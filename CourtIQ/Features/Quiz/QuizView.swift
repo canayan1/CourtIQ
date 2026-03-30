@@ -48,7 +48,7 @@ struct QuizView: View {
                     .lineSpacing(5)
 
                 VStack(spacing: 12) {
-                    ForEach(Array(question.options.enumerated()), id: \ .0) { index, option in
+                    ForEach(Array(question.options.enumerated()), id: \.0) { index, option in
                         optionButton(option, index: index, question: question)
                     }
                 }
