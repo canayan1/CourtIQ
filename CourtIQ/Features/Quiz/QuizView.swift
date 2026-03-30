@@ -24,15 +24,14 @@ struct QuizView: View {
         }
         .navigationTitle(vm.quiz.title)
         .navigationBarTitleDisplayMode(.inline)
-        .onChange(of: vm.isFinished) { finished in
+        .onChange(of: vm.isFinished, action: { finished in
             guard finished, !hasMarkedCompletion else { return }
             hasMarkedCompletion = true
             onComplete()
-        }
+        })
     }
 
-    // MARK: - Question Screen
-
+    @ViewBuilder
     private func questionScreen(_ question: QuizQuestion) -> some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
@@ -73,8 +72,10 @@ struct QuizView: View {
                     .background(Color(.secondarySystemBackground))
                     .clipShape(RoundedRectangle(cornerRadius: 14))
 
-                    Button("Next") { vm.next() }
-                        .buttonStyle(PrimaryButtonStyle())
+                    Button("Next") {
+                        vm.next()
+                    }
+                    .buttonStyle(PrimaryButtonStyle())
                 }
             }
             .padding()
@@ -124,8 +125,7 @@ struct QuizView: View {
         .disabled(revealed)
     }
 
-    // MARK: - Result Screen
-
+    @ViewBuilder
     private var resultScreen: some View {
         let tip = Quiz.dailyTrainingTip()
 
@@ -146,8 +146,8 @@ struct QuizView: View {
 
             Text(resultTakeaway)
                 .multilineTextAlignment(.center)
-                .padding(.horizontal)
                 .foregroundStyle(.secondary)
+                .padding(.horizontal)
 
             VStack(alignment: .leading, spacing: 12) {
                 Label("Training Tip", systemImage: "lightbulb.fill")
@@ -202,9 +202,11 @@ struct QuizView: View {
         }
     }
 
+    @ViewBuilder
     private var discussionBlock: some View {
         let threadCount = DiscussionRepository.threadCount(for: .trainingSession, targetID: vm.quiz.id)
-        return VStack(alignment: .leading, spacing: 12) {
+
+        VStack(alignment: .leading, spacing: 12) {
             Text("Discussion")
                 .font(.headline)
             if threadCount > 0 {
@@ -221,21 +223,5 @@ struct QuizView: View {
         .padding()
         .background(Color(.secondarySystemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 14))
-    }
-}
-
-// MARK: - Shared Button Style
-
-struct PrimaryButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .font(.headline)
-            .frame(maxWidth: .infinity)
-            .padding()
-            .background(Color.green)
-            .foregroundStyle(.white)
-            .clipShape(RoundedRectangle(cornerRadius: 14))
-            .scaleEffect(configuration.isPressed ? 0.97 : 1)
-            .animation(.easeInOut(duration: 0.1), value: configuration.isPressed)
     }
 }
