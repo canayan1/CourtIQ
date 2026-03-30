@@ -82,8 +82,19 @@ struct QuizView: View {
         }
     }
 
-    private func optionButton(_ option: String, index: Int, question: QuizQuestion) -> some View {
-        let isSelected = vm.selectedOptionIndex == index
+struct PrimaryButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(.headline)
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(configuration.isPressed ? Color.green.opacity(0.8) : Color.green)
+            .foregroundStyle(.white)
+            .clipShape(RoundedRectangle(cornerRadius: 14))
+            .scaleEffect(configuration.isPressed ? 0.97 : 1)
+            .animation(.easeInOut(duration: 0.1), value: configuration.isPressed)
+    }
+}
         let isCorrect = index == question.correctAnswerIndex
         let revealed = vm.isAnswered
 
