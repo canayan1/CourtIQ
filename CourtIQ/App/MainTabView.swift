@@ -3,20 +3,26 @@ import SwiftUI
 struct MainTabView: View {
     var body: some View {
         TabView {
-            QuizView()
-                .tabItem {
-                    Label("Quiz", systemImage: "questionmark.circle.fill")
-                }
+            NavigationStack {
+                TodayView()
+            }
+            .tabItem {
+                Label("Today", systemImage: "sun.max.fill")
+            }
 
-            Text("Daily Tip — Coming Soon")
-                .tabItem {
-                    Label("Daily Tip", systemImage: "lightbulb.fill")
-                }
+            NavigationStack {
+                PracticeView()
+            }
+            .tabItem {
+                Label("Practice", systemImage: "book.closed.fill")
+            }
 
-            Text("Profile — Coming Soon")
-                .tabItem {
-                    Label("Profile", systemImage: "person.fill")
-                }
+            NavigationStack {
+                ProfileView()
+            }
+            .tabItem {
+                Label("Stats", systemImage: "chart.bar.fill")
+            }
         }
     }
 }

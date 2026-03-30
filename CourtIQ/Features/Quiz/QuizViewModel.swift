@@ -5,7 +5,7 @@ import Observation
 final class QuizViewModel {
     let quiz: Quiz
     private(set) var currentIndex: Int = 0
-    private(set) var selectedOptionID: String? = nil
+    private(set) var selectedOptionIndex: Int? = nil
     private(set) var score: Int = 0
     private(set) var isFinished: Bool = false
 
@@ -14,20 +14,21 @@ final class QuizViewModel {
         return quiz.questions[currentIndex]
     }
 
-    var isAnswered: Bool { selectedOptionID != nil }
+    var isAnswered: Bool { selectedOptionIndex != nil }
 
     var progress: Double {
-        Double(currentIndex) / Double(quiz.questions.count)
+        guard quiz.questions.count > 0 else { return 0 }
+        return Double(currentIndex) / Double(quiz.questions.count)
     }
 
     init(quiz: Quiz = .sample) {
         self.quiz = quiz
     }
 
-    func select(optionID: String) {
+    func select(optionIndex: Int) {
         guard !isAnswered else { return }
-        selectedOptionID = optionID
-        if optionID == currentQuestion?.correctOptionID {
+        selectedOptionIndex = optionIndex
+        if optionIndex == currentQuestion?.correctAnswerIndex {
             score += 1
         }
     }
@@ -38,13 +39,13 @@ final class QuizViewModel {
             isFinished = true
         } else {
             currentIndex = next
-            selectedOptionID = nil
+            selectedOptionIndex = nil
         }
     }
 
     func restart() {
         currentIndex = 0
-        selectedOptionID = nil
+        selectedOptionIndex = nil
         score = 0
         isFinished = false
     }
