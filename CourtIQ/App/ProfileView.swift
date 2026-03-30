@@ -79,7 +79,7 @@ struct ProfileView: View {
                 Text("Top patterns")
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(.secondary)
-                ForEach(session.topMistakePatterns, id: \ .self) { pattern in
+                    ForEach(session.topMistakePatterns, id: \.self) { pattern in
                     Text("• \(pattern)")
                         .font(.subheadline)
                 }

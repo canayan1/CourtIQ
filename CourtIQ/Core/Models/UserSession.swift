@@ -1,4 +1,5 @@
 import Foundation
+import Combine
 
 enum PremiumStatus: String, Codable {
     case free
