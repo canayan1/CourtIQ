@@ -31,7 +31,6 @@ struct QuizView: View {
         })
     }
 
-    @ViewBuilder
     private func questionScreen(_ question: QuizQuestion) -> some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
@@ -82,19 +81,8 @@ struct QuizView: View {
         }
     }
 
-struct PrimaryButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .font(.headline)
-            .frame(maxWidth: .infinity)
-            .padding()
-            .background(configuration.isPressed ? Color.green.opacity(0.8) : Color.green)
-            .foregroundStyle(.white)
-            .clipShape(RoundedRectangle(cornerRadius: 14))
-            .scaleEffect(configuration.isPressed ? 0.97 : 1)
-            .animation(.easeInOut(duration: 0.1), value: configuration.isPressed)
-    }
-}
+    private func optionButton(_ option: String, index: Int, question: QuizQuestion) -> some View {
+        let isSelected = vm.selectedOptionIndex == index
         let isCorrect = index == question.correctAnswerIndex
         let revealed = vm.isAnswered
 
@@ -136,7 +124,6 @@ struct PrimaryButtonStyle: ButtonStyle {
         .disabled(revealed)
     }
 
-    @ViewBuilder
     private var resultScreen: some View {
         let tip = Quiz.dailyTrainingTip()
 
@@ -177,7 +164,7 @@ struct PrimaryButtonStyle: ButtonStyle {
 
             Spacer()
 
-            Button("Review Todayâ€™s Quiz") {
+            Button("Review Today’s Quiz") {
                 vm.restart()
                 hasMarkedCompletion = false
             }
@@ -207,17 +194,16 @@ struct PrimaryButtonStyle: ButtonStyle {
         case vm.quiz.questions.count - 1:
             return "One more adjustment and your decision game is tighter. Keep the focus on court sense."
         case 1...:
-            return "You found some strong options. Use tomorrowâ€™s quiz to sharpen the next decision."
+            return "You found some strong options. Use tomorrow’s quiz to sharpen the next decision."
         default:
             return "Practice the decision process again tomorrow and build consistency one day at a time."
         }
     }
 
-    @ViewBuilder
     private var discussionBlock: some View {
         let threadCount = DiscussionRepository.threadCount(for: .trainingSession, targetID: vm.quiz.id)
 
-        VStack(alignment: .leading, spacing: 12) {
+        return VStack(alignment: .leading, spacing: 12) {
             Text("Discussion")
                 .font(.headline)
             if threadCount > 0 {
@@ -234,5 +220,19 @@ struct PrimaryButtonStyle: ButtonStyle {
         .padding()
         .background(Color(.secondarySystemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 14))
+    }
+}
+
+struct PrimaryButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(.headline)
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(configuration.isPressed ? Color.green.opacity(0.8) : Color.green)
+            .foregroundStyle(.white)
+            .clipShape(RoundedRectangle(cornerRadius: 14))
+            .scaleEffect(configuration.isPressed ? 0.97 : 1)
+            .animation(.easeInOut(duration: 0.1), value: configuration.isPressed)
     }
 }
