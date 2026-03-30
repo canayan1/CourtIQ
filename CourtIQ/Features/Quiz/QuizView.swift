@@ -58,7 +58,7 @@ struct QuizView: View {
 
             onComplete()
 
-        })
+        }
 
     }
 
