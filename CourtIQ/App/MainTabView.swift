@@ -21,7 +21,7 @@ struct MainTabView: View {
                 ProfileView()
             }
             .tabItem {
-                Label("Stats", systemImage: "chart.bar.fill")
+                Label("Profile", systemImage: "person.crop.circle.fill")
             }
         }
     }

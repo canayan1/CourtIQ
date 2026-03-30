@@ -1,50 +1,50 @@
 import Combine
 
+struct QuizQuestionModel {
+    let prompt: String
+    let options: [String]
+    let correctIndex: Int
+}
+
 final class QuizViewModel: ObservableObject {
-    let quiz: Quiz
-    @Published private(set) var currentIndex: Int = 0
-    @Published private(set) var selectedOptionIndex: Int? = nil
-    @Published private(set) var score: Int = 0
-    @Published private(set) var isFinished: Bool = false
+    @Published private(set) var question: QuizQuestionModel
+    @Published private(set) var selectedIndex: Int? = nil
+    @Published private(set) var showFeedback = false
 
-    var currentQuestion: QuizQuestion? {
-        guard currentIndex < quiz.questions.count else { return nil }
-        return quiz.questions[currentIndex]
+    init() {
+        self.question = QuizQuestionModel(
+            prompt: "Which shot is best after a deep return?",
+            options: ["Cross-court forehand", "Drop shot", "Lob"],
+            correctIndex: 0
+        )
     }
 
-    var isAnswered: Bool { selectedOptionIndex != nil }
-
-    var progress: Double {
-        guard quiz.questions.count > 0 else { return 0 }
-        return Double(currentIndex) / Double(quiz.questions.count)
+    var hasAnswered: Bool {
+        selectedIndex != nil
     }
 
-    init(quiz: Quiz = .sample) {
-        self.quiz = quiz
+    var isCorrectSelection: Bool {
+        selectedIndex == question.correctIndex
+    }
+
+    var feedbackText: String {
+        guard let selectedIndex = selectedIndex else {
+            return "Select an option and submit."
+        }
+        return selectedIndex == question.correctIndex ? "Good choice!" : "Try again."
     }
 
     func select(optionIndex: Int) {
-        guard !isAnswered else { return }
-        selectedOptionIndex = optionIndex
-        if optionIndex == currentQuestion?.correctAnswerIndex {
-            score += 1
-        }
+        guard !showFeedback else { return }
+        selectedIndex = optionIndex
     }
 
-    func next() {
-        let next = currentIndex + 1
-        if next >= quiz.questions.count {
-            isFinished = true
-        } else {
-            currentIndex = next
-            selectedOptionIndex = nil
-        }
+    func submit() {
+        showFeedback = true
     }
 
-    func restart() {
-        currentIndex = 0
-        selectedOptionIndex = nil
-        score = 0
-        isFinished = false
+    func reset() {
+        selectedIndex = nil
+        showFeedback = false
     }
 }

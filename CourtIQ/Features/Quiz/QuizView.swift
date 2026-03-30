@@ -1,117 +1,60 @@
 ﻿import SwiftUI
 
 struct QuizView: View {
+    @StateObject private var viewModel = QuizViewModel()
+    let title: String
 
-    @StateObject private var viewModel: QuizViewModel
-    let onComplete: () -> Void
-
-    init(quiz: Quiz = .sample, onComplete: @escaping () -> Void = {}) {
-        _viewModel = StateObject(wrappedValue: QuizViewModel(quiz: quiz))
-        self.onComplete = onComplete
+    init(title: String = "Quiz") {
+        self.title = title
     }
 
     var body: some View {
         VStack(spacing: 20) {
-            Text(viewModel.quiz.title)
+            Text(title)
                 .font(.title2)
                 .bold()
-                .multilineTextAlignment(.center)
-                .padding(.horizontal)
+                .padding(.top)
 
-            if viewModel.isFinished {
-                finishedView
-            } else if let question = viewModel.currentQuestion {
-                questionView(question)
-            } else {
-                Text("No questions available.")
-                    .foregroundColor(.secondary)
-                    .padding()
-            }
-
-            Spacer()
-        }
-        .padding(.top)
-    }
-
-    private func questionView(_ question: QuizQuestion) -> some View {
-        VStack(alignment: .leading, spacing: 18) {
-            Text("Question \(viewModel.currentIndex + 1) of \(viewModel.quiz.questions.count)")
-                .font(.caption)
-                .foregroundColor(.secondary)
-
-            Text(question.scenario)
-                .font(.body)
+            Text(viewModel.question.prompt)
+                .font(.title3)
                 .multilineTextAlignment(.leading)
 
             VStack(spacing: 12) {
-                ForEach(Array(question.options.enumerated()), id: \.0) { index, option in
+                ForEach(viewModel.question.options.indices, id: \.self) { index in
                     Button(action: {
                         viewModel.select(optionIndex: index)
                     }) {
                         HStack {
-                            Text(option)
+                            Text(viewModel.question.options[index])
                                 .foregroundColor(.primary)
-                                .multilineTextAlignment(.leading)
                             Spacer()
-                            if viewModel.isAnswered {
-                                if index == question.correctAnswerIndex {
-                                    Image(systemName: "checkmark.circle.fill")
-                                        .foregroundColor(.green)
-                                } else if viewModel.selectedOptionIndex == index {
-                                    Image(systemName: "xmark.circle.fill")
-                                        .foregroundColor(.red)
-                                }
-                            }
                         }
                         .padding()
                         .background(Color(.secondarySystemBackground))
-                        .cornerRadius(12)
+                        .cornerRadius(10)
                     }
-                    .disabled(viewModel.isAnswered)
+                    .disabled(viewModel.hasAnswered)
                 }
             }
 
-            if viewModel.isAnswered {
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Explanation")
-                        .font(.headline)
-                    Text(question.explanation)
-                        .font(.callout)
-                    Text(question.takeaway)
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                }
-                .padding()
-                .background(Color(.secondarySystemBackground))
-                .cornerRadius(14)
-
-                Button("Next") {
-                    viewModel.next()
-                    if viewModel.isFinished {
-                        onComplete()
-                    }
-                }
-                .buttonStyle(.borderedProminent)
+            if viewModel.showFeedback {
+                Text(viewModel.feedbackText)
+                    .foregroundColor(viewModel.isCorrectSelection ? .green : .red)
+                    .padding(.top)
             }
-        }
-        .padding(.horizontal)
-    }
 
-    private var finishedView: some View {
-        VStack(spacing: 18) {
-            Text("Quiz complete")
-                .font(.title3)
-                .bold()
-
-            Text("\(viewModel.score) of \(viewModel.quiz.questions.count) correct")
-                .font(.body)
-                .foregroundColor(.secondary)
-
-            Button("Restart Quiz") {
-                viewModel.restart()
+            Button(viewModel.hasAnswered ? "Reset" : "Submit") {
+                if viewModel.hasAnswered {
+                    viewModel.reset()
+                } else {
+                    viewModel.submit()
+                }
             }
             .buttonStyle(.borderedProminent)
+
+            Spacer()
         }
-        .padding(.horizontal)
+        .padding()
+        .navigationTitle(title)
     }
 }
