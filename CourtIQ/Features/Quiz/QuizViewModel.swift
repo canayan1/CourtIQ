@@ -1,13 +1,11 @@
-import Foundation
-import Observation
+import Combine
 
-@Observable
-final class QuizViewModel {
+final class QuizViewModel: ObservableObject {
     let quiz: Quiz
-    private(set) var currentIndex: Int = 0
-    private(set) var selectedOptionIndex: Int? = nil
-    private(set) var score: Int = 0
-    private(set) var isFinished: Bool = false
+    @Published private(set) var currentIndex: Int = 0
+    @Published private(set) var selectedOptionIndex: Int? = nil
+    @Published private(set) var score: Int = 0
+    @Published private(set) var isFinished: Bool = false
 
     var currentQuestion: QuizQuestion? {
         guard currentIndex < quiz.questions.count else { return nil }
