@@ -1,0 +1,697 @@
+[
+  {
+    "coachingCues" : "Keep the shoulder blade active, rotate through the mid-back, and avoid shrugging.",
+    "duration" : "6 min",
+    "focusAreas" : [
+      "shoulders",
+      "thoracicRotation"
+    ],
+    "goal" : "Refresh shoulder and upper-back motion before serving.",
+    "id" : "quick-reset-001",
+    "instructions" : "Work through the upper-body sequence with controlled tempo so your serve shoulder feels ready without tension.",
+    "movements" : [
+      {
+        "duration" : "1 min",
+        "id" : "quick-reset-001-1",
+        "notes" : "Keep the chest lifted.",
+        "title" : "Arm circles with thoracic rotation"
+      },
+      {
+        "duration" : "90 sec",
+        "id" : "quick-reset-001-2",
+        "notes" : "Keep elbows soft and scapula engaged.",
+        "title" : "Wall shoulder slides"
+      },
+      {
+        "duration" : "1 min",
+        "id" : "quick-reset-001-3",
+        "notes" : "Move from the mid-back, not the lower back.",
+        "title" : "Standing open-book reps"
+      },
+      {
+        "duration" : "1 min",
+        "id" : "quick-reset-001-4",
+        "notes" : "Use slow control to feel the back of the shoulder.",
+        "title" : "Gentle band pull-aparts"
+      },
+      {
+        "duration" : "1 min",
+        "id" : "quick-reset-001-5",
+        "notes" : "Breathe as you move.",
+        "title" : "Controlled shoulder rolls"
+      }
+    ],
+    "title" : "Serve Shoulder Reset",
+    "type" : "quickReset",
+    "whyItMatters" : "Better shoulder freedom and thoracic rotation support a smoother serve toss, cleaner swing path, and less late-arm tension."
+  },
+  {
+    "coachingCues" : "Feel the range in your hips and ankles before you accept the first ball.",
+    "duration" : "7 min",
+    "focusAreas" : [
+      "hips",
+      "ankles"
+    ],
+    "goal" : "Prime the lower body for split-step speed and court coverage.",
+    "id" : "quick-reset-002",
+    "instructions" : "Move deliberately through each lower-body reset drill before stepping onto court or starting a practice block.",
+    "movements" : [
+      {
+        "duration" : "1 min",
+        "id" : "quick-reset-002-1",
+        "notes" : "Keep the foot close to the ground.",
+        "title" : "Lateral ankle rocks"
+      },
+      {
+        "duration" : "1 min",
+        "id" : "quick-reset-002-2",
+        "notes" : "Turn through the hips, not the lower spine.",
+        "title" : "90/90 hip switches"
+      },
+      {
+        "duration" : "1 min",
+        "id" : "quick-reset-002-3",
+        "notes" : "Move slowly to feel each direction.",
+        "title" : "Standing hip circles"
+      },
+      {
+        "duration" : "1 min",
+        "id" : "quick-reset-002-4",
+        "notes" : "Control the motion on both sides.",
+        "title" : "Heel-toe calf lifts"
+      },
+      {
+        "duration" : "1 min",
+        "id" : "quick-reset-002-5",
+        "notes" : "Sink only as low as you can keep your weight balanced.",
+        "title" : "Mini squat holds with ankle drive"
+      }
+    ],
+    "title" : "Hips & Ankle Warm-Up",
+    "type" : "quickReset",
+    "whyItMatters" : "Stable hips and mobile ankles reduce early match stiffness, making it easier to react and recover on the first step."
+  },
+  {
+    "coachingCues" : "Stay tall through your torso and let the legs lengthen without forcing.",
+    "duration" : "5 min",
+    "focusAreas" : [
+      "hamstrings",
+      "hips"
+    ],
+    "goal" : "Loosen the hamstrings after long rallies or between sets.",
+    "id" : "quick-reset-003",
+    "instructions" : "Use this quick flow to ease hamstring tension while maintaining movement quality.",
+    "movements" : [
+      {
+        "duration" : "1 min",
+        "id" : "quick-reset-003-1",
+        "notes" : "Keep a soft knee.",
+        "title" : "Standing hamstring swings"
+      },
+      {
+        "duration" : "1 min",
+        "id" : "quick-reset-003-2",
+        "notes" : "Use the opposite hip to level the pelvis.",
+        "title" : "Seated single-leg reach"
+      },
+      {
+        "duration" : "1 min",
+        "id" : "quick-reset-003-3",
+        "notes" : "Shift weight forward gently.",
+        "title" : "Kneeling half-splits"
+      },
+      {
+        "duration" : "1 min",
+        "id" : "quick-reset-003-4",
+        "notes" : "Keep the spine long.",
+        "title" : "Dynamic toe taps"
+      },
+      {
+        "duration" : "1 min",
+        "id" : "quick-reset-003-5",
+        "notes" : "Move with control.",
+        "title" : "Standing hip hinge pulses"
+      }
+    ],
+    "title" : "Hamstring Release Flow",
+    "type" : "quickReset",
+    "whyItMatters" : "Smoothed hamstrings help you recover faster after long rallies and move more dynamically on the next point."
+  },
+  {
+    "coachingCues" : "Rotate from the mid-back, not from the low back.",
+    "duration" : "6 min",
+    "focusAreas" : [
+      "thoracicRotation",
+      "shoulders"
+    ],
+    "goal" : "Restore mid-back twist and prepare for groundstroke rotation.",
+    "id" : "quick-reset-004",
+    "instructions" : "Flow through these rotation drills to restore clean torso movement without aggressive stretching.",
+    "movements" : [
+      {
+        "duration" : "1 min",
+        "id" : "quick-reset-004-1",
+        "notes" : "Keep both hips grounded.",
+        "title" : "Open-book sequence"
+      },
+      {
+        "duration" : "1 min",
+        "id" : "quick-reset-004-2",
+        "notes" : "Reach through the chest.",
+        "title" : "Kneeling thoracic reach"
+      },
+      {
+        "duration" : "1 min",
+        "id" : "quick-reset-004-3",
+        "notes" : "Breathe into each turn.",
+        "title" : "Seated twist with arm extension"
+      },
+      {
+        "duration" : "1 min",
+        "id" : "quick-reset-004-4",
+        "notes" : "Keep the pelvis stable.",
+        "title" : "Standing band rotation"
+      },
+      {
+        "duration" : "1 min",
+        "id" : "quick-reset-004-5",
+        "notes" : "Maintain a neutral neck.",
+        "title" : "Reverse shoulder circles"
+      }
+    ],
+    "title" : "Thoracic Rotation Reset",
+    "type" : "quickReset",
+    "whyItMatters" : "A mobile thoracic spine supports better racket head speed, recovery between strokes, and a safer serve turn."
+  },
+  {
+    "coachingCues" : "Stay steady through your breath and keep each joint moving in the direction you want to feel on court.",
+    "duration" : "8 min",
+    "focusAreas" : [
+      "hips",
+      "shoulders",
+      "ankles"
+    ],
+    "goal" : "Reduce stiffness and reset range of motion between sets.",
+    "id" : "quick-reset-005",
+    "instructions" : "Use this match-day reset when you want a short, complete movement refresh.",
+    "movements" : [
+      {
+        "duration" : "1 min",
+        "id" : "quick-reset-005-1",
+        "notes" : "Keep the opposite hand on a support if needed.",
+        "title" : "Standing hip swings"
+      },
+      {
+        "duration" : "1 min",
+        "id" : "quick-reset-005-2",
+        "notes" : "Keep the shoulder blades low.",
+        "title" : "Shoulder band draws"
+      },
+      {
+        "duration" : "1 min",
+        "id" : "quick-reset-005-3",
+        "notes" : "Move both directions.",
+        "title" : "Ankle circles and dorsiflexion prep"
+      },
+      {
+        "duration" : "2 min",
+        "id" : "quick-reset-005-4",
+        "notes" : "Sink gently into the front hip.",
+        "title" : "Half-kneeling hip flexor access"
+      },
+      {
+        "duration" : "2 min",
+        "id" : "quick-reset-005-5",
+        "notes" : "Maintain a tall chest.",
+        "title" : "Controlled walking lunges"
+      }
+    ],
+    "title" : "Match Day Energy Reset",
+    "type" : "quickReset",
+    "whyItMatters" : "A quick mobility reset supports faster recovery, better lateral mobility, and clear movement before the next game."
+  },
+  {
+    "coachingCues" : "Avoid rushing and feel the rotation through the spine, not just the arms.",
+    "duration" : "12 min",
+    "focusAreas" : [
+      "thoracicRotation",
+      "shoulders"
+    ],
+    "goal" : "Build consistent thoracic and shoulder mobility for groundstroke rotation.",
+    "id" : "daily-mobility-001",
+    "instructions" : "Complete this daily rotation flow to support cleaner torso turns in rallies and serve preparation.",
+    "movements" : [
+      {
+        "duration" : "2 min",
+        "id" : "daily-mobility-001-1",
+        "notes" : "Lengthen through the spine.",
+        "title" : "Seated spinal twists"
+      },
+      {
+        "duration" : "2 min",
+        "id" : "daily-mobility-001-2",
+        "notes" : "Focus on the upper back.",
+        "title" : "World’s greatest stretch"
+      },
+      {
+        "duration" : "2 min",
+        "id" : "daily-mobility-001-3",
+        "notes" : "Keep the hips square.",
+        "title" : "Standing reach and rotate"
+      },
+      {
+        "duration" : "2 min",
+        "id" : "daily-mobility-001-4",
+        "notes" : "Move slowly through each side.",
+        "title" : "Thread-the-needle press"
+      },
+      {
+        "duration" : "2 min",
+        "id" : "daily-mobility-001-5",
+        "notes" : "Keep the core engaged.",
+        "title" : "Overhead band rotations"
+      }
+    ],
+    "title" : "Court-Ready Rotation Sequence",
+    "type" : "dailyMobility",
+    "whyItMatters" : "Better rotation helps you generate power with less stress and recover faster between shots."
+  },
+  {
+    "coachingCues" : "Feel the stretch without forcing, and maintain stability through the core.",
+    "duration" : "15 min",
+    "focusAreas" : [
+      "hips",
+      "hamstrings"
+    ],
+    "goal" : "Improve hip and hamstring range for faster change of direction.",
+    "id" : "daily-mobility-002",
+    "instructions" : "Use this daily sequence to keep your legs responsive and ready for quick court movement.",
+    "movements" : [
+      {
+        "duration" : "3 min",
+        "id" : "daily-mobility-002-1",
+        "notes" : "Step with intent.",
+        "title" : "Walking hip openers"
+      },
+      {
+        "duration" : "3 min",
+        "id" : "daily-mobility-002-2",
+        "notes" : "Keep the pelvis level.",
+        "title" : "Alternating kneeling lunge reaches"
+      },
+      {
+        "duration" : "3 min",
+        "id" : "daily-mobility-002-3",
+        "notes" : "Use a slow, controlled hinge.",
+        "title" : "Single-leg Romanian deadlift reach"
+      },
+      {
+        "duration" : "3 min",
+        "id" : "daily-mobility-002-4",
+        "notes" : "Keep the chest up.",
+        "title" : "Seated hamstring band stretch"
+      },
+      {
+        "duration" : "3 min",
+        "id" : "daily-mobility-002-5",
+        "notes" : "Keep a soft bend in the knees.",
+        "title" : "Side shuffle hip access"
+      }
+    ],
+    "title" : "Lower-Body Movement Circuit",
+    "type" : "dailyMobility",
+    "whyItMatters" : "More mobile hips and hamstrings improve your ability to cover the court and recover after wide shots."
+  },
+  {
+    "coachingCues" : "Breathe deeply and move with control through each position.",
+    "duration" : "10 min",
+    "focusAreas" : [
+      "shoulders",
+      "thoracicRotation"
+    ],
+    "goal" : "Maintain shoulder mobility for serving and overhead control.",
+    "id" : "daily-mobility-003",
+    "instructions" : "Flow calmly through the shoulder drills to maintain range without fatigue.",
+    "movements" : [
+      {
+        "duration" : "2 min",
+        "id" : "daily-mobility-003-1",
+        "notes" : "Keep the ribs packed.",
+        "title" : "Band shoulder draws"
+      },
+      {
+        "duration" : "2 min",
+        "id" : "daily-mobility-003-2",
+        "notes" : "Move with rhythm.",
+        "title" : "Cross-body shoulder swings"
+      },
+      {
+        "duration" : "2 min",
+        "id" : "daily-mobility-003-3",
+        "notes" : "Keep contact through the spine.",
+        "title" : "Wall angel slides"
+      },
+      {
+        "duration" : "2 min",
+        "id" : "daily-mobility-003-4",
+        "notes" : "Avoid arching the lower back.",
+        "title" : "Doorway chest opener"
+      },
+      {
+        "duration" : "2 min",
+        "id" : "daily-mobility-003-5",
+        "notes" : "Link the shoulder and thoracic spine.",
+        "title" : "Overhead reach and rotate"
+      }
+    ],
+    "title" : "Shoulder Freedom Routine",
+    "type" : "dailyMobility",
+    "whyItMatters" : "A free shoulder and upper-back chain supports serve speed, overhead placement, and consistent follow-through."
+  },
+  {
+    "coachingCues" : "Move with control and avoid locking the joints.",
+    "duration" : "11 min",
+    "focusAreas" : [
+      "ankles",
+      "hips"
+    ],
+    "goal" : "Build ankle resilience for quick directional changes.",
+    "id" : "daily-mobility-004",
+    "instructions" : "Use this mobility routine to keep your lower legs stable through quick stops and starts.",
+    "movements" : [
+      {
+        "duration" : "2 min",
+        "id" : "daily-mobility-004-1",
+        "notes" : "Stay balanced.",
+        "title" : "Toe-calf lifts with pulse"
+      },
+      {
+        "duration" : "2 min",
+        "id" : "daily-mobility-004-2",
+        "notes" : "Move both directions.",
+        "title" : "Ankle circles and dorsiflexion"
+      },
+      {
+        "duration" : "2 min",
+        "id" : "daily-mobility-004-3",
+        "notes" : "Keep the weight centered.",
+        "title" : "Cossack squat reach"
+      },
+      {
+        "duration" : "2 min",
+        "id" : "daily-mobility-004-4",
+        "notes" : "Control the knee tracking.",
+        "title" : "Single-leg balance reach"
+      },
+      {
+        "duration" : "3 min",
+        "id" : "daily-mobility-004-5",
+        "notes" : "Keep the spine long.",
+        "title" : "Standing hip hinge pulses"
+      }
+    ],
+    "title" : "Ankle & Lower Leg Support",
+    "type" : "dailyMobility",
+    "whyItMatters" : "Stronger ankle mobility helps you push off more efficiently and reduces the risk of late-match fatigue."
+  },
+  {
+    "coachingCues" : "Link each segment slowly and maintain awareness of the range you feel.",
+    "duration" : "18 min",
+    "focusAreas" : [
+      "hips",
+      "thoracicRotation",
+      "shoulders"
+    ],
+    "goal" : "Connect the hips, shoulders, and spine for smoother court movement.",
+    "id" : "daily-mobility-005",
+    "instructions" : "Complete this full-body flow to keep your tennis movement chain balanced and ready.",
+    "movements" : [
+      {
+        "duration" : "3 min",
+        "id" : "daily-mobility-005-1",
+        "notes" : "Keep the chest open.",
+        "title" : "Walking knee hugs with rotation"
+      },
+      {
+        "duration" : "3 min",
+        "id" : "daily-mobility-005-2",
+        "notes" : "Move with control.",
+        "title" : "Lateral leg swings"
+      },
+      {
+        "duration" : "3 min",
+        "id" : "daily-mobility-005-3",
+        "notes" : "Breathe into each side.",
+        "title" : "Half-kneeling thoracic reaches"
+      },
+      {
+        "duration" : "3 min",
+        "id" : "daily-mobility-005-4",
+        "notes" : "Use small repetitions.",
+        "title" : "Standing shoulder plates"
+      },
+      {
+        "duration" : "3 min",
+        "id" : "daily-mobility-005-5",
+        "notes" : "Keep the movement smooth.",
+        "title" : "Dynamic hip openers"
+      }
+    ],
+    "title" : "Full-Body Tennis Flow",
+    "type" : "dailyMobility",
+    "whyItMatters" : "A coordinated mobility routine lowers stiffness and improves the quality of your movement on the court."
+  },
+  {
+    "coachingCues" : "Stay relaxed and let the muscles lengthen without force.",
+    "duration" : "22 min",
+    "focusAreas" : [
+      "hips",
+      "hamstrings"
+    ],
+    "goal" : "Release the lower body after a long match.",
+    "id" : "recovery-001",
+    "instructions" : "Use this recovery flow after play to remove stiffness and support tomorrow’s movement.",
+    "movements" : [
+      {
+        "duration" : "4 min",
+        "id" : "recovery-001-1",
+        "notes" : "Move slowly over tight spots.",
+        "title" : "Foam roll hamstrings"
+      },
+      {
+        "duration" : "4 min",
+        "id" : "recovery-001-2",
+        "notes" : "Drive through the heels.",
+        "title" : "Supine hip bridges"
+      },
+      {
+        "duration" : "4 min",
+        "id" : "recovery-001-3",
+        "notes" : "Breathe into the front hip.",
+        "title" : "Pigeon pose hold"
+      },
+      {
+        "duration" : "4 min",
+        "id" : "recovery-001-4",
+        "notes" : "Soften the spine.",
+        "title" : "Seated forward fold"
+      },
+      {
+        "duration" : "4 min",
+        "id" : "recovery-001-5",
+        "notes" : "Keep the pelvis squared.",
+        "title" : "Supported figure-four release"
+      }
+    ],
+    "title" : "Post-Match Hip & Hamstring Recovery",
+    "type" : "recovery",
+    "whyItMatters" : "Recovering the hips and hamstrings helps you move more freely and lowers injury risk after long days on court."
+  },
+  {
+    "coachingCues" : "Let each position settle before you move on.",
+    "duration" : "24 min",
+    "focusAreas" : [
+      "shoulders",
+      "thoracicRotation"
+    ],
+    "goal" : "Ease upper-body tension after a hard hitting session.",
+    "id" : "recovery-002",
+    "instructions" : "Finish play with this upper-body recovery routine to reduce tightness and restore rotation.",
+    "movements" : [
+      {
+        "duration" : "4 min",
+        "id" : "recovery-002-1",
+        "notes" : "Stay gentle.",
+        "title" : "Foam roll upper back"
+      },
+      {
+        "duration" : "4 min",
+        "id" : "recovery-002-2",
+        "notes" : "Breathe long.",
+        "title" : "Child’s pose with reach"
+      },
+      {
+        "duration" : "4 min",
+        "id" : "recovery-002-3",
+        "notes" : "Keep the shoulder blade down.",
+        "title" : "Sleeper stretch hold"
+      },
+      {
+        "duration" : "4 min",
+        "id" : "recovery-002-4",
+        "notes" : "Move slowly.",
+        "title" : "Lying thoracic twists"
+      },
+      {
+        "duration" : "4 min",
+        "id" : "recovery-002-5",
+        "notes" : "Avoid arching the lower back.",
+        "title" : "Doorway shoulder opener"
+      }
+    ],
+    "title" : "Shoulder & Spine Recovery",
+    "type" : "recovery",
+    "whyItMatters" : "Shoulder and spine recovery preserves serve quality and reduces the feel of fatigue in the upper body."
+  },
+  {
+    "coachingCues" : "Move with purpose and use the rest positions to unload the joints.",
+    "duration" : "20 min",
+    "focusAreas" : [
+      "ankles",
+      "hips",
+      "hamstrings"
+    ],
+    "goal" : "Reset legs and ankles after a long practice or match.",
+    "id" : "recovery-003",
+    "instructions" : "Use this recovery routine to settle the lower body and keep your legs ready for the next practice.",
+    "movements" : [
+      {
+        "duration" : "4 min",
+        "id" : "recovery-003-1",
+        "notes" : "Use a massage ball if available.",
+        "title" : "Seated calf release"
+      },
+      {
+        "duration" : "4 min",
+        "id" : "recovery-003-2",
+        "notes" : "Keep the breath steady.",
+        "title" : "Passive hamstring stretch"
+      },
+      {
+        "duration" : "4 min",
+        "id" : "recovery-003-3",
+        "notes" : "Relax the lower back.",
+        "title" : "Supine twists with bent knees"
+      },
+      {
+        "duration" : "4 min",
+        "id" : "recovery-003-4",
+        "notes" : "Focus on the contraction.",
+        "title" : "Glute bridges with hold"
+      },
+      {
+        "duration" : "4 min",
+        "id" : "recovery-003-5",
+        "notes" : "Control each direction.",
+        "title" : "Ankle mobility floor drills"
+      }
+    ],
+    "title" : "Match-Day Lower-Body Reset",
+    "type" : "recovery",
+    "whyItMatters" : "Well-managed lower-body recovery improves your ability to return fresh the next day and reduces ankle and calf fatigue."
+  },
+  {
+    "coachingCues" : "Stay slow and let the positions feel restorative, not forced.",
+    "duration" : "25 min",
+    "focusAreas" : [
+      "shoulders",
+      "hips",
+      "ankles"
+    ],
+    "goal" : "Recover after a long tennis day with a full-body release.",
+    "id" : "recovery-004",
+    "instructions" : "Finish the day with this full-body recovery flow to ease tension and support tomorrow’s movement.",
+    "movements" : [
+      {
+        "duration" : "4 min",
+        "id" : "recovery-004-1",
+        "notes" : "Keep the knees soft.",
+        "title" : "Gentle spine roll-downs"
+      },
+      {
+        "duration" : "4 min",
+        "id" : "recovery-004-2",
+        "notes" : "Use a cushion if needed.",
+        "title" : "Supported shoulder opener"
+      },
+      {
+        "duration" : "4 min",
+        "id" : "recovery-004-3",
+        "notes" : "Breathe into the front side.",
+        "title" : "Standing hip flexor release"
+      },
+      {
+        "duration" : "4 min",
+        "id" : "recovery-004-4",
+        "notes" : "Move through each plane.",
+        "title" : "Seated ankle mobilizations"
+      },
+      {
+        "duration" : "4 min",
+        "id" : "recovery-004-5",
+        "notes" : "Keep the spine long.",
+        "title" : "Relaxed hamstring stretch"
+      }
+    ],
+    "title" : "Court-to-Couch Recovery",
+    "type" : "recovery",
+    "whyItMatters" : "A thoughtful recovery routine after play helps you sleep better and maintain consistent mobility for the next session."
+  },
+  {
+    "coachingCues" : "Breathe deeply and let each position settle into the joint instead of forcing the movement.",
+    "duration" : "30 min",
+    "focusAreas" : [
+      "hips",
+      "shoulders",
+      "ankles"
+    ],
+    "goal" : "Support joint recovery after extended court time.",
+    "id" : "recovery-005",
+    "instructions" : "Use this joint-focused recovery routine after long playing days to preserve range and reduce discomfort.",
+    "movements" : [
+      {
+        "duration" : "5 min",
+        "id" : "recovery-005-1",
+        "notes" : "Breathe through the tight areas.",
+        "title" : "Foam roll outer hips"
+      },
+      {
+        "duration" : "5 min",
+        "id" : "recovery-005-2",
+        "notes" : "Move slowly along the spine.",
+        "title" : "Thoracic foam mobilization"
+      },
+      {
+        "duration" : "5 min",
+        "id" : "recovery-005-3",
+        "notes" : "Keep the scapula stable.",
+        "title" : "Supported shoulder stretch"
+      },
+      {
+        "duration" : "5 min",
+        "id" : "recovery-005-4",
+        "notes" : "Maintain even pressure.",
+        "title" : "Ankle dorsiflexion holds"
+      },
+      {
+        "duration" : "5 min",
+        "id" : "recovery-005-5",
+        "notes" : "Let the glute relax.",
+        "title" : "Supine figure-four release"
+      }
+    ],
+    "title" : "Long-Play Joint Recovery",
+    "type" : "recovery",
+    "whyItMatters" : "Joint recovery after extended play keeps you moving well in the next session and reduces lingering stiffness."
+  }
+]

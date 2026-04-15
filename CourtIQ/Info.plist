@@ -2,12 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-  <key>CFBundleDevelopmentRegion</key>
-  <string>en</string>
-  <key>CFBundleExecutable</key>
-  <string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
   <key>CFBundleIdentifier</key>
   <string>com.courtIQ.CourtIQ</string>
+  <key>CFBundleDisplayName</key>
+  <string>CourtIQ</string>
   <key>CFBundleName</key>
   <string>CourtIQ</string>
   <key>CFBundlePackageType</key>
@@ -16,11 +18,38 @@
   <string>1.0</string>
   <key>CFBundleVersion</key>
   <string>1</string>
-  <key>LSRequiresIPhoneOS</key>
-  <true/>
-  <key>UISupportedInterfaceOrientations</key>
-  <array>
-    <string>UIInterfaceOrientationPortrait</string>
-  </array>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>COURTIQ_MONTHLY_PRODUCT_ID</key>
+	<string>com.courtiq.premium.monthly</string>
+	<key>COURTIQ_YEARLY_PRODUCT_ID</key>
+	<string>com.courtiq.premium.yearly</string>
+	<key>COURTIQ_PREMIUM_ENTITLEMENT_ID</key>
+	<string>premium_all_access</string>
+	<key>COURTIQ_PRIVACY_URL</key>
+	<string></string>
+	<key>COURTIQ_TERMS_URL</key>
+	<string></string>
+	<key>COURTIQ_SUPPORT_URL</key>
+	<string></string>
+	<key>COURTIQ_SUPABASE_URL</key>
+	<string></string>
+	<key>COURTIQ_SUPABASE_ANON_KEY</key>
+	<string></string>
+	<key>COURTIQ_REVENUECAT_API_KEY</key>
+	<string></string>
+	<key>UILaunchScreen</key>
+	<dict/>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
 </dict>
 </plist>

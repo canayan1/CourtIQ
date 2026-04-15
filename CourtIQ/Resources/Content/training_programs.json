@@ -1,0 +1,954 @@
+[
+  {
+    "accessTier" : "free",
+    "category" : "hybridFoundation",
+    "days" : [
+      {
+        "dayLabel" : "Day 1",
+        "duration" : "70 min",
+        "exercises" : [
+          {
+            "id" : "fd1-1",
+            "intent" : "Fast ground contact and clean landing.",
+            "prescription" : "4 x 4",
+            "title" : "Box jumps"
+          },
+          {
+            "id" : "fd1-2",
+            "intent" : "Heavy but crisp concentric drive.",
+            "prescription" : "4 x 5",
+            "title" : "Trap-bar deadlift"
+          },
+          {
+            "id" : "fd1-3",
+            "intent" : "Single-leg strength that carries into open-stance loading.",
+            "prescription" : "3 x 8 / side",
+            "title" : "Rear-foot elevated split squat"
+          },
+          {
+            "id" : "fd1-4",
+            "intent" : "Own the landing before the next push.",
+            "prescription" : "3 x 6 / side",
+            "title" : "Lateral bounds"
+          },
+          {
+            "id" : "fd1-5",
+            "intent" : "Protect posterior chain after explosive work.",
+            "prescription" : "3 x 10",
+            "title" : "Hamstring curl or slide curl"
+          }
+        ],
+        "finisher" : "8 x 15 sec assault bike sprints with 45 sec easy spin.",
+        "focus" : "Explosive legs, hip drive, first-step intent",
+        "id" : "foundation-day-1",
+        "objective" : "Build the force you need for push-off speed without losing posture or balance.",
+        "recovery" : "Walk 5 minutes, then do calf and hip flexor mobility.",
+        "title" : "Lower-Body Power + Acceleration",
+        "type" : "hybrid",
+        "warmup" : "5 min bike, ankle rocks, world’s greatest stretch, pogo hops, and 3 progressive accelerations."
+      },
+      {
+        "dayLabel" : "Day 2",
+        "duration" : "75 min",
+        "exercises" : [
+          {
+            "id" : "fd2-1",
+            "intent" : "Explode from the hip and release violently.",
+            "prescription" : "4 x 5 / side",
+            "title" : "Med-ball rotational scoop throw"
+          },
+          {
+            "id" : "fd2-2",
+            "intent" : "Build vertical pulling strength for shoulder support.",
+            "prescription" : "4 x 6-8",
+            "title" : "Pull-up or lat pulldown"
+          },
+          {
+            "id" : "fd2-3",
+            "intent" : "Press with control, finish with speed.",
+            "prescription" : "4 x 8",
+            "title" : "Incline dumbbell press"
+          },
+          {
+            "id" : "fd2-4",
+            "intent" : "Train trunk control during pull.",
+            "prescription" : "3 x 10 / side",
+            "title" : "Single-arm cable row"
+          },
+          {
+            "id" : "fd2-5",
+            "intent" : "Link trunk stability with upper-body force.",
+            "prescription" : "3 x 8 / side",
+            "title" : "Half-kneeling cable press"
+          }
+        ],
+        "finisher" : "25-30 min zone 2 bike or incline walk.",
+        "focus" : "Rotational force, posture, engine support",
+        "id" : "foundation-day-2",
+        "objective" : "Create stronger upper-body force transfer for serves and groundstrokes while keeping an aerobic base alive.",
+        "recovery" : "Gentle pec, lat, and thoracic mobility.",
+        "title" : "Upper-Body Strength + Aerobic Base",
+        "type" : "hybrid",
+        "warmup" : "Band pull-aparts, thoracic rotations, shoulder wall slides, and 5 min rower."
+      },
+      {
+        "dayLabel" : "Day 3",
+        "duration" : "55 min",
+        "exercises" : [
+          {
+            "id" : "fd3-1",
+            "intent" : "Stay quick and relaxed through the feet.",
+            "prescription" : "6 rounds",
+            "title" : "Ladder in-and-out patterns"
+          },
+          {
+            "id" : "fd3-2",
+            "intent" : "Attack the plant step and recover cleanly.",
+            "prescription" : "6 reps",
+            "title" : "5-10-5 shuttles"
+          },
+          {
+            "id" : "fd3-3",
+            "intent" : "Move smoothly at controlled effort.",
+            "prescription" : "8 x 100 m",
+            "title" : "Tempo runs"
+          },
+          {
+            "id" : "fd3-4",
+            "intent" : "Restore positions after conditioning.",
+            "prescription" : "10 min",
+            "title" : "Thoracic + hip mobility flow"
+          }
+        ],
+        "finisher" : "3 rounds of 30 sec fast feet, 30 sec rest, 30 sec plank.",
+        "focus" : "Repeat sprint ability and movement quality",
+        "id" : "foundation-day-3",
+        "objective" : "Raise conditioning without turning the day into junk fatigue.",
+        "recovery" : "Easy walk and deep breathing for 5 minutes.",
+        "title" : "Court Conditioning + Mobility",
+        "type" : "cardio",
+        "warmup" : "Dynamic lower-body warmup, 2 easy shuffles each way, and 2 build-up runs."
+      },
+      {
+        "dayLabel" : "Day 4",
+        "duration" : "70 min",
+        "exercises" : [
+          {
+            "id" : "fd4-1",
+            "intent" : "Controlled lowering and strong upward drive.",
+            "prescription" : "4 x 10",
+            "title" : "Goblet squat"
+          },
+          {
+            "id" : "fd4-2",
+            "intent" : "Load hamstrings with posture.",
+            "prescription" : "4 x 8",
+            "title" : "Romanian deadlift"
+          },
+          {
+            "id" : "fd4-3",
+            "intent" : "Press through the floor and rotate cleanly.",
+            "prescription" : "3 x 10 / side",
+            "title" : "Landmine press"
+          },
+          {
+            "id" : "fd4-4",
+            "intent" : "Upper-back volume without excess fatigue.",
+            "prescription" : "3 x 10",
+            "title" : "Chest-supported row"
+          },
+          {
+            "id" : "fd4-5",
+            "intent" : "Adductor strength for lateral resilience.",
+            "prescription" : "3 x 20 sec / side",
+            "title" : "Copenhagen plank"
+          }
+        ],
+        "finisher" : "6 min alternating sled drag or incline treadmill pushes.",
+        "focus" : "Muscle support, tissue resilience, trunk control",
+        "id" : "foundation-day-4",
+        "objective" : "Add enough muscle and tendon support to stay durable through repeated on-court load.",
+        "recovery" : "Hamstring, adductor, and trunk reset.",
+        "title" : "Full-Body Hypertrophy + Trunk",
+        "type" : "gym",
+        "warmup" : "Bike 5 min, bodyweight squats, shoulder circles, dead bugs."
+      },
+      {
+        "dayLabel" : "Day 5",
+        "duration" : "65 min",
+        "exercises" : [
+          {
+            "id" : "fd5-1",
+            "intent" : "Stay tall and springy.",
+            "prescription" : "3 x 20 sec",
+            "title" : "Pogo jumps"
+          },
+          {
+            "id" : "fd5-2",
+            "intent" : "Train vertical and rotational intent together.",
+            "prescription" : "4 x 4 each",
+            "title" : "Med-ball slam to scoop combo"
+          },
+          {
+            "id" : "fd5-3",
+            "intent" : "Leg drive into fast upper-body finish.",
+            "prescription" : "4 x 5",
+            "title" : "Push press"
+          },
+          {
+            "id" : "fd5-4",
+            "intent" : "Upper-body force and shoulder control.",
+            "prescription" : "4 x 6",
+            "title" : "Weighted chin-up or assisted chin-up"
+          },
+          {
+            "id" : "fd5-5",
+            "intent" : "Explode laterally and stabilize the landing.",
+            "prescription" : "3 x 8 / side",
+            "title" : "Skater hops"
+          }
+        ],
+        "finisher" : "10 rounds of 20 sec hard / 40 sec easy on rower or bike.",
+        "focus" : "Reactive stiffness and rotational pop",
+        "id" : "foundation-day-5",
+        "objective" : "Convert strength work into quicker elastic output and faster swing intent.",
+        "recovery" : "Foot, calf, and thoracic release.",
+        "title" : "Elasticity + Shot-Speed Transfer",
+        "type" : "hybrid",
+        "warmup" : "Pogo series, skips, band rotations, and 2 medicine-ball rehearsal throws."
+      },
+      {
+        "dayLabel" : "Day 6",
+        "duration" : "60 min",
+        "exercises" : [
+          {
+            "id" : "fd6-1",
+            "intent" : "Nasal-breathing pace if possible.",
+            "prescription" : "35-40 min",
+            "title" : "Zone 2 cardio"
+          },
+          {
+            "id" : "fd6-2",
+            "intent" : "Posture and grip under fatigue.",
+            "prescription" : "4 x 30 m",
+            "title" : "Farmer carry"
+          },
+          {
+            "id" : "fd6-3",
+            "intent" : "Ankle stiffness and lower-leg durability.",
+            "prescription" : "3 x 12 / side",
+            "title" : "Single-leg calf raise"
+          },
+          {
+            "id" : "fd6-4",
+            "intent" : "Serve shoulder maintenance.",
+            "prescription" : "3 x 15",
+            "title" : "Band external rotation"
+          },
+          {
+            "id" : "fd6-5",
+            "intent" : "Quiet trunk control.",
+            "prescription" : "3 x 8 / side",
+            "title" : "Dead bug variation"
+          }
+        ],
+        "finisher" : "8-10 min guided mobility flow for hips, shoulders, and t-spine.",
+        "focus" : "Low-intensity engine support and posture",
+        "id" : "foundation-day-6",
+        "objective" : "Support match stamina without adding another high-stress day.",
+        "recovery" : "Keep this day easier than you think.",
+        "title" : "Endurance Engine + Recovery Strength",
+        "type" : "hybrid",
+        "warmup" : "Easy 5 min cardio and joint mobility."
+      },
+      {
+        "dayLabel" : "Day 7",
+        "duration" : "20-30 min",
+        "exercises" : [
+          {
+            "id" : "fd7-1",
+            "intent" : "Calves, glutes, lats, adductors.",
+            "prescription" : "10 min",
+            "title" : "Soft tissue reset"
+          },
+          {
+            "id" : "fd7-2",
+            "intent" : "Hips, thoracic spine, ankles, shoulders.",
+            "prescription" : "10 min",
+            "title" : "Mobility circuit"
+          }
+        ],
+        "finisher" : "None. Keep recovery truly light.",
+        "focus" : "Regain freshness",
+        "id" : "foundation-day-7",
+        "objective" : "Show up to week two feeling better, not just more tired.",
+        "recovery" : "Sleep, hydration, and an easy walk win the day.",
+        "title" : "Recovery / Off",
+        "type" : "recovery",
+        "warmup" : "Optional 10 minute walk."
+      }
+    ],
+    "durationWeeks" : 8,
+    "emphasis" : [
+      "Plyometrics",
+      "Hypertrophy",
+      "Explosive strength",
+      "Conditioning"
+    ],
+    "id" : "training-hybrid-foundation",
+    "outcome" : "A stronger lower body, cleaner force transfer into shots, better repeat-sprint conditioning, and enough muscle support to stay durable across court weeks.",
+    "overview" : "Repeat this one-week structure for eight weeks to build strength, explosiveness, hypertrophy, and match-ready conditioning together without losing movement quality.",
+    "persistencePrompts" : [
+      "How explosive did your first step feel this week?",
+      "How well did your legs recover between gym work and cardio days?",
+      "How confident did you feel sustaining intensity late in the week?"
+    ],
+    "phases" : [
+      {
+        "guidance" : "Learn the movement patterns, leave one or two reps in reserve, and build consistency before chasing intensity.",
+        "id" : "phase-1",
+        "title" : "Base & Rhythm",
+        "weekRange" : "Weeks 1-2"
+      },
+      {
+        "guidance" : "Add small load jumps or one extra set on primary lifts while keeping sprint and jump quality high.",
+        "id" : "phase-2",
+        "title" : "Load & Capacity",
+        "weekRange" : "Weeks 3-4"
+      },
+      {
+        "guidance" : "Move the weights faster, trim fluff volume, and make every plyometric rep crisp and reactive.",
+        "id" : "phase-3",
+        "title" : "Power Conversion",
+        "weekRange" : "Weeks 5-6"
+      },
+      {
+        "guidance" : "Cut total volume by roughly thirty percent so the body freshens up without losing rhythm.",
+        "id" : "phase-4",
+        "title" : "Deload & Reset",
+        "weekRange" : "Week 7"
+      },
+      {
+        "guidance" : "Keep the sessions snappy, repeat your best loads, and use the persistence check to compare readiness versus week one.",
+        "id" : "phase-5",
+        "title" : "Sharpness Week",
+        "weekRange" : "Week 8"
+      }
+    ],
+    "title" : "8-Week Tennis Hybrid Foundation"
+  },
+  {
+    "accessTier" : "premium",
+    "category" : "betterFootwork",
+    "days" : [
+      {
+        "dayLabel" : "Day 1",
+        "duration" : "60 min",
+        "exercises" : [
+          {
+            "id" : "fw-1",
+            "intent" : "Own shin angle and projection.",
+            "prescription" : "4 x 5 / side",
+            "title" : "Wall acceleration drill"
+          },
+          {
+            "id" : "fw-2",
+            "intent" : "Drive through the floor.",
+            "prescription" : "6 x 15 m",
+            "title" : "Sled push"
+          },
+          {
+            "id" : "fw-3",
+            "intent" : "Explode and stabilize.",
+            "prescription" : "4 x 4 / side",
+            "title" : "Lateral bound to stick"
+          }
+        ],
+        "finisher" : "6 short shuttle repeats.",
+        "focus" : "Push-off angles",
+        "id" : "footwork-1",
+        "objective" : "Teach the body to project forward fast.",
+        "recovery" : "Calf and hip mobility.",
+        "title" : "Acceleration Mechanics",
+        "type" : "hybrid",
+        "warmup" : "March, skips, ankle prep, and wall drills."
+      },
+      {
+        "dayLabel" : "Day 2",
+        "duration" : "65 min",
+        "exercises" : [
+          {
+            "id" : "fw-4",
+            "intent" : "Control range.",
+            "prescription" : "4 x 6 / side",
+            "title" : "Cossack squat"
+          },
+          {
+            "id" : "fw-5",
+            "intent" : "Single-leg force.",
+            "prescription" : "4 x 8 / side",
+            "title" : "Split squat"
+          },
+          {
+            "id" : "fw-6",
+            "intent" : "Stay quick laterally.",
+            "prescription" : "3 x 20 sec",
+            "title" : "Slideboard or skater reps"
+          }
+        ],
+        "finisher" : "Bike flush 12 min.",
+        "focus" : "Side-to-side resilience",
+        "id" : "footwork-2",
+        "objective" : "Improve braking and re-acceleration.",
+        "recovery" : "Adductor reset.",
+        "title" : "Lateral Strength",
+        "type" : "gym",
+        "warmup" : "Lateral lunges and glute prep."
+      },
+      {
+        "dayLabel" : "Day 3",
+        "duration" : "50 min",
+        "exercises" : [
+          {
+            "id" : "fw-7",
+            "intent" : "React without extra steps.",
+            "prescription" : "8 reps",
+            "title" : "Cone reaction drill"
+          },
+          {
+            "id" : "fw-8",
+            "intent" : "Sharp plant and return.",
+            "prescription" : "6 reps",
+            "title" : "5-0-5 drill"
+          },
+          {
+            "id" : "fw-9",
+            "intent" : "Build repeated lateral quality.",
+            "prescription" : "8 rounds",
+            "title" : "Tempo shuffles"
+          }
+        ],
+        "finisher" : "Mobility flow.",
+        "focus" : "Read and go",
+        "id" : "footwork-3",
+        "objective" : "Move from cue to action faster.",
+        "recovery" : "Easy walk.",
+        "title" : "Reactive Agility",
+        "type" : "cardio",
+        "warmup" : "Fast feet and low skips."
+      },
+      {
+        "dayLabel" : "Day 4",
+        "duration" : "35 min",
+        "exercises" : [
+          {
+            "id" : "fw-10",
+            "intent" : "Short fast contacts.",
+            "prescription" : "4 x 20 sec",
+            "title" : "Pogo series"
+          },
+          {
+            "id" : "fw-11",
+            "intent" : "Build stiffness.",
+            "prescription" : "3 x 15 / side",
+            "title" : "Single-leg calf raise"
+          },
+          {
+            "id" : "fw-12",
+            "intent" : "Control the foot tripod.",
+            "prescription" : "3 rounds",
+            "title" : "Toe yoga and balance"
+          }
+        ],
+        "finisher" : "None.",
+        "focus" : "Elastic lower leg",
+        "id" : "footwork-4",
+        "objective" : "Keep feet reactive and durable.",
+        "recovery" : "Foot care and mobility.",
+        "title" : "Foot & Ankle Support",
+        "type" : "recovery",
+        "warmup" : "Ankle circles and calf pumps."
+      }
+    ],
+    "durationWeeks" : 8,
+    "emphasis" : [
+      "Reactive hops",
+      "Deceleration strength",
+      "Agility",
+      "Repeat COD conditioning"
+    ],
+    "id" : "training-footwork",
+    "outcome" : "You feel lighter into the split step, sharper on wide balls, and more organized on recovery steps.",
+    "overview" : "A premium 8-week progression focused on first-step quickness, deceleration strength, crossover efficiency, and change-of-direction repeatability.",
+    "persistencePrompts" : [
+      "How explosive did your first step feel this week?",
+      "How well did your legs recover between gym work and cardio days?",
+      "How confident did you feel sustaining intensity late in the week?"
+    ],
+    "phases" : [
+      {
+        "guidance" : "Learn the movement patterns, leave one or two reps in reserve, and build consistency before chasing intensity.",
+        "id" : "phase-1",
+        "title" : "Base & Rhythm",
+        "weekRange" : "Weeks 1-2"
+      },
+      {
+        "guidance" : "Add small load jumps or one extra set on primary lifts while keeping sprint and jump quality high.",
+        "id" : "phase-2",
+        "title" : "Load & Capacity",
+        "weekRange" : "Weeks 3-4"
+      },
+      {
+        "guidance" : "Move the weights faster, trim fluff volume, and make every plyometric rep crisp and reactive.",
+        "id" : "phase-3",
+        "title" : "Power Conversion",
+        "weekRange" : "Weeks 5-6"
+      },
+      {
+        "guidance" : "Cut total volume by roughly thirty percent so the body freshens up without losing rhythm.",
+        "id" : "phase-4",
+        "title" : "Deload & Reset",
+        "weekRange" : "Week 7"
+      },
+      {
+        "guidance" : "Keep the sessions snappy, repeat your best loads, and use the persistence check to compare readiness versus week one.",
+        "id" : "phase-5",
+        "title" : "Sharpness Week",
+        "weekRange" : "Week 8"
+      }
+    ],
+    "title" : "Better Footwork Performance Track"
+  },
+  {
+    "accessTier" : "premium",
+    "category" : "strongerShots",
+    "days" : [
+      {
+        "dayLabel" : "Day 1",
+        "duration" : "65 min",
+        "exercises" : [
+          {
+            "id" : "ss-1",
+            "intent" : "Explode off back hip.",
+            "prescription" : "5 x 4 / side",
+            "title" : "Med-ball scoop throw"
+          },
+          {
+            "id" : "ss-2",
+            "intent" : "Drive and decelerate.",
+            "prescription" : "4 x 6 / side",
+            "title" : "Landmine rotation"
+          },
+          {
+            "id" : "ss-3",
+            "intent" : "Legs into upper-body finish.",
+            "prescription" : "4 x 5",
+            "title" : "Push press"
+          }
+        ],
+        "finisher" : "Bike intervals 8 min.",
+        "focus" : "Hip-to-racket transfer",
+        "id" : "shots-1",
+        "objective" : "Train rotational intent that actually carries to court.",
+        "recovery" : "Lat and hip release.",
+        "title" : "Rotational Power",
+        "type" : "hybrid",
+        "warmup" : "Thoracic and hip rotation prep."
+      },
+      {
+        "dayLabel" : "Day 2",
+        "duration" : "70 min",
+        "exercises" : [
+          {
+            "id" : "ss-4",
+            "intent" : "Stable press path.",
+            "prescription" : "4 x 6-8",
+            "title" : "Bench or incline dumbbell press"
+          },
+          {
+            "id" : "ss-5",
+            "intent" : "Back-side support.",
+            "prescription" : "4 x 8",
+            "title" : "Weighted row"
+          },
+          {
+            "id" : "ss-6",
+            "intent" : "Shoulder durability.",
+            "prescription" : "3 x 6",
+            "title" : "Pull-up"
+          }
+        ],
+        "finisher" : "Core anti-rotation circuit.",
+        "focus" : "Force production",
+        "id" : "shots-2",
+        "objective" : "Build enough strength to support serve and forehand speed.",
+        "recovery" : "Shoulder mobility.",
+        "title" : "Upper Push/Pull Strength",
+        "type" : "gym",
+        "warmup" : "Band shoulder series."
+      },
+      {
+        "dayLabel" : "Day 3",
+        "duration" : "65 min",
+        "exercises" : [
+          {
+            "id" : "ss-7",
+            "intent" : "Strong stacked torso.",
+            "prescription" : "4 x 5",
+            "title" : "Front squat"
+          },
+          {
+            "id" : "ss-8",
+            "intent" : "Posterior-chain tension.",
+            "prescription" : "4 x 6",
+            "title" : "RDL"
+          },
+          {
+            "id" : "ss-9",
+            "intent" : "Fast concentric output.",
+            "prescription" : "3 x 5",
+            "title" : "Jump squat"
+          }
+        ],
+        "finisher" : "Short row sprints.",
+        "focus" : "Ground force",
+        "id" : "shots-3",
+        "objective" : "Create stronger load and launch from the floor.",
+        "recovery" : "Glute and hamstring reset.",
+        "title" : "Lower-Body Drive",
+        "type" : "gym",
+        "warmup" : "Hip openers and jumps."
+      }
+    ],
+    "durationWeeks" : 8,
+    "emphasis" : [
+      "Rotational power",
+      "Upper-body force",
+      "Leg drive",
+      "Shot repeatability"
+    ],
+    "id" : "training-stronger-shots",
+    "outcome" : "You create more pace with less strain and repeat power deeper into sessions.",
+    "overview" : "A premium blend of lower-body strength, rotational medicine-ball work, pressing, pulling, and power transfer work aimed at heavier shots.",
+    "persistencePrompts" : [
+      "How explosive did your first step feel this week?",
+      "How well did your legs recover between gym work and cardio days?",
+      "How confident did you feel sustaining intensity late in the week?"
+    ],
+    "phases" : [
+      {
+        "guidance" : "Learn the movement patterns, leave one or two reps in reserve, and build consistency before chasing intensity.",
+        "id" : "phase-1",
+        "title" : "Base & Rhythm",
+        "weekRange" : "Weeks 1-2"
+      },
+      {
+        "guidance" : "Add small load jumps or one extra set on primary lifts while keeping sprint and jump quality high.",
+        "id" : "phase-2",
+        "title" : "Load & Capacity",
+        "weekRange" : "Weeks 3-4"
+      },
+      {
+        "guidance" : "Move the weights faster, trim fluff volume, and make every plyometric rep crisp and reactive.",
+        "id" : "phase-3",
+        "title" : "Power Conversion",
+        "weekRange" : "Weeks 5-6"
+      },
+      {
+        "guidance" : "Cut total volume by roughly thirty percent so the body freshens up without losing rhythm.",
+        "id" : "phase-4",
+        "title" : "Deload & Reset",
+        "weekRange" : "Week 7"
+      },
+      {
+        "guidance" : "Keep the sessions snappy, repeat your best loads, and use the persistence check to compare readiness versus week one.",
+        "id" : "phase-5",
+        "title" : "Sharpness Week",
+        "weekRange" : "Week 8"
+      }
+    ],
+    "title" : "Stronger Shots Power Track"
+  },
+  {
+    "accessTier" : "premium",
+    "category" : "betterFlexibility",
+    "days" : [
+      {
+        "dayLabel" : "Day 1",
+        "duration" : "40 min",
+        "exercises" : [
+          {
+            "id" : "bf-1",
+            "intent" : "Own both hip directions.",
+            "prescription" : "3 rounds",
+            "title" : "90/90 flow"
+          },
+          {
+            "id" : "bf-2",
+            "intent" : "Lengthen hamstrings with control.",
+            "prescription" : "3 x 8 / side",
+            "title" : "Half-split rocks"
+          },
+          {
+            "id" : "bf-3",
+            "intent" : "Range with stability.",
+            "prescription" : "3 x 20 sec / side",
+            "title" : "Hip airplane support hold"
+          }
+        ],
+        "finisher" : "Breathing reset.",
+        "focus" : "Lower-body range",
+        "id" : "flex-1",
+        "objective" : "Improve hinge and split-step positions.",
+        "recovery" : "Walk lightly.",
+        "title" : "Hip & Hamstring Access",
+        "type" : "recovery",
+        "warmup" : "Easy bike and hip circles."
+      },
+      {
+        "dayLabel" : "Day 2",
+        "duration" : "35 min",
+        "exercises" : [
+          {
+            "id" : "bf-4",
+            "intent" : "Rotate through mid-back.",
+            "prescription" : "3 x 6 / side",
+            "title" : "Open book"
+          },
+          {
+            "id" : "bf-5",
+            "intent" : "Upward rotation control.",
+            "prescription" : "3 x 10",
+            "title" : "Wall slide"
+          },
+          {
+            "id" : "bf-6",
+            "intent" : "Link shoulder with thoracic spine.",
+            "prescription" : "3 x 6 / side",
+            "title" : "Thread-the-needle"
+          }
+        ],
+        "finisher" : "5 min easy row.",
+        "focus" : "Serve positions",
+        "id" : "flex-2",
+        "objective" : "Free the upper body without irritating the shoulder.",
+        "recovery" : "Neck and lat release.",
+        "title" : "Thoracic + Shoulder Freedom",
+        "type" : "recovery",
+        "warmup" : "Band pulls and cat-cow."
+      },
+      {
+        "dayLabel" : "Day 3",
+        "duration" : "30 min",
+        "exercises" : [
+          {
+            "id" : "bf-7",
+            "intent" : "Slow controlled range.",
+            "prescription" : "3 x 10 / side",
+            "title" : "Knee-over-toe ankle rocks"
+          },
+          {
+            "id" : "bf-8",
+            "intent" : "Length plus tension.",
+            "prescription" : "3 x 20 sec",
+            "title" : "Calf stretch pulses"
+          },
+          {
+            "id" : "bf-9",
+            "intent" : "Open ankles and hips together.",
+            "prescription" : "3 x 30 sec",
+            "title" : "Supported squat pry"
+          }
+        ],
+        "finisher" : "Breathing downshift.",
+        "focus" : "Lower-leg freedom",
+        "id" : "flex-3",
+        "objective" : "Improve dorsiflexion and absorb court load better.",
+        "recovery" : "Keep the day easy.",
+        "title" : "Ankle + Recovery Flow",
+        "type" : "recovery",
+        "warmup" : "Ankle circles and toe walks."
+      }
+    ],
+    "durationWeeks" : 8,
+    "emphasis" : [
+      "Hip mobility",
+      "Thoracic rotation",
+      "Serve shoulder range",
+      "Recovery flow"
+    ],
+    "id" : "training-flexibility",
+    "outcome" : "You move into tennis positions more easily and recover range faster between hard sessions.",
+    "overview" : "Premium mobility programming for players who need more hip freedom, thoracic rotation, shoulder access, and lower-leg range without becoming floppy.",
+    "persistencePrompts" : [
+      "How explosive did your first step feel this week?",
+      "How well did your legs recover between gym work and cardio days?",
+      "How confident did you feel sustaining intensity late in the week?"
+    ],
+    "phases" : [
+      {
+        "guidance" : "Learn the movement patterns, leave one or two reps in reserve, and build consistency before chasing intensity.",
+        "id" : "phase-1",
+        "title" : "Base & Rhythm",
+        "weekRange" : "Weeks 1-2"
+      },
+      {
+        "guidance" : "Add small load jumps or one extra set on primary lifts while keeping sprint and jump quality high.",
+        "id" : "phase-2",
+        "title" : "Load & Capacity",
+        "weekRange" : "Weeks 3-4"
+      },
+      {
+        "guidance" : "Move the weights faster, trim fluff volume, and make every plyometric rep crisp and reactive.",
+        "id" : "phase-3",
+        "title" : "Power Conversion",
+        "weekRange" : "Weeks 5-6"
+      },
+      {
+        "guidance" : "Cut total volume by roughly thirty percent so the body freshens up without losing rhythm.",
+        "id" : "phase-4",
+        "title" : "Deload & Reset",
+        "weekRange" : "Week 7"
+      },
+      {
+        "guidance" : "Keep the sessions snappy, repeat your best loads, and use the persistence check to compare readiness versus week one.",
+        "id" : "phase-5",
+        "title" : "Sharpness Week",
+        "weekRange" : "Week 8"
+      }
+    ],
+    "title" : "Better Flexibility Mobility Track"
+  },
+  {
+    "accessTier" : "premium",
+    "category" : "matchConditioning",
+    "days" : [
+      {
+        "dayLabel" : "Day 1",
+        "duration" : "45 min",
+        "exercises" : [
+          {
+            "id" : "mc-1",
+            "intent" : "Consistent quality each rep.",
+            "prescription" : "12 rounds",
+            "title" : "20 sec hard / 40 sec easy"
+          },
+          {
+            "id" : "mc-2",
+            "intent" : "Move clean under fatigue.",
+            "prescription" : "6 rounds",
+            "title" : "Shuttle repeat"
+          }
+        ],
+        "finisher" : "Walk 5 min.",
+        "focus" : "Anaerobic repeatability",
+        "id" : "cond-1",
+        "objective" : "Improve point-to-point recovery.",
+        "recovery" : "Leg flush and breathing.",
+        "title" : "Repeat Sprint Builder",
+        "type" : "cardio",
+        "warmup" : "Jog and dynamic prep."
+      },
+      {
+        "dayLabel" : "Day 2",
+        "duration" : "40 min",
+        "exercises" : [
+          {
+            "id" : "mc-3",
+            "intent" : "Stay controlled and conversational.",
+            "prescription" : "35 min",
+            "title" : "Zone 2 ride or jog"
+          }
+        ],
+        "finisher" : "Mobility 8 min.",
+        "focus" : "Engine support",
+        "id" : "cond-2",
+        "objective" : "Build the base that lets you recover faster.",
+        "recovery" : "Hydrate and relax.",
+        "title" : "Aerobic Base",
+        "type" : "cardio",
+        "warmup" : "Easy spin."
+      },
+      {
+        "dayLabel" : "Day 3",
+        "duration" : "50 min",
+        "exercises" : [
+          {
+            "id" : "mc-4",
+            "intent" : "Stay smooth.",
+            "prescription" : "10 x 100 m",
+            "title" : "Tempo run"
+          },
+          {
+            "id" : "mc-5",
+            "intent" : "Posture under fatigue.",
+            "prescription" : "4 x 30 m",
+            "title" : "Farmer carry"
+          },
+          {
+            "id" : "mc-6",
+            "intent" : "Quiet trunk.",
+            "prescription" : "3 x 8 / side",
+            "title" : "Dead bug"
+          }
+        ],
+        "finisher" : "Easy walk.",
+        "focus" : "Sustainable pace",
+        "id" : "cond-3",
+        "objective" : "Support long-session quality.",
+        "recovery" : "Keep effort moderate.",
+        "title" : "Tempo & Core",
+        "type" : "hybrid",
+        "warmup" : "Dynamic mobility."
+      }
+    ],
+    "durationWeeks" : 8,
+    "emphasis" : [
+      "Aerobic support",
+      "Repeat sprint ability",
+      "Tempo work",
+      "Recovery capacity"
+    ],
+    "id" : "training-conditioning",
+    "outcome" : "You maintain sharper legs, cleaner decisions, and better posture when fatigue starts to rise.",
+    "overview" : "Premium conditioning blocks for players who want better recovery between points and more quality late in long sessions.",
+    "persistencePrompts" : [
+      "How explosive did your first step feel this week?",
+      "How well did your legs recover between gym work and cardio days?",
+      "How confident did you feel sustaining intensity late in the week?"
+    ],
+    "phases" : [
+      {
+        "guidance" : "Learn the movement patterns, leave one or two reps in reserve, and build consistency before chasing intensity.",
+        "id" : "phase-1",
+        "title" : "Base & Rhythm",
+        "weekRange" : "Weeks 1-2"
+      },
+      {
+        "guidance" : "Add small load jumps or one extra set on primary lifts while keeping sprint and jump quality high.",
+        "id" : "phase-2",
+        "title" : "Load & Capacity",
+        "weekRange" : "Weeks 3-4"
+      },
+      {
+        "guidance" : "Move the weights faster, trim fluff volume, and make every plyometric rep crisp and reactive.",
+        "id" : "phase-3",
+        "title" : "Power Conversion",
+        "weekRange" : "Weeks 5-6"
+      },
+      {
+        "guidance" : "Cut total volume by roughly thirty percent so the body freshens up without losing rhythm.",
+        "id" : "phase-4",
+        "title" : "Deload & Reset",
+        "weekRange" : "Week 7"
+      },
+      {
+        "guidance" : "Keep the sessions snappy, repeat your best loads, and use the persistence check to compare readiness versus week one.",
+        "id" : "phase-5",
+        "title" : "Sharpness Week",
+        "weekRange" : "Week 8"
+      }
+    ],
+    "title" : "Match Conditioning Engine Track"
+  }
+]

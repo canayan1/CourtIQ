@@ -4,41 +4,70 @@ struct MobilityLibraryView: View {
     @EnvironmentObject private var session: UserSessionManager
     private let flows = MobilityFlow.sampleFlows
 
-    var body: some View {
-        List {
-            premiumHeader
+    private var previewFlowIDs: Set<String> {
+        Set(flows.prefix(2).map(\.id))
+    }
 
-            ForEach(MobilityFlowType.allCases) { type in
-                Section(header: Text(type.title)) {
-                    ForEach(flows.filter { $0.type == type }) { flow in
-                        NavigationLink {
-                            MobilityFlowDetailView(flow: flow)
-                        } label: {
-                            HStack {
-                                VStack(alignment: .leading, spacing: 6) {
-                                    Text(flow.title)
-                                        .font(.headline)
-                                    Text(flow.goal)
-                                        .font(.caption)
-                                        .foregroundStyle(.secondary)
-                                }
-                                Spacer()
-                                VStack(alignment: .trailing, spacing: 4) {
-                                    Text(flow.duration)
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+                premiumHeader
+
+                ForEach(MobilityFlowType.allCases) { type in
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text(type.title)
+                            .font(.title3.bold())
+
+                        ForEach(flows.filter { $0.type == type }) { flow in
+                            NavigationLink {
+                                MobilityFlowDetailView(flow: flow)
+                            } label: {
+                                HStack(alignment: .top, spacing: 14) {
+                                    VStack(alignment: .leading, spacing: 8) {
+                                        HStack {
+                                            Text(flow.title)
+                                                .font(.headline)
+                                            if !session.isPremiumUnlocked && !previewFlowIDs.contains(flow.id) {
+                                                Image(systemName: "lock.fill")
+                                                    .font(.caption)
+                                                    .foregroundStyle(AppPalette.inkSoft)
+                                            }
+                                        }
+                                        Text(flow.goal)
+                                            .font(.subheadline)
+                                            .foregroundStyle(AppPalette.inkSoft)
+
+                                        HStack(spacing: 10) {
+                                            Label(flow.duration, systemImage: "timer")
+                                            Label(flow.focusLabel, systemImage: "target")
+                                        }
                                         .font(.caption.weight(.semibold))
-                                    Text(flow.focusLabel)
-                                        .font(.caption2)
-                                        .foregroundStyle(.secondary)
+                                        .foregroundStyle(AppPalette.inkSoft)
+                                    }
+
+                                    Spacer()
+
+                                    Image(systemName: "chevron.right")
+                                        .font(.footnote.weight(.semibold))
+                                        .foregroundStyle(.tertiary)
                                 }
+                                .padding()
+                                .background(AppPalette.parchment)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 22, style: .continuous)
+                                        .stroke(AppPalette.sand, lineWidth: 1)
+                                )
+                                .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
                             }
-                            .padding(.vertical, 6)
+                            .buttonStyle(.plain)
                         }
                     }
                 }
             }
+            .padding()
         }
         .navigationTitle("Mobility Library")
-        .listStyle(.insetGrouped)
+        .background(AppPalette.cream)
     }
 
     private var premiumHeader: some View {
@@ -50,20 +79,20 @@ struct MobilityLibraryView: View {
                 Text(session.premiumStatus.title)
                     .font(.caption.weight(.semibold))
                     .padding(6)
-                    .background(session.isPremiumUnlocked ? Color.green.opacity(0.2) : Color.gray.opacity(0.2))
+                    .background((session.isPremiumUnlocked ? AppPalette.moss : AppPalette.clay).opacity(0.16))
                     .clipShape(RoundedRectangle(cornerRadius: 10))
             }
 
-            Text("A premium library of tennis-specific mobility and recovery flows for better rotation, shoulder freedom, hip mobility, and match-day recovery.")
+            Text("Preview the first two flows for free. All Access unlocks the full tennis-specific mobility and recovery library.")
                 .font(.subheadline)
-                .foregroundStyle(.secondary)
-
-            if !session.isPremiumUnlocked {
-                Text("Unlock premium later to save these routines and access guided recovery support.")
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
-            }
+                .foregroundStyle(AppPalette.inkSoft)
         }
-        .padding(.vertical, 6)
+        .padding()
+        .background(AppPalette.parchment)
+        .overlay(
+            RoundedRectangle(cornerRadius: 24, style: .continuous)
+                .stroke(AppPalette.sand, lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
     }
 }

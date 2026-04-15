@@ -1,0 +1,187 @@
+import Foundation
+
+enum TrainingAccessTier: String, Codable {
+    case free
+    case premium
+
+    var title: String {
+        switch self {
+        case .free: return "Free"
+        case .premium: return "Premium"
+        }
+    }
+}
+
+enum TrainingGoalCategory: String, CaseIterable, Identifiable, Codable {
+    case hybridFoundation
+    case betterFootwork
+    case strongerShots
+    case betterFlexibility
+    case matchConditioning
+
+    var id: String { rawValue }
+
+    var title: String {
+        switch self {
+        case .hybridFoundation: return "Weekly Hybrid Build"
+        case .betterFootwork: return "Better Footwork"
+        case .strongerShots: return "Stronger Shots"
+        case .betterFlexibility: return "Better Flexibility"
+        case .matchConditioning: return "Match Conditioning"
+        }
+    }
+
+    var summary: String {
+        switch self {
+        case .hybridFoundation:
+            return "A full weekly gym and cardio mix for tennis players who need strength, explosiveness, hypertrophy, and conditioning together."
+        case .betterFootwork:
+            return "Sharper first-step reactions, deceleration strength, lateral power, and cleaner recovery steps."
+        case .strongerShots:
+            return "Build lower-body drive, rotational power, upper-body force transfer, and shot repeatability."
+        case .betterFlexibility:
+            return "Improve mobility, tissue tolerance, and range where tennis players tend to lose freedom."
+        case .matchConditioning:
+            return "Extend point quality deeper into sessions with repeat-sprint capacity and aerobic support."
+        }
+    }
+
+    var symbolName: String {
+        switch self {
+        case .hybridFoundation: return "figure.strengthtraining.traditional"
+        case .betterFootwork: return "figure.run"
+        case .strongerShots: return "bolt.fill"
+        case .betterFlexibility: return "figure.cooldown"
+        case .matchConditioning: return "heart.circle.fill"
+        }
+    }
+
+    var accessTier: TrainingAccessTier {
+        switch self {
+        case .hybridFoundation:
+            return .free
+        case .betterFootwork, .strongerShots, .betterFlexibility, .matchConditioning:
+            return .premium
+        }
+    }
+}
+
+enum TrainingDayType: String, Codable {
+    case gym
+    case cardio
+    case hybrid
+    case recovery
+
+    var title: String {
+        switch self {
+        case .gym: return "Gym"
+        case .cardio: return "Cardio"
+        case .hybrid: return "Hybrid"
+        case .recovery: return "Recovery"
+        }
+    }
+}
+
+struct TrainingExercise: Identifiable, Codable, Hashable {
+    let id: String
+    let title: String
+    let prescription: String
+    let intent: String
+}
+
+struct TrainingDayPlan: Identifiable, Codable, Hashable {
+    let id: String
+    let dayLabel: String
+    let title: String
+    let type: TrainingDayType
+    let duration: String
+    let focus: String
+    let objective: String
+    let warmup: String
+    let exercises: [TrainingExercise]
+    let finisher: String
+    let recovery: String
+}
+
+struct TrainingPhase: Identifiable, Codable, Hashable {
+    let id: String
+    let weekRange: String
+    let title: String
+    let guidance: String
+}
+
+struct TrainingProgram: Identifiable, Codable, Hashable {
+    let id: String
+    let category: TrainingGoalCategory
+    let title: String
+    let accessTier: TrainingAccessTier
+    let durationWeeks: Int
+    let overview: String
+    let outcome: String
+    let emphasis: [String]
+    let phases: [TrainingPhase]
+    let days: [TrainingDayPlan]
+    let persistencePrompts: [String]
+
+    var isPremium: Bool {
+        accessTier == .premium
+    }
+}
+
+extension TrainingProgram {
+    static let allPrograms: [TrainingProgram] = {
+        let loaded = BundleContentLoader.loadArray([TrainingProgram].self, named: "training_programs")
+        if !loaded.isEmpty {
+            return loaded
+        }
+
+        return [fallbackProgram]
+    }()
+
+    static let featuredProgram = allPrograms.first ?? fallbackProgram
+
+    static func program(for category: TrainingGoalCategory) -> TrainingProgram {
+        allPrograms.first { $0.category == category } ?? featuredProgram
+    }
+
+    private static let fallbackProgram = TrainingProgram(
+        id: "training-hybrid-foundation",
+        category: .hybridFoundation,
+        title: "8-Week Tennis Hybrid Foundation",
+        accessTier: .free,
+        durationWeeks: 8,
+        overview: "Repeat a weekly mix of power, strength, and conditioning to build a stronger tennis base.",
+        outcome: "A stronger lower body, cleaner force transfer into shots, and better repeat sprint conditioning.",
+        emphasis: ["Plyometrics", "Hypertrophy", "Explosive strength", "Conditioning"],
+        phases: [
+            TrainingPhase(id: "phase-1", weekRange: "Weeks 1-2", title: "Base & Rhythm", guidance: "Learn the patterns and keep one rep in reserve."),
+            TrainingPhase(id: "phase-2", weekRange: "Weeks 3-4", title: "Load & Capacity", guidance: "Add small load jumps while sprint quality stays high."),
+            TrainingPhase(id: "phase-3", weekRange: "Weeks 5-6", title: "Power Conversion", guidance: "Move weights faster and keep jumps crisp."),
+            TrainingPhase(id: "phase-4", weekRange: "Week 7", title: "Deload & Reset", guidance: "Reduce volume and freshen the body."),
+            TrainingPhase(id: "phase-5", weekRange: "Week 8", title: "Sharpness Week", guidance: "Keep the sessions sharp and compare week one against week eight.")
+        ],
+        days: [
+            TrainingDayPlan(
+                id: "foundation-day-1",
+                dayLabel: "Day 1",
+                title: "Lower-Body Power + Acceleration",
+                type: .hybrid,
+                duration: "70 min",
+                focus: "Explosive legs and first-step intent",
+                objective: "Build force for push-off speed without losing posture.",
+                warmup: "Bike, ankle rocks, mobility, pogo hops, and progressive accelerations.",
+                exercises: [
+                    TrainingExercise(id: "fd1-1", title: "Box jumps", prescription: "4 x 4", intent: "Fast ground contact and clean landing."),
+                    TrainingExercise(id: "fd1-2", title: "Trap-bar deadlift", prescription: "4 x 5", intent: "Heavy but crisp concentric drive.")
+                ],
+                finisher: "8 x 15 sec bike sprints with 45 sec easy spin.",
+                recovery: "Walk 5 minutes, then calf and hip-flexor mobility."
+            )
+        ],
+        persistencePrompts: [
+            "How explosive did your first step feel this week?",
+            "How well did your legs recover between sessions?",
+            "How confident did you feel sustaining intensity late in the week?"
+        ]
+    )
+}

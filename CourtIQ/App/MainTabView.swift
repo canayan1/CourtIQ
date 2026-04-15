@@ -18,11 +18,19 @@ struct MainTabView: View {
             }
 
             NavigationStack {
+                TrainingHubView()
+            }
+            .tabItem {
+                Label("Training", systemImage: "figure.strengthtraining.traditional")
+            }
+
+            NavigationStack {
                 ProfileView()
             }
             .tabItem {
                 Label("Profile", systemImage: "person.crop.circle.fill")
             }
         }
+        .tint(AppPalette.clay)
     }
 }
