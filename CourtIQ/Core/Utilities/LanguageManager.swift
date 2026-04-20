@@ -39,8 +39,8 @@ final class LanguageManager: ObservableObject {
     private let storageKey = "CourtIQ.Language"
 
     private init() {
-        let saved = UserDefaults.standard.string(forKey: "CourtIQ.Language") ?? "en"
-        language = AppLanguage(rawValue: saved) ?? .english
+        // Localization is not yet shipped — locked to English until a future update.
+        language = .english
     }
 
     func t(_ key: String) -> String {

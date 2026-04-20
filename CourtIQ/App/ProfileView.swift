@@ -21,7 +21,6 @@ struct ProfileView: View {
                 streakSection
                 historySection
                 accountSection
-                languageSection
                 legalSection
             }
             .padding()
