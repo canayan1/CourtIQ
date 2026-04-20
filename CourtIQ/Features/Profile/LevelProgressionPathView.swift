@@ -31,10 +31,8 @@ struct LevelProgressionPathView: View {
                 Divider()
                 if manager.isLevelComplete {
                     levelCompleteCard
-                } else if manager.isStarted {
-                    weekProgressCard
                 } else {
-                    startHint
+                    weekProgressCard
                 }
             }
         }
@@ -132,6 +130,18 @@ struct LevelProgressionPathView: View {
                 current: quiz,
                 required: PlayerProgressionManager.requiredQuizCorrect
             )
+
+            if !manager.isStarted {
+                HStack(spacing: 6) {
+                    Image(systemName: "hand.tap.fill")
+                        .font(.caption)
+                        .foregroundStyle(AppPalette.clay)
+                    Text(lang.t("progression.tap_to_start"))
+                        .font(.caption)
+                        .foregroundStyle(AppPalette.inkSoft)
+                }
+                .padding(.top, 2)
+            }
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -153,22 +163,6 @@ struct LevelProgressionPathView: View {
                 .font(.subheadline.weight(.semibold).monospacedDigit())
                 .foregroundStyle(done ? AppPalette.moss : AppPalette.ink)
         }
-    }
-
-    // MARK: Other states
-
-    private var startHint: some View {
-        HStack(spacing: 10) {
-            Image(systemName: "hand.tap.fill")
-                .foregroundStyle(AppPalette.clay)
-            Text(lang.t("progression.tap_to_start"))
-                .font(.subheadline)
-                .foregroundStyle(AppPalette.inkSoft)
-        }
-        .padding()
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(AppPalette.clay.opacity(0.08))
-        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
     }
 
     private var levelCompleteCard: some View {

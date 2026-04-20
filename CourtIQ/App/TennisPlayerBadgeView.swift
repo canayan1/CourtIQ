@@ -102,21 +102,6 @@ struct TennisPlayerBadgeView: View {
                 }
             }
 
-            // IQ score
-            HStack(alignment: .firstTextBaseline, spacing: 4) {
-                Text("IQ \(iqRating)")
-                    .font(.system(size: 15, weight: .bold, design: .rounded))
-                    .foregroundStyle(level.accent)
-                if level != .pro {
-                    Text("/ \(level.upperBound)")
-                        .font(.system(size: 12, weight: .regular, design: .rounded))
-                        .foregroundStyle(level.accent.opacity(0.45))
-                } else {
-                    Text("MAX")
-                        .font(.system(size: 10, weight: .bold, design: .rounded))
-                        .foregroundStyle(level.accentSoft)
-                }
-            }
 
         }
     }
