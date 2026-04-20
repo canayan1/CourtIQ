@@ -39,24 +39,59 @@ enum MobilityFocusArea: String, CaseIterable, Codable, Identifiable {
 struct MobilityMovement: Identifiable, Codable, Hashable {
     let id: String
     let title: String
+    var titleTr: String? = nil
     let duration: String
     let notes: String?
+    var notesTr: String? = nil
+
+    func localizedTitle(for lang: AppLanguage) -> String {
+        lang == .turkish ? (titleTr ?? title) : title
+    }
+
+    func localizedNotes(for lang: AppLanguage) -> String? {
+        lang == .turkish ? (notesTr ?? notes) : notes
+    }
 }
 
 struct MobilityFlow: Identifiable, Codable {
     let id: String
     let title: String
+    var titleTr: String? = nil
     let duration: String
     let type: MobilityFlowType
     let goal: String
+    var goalTr: String? = nil
     let focusAreas: [MobilityFocusArea]
     let movements: [MobilityMovement]
     let instructions: String
+    var instructionsTr: String? = nil
     let coachingCues: String
+    var coachingCuesTr: String? = nil
     let whyItMatters: String
+    var whyItMattersTr: String? = nil
 
     var focusLabel: String {
         focusAreas.map { $0.title }.joined(separator: ", ")
+    }
+
+    func localizedTitle(for lang: AppLanguage) -> String {
+        lang == .turkish ? (titleTr ?? title) : title
+    }
+
+    func localizedGoal(for lang: AppLanguage) -> String {
+        lang == .turkish ? (goalTr ?? goal) : goal
+    }
+
+    func localizedInstructions(for lang: AppLanguage) -> String {
+        lang == .turkish ? (instructionsTr ?? instructions) : instructions
+    }
+
+    func localizedCoachingCues(for lang: AppLanguage) -> String {
+        lang == .turkish ? (coachingCuesTr ?? coachingCues) : coachingCues
+    }
+
+    func localizedWhyItMatters(for lang: AppLanguage) -> String {
+        lang == .turkish ? (whyItMattersTr ?? whyItMatters) : whyItMatters
     }
 }
 

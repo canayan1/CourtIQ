@@ -3,106 +3,39 @@ import SwiftUI
 struct TodayView: View {
     @EnvironmentObject private var dailyQuizManager: DailyQuizManager
     @EnvironmentObject private var session: UserSessionManager
-    @EnvironmentObject private var discussionStore: DiscussionStore
+    @EnvironmentObject private var tipManager: TipManager
+    @EnvironmentObject private var lang: LanguageManager
 
-    private var dailyQuiz: Quiz {
-        dailyQuizManager.todayQuiz
-    }
+    @State private var tipExpanded = false
 
-    private var recommendedFlow: MobilityFlow {
-        MobilityFlow.sampleFlows.first { $0.type == .quickReset } ?? MobilityFlow.sampleFlows[0]
-    }
-
-    private var featuredTrainingProgram: TrainingProgram {
-        TrainingProgram.featuredProgram
-    }
-
-    private var featuredThread: DiscussionThread? {
-        discussionStore.featuredThreads.first
-    }
+    private var dailyQuiz: Quiz { dailyQuizManager.todayQuiz }
+    private var tip: DailyTip { tipManager.todayTip }
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .leading, spacing: 16) {
                 heroCard
+                tipCard
                 dailyQuizCard
-                trainingCard
                 mobilityCard
-                communityCard
             }
             .padding()
         }
         .background(AppPalette.cream)
-        .navigationTitle("Today")
+        .navigationTitle(lang.t("tab.today"))
     }
+
+    // MARK: - Hero
 
     private var heroCard: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("CourtIQ")
-                .font(.caption.weight(.semibold))
-                .textCase(.uppercase)
-                .foregroundStyle(.white.opacity(0.85))
-
-            Text("Train the next point before you play it.")
-                .font(.system(size: 30, weight: .bold, design: .rounded))
+            Text(greetingLine)
+                .font(.system(size: 26, weight: .bold, design: .rounded))
                 .foregroundStyle(.white)
 
-            Text(heroSubtitle)
-                .foregroundStyle(.white.opacity(0.92))
-
             HStack(spacing: 12) {
-                metricPill(title: "Streak", value: "\(dailyQuizManager.currentStreak) day")
-                metricPill(title: "This Week", value: "\(dailyQuizManager.completedThisWeek)/7")
-            }
-
-            if dailyQuizManager.isCompletedToday {
-                NavigationLink {
-                    TrainingProgramDetailView(program: featuredTrainingProgram)
-                } label: {
-                    Text("Continue Today’s Training")
-                        .font(.headline)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 16)
-                }
-                .buttonStyle(.borderedProminent)
-                .tint(.white)
-                .foregroundStyle(AppPalette.ink)
-            } else {
-                NavigationLink {
-                    QuizView(quiz: dailyQuiz) { summary in
-                        dailyQuizManager.recordCompletion(summary: summary, isDaily: true)
-                        session.updateCurrentFocus(summary.focusLabel)
-                        session.updateTopMistakePatterns(summary.mistakeTypes)
-                    }
-                } label: {
-                    Text("Continue Today’s Quiz")
-                        .font(.headline)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 16)
-                }
-                .buttonStyle(.borderedProminent)
-                .tint(.white)
-                .foregroundStyle(AppPalette.ink)
-            }
-        }
-        .padding(24)
-        .background(AppPalette.heroGradient)
-        .clipShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
-    }
-
-    private var dailyQuizCard: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            sectionHeader(title: "Daily IQ", subtitle: dailyQuizManager.isCompletedToday ? "Completed today" : "Ready for today")
-
-            Text(dailyQuiz.focusLabel)
-                .font(.title3.bold())
-
-            Text("Five scenario-based questions built around \(dailyQuiz.primaryFocusTag ?? "match awareness").")
-                .foregroundStyle(AppPalette.inkSoft)
-
-            HStack(spacing: 12) {
-                infoChip(systemImage: "checkmark.circle", text: "\(dailyQuiz.questions.count) questions")
-                infoChip(systemImage: "target", text: dailyQuiz.primaryFocusTag ?? "court pattern")
+                streakPill(value: "\(dailyQuizManager.currentStreak)", label: lang.t("today.day_streak"))
+                streakPill(value: "\(dailyQuizManager.completedThisWeek)/7", label: lang.t("today.this_week"))
             }
 
             NavigationLink {
@@ -112,172 +45,213 @@ struct TodayView: View {
                     session.updateTopMistakePatterns(summary.mistakeTypes)
                 }
             } label: {
-                Text(dailyQuizManager.isCompletedToday ? "Review Today’s Quiz" : "Start Today’s Quiz")
+                Text(dailyQuizManager.isCompletedToday ? lang.t("today.review_quiz") : lang.t("today.start_quiz"))
                     .font(.headline)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 14)
+                    .background(.white)
+                    .foregroundStyle(AppPalette.clay)
+                    .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+            }
+            .buttonStyle(.plain)
+        }
+        .padding(24)
+        .background(AppPalette.heroGradient)
+        .clipShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
+    }
+
+    private var greetingLine: String {
+        let hour = Calendar.current.component(.hour, from: Date())
+        let greeting: String
+        switch hour {
+        case 5..<12: greeting = lang.t("today.greeting_morning")
+        case 12..<17: greeting = lang.t("today.greeting_afternoon")
+        default:     greeting = lang.t("today.greeting_evening")
+        }
+        if session.hasCompletedOnboarding {
+            let focus = session.currentImprovementFocus
+            return "\(greeting). \(lang.t("today.focus_label")) \(focus)."
+        }
+        return "\(greeting). \(lang.t("today.train_next"))"
+    }
+
+    private func streakPill(value: String, label: String) -> some View {
+        VStack(alignment: .leading, spacing: 2) {
+            Text(value)
+                .font(.system(size: 22, weight: .bold, design: .rounded))
+                .foregroundStyle(.white)
+            Text(label)
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(.white.opacity(0.75))
+        }
+        .padding(.horizontal, 14)
+        .padding(.vertical, 10)
+        .background(.white.opacity(0.14))
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+    }
+
+    // MARK: - Tip of the Day
+
+    private var tipCard: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack {
+                Label(tip.category.title, systemImage: tip.category.systemImage)
+                    .font(.caption.weight(.semibold))
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 6)
+                    .background(AppPalette.clay.opacity(0.12))
+                    .foregroundStyle(AppPalette.clay)
+                    .clipShape(Capsule())
+                Spacer()
+                Text(lang.t("today.tip_of_day"))
+                    .font(.caption)
+                    .foregroundStyle(AppPalette.inkSoft)
+            }
+
+            Text(tip.title)
+                .font(.headline)
+
+            if tipExpanded {
+                Text(tip.body)
+                    .font(.subheadline)
+                    .foregroundStyle(AppPalette.inkSoft)
+                    .transition(.opacity.combined(with: .move(edge: .top)))
+
+                if let source = tip.source {
+                    Text("— \(source)")
+                        .font(.caption)
+                        .foregroundStyle(AppPalette.inkSoft.opacity(0.7))
+                }
+            }
+
+            Button {
+                withAnimation(.easeInOut(duration: 0.22)) {
+                    tipExpanded.toggle()
+                }
+            } label: {
+                Label(tipExpanded ? lang.t("today.show_less") : lang.t("today.read_more"),
+                      systemImage: tipExpanded ? "chevron.up" : "chevron.down")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(AppPalette.clay)
+            }
+            .buttonStyle(.plain)
+        }
+        .padding()
+        .background(AppPalette.parchment)
+        .overlay(
+            RoundedRectangle(cornerRadius: 22, style: .continuous)
+                .strokeBorder(AppPalette.sand, lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+    }
+
+    // MARK: - Daily Quiz
+
+    private var dailyQuizCard: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(lang.t("today.daily_iq"))
+                        .font(.headline)
+                    Text(dailyQuizManager.isCompletedToday ? lang.t("today.completed") : lang.t("today.ready"))
+                        .font(.caption)
+                        .foregroundStyle(dailyQuizManager.isCompletedToday ? AppPalette.moss : AppPalette.inkSoft)
+                }
+                Spacer()
+                infoChip(systemImage: "list.bullet", text: "\(dailyQuiz.questions.count) \(lang.t("today.questions"))")
+            }
+
+            Text(dailyQuiz.focusLabel)
+                .font(.title3.bold())
+
+            infoChip(systemImage: "target", text: dailyQuiz.primaryFocusTag ?? lang.t("today.match_awareness"))
+
+            NavigationLink {
+                QuizView(quiz: dailyQuiz) { summary in
+                    dailyQuizManager.recordCompletion(summary: summary, isDaily: true)
+                    session.updateCurrentFocus(summary.focusLabel)
+                    session.updateTopMistakePatterns(summary.mistakeTypes)
+                }
+            } label: {
+                Text(dailyQuizManager.isCompletedToday ? lang.t("today.review") : lang.t("today.start_quiz_btn"))
+                    .font(.headline)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 13)
             }
             .buttonStyle(.borderedProminent)
         }
         .padding()
         .background(AppPalette.parchment)
         .overlay(
-            RoundedRectangle(cornerRadius: 24, style: .continuous)
-                .stroke(AppPalette.sand, lineWidth: 1)
+            RoundedRectangle(cornerRadius: 22, style: .continuous)
+                .strokeBorder(AppPalette.sand, lineWidth: 1)
         )
-        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
     }
 
-    private var trainingCard: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            sectionHeader(title: "Today’s Training", subtitle: "8-week foundation")
+    // MARK: - Mobility
 
-            Text(featuredTrainingProgram.title)
-                .font(.title3.bold())
-            Text(featuredTrainingProgram.outcome)
-                .foregroundStyle(AppPalette.inkSoft)
-
-            HStack(spacing: 12) {
-                infoChip(systemImage: "calendar", text: "\(featuredTrainingProgram.durationWeeks) weeks")
-                infoChip(systemImage: "figure.run", text: "Gym + cardio")
-            }
-
-            NavigationLink {
-                TrainingProgramDetailView(program: featuredTrainingProgram)
-            } label: {
-                Text("Open Training Calendar")
-                    .font(.headline)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 14)
-            }
-            .buttonStyle(.bordered)
-        }
-        .padding()
-        .background(AppPalette.parchment)
-        .overlay(
-            RoundedRectangle(cornerRadius: 24, style: .continuous)
-                .stroke(AppPalette.sand, lineWidth: 1)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
-    }
-
+    @ViewBuilder
     private var mobilityCard: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            sectionHeader(title: "Recommended Mobility", subtitle: recommendedFlow.type.title)
+        // Safe lookup — show nothing if content hasn't loaded yet.
+        let flows = MobilityFlow.sampleFlows
+        if let flow = flows.first(where: { $0.type == .quickReset }) ?? flows.first {
+            VStack(alignment: .leading, spacing: 12) {
+                HStack {
+                    Text(lang.t("today.quick_reset"))
+                        .font(.headline)
+                    Spacer()
+                    if !session.isPremiumUnlocked {
+                        premiumBadge
+                    }
+                }
 
-            Text(recommendedFlow.title)
-                .font(.title3.bold())
-            Text(recommendedFlow.goal)
-                .foregroundStyle(AppPalette.inkSoft)
+                Text(flow.localizedTitle(for: lang.language))
+                    .font(.subheadline.weight(.semibold))
 
-            HStack(spacing: 12) {
-                infoChip(systemImage: "timer", text: recommendedFlow.duration)
-                infoChip(systemImage: "figure.walk", text: recommendedFlow.focusLabel)
-            }
-
-            NavigationLink {
-                MobilityFlowDetailView(flow: recommendedFlow)
-            } label: {
-                Text(session.isPremiumUnlocked ? "Open Mobility Flow" : "Preview Mobility Flow")
-                    .font(.headline)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 14)
-            }
-            .buttonStyle(.bordered)
-        }
-        .padding()
-        .background(AppPalette.parchment)
-        .overlay(
-            RoundedRectangle(cornerRadius: 24, style: .continuous)
-                .stroke(AppPalette.sand, lineWidth: 1)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
-    }
-
-    private var communityCard: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            sectionHeader(title: "Active Community Thread", subtitle: session.canWriteCommunityComment ? "Commenting unlocked" : "Read-only preview")
-
-            if let featuredThread {
-                Text(featuredThread.title)
-                    .font(.title3.bold())
-                Text(featuredThread.subtitle)
-                    .foregroundStyle(AppPalette.inkSoft)
-
-                HStack(spacing: 12) {
-                    infoChip(systemImage: "bubble.left.and.bubble.right", text: "\(discussionStore.commentCount(for: featuredThread.id)) comments")
-                    infoChip(systemImage: "clock", text: featuredThread.lastActivityLabel)
+                HStack(spacing: 8) {
+                    infoChip(systemImage: "timer", text: flow.duration)
+                    infoChip(systemImage: "figure.walk", text: flow.focusLabel)
                 }
 
                 NavigationLink {
-                    CommunityFeedView()
+                    MobilityFlowDetailView(flow: flow)
                 } label: {
-                    Text("Open Community")
-                        .font(.headline)
+                    Text(session.isPremiumUnlocked ? lang.t("today.open_flow") : lang.t("today.preview_flow"))
+                        .font(.subheadline.weight(.semibold))
                         .frame(maxWidth: .infinity)
-                        .padding(.vertical, 14)
+                        .padding(.vertical, 12)
                 }
                 .buttonStyle(.bordered)
-            } else {
-                Text("Threads will appear here once content-linked discussion is available.")
-                    .foregroundStyle(AppPalette.inkSoft)
             }
+            .padding()
+            .background(AppPalette.parchment)
+            .overlay(
+                RoundedRectangle(cornerRadius: 22, style: .continuous)
+                    .strokeBorder(AppPalette.sand, lineWidth: 1)
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
         }
-        .padding()
-        .background(AppPalette.parchment)
-        .overlay(
-            RoundedRectangle(cornerRadius: 24, style: .continuous)
-                .stroke(AppPalette.sand, lineWidth: 1)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
     }
 
-    private var heroSubtitle: String {
-        if session.isGuest {
-            return "Guest preview is active. Your IQ progress and training history are saved locally."
-        }
+    // MARK: - Helpers
 
-        if session.isSignedInWithApple {
-            return "\(session.displayName), your current improvement focus is \(session.currentImprovementFocus.lowercased())."
-        }
-
-        return "Start with a guest profile or Apple sign-in to track progress, unlock premium, and keep your tennis week together."
-    }
-
-    private func metricPill(title: String, value: String) -> some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text(title)
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(.white.opacity(0.8))
-            Text(value)
-                .font(.headline)
-                .foregroundStyle(.white)
-        }
-        .padding(.horizontal, 14)
-        .padding(.vertical, 10)
-        .background(Color.white.opacity(0.14))
-        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-    }
-
-    private func sectionHeader(title: String, subtitle: String) -> some View {
-        HStack(alignment: .top) {
-            VStack(alignment: .leading, spacing: 4) {
-                Text(title)
-                    .font(.headline)
-                Text(subtitle)
-                    .font(.subheadline)
-                    .foregroundStyle(AppPalette.inkSoft)
-            }
-            Spacer()
-        }
+    private var premiumBadge: some View {
+        Text(lang.t("common.premium"))
+            .font(.caption.weight(.semibold))
+            .padding(.horizontal, 8)
+            .padding(.vertical, 4)
+            .background(AppPalette.clay.opacity(0.12))
+            .foregroundStyle(AppPalette.clay)
+            .clipShape(Capsule())
     }
 
     private func infoChip(systemImage: String, text: String) -> some View {
         Label(text, systemImage: systemImage)
             .font(.caption.weight(.semibold))
             .padding(.horizontal, 10)
-            .padding(.vertical, 8)
-            .background(AppPalette.sand.opacity(0.55))
+            .padding(.vertical, 7)
+            .background(AppPalette.sand.opacity(0.5))
             .clipShape(Capsule())
     }
 }

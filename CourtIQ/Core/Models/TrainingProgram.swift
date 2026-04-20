@@ -85,8 +85,40 @@ enum TrainingDayType: String, Codable {
 struct TrainingExercise: Identifiable, Codable, Hashable {
     let id: String
     let title: String
+    var titleTr: String? = nil
     let prescription: String
     let intent: String
+    var intentTr: String? = nil
+    let howTo: [String]?
+    var howToTr: [String]? = nil
+    let tennisWhy: String?
+    var tennisWhyTr: String? = nil
+    let watchOuts: [String]?
+    var watchOutsTr: [String]? = nil
+
+    var hasDetail: Bool {
+        (howTo?.isEmpty == false) || (tennisWhy?.isEmpty == false) || (watchOuts?.isEmpty == false)
+    }
+
+    func localizedTitle(for lang: AppLanguage) -> String {
+        lang == .turkish ? (titleTr ?? title) : title
+    }
+
+    func localizedIntent(for lang: AppLanguage) -> String {
+        lang == .turkish ? (intentTr ?? intent) : intent
+    }
+
+    func localizedHowTo(for lang: AppLanguage) -> [String]? {
+        lang == .turkish ? (howToTr ?? howTo) : howTo
+    }
+
+    func localizedTennisWhy(for lang: AppLanguage) -> String? {
+        lang == .turkish ? (tennisWhyTr ?? tennisWhy) : tennisWhy
+    }
+
+    func localizedWatchOuts(for lang: AppLanguage) -> [String]? {
+        lang == .turkish ? (watchOutsTr ?? watchOuts) : watchOuts
+    }
 }
 
 struct TrainingDayPlan: Identifiable, Codable, Hashable {
@@ -171,8 +203,8 @@ extension TrainingProgram {
                 objective: "Build force for push-off speed without losing posture.",
                 warmup: "Bike, ankle rocks, mobility, pogo hops, and progressive accelerations.",
                 exercises: [
-                    TrainingExercise(id: "fd1-1", title: "Box jumps", prescription: "4 x 4", intent: "Fast ground contact and clean landing."),
-                    TrainingExercise(id: "fd1-2", title: "Trap-bar deadlift", prescription: "4 x 5", intent: "Heavy but crisp concentric drive.")
+                    TrainingExercise(id: "fd1-1", title: "Box jumps", prescription: "4 x 4", intent: "Fast ground contact and clean landing.", howTo: nil, tennisWhy: nil, watchOuts: nil),
+                    TrainingExercise(id: "fd1-2", title: "Trap-bar deadlift", prescription: "4 x 5", intent: "Heavy but crisp concentric drive.", howTo: nil, tennisWhy: nil, watchOuts: nil)
                 ],
                 finisher: "8 x 15 sec bike sprints with 45 sec easy spin.",
                 recovery: "Walk 5 minutes, then calf and hip-flexor mobility."

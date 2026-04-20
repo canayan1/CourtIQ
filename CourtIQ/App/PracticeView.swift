@@ -2,6 +2,7 @@ import SwiftUI
 
 struct PracticeView: View {
     @EnvironmentObject private var session: UserSessionManager
+    @EnvironmentObject private var lang: LanguageManager
     @State private var showPaywall = false
 
     var body: some View {
@@ -10,7 +11,7 @@ struct PracticeView: View {
                 practiceHero
 
                 VStack(alignment: .leading, spacing: 14) {
-                    Text("Skill Blocks")
+                    Text(lang.t("practice.skill_blocks"))
                         .font(.title3.bold())
 
                     ForEach(QuizCategory.allCases) { category in
@@ -36,7 +37,7 @@ struct PracticeView: View {
                 }
 
                 VStack(alignment: .leading, spacing: 14) {
-                    Text("Support Work")
+                    Text(lang.t("practice.support_work"))
                         .font(.title3.bold())
 
                     NavigationLink {
@@ -48,9 +49,9 @@ struct PracticeView: View {
                                 .foregroundStyle(AppPalette.clay)
 
                             VStack(alignment: .leading, spacing: 6) {
-                                Text("Mobility & Recovery Library")
+                                Text(lang.t("practice.mobility_library"))
                                     .font(.headline)
-                                Text("Quick resets, daily mobility, and recovery flows built for tennis movement.")
+                                Text(lang.t("practice.mobility_desc"))
                                     .foregroundStyle(AppPalette.inkSoft)
                             }
 
@@ -70,7 +71,7 @@ struct PracticeView: View {
             .padding()
         }
         .background(AppPalette.cream)
-        .navigationTitle("Practice")
+        .navigationTitle(lang.t("tab.practice"))
         .sheet(isPresented: $showPaywall) {
             NavigationStack {
                 PaywallView(source: "Practice")
@@ -81,15 +82,15 @@ struct PracticeView: View {
 
     private var practiceHero: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Deliberate reps")
+            Text(lang.t("practice.deliberate_reps"))
                 .font(.caption.weight(.semibold))
                 .textCase(.uppercase)
                 .foregroundStyle(AppPalette.inkSoft)
 
-            Text("Choose the pattern you want to sharpen, then run a focused block.")
+            Text(lang.t("practice.choose_pattern"))
                 .font(.system(size: 28, weight: .bold, design: .rounded))
 
-            Text("Daily IQ stays free in Today. All Access unlocks the full library of repeatable skill blocks here.")
+            Text(lang.t("practice.free_desc"))
                 .foregroundStyle(AppPalette.inkSoft)
         }
         .padding()

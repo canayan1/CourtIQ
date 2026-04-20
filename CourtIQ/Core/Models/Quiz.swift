@@ -63,11 +63,31 @@ struct QuizQuestion: Identifiable, Codable, Hashable {
     let difficulty: QuizDifficulty
     let focusTag: String
     let scenario: String
+    var scenarioTr: String? = nil
     let options: [String]
+    var optionsTr: [String]? = nil
     let correctAnswerIndex: Int
     let explanation: String
+    var explanationTr: String? = nil
     let takeaway: String
+    var takeawayTr: String? = nil
     let mistakeType: String
+
+    func localizedScenario(for lang: AppLanguage) -> String {
+        lang == .turkish ? (scenarioTr ?? scenario) : scenario
+    }
+
+    func localizedOptions(for lang: AppLanguage) -> [String] {
+        lang == .turkish ? (optionsTr ?? options) : options
+    }
+
+    func localizedExplanation(for lang: AppLanguage) -> String {
+        lang == .turkish ? (explanationTr ?? explanation) : explanation
+    }
+
+    func localizedTakeaway(for lang: AppLanguage) -> String {
+        lang == .turkish ? (takeawayTr ?? takeaway) : takeaway
+    }
 }
 
 struct Quiz: Identifiable, Codable {

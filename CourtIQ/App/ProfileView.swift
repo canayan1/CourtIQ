@@ -4,244 +4,247 @@ import AuthenticationServices
 struct ProfileView: View {
     @EnvironmentObject private var session: UserSessionManager
     @EnvironmentObject private var dailyQuizManager: DailyQuizManager
-    @EnvironmentObject private var trainingProgress: TrainingProgressManager
+    @EnvironmentObject private var progressionManager: PlayerProgressionManager
+    @EnvironmentObject private var lang: LanguageManager
 
     @State private var showPaywall = false
     @State private var showDeleteConfirmation = false
+    @State private var showResetConfirmation = false
     @State private var isDeleting = false
+    @State private var isResetting = false
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 profileHeader
-                progressSection
-                patternsSection
+                LevelProgressionPathView()
+                streakSection
                 historySection
                 accountSection
+                languageSection
                 legalSection
             }
             .padding()
         }
         .background(AppPalette.cream)
-        .navigationTitle("Profile")
+        .navigationTitle(lang.t("profile.title"))
         .sheet(isPresented: $showPaywall) {
             NavigationStack {
                 PaywallView(source: "Profile")
                     .environmentObject(session)
             }
         }
-        .confirmationDialog("Delete account?", isPresented: $showDeleteConfirmation, titleVisibility: .visible) {
-            Button("Delete Account", role: .destructive) {
+        .confirmationDialog(lang.t("profile.delete_title"), isPresented: $showDeleteConfirmation, titleVisibility: .visible) {
+            Button(lang.t("common.delete"), role: .destructive) {
                 Task {
                     isDeleting = true
                     await session.deleteAccount()
                     isDeleting = false
                 }
             }
-
-            Button("Cancel", role: .cancel) {}
+            Button(lang.t("common.cancel"), role: .cancel) {}
         } message: {
-            Text("This clears your profile, local history, training logs, and community activity on this device.")
+            Text(lang.t("profile.delete_msg"))
         }
+        .confirmationDialog(lang.t("profile.reset_title"), isPresented: $showResetConfirmation, titleVisibility: .visible) {
+            Button(lang.t("common.delete"), role: .destructive) {
+                Task {
+                    isResetting = true
+                    await session.resetLocalData()
+                    isResetting = false
+                }
+            }
+            Button(lang.t("common.cancel"), role: .cancel) {}
+        } message: {
+            Text(lang.t("profile.reset_msg"))
+        }
+    }
+
+    // MARK: - Profile Header
+
+    /// IQ rating derived from quiz activity.
+    /// Formula: 10 pts per completed quiz + 5 pts per current streak day.
+    private var iqRating: Int {
+        dailyQuizManager.totalQuizzesCompleted * 10
+            + dailyQuizManager.currentStreak * 5
+    }
+
+    private var playerLevel: TennisPlayerLevel {
+        progressionManager.currentLevel
     }
 
     private var profileHeader: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack {
-                VStack(alignment: .leading, spacing: 6) {
-                    Text(session.displayName)
-                        .font(.system(size: 30, weight: .bold, design: .rounded))
-                    Text(session.premiumStatus.description)
-                        .foregroundStyle(AppPalette.inkSoft)
-                }
+        VStack(spacing: 20) {
+            TennisPlayerBadgeView(
+                level: playerLevel,
+                iqRating: iqRating,
+                progressOverride: progressionManager.progressionProgress
+            )
 
-                Spacer()
+            VStack(spacing: 8) {
+                Text(session.displayName)
+                    .font(.title3.bold())
 
-                Circle()
-                    .fill(AppPalette.sand.opacity(0.65))
-                    .frame(width: 60, height: 60)
-                    .overlay(
-                        Image(systemName: session.isSignedInWithApple ? "person.crop.circle.badge.checkmark" : "person.fill")
-                            .font(.title2)
-                            .foregroundStyle(AppPalette.clay)
+                HStack(spacing: 8) {
+                    statusChip(
+                        label: session.premiumStatus.title,
+                        accent: session.isPremiumUnlocked ? AppPalette.moss : AppPalette.clay
                     )
+                    statusChip(
+                        label: session.isSignedInWithApple ? lang.t("profile.apple_id") : lang.t("profile.guest"),
+                        accent: AppPalette.ink
+                    )
+                }
             }
-
-            HStack(spacing: 10) {
-                statusChip(label: session.premiumStatus.title, accent: session.isPremiumUnlocked ? AppPalette.moss : AppPalette.clay)
-                statusChip(label: session.isSignedInWithApple ? "Apple ID" : "Guest", accent: AppPalette.ink)
-            }
-
-            Text("Current focus: \(session.currentImprovementFocus)")
-                .font(.subheadline.weight(.semibold))
-                .padding(.horizontal, 12)
-                .padding(.vertical, 8)
-                .background(AppPalette.sand.opacity(0.65))
-                .clipShape(Capsule())
         }
-        .padding()
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 24)
+        .padding(.horizontal)
         .background(AppPalette.parchment)
         .overlay(
-            RoundedRectangle(cornerRadius: 24, style: .continuous)
-                .stroke(AppPalette.sand, lineWidth: 1)
+            RoundedRectangle(cornerRadius: 22, style: .continuous)
+                .strokeBorder(AppPalette.sand, lineWidth: 1)
         )
-        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
     }
 
-    private var progressSection: some View {
+    // MARK: - Streak & Progress
+
+    private var streakSection: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("Progress")
+            Text(lang.t("profile.section_progress"))
                 .font(.title3.bold())
 
             HStack(spacing: 12) {
-                statCard(title: "Daily Streak", value: "\(dailyQuizManager.currentStreak)", detail: "days")
-                statCard(title: "Completed", value: "\(dailyQuizManager.totalQuizzesCompleted)", detail: "daily quizzes")
-            }
-
-            HStack(spacing: 12) {
-                statCard(
-                    title: "Training",
-                    value: "\(trainingProgress.totalCompletedSessions(programID: TrainingProgram.featuredProgram.id))",
-                    detail: "sessions logged"
+                bigStatCard(
+                    value: "\(dailyQuizManager.currentStreak)",
+                    label: lang.t("profile.stat_streak"),
+                    icon: "flame.fill",
+                    accent: AppPalette.clay
                 )
-                statCard(
-                    title: "Check-ins",
-                    value: "\(trainingProgress.checkInHistory(programID: TrainingProgram.featuredProgram.id).count)",
-                    detail: "weekly reviews"
+                bigStatCard(
+                    value: "\(dailyQuizManager.totalQuizzesCompleted)",
+                    label: lang.t("profile.stat_quizzes"),
+                    icon: "checkmark.circle.fill",
+                    accent: AppPalette.moss
                 )
             }
 
-            VStack(alignment: .leading, spacing: 10) {
+            VStack(alignment: .leading, spacing: 8) {
                 HStack {
-                    Text("Weekly rhythm")
-                        .font(.headline)
-                    Spacer()
-                    Text("\(dailyQuizManager.completedThisWeek)/7")
+                    Text(lang.t("profile.stat_week"))
                         .font(.subheadline.weight(.semibold))
+                    Spacer()
+                    Text("\(dailyQuizManager.completedThisWeek) / 7 \(lang.t("common.days"))")
+                        .font(.subheadline)
                         .foregroundStyle(AppPalette.inkSoft)
                 }
-
                 ProgressView(value: dailyQuizManager.weeklyCompletionRate)
                     .tint(AppPalette.clay)
             }
             .padding()
             .background(AppPalette.parchment)
             .overlay(
-                RoundedRectangle(cornerRadius: 20, style: .continuous)
-                    .stroke(AppPalette.sand, lineWidth: 1)
+                RoundedRectangle(cornerRadius: 18, style: .continuous)
+                    .strokeBorder(AppPalette.sand, lineWidth: 1)
             )
-            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+            .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
         }
     }
 
-    private var patternsSection: some View {
-        VStack(alignment: .leading, spacing: 14) {
-            Text("Top Patterns To Clean Up")
-                .font(.title3.bold())
-
-            ForEach(dailyQuizManager.topMistakePatterns.isEmpty ? session.topMistakePatterns : dailyQuizManager.topMistakePatterns, id: \.self) { pattern in
-                HStack(alignment: .top, spacing: 12) {
-                    Image(systemName: "target")
-                        .foregroundStyle(AppPalette.clay)
-                    Text(pattern)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
-                .padding()
-                .background(AppPalette.parchment)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 18, style: .continuous)
-                        .stroke(AppPalette.sand, lineWidth: 1)
-                )
-                .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
-            }
-        }
-    }
+    // MARK: - Quiz History (Premium)
 
     private var historySection: some View {
         VStack(alignment: .leading, spacing: 14) {
             HStack {
-                Text("Archived Quiz History")
+                Text(lang.t("profile.section_quiz"))
                     .font(.title3.bold())
                 Spacer()
                 if !session.isPremiumUnlocked {
-                    Text("Premium")
+                    Text(lang.t("common.premium"))
                         .font(.caption.weight(.semibold))
                         .padding(.horizontal, 10)
-                        .padding(.vertical, 6)
+                        .padding(.vertical, 5)
                         .background(AppPalette.clay.opacity(0.12))
+                        .foregroundStyle(AppPalette.clay)
                         .clipShape(Capsule())
                 }
             }
 
             if session.isPremiumUnlocked {
                 if dailyQuizManager.archivedDailyHistory.isEmpty {
-                    Text("Complete your first daily quiz to build an archive.")
-                        .foregroundStyle(AppPalette.inkSoft)
+                    emptyHistory
                 } else {
                     ForEach(dailyQuizManager.archivedDailyHistory.prefix(5)) { record in
-                        HStack {
-                            VStack(alignment: .leading, spacing: 4) {
-                                Text(record.focusLabel)
-                                    .font(.headline)
-                                Text(record.completedAt.formatted(date: .abbreviated, time: .omitted))
-                                    .font(.caption)
-                                    .foregroundStyle(AppPalette.inkSoft)
-                            }
-                            Spacer()
-                            Text(record.accuracyText)
-                                .font(.headline.monospacedDigit())
-                        }
-                        .padding()
-                        .background(AppPalette.parchment)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 18, style: .continuous)
-                                .stroke(AppPalette.sand, lineWidth: 1)
-                        )
-                        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+                        historyRow(record)
                     }
                 }
             } else {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Unlock the archive to review previous quiz sessions, track focus changes, and spot recurring decision errors.")
-                        .foregroundStyle(AppPalette.inkSoft)
-                    Button("Unlock All Access") {
-                        showPaywall = true
-                    }
-                    .buttonStyle(.borderedProminent)
-                }
-                .padding()
-                .background(AppPalette.parchment)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 18, style: .continuous)
-                        .stroke(AppPalette.sand, lineWidth: 1)
-                )
-                .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+                premiumHistoryUpsell
             }
         }
     }
 
+    private var emptyHistory: some View {
+        Text(lang.t("profile.quiz_empty"))
+            .font(.subheadline)
+            .foregroundStyle(AppPalette.inkSoft)
+            .padding()
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(AppPalette.parchment)
+            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+    }
+
+    private func historyRow(_ record: QuizSessionRecord) -> some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 3) {
+                Text(record.focusLabel)
+                    .font(.subheadline.weight(.semibold))
+                Text(record.completedAt.formatted(date: .abbreviated, time: .omitted))
+                    .font(.caption)
+                    .foregroundStyle(AppPalette.inkSoft)
+            }
+            Spacer()
+            Text(record.accuracyText)
+                .font(.headline.monospacedDigit())
+                .foregroundStyle(AppPalette.clay)
+        }
+        .padding()
+        .background(AppPalette.parchment)
+        .overlay(
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .strokeBorder(AppPalette.sand, lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+    }
+
+    private var premiumHistoryUpsell: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text(lang.t("profile.unlock_history"))
+                .font(.subheadline)
+                .foregroundStyle(AppPalette.inkSoft)
+            Button(lang.t("common.unlock_all")) { showPaywall = true }
+                .buttonStyle(.borderedProminent)
+        }
+        .padding()
+        .background(AppPalette.parchment)
+        .overlay(
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .strokeBorder(AppPalette.sand, lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+    }
+
+    // MARK: - Account
+
     private var accountSection: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("Account")
+            Text(lang.t("profile.section_account"))
                 .font(.title3.bold())
-
-            VStack(alignment: .leading, spacing: 12) {
-                accountRow(label: "Mode", value: session.isSignedInWithApple ? "Sign in with Apple" : "Guest preview")
-                accountRow(label: "Plan", value: session.premiumStatus.title)
-                accountRow(label: "Billing", value: session.subscriptionManager.integrationMode.title)
-                accountRow(label: "Integration", value: session.integrationSummary)
-            }
-            .padding()
-            .background(AppPalette.parchment)
-            .overlay(
-                RoundedRectangle(cornerRadius: 20, style: .continuous)
-                    .stroke(AppPalette.sand, lineWidth: 1)
-            )
-            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
 
             if !session.isSignedInWithApple {
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("Upgrade this profile with Sign in with Apple to unlock purchases, sync, and community posting.")
+                    Text(lang.t("profile.sign_in_hint"))
                         .font(.subheadline)
                         .foregroundStyle(AppPalette.inkSoft)
 
@@ -256,47 +259,86 @@ struct ProfileView: View {
                 .padding()
                 .background(AppPalette.parchment)
                 .overlay(
-                    RoundedRectangle(cornerRadius: 20, style: .continuous)
-                        .stroke(AppPalette.sand, lineWidth: 1)
+                    RoundedRectangle(cornerRadius: 18, style: .continuous)
+                        .strokeBorder(AppPalette.sand, lineWidth: 1)
                 )
-                .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
             }
 
             if !session.isPremiumUnlocked {
-                Button("View All Access Plans") {
-                    showPaywall = true
-                }
-                .buttonStyle(.borderedProminent)
+                Button(lang.t("profile.view_plans")) { showPaywall = true }
+                    .buttonStyle(.borderedProminent)
             } else {
-                Button("Manage Subscription") {
-                    session.openManageSubscriptions()
-                }
-                .buttonStyle(.borderedProminent)
+                Button(lang.t("profile.manage_sub")) { session.openManageSubscriptions() }
+                    .buttonStyle(.borderedProminent)
             }
 
-            Button("Restore Purchases") {
-                Task {
-                    await session.restorePurchases()
-                }
+            Button(lang.t("profile.restore")) {
+                Task { await session.restorePurchases() }
             }
             .buttonStyle(.bordered)
 
-            Button(session.isGuest ? "Leave Guest Preview" : "Sign Out") {
+            Button(isResetting ? lang.t("common.resetting") : lang.t("profile.reset_title"), role: .destructive) {
+                showResetConfirmation = true
+            }
+            .buttonStyle(.bordered)
+            .disabled(isResetting)
+
+            Button(session.isGuest ? lang.t("profile.leave_guest") : lang.t("profile.sign_out")) {
                 session.signOut()
             }
             .buttonStyle(.bordered)
 
-            Button(isDeleting ? "Deleting..." : "Delete Account", role: .destructive) {
-                showDeleteConfirmation = true
+            if session.isSignedInWithApple {
+                Button(isDeleting ? lang.t("common.deleting") : lang.t("common.delete"), role: .destructive) {
+                    showDeleteConfirmation = true
+                }
+                .buttonStyle(.bordered)
+                .disabled(isDeleting)
             }
-            .buttonStyle(.bordered)
-            .disabled(isDeleting)
+        }
+    }
+
+    // MARK: - Legal
+
+    private var languageSection: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            Text(lang.t("profile.section_language"))
+                .font(.title3.bold())
+
+            HStack(spacing: 10) {
+                ForEach(AppLanguage.allCases) { option in
+                    Button {
+                        lang.language = option
+                    } label: {
+                        VStack(spacing: 4) {
+                            Text(option.regionLabel)
+                                .font(.system(size: 13, weight: .bold, design: .rounded))
+                            Text(option.displayName)
+                                .font(.caption)
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)
+                        .background(lang.language == option ? AppPalette.clay : AppPalette.parchment)
+                        .foregroundStyle(lang.language == option ? .white : AppPalette.ink)
+                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                .strokeBorder(
+                                    lang.language == option ? AppPalette.clay : AppPalette.sand,
+                                    lineWidth: 1
+                                )
+                        )
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
         }
     }
 
     private var legalSection: some View {
-        VStack(alignment: .leading, spacing: 14) {
-            Text("Policies")
+        VStack(alignment: .leading, spacing: 10) {
+            Text(lang.t("profile.section_policies"))
                 .font(.title3.bold())
 
             ForEach(LegalDocument.allCases) { document in
@@ -305,6 +347,7 @@ struct ProfileView: View {
                 } label: {
                     HStack {
                         Text(document.title)
+                            .font(.subheadline)
                         Spacer()
                         Image(systemName: "chevron.right")
                             .font(.footnote.weight(.semibold))
@@ -313,24 +356,26 @@ struct ProfileView: View {
                     .padding()
                     .background(AppPalette.parchment)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 18, style: .continuous)
-                            .stroke(AppPalette.sand, lineWidth: 1)
+                        RoundedRectangle(cornerRadius: 16, style: .continuous)
+                            .strokeBorder(AppPalette.sand, lineWidth: 1)
                     )
-                    .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                 }
                 .buttonStyle(.plain)
             }
         }
     }
 
-    private func statCard(title: String, value: String, detail: String) -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text(title)
-                .font(.subheadline.weight(.semibold))
-                .foregroundStyle(AppPalette.inkSoft)
+    // MARK: - Helpers
+
+    private func bigStatCard(value: String, label: String, icon: String, accent: Color) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Image(systemName: icon)
+                .font(.title3)
+                .foregroundStyle(accent)
             Text(value)
-                .font(.system(size: 28, weight: .bold, design: .rounded))
-            Text(detail)
+                .font(.system(size: 34, weight: .bold, design: .rounded))
+            Text(label)
                 .font(.caption)
                 .foregroundStyle(AppPalette.inkSoft)
         }
@@ -338,29 +383,19 @@ struct ProfileView: View {
         .padding()
         .background(AppPalette.parchment)
         .overlay(
-            RoundedRectangle(cornerRadius: 20, style: .continuous)
-                .stroke(AppPalette.sand, lineWidth: 1)
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .strokeBorder(AppPalette.sand, lineWidth: 1)
         )
-        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-    }
-
-    private func accountRow(label: String, value: String) -> some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text(label)
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(AppPalette.inkSoft)
-            Text(value)
-                .font(.subheadline.weight(.semibold))
-                .fixedSize(horizontal: false, vertical: true)
-        }
+        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
     }
 
     private func statusChip(label: String, accent: Color) -> some View {
         Text(label)
             .font(.caption.weight(.semibold))
             .padding(.horizontal, 10)
-            .padding(.vertical, 8)
+            .padding(.vertical, 6)
             .background(accent.opacity(0.14))
+            .foregroundStyle(accent)
             .clipShape(Capsule())
     }
 }

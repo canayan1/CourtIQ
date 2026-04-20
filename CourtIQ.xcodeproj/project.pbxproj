@@ -1,556 +1,381 @@
 // !$*UTF8*$!
 {
-  archiveVersion = 1;
-  classes = {};
-  objectVersion = 55;
-  objects = {
-    A000000000000000000000 /* Project object */ = {
-      isa = PBXProject;
-      attributes = {
-        LastUpgradeCheck = 1530;
-        ORGANIZATIONNAME = CourtIQ;
-      };
-      buildConfigurationList = A000000000000000000001 /* Build configuration list for PBXProject */;
-      compatibilityVersion = "Xcode 15.0";
-      developmentRegion = English;
-      hasScannedForEncodings = 0;
-      knownRegions = (
-        en,
-      );
-      mainGroup = A000000000000000000004;
-      productRefGroup = A000000000000000000005 /* Products */;
-      projectDirPath = "";
-      projectRoot = "";
-      targets = (
-        A000000000000000000006 /* CourtIQ */,
-      );
-    };
-    A000000000000000000001 /* Build configuration list for PBXProject */ = {
-      isa = XCConfigurationList;
-      buildConfigurations = (
-        A000000000000000000002 /* Debug */,
-        A000000000000000000003 /* Release */,
-      );
-      defaultConfigurationIsVisible = 0;
-      defaultConfigurationName = Debug;
-    };
-    A000000000000000000002 /* Debug */ = {
-      isa = XCBuildConfiguration;
-      buildSettings = {
-        ALWAYS_SEARCH_USER_PATHS = NO;
-        CLANG_ENABLE_MODULES = YES;
-        ENABLE_BITCODE = NO;
-        GCC_C_LANGUAGE_STANDARD = gnu11;
-        MACOSX_DEPLOYMENT_TARGET = 14.0;
-        PRODUCT_NAME = "$(TARGET_NAME)";
-        SWIFT_VERSION = 5.9;
-      };
-      name = Debug;
-    };
-    A000000000000000000003 /* Release */ = {
-      isa = XCBuildConfiguration;
-      buildSettings = {
-        ALWAYS_SEARCH_USER_PATHS = NO;
-        CLANG_ENABLE_MODULES = YES;
-        ENABLE_BITCODE = NO;
-        GCC_C_LANGUAGE_STANDARD = gnu11;
-        MACOSX_DEPLOYMENT_TARGET = 14.0;
-        PRODUCT_NAME = "$(TARGET_NAME)";
-        SWIFT_VERSION = 5.9;
-      };
-      name = Release;
-    };
-    A000000000000000000004 /* Main Group */ = {
-      isa = PBXGroup;
-      children = (
-        A00000000000000000000F /* Info.plist */,
-        A000000000000000000010 /* CourtIQApp.swift */,
-        A000000000000000000011 /* MainTabView.swift */,
-        A000000000000000000012 /* PracticeView.swift */,
-        A000000000000000000013 /* ProfileView.swift */,
-        A000000000000000000014 /* TodayView.swift */,
-        A000000000000000000015 /* DailyQuizManager.swift */,
-        A000000000000000000016 /* DiscussionThread.swift */,
-        A000000000000000000017 /* MobilityFlow.swift */,
-        A000000000000000000018 /* Quiz.swift */,
-        A000000000000000000019 /* UserSession.swift */,
-        A000000000000000000038 /* AppPalette.swift */,
-        A000000000000000000040 /* AppConfiguration.swift */,
-        A000000000000000000041 /* BundleContentLoader.swift */,
-        A00000000000000000001A /* MobilityFlowDetailView.swift */,
-        A00000000000000000001B /* MobilityLibraryView.swift */,
-        A00000000000000000001C /* QuizView.swift */,
-        A00000000000000000001D /* QuizViewModel.swift */,
-        A000000000000000000042 /* OnboardingView.swift */,
-        A000000000000000000043 /* PaywallView.swift */,
-        A000000000000000000044 /* CommunityViews.swift */,
-        A000000000000000000045 /* LegalDocumentView.swift */,
-        A000000000000000000030 /* TrainingProgram.swift */,
-        A000000000000000000031 /* TrainingProgressManager.swift */,
-        A000000000000000000032 /* TrainingHubView.swift */,
-        A000000000000000000033 /* TrainingProgramDetailView.swift */,
-        A000000000000000000046 /* Assets.xcassets */,
-        A000000000000000000047 /* quiz_questions.json */,
-        A000000000000000000048 /* training_programs.json */,
-        A000000000000000000049 /* mobility_flows.json */,
-        A000000000000000000005 /* Products */,
-      );
-      sourceTree = "<group>";
-    };
-    A000000000000000000005 /* Products */ = {
-      isa = PBXGroup;
-      children = (
-        A00000000000000000000D /* CourtIQ.app */,
-      );
-      name = Products;
-      sourceTree = "<group>";
-    };
-    A00000000000000000000D /* CourtIQ.app */ = {
-      isa = PBXFileReference;
-      explicitFileType = wrapper.application;
-      includeInIndex = 0;
-      path = CourtIQ.app;
-      sourceTree = BUILT_PRODUCTS_DIR;
-    };
-    A00000000000000000000F /* Info.plist */ = {
-      isa = PBXFileReference;
-      lastKnownFileType = text.plist.xml;
-      name = Info.plist;
-      path = CourtIQ/Info.plist;
-      sourceTree = "<group>";
-    };
-    A000000000000000000010 /* CourtIQApp.swift */ = {
-      isa = PBXFileReference;
-      lastKnownFileType = sourcecode.swift;
-      name = CourtIQApp.swift;
-      path = CourtIQ/App/CourtIQApp.swift;
-      sourceTree = "<group>";
-    };
-    A000000000000000000011 /* MainTabView.swift */ = {
-      isa = PBXFileReference;
-      lastKnownFileType = sourcecode.swift;
-      name = MainTabView.swift;
-      path = CourtIQ/App/MainTabView.swift;
-      sourceTree = "<group>";
-    };
-    A000000000000000000012 /* PracticeView.swift */ = {
-      isa = PBXFileReference;
-      lastKnownFileType = sourcecode.swift;
-      name = PracticeView.swift;
-      path = CourtIQ/App/PracticeView.swift;
-      sourceTree = "<group>";
-    };
-    A000000000000000000013 /* ProfileView.swift */ = {
-      isa = PBXFileReference;
-      lastKnownFileType = sourcecode.swift;
-      name = ProfileView.swift;
-      path = CourtIQ/App/ProfileView.swift;
-      sourceTree = "<group>";
-    };
-    A000000000000000000014 /* TodayView.swift */ = {
-      isa = PBXFileReference;
-      lastKnownFileType = sourcecode.swift;
-      name = TodayView.swift;
-      path = CourtIQ/App/TodayView.swift;
-      sourceTree = "<group>";
-    };
-    A000000000000000000015 /* DailyQuizManager.swift */ = {
-      isa = PBXFileReference;
-      lastKnownFileType = sourcecode.swift;
-      name = DailyQuizManager.swift;
-      path = CourtIQ/Core/Models/DailyQuizManager.swift;
-      sourceTree = "<group>";
-    };
-    A000000000000000000016 /* DiscussionThread.swift */ = {
-      isa = PBXFileReference;
-      lastKnownFileType = sourcecode.swift;
-      name = DiscussionThread.swift;
-      path = CourtIQ/Core/Models/DiscussionThread.swift;
-      sourceTree = "<group>";
-    };
-    A000000000000000000017 /* MobilityFlow.swift */ = {
-      isa = PBXFileReference;
-      lastKnownFileType = sourcecode.swift;
-      name = MobilityFlow.swift;
-      path = CourtIQ/Core/Models/MobilityFlow.swift;
-      sourceTree = "<group>";
-    };
-    A000000000000000000018 /* Quiz.swift */ = {
-      isa = PBXFileReference;
-      lastKnownFileType = sourcecode.swift;
-      name = Quiz.swift;
-      path = CourtIQ/Core/Models/Quiz.swift;
-      sourceTree = "<group>";
-    };
-    A000000000000000000019 /* UserSession.swift */ = {
-      isa = PBXFileReference;
-      lastKnownFileType = sourcecode.swift;
-      name = UserSession.swift;
-      path = CourtIQ/Core/Models/UserSession.swift;
-      sourceTree = "<group>";
-    };
-    A000000000000000000038 /* AppPalette.swift */ = {
-      isa = PBXFileReference;
-      lastKnownFileType = sourcecode.swift;
-      name = AppPalette.swift;
-      path = CourtIQ/Core/Models/AppPalette.swift;
-      sourceTree = "<group>";
-    };
-    A000000000000000000040 /* AppConfiguration.swift */ = {
-      isa = PBXFileReference;
-      lastKnownFileType = sourcecode.swift;
-      name = AppConfiguration.swift;
-      path = CourtIQ/Core/Models/AppConfiguration.swift;
-      sourceTree = "<group>";
-    };
-    A000000000000000000041 /* BundleContentLoader.swift */ = {
-      isa = PBXFileReference;
-      lastKnownFileType = sourcecode.swift;
-      name = BundleContentLoader.swift;
-      path = CourtIQ/Core/Models/BundleContentLoader.swift;
-      sourceTree = "<group>";
-    };
-    A00000000000000000001A /* MobilityFlowDetailView.swift */ = {
-      isa = PBXFileReference;
-      lastKnownFileType = sourcecode.swift;
-      name = MobilityFlowDetailView.swift;
-      path = CourtIQ/Features/Mobility/MobilityFlowDetailView.swift;
-      sourceTree = "<group>";
-    };
-    A00000000000000000001B /* MobilityLibraryView.swift */ = {
-      isa = PBXFileReference;
-      lastKnownFileType = sourcecode.swift;
-      name = MobilityLibraryView.swift;
-      path = CourtIQ/Features/Mobility/MobilityLibraryView.swift;
-      sourceTree = "<group>";
-    };
-    A00000000000000000001C /* QuizView.swift */ = {
-      isa = PBXFileReference;
-      lastKnownFileType = sourcecode.swift;
-      name = QuizView.swift;
-      path = CourtIQ/Features/Quiz/QuizView.swift;
-      sourceTree = "<group>";
-    };
-    A00000000000000000001D /* QuizViewModel.swift */ = {
-      isa = PBXFileReference;
-      lastKnownFileType = sourcecode.swift;
-      name = QuizViewModel.swift;
-      path = CourtIQ/Features/Quiz/QuizViewModel.swift;
-      sourceTree = "<group>";
-    };
-    A000000000000000000042 /* OnboardingView.swift */ = {
-      isa = PBXFileReference;
-      lastKnownFileType = sourcecode.swift;
-      name = OnboardingView.swift;
-      path = CourtIQ/Features/Onboarding/OnboardingView.swift;
-      sourceTree = "<group>";
-    };
-    A000000000000000000043 /* PaywallView.swift */ = {
-      isa = PBXFileReference;
-      lastKnownFileType = sourcecode.swift;
-      name = PaywallView.swift;
-      path = CourtIQ/Features/Paywall/PaywallView.swift;
-      sourceTree = "<group>";
-    };
-    A000000000000000000044 /* CommunityViews.swift */ = {
-      isa = PBXFileReference;
-      lastKnownFileType = sourcecode.swift;
-      name = CommunityViews.swift;
-      path = CourtIQ/Features/Community/CommunityViews.swift;
-      sourceTree = "<group>";
-    };
-    A000000000000000000045 /* LegalDocumentView.swift */ = {
-      isa = PBXFileReference;
-      lastKnownFileType = sourcecode.swift;
-      name = LegalDocumentView.swift;
-      path = CourtIQ/Features/Legal/LegalDocumentView.swift;
-      sourceTree = "<group>";
-    };
-    A000000000000000000030 /* TrainingProgram.swift */ = {
-      isa = PBXFileReference;
-      lastKnownFileType = sourcecode.swift;
-      name = TrainingProgram.swift;
-      path = CourtIQ/Core/Models/TrainingProgram.swift;
-      sourceTree = "<group>";
-    };
-    A000000000000000000031 /* TrainingProgressManager.swift */ = {
-      isa = PBXFileReference;
-      lastKnownFileType = sourcecode.swift;
-      name = TrainingProgressManager.swift;
-      path = CourtIQ/Core/Models/TrainingProgressManager.swift;
-      sourceTree = "<group>";
-    };
-    A000000000000000000032 /* TrainingHubView.swift */ = {
-      isa = PBXFileReference;
-      lastKnownFileType = sourcecode.swift;
-      name = TrainingHubView.swift;
-      path = CourtIQ/Features/Training/TrainingHubView.swift;
-      sourceTree = "<group>";
-    };
-    A000000000000000000033 /* TrainingProgramDetailView.swift */ = {
-      isa = PBXFileReference;
-      lastKnownFileType = sourcecode.swift;
-      name = TrainingProgramDetailView.swift;
-      path = CourtIQ/Features/Training/TrainingProgramDetailView.swift;
-      sourceTree = "<group>";
-    };
-    A000000000000000000046 /* Assets.xcassets */ = {
-      isa = PBXFileReference;
-      lastKnownFileType = folder.assetcatalog;
-      name = Assets.xcassets;
-      path = CourtIQ/Assets.xcassets;
-      sourceTree = "<group>";
-    };
-    A000000000000000000047 /* quiz_questions.json */ = {
-      isa = PBXFileReference;
-      lastKnownFileType = text.json;
-      name = quiz_questions.json;
-      path = CourtIQ/Resources/Content/quiz_questions.json;
-      sourceTree = "<group>";
-    };
-    A000000000000000000048 /* training_programs.json */ = {
-      isa = PBXFileReference;
-      lastKnownFileType = text.json;
-      name = training_programs.json;
-      path = CourtIQ/Resources/Content/training_programs.json;
-      sourceTree = "<group>";
-    };
-    A000000000000000000049 /* mobility_flows.json */ = {
-      isa = PBXFileReference;
-      lastKnownFileType = text.json;
-      name = mobility_flows.json;
-      path = CourtIQ/Resources/Content/mobility_flows.json;
-      sourceTree = "<group>";
-    };
-    A000000000000000000020 /* CourtIQApp.swift in Sources */ = {
-      isa = PBXBuildFile;
-      fileRef = A000000000000000000010 /* CourtIQApp.swift */;
-    };
-    A000000000000000000021 /* MainTabView.swift in Sources */ = {
-      isa = PBXBuildFile;
-      fileRef = A000000000000000000011 /* MainTabView.swift */;
-    };
-    A000000000000000000022 /* PracticeView.swift in Sources */ = {
-      isa = PBXBuildFile;
-      fileRef = A000000000000000000012 /* PracticeView.swift */;
-    };
-    A000000000000000000023 /* ProfileView.swift in Sources */ = {
-      isa = PBXBuildFile;
-      fileRef = A000000000000000000013 /* ProfileView.swift */;
-    };
-    A000000000000000000024 /* TodayView.swift in Sources */ = {
-      isa = PBXBuildFile;
-      fileRef = A000000000000000000014 /* TodayView.swift */;
-    };
-    A000000000000000000025 /* DailyQuizManager.swift in Sources */ = {
-      isa = PBXBuildFile;
-      fileRef = A000000000000000000015 /* DailyQuizManager.swift */;
-    };
-    A000000000000000000026 /* DiscussionThread.swift in Sources */ = {
-      isa = PBXBuildFile;
-      fileRef = A000000000000000000016 /* DiscussionThread.swift */;
-    };
-    A000000000000000000027 /* MobilityFlow.swift in Sources */ = {
-      isa = PBXBuildFile;
-      fileRef = A000000000000000000017 /* MobilityFlow.swift */;
-    };
-    A000000000000000000028 /* Quiz.swift in Sources */ = {
-      isa = PBXBuildFile;
-      fileRef = A000000000000000000018 /* Quiz.swift */;
-    };
-    A000000000000000000029 /* UserSession.swift in Sources */ = {
-      isa = PBXBuildFile;
-      fileRef = A000000000000000000019 /* UserSession.swift */;
-    };
-    A00000000000000000002A /* MobilityFlowDetailView.swift in Sources */ = {
-      isa = PBXBuildFile;
-      fileRef = A00000000000000000001A /* MobilityFlowDetailView.swift */;
-    };
-    A00000000000000000002B /* MobilityLibraryView.swift in Sources */ = {
-      isa = PBXBuildFile;
-      fileRef = A00000000000000000001B /* MobilityLibraryView.swift */;
-    };
-    A00000000000000000002C /* QuizView.swift in Sources */ = {
-      isa = PBXBuildFile;
-      fileRef = A00000000000000000001C /* QuizView.swift */;
-    };
-    A00000000000000000002D /* QuizViewModel.swift in Sources */ = {
-      isa = PBXBuildFile;
-      fileRef = A00000000000000000001D /* QuizViewModel.swift */;
-    };
-    A000000000000000000034 /* TrainingProgram.swift in Sources */ = {
-      isa = PBXBuildFile;
-      fileRef = A000000000000000000030 /* TrainingProgram.swift */;
-    };
-    A000000000000000000035 /* TrainingProgressManager.swift in Sources */ = {
-      isa = PBXBuildFile;
-      fileRef = A000000000000000000031 /* TrainingProgressManager.swift */;
-    };
-    A000000000000000000036 /* TrainingHubView.swift in Sources */ = {
-      isa = PBXBuildFile;
-      fileRef = A000000000000000000032 /* TrainingHubView.swift */;
-    };
-    A000000000000000000037 /* TrainingProgramDetailView.swift in Sources */ = {
-      isa = PBXBuildFile;
-      fileRef = A000000000000000000033 /* TrainingProgramDetailView.swift */;
-    };
-    A000000000000000000039 /* AppPalette.swift in Sources */ = {
-      isa = PBXBuildFile;
-      fileRef = A000000000000000000038 /* AppPalette.swift */;
-    };
-    A000000000000000000050 /* AppConfiguration.swift in Sources */ = {
-      isa = PBXBuildFile;
-      fileRef = A000000000000000000040 /* AppConfiguration.swift */;
-    };
-    A000000000000000000051 /* BundleContentLoader.swift in Sources */ = {
-      isa = PBXBuildFile;
-      fileRef = A000000000000000000041 /* BundleContentLoader.swift */;
-    };
-    A000000000000000000052 /* OnboardingView.swift in Sources */ = {
-      isa = PBXBuildFile;
-      fileRef = A000000000000000000042 /* OnboardingView.swift */;
-    };
-    A000000000000000000053 /* PaywallView.swift in Sources */ = {
-      isa = PBXBuildFile;
-      fileRef = A000000000000000000043 /* PaywallView.swift */;
-    };
-    A000000000000000000054 /* CommunityViews.swift in Sources */ = {
-      isa = PBXBuildFile;
-      fileRef = A000000000000000000044 /* CommunityViews.swift */;
-    };
-    A000000000000000000055 /* LegalDocumentView.swift in Sources */ = {
-      isa = PBXBuildFile;
-      fileRef = A000000000000000000045 /* LegalDocumentView.swift */;
-    };
-    A000000000000000000057 /* quiz_questions.json in Resources */ = {
-      isa = PBXBuildFile;
-      fileRef = A000000000000000000047 /* quiz_questions.json */;
-    };
-    A000000000000000000058 /* training_programs.json in Resources */ = {
-      isa = PBXBuildFile;
-      fileRef = A000000000000000000048 /* training_programs.json */;
-    };
-    A000000000000000000059 /* mobility_flows.json in Resources */ = {
-      isa = PBXBuildFile;
-      fileRef = A000000000000000000049 /* mobility_flows.json */;
-    };
-    A00000000000000000000A /* Sources */ = {
-      isa = PBXSourcesBuildPhase;
-      buildActionMask = 2147483647;
-      files = (
-        A000000000000000000020 /* CourtIQApp.swift in Sources */,
-        A000000000000000000021 /* MainTabView.swift in Sources */,
-        A000000000000000000022 /* PracticeView.swift in Sources */,
-        A000000000000000000023 /* ProfileView.swift in Sources */,
-        A000000000000000000024 /* TodayView.swift in Sources */,
-        A000000000000000000025 /* DailyQuizManager.swift in Sources */,
-        A000000000000000000026 /* DiscussionThread.swift in Sources */,
-        A000000000000000000027 /* MobilityFlow.swift in Sources */,
-        A000000000000000000028 /* Quiz.swift in Sources */,
-        A000000000000000000029 /* UserSession.swift in Sources */,
-        A00000000000000000002A /* MobilityFlowDetailView.swift in Sources */,
-        A00000000000000000002B /* MobilityLibraryView.swift in Sources */,
-        A00000000000000000002C /* QuizView.swift in Sources */,
-        A00000000000000000002D /* QuizViewModel.swift in Sources */,
-        A000000000000000000039 /* AppPalette.swift in Sources */,
-        A000000000000000000050 /* AppConfiguration.swift in Sources */,
-        A000000000000000000051 /* BundleContentLoader.swift in Sources */,
-        A000000000000000000052 /* OnboardingView.swift in Sources */,
-        A000000000000000000053 /* PaywallView.swift in Sources */,
-        A000000000000000000054 /* CommunityViews.swift in Sources */,
-        A000000000000000000055 /* LegalDocumentView.swift in Sources */,
-        A000000000000000000034 /* TrainingProgram.swift in Sources */,
-        A000000000000000000035 /* TrainingProgressManager.swift in Sources */,
-        A000000000000000000036 /* TrainingHubView.swift in Sources */,
-        A000000000000000000037 /* TrainingProgramDetailView.swift in Sources */,
-      );
-      runOnlyForDeploymentPostprocessing = 0;
-    };
-    A00000000000000000000B /* Frameworks */ = {
-      isa = PBXFrameworksBuildPhase;
-      buildActionMask = 2147483647;
-      files = ();
-      runOnlyForDeploymentPostprocessing = 0;
-    };
-    A00000000000000000000C /* Resources */ = {
-      isa = PBXResourcesBuildPhase;
-      buildActionMask = 2147483647;
-      files = (
-        A000000000000000000057 /* quiz_questions.json in Resources */,
-        A000000000000000000058 /* training_programs.json in Resources */,
-        A000000000000000000059 /* mobility_flows.json in Resources */,
-      );
-      runOnlyForDeploymentPostprocessing = 0;
-    };
-    A000000000000000000006 /* CourtIQ */ = {
-      isa = PBXNativeTarget;
-      buildConfigurationList = A000000000000000000007 /* Build configuration list for PBXNativeTarget 'CourtIQ' */;
-      buildPhases = (
-        A00000000000000000000A /* Sources */,
-        A00000000000000000000B /* Frameworks */,
-        A00000000000000000000C /* Resources */,
-      );
-      buildRules = ();
-      dependencies = ();
-      name = CourtIQ;
-      productName = CourtIQ;
-      productReference = A00000000000000000000D /* CourtIQ.app */;
-      productType = "com.apple.product-type.application";
-    };
-    A000000000000000000007 /* Build configuration list for PBXNativeTarget 'CourtIQ' */ = {
-      isa = XCConfigurationList;
-      buildConfigurations = (
-        A000000000000000000008 /* Debug */,
-        A000000000000000000009 /* Release */,
-      );
-      defaultConfigurationIsVisible = 0;
-      defaultConfigurationName = Debug;
-    };
-    A000000000000000000008 /* Debug */ = {
-      isa = XCBuildConfiguration;
-      buildSettings = {
-        ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-        CLANG_ENABLE_MODULES = YES;
-        CODE_SIGN_STYLE = Automatic;
-        CODE_SIGNING_ALLOWED = NO;
-        CODE_SIGNING_REQUIRED = NO;
-        DEVELOPMENT_TEAM = "";
-        ENABLE_BITCODE = NO;
-        INFOPLIST_FILE = CourtIQ/Info.plist;
-        IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-        PRODUCT_BUNDLE_IDENTIFIER = com.courtIQ.CourtIQ;
-        PRODUCT_NAME = CourtIQ;
-        SDKROOT = iphoneos;
-        SWIFT_VERSION = 5.9;
-        TARGETED_DEVICE_FAMILY = "1,2";
-        SUPPORTS_MACCATALYST = NO;
-        LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-      };
-      name = Debug;
-    };
-    A000000000000000000009 /* Release */ = {
-      isa = XCBuildConfiguration;
-      buildSettings = {
-        ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-        CLANG_ENABLE_MODULES = YES;
-        CODE_SIGN_STYLE = Automatic;
-        CODE_SIGNING_ALLOWED = NO;
-        CODE_SIGNING_REQUIRED = NO;
-        DEVELOPMENT_TEAM = "";
-        ENABLE_BITCODE = NO;
-        INFOPLIST_FILE = CourtIQ/Info.plist;
-        IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-        PRODUCT_BUNDLE_IDENTIFIER = com.courtIQ.CourtIQ;
-        PRODUCT_NAME = CourtIQ;
-        SDKROOT = iphoneos;
-        SWIFT_VERSION = 5.9;
-        TARGETED_DEVICE_FAMILY = "1,2";
-        SUPPORTS_MACCATALYST = NO;
-        LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-        SWIFT_OPTIMIZATION_LEVEL = "-O";
-      };
-      name = Release;
-    };
-  };
-  rootObject = A000000000000000000000 /* Project object */;
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 60;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A000000000000000000020 /* CourtIQApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000010 /* CourtIQApp.swift */; };
+		A000000000000000000021 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000011 /* MainTabView.swift */; };
+		A000000000000000000022 /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000012 /* PracticeView.swift */; };
+		A000000000000000000023 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000013 /* ProfileView.swift */; };
+		A000000000000000000024 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000014 /* TodayView.swift */; };
+		A000000000000000000025 /* DailyQuizManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000015 /* DailyQuizManager.swift */; };
+		A000000000000000000026 /* DiscussionThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000016 /* DiscussionThread.swift */; };
+		A000000000000000000027 /* MobilityFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000017 /* MobilityFlow.swift */; };
+		A000000000000000000028 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000018 /* Quiz.swift */; };
+		A000000000000000000029 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000019 /* UserSession.swift */; };
+		A00000000000000000002A /* MobilityFlowDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000001A /* MobilityFlowDetailView.swift */; };
+		A00000000000000000002B /* MobilityLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000001B /* MobilityLibraryView.swift */; };
+		A00000000000000000002C /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000001C /* QuizView.swift */; };
+		A00000000000000000002D /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000001D /* QuizViewModel.swift */; };
+		A000000000000000000034 /* TrainingProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000030 /* TrainingProgram.swift */; };
+		A000000000000000000035 /* TrainingProgressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000031 /* TrainingProgressManager.swift */; };
+		A000000000000000000036 /* TrainingHubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000032 /* TrainingHubView.swift */; };
+		A000000000000000000037 /* TrainingProgramDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000033 /* TrainingProgramDetailView.swift */; };
+		A000000000000000000039 /* AppPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000038 /* AppPalette.swift */; };
+		A000000000000000000050 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000040 /* AppConfiguration.swift */; };
+		A000000000000000000051 /* BundleContentLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000041 /* BundleContentLoader.swift */; };
+		A000000000000000000052 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000042 /* OnboardingView.swift */; };
+		A000000000000000000053 /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000043 /* PaywallView.swift */; };
+		A000000000000000000054 /* CommunityViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000044 /* CommunityViews.swift */; };
+		A000000000000000000055 /* LegalDocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000045 /* LegalDocumentView.swift */; };
+		A000000000000000000057 /* quiz_questions.json in Resources */ = {isa = PBXBuildFile; fileRef = A000000000000000000047 /* quiz_questions.json */; };
+		A000000000000000000058 /* training_programs.json in Resources */ = {isa = PBXBuildFile; fileRef = A000000000000000000048 /* training_programs.json */; };
+		A000000000000000000059 /* mobility_flows.json in Resources */ = {isa = PBXBuildFile; fileRef = A000000000000000000049 /* mobility_flows.json */; };
+		A00000000000000000005B /* DailyTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000005A /* DailyTip.swift */; };
+		A00000000000000000005D /* TennisPlayerLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000005C /* TennisPlayerLevel.swift */; };
+		A00000000000000000005F /* TennisPlayerBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000005E /* TennisPlayerBadgeView.swift */; };
+		A000000000000000000060 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A000000000000000000046 /* Assets.xcassets */; };
+		A000000000000000000062 /* PlayerProgressionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000061 /* PlayerProgressionManager.swift */; };
+		A000000000000000000064 /* LevelProgressionPathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000063 /* LevelProgressionPathView.swift */; };
+		A000000000000000000066 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000065 /* LanguageManager.swift */; };
+		A00000000000000000006A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A000000000000000000069 /* Localizable.strings */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A00000000000000000000D /* CourtIQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CourtIQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A00000000000000000000F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = CourtIQ/Info.plist; sourceTree = "<group>"; };
+		A000000000000000000010 /* CourtIQApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CourtIQApp.swift; path = CourtIQ/App/CourtIQApp.swift; sourceTree = "<group>"; };
+		A000000000000000000011 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainTabView.swift; path = CourtIQ/App/MainTabView.swift; sourceTree = "<group>"; };
+		A000000000000000000012 /* PracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PracticeView.swift; path = CourtIQ/App/PracticeView.swift; sourceTree = "<group>"; };
+		A000000000000000000013 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileView.swift; path = CourtIQ/App/ProfileView.swift; sourceTree = "<group>"; };
+		A000000000000000000014 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TodayView.swift; path = CourtIQ/App/TodayView.swift; sourceTree = "<group>"; };
+		A000000000000000000015 /* DailyQuizManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DailyQuizManager.swift; path = CourtIQ/Core/Models/DailyQuizManager.swift; sourceTree = "<group>"; };
+		A000000000000000000016 /* DiscussionThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DiscussionThread.swift; path = CourtIQ/Core/Models/DiscussionThread.swift; sourceTree = "<group>"; };
+		A000000000000000000017 /* MobilityFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MobilityFlow.swift; path = CourtIQ/Core/Models/MobilityFlow.swift; sourceTree = "<group>"; };
+		A000000000000000000018 /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Quiz.swift; path = CourtIQ/Core/Models/Quiz.swift; sourceTree = "<group>"; };
+		A000000000000000000019 /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserSession.swift; path = CourtIQ/Core/Models/UserSession.swift; sourceTree = "<group>"; };
+		A00000000000000000001A /* MobilityFlowDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MobilityFlowDetailView.swift; path = CourtIQ/Features/Mobility/MobilityFlowDetailView.swift; sourceTree = "<group>"; };
+		A00000000000000000001B /* MobilityLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MobilityLibraryView.swift; path = CourtIQ/Features/Mobility/MobilityLibraryView.swift; sourceTree = "<group>"; };
+		A00000000000000000001C /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuizView.swift; path = CourtIQ/Features/Quiz/QuizView.swift; sourceTree = "<group>"; };
+		A00000000000000000001D /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuizViewModel.swift; path = CourtIQ/Features/Quiz/QuizViewModel.swift; sourceTree = "<group>"; };
+		A000000000000000000030 /* TrainingProgram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrainingProgram.swift; path = CourtIQ/Core/Models/TrainingProgram.swift; sourceTree = "<group>"; };
+		A000000000000000000031 /* TrainingProgressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrainingProgressManager.swift; path = CourtIQ/Core/Models/TrainingProgressManager.swift; sourceTree = "<group>"; };
+		A000000000000000000032 /* TrainingHubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrainingHubView.swift; path = CourtIQ/Features/Training/TrainingHubView.swift; sourceTree = "<group>"; };
+		A000000000000000000033 /* TrainingProgramDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrainingProgramDetailView.swift; path = CourtIQ/Features/Training/TrainingProgramDetailView.swift; sourceTree = "<group>"; };
+		A000000000000000000038 /* AppPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppPalette.swift; path = CourtIQ/Core/Models/AppPalette.swift; sourceTree = "<group>"; };
+		A000000000000000000040 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppConfiguration.swift; path = CourtIQ/Core/Models/AppConfiguration.swift; sourceTree = "<group>"; };
+		A000000000000000000041 /* BundleContentLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BundleContentLoader.swift; path = CourtIQ/Core/Models/BundleContentLoader.swift; sourceTree = "<group>"; };
+		A000000000000000000042 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OnboardingView.swift; path = CourtIQ/Features/Onboarding/OnboardingView.swift; sourceTree = "<group>"; };
+		A000000000000000000043 /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PaywallView.swift; path = CourtIQ/Features/Paywall/PaywallView.swift; sourceTree = "<group>"; };
+		A000000000000000000044 /* CommunityViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CommunityViews.swift; path = CourtIQ/Features/Community/CommunityViews.swift; sourceTree = "<group>"; };
+		A000000000000000000045 /* LegalDocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LegalDocumentView.swift; path = CourtIQ/Features/Legal/LegalDocumentView.swift; sourceTree = "<group>"; };
+		A000000000000000000046 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = CourtIQ/Assets.xcassets; sourceTree = "<group>"; };
+		A000000000000000000047 /* quiz_questions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = quiz_questions.json; path = CourtIQ/Resources/Content/quiz_questions.json; sourceTree = "<group>"; };
+		A000000000000000000048 /* training_programs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = training_programs.json; path = CourtIQ/Resources/Content/training_programs.json; sourceTree = "<group>"; };
+		A000000000000000000049 /* mobility_flows.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = mobility_flows.json; path = CourtIQ/Resources/Content/mobility_flows.json; sourceTree = "<group>"; };
+		A00000000000000000005A /* DailyTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DailyTip.swift; path = CourtIQ/Core/Models/DailyTip.swift; sourceTree = "<group>"; };
+		A00000000000000000005C /* TennisPlayerLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TennisPlayerLevel.swift; path = CourtIQ/Core/Models/TennisPlayerLevel.swift; sourceTree = "<group>"; };
+		A00000000000000000005E /* TennisPlayerBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TennisPlayerBadgeView.swift; path = CourtIQ/App/TennisPlayerBadgeView.swift; sourceTree = "<group>"; };
+		A000000000000000000061 /* PlayerProgressionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlayerProgressionManager.swift; path = CourtIQ/Core/Models/PlayerProgressionManager.swift; sourceTree = "<group>"; };
+		A000000000000000000063 /* LevelProgressionPathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LevelProgressionPathView.swift; path = CourtIQ/Features/Profile/LevelProgressionPathView.swift; sourceTree = "<group>"; };
+		A000000000000000000065 /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LanguageManager.swift; path = CourtIQ/Core/Utilities/LanguageManager.swift; sourceTree = "<group>"; };
+		A000000000000000000067 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = CourtIQ/Resources/en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A000000000000000000068 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = CourtIQ/Resources/tr.lproj/Localizable.strings; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A00000000000000000000B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		36A5E7C12F95D37A00BCD7DA /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				A000000000000000000069 /* Localizable.strings */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		A000000000000000000004 = {
+			isa = PBXGroup;
+			children = (
+				A00000000000000000000F /* Info.plist */,
+				A000000000000000000010 /* CourtIQApp.swift */,
+				A000000000000000000011 /* MainTabView.swift */,
+				A000000000000000000012 /* PracticeView.swift */,
+				A000000000000000000013 /* ProfileView.swift */,
+				A000000000000000000014 /* TodayView.swift */,
+				A000000000000000000015 /* DailyQuizManager.swift */,
+				A000000000000000000016 /* DiscussionThread.swift */,
+				A000000000000000000017 /* MobilityFlow.swift */,
+				A000000000000000000018 /* Quiz.swift */,
+				A000000000000000000019 /* UserSession.swift */,
+				A00000000000000000005A /* DailyTip.swift */,
+				A00000000000000000005C /* TennisPlayerLevel.swift */,
+				A00000000000000000005E /* TennisPlayerBadgeView.swift */,
+				A000000000000000000061 /* PlayerProgressionManager.swift */,
+				A000000000000000000063 /* LevelProgressionPathView.swift */,
+				A000000000000000000065 /* LanguageManager.swift */,
+				A000000000000000000038 /* AppPalette.swift */,
+				A000000000000000000040 /* AppConfiguration.swift */,
+				A000000000000000000041 /* BundleContentLoader.swift */,
+				A00000000000000000001A /* MobilityFlowDetailView.swift */,
+				A00000000000000000001B /* MobilityLibraryView.swift */,
+				A00000000000000000001C /* QuizView.swift */,
+				A00000000000000000001D /* QuizViewModel.swift */,
+				A000000000000000000042 /* OnboardingView.swift */,
+				A000000000000000000043 /* PaywallView.swift */,
+				A000000000000000000044 /* CommunityViews.swift */,
+				A000000000000000000045 /* LegalDocumentView.swift */,
+				A000000000000000000030 /* TrainingProgram.swift */,
+				A000000000000000000031 /* TrainingProgressManager.swift */,
+				A000000000000000000032 /* TrainingHubView.swift */,
+				A000000000000000000033 /* TrainingProgramDetailView.swift */,
+				A000000000000000000046 /* Assets.xcassets */,
+				A000000000000000000047 /* quiz_questions.json */,
+				A000000000000000000048 /* training_programs.json */,
+				A000000000000000000049 /* mobility_flows.json */,
+				A000000000000000000005 /* Products */,
+				36A5E7C12F95D37A00BCD7DA /* Recovered References */,
+			);
+			sourceTree = "<group>";
+		};
+		A000000000000000000005 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A00000000000000000000D /* CourtIQ.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A000000000000000000006 /* CourtIQ */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A000000000000000000007 /* Build configuration list for PBXNativeTarget "CourtIQ" */;
+			buildPhases = (
+				A00000000000000000000A /* Sources */,
+				A00000000000000000000B /* Frameworks */,
+				A00000000000000000000C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CourtIQ;
+			productName = CourtIQ;
+			productReference = A00000000000000000000D /* CourtIQ.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A000000000000000000000 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1530;
+				ORGANIZATIONNAME = CourtIQ;
+			};
+			buildConfigurationList = A000000000000000000001 /* Build configuration list for PBXProject "CourtIQ" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+				tr,
+			);
+			mainGroup = A000000000000000000004;
+			productRefGroup = A000000000000000000005 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A000000000000000000006 /* CourtIQ */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A00000000000000000000C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A000000000000000000060 /* Assets.xcassets in Resources */,
+				A000000000000000000057 /* quiz_questions.json in Resources */,
+				A000000000000000000058 /* training_programs.json in Resources */,
+				A000000000000000000059 /* mobility_flows.json in Resources */,
+				A00000000000000000006A /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A00000000000000000000A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A000000000000000000020 /* CourtIQApp.swift in Sources */,
+				A000000000000000000021 /* MainTabView.swift in Sources */,
+				A000000000000000000022 /* PracticeView.swift in Sources */,
+				A000000000000000000023 /* ProfileView.swift in Sources */,
+				A000000000000000000024 /* TodayView.swift in Sources */,
+				A000000000000000000025 /* DailyQuizManager.swift in Sources */,
+				A000000000000000000026 /* DiscussionThread.swift in Sources */,
+				A000000000000000000027 /* MobilityFlow.swift in Sources */,
+				A000000000000000000028 /* Quiz.swift in Sources */,
+				A000000000000000000029 /* UserSession.swift in Sources */,
+				A00000000000000000002A /* MobilityFlowDetailView.swift in Sources */,
+				A00000000000000000002B /* MobilityLibraryView.swift in Sources */,
+				A00000000000000000002C /* QuizView.swift in Sources */,
+				A00000000000000000002D /* QuizViewModel.swift in Sources */,
+				A000000000000000000039 /* AppPalette.swift in Sources */,
+				A000000000000000000050 /* AppConfiguration.swift in Sources */,
+				A000000000000000000051 /* BundleContentLoader.swift in Sources */,
+				A000000000000000000052 /* OnboardingView.swift in Sources */,
+				A000000000000000000053 /* PaywallView.swift in Sources */,
+				A000000000000000000054 /* CommunityViews.swift in Sources */,
+				A000000000000000000055 /* LegalDocumentView.swift in Sources */,
+				A000000000000000000034 /* TrainingProgram.swift in Sources */,
+				A000000000000000000035 /* TrainingProgressManager.swift in Sources */,
+				A000000000000000000036 /* TrainingHubView.swift in Sources */,
+				A000000000000000000037 /* TrainingProgramDetailView.swift in Sources */,
+				A00000000000000000005B /* DailyTip.swift in Sources */,
+				A00000000000000000005D /* TennisPlayerLevel.swift in Sources */,
+				A00000000000000000005F /* TennisPlayerBadgeView.swift in Sources */,
+				A000000000000000000062 /* PlayerProgressionManager.swift in Sources */,
+				A000000000000000000064 /* LevelProgressionPathView.swift in Sources */,
+				A000000000000000000066 /* LanguageManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A000000000000000000069 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A000000000000000000067 /* en */,
+				A000000000000000000068 /* tr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A000000000000000000002 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				ENABLE_BITCODE = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		A000000000000000000003 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				ENABLE_BITCODE = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		A000000000000000000008 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_ENTITLEMENTS = CourtIQ/CourtIQ.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = CourtIQ/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.courtIQ.CourtIQ;
+				PRODUCT_NAME = CourtIQ;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		A000000000000000000009 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_ENTITLEMENTS = CourtIQ/CourtIQ.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = CourtIQ/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.courtIQ.CourtIQ;
+				PRODUCT_NAME = CourtIQ;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A000000000000000000001 /* Build configuration list for PBXProject "CourtIQ" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A000000000000000000002 /* Debug */,
+				A000000000000000000003 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A000000000000000000007 /* Build configuration list for PBXNativeTarget "CourtIQ" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A000000000000000000008 /* Debug */,
+				A000000000000000000009 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A000000000000000000000 /* Project object */;
 }

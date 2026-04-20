@@ -20,9 +20,9 @@ enum EntitlementState: String, Codable {
     var description: String {
         switch self {
         case .freePreview:
-            return "Daily IQ stays open. Premium content is previewable but locked."
+            return "Daily IQ, the foundation plan, and preview mobility flows stay unlocked."
         case .premiumAllAccess:
-            return "Training, mobility, archived insights, and community posting are unlocked."
+            return "Premium training tracks, the full mobility library, archived insights, and community posting are unlocked."
         }
     }
 
@@ -32,15 +32,13 @@ enum EntitlementState: String, Codable {
 }
 
 enum BillingIntegrationMode: String {
-    case preview
-    case appStoreConfigured
-    case revenueCatReady
+    case storeKitDirect
+    case productConfigurationMissing
 
     var title: String {
         switch self {
-        case .preview: return "Preview"
-        case .appStoreConfigured: return "App Store"
-        case .revenueCatReady: return "RevenueCat Ready"
+        case .storeKitDirect: return "StoreKit"
+        case .productConfigurationMissing: return "Products Missing"
         }
     }
 }
@@ -51,14 +49,14 @@ enum SignInProvider: String, Codable {
 }
 
 struct SessionIdentity: Identifiable, Codable, Equatable {
-    let id: UUID
+    let id: String
     var displayName: String
     var email: String?
     var provider: SignInProvider
 }
 
-struct RemoteUserProfile: Identifiable, Codable {
-    let id: UUID
+struct RemoteUserProfile: Identifiable, Codable, Equatable {
+    let id: String
     var displayName: String
     var email: String?
     var signInProvider: SignInProvider
@@ -77,6 +75,7 @@ struct SubscriptionOffer: Identifiable, Hashable {
 }
 
 enum SubscriptionError: LocalizedError {
+    case storeProductsUnavailable
     case purchaseCancelled
     case purchasePending
     case verificationFailed
@@ -84,6 +83,8 @@ enum SubscriptionError: LocalizedError {
 
     var errorDescription: String? {
         switch self {
+        case .storeProductsUnavailable:
+            return "Subscriptions are not available right now."
         case .purchaseCancelled:
             return "The purchase was cancelled."
         case .purchasePending:
@@ -99,55 +100,146 @@ enum SubscriptionError: LocalizedError {
 @MainActor
 final class AuthManager: ObservableObject {
     @Published private(set) var identity: SessionIdentity?
+    @Published private(set) var remoteSession: SupabaseSession?
 
     private let defaults = UserDefaults.standard
-    private let storageKey = "CourtIQ.Auth.Identity"
+    private let client = SupabaseRESTClient.shared
+    private let identityStorageKey = "CourtIQ.Auth.Identity"
+    private let remoteSessionStorageKey = "CourtIQ.Auth.SupabaseSession"
 
     init() {
         load()
+
+        Task {
+            await restoreRemoteSessionIfPossible()
+        }
     }
 
     var isSignedInWithApple: Bool {
-        identity?.provider == .apple
+        identity?.provider == .apple && remoteSession != nil
     }
 
     func signInAsGuest() {
         identity = SessionIdentity(
-            id: UUID(),
+            id: "guest-\(UUID().uuidString.lowercased())",
             displayName: "Guest Player",
             email: nil,
             provider: .guest
         )
+        remoteSession = nil
         save()
     }
 
-    func signInWithApple(credential: ASAuthorizationAppleIDCredential, preserving existing: SessionIdentity?) {
+    func signInWithApple(
+        credential: ASAuthorizationAppleIDCredential,
+        preserving existing: SessionIdentity?
+    ) async throws {
+        guard AppConfiguration.shared.hasRemoteSyncConfiguration else {
+            throw RemoteDataError.missingConfiguration
+        }
+
+        guard let identityTokenData = credential.identityToken,
+              let identityToken = String(data: identityTokenData, encoding: .utf8),
+              !identityToken.isEmpty else {
+            throw RemoteDataError.missingIdentityToken
+        }
+
+        let session = try await client.signInWithApple(idToken: identityToken)
+        remoteSession = session
+
         let formatter = PersonNameComponentsFormatter()
         let providedName = formatter.string(from: credential.fullName ?? PersonNameComponents()).trimmingCharacters(in: .whitespacesAndNewlines)
-        let fallbackName = existing?.displayName == "Guest Player" ? "CourtIQ Player" : (existing?.displayName ?? "CourtIQ Player")
+        let resolvedName = [
+            providedName.nilIfBlank,
+            session.fullName?.nilIfBlank,
+            existing?.displayName.nilIfBlank,
+            "CourtIQ Player"
+        ]
+        .compactMap { $0 }
+        .first ?? "CourtIQ Player"
 
         identity = SessionIdentity(
-            id: existing?.id ?? UUID(),
-            displayName: providedName.isEmpty ? fallbackName : providedName,
-            email: credential.email ?? existing?.email,
+            id: session.userID,
+            displayName: resolvedName,
+            email: credential.email ?? session.email ?? existing?.email,
             provider: .apple
         )
         save()
     }
 
-    func signOut() {
+    func signOut() async {
+        if let remoteSession {
+            await client.signOut(session: remoteSession)
+        }
+
         identity = nil
-        defaults.removeObject(forKey: storageKey)
+        remoteSession = nil
+        defaults.removeObject(forKey: identityStorageKey)
+        defaults.removeObject(forKey: remoteSessionStorageKey)
+    }
+
+    func deleteAccount() async throws {
+        guard let remoteSession else {
+            throw RemoteDataError.message("There is no signed-in account to delete.")
+        }
+
+        try await client.invokeDeleteAccount(session: remoteSession)
+        identity = nil
+        self.remoteSession = nil
+        defaults.removeObject(forKey: identityStorageKey)
+        defaults.removeObject(forKey: remoteSessionStorageKey)
+    }
+
+    private func restoreRemoteSessionIfPossible() async {
+        guard let remoteSession, AppConfiguration.shared.hasRemoteSyncConfiguration else { return }
+
+        do {
+            let refreshedSession = try await client.refresh(session: remoteSession)
+            self.remoteSession = refreshedSession
+
+            if identity?.provider == .apple {
+                let user = try await client.fetchCurrentUser(session: refreshedSession)
+                identity = SessionIdentity(
+                    id: user.id,
+                    displayName: identity?.displayName ?? user.fullName ?? "CourtIQ Player",
+                    email: user.email ?? identity?.email,
+                    provider: .apple
+                )
+            }
+
+            save()
+        } catch {
+            if identity?.provider == .apple {
+                identity = nil
+            }
+            self.remoteSession = nil
+            defaults.removeObject(forKey: remoteSessionStorageKey)
+            save()
+        }
     }
 
     private func load() {
-        guard let data = defaults.data(forKey: storageKey) else { return }
-        identity = try? JSONDecoder().decode(SessionIdentity.self, from: data)
+        if let data = defaults.data(forKey: identityStorageKey) {
+            identity = try? JSONDecoder().decode(SessionIdentity.self, from: data)
+        }
+
+        if let data = defaults.data(forKey: remoteSessionStorageKey) {
+            remoteSession = try? JSONDecoder().decode(SupabaseSession.self, from: data)
+        }
     }
 
     private func save() {
-        guard let identity, let data = try? JSONEncoder().encode(identity) else { return }
-        defaults.set(data, forKey: storageKey)
+        if let identity, let data = try? JSONEncoder().encode(identity) {
+            defaults.set(data, forKey: identityStorageKey)
+        } else {
+            defaults.removeObject(forKey: identityStorageKey)
+        }
+
+        if let remoteSession, let data = try? JSONEncoder().encode(remoteSession) {
+            defaults.set(data, forKey: remoteSessionStorageKey)
+        } else {
+            defaults.removeObject(forKey: remoteSessionStorageKey)
+        }
     }
 }
 
@@ -158,109 +250,146 @@ final class SubscriptionManager: ObservableObject {
     @Published private(set) var integrationMode: BillingIntegrationMode
 
     let premiumBenefits = [
-        "Full 8-week training programs",
-        "Full mobility and recovery library",
-        "Archived quiz history and focus insights",
-        "Community commenting and thread participation",
-        "Future synced progress across devices"
+        "Unlimited daily quizzes",
+        "Full tip archive — every insight ever published",
+        "All 8-week training programs",
+        "All mobility and recovery flows",
+        "Ongoing fitness program updates as they ship",
+        "Early access to every new feature",
+        "Full quiz history and performance tracking",
+        "Cloud sync across signed-in devices"
     ]
 
     private let configuration: AppConfiguration
     private let defaults = UserDefaults.standard
     private let entitlementKey = "CourtIQ.Subscription.EntitlementState"
     private var productsByID: [String: Product] = [:]
+    private var updatesTask: Task<Void, Never>?
 
     init(configuration: AppConfiguration = .shared) {
-        let defaults = UserDefaults.standard
         self.configuration = configuration
         self.entitlementState = Self.loadEntitlement(from: defaults)
         self.offers = [
             SubscriptionOffer(
                 id: configuration.monthlyProductID,
                 title: "Monthly All Access",
-                detail: "Best for trialing a focused training block.",
-                priceDisplay: "$9.99 / month",
+                detail: "Billed monthly after 7-day free trial.",
+                priceDisplay: "$5.00 / month",
                 isFeatured: false
             ),
             SubscriptionOffer(
                 id: configuration.yearlyProductID,
-                title: "Yearly All Access",
-                detail: "Best value for full-season progress.",
-                priceDisplay: "$59.99 / year",
+                title: "Annual All Access",
+                detail: "Best value — save 52% vs monthly.",
+                priceDisplay: "$29.00 / year",
                 isFeatured: true
             )
         ]
-        self.integrationMode = configuration.hasRevenueCatConfiguration ? .revenueCatReady : .preview
+        self.integrationMode = .productConfigurationMissing
+
+        startListener()
 
         Task {
-            await refreshProducts()
+            await loadOfferings()
+            await refreshEntitlements()
         }
+    }
+
+    deinit {
+        updatesTask?.cancel()
     }
 
     var isPremiumUnlocked: Bool {
         entitlementState.isPremium
     }
 
-    func purchase(_ offer: SubscriptionOffer) async throws {
-        if let product = productsByID[offer.id] {
-            let result = try await product.purchase()
-            switch result {
-            case .success(let verification):
-                guard case .verified(let transaction) = verification else {
-                    throw SubscriptionError.verificationFailed
-                }
-                entitlementState = .premiumAllAccess
-                saveEntitlement()
-                integrationMode = configuration.hasRevenueCatConfiguration ? .revenueCatReady : .appStoreConfigured
-                await transaction.finish()
-            case .pending:
-                throw SubscriptionError.purchasePending
-            case .userCancelled:
-                throw SubscriptionError.purchaseCancelled
-            @unknown default:
-                throw SubscriptionError.unknown
-            }
-        } else {
-            entitlementState = .premiumAllAccess
-            saveEntitlement()
-        }
-    }
-
-    func restorePurchases() async {
-        if !productsByID.isEmpty {
-            do {
-                try await AppStore.sync()
-            } catch {
-                return
-            }
-        }
-    }
-
-    func reset() {
-        entitlementState = .freePreview
-        saveEntitlement()
-    }
-
-    private func refreshProducts() async {
+    func loadOfferings() async {
         do {
             let products = try await Product.products(for: [configuration.monthlyProductID, configuration.yearlyProductID])
-            guard !products.isEmpty else { return }
-
             productsByID = Dictionary(uniqueKeysWithValues: products.map { ($0.id, $0) })
-            integrationMode = configuration.hasRevenueCatConfiguration ? .revenueCatReady : .appStoreConfigured
+            integrationMode = productsByID.isEmpty ? .productConfigurationMissing : .storeKitDirect
 
             offers = offers.map { offer in
                 guard let product = productsByID[offer.id] else { return offer }
+                let suffix = offer.id == configuration.yearlyProductID ? " / year" : " / month"
                 return SubscriptionOffer(
                     id: offer.id,
                     title: offer.title,
                     detail: offer.detail,
-                    priceDisplay: product.displayPrice + (offer.id == configuration.yearlyProductID ? " / year" : " / month"),
+                    priceDisplay: product.displayPrice + suffix,
                     isFeatured: offer.isFeatured
                 )
             }
         } catch {
-            integrationMode = configuration.hasRevenueCatConfiguration ? .revenueCatReady : .preview
+            integrationMode = .productConfigurationMissing
+        }
+    }
+
+    func refreshEntitlements() async {
+        var hasPremium = false
+
+        for await result in Transaction.currentEntitlements {
+            guard case .verified(let transaction) = result else { continue }
+            guard transaction.productID == configuration.monthlyProductID || transaction.productID == configuration.yearlyProductID else {
+                continue
+            }
+
+            let isActive = transaction.revocationDate == nil &&
+                (transaction.expirationDate == nil || transaction.expirationDate ?? .distantPast > Date())
+            if isActive {
+                hasPremium = true
+            }
+        }
+
+        entitlementState = hasPremium ? .premiumAllAccess : .freePreview
+        saveEntitlement()
+    }
+
+    func purchase(_ offer: SubscriptionOffer) async throws {
+        guard let product = productsByID[offer.id] else {
+            throw SubscriptionError.storeProductsUnavailable
+        }
+
+        let result = try await product.purchase()
+        switch result {
+        case .success(let verification):
+            guard case .verified(let transaction) = verification else {
+                throw SubscriptionError.verificationFailed
+            }
+            await transaction.finish()
+            await refreshEntitlements()
+        case .pending:
+            throw SubscriptionError.purchasePending
+        case .userCancelled:
+            throw SubscriptionError.purchaseCancelled
+        @unknown default:
+            throw SubscriptionError.unknown
+        }
+    }
+
+    func restorePurchases() async {
+        do {
+            try await AppStore.sync()
+            await refreshEntitlements()
+        } catch {
+            UserSessionManager.shared.registerSyncError("Purchases could not be restored right now.")
+        }
+    }
+
+    func resetLocalEntitlements() {
+        entitlementState = .freePreview
+        saveEntitlement()
+    }
+
+    func startListener() {
+        guard updatesTask == nil else { return }
+
+        updatesTask = Task.detached(priority: .background) { [weak self] in
+            for await result in Transaction.updates {
+                guard case .verified(let transaction) = result else { continue }
+                await transaction.finish()
+                await self?.refreshEntitlements()
+            }
         }
     }
 
@@ -283,6 +412,7 @@ final class ProfileStore: ObservableObject {
 
     private let defaults = UserDefaults.standard
     private let storageKey = "CourtIQ.Profile.RemoteUserProfile"
+    private let client = SupabaseRESTClient.shared
 
     init() {
         load()
@@ -310,6 +440,49 @@ final class ProfileStore: ObservableObject {
             )
         }
         save()
+
+        Task {
+            await pushProfileIfPossible()
+        }
+    }
+
+    func syncAfterAuthentication(
+        uploadLocalPreview: Bool,
+        identity: SessionIdentity
+    ) async throws {
+        guard let session = UserSessionManager.shared.remoteSession else { return }
+
+        if uploadLocalPreview, let profile {
+            let payload = RemoteUserProfileRecord(profile: profile, userID: session.userID)
+            _ = try await client.upsertRows([payload], into: "profiles", onConflict: "id", session: session) as [RemoteUserProfileRecord]
+        }
+
+        let remoteProfiles: [RemoteUserProfileRecord] = try await client.selectRows(
+            from: "profiles",
+            queryItems: [
+                URLQueryItem(name: "id", value: "eq.\(session.userID)")
+            ],
+            session: session
+        )
+
+        if let remote = remoteProfiles.first {
+            profile = remote.appModel
+        } else {
+            let payload = RemoteUserProfileRecord(
+                id: session.userID,
+                displayName: identity.displayName,
+                email: identity.email,
+                signInProvider: .apple,
+                currentFocus: profile?.currentFocus ?? "Daily IQ",
+                topMistakePatterns: profile?.topMistakePatterns ?? ["Second serve pressure", "Being predictable", "Return court position"],
+                createdAt: Date(),
+                updatedAt: Date()
+            )
+            let created: [RemoteUserProfileRecord] = try await client.upsertRows([payload], into: "profiles", onConflict: "id", session: session)
+            profile = created.first?.appModel ?? payload.appModel
+        }
+
+        save()
     }
 
     func updateCurrentFocus(_ focus: String) {
@@ -318,6 +491,10 @@ final class ProfileStore: ObservableObject {
         profile.updatedAt = Date()
         self.profile = profile
         save()
+
+        Task {
+            await pushProfileIfPossible()
+        }
     }
 
     func updateTopMistakePatterns(_ patterns: [String]) {
@@ -326,11 +503,28 @@ final class ProfileStore: ObservableObject {
         profile.updatedAt = Date()
         self.profile = profile
         save()
+
+        Task {
+            await pushProfileIfPossible()
+        }
     }
 
-    func delete() {
+    func deleteLocal() {
         profile = nil
         defaults.removeObject(forKey: storageKey)
+    }
+
+    func resetLocalData(preserving identity: SessionIdentity?) {
+        profile = nil
+        defaults.removeObject(forKey: storageKey)
+
+        if let identity {
+            bootstrap(
+                from: identity,
+                preserving: "Daily IQ",
+                topMistakePatterns: ["Second serve pressure", "Being predictable", "Return court position"]
+            )
+        }
     }
 
     private func load() {
@@ -341,6 +535,23 @@ final class ProfileStore: ObservableObject {
     private func save() {
         guard let profile, let data = try? JSONEncoder().encode(profile) else { return }
         defaults.set(data, forKey: storageKey)
+    }
+
+    private func pushProfileIfPossible() async {
+        guard let session = UserSessionManager.shared.remoteSession,
+              let profile,
+              profile.signInProvider == .apple else {
+            return
+        }
+
+        do {
+            let payload = RemoteUserProfileRecord(profile: profile, userID: session.userID)
+            _ = try await client.upsertRows([payload], into: "profiles", onConflict: "id", session: session) as [RemoteUserProfileRecord]
+        } catch {
+            await MainActor.run {
+                UserSessionManager.shared.registerSyncError("Profile changes could not sync right now.")
+            }
+        }
     }
 }
 
@@ -355,6 +566,7 @@ final class UserSessionManager: ObservableObject {
 
     @Published private(set) var hasCompletedOnboarding: Bool
     @Published var authErrorMessage: String?
+    @Published private(set) var syncState: RemoteSyncState
 
     private let defaults = UserDefaults.standard
     private let onboardingKey = "CourtIQ.App.OnboardingCompleted"
@@ -371,16 +583,25 @@ final class UserSessionManager: ObservableObject {
         self.subscriptionManager = subscriptionManager ?? SubscriptionManager(configuration: configuration)
         self.profileStore = profileStore ?? ProfileStore()
         self.hasCompletedOnboarding = defaults.bool(forKey: onboardingKey)
+        self.syncState = configuration.hasRemoteSyncConfiguration ? .syncing : .unavailable
 
         bindChildObjects()
+
+        Task {
+            await bootstrapSession()
+        }
     }
 
     var currentUserID: String {
-        authManager.identity?.id.uuidString ?? "anonymous-preview"
+        authManager.identity?.id ?? "anonymous-preview"
     }
 
     var isAuthenticated: Bool {
         authManager.identity != nil
+    }
+
+    var remoteSession: SupabaseSession? {
+        authManager.remoteSession
     }
 
     var isSignedInWithApple: Bool {
@@ -415,16 +636,20 @@ final class UserSessionManager: ObservableObject {
         isPremiumUnlocked && isSignedInWithApple
     }
 
+    var communityAccessState: CommunityAccessState {
+        canWriteCommunityComment ? .interactive : .readOnly
+    }
+
     var integrationSummary: String {
-        if configuration.hasRemoteSyncConfiguration && configuration.hasRevenueCatConfiguration {
-            return "Remote sync and RevenueCat keys are configured."
+        if isSignedInWithApple {
+            return "\(subscriptionManager.integrationMode.title) billing with \(syncState.title.lowercased()) profile sync."
         }
 
-        if configuration.hasRemoteSyncConfiguration || configuration.hasRevenueCatConfiguration {
-            return "Partial production configuration detected. Complete remaining keys before App Store release."
+        if isGuest {
+            return "Guest preview uses on-device progress until you sign in with Apple."
         }
 
-        return "App Store testing mode is active. Add Supabase and RevenueCat keys in Info.plist before release."
+        return "Sign in with Apple enables cloud sync, community posting, and purchase restore."
     }
 
     func signInAsGuest() {
@@ -436,6 +661,7 @@ final class UserSessionManager: ObservableObject {
                 topMistakePatterns: profileStore.profile?.topMistakePatterns ?? topMistakePatterns
             )
         }
+        syncState = .localOnly
         completeOnboarding()
     }
 
@@ -448,15 +674,27 @@ final class UserSessionManager: ObservableObject {
             }
 
             let previousIdentity = authManager.identity
-            authManager.signInWithApple(credential: credential, preserving: previousIdentity)
-            if let identity = authManager.identity {
-                profileStore.bootstrap(
-                    from: identity,
-                    preserving: profileStore.profile?.currentFocus ?? currentImprovementFocus,
-                    topMistakePatterns: profileStore.profile?.topMistakePatterns ?? topMistakePatterns
-                )
+
+            Task {
+                do {
+                    syncState = .syncing
+                    try await authManager.signInWithApple(credential: credential, preserving: previousIdentity)
+
+                    if let identity = authManager.identity {
+                        profileStore.bootstrap(
+                            from: identity,
+                            preserving: profileStore.profile?.currentFocus ?? currentImprovementFocus,
+                            topMistakePatterns: profileStore.profile?.topMistakePatterns ?? topMistakePatterns
+                        )
+                    }
+
+                    completeOnboarding()
+                    try await refreshRemoteState(uploadLocalPreview: previousIdentity?.provider == .guest)
+                } catch {
+                    authErrorMessage = error.localizedDescription
+                    syncState = .failed(error.localizedDescription)
+                }
             }
-            completeOnboarding()
 
         case .failure(let error):
             authErrorMessage = error.localizedDescription
@@ -464,18 +702,52 @@ final class UserSessionManager: ObservableObject {
     }
 
     func signOut() {
-        authManager.signOut()
-        profileStore.delete()
-        subscriptionManager.reset()
-        hasCompletedOnboarding = false
-        defaults.set(false, forKey: onboardingKey)
+        Task {
+            await authManager.signOut()
+            profileStore.deleteLocal()
+            DailyQuizManager.shared.resetLocalData()
+            TrainingProgressManager.shared.resetLocalData()
+            DiscussionStore.shared.resetLocalData()
+            subscriptionManager.resetLocalEntitlements()
+            hasCompletedOnboarding = false
+            syncState = configuration.hasRemoteSyncConfiguration ? .syncing : .unavailable
+            defaults.set(false, forKey: onboardingKey)
+        }
     }
 
     func deleteAccount() async {
-        DailyQuizManager.shared.reset()
-        TrainingProgressManager.shared.reset()
-        DiscussionStore.shared.reset()
-        signOut()
+        do {
+            try await authManager.deleteAccount()
+            profileStore.deleteLocal()
+            DailyQuizManager.shared.resetLocalData()
+            TrainingProgressManager.shared.resetLocalData()
+            DiscussionStore.shared.resetLocalData()
+            subscriptionManager.resetLocalEntitlements()
+            hasCompletedOnboarding = false
+            syncState = configuration.hasRemoteSyncConfiguration ? .syncing : .unavailable
+            defaults.set(false, forKey: onboardingKey)
+        } catch {
+            authErrorMessage = error.localizedDescription
+        }
+    }
+
+    func resetLocalData() async {
+        let existingIdentity = authManager.identity
+
+        DailyQuizManager.shared.resetLocalData()
+        TrainingProgressManager.shared.resetLocalData()
+        DiscussionStore.shared.resetLocalData()
+        profileStore.resetLocalData(preserving: existingIdentity)
+
+        if isSignedInWithApple {
+            do {
+                try await refreshRemoteState(uploadLocalPreview: false)
+            } catch {
+                authErrorMessage = error.localizedDescription
+            }
+        } else if isGuest {
+            syncState = .localOnly
+        }
     }
 
     func purchase(offer: SubscriptionOffer) async throws {
@@ -502,6 +774,50 @@ final class UserSessionManager: ObservableObject {
         #endif
     }
 
+    func registerSyncError(_ message: String) {
+        syncState = .failed(message)
+    }
+
+    private func bootstrapSession() async {
+        await subscriptionManager.loadOfferings()
+        await subscriptionManager.refreshEntitlements()
+
+        if isSignedInWithApple {
+            do {
+                try await refreshRemoteState(uploadLocalPreview: false)
+                completeOnboarding()
+            } catch {
+                authErrorMessage = error.localizedDescription
+                syncState = .failed(error.localizedDescription)
+            }
+        } else if isGuest {
+            syncState = .localOnly
+        } else {
+            syncState = configuration.hasRemoteSyncConfiguration ? .syncing : .unavailable
+        }
+    }
+
+    private func refreshRemoteState(uploadLocalPreview: Bool) async throws {
+        guard let identity = authManager.identity, identity.provider == .apple else {
+            syncState = .localOnly
+            return
+        }
+
+        syncState = .syncing
+
+        async let profileSync: Void = profileStore.syncAfterAuthentication(
+            uploadLocalPreview: uploadLocalPreview,
+            identity: identity
+        )
+        async let quizSync: Void = DailyQuizManager.shared.syncAfterAuthentication(uploadLocalPreview: uploadLocalPreview)
+        async let trainingSync: Void = TrainingProgressManager.shared.syncAfterAuthentication(uploadLocalPreview: uploadLocalPreview)
+        async let discussionSync: Void = DiscussionStore.shared.syncAfterAuthentication()
+
+        _ = try await (profileSync, quizSync, trainingSync, discussionSync)
+        await subscriptionManager.refreshEntitlements()
+        syncState = .synced(Date())
+    }
+
     private func completeOnboarding() {
         hasCompletedOnboarding = true
         defaults.set(true, forKey: onboardingKey)
@@ -516,5 +832,67 @@ final class UserSessionManager: ObservableObject {
                     }
                     .store(in: &cancellables)
             }
+    }
+}
+
+private struct RemoteUserProfileRecord: Codable {
+    let id: String
+    let displayName: String
+    let email: String?
+    let signInProvider: SignInProvider
+    let currentFocus: String
+    let topMistakePatterns: [String]
+    let createdAt: Date
+    let updatedAt: Date
+
+    init(profile: RemoteUserProfile, userID: String) {
+        id = userID
+        displayName = profile.displayName
+        email = profile.email
+        signInProvider = profile.signInProvider
+        currentFocus = profile.currentFocus
+        topMistakePatterns = profile.topMistakePatterns
+        createdAt = profile.joinedAt
+        updatedAt = profile.updatedAt
+    }
+
+    init(
+        id: String,
+        displayName: String,
+        email: String?,
+        signInProvider: SignInProvider,
+        currentFocus: String,
+        topMistakePatterns: [String],
+        createdAt: Date,
+        updatedAt: Date
+    ) {
+        self.id = id
+        self.displayName = displayName
+        self.email = email
+        self.signInProvider = signInProvider
+        self.currentFocus = currentFocus
+        self.topMistakePatterns = topMistakePatterns
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
+    }
+
+    var appModel: RemoteUserProfile {
+        RemoteUserProfile(
+            id: id,
+            displayName: displayName,
+            email: email,
+            signInProvider: signInProvider,
+            currentFocus: currentFocus,
+            topMistakePatterns: topMistakePatterns,
+            joinedAt: createdAt,
+            updatedAt: updatedAt
+        )
+    }
+}
+
+private extension String {
+    var nilIfBlank: String? {
+        let trimmed = trimmingCharacters(in: .whitespacesAndNewlines)
+        return trimmed.isEmpty ? nil : trimmed
     }
 }

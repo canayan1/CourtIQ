@@ -2,6 +2,7 @@ import SwiftUI
 
 struct MobilityLibraryView: View {
     @EnvironmentObject private var session: UserSessionManager
+    @EnvironmentObject private var lang: LanguageManager
     private let flows = MobilityFlow.sampleFlows
 
     private var previewFlowIDs: Set<String> {
@@ -25,7 +26,7 @@ struct MobilityLibraryView: View {
                                 HStack(alignment: .top, spacing: 14) {
                                     VStack(alignment: .leading, spacing: 8) {
                                         HStack {
-                                            Text(flow.title)
+                                            Text(flow.localizedTitle(for: lang.language))
                                                 .font(.headline)
                                             if !session.isPremiumUnlocked && !previewFlowIDs.contains(flow.id) {
                                                 Image(systemName: "lock.fill")
@@ -33,7 +34,7 @@ struct MobilityLibraryView: View {
                                                     .foregroundStyle(AppPalette.inkSoft)
                                             }
                                         }
-                                        Text(flow.goal)
+                                        Text(flow.localizedGoal(for: lang.language))
                                             .font(.subheadline)
                                             .foregroundStyle(AppPalette.inkSoft)
 
@@ -66,14 +67,14 @@ struct MobilityLibraryView: View {
             }
             .padding()
         }
-        .navigationTitle("Mobility Library")
+        .navigationTitle(lang.t("mobility.library"))
         .background(AppPalette.cream)
     }
 
     private var premiumHeader: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
-                Text("Mobility & Recovery")
+                Text(lang.t("mobility.title"))
                     .font(.title3.weight(.semibold))
                 Spacer()
                 Text(session.premiumStatus.title)
@@ -83,7 +84,7 @@ struct MobilityLibraryView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 10))
             }
 
-            Text("Preview the first two flows for free. All Access unlocks the full tennis-specific mobility and recovery library.")
+            Text(lang.t("mobility.preview_desc"))
                 .font(.subheadline)
                 .foregroundStyle(AppPalette.inkSoft)
         }

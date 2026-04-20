@@ -1,0 +1,296 @@
+/* ── Common ── */
+"common.ok" = "OK";
+"common.cancel" = "Cancel";
+"common.done" = "Done";
+"common.save" = "Save";
+"common.delete" = "Delete";
+"common.edit" = "Edit";
+"common.report" = "Report";
+"common.post" = "Post";
+"common.saving" = "Saving…";
+"common.deleting" = "Deleting…";
+"common.resetting" = "Resetting…";
+"common.unlock_all" = "Unlock All Access";
+"common.premium" = "Premium";
+"common.free" = "Free";
+"common.start" = "Start";
+"common.next" = "Next";
+"common.of" = "of";
+"common.weeks" = "weeks";
+"common.days" = "days";
+
+/* ── Tabs ── */
+"tab.today" = "Today";
+"tab.practice" = "Practice";
+"tab.community" = "Community";
+"tab.training" = "Training";
+"tab.profile" = "Profile";
+
+/* ── Today ── */
+"today.day_streak" = "day streak";
+"today.this_week" = "this week";
+"today.start_quiz" = "Start today's quiz";
+"today.review_quiz" = "Review today's quiz";
+"today.greeting_morning" = "Good morning";
+"today.greeting_afternoon" = "Good afternoon";
+"today.greeting_evening" = "Good evening";
+"today.focus_label" = "Focus:";
+"today.train_next" = "Train the next point.";
+"today.tip_of_day" = "Tip of the day";
+"today.daily_iq" = "Daily IQ";
+"today.completed" = "Completed";
+"today.ready" = "Ready";
+"today.questions" = "questions";
+"today.match_awareness" = "Match awareness";
+"today.review" = "Review";
+"today.start_quiz_btn" = "Start quiz";
+"today.quick_reset" = "Quick reset";
+"today.open_flow" = "Open flow";
+"today.preview_flow" = "Preview flow";
+"today.show_less" = "Show less";
+"today.read_more" = "Read more";
+
+/* ── Practice ── */
+"practice.skill_blocks" = "Skill Blocks";
+"practice.support_work" = "Support Work";
+"practice.mobility_library" = "Mobility & Recovery Library";
+"practice.mobility_desc" = "Quick resets, daily mobility, and recovery flows built for tennis movement.";
+"practice.deliberate_reps" = "Deliberate reps";
+"practice.choose_pattern" = "Choose the pattern you want to sharpen, then run a focused block.";
+"practice.free_desc" = "Daily IQ stays free in Today. All Access unlocks the full library of repeatable skill blocks here and syncs your premium progress across signed-in devices.";
+
+/* ── Training Hub ── */
+"training.title" = "Training";
+"training.subtitle" = "Performance engine";
+"training.desc" = "Build the body behind better tennis decisions.";
+"training.long_desc" = "Start with the free 8-week hybrid plan, then unlock deeper tracks for footwork, shot power, flexibility, and match conditioning.";
+"training.8week_cycle" = "8-week cycle";
+"training.persistence_checks" = "Persistence checks";
+"training.free_foundation" = "Free Foundation";
+"training.start_here" = "Start here";
+"training.open_plan" = "Open 8-Week Plan";
+"training.premium_tracks" = "Premium Tracks";
+"training.unlocked" = "Unlocked";
+"training.locked" = "Locked";
+
+/* ── Training Detail ── */
+"training.cycle_week" = "Cycle Week";
+"training.week" = "Week";
+"training.progress_label" = "Progress";
+"training.sessions_completed" = "sessions completed";
+"training.calendar_hint" = "Pick a day from the calendar, open the session, and keep the week checked off as you go.";
+"training.weekly_calendar" = "Weekly Calendar";
+"training.progression_phase" = "Current Progression Phase";
+"training.reset" = "Reset";
+"training.check" = "Check";
+"training.checked" = "Checked";
+"training.mark_done" = "Mark Done";
+"training.marked_msg" = "Nice work. This day is now checked and will stay saved in your account.";
+"training.open_session" = "Open session";
+"training.complete_hint" = "Complete the work below, then tap Mark Done to keep this calendar day checked.";
+"training.objective" = "Objective";
+"training.warmup" = "Warm-up";
+"training.main_work" = "Main work";
+"training.finisher" = "Finisher";
+"training.recovery" = "Recovery";
+"training.recovery_reset" = "Recovery Reset";
+"training.recovery_hint" = "Use this day for a full reset so the next training block still feels explosive.";
+"training.recommended_flow" = "Recommended flow";
+"training.recommended_desc" = "20-30 min easy walk or bike, hip and thoracic mobility, calves, adductors, and soft tissue work.";
+"training.recovery_goal" = "Come back fresher, not flat. Keep blood flow high and overall stress low.";
+"training.optional_note" = "Optional note";
+"training.heavy_week_hint" = "If the week felt heavy, use this day to downshift before the persistence check.";
+"training.persistence_check" = "Persistence Check";
+"training.persistence_desc" = "Finish the week with a short check-in so your progress stays visible across the full 8-week run.";
+"training.coach_note" = "Coach note";
+"training.week_reflection" = "What improved or felt heavy this week?";
+"training.readiness" = "Readiness";
+"training.explosiveness" = "Explosiveness";
+"training.conditioning" = "Conditioning";
+"training.premium_access" = "Premium Access";
+"training.premium_desc" = "This first premium layer unlocks category-specific 8-week plans like better footwork, stronger shots, better flexibility, and match conditioning.";
+"training.checkin_history" = "Check-in History";
+"training.checkin_empty" = "Save your first weekly persistence check to build a history for this plan.";
+"training.discussion" = "Discussion";
+"training.discussion_hint" = "Head to the Community tab to discuss today's tip with other players.";
+"training.how_to" = "How to perform";
+"training.tennis_why" = "Why it helps your tennis";
+"training.watch_out" = "Watch out for";
+"training.exercise" = "Exercise";
+
+/* ── Quiz ── */
+"quiz.question_of" = "Question %d of %d";
+"quiz.restart" = "Restart quiz";
+"quiz.finish" = "Finish quiz";
+"quiz.next" = "Next question";
+"quiz.submit" = "Submit answer";
+"quiz.choose" = "Choose the shot you trust most.";
+"quiz.good_read" = "Good read";
+"quiz.better_option" = "Better option available";
+"quiz.no_questions" = "This quiz does not have any questions yet.";
+"quiz.score" = "You scored %d out of %d.";
+"quiz.best_choice" = "Best percentage choice";
+"quiz.harder" = "This would make the point harder.";
+"quiz.challenge_partner" = "Challenge your doubles partner";
+"quiz.challenge_desc" = "Share this scenario and see if your partner reads it the same way.";
+"quiz.send_partner" = "Send to partner";
+"quiz.session_complete" = "Session complete";
+"quiz.review_hint" = "Review the explanations, then restart or head back to today's plan.";
+"quiz.share_result" = "Share your result";
+"quiz.share_desc" = "Let your doubles partner know your score — or challenge them to beat it.";
+"quiz.share_btn" = "Share result";
+"quiz.no_quiz" = "No quiz available";
+"quiz.no_quiz_desc" = "Add questions to this category to start a practice block.";
+
+/* ── Mobility ── */
+"mobility.library" = "Mobility Library";
+"mobility.title" = "Mobility & Recovery";
+"mobility.preview_desc" = "Preview the first two flows for free. All Access unlocks the full tennis-specific mobility and recovery library.";
+"mobility.goal" = "Goal";
+"mobility.focus_areas" = "Focus areas";
+"mobility.why" = "Why it matters for tennis";
+"mobility.instructions" = "Instructions";
+"mobility.cues" = "Coaching cues";
+"mobility.sequence" = "Sequence";
+"mobility.premium" = "Premium flow";
+"mobility.locked_desc" = "Preview is limited to the first two flows. All Access unlocks the full mobility and recovery library, archived insights, and premium discussion posting.";
+"mobility.unlock" = "Unlock Mobility Library";
+
+/* ── Community ── */
+"community.title" = "Discussion";
+"community.report_title" = "Report this comment?";
+"community.report_action" = "Report as inappropriate";
+"community.report_guideline" = "We'll review this comment and take action if it violates community guidelines.";
+"community.report_thanks" = "Thanks for the report. We'll review this comment shortly.";
+"community.placeholder" = "What does this tip change in your game?";
+"community.unlock" = "Unlock community access";
+"community.add_take" = "Add your take";
+"community.edit_comment" = "Edit comment";
+"community.empty" = "Be the first to share your take on today's tip.";
+"community.comments" = "comments";
+"community.coach" = "Coach";
+"community.unlock_desc" = "Sign in with Apple and unlock All Access to join the conversation.";
+
+/* ── Profile ── */
+"profile.title" = "Profile";
+"profile.delete_title" = "Delete account?";
+"profile.delete_msg" = "This permanently deletes your account, synced progress, and community content from CourtIQ.";
+"profile.reset_title" = "Reset local data?";
+"profile.reset_msg" = "This clears cached progress on this device. Synced account data will re-download on next launch.";
+"profile.quiz_empty" = "Complete your first daily quiz to start your archive.";
+"profile.unlock_history" = "Unlock your full quiz archive, track focus changes over time, and spot recurring decision errors.";
+"profile.sign_in_hint" = "Sign in with Apple to enable cloud sync and purchase restore.";
+"profile.leave_guest" = "Leave Guest Preview";
+"profile.section_progress" = "Progress";
+"profile.section_quiz" = "Quiz History";
+"profile.section_account" = "Account";
+"profile.section_policies" = "Policies";
+"profile.section_language" = "Language";
+"profile.stat_streak" = "Day streak";
+"profile.stat_quizzes" = "Quizzes done";
+"profile.stat_week" = "This week";
+"profile.sign_out" = "Sign Out";
+"profile.manage_sub" = "Manage Subscription";
+"profile.restore" = "Restore Purchases";
+"profile.view_plans" = "View All Access Plans";
+"profile.guest" = "Guest";
+"profile.apple_id" = "Apple ID";
+"profile.guest_desc" = "Guest mode saves progress on this device only. Sign in with Apple to protect your streak and purchase history.";
+
+/* ── Onboarding ── */
+"onboarding.tagline" = "Raise your Tennis IQ";
+"onboarding.subtitle" = "Daily decisions. Smart habits. A sharper game.";
+"onboarding.get_started" = "Get Started";
+"onboarding.everything" = "Everything in one place";
+"onboarding.everything_desc" = "CourtIQ covers every part of your tennis week — on and off the court.";
+"onboarding.daily_iq" = "Daily IQ Quiz";
+"onboarding.daily_iq_desc" = "A new scenario every day. Real match situations, multiple choices, instant coaching feedback. Decisions become instinct.";
+"onboarding.tip" = "Tip of the Day";
+"onboarding.tip_desc" = "One sharp tactic or technique insight each morning — tactics, technique, fitness, or mental game.";
+"onboarding.training" = "Training Programs";
+"onboarding.training_desc" = "8-week premium plans for footwork, shot power, flexibility, and match conditioning — all built for tennis.";
+"onboarding.mobility" = "Mobility & Recovery";
+"onboarding.mobility_desc" = "Pre-match, post-match, and weekly reset flows targeting the areas court sport wrecks most.";
+"onboarding.go_all_access" = "Go All Access";
+"onboarding.free_week" = "Your first week is completely free. Then choose the plan that fits.";
+"onboarding.free_trial" = "7 days free — cancel any time";
+"onboarding.annual" = "Annual";
+"onboarding.per_month" = "/ month";
+"onboarding.per_year" = "/ year";
+"onboarding.annual_equiv" = "That's $2.42 / month";
+"onboarding.best_value" = "Best value  ·  Save 52%";
+"onboarding.monthly" = "Monthly";
+"onboarding.billed_monthly" = "Billed monthly after free trial";
+"onboarding.whats_included" = "What's included";
+"onboarding.feature_quizzes" = "Unlimited daily quizzes";
+"onboarding.feature_archive" = "Full tip archive — every insight ever published";
+"onboarding.feature_training" = "All 8-week training programs";
+"onboarding.feature_mobility" = "All mobility & recovery flows";
+"onboarding.feature_updates" = "Ongoing fitness program updates as they ship";
+"onboarding.feature_early" = "Early access to every new feature";
+"onboarding.feature_history" = "Full quiz history & performance tracking";
+"onboarding.first_in_line" = "Always first in line";
+"onboarding.first_in_line_desc" = "Premium members test new features — new quiz formats, analytics, and court tools — before they go public.";
+"onboarding.start_trial" = "Start Free Trial";
+"onboarding.continue_free" = "Continue for free";
+"onboarding.one_last_step" = "One last step";
+"onboarding.sign_in_desc" = "Sign in to unlock cloud sync, cross-device progress, and the ability to restore your premium access.";
+"onboarding.guest" = "Continue as Guest";
+"onboarding.guest_desc" = "Guest mode saves progress on this device only. Sign in with Apple to protect your streak and purchase history.";
+
+/* ── Paywall ── */
+"paywall.title" = "All Access";
+"paywall.subtitle" = "Unlock the full CourtIQ stack";
+"paywall.sign_in_required" = "Sign in with Apple is required before purchase.";
+"paywall.what_unlocks" = "What unlocks";
+"paywall.choose_plan" = "Choose your plan";
+"paywall.best_value" = "Best value";
+"paywall.continue" = "Continue";
+"paywall.restore" = "Restore Purchases";
+"paywall.manage" = "Manage Subscription";
+"paywall.privacy" = "Privacy Policy";
+"paywall.terms" = "Terms of Use";
+"paywall.support" = "Support";
+"paywall.subscription_note" = "Subscriptions renew automatically unless canceled in App Store settings at least 24 hours before the end of the current period. Your premium access is restored from the App Store on launch and after restore.";
+"paywall.unlocked" = "Unlocked";
+
+/* ── Legal ── */
+"legal.privacy" = "Privacy Policy";
+"legal.terms" = "Terms of Use";
+"legal.support" = "Support";
+"legal.moderation" = "Moderation Policy";
+"legal.privacy_body" = "CourtIQ stores guest progress locally on your device. When you sign in with Apple, your profile, quiz history, training logs, weekly check-ins, and community activity can sync to your CourtIQ account through our backend services. We do not sell personal data, and we only use the data needed to run purchases, sync, support, and moderation.";
+"legal.terms_body" = "CourtIQ All Access is an auto-renewing subscription that unlocks premium training programs, the full mobility library, archived quiz insights, and premium community participation. Billing is handled by Apple through your App Store account and renews automatically unless canceled at least 24 hours before the end of the current period.";
+"legal.support_body" = "Support is available through the published support link for billing issues, account questions, sync problems, and community moderation requests. If you report harmful or abusive community content, the moderation team reviews it through the support and admin workflow connected to CourtIQ.";
+"legal.moderation_body" = "Community discussion is anchored to CourtIQ content. Players can report comments for manual moderator review. Offensive, abusive, spammy, or unsafe content may be removed, and repeated violations can lead to account restrictions or removal from the community.";
+"legal.open_doc" = "Open Published Document";
+
+/* ── Progression ── */
+"progression.title" = "How Progression Works";
+"progression.this_week" = "This week";
+"progression.training_sessions" = "Training sessions";
+"progression.mobility_flows" = "Mobility flows";
+"progression.quiz_correct" = "Quiz correct answers";
+"progression.tap_to_start" = "Tap circle 1 to start your first week.";
+"progression.level_complete" = "Level complete!";
+"progression.premium_required" = "Premium required";
+"progression.how_it_works" = "How it works";
+"progression.how_1" = "Complete 9 successful weeks to advance to the next player level.";
+"progression.how_2" = "A week starts when you tap circle 1 — or auto-starts after completing the previous week.";
+"progression.how_3" = "Hit all 3 requirements within the week and that circle turns green automatically.";
+"progression.how_4" = "Activities only count from the moment the week starts.";
+"progression.weekly_req" = "Weekly requirements";
+"progression.training_hint" = "Mark any days complete inside a training program.";
+"progression.mobility_hint" = "Open any mobility flow while it is in progress.";
+"progression.quiz_hint" = "Correct answers from any daily or practice quiz this week.";
+"progression.player_levels" = "Player levels";
+"progression.tip_1" = "You don't need to complete all 3 requirements on the same day.";
+"progression.tip_2" = "Training and mobility track from the current week's start date only.";
+"progression.tip_3" = "Missing a week just means starting a fresh attempt — progress doesn't reset.";
+"progression.tip_4" = "Pair this with the daily quiz habit for the fastest route to higher levels.";
+"progression.max" = "Max";
+"progression.level_reached_desc" = "You've reached %@. A new path will unlock.";
+"progression.premium_gate_desc" = "You've reached %@. Unlock premium to continue through all player levels.";
+
+/* ── App ── */
+"app.account_issue" = "Account issue";

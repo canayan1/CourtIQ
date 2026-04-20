@@ -8,6 +8,24 @@ enum LegalDocument: String, CaseIterable, Identifiable {
 
     var id: String { rawValue }
 
+    var titleKey: String {
+        switch self {
+        case .privacy: return "legal.privacy"
+        case .terms: return "legal.terms"
+        case .support: return "legal.support"
+        case .moderation: return "legal.moderation"
+        }
+    }
+
+    var bodyKey: String {
+        switch self {
+        case .privacy: return "legal.privacy_body"
+        case .terms: return "legal.terms_body"
+        case .support: return "legal.support_body"
+        case .moderation: return "legal.moderation_body"
+        }
+    }
+
     var title: String {
         switch self {
         case .privacy: return "Privacy Policy"
@@ -16,31 +34,11 @@ enum LegalDocument: String, CaseIterable, Identifiable {
         case .moderation: return "Moderation Policy"
         }
     }
-
-    var bodyText: String {
-        switch self {
-        case .privacy:
-            return """
-            CourtIQ stores guest progress locally on device. When Sign in with Apple and remote sync are configured, profile, training logs, quiz completions, and discussion activity may be synced to your account. We do not sell personal data. App Store release should replace this placeholder with your production privacy policy text and public URL.
-            """
-        case .terms:
-            return """
-            CourtIQ All Access is an auto-renewing subscription that unlocks premium training programs, mobility flows, archived quiz insights, and community posting. Payment and renewal terms must match your App Store Connect products before release.
-            """
-        case .support:
-            return """
-            Support will be handled through your production support inbox or help center. Replace this placeholder with your final support email, response expectations, and troubleshooting steps before submitting to the App Store.
-            """
-        case .moderation:
-            return """
-            Community discussion is anchored to CourtIQ content. Players may report comments for review. Offensive, abusive, spammy, or unsafe content should be removed according to your production moderation workflow.
-            """
-        }
-    }
 }
 
 struct LegalDocumentView: View {
     let document: LegalDocument
+    @EnvironmentObject private var lang: LanguageManager
     private let configuration = AppConfiguration.shared
 
     private var documentURL: URL? {
@@ -59,12 +57,12 @@ struct LegalDocumentView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                Text(document.bodyText)
+                Text(lang.t(document.bodyKey))
                     .frame(maxWidth: .infinity, alignment: .leading)
 
                 if let documentURL {
                     Link(destination: documentURL) {
-                        Label("Open Published Document", systemImage: "arrow.up.right.square")
+                        Label(lang.t("legal.open_doc"), systemImage: "arrow.up.right.square")
                             .font(.headline)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 14)
@@ -75,7 +73,7 @@ struct LegalDocumentView: View {
             .padding()
         }
         .background(AppPalette.cream)
-        .navigationTitle(document.title)
+        .navigationTitle(lang.t(document.titleKey))
         .navigationBarTitleDisplayMode(.inline)
     }
 }

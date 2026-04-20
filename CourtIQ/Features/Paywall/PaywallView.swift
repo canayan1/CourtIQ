@@ -6,8 +6,10 @@ struct PaywallView: View {
 
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var session: UserSessionManager
+    @EnvironmentObject private var lang: LanguageManager
     @State private var isWorking = false
     @State private var errorMessage: String?
+    private let configuration = AppConfiguration.shared
 
     var body: some View {
         ScrollView {
@@ -15,28 +17,29 @@ struct PaywallView: View {
                 header
                 benefitsCard
                 offerCards
+                legalLinks
                 legalNote
             }
             .padding()
         }
         .background(AppPalette.cream)
-        .navigationTitle("All Access")
+        .navigationTitle(lang.t("paywall.title"))
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Button("Close") {
+                Button(lang.t("common.done")) {
                     dismiss()
                 }
             }
         }
-        .alert("Purchase issue", isPresented: Binding(get: {
+        .alert(lang.t("app.account_issue"), isPresented: Binding(get: {
             errorMessage != nil
         }, set: { newValue in
             if !newValue {
                 errorMessage = nil
             }
         })) {
-            Button("OK", role: .cancel) {}
+            Button(lang.t("common.ok"), role: .cancel) {}
         } message: {
             Text(errorMessage ?? "")
         }
@@ -44,7 +47,7 @@ struct PaywallView: View {
 
     private var header: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("Unlock the full CourtIQ stack")
+            Text(lang.t("paywall.subtitle"))
                 .font(.system(size: 30, weight: .bold, design: .rounded))
 
             Text("You came from \(source). Premium unlocks the full training library, mobility flows, archived quiz insights, and community participation.")
@@ -52,7 +55,7 @@ struct PaywallView: View {
 
             if !session.isSignedInWithApple {
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("Sign in with Apple is required before purchase.")
+                    Text(lang.t("paywall.sign_in_required"))
                         .font(.subheadline.weight(.semibold))
                     SignInWithAppleButton(.continue) { request in
                         request.requestedScopes = [.fullName, .email]
@@ -75,7 +78,7 @@ struct PaywallView: View {
 
     private var benefitsCard: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("What unlocks")
+            Text(lang.t("paywall.what_unlocks"))
                 .font(.title3.bold())
 
             ForEach(session.subscriptionManager.premiumBenefits, id: \.self) { benefit in
@@ -83,8 +86,8 @@ struct PaywallView: View {
                     .foregroundStyle(AppPalette.ink)
             }
 
-            if session.subscriptionManager.integrationMode == .preview {
-                Text("App Store testing mode is active until StoreKit or RevenueCat keys are configured.")
+            if session.subscriptionManager.integrationMode == .productConfigurationMissing {
+                Text("App Store products are not loading yet. Confirm your subscription products in App Store Connect before release.")
                     .font(.footnote)
                     .foregroundStyle(AppPalette.inkSoft)
             }
@@ -100,7 +103,7 @@ struct PaywallView: View {
 
     private var offerCards: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("Choose your plan")
+            Text(lang.t("paywall.choose_plan"))
                 .font(.title3.bold())
 
             ForEach(session.subscriptionManager.offers) { offer in
@@ -115,7 +118,7 @@ struct PaywallView: View {
                         }
                         Spacer()
                         if offer.isFeatured {
-                            Text("Best value")
+                            Text(lang.t("paywall.best_value"))
                                 .font(.caption.weight(.semibold))
                                 .padding(.horizontal, 10)
                                 .padding(.vertical, 6)
@@ -137,7 +140,7 @@ struct PaywallView: View {
                                 ProgressView()
                                     .progressViewStyle(.circular)
                             }
-                            Text(session.subscriptionManager.isPremiumUnlocked ? "Unlocked" : "Continue")
+                            Text(session.subscriptionManager.isPremiumUnlocked ? lang.t("paywall.unlocked") : lang.t("paywall.continue"))
                                 .font(.headline)
                         }
                         .frame(maxWidth: .infinity)
@@ -155,7 +158,7 @@ struct PaywallView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
             }
 
-            Button("Restore Purchases") {
+            Button(lang.t("paywall.restore")) {
                 Task {
                     isWorking = true
                     defer { isWorking = false }
@@ -166,7 +169,7 @@ struct PaywallView: View {
             .disabled(isWorking)
 
             if session.subscriptionManager.isPremiumUnlocked {
-                Button("Manage Subscription") {
+                Button(lang.t("paywall.manage")) {
                     session.openManageSubscriptions()
                 }
                 .buttonStyle(.bordered)
@@ -174,8 +177,31 @@ struct PaywallView: View {
         }
     }
 
+    private var legalLinks: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            if let privacyURL = configuration.privacyPolicyURL {
+                Link(destination: privacyURL) {
+                    Label(lang.t("paywall.privacy"), systemImage: "lock.doc")
+                }
+            }
+
+            if let termsURL = configuration.termsOfUseURL {
+                Link(destination: termsURL) {
+                    Label(lang.t("paywall.terms"), systemImage: "doc.text")
+                }
+            }
+
+            if let supportURL = configuration.supportURL {
+                Link(destination: supportURL) {
+                    Label(lang.t("paywall.support"), systemImage: "questionmark.circle")
+                }
+            }
+        }
+        .font(.subheadline.weight(.semibold))
+    }
+
     private var legalNote: some View {
-        Text("Subscriptions renew automatically unless canceled in App Store settings at least 24 hours before the end of the current period.")
+        Text(lang.t("paywall.subscription_note"))
             .font(.footnote)
             .foregroundStyle(AppPalette.inkSoft)
             .padding(.horizontal, 4)

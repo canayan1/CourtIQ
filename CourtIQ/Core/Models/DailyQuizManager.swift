@@ -36,6 +36,7 @@ final class DailyQuizManager: ObservableObject {
     private let userDefaults = UserDefaults.standard
     private let completedKey = "CourtIQ.CompletedDates"
     private let historyKey = "CourtIQ.Quiz.SessionHistory"
+    private let client = SupabaseRESTClient.shared
 
     private init() {
         completedDates = Self.loadCompletedDates(from: userDefaults)
@@ -126,9 +127,61 @@ final class DailyQuizManager: ObservableObject {
             isDaily: isDaily
         )
 
-        if isDaily {
-            completedDates.removeAll { $0 == Date.todayKey }
-            completedDates.append(Date.todayKey)
+        upsertLocal(record)
+
+        Task {
+            await push(record)
+        }
+    }
+
+    func syncAfterAuthentication(uploadLocalPreview: Bool) async throws {
+        guard let session = UserSessionManager.shared.remoteSession else { return }
+
+        if uploadLocalPreview, !sessionHistory.isEmpty {
+            let payload = sessionHistory.map { RemoteQuizCompletionRecord(record: $0, userID: session.userID) }
+            _ = try await client.upsertRows(payload, into: "quiz_completions", onConflict: "id", session: session) as [RemoteQuizCompletionRecord]
+        }
+
+        let remote: [RemoteQuizCompletionRecord] = try await client.selectRows(
+            from: "quiz_completions",
+            queryItems: [
+                URLQueryItem(name: "user_id", value: "eq.\(session.userID)"),
+                URLQueryItem(name: "order", value: "completed_at.desc")
+            ],
+            session: session
+        )
+
+        applyRemote(records: remote.map(\.appModel))
+    }
+
+    func reset() {
+        resetLocalData()
+    }
+
+    func resetLocalData() {
+        completedDates = []
+        sessionHistory = []
+        userDefaults.removeObject(forKey: completedKey)
+        userDefaults.removeObject(forKey: historyKey)
+    }
+
+    private func push(_ record: QuizSessionRecord) async {
+        guard let session = UserSessionManager.shared.remoteSession else { return }
+
+        do {
+            let payload = RemoteQuizCompletionRecord(record: record, userID: session.userID)
+            _ = try await client.upsertRows([payload], into: "quiz_completions", onConflict: "id", session: session) as [RemoteQuizCompletionRecord]
+        } catch {
+            await MainActor.run {
+                UserSessionManager.shared.registerSyncError("Quiz progress could not sync right now.")
+            }
+        }
+    }
+
+    private func upsertLocal(_ record: QuizSessionRecord) {
+        if record.isDaily {
+            completedDates.removeAll { $0 == record.completedAt.todayKey }
+            completedDates.append(record.completedAt.todayKey)
             completedDates.sort()
             userDefaults.set(completedDates, forKey: completedKey)
         }
@@ -141,11 +194,15 @@ final class DailyQuizManager: ObservableObject {
         saveHistory()
     }
 
-    func reset() {
-        completedDates = []
-        sessionHistory = []
-        userDefaults.removeObject(forKey: completedKey)
-        userDefaults.removeObject(forKey: historyKey)
+    private func applyRemote(records: [QuizSessionRecord]) {
+        sessionHistory = records.sorted { $0.completedAt > $1.completedAt }
+        completedDates = sessionHistory
+            .filter(\.isDaily)
+            .map { $0.completedAt.todayKey }
+            .uniqued()
+            .sorted()
+        userDefaults.set(completedDates, forKey: completedKey)
+        saveHistory()
     }
 
     private static func loadCompletedDates(from defaults: UserDefaults) -> [String] {
@@ -169,6 +226,46 @@ final class DailyQuizManager: ObservableObject {
     }
 }
 
+private struct RemoteQuizCompletionRecord: Codable {
+    let id: String
+    let userID: String
+    let quizID: String
+    let title: String
+    let focusLabel: String
+    let score: Int
+    let totalQuestions: Int
+    let mistakeTypes: [String]
+    let completedAt: Date
+    let isDaily: Bool
+
+    init(record: QuizSessionRecord, userID: String) {
+        id = record.id
+        self.userID = userID
+        quizID = record.quizID
+        title = record.title
+        focusLabel = record.focusLabel
+        score = record.score
+        totalQuestions = record.totalQuestions
+        mistakeTypes = record.mistakeTypes
+        completedAt = record.completedAt
+        isDaily = record.isDaily
+    }
+
+    var appModel: QuizSessionRecord {
+        QuizSessionRecord(
+            id: id,
+            quizID: quizID,
+            title: title,
+            focusLabel: focusLabel,
+            score: score,
+            totalQuestions: totalQuestions,
+            mistakeTypes: mistakeTypes,
+            completedAt: completedAt,
+            isDaily: isDaily
+        )
+    }
+}
+
 private extension Date {
     static var todayKey: String {
         dateFormatter.string(from: Calendar.current.startOfDay(for: Date()))
@@ -186,4 +283,11 @@ private extension Date {
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter
     }()
+}
+
+private extension Array where Element: Hashable {
+    func uniqued() -> [Element] {
+        var seen = Set<Element>()
+        return filter { seen.insert($0).inserted }
+    }
 }

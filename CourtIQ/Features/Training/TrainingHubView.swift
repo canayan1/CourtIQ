@@ -3,6 +3,7 @@ import SwiftUI
 struct TrainingHubView: View {
     @EnvironmentObject private var session: UserSessionManager
     @EnvironmentObject private var trainingProgress: TrainingProgressManager
+    @EnvironmentObject private var lang: LanguageManager
 
     private let programs = TrainingProgram.allPrograms
 
@@ -16,25 +17,25 @@ struct TrainingHubView: View {
             .padding()
         }
         .background(AppPalette.cream)
-        .navigationTitle("Training")
+        .navigationTitle(lang.t("tab.training"))
     }
 
     private var heroCard: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("Performance engine")
+            Text(lang.t("training.subtitle"))
                 .font(.caption.weight(.semibold))
                 .textCase(.uppercase)
                 .foregroundStyle(AppPalette.inkSoft)
 
-            Text("Build the body behind better tennis decisions.")
+            Text(lang.t("training.desc"))
                 .font(.system(size: 28, weight: .bold, design: .rounded))
 
-            Text("Start with the free 8-week hybrid plan, then unlock deeper tracks for footwork, shot power, flexibility, and match conditioning.")
+            Text(lang.t("training.long_desc"))
                 .foregroundStyle(AppPalette.inkSoft)
 
             HStack(spacing: 12) {
-                chip(text: "8-week cycle", systemImage: "calendar")
-                chip(text: "Persistence checks", systemImage: "chart.line.uptrend.xyaxis")
+                chip(text: lang.t("training.8week_cycle"), systemImage: "calendar")
+                chip(text: lang.t("training.persistence_checks"), systemImage: "chart.line.uptrend.xyaxis")
             }
         }
         .padding()
@@ -50,7 +51,7 @@ struct TrainingHubView: View {
         let program = TrainingProgram.featuredProgram
 
         return VStack(alignment: .leading, spacing: 16) {
-            sectionHeader(title: "Free Foundation", subtitle: "Start here")
+            sectionHeader(title: lang.t("training.free_foundation"), subtitle: lang.t("training.start_here"))
 
             Text(program.title)
                 .font(.title3.bold())
@@ -74,7 +75,7 @@ struct TrainingHubView: View {
             NavigationLink {
                 TrainingProgramDetailView(program: program)
             } label: {
-                Text("Open 8-Week Plan")
+                Text(lang.t("training.open_plan"))
                     .font(.headline)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 14)
@@ -91,7 +92,7 @@ struct TrainingHubView: View {
 
     private var premiumTracks: some View {
         VStack(alignment: .leading, spacing: 14) {
-            sectionHeader(title: "Premium Tracks", subtitle: session.isPremiumUnlocked ? "Unlocked" : "Locked")
+            sectionHeader(title: lang.t("training.premium_tracks"), subtitle: session.isPremiumUnlocked ? lang.t("training.unlocked") : lang.t("training.locked"))
 
             ForEach(programs.filter(\.isPremium)) { program in
                 NavigationLink {

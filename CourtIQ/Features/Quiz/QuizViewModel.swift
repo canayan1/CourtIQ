@@ -16,6 +16,7 @@ final class QuizViewModel: ObservableObject {
     @Published private(set) var hasSubmittedCurrentAnswer = false
     @Published private(set) var score = 0
     @Published private(set) var isCompleted = false
+    var language: AppLanguage = .english
 
     private let onComplete: ((QuizCompletionSummary) -> Void)?
     private var completionHandled = false
@@ -31,8 +32,8 @@ final class QuizViewModel: ObservableObject {
     }
 
     var progressLabel: String {
-        guard !quiz.questions.isEmpty else { return "No questions" }
-        return "Question \(currentIndex + 1) of \(quiz.questions.count)"
+        guard !quiz.questions.isEmpty else { return t("quiz.no_questions") }
+        return String(format: t("quiz.question_of"), currentIndex + 1, quiz.questions.count)
     }
 
     var progressValue: Double {
@@ -45,15 +46,11 @@ final class QuizViewModel: ObservableObject {
     }
 
     var primaryButtonTitle: String {
-        if isCompleted {
-            return "Restart Quiz"
-        }
-
+        if isCompleted          { return t("quiz.restart") }
         if hasSubmittedCurrentAnswer {
-            return isLastQuestion ? "Finish Quiz" : "Next Question"
+            return isLastQuestion ? t("quiz.finish") : t("quiz.next")
         }
-
-        return "Submit Answer"
+        return t("quiz.submit")
     }
 
     var isLastQuestion: Bool {
@@ -66,29 +63,71 @@ final class QuizViewModel: ObservableObject {
     }
 
     var feedbackTitle: String {
-        guard hasSubmittedCurrentAnswer else {
-            return "Choose the shot you trust most."
-        }
-
-        return selectedAnswerIsCorrect ? "Good read" : "Better option available"
+        guard hasSubmittedCurrentAnswer else { return t("quiz.choose") }
+        return selectedAnswerIsCorrect ? t("quiz.good_read") : t("quiz.better_option")
     }
 
     var feedbackBody: String {
-        guard let currentQuestion else {
-            return "This quiz does not have any questions yet."
-        }
-
-        guard hasSubmittedCurrentAnswer else {
-            return currentQuestion.takeaway
-        }
-
-        return "\(currentQuestion.explanation) \(currentQuestion.takeaway)"
+        guard let currentQuestion else { return t("quiz.no_questions") }
+        guard hasSubmittedCurrentAnswer else { return currentQuestion.localizedTakeaway(for: language) }
+        return "\(currentQuestion.localizedExplanation(for: language)) \(currentQuestion.localizedTakeaway(for: language))"
     }
 
     var completionSummary: String {
-        guard !quiz.questions.isEmpty else { return "Add questions to start training." }
-        return "You scored \(score) out of \(quiz.questions.count)."
+        guard !quiz.questions.isEmpty else { return t("quiz.no_questions") }
+        return String(format: t("quiz.score"), score, quiz.questions.count)
     }
+
+    private func t(_ key: String) -> String {
+        guard let path = Bundle.main.path(forResource: language.rawValue, ofType: "lproj"),
+              let bundle = Bundle(path: path) else {
+            return Bundle.main.path(forResource: "en", ofType: "lproj")
+                .flatMap { Bundle(path: $0) }?
+                .localizedString(forKey: key, value: key, table: nil) ?? key
+        }
+        return bundle.localizedString(forKey: key, value: key, table: nil)
+    }
+
+    // MARK: - Sharing
+
+    /// Result share text for the completion card.
+    var resultShareText: String {
+        let total = quiz.questions.count
+        let emoji: String
+        switch score {
+        case total:        emoji = "🎾 Perfect score!"
+        case (total/2)...: emoji = "🎾 Solid read."
+        default:           emoji = "🎾 Good practice."
+        }
+        return """
+        \(emoji)
+        \(score)/\(total) on today's CourtIQ quiz — \(quiz.focusLabel).
+        Train your tennis IQ daily: courtiq.app
+        #CourtIQ #TennisIQ
+        """
+    }
+
+    /// Question share text for the "challenge your doubles partner" button.
+    /// Only available after the current answer has been submitted.
+    func partnerChallengeText(for question: QuizQuestion) -> String {
+        let options = question.options.enumerated()
+            .map { i, opt in "\(["A", "B", "C", "D"][i]). \(opt)" }
+            .joined(separator: "\n")
+
+        return """
+        🎾 Tennis IQ challenge — can you solve this?
+
+        "\(question.scenario)"
+
+        \(options)
+
+        What's your call? (DM me the answer)
+        Training daily with CourtIQ 👇
+        courtiq.app #CourtIQ #TennisIQ
+        """
+    }
+
+    // MARK: - Actions
 
     func selectOption(_ index: Int) {
         guard !hasSubmittedCurrentAnswer, currentQuestion != nil else { return }
@@ -96,51 +135,34 @@ final class QuizViewModel: ObservableObject {
     }
 
     func handlePrimaryAction() {
-        if isCompleted {
-            restart()
-        } else if hasSubmittedCurrentAnswer {
-            advance()
-        } else {
-            submit()
-        }
+        if isCompleted       { restart() }
+        else if hasSubmittedCurrentAnswer { advance() }
+        else                 { submit() }
     }
 
     func optionState(for index: Int) -> QuizOptionState {
         guard let currentQuestion else { return .idle }
-
         if !hasSubmittedCurrentAnswer {
             return selectedIndex == index ? .selected : .idle
         }
-
-        if index == currentQuestion.correctAnswerIndex {
-            return .correct
-        }
-
-        if selectedIndex == index {
-            return .incorrect
-        }
-
+        if index == currentQuestion.correctAnswerIndex { return .correct }
+        if selectedIndex == index                      { return .incorrect }
         return .idle
     }
 
     private func submit() {
         guard canSubmit else { return }
         hasSubmittedCurrentAnswer = true
-
-        if selectedAnswerIsCorrect {
-            score += 1
-        }
+        if selectedAnswerIsCorrect { score += 1 }
     }
 
     private func advance() {
         guard hasSubmittedCurrentAnswer else { return }
-
         if isLastQuestion {
             isCompleted = true
             triggerCompletionOnce()
             return
         }
-
         currentIndex += 1
         selectedIndex = nil
         hasSubmittedCurrentAnswer = false

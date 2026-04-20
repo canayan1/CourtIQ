@@ -5,8 +5,11 @@ struct MobilityFlowDetailView: View {
 
     @EnvironmentObject private var session: UserSessionManager
     @EnvironmentObject private var discussionStore: DiscussionStore
+    @EnvironmentObject private var progressionManager: PlayerProgressionManager
+    @EnvironmentObject private var lang: LanguageManager
     @State private var showPaywall = false
     @State private var threadID: String?
+    @State private var mobilityRecorded = false
 
     private var previewFlowIDs: Set<String> {
         Set(MobilityFlow.sampleFlows.prefix(2).map(\.id))
@@ -29,22 +32,22 @@ struct MobilityFlowDetailView: View {
                 if !hasAccess {
                     lockedCard
                 } else {
-                    section(title: "Goal", content: flow.goal)
-                    section(title: "Focus areas", content: flow.focusLabel)
-                    section(title: "Why it matters for tennis", content: flow.whyItMatters)
-                    section(title: "Instructions", content: flow.instructions)
-                    section(title: "Coaching cues", content: flow.coachingCues)
+                    section(title: lang.t("mobility.goal"), content: flow.localizedGoal(for: lang.language))
+                    section(title: lang.t("mobility.focus_areas"), content: flow.focusLabel)
+                    section(title: lang.t("mobility.why"), content: flow.localizedWhyItMatters(for: lang.language))
+                    section(title: lang.t("mobility.instructions"), content: flow.localizedInstructions(for: lang.language))
+                    section(title: lang.t("mobility.cues"), content: flow.localizedCoachingCues(for: lang.language))
 
                     VStack(alignment: .leading, spacing: 12) {
-                        Text("Sequence")
+                        Text(lang.t("mobility.sequence"))
                             .font(.headline)
                         ForEach(flow.movements) { movement in
                             HStack(alignment: .top, spacing: 12) {
                                 Text("•")
                                 VStack(alignment: .leading, spacing: 4) {
-                                    Text(movement.title)
+                                    Text(movement.localizedTitle(for: lang.language))
                                         .font(.subheadline.weight(.semibold))
-                                    Text("\(movement.duration) · \(movement.notes ?? "")")
+                                    Text("\(movement.duration) · \(movement.localizedNotes(for: lang.language) ?? "")")
                                         .font(.caption)
                                         .foregroundStyle(AppPalette.inkSoft)
                                 }
@@ -65,9 +68,14 @@ struct MobilityFlowDetailView: View {
             .padding()
         }
         .background(AppPalette.cream)
-        .navigationTitle(flow.title)
+        .navigationTitle(flow.localizedTitle(for: lang.language))
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
+            if hasAccess && !mobilityRecorded {
+                progressionManager.recordMobilitySession()
+                mobilityRecorded = true
+            }
+
             if threadID == nil {
                 threadID = discussionStore.thread(
                     for: ContentNodeID(targetType: .mobilityFlow, targetID: flow.id),
@@ -75,6 +83,12 @@ struct MobilityFlowDetailView: View {
                     subtitle: flow.goal,
                     starterPrompt: "How do you use this flow in your tennis week?"
                 ).id
+            }
+
+            if let threadID {
+                Task {
+                    try? await discussionStore.refreshThread(threadID: threadID)
+                }
             }
         }
         .sheet(isPresented: $showPaywall) {
@@ -100,13 +114,13 @@ struct MobilityFlowDetailView: View {
 
     private var lockedCard: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Premium flow")
+            Text(lang.t("mobility.premium"))
                 .font(.headline)
 
-            Text("Preview is limited to the first two flows. All Access unlocks the complete mobility and recovery library plus community participation.")
+            Text(lang.t("mobility.locked_desc"))
                 .foregroundStyle(AppPalette.inkSoft)
 
-            Button("Unlock Mobility Library") {
+            Button(lang.t("mobility.unlock")) {
                 showPaywall = true
             }
             .buttonStyle(.borderedProminent)
@@ -122,23 +136,11 @@ struct MobilityFlowDetailView: View {
 
     private var discussionSection: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Discussion")
+            Text(lang.t("training.discussion"))
                 .font(.headline)
-
-            if let thread {
-                Text("\(discussionStore.commentCount(for: thread.id)) comments linked to this flow.")
-                    .foregroundStyle(AppPalette.inkSoft)
-
-                NavigationLink {
-                    DiscussionThreadView(threadID: thread.id)
-                } label: {
-                    Text("Open Thread")
-                        .font(.headline)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 14)
-                }
-                .buttonStyle(.bordered)
-            }
+            Text(lang.t("training.discussion_hint"))
+                .font(.subheadline)
+                .foregroundStyle(AppPalette.inkSoft)
         }
         .padding()
         .background(AppPalette.parchment)
