@@ -32,4 +32,4 @@ We aim to respond within 24 hours.
 
 ## About
 
-CourtIQ is built by [Your Legal Entity Name], based in [Your City].
+CourtIQ is built by [Your Legal Entity Name], based in Ireland.

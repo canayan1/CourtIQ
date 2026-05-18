@@ -4,10 +4,10 @@
 CourtIQ
 
 ## Subtitle
-Daily tennis IQ and training plans
+Daily tennis IQ, training, and recovery
 
 ## Promotional Text
-Train your decisions, your body, and your weekly tennis habits in one focused system.
+Train your decisions, your body, and your weekly tennis habits in one focused system with synced progress and content-linked community threads.
 
 ## Keywords
 tennis,training,footwork,fitness,mobility,conditioning,quiz,coach,drills,recovery
@@ -15,7 +15,7 @@ tennis,training,footwork,fitness,mobility,conditioning,quiz,coach,drills,recover
 ## Description
 CourtIQ helps tennis players train the next point before they play it.
 
-Use daily IQ quizzes to sharpen decision-making, follow an 8-week tennis training plan, unlock premium mobility flows, and stay accountable with content-linked discussion threads.
+Use daily IQ quizzes to sharpen decision-making, follow an 8-week tennis training plan, unlock premium mobility flows, and join content-linked discussion threads that stay anchored to real tennis work.
 
 Free preview includes:
 - the Today hub
@@ -29,13 +29,14 @@ All Access unlocks:
 - the full mobility and recovery library
 - premium practice skill blocks
 - archived quiz insights
-- community posting and participation
+- community posting, likes, and reports
+- synced progress for signed-in users
 
 CourtIQ is built for players who want structure, not noise:
 - scenario-based tennis IQ
 - weekly training progression
 - persistence checks and history
-- clear premium upgrades
+- Sign in with Apple account sync
 - focused, content-anchored community discussion
 
 ## Custom Product Page Angles

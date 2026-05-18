@@ -2,7 +2,9 @@
 
 **Last updated:** May 2026
 
-CourtIQ ("we", "us") is a tennis IQ and training app published by [Your Legal Entity Name]. This policy explains what data we collect, why, and how you can control it. We do **not** sell personal data, and we use only the data needed to run the app.
+CourtIQ ("we", "us") is a tennis IQ and training app published by **[Your Legal Entity Name]**, established in the Republic of Ireland. This policy explains what data we collect, why, and how you can control it. We are the **data controller** of your personal data under the EU General Data Protection Regulation (GDPR) and the Irish Data Protection Act 2018.
+
+We do **not** sell personal data, and we use only the data needed to run the app.
 
 If you have questions, contact us at **privacy@courtiq.app**.
 
@@ -59,18 +61,36 @@ We retain account data while your account is active. When you delete your accoun
 
 You can:
 - **See your data** — most of it is shown in the app (Profile, Progress, History tabs).
-- **Export your data** — email **privacy@courtiq.app** and we'll send a copy within 30 days.
-- **Delete your data** — Profile → Delete account, or email us.
+- **Export your data** (right to access / data portability) — email **privacy@courtiq.app** and we'll send a copy within 30 days.
+- **Correct inaccurate data** (right to rectification) — email us.
+- **Delete your data** (right to erasure / "right to be forgotten") — Profile → Delete account, or email us.
+- **Restrict or object to processing** — email us with the specifics.
 - **Reset local data without deleting your account** — Profile → Reset local data.
-- **Withdraw consent** — sign out, switch to guest mode, or delete the app.
+- **Withdraw consent** at any time — sign out, switch to guest mode, or delete the app. Withdrawing consent does not affect the lawfulness of prior processing.
 
-If you are in the EU/UK (GDPR) or California (CCPA), you also have the right to lodge a complaint with your local data protection authority.
+### Lodging a complaint
+
+If you believe we have processed your personal data unlawfully, you have the right to lodge a complaint with a data protection authority.
+
+- **Our lead supervisory authority** is the **Irish Data Protection Commission (DPC)**, 21 Fitzwilliam Square South, Dublin 2, D02 RD28, Ireland. Web: https://www.dataprotection.ie. Phone: +353 (0)761 104 800.
+- If you live in the EU/EEA, you may also contact your **national data protection authority**.
+- If you live in the UK, you may contact the **Information Commissioner's Office (ICO)**: https://ico.org.uk.
+- If you live in California, the **California Consumer Privacy Act (CCPA)** gives you additional rights — write to us and we will honor them.
+
+### Legal bases for processing (GDPR Art. 6)
+
+We rely on the following legal bases:
+
+- **Contract performance** (Art. 6(1)(b)) — to run your account, deliver subscription content, sync progress, and process purchases.
+- **Legitimate interests** (Art. 6(1)(f)) — to keep the app secure, prevent fraud and abuse, improve performance via aggregated crash/diagnostic data, and moderate community content. You can object at any time.
+- **Consent** (Art. 6(1)(a)) — for anything that requires it explicitly (currently nothing beyond the health & safety acknowledgment).
+- **Legal obligation** (Art. 6(1)(c)) — to comply with tax, financial, and regulatory requirements.
 
 ---
 
 ## 5. Children
 
-CourtIQ is not directed at children under 13 (or under 16 in the EU). We do not knowingly collect data from children. If you believe a child has signed up, contact us and we will delete the account.
+CourtIQ requires users to be **at least 16 years old** — the strictest GDPR consent threshold. We do not knowingly collect data from anyone under 16. If you believe a child has signed up, contact **privacy@courtiq.app** and we will delete the account.
 
 ---
 
@@ -99,9 +119,18 @@ We may update this policy as the app evolves. Material changes will be announced
 
 ---
 
-## 9. Contact
+## 9. International data transfers
+
+Some of our service providers (e.g. Apple, Firebase / Supabase if used) may process your personal data outside the European Economic Area. Where this happens, we rely on the safeguards published by those providers — typically the European Commission's Standard Contractual Clauses or an applicable adequacy decision. You may request details of these safeguards by emailing privacy@courtiq.app.
+
+---
+
+## 10. Contact
 
 **privacy@courtiq.app**
 
 [Your Legal Entity Name]
-[Your Address]
+[Your Registered Address, Ireland]
+Republic of Ireland
+
+(We are not yet required to appoint a Data Protection Officer under GDPR Art. 37. If that changes, we will update this policy with the DPO's contact.)

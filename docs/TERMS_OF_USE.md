@@ -2,17 +2,19 @@
 
 **Last updated:** May 2026
 
-By downloading, installing, or using CourtIQ ("the app"), you agree to these Terms of Use ("Terms"). If you do not agree, do not use the app. CourtIQ is published by [Your Legal Entity Name] ("we", "us", "our").
+By downloading, installing, or using CourtIQ ("the app"), you agree to these Terms of Use ("Terms"). If you do not agree, do not use the app. CourtIQ is published by **[Your Legal Entity Name]**, established in the Republic of Ireland ("we", "us", "our").
 
 Questions: **support@courtiq.app**
 
-> **READ SECTIONS 5–10 CAREFULLY.** They contain important health and safety acknowledgments, an assumption-of-risk clause, a limitation of our liability, an indemnification by you, and a binding arbitration agreement with a class action waiver (where enforceable). These affect your legal rights.
+> **READ SECTIONS 5–10 CAREFULLY.** They contain important health and safety acknowledgments, an assumption-of-risk clause, a limitation of our liability, an indemnification by you, and our approach to dispute resolution. These affect your legal rights.
+>
+> If you are a consumer resident in the European Union, the European Economic Area, or the United Kingdom, your **mandatory statutory consumer rights** under the law of your country of residence apply on top of these Terms and cannot be waived. Nothing in these Terms limits those rights.
 
 ---
 
 ## 1. Who can use CourtIQ
 
-You must be at least 13 years old (16 in the EU/UK) to use CourtIQ. By using the app you confirm you meet this requirement.
+You must be at least **16 years old** to use CourtIQ. We set this minimum age to align with the most protective consent threshold under the EU General Data Protection Regulation (GDPR) and to keep the app clearly out of scope for under-13 data-protection regimes such as COPPA. By using the app you confirm you meet this requirement.
 
 You are responsible for keeping your account credentials secure and for everything that happens through your account.
 
@@ -166,24 +168,27 @@ Some jurisdictions do not allow the limitation or exclusion of liability for inc
 
 ### 10.1 Informal resolution first
 
-Before filing any claim, you agree to try to resolve it informally by emailing **support@courtiq.app** with a clear description of the dispute. We will try to respond within 30 days. Many disputes can be resolved this way.
+Before filing any claim, you agree to try to resolve it informally by emailing **support@courtiq.app** with a clear description of the dispute. We will try to respond within 30 days. Many disputes are resolved this way without escalating.
 
-### 10.2 Binding arbitration (where enforceable)
+### 10.2 Online dispute resolution (EU consumers)
 
-If informal resolution fails, **any dispute, claim, or controversy** arising out of or relating to CourtIQ or these Terms — including the formation, interpretation, breach, or termination of these Terms, and whether the claims are arbitrable — will be resolved by **final and binding arbitration** rather than in court, except:
+If you are a consumer resident in the European Union, you may also submit complaints to the European Commission's Online Dispute Resolution platform: https://ec.europa.eu/consumers/odr. We are not obliged to participate in ODR proceedings, and we prefer to resolve disputes directly through the email above.
 
-- Either party may bring an individual claim in small claims court if the claim qualifies.
-- Either party may seek injunctive relief in court for intellectual property infringement.
+### 10.3 Courts (consumers)
 
-The arbitration will be administered by a recognized arbitration body in [Your Jurisdiction] under its rules then in effect. The arbitrator's decision will be final and binding, and judgment may be entered in any court of competent jurisdiction.
+If informal resolution fails and you are a **consumer**, you may bring proceedings in the courts of your country of residence and you have the benefit of mandatory consumer-protection rules under the law of that country. We may bring proceedings against you in the courts of your country of residence.
 
-### 10.3 Class action waiver
+### 10.4 Courts (non-consumers) and where you act on behalf of a business
 
-You and we each agree that **any dispute resolution proceedings will be conducted only on an individual basis** and not in a class, consolidated, or representative action. You waive any right to participate in a class action, class arbitration, private attorney general action, or any other collective or representative proceeding.
+If you are not acting as a consumer (for example, you are a business, a sole trader using the app for commercial purposes, or you are otherwise acting in a professional capacity), any dispute arising out of or in connection with these Terms or CourtIQ will be subject to the **exclusive jurisdiction of the courts of Ireland**.
 
-### 10.4 Where this section does not apply
+### 10.5 Optional arbitration
 
-If you are a consumer in the European Union, the United Kingdom, or another jurisdiction that prohibits pre-dispute binding arbitration or class action waivers, sections 10.2 and 10.3 do not apply to you to the extent prohibited. Your statutory consumer rights are not affected by these Terms.
+The parties may, by mutual written agreement after a dispute arises, refer the dispute to confidential arbitration in Ireland under the Arbitration Act 2010. This section does not require you to arbitrate, and nothing in these Terms forces a consumer to waive their right to bring a claim in court.
+
+### 10.6 No class actions outside permitted regimes
+
+Except where prohibited by law (including under EU consumer protection law), claims will be brought on an individual basis. This clause does not affect any right to participate in a collective redress mechanism that is established by, or available under, mandatory law in your country of residence.
 
 ---
 
@@ -209,7 +214,7 @@ You must comply with all applicable third-party agreements when using the app. A
 
 ### 13.1 Governing law
 
-These Terms are governed by the laws of [Your Jurisdiction], without regard to conflict-of-laws principles. Mandatory consumer protection laws of your country of residence still apply where they provide stronger protection.
+These Terms are governed by the **laws of Ireland**, without regard to its conflict-of-laws principles. If you are a consumer, the mandatory consumer-protection laws of your country of residence continue to apply where they provide stronger protection — these Terms do not override those rights.
 
 ### 13.2 Severability
 
@@ -238,5 +243,5 @@ We are not liable for any failure or delay in performance caused by events outsi
 **support@courtiq.app**
 
 [Your Legal Entity Name]
-[Your Address]
-[Your Jurisdiction]
+[Your Registered Address, Ireland]
+Republic of Ireland
