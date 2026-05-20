@@ -11,6 +11,7 @@ struct TrainingHubView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 heroCard
+                frequencyBanner
                 featuredCard
                 premiumTracks
             }
@@ -18,6 +19,47 @@ struct TrainingHubView: View {
         }
         .background(AppPalette.cream)
         .navigationTitle(lang.t("tab.training"))
+    }
+
+    // MARK: - Onboarding frequency personalisation
+
+    @ViewBuilder
+    private var frequencyBanner: some View {
+        let freq = UserDefaults.standard.string(forKey: "CourtIQ.onboardingFrequency") ?? ""
+
+        if !freq.isEmpty, let info = frequencyInfo(for: freq) {
+            HStack(alignment: .top, spacing: 12) {
+                Image(systemName: "calendar.badge.checkmark")
+                    .font(.system(size: 20))
+                    .foregroundStyle(AppPalette.moss)
+                    .frame(width: 28)
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Plan matched to \(info.days)")
+                        .font(.system(size: 13, weight: .bold, design: .rounded))
+                        .foregroundStyle(AppPalette.moss)
+                    Text(info.note)
+                        .font(.caption)
+                        .foregroundStyle(AppPalette.inkSoft)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+            }
+            .padding(14)
+            .background(AppPalette.moss.opacity(0.09))
+            .overlay(
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .stroke(AppPalette.moss.opacity(0.22), lineWidth: 1)
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        }
+    }
+
+    private func frequencyInfo(for freq: String) -> (days: String, note: String)? {
+        switch freq {
+        case "1-2": return ("1–2 days/week", "The foundation plan fits neatly into two sessions — exactly your schedule.")
+        case "3-4": return ("3–4 days/week", "The 4-day weekly loop in the foundation plan is built for your rhythm.")
+        case "5+":  return ("5+ days/week", "High-frequency players get the most from the Match Conditioning track once premium is unlocked.")
+        default:    return nil
+        }
     }
 
     private var heroCard: some View {
@@ -50,42 +92,58 @@ struct TrainingHubView: View {
     private var featuredCard: some View {
         let program = TrainingProgram.featuredProgram
 
-        return VStack(alignment: .leading, spacing: 16) {
-            sectionHeader(title: lang.t("training.free_foundation"), subtitle: lang.t("training.start_here"))
+        return ZStack(alignment: .topTrailing) {
+            // Diagonal racket motif behind content
+            TennisRacket(color: .white.opacity(0.16), accent: .white.opacity(0.35), angle: -22)
+                .frame(width: 130, height: 182)
+                .offset(x: 28, y: -8)
+                .allowsHitTesting(false)
 
-            Text(program.title)
-                .font(.title3.bold())
+            VStack(alignment: .leading, spacing: 16) {
+                sectionHeader(title: lang.t("training.free_foundation"),
+                              subtitle: lang.t("training.start_here"))
 
-            VStack(alignment: .leading, spacing: 6) {
-                Text("PHEC Program")
-                    .font(.system(size: 24, weight: .black, design: .rounded))
-                    .textCase(.uppercase)
-                    .tracking(0.8)
-                    .foregroundStyle(.white)
-                Text("Plyometrics, hypertrophy, explosiveness, conditioning")
-                    .font(.subheadline.weight(.medium))
-                    .fixedSize(horizontal: false, vertical: true)
-                    .foregroundStyle(.white.opacity(0.88))
+                Text(program.title)
+                    .font(.title3.bold())
+
+                VStack(alignment: .leading, spacing: 6) {
+                    Text("PHEC Program")
+                        .font(.system(size: 24, weight: .black, design: .rounded))
+                        .textCase(.uppercase)
+                        .tracking(0.8)
+                        .foregroundStyle(.white)
+                    Text("Plyometrics, hypertrophy, explosiveness, conditioning")
+                        .font(.subheadline.weight(.medium))
+                        .fixedSize(horizontal: false, vertical: true)
+                        .foregroundStyle(.white.opacity(0.88))
+                }
+
+                // 8-week strip
+                HStack(spacing: 4) {
+                    ForEach(1...8, id: \.self) { i in
+                        RoundedRectangle(cornerRadius: 3, style: .continuous)
+                            .fill(.white.opacity(i <= 2 ? 0.85 : 0.28))
+                            .frame(height: 6)
+                    }
+                }
+
+                Text("Repeat the weekly structure for 8 weeks, log each session, and compare your persistence checks over time.")
+                    .font(.subheadline)
+                    .foregroundStyle(.white.opacity(0.9))
+
+                NavigationLink {
+                    TrainingProgramDetailView(program: program)
+                } label: {
+                    Text(lang.t("training.open_plan"))
+                        .font(.headline)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 14)
+                }
+                .buttonStyle(.borderedProminent)
             }
-
-            Text("Repeat the weekly structure for 8 weeks, log each session, and compare your persistence checks over time.")
-                .font(.subheadline)
-                .foregroundStyle(.white.opacity(0.9))
-
-            NavigationLink {
-                TrainingProgramDetailView(program: program)
-            } label: {
-                Text(lang.t("training.open_plan"))
-                    .font(.headline)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 14)
-            }
-            .buttonStyle(.borderedProminent)
+            .padding()
         }
-        .padding()
-        .background(
-            AppPalette.trainingGradient
-        )
+        .background(AppPalette.trainingGradient)
         .foregroundStyle(.white)
         .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
     }

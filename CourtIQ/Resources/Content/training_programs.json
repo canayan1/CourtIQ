@@ -1141,7 +1141,8 @@
         "weekRange": "Week 8"
       }
     ],
-    "title": "8-Week Tennis Hybrid Foundation"
+    "title": "8-Week Tennis Hybrid Foundation",
+    "followOnProgramID": "training-hybrid-progression"
   },
   {
     "accessTier": "premium",
@@ -1859,7 +1860,8 @@
         "weekRange": "Week 8"
       }
     ],
-    "title": "Better Footwork Performance Track"
+    "title": "Better Footwork Performance Track",
+    "followOnProgramID": "training-footwork-progression"
   },
   {
     "accessTier": "premium",
@@ -2435,7 +2437,8 @@
         "weekRange": "Week 8"
       }
     ],
-    "title": "Stronger Shots Power Track"
+    "title": "Stronger Shots Power Track",
+    "followOnProgramID": "training-stronger-shots-progression"
   },
   {
     "accessTier": "premium",
@@ -2819,7 +2822,8 @@
         "weekRange": "Week 8"
       }
     ],
-    "title": "Better Flexibility Mobility Track"
+    "title": "Better Flexibility Mobility Track",
+    "followOnProgramID": "training-flexibility-progression"
   },
   {
     "accessTier": "premium",
@@ -3363,6 +3367,1522 @@
         "weekRange": "Week 8"
       }
     ],
-    "title": "Match Conditioning Engine Track"
+    "title": "Match Conditioning Engine Track",
+    "followOnProgramID": "training-conditioning-progression"
+  },
+  {
+    "id": "training-hybrid-progression",
+    "category": "hybridFoundation",
+    "title": "8-Week Hybrid Power Continuation",
+    "accessTier": "free",
+    "durationWeeks": 8,
+    "overview": "The follow-on block after Hybrid Foundation. New rotational patterns, heavier elastic work, and match-speed conditioning — all introduced at moderate load so you earn the volume.",
+    "outcome": "Sharper elastic power, cleaner rotational drive through the serve and forehand, and better repeat-sprint recovery.",
+    "emphasis": [
+      "Rotational power",
+      "Elasticity",
+      "Contrast training",
+      "Repeat sprint"
+    ],
+    "phases": [
+      {
+        "id": "hybridp-phase-1",
+        "weekRange": "Weeks 1-2",
+        "title": "Adaptation",
+        "guidance": "New movement patterns at moderate load. Priority is clean technique and tolerance, not volume."
+      },
+      {
+        "id": "hybridp-phase-2",
+        "weekRange": "Week 3",
+        "title": "Ramp",
+        "guidance": "Add load only where week-2 technique was clean. Keep rest generous between main lifts."
+      },
+      {
+        "id": "hybridp-phase-3",
+        "weekRange": "Week 4",
+        "title": "Throwback Test Week",
+        "guidance": "Run one full week of the Hybrid Foundation program. This re-exposes your legs to the baseline movement pattern and confirms your base has consolidated before the new block's final stretch."
+      },
+      {
+        "id": "hybridp-phase-4",
+        "weekRange": "Weeks 5-7",
+        "title": "Consolidation",
+        "guidance": "Return to the new block. Build toward target loads and sharper outputs — intensity over volume."
+      },
+      {
+        "id": "hybridp-phase-5",
+        "weekRange": "Week 8",
+        "title": "Benchmark",
+        "guidance": "Repeat a single high-quality session per theme to compare against week 2. Log a persistence check."
+      }
+    ],
+    "days": [
+      {
+        "id": "hybridp-day-1",
+        "dayLabel": "Day 1",
+        "title": "Rotational Power + Sprint",
+        "type": "hybrid",
+        "duration": "70 min",
+        "focus": "Transfer rotational force into court speed.",
+        "objective": "Introduce rotational power patterns while keeping sprint quality sharp.",
+        "warmup": "Bike 5 min, hip 90/90, thoracic open-book, med-ball slams light.",
+        "exercises": [
+          {
+            "id": "hybridp-d1-1",
+            "title": "Rotational med-ball throw",
+            "prescription": "4 x 4 / side",
+            "intent": "Hip-driven rotation with a stable trunk.",
+            "howTo": [
+              "Stand sideways to a wall, feet just wider than shoulders.",
+              "Rotate away from the wall, loading the back hip.",
+              "Drive the hip forward and throw the ball into the wall.",
+              "Catch and reset for each rep — no rushing."
+            ],
+            "tennisWhy": "This is the exact rotational pattern you use to generate pace on a forehand or serve. Loading the back hip first is what separates a heavy shot from an arm shot.",
+            "watchOuts": [
+              "Don't lead with your arms — the hip turns first.",
+              "Keep your chest tall through the throw.",
+              "If your lower back feels loaded, you're rotating from the lumbar instead of the hip."
+            ],
+            "titleTr": "Rotasyonel Sağlık Topu Atışı",
+            "intentTr": "Sabit gövde ile kalça kaynaklı rotasyon.",
+            "howToTr": [
+              "Duvara yan dur, ayaklar omuzdan biraz geniş.",
+              "Duvardan uzaklaşarak dön, arka kalçayı yükle.",
+              "Kalçayı ileri sür ve topu duvara fırlat.",
+              "Her tekrarda yakala ve sıfırla — acele etme."
+            ],
+            "tennisWhyTr": "Forehand veya servis hızı üretirken kullandığın rotasyonel desenin aynısı. Arka kalçayı önce yüklemek ağır bir vuruşu kol vuruşundan ayıran şeydir.",
+            "watchOutsTr": [
+              "Kollarla başlama — önce kalça döner.",
+              "Atış boyunca göğsü dik tut.",
+              "Belin yüklenmiş hissediyorsa kalçadan değil belden dönüyorsun."
+            ]
+          },
+          {
+            "id": "hybridp-d1-2",
+            "title": "Trap-bar jump",
+            "prescription": "4 x 3",
+            "intent": "Fast concentric drive under load.",
+            "howTo": [
+              "Load a trap-bar to roughly 30-40% of your deadlift 1RM.",
+              "Set up as for a deadlift — hips back, chest tall.",
+              "Drive up explosively so the bar leaves the ground slightly.",
+              "Land balanced and reset — don't rebound."
+            ],
+            "tennisWhy": "Teaches your legs to push hard under load, then release — the same pattern you need when pushing off for a wide ball or exploding into a serve.",
+            "watchOuts": [
+              "Skip this day if the concentric feels slow — you need speed, not grind.",
+              "Land with soft knees.",
+              "Don't chase height over intent."
+            ],
+            "titleTr": "Trap-bar Sıçrama",
+            "intentTr": "Yük altında hızlı konsantrik itme.",
+            "howToTr": [
+              "Trap-bar'a deadlift 1RM'inin yaklaşık %30-40'ını yükle.",
+              "Deadlift gibi kurul — kalça geride, göğüs dik.",
+              "Bar yerden hafif kalkacak kadar patlamalı yukarı sür.",
+              "Dengeli in ve sıfırla — hemen tekrarlama."
+            ],
+            "tennisWhyTr": "Bacaklarına yük altında sert itmeyi ve bırakmayı öğretir — geniş top için itmede veya servise patlamada kullandığın desen.",
+            "watchOutsTr": [
+              "Konsantrik yavaş hissediyorsa bugünü atla — hız gerekli, yük değil.",
+              "Yumuşak dizlerle in.",
+              "Yüksekliği değil niyeti kovala."
+            ]
+          },
+          {
+            "id": "hybridp-d1-3",
+            "title": "Broad jump + repeat sprint",
+            "prescription": "6 x (1 jump + 20 m sprint)",
+            "intent": "Elastic-to-linear speed transfer.",
+            "howTo": [
+              "Jump as far as you can from a standing start.",
+              "Land and immediately accelerate for 20 metres.",
+              "Walk back fully. Rest 45 seconds before the next rep."
+            ],
+            "tennisWhy": "The first step after a split-step is elastic. This builds the chain from load-absorb-rebound to linear drive.",
+            "watchOuts": [
+              "Quality over distance — if your landing is sloppy, reduce jump effort.",
+              "Full rest between reps. This isn't conditioning; it's speed."
+            ],
+            "titleTr": "Uzun Atlama + Tekrar Sprint",
+            "intentTr": "Elastik hızdan lineer hıza transfer.",
+            "howToTr": [
+              "Ayakta duruştan olabildiğince uzağa atla.",
+              "İn ve hemen 20 metre hızlan.",
+              "Tam geri yürü. Sonraki tekrardan önce 45 saniye dinlen."
+            ],
+            "tennisWhyTr": "Split step sonrası ilk adım elastiktir. Bu zinciri yükle-emme-geri tepki-lineer itme olarak kurar.",
+            "watchOutsTr": [
+              "Mesafeden çok kalite — iniş dağınıksa atlama efordunu azalt.",
+              "Tekrarlar arası tam dinlen. Bu kondisyon değil, hız."
+            ]
+          }
+        ],
+        "finisher": "6 x 12-second shuttle runs with 60-second walks.",
+        "recovery": "Walk 5 min, then hip and calf mobility."
+      },
+      {
+        "id": "hybridp-day-2",
+        "dayLabel": "Day 2",
+        "title": "Upper Contrast + Core",
+        "type": "gym",
+        "duration": "70 min",
+        "focus": "Contrast heavy and fast for serving arm speed.",
+        "objective": "Pair a heavy press with a fast throw to build arm speed under load tolerance.",
+        "warmup": "Band pull-aparts, scapular circles, light overhead press, med-ball chest pass.",
+        "exercises": [
+          {
+            "id": "hybridp-d2-1",
+            "title": "Bench press",
+            "prescription": "4 x 5",
+            "intent": "Upper-body pushing strength.",
+            "howTo": [
+              "Keep feet flat, back and shoulders pressed into the bench.",
+              "Lower to mid-chest with elbows around 45°.",
+              "Drive the bar straight up — don't flare the elbows out fully."
+            ],
+            "tennisWhy": "A strong push underpins stable, repeatable volleys and the end-range push in the serve extension.",
+            "watchOuts": [
+              "Leave 1-2 reps in reserve.",
+              "Don't bounce off the chest.",
+              "Stop if a shoulder pinches at the bottom."
+            ],
+            "titleTr": "Bench Press",
+            "intentTr": "Üst gövde itiş gücü.",
+            "howToTr": [
+              "Ayaklar düz, sırt ve omuzlar sıkıca banka yaslansın.",
+              "Dirsekler yaklaşık 45° ile orta göğse indir.",
+              "Barı düz yukarı sür — dirsekleri tam yanlara açma."
+            ],
+            "tennisWhyTr": "Güçlü itiş, tekrarlanabilir volley'lerin ve servis uzatmasının arkasındaki omurgadır.",
+            "watchOutsTr": [
+              "1-2 tekrar rezerv bırak.",
+              "Göğüsten sektirme.",
+              "Omuzda alt noktada sıkışma hissedersen dur."
+            ]
+          },
+          {
+            "id": "hybridp-d2-2",
+            "title": "Med-ball overhead slam",
+            "prescription": "4 x 5",
+            "intent": "Fast concentric arm action matching the serve.",
+            "howTo": [
+              "Stand tall, ball overhead with arms extended.",
+              "Brace your core and slam the ball straight down.",
+              "Catch it off the bounce and reset tall."
+            ],
+            "tennisWhy": "The slam mirrors the arm-down action of the serve. Doing it right after a bench press uses contrast training: heavy primes the muscle, fast trains the speed.",
+            "watchOuts": [
+              "Use a med-ball you can control — too heavy makes the motion slow.",
+              "Don't arch your lower back to slam."
+            ],
+            "titleTr": "Sağlık Topu Baş Üstü Slam",
+            "intentTr": "Servisin hızlı konsantrik kol hareketine eşlik eden egzersiz.",
+            "howToTr": [
+              "Dik dur, top baş üstünde kollar uzatılmış.",
+              "Karnı sık ve topu düz aşağı çarp.",
+              "Seken topu yakala ve dik sıfırla."
+            ],
+            "tennisWhyTr": "Slam, servisin kol-aşağı hareketini yansıtır. Bench press hemen sonrasında yapıldığında kontrast antrenman uygulanmış olur.",
+            "watchOutsTr": [
+              "Kontrol edebileceğin bir top seç — çok ağır topla hareket yavaşlar.",
+              "Slam için beli kırma."
+            ]
+          },
+          {
+            "id": "hybridp-d2-3",
+            "title": "Pallof press",
+            "prescription": "3 x 10 / side",
+            "intent": "Anti-rotation core strength.",
+            "howTo": [
+              "Set a cable at chest height, stand sideways to it.",
+              "Hold the handle at your sternum with both hands.",
+              "Press the cable straight out and resist the pull to rotate.",
+              "Return slowly under control."
+            ],
+            "tennisWhy": "Every rotational stroke needs a trunk that doesn't leak force. Anti-rotation is the base that lets hip drive actually reach the racket.",
+            "watchOuts": [
+              "Keep hips square — no twisting.",
+              "Slow is the point; don't rush the press."
+            ],
+            "titleTr": "Pallof Press",
+            "intentTr": "Anti-rotasyon kor gücü.",
+            "howToTr": [
+              "Kabloyu göğüs hizasına ayarla, yan dur.",
+              "Kolu iki elle göğüs kemiği önünde tut.",
+              "Kabloyu düz ileri it, dönmeye karşı diren.",
+              "Kontrollü geri dön."
+            ],
+            "tennisWhyTr": "Her rotasyonel vuruş, gücü kaçırmayan bir gövde ister. Anti-rotasyon, kalça sürüşünün rakete ulaşmasını sağlayan temeldir.",
+            "watchOutsTr": [
+              "Kalçalar eşit dursun — dönme.",
+              "Yavaşlık burada önemli — hızlandırma."
+            ]
+          }
+        ],
+        "finisher": "Farmer carry 3 x 30m with heavy load.",
+        "recovery": "Chest and thoracic stretching, 5 min."
+      },
+      {
+        "id": "hybridp-day-3",
+        "dayLabel": "Day 3",
+        "title": "Court Conditioning + Mobility",
+        "type": "cardio",
+        "duration": "55 min",
+        "focus": "Court-specific repeat sprint at match intensity.",
+        "objective": "Repeat-sprint endurance using tennis-shaped shuttles.",
+        "warmup": "Jog 5 min, dynamic stretches, 3 x 20m strides.",
+        "exercises": [
+          {
+            "id": "hybridp-d3-1",
+            "title": "Sideline-to-sideline shuttles",
+            "prescription": "8 x 15 sec on / 45 sec off",
+            "intent": "Match-like lateral intensity.",
+            "howTo": [
+              "Start at one singles sideline.",
+              "Shuffle to the opposite sideline as fast as you can, touch the line, return.",
+              "Repeat for 15 seconds, rest 45 seconds, repeat."
+            ],
+            "tennisWhy": "This is essentially a long rally expressed as movement. The interval length matches a 4-shot rally.",
+            "watchOuts": [
+              "If reps 7-8 feel far slower than 1-2, reduce to 6 reps next week.",
+              "Keep chest tall — no hunching late."
+            ],
+            "titleTr": "Yanlıklar Arası Mekik",
+            "intentTr": "Maç benzeri yanal yoğunluk.",
+            "howToTr": [
+              "Bir yan çizgide başla.",
+              "Karşı yan çizgiye olabildiğince hızlı kay, çizgiye dokun, geri dön.",
+              "15 saniye tekrarla, 45 saniye dinlen, tekrarla."
+            ],
+            "tennisWhyTr": "Bu aslında hareketle ifade edilmiş uzun bir rally'dir. Aralık süresi 4 vuruşluk rally'ye denk gelir.",
+            "watchOutsTr": [
+              "Tekrar 7-8, tekrar 1-2'den belirgin daha yavaşsa gelecek hafta 6 tekrara in.",
+              "Göğsü dik tut — sonlarda öne eğilme."
+            ]
+          }
+        ],
+        "finisher": "Hip flexor and calf mobility 8 min.",
+        "recovery": "Easy 5-min walk, then full-body stretch."
+      },
+      {
+        "id": "hybridp-day-4",
+        "dayLabel": "Day 4",
+        "title": "Lower Hypertrophy + Trunk",
+        "type": "gym",
+        "duration": "70 min",
+        "focus": "Build leg volume without sacrificing speed.",
+        "objective": "Hypertrophy-focused leg work with anti-extension core.",
+        "warmup": "Bike 5 min, banded hip openers, goblet squat warmup set.",
+        "exercises": [
+          {
+            "id": "hybridp-d4-1",
+            "title": "Bulgarian split squat",
+            "prescription": "4 x 8 / side",
+            "intent": "Single-leg strength and control.",
+            "howTo": [
+              "Place the top of your back foot on a bench.",
+              "Lower until the front knee is at ~90°.",
+              "Drive through the front heel to stand."
+            ],
+            "tennisWhy": "Open-stance forehands and lunging volleys are single-leg actions. This builds the strength to make them repeatable.",
+            "watchOuts": [
+              "Front knee tracks over middle toe — no cave.",
+              "Don't let the back leg take the weight."
+            ],
+            "titleTr": "Bulgar Split Squat",
+            "intentTr": "Tek bacak güç ve kontrol.",
+            "howToTr": [
+              "Arka ayak üstünü banka koy.",
+              "Ön diz ~90°'ye gelene kadar in.",
+              "Ön topuğa basarak kalk."
+            ],
+            "tennisWhyTr": "Açık duruş forehand ve lunge volley tek bacak hareketleridir. Bunu tekrarlanabilir kılacak gücü inşa eder.",
+            "watchOutsTr": [
+              "Ön diz orta parmağı takip etsin — içe çökme.",
+              "Ağırlığı arka bacağa bindirme."
+            ]
+          },
+          {
+            "id": "hybridp-d4-2",
+            "title": "Romanian deadlift",
+            "prescription": "3 x 8",
+            "intent": "Posterior chain strength.",
+            "howTo": [
+              "Stand tall, bar at hip level.",
+              "Push hips back keeping a long spine, bar slides along the thighs.",
+              "Lower until you feel a hamstring stretch, then drive hips forward."
+            ],
+            "tennisWhy": "Strong hamstrings and glutes decelerate you when stopping for a ball and load up the next push.",
+            "watchOuts": [
+              "Don't squat it — the hips go back, not down.",
+              "Keep the bar close to your legs."
+            ],
+            "titleTr": "Romen Deadlift",
+            "intentTr": "Arka zincir gücü.",
+            "howToTr": [
+              "Dik dur, bar kalça hizasında.",
+              "Uzun omurga koruyarak kalçayı geri it, bar uyluklar boyunca kayar.",
+              "Hamstring gerginliğini hissedene kadar in, sonra kalçayı öne sür."
+            ],
+            "tennisWhyTr": "Güçlü hamstring ve kalça kasları topa dururken yavaşlamayı sağlar ve sonraki itmeyi yükler.",
+            "watchOutsTr": [
+              "Çömelme — kalçalar geri, aşağı değil.",
+              "Barı bacaklara yakın tut."
+            ]
+          }
+        ],
+        "finisher": "Dead bug 3 x 8 / side, slow tempo.",
+        "recovery": "Quad and hamstring stretch, 6 min."
+      },
+      {
+        "id": "hybridp-day-5",
+        "dayLabel": "Day 5",
+        "title": "Elasticity + Shot Speed",
+        "type": "hybrid",
+        "duration": "65 min",
+        "focus": "Rebound strength and contact-point speed.",
+        "objective": "Plyometrics paired with rotational speed drills.",
+        "warmup": "Jump rope 3 min, hip circles, banded scapular work.",
+        "exercises": [
+          {
+            "id": "hybridp-d5-1",
+            "title": "Depth jump",
+            "prescription": "4 x 4",
+            "intent": "Reactive stretch-shortening elasticity.",
+            "howTo": [
+              "Step off a low box (30-40 cm).",
+              "Land with both feet and immediately rebound into a max jump.",
+              "Aim for minimum ground time, not max height alone."
+            ],
+            "tennisWhy": "The split-step and first step are a reactive rebound. This is the purest version of that skill in the gym.",
+            "watchOuts": [
+              "Start low — add box height only if ground time stays fast.",
+              "Stop if knees start caving."
+            ],
+            "titleTr": "Depth Jump",
+            "intentTr": "Reaktif germe-kısalma elastikiyeti.",
+            "howToTr": [
+              "Alçak bir kutudan (30-40 cm) adım atarak in.",
+              "İki ayakla in ve hemen maksimum sıçrayışa geç.",
+              "Sadece yükseklik değil, en kısa zemin temasını hedefle."
+            ],
+            "tennisWhyTr": "Split step ve ilk adım reaktif bir sekmedir. Bu, o yeteneğin salondaki en saf halidir.",
+            "watchOutsTr": [
+              "Alçak başla — zemin teması hızlı kalıyorsa yüksekliği artır.",
+              "Dizler içe çökmeye başlarsa dur."
+            ]
+          },
+          {
+            "id": "hybridp-d5-2",
+            "title": "Cable rotational chop",
+            "prescription": "3 x 8 / side",
+            "intent": "Rotational speed under tension.",
+            "howTo": [
+              "Set a cable high. Stand sideways to it.",
+              "Pull the handle down and across your body in an arc.",
+              "Return under control — the speed is on the way out."
+            ],
+            "tennisWhy": "This mimics the down-and-across arc of a heavy forehand. Doing it under controllable load teaches your body to drive faster from the same line.",
+            "watchOuts": [
+              "Hips rotate; don't lean.",
+              "Chest stays tall throughout."
+            ],
+            "titleTr": "Kablo Rotasyonel Chop",
+            "intentTr": "Gerilim altında rotasyonel hız.",
+            "howToTr": [
+              "Kabloyu yüksek ayarla, yan dur.",
+              "Kolu yay çizerek aşağı ve çaprazlama vücuduna çek.",
+              "Kontrollü geri dön — hız çıkış yönündedir."
+            ],
+            "tennisWhyTr": "Ağır bir forehand'ın aşağı-çaprazlama yayını taklit eder. Kontrol edilebilir yük altında yapmak vücuda aynı hattan daha hızlı sürmeyi öğretir.",
+            "watchOutsTr": [
+              "Kalçalar döner; yaslanma.",
+              "Göğüs boyunca dik kalsın."
+            ]
+          }
+        ],
+        "finisher": "Short shadow-swing drill with band resistance, 3 x 20 sec.",
+        "recovery": "Thoracic mobility, 5 min."
+      },
+      {
+        "id": "hybridp-day-6",
+        "dayLabel": "Day 6",
+        "title": "Aerobic + Recovery Strength",
+        "type": "hybrid",
+        "duration": "55 min",
+        "focus": "Long aerobic base with recovery-focused strength.",
+        "objective": "Easy aerobic work paired with postural and corrective strength.",
+        "warmup": "Dynamic walk 5 min.",
+        "exercises": [
+          {
+            "id": "hybridp-d6-1",
+            "title": "Zone-2 run or bike",
+            "prescription": "30 min at conversational pace",
+            "intent": "Aerobic base capacity.",
+            "howTo": [
+              "Maintain a pace where you can talk in full sentences.",
+              "Heart rate around 60-70% of max.",
+              "Keep stride or cadence relaxed."
+            ],
+            "tennisWhy": "Your base aerobic fitness is what keeps the fifth set from falling apart. This builds it without compromising Day 5's explosive work.",
+            "watchOuts": [
+              "If you can't talk, you're too hard.",
+              "Skip if legs feel beat from Day 5 — easy walk instead."
+            ],
+            "titleTr": "Zone-2 Koşu ya da Bisiklet",
+            "intentTr": "Aerobik temel kapasite.",
+            "howToTr": [
+              "Tam cümle kurabileceğin bir tempo tut.",
+              "Kalp atışı maksimumun %60-70'i civarında.",
+              "Adım veya pedal temposu rahat kalsın."
+            ],
+            "tennisWhyTr": "Temel aerobik kondisyon, beşinci setin dağılmasını engelleyen şeydir. Bunu 5. Günün patlayıcı işini bozmadan inşa eder.",
+            "watchOutsTr": [
+              "Konuşamıyorsan çok zor yapıyorsun.",
+              "5. Günden bacaklar yorgunsa atla — yerine rahat yürüyüş."
+            ]
+          }
+        ],
+        "finisher": "Reverse plank hold 3 x 30 sec.",
+        "recovery": "Full-body stretch, 8 min."
+      },
+      {
+        "id": "hybridp-day-7",
+        "dayLabel": "Day 7",
+        "title": "Recovery / Off",
+        "type": "recovery",
+        "duration": "20-30 min",
+        "focus": "Full recovery.",
+        "objective": "Active recovery or full rest day depending on fatigue.",
+        "warmup": "-",
+        "exercises": [
+          {
+            "id": "hybridp-d7-1",
+            "title": "Easy walk + breath work",
+            "prescription": "20 min walk, 5 min box breathing",
+            "intent": "Parasympathetic activation.",
+            "howTo": [
+              "Walk at a truly easy pace — no pushing.",
+              "Finish with 5 minutes of 4-4-4-4 box breathing."
+            ],
+            "tennisWhy": "Recovery is where adaptation happens. Skipping it means the strength work doesn't stick.",
+            "watchOuts": [
+              "Skip the walk entirely if you're sore — full rest is fine."
+            ],
+            "titleTr": "Rahat Yürüyüş + Nefes Çalışması",
+            "intentTr": "Parasempatik aktivasyon.",
+            "howToTr": [
+              "Gerçekten rahat tempoda yürü — zorlama.",
+              "5 dakika 4-4-4-4 kutu nefes ile bitir."
+            ],
+            "tennisWhyTr": "Adaptasyon dinlenmede olur. Dinlenmeyi atlamak güç işinin kalıcı olmamasına neden olur.",
+            "watchOutsTr": [
+              "Ağrı varsa yürüyüşü de atla — tam dinlenme sorun değil."
+            ]
+          }
+        ],
+        "finisher": "-",
+        "recovery": "Sleep priority."
+      }
+    ],
+    "persistencePrompts": [
+      "How crisp did your rotational power feel this week compared to the foundation block?",
+      "How well did you recover between the elastic Day 1 and the volume Day 4?",
+      "How did the Week 4 throwback feel — easier than week 1 of the foundation?"
+    ],
+    "followOnProgramID": null
+  },
+  {
+    "id": "training-footwork-progression",
+    "category": "betterFootwork",
+    "title": "8-Week Footwork Reactive Speed Track",
+    "accessTier": "premium",
+    "durationWeeks": 8,
+    "overview": "The progression block after Better Footwork. Emphasises reactive starts, multi-directional chains, and deceleration strength — earned from the cleaner mechanics you built in cycle 1.",
+    "outcome": "Faster first step from any stance, cleaner stops, and better chained movement without extra steps.",
+    "emphasis": [
+      "Reactive speed",
+      "Deceleration",
+      "Chain movements",
+      "Change of direction"
+    ],
+    "phases": [
+      {
+        "id": "footworkp-phase-1",
+        "weekRange": "Weeks 1-2",
+        "title": "Adaptation",
+        "guidance": "New movement patterns at moderate load. Priority is clean technique and tolerance, not volume."
+      },
+      {
+        "id": "footworkp-phase-2",
+        "weekRange": "Week 3",
+        "title": "Ramp",
+        "guidance": "Add load only where week-2 technique was clean. Keep rest generous between main lifts."
+      },
+      {
+        "id": "footworkp-phase-3",
+        "weekRange": "Week 4",
+        "title": "Throwback Test Week",
+        "guidance": "Return to Better Footwork program for one week. The mechanics should feel easier now — this is a live benchmark of how much the base has strengthened."
+      },
+      {
+        "id": "footworkp-phase-4",
+        "weekRange": "Weeks 5-7",
+        "title": "Consolidation",
+        "guidance": "Return to the new block. Build toward target loads and sharper outputs — intensity over volume."
+      },
+      {
+        "id": "footworkp-phase-5",
+        "weekRange": "Week 8",
+        "title": "Benchmark",
+        "guidance": "Repeat a single high-quality session per theme to compare against week 2. Log a persistence check."
+      }
+    ],
+    "days": [
+      {
+        "id": "footworkp-day-1",
+        "dayLabel": "Day 1",
+        "title": "Reactive Starts",
+        "type": "hybrid",
+        "duration": "60 min",
+        "focus": "First-step reaction to visual or audio cues.",
+        "objective": "Train unprogrammed starts.",
+        "warmup": "A-skips, high knees, lateral shuffles, 3 x short sprints.",
+        "exercises": [
+          {
+            "id": "footworkp-d1-1",
+            "title": "Mirror sprint",
+            "prescription": "6 x 8 sec / 60 sec rest",
+            "intent": "React and move without anticipation.",
+            "howTo": [
+              "Partner 5 metres away mirrors their first move.",
+              "They choose direction randomly — you react and match.",
+              "8 seconds of continuous reactions, then full rest."
+            ],
+            "tennisWhy": "You never know where the ball is going until it leaves the racket. Mirror sprints train honest reaction, not guesswork.",
+            "watchOuts": [
+              "Full rest between reps — speed degrades fast.",
+              "Stop if you start pre-moving — the whole point is reacting."
+            ],
+            "titleTr": "Ayna Sprint",
+            "intentTr": "Beklenti olmadan tepki ver ve hareket et.",
+            "howToTr": [
+              "5 metre uzakta bir partner ilk hareketini ayna gibi yapsın.",
+              "Yönü rastgele seçer — sen tepki verip eşleşirsin.",
+              "8 saniye sürekli tepki, sonra tam dinlenme."
+            ],
+            "tennisWhyTr": "Top nereye gidecek biliyorsun — ama raketten çıkana kadar değil. Ayna sprint tahmini değil, dürüst tepkiyi eğitir.",
+            "watchOutsTr": [
+              "Tekrarlar arası tam dinlen — hız hızla bozulur.",
+              "Önceden hareket etmeye başlarsan dur — mesele tepki vermek."
+            ]
+          },
+          {
+            "id": "footworkp-d1-2",
+            "title": "Split-step to sprint",
+            "prescription": "8 x 5m / 40 sec rest",
+            "intent": "Loaded split-step into a directional sprint.",
+            "howTo": [
+              "Split-step in place — land just as a partner calls or points.",
+              "Sprint 5 metres in the cued direction.",
+              "Walk back and reset."
+            ],
+            "tennisWhy": "The split-step is the single most important piece of tennis footwork. This drill couples it to an honest reactive sprint.",
+            "watchOuts": [
+              "Split contact has to be balanced — not leaning one way.",
+              "If fatigue shows in rep 6-8, cut to 6 reps."
+            ],
+            "titleTr": "Split Step'ten Sprint",
+            "intentTr": "Yüklü split step ile yönlü sprint.",
+            "howToTr": [
+              "Yerinde split step — partner komut verdiği ya da işaret ettiği anda in.",
+              "Gösterilen yöne 5 metre sprint.",
+              "Yürüyerek dön ve sıfırla."
+            ],
+            "tennisWhyTr": "Split step, tenis ayak işinin tek başına en önemli parçasıdır. Bu çalışma onu dürüst bir reaktif sprinte bağlar.",
+            "watchOutsTr": [
+              "Split teması dengeli olmalı — bir tarafa yaslanma.",
+              "Tekrar 6-8'de yorgunluk görünürse 6 tekrara düşür."
+            ]
+          }
+        ],
+        "finisher": "Pogo hops 3 x 15 sec.",
+        "recovery": "Calf and ankle mobility."
+      },
+      {
+        "id": "footworkp-day-2",
+        "dayLabel": "Day 2",
+        "title": "Deceleration Strength",
+        "type": "gym",
+        "duration": "65 min",
+        "focus": "Eccentric strength for stopping.",
+        "objective": "Build the braking force that lets you change direction without wide steps.",
+        "warmup": "Bike 5 min, banded lateral walks, slow reverse lunges.",
+        "exercises": [
+          {
+            "id": "footworkp-d2-1",
+            "title": "Tempo reverse lunge",
+            "prescription": "3 x 8 / side",
+            "intent": "Controlled eccentric loading.",
+            "howTo": [
+              "Step back into a reverse lunge on a 3-second descent.",
+              "Pause 1 second at the bottom.",
+              "Drive up normally. Repeat on the other side."
+            ],
+            "tennisWhy": "The reverse lunge mimics the posterior load when you backpedal to a wide ball. Slow tempo builds the tissue that handles deceleration.",
+            "watchOuts": [
+              "Keep chest tall — don't fold forward.",
+              "If quality drops, stop the set before the final rep."
+            ],
+            "titleTr": "Tempo Ters Lunge",
+            "intentTr": "Kontrollü eksantrik yükleme.",
+            "howToTr": [
+              "3 saniyede ters lunge'a in.",
+              "Dipte 1 saniye dur.",
+              "Normal kalk. Diğer tarafa geç."
+            ],
+            "tennisWhyTr": "Ters lunge, geniş bir topa geri çekilirken arka zincirin yüklenmesini taklit eder. Yavaş tempo yavaşlamayı kaldıran dokuyu inşa eder.",
+            "watchOutsTr": [
+              "Göğsü dik tut — öne katlanma.",
+              "Kalite düşerse son tekrardan önce seti durdur."
+            ]
+          },
+          {
+            "id": "footworkp-d2-2",
+            "title": "Single-leg RDL",
+            "prescription": "3 x 8 / side",
+            "intent": "Single-leg posterior strength and balance.",
+            "howTo": [
+              "Stand on one leg, light weight in the opposite hand.",
+              "Hinge at the hip keeping a long spine, back leg lifts.",
+              "Drive up by squeezing the glute."
+            ],
+            "tennisWhy": "Most open-stance ball contacts are single-leg moments. This is the strength version of that pattern.",
+            "watchOuts": [
+              "Use a light weight — quality first.",
+              "Don't round the lower back."
+            ],
+            "titleTr": "Tek Bacak RDL",
+            "intentTr": "Tek bacak arka zincir gücü ve denge.",
+            "howToTr": [
+              "Tek bacak üstünde dur, karşı elde hafif ağırlık.",
+              "Uzun omurgayı koruyarak kalçadan menteşele, arka bacak kalkar.",
+              "Kalçayı sıkarak kalk."
+            ],
+            "tennisWhyTr": "Açık duruş toplarının çoğu tek bacak anlardır. Bu, o desenin güç versiyonudur.",
+            "watchOutsTr": [
+              "Hafif ağırlık kullan — önce kalite.",
+              "Bel yuvarlanmasın."
+            ]
+          }
+        ],
+        "finisher": "Farmer carry 3 x 30m.",
+        "recovery": "Posterior chain stretch, 6 min."
+      },
+      {
+        "id": "footworkp-day-3",
+        "dayLabel": "Day 3",
+        "title": "Chained Agility",
+        "type": "cardio",
+        "duration": "50 min",
+        "focus": "Linked multi-directional movement.",
+        "objective": "Train sequences of direction change without pauses.",
+        "warmup": "Jump rope 3 min, carioca, crossovers.",
+        "exercises": [
+          {
+            "id": "footworkp-d3-1",
+            "title": "T-drill",
+            "prescription": "6 x each direction / 60 sec rest",
+            "intent": "Chained forward-lateral-backward.",
+            "howTo": [
+              "Set 3 cones 5m apart in a T-shape.",
+              "Sprint to the centre cone, shuffle to one side cone, shuffle across to the other, backpedal to start.",
+              "Alternate leading direction each rep."
+            ],
+            "tennisWhy": "Match rallies chain movements. The T-drill compresses forward-side-back patterns into one quality rep.",
+            "watchOuts": [
+              "Touch each cone — no cheating on the turn.",
+              "Slow down for good form rather than rushing."
+            ],
+            "titleTr": "T-Drill",
+            "intentTr": "Zincirlenmiş ileri-yan-geri.",
+            "howToTr": [
+              "3 koniyi T şeklinde 5'er metre arayla yerleştir.",
+              "Orta koniye sprint, bir yan koniye kayma, karşıya kayma, geriye başlangıca.",
+              "Her tekrarda öncü yönü değiştir."
+            ],
+            "tennisWhyTr": "Maç rally'leri hareketleri zincirler. T-drill ileri-yan-geri desenlerini tek bir kaliteli tekrara sığdırır.",
+            "watchOutsTr": [
+              "Her koniye dokun — dönüşte aldatma.",
+              "İyi formu korumak için yavaşla — acele etme."
+            ]
+          }
+        ],
+        "finisher": "Calf raises 3 x 15.",
+        "recovery": "Ankle and hip mobility."
+      },
+      {
+        "id": "footworkp-day-4",
+        "dayLabel": "Day 4",
+        "title": "Foot & Ankle Recovery",
+        "type": "recovery",
+        "duration": "35 min",
+        "focus": "Tissue maintenance.",
+        "objective": "Low-intensity work to keep feet and calves healthy.",
+        "warmup": "Easy walk 3 min.",
+        "exercises": [
+          {
+            "id": "footworkp-d4-1",
+            "title": "Ankle mobility + foot strengthening",
+            "prescription": "20 min circuit",
+            "intent": "Tissue health and proprioception.",
+            "howTo": [
+              "Ankle dorsiflexion stretch 2 min / side.",
+              "Short-foot exercise 3 x 10 / side.",
+              "Single-leg balance 3 x 30 sec / side.",
+              "Calf raises slow tempo 3 x 12."
+            ],
+            "tennisWhy": "The feet take the biggest pounding in tennis. Low-grade daily work is what keeps the high-intensity days possible.",
+            "watchOuts": [
+              "Don't force ranges — gradual is the point."
+            ],
+            "titleTr": "Ayak Bileği Mobilitesi + Ayak Güçlendirme",
+            "intentTr": "Doku sağlığı ve propriyosepsiyon.",
+            "howToTr": [
+              "Ayak bileği dorsi-fleksiyon germesi 2 dk / taraf.",
+              "Kısa ayak egzersizi 3 x 10 / taraf.",
+              "Tek bacak denge 3 x 30 sn / taraf.",
+              "Yavaş tempo topuk kaldırma 3 x 12."
+            ],
+            "tennisWhyTr": "Tenis'te ayaklar en büyük darbeyi alır. Düşük dozlu günlük iş, yüksek yoğunluklu günlerin yapılabilir kalmasını sağlar.",
+            "watchOutsTr": [
+              "Menzilleri zorlama — kademeli olmak esas."
+            ]
+          }
+        ],
+        "finisher": "Self-massage foot sole, 5 min.",
+        "recovery": "Walk easy 10 min."
+      }
+    ],
+    "persistencePrompts": [
+      "How did your first step feel compared to the foundation block?",
+      "Did chained direction changes feel quieter — fewer extra steps?",
+      "How sharp did you feel in the Week 4 throwback drills?"
+    ],
+    "followOnProgramID": null
+  },
+  {
+    "id": "training-stronger-shots-progression",
+    "category": "strongerShots",
+    "title": "8-Week Shot Velocity Track",
+    "accessTier": "premium",
+    "durationWeeks": 8,
+    "overview": "The progression after Stronger Shots. Maximum intent work — heavier rotational loads paired with top-speed ball throws — to raise the ceiling of your shot speed without losing repeatability.",
+    "outcome": "Noticeably higher top-end shot speed, better contact transfer from legs to racket, and fewer arm-only strokes under fatigue.",
+    "emphasis": [
+      "Peak velocity",
+      "Heavy rotation",
+      "Transfer drills",
+      "Contrast training"
+    ],
+    "phases": [
+      {
+        "id": "strongp-phase-1",
+        "weekRange": "Weeks 1-2",
+        "title": "Adaptation",
+        "guidance": "New movement patterns at moderate load. Priority is clean technique and tolerance, not volume."
+      },
+      {
+        "id": "strongp-phase-2",
+        "weekRange": "Week 3",
+        "title": "Ramp",
+        "guidance": "Add load only where week-2 technique was clean. Keep rest generous between main lifts."
+      },
+      {
+        "id": "strongp-phase-3",
+        "weekRange": "Week 4",
+        "title": "Throwback Test Week",
+        "guidance": "Rerun one week of Stronger Shots. The base loads should feel lighter — confirming the body is ready for velocity-focused work."
+      },
+      {
+        "id": "strongp-phase-4",
+        "weekRange": "Weeks 5-7",
+        "title": "Consolidation",
+        "guidance": "Return to the new block. Build toward target loads and sharper outputs — intensity over volume."
+      },
+      {
+        "id": "strongp-phase-5",
+        "weekRange": "Week 8",
+        "title": "Benchmark",
+        "guidance": "Repeat a single high-quality session per theme to compare against week 2. Log a persistence check."
+      }
+    ],
+    "days": [
+      {
+        "id": "strongp-day-1",
+        "dayLabel": "Day 1",
+        "title": "Heavy Rotation",
+        "type": "hybrid",
+        "duration": "65 min",
+        "focus": "Heavy loaded rotation with fast med-ball release.",
+        "objective": "Contrast heavy cable rotation with fast throws.",
+        "warmup": "Bike 5 min, hip 90/90, thoracic rotations.",
+        "exercises": [
+          {
+            "id": "strongp-d1-1",
+            "title": "Heavy cable rotation",
+            "prescription": "4 x 6 / side",
+            "intent": "Load the rotation pattern.",
+            "howTo": [
+              "Set a cable at hip height.",
+              "Grip with both hands, stand sideways.",
+              "Rotate through the hips with a stable trunk, pulling the cable across your body.",
+              "Control the return."
+            ],
+            "tennisWhy": "The hip-driven rotation is the engine of a heavy forehand. Loading it hard makes the unloaded stroke feel lighter.",
+            "watchOuts": [
+              "Keep the chest tall — no crunching.",
+              "Hips turn; the arms follow."
+            ],
+            "titleTr": "Ağır Kablo Rotasyon",
+            "intentTr": "Rotasyon desenini yükle.",
+            "howToTr": [
+              "Kabloyu kalça hizasına ayarla.",
+              "İki elle tut, yan dur.",
+              "Sabit gövde ile kalçadan dön, kabloyu vücut çaprazında çek.",
+              "Geri dönüşü kontrol et."
+            ],
+            "tennisWhyTr": "Kalça kaynaklı rotasyon ağır bir forehand'ın motorudur. Sert yüklemek yüksüz vuruşu hafif hissettirir.",
+            "watchOutsTr": [
+              "Göğsü dik tut — kamburlaşma.",
+              "Kalçalar döner, kollar takip eder."
+            ]
+          },
+          {
+            "id": "strongp-d1-2",
+            "title": "Med-ball rotational throw (max intent)",
+            "prescription": "5 x 4 / side",
+            "intent": "Top-speed rotational release.",
+            "howTo": [
+              "Stand sideways to a wall, med-ball in both hands.",
+              "Load the back hip and drive it forward fastest you can.",
+              "Release the ball at max speed."
+            ],
+            "tennisWhy": "The peak velocity version of the pattern. Maximum intent teaches the nervous system the highest ceiling it can hit.",
+            "watchOuts": [
+              "Full rest between reps — this is speed work, not conditioning.",
+              "If speed drops, end the set."
+            ],
+            "titleTr": "Sağlık Topu Rotasyonel Atış (maksimum niyet)",
+            "intentTr": "En üst hızlı rotasyonel serbest bırakma.",
+            "howToTr": [
+              "Duvara yan dur, top iki elde.",
+              "Arka kalçayı yükle ve olabildiğince hızlı öne sür.",
+              "Topu maksimum hızla bırak."
+            ],
+            "tennisWhyTr": "Desenin zirve hız versiyonu. Maksimum niyet sinir sistemine ulaşabileceği en yüksek tavanı öğretir.",
+            "watchOutsTr": [
+              "Tekrarlar arası tam dinlen — bu hız işi, kondisyon değil.",
+              "Hız düşerse seti bitir."
+            ]
+          }
+        ],
+        "finisher": "Short-range shadow swings with intent.",
+        "recovery": "Hip and thoracic mobility."
+      },
+      {
+        "id": "strongp-day-2",
+        "dayLabel": "Day 2",
+        "title": "Upper Push-Pull Power",
+        "type": "gym",
+        "duration": "70 min",
+        "focus": "Contrast heavy push/pull with fast throws.",
+        "objective": "Heavy upper work paired with explosive transfer.",
+        "warmup": "Band work, scapular activation, push-up warmup set.",
+        "exercises": [
+          {
+            "id": "strongp-d2-1",
+            "title": "Weighted push-up + ball slam",
+            "prescription": "4 x (5 push-ups + 5 slams)",
+            "intent": "Contrast heavy / fast upper body.",
+            "howTo": [
+              "Do 5 weighted push-ups — plate on back if needed.",
+              "Immediately do 5 med-ball overhead slams.",
+              "Rest 2 minutes, repeat."
+            ],
+            "tennisWhy": "Contrast primes the heavy muscle fibres then asks them to fire fast — exactly what a serve does under fatigue.",
+            "watchOuts": [
+              "No pause between the two — keep the contrast tight.",
+              "If push-up form breaks, drop the weight."
+            ],
+            "titleTr": "Ağırlıklı Şınav + Top Slam",
+            "intentTr": "Üst gövdede kontrast ağır / hızlı.",
+            "howToTr": [
+              "5 ağırlıklı şınav yap — gerekirse sırta plaka koy.",
+              "Hemen 5 baş üstü slam yap.",
+              "2 dakika dinlen, tekrarla."
+            ],
+            "tennisWhyTr": "Kontrast ağır fiberleri hazırlar sonra onlardan hızlı ateş etmelerini ister — yorgunluk altında servis tam olarak bunu yapar.",
+            "watchOutsTr": [
+              "İki hareket arası durma — kontrastı sık tut.",
+              "Şınav formu bozulursa ağırlığı çıkar."
+            ]
+          },
+          {
+            "id": "strongp-d2-2",
+            "title": "Bent-over row",
+            "prescription": "4 x 6",
+            "intent": "Upper-back strength for deceleration.",
+            "howTo": [
+              "Hinge forward with a long spine.",
+              "Row the bar to your lower chest.",
+              "Control the descent — 2-second lower."
+            ],
+            "tennisWhy": "Every forehand needs an upper back strong enough to stop the arm without tugging the shoulder. This is the unseen side of shot speed.",
+            "watchOuts": [
+              "No jerking — smooth pull.",
+              "Keep the spine long."
+            ],
+            "titleTr": "Öne Eğik Kürek",
+            "intentTr": "Yavaşlama için üst sırt gücü.",
+            "howToTr": [
+              "Uzun omurgayla öne menteşele.",
+              "Barı alt göğse çek.",
+              "Kontrollü indir — 2 saniye."
+            ],
+            "tennisWhyTr": "Her forehand kolu omuzu çekmeden durduracak kadar güçlü bir üst sırt ister. Bu, vuruş hızının görünmeyen yüzüdür.",
+            "watchOutsTr": [
+              "Sarsma — düzgün çek.",
+              "Omurgayı uzun tut."
+            ]
+          }
+        ],
+        "finisher": "Face-pulls 3 x 15.",
+        "recovery": "Chest and shoulder stretch."
+      },
+      {
+        "id": "strongp-day-3",
+        "dayLabel": "Day 3",
+        "title": "Lower Drive + Jump",
+        "type": "gym",
+        "duration": "65 min",
+        "focus": "Heavy leg drive paired with jumping.",
+        "objective": "Lower-body contrast for shot base.",
+        "warmup": "Bike 5 min, goblet squat warmup.",
+        "exercises": [
+          {
+            "id": "strongp-d3-1",
+            "title": "Back squat",
+            "prescription": "4 x 5",
+            "intent": "Heavy leg strength.",
+            "howTo": [
+              "Brace your core, unrack the bar.",
+              "Squat to thighs parallel with control.",
+              "Drive up with legs — not back."
+            ],
+            "tennisWhy": "Every serve, every forehand drive is a leg push first. Squat strength raises the ceiling of that push.",
+            "watchOuts": [
+              "Leave 2 reps in the tank.",
+              "Don't let knees cave."
+            ],
+            "titleTr": "Back Squat",
+            "intentTr": "Ağır bacak gücü.",
+            "howToTr": [
+              "Karnı sık, barı rafdan çıkar.",
+              "Uyluklar paralele kadar kontrollü in.",
+              "Bacaklarla kalk — bel ile değil."
+            ],
+            "tennisWhyTr": "Her servis, her forehand itmesi önce bir bacak itmesidir. Squat gücü o itmenin tavanını yükseltir.",
+            "watchOutsTr": [
+              "2 tekrar rezervde bırak.",
+              "Dizler içe çökmesin."
+            ]
+          },
+          {
+            "id": "strongp-d3-2",
+            "title": "Box jump",
+            "prescription": "4 x 3",
+            "intent": "Fast concentric after the heavy squat.",
+            "howTo": [
+              "Immediately after squats, do 3 clean box jumps.",
+              "Step down between reps.",
+              "Priority: clean landing, fast launch."
+            ],
+            "tennisWhy": "The contrast pair teaches strength-to-speed transfer. The squat provides the force; the jump asks for speed.",
+            "watchOuts": [
+              "Rest fully between squat-jump pairs (2-3 min).",
+              "Stop jumps if landing gets noisy."
+            ],
+            "titleTr": "Kutu Atlama",
+            "intentTr": "Ağır squat sonrası hızlı konsantrik.",
+            "howToTr": [
+              "Squat hemen sonrasında 3 temiz kutu atlama.",
+              "Tekrarlar arası aşağı adım at.",
+              "Öncelik: temiz iniş, hızlı çıkış."
+            ],
+            "tennisWhyTr": "Kontrast çifti güçten hıza transferi öğretir. Squat gücü sağlar; atlama hızı ister.",
+            "watchOutsTr": [
+              "Squat-atlama çiftleri arası tam dinlen (2-3 dk).",
+              "İniş gürültülüyse atlamaları bırak."
+            ]
+          }
+        ],
+        "finisher": "Walking lunges 2 x 20m.",
+        "recovery": "Full lower-body stretch."
+      }
+    ],
+    "persistencePrompts": [
+      "Did your shot speed feel higher in practice after the contrast days?",
+      "How steady was your velocity when tired — could you still hit with intent?",
+      "How did the Week 4 throwback loads feel compared to the first cycle?"
+    ],
+    "followOnProgramID": null
+  },
+  {
+    "id": "training-flexibility-progression",
+    "category": "betterFlexibility",
+    "title": "8-Week Active Range Track",
+    "accessTier": "premium",
+    "durationWeeks": 8,
+    "overview": "The continuation of Better Flexibility. Shifts emphasis from passive range to active range — controlled strength at end ranges, so your new flexibility shows up in your movement.",
+    "outcome": "Range you can actually use mid-rally. Stronger end-range control in hips, shoulders, and thoracic rotation.",
+    "emphasis": [
+      "Active range",
+      "End-range strength",
+      "Loaded mobility",
+      "Control"
+    ],
+    "phases": [
+      {
+        "id": "flexp-phase-1",
+        "weekRange": "Weeks 1-2",
+        "title": "Adaptation",
+        "guidance": "New movement patterns at moderate load. Priority is clean technique and tolerance, not volume."
+      },
+      {
+        "id": "flexp-phase-2",
+        "weekRange": "Week 3",
+        "title": "Ramp",
+        "guidance": "Add load only where week-2 technique was clean. Keep rest generous between main lifts."
+      },
+      {
+        "id": "flexp-phase-3",
+        "weekRange": "Week 4",
+        "title": "Throwback Test Week",
+        "guidance": "Rerun one week of Better Flexibility. Compare how the passive ranges feel — the new range should hold easier."
+      },
+      {
+        "id": "flexp-phase-4",
+        "weekRange": "Weeks 5-7",
+        "title": "Consolidation",
+        "guidance": "Return to the new block. Build toward target loads and sharper outputs — intensity over volume."
+      },
+      {
+        "id": "flexp-phase-5",
+        "weekRange": "Week 8",
+        "title": "Benchmark",
+        "guidance": "Repeat a single high-quality session per theme to compare against week 2. Log a persistence check."
+      }
+    ],
+    "days": [
+      {
+        "id": "flexp-day-1",
+        "dayLabel": "Day 1",
+        "title": "Hip Active Range",
+        "type": "recovery",
+        "duration": "40 min",
+        "focus": "Controlled active range for hips.",
+        "objective": "Work the range you have, under control.",
+        "warmup": "Breath drills 2 min, hip circles.",
+        "exercises": [
+          {
+            "id": "flexp-d1-1",
+            "title": "Cossack squat",
+            "prescription": "3 x 6 / side",
+            "intent": "Loaded lateral hip range.",
+            "howTo": [
+              "Feet very wide, toes slightly out.",
+              "Sit into one hip while the other leg extends straight.",
+              "Push back up and shift to the other side."
+            ],
+            "tennisWhy": "Lateral hip range is what lets you load open-stance shots fully. A strong cossack puts that range under your control in a match.",
+            "watchOuts": [
+              "Start shallow — depth comes with control.",
+              "Keep the chest tall, don't fold."
+            ],
+            "titleTr": "Kazak Squat",
+            "intentTr": "Yüklü yanal kalça menzili.",
+            "howToTr": [
+              "Ayaklar çok geniş, parmaklar hafif dışa.",
+              "Bir kalçaya otur, diğer bacak düz uzanır.",
+              "Geri it ve karşı tarafa kay."
+            ],
+            "tennisWhyTr": "Yanal kalça menzili açık duruş vuruşlarını tam yüklemeni sağlayan şeydir. Güçlü bir Cossack o menzili maçta kontrol altına alır.",
+            "watchOutsTr": [
+              "Az derinlikte başla — derinlik kontrolle gelir.",
+              "Göğsü dik tut, katlanma."
+            ]
+          },
+          {
+            "id": "flexp-d1-2",
+            "title": "90/90 hip lift",
+            "prescription": "3 x 8 / side",
+            "intent": "Active internal and external hip rotation.",
+            "howTo": [
+              "Sit in 90/90 position (front leg 90°, back leg 90°).",
+              "Lift the back knee off the floor, keeping the foot down.",
+              "Hold 2 seconds, lower, repeat."
+            ],
+            "tennisWhy": "Internal hip rotation on the back leg is what unlocks a clean forehand push. This builds it under load.",
+            "watchOuts": [
+              "If lift is tiny, that's fine — it's about intent.",
+              "Hold chest upright."
+            ],
+            "titleTr": "90/90 Kalça Kaldırma",
+            "intentTr": "Aktif iç ve dış kalça rotasyonu.",
+            "howToTr": [
+              "90/90 pozisyonunda otur (ön bacak 90°, arka bacak 90°).",
+              "Arka dizi ayak yerdeyken yerden kaldır.",
+              "2 saniye tut, indir, tekrarla."
+            ],
+            "tennisWhyTr": "Arka bacakta iç kalça rotasyonu temiz bir forehand itmesini açan şeydir. Bunu yük altında inşa eder.",
+            "watchOutsTr": [
+              "Kaldırma çok az olsa da sorun değil — mesele niyet.",
+              "Göğsü dik tut."
+            ]
+          }
+        ],
+        "finisher": "Deep squat hold 2 min cumulative.",
+        "recovery": "Walk 5 min."
+      },
+      {
+        "id": "flexp-day-2",
+        "dayLabel": "Day 2",
+        "title": "Shoulder End-Range Strength",
+        "type": "recovery",
+        "duration": "35 min",
+        "focus": "Controlled strength at shoulder end ranges.",
+        "objective": "Make the new shoulder range bulletproof.",
+        "warmup": "Scapular circles, band pull-aparts.",
+        "exercises": [
+          {
+            "id": "flexp-d2-1",
+            "title": "Scap CARs",
+            "prescription": "2 x 5 / direction",
+            "intent": "Controlled articular rotation of the shoulder blade.",
+            "howTo": [
+              "Lift one arm to shoulder height.",
+              "Rotate the shoulder blade through its full range slowly.",
+              "Each circle should take 10+ seconds."
+            ],
+            "tennisWhy": "Serve health depends on the shoulder blade moving freely. CARs reinforce that motion daily.",
+            "watchOuts": [
+              "Slower is better.",
+              "Stop if any position pinches."
+            ],
+            "titleTr": "Skapular CAR",
+            "intentTr": "Kürek kemiğinin kontrollü eklem rotasyonu.",
+            "howToTr": [
+              "Bir kolu omuz hizasına kaldır.",
+              "Kürek kemiğini tam menzil boyunca yavaşça döndür.",
+              "Her daire 10+ saniye sürmeli."
+            ],
+            "tennisWhyTr": "Servis sağlığı kürek kemiğinin serbest hareketine bağlıdır. CAR'lar o hareketi günlük olarak pekiştirir.",
+            "watchOutsTr": [
+              "Yavaş daha iyi.",
+              "Bir pozisyonda sıkışma varsa dur."
+            ]
+          },
+          {
+            "id": "flexp-d2-2",
+            "title": "Prone Y-T-W",
+            "prescription": "3 x 6 of each",
+            "intent": "Mid-back strength for end-range shoulder.",
+            "howTo": [
+              "Lie face down.",
+              "Make a Y, then a T, then a W with your arms — lift each slightly.",
+              "Hold 2 seconds at the top of each."
+            ],
+            "tennisWhy": "End-range shoulder strength is what protects the serve over a long season. Y-T-W is the simplest way to train all three angles.",
+            "watchOuts": [
+              "Don't lift your head — neck stays neutral.",
+              "Stop if any angle pinches."
+            ],
+            "titleTr": "Yüzüstü Y-T-W",
+            "intentTr": "Son menzil omuz için orta sırt gücü.",
+            "howToTr": [
+              "Yüzüstü yat.",
+              "Kollarla Y, sonra T, sonra W yap — her birini hafif kaldır.",
+              "Her birinin üstünde 2 saniye tut."
+            ],
+            "tennisWhyTr": "Son menzil omuz gücü uzun sezonda servisi koruyan şeydir. Y-T-W her üç açıyı eğitmenin en basit yoludur.",
+            "watchOutsTr": [
+              "Başı kaldırma — boyun nötr.",
+              "Bir açıda sıkışma varsa dur."
+            ]
+          }
+        ],
+        "finisher": "Hang from a bar 3 x 20 sec.",
+        "recovery": "Chest opener stretch."
+      },
+      {
+        "id": "flexp-day-3",
+        "dayLabel": "Day 3",
+        "title": "Loaded Mobility Flow",
+        "type": "recovery",
+        "duration": "30 min",
+        "focus": "Put the range under light load.",
+        "objective": "A flow that cycles through the key tennis ranges with a light weight.",
+        "warmup": "Breath work 3 min.",
+        "exercises": [
+          {
+            "id": "flexp-d3-1",
+            "title": "Goblet squat to cossack chain",
+            "prescription": "3 x 6 / side",
+            "intent": "Combined squat + lateral range under load.",
+            "howTo": [
+              "Hold a light dumbbell at your chest.",
+              "Goblet squat, stand, shift to a cossack squat, stand.",
+              "Alternate sides each rep."
+            ],
+            "tennisWhy": "Chains the front-to-side range in one movement — closer to how tennis uses both.",
+            "watchOuts": [
+              "Light weight.",
+              "Smooth transitions — no bouncing."
+            ],
+            "titleTr": "Goblet Squat - Kazak Squat Zinciri",
+            "intentTr": "Yük altında birleşik squat + yanal menzil.",
+            "howToTr": [
+              "Göğüste hafif dumbbell tut.",
+              "Goblet squat, kalk, Cossack'e geç, kalk.",
+              "Her tekrarda taraf değiştir."
+            ],
+            "tennisWhyTr": "Öne-yana menzili tek harekette zincirler — tenisin her ikisini birlikte kullanmasına daha yakın.",
+            "watchOutsTr": [
+              "Hafif ağırlık.",
+              "Yumuşak geçişler — sektirme."
+            ]
+          }
+        ],
+        "finisher": "Diaphragmatic breathing 5 min.",
+        "recovery": "Walk easy 5 min."
+      }
+    ],
+    "persistencePrompts": [
+      "Did your new range show up in matches — did you feel less tight mid-rally?",
+      "How confident did the end-range shoulder work make you feel on serves?",
+      "How tight did old ranges feel during the Week 4 throwback?"
+    ],
+    "followOnProgramID": null
+  },
+  {
+    "id": "training-conditioning-progression",
+    "category": "matchConditioning",
+    "title": "8-Week Match Duration Engine",
+    "accessTier": "premium",
+    "durationWeeks": 8,
+    "overview": "The follow-on from Match Conditioning. Designed to push your work-capacity ceiling: longer high-quality rallies, higher average intensity across sessions, and matched-duration efforts that mirror a full match.",
+    "outcome": "Able to maintain point quality deep into the third set, faster recovery between points, and better tolerance for long matches.",
+    "emphasis": [
+      "Work capacity",
+      "High-intensity repeats",
+      "Match-duration capacity",
+      "Recovery efficiency"
+    ],
+    "phases": [
+      {
+        "id": "condp-phase-1",
+        "weekRange": "Weeks 1-2",
+        "title": "Adaptation",
+        "guidance": "New movement patterns at moderate load. Priority is clean technique and tolerance, not volume."
+      },
+      {
+        "id": "condp-phase-2",
+        "weekRange": "Week 3",
+        "title": "Ramp",
+        "guidance": "Add load only where week-2 technique was clean. Keep rest generous between main lifts."
+      },
+      {
+        "id": "condp-phase-3",
+        "weekRange": "Week 4",
+        "title": "Throwback Test Week",
+        "guidance": "Rerun one week of Match Conditioning. The baseline volumes should feel easier now — this is the test."
+      },
+      {
+        "id": "condp-phase-4",
+        "weekRange": "Weeks 5-7",
+        "title": "Consolidation",
+        "guidance": "Return to the new block. Build toward target loads and sharper outputs — intensity over volume."
+      },
+      {
+        "id": "condp-phase-5",
+        "weekRange": "Week 8",
+        "title": "Benchmark",
+        "guidance": "Repeat a single high-quality session per theme to compare against week 2. Log a persistence check."
+      }
+    ],
+    "days": [
+      {
+        "id": "condp-day-1",
+        "dayLabel": "Day 1",
+        "title": "High-Intensity Repeats",
+        "type": "cardio",
+        "duration": "60 min",
+        "focus": "Repeat high-intensity intervals with tight rest.",
+        "objective": "Train repeat sprint with match-intensity work-to-rest ratio.",
+        "warmup": "Jog 8 min, dynamic stretch, 4 x 20m strides.",
+        "exercises": [
+          {
+            "id": "condp-d1-1",
+            "title": "30-second hard / 60-second easy",
+            "prescription": "10 rounds",
+            "intent": "Near-VO2max intervals.",
+            "howTo": [
+              "Run hard for 30 seconds at ~90% effort.",
+              "Jog easy for 60 seconds.",
+              "Repeat for 10 rounds."
+            ],
+            "tennisWhy": "A standard point is 5-10 seconds of work; a long rally is 20-30. Training at rally-length intensity directly mirrors match stress.",
+            "watchOuts": [
+              "If rep 8+ slows by more than 20%, cut the workout.",
+              "Don't walk the rest — jog."
+            ],
+            "titleTr": "30 Saniye Sert / 60 Saniye Rahat",
+            "intentTr": "VO2max civarı aralıklar.",
+            "howToTr": [
+              "30 saniye ~%90 efor ile sert koş.",
+              "60 saniye rahat koş.",
+              "10 tur tekrar et."
+            ],
+            "tennisWhyTr": "Standart bir puan 5-10 saniye iştir; uzun bir rally 20-30 saniye. Rally uzunluğunda yoğunlukta çalışmak maç stresini doğrudan yansıtır.",
+            "watchOutsTr": [
+              "Tekrar 8+ zamanı %20'den fazla yavaşladıysa antrenmanı bitir.",
+              "Dinlenmede yürüme — jog et."
+            ]
+          }
+        ],
+        "finisher": "5-min easy cooldown jog.",
+        "recovery": "Full-body stretch."
+      },
+      {
+        "id": "condp-day-2",
+        "dayLabel": "Day 2",
+        "title": "Tempo + Core",
+        "type": "hybrid",
+        "duration": "55 min",
+        "focus": "Tempo running with core work.",
+        "objective": "Sustained effort at threshold pace with anti-rotation core.",
+        "warmup": "Jog 5 min, activations.",
+        "exercises": [
+          {
+            "id": "condp-d2-1",
+            "title": "Tempo run",
+            "prescription": "20 min at threshold pace",
+            "intent": "Sustained threshold work.",
+            "howTo": [
+              "Run at a pace you could hold for about 45 minutes — comfortably hard.",
+              "No bursts, no slowing — steady output."
+            ],
+            "tennisWhy": "Between-point walks are your recovery windows. Tempo work raises the pace at which you can recover, so you recover more in less time.",
+            "watchOuts": [
+              "Start slightly slower than you think.",
+              "Stop if form collapses."
+            ],
+            "titleTr": "Tempo Koşu",
+            "intentTr": "Eşik temposu sürekli iş.",
+            "howToTr": [
+              "Yaklaşık 45 dakika koruyabileceğin tempoda koş — rahat-zor.",
+              "Patlama yok, yavaşlama yok — sabit çıktı."
+            ],
+            "tennisWhyTr": "Puanlar arası yürüyüşler senin toparlanma pencerelerindir. Tempo işi toparlanabildiğin tempoyu yükseltir, böylece daha kısa sürede daha çok toparlanırsın.",
+            "watchOutsTr": [
+              "Düşündüğünden biraz yavaş başla.",
+              "Form bozulursa dur."
+            ]
+          },
+          {
+            "id": "condp-d2-2",
+            "title": "Side plank with rotation",
+            "prescription": "3 x 8 / side",
+            "intent": "Anti-lateral core under fatigue.",
+            "howTo": [
+              "Set up in a side plank.",
+              "Rotate the top arm under your body and back up.",
+              "Keep hips square to avoid sagging."
+            ],
+            "tennisWhy": "The core fatigues late in matches. Strengthening it under rotation under fatigue protects shot quality in hour 2.",
+            "watchOuts": [
+              "Quality over quantity — stop when hips sag.",
+              "Slow tempo."
+            ],
+            "titleTr": "Rotasyonlu Yan Plank",
+            "intentTr": "Yorgunluk altında anti-lateral kor.",
+            "howToTr": [
+              "Yan plank'a kur.",
+              "Üstteki kolu vücudun altından ve geri çevir.",
+              "Sarkmamak için kalçaları eşit tut."
+            ],
+            "tennisWhyTr": "Kor maçların geç saatlerinde yorulur. Rotasyon altında yorgunken güçlendirmek 2. saatte vuruş kalitesini korur.",
+            "watchOutsTr": [
+              "Miktardan önce kalite — kalçalar sarktığında dur.",
+              "Yavaş tempo."
+            ]
+          }
+        ],
+        "finisher": "Dead bug 3 x 8.",
+        "recovery": "Hip and hamstring stretch."
+      },
+      {
+        "id": "condp-day-3",
+        "dayLabel": "Day 3",
+        "title": "Match-Duration Effort",
+        "type": "cardio",
+        "duration": "75 min",
+        "focus": "Long session at varied intensity.",
+        "objective": "Simulate the duration and variability of a match.",
+        "warmup": "Jog 10 min, dynamic stretch.",
+        "exercises": [
+          {
+            "id": "condp-d3-1",
+            "title": "Varied-pace bike or run",
+            "prescription": "45 min mixed effort",
+            "intent": "Match-length capacity.",
+            "howTo": [
+              "Alternate 3 min moderate, 1 min hard, 2 min easy.",
+              "Repeat the block for 45 minutes.",
+              "Don't drop to walking on 'easy' — just easy."
+            ],
+            "tennisWhy": "A match is a 2-3 hour piece of varied intensity. Building the capacity to sustain varied effort for match length is the single clearest win.",
+            "watchOuts": [
+              "If you can't hold the block, shorten to 30 min and build up.",
+              "Stop if any form breakdown appears — this is a capacity build, not a grind."
+            ],
+            "titleTr": "Değişken Tempolu Bisiklet ya da Koşu",
+            "intentTr": "Maç uzunluğunda kapasite.",
+            "howToTr": [
+              "3 dakika orta, 1 dakika sert, 2 dakika rahat dönüşümlü.",
+              "Bloğu 45 dakika tekrarla.",
+              "'Rahat'ta yürüyüşe düşme — sadece rahat."
+            ],
+            "tennisWhyTr": "Bir maç 2-3 saatlik değişken yoğunluklu bir parçadır. Maç uzunluğunda değişken efora dayanma kapasitesi en net kazançtır.",
+            "watchOutsTr": [
+              "Bloğu tutamıyorsan 30 dakikaya indir ve çık.",
+              "Formda bozulma olursa dur — bu kapasite inşası, dayanma testi değil."
+            ]
+          }
+        ],
+        "finisher": "Cooldown jog 5 min.",
+        "recovery": "Legs up the wall, 10 min."
+      }
+    ],
+    "persistencePrompts": [
+      "Did you recover between points faster than in the previous block?",
+      "How fresh did your legs feel in hour 2 of long sessions?",
+      "How did match-duration workouts compare to the Week 4 throwback?"
+    ],
+    "followOnProgramID": null
   }
 ]

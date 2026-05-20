@@ -50,7 +50,7 @@ struct PaywallView: View {
             Text(lang.t("paywall.subtitle"))
                 .font(.system(size: 30, weight: .bold, design: .rounded))
 
-            Text("You came from \(source). Premium unlocks the full training library, mobility flows, archived quiz insights, and community participation.")
+            Text(lang.t("paywall.intro_body"))
                 .foregroundStyle(AppPalette.inkSoft)
 
             if !session.isSignedInWithApple {
@@ -87,7 +87,7 @@ struct PaywallView: View {
             }
 
             if session.subscriptionManager.integrationMode == .productConfigurationMissing {
-                Text("App Store products are not loading yet. Confirm your subscription products in App Store Connect before release.")
+                Text(lang.t("paywall.products_loading"))
                     .font(.footnote)
                     .foregroundStyle(AppPalette.inkSoft)
             }
@@ -178,9 +178,19 @@ struct PaywallView: View {
     }
 
     private var legalLinks: some View {
+        // Privacy + Terms must always be reachable from the paywall per
+        // App Store Review §3.1.2(a). If a hosted URL is configured we
+        // open it externally; otherwise we fall back to the in-app
+        // LegalDocumentView so the requirement is always satisfied.
         VStack(alignment: .leading, spacing: 10) {
             if let privacyURL = configuration.privacyPolicyURL {
                 Link(destination: privacyURL) {
+                    Label(lang.t("paywall.privacy"), systemImage: "lock.doc")
+                }
+            } else {
+                NavigationLink {
+                    LegalDocumentView(document: .privacy)
+                } label: {
                     Label(lang.t("paywall.privacy"), systemImage: "lock.doc")
                 }
             }
@@ -189,10 +199,22 @@ struct PaywallView: View {
                 Link(destination: termsURL) {
                     Label(lang.t("paywall.terms"), systemImage: "doc.text")
                 }
+            } else {
+                NavigationLink {
+                    LegalDocumentView(document: .terms)
+                } label: {
+                    Label(lang.t("paywall.terms"), systemImage: "doc.text")
+                }
             }
 
             if let supportURL = configuration.supportURL {
                 Link(destination: supportURL) {
+                    Label(lang.t("paywall.support"), systemImage: "questionmark.circle")
+                }
+            } else {
+                NavigationLink {
+                    LegalDocumentView(document: .support)
+                } label: {
                     Label(lang.t("paywall.support"), systemImage: "questionmark.circle")
                 }
             }

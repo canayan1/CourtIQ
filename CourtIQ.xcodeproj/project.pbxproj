@@ -42,7 +42,41 @@
 		A000000000000000000062 /* PlayerProgressionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000061 /* PlayerProgressionManager.swift */; };
 		A000000000000000000064 /* LevelProgressionPathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000063 /* LevelProgressionPathView.swift */; };
 		A000000000000000000066 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000065 /* LanguageManager.swift */; };
+		A0000000000000000000B1 /* TennisVisuals.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000B0 /* TennisVisuals.swift */; };
+		A0000000000000000000B3 /* FeedbackComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000B2 /* FeedbackComposer.swift */; };
+		A0000000000000000000B5 /* CrashReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000B4 /* CrashReporter.swift */; };
+		A0000000000000000000D1 /* HealthAcknowledgmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000D0 /* HealthAcknowledgmentView.swift */; };
+		A0000000000000000000D3 /* TrainSafelyBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000D2 /* TrainSafelyBanner.swift */; };
+		A0000000000000000000E1 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000E0 /* NotificationManager.swift */; };
+		A0000000000000000000E3 /* NotificationPreAskSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000E2 /* NotificationPreAskSheet.swift */; };
+		A0000000000000000000F1 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000F0 /* Haptics.swift */; };
+		A000000000000000000101 /* TourStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000100 /* TourStep.swift */; };
+		A000000000000000000111 /* MatchEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000110 /* MatchEntry.swift */; };
+		A000000000000000000113 /* MatchEntryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000112 /* MatchEntryManager.swift */; };
+		A000000000000000000115 /* MatchesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000114 /* MatchesListView.swift */; };
+		A000000000000000000117 /* QuickLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000116 /* QuickLogView.swift */; };
+		A000000000000000000119 /* MatchJournalEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000118 /* MatchJournalEntryView.swift */; };
+		A00000000000000000011B /* LogStreakBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000011A /* LogStreakBadge.swift */; };
+		A00000000000000000011D /* MatchCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000011C /* MatchCalendarView.swift */; };
+		A00000000000000000011F /* MatchTrendDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000011E /* MatchTrendDashboardView.swift */; };
+		A000000000000000000131 /* PolygonMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000130 /* PolygonMath.swift */; };
+		A000000000000000000133 /* CourtTapDrill.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000132 /* CourtTapDrill.swift */; };
+		A000000000000000000135 /* CourtTapDrillManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000134 /* CourtTapDrillManager.swift */; };
+		A000000000000000000137 /* CourtTapDrillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000136 /* CourtTapDrillView.swift */; };
+		A000000000000000000139 /* DrillResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000138 /* DrillResultView.swift */; };
+		A000000000000000000141 /* ActivityRingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000140 /* ActivityRingsView.swift */; };
+		A000000000000000000151 /* AvatarConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000150 /* AvatarConfig.swift */; };
+		A000000000000000000153 /* AvatarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000152 /* AvatarManager.swift */; };
+		A000000000000000000155 /* TennisAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000154 /* TennisAvatarView.swift */; };
+		A000000000000000000157 /* AvatarLockerRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000156 /* AvatarLockerRoomView.swift */; };
+		A000000000000000000161 /* ProShotPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000160 /* ProShotPattern.swift */; };
+		A000000000000000000163 /* ProShotPatternsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000162 /* ProShotPatternsManager.swift */; };
+		A000000000000000000165 /* ProShotAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000164 /* ProShotAnimationView.swift */; };
+		A000000000000000000167 /* ProShotCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000166 /* ProShotCard.swift */; };
+		A000000000000000000169 /* pro_shot_patterns.json in Resources */ = {isa = PBXBuildFile; fileRef = A000000000000000000168 /* pro_shot_patterns.json */; };
+		A00000000000000000013B /* court_tap_drills.json in Resources */ = {isa = PBXBuildFile; fileRef = A00000000000000000013A /* court_tap_drills.json */; };
 		A00000000000000000006A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A000000000000000000069 /* Localizable.strings */; };
+		A0000000000000000000C1 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000C0 /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,8 +117,42 @@
 		A000000000000000000061 /* PlayerProgressionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlayerProgressionManager.swift; path = CourtIQ/Core/Models/PlayerProgressionManager.swift; sourceTree = "<group>"; };
 		A000000000000000000063 /* LevelProgressionPathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LevelProgressionPathView.swift; path = CourtIQ/Features/Profile/LevelProgressionPathView.swift; sourceTree = "<group>"; };
 		A000000000000000000065 /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LanguageManager.swift; path = CourtIQ/Core/Utilities/LanguageManager.swift; sourceTree = "<group>"; };
+		A0000000000000000000B0 /* TennisVisuals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TennisVisuals.swift; path = CourtIQ/Core/Utilities/TennisVisuals.swift; sourceTree = "<group>"; };
+		A0000000000000000000B2 /* FeedbackComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeedbackComposer.swift; path = CourtIQ/Core/Utilities/FeedbackComposer.swift; sourceTree = "<group>"; };
+		A0000000000000000000B4 /* CrashReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CrashReporter.swift; path = CourtIQ/Core/Utilities/CrashReporter.swift; sourceTree = "<group>"; };
+		A0000000000000000000D0 /* HealthAcknowledgmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HealthAcknowledgmentView.swift; path = CourtIQ/Features/Legal/HealthAcknowledgmentView.swift; sourceTree = "<group>"; };
+		A0000000000000000000D2 /* TrainSafelyBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrainSafelyBanner.swift; path = CourtIQ/Features/Legal/TrainSafelyBanner.swift; sourceTree = "<group>"; };
+		A0000000000000000000E0 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotificationManager.swift; path = CourtIQ/Core/Utilities/NotificationManager.swift; sourceTree = "<group>"; };
+		A0000000000000000000E2 /* NotificationPreAskSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotificationPreAskSheet.swift; path = CourtIQ/Features/Onboarding/NotificationPreAskSheet.swift; sourceTree = "<group>"; };
+		A0000000000000000000F0 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Haptics.swift; path = CourtIQ/Core/Utilities/Haptics.swift; sourceTree = "<group>"; };
+		A000000000000000000100 /* TourStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TourStep.swift; path = CourtIQ/Features/Onboarding/TourStep.swift; sourceTree = "<group>"; };
+		A000000000000000000110 /* MatchEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchEntry.swift; path = CourtIQ/Core/Models/MatchEntry.swift; sourceTree = "<group>"; };
+		A000000000000000000112 /* MatchEntryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchEntryManager.swift; path = CourtIQ/Core/Models/MatchEntryManager.swift; sourceTree = "<group>"; };
+		A000000000000000000114 /* MatchesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchesListView.swift; path = CourtIQ/Features/Matches/MatchesListView.swift; sourceTree = "<group>"; };
+		A000000000000000000116 /* QuickLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuickLogView.swift; path = CourtIQ/Features/Matches/QuickLogView.swift; sourceTree = "<group>"; };
+		A000000000000000000118 /* MatchJournalEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchJournalEntryView.swift; path = CourtIQ/Features/Matches/MatchJournalEntryView.swift; sourceTree = "<group>"; };
+		A00000000000000000011A /* LogStreakBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LogStreakBadge.swift; path = CourtIQ/Features/Matches/LogStreakBadge.swift; sourceTree = "<group>"; };
+		A00000000000000000011C /* MatchCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchCalendarView.swift; path = CourtIQ/Features/Matches/MatchCalendarView.swift; sourceTree = "<group>"; };
+		A00000000000000000011E /* MatchTrendDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchTrendDashboardView.swift; path = CourtIQ/Features/Matches/MatchTrendDashboardView.swift; sourceTree = "<group>"; };
+		A000000000000000000130 /* PolygonMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PolygonMath.swift; path = CourtIQ/Core/Utilities/PolygonMath.swift; sourceTree = "<group>"; };
+		A000000000000000000132 /* CourtTapDrill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CourtTapDrill.swift; path = CourtIQ/Core/Models/CourtTapDrill.swift; sourceTree = "<group>"; };
+		A000000000000000000134 /* CourtTapDrillManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CourtTapDrillManager.swift; path = CourtIQ/Core/Models/CourtTapDrillManager.swift; sourceTree = "<group>"; };
+		A000000000000000000136 /* CourtTapDrillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CourtTapDrillView.swift; path = CourtIQ/Features/Drill/CourtTapDrillView.swift; sourceTree = "<group>"; };
+		A000000000000000000138 /* DrillResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DrillResultView.swift; path = CourtIQ/Features/Drill/DrillResultView.swift; sourceTree = "<group>"; };
+		A000000000000000000140 /* ActivityRingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActivityRingsView.swift; path = CourtIQ/Features/Rings/ActivityRingsView.swift; sourceTree = "<group>"; };
+		A000000000000000000150 /* AvatarConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AvatarConfig.swift; path = CourtIQ/Core/Models/AvatarConfig.swift; sourceTree = "<group>"; };
+		A000000000000000000152 /* AvatarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AvatarManager.swift; path = CourtIQ/Core/Models/AvatarManager.swift; sourceTree = "<group>"; };
+		A000000000000000000154 /* TennisAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TennisAvatarView.swift; path = CourtIQ/Features/Avatar/TennisAvatarView.swift; sourceTree = "<group>"; };
+		A000000000000000000156 /* AvatarLockerRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AvatarLockerRoomView.swift; path = CourtIQ/Features/Avatar/AvatarLockerRoomView.swift; sourceTree = "<group>"; };
+		A000000000000000000160 /* ProShotPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProShotPattern.swift; path = CourtIQ/Core/Models/ProShotPattern.swift; sourceTree = "<group>"; };
+		A000000000000000000162 /* ProShotPatternsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProShotPatternsManager.swift; path = CourtIQ/Core/Models/ProShotPatternsManager.swift; sourceTree = "<group>"; };
+		A000000000000000000164 /* ProShotAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProShotAnimationView.swift; path = CourtIQ/Features/ProShot/ProShotAnimationView.swift; sourceTree = "<group>"; };
+		A000000000000000000166 /* ProShotCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProShotCard.swift; path = CourtIQ/Features/ProShot/ProShotCard.swift; sourceTree = "<group>"; };
+		A000000000000000000168 /* pro_shot_patterns.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = pro_shot_patterns.json; path = CourtIQ/Resources/Content/pro_shot_patterns.json; sourceTree = "<group>"; };
+		A00000000000000000013A /* court_tap_drills.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = court_tap_drills.json; path = CourtIQ/Resources/Content/court_tap_drills.json; sourceTree = "<group>"; };
 		A000000000000000000067 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = CourtIQ/Resources/en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A000000000000000000068 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = CourtIQ/Resources/tr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A0000000000000000000C0 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = CourtIQ/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				A000000000000000000069 /* Localizable.strings */,
+				A0000000000000000000C0 /* PrivacyInfo.xcprivacy */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -126,6 +195,39 @@
 				A000000000000000000061 /* PlayerProgressionManager.swift */,
 				A000000000000000000063 /* LevelProgressionPathView.swift */,
 				A000000000000000000065 /* LanguageManager.swift */,
+				A0000000000000000000B0 /* TennisVisuals.swift */,
+				A0000000000000000000B2 /* FeedbackComposer.swift */,
+				A0000000000000000000B4 /* CrashReporter.swift */,
+				A0000000000000000000D0 /* HealthAcknowledgmentView.swift */,
+				A0000000000000000000D2 /* TrainSafelyBanner.swift */,
+				A0000000000000000000E0 /* NotificationManager.swift */,
+				A0000000000000000000E2 /* NotificationPreAskSheet.swift */,
+				A0000000000000000000F0 /* Haptics.swift */,
+				A000000000000000000100 /* TourStep.swift */,
+				A000000000000000000110 /* MatchEntry.swift */,
+				A000000000000000000112 /* MatchEntryManager.swift */,
+				A000000000000000000114 /* MatchesListView.swift */,
+				A000000000000000000116 /* QuickLogView.swift */,
+				A000000000000000000118 /* MatchJournalEntryView.swift */,
+				A00000000000000000011A /* LogStreakBadge.swift */,
+				A00000000000000000011C /* MatchCalendarView.swift */,
+				A00000000000000000011E /* MatchTrendDashboardView.swift */,
+				A000000000000000000130 /* PolygonMath.swift */,
+				A000000000000000000132 /* CourtTapDrill.swift */,
+				A000000000000000000134 /* CourtTapDrillManager.swift */,
+				A000000000000000000136 /* CourtTapDrillView.swift */,
+				A000000000000000000138 /* DrillResultView.swift */,
+				A000000000000000000140 /* ActivityRingsView.swift */,
+				A000000000000000000150 /* AvatarConfig.swift */,
+				A000000000000000000152 /* AvatarManager.swift */,
+				A000000000000000000154 /* TennisAvatarView.swift */,
+				A000000000000000000156 /* AvatarLockerRoomView.swift */,
+				A000000000000000000160 /* ProShotPattern.swift */,
+				A000000000000000000162 /* ProShotPatternsManager.swift */,
+				A000000000000000000164 /* ProShotAnimationView.swift */,
+				A000000000000000000166 /* ProShotCard.swift */,
+				A000000000000000000168 /* pro_shot_patterns.json */,
+				A00000000000000000013A /* court_tap_drills.json */,
 				A000000000000000000038 /* AppPalette.swift */,
 				A000000000000000000040 /* AppConfiguration.swift */,
 				A000000000000000000041 /* BundleContentLoader.swift */,
@@ -216,6 +318,9 @@
 				A000000000000000000058 /* training_programs.json in Resources */,
 				A000000000000000000059 /* mobility_flows.json in Resources */,
 				A00000000000000000006A /* Localizable.strings in Resources */,
+				A0000000000000000000C1 /* PrivacyInfo.xcprivacy in Resources */,
+				A00000000000000000013B /* court_tap_drills.json in Resources */,
+				A000000000000000000169 /* pro_shot_patterns.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +362,37 @@
 				A000000000000000000062 /* PlayerProgressionManager.swift in Sources */,
 				A000000000000000000064 /* LevelProgressionPathView.swift in Sources */,
 				A000000000000000000066 /* LanguageManager.swift in Sources */,
+				A0000000000000000000B1 /* TennisVisuals.swift in Sources */,
+				A0000000000000000000B3 /* FeedbackComposer.swift in Sources */,
+				A0000000000000000000B5 /* CrashReporter.swift in Sources */,
+				A0000000000000000000D1 /* HealthAcknowledgmentView.swift in Sources */,
+				A0000000000000000000D3 /* TrainSafelyBanner.swift in Sources */,
+				A0000000000000000000E1 /* NotificationManager.swift in Sources */,
+				A0000000000000000000E3 /* NotificationPreAskSheet.swift in Sources */,
+				A0000000000000000000F1 /* Haptics.swift in Sources */,
+				A000000000000000000101 /* TourStep.swift in Sources */,
+				A000000000000000000111 /* MatchEntry.swift in Sources */,
+				A000000000000000000113 /* MatchEntryManager.swift in Sources */,
+				A000000000000000000115 /* MatchesListView.swift in Sources */,
+				A000000000000000000117 /* QuickLogView.swift in Sources */,
+				A000000000000000000119 /* MatchJournalEntryView.swift in Sources */,
+				A00000000000000000011B /* LogStreakBadge.swift in Sources */,
+				A00000000000000000011D /* MatchCalendarView.swift in Sources */,
+				A00000000000000000011F /* MatchTrendDashboardView.swift in Sources */,
+				A000000000000000000131 /* PolygonMath.swift in Sources */,
+				A000000000000000000133 /* CourtTapDrill.swift in Sources */,
+				A000000000000000000135 /* CourtTapDrillManager.swift in Sources */,
+				A000000000000000000137 /* CourtTapDrillView.swift in Sources */,
+				A000000000000000000139 /* DrillResultView.swift in Sources */,
+				A000000000000000000141 /* ActivityRingsView.swift in Sources */,
+				A000000000000000000151 /* AvatarConfig.swift in Sources */,
+				A000000000000000000153 /* AvatarManager.swift in Sources */,
+				A000000000000000000155 /* TennisAvatarView.swift in Sources */,
+				A000000000000000000157 /* AvatarLockerRoomView.swift in Sources */,
+				A000000000000000000161 /* ProShotPattern.swift in Sources */,
+				A000000000000000000163 /* ProShotPatternsManager.swift in Sources */,
+				A000000000000000000165 /* ProShotAnimationView.swift in Sources */,
+				A000000000000000000167 /* ProShotCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,11 +443,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGNING_ALLOWED = YES;
+				CODE_SIGNING_REQUIRED = YES;
 				CODE_SIGN_ENTITLEMENTS = CourtIQ/CourtIQ.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = DC8ALPY949;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = CourtIQ/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -319,7 +455,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.courtIQ.CourtIQ;
+				PRODUCT_BUNDLE_IDENTIFIER = com.canayan93.courtiq;
 				PRODUCT_NAME = CourtIQ;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
@@ -334,11 +470,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGNING_ALLOWED = YES;
+				CODE_SIGNING_REQUIRED = YES;
 				CODE_SIGN_ENTITLEMENTS = CourtIQ/CourtIQ.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = DC8ALPY949;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = CourtIQ/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -346,7 +482,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.courtIQ.CourtIQ;
+				PRODUCT_BUNDLE_IDENTIFIER = com.canayan93.courtiq;
 				PRODUCT_NAME = CourtIQ;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;

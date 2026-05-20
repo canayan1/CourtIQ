@@ -81,19 +81,28 @@ struct PracticeView: View {
     }
 
     private var practiceHero: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text(lang.t("practice.deliberate_reps"))
-                .font(.caption.weight(.semibold))
-                .textCase(.uppercase)
-                .foregroundStyle(AppPalette.inkSoft)
+        ZStack(alignment: .topTrailing) {
+            // Top-down clay court watermark
+            CourtTopDown(surface: .clay, lineOpacity: 0.5)
+                .opacity(0.18)
+                .frame(width: 130, height: 200)
+                .offset(x: 8, y: -10)
+                .allowsHitTesting(false)
 
-            Text(lang.t("practice.choose_pattern"))
-                .font(.system(size: 28, weight: .bold, design: .rounded))
+            VStack(alignment: .leading, spacing: 12) {
+                Text(lang.t("practice.deliberate_reps"))
+                    .font(.caption.weight(.semibold))
+                    .textCase(.uppercase)
+                    .foregroundStyle(AppPalette.inkSoft)
 
-            Text(lang.t("practice.free_desc"))
-                .foregroundStyle(AppPalette.inkSoft)
+                Text(lang.t("practice.choose_pattern"))
+                    .font(.system(size: 28, weight: .bold, design: .rounded))
+
+                Text(lang.t("practice.free_desc"))
+                    .foregroundStyle(AppPalette.inkSoft)
+            }
+            .padding()
         }
-        .padding()
         .background(AppPalette.parchment)
         .overlay(
             RoundedRectangle(cornerRadius: 24, style: .continuous)
@@ -102,14 +111,26 @@ struct PracticeView: View {
         .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
     }
 
+    private func tennisGlyph(for category: QuizCategory) -> TennisGlyphKind {
+        switch category {
+        case .serve:      return .serve
+        case .returnPlay: return .backhand
+        case .rally:      return .forehand
+        case .net:        return .volley
+        case .mental:     return .target
+        }
+    }
+
     private func practiceCard(for category: QuizCategory, isLocked: Bool) -> some View {
         HStack(alignment: .top, spacing: 14) {
-            Image(systemName: category.systemImage)
-                .font(.title2)
-                .foregroundStyle(.white)
-                .frame(width: 48, height: 48)
-                .background(AppPalette.clay)
-                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+            ZStack {
+                CourtLinesBg(color: .white.opacity(0.22))
+                    .frame(width: 48, height: 48)
+                TennisGlyph(kind: tennisGlyph(for: category), color: .white, size: 26)
+            }
+            .frame(width: 48, height: 48)
+            .background(AppPalette.clay)
+            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
 
             VStack(alignment: .leading, spacing: 6) {
                 HStack {

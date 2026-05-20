@@ -39,6 +39,8 @@ enum LegalDocument: String, CaseIterable, Identifiable {
 struct LegalDocumentView: View {
     let document: LegalDocument
     @EnvironmentObject private var lang: LanguageManager
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.presentationMode) private var presentationMode
     private let configuration = AppConfiguration.shared
 
     private var documentURL: URL? {
@@ -75,5 +77,16 @@ struct LegalDocumentView: View {
         .background(AppPalette.cream)
         .navigationTitle(lang.t(document.titleKey))
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    Label(lang.t("common.back"), systemImage: "chevron.left")
+                        .labelStyle(.titleAndIcon)
+                        .foregroundStyle(AppPalette.clay)
+                }
+            }
+        }
     }
 }

@@ -43,6 +43,7 @@ struct CommunityFeedView: View {
                 .lineLimit(4)
         }
         .padding()
+        .frame(maxWidth: .infinity, alignment: .leading)
         .background(AppPalette.parchment)
         .overlay(
             RoundedRectangle(cornerRadius: 22, style: .continuous)
@@ -122,17 +123,29 @@ struct TipCommentSectionView: View {
     private var commentsList: some View {
         Group {
             if comments.isEmpty {
-                Text(lang.t("community.empty"))
-                    .font(.subheadline)
-                    .foregroundStyle(AppPalette.inkSoft)
-                    .padding()
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .background(AppPalette.parchment)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 18, style: .continuous)
-                            .strokeBorder(AppPalette.sand, lineWidth: 1)
-                    )
-                    .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+                HStack(alignment: .top, spacing: 14) {
+                    Image(systemName: "bubble.left.and.bubble.right.fill")
+                        .font(.title2)
+                        .foregroundStyle(AppPalette.clay)
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(lang.t("community.empty_title"))
+                            .font(.subheadline.weight(.semibold))
+                            .foregroundStyle(AppPalette.ink)
+                        Text(lang.t("community.empty"))
+                            .font(.caption)
+                            .foregroundStyle(AppPalette.inkSoft)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    Spacer()
+                }
+                .padding()
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(AppPalette.parchment)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 18, style: .continuous)
+                        .strokeBorder(AppPalette.sand, lineWidth: 1)
+                )
+                .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
             } else {
                 VStack(spacing: 10) {
                     ForEach(comments) { comment in

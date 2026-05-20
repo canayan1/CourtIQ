@@ -3,6 +3,8 @@ import SwiftUI
 struct QuizView: View {
     @StateObject private var viewModel: QuizViewModel
     @EnvironmentObject private var lang: LanguageManager
+    @StateObject private var notifications = NotificationManager.shared
+    @State private var showNotificationPreAsk = false
     private let title: String
 
     init(quiz: Quiz, title: String? = nil, onComplete: ((QuizCompletionSummary) -> Void)? = nil) {
@@ -36,6 +38,21 @@ struct QuizView: View {
         .navigationBarTitleDisplayMode(.inline)
         .onChange(of: lang.language, initial: true) { _, newLang in
             viewModel.language = newLang
+        }
+        .onChange(of: viewModel.isCompleted) { _, completed in
+            // Pre-ask for daily reminder right after the first quiz completion
+            // (highest-intent moment — they just felt the dopamine).
+            guard completed else { return }
+            Task {
+                await notifications.refreshAuthorizationStatus()
+                if notifications.shouldShowPreAsk() {
+                    showNotificationPreAsk = true
+                }
+            }
+        }
+        .sheet(isPresented: $showNotificationPreAsk) {
+            NotificationPreAskSheet()
+                .environmentObject(lang)
         }
         .safeAreaInset(edge: .bottom) {
             primaryActionBar
@@ -76,24 +93,40 @@ struct QuizView: View {
     // MARK: - Question
 
     private func questionCard(_ question: QuizQuestion) -> some View {
-        VStack(alignment: .leading, spacing: 16) {
-            HStack {
-                Label(question.category.title, systemImage: question.category.systemImage)
-                Spacer()
-                Text(question.difficulty.title)
-            }
-            .font(.caption.weight(.semibold))
-            .foregroundStyle(.secondary)
+        VStack(alignment: .leading, spacing: 0) {
+            // Court diagram — editorial-style single court on parchment.
+            // QuizCourtDiagramView manages its own height (288pt).
+            QuizCourtDiagramView(diagram: question.resolvedDiagram)
+                .overlay(alignment: .topTrailing) {
+                    Text(question.difficulty.title.uppercased())
+                        .font(.system(size: 10, weight: .heavy, design: .rounded))
+                        .tracking(1.2)
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 5)
+                        .background(Capsule().fill(AppPalette.ink.opacity(0.85)))
+                        .padding(14)
+                }
 
-            VStack(alignment: .leading, spacing: 8) {
-                Text(question.focusTag.uppercased())
-                    .font(.caption.weight(.bold))
-                    .foregroundStyle(AppPalette.clayBright)
-                Text(question.localizedScenario(for: lang.language))
-                    .font(.title3.weight(.semibold))
+            VStack(alignment: .leading, spacing: 16) {
+                HStack {
+                    Label(question.category.title, systemImage: question.category.systemImage)
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(.secondary)
+                    Spacer()
+                }
+
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(question.focusTag.uppercased())
+                        .font(.caption.weight(.bold))
+                        .foregroundStyle(AppPalette.clayBright)
+                    Text(question.localizedScenario(for: lang.language))
+                        .font(.title3.weight(.semibold))
+                }
             }
+            .padding()
+            .padding(.top, 4)
         }
-        .padding()
         .background(AppPalette.parchment)
         .overlay(
             RoundedRectangle(cornerRadius: 24, style: .continuous)
@@ -115,22 +148,18 @@ struct QuizView: View {
                         Image(systemName: iconName(for: index))
                             .font(.headline)
 
-                        VStack(alignment: .leading, spacing: 6) {
-                            Text(localizedOptions[index])
-                                .font(.body.weight(.semibold))
-                                .multilineTextAlignment(.leading)
-
-                            if viewModel.hasSubmittedCurrentAnswer && index == question.correctAnswerIndex {
-                                Text(lang.t("quiz.best_choice"))
-                                    .font(.caption)
-                            } else if viewModel.hasSubmittedCurrentAnswer
-                                        && viewModel.selectedIndex == index
-                                        && index != question.correctAnswerIndex {
-                                Text(lang.t("quiz.harder"))
-                                    .font(.caption)
-                            }
-                        }
-                        Spacer()
+                        // Per-option "Best choice" / "Harder" footnotes
+                        // removed — the icon + color already signal correctness;
+                        // the rationale below explains why.
+                        Text(localizedOptions[index])
+                            .font(.body.weight(.semibold))
+                            .multilineTextAlignment(.leading)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .accessibilityLabel(
+                                viewModel.hasSubmittedCurrentAnswer && index == question.correctAnswerIndex
+                                    ? "\(localizedOptions[index]). \(lang.t("quiz.best_choice"))"
+                                    : localizedOptions[index]
+                            )
                     }
                     .foregroundStyle(foregroundColor(for: index))
                     .padding()
@@ -170,17 +199,13 @@ struct QuizView: View {
     // MARK: - Challenge Partner (per question)
 
     private func partnerChallengeCard(_ question: QuizQuestion) -> some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Label(lang.t("quiz.challenge_partner"), systemImage: "person.2.fill")
-                .font(.subheadline.weight(.semibold))
+        // Collapsed: 2-person icon + share button only. Header + 12-word
+        // description removed.
+        HStack(spacing: 12) {
+            Image(systemName: "person.2.fill")
                 .foregroundStyle(AppPalette.clay)
-
-            Text(lang.t("quiz.challenge_desc"))
-                .font(.caption)
-                .foregroundStyle(AppPalette.inkSoft)
-
             ShareLink(item: viewModel.partnerChallengeText(for: question)) {
-                Label(lang.t("quiz.send_partner"), systemImage: "square.and.arrow.up")
+                Label(lang.t("common.share"), systemImage: "square.and.arrow.up")
                     .font(.subheadline.weight(.semibold))
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 10)
@@ -200,19 +225,18 @@ struct QuizView: View {
     // MARK: - Completion
 
     private var completionCard: some View {
-        VStack(alignment: .leading, spacing: 14) {
-            Label(lang.t("quiz.session_complete"), systemImage: "checkmark.seal.fill")
-                .font(.title3.bold())
+        // Centered seal + dynamic completion summary. "Session complete"
+        // header + 11-word review-hint dropped — the seal + score speak.
+        VStack(spacing: 12) {
+            Image(systemName: "checkmark.seal.fill")
+                .font(.system(size: 56))
                 .foregroundStyle(AppPalette.moss)
-
             Text(viewModel.completionSummary)
                 .font(.title3.weight(.semibold))
-
-            Text(lang.t("quiz.review_hint"))
-                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
         }
-        .padding()
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.vertical, 22)
+        .frame(maxWidth: .infinity)
         .background(AppPalette.parchment)
         .overlay(
             RoundedRectangle(cornerRadius: 24, style: .continuous)
@@ -221,46 +245,28 @@ struct QuizView: View {
         .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
     }
 
-    /// Share card shown below the completion summary.
+    /// Share card shown below the completion summary — single button.
     private var shareResultCard: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Label(lang.t("quiz.share_result"), systemImage: "square.and.arrow.up")
-                .font(.subheadline.weight(.semibold))
-                .foregroundStyle(AppPalette.clay)
-
-            Text(lang.t("quiz.share_desc"))
-                .font(.caption)
-                .foregroundStyle(AppPalette.inkSoft)
-
-            ShareLink(item: viewModel.resultShareText) {
-                Label(lang.t("quiz.share_btn"), systemImage: "square.and.arrow.up")
-                    .font(.headline)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 13)
-            }
-            .buttonStyle(.borderedProminent)
-            .tint(AppPalette.clay)
+        ShareLink(item: viewModel.resultShareText) {
+            Label(lang.t("common.share"), systemImage: "square.and.arrow.up")
+                .font(.headline)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 13)
         }
-        .padding()
-        .background(AppPalette.parchment)
-        .overlay(
-            RoundedRectangle(cornerRadius: 22, style: .continuous)
-                .stroke(AppPalette.sand, lineWidth: 1)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .buttonStyle(.borderedProminent)
+        .tint(AppPalette.clay)
     }
 
     // MARK: - Empty / Action Bar
 
     private var emptyState: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(spacing: 12) {
+            TennisGlyph(kind: .racket, color: AppPalette.inkSoft.opacity(0.4), size: 64)
             Text(lang.t("quiz.no_quiz"))
                 .font(.headline)
-            Text(lang.t("quiz.no_quiz_desc"))
-                .foregroundStyle(.secondary)
         }
-        .padding()
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 32)
         .background(AppPalette.parchment)
         .overlay(
             RoundedRectangle(cornerRadius: 20, style: .continuous)

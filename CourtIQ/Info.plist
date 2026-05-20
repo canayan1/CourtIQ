@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
   <key>CFBundleIdentifier</key>
-  <string>com.courtIQ.CourtIQ</string>
+  <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
   <key>CFBundleDisplayName</key>
   <string>CourtIQ</string>
   <key>CFBundleName</key>
@@ -20,6 +20,8 @@
   <string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.sports</string>
 	<key>COURTIQ_MONTHLY_PRODUCT_ID</key>
 	<string>com.courtiq.premium.monthly</string>
 	<key>COURTIQ_YEARLY_PRODUCT_ID</key>
@@ -27,11 +29,11 @@
 	<key>COURTIQ_PREMIUM_ENTITLEMENT_ID</key>
 	<string>premium_all_access</string>
 	<key>COURTIQ_PRIVACY_URL</key>
-	<string></string>
+	<string>https://canayan1.github.io/CourtIQ/PRIVACY_POLICY</string>
 	<key>COURTIQ_TERMS_URL</key>
-	<string></string>
+	<string>https://canayan1.github.io/CourtIQ/TERMS_OF_USE</string>
 	<key>COURTIQ_SUPPORT_URL</key>
-	<string></string>
+	<string>https://canayan1.github.io/CourtIQ/SUPPORT</string>
 	<key>COURTIQ_SUPABASE_URL</key>
 	<string></string>
 	<key>COURTIQ_SUPABASE_ANON_KEY</key>

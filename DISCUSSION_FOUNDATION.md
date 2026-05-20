@@ -2,36 +2,21 @@
 
 ## Model
 
-- `DiscussionTargetType` defines the kinds of content that can host discussions:
-  - `quizItem`
-  - `trainingSession`
-  - `mobilityFlow`
-  - `premiumInsight`
-- `ContentDiscussionThread` captures a discussion thread with:
-  - `id`
-  - `targetType`
-  - `targetID`
-  - `title`
-  - `commentCount`
-  - `lastUpdated`
-- `DiscussionRepository` provides sample thread data and lookup methods.
+- `DiscussionThread` anchors each conversation to a quiz item, training plan, mobility flow, or premium insight.
+- `DiscussionComment` now includes viewer-level state:
+  - `viewerHasLiked`
+  - `canEdit`
+  - `canDelete`
+- Likes and reports are stored as first-class backend records rather than device-only counters.
 
-## Supported targets
+## Current behavior
 
-- Quiz item discussions are tied to individual question IDs.
-- Training session discussions are tied to quiz sessions or daily training IDs.
-- Mobility flow discussions are tied to mobility flow IDs.
-- Premium insight discussions are tied to premium library concepts.
+- Free preview users can read community threads.
+- Signed-in All Access users can create, edit, delete, like, unlike, and report comments.
+- Thread and comment state is cached locally for launch speed, then refreshed from Supabase.
+- Launch threads are seeded in the backend and can also be materialized from content metadata inside the app when needed.
 
-## UI state
+## Moderation
 
-- `QuizView` shows a discussion block on the result screen.
-- `MobilityFlowDetailView` shows a discussion summary and a disabled "Join discussion" placeholder.
-- `ProfileView` highlights that discussion threads are ready to link across product content.
-
-## Future evolution
-
-- Add thread list and comment models.
-- Enable real discussion posting and moderation.
-- Link discussion threads to quiz analytics, training sessions, and premium guidance.
-- Keep the current model as the foundation for thread count, content tagging, and target-based discussion lookup.
+- Reports are submitted to the backend for manual review.
+- No in-app moderator tooling ships in v1; moderation runs through the admin/dashboard workflow.

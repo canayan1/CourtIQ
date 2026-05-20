@@ -1,0 +1,319 @@
+[
+  {
+    "id": "drill_001",
+    "title": "Open court +1",
+    "titleTr": "Açık kort +1",
+    "surface": "clay",
+    "youX": 0.50,
+    "youY": 0.96,
+    "opponentX": 0.20,
+    "opponentY": 0.08,
+    "ballOriginX": 0.20,
+    "ballOriginY": 0.18,
+    "ballTargetX": 0.55,
+    "ballTargetY": 0.62,
+    "scoreChip": "OPEN COURT",
+    "greenZone": [[0.55, 0.05], [0.85, 0.05], [0.85, 0.32], [0.55, 0.32]],
+    "yellowZones": [
+      [[0.40, 0.05], [0.55, 0.05], [0.55, 0.25], [0.40, 0.25]]
+    ],
+    "rationale": "Open court forehand. Opponent is stranded wide.",
+    "rationaleTr": "Açık korta forehand. Rakip kort dışında kalmış."
+  },
+  {
+    "id": "drill_002",
+    "title": "Defensive crosscourt",
+    "titleTr": "Defansif crosscourt",
+    "surface": "clay",
+    "youX": 0.10,
+    "youY": 0.88,
+    "opponentX": 0.50,
+    "opponentY": 0.10,
+    "ballOriginX": 0.50,
+    "ballOriginY": 0.20,
+    "ballTargetX": 0.12,
+    "ballTargetY": 0.80,
+    "scoreChip": "DEFENSE",
+    "greenZone": [[0.05, 0.05], [0.40, 0.05], [0.40, 0.30], [0.05, 0.30]],
+    "yellowZones": [
+      [[0.40, 0.05], [0.65, 0.05], [0.65, 0.30], [0.40, 0.30]]
+    ],
+    "rationale": "Deep crosscourt is the recovery shot. Down-the-line is high risk when stretched wide.",
+    "rationaleTr": "Derin crosscourt toparlanma vuruşu. Stretched durumda DTL yüksek risk."
+  },
+  {
+    "id": "drill_003",
+    "title": "Short ball attack",
+    "titleTr": "Kısa top saldırı",
+    "surface": "hard",
+    "youX": 0.50,
+    "youY": 0.78,
+    "opponentX": 0.40,
+    "opponentY": 0.12,
+    "ballOriginX": 0.40,
+    "ballOriginY": 0.30,
+    "ballTargetX": 0.55,
+    "ballTargetY": 0.60,
+    "scoreChip": "SHORT BALL",
+    "greenZone": [[0.62, 0.05], [0.88, 0.05], [0.88, 0.32], [0.62, 0.32]],
+    "yellowZones": [
+      [[0.12, 0.05], [0.32, 0.05], [0.32, 0.25], [0.12, 0.25]]
+    ],
+    "rationale": "Take it inside-out to the open court. Going back behind the opponent is also strong but harder.",
+    "rationaleTr": "Inside-out açık korta. Rakibin arkasına gitmek de güçlü ama zor."
+  },
+  {
+    "id": "drill_004",
+    "title": "Wide serve +1",
+    "titleTr": "Wide servis +1",
+    "surface": "clay",
+    "youX": 0.45,
+    "youY": 0.96,
+    "opponentX": 0.18,
+    "opponentY": 0.05,
+    "ballOriginX": 0.20,
+    "ballOriginY": 0.20,
+    "ballTargetX": 0.50,
+    "ballTargetY": 0.55,
+    "scoreChip": "DEUCE +1",
+    "greenZone": [[0.55, 0.05], [0.85, 0.05], [0.85, 0.35], [0.55, 0.35]],
+    "yellowZones": [
+      [[0.42, 0.05], [0.58, 0.05], [0.58, 0.30], [0.42, 0.30]]
+    ],
+    "rationale": "Open deuce side — opponent is way ad-wide.",
+    "rationaleTr": "Açık deuce tarafı — rakip ad-wide kaldı."
+  },
+  {
+    "id": "drill_005",
+    "title": "Mid-court approach",
+    "titleTr": "Mid-court approach",
+    "surface": "grass",
+    "youX": 0.50,
+    "youY": 0.68,
+    "opponentX": 0.45,
+    "opponentY": 0.12,
+    "ballOriginX": 0.45,
+    "ballOriginY": 0.32,
+    "ballTargetX": 0.50,
+    "ballTargetY": 0.58,
+    "scoreChip": "APPROACH",
+    "greenZone": [[0.08, 0.03], [0.32, 0.03], [0.32, 0.18], [0.08, 0.18]],
+    "yellowZones": [
+      [[0.62, 0.03], [0.88, 0.03], [0.88, 0.20], [0.62, 0.20]]
+    ],
+    "rationale": "Deep down-the-line approach to the corner. Crosscourt is acceptable but opens the line for a pass.",
+    "rationaleTr": "Derin DTL approach köşeye. Crosscourt kabul edilebilir ama line'ı pass için açar."
+  },
+  {
+    "id": "drill_006",
+    "title": "Volley placement",
+    "titleTr": "Volley yerleşimi",
+    "surface": "grass",
+    "youX": 0.50,
+    "youY": 0.42,
+    "opponentX": 0.70,
+    "opponentY": 0.12,
+    "ballOriginX": 0.70,
+    "ballOriginY": 0.20,
+    "ballTargetX": 0.50,
+    "ballTargetY": 0.38,
+    "scoreChip": "1ST VOLLEY",
+    "greenZone": [[0.08, 0.03], [0.32, 0.03], [0.32, 0.25], [0.08, 0.25]],
+    "yellowZones": [
+      [[0.42, 0.05], [0.58, 0.05], [0.58, 0.22], [0.42, 0.22]]
+    ],
+    "rationale": "First volley goes deep into the open court. Don't try to angle short.",
+    "rationaleTr": "İlk volley derin açık korta. Kısa açıya çalışma."
+  },
+  {
+    "id": "drill_007",
+    "title": "Return target",
+    "titleTr": "Return hedefi",
+    "surface": "hard",
+    "youX": 0.30,
+    "youY": 0.92,
+    "opponentX": 0.40,
+    "opponentY": 0.05,
+    "ballOriginX": 0.40,
+    "ballOriginY": 0.05,
+    "ballTargetX": 0.16,
+    "ballTargetY": 0.82,
+    "scoreChip": "AD · KICK",
+    "greenZone": [[0.40, 0.05], [0.70, 0.05], [0.70, 0.30], [0.40, 0.30]],
+    "yellowZones": [
+      [[0.05, 0.05], [0.35, 0.05], [0.35, 0.25], [0.05, 0.25]]
+    ],
+    "rationale": "Crosscourt return back to server's body — neutralize the kick. Down-the-line is high risk.",
+    "rationaleTr": "Crosscourt return server'ın gövdesine — kick'i nötralize et. DTL yüksek risk."
+  },
+  {
+    "id": "drill_008",
+    "title": "Behind the opponent",
+    "titleTr": "Rakibin arkasına",
+    "surface": "clay",
+    "youX": 0.70,
+    "youY": 0.88,
+    "opponentX": 0.30,
+    "opponentY": 0.10,
+    "ballOriginX": 0.30,
+    "ballOriginY": 0.18,
+    "ballTargetX": 0.72,
+    "ballTargetY": 0.78,
+    "scoreChip": "MOMENTUM",
+    "greenZone": [[0.15, 0.05], [0.42, 0.05], [0.42, 0.28], [0.15, 0.28]],
+    "yellowZones": [
+      [[0.62, 0.05], [0.88, 0.05], [0.88, 0.28], [0.62, 0.28]]
+    ],
+    "rationale": "Opponent committed to recovery — hit back behind them. Easier than another open-court winner.",
+    "rationaleTr": "Rakip recovery'ye gitti — arkasına vur. Bir başka açık kort winner'ından kolay."
+  },
+  {
+    "id": "drill_009",
+    "title": "Deep neutral rally",
+    "titleTr": "Derin neutral ralli",
+    "surface": "clay",
+    "youX": 0.30,
+    "youY": 0.92,
+    "opponentX": 0.70,
+    "opponentY": 0.08,
+    "ballOriginX": 0.70,
+    "ballOriginY": 0.18,
+    "ballTargetX": 0.30,
+    "ballTargetY": 0.85,
+    "scoreChip": "NEUTRAL",
+    "greenZone": [[0.55, 0.05], [0.88, 0.05], [0.88, 0.22], [0.55, 0.22]],
+    "yellowZones": [
+      [[0.10, 0.05], [0.40, 0.05], [0.40, 0.22], [0.10, 0.22]],
+      [[0.40, 0.22], [0.62, 0.22], [0.62, 0.42], [0.40, 0.42]]
+    ],
+    "rationale": "Stay heavy crosscourt deep — patience. Down-the-line opens the court for them.",
+    "rationaleTr": "Crosscourt derin sabırlı kal. DTL kortu rakip için açar."
+  },
+  {
+    "id": "drill_010",
+    "title": "Net pass decision",
+    "titleTr": "Net pass kararı",
+    "surface": "hard",
+    "youX": 0.40,
+    "youY": 0.92,
+    "opponentX": 0.50,
+    "opponentY": 0.45,
+    "ballOriginX": 0.50,
+    "ballOriginY": 0.55,
+    "ballTargetX": 0.30,
+    "ballTargetY": 0.82,
+    "scoreChip": "OPP AT NET",
+    "greenZone": [[0.06, 0.05], [0.32, 0.05], [0.32, 0.42], [0.06, 0.42]],
+    "yellowZones": [
+      [[0.42, 0.02], [0.58, 0.02], [0.58, 0.18], [0.42, 0.18]]
+    ],
+    "rationale": "Down-the-line passing shot — opponent at net leans crosscourt. Lob is the backup.",
+    "rationaleTr": "DTL pass — file'deki rakip crosscourt'a yatkın. Lob yedek."
+  },
+  {
+    "id": "drill_011",
+    "title": "Lob over the net player",
+    "titleTr": "File üstünden lob",
+    "surface": "grass",
+    "youX": 0.55,
+    "youY": 0.92,
+    "opponentX": 0.50,
+    "opponentY": 0.40,
+    "ballOriginX": 0.50,
+    "ballOriginY": 0.50,
+    "ballTargetX": 0.55,
+    "ballTargetY": 0.85,
+    "scoreChip": "LOB OPTION",
+    "greenZone": [[0.06, 0.02], [0.92, 0.02], [0.92, 0.20], [0.06, 0.20]],
+    "yellowZones": [
+      [[0.06, 0.20], [0.42, 0.20], [0.42, 0.42], [0.06, 0.42]]
+    ],
+    "rationale": "Deep lob over the opposite shoulder is the highest-percentage answer when squeezed at the baseline.",
+    "rationaleTr": "Aksi omuz üstünden derin lob — baseline'da sıkışınca en yüksek persantaj."
+  },
+  {
+    "id": "drill_012",
+    "title": "Inside-out forehand",
+    "titleTr": "Inside-out forehand",
+    "surface": "hard",
+    "youX": 0.35,
+    "youY": 0.88,
+    "opponentX": 0.65,
+    "opponentY": 0.10,
+    "ballOriginX": 0.65,
+    "ballOriginY": 0.20,
+    "ballTargetX": 0.35,
+    "ballTargetY": 0.80,
+    "scoreChip": "RUN AROUND BH",
+    "greenZone": [[0.62, 0.05], [0.90, 0.05], [0.90, 0.28], [0.62, 0.28]],
+    "yellowZones": [
+      [[0.42, 0.05], [0.60, 0.05], [0.60, 0.25], [0.42, 0.25]]
+    ],
+    "rationale": "Inside-out forehand to the opponent's backhand corner is the textbook 3rd-shot pattern.",
+    "rationaleTr": "Inside-out FH rakibin backhand köşesine — textbook 3. vuruş pattern'i."
+  },
+  {
+    "id": "drill_013",
+    "title": "Drop shot opportunity",
+    "titleTr": "Drop shot fırsatı",
+    "surface": "clay",
+    "youX": 0.45,
+    "youY": 0.70,
+    "opponentX": 0.50,
+    "opponentY": 0.02,
+    "ballOriginX": 0.50,
+    "ballOriginY": 0.18,
+    "ballTargetX": 0.48,
+    "ballTargetY": 0.52,
+    "scoreChip": "OPP FAR BACK",
+    "greenZone": [[0.18, 0.42], [0.42, 0.42], [0.42, 0.55], [0.18, 0.55]],
+    "yellowZones": [
+      [[0.55, 0.05], [0.85, 0.05], [0.85, 0.25], [0.55, 0.25]],
+      [[0.42, 0.42], [0.62, 0.42], [0.62, 0.55], [0.42, 0.55]]
+    ],
+    "rationale": "Opponent is camped 5m behind the baseline. Drop shot just over the net is the highest-leverage play.",
+    "rationaleTr": "Rakip baseline'ın 5m gerisinde. File üstüne drop shot en yüksek leverage."
+  },
+  {
+    "id": "drill_014",
+    "title": "Body serve return",
+    "titleTr": "Vücuda gelen servis return",
+    "surface": "hard",
+    "youX": 0.45,
+    "youY": 0.95,
+    "opponentX": 0.40,
+    "opponentY": 0.05,
+    "ballOriginX": 0.40,
+    "ballOriginY": 0.05,
+    "ballTargetX": 0.48,
+    "ballTargetY": 0.88,
+    "scoreChip": "BODY SERVE",
+    "greenZone": [[0.40, 0.05], [0.60, 0.05], [0.60, 0.30], [0.40, 0.30]],
+    "yellowZones": [
+      [[0.06, 0.05], [0.32, 0.05], [0.32, 0.25], [0.06, 0.25]]
+    ],
+    "rationale": "Block return back to the server's body — buy time, neutralize. Wide is risky on a jammed return.",
+    "rationaleTr": "Block return server'ın gövdesine — zaman kazan, nötralize et. Sıkıştığında wide risklidir."
+  },
+  {
+    "id": "drill_015",
+    "title": "High looper to backhand",
+    "titleTr": "Backhand'e yüksek loop",
+    "surface": "clay",
+    "youX": 0.20,
+    "youY": 0.90,
+    "opponentX": 0.55,
+    "opponentY": 0.10,
+    "ballOriginX": 0.55,
+    "ballOriginY": 0.20,
+    "ballTargetX": 0.15,
+    "ballTargetY": 0.80,
+    "scoreChip": "BH UNDER HEIGHT",
+    "greenZone": [[0.55, 0.18], [0.78, 0.18], [0.78, 0.40], [0.55, 0.40]],
+    "yellowZones": [
+      [[0.32, 0.05], [0.55, 0.05], [0.55, 0.22], [0.32, 0.22]]
+    ],
+    "rationale": "Loop a heavy ball back deep into their court — give yourself time to recover, don't go for a low-margin DTL winner.",
+    "rationaleTr": "Yüksek topspin derin onların kortuna — toparlanma için zaman kazan, low-margin DTL winner deneme."
+  }
+]

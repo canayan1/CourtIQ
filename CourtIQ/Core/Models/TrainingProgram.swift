@@ -154,9 +154,19 @@ struct TrainingProgram: Identifiable, Codable, Hashable {
     let phases: [TrainingPhase]
     let days: [TrainingDayPlan]
     let persistencePrompts: [String]
+    /// ID of the next program in this track. After finishing this program's
+    /// 8 weeks, the user progresses to the program with this ID. Nil means
+    /// end of track.
+    var followOnProgramID: String? = nil
 
     var isPremium: Bool {
         accessTier == .premium
+    }
+
+    /// Resolves the continuation program, if one is wired up.
+    var followOnProgram: TrainingProgram? {
+        guard let followOnProgramID else { return nil }
+        return TrainingProgram.allPrograms.first { $0.id == followOnProgramID }
     }
 }
 

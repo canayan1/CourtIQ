@@ -2,22 +2,18 @@
 
 ## Included
 
-- Today screen with app title, daily training copy, streak indicator, and Start CTA
-- Local daily quiz selection with the same questions for the same date
-- 20+ local scenario questions across Serve, Return, Rally, Net Play, and Mental categories
-- Five-question daily quiz sessions with instant right/wrong feedback and coaching explanations
-- Final result screen with score, headline, and takeaway
-- Lightweight local streak tracking in `UserDefaults`
-- Minimal practice tab for category-based replay
-- Stats tab with current streak, completed quizzes, and today’s focus
-- Pure SwiftUI implementation, no backend or authentication
+- Guest preview with onboarding, Today hub, one daily IQ quiz, the free hybrid foundation plan, read-only community, and preview mobility flows.
+- Sign in with Apple account upgrade for cloud-backed profile sync and purchase restore.
+- StoreKit-based monthly and yearly All Access subscriptions.
+- Premium training tracks, premium practice blocks, the full mobility library, archived quiz history, and premium community posting.
+- Content-linked community threads with create, edit, delete, like, unlike, and report flows.
+- Synced quiz completions, training session logs, and weekly persistence checks for signed-in users.
+- Real account deletion for signed-in users plus a separate local reset action.
+- iPhone-first launch scope.
 
 ## Excluded
 
-- No Firebase or remote backend
-- No authentication or profile accounts
-- No subscriptions, paywall, or monetization
-- No remote APIs or analytics
-- No social features or sharing
-- No heavyweight persistence system
-- No onboarding flow beyond the core daily training experience
+- Standalone social feed or general-purpose posting outside content-linked threads.
+- In-app moderator tooling; moderation runs through the admin dashboard/manual workflow.
+- iPad-specific UI optimization and launch assets.
+- Android, web, or non-Apple authentication providers.

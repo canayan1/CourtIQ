@@ -29,6 +29,18 @@
 /* ── Today ── */
 "today.day_streak" = "day streak";
 "today.this_week" = "this week";
+"today.streak_grace_hint" = "You missed yesterday — your streak is frozen for today. Solve today's quiz to keep it alive.";
+"today.a11y_day_streak" = "Day streak";
+"today.a11y_this_week" = "This week";
+"common.share" = "Share";
+"training.a11y_sessions_done" = "Sessions completed this week";
+
+/* ── Empty states ── */
+"profile.empty_history_title" = "Your quiz history will live here";
+"profile.empty_history_body" = "Complete a quiz to start tracking.";
+"community.empty_title" = "Be the first to write";
+"training.checkin_empty_title" = "No check-ins yet";
+"common.back" = "Back";
 "today.start_quiz" = "Start today's quiz";
 "today.review_quiz" = "Review today's quiz";
 "today.greeting_morning" = "Good morning";
@@ -178,8 +190,8 @@
 "profile.reset_title" = "Reset local data?";
 "profile.reset_msg" = "This clears cached progress on this device. Synced account data will re-download on next launch.";
 "profile.quiz_empty" = "Complete your first daily quiz to start your archive.";
-"profile.unlock_history" = "Unlock your full quiz archive, track focus changes over time, and spot recurring decision errors.";
-"profile.sign_in_hint" = "Sign in with Apple to enable cloud sync and purchase restore.";
+"profile.unlock_history" = "See your full archive.";
+"profile.sign_in_hint" = "Sync progress across devices.";
 "profile.leave_guest" = "Leave Guest Preview";
 "profile.section_progress" = "Progress";
 "profile.section_quiz" = "Quiz History";
@@ -253,6 +265,217 @@
 "paywall.support" = "Support";
 "paywall.subscription_note" = "Subscriptions renew automatically unless canceled in App Store settings at least 24 hours before the end of the current period. Your premium access is restored from the App Store on launch and after restore.";
 "paywall.unlocked" = "Unlocked";
+"paywall.intro_body" = "Premium unlocks the full training library, mobility flows, archived quiz insights, and community participation.";
+"paywall.products_loading" = "Loading subscription options…";
+
+/* ── Beta feedback ── */
+"beta.section_title" = "Beta feedback";
+"beta.prompt_title" = "Found a bug or have an idea?";
+"beta.prompt_body" = "One tap with device info pre-filled.";
+"beta.send" = "Send feedback";
+
+/* ── Health & Safety ── */
+"health.eyebrow" = "BEFORE YOU START";
+"health.title" = "Train safely.";
+"health.subtitle" = "CourtIQ is built by tennis players, not doctors. Please read and acknowledge a few things before you use the training, mobility, or any physical content in this app.";
+"health.bullet_not_medical" = "CourtIQ is not medical advice, diagnosis, or treatment. It is not a substitute for a doctor, physiotherapist, certified trainer, or coach.";
+"health.bullet_consult_doctor" = "Speak to a qualified medical professional before starting any new physical activity — especially if you have any heart, joint, or musculoskeletal condition, are pregnant, are recovering from injury, or have not exercised regularly in the past 6 months.";
+"health.bullet_stop_if_pain" = "If you feel pain, dizziness, shortness of breath, chest discomfort, or any unusual symptom during or after using CourtIQ, stop immediately and seek medical attention.";
+"health.bullet_assume_risk" = "Tennis, strength training, plyometrics, mobility, and conditioning carry an inherent risk of injury — including serious injury or worse. You knowingly and voluntarily accept this risk by using CourtIQ.";
+"health.bullet_self_directed" = "CourtIQ is self-directed. You are not supervised by a coach through the app. You are responsible for your technique, equipment, warm-up, recovery, and knowing your limits.";
+"health.read_more" = "READ THE FULL DOCUMENT";
+"health.full_disclaimer_link" = "Full Health & Safety Disclaimer";
+"health.confirm_toggle" = "I have read the points above and I understand the risks of physical activity.";
+"health.confirm_required_hint" = "TOGGLE THIS ON TO CONTINUE";
+"health.confirm_done_hint" = "READY TO CONTINUE";
+"health.accept" = "I understand and agree";
+"health.footer_note" = "By tapping the button above you confirm that you have read, understood, and agree to the Health & Safety Disclaimer and Terms of Use. You agree to use CourtIQ at your own risk.";
+"health.banner_title" = "Train safely";
+"health.banner_body" = "Warm up first. Use safe technique and weight. Stop if anything feels wrong.";
+
+/* ── Onboarding ── */
+"onb.welcome.tagline" = "Tennis IQ for all levels.";
+"onb.welcome.body" = "Daily scenarios, structured training, and mobility — in one coach-shaped routine.";
+"onb.welcome.cta" = "Get started";
+"onb.welcome.footer" = "30 SECONDS TO SET UP · FREE FOREVER TIER";
+
+"onb.cta.continue" = "Continue";
+"onb.cta.build_plan" = "Build my plan";
+"onb.cta.see_included" = "See what's included";
+"onb.cta.skip" = "Skip";
+
+"onb.level.step" = "1 / 3";
+"onb.level.title" = "Where are you\non court?";
+"onb.level.subtitle" = "We'll calibrate quiz difficulty and practice blocks.";
+"onb.level.beginner.title" = "Beginner";
+"onb.level.beginner.desc" = "Learning rallies, still finding consistency";
+"onb.level.club.title" = "Club player";
+"onb.level.club.desc" = "Steady rallies, regular match play";
+"onb.level.advanced.title" = "Advanced";
+"onb.level.advanced.desc" = "Tournaments, ranked play, tight margins";
+"onb.level.coach.title" = "Coach / pro";
+"onb.level.coach.desc" = "Teaching others, also sharpening yourself";
+
+"onb.focus.step" = "2 / 3";
+"onb.focus.title" = "What do you most\nwant to sharpen?";
+"onb.focus.subtitle" = "Pick one. You can change this anytime in your profile.";
+"onb.focus.decision.title" = "Decision-making";
+"onb.focus.decision.desc" = "Shot choice, court awareness, reading opponents";
+"onb.focus.strokes.title" = "Stroke mechanics";
+"onb.focus.strokes.desc" = "Forehand, backhand, serve, volley patterns";
+"onb.focus.mobility.title" = "Mobility & recovery";
+"onb.focus.mobility.desc" = "Stay injury-free, move better between points";
+"onb.focus.mental.title" = "Mental game";
+"onb.focus.mental.desc" = "Nerves in tight moments, focus between points";
+
+"onb.freq.step" = "3 / 3";
+"onb.freq.title" = "How often do\nyou train?";
+"onb.freq.subtitle" = "We'll suggest a training plan that fits your week.";
+"onb.freq.1_2.title" = "1–2 days";
+"onb.freq.1_2.desc" = "Casual — weekend hitter";
+"onb.freq.3_4.title" = "3–4 days";
+"onb.freq.3_4.desc" = "Committed — clinic + match play";
+"onb.freq.5plus.title" = "5+ days";
+"onb.freq.5plus.desc" = "Serious — near-daily training";
+
+"onb.plan.tag" = "YOUR PLAN";
+"onb.plan.title" = "Here's your\ncoach-shaped week.";
+"onb.plan.subtitle" = "Built around your level, focus, and schedule.";
+"onb.plan.row.iq" = "Daily IQ scenario";
+"onb.plan.row.training" = "Foundation plan";
+"onb.plan.row.mobility" = "Quick reset flow";
+"onb.plan.row.tip" = "Tip of the day";
+"onb.plan.iq.decision" = "Decision-heavy questions first";
+"onb.plan.iq.default" = "5 questions a day, graded feedback";
+"onb.plan.training.5plus" = "5-day micro-cycle";
+"onb.plan.training.1_2" = "Weekend 2-day loop";
+"onb.plan.training.default" = "Hybrid 4-day block";
+"onb.plan.mobility.priority" = "Prioritized in your Today hub";
+"onb.plan.mobility.preview" = "Preview flows unlocked";
+"onb.plan.tip.desc" = "One bite-sized coaching note every morning";
+"onb.plan.free_title" = "Free forever — no card required";
+"onb.plan.free_body" = "One daily quiz, foundation plan, and mobility previews. No card needed.";
+
+"onb.paywall.tag" = "PREMIUM PREVIEW";
+"onb.paywall.title" = "What All Access unlocks.";
+"onb.paywall.subtitle" = "You can subscribe from your Profile anytime — no credit card required to keep going.";
+"onb.paywall.included" = "What's included";
+"onb.paywall.b1" = "Unlimited daily & archived quizzes";
+"onb.paywall.b2" = "Premium training tracks + mobility library";
+"onb.paywall.b3" = "Weekly persistence checks with history";
+"onb.paywall.b4" = "Post in content-linked community threads";
+"onb.paywall.b5" = "Early access to every new coaching pack";
+
+"onb.account.title" = "Save your progress.";
+"onb.account.subtitle" = "Sync progress across devices.";
+"onb.account.guest" = "Continue as guest";
+"onb.account.guest_note" = "Guest progress stays on this device.";
+
+"onb.tour.skip" = "Skip tour";
+"onb.tour.swipe_hint" = "Swipe to see more →";
+"onb.tour.1.title" = "Daily IQ scenarios";
+"onb.tour.1.body" = "5 court-diagram questions a day. Read the scenario visually, pick the smartest shot, see exactly why.";
+"onb.tour.2.title" = "Built-for-tennis training";
+"onb.tour.2.body" = "8-week strength, plyo, and conditioning programs designed around how tennis players actually move. Finish one, graduate to the next phase.";
+"onb.tour.3.title" = "Mobility on demand";
+"onb.tour.3.body" = "Quick reset flows, pre-match warm-ups, and recovery sessions — keep your body tennis-ready between hits.";
+"onb.tour.4.title" = "Track your streak and IQ";
+"onb.tour.4.body" = "Your IQ rating, your streak, and your progression badge — all in one Profile tab. Watch yourself climb.";
+
+/* ── Onboarding tour (new feature pages) ── */
+"onb.tour.drill.title" = "Daily Court Drill";
+"onb.tour.drill.body" = "5 fast scenarios. Tap where you'd hit the smartest shot. 30 seconds, every day.";
+"onb.tour.proshot.title" = "Today's pro shot";
+"onb.tour.proshot.body" = "Watch how the best players construct points — one new pattern every day.";
+"onb.tour.rings.title" = "Close your rings";
+"onb.tour.rings.body" = "Drill · Match · Mobility. Close all three for a Triple Ring Day.";
+"onb.tour.matches.title" = "Log your matches";
+"onb.tour.matches.body" = "Pre-match plan, post-match notes, your honest ratings — see your trend over time.";
+"onb.tour.training.title" = "8-week training";
+"onb.tour.training.body" = "Tennis-specific strength, plyo, conditioning. Finish one, graduate to the next.";
+"onb.tour.mobility.title" = "Move better";
+"onb.tour.mobility.body" = "Quick resets, warm-ups, recovery flows — kept short, kept tennis-ready.";
+"onb.tour.avatar.title" = "Your player";
+"onb.tour.avatar.body" = "Build your court look. Streaks, drills, and matches unlock new gear.";
+
+/* ── Matches ── */
+"tab.matches" = "Matches";
+"matches.new_entry" = "New match";
+"matches.choose_type" = "How do you want to log this match?";
+"matches.quick_log" = "Quick log (30s)";
+"matches.full_journal" = "Full journal";
+"matches.total_logged" = "Logged";
+"matches.streak_label" = "Streak";
+"matches.unknown_opponent" = "Practice match";
+"matches.empty_title" = "Your match journal starts here";
+"matches.empty_body" = "Log the matches you play. Track how you serve, return, move, and stay focused — and watch the trend.";
+"matches.first_log_cta" = "Log a match";
+"matches.takeaway_label" = "One takeaway";
+"matches.takeaway_placeholder" = "One thing you'll change next time…";
+"matches.opponent_placeholder" = "Opponent name";
+"matches.score_placeholder" = "Score (e.g. 6-4, 3-6, 7-5)";
+"matches.pre_match_label" = "Pre-match plan";
+"matches.pre_match_placeholder" = "What's your tactical plan against this opponent?";
+"matches.post_match_label" = "Post-match notes";
+"matches.post_match_placeholder" = "What worked, what didn't, what surprised you?";
+"matches.journal_title_new" = "New journal entry";
+"matches.journal_title_edit" = "Journal entry";
+"matches.delete_title" = "Delete this entry?";
+"matches.calendar_logged" = "logged";
+"matches.calendar_not_logged" = "no entry";
+"matches.trend_title" = "Match insights";
+"matches.trend_locked_title" = "Log 5 matches to unlock your trends";
+"matches.trend_up" = "Biggest improvement";
+"matches.trend_down" = "Biggest decline";
+"matches.trend_volume" = "Matches per month";
+"matches.dim_serve" = "Serve";
+"matches.dim_return" = "Return";
+"matches.dim_movement" = "Movement";
+"matches.dim_mental" = "Mental";
+"matches.view_insights" = "View insights";
+"matches.view_calendar" = "Match calendar";
+
+/* ── Daily Court Tap Drill ── */
+"drill.card_kicker" = "Daily drill";
+"drill.card_title" = "Read the court. Tap the smartest shot.";
+"drill.start" = "Start";
+"drill.replay" = "Replay";
+"drill.next" = "Next";
+"drill.see_result" = "See result";
+"drill.share" = "Share result";
+"drill.label_excellent" = "Pro read.";
+"drill.label_strong" = "Strong read.";
+"drill.label_decent" = "Decent — sharpen up.";
+"drill.label_keep_going" = "Keep practicing.";
+
+/* ── Activity Rings ── */
+"rings.quiz" = "Drill";
+"rings.match" = "Match";
+"rings.mobility" = "Mobility";
+"rings.triple_ring" = "Triple Ring Day!";
+
+/* ── Avatar / Locker Room ── */
+"avatar.your_player" = "Your player";
+"avatar.tap_to_customize" = "Customize your look";
+"avatar.locker_title" = "Locker room";
+"avatar.cat_outfit" = "Outfit";
+"avatar.cat_racket" = "Racket";
+"avatar.cat_court" = "Court";
+"avatar.cat_accent" = "Accent";
+"avatar.cat_stance" = "Stance";
+
+/* ── Pro Shot of the Day ── */
+"pro_shot.card_kicker" = "Today's pro shot";
+"pro_shot.play" = "Play";
+"pro_shot.replay" = "Play again";
+
+/* ── Notifications ── */
+"notif.permission.title" = "Stay on streak";
+"notif.permission.body" = "Get one quick nudge each morning so today's quiz doesn't slip past you.";
+"notif.permission.enable" = "Enable reminders";
+"notif.permission.later" = "Maybe later";
+"notif.daily.title" = "Today's CourtIQ is ready";
+"notif.daily.body" = "5 quick scenarios, 3 minutes. Keep your streak alive.";
 
 /* ── Legal ── */
 "legal.privacy" = "Privacy Policy";

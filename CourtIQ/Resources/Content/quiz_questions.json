@@ -1,2402 +1,1508 @@
 [
-    {
-        "id": "serve_001",
-        "category": "serve",
-        "difficulty": "medium",
-        "focusTag": "second serve pressure",
-        "scenario": "4-2 on your serve, your first serve has been inconsistent and you need a second serve that stays in.",
-        "options": [
-            "Use a higher-margin spin serve to the body",
-            "Hit a flat serve down the T",
-            "Try a wide slice serve"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A higher-margin spin serve lowers the risk of a double fault while still giving attack options.",
-        "takeaway": "Protect the second serve under pressure.",
-        "mistakeType": "forcing the second serve",
-        "scenarioTr": "Servis oyununda 4-2 öndeyken birinci servisin tutarsız gitmiş, içeri giren bir ikinci servise ihtiyacın var.",
-        "optionsTr": [
-            "Vücuda yüksek marjlı topspin servis at",
-            "T'ye düz servis at",
-            "Açıktan slice servis dene"
-        ],
-        "explanationTr": "Yüksek marjlı bir topspin servis, hâlâ saldırı seçenekleri sunarken çift hata riskini azaltır.",
-        "takeawayTr": "Baskı altında ikinci servisi koru."
-    },
-    {
-        "id": "serve_002",
-        "category": "serve",
-        "difficulty": "easy",
-        "focusTag": "serve variation",
-        "scenario": "Your opponent has adjusted to your wide serve on the deuce side 30-30 in the fourth game. What should you do?",
-        "options": [
-            "Change to a serve down the T",
-            "Keep serving wide",
-            "Serve into the body"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Changing to the T forces the opponent to move in a different direction and can create a weaker return.",
-        "takeaway": "Vary your serve when the opponent learns your pattern.",
-        "mistakeType": "being predictable",
-        "scenarioTr": "Rakibin dördüncü oyunda 30-30'da deuce tarafındaki açık servine adapte oldu. Ne yapmalısın?",
-        "optionsTr": [
-            "T'ye servis değiştir",
-            "Açıktan atmaya devam et",
-            "Vücuda servis at"
-        ],
-        "explanationTr": "T'ye geçmek rakibi farklı bir yönde hareket ettirmek zorunda bırakır ve daha zayıf bir geri dönüşe yol açabilir.",
-        "takeawayTr": "Rakip desenini öğrendiğinde servisi çeşitlendir."
-    },
-    {
-        "id": "serve_003",
-        "category": "serve",
-        "difficulty": "medium",
-        "focusTag": "serve placement",
-        "scenario": "Your opponent's backhand is weaker than the forehand, and they stand slightly inside the baseline 5-4 in the first set.",
-        "options": [
-            "Aim for the backhand with a T serve",
-            "Serve wide to the forehand",
-            "Serve into the body"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Targeting the weaker backhand helps you force a weaker reply or a short return.",
-        "takeaway": "Use serve placement to attack the weaker side.",
-        "mistakeType": "serving into strength",
-        "scenarioTr": "Rakibinin backhand'i forehand'den daha zayıf ve ilk sette 5-4'te baz çizgisinin biraz içinde duruyor.",
-        "optionsTr": [
-            "T servisiyle backhand'e hedefle",
-            "Forehand'e açık servis at",
-            "Vücuda servis at"
-        ],
-        "explanationTr": "Daha zayıf backhand'i hedeflemek rakibi daha zayıf geri dönüş yapmaya zorlar veya kısa bir dönüş sağlar.",
-        "takeawayTr": "Daha zayıf tarafı saldırmak için servis yerleşimini kullan."
-    },
-    {
-        "id": "serve_004",
-        "category": "serve",
-        "difficulty": "easy",
-        "focusTag": "safe serve",
-        "scenario": "You are on the verge of holding serve and need a safe first point 3-3 in a tight set.",
-        "options": [
-            "Choose a reliable serve with margin",
-            "Try to ace the opponent",
-            "Serve a fast wide serve"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A reliable serve is better than a risky one when you need to close out a game.",
-        "takeaway": "Favor consistency when protecting serve.",
-        "mistakeType": "overaggressive serving",
-        "scenarioTr": "Servis oyununu kazanmak üzeresin ve sıkı bir sette 3-3'te güvenli bir ilk puana ihtiyacın var.",
-        "optionsTr": [
-            "Marjlı güvenilir bir servis seç",
-            "Asa atmayı dene",
-            "Hızlı açık servis at"
-        ],
-        "explanationTr": "Oyunu kapatmak istediğinde güvenilir bir servis riskli olandan daha iyidir.",
-        "takeawayTr": "Servisi korurken tutarlılığı tercih et."
-    },
-    {
-        "id": "serve_005",
-        "category": "serve",
-        "difficulty": "medium",
-        "focusTag": "body serve",
-        "scenario": "The opponent has been stepping in to return your wide serves before a key tiebreak. What is the smarter choice?",
-        "options": [
-            "Serve to the body",
-            "Keep serving wide",
-            "Try a lower percentage T serve"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A body serve limits the returner's ability to attack and can win the point outright.",
-        "takeaway": "Use the body serve when the opponent is anticipating wide.",
-        "mistakeType": "ignoring returner positioning",
-        "scenarioTr": "Rakip önemli bir tiebreak öncesinde açık servislerine adım atarak geri dönüyor. Daha akıllı seçim nedir?",
-        "optionsTr": [
-            "Vücuda servis at",
-            "Açıktan atmaya devam et",
-            "Düşük yüzdeli T servisi dene"
-        ],
-        "explanationTr": "Vücut servisi, ripost yapanın saldırı yeteneğini kısıtlar ve puanı doğrudan kazanabilir.",
-        "takeawayTr": "Rakip açığı beklediğinde vücut servisini kullan."
-    },
-    {
-        "id": "serve_006",
-        "category": "serve",
-        "difficulty": "medium",
-        "focusTag": "second serve pressure",
-        "scenario": "at 15-30 in the second set, your first serve has been inconsistent and you need a second serve that stays in.",
-        "options": [
-            "Use a higher-margin spin serve to the body",
-            "Hit a flat serve down the T",
-            "Try a wide slice serve"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A higher-margin spin serve lowers the risk of a double fault while still giving attack options.",
-        "takeaway": "Protect the second serve under pressure.",
-        "mistakeType": "forcing the second serve",
-        "scenarioTr": "İkinci sette 15-30'da birinci servisin tutarsız gidiyor, içeri giren bir ikinci servise ihtiyacın var.",
-        "optionsTr": [
-            "Vücuda yüksek marjlı topspin servis at",
-            "T'ye düz servis at",
-            "Açıktan slice servis dene"
-        ],
-        "explanationTr": "Yüksek marjlı bir topspin servis, hâlâ saldırı seçenekleri sunarken çift hata riskini azaltır.",
-        "takeawayTr": "Baskı altında ikinci servisi koru."
-    },
-    {
-        "id": "serve_007",
-        "category": "serve",
-        "difficulty": "easy",
-        "focusTag": "serve variation",
-        "scenario": "Your opponent has adjusted to your wide serve on the deuce side during a pressure service game. What should you do?",
-        "options": [
-            "Change to a serve down the T",
-            "Keep serving wide",
-            "Serve into the body"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Changing to the T forces the opponent to move in a different direction and can create a weaker return.",
-        "takeaway": "Vary your serve when the opponent learns your pattern.",
-        "mistakeType": "being predictable",
-        "scenarioTr": "Rakibin baskılı bir servis oyununda deuce tarafındaki açık servine adapte oldu. Ne yapmalısın?",
-        "optionsTr": [
-            "T'ye servis değiştir",
-            "Açıktan atmaya devam et",
-            "Vücuda servis at"
-        ],
-        "explanationTr": "T'ye geçmek rakibi farklı bir yönde hareket ettirmek zorunda bırakır ve daha zayıf bir geri dönüşe yol açabilir.",
-        "takeawayTr": "Rakip desenini öğrendiğinde servisi çeşitlendir."
-    },
-    {
-        "id": "serve_008",
-        "category": "serve",
-        "difficulty": "medium",
-        "focusTag": "serve placement",
-        "scenario": "Your opponent's backhand is weaker than the forehand, and they stand slightly inside the baseline as the match reaches deuce.",
-        "options": [
-            "Aim for the backhand with a T serve",
-            "Serve wide to the forehand",
-            "Serve into the body"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Targeting the weaker backhand helps you force a weaker reply or a short return.",
-        "takeaway": "Use serve placement to attack the weaker side.",
-        "mistakeType": "serving into strength",
-        "scenarioTr": "Rakibinin backhand'i forehand'den daha zayıf ve maç eşitliğe geldiğinde baz çizgisinin biraz içinde duruyor.",
-        "optionsTr": [
-            "T servisiyle backhand'e hedefle",
-            "Forehand'e açık servis at",
-            "Vücuda servis at"
-        ],
-        "explanationTr": "Daha zayıf backhand'i hedeflemek rakibi daha zayıf geri dönüş yapmaya zorlar veya kısa bir dönüş sağlar.",
-        "takeawayTr": "Daha zayıf tarafı saldırmak için servis yerleşimini kullan."
-    },
-    {
-        "id": "serve_009",
-        "category": "serve",
-        "difficulty": "easy",
-        "focusTag": "safe serve",
-        "scenario": "You are on the verge of holding serve and need a safe first point up one break in the set.",
-        "options": [
-            "Choose a reliable serve with margin",
-            "Try to ace the opponent",
-            "Serve a fast wide serve"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A reliable serve is better than a risky one when you need to close out a game.",
-        "takeaway": "Favor consistency when protecting serve.",
-        "mistakeType": "overaggressive serving",
-        "scenarioTr": "Servis oyununu kazanmak üzeresin ve sette bir break önde güvenli bir ilk puana ihtiyacın var.",
-        "optionsTr": [
-            "Marjlı güvenilir bir servis seç",
-            "Asa atmayı dene",
-            "Hızlı açık servis at"
-        ],
-        "explanationTr": "Oyunu kapatmak istediğinde güvenilir bir servis riskli olandan daha iyidir.",
-        "takeawayTr": "Servisi korurken tutarlılığı tercih et."
-    },
-    {
-        "id": "serve_010",
-        "category": "serve",
-        "difficulty": "medium",
-        "focusTag": "body serve",
-        "scenario": "The opponent has been stepping in to return your wide serves at 1-1 in the deciding set. What is the smarter choice?",
-        "options": [
-            "Serve to the body",
-            "Keep serving wide",
-            "Try a lower percentage T serve"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A body serve limits the returner's ability to attack and can win the point outright.",
-        "takeaway": "Use the body serve when the opponent is anticipating wide.",
-        "mistakeType": "ignoring returner positioning",
-        "scenarioTr": "Rakip belirleyici sette 1-1'de açık servislerine adım atarak geri dönüyor. Daha akıllı seçim nedir?",
-        "optionsTr": [
-            "Vücuda servis at",
-            "Açıktan atmaya devam et",
-            "Düşük yüzdeli T servisi dene"
-        ],
-        "explanationTr": "Vücut servisi, ripost yapanın saldırı yeteneğini kısıtlar ve puanı doğrudan kazanabilir.",
-        "takeawayTr": "Rakip açığı beklediğinde vücut servisini kullan."
-    },
-    {
-        "id": "serve_011",
-        "category": "serve",
-        "difficulty": "medium",
-        "focusTag": "second serve pressure",
-        "scenario": "after losing the previous game, your first serve has been inconsistent and you need a second serve that stays in.",
-        "options": [
-            "Use a higher-margin spin serve to the body",
-            "Hit a flat serve down the T",
-            "Try a wide slice serve"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A higher-margin spin serve lowers the risk of a double fault while still giving attack options.",
-        "takeaway": "Protect the second serve under pressure.",
-        "mistakeType": "forcing the second serve",
-        "scenarioTr": "Bir önceki oyunu kaybettikten sonra birinci servisin tutarsız gidiyor, içeri giren bir ikinci servise ihtiyacın var.",
-        "optionsTr": [
-            "Vücuda yüksek marjlı topspin servis at",
-            "T'ye düz servis at",
-            "Açıktan slice servis dene"
-        ],
-        "explanationTr": "Yüksek marjlı bir topspin servis, hâlâ saldırı seçenekleri sunarken çift hata riskini azaltır.",
-        "takeawayTr": "Baskı altında ikinci servisi koru."
-    },
-    {
-        "id": "serve_012",
-        "category": "serve",
-        "difficulty": "easy",
-        "focusTag": "serve variation",
-        "scenario": "Your opponent has adjusted to your wide serve on the deuce side with the crowd on their feet. What should you do?",
-        "options": [
-            "Change to a serve down the T",
-            "Keep serving wide",
-            "Serve into the body"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Changing to the T forces the opponent to move in a different direction and can create a weaker return.",
-        "takeaway": "Vary your serve when the opponent learns your pattern.",
-        "mistakeType": "being predictable",
-        "scenarioTr": "Seyirci ayaktayken rakibin deuce tarafındaki açık servine adapte oldu. Ne yapmalısın?",
-        "optionsTr": [
-            "T'ye servis değiştir",
-            "Açıktan atmaya devam et",
-            "Vücuda servis at"
-        ],
-        "explanationTr": "T'ye geçmek rakibi farklı bir yönde hareket ettirmek zorunda bırakır ve daha zayıf bir geri dönüşe yol açabilir.",
-        "takeawayTr": "Rakip desenini öğrendiğinde servisi çeşitlendir."
-    },
-    {
-        "id": "serve_013",
-        "category": "serve",
-        "difficulty": "medium",
-        "focusTag": "serve placement",
-        "scenario": "Your opponent's backhand is weaker than the forehand, and they stand slightly inside the baseline in a long twilight session.",
-        "options": [
-            "Aim for the backhand with a T serve",
-            "Serve wide to the forehand",
-            "Serve into the body"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Targeting the weaker backhand helps you force a weaker reply or a short return.",
-        "takeaway": "Use serve placement to attack the weaker side.",
-        "mistakeType": "serving into strength",
-        "scenarioTr": "Rakibinin backhand'i forehand'den daha zayıf ve uzun bir akşam seansında baz çizgisinin biraz içinde duruyor.",
-        "optionsTr": [
-            "T servisiyle backhand'e hedefle",
-            "Forehand'e açık servis at",
-            "Vücuda servis at"
-        ],
-        "explanationTr": "Daha zayıf backhand'i hedeflemek rakibi daha zayıf geri dönüş yapmaya zorlar veya kısa bir dönüş sağlar.",
-        "takeawayTr": "Daha zayıf tarafı saldırmak için servis yerleşimini kullan."
-    },
-    {
-        "id": "serve_014",
-        "category": "serve",
-        "difficulty": "easy",
-        "focusTag": "safe serve",
-        "scenario": "You are on the verge of holding serve and need a safe first point while the opponent is returning well.",
-        "options": [
-            "Choose a reliable serve with margin",
-            "Try to ace the opponent",
-            "Serve a fast wide serve"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A reliable serve is better than a risky one when you need to close out a game.",
-        "takeaway": "Favor consistency when protecting serve.",
-        "mistakeType": "overaggressive serving",
-        "scenarioTr": "Servis oyununu kazanmak üzeresin ve rakip iyi geri dönerken güvenli bir ilk puana ihtiyacın var.",
-        "optionsTr": [
-            "Marjlı güvenilir bir servis seç",
-            "Asa atmayı dene",
-            "Hızlı açık servis at"
-        ],
-        "explanationTr": "Oyunu kapatmak istediğinde güvenilir bir servis riskli olandan daha iyidir.",
-        "takeawayTr": "Servisi korurken tutarlılığı tercih et."
-    },
-    {
-        "id": "serve_015",
-        "category": "serve",
-        "difficulty": "medium",
-        "focusTag": "body serve",
-        "scenario": "The opponent has been stepping in to return your wide serves with a chance to break. What is the smarter choice?",
-        "options": [
-            "Serve to the body",
-            "Keep serving wide",
-            "Try a lower percentage T serve"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A body serve limits the returner's ability to attack and can win the point outright.",
-        "takeaway": "Use the body serve when the opponent is anticipating wide.",
-        "mistakeType": "ignoring returner positioning",
-        "scenarioTr": "Rakip bir break fırsatıyla açık servislerine adım atarak geri dönüyor. Daha akıllı seçim nedir?",
-        "optionsTr": [
-            "Vücuda servis at",
-            "Açıktan atmaya devam et",
-            "Düşük yüzdeli T servisi dene"
-        ],
-        "explanationTr": "Vücut servisi, ripost yapanın saldırı yeteneğini kısıtlar ve puanı doğrudan kazanabilir.",
-        "takeawayTr": "Rakip açığı beklediğinde vücut servisini kullan."
-    },
-    {
-        "id": "serve_016",
-        "category": "serve",
-        "difficulty": "medium",
-        "focusTag": "second serve pressure",
-        "scenario": "after a long baseline rally, your first serve has been inconsistent and you need a second serve that stays in.",
-        "options": [
-            "Use a higher-margin spin serve to the body",
-            "Hit a flat serve down the T",
-            "Try a wide slice serve"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A higher-margin spin serve lowers the risk of a double fault while still giving attack options.",
-        "takeaway": "Protect the second serve under pressure.",
-        "mistakeType": "forcing the second serve",
-        "scenarioTr": "Uzun bir baz çizgisi rallisinin ardından birinci servisin tutarsız gidiyor, içeri giren bir ikinci servise ihtiyacın var.",
-        "optionsTr": [
-            "Vücuda yüksek marjlı topspin servis at",
-            "T'ye düz servis at",
-            "Açıktan slice servis dene"
-        ],
-        "explanationTr": "Yüksek marjlı bir topspin servis, hâlâ saldırı seçenekleri sunarken çift hata riskini azaltır.",
-        "takeawayTr": "Baskı altında ikinci servisi koru."
-    },
-    {
-        "id": "serve_017",
-        "category": "serve",
-        "difficulty": "easy",
-        "focusTag": "serve variation",
-        "scenario": "Your opponent has adjusted to your wide serve on the deuce side when the wind is slight. What should you do?",
-        "options": [
-            "Change to a serve down the T",
-            "Keep serving wide",
-            "Serve into the body"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Changing to the T forces the opponent to move in a different direction and can create a weaker return.",
-        "takeaway": "Vary your serve when the opponent learns your pattern.",
-        "mistakeType": "being predictable",
-        "scenarioTr": "Hafif rüzgarlıyken rakibin deuce tarafındaki açık servine adapte oldu. Ne yapmalısın?",
-        "optionsTr": [
-            "T'ye servis değiştir",
-            "Açıktan atmaya devam et",
-            "Vücuda servis at"
-        ],
-        "explanationTr": "T'ye geçmek rakibi farklı bir yönde hareket ettirmek zorunda bırakır ve daha zayıf bir geri dönüşe yol açabilir.",
-        "takeawayTr": "Rakip desenini öğrendiğinde servisi çeşitlendir."
-    },
-    {
-        "id": "serve_018",
-        "category": "serve",
-        "difficulty": "medium",
-        "focusTag": "serve placement",
-        "scenario": "Your opponent's backhand is weaker than the forehand, and they stand slightly inside the baseline at the start of the final set.",
-        "options": [
-            "Aim for the backhand with a T serve",
-            "Serve wide to the forehand",
-            "Serve into the body"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Targeting the weaker backhand helps you force a weaker reply or a short return.",
-        "takeaway": "Use serve placement to attack the weaker side.",
-        "mistakeType": "serving into strength",
-        "scenarioTr": "Rakibinin backhand'i forehand'den daha zayıf ve final setinin başında baz çizgisinin biraz içinde duruyor.",
-        "optionsTr": [
-            "T servisiyle backhand'e hedefle",
-            "Forehand'e açık servis at",
-            "Vücuda servis at"
-        ],
-        "explanationTr": "Daha zayıf backhand'i hedeflemek rakibi daha zayıf geri dönüş yapmaya zorlar veya kısa bir dönüş sağlar.",
-        "takeawayTr": "Daha zayıf tarafı saldırmak için servis yerleşimini kullan."
-    },
-    {
-        "id": "serve_019",
-        "category": "serve",
-        "difficulty": "easy",
-        "focusTag": "safe serve",
-        "scenario": "You are on the verge of holding serve and need a safe first point as the opponent steps in.",
-        "options": [
-            "Choose a reliable serve with margin",
-            "Try to ace the opponent",
-            "Serve a fast wide serve"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A reliable serve is better than a risky one when you need to close out a game.",
-        "takeaway": "Favor consistency when protecting serve.",
-        "mistakeType": "overaggressive serving",
-        "scenarioTr": "Servis oyununu kazanmak üzeresin ve rakip içeri adım atarken güvenli bir ilk puana ihtiyacın var.",
-        "optionsTr": [
-            "Marjlı güvenilir bir servis seç",
-            "Asa atmayı dene",
-            "Hızlı açık servis at"
-        ],
-        "explanationTr": "Oyunu kapatmak istediğinde güvenilir bir servis riskli olandan daha iyidir.",
-        "takeawayTr": "Servisi korurken tutarlılığı tercih et."
-    },
-    {
-        "id": "serve_020",
-        "category": "serve",
-        "difficulty": "medium",
-        "focusTag": "body serve",
-        "scenario": "The opponent has been stepping in to return your wide serves before the biggest game of the set. What is the smarter choice?",
-        "options": [
-            "Serve to the body",
-            "Keep serving wide",
-            "Try a lower percentage T serve"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A body serve limits the returner's ability to attack and can win the point outright.",
-        "takeaway": "Use the body serve when the opponent is anticipating wide.",
-        "mistakeType": "ignoring returner positioning",
-        "scenarioTr": "Rakip setteki en önemli oyun öncesinde açık servislerine adım atarak geri dönüyor. Daha akıllı seçim nedir?",
-        "optionsTr": [
-            "Vücuda servis at",
-            "Açıktan atmaya devam et",
-            "Düşük yüzdeli T servisi dene"
-        ],
-        "explanationTr": "Vücut servisi, ripost yapanın saldırı yeteneğini kısıtlar ve puanı doğrudan kazanabilir.",
-        "takeawayTr": "Rakip açığı beklediğinde vücut servisini kullan."
-    },
-    {
-        "id": "return_001",
-        "category": "returnPlay",
-        "difficulty": "easy",
-        "focusTag": "attack weak second serve",
-        "scenario": "Your opponent hits a weak second serve to your forehand 30-40 in the third game. What is the best return?",
-        "options": [
-            "Step in and hit a deep return",
-            "Block it back with slice",
-            "Try a down-the-line winner"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A deep return on a weak second serve takes control of the point without unnecessary risk.",
-        "takeaway": "Use weak seconds to take command.",
-        "mistakeType": "waiting too long",
-        "scenarioTr": "Üçüncü oyunda 30-40'ta rakibin forehand'ine zayıf bir ikinci servis atıyor. En iyi geri dönüş nedir?",
-        "optionsTr": [
-            "İçeri adım at ve derin geri dönüş vur",
-            "Slice ile geri bloke et",
-            "Çizgi boyunca winner dene"
-        ],
-        "explanationTr": "Zayıf bir ikinci serviste derin geri dönüş, gereksiz risk almadan puana hâkim olur.",
-        "takeawayTr": "Hâkimiyet kurmak için zayıf ikinci servisleri kullan."
-    },
-    {
-        "id": "return_002",
-        "category": "returnPlay",
-        "difficulty": "medium",
-        "focusTag": "return safe",
-        "scenario": "It's break point and the opponent serves fast to your forehand break point in the second set.",
-        "options": [
-            "Return crosscourt safely",
-            "Try a winner down the line",
-            "Return to the body"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A safe crosscourt return keeps the point alive and protects against the score.",
-        "takeaway": "Play steady returns under pressure.",
-        "mistakeType": "overreaching",
-        "scenarioTr": "Break puanında rakip ikinci sette forehand'ine hızlı servis atıyor.",
-        "optionsTr": [
-            "Güvenli şekilde çapraz geri dön",
-            "Çizgi boyunca winner dene",
-            "Vücuda geri dön"
-        ],
-        "explanationTr": "Güvenli çapraz geri dönüş, puanı yaşatır ve skoru korur.",
-        "takeawayTr": "Baskı altında istikrarlı geri dönüşler yap."
-    },
-    {
-        "id": "return_003",
-        "category": "returnPlay",
-        "difficulty": "easy",
-        "focusTag": "body return",
-        "scenario": "The opponent serves into your body on the deuce side 15-30 after a long rally.",
-        "options": [
-            "Return to their backhand",
-            "Swing at your forehand",
-            "Block it short"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Returning to the opponent's backhand is safer and often more effective against a body serve.",
-        "takeaway": "Use the opponent's body as a target.",
-        "mistakeType": "setting up their strength",
-        "scenarioTr": "Rakip uzun bir rallinin ardından deuce tarafında vücuduna servis atıyor. 15-30.",
-        "optionsTr": [
-            "Rakibin backhand'ine geri dön",
-            "Forehand'inle vur",
-            "Kısa geri bloke et"
-        ],
-        "explanationTr": "Rakibin backhand'ine geri dönmek vücut servisine karşı daha güvenli ve çoğu zaman daha etkilidir.",
-        "takeawayTr": "Rakibin vücudunu hedef olarak kullan."
-    },
-    {
-        "id": "return_004",
-        "category": "returnPlay",
-        "difficulty": "medium",
-        "focusTag": "return recovery",
-        "scenario": "Your opponent serves wide to your backhand and you are stretched deuce in the seventh game.",
-        "options": [
-            "Hit a safe crosscourt return",
-            "Return down the line",
-            "Slice it short"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A crosscourt return gives you time to recover and keeps the ball in play.",
-        "takeaway": "Think recovery when returning from wide.",
-        "mistakeType": "overextending",
-        "scenarioTr": "Rakip yedinci oyunda eşitlikte backhand'ine açık servis atıyor ve sen geriliyorsun.",
-        "optionsTr": [
-            "Güvenli çapraz geri dönüş vur",
-            "Çizgi boyunca geri dön",
-            "Kısa slice at"
-        ],
-        "explanationTr": "Çapraz geri dönüş toparlanmak için zaman kazandırır ve topu oyunda tutar.",
-        "takeawayTr": "Açıktan geri dönerken toparlanmayı düşün."
-    },
-    {
-        "id": "return_005",
-        "category": "returnPlay",
-        "difficulty": "easy",
-        "focusTag": "return variation",
-        "scenario": "The opponent has returned your wide serves well for the past two points after your opponent has taken momentum.",
-        "options": [
-            "Change to a down-the-line return",
-            "Keep returning wide",
-            "Return to the body"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Changing direction can disrupt the server's rhythm when a pattern is established.",
-        "takeaway": "Vary your return when the server adapts.",
-        "mistakeType": "following the same path",
-        "scenarioTr": "Rakip momentum kazandıktan sonra son iki puanda açık servislerine iyi geri dönüyor.",
-        "optionsTr": [
-            "Çizgi boyunca geri dönüşe geç",
-            "Açıktan geri dönmeye devam et",
-            "Vücuda geri dön"
-        ],
-        "explanationTr": "Yön değiştirmek, desen kurulduğunda servis yapanın ritmini bozabilir.",
-        "takeawayTr": "Servis yapan uyum sağladığında geri dönüşünü çeşitlendir."
-    },
-    {
-        "id": "return_006",
-        "category": "returnPlay",
-        "difficulty": "easy",
-        "focusTag": "attack weak second serve",
-        "scenario": "Your opponent hits a weak second serve to your forehand at 0-30 in the fifth game. What is the best return?",
-        "options": [
-            "Step in and hit a deep return",
-            "Block it back with slice",
-            "Try a down-the-line winner"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A deep return on a weak second serve takes control of the point without unnecessary risk.",
-        "takeaway": "Use weak seconds to take command.",
-        "mistakeType": "waiting too long",
-        "scenarioTr": "Beşinci oyunda 0-30'da rakibin forehand'ine zayıf bir ikinci servis atıyor. En iyi geri dönüş nedir?",
-        "optionsTr": [
-            "İçeri adım at ve derin geri dönüş vur",
-            "Slice ile geri bloke et",
-            "Çizgi boyunca winner dene"
-        ],
-        "explanationTr": "Zayıf bir ikinci serviste derin geri dönüş, gereksiz risk almadan puana hâkim olur.",
-        "takeawayTr": "Hâkimiyet kurmak için zayıf ikinci servisleri kullan."
-    },
-    {
-        "id": "return_007",
-        "category": "returnPlay",
-        "difficulty": "medium",
-        "focusTag": "return safe",
-        "scenario": "It's break point and the opponent serves fast to your forehand during a key return game.",
-        "options": [
-            "Return crosscourt safely",
-            "Try a winner down the line",
-            "Return to the body"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A safe crosscourt return keeps the point alive and protects against the score.",
-        "takeaway": "Play steady returns under pressure.",
-        "mistakeType": "overreaching",
-        "scenarioTr": "Break puanında önemli bir geri dönüş oyununda rakip forehand'ine hızlı servis atıyor.",
-        "optionsTr": [
-            "Güvenli şekilde çapraz geri dön",
-            "Çizgi boyunca winner dene",
-            "Vücuda geri dön"
-        ],
-        "explanationTr": "Güvenli çapraz geri dönüş, puanı yaşatır ve skoru korur.",
-        "takeawayTr": "Baskı altında istikrarlı geri dönüşler yap."
-    },
-    {
-        "id": "return_008",
-        "category": "returnPlay",
-        "difficulty": "easy",
-        "focusTag": "body return",
-        "scenario": "The opponent serves into your body on the deuce side with your back against the wall.",
-        "options": [
-            "Return to their backhand",
-            "Swing at your forehand",
-            "Block it short"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Returning to the opponent's backhand is safer and often more effective against a body serve.",
-        "takeaway": "Use the opponent's body as a target.",
-        "mistakeType": "setting up their strength",
-        "scenarioTr": "Rakip sırtı duvara dayalıyken deuce tarafında vücuduna servis atıyor.",
-        "optionsTr": [
-            "Rakibin backhand'ine geri dön",
-            "Forehand'inle vur",
-            "Kısa geri bloke et"
-        ],
-        "explanationTr": "Rakibin backhand'ine geri dönmek vücut servisine karşı daha güvenli ve çoğu zaman daha etkilidir.",
-        "takeawayTr": "Rakibin vücudunu hedef olarak kullan."
-    },
-    {
-        "id": "return_009",
-        "category": "returnPlay",
-        "difficulty": "medium",
-        "focusTag": "return recovery",
-        "scenario": "Your opponent serves wide to your backhand and you are stretched after the opponent held serve easily.",
-        "options": [
-            "Hit a safe crosscourt return",
-            "Return down the line",
-            "Slice it short"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A crosscourt return gives you time to recover and keeps the ball in play.",
-        "takeaway": "Think recovery when returning from wide.",
-        "mistakeType": "overextending",
-        "scenarioTr": "Rakip kolay servis oyunu kazandıktan sonra backhand'ine açık servis atıyor ve sen geriliyorsun.",
-        "optionsTr": [
-            "Güvenli çapraz geri dönüş vur",
-            "Çizgi boyunca geri dön",
-            "Kısa slice at"
-        ],
-        "explanationTr": "Çapraz geri dönüş toparlanmak için zaman kazandırır ve topu oyunda tutar.",
-        "takeawayTr": "Açıktan geri dönerken toparlanmayı düşün."
-    },
-    {
-        "id": "return_010",
-        "category": "returnPlay",
-        "difficulty": "easy",
-        "focusTag": "return variation",
-        "scenario": "The opponent has returned your wide serves well for the past two points when the opponent's serve is improving.",
-        "options": [
-            "Change to a down-the-line return",
-            "Keep returning wide",
-            "Return to the body"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Changing direction can disrupt the server's rhythm when a pattern is established.",
-        "takeaway": "Vary your return when the server adapts.",
-        "mistakeType": "following the same path",
-        "scenarioTr": "Rakibin servisi güçlenirken son iki puanda açık servislerine iyi geri dönüyor.",
-        "optionsTr": [
-            "Çizgi boyunca geri dönüşe geç",
-            "Açıktan geri dönmeye devam et",
-            "Vücuda geri dön"
-        ],
-        "explanationTr": "Yön değiştirmek, desen kurulduğunda servis yapanın ritmini bozabilir.",
-        "takeawayTr": "Servis yapan uyum sağladığında geri dönüşünü çeşitlendir."
-    },
-    {
-        "id": "return_011",
-        "category": "returnPlay",
-        "difficulty": "easy",
-        "focusTag": "attack weak second serve",
-        "scenario": "Your opponent hits a weak second serve to your forehand before a potential break. What is the best return?",
-        "options": [
-            "Step in and hit a deep return",
-            "Block it back with slice",
-            "Try a down-the-line winner"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A deep return on a weak second serve takes control of the point without unnecessary risk.",
-        "takeaway": "Use weak seconds to take command.",
-        "mistakeType": "waiting too long",
-        "scenarioTr": "Olası bir break öncesinde rakibin forehand'ine zayıf bir ikinci servis atıyor. En iyi geri dönüş nedir?",
-        "optionsTr": [
-            "İçeri adım at ve derin geri dönüş vur",
-            "Slice ile geri bloke et",
-            "Çizgi boyunca winner dene"
-        ],
-        "explanationTr": "Zayıf bir ikinci serviste derin geri dönüş, gereksiz risk almadan puana hâkim olur.",
-        "takeawayTr": "Hâkimiyet kurmak için zayıf ikinci servisleri kullan."
-    },
-    {
-        "id": "return_012",
-        "category": "returnPlay",
-        "difficulty": "medium",
-        "focusTag": "return safe",
-        "scenario": "It's break point and the opponent serves fast to your forehand with the sun in your eyes.",
-        "options": [
-            "Return crosscourt safely",
-            "Try a winner down the line",
-            "Return to the body"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A safe crosscourt return keeps the point alive and protects against the score.",
-        "takeaway": "Play steady returns under pressure.",
-        "mistakeType": "overreaching",
-        "scenarioTr": "Break puanında güneş gözünde olurken rakip forehand'ine hızlı servis atıyor.",
-        "optionsTr": [
-            "Güvenli şekilde çapraz geri dön",
-            "Çizgi boyunca winner dene",
-            "Vücuda geri dön"
-        ],
-        "explanationTr": "Güvenli çapraz geri dönüş, puanı yaşatır ve skoru korur.",
-        "takeawayTr": "Baskı altında istikrarlı geri dönüşler yap."
-    },
-    {
-        "id": "return_013",
-        "category": "returnPlay",
-        "difficulty": "easy",
-        "focusTag": "body return",
-        "scenario": "The opponent serves into your body on the deuce side as the court conditions slow down.",
-        "options": [
-            "Return to their backhand",
-            "Swing at your forehand",
-            "Block it short"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Returning to the opponent's backhand is safer and often more effective against a body serve.",
-        "takeaway": "Use the opponent's body as a target.",
-        "mistakeType": "setting up their strength",
-        "scenarioTr": "Kort koşulları yavaşladıkça rakip deuce tarafında vücuduna servis atıyor.",
-        "optionsTr": [
-            "Rakibin backhand'ine geri dön",
-            "Forehand'inle vur",
-            "Kısa geri bloke et"
-        ],
-        "explanationTr": "Rakibin backhand'ine geri dönmek vücut servisine karşı daha güvenli ve çoğu zaman daha etkilidir.",
-        "takeawayTr": "Rakibin vücudunu hedef olarak kullan."
-    },
-    {
-        "id": "return_014",
-        "category": "returnPlay",
-        "difficulty": "medium",
-        "focusTag": "return recovery",
-        "scenario": "Your opponent serves wide to your backhand and you are stretched after a long rally.",
-        "options": [
-            "Hit a safe crosscourt return",
-            "Return down the line",
-            "Slice it short"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A crosscourt return gives you time to recover and keeps the ball in play.",
-        "takeaway": "Think recovery when returning from wide.",
-        "mistakeType": "overextending",
-        "scenarioTr": "Uzun bir rallinin ardından rakip backhand'ine açık servis atıyor ve sen geriliyorsun.",
-        "optionsTr": [
-            "Güvenli çapraz geri dönüş vur",
-            "Çizgi boyunca geri dön",
-            "Kısa slice at"
-        ],
-        "explanationTr": "Çapraz geri dönüş toparlanmak için zaman kazandırır ve topu oyunda tutar.",
-        "takeawayTr": "Açıktan geri dönerken toparlanmayı düşün."
-    },
-    {
-        "id": "return_015",
-        "category": "returnPlay",
-        "difficulty": "easy",
-        "focusTag": "return variation",
-        "scenario": "The opponent has returned your wide serves well for the past two points at 40-40 in a tight set.",
-        "options": [
-            "Change to a down-the-line return",
-            "Keep returning wide",
-            "Return to the body"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Changing direction can disrupt the server's rhythm when a pattern is established.",
-        "takeaway": "Vary your return when the server adapts.",
-        "mistakeType": "following the same path",
-        "scenarioTr": "Sıkı bir sette 40-40'ta son iki puanda açık servislerine iyi geri dönüyor.",
-        "optionsTr": [
-            "Çizgi boyunca geri dönüşe geç",
-            "Açıktan geri dönmeye devam et",
-            "Vücuda geri dön"
-        ],
-        "explanationTr": "Yön değiştirmek, desen kurulduğunda servis yapanın ritmini bozabilir.",
-        "takeawayTr": "Servis yapan uyum sağladığında geri dönüşünü çeşitlendir."
-    },
-    {
-        "id": "return_016",
-        "category": "returnPlay",
-        "difficulty": "easy",
-        "focusTag": "attack weak second serve",
-        "scenario": "Your opponent hits a weak second serve to your forehand during a momentum shift. What is the best return?",
-        "options": [
-            "Step in and hit a deep return",
-            "Block it back with slice",
-            "Try a down-the-line winner"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A deep return on a weak second serve takes control of the point without unnecessary risk.",
-        "takeaway": "Use weak seconds to take command.",
-        "mistakeType": "waiting too long",
-        "scenarioTr": "Bir momentum kayması sırasında rakibin forehand'ine zayıf bir ikinci servis atıyor. En iyi geri dönüş nedir?",
-        "optionsTr": [
-            "İçeri adım at ve derin geri dönüş vur",
-            "Slice ile geri bloke et",
-            "Çizgi boyunca winner dene"
-        ],
-        "explanationTr": "Zayıf bir ikinci serviste derin geri dönüş, gereksiz risk almadan puana hâkim olur.",
-        "takeawayTr": "Hâkimiyet kurmak için zayıf ikinci servisleri kullan."
-    },
-    {
-        "id": "return_017",
-        "category": "returnPlay",
-        "difficulty": "medium",
-        "focusTag": "return safe",
-        "scenario": "It's break point and the opponent serves fast to your forehand while the opponent is serving well.",
-        "options": [
-            "Return crosscourt safely",
-            "Try a winner down the line",
-            "Return to the body"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A safe crosscourt return keeps the point alive and protects against the score.",
-        "takeaway": "Play steady returns under pressure.",
-        "mistakeType": "overreaching",
-        "scenarioTr": "Break puanında rakip iyi servis yaparken forehand'ine hızlı servis atıyor.",
-        "optionsTr": [
-            "Güvenli şekilde çapraz geri dön",
-            "Çizgi boyunca winner dene",
-            "Vücuda geri dön"
-        ],
-        "explanationTr": "Güvenli çapraz geri dönüş, puanı yaşatır ve skoru korur.",
-        "takeawayTr": "Baskı altında istikrarlı geri dönüşler yap."
-    },
-    {
-        "id": "return_018",
-        "category": "returnPlay",
-        "difficulty": "easy",
-        "focusTag": "body return",
-        "scenario": "The opponent serves into your body on the deuce side in the first service game.",
-        "options": [
-            "Return to their backhand",
-            "Swing at your forehand",
-            "Block it short"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Returning to the opponent's backhand is safer and often more effective against a body serve.",
-        "takeaway": "Use the opponent's body as a target.",
-        "mistakeType": "setting up their strength",
-        "scenarioTr": "Rakip ilk servis oyununda deuce tarafında vücuduna servis atıyor.",
-        "optionsTr": [
-            "Rakibin backhand'ine geri dön",
-            "Forehand'inle vur",
-            "Kısa geri bloke et"
-        ],
-        "explanationTr": "Rakibin backhand'ine geri dönmek vücut servisine karşı daha güvenli ve çoğu zaman daha etkilidir.",
-        "takeawayTr": "Rakibin vücudunu hedef olarak kullan."
-    },
-    {
-        "id": "return_019",
-        "category": "returnPlay",
-        "difficulty": "medium",
-        "focusTag": "return recovery",
-        "scenario": "Your opponent serves wide to your backhand and you are stretched before the opponent's favorite pattern.",
-        "options": [
-            "Hit a safe crosscourt return",
-            "Return down the line",
-            "Slice it short"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A crosscourt return gives you time to recover and keeps the ball in play.",
-        "takeaway": "Think recovery when returning from wide.",
-        "mistakeType": "overextending",
-        "scenarioTr": "Rakibin favori deseni öncesinde backhand'ine açık servis atıyor ve sen geriliyorsun.",
-        "optionsTr": [
-            "Güvenli çapraz geri dönüş vur",
-            "Çizgi boyunca geri dön",
-            "Kısa slice at"
-        ],
-        "explanationTr": "Çapraz geri dönüş toparlanmak için zaman kazandırır ve topu oyunda tutar.",
-        "takeawayTr": "Açıktan geri dönerken toparlanmayı düşün."
-    },
-    {
-        "id": "return_020",
-        "category": "returnPlay",
-        "difficulty": "easy",
-        "focusTag": "return variation",
-        "scenario": "The opponent has returned your wide serves well for the past two points when the score is tied.",
-        "options": [
-            "Change to a down-the-line return",
-            "Keep returning wide",
-            "Return to the body"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Changing direction can disrupt the server's rhythm when a pattern is established.",
-        "takeaway": "Vary your return when the server adapts.",
-        "mistakeType": "following the same path",
-        "scenarioTr": "Skor eşitken son iki puanda açık servislerine iyi geri dönüyor.",
-        "optionsTr": [
-            "Çizgi boyunca geri dönüşe geç",
-            "Açıktan geri dönmeye devam et",
-            "Vücuda geri dön"
-        ],
-        "explanationTr": "Yön değiştirmek, desen kurulduğunda servis yapanın ritmini bozabilir.",
-        "takeawayTr": "Servis yapan uyum sağladığında geri dönüşünü çeşitlendir."
-    },
-    {
-        "id": "rally_001",
-        "category": "rally",
-        "difficulty": "easy",
-        "focusTag": "crosscourt control",
-        "scenario": "Your opponent hits deep to your backhand 15-15 in the second set. What is the safest play?",
-        "options": [
-            "Hit deep crosscourt",
-            "Go down the line",
-            "Drop it short"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A deep crosscourt shot keeps you in the rally and avoids risky angles.",
-        "takeaway": "Use the safer crosscourt path in rallies.",
-        "mistakeType": "forcing lines too early",
-        "scenarioTr": "İkinci sette 15-15'te rakip backhand'ine derin vuruyor. En güvenli hamle nedir?",
-        "optionsTr": [
-            "Derin çapraz vur",
-            "Çizgi boyunca git",
-            "Kısa düşür"
-        ],
-        "explanationTr": "Derin çapraz vuruş rallide kalmanı sağlar ve riskli açılardan kaçınır.",
-        "takeawayTr": "Rallilerde daha güvenli çapraz yolu kullan."
-    },
-    {
-        "id": "rally_002",
-        "category": "rally",
-        "difficulty": "medium",
-        "focusTag": "short ball attack",
-        "scenario": "You receive a short ball to your forehand 30-30 after a long point. What should you do?",
-        "options": [
-            "Step in and attack",
-            "Hit a safe slice",
-            "Play a defensive lob"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Short balls are opportunities to take control, so attack when you can.",
-        "takeaway": "Use short balls to transition to offense.",
-        "mistakeType": "waiting too long",
-        "scenarioTr": "Uzun bir puan sonrası 30-30'da forehand'ine kısa top geliyor. Ne yapmalısın?",
-        "optionsTr": [
-            "İçeri adım at ve saldır",
-            "Güvenli slice vur",
-            "Defansif lob oyna"
-        ],
-        "explanationTr": "Kısa toplar hâkimiyet kurma fırsatıdır; yapabilirsen saldır.",
-        "takeawayTr": "Ofanse geçmek için kısa topları kullan."
-    },
-    {
-        "id": "rally_003",
-        "category": "rally",
-        "difficulty": "easy",
-        "focusTag": "recovery",
-        "scenario": "You are pulled wide and need to recover deuce in the first set.",
-        "options": [
-            "Hit a crosscourt slice and recover",
-            "Try a down-the-line winner",
-            "Lob deep"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A slice keeps the ball in play and gives you time to recover your position.",
-        "takeaway": "Recover before trying to win.",
-        "mistakeType": "overhitting from awkward positions",
-        "scenarioTr": "Birinci sette eşitlikte yana çekildin ve topaklanman gerekiyor.",
-        "optionsTr": [
-            "Çapraz slice vur ve topaklan",
-            "Çizgi boyunca winner dene",
-            "Derin lob at"
-        ],
-        "explanationTr": "Slice topu oyunda tutar ve pozisyonunu toparlamak için zaman kazandırır.",
-        "takeawayTr": "Kazanmaya çalışmadan önce topaklan."
-    },
-    {
-        "id": "rally_004",
-        "category": "rally",
-        "difficulty": "medium",
-        "focusTag": "pace control",
-        "scenario": "The opponent is hitting flat and fast a crucial service game. How should you respond?",
-        "options": [
-            "Use topspin to slow the pace",
-            "Match the flat pace",
-            "Hit harder"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Slowing the pace with topspin can disrupt an opponent who thrives on flat speed.",
-        "takeaway": "Change the pace to control the rally.",
-        "mistakeType": "letting them dictate rhythm",
-        "scenarioTr": "Kritik bir servis oyununda rakip düz ve hızlı vuruyor. Nasıl karşılık vermelisin?",
-        "optionsTr": [
-            "Tempoyu yavaşlatmak için topspin kullan",
-            "Düz tempoyu yakala",
-            "Daha sert vur"
-        ],
-        "explanationTr": "Topspinle tempoyu yavaşlatmak, düz hızla gelişen rakibi bozabilir.",
-        "takeawayTr": "Ralliyi kontrol etmek için tempoyu değiştir."
-    },
-    {
-        "id": "rally_005",
-        "category": "rally",
-        "difficulty": "easy",
-        "focusTag": "direction change",
-        "scenario": "Your opponent is moving well laterally a momentum swing. What is the better shot?",
-        "options": [
-            "Hit down the line",
-            "Keep playing crosscourt",
-            "Try a short angle"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Changing direction can take advantage of an opponent who expects crosscourt shots.",
-        "takeaway": "Use direction changes to destabilize your opponent.",
-        "mistakeType": "staying on the same path",
-        "scenarioTr": "Bir momentum dalgalanmasında rakip yanal olarak iyi hareket ediyor. Daha iyi vuruş nedir?",
-        "optionsTr": [
-            "Çizgi boyunca vur",
-            "Çapraz oynamaya devam et",
-            "Kısa açı dene"
-        ],
-        "explanationTr": "Yön değiştirmek, çapraz vuruş bekleyen rakibi avantajlı konuma getirebilir.",
-        "takeawayTr": "Rakibi dengesiz bırakmak için yön değişikliklerini kullan."
-    },
-    {
-        "id": "rally_006",
-        "category": "rally",
-        "difficulty": "easy",
-        "focusTag": "crosscourt control",
-        "scenario": "Your opponent hits deep to your backhand 30-40 in the third game. What is the safest play?",
-        "options": [
-            "Hit deep crosscourt",
-            "Go down the line",
-            "Drop it short"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A deep crosscourt shot keeps you in the rally and avoids risky angles.",
-        "takeaway": "Use the safer crosscourt path in rallies.",
-        "mistakeType": "forcing lines too early",
-        "scenarioTr": "Üçüncü oyunda 30-40'ta rakip backhand'ine derin vuruyor. En güvenli hamle nedir?",
-        "optionsTr": [
-            "Derin çapraz vur",
-            "Çizgi boyunca git",
-            "Kısa düşür"
-        ],
-        "explanationTr": "Derin çapraz vuruş rallide kalmanı sağlar ve riskli açılardan kaçınır.",
-        "takeawayTr": "Rallilerde daha güvenli çapraz yolu kullan."
-    },
-    {
-        "id": "rally_007",
-        "category": "rally",
-        "difficulty": "medium",
-        "focusTag": "short ball attack",
-        "scenario": "You receive a short ball to your forehand a long baseline exchange. What should you do?",
-        "options": [
-            "Step in and attack",
-            "Hit a safe slice",
-            "Play a defensive lob"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Short balls are opportunities to take control, so attack when you can.",
-        "takeaway": "Use short balls to transition to offense.",
-        "mistakeType": "waiting too long",
-        "scenarioTr": "Uzun bir baz çizgisi mücadelesi sırasında forehand'ine kısa top geliyor. Ne yapmalısın?",
-        "optionsTr": [
-            "İçeri adım at ve saldır",
-            "Güvenli slice vur",
-            "Defansif lob oyna"
-        ],
-        "explanationTr": "Kısa toplar hâkimiyet kurma fırsatıdır; yapabilirsen saldır.",
-        "takeawayTr": "Ofanse geçmek için kısa topları kullan."
-    },
-    {
-        "id": "rally_008",
-        "category": "rally",
-        "difficulty": "easy",
-        "focusTag": "recovery",
-        "scenario": "You are pulled wide and need to recover after a short change of direction.",
-        "options": [
-            "Hit a crosscourt slice and recover",
-            "Try a down-the-line winner",
-            "Lob deep"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A slice keeps the ball in play and gives you time to recover your position.",
-        "takeaway": "Recover before trying to win.",
-        "mistakeType": "overhitting from awkward positions",
-        "scenarioTr": "Kısa bir yön değişiminin ardından yana çekildin ve topaklanman gerekiyor.",
-        "optionsTr": [
-            "Çapraz slice vur ve topaklan",
-            "Çizgi boyunca winner dene",
-            "Derin lob at"
-        ],
-        "explanationTr": "Slice topu oyunda tutar ve pozisyonunu toparlamak için zaman kazandırır.",
-        "takeawayTr": "Kazanmaya çalışmadan önce topaklan."
-    },
-    {
-        "id": "rally_009",
-        "category": "rally",
-        "difficulty": "medium",
-        "focusTag": "pace control",
-        "scenario": "The opponent is hitting flat and fast when the opponent is defending well. How should you respond?",
-        "options": [
-            "Use topspin to slow the pace",
-            "Match the flat pace",
-            "Hit harder"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Slowing the pace with topspin can disrupt an opponent who thrives on flat speed.",
-        "takeaway": "Change the pace to control the rally.",
-        "mistakeType": "letting them dictate rhythm",
-        "scenarioTr": "Rakip iyi savunurken düz ve hızlı vuruyor. Nasıl karşılık vermelisin?",
-        "optionsTr": [
-            "Tempoyu yavaşlatmak için topspin kullan",
-            "Düz tempoyu yakala",
-            "Daha sert vur"
-        ],
-        "explanationTr": "Topspinle tempoyu yavaşlatmak, düz hızla gelişen rakibi bozabilir.",
-        "takeawayTr": "Ralliyi kontrol etmek için tempoyu değiştir."
-    },
-    {
-        "id": "rally_010",
-        "category": "rally",
-        "difficulty": "easy",
-        "focusTag": "direction change",
-        "scenario": "Your opponent is moving well laterally at 4-4 in the second set. What is the better shot?",
-        "options": [
-            "Hit down the line",
-            "Keep playing crosscourt",
-            "Try a short angle"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Changing direction can take advantage of an opponent who expects crosscourt shots.",
-        "takeaway": "Use direction changes to destabilize your opponent.",
-        "mistakeType": "staying on the same path",
-        "scenarioTr": "İkinci sette 4-4'te rakip yanal olarak iyi hareket ediyor. Daha iyi vuruş nedir?",
-        "optionsTr": [
-            "Çizgi boyunca vur",
-            "Çapraz oynamaya devam et",
-            "Kısa açı dene"
-        ],
-        "explanationTr": "Yön değiştirmek, çapraz vuruş bekleyen rakibi avantajlı konuma getirebilir.",
-        "takeawayTr": "Rakibi dengesiz bırakmak için yön değişikliklerini kullan."
-    },
-    {
-        "id": "rally_011",
-        "category": "rally",
-        "difficulty": "easy",
-        "focusTag": "crosscourt control",
-        "scenario": "Your opponent hits deep to your backhand with the crowd watching. What is the safest play?",
-        "options": [
-            "Hit deep crosscourt",
-            "Go down the line",
-            "Drop it short"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A deep crosscourt shot keeps you in the rally and avoids risky angles.",
-        "takeaway": "Use the safer crosscourt path in rallies.",
-        "mistakeType": "forcing lines too early",
-        "scenarioTr": "Seyirci izlerken rakip backhand'ine derin vuruyor. En güvenli hamle nedir?",
-        "optionsTr": [
-            "Derin çapraz vur",
-            "Çizgi boyunca git",
-            "Kısa düşür"
-        ],
-        "explanationTr": "Derin çapraz vuruş rallide kalmanı sağlar ve riskli açılardan kaçınır.",
-        "takeawayTr": "Rallilerde daha güvenli çapraz yolu kullan."
-    },
-    {
-        "id": "rally_012",
-        "category": "rally",
-        "difficulty": "medium",
-        "focusTag": "short ball attack",
-        "scenario": "You receive a short ball to your forehand during a weather delay. What should you do?",
-        "options": [
-            "Step in and attack",
-            "Hit a safe slice",
-            "Play a defensive lob"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Short balls are opportunities to take control, so attack when you can.",
-        "takeaway": "Use short balls to transition to offense.",
-        "mistakeType": "waiting too long",
-        "scenarioTr": "Kötü hava molasında forehand'ine kısa top geliyor. Ne yapmalısın?",
-        "optionsTr": [
-            "İçeri adım at ve saldır",
-            "Güvenli slice vur",
-            "Defansif lob oyna"
-        ],
-        "explanationTr": "Kısa toplar hâkimiyet kurma fırsatıdır; yapabilirsen saldır.",
-        "takeawayTr": "Ofanse geçmek için kısa topları kullan."
-    },
-    {
-        "id": "rally_013",
-        "category": "rally",
-        "difficulty": "easy",
-        "focusTag": "recovery",
-        "scenario": "You are pulled wide and need to recover at the start of a fifth game.",
-        "options": [
-            "Hit a crosscourt slice and recover",
-            "Try a down-the-line winner",
-            "Lob deep"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A slice keeps the ball in play and gives you time to recover your position.",
-        "takeaway": "Recover before trying to win.",
-        "mistakeType": "overhitting from awkward positions",
-        "scenarioTr": "Beşinci oyunun başında yana çekildin ve topaklanman gerekiyor.",
-        "optionsTr": [
-            "Çapraz slice vur ve topaklan",
-            "Çizgi boyunca winner dene",
-            "Derin lob at"
-        ],
-        "explanationTr": "Slice topu oyunda tutar ve pozisyonunu toparlamak için zaman kazandırır.",
-        "takeawayTr": "Kazanmaya çalışmadan önce topaklan."
-    },
-    {
-        "id": "rally_014",
-        "category": "rally",
-        "difficulty": "medium",
-        "focusTag": "pace control",
-        "scenario": "The opponent is hitting flat and fast after a missed opportunity. How should you respond?",
-        "options": [
-            "Use topspin to slow the pace",
-            "Match the flat pace",
-            "Hit harder"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Slowing the pace with topspin can disrupt an opponent who thrives on flat speed.",
-        "takeaway": "Change the pace to control the rally.",
-        "mistakeType": "letting them dictate rhythm",
-        "scenarioTr": "Kaçırılan bir fırsatın ardından rakip düz ve hızlı vuruyor. Nasıl karşılık vermelisin?",
-        "optionsTr": [
-            "Tempoyu yavaşlatmak için topspin kullan",
-            "Düz tempoyu yakala",
-            "Daha sert vur"
-        ],
-        "explanationTr": "Topspinle tempoyu yavaşlatmak, düz hızla gelişen rakibi bozabilir.",
-        "takeawayTr": "Ralliyi kontrol etmek için tempoyu değiştir."
-    },
-    {
-        "id": "rally_015",
-        "category": "rally",
-        "difficulty": "easy",
-        "focusTag": "direction change",
-        "scenario": "Your opponent is moving well laterally when the opponent is under pressure. What is the better shot?",
-        "options": [
-            "Hit down the line",
-            "Keep playing crosscourt",
-            "Try a short angle"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Changing direction can take advantage of an opponent who expects crosscourt shots.",
-        "takeaway": "Use direction changes to destabilize your opponent.",
-        "mistakeType": "staying on the same path",
-        "scenarioTr": "Rakip baskı altındayken yanal olarak iyi hareket ediyor. Daha iyi vuruş nedir?",
-        "optionsTr": [
-            "Çizgi boyunca vur",
-            "Çapraz oynamaya devam et",
-            "Kısa açı dene"
-        ],
-        "explanationTr": "Yön değiştirmek, çapraz vuruş bekleyen rakibi avantajlı konuma getirebilir.",
-        "takeawayTr": "Rakibi dengesiz bırakmak için yön değişikliklerini kullan."
-    },
-    {
-        "id": "rally_016",
-        "category": "rally",
-        "difficulty": "easy",
-        "focusTag": "crosscourt control",
-        "scenario": "Your opponent hits deep to your backhand at the end of a long rally. What is the safest play?",
-        "options": [
-            "Hit deep crosscourt",
-            "Go down the line",
-            "Drop it short"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A deep crosscourt shot keeps you in the rally and avoids risky angles.",
-        "takeaway": "Use the safer crosscourt path in rallies.",
-        "mistakeType": "forcing lines too early",
-        "scenarioTr": "Uzun bir rallinin sonunda rakip backhand'ine derin vuruyor. En güvenli hamle nedir?",
-        "optionsTr": [
-            "Derin çapraz vur",
-            "Çizgi boyunca git",
-            "Kısa düşür"
-        ],
-        "explanationTr": "Derin çapraz vuruş rallide kalmanı sağlar ve riskli açılardan kaçınır.",
-        "takeawayTr": "Rallilerde daha güvenli çapraz yolu kullan."
-    },
-    {
-        "id": "rally_017",
-        "category": "rally",
-        "difficulty": "medium",
-        "focusTag": "short ball attack",
-        "scenario": "You receive a short ball to your forehand as the opponent sets up for the next shot. What should you do?",
-        "options": [
-            "Step in and attack",
-            "Hit a safe slice",
-            "Play a defensive lob"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Short balls are opportunities to take control, so attack when you can.",
-        "takeaway": "Use short balls to transition to offense.",
-        "mistakeType": "waiting too long",
-        "scenarioTr": "Rakip bir sonraki vuruşa hazırlanırken forehand'ine kısa top geliyor. Ne yapmalısın?",
-        "optionsTr": [
-            "İçeri adım at ve saldır",
-            "Güvenli slice vur",
-            "Defansif lob oyna"
-        ],
-        "explanationTr": "Kısa toplar hâkimiyet kurma fırsatıdır; yapabilirsen saldır.",
-        "takeawayTr": "Ofanse geçmek için kısa topları kullan."
-    },
-    {
-        "id": "rally_018",
-        "category": "rally",
-        "difficulty": "easy",
-        "focusTag": "recovery",
-        "scenario": "You are pulled wide and need to recover during a key service game.",
-        "options": [
-            "Hit a crosscourt slice and recover",
-            "Try a down-the-line winner",
-            "Lob deep"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A slice keeps the ball in play and gives you time to recover your position.",
-        "takeaway": "Recover before trying to win.",
-        "mistakeType": "overhitting from awkward positions",
-        "scenarioTr": "Önemli bir servis oyununda yana çekildin ve topaklanman gerekiyor.",
-        "optionsTr": [
-            "Çapraz slice vur ve topaklan",
-            "Çizgi boyunca winner dene",
-            "Derin lob at"
-        ],
-        "explanationTr": "Slice topu oyunda tutar ve pozisyonunu toparlamak için zaman kazandırır.",
-        "takeawayTr": "Kazanmaya çalışmadan önce topaklan."
-    },
-    {
-        "id": "rally_019",
-        "category": "rally",
-        "difficulty": "medium",
-        "focusTag": "pace control",
-        "scenario": "The opponent is hitting flat and fast with the score level in the set. How should you respond?",
-        "options": [
-            "Use topspin to slow the pace",
-            "Match the flat pace",
-            "Hit harder"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Slowing the pace with topspin can disrupt an opponent who thrives on flat speed.",
-        "takeaway": "Change the pace to control the rally.",
-        "mistakeType": "letting them dictate rhythm",
-        "scenarioTr": "Setteki skor eşitken rakip düz ve hızlı vuruyor. Nasıl karşılık vermelisin?",
-        "optionsTr": [
-            "Tempoyu yavaşlatmak için topspin kullan",
-            "Düz tempoyu yakala",
-            "Daha sert vur"
-        ],
-        "explanationTr": "Topspinle tempoyu yavaşlatmak, düz hızla gelişen rakibi bozabilir.",
-        "takeawayTr": "Ralliyi kontrol etmek için tempoyu değiştir."
-    },
-    {
-        "id": "rally_020",
-        "category": "rally",
-        "difficulty": "easy",
-        "focusTag": "direction change",
-        "scenario": "Your opponent is moving well laterally when momentum is shifting. What is the better shot?",
-        "options": [
-            "Hit down the line",
-            "Keep playing crosscourt",
-            "Try a short angle"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Changing direction can take advantage of an opponent who expects crosscourt shots.",
-        "takeaway": "Use direction changes to destabilize your opponent.",
-        "mistakeType": "staying on the same path",
-        "scenarioTr": "Momentum kayarken rakip yanal olarak iyi hareket ediyor. Daha iyi vuruş nedir?",
-        "optionsTr": [
-            "Çizgi boyunca vur",
-            "Çapraz oynamaya devam et",
-            "Kısa açı dene"
-        ],
-        "explanationTr": "Yön değiştirmek, çapraz vuruş bekleyen rakibi avantajlı konuma getirebilir.",
-        "takeawayTr": "Rakibi dengesiz bırakmak için yön değişikliklerini kullan."
-    },
-    {
-        "id": "net_001",
-        "category": "net",
-        "difficulty": "medium",
-        "focusTag": "approach judgment",
-        "scenario": "Your approach shot is short and you are at the net 30-30 on the second set.",
-        "options": [
-            "Hold back and keep the point alive",
-            "Attack the net anyway",
-            "Hit a defensive lob"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A short approach shot at the net is usually not worth the risk unless the ball is truly short.",
-        "takeaway": "Approach only when the shot is strong.",
-        "mistakeType": "forcing the net",
-        "scenarioTr": "İkinci sette 30-30'da yaklaşma vuruşun kısa ve file'dasın.",
-        "optionsTr": [
-            "Geri dur ve puanı yaşat",
-            "Yine de file'a git",
-            "Defansif lob vur"
-        ],
-        "explanationTr": "File'daki kısa bir yaklaşma vuruşu, top gerçekten kısa olmadıkça genellikle riske değmez.",
-        "takeawayTr": "Yalnızca vuruş güçlü olduğunda yaklaş."
-    },
-    {
-        "id": "net_002",
-        "category": "net",
-        "difficulty": "easy",
-        "focusTag": "overhead defense",
-        "scenario": "Your opponent lobs to a comfortable height while you are at the net 15-15 during a key game.",
-        "options": [
-            "Let it bounce and hit an overhead",
-            "Take it on the rise",
-            "Run back and lob"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Letting the ball bounce gives you a more controlled and reliable overhead.",
-        "takeaway": "Take medium-height lobs after one bounce.",
-        "mistakeType": "rushing the overhead",
-        "scenarioTr": "Önemli bir oyunda 15-15'te file'dayken rakip rahat bir yüksekliğe lob atıyor.",
-        "optionsTr": [
-            "Bir sekme sek ve smaç vur",
-            "Yükselirken al",
-            "Geri koş ve lob at"
-        ],
-        "explanationTr": "Topun sekmesine izin vermek daha kontrollü ve güvenilir bir smaç sağlar.",
-        "takeawayTr": "Orta yükseklikteki lobları bir sekmeden sonra al."
-    },
-    {
-        "id": "net_003",
-        "category": "net",
-        "difficulty": "easy",
-        "focusTag": "low volley",
-        "scenario": "Your opponent hits a low ball at your feet while you are at the net deuce in the fifth game.",
-        "options": [
-            "Cut it back low and keep it in play",
-            "Reach for a wide volley",
-            "Lob it up"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A low cut volley is the safest response to a ball at your feet.",
-        "takeaway": "Use control on low net balls.",
-        "mistakeType": "attempting a risky angle",
-        "scenarioTr": "Beşinci oyunda eşitlikte file'dayken rakip ayaklarının dibine alçak top vuruyor.",
-        "optionsTr": [
-            "Alçak kes ve oyunda tut",
-            "Geniş vole için uzat",
-            "Lob yap"
-        ],
-        "explanationTr": "Alçak kes vole, ayakların dibindeki bir topa en güvenli yanıttır.",
-        "takeawayTr": "File'daki alçak toplarda kontrolü kullan."
-    },
-    {
-        "id": "net_004",
-        "category": "net",
-        "difficulty": "medium",
-        "focusTag": "net target",
-        "scenario": "Your opponent returns softly to your forehand at the net after your opponent's deep shot.",
-        "options": [
-            "Punch the volley into the open court",
-            "Block it back gently",
-            "Lob it back"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A punch volley into the open court is usually the clearest way to finish a soft reply.",
-        "takeaway": "Finish soft net balls with authority.",
-        "mistakeType": "being too passive",
-        "scenarioTr": "Rakibin derin vuruşunun ardından file'dayken forehand'ine yumuşak geri dönüyor.",
-        "optionsTr": [
-            "Voleyi açık koya ilet",
-            "Nazikçe geri bloke et",
-            "Geri lob yap"
-        ],
-        "explanationTr": "Açık koya iletme volesi genellikle yumuşak bir yanıtı bitirmenin en net yoludur.",
-        "takeawayTr": "Yumuşak file toplarını özgüvenle bitir."
-    },
-    {
-        "id": "net_005",
-        "category": "net",
-        "difficulty": "easy",
-        "focusTag": "net patience",
-        "scenario": "You are at the net but the opponent's ball is not easy to finish during a momentum swing.",
-        "options": [
-            "Play a safe controlled volley",
-            "Go for a low-percentage winner",
-            "Lob it back deep"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A safe controlled volley is the best choice when the finish is not clear.",
-        "takeaway": "Choose control at the net when unsure.",
-        "mistakeType": "overaggressive net play",
-        "scenarioTr": "Momentum dalgalanmasında file'dasın ama rakibin topu bitirmek için kolay değil.",
-        "optionsTr": [
-            "Güvenli kontrollü vole oyna",
-            "Düşük yüzdeli winner için git",
-            "Derin lob yap"
-        ],
-        "explanationTr": "Bitiş netleşmediğinde güvenli kontrollü vole en iyi seçimdir.",
-        "takeawayTr": "Emin olmadığında file'da kontrolü seç."
-    },
-    {
-        "id": "net_006",
-        "category": "net",
-        "difficulty": "medium",
-        "focusTag": "approach judgment",
-        "scenario": "Your approach shot is short and you are at the net while the opponent is approaching.",
-        "options": [
-            "Hold back and keep the point alive",
-            "Attack the net anyway",
-            "Hit a defensive lob"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A short approach shot at the net is usually not worth the risk unless the ball is truly short.",
-        "takeaway": "Approach only when the shot is strong.",
-        "mistakeType": "forcing the net",
-        "scenarioTr": "Rakip yaklaşırken yaklaşma vuruşun kısa ve file'dasın.",
-        "optionsTr": [
-            "Geri dur ve puanı yaşat",
-            "Yine de file'a git",
-            "Defansif lob vur"
-        ],
-        "explanationTr": "File'daki kısa bir yaklaşma vuruşu, top gerçekten kısa olmadıkça genellikle riske değmez.",
-        "takeawayTr": "Yalnızca vuruş güçlü olduğunda yaklaş."
-    },
-    {
-        "id": "net_007",
-        "category": "net",
-        "difficulty": "easy",
-        "focusTag": "overhead defense",
-        "scenario": "Your opponent lobs to a comfortable height while you are at the net at the start of a new game.",
-        "options": [
-            "Let it bounce and hit an overhead",
-            "Take it on the rise",
-            "Run back and lob"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Letting the ball bounce gives you a more controlled and reliable overhead.",
-        "takeaway": "Take medium-height lobs after one bounce.",
-        "mistakeType": "rushing the overhead",
-        "scenarioTr": "Yeni bir oyunun başında file'dayken rakip rahat bir yüksekliğe lob atıyor.",
-        "optionsTr": [
-            "Bir sekme sek ve smaç vur",
-            "Yükselirken al",
-            "Geri koş ve lob at"
-        ],
-        "explanationTr": "Topun sekmesine izin vermek daha kontrollü ve güvenilir bir smaç sağlar.",
-        "takeawayTr": "Orta yükseklikteki lobları bir sekmeden sonra al."
-    },
-    {
-        "id": "net_008",
-        "category": "net",
-        "difficulty": "easy",
-        "focusTag": "low volley",
-        "scenario": "Your opponent hits a low ball at your feet while you are at the net after a baseline rally.",
-        "options": [
-            "Cut it back low and keep it in play",
-            "Reach for a wide volley",
-            "Lob it up"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A low cut volley is the safest response to a ball at your feet.",
-        "takeaway": "Use control on low net balls.",
-        "mistakeType": "attempting a risky angle",
-        "scenarioTr": "Baz çizgisi rallisinin ardından file'dayken rakip ayaklarının dibine alçak top vuruyor.",
-        "optionsTr": [
-            "Alçak kes ve oyunda tut",
-            "Geniş vole için uzat",
-            "Lob yap"
-        ],
-        "explanationTr": "Alçak kes vole, ayakların dibindeki bir topa en güvenli yanıttır.",
-        "takeawayTr": "File'daki alçak toplarda kontrolü kullan."
-    },
-    {
-        "id": "net_009",
-        "category": "net",
-        "difficulty": "medium",
-        "focusTag": "net target",
-        "scenario": "Your opponent returns softly to your forehand at the net when the court is slowing down.",
-        "options": [
-            "Punch the volley into the open court",
-            "Block it back gently",
-            "Lob it back"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A punch volley into the open court is usually the clearest way to finish a soft reply.",
-        "takeaway": "Finish soft net balls with authority.",
-        "mistakeType": "being too passive",
-        "scenarioTr": "Kort yavaşlarken file'dayken rakip forehand'ine yumuşak geri dönüyor.",
-        "optionsTr": [
-            "Voleyi açık koya ilet",
-            "Nazikçe geri bloke et",
-            "Geri lob yap"
-        ],
-        "explanationTr": "Açık koya iletme volesi genellikle yumuşak bir yanıtı bitirmenin en net yoludur.",
-        "takeawayTr": "Yumuşak file toplarını özgüvenle bitir."
-    },
-    {
-        "id": "net_010",
-        "category": "net",
-        "difficulty": "easy",
-        "focusTag": "net patience",
-        "scenario": "You are at the net but the opponent's ball is not easy to finish with the opponent on the defensive.",
-        "options": [
-            "Play a safe controlled volley",
-            "Go for a low-percentage winner",
-            "Lob it back deep"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A safe controlled volley is the best choice when the finish is not clear.",
-        "takeaway": "Choose control at the net when unsure.",
-        "mistakeType": "overaggressive net play",
-        "scenarioTr": "Rakip defanstayken file'dasın ama rakibin topu bitirmek için kolay değil.",
-        "optionsTr": [
-            "Güvenli kontrollü vole oyna",
-            "Düşük yüzdeli winner için git",
-            "Derin lob yap"
-        ],
-        "explanationTr": "Bitiş netleşmediğinde güvenli kontrollü vole en iyi seçimdir.",
-        "takeawayTr": "Emin olmadığında file'da kontrolü seç."
-    },
-    {
-        "id": "net_011",
-        "category": "net",
-        "difficulty": "medium",
-        "focusTag": "approach judgment",
-        "scenario": "Your approach shot is short and you are at the net during a critical service game.",
-        "options": [
-            "Hold back and keep the point alive",
-            "Attack the net anyway",
-            "Hit a defensive lob"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A short approach shot at the net is usually not worth the risk unless the ball is truly short.",
-        "takeaway": "Approach only when the shot is strong.",
-        "mistakeType": "forcing the net",
-        "scenarioTr": "Kritik bir servis oyununda yaklaşma vuruşun kısa ve file'dasın.",
-        "optionsTr": [
-            "Geri dur ve puanı yaşat",
-            "Yine de file'a git",
-            "Defansif lob vur"
-        ],
-        "explanationTr": "File'daki kısa bir yaklaşma vuruşu, top gerçekten kısa olmadıkça genellikle riske değmez.",
-        "takeawayTr": "Yalnızca vuruş güçlü olduğunda yaklaş."
-    },
-    {
-        "id": "net_012",
-        "category": "net",
-        "difficulty": "easy",
-        "focusTag": "overhead defense",
-        "scenario": "Your opponent lobs to a comfortable height while you are at the net as the opponent tries to chip it back.",
-        "options": [
-            "Let it bounce and hit an overhead",
-            "Take it on the rise",
-            "Run back and lob"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Letting the ball bounce gives you a more controlled and reliable overhead.",
-        "takeaway": "Take medium-height lobs after one bounce.",
-        "mistakeType": "rushing the overhead",
-        "scenarioTr": "Rakip geri dönüşü yongalamaya çalışırken file'dayken rahat bir yüksekliğe lob atıyor.",
-        "optionsTr": [
-            "Bir sekme sek ve smaç vur",
-            "Yükselirken al",
-            "Geri koş ve lob at"
-        ],
-        "explanationTr": "Topun sekmesine izin vermek daha kontrollü ve güvenilir bir smaç sağlar.",
-        "takeawayTr": "Orta yükseklikteki lobları bir sekmeden sonra al."
-    },
-    {
-        "id": "net_013",
-        "category": "net",
-        "difficulty": "easy",
-        "focusTag": "low volley",
-        "scenario": "Your opponent hits a low ball at your feet while you are at the net when the opponent has recovery time.",
-        "options": [
-            "Cut it back low and keep it in play",
-            "Reach for a wide volley",
-            "Lob it up"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A low cut volley is the safest response to a ball at your feet.",
-        "takeaway": "Use control on low net balls.",
-        "mistakeType": "attempting a risky angle",
-        "scenarioTr": "Rakibin toparlanma zamanı varken file'dayken ayaklarının dibine alçak top vuruyor.",
-        "optionsTr": [
-            "Alçak kes ve oyunda tut",
-            "Geniş vole için uzat",
-            "Lob yap"
-        ],
-        "explanationTr": "Alçak kes vole, ayakların dibindeki bir topa en güvenli yanıttır.",
-        "takeawayTr": "File'daki alçak toplarda kontrolü kullan."
-    },
-    {
-        "id": "net_014",
-        "category": "net",
-        "difficulty": "medium",
-        "focusTag": "net target",
-        "scenario": "Your opponent returns softly to your forehand at the net before a big return.",
-        "options": [
-            "Punch the volley into the open court",
-            "Block it back gently",
-            "Lob it back"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A punch volley into the open court is usually the clearest way to finish a soft reply.",
-        "takeaway": "Finish soft net balls with authority.",
-        "mistakeType": "being too passive",
-        "scenarioTr": "Büyük bir geri dönüş öncesinde file'dayken rakip forehand'ine yumuşak geri dönüyor.",
-        "optionsTr": [
-            "Voleyi açık koya ilet",
-            "Nazikçe geri bloke et",
-            "Geri lob yap"
-        ],
-        "explanationTr": "Açık koya iletme volesi genellikle yumuşak bir yanıtı bitirmenin en net yoludur.",
-        "takeawayTr": "Yumuşak file toplarını özgüvenle bitir."
-    },
-    {
-        "id": "net_015",
-        "category": "net",
-        "difficulty": "easy",
-        "focusTag": "net patience",
-        "scenario": "You are at the net but the opponent's ball is not easy to finish as conditions become tricky.",
-        "options": [
-            "Play a safe controlled volley",
-            "Go for a low-percentage winner",
-            "Lob it back deep"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A safe controlled volley is the best choice when the finish is not clear.",
-        "takeaway": "Choose control at the net when unsure.",
-        "mistakeType": "overaggressive net play",
-        "scenarioTr": "Koşullar zorlaşırken file'dasın ama rakibin topu bitirmek için kolay değil.",
-        "optionsTr": [
-            "Güvenli kontrollü vole oyna",
-            "Düşük yüzdeli winner için git",
-            "Derin lob yap"
-        ],
-        "explanationTr": "Bitiş netleşmediğinde güvenli kontrollü vole en iyi seçimdir.",
-        "takeawayTr": "Emin olmadığında file'da kontrolü seç."
-    },
-    {
-        "id": "net_016",
-        "category": "net",
-        "difficulty": "medium",
-        "focusTag": "approach judgment",
-        "scenario": "Your approach shot is short and you are at the net after your last approach was short.",
-        "options": [
-            "Hold back and keep the point alive",
-            "Attack the net anyway",
-            "Hit a defensive lob"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A short approach shot at the net is usually not worth the risk unless the ball is truly short.",
-        "takeaway": "Approach only when the shot is strong.",
-        "mistakeType": "forcing the net",
-        "scenarioTr": "Son yaklaşman da kısa olmuşken yaklaşma vuruşun kısa ve file'dasın.",
-        "optionsTr": [
-            "Geri dur ve puanı yaşat",
-            "Yine de file'a git",
-            "Defansif lob vur"
-        ],
-        "explanationTr": "File'daki kısa bir yaklaşma vuruşu, top gerçekten kısa olmadıkça genellikle riske değmez.",
-        "takeawayTr": "Yalnızca vuruş güçlü olduğunda yaklaş."
-    },
-    {
-        "id": "net_017",
-        "category": "net",
-        "difficulty": "easy",
-        "focusTag": "overhead defense",
-        "scenario": "Your opponent lobs to a comfortable height while you are at the net at the end of a long point.",
-        "options": [
-            "Let it bounce and hit an overhead",
-            "Take it on the rise",
-            "Run back and lob"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Letting the ball bounce gives you a more controlled and reliable overhead.",
-        "takeaway": "Take medium-height lobs after one bounce.",
-        "mistakeType": "rushing the overhead",
-        "scenarioTr": "Uzun bir puan sonunda file'dayken rakip rahat bir yüksekliğe lob atıyor.",
-        "optionsTr": [
-            "Bir sekme sek ve smaç vur",
-            "Yükselirken al",
-            "Geri koş ve lob at"
-        ],
-        "explanationTr": "Topun sekmesine izin vermek daha kontrollü ve güvenilir bir smaç sağlar.",
-        "takeawayTr": "Orta yükseklikteki lobları bir sekmeden sonra al."
-    },
-    {
-        "id": "net_018",
-        "category": "net",
-        "difficulty": "easy",
-        "focusTag": "low volley",
-        "scenario": "Your opponent hits a low ball at your feet while you are at the net when you feel slightly out of position.",
-        "options": [
-            "Cut it back low and keep it in play",
-            "Reach for a wide volley",
-            "Lob it up"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A low cut volley is the safest response to a ball at your feet.",
-        "takeaway": "Use control on low net balls.",
-        "mistakeType": "attempting a risky angle",
-        "scenarioTr": "Hafifçe pozisyon dışındayken file'dayken rakip ayaklarının dibine alçak top vuruyor.",
-        "optionsTr": [
-            "Alçak kes ve oyunda tut",
-            "Geniş vole için uzat",
-            "Lob yap"
-        ],
-        "explanationTr": "Alçak kes vole, ayakların dibindeki bir topa en güvenli yanıttır.",
-        "takeawayTr": "File'daki alçak toplarda kontrolü kullan."
-    },
-    {
-        "id": "net_019",
-        "category": "net",
-        "difficulty": "medium",
-        "focusTag": "net target",
-        "scenario": "Your opponent returns softly to your forehand at the net during a tense exchange.",
-        "options": [
-            "Punch the volley into the open court",
-            "Block it back gently",
-            "Lob it back"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A punch volley into the open court is usually the clearest way to finish a soft reply.",
-        "takeaway": "Finish soft net balls with authority.",
-        "mistakeType": "being too passive",
-        "scenarioTr": "Gergin bir mücadele sırasında file'dayken rakip forehand'ine yumuşak geri dönüyor.",
-        "optionsTr": [
-            "Voleyi açık koya ilet",
-            "Nazikçe geri bloke et",
-            "Geri lob yap"
-        ],
-        "explanationTr": "Açık koya iletme volesi genellikle yumuşak bir yanıtı bitirmenin en net yoludur.",
-        "takeawayTr": "Yumuşak file toplarını özgüvenle bitir."
-    },
-    {
-        "id": "net_020",
-        "category": "net",
-        "difficulty": "easy",
-        "focusTag": "net patience",
-        "scenario": "You are at the net but the opponent's ball is not easy to finish as the opponent changes pace.",
-        "options": [
-            "Play a safe controlled volley",
-            "Go for a low-percentage winner",
-            "Lob it back deep"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A safe controlled volley is the best choice when the finish is not clear.",
-        "takeaway": "Choose control at the net when unsure.",
-        "mistakeType": "overaggressive net play",
-        "scenarioTr": "Rakip tempo değiştirirken file'dasın ama rakibin topu bitirmek için kolay değil.",
-        "optionsTr": [
-            "Güvenli kontrollü vole oyna",
-            "Düşük yüzdeli winner için git",
-            "Derin lob yap"
-        ],
-        "explanationTr": "Bitiş netleşmediğinde güvenli kontrollü vole en iyi seçimdir.",
-        "takeawayTr": "Emin olmadığında file'da kontrolü seç."
-    },
-    {
-        "id": "mental_001",
-        "category": "mental",
-        "difficulty": "easy",
-        "focusTag": "pre-point routine",
-        "scenario": "You are nervous before a big point deuce in the fourth game. What should you do?",
-        "options": [
-            "Use your regular pre-point routine",
-            "Rush the point to get it over with",
-            "Think about the crowd"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A routine helps you stay calm and focused on the process.",
-        "takeaway": "Use routine to manage nerves.",
-        "mistakeType": "rushing under pressure",
-        "scenarioTr": "Dördüncü oyunda eşitlikte büyük bir puan öncesinde sinirlisin. Ne yapmalısın?",
-        "optionsTr": [
-            "Normal puan öncesi rutinini kullan",
-            "Bitirmek için puanı acele et",
-            "Seyirciyi düşün"
-        ],
-        "explanationTr": "Rutin, sürece odaklanmış ve sakin kalmanı sağlar.",
-        "takeawayTr": "Siniri yönetmek için rutini kullan."
-    },
-    {
-        "id": "mental_002",
-        "category": "mental",
-        "difficulty": "medium",
-        "focusTag": "reset",
-        "scenario": "You just lost a close game and the opponent is celebrating 30-30 after a tight set.",
-        "options": [
-            "Reset to the next point",
-            "Replay the last error in your head",
-            "Try to hit the next shot harder"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Resetting quickly prevents frustration from affecting the next point.",
-        "takeaway": "Let go of the last point and move on.",
-        "mistakeType": "dwelling on mistakes",
-        "scenarioTr": "Sıkı bir set sonrasında 30-30'da yakın bir oyunu kaybettikten sonra rakip kutluyor.",
-        "optionsTr": [
-            "Bir sonraki puana sıfırlan",
-            "Son hatayı kafanda tekrar oyna",
-            "Bir sonraki vuruşu daha sert vur"
-        ],
-        "explanationTr": "Hızlı sıfırlanmak, hayal kırıklığının bir sonraki puanı etkilemesini önler.",
-        "takeawayTr": "Son puanı bırak ve devam et."
-    },
-    {
-        "id": "mental_003",
-        "category": "mental",
-        "difficulty": "easy",
-        "focusTag": "lead protection",
-        "scenario": "You are ahead and the opponent is trying to force errors a break point in the second set.",
-        "options": [
-            "Play safe, consistent tennis",
-            "Try to finish every point fast",
-            "Change your game plan completely"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Protecting a lead is usually about consistency, not heroics.",
-        "takeaway": "Choose stability when leading.",
-        "mistakeType": "overplaying with a lead",
-        "scenarioTr": "Öndeyken rakip ikinci sette break puanında hata yapmaya zorluyor.",
-        "optionsTr": [
-            "Güvenli, tutarlı tenis oyna",
-            "Her puanı hızlı bitirmeye çalış",
-            "Oyun planını tamamen değiştir"
-        ],
-        "explanationTr": "Öndeyken lead korumak genellikle tutarlılıkla ilgilidir, kahramanlıkla değil.",
-        "takeawayTr": "Önde olduğunda istikrarı seç."
-    },
-    {
-        "id": "mental_004",
-        "category": "mental",
-        "difficulty": "medium",
-        "focusTag": "one point at a time",
-        "scenario": "You are down a set but want to stay in the match one game after losing the previous one.",
-        "options": [
-            "Focus on one point at a time",
-            "Think about winning the match",
-            "Try riskier shots to come back quickly"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "One point at a time keeps you present and avoids overwhelm.",
-        "takeaway": "Stay present when chasing a comeback.",
-        "mistakeType": "playing too far ahead",
-        "scenarioTr": "Bir set geridesin ama önceki oyunu kaybettikten sonra maçta kalmak istiyorsun.",
-        "optionsTr": [
-            "Tek bir puana odaklan",
-            "Maçı kazanmayı düşün",
-            "Hızlı geri dönmek için riskli vuruşlar dene"
-        ],
-        "explanationTr": "Bir seferinde bir puan odaklanmak seni anda tutar ve bunaltmaktan korur.",
-        "takeawayTr": "Geri dönerken anda kal."
-    },
-    {
-        "id": "mental_005",
-        "category": "mental",
-        "difficulty": "easy",
-        "focusTag": "momentum control",
-        "scenario": "Your opponent is gaining momentum during a long match. What should you do?",
-        "options": [
-            "Stick to your game plan",
-            "Try a risky change of pace",
-            "Start playing more aggressively"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Sticking to your plan is often the best way to stop an opponent's momentum.",
-        "takeaway": "Trust your process during swings.",
-        "mistakeType": "reacting emotionally",
-        "scenarioTr": "Uzun bir maçta rakip momentum kazanıyor. Ne yapmalısın?",
-        "optionsTr": [
-            "Oyun planına sadık kal",
-            "Riskli tempo değişikliği dene",
-            "Daha agresif oynamaya başla"
-        ],
-        "explanationTr": "Planına bağlı kalmak genellikle rakibin momentumunu durdurmak için en iyi yoldur.",
-        "takeawayTr": "Dalgalanmalar sırasında sürecine güven."
-    },
-    {
-        "id": "mental_006",
-        "category": "mental",
-        "difficulty": "easy",
-        "focusTag": "pre-point routine",
-        "scenario": "You are nervous before a big point while your energy feels high. What should you do?",
-        "options": [
-            "Use your regular pre-point routine",
-            "Rush the point to get it over with",
-            "Think about the crowd"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A routine helps you stay calm and focused on the process.",
-        "takeaway": "Use routine to manage nerves.",
-        "mistakeType": "rushing under pressure",
-        "scenarioTr": "Enerjin yüksek hissederken büyük bir puan öncesinde sinirlisin. Ne yapmalısın?",
-        "optionsTr": [
-            "Normal puan öncesi rutinini kullan",
-            "Bitirmek için puanı acele et",
-            "Seyirciyi düşün"
-        ],
-        "explanationTr": "Rutin, sürece odaklanmış ve sakin kalmanı sağlar.",
-        "takeawayTr": "Siniri yönetmek için rutini kullan."
-    },
-    {
-        "id": "mental_007",
-        "category": "mental",
-        "difficulty": "medium",
-        "focusTag": "reset",
-        "scenario": "You just lost a close game and the opponent is celebrating after a bad line call.",
-        "options": [
-            "Reset to the next point",
-            "Replay the last error in your head",
-            "Try to hit the next shot harder"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Resetting quickly prevents frustration from affecting the next point.",
-        "takeaway": "Let go of the last point and move on.",
-        "mistakeType": "dwelling on mistakes",
-        "scenarioTr": "Kötü bir hat kararının ardından yakın bir oyunu kaybettikten sonra rakip kutluyor.",
-        "optionsTr": [
-            "Bir sonraki puana sıfırlan",
-            "Son hatayı kafanda tekrar oyna",
-            "Bir sonraki vuruşu daha sert vur"
-        ],
-        "explanationTr": "Hızlı sıfırlanmak, hayal kırıklığının bir sonraki puanı etkilemesini önler.",
-        "takeawayTr": "Son puanı bırak ve devam et."
-    },
-    {
-        "id": "mental_008",
-        "category": "mental",
-        "difficulty": "easy",
-        "focusTag": "lead protection",
-        "scenario": "You are ahead and the opponent is trying to force errors when the opponent is gaining confidence.",
-        "options": [
-            "Play safe, consistent tennis",
-            "Try to finish every point fast",
-            "Change your game plan completely"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Protecting a lead is usually about consistency, not heroics.",
-        "takeaway": "Choose stability when leading.",
-        "mistakeType": "overplaying with a lead",
-        "scenarioTr": "Öndeyken rakip güven kazanırken hata yapmaya zorluyor.",
-        "optionsTr": [
-            "Güvenli, tutarlı tenis oyna",
-            "Her puanı hızlı bitirmeye çalış",
-            "Oyun planını tamamen değiştir"
-        ],
-        "explanationTr": "Öndeyken lead korumak genellikle tutarlılıkla ilgilidir, kahramanlıkla değil.",
-        "takeawayTr": "Önde olduğunda istikrarı seç."
-    },
-    {
-        "id": "mental_009",
-        "category": "mental",
-        "difficulty": "medium",
-        "focusTag": "one point at a time",
-        "scenario": "You are down a set but want to stay in the match before the biggest game of the set.",
-        "options": [
-            "Focus on one point at a time",
-            "Think about winning the match",
-            "Try riskier shots to come back quickly"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "One point at a time keeps you present and avoids overwhelm.",
-        "takeaway": "Stay present when chasing a comeback.",
-        "mistakeType": "playing too far ahead",
-        "scenarioTr": "Bir set geridesin ama setin en büyük oyunu öncesinde maçta kalmak istiyorsun.",
-        "optionsTr": [
-            "Tek bir puana odaklan",
-            "Maçı kazanmayı düşün",
-            "Hızlı geri dönmek için riskli vuruşlar dene"
-        ],
-        "explanationTr": "Bir seferinde bir puan odaklanmak seni anda tutar ve bunaltmaktan korur.",
-        "takeawayTr": "Geri dönerken anda kal."
-    },
-    {
-        "id": "mental_010",
-        "category": "mental",
-        "difficulty": "easy",
-        "focusTag": "momentum control",
-        "scenario": "Your opponent is gaining momentum as the conditions become windy. What should you do?",
-        "options": [
-            "Stick to your game plan",
-            "Try a risky change of pace",
-            "Start playing more aggressively"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Sticking to your plan is often the best way to stop an opponent's momentum.",
-        "takeaway": "Trust your process during swings.",
-        "mistakeType": "reacting emotionally",
-        "scenarioTr": "Koşullar rüzgarlı hale gelirken rakip momentum kazanıyor. Ne yapmalısın?",
-        "optionsTr": [
-            "Oyun planına sadık kal",
-            "Riskli tempo değişikliği dene",
-            "Daha agresif oynamaya başla"
-        ],
-        "explanationTr": "Planına bağlı kalmak genellikle rakibin momentumunu durdurmak için en iyi yoldur.",
-        "takeawayTr": "Dalgalanmalar sırasında sürecine güven."
-    },
-    {
-        "id": "mental_011",
-        "category": "mental",
-        "difficulty": "easy",
-        "focusTag": "pre-point routine",
-        "scenario": "You are nervous before a big point after you lost the last rally. What should you do?",
-        "options": [
-            "Use your regular pre-point routine",
-            "Rush the point to get it over with",
-            "Think about the crowd"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A routine helps you stay calm and focused on the process.",
-        "takeaway": "Use routine to manage nerves.",
-        "mistakeType": "rushing under pressure",
-        "scenarioTr": "Son ralliyi kaybettikten sonra büyük bir puan öncesinde sinirlisin. Ne yapmalısın?",
-        "optionsTr": [
-            "Normal puan öncesi rutinini kullan",
-            "Bitirmek için puanı acele et",
-            "Seyirciyi düşün"
-        ],
-        "explanationTr": "Rutin, sürece odaklanmış ve sakin kalmanı sağlar.",
-        "takeawayTr": "Siniri yönetmek için rutini kullan."
-    },
-    {
-        "id": "mental_012",
-        "category": "mental",
-        "difficulty": "medium",
-        "focusTag": "reset",
-        "scenario": "You just lost a close game and the opponent is celebrating during a key mental battle.",
-        "options": [
-            "Reset to the next point",
-            "Replay the last error in your head",
-            "Try to hit the next shot harder"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Resetting quickly prevents frustration from affecting the next point.",
-        "takeaway": "Let go of the last point and move on.",
-        "mistakeType": "dwelling on mistakes",
-        "scenarioTr": "Önemli bir zihinsel mücadelede yakın bir oyunu kaybettikten sonra rakip kutluyor.",
-        "optionsTr": [
-            "Bir sonraki puana sıfırlan",
-            "Son hatayı kafanda tekrar oyna",
-            "Bir sonraki vuruşu daha sert vur"
-        ],
-        "explanationTr": "Hızlı sıfırlanmak, hayal kırıklığının bir sonraki puanı etkilemesini önler.",
-        "takeawayTr": "Son puanı bırak ve devam et."
-    },
-    {
-        "id": "mental_013",
-        "category": "mental",
-        "difficulty": "easy",
-        "focusTag": "lead protection",
-        "scenario": "You are ahead and the opponent is trying to force errors when you need to stay composed.",
-        "options": [
-            "Play safe, consistent tennis",
-            "Try to finish every point fast",
-            "Change your game plan completely"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Protecting a lead is usually about consistency, not heroics.",
-        "takeaway": "Choose stability when leading.",
-        "mistakeType": "overplaying with a lead",
-        "scenarioTr": "Öndeyken sakin kalman gerekirken rakip hata yapmaya zorluyor.",
-        "optionsTr": [
-            "Güvenli, tutarlı tenis oyna",
-            "Her puanı hızlı bitirmeye çalış",
-            "Oyun planını tamamen değiştir"
-        ],
-        "explanationTr": "Öndeyken lead korumak genellikle tutarlılıkla ilgilidir, kahramanlıkla değil.",
-        "takeawayTr": "Önde olduğunda istikrarı seç."
-    },
-    {
-        "id": "mental_014",
-        "category": "mental",
-        "difficulty": "medium",
-        "focusTag": "one point at a time",
-        "scenario": "You are down a set but want to stay in the match at the start of the final set.",
-        "options": [
-            "Focus on one point at a time",
-            "Think about winning the match",
-            "Try riskier shots to come back quickly"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "One point at a time keeps you present and avoids overwhelm.",
-        "takeaway": "Stay present when chasing a comeback.",
-        "mistakeType": "playing too far ahead",
-        "scenarioTr": "Bir set geridesin ama final setin başında maçta kalmak istiyorsun.",
-        "optionsTr": [
-            "Tek bir puana odaklan",
-            "Maçı kazanmayı düşün",
-            "Hızlı geri dönmek için riskli vuruşlar dene"
-        ],
-        "explanationTr": "Bir seferinde bir puan odaklanmak seni anda tutar ve bunaltmaktan korur.",
-        "takeawayTr": "Geri dönerken anda kal."
-    },
-    {
-        "id": "mental_015",
-        "category": "mental",
-        "difficulty": "easy",
-        "focusTag": "momentum control",
-        "scenario": "Your opponent is gaining momentum while the opponent is hitting strong shots. What should you do?",
-        "options": [
-            "Stick to your game plan",
-            "Try a risky change of pace",
-            "Start playing more aggressively"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Sticking to your plan is often the best way to stop an opponent's momentum.",
-        "takeaway": "Trust your process during swings.",
-        "mistakeType": "reacting emotionally",
-        "scenarioTr": "Rakip güçlü vuruşlar yaparken momentum kazanıyor. Ne yapmalısın?",
-        "optionsTr": [
-            "Oyun planına sadık kal",
-            "Riskli tempo değişikliği dene",
-            "Daha agresif oynamaya başla"
-        ],
-        "explanationTr": "Planına bağlı kalmak genellikle rakibin momentumunu durdurmak için en iyi yoldur.",
-        "takeawayTr": "Dalgalanmalar sırasında sürecine güven."
-    },
-    {
-        "id": "mental_016",
-        "category": "mental",
-        "difficulty": "easy",
-        "focusTag": "pre-point routine",
-        "scenario": "You are nervous before a big point after a double fault. What should you do?",
-        "options": [
-            "Use your regular pre-point routine",
-            "Rush the point to get it over with",
-            "Think about the crowd"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "A routine helps you stay calm and focused on the process.",
-        "takeaway": "Use routine to manage nerves.",
-        "mistakeType": "rushing under pressure",
-        "scenarioTr": "Çift hatanın ardından büyük bir puan öncesinde sinirlisin. Ne yapmalısın?",
-        "optionsTr": [
-            "Normal puan öncesi rutinini kullan",
-            "Bitirmek için puanı acele et",
-            "Seyirciyi düşün"
-        ],
-        "explanationTr": "Rutin, sürece odaklanmış ve sakin kalmanı sağlar.",
-        "takeawayTr": "Siniri yönetmek için rutini kullan."
-    },
-    {
-        "id": "mental_017",
-        "category": "mental",
-        "difficulty": "medium",
-        "focusTag": "reset",
-        "scenario": "You just lost a close game and the opponent is celebrating during a momentum swing.",
-        "options": [
-            "Reset to the next point",
-            "Replay the last error in your head",
-            "Try to hit the next shot harder"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Resetting quickly prevents frustration from affecting the next point.",
-        "takeaway": "Let go of the last point and move on.",
-        "mistakeType": "dwelling on mistakes",
-        "scenarioTr": "Bir momentum dalgalanmasında yakın bir oyunu kaybettikten sonra rakip kutluyor.",
-        "optionsTr": [
-            "Bir sonraki puana sıfırlan",
-            "Son hatayı kafanda tekrar oyna",
-            "Bir sonraki vuruşu daha sert vur"
-        ],
-        "explanationTr": "Hızlı sıfırlanmak, hayal kırıklığının bir sonraki puanı etkilemesini önler.",
-        "takeawayTr": "Son puanı bırak ve devam et."
-    },
-    {
-        "id": "mental_018",
-        "category": "mental",
-        "difficulty": "easy",
-        "focusTag": "lead protection",
-        "scenario": "You are ahead and the opponent is trying to force errors when the scoreboard is tight.",
-        "options": [
-            "Play safe, consistent tennis",
-            "Try to finish every point fast",
-            "Change your game plan completely"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Protecting a lead is usually about consistency, not heroics.",
-        "takeaway": "Choose stability when leading.",
-        "mistakeType": "overplaying with a lead",
-        "scenarioTr": "Skor sıkışırken öndeyken rakip hata yapmaya zorluyor.",
-        "optionsTr": [
-            "Güvenli, tutarlı tenis oyna",
-            "Her puanı hızlı bitirmeye çalış",
-            "Oyun planını tamamen değiştir"
-        ],
-        "explanationTr": "Öndeyken lead korumak genellikle tutarlılıkla ilgilidir, kahramanlıkla değil.",
-        "takeawayTr": "Önde olduğunda istikrarı seç."
-    },
-    {
-        "id": "mental_019",
-        "category": "mental",
-        "difficulty": "medium",
-        "focusTag": "one point at a time",
-        "scenario": "You are down a set but want to stay in the match before a crucial break opportunity.",
-        "options": [
-            "Focus on one point at a time",
-            "Think about winning the match",
-            "Try riskier shots to come back quickly"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "One point at a time keeps you present and avoids overwhelm.",
-        "takeaway": "Stay present when chasing a comeback.",
-        "mistakeType": "playing too far ahead",
-        "scenarioTr": "Bir set geridesin ama kritik bir break fırsatı öncesinde maçta kalmak istiyorsun.",
-        "optionsTr": [
-            "Tek bir puana odaklan",
-            "Maçı kazanmayı düşün",
-            "Hızlı geri dönmek için riskli vuruşlar dene"
-        ],
-        "explanationTr": "Bir seferinde bir puan odaklanmak seni anda tutar ve bunaltmaktan korur.",
-        "takeawayTr": "Geri dönerken anda kal."
-    },
-    {
-        "id": "mental_020",
-        "category": "mental",
-        "difficulty": "easy",
-        "focusTag": "momentum control",
-        "scenario": "Your opponent is gaining momentum after a long on-court battle. What should you do?",
-        "options": [
-            "Stick to your game plan",
-            "Try a risky change of pace",
-            "Start playing more aggressively"
-        ],
-        "correctAnswerIndex": 0,
-        "explanation": "Sticking to your plan is often the best way to stop an opponent's momentum.",
-        "takeaway": "Trust your process during swings.",
-        "mistakeType": "reacting emotionally",
-        "scenarioTr": "Uzun bir kort mücadelesinin ardından rakip momentum kazanıyor. Ne yapmalısın?",
-        "optionsTr": [
-            "Oyun planına sadık kal",
-            "Riskli tempo değişikliği dene",
-            "Daha agresif oynamaya başla"
-        ],
-        "explanationTr": "Planına bağlı kalmak genellikle rakibin momentumunu durdurmak için en iyi yoldur.",
-        "takeawayTr": "Dalgalanmalar sırasında sürecine güven."
+  {
+    "id": "serve_021",
+    "category": "serve",
+    "difficulty": "easy",
+    "focusTag": "serve placement variety",
+    "scenario": "You've served wide three times in a row in the deuce court and your opponent is leaning to cover it. What's the smart next serve?",
+    "options": [
+      "Serve T to expose the opposite lean",
+      "Serve wide again — it's working",
+      "Serve a flat middle serve as surprise"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Once the returner shifts, the T line opens. A T serve punishes the anticipation without requiring extra pace.",
+    "takeaway": "Patterns work until they're read — then switch direction, not pace.",
+    "mistakeType": "predictable serve direction",
+    "scenarioTr": "Deuce bölgesinde üst üste üç kez açıktan servis attın ve rakibin o tarafa yöneliyor. Bir sonraki akıllı servis ne?",
+    "optionsTr": [
+      "T'ye servis at, ters yönelimi cezalandır",
+      "Tekrar açıktan at — işe yarıyor",
+      "Sürpriz düz orta servis dene"
+    ],
+    "explanationTr": "Rakip kayınca T çizgisi açılır. T servisi fazla hız gerektirmeden öngörüyü cezalandırır.",
+    "takeawayTr": "Desenler okununca yön değiştir, hız değil.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.45,
+      "youY": 0.96,
+      "opponentX": 0.2,
+      "opponentY": 0.06,
+      "ballOriginX": 0.45,
+      "ballOriginY": 0.96,
+      "ballTargetX": 0.55,
+      "ballTargetY": 0.3,
+      "scoreChip": "DEUCE COURT"
     }
+  },
+  {
+    "id": "serve_022",
+    "category": "serve",
+    "difficulty": "medium",
+    "focusTag": "serve +1 pattern",
+    "scenario": "You hit a heavy wide serve on the ad side and the return floats crosscourt mid-court. Where should your +1 go?",
+    "options": [
+      "Into the open deuce court with a forehand",
+      "Behind the opponent back to the ad corner",
+      "A drop shot to surprise them"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "The wide serve has opened the court. The forehand into the open deuce corner is a high-percentage finishing ball.",
+    "takeaway": "The serve opens the court; the +1 uses that space.",
+    "mistakeType": "wasting an opened court",
+    "scenarioTr": "Ad tarafta ağır açık servis attın ve dönüş ortadan çaprazlamaya havalandı. +1 vuruşun nereye gitmeli?",
+    "optionsTr": [
+      "Açık deuce alana forehand'le",
+      "Geriye, ad köşesine oyuncunun arkasına",
+      "Şaşırtmak için drop shot"
+    ],
+    "explanationTr": "Açık servis sahayı açmıştır. Açık deuce köşeye forehand yüksek ihtimalli bitirici toptur.",
+    "takeawayTr": "Servis sahayı açar; +1 o boşluğu kullanır.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.55,
+      "youY": 0.96,
+      "opponentX": 0.2,
+      "opponentY": 0.08,
+      "ballOriginX": 0.2,
+      "ballOriginY": 0.18,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.55,
+      "scoreChip": "AD COURT · +1 SHOT"
+    }
+  },
+  {
+    "id": "serve_023",
+    "category": "serve",
+    "difficulty": "easy",
+    "focusTag": "first serve percentage under fatigue",
+    "scenario": "You're deep in a third set and your first serve % has dropped to 35%. What's the first adjustment?",
+    "options": [
+      "Reduce pace by 10-15% and prioritize spin",
+      "Go for more aces to end points quickly",
+      "Change grip to experiment"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Fatigue shortens your kinetic chain. Taking pace off and adding spin keeps the serve effective without straining.",
+    "takeaway": "When tired, trade pace for placement — don't chase aces.",
+    "mistakeType": "forcing pace when fatigued",
+    "scenarioTr": "Üçüncü setin içindesin ve ilk servis yüzden %35'e düştü. İlk ayar ne olmalı?",
+    "optionsTr": [
+      "Hızı %10-15 azalt, spine öncelik ver",
+      "Puanı bitirmek için daha çok as dene",
+      "Deneme olarak grip değiştir"
+    ],
+    "explanationTr": "Yorgunluk kinetik zinciri kısaltır. Hızı azaltıp spin eklemek servisin etkisini korur.",
+    "takeawayTr": "Yorgunken hızı yerleşime çevir — as peşinde koşma.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.96,
+      "opponentX": 0.5,
+      "opponentY": 0.08,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.96,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.32,
+      "scoreChip": "3RD SET · 35% 1ST"
+    }
+  },
+  {
+    "id": "serve_024",
+    "category": "serve",
+    "difficulty": "medium",
+    "focusTag": "second serve targeting",
+    "scenario": "Your opponent stands far back to return second serves. What's the best second serve choice?",
+    "options": [
+      "A kick serve that jumps above shoulder height",
+      "A slow slice wide",
+      "A flat T serve"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "A deep returner is vulnerable to high-bouncing balls that force upward contact from shoulder height or above.",
+    "takeaway": "When they stand deep, bounce the ball up — don't dink it in.",
+    "mistakeType": "safe-dink second serve",
+    "scenarioTr": "Rakip ikinci servisleri çok geriden karşılıyor. En iyi ikinci servis seçimi nedir?",
+    "optionsTr": [
+      "Omuz hizasının üstüne sıçrayan kick servis",
+      "Yavaş açık slice",
+      "Düz T servisi"
+    ],
+    "explanationTr": "Geride duran rakip, omuz hizasından yukarı vurmak zorunda kaldığı yüksek sıçrayan toplara karşı zayıftır.",
+    "takeawayTr": "Geride duruyorlarsa topu sıçrat — ortaya atmadan.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.96,
+      "opponentX": 0.5,
+      "opponentY": 0.02,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.96,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.32,
+      "scoreChip": "2ND SERVE"
+    }
+  },
+  {
+    "id": "serve_025",
+    "category": "serve",
+    "difficulty": "easy",
+    "focusTag": "break point serve",
+    "scenario": "It's 30-40, your first break point faced this set. Your opponent has been attacking second serves. What's the priority?",
+    "options": [
+      "Make the first serve — even at 80% pace",
+      "Go big and risk a first-serve miss",
+      "Serve-volley to shorten the point"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "On break point, the most valuable outcome is making a first serve. A first serve at 80% still wins points — a missed one hands the initiative to an aggressive returner.",
+    "takeaway": "Break points aren't about aces — they're about first-serve percentage.",
+    "mistakeType": "going for too much on break point",
+    "scenarioTr": "30-40, bu set karşılaştığın ilk break point. Rakip ikinci servislere saldırıyor. Önceliğin ne?",
+    "optionsTr": [
+      "İlk servisi içeri at — %80 hızla bile",
+      "Büyük git, kaçırmayı göze al",
+      "Servis-volley ile puanı kısalt"
+    ],
+    "explanationTr": "Break point'te en değerli sonuç ilk servisi içeri atmaktır. %80 hızla atılan servis de puan kazandırır; kaçırılmış servis agresif karşılayana inisiyatif verir.",
+    "takeawayTr": "Break point as değil, ilk servis yüzdesi meselesidir.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.96,
+      "opponentX": 0.5,
+      "opponentY": 0.1,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.96,
+      "ballTargetX": 0.48,
+      "ballTargetY": 0.32,
+      "scoreChip": "30–40 BREAK PT"
+    }
+  },
+  {
+    "id": "serve_026",
+    "category": "serve",
+    "difficulty": "medium",
+    "focusTag": "ad-court T serve",
+    "scenario": "A right-handed opponent stands slightly closer to the alley in the ad court. What serve exploits this?",
+    "options": [
+      "T serve into their backhand",
+      "Wide slice to their forehand",
+      "Body serve at their feet"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Shifting toward the alley opens the T completely, forcing a jammed backhand return.",
+    "takeaway": "Read returner positioning before every serve — adjust to their stance, not yours.",
+    "mistakeType": "ignoring returner positioning",
+    "scenarioTr": "Ad tarafta sağlak rakip korte biraz daha yakın duruyor. Hangi servis bunu cezalandırır?",
+    "optionsTr": [
+      "Backhand'e T servisi",
+      "Forehand'e açık slice",
+      "Ayaklarına vücut servisi"
+    ],
+    "explanationTr": "Kort kenarına kayması T'yi tam olarak açar ve sıkışmış bir backhand dönüşü zorlar.",
+    "takeawayTr": "Her servis öncesi karşıladığı pozisyonu oku — kendine göre değil ona göre servis at.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.45,
+      "youY": 0.96,
+      "opponentX": 0.78,
+      "opponentY": 0.06,
+      "ballOriginX": 0.45,
+      "ballOriginY": 0.96,
+      "ballTargetX": 0.55,
+      "ballTargetY": 0.3,
+      "scoreChip": "AD COURT"
+    }
+  },
+  {
+    "id": "serve_027",
+    "category": "serve",
+    "difficulty": "easy",
+    "focusTag": "set-closing serve game",
+    "scenario": "You're serving at 5-3 to close the set. What's the mental approach?",
+    "options": [
+      "Execute your normal patterns — don't play protect-mode",
+      "Go safer than usual to avoid mistakes",
+      "Go bigger than usual to finish strong"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Changing your approach under pressure is what causes choking. Stick to what got you the lead.",
+    "takeaway": "To close a set, keep serving how you won it.",
+    "mistakeType": "protect-mode under pressure",
+    "scenarioTr": "Seti 5-3 önde, servis atarak kapatmaya hazırlanıyorsun. Zihinsel yaklaşım ne?",
+    "optionsTr": [
+      "Normal deseninle servis at — koruma moduna girme",
+      "Hata yapmamak için her zamankinden güvenli at",
+      "Güçlü kapatmak için her zamankinden büyük at"
+    ],
+    "explanationTr": "Baskı altında yaklaşımı değiştirmek boğulmanın başlıca nedenidir. Liderliği getiren şeye sadık kal.",
+    "takeawayTr": "Seti kapatmak için seni lider yapan şekilde servis atmaya devam et."
+  },
+  {
+    "id": "serve_028",
+    "category": "serve",
+    "difficulty": "medium",
+    "focusTag": "body serve vs tall player",
+    "scenario": "You're playing a tall opponent with long arms who returns both wide serves comfortably. What's the pattern adjustment?",
+    "options": [
+      "Serve into the body to jam the swing",
+      "Serve even wider to stretch them",
+      "Serve shorter for lower bounce"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Tall players with reach cover wide serves well. A body serve removes their reach advantage and forces a cramped swing.",
+    "takeaway": "Against long-armed players, crowd them — don't stretch them.",
+    "mistakeType": "serving into opponent's strength",
+    "scenarioTr": "Uzun kollu ve her iki açık servisi rahat karşılayan uzun bir rakiple oynuyorsun. Desen ayarı ne olmalı?",
+    "optionsTr": [
+      "Vurmayı sıkıştırmak için vücuda servis at",
+      "Daha da geniş at, onları gerebilmek için",
+      "Düşük sıçrama için daha kısa at"
+    ],
+    "explanationTr": "Uzun kollu oyuncular açık servisleri iyi kapsar. Vücut servisi uzunluk avantajını ortadan kaldırır.",
+    "takeawayTr": "Uzun kollulara karşı gerdirme — sıkıştır."
+  },
+  {
+    "id": "serve_029",
+    "category": "serve",
+    "difficulty": "easy",
+    "focusTag": "after a double fault",
+    "scenario": "You just double faulted. The next point, what's the right first serve?",
+    "options": [
+      "Your normal first serve — don't ease up",
+      "A conservative 70% first serve",
+      "Go big to shake off the miss"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Easing up after a double fault produces a short, attackable ball and feeds the anxiety cycle. Trust your mechanics.",
+    "takeaway": "A double fault is one point — not a signal to change your serve.",
+    "mistakeType": "easing up after double fault",
+    "scenarioTr": "Az önce çifte hata yaptın. Sonraki puanda ilk servis nasıl olmalı?",
+    "optionsTr": [
+      "Normal ilk servisin — yumuşatma",
+      "İhtiyatlı %70 ilk servis",
+      "Hatayı silmek için büyük at"
+    ],
+    "explanationTr": "Çifte hatadan sonra yumuşatmak kısa ve saldırılabilir bir top üretir ve kaygı döngüsünü besler.",
+    "takeawayTr": "Çifte hata tek puandır — servis değiştirme sinyali değil."
+  },
+  {
+    "id": "serve_030",
+    "category": "serve",
+    "difficulty": "medium",
+    "focusTag": "wind management",
+    "scenario": "Strong wind blows toward your side on the deuce court serve. What adjustment helps most?",
+    "options": [
+      "Lower toss to reduce wind effect on the ball",
+      "Higher toss for more time",
+      "Same toss, more pace"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "A lower toss spends less time in the air and is less affected by wind drift. Pace doesn't fix toss drift.",
+    "takeaway": "In wind, shorten the toss — don't chase pace.",
+    "mistakeType": "ignoring toss variables in wind",
+    "scenarioTr": "Deuce servis tarafında sana doğru güçlü rüzgar esiyor. Hangi ayar en çok yardımcı olur?",
+    "optionsTr": [
+      "Topu daha alçak at — rüzgar etkisini azalt",
+      "Daha yüksek at, zaman kazan",
+      "Aynı atış, daha çok hız"
+    ],
+    "explanationTr": "Alçak atılan top havada daha az kalır ve rüzgardan daha az etkilenir. Hız atış kaymasını düzeltmez.",
+    "takeawayTr": "Rüzgarda atışı kısalt — hızın peşinde koşma."
+  },
+  {
+    "id": "return_021",
+    "category": "returnPlay",
+    "difficulty": "easy",
+    "focusTag": "return depth discipline",
+    "scenario": "On a big first serve you're forced into a defensive block return. What's the primary target?",
+    "options": [
+      "Deep through the middle of the court",
+      "Cross-court angle for length",
+      "Short to bring them in"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Deep middle neutralises angles and gives you time to recover. On a defensive block, centralising the ball is safer than any angle.",
+    "takeaway": "Defensive returns go deep and central — not wide.",
+    "mistakeType": "attempting angle on defensive return",
+    "scenarioTr": "Büyük birinci servise karşı savunmada bloke dönüş atmak zorundasın. Ana hedef nedir?",
+    "optionsTr": [
+      "Kortun ortasından derine",
+      "Uzunluk için çapraz açı",
+      "Onları içeri çekmek için kısa"
+    ],
+    "explanationTr": "Derin orta hem açıları etkisiz kılar hem de senin toparlanma zamanını verir. Savunma bloke atışlarında topu ortaya göndermek güvenlidir.",
+    "takeawayTr": "Savunma dönüşleri derine ve ortaya gider — açıya değil.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.98,
+      "opponentX": 0.5,
+      "opponentY": 0.05,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.05,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.88,
+      "scoreChip": "DEFENSIVE BLOCK"
+    }
+  },
+  {
+    "id": "return_022",
+    "category": "returnPlay",
+    "difficulty": "medium",
+    "focusTag": "return position adjustment",
+    "scenario": "Your opponent's first serve averages below 160 km/h. Where should you stand to return?",
+    "options": [
+      "Inside the baseline to take time away",
+      "Two steps behind the baseline to give yourself time",
+      "Same spot as for a big server"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Against slower serves, stepping inside the baseline takes time away from the server's next shot and pressures them immediately.",
+    "takeaway": "Return position is a weapon — match it to the server's pace.",
+    "mistakeType": "static return position",
+    "scenarioTr": "Rakibin ilk servis ortalaması 160 km/h'nin altında. Karşılamak için nerede durmalısın?",
+    "optionsTr": [
+      "Kale çizgisinin içinde — zaman çal",
+      "Kaleden iki adım geride — zaman kazan",
+      "Büyük servisçiye karşı olduğu gibi aynı yer"
+    ],
+    "explanationTr": "Yavaş servislere karşı kaleden öne adım atmak rakibin sonraki vuruşundan zaman çalar.",
+    "takeawayTr": "Karşılama pozisyonu silahtır — servisçinin hızına göre ayarla.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.78,
+      "opponentX": 0.5,
+      "opponentY": 0.05,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.05,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.7,
+      "scoreChip": "STEP IN"
+    }
+  },
+  {
+    "id": "return_023",
+    "category": "returnPlay",
+    "difficulty": "easy",
+    "focusTag": "return intent before the toss",
+    "scenario": "Before the serve, what should you be mentally committed to?",
+    "options": [
+      "A specific target zone for the return",
+      "Whatever shot feels right at contact",
+      "Just getting it back in play"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Decisions made before contact are calmer and cleaner. Reactive decisions at contact lead to tentative swings.",
+    "takeaway": "Decide the return direction before the ball leaves the server's hand.",
+    "mistakeType": "reactive return decision",
+    "scenarioTr": "Servis atılmadan önce zihinsel olarak neye söz vermiş olmalısın?",
+    "optionsTr": [
+      "Dönüş için belirli bir hedef bölgesi",
+      "Temas anında doğru gelen vuruş",
+      "Sadece topu oyuna sokmak"
+    ],
+    "explanationTr": "Temas öncesi verilen kararlar daha sakin ve temizdir. Temas anında verilen tepkisel kararlar tereddütlü vuruşlara yol açar.",
+    "takeawayTr": "Dönüş yönüne servis atılmadan önce karar ver.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.92,
+      "scoreChip": "BEFORE THE SERVE"
+    }
+  },
+  {
+    "id": "return_024",
+    "category": "returnPlay",
+    "difficulty": "medium",
+    "focusTag": "ad-court backhand return",
+    "scenario": "On ad court, the server hits a wide kick serve jumping to your backhand. Best target?",
+    "options": [
+      "A high block return crosscourt and deep",
+      "A down-the-line attempted winner",
+      "A drop shot"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "A high-bouncing wide kick serve is a poor ball to attack. Neutralising crosscourt gives you time to recover the middle.",
+    "takeaway": "Against kick serves pulling you off court, reset — don't counterpunch.",
+    "mistakeType": "attacking a tough kick serve",
+    "scenarioTr": "Ad tarafta servisçi backhand'e yükselen açık kick servis attı. En iyi hedef?",
+    "optionsTr": [
+      "Çaprazlamasına yüksek blok — derine",
+      "Çizgiye winner denemesi",
+      "Drop shot"
+    ],
+    "explanationTr": "Yüksek sıçrayan açık kick servis saldırılacak bir top değildir. Çaprazlama nötürlemek toparlanma zamanı verir.",
+    "takeawayTr": "Seni korttan çıkaran kick servislere karşı sıfırla — karşı atak yapma.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.3,
+      "youY": 0.92,
+      "opponentX": 0.4,
+      "opponentY": 0.06,
+      "ballOriginX": 0.4,
+      "ballOriginY": 0.06,
+      "ballTargetX": 0.16,
+      "ballTargetY": 0.82,
+      "scoreChip": "AD COURT · KICK"
+    }
+  },
+  {
+    "id": "return_025",
+    "category": "returnPlay",
+    "difficulty": "easy",
+    "focusTag": "split step timing",
+    "scenario": "When should your split step land as the server makes contact?",
+    "options": [
+      "Just before the server hits the ball",
+      "Exactly as the serve is hit",
+      "After you see the ball direction"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Landing just before contact means your feet are about to touch the ground as the serve is struck — giving you an explosive push toward the ball.",
+    "takeaway": "Land into the split just before the hit — not after.",
+    "mistakeType": "late split step",
+    "scenarioTr": "Split step ne zaman yere inmeli?",
+    "optionsTr": [
+      "Servisçi topa vurmadan hemen önce",
+      "Tam servis anında",
+      "Top yönünü gördükten sonra"
+    ],
+    "explanationTr": "Servis vuruşundan hemen önce inmek, ayakların yere değmek üzereyken servisin atılmasıyla patlamalı itme sağlar.",
+    "takeawayTr": "Split'e servis vuruşundan hemen önce in — sonra değil.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.9,
+      "opponentX": 0.5,
+      "opponentY": 0.05,
+      "scoreChip": "SPLIT STEP"
+    }
+  },
+  {
+    "id": "return_026",
+    "category": "returnPlay",
+    "difficulty": "medium",
+    "focusTag": "second serve attack",
+    "scenario": "Opponent's second serve averages 140 km/h with heavy kick. What's the best aggressive return pattern?",
+    "options": [
+      "Move up and take it on the rise down the line",
+      "Stand back and loop it crosscourt",
+      "Block it safely and rally"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Moving up denies the kick its bounce height. Taking it on the rise down the line opens the court for a +2 winner.",
+    "takeaway": "Attack a second serve by moving forward — not backward.",
+    "mistakeType": "retreating on second serve",
+    "scenarioTr": "Rakibin ikinci servisi 140 km/h ağır kick'le geliyor. En iyi agresif dönüş deseni?",
+    "optionsTr": [
+      "Öne gel, yükseliyorken çizgiye vur",
+      "Geride kal ve çaprazlamasına lup",
+      "Güvenli blokla rally'ye dön"
+    ],
+    "explanationTr": "Öne gelmek kick'in sıçrama yüksekliğini yok eder. Yükselirken çizgiye vurmak +2 winner için sahayı açar.",
+    "takeawayTr": "İkinci servise saldırmak için öne gel — geri çekilme.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.8,
+      "opponentX": 0.5,
+      "opponentY": 0.06,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.06,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.7,
+      "scoreChip": "2ND SERVE · KICK"
+    }
+  },
+  {
+    "id": "return_027",
+    "category": "returnPlay",
+    "difficulty": "easy",
+    "focusTag": "return recovery step",
+    "scenario": "After a deep crosscourt return, what's your first recovery move?",
+    "options": [
+      "Sprint to cover the middle-third of the court",
+      "Admire the return and prepare for the next point",
+      "Drop back to the deepest part of the baseline"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Deep crosscourt returns give the server narrow angles. Covering the middle-third of the court positions you for most replies.",
+    "takeaway": "The return isn't the end of the point — recover immediately.",
+    "mistakeType": "admiring the shot",
+    "scenarioTr": "Derin çapraz dönüşten sonra ilk toparlanma hamlen ne?",
+    "optionsTr": [
+      "Kortun orta üçte birini kaplamak için koş",
+      "Dönüşü izle ve sonraki puana hazırlan",
+      "Kalenin en arkasına düş"
+    ],
+    "explanationTr": "Derin çapraz dönüş, servisçiye dar açılar bırakır. Kortun orta üçte birini kaplamak çoğu yanıtı karşılamak için uygun pozisyondur.",
+    "takeawayTr": "Dönüş puanın sonu değildir — hemen toparlan."
+  },
+  {
+    "id": "return_028",
+    "category": "returnPlay",
+    "difficulty": "medium",
+    "focusTag": "chip-and-charge return",
+    "scenario": "Against a server who is slow at the baseline, when is a chip-and-charge return smart?",
+    "options": [
+      "On a predictable second serve in a 30-0 situation",
+      "On every first serve",
+      "Only on break points"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Chip-and-charge on a predictable second serve at 30-0 puts the slow-baseline opponent in a passing-shot situation they're uncomfortable in — without risking a critical score.",
+    "takeaway": "Chip-and-charge works in low-stakes moments against predictable serves.",
+    "mistakeType": "chip-and-charge at bad moments",
+    "scenarioTr": "Kaleden yavaş olan servisçiye karşı chip-and-charge dönüşü ne zaman akıllıca?",
+    "optionsTr": [
+      "30-0'da tahmin edilebilir ikinci servise",
+      "Her ilk serviste",
+      "Sadece break point'te"
+    ],
+    "explanationTr": "30-0'da tahmin edilebilir ikinci servise chip-and-charge, kaleden yavaş rakibi zorlayan bir passing-shot durumuna sokar — kritik skor riski almadan.",
+    "takeawayTr": "Chip-and-charge tahmin edilebilir servislere ve düşük riskli anlara yakışır."
+  },
+  {
+    "id": "return_029",
+    "category": "returnPlay",
+    "difficulty": "easy",
+    "focusTag": "return breathing routine",
+    "scenario": "Between the server's ball bounce and the toss, what should you do?",
+    "options": [
+      "One deep exhale to settle",
+      "Check the scoreboard",
+      "Fix your strings"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "A single deep exhale anchors your focus and resets tension. It's the cleanest pre-return habit you can build.",
+    "takeaway": "One breath before the return — every time.",
+    "mistakeType": "no pre-return ritual",
+    "scenarioTr": "Servisçinin top zıplatmasıyla atış arasında ne yapmalısın?",
+    "optionsTr": [
+      "Bir derin nefes ver — sabitlen",
+      "Skoru kontrol et",
+      "İpleri düzelt"
+    ],
+    "explanationTr": "Tek bir derin nefes odağını sabitler ve gerilimi sıfırlar. Kurulabilecek en temiz dönüş öncesi alışkanlıktır.",
+    "takeawayTr": "Her dönüş öncesi tek nefes — istisnasız."
+  },
+  {
+    "id": "return_030",
+    "category": "returnPlay",
+    "difficulty": "medium",
+    "focusTag": "return on break point",
+    "scenario": "Break point at 15-40. Opponent has missed two first serves in a row this game. What's the return mindset?",
+    "options": [
+      "Step inside the baseline and attack the likely second serve",
+      "Return deep and start the rally",
+      "Block safely and hope for a rally error"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Data says another second serve is likely. Attacking position pressures the server, and even a neutral attacking return flips the point's geometry.",
+    "takeaway": "Break points reward informed aggression — not caution.",
+    "mistakeType": "passive returning on break point",
+    "scenarioTr": "15-40 break point. Rakip bu oyunda üst üste iki ilk servis kaçırdı. Dönüş zihniyeti ne?",
+    "optionsTr": [
+      "Kalenin içine gel, muhtemel ikinci servise saldır",
+      "Derin dön ve rally'e başla",
+      "Güvenli blokla, rally hatası bekle"
+    ],
+    "explanationTr": "Veri yeni bir ikinci servisi işaret eder. Saldırı pozisyonu servisçiyi zorlar, nötür bir saldırı dönüşü bile puan geometrisini değiştirir.",
+    "takeawayTr": "Break point bilinçli agresyonu ödüllendirir — ihtiyatı değil."
+  },
+  {
+    "id": "rally_021",
+    "category": "rally",
+    "difficulty": "easy",
+    "focusTag": "neutral rally direction",
+    "scenario": "You're in a neutral crosscourt rally with even positioning. What's the default plan?",
+    "options": [
+      "Keep hitting crosscourt with depth and wait for a short ball",
+      "Change direction to break the pattern",
+      "Hit harder to force the error"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Crosscourt is the safest trajectory — lowest net, deepest landing zone. Direction change is a choice for short balls, not neutral exchanges.",
+    "takeaway": "Crosscourt until the ball says otherwise.",
+    "mistakeType": "changing direction from neutral",
+    "scenarioTr": "Pozisyonlar eşit, nötr çapraz rally içindesin. Varsayılan plan ne?",
+    "optionsTr": [
+      "Çapraz derinlik at ve kısa top bekle",
+      "Deseni kırmak için yön değiştir",
+      "Hatayı zorlamak için daha sert vur"
+    ],
+    "explanationTr": "Çapraz en güvenli yörüngedir — en düşük file, en derin iniş alanı. Yön değişimi kısa toplar için bir seçimdir, nötrler için değil.",
+    "takeawayTr": "Top aksini söyleyene kadar çapraz.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.3,
+      "youY": 0.9,
+      "opponentX": 0.7,
+      "opponentY": 0.1,
+      "ballOriginX": 0.7,
+      "ballOriginY": 0.2,
+      "ballTargetX": 0.3,
+      "ballTargetY": 0.82,
+      "scoreChip": "NEUTRAL"
+    }
+  },
+  {
+    "id": "rally_022",
+    "category": "rally",
+    "difficulty": "medium",
+    "focusTag": "moonball counter",
+    "scenario": "Your opponent keeps sending high, looping topspin to your backhand. What's the best counter?",
+    "options": [
+      "Move inside the baseline and take it on the rise",
+      "Retreat to the fence and loop it back",
+      "Slice it low and short"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Moonballs rely on time. Taking it on the rise inside the baseline removes that time and turns their defensive shot into your attacking one.",
+    "takeaway": "Don't let a moonball push you back — step forward instead.",
+    "mistakeType": "retreating against moonballs",
+    "scenarioTr": "Rakip sürekli backhand'ine yüksek topspin topu atıyor. En iyi karşı hamle?",
+    "optionsTr": [
+      "Kalenin içine gel ve yükseliyorken vur",
+      "Çite kadar geri çekil ve lupla",
+      "Alçak ve kısa slice at"
+    ],
+    "explanationTr": "Moonball zamanın üzerinde çalışır. Kalenin içinde yükseliyorken vurmak o zamanı elinden alır ve savunma toplarını saldırı toplarına çevirir.",
+    "takeawayTr": "Moonball seni geriye itmesin — öne adım at.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.25,
+      "youY": 0.9,
+      "opponentX": 0.5,
+      "opponentY": 0.1,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.18,
+      "ballTargetX": 0.2,
+      "ballTargetY": 0.78,
+      "scoreChip": "HIGH BALL · BH"
+    }
+  },
+  {
+    "id": "rally_023",
+    "category": "rally",
+    "difficulty": "easy",
+    "focusTag": "recovery position",
+    "scenario": "You hit a heavy crosscourt forehand from the deuce side. Where do you recover to?",
+    "options": [
+      "A step to the right of the centre mark — bisecting their reply angles",
+      "The centre mark exactly",
+      "Your side of the court where you hit from"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Recovery isn't a fixed spot — it's the midpoint of your opponent's available reply angles. After a crosscourt from deuce, that's slightly ad side of centre.",
+    "takeaway": "Recover to the angle bisector — not the centre.",
+    "mistakeType": "static recovery to centre",
+    "scenarioTr": "Deuce taraftan ağır çapraz forehand attın. Nereye toparlanırsın?",
+    "optionsTr": [
+      "Orta işaretin bir adım sağı — yanıt açılarını ikiye böl",
+      "Tam orta işaret",
+      "Vurduğun kort tarafı"
+    ],
+    "explanationTr": "Toparlanma sabit bir nokta değildir — rakibin olası yanıt açılarının orta noktasıdır. Deuce taraftan çaprazdan sonra ortaya göre hafif ad tarafa kayar.",
+    "takeawayTr": "Açı ikizkenarına toparlan — ortaya değil.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.25,
+      "youY": 0.92,
+      "opponentX": 0.78,
+      "opponentY": 0.1,
+      "ballOriginX": 0.25,
+      "ballOriginY": 0.92,
+      "ballTargetX": 0.78,
+      "ballTargetY": 0.2,
+      "scoreChip": "DEUCE · CC FH"
+    }
+  },
+  {
+    "id": "rally_024",
+    "category": "rally",
+    "difficulty": "medium",
+    "focusTag": "rally length management",
+    "scenario": "You're more fit than your opponent. What's the smart rally-length strategy?",
+    "options": [
+      "Extend rallies with high margin and safe depth",
+      "Shorten rallies with aggressive first-strike tennis",
+      "Serve and volley every point"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Fitness advantage compounds over long rallies. Making your opponent play one more ball than they're comfortable with multiplies over a match.",
+    "takeaway": "Use fitness as a tactic — don't just survive, extend.",
+    "mistakeType": "wasting fitness advantage",
+    "scenarioTr": "Rakibinden daha iyi kondisyondasın. Akıllı rally uzunluğu stratejisi ne?",
+    "optionsTr": [
+      "Yüksek marjla ve güvenli derinlikle rally'leri uzat",
+      "Agresif ilk vuruş tenisiyle kısalt",
+      "Her puanda servis-volley"
+    ],
+    "explanationTr": "Kondisyon avantajı uzun rally'lerde katlanır. Rakibin rahat olduğundan bir top fazla oynatmak maç boyunca çarpan etkisi yapar.",
+    "takeawayTr": "Kondisyonu taktik yap — sadece hayatta kalmakla kalma, uzat.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.95,
+      "opponentX": 0.5,
+      "opponentY": 0.1,
+      "scoreChip": "LONG RALLY"
+    }
+  },
+  {
+    "id": "rally_025",
+    "category": "rally",
+    "difficulty": "easy",
+    "focusTag": "contact point consistency",
+    "scenario": "You're mishitting forehands late in a long rally. What's usually the cause?",
+    "options": [
+      "Contact point moving back behind your front hip",
+      "Your racket grip has weakened",
+      "The ball is spinning differently"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Under fatigue, footwork slows and you reach for the ball instead of setting up. A contact point behind the hip costs power and control.",
+    "takeaway": "When tired, set your feet early — don't reach.",
+    "mistakeType": "reaching for the ball when tired",
+    "scenarioTr": "Uzun rally'nin sonlarına doğru forehand'leri yanlış vuruyorsun. Sebep genelde ne?",
+    "optionsTr": [
+      "Temas noktası ön kalçanın arkasına kayıyor",
+      "Raket tutuşun zayıflamış",
+      "Top farklı dönüyor"
+    ],
+    "explanationTr": "Yorgunlukta ayaklar yavaşlar ve kurulmak yerine topa uzanırsın. Kalçanın arkasındaki temas noktası güç ve kontrol kaybettirir.",
+    "takeawayTr": "Yorgunken ayakları erken yerleştir — uzanma.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.92,
+      "opponentX": 0.5,
+      "opponentY": 0.1,
+      "scoreChip": "10+ SHOT RALLY"
+    }
+  },
+  {
+    "id": "rally_026",
+    "category": "rally",
+    "difficulty": "medium",
+    "focusTag": "transition ball",
+    "scenario": "You hit a strong deep ball and your opponent replies with a short mid-court ball. First decision?",
+    "options": [
+      "Move in, load your shot, and plan the +1",
+      "Hit it hard as a winner attempt",
+      "Play it safe back to middle"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Short balls aren't winners — they're transition opportunities. Move in, load, and plan the next ball rather than forcing a single-shot winner.",
+    "takeaway": "Short balls are setups, not winners.",
+    "mistakeType": "forcing winners off transition balls",
+    "scenarioTr": "Derin sert bir top attın ve rakip orta kort kısa bir topla yanıtladı. İlk karar?",
+    "optionsTr": [
+      "Öne gel, vuruşunu yükle ve +1'i planla",
+      "Winner denemesiyle sert vur",
+      "Ortaya güvenli at"
+    ],
+    "explanationTr": "Kısa toplar winner değildir — geçiş fırsatlarıdır. İçeri gir, yüklen ve tek atışla winner zorlamak yerine sonraki topu planla.",
+    "takeawayTr": "Kısa toplar kurulum; winner değildir.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.78,
+      "opponentX": 0.5,
+      "opponentY": 0.14,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.22,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.62,
+      "scoreChip": "SHORT REPLY"
+    }
+  },
+  {
+    "id": "rally_027",
+    "category": "rally",
+    "difficulty": "easy",
+    "focusTag": "margin over pace",
+    "scenario": "You're making 3+ unforced errors per game trying to hit winners from the baseline. What's the first adjustment?",
+    "options": [
+      "Add 1 metre of net clearance and see if errors drop",
+      "Hit harder to force errors before you make them",
+      "Change your grip"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Net-clearance margin is the fastest way to reduce unforced errors without changing style. One metre higher keeps shots in — the pace can stay.",
+    "takeaway": "When erroring, raise net clearance before changing pace.",
+    "mistakeType": "low-margin baseline hitting",
+    "scenarioTr": "Baseline'dan winner için oyun başına 3+ zorlanmamış hata yapıyorsun. İlk ayar ne olmalı?",
+    "optionsTr": [
+      "Fileyi 1 metre daha yüksek geç — hata düşer mi bak",
+      "Kendin hata yapmadan hatayı zorlamak için sert vur",
+      "Grip değiştir"
+    ],
+    "explanationTr": "Fileye olan mesafe marjı, hataları stil değiştirmeden azaltmanın en hızlı yoludur. 1 metre yukarı hataları kapatır — hız aynı kalabilir.",
+    "takeawayTr": "Hata yapıyorsan hızı değil, file üstü marjı artır."
+  },
+  {
+    "id": "rally_028",
+    "category": "rally",
+    "difficulty": "medium",
+    "focusTag": "neutral-to-offensive transition",
+    "scenario": "In a neutral rally, your opponent's reply lands between the service line and baseline with low spin. What's the trigger?",
+    "options": [
+      "Step in and flatten the ball deep down-the-line or inside-out",
+      "Continue the neutral pattern — it's not short enough",
+      "Drop shot to shorten the point"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "A ball in that zone with low spin is a transition trigger. Flattening with intent pressures the next reply and moves you into position for a +2 finish.",
+    "takeaway": "Know your attack zone — mid-court with low spin is it.",
+    "mistakeType": "missing the attack trigger",
+    "scenarioTr": "Nötr rally'de rakibin yanıtı servis çizgisiyle kalenin arasında, düşük spinle düştü. Tetikleyici ne?",
+    "optionsTr": [
+      "Öne adım at, çizgiye veya inside-out düzleştir",
+      "Nötr deseni sürdür — yeterince kısa değil",
+      "Puanı kısaltmak için drop shot"
+    ],
+    "explanationTr": "O bölgedeki düşük spinli top geçiş tetiğidir. Niyetli düzleştirme sonraki yanıtı zorlar ve seni +2 bitirme pozisyonuna taşır.",
+    "takeawayTr": "Saldırı bölgeni bil — orta kort düşük spinli top orasıdır."
+  },
+  {
+    "id": "rally_029",
+    "category": "rally",
+    "difficulty": "easy",
+    "focusTag": "rally breathing rhythm",
+    "scenario": "In long rallies, when should you exhale?",
+    "options": [
+      "At the moment of contact — every ball",
+      "Between points only",
+      "When you're tired"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Exhaling at contact stabilises the core and keeps breathing rhythmic. Holding breath during rallies raises tension and tires you faster.",
+    "takeaway": "Exhale every contact — every ball.",
+    "mistakeType": "holding breath during rallies",
+    "scenarioTr": "Uzun rally'lerde ne zaman nefes vermelisin?",
+    "optionsTr": [
+      "Her topun temas anında",
+      "Sadece puan aralarında",
+      "Yorulduğunda"
+    ],
+    "explanationTr": "Temas anında nefes vermek karını sabitler ve soluğu ritmik tutar. Rally sırasında nefes tutmak gerilimi artırır ve daha hızlı yorar.",
+    "takeawayTr": "Her temasta nefes ver — her topta."
+  },
+  {
+    "id": "rally_030",
+    "category": "rally",
+    "difficulty": "medium",
+    "focusTag": "direction change quality",
+    "scenario": "You've decided to change direction from crosscourt to down-the-line. What's the execution priority?",
+    "options": [
+      "A contact point slightly in front of normal to redirect cleanly",
+      "Extra pace to beat the recovery",
+      "A higher net clearance"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Direction change requires a slightly earlier contact point to redirect the ball precisely. Pace without precision just sends the ball wide of the line.",
+    "takeaway": "Direction change is a contact-point problem — not a pace problem.",
+    "mistakeType": "chasing pace on direction change",
+    "scenarioTr": "Çaprazdan çizgiye yön değiştirmeye karar verdin. Uygulama önceliği ne?",
+    "optionsTr": [
+      "Temiz yönlendirme için normal temas noktasının biraz önünde vur",
+      "Toparlanmayı yenmek için ekstra hız",
+      "Daha yüksek file marjı"
+    ],
+    "explanationTr": "Yön değişikliği topu hassas yönlendirmek için temas noktasının biraz önde olmasını ister. Hassasiyetsiz hız topu çizgi dışına gönderir.",
+    "takeawayTr": "Yön değişimi temas noktası meselesidir — hız değil."
+  },
+  {
+    "id": "net_021",
+    "category": "net",
+    "difficulty": "easy",
+    "focusTag": "approach shot follow",
+    "scenario": "You hit a deep slice approach down the line. Where should you be as your opponent makes contact?",
+    "options": [
+      "Inside the service line, split-stepping",
+      "Already at the net tape",
+      "Behind the baseline still"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Inside the service line with a split step is the textbook position — close enough to cover, balanced enough to react to any pass or lob.",
+    "takeaway": "Inside the service line, split step — every approach.",
+    "mistakeType": "poor approach follow-through",
+    "scenarioTr": "Çizgiye derin slice approach attın. Rakip temas ederken nerede olmalısın?",
+    "optionsTr": [
+      "Servis çizgisinin içinde, split-step yapmış",
+      "Zaten file bandında",
+      "Hâlâ kale çizgisinin arkasında"
+    ],
+    "explanationTr": "Servis çizgisinin içinde split step, ders kitabı pozisyonudur — kapsamak için yeterince yakın, her pass veya lop'a tepki için yeterince dengeli.",
+    "takeawayTr": "Servis çizgisinin içinde split step — her approach'ta.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.3,
+      "youY": 0.45,
+      "opponentX": 0.2,
+      "opponentY": 0.1,
+      "ballOriginX": 0.3,
+      "ballOriginY": 0.5,
+      "ballTargetX": 0.2,
+      "ballTargetY": 0.18,
+      "scoreChip": "DTL APPROACH"
+    }
+  },
+  {
+    "id": "net_022",
+    "category": "net",
+    "difficulty": "medium",
+    "focusTag": "volley positioning vs passing shot",
+    "scenario": "Opponent shapes to hit a crosscourt passing shot. Where do you volley from?",
+    "options": [
+      "Slightly toward the crosscourt sideline — bisecting the passing lane",
+      "Directly on the centre line",
+      "Close to the net tape"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Tilting toward the crosscourt side closes the primary passing lane without abandoning the down-the-line. You're defending the likely shot first.",
+    "takeaway": "Bias your volley position toward the obvious passing lane.",
+    "mistakeType": "static volley position",
+    "scenarioTr": "Rakip çapraz pass atmaya hazırlanıyor. Volley'i nereden alırsın?",
+    "optionsTr": [
+      "Çapraz çizgiye doğru kaydır — pass rotasını ikiye böl",
+      "Tam orta çizgide",
+      "File bandına çok yakın"
+    ],
+    "explanationTr": "Çapraz tarafa kaymak birincil pass rotasını kapar ama çizgi tarafını terk etmez. Muhtemel atışı önce savunuyorsun.",
+    "takeawayTr": "Volley pozisyonunu bariz pass rotasına doğru kaydır.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.45,
+      "youY": 0.45,
+      "opponentX": 0.2,
+      "opponentY": 0.08,
+      "ballOriginX": 0.2,
+      "ballOriginY": 0.18,
+      "ballTargetX": 0.78,
+      "ballTargetY": 0.4,
+      "scoreChip": "CC PASS COMING"
+    }
+  },
+  {
+    "id": "net_023",
+    "category": "net",
+    "difficulty": "easy",
+    "focusTag": "volley contact point",
+    "scenario": "Where should your volley contact the ball?",
+    "options": [
+      "In front of your lead hip",
+      "Level with your back hip",
+      "Behind your body"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "A volley contacted in front of the lead hip gives you racket face control, pace absorption, and forward direction.",
+    "takeaway": "Volley in front — always.",
+    "mistakeType": "late volley contact",
+    "scenarioTr": "Volley'de topa neresinden vurmalısın?",
+    "optionsTr": [
+      "Ön kalçanın önünde",
+      "Arka kalçanın hizasında",
+      "Vücudunun arkasında"
+    ],
+    "explanationTr": "Ön kalçanın önünde alınan volley raket yüzü kontrolü, hızı emme ve ileri yön verir.",
+    "takeawayTr": "Volley'i her zaman önde al.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.42,
+      "opponentX": 0.5,
+      "opponentY": 0.1,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.18,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.4,
+      "scoreChip": "VOLLEY CONTACT"
+    }
+  },
+  {
+    "id": "net_024",
+    "category": "net",
+    "difficulty": "medium",
+    "focusTag": "first volley after serve",
+    "scenario": "You serve-and-volley and get a low ball at your feet. What's the priority?",
+    "options": [
+      "Scoop it deep down the middle to buy time",
+      "Attempt a sharp angle volley winner",
+      "Let it bounce and play a groundstroke"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "A low first volley is a reset — deep middle buys time to reach the proper volley position for the second volley.",
+    "takeaway": "First volleys at your feet are setups — not winners.",
+    "mistakeType": "going for winners on low first volleys",
+    "scenarioTr": "Servis-volley attın ve ayaklarına düşük top geldi. Öncelik ne?",
+    "optionsTr": [
+      "Ortadan derine kepçele — zaman kazan",
+      "Sert açılı volley winner dene",
+      "Sektir ve groundstroke'la oyna"
+    ],
+    "explanationTr": "Düşük ilk volley bir sıfırlamadır — ortadan derine atmak ikinci volley için doğru pozisyona gelme zamanı kazandırır.",
+    "takeawayTr": "Ayağındaki ilk volley kurulumdur — winner değil.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.55,
+      "opponentX": 0.5,
+      "opponentY": 0.92,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.82,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.58,
+      "scoreChip": "S&V · LOW BALL"
+    }
+  },
+  {
+    "id": "net_025",
+    "category": "net",
+    "difficulty": "easy",
+    "focusTag": "overhead on a lob",
+    "scenario": "Opponent lobs you. Your first movement?",
+    "options": [
+      "Racket up and backpedal laterally in small steps",
+      "Sprint straight back with your head down",
+      "Watch the ball arc before moving"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Racket-up early and small lateral backpedal steps keep your balance and head position for a clean overhead contact.",
+    "takeaway": "On a lob: racket up first, feet second.",
+    "mistakeType": "slow racket preparation on lob",
+    "scenarioTr": "Rakip lop attı. İlk hareketin?",
+    "optionsTr": [
+      "Raket yukarıda, küçük yan adımlarla geriye",
+      "Başı aşağıda düz arkaya koş",
+      "Topun yörüngesini izle, sonra hareket et"
+    ],
+    "explanationTr": "Raketi erken yukarı almak ve küçük yan adımlar dengeyi ve baş pozisyonunu korur — temiz overhead teması için.",
+    "takeawayTr": "Lop'ta önce raket, sonra ayaklar.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.42,
+      "opponentX": 0.5,
+      "opponentY": 0.95,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.88,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.95,
+      "scoreChip": "LOB OVER YOU"
+    }
+  },
+  {
+    "id": "net_026",
+    "category": "net",
+    "difficulty": "medium",
+    "focusTag": "drop volley decision",
+    "scenario": "A high floating ball comes to you at the service line with your opponent deep behind the baseline. Choice?",
+    "options": [
+      "Angled deep volley to keep them pinned back",
+      "A drop volley short crosscourt",
+      "A full-pace volley down the middle"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "When the opponent is deep, a deep angled volley maintains the advantage. A drop volley brings them into play — risky when they're already out of position.",
+    "takeaway": "When opponents are deep, keep them deep — don't invite them in.",
+    "mistakeType": "unnecessary drop volley",
+    "scenarioTr": "Yüksek havada top servis çizgisine geliyor, rakip kalenin derinlerinde. Seçim?",
+    "optionsTr": [
+      "Derin açılı volley — onları geride tut",
+      "Kısa çapraz drop volley",
+      "Ortadan tam hızlı volley"
+    ],
+    "explanationTr": "Rakip geride olduğunda derin açılı volley avantajı sürdürür. Drop volley onları oyuna çeker — zaten pozisyon dışıysa risk.",
+    "takeawayTr": "Rakip geridelerse geride tut — içeri davet etme.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.55,
+      "opponentX": 0.5,
+      "opponentY": 0.1,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.2,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.5,
+      "scoreChip": "HIGH FLOATER"
+    }
+  },
+  {
+    "id": "net_027",
+    "category": "net",
+    "difficulty": "easy",
+    "focusTag": "net swing length",
+    "scenario": "You're at the net and a ball comes hard at you. What's the swing?",
+    "options": [
+      "Almost no backswing — a firm, short block",
+      "A full groundstroke swing",
+      "A soft underspin slice"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "At the net, pace absorption comes from a short, firm swing — not a big backswing. The opponent supplies the power; you supply direction.",
+    "takeaway": "At the net, short swing, firm grip — always.",
+    "mistakeType": "long volley swing",
+    "scenarioTr": "File önündesin ve sert bir top üstüne geliyor. Nasıl vurursun?",
+    "optionsTr": [
+      "Neredeyse hiç arka salınım yok — sert, kısa blok",
+      "Tam groundstroke salınımı",
+      "Yumuşak alt dönüşlü slice"
+    ],
+    "explanationTr": "File önünde hız emme kısa ve sert bir salınımla gelir — büyük arka salınımla değil. Gücü rakip sağlar; sen yönü verirsin.",
+    "takeawayTr": "File önünde kısa salınım, sıkı tutuş — her zaman."
+  },
+  {
+    "id": "net_028",
+    "category": "net",
+    "difficulty": "medium",
+    "focusTag": "half-volley management",
+    "scenario": "A hard ball dips to your feet at the transition zone. What's the right play?",
+    "options": [
+      "A soft half-volley deep to the middle",
+      "A hard half-volley trying to punch a winner",
+      "Let it bounce and scramble"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "A soft half-volley uses the opponent's pace, clears the net, and buys time. A hard one usually sprays. Letting it bounce means you're on the baseline without having gained anything.",
+    "takeaway": "Half-volleys are survival shots — soft, deep, and middle.",
+    "mistakeType": "hard half-volley attempt",
+    "scenarioTr": "Geçiş bölgesinde ayağına sert dip top geliyor. Doğru oyun?",
+    "optionsTr": [
+      "Yumuşak half-volley, derinlik ortaya",
+      "Winner denemek için sert half-volley",
+      "Sektir ve koş"
+    ],
+    "explanationTr": "Yumuşak half-volley rakibin hızını kullanır, fileyi geçer ve zaman kazandırır. Sert olan çoğu zaman savrulur.",
+    "takeawayTr": "Half-volley bir hayatta kalma vuruşudur — yumuşak, derin, orta."
+  },
+  {
+    "id": "net_029",
+    "category": "net",
+    "difficulty": "easy",
+    "focusTag": "doubles net movement",
+    "scenario": "In doubles, your partner is serving. What's your pre-serve position at the net?",
+    "options": [
+      "Slightly closer to the T than the alley, ready to poach",
+      "Right on the alley to protect your line",
+      "Behind the service line for mobility"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Closer to the T gives you poaching range without completely abandoning the alley. That's where doubles net players live.",
+    "takeaway": "Doubles net: T-biased, poach-ready.",
+    "mistakeType": "alley-glued doubles positioning",
+    "scenarioTr": "Çiftlerde partnerin servis atıyor. File önünde servis öncesi pozisyonun ne?",
+    "optionsTr": [
+      "Kenardan çok T'ye daha yakın — poach için hazır",
+      "Tam kenarda — çizgini koru",
+      "Mobilite için servis çizgisinin arkasında"
+    ],
+    "explanationTr": "T'ye yakın olmak kenarı tam terk etmeden poach menzili sağlar. Çiftler file oyuncularının yeri orasıdır.",
+    "takeawayTr": "Çiftler file önü: T'ye kayık, poach'a hazır."
+  },
+  {
+    "id": "net_030",
+    "category": "net",
+    "difficulty": "medium",
+    "focusTag": "volley target selection",
+    "scenario": "You're at the net and your opponent is recovering from wide in the deuce court. Best volley target?",
+    "options": [
+      "Open ad court — deep into the corner",
+      "Behind them back into the deuce corner",
+      "Short drop volley"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Opponent recovering means they're moving toward the centre. Deep into the open ad court makes them reverse direction and arrive off-balance — or not at all.",
+    "takeaway": "At the net, hit away from their recovery — not back to where they came from.",
+    "mistakeType": "hitting behind when they're recovering",
+    "scenarioTr": "File önündesin ve rakip deuce tarafta açıktan toparlanıyor. En iyi volley hedefi?",
+    "optionsTr": [
+      "Açık ad köşe — derine",
+      "Geldiği deuce köşesine arkadan",
+      "Kısa drop volley"
+    ],
+    "explanationTr": "Toparlanan rakip ortaya doğru hareket eder. Açık ad köşesine derin volley yön değiştirmeye zorlar ve dengesiz yakalar — ya da hiç yetişemez.",
+    "takeawayTr": "File önünde toparlanma yönünün tersine vur — geldiği yere değil."
+  },
+  {
+    "id": "mental_021",
+    "category": "mental",
+    "difficulty": "easy",
+    "focusTag": "score anchoring",
+    "scenario": "You just lost a set 6-4 and are about to start the second set. What should anchor your mind for the first game?",
+    "options": [
+      "A simple process goal (e.g., split step every ball)",
+      "Replay the lost set in your head",
+      "Promise yourself you'll play 'perfect'"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Process goals give your brain something concrete to do. Replaying the past or chasing perfection raises anxiety and reduces present-moment focus.",
+    "takeaway": "Start new sets with process — not replay.",
+    "mistakeType": "replaying the lost set",
+    "scenarioTr": "Bir önceki seti 6-4 kaybettin ve ikinci sete başlıyorsun. İlk oyun için zihnini nereye sabitlemelisin?",
+    "optionsTr": [
+      "Basit bir süreç hedefi (her topta split step)",
+      "Kaybettiğin seti zihinde oynatmak",
+      "Kendine 'kusursuz' oynayacağına dair söz vermek"
+    ],
+    "explanationTr": "Süreç hedefleri beynine yapılacak somut bir şey verir. Geçmişi oynatmak veya kusursuzluk peşinde koşmak kaygıyı artırır.",
+    "takeawayTr": "Yeni setlere süreçle başla — geçmişi oynatmadan.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.92,
+      "scoreChip": "LOST 1ST SET 4–6"
+    }
+  },
+  {
+    "id": "mental_022",
+    "category": "mental",
+    "difficulty": "medium",
+    "focusTag": "anger management after call",
+    "scenario": "A line call goes against you and you believe it was wrong. What's the 90-second response?",
+    "options": [
+      "Towel, breath, and commit to the next point",
+      "Argue with the line judge",
+      "Play the next point angry to punish them"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "A 90-second reset — towel, breath, next-point commitment — is the routine pros use. Anger in the next point doubles the damage: you lose the disputed point and the next one.",
+    "takeaway": "One bad call shouldn't cost you two points.",
+    "mistakeType": "playing angry after a bad call",
+    "scenarioTr": "Çizgi hakemi aleyhine karar verdi ve yanlış olduğunu düşünüyorsun. 90 saniyelik yanıt ne?",
+    "optionsTr": [
+      "Havlu, nefes, sonraki puana söz",
+      "Çizgi hakemiyle tartış",
+      "Cezalandırmak için sinirli oyna"
+    ],
+    "explanationTr": "90 saniyelik sıfırlama — havlu, nefes, sonraki puana söz — profesyonellerin kullandığı rutindir. Sonraki puanda öfke hasarı ikiye katlar.",
+    "takeawayTr": "Bir kötü karar seni iki puan kaybetmemeli.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.92,
+      "scoreChip": "DISPUTED CALL"
+    }
+  },
+  {
+    "id": "mental_023",
+    "category": "mental",
+    "difficulty": "easy",
+    "focusTag": "tiebreak mindset",
+    "scenario": "You're about to start a tiebreak at 6-6. What's the right mindset?",
+    "options": [
+      "Play the first point like it's the match-clinching point",
+      "Play conservatively to avoid early mistakes",
+      "Hope for errors from the opponent"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Tiebreaks reward aggression from point one. Waiting to 'see how it goes' concedes the early swing to your opponent.",
+    "takeaway": "Tiebreaks start at full intensity — not build to it.",
+    "mistakeType": "slow start in tiebreaks",
+    "scenarioTr": "6-6'da tiebreak'e başlıyorsun. Doğru zihniyet ne?",
+    "optionsTr": [
+      "İlk puanı maçı bitiren puan gibi oyna",
+      "Erken hataları önlemek için ihtiyatlı oyna",
+      "Rakip hata yapar diye bekle"
+    ],
+    "explanationTr": "Tiebreak ilk puandan itibaren agresyonu ödüllendirir. 'Görelim nasıl gidiyor' demek erken dalgayı rakibe verir.",
+    "takeawayTr": "Tiebreak tam yoğunlukla başlar — ona doğru yükselmez.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.92,
+      "scoreChip": "TIEBREAK · 0–0"
+    }
+  },
+  {
+    "id": "mental_024",
+    "category": "mental",
+    "difficulty": "medium",
+    "focusTag": "internal vs external focus",
+    "scenario": "You notice you're thinking 'don't miss' before a big shot. What's the reframe?",
+    "options": [
+      "Think about where the ball should land instead",
+      "Think about how to swing better",
+      "Think about the score"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "External focus (target) beats internal focus (technique) under pressure. 'Don't miss' is both internal and negative — the worst combination.",
+    "takeaway": "Under pressure, focus on the target — not on technique.",
+    "mistakeType": "negative internal focus under pressure",
+    "scenarioTr": "Büyük bir vuruş öncesi 'kaçırma' düşündüğünü fark ettin. Yeniden çerçeveleme?",
+    "optionsTr": [
+      "Onun yerine topun nereye düşmesini istediğini düşün",
+      "Daha iyi nasıl vuracağını düşün",
+      "Skoru düşün"
+    ],
+    "explanationTr": "Baskı altında dış odak (hedef) iç odağı (teknik) yener. 'Kaçırma' hem iç hem de olumsuzdur — en kötü kombinasyon.",
+    "takeawayTr": "Baskı altında hedefe odaklan — tekniğe değil.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.92,
+      "scoreChip": "BREAK POINT"
+    }
+  },
+  {
+    "id": "mental_025",
+    "category": "mental",
+    "difficulty": "easy",
+    "focusTag": "between-point routine",
+    "scenario": "How long is an effective between-point routine?",
+    "options": [
+      "The full 20-25 seconds — slow, deliberate, consistent",
+      "Under 10 seconds to keep rhythm",
+      "Variable depending on how you feel"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Using the full allowed time gives you breathing, reset, and visualisation space. Rushing loses the benefit; variability causes inconsistency.",
+    "takeaway": "Use the full 20 seconds — every point.",
+    "mistakeType": "rushing between points",
+    "scenarioTr": "Etkili bir puan arası rutin ne kadar sürer?",
+    "optionsTr": [
+      "Tam 20-25 saniye — yavaş, kasıtlı, tutarlı",
+      "Ritim için 10 saniyeden az",
+      "Hissine göre değişken"
+    ],
+    "explanationTr": "İzin verilen tüm süreyi kullanmak nefes, sıfırlama ve görselleştirme alanı verir. Acele faydayı kaybettirir; değişkenlik tutarsızlık yaratır.",
+    "takeawayTr": "Tüm 20 saniyeyi kullan — her puanda.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.92,
+      "scoreChip": "BETWEEN POINTS"
+    }
+  },
+  {
+    "id": "mental_026",
+    "category": "mental",
+    "difficulty": "medium",
+    "focusTag": "opponent's momentum",
+    "scenario": "Your opponent just won 4 games in a row. What's the best tactical response?",
+    "options": [
+      "Deliberately slow your play between points — break their rhythm",
+      "Speed up to overwhelm them",
+      "Change strategy completely"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Momentum feeds on rhythm. Slowing between points (towel, longer bounces) breaks that rhythm without overhauling your strategy, which rarely works mid-match.",
+    "takeaway": "Break momentum by slowing down — not by changing everything.",
+    "mistakeType": "overreacting to momentum",
+    "scenarioTr": "Rakibin üst üste 4 oyun aldı. En iyi taktik yanıt ne?",
+    "optionsTr": [
+      "Puan arası temponu bilinçli yavaşlat — ritmini kır",
+      "Hızlan — onları boğ",
+      "Stratejini komple değiştir"
+    ],
+    "explanationTr": "Momentum ritimden beslenir. Puan arasında yavaşlamak (havlu, uzun top sektirme) ritmini kırar — ki strateji komple değiştirmek maç ortasında nadiren işe yarar.",
+    "takeawayTr": "Momentumu yavaşlayarak kır — her şeyi değiştirerek değil.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.92,
+      "scoreChip": "0–4 GAMES"
+    }
+  },
+  {
+    "id": "mental_027",
+    "category": "mental",
+    "difficulty": "easy",
+    "focusTag": "after serving for the match",
+    "scenario": "You just got broken serving for the match. What's the mental move?",
+    "options": [
+      "One deep breath — it's still your match to win from 5-4 deficit",
+      "Accept the loss is coming",
+      "Demand to play faster to end it"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Being broken while serving for the match is common; it's not fatal. One deep breath resets you — the opponent is serving under pressure now too.",
+    "takeaway": "One break doesn't end the set — reset and respond.",
+    "mistakeType": "catastrophising a service break",
+    "scenarioTr": "Maç için servis atarken kırıldın. Zihinsel hamle?",
+    "optionsTr": [
+      "Tek derin nefes — hâlâ senin kazanabileceğin bir maç",
+      "Kaybedeceğini kabul et",
+      "Bitirmek için daha hızlı oyna"
+    ],
+    "explanationTr": "Maç için servis atarken kırılmak sık karşılaşılan bir durumdur — öldürücü değildir. Tek derin nefes seni sıfırlar — şimdi rakip baskı altında servis atıyor.",
+    "takeawayTr": "Bir kırılma seti bitirmez — sıfırla ve yanıtla."
+  },
+  {
+    "id": "mental_028",
+    "category": "mental",
+    "difficulty": "medium",
+    "focusTag": "confidence from small wins",
+    "scenario": "You're struggling mentally mid-match. What's the fastest confidence builder?",
+    "options": [
+      "Win the next point with your highest-percentage pattern",
+      "Try to hit a spectacular winner",
+      "Analyse what's gone wrong"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Confidence rebuilds from small wins. Your highest-percentage pattern gives the best chance of a point won, which compounds into belief.",
+    "takeaway": "Rebuild confidence with safe patterns — not heroics.",
+    "mistakeType": "heroics to rebuild confidence",
+    "scenarioTr": "Maç ortasında zihnen zorlanıyorsun. En hızlı özgüven yükseltici ne?",
+    "optionsTr": [
+      "Sonraki puanı en yüksek ihtimalli deseninle al",
+      "Göz alıcı winner dene",
+      "Neyin ters gittiğini analiz et"
+    ],
+    "explanationTr": "Özgüven küçük zaferlerden yeniden inşa olur. En yüksek ihtimalli desenin puan kazanma şansını artırır ve bu inanca dönüşür.",
+    "takeawayTr": "Özgüveni güvenli desenlerle inşa et — kahramanlıkla değil."
+  },
+  {
+    "id": "mental_029",
+    "category": "mental",
+    "difficulty": "easy",
+    "focusTag": "post-match reflection",
+    "scenario": "You lost 6-4, 6-4 to a player you felt you should have beaten. What's the healthy next step?",
+    "options": [
+      "Write down 2 things that worked and 1 thing to adjust",
+      "Avoid thinking about it completely",
+      "Watch the whole match back immediately while angry"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "A structured 2+1 reflection captures lessons without spiralling. Avoidance misses learning; watching while angry distorts the lesson.",
+    "takeaway": "Reflect short, reflect soon — but reflect calmly.",
+    "mistakeType": "over- or under-reflecting on losses",
+    "scenarioTr": "Yenmen gerektiğini hissettiğin bir oyuncuya 6-4, 6-4 kaybettin. Sağlıklı bir sonraki adım?",
+    "optionsTr": [
+      "İşe yarayan 2 şey ve ayarlanacak 1 şey yaz",
+      "Hiç düşünme",
+      "Sinirliyken maçı baştan izle"
+    ],
+    "explanationTr": "Yapılandırılmış 2+1 yansıma takıntıya dönmeden dersleri yakalar. Kaçınma öğrenmeyi kaçırır; sinirli izlemek dersi bozar.",
+    "takeawayTr": "Kısa yansıt, yakında yansıt — ama sakin yansıt."
+  },
+  {
+    "id": "mental_030",
+    "category": "mental",
+    "difficulty": "medium",
+    "focusTag": "competitive identity",
+    "scenario": "You play best when you're fully competitive. In warm-up, how do you trigger that state?",
+    "options": [
+      "Visualise one aggressive pattern you'll use on the first point",
+      "Chat casually to relax",
+      "Hit at 50% to save energy"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Visualising an aggressive pattern primes your brain and body for the competitive state before the first point. Casual warm-up primes casual play.",
+    "takeaway": "Warm up the way you want to compete.",
+    "mistakeType": "warming up without intent",
+    "scenarioTr": "Tam yarışmacıyken en iyi oynuyorsun. Isınmada o duruma nasıl geçersin?",
+    "optionsTr": [
+      "İlk puanda kullanacağın bir agresif deseni görselleştir",
+      "Rahatlamak için sohbet et",
+      "Enerji saklamak için %50 vur"
+    ],
+    "explanationTr": "Agresif bir deseni görselleştirmek beyni ve bedeni yarışma durumuna hazırlar. Rahat ısınma rahat oyun hazırlar.",
+    "takeawayTr": "Yarışmak istediğin gibi ısın."
+  }
 ]

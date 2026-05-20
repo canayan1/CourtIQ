@@ -29,6 +29,18 @@
 /* ── Today ── */
 "today.day_streak" = "günlük seri";
 "today.this_week" = "bu hafta";
+"today.streak_grace_hint" = "Dün kaçırdın — streak'in bugün için donduruldu. Bugünün quiz'ini çöz, hayatta tutarsın.";
+"today.a11y_day_streak" = "Gün streak";
+"today.a11y_this_week" = "Bu hafta";
+"common.share" = "Paylaş";
+"training.a11y_sessions_done" = "Bu hafta tamamlanan seanslar";
+
+/* ── Boş durumlar ── */
+"profile.empty_history_title" = "Quiz geçmişin burada görünecek";
+"profile.empty_history_body" = "Bir quiz tamamla, takip başlasın.";
+"community.empty_title" = "Yazan ilk sen ol";
+"training.checkin_empty_title" = "Henüz check-in yok";
+"common.back" = "Geri";
 "today.start_quiz" = "Bugünün sınavını başlat";
 "today.review_quiz" = "Bugünün sınavını incele";
 "today.greeting_morning" = "Günaydın";
@@ -178,8 +190,8 @@
 "profile.reset_title" = "Yerel veriler sıfırlansın mı?";
 "profile.reset_msg" = "Bu, bu cihazdaki önbelleğe alınmış ilerlemeyi temizler. Senkronize hesap verileri bir sonraki başlatmada yeniden indirilecektir.";
 "profile.quiz_empty" = "Arşivini başlatmak için ilk günlük sınavını tamamla.";
-"profile.unlock_history" = "Tam sınav arşivini aç, zaman içindeki odak değişikliklerini takip et ve tekrarlayan karar hatalarını tespit et.";
-"profile.sign_in_hint" = "Bulut senkronizasyonunu ve satın alma geri yüklemeyi etkinleştirmek için Apple ile giriş yap.";
+"profile.unlock_history" = "Tam arşivini gör.";
+"profile.sign_in_hint" = "İlerlemeni cihazlar arasında senkronize et.";
 "profile.leave_guest" = "Misafir Önizlemesinden Çık";
 "profile.section_progress" = "İlerleme";
 "profile.section_quiz" = "Sınav Geçmişi";
@@ -253,6 +265,217 @@
 "paywall.support" = "Destek";
 "paywall.subscription_note" = "Abonelikler, mevcut dönemin bitiminden en az 24 saat önce App Store ayarlarından iptal edilmediği sürece otomatik olarak yenilenir. Premium erişiminiz, başlatma sırasında ve geri yüklemeden sonra App Store'dan geri yüklenir.";
 "paywall.unlocked" = "Açıldı";
+"paywall.intro_body" = "Premium; tam antrenman kitaplığını, mobilite akışlarını, geçmiş quiz analizlerini ve topluluk katılımını açar.";
+"paywall.products_loading" = "Abonelik seçenekleri yükleniyor…";
+
+/* ── Beta geri bildirim ── */
+"beta.section_title" = "Beta geri bildirim";
+"beta.prompt_title" = "Bir hata mı buldunuz, fikriniz mi var?";
+"beta.prompt_body" = "Cihaz bilgisi otomatik gelir.";
+"beta.send" = "Geri bildirim gönder";
+
+/* ── Sağlık & Güvenlik ── */
+"health.eyebrow" = "BAŞLAMADAN ÖNCE";
+"health.title" = "Güvenli antrenman.";
+"health.subtitle" = "CourtIQ tenisçiler tarafından yapıldı, doktorlar değil. Antrenman, mobilite veya fiziksel içeriği kullanmadan önce lütfen şunları oku ve onayla.";
+"health.bullet_not_medical" = "CourtIQ tıbbi tavsiye, teşhis veya tedavi değildir. Doktor, fizyoterapist, sertifikalı antrenör veya koçun yerini tutmaz.";
+"health.bullet_consult_doctor" = "Herhangi bir yeni fiziksel aktiviteye başlamadan önce mutlaka kalifiye bir sağlık profesyoneliyle konuş — özellikle kalp, eklem ya da kas-iskelet rahatsızlığın varsa, hamile isen, sakatlıktan iyileşiyorsan veya son 6 ayda düzenli egzersiz yapmadıysan.";
+"health.bullet_stop_if_pain" = "CourtIQ'i kullanırken ya da sonrasında ağrı, baş dönmesi, nefes darlığı, göğüs rahatsızlığı veya alışılmadık herhangi bir belirti hissedersen hemen dur ve tıbbi yardım al.";
+"health.bullet_assume_risk" = "Tenis, kuvvet antrenmanı, plyometrik, mobilite ve kondisyon çalışması ciddi yaralanma dahil olmak üzere doğal bir sakatlanma riski taşır. CourtIQ'i kullanarak bu riski bilerek ve gönüllü olarak kabul ediyorsun.";
+"health.bullet_self_directed" = "CourtIQ kendi kendine yönlendirilen bir uygulamadır. App üzerinden bir koç tarafından denetlenmiyorsun. Tekniğinden, ekipmanından, ısınmandan, toparlanmandan ve kendi sınırlarını bilmekten sen sorumlusun.";
+"health.read_more" = "TAM METNİ OKU";
+"health.full_disclaimer_link" = "Tam Sağlık ve Güvenlik Beyanı";
+"health.confirm_toggle" = "Yukarıdaki maddeleri okudum ve fiziksel aktivitenin risklerini anlıyorum.";
+"health.confirm_required_hint" = "DEVAM ETMEK İÇİN BU TOGGLE'I AÇ";
+"health.confirm_done_hint" = "DEVAM ETMEYE HAZIR";
+"health.accept" = "Anladım ve kabul ediyorum";
+"health.footer_note" = "Yukarıdaki butona dokunarak Sağlık ve Güvenlik Beyanı ile Kullanım Koşulları'nı okuduğunu, anladığını ve kabul ettiğini onaylıyorsun. CourtIQ'i kendi sorumluluğunla kullanmayı kabul ediyorsun.";
+"health.banner_title" = "Güvenli antrenman";
+"health.banner_body" = "Önce ısın. Güvenli teknik ve uygun yük kullan. Bir şey ters hissedersen dur.";
+
+/* ── Onboarding ── */
+"onb.welcome.tagline" = "Her seviyeden oyuncu için Tenis IQ.";
+"onb.welcome.body" = "Günlük senaryolar, yapılandırılmış antrenman ve mobilite — tek bir koç düzeninde.";
+"onb.welcome.cta" = "Başla";
+"onb.welcome.footer" = "30 SANİYEDE KURULUM · SONSUZA KADAR ÜCRETSİZ KATMAN";
+
+"onb.cta.continue" = "Devam et";
+"onb.cta.build_plan" = "Planımı oluştur";
+"onb.cta.see_included" = "Nelerin dahil olduğunu gör";
+"onb.cta.skip" = "Atla";
+
+"onb.level.step" = "1 / 3";
+"onb.level.title" = "Kortta nerede\nduruyorsun?";
+"onb.level.subtitle" = "Quiz zorluğunu ve antrenman bloklarını sana göre ayarlayalım.";
+"onb.level.beginner.title" = "Başlangıç";
+"onb.level.beginner.desc" = "Ralliyi öğreniyor, tutarlılık arıyor";
+"onb.level.club.title" = "Kulüp oyuncusu";
+"onb.level.club.desc" = "İstikrarlı ralli, düzenli maç oynuyor";
+"onb.level.advanced.title" = "İleri seviye";
+"onb.level.advanced.desc" = "Turnuva, ranking, dar marjlar";
+"onb.level.coach.title" = "Antrenör / pro";
+"onb.level.coach.desc" = "Başkalarına da öğretiyor, kendini de geliştiriyor";
+
+"onb.focus.step" = "2 / 3";
+"onb.focus.title" = "En çok neyi\ngeliştirmek istiyorsun?";
+"onb.focus.subtitle" = "Bir tane seç. Profilinden istediğin zaman değiştirebilirsin.";
+"onb.focus.decision.title" = "Karar verme";
+"onb.focus.decision.desc" = "Vuruş seçimi, kort farkındalığı, rakibi okuma";
+"onb.focus.strokes.title" = "Vuruş mekaniği";
+"onb.focus.strokes.desc" = "Forehand, backhand, servis, vole pattern'leri";
+"onb.focus.mobility.title" = "Mobilite ve toparlanma";
+"onb.focus.mobility.desc" = "Sakatlanmadan, puanlar arası daha iyi hareket et";
+"onb.focus.mental.title" = "Zihinsel oyun";
+"onb.focus.mental.desc" = "Kritik anlarda sakinlik, puanlar arası odak";
+
+"onb.freq.step" = "3 / 3";
+"onb.freq.title" = "Haftada\nkaç gün antrenman?";
+"onb.freq.subtitle" = "Haftana uyacak bir antrenman planı öneririz.";
+"onb.freq.1_2.title" = "1–2 gün";
+"onb.freq.1_2.desc" = "Hafta sonu oyuncusu — rahat tempo";
+"onb.freq.3_4.title" = "3–4 gün";
+"onb.freq.3_4.desc" = "İstekli — klinik + maç oyunu";
+"onb.freq.5plus.title" = "5+ gün";
+"onb.freq.5plus.desc" = "Ciddi — neredeyse her gün antrenman";
+
+"onb.plan.tag" = "PLANIN";
+"onb.plan.title" = "İşte sana özel\nkoç düzeninde haftan.";
+"onb.plan.subtitle" = "Seviyene, odağına ve programına göre hazırlandı.";
+"onb.plan.row.iq" = "Günlük IQ senaryosu";
+"onb.plan.row.training" = "Temel plan";
+"onb.plan.row.mobility" = "Hızlı sıfırlama akışı";
+"onb.plan.row.tip" = "Günün ipucu";
+"onb.plan.iq.decision" = "Karar odaklı sorular önce";
+"onb.plan.iq.default" = "Günde 5 soru, puanlı geri bildirim";
+"onb.plan.training.5plus" = "5 günlük mikro döngü";
+"onb.plan.training.1_2" = "Hafta sonu 2 günlük döngü";
+"onb.plan.training.default" = "Hibrit 4 günlük blok";
+"onb.plan.mobility.priority" = "Today sekmende öncelikli";
+"onb.plan.mobility.preview" = "Önizleme akışları açık";
+"onb.plan.tip.desc" = "Her sabah küçük bir koçluk notu";
+"onb.plan.free_title" = "Sonsuza kadar ücretsiz — kart gerekmez";
+"onb.plan.free_body" = "Bir günlük quiz, temel plan ve mobilite önizlemeleri. Kart bilgisi gerekmez.";
+
+"onb.paywall.tag" = "PREMIUM ÖNİZLEME";
+"onb.paywall.title" = "All Access ne açıyor.";
+"onb.paywall.subtitle" = "Profilinden istediğin zaman abone olabilirsin — devam etmek için kart bilgisi gerekmez.";
+"onb.paywall.included" = "Neler dahil";
+"onb.paywall.b1" = "Sınırsız günlük ve arşiv quiz'leri";
+"onb.paywall.b2" = "Premium antrenman track'leri + mobilite kitaplığı";
+"onb.paywall.b3" = "Geçmişiyle birlikte haftalık ısrar kontrolleri";
+"onb.paywall.b4" = "İçeriğe bağlı topluluk thread'lerinde yazma";
+"onb.paywall.b5" = "Her yeni koçluk paketine erken erişim";
+
+"onb.account.title" = "İlerlemeni kaydet.";
+"onb.account.subtitle" = "İlerlemeni cihazlar arasında senkronize et.";
+"onb.account.guest" = "Misafir olarak devam et";
+"onb.account.guest_note" = "Misafir ilerlemesi bu cihazda kalır.";
+
+"onb.tour.skip" = "Tour'u atla";
+"onb.tour.swipe_hint" = "Görmek için kaydır →";
+"onb.tour.1.title" = "Günlük IQ senaryoları";
+"onb.tour.1.body" = "Günde 5 kort diyagramlı soru. Senaryoyu görsel olarak oku, en akıllı vuruşu seç, neden olduğunu öğren.";
+"onb.tour.2.title" = "Tenis için özel antrenman";
+"onb.tour.2.body" = "Tenis oyuncusunun hareket biçimine göre tasarlanmış 8 haftalık kuvvet, plyo ve kondisyon programları. Birini bitir, bir sonraki faza geç.";
+"onb.tour.3.title" = "Anında mobilite";
+"onb.tour.3.body" = "Hızlı sıfırlama akışları, maç öncesi ısınmalar, toparlanma seansları — vücudunu kortlar arasında tenise hazır tut.";
+"onb.tour.4.title" = "Streak'ini ve IQ'nu takip et";
+"onb.tour.4.body" = "IQ puanın, streak'in ve progression rozetin — hepsi tek bir Profil sekmesinde. Kendini yükselirken izle.";
+
+/* ── Onboarding tour (yeni feature sayfaları) ── */
+"onb.tour.drill.title" = "Günlük Kort Drill";
+"onb.tour.drill.body" = "5 hızlı senaryo. En akıllı vuruşun yerine dokun. Her gün 30 saniye.";
+"onb.tour.proshot.title" = "Günün pro vuruşu";
+"onb.tour.proshot.body" = "En iyi oyuncuların puanı nasıl kurduğunu izle — her gün yeni bir pattern.";
+"onb.tour.rings.title" = "Halkalarını kapat";
+"onb.tour.rings.body" = "Drill · Maç · Mobilite. Üçünü de kapat — Üçlü Halka Günü.";
+"onb.tour.matches.title" = "Maçlarını logla";
+"onb.tour.matches.body" = "Öncesi planın, sonrası notların, dürüst puanların — trendini zamanla gör.";
+"onb.tour.training.title" = "8 haftalık antrenman";
+"onb.tour.training.body" = "Tenise özel kuvvet, plyo, kondisyon. Birini bitir, sıradakine geç.";
+"onb.tour.mobility.title" = "Daha iyi hareket";
+"onb.tour.mobility.body" = "Hızlı sıfırlama, ısınma, toparlanma akışları — kısa ve tenise hazır.";
+"onb.tour.avatar.title" = "Oyuncun";
+"onb.tour.avatar.body" = "Kort görünümünü yarat. Streak'ler, drill'ler ve maçlar yeni gear açar.";
+
+/* ── Maçlar ── */
+"tab.matches" = "Maçlar";
+"matches.new_entry" = "Yeni maç";
+"matches.choose_type" = "Bu maçı nasıl kaydetmek istersin?";
+"matches.quick_log" = "Hızlı log (30s)";
+"matches.full_journal" = "Tam günlük";
+"matches.total_logged" = "Kayıt";
+"matches.streak_label" = "Streak";
+"matches.unknown_opponent" = "Antrenman maçı";
+"matches.empty_title" = "Maç günlüğün burada başlar";
+"matches.empty_body" = "Oynadığın maçları logla. Servis, return, hareket ve mental odağını takip et — trendi izle.";
+"matches.first_log_cta" = "Maç logla";
+"matches.takeaway_label" = "Tek çıkarım";
+"matches.takeaway_placeholder" = "Bir dahaki sefere değiştireceğin bir şey…";
+"matches.opponent_placeholder" = "Rakip adı";
+"matches.score_placeholder" = "Skor (örn 6-4, 3-6, 7-5)";
+"matches.pre_match_label" = "Maç öncesi plan";
+"matches.pre_match_placeholder" = "Bu rakibe karşı taktik planın ne?";
+"matches.post_match_label" = "Maç sonrası notlar";
+"matches.post_match_placeholder" = "Ne işe yaradı, ne yaramadı, seni ne şaşırttı?";
+"matches.journal_title_new" = "Yeni günlük kaydı";
+"matches.journal_title_edit" = "Günlük kaydı";
+"matches.delete_title" = "Bu kaydı sil?";
+"matches.calendar_logged" = "kayıtlı";
+"matches.calendar_not_logged" = "kayıt yok";
+"matches.trend_title" = "Maç içgörüleri";
+"matches.trend_locked_title" = "Trendleri açmak için 5 maç logla";
+"matches.trend_up" = "En büyük gelişme";
+"matches.trend_down" = "En büyük düşüş";
+"matches.trend_volume" = "Aylık maç sayısı";
+"matches.dim_serve" = "Servis";
+"matches.dim_return" = "Return";
+"matches.dim_movement" = "Hareket";
+"matches.dim_mental" = "Mental";
+"matches.view_insights" = "İçgörüleri gör";
+"matches.view_calendar" = "Maç takvimi";
+
+/* ── Günlük Kort Tap Drill ── */
+"drill.card_kicker" = "Günlük drill";
+"drill.card_title" = "Kortu oku. En akıllı vuruşa dokun.";
+"drill.start" = "Başla";
+"drill.replay" = "Tekrar oyna";
+"drill.next" = "Sıradaki";
+"drill.see_result" = "Sonucu gör";
+"drill.share" = "Paylaş";
+"drill.label_excellent" = "Pro okuma.";
+"drill.label_strong" = "Güçlü okuma.";
+"drill.label_decent" = "İdare eder — keskinleş.";
+"drill.label_keep_going" = "Çalışmaya devam.";
+
+/* ── Aktivite Halkaları ── */
+"rings.quiz" = "Drill";
+"rings.match" = "Maç";
+"rings.mobility" = "Mobilite";
+"rings.triple_ring" = "Üçlü Halka Günü!";
+
+/* ── Avatar / Soyunma Odası ── */
+"avatar.your_player" = "Oyuncun";
+"avatar.tap_to_customize" = "Görünümünü özelleştir";
+"avatar.locker_title" = "Soyunma odası";
+"avatar.cat_outfit" = "Forma";
+"avatar.cat_racket" = "Raket";
+"avatar.cat_court" = "Kort";
+"avatar.cat_accent" = "Aksesuar";
+"avatar.cat_stance" = "Duruş";
+
+/* ── Günün Pro Vuruşu ── */
+"pro_shot.card_kicker" = "Günün pro vuruşu";
+"pro_shot.play" = "Oynat";
+"pro_shot.replay" = "Tekrar oynat";
+
+/* ── Bildirimler ── */
+"notif.permission.title" = "Streak'in sürsün";
+"notif.permission.body" = "Her sabah küçük bir hatırlatma — bugünün quiz'i gözünden kaçmasın.";
+"notif.permission.enable" = "Hatırlatmaları aç";
+"notif.permission.later" = "Belki sonra";
+"notif.daily.title" = "Bugünün CourtIQ'i hazır";
+"notif.daily.body" = "5 hızlı senaryo, 3 dakika. Streak'i bozma.";
 
 /* ── Legal ── */
 "legal.privacy" = "Gizlilik Politikası";

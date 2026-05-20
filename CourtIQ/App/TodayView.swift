@@ -5,8 +5,10 @@ struct TodayView: View {
     @EnvironmentObject private var session: UserSessionManager
     @EnvironmentObject private var tipManager: TipManager
     @EnvironmentObject private var lang: LanguageManager
+    @EnvironmentObject private var drillManager: CourtTapDrillManager
 
     @State private var tipExpanded = false
+    @State private var showDrill = false
 
     private var dailyQuiz: Quiz { dailyQuizManager.todayQuiz }
     private var tip: DailyTip { tipManager.todayTip }
@@ -15,97 +17,243 @@ struct TodayView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 heroCard
+                ThreeRingsCard()
+                drillCard
+                ProShotCard()
                 tipCard
-                dailyQuizCard
                 mobilityCard
             }
             .padding()
         }
         .background(AppPalette.cream)
         .navigationTitle(lang.t("tab.today"))
+        .fullScreenCover(isPresented: $showDrill) {
+            NavigationStack {
+                CourtTapDrillView()
+                    .environmentObject(lang)
+                    .environmentObject(drillManager)
+            }
+        }
+    }
+
+    // MARK: - Daily Court Tap Drill (the new daily ritual)
+
+    private var drillCard: some View {
+        let done = drillManager.completedToday
+        let session = drillManager.todaysSession
+        let pct = session.map { Double($0.score) / Double($0.maxScore) } ?? 0
+
+        return ZStack(alignment: .topTrailing) {
+            // Court watermark
+            CourtTopDown(surface: .clay, lineOpacity: 0.35)
+                .opacity(0.10)
+                .frame(width: 90, height: 140)
+                .offset(x: 8, y: 8)
+                .allowsHitTesting(false)
+
+            VStack(alignment: .leading, spacing: 12) {
+                HStack(spacing: 8) {
+                    Image(systemName: "scope")
+                        .font(.caption.weight(.bold))
+                        .foregroundStyle(AppPalette.clay)
+                    Text(lang.t("drill.card_kicker"))
+                        .font(.caption.weight(.heavy))
+                        .tracking(0.6)
+                        .textCase(.uppercase)
+                        .foregroundStyle(AppPalette.clay)
+                    Spacer()
+                    if done {
+                        Image(systemName: "checkmark.seal.fill")
+                            .font(.subheadline.weight(.bold))
+                            .foregroundStyle(AppPalette.moss)
+                    }
+                }
+
+                Text(lang.t("drill.card_title"))
+                    .font(.system(size: 22, weight: .heavy, design: .rounded))
+                    .foregroundStyle(AppPalette.ink)
+
+                if let session = session {
+                    HStack(spacing: 8) {
+                        ForEach(Array(session.taps.enumerated()), id: \.offset) { _, tap in
+                            Text(tap.zone.emoji)
+                                .font(.system(size: 20))
+                        }
+                        Spacer()
+                        Text("\(Int(pct * 100))%")
+                            .font(.system(size: 16, weight: .heavy, design: .rounded))
+                            .foregroundStyle(AppPalette.ink)
+                            .monospacedDigit()
+                    }
+                }
+
+                Button {
+                    showDrill = true
+                } label: {
+                    HStack(spacing: 8) {
+                        Image(systemName: done ? "arrow.clockwise" : "play.fill")
+                        Text(done ? lang.t("drill.replay") : lang.t("drill.start"))
+                    }
+                    .font(.system(size: 15, weight: .bold, design: .rounded))
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 12)
+                    .background(AppPalette.clay)
+                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                }
+                .buttonStyle(.plain)
+            }
+            .padding(16)
+        }
+        .background(AppPalette.parchment)
+        .overlay(
+            RoundedRectangle(cornerRadius: 22, style: .continuous)
+                .stroke(AppPalette.sand, lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
     }
 
     // MARK: - Hero
 
     private var heroCard: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text(greetingLine)
-                .font(.system(size: 26, weight: .bold, design: .rounded))
-                .foregroundStyle(.white)
+        // ZStack uses .topLeading so the content VStack fills the natural
+        // leading edge instead of being pushed right by a topTrailing
+        // alignment. The corner ball positions itself explicitly via its
+        // own maxWidth + .topTrailing frame.
+        ZStack(alignment: .topLeading) {
+            // Court hero background
+            CourtPerspective(surface: .clay)
+                .overlay(
+                    LinearGradient(
+                        colors: [AppPalette.clay.opacity(0.55), AppPalette.ink.opacity(0.55)],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
 
-            HStack(spacing: 12) {
-                streakPill(value: "\(dailyQuizManager.currentStreak)", label: lang.t("today.day_streak"))
-                streakPill(value: "\(dailyQuizManager.completedThisWeek)/7", label: lang.t("today.this_week"))
-            }
+            // Trajectory arc
+            TrajectoryArc(color: .white.opacity(0.55))
+                .padding(.horizontal, 12)
+                .allowsHitTesting(false)
 
-            NavigationLink {
-                QuizView(quiz: dailyQuiz) { summary in
-                    dailyQuizManager.recordCompletion(summary: summary, isDaily: true)
-                    session.updateCurrentFocus(summary.focusLabel)
-                    session.updateTopMistakePatterns(summary.mistakeTypes)
+            // Hero is intentionally CTA-free. The single quiz entry point
+            // lives on the Daily IQ card below.
+            VStack(alignment: .leading, spacing: 16) {
+                Text(greetingLine)
+                    .font(.system(size: 26, weight: .bold, design: .rounded))
+                    .foregroundStyle(.white)
+                    .fixedSize(horizontal: false, vertical: true)
+
+                if session.hasCompletedOnboarding,
+                   !session.currentImprovementFocus.isEmpty {
+                    HStack(spacing: 6) {
+                        Image(systemName: "target")
+                            .font(.caption.weight(.bold))
+                        Text(session.currentImprovementFocus.uppercased())
+                            .font(.caption.weight(.heavy))
+                            .tracking(0.8)
+                    }
+                    .foregroundStyle(.white.opacity(0.9))
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 5)
+                    .background(
+                        Capsule().fill(.white.opacity(0.14))
+                    )
                 }
-            } label: {
-                Text(dailyQuizManager.isCompletedToday ? lang.t("today.review_quiz") : lang.t("today.start_quiz"))
-                    .font(.headline)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 14)
-                    .background(.white)
-                    .foregroundStyle(AppPalette.clay)
-                    .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+
+                HStack(spacing: 12) {
+                    iconStat(
+                        systemImage: "flame.fill",
+                        value: "\(dailyQuizManager.currentStreak)",
+                        showGrace: dailyQuizManager.streakGraceActive,
+                        accessibilityLabel: lang.t("today.a11y_day_streak")
+                    )
+                    iconStat(
+                        systemImage: "calendar",
+                        value: "\(dailyQuizManager.completedThisWeek)/7",
+                        showGrace: false,
+                        accessibilityLabel: lang.t("today.a11y_this_week")
+                    )
+                }
             }
-            .buttonStyle(.plain)
+            .padding(24)
+            .frame(maxWidth: .infinity, alignment: .leading)
+
+            // Corner felt-seamed ball — positioned top-right via an explicit
+            // alignment frame so it doesn't pull content with it.
+            TennisBall()
+                .frame(width: 64, height: 64)
+                .padding(.top, -8)
+                .padding(.trailing, -8)
+                .opacity(0.95)
+                .allowsHitTesting(false)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
         }
-        .padding(24)
-        .background(AppPalette.heroGradient)
         .clipShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
     }
 
+    /// Single-line greeting — focus context lives in the chip below the
+    /// greeting, so the greeting itself stays a short hello.
     private var greetingLine: String {
         let hour = Calendar.current.component(.hour, from: Date())
-        let greeting: String
         switch hour {
-        case 5..<12: greeting = lang.t("today.greeting_morning")
-        case 12..<17: greeting = lang.t("today.greeting_afternoon")
-        default:     greeting = lang.t("today.greeting_evening")
+        case 5..<12:  return lang.t("today.greeting_morning")
+        case 12..<17: return lang.t("today.greeting_afternoon")
+        default:      return lang.t("today.greeting_evening")
         }
-        if session.hasCompletedOnboarding {
-            let focus = session.currentImprovementFocus
-            return "\(greeting). \(lang.t("today.focus_label")) \(focus)."
-        }
-        return "\(greeting). \(lang.t("today.train_next"))"
     }
 
-    private func streakPill(value: String, label: String) -> some View {
-        VStack(alignment: .leading, spacing: 2) {
+    /// Icon-led stat pill — no word label, just icon + number. The icon
+    /// teaches the meaning; an accessibility label preserves it for
+    /// VoiceOver.
+    private func iconStat(systemImage: String, value: String, showGrace: Bool,
+                          accessibilityLabel: String) -> some View {
+        HStack(spacing: 8) {
+            Image(systemName: systemImage)
+                .font(.system(size: 14, weight: .bold))
+                .foregroundStyle(.white.opacity(0.85))
             Text(value)
                 .font(.system(size: 22, weight: .bold, design: .rounded))
                 .foregroundStyle(.white)
-            Text(label)
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(.white.opacity(0.75))
+                .monospacedDigit()
+            if showGrace {
+                Image(systemName: "snowflake")
+                    .font(.system(size: 11, weight: .bold))
+                    .foregroundStyle(.white.opacity(0.85))
+                    .help(lang.t("today.streak_grace_hint"))
+            }
         }
         .padding(.horizontal, 14)
         .padding(.vertical, 10)
-        .background(.white.opacity(0.14))
-        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .background(
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .fill(.white.opacity(0.14))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 14, style: .continuous)
+                        .stroke(.white.opacity(0.22), lineWidth: 0.6)
+                )
+        )
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("\(accessibilityLabel): \(value)")
     }
 
     // MARK: - Tip of the Day
 
     private var tipCard: some View {
         VStack(alignment: .leading, spacing: 12) {
-            HStack {
-                Label(tip.category.title, systemImage: tip.category.systemImage)
-                    .font(.caption.weight(.semibold))
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 6)
-                    .background(AppPalette.clay.opacity(0.12))
+            // Icon-only category indicator. Card aesthetic (lightbulb
+            // accent + parchment) already says "tip of the day"; the
+            // textual "Tip of the day" label and category name were
+            // redundant chrome.
+            HStack(spacing: 8) {
+                Image(systemName: "lightbulb.fill")
+                    .foregroundStyle(AppPalette.gold)
+                    .font(.subheadline.weight(.bold))
+                Image(systemName: tip.category.systemImage)
                     .foregroundStyle(AppPalette.clay)
-                    .clipShape(Capsule())
+                    .font(.subheadline.weight(.semibold))
+                    .accessibilityLabel(tip.category.title)
                 Spacer()
-                Text(lang.t("today.tip_of_day"))
-                    .font(.caption)
-                    .foregroundStyle(AppPalette.inkSoft)
             }
 
             Text(tip.title)
@@ -129,10 +277,13 @@ struct TodayView: View {
                     tipExpanded.toggle()
                 }
             } label: {
-                Label(tipExpanded ? lang.t("today.show_less") : lang.t("today.read_more"),
-                      systemImage: tipExpanded ? "chevron.up" : "chevron.down")
-                    .font(.caption.weight(.semibold))
+                Image(systemName: tipExpanded ? "chevron.up" : "chevron.down")
+                    .font(.system(size: 16, weight: .bold))
                     .foregroundStyle(AppPalette.clay)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .padding(.top, 4)
+                    .contentShape(Rectangle())
+                    .accessibilityLabel(tipExpanded ? lang.t("today.show_less") : lang.t("today.read_more"))
             }
             .buttonStyle(.plain)
         }
@@ -196,18 +347,21 @@ struct TodayView: View {
         // Safe lookup — show nothing if content hasn't loaded yet.
         let flows = MobilityFlow.sampleFlows
         if let flow = flows.first(where: { $0.type == .quickReset }) ?? flows.first {
+            // Card opens with mobility glyph + flow title (no "Quick reset"
+            // header — the glyph + duration chip already convey it).
             VStack(alignment: .leading, spacing: 12) {
-                HStack {
-                    Text(lang.t("today.quick_reset"))
-                        .font(.headline)
+                HStack(spacing: 10) {
+                    TennisGlyph(kind: .mobility, color: AppPalette.clay, size: 20)
+                    Text(flow.localizedTitle(for: lang.language))
+                        .font(.subheadline.weight(.bold))
                     Spacer()
                     if !session.isPremiumUnlocked {
-                        premiumBadge
+                        Image(systemName: "crown.fill")
+                            .font(.caption.weight(.bold))
+                            .foregroundStyle(AppPalette.gold)
+                            .accessibilityLabel(lang.t("common.premium"))
                     }
                 }
-
-                Text(flow.localizedTitle(for: lang.language))
-                    .font(.subheadline.weight(.semibold))
 
                 HStack(spacing: 8) {
                     infoChip(systemImage: "timer", text: flow.duration)

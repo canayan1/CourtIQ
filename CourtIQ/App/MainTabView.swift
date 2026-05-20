@@ -34,6 +34,13 @@ struct MainTabView: View {
             }
 
             NavigationStack {
+                MatchesListView()
+            }
+            .tabItem {
+                Label(lang.t("tab.matches"), systemImage: "pencil.and.list.clipboard")
+            }
+
+            NavigationStack {
                 ProfileView()
             }
             .tabItem {

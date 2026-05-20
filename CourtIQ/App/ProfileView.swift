@@ -6,6 +6,10 @@ struct ProfileView: View {
     @EnvironmentObject private var dailyQuizManager: DailyQuizManager
     @EnvironmentObject private var progressionManager: PlayerProgressionManager
     @EnvironmentObject private var lang: LanguageManager
+    @EnvironmentObject private var avatarManager: AvatarManager
+    @EnvironmentObject private var drillManager: CourtTapDrillManager
+    @EnvironmentObject private var matchManager: MatchEntryManager
+    @State private var showLockerRoom = false
 
     @State private var showPaywall = false
     @State private var showDeleteConfirmation = false
@@ -16,10 +20,12 @@ struct ProfileView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
+                avatarHeaderCard
                 profileHeader
                 LevelProgressionPathView()
                 streakSection
                 historySection
+                betaFeedbackSection
                 accountSection
                 legalSection
             }
@@ -59,6 +65,67 @@ struct ProfileView: View {
         }
     }
 
+    // MARK: - Avatar header (new)
+
+    private var avatarHeaderCard: some View {
+        Button {
+            Haptics.tap()
+            // Refresh unlock state when entering locker — surfaces any
+            // milestones the user just earned without restarting the app.
+            avatarManager.checkMilestones(
+                logStreak: matchManager.currentStreak,
+                totalDrillsCompleted: drillManager.sessions.count,
+                totalMatches: matchManager.totalEntries,
+                tripleRingDays: TripleRingTracker.shared.count
+            )
+            showLockerRoom = true
+        } label: {
+            HStack(spacing: 16) {
+                TennisAvatarView(config: avatarManager.config, size: 110)
+                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+
+                VStack(alignment: .leading, spacing: 6) {
+                    Text(lang.t("avatar.your_player"))
+                        .font(.caption.weight(.heavy))
+                        .tracking(0.6)
+                        .textCase(.uppercase)
+                        .foregroundStyle(AppPalette.inkSoft)
+                    Text(lang.t("avatar.tap_to_customize"))
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(AppPalette.ink)
+                    HStack(spacing: 4) {
+                        Image(systemName: "lock.open.fill")
+                            .font(.caption2.weight(.bold))
+                        Text("\(avatarManager.unlockedIDs.count)/\(AvatarManager.unlockRules.count)")
+                            .font(.caption2.weight(.bold))
+                    }
+                    .foregroundStyle(AppPalette.clay)
+                }
+
+                Spacer()
+
+                Image(systemName: "chevron.right")
+                    .font(.footnote.weight(.semibold))
+                    .foregroundStyle(.tertiary)
+            }
+            .padding(14)
+            .background(AppPalette.parchment)
+            .overlay(
+                RoundedRectangle(cornerRadius: 22, style: .continuous)
+                    .stroke(AppPalette.sand, lineWidth: 1)
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+        }
+        .buttonStyle(.plain)
+        .sheet(isPresented: $showLockerRoom) {
+            NavigationStack {
+                AvatarLockerRoomView()
+                    .environmentObject(avatarManager)
+                    .environmentObject(lang)
+            }
+        }
+    }
+
     // MARK: - Profile Header
 
     /// IQ rating derived from quiz activity.
@@ -73,32 +140,49 @@ struct ProfileView: View {
     }
 
     private var profileHeader: some View {
-        VStack(spacing: 20) {
-            TennisPlayerBadgeView(
-                level: playerLevel,
-                iqRating: iqRating,
-                progressOverride: progressionManager.progressionProgress
-            )
+        ZStack {
+            // Subtle court-lines watermark
+            CourtLinesBg(color: AppPalette.clay.opacity(0.08))
+                .allowsHitTesting(false)
 
-            VStack(spacing: 8) {
-                Text(session.displayName)
-                    .font(.title3.bold())
+            VStack(spacing: 18) {
+                TennisPlayerBadgeView(
+                    level: playerLevel,
+                    iqRating: iqRating,
+                    progressOverride: progressionManager.progressionProgress
+                )
 
-                HStack(spacing: 8) {
-                    statusChip(
-                        label: session.premiumStatus.title,
-                        accent: session.isPremiumUnlocked ? AppPalette.moss : AppPalette.clay
-                    )
-                    statusChip(
-                        label: session.isSignedInWithApple ? lang.t("profile.apple_id") : lang.t("profile.guest"),
-                        accent: AppPalette.ink
-                    )
+                VStack(spacing: 6) {
+                    Text("IQ RATING")
+                        .font(.system(size: 11, weight: .heavy, design: .rounded))
+                        .tracking(1.6)
+                        .foregroundStyle(AppPalette.inkSoft)
+                    Text("\(iqRating)")
+                        .font(.system(size: 44, weight: .black, design: .rounded))
+                        .foregroundStyle(AppPalette.ink)
+                        .monospacedDigit()
+                }
+
+                VStack(spacing: 8) {
+                    Text(session.displayName)
+                        .font(.title3.bold())
+
+                    HStack(spacing: 8) {
+                        statusChip(
+                            label: session.premiumStatus.title,
+                            accent: session.isPremiumUnlocked ? AppPalette.moss : AppPalette.clay
+                        )
+                        statusChip(
+                            label: session.isSignedInWithApple ? lang.t("profile.apple_id") : lang.t("profile.guest"),
+                            accent: AppPalette.ink
+                        )
+                    }
                 }
             }
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 24)
+            .padding(.horizontal)
         }
-        .frame(maxWidth: .infinity)
-        .padding(.vertical, 24)
-        .padding(.horizontal)
         .background(AppPalette.parchment)
         .overlay(
             RoundedRectangle(cornerRadius: 22, style: .continuous)
@@ -110,10 +194,9 @@ struct ProfileView: View {
     // MARK: - Streak & Progress
 
     private var streakSection: some View {
+        // "Progress" header dropped — the two big stat cards are
+        // self-evidently progress data.
         VStack(alignment: .leading, spacing: 14) {
-            Text(lang.t("profile.section_progress"))
-                .font(.title3.bold())
-
             HStack(spacing: 12) {
                 bigStatCard(
                     value: "\(dailyQuizManager.currentStreak)",
@@ -185,13 +268,30 @@ struct ProfileView: View {
     }
 
     private var emptyHistory: some View {
-        Text(lang.t("profile.quiz_empty"))
-            .font(.subheadline)
-            .foregroundStyle(AppPalette.inkSoft)
-            .padding()
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(AppPalette.parchment)
-            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        HStack(alignment: .top, spacing: 14) {
+            Image(systemName: "bolt.circle.fill")
+                .font(.title)
+                .foregroundStyle(AppPalette.clay)
+
+            VStack(alignment: .leading, spacing: 4) {
+                Text(lang.t("profile.empty_history_title"))
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(AppPalette.ink)
+                Text(lang.t("profile.empty_history_body"))
+                    .font(.caption)
+                    .foregroundStyle(AppPalette.inkSoft)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            Spacer()
+        }
+        .padding()
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppPalette.parchment)
+        .overlay(
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .strokeBorder(AppPalette.sand, lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
     }
 
     private func historyRow(_ record: QuizSessionRecord) -> some View {
@@ -232,6 +332,51 @@ struct ProfileView: View {
                 .strokeBorder(AppPalette.sand, lineWidth: 1)
         )
         .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+    }
+
+    // MARK: - Beta feedback
+
+    private var betaFeedbackSection: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text(lang.t("beta.section_title"))
+                .font(.title3.bold())
+
+            VStack(alignment: .leading, spacing: 10) {
+                HStack(alignment: .top, spacing: 12) {
+                    Image(systemName: "envelope.fill")
+                        .font(.title3)
+                        .foregroundStyle(AppPalette.clay)
+                        .frame(width: 28)
+
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(lang.t("beta.prompt_title"))
+                            .font(.subheadline.weight(.semibold))
+                        Text(lang.t("beta.prompt_body"))
+                            .font(.caption)
+                            .foregroundStyle(AppPalette.inkSoft)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                }
+
+                Button {
+                    FeedbackComposer.openMailComposer()
+                } label: {
+                    Text(lang.t("beta.send"))
+                        .font(.subheadline.weight(.semibold))
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 12)
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(AppPalette.clay)
+            }
+            .padding()
+            .background(AppPalette.parchment)
+            .overlay(
+                RoundedRectangle(cornerRadius: 18, style: .continuous)
+                    .strokeBorder(AppPalette.sand, lineWidth: 1)
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+        }
     }
 
     // MARK: - Account

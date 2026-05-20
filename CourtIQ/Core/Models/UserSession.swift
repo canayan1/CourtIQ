@@ -269,19 +269,24 @@ final class SubscriptionManager: ObservableObject {
     init(configuration: AppConfiguration = .shared) {
         self.configuration = configuration
         self.entitlementState = Self.loadEntitlement(from: defaults)
+        // NOTE: Placeholder offers — `priceDisplay` is intentionally a dash
+        // so users never see hardcoded USD prices if StoreKit fails to load
+        // (e.g. during App Review without products in "Ready to Submit").
+        // Real values come from `loadOfferings()` reading StoreKit's
+        // `product.displayPrice`, which respects the user's storefront.
         self.offers = [
             SubscriptionOffer(
                 id: configuration.monthlyProductID,
                 title: "Monthly All Access",
-                detail: "Billed monthly after 7-day free trial.",
-                priceDisplay: "$5.00 / month",
+                detail: "Billed monthly. Cancel anytime.",
+                priceDisplay: "—",
                 isFeatured: false
             ),
             SubscriptionOffer(
                 id: configuration.yearlyProductID,
                 title: "Annual All Access",
-                detail: "Best value — save 52% vs monthly.",
-                priceDisplay: "$29.00 / year",
+                detail: "Best value vs monthly.",
+                priceDisplay: "—",
                 isFeatured: true
             )
         ]
@@ -697,7 +702,17 @@ final class UserSessionManager: ObservableObject {
             }
 
         case .failure(let error):
-            authErrorMessage = error.localizedDescription
+            // User-initiated cancellation isn't an error — it's a deliberate
+            // action. Suppress the error alert in that case; surface only
+            // real failures (network, identity provider failure, etc.).
+            let nsError = error as NSError
+            let isCanceled =
+                (nsError.domain == ASAuthorizationError.errorDomain &&
+                 nsError.code == ASAuthorizationError.canceled.rawValue) ||
+                nsError.code == NSUserCancelledError
+            if !isCanceled {
+                authErrorMessage = error.localizedDescription
+            }
         }
     }
 
@@ -785,7 +800,12 @@ final class UserSessionManager: ObservableObject {
         if isSignedInWithApple {
             do {
                 try await refreshRemoteState(uploadLocalPreview: false)
-                completeOnboarding()
+                // NOTE: We intentionally do NOT call completeOnboarding() here.
+                // bootstrapSession runs on every launch; restoring a Keychain
+                // identity (the Apple Sign-in token) used to silently mark
+                // onboarding complete and skip the entire flow on reinstalls.
+                // Onboarding completion is now driven solely by explicit user
+                // action in OnboardingView (applyAndSignInApple / applyAndSignInGuest).
             } catch {
                 authErrorMessage = error.localizedDescription
                 syncState = .failed(error.localizedDescription)

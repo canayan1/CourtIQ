@@ -31,6 +31,7 @@ struct TrainingProgramDetailView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 headerCard
+                TrainSafelyBanner()
 
                 if hasAccess {
                     weekControl
@@ -39,6 +40,7 @@ struct TrainingProgramDetailView: View {
                     selectedContent
                     phaseCard
                     checkInHistoryCard
+                    followOnCard
                     discussionCard
                 } else {
                     lockedCard
@@ -116,50 +118,41 @@ struct TrainingProgramDetailView: View {
         .clipShape(RoundedRectangle(cornerRadius: 26, style: .continuous))
     }
 
+    // weekControl + progressCard merged into one slim row:
+    // numeral-only week picker + completion progress ring.
     private var weekControl: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text(lang.t("training.cycle_week"))
-                .font(.headline)
-
-            Picker(lang.t("training.cycle_week"), selection: $progress.selectedWeek) {
+        HStack(spacing: 14) {
+            Picker("", selection: $progress.selectedWeek) {
                 ForEach(1...program.durationWeeks, id: \.self) { week in
-                    Text("\(lang.t("training.week")) \(week)").tag(week)
+                    Text("\(week)").tag(week)
                 }
             }
             .pickerStyle(.segmented)
+
+            HStack(spacing: 4) {
+                Text("\(completedCount)/\(program.days.count)")
+                    .font(.system(size: 15, weight: .heavy, design: .rounded))
+                    .foregroundStyle(AppPalette.clay)
+                    .monospacedDigit()
+            }
+            .accessibilityLabel(lang.t("training.a11y_sessions_done"))
         }
-        .padding()
+        .padding(.horizontal)
+        .padding(.vertical, 12)
         .background(cardFill)
-        .overlay(cardStroke(cornerRadius: 20))
-        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .overlay(cardStroke(cornerRadius: 18))
+        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
     }
 
-    private var progressCard: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("\(lang.t("training.week")) \(progress.selectedWeek) \(lang.t("training.progress_label"))")
-                .font(.headline)
-
-            Text("\(completedCount) \(lang.t("common.of")) \(program.days.count) \(lang.t("training.sessions_completed"))")
-                .foregroundStyle(AppPalette.inkSoft)
-
-            ProgressView(value: progress.completionRate(programID: program.id, week: progress.selectedWeek, totalDays: program.days.count))
-                .tint(AppPalette.clay)
-
-            Text(lang.t("training.calendar_hint"))
-                .font(.subheadline)
-                .foregroundStyle(AppPalette.inkSoft)
-        }
-        .padding()
-        .background(cardFill)
-        .overlay(cardStroke(cornerRadius: 20))
-        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-    }
+    // progressCard removed — its content (sessions completed + progress bar
+    // + calendar hint) was merged into the weekControl above. The day
+    // pills below give the same affordance more cheaply.
+    @ViewBuilder
+    private var progressCard: some View { EmptyView() }
 
     private var weeklyCalendarCard: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text(lang.t("training.weekly_calendar"))
-                .font(.headline)
-
+            // Header removed — the 7 day pills below are self-evident.
             HStack(spacing: 10) {
                 ForEach(weeklyEntries) { entry in
                     Button {
@@ -202,18 +195,25 @@ struct TrainingProgramDetailView: View {
     private var phaseCard: some View {
         let phase = currentPhase
 
-        return VStack(alignment: .leading, spacing: 10) {
-            Text(lang.t("training.progression_phase"))
-                .font(.headline)
-            Text("\(phase.weekRange) · \(phase.title)")
-                .font(.subheadline.weight(.semibold))
+        // Header dropped; an icon + week-range + title row tells the
+        // user which phase this is. The phase guidance paragraph stays
+        // — it's content, not chrome.
+        return VStack(alignment: .leading, spacing: 8) {
+            HStack(spacing: 8) {
+                Image(systemName: "chart.line.uptrend.xyaxis")
+                    .font(.caption.weight(.bold))
+                    .foregroundStyle(AppPalette.clay)
+                Text("\(phase.weekRange) · \(phase.title)")
+                    .font(.subheadline.weight(.heavy))
+            }
             Text(phase.guidance)
+                .font(.subheadline)
                 .foregroundStyle(AppPalette.inkSoft)
         }
         .padding()
         .background(cardFill)
-        .overlay(cardStroke(cornerRadius: 20))
-        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .overlay(cardStroke(cornerRadius: 18))
+        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
     }
 
     private var selectedContent: some View {
@@ -249,9 +249,11 @@ struct TrainingProgramDetailView: View {
                     progress.toggleCompletion(programID: program.id, week: progress.selectedWeek, dayID: day.id)
                     if wasCompleted {
                         progressionManager.removeTrainingDay()
+                        Haptics.tap()
                     } else {
                         progressionManager.recordTrainingDay()
                         progressionManager.checkAndCompleteWeek(quizHistory: dailyQuiz.sessionHistory)
+                        Haptics.confirm()
                     }
                 } label: {
                     Label(isCompleted ? lang.t("training.checked") : lang.t("training.mark_done"), systemImage: isCompleted ? "checkmark.circle.fill" : "circle")
@@ -261,24 +263,21 @@ struct TrainingProgramDetailView: View {
                 .buttonStyle(.plain)
             }
 
-            if isCompleted {
-                feedbackBanner(
-                    title: "\(lang.t("training.week")) \(progress.selectedWeek)",
-                    message: lang.t("training.marked_msg")
-                )
-            } else {
-                feedbackBanner(
-                    title: lang.t("training.open_session"),
-                    message: lang.t("training.complete_hint")
-                )
-            }
+            // Feedback banners removed — the mark-done button's state
+            // already confirms completion.
 
-            textBlock(title: lang.t("training.objective"), content: day.objective)
-            textBlock(title: lang.t("training.warmup"), content: day.warmup)
+            timelineBlock(icon: "flag.fill",   content: day.objective)
+            timelineBlock(icon: "flame.fill",  content: day.warmup)
 
             VStack(alignment: .leading, spacing: 8) {
-                Text(lang.t("training.main_work"))
-                    .font(.subheadline.weight(.semibold))
+                HStack(spacing: 8) {
+                    Image(systemName: "dumbbell.fill")
+                        .font(.subheadline.weight(.bold))
+                        .foregroundStyle(AppPalette.clay)
+                    Text(lang.t("training.main_work"))
+                        .font(.subheadline.weight(.heavy))
+                        .tracking(0.3)
+                }
                 ForEach(day.exercises) { exercise in
                     Button {
                         if exercise.hasDetail {
@@ -314,8 +313,8 @@ struct TrainingProgramDetailView: View {
                 }
             }
 
-            textBlock(title: lang.t("training.finisher"), content: day.finisher)
-            textBlock(title: lang.t("training.recovery"), content: day.recovery)
+            timelineBlock(icon: "bolt.fill",       content: day.finisher)
+            timelineBlock(icon: "figure.cooldown", content: day.recovery)
         }
         .padding()
         .background(cardFill)
@@ -325,19 +324,18 @@ struct TrainingProgramDetailView: View {
 
     private var recoveryCard: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text(lang.t("training.recovery_reset"))
-                .font(.title3.bold())
+            HStack(spacing: 8) {
+                Image(systemName: "figure.cooldown")
+                    .font(.subheadline.weight(.bold))
+                    .foregroundStyle(AppPalette.clay)
+                Text(lang.t("training.recovery_reset"))
+                    .font(.headline)
+            }
 
-            Text(lang.t("training.recovery_hint"))
-                .foregroundStyle(AppPalette.inkSoft)
-
-            feedbackBanner(
-                title: lang.t("training.recommended_flow"),
-                message: lang.t("training.recommended_desc")
-            )
-
-            textBlock(title: lang.t("training.recovery"), content: lang.t("training.recovery_goal"))
-            textBlock(title: lang.t("training.optional_note"), content: lang.t("training.heavy_week_hint"))
+            // Verbose hint and recommended-flow banner removed.
+            // Recovery goal stays as content via the timeline block.
+            timelineBlock(icon: "checkmark.seal.fill",
+                          content: lang.t("training.recovery_goal"))
         }
         .padding()
         .background(cardFill)
@@ -347,25 +345,34 @@ struct TrainingProgramDetailView: View {
 
     private var persistenceCheckCard: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text(lang.t("training.persistence_check"))
-                .font(.title3.bold())
+            HStack(spacing: 8) {
+                Image(systemName: "square.and.pencil")
+                    .font(.subheadline.weight(.bold))
+                    .foregroundStyle(AppPalette.clay)
+                Text("\(lang.t("training.week")) \(progress.selectedWeek)")
+                    .font(.headline)
+            }
 
-            Text(lang.t("training.persistence_desc"))
-                .foregroundStyle(AppPalette.inkSoft)
+            // Long descriptive paragraph removed — the rating rows below
+            // are self-evidently a check-in.
 
             ratingRow(title: program.persistencePrompts[safe: 0] ?? lang.t("training.readiness"), value: $readiness)
             ratingRow(title: program.persistencePrompts[safe: 1] ?? lang.t("training.explosiveness"), value: $explosiveness)
             ratingRow(title: program.persistencePrompts[safe: 2] ?? lang.t("training.conditioning"), value: $conditioning)
 
-            VStack(alignment: .leading, spacing: 8) {
-                Text(lang.t("training.coach_note"))
-                    .font(.subheadline.weight(.semibold))
+            // Coach-note header removed; the placeholder + icon row below
+            // is enough scaffolding.
+            HStack(alignment: .top, spacing: 6) {
+                Image(systemName: "square.and.pencil")
+                    .font(.caption.weight(.bold))
+                    .foregroundStyle(AppPalette.inkSoft)
+                    .padding(.top, 10)
                 TextField(lang.t("training.week_reflection"), text: $notes, axis: .vertical)
                     .textFieldStyle(.roundedBorder)
                     .lineLimit(3, reservesSpace: true)
             }
 
-            Button("\(lang.t("training.week")) \(progress.selectedWeek) \(lang.t("training.persistence_check"))") {
+            Button(lang.t("common.save")) {
                 progress.saveCheckIn(
                     programID: program.id,
                     week: progress.selectedWeek,
@@ -377,12 +384,8 @@ struct TrainingProgramDetailView: View {
             }
             .buttonStyle(.borderedProminent)
 
-            if let checkIn = progress.checkIn(for: program.id, week: progress.selectedWeek) {
-                feedbackBanner(
-                    title: "\(lang.t("training.week")) \(progress.selectedWeek)",
-                    message: "\(lang.t("training.readiness")) \(checkIn.readiness)/5, \(lang.t("training.explosiveness").lowercased()) \(checkIn.explosiveness)/5, \(lang.t("training.conditioning").lowercased()) \(checkIn.conditioning)/5."
-                )
-            }
+            // Verbose saved-banner removed; the rating sliders' current
+            // values already show the saved state in real time.
         }
         .padding()
         .background(cardFill)
@@ -500,8 +503,28 @@ struct TrainingProgramDetailView: View {
 
             let history = progress.checkInHistory(programID: program.id)
             if history.isEmpty {
-                Text(lang.t("training.checkin_empty"))
-                    .foregroundStyle(AppPalette.inkSoft)
+                HStack(alignment: .top, spacing: 12) {
+                    Image(systemName: "checkmark.seal.fill")
+                        .font(.title3)
+                        .foregroundStyle(AppPalette.moss)
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(lang.t("training.checkin_empty_title"))
+                            .font(.subheadline.weight(.semibold))
+                            .foregroundStyle(AppPalette.ink)
+                        Text(lang.t("training.checkin_empty"))
+                            .font(.caption)
+                            .foregroundStyle(AppPalette.inkSoft)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    Spacer()
+                }
+                .padding(12)
+                .background(AppPalette.parchment)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 14, style: .continuous)
+                        .strokeBorder(AppPalette.sand, lineWidth: 1)
+                )
+                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
             } else {
                 ForEach(history.prefix(3), id: \.updatedAt) { checkIn in
                     HStack {
@@ -526,13 +549,66 @@ struct TrainingProgramDetailView: View {
         .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
     }
 
+    @ViewBuilder
+    private var followOnCard: some View {
+        if let next = program.followOnProgram {
+            let nearingEnd = progress.selectedWeek >= 6
+            VStack(alignment: .leading, spacing: 12) {
+                HStack(spacing: 8) {
+                    Image(systemName: "arrow.right.circle.fill")
+                        .foregroundStyle(AppPalette.clay)
+                    Text(nearingEnd ? "What's next" : "After week 8")
+                        .font(.headline)
+                    Spacer()
+                    Text("8 weeks")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(AppPalette.inkSoft)
+                }
+
+                Text(next.title)
+                    .font(.title3.bold())
+
+                Text(next.overview)
+                    .font(.subheadline)
+                    .foregroundStyle(AppPalette.inkSoft)
+                    .fixedSize(horizontal: false, vertical: true)
+
+                Text("7+1 progression: new adaptation stimulus for 3 weeks, a throwback test week from this plan in week 4, then consolidation through week 8.")
+                    .font(.caption)
+                    .foregroundStyle(AppPalette.inkSoft)
+                    .fixedSize(horizontal: false, vertical: true)
+
+                NavigationLink {
+                    TrainingProgramDetailView(program: next)
+                } label: {
+                    Text(nearingEnd ? "Preview next program" : "See the progression")
+                        .font(.subheadline.weight(.semibold))
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 12)
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(AppPalette.clay)
+            }
+            .padding()
+            .background(cardFill)
+            .overlay(cardStroke(cornerRadius: 20))
+            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+        }
+    }
+
     private var discussionCard: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        // Header + 12-word hint collapsed into a single icon row that
+        // implies "tap to discuss."
+        HStack(spacing: 10) {
+            Image(systemName: "bubble.left.and.bubble.right.fill")
+                .font(.subheadline.weight(.bold))
+                .foregroundStyle(AppPalette.clay)
             Text(lang.t("training.discussion"))
-                .font(.headline)
-            Text(lang.t("training.discussion_hint"))
-                .font(.subheadline)
-                .foregroundStyle(AppPalette.inkSoft)
+                .font(.subheadline.weight(.semibold))
+            Spacer()
+            Image(systemName: "chevron.right")
+                .font(.footnote.weight(.semibold))
+                .foregroundStyle(.tertiary)
         }
         .padding()
         .background(cardFill)
@@ -547,6 +623,24 @@ struct TrainingProgramDetailView: View {
             Text(content)
                 .font(.subheadline)
                 .foregroundStyle(AppPalette.inkSoft)
+        }
+    }
+
+    /// Icon-led timeline row. Replaces the old `textBlock(title:content:)`
+    /// pattern — the SF Symbol on the left carries the section meaning
+    /// (warm-up, main work, finisher, recovery) instead of a redundant
+    /// text header.
+    private func timelineBlock(icon: String, content: String) -> some View {
+        HStack(alignment: .top, spacing: 10) {
+            Image(systemName: icon)
+                .font(.subheadline.weight(.bold))
+                .foregroundStyle(AppPalette.clay)
+                .frame(width: 22, alignment: .center)
+                .padding(.top, 2)
+            Text(content)
+                .font(.subheadline)
+                .foregroundStyle(AppPalette.inkSoft)
+                .fixedSize(horizontal: false, vertical: true)
         }
     }
 

@@ -24,6 +24,7 @@ final class QuizViewModel: ObservableObject {
     init(quiz: Quiz, onComplete: ((QuizCompletionSummary) -> Void)? = nil) {
         self.quiz = quiz
         self.onComplete = onComplete
+        restoreProgress()
     }
 
     var currentQuestion: QuizQuestion? {
@@ -153,19 +154,26 @@ final class QuizViewModel: ObservableObject {
     private func submit() {
         guard canSubmit else { return }
         hasSubmittedCurrentAnswer = true
-        if selectedAnswerIsCorrect { score += 1 }
+        let correct = selectedAnswerIsCorrect
+        if correct { score += 1 }
+        persistProgress()
+        Task { @MainActor in
+            correct ? Haptics.success() : Haptics.error()
+        }
     }
 
     private func advance() {
         guard hasSubmittedCurrentAnswer else { return }
         if isLastQuestion {
             isCompleted = true
+            clearPersistedProgress()
             triggerCompletionOnce()
             return
         }
         currentIndex += 1
         selectedIndex = nil
         hasSubmittedCurrentAnswer = false
+        persistProgress()
     }
 
     private func restart() {
@@ -175,6 +183,7 @@ final class QuizViewModel: ObservableObject {
         isCompleted = false
         score = 0
         completionHandled = false
+        clearPersistedProgress()
     }
 
     private func triggerCompletionOnce() {
@@ -188,5 +197,63 @@ final class QuizViewModel: ObservableObject {
             totalQuestions: quiz.questions.count,
             mistakeTypes: quiz.primaryMistakeTypes
         ))
+    }
+
+    // MARK: - Persistence
+    //
+    // Mid-quiz progress is saved per-quiz-id in UserDefaults so users who
+    // background the app or get a call mid-quiz can resume from the next
+    // unanswered question with their current score intact.
+
+    private var progressKey: String {
+        "CourtIQ.quizProgress.\(quiz.id)"
+    }
+
+    private struct PersistedProgress: Codable {
+        var currentIndex: Int
+        var score: Int
+        var savedAt: TimeInterval
+    }
+
+    private func persistProgress() {
+        // Only persist if user has at least one answered question and the
+        // quiz isn't already completed.
+        guard currentIndex > 0 || hasSubmittedCurrentAnswer, !isCompleted else { return }
+        let p = PersistedProgress(currentIndex: currentIndex,
+                                  score: score,
+                                  savedAt: Date().timeIntervalSince1970)
+        if let data = try? JSONEncoder().encode(p) {
+            UserDefaults.standard.set(data, forKey: progressKey)
+        }
+    }
+
+    private func restoreProgress() {
+        guard let data = UserDefaults.standard.data(forKey: progressKey),
+              let p = try? JSONDecoder().decode(PersistedProgress.self, from: data)
+        else { return }
+
+        // Stale progress (>48h) is discarded — the daily quiz changes daily
+        // so resuming yesterday's questions would be confusing.
+        let age = Date().timeIntervalSince1970 - p.savedAt
+        guard age < 60 * 60 * 48 else {
+            clearPersistedProgress()
+            return
+        }
+
+        // Sanity check: index must be inside the current quiz's bounds.
+        guard p.currentIndex < quiz.questions.count else {
+            clearPersistedProgress()
+            return
+        }
+
+        currentIndex = p.currentIndex
+        score = p.score
+        // Always resume on a fresh, unanswered question.
+        selectedIndex = nil
+        hasSubmittedCurrentAnswer = false
+    }
+
+    private func clearPersistedProgress() {
+        UserDefaults.standard.removeObject(forKey: progressKey)
     }
 }

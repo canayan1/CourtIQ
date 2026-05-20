@@ -69,27 +69,55 @@ final class DailyQuizManager: ObservableObject {
     }
 
     var currentStreak: Int {
+        streakComputation.streak
+    }
+
+    /// `true` when the current streak is being held together by a single
+    /// missed day (the grace day). UI can surface this with a snowflake /
+    /// warning so the user knows tomorrow's quiz is critical.
+    var streakGraceActive: Bool {
+        streakComputation.usedGrace
+    }
+
+    /// Walks back from today (or yesterday if today is not yet completed)
+    /// and counts consecutive completed days. Tolerates **one** missed day
+    /// anywhere in the chain — the "grace day" — so a single forgotten day
+    /// doesn't reset months of effort. A second consecutive missed day
+    /// breaks the streak.
+    private var streakComputation: (streak: Int, usedGrace: Bool) {
         let completedSet = Set(completedDates)
         let calendar = Calendar.current
         var streak = 0
+        var usedGrace = false
         var date = Date()
 
         if !isCompletedToday {
             guard let yesterday = calendar.date(byAdding: .day, value: -1, to: date) else {
-                return 0
+                return (0, false)
             }
             date = yesterday
         }
 
-        while completedSet.contains(date.todayKey) {
-            streak += 1
-            guard let previous = calendar.date(byAdding: .day, value: -1, to: date) else {
+        while true {
+            if completedSet.contains(date.todayKey) {
+                streak += 1
+                guard let previous = calendar.date(byAdding: .day, value: -1, to: date) else {
+                    break
+                }
+                date = previous
+            } else if !usedGrace && streak > 0 {
+                // Spend the one allowed grace day to skip this missed day.
+                usedGrace = true
+                guard let previous = calendar.date(byAdding: .day, value: -1, to: date) else {
+                    break
+                }
+                date = previous
+            } else {
                 break
             }
-            date = previous
         }
 
-        return streak
+        return (streak, usedGrace)
     }
 
     var topMistakePatterns: [String] {

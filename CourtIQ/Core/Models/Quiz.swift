@@ -57,6 +57,22 @@ enum QuizDifficulty: String, Codable {
     }
 }
 
+/// Optional court diagram metadata for a quiz question. Coordinates are
+/// expressed in normalized court space: x in [0, 1] (left to right of the
+/// doubles court), y in [0, 1] (far baseline = 0, near baseline = 1, net = 0.5).
+struct QuizCourtDiagram: Codable, Hashable {
+    var surface: String?     // "clay" | "grass" | "hard" — defaults to clay
+    var youX: Double         // player position
+    var youY: Double
+    var opponentX: Double?   // optional opponent marker
+    var opponentY: Double?
+    var ballOriginX: Double? // dashed incoming ball trajectory start
+    var ballOriginY: Double?
+    var ballTargetX: Double? // dashed incoming ball trajectory end
+    var ballTargetY: Double?
+    var scoreChip: String?   // e.g. "30–40 · AD COURT"
+}
+
 struct QuizQuestion: Identifiable, Codable, Hashable {
     let id: String
     let category: QuizCategory
@@ -72,6 +88,7 @@ struct QuizQuestion: Identifiable, Codable, Hashable {
     let takeaway: String
     var takeawayTr: String? = nil
     let mistakeType: String
+    var diagram: QuizCourtDiagram? = nil
 
     func localizedScenario(for lang: AppLanguage) -> String {
         lang == .turkish ? (scenarioTr ?? scenario) : scenario
@@ -87,6 +104,53 @@ struct QuizQuestion: Identifiable, Codable, Hashable {
 
     func localizedTakeaway(for lang: AppLanguage) -> String {
         lang == .turkish ? (takeawayTr ?? takeaway) : takeaway
+    }
+
+    /// Returns either the authored diagram or a category-aware generic
+    /// diagram so every question gets a court visual.
+    var resolvedDiagram: QuizCourtDiagram {
+        if let diagram { return diagram }
+        return Self.genericDiagram(for: category)
+    }
+
+    private static func genericDiagram(for category: QuizCategory) -> QuizCourtDiagram {
+        switch category {
+        case .serve:
+            return QuizCourtDiagram(surface: "clay",
+                                    youX: 0.5, youY: 0.95,
+                                    opponentX: 0.7, opponentY: 0.08,
+                                    ballOriginX: 0.5, ballOriginY: 0.95,
+                                    ballTargetX: 0.7, ballTargetY: 0.32,
+                                    scoreChip: nil)
+        case .returnPlay:
+            return QuizCourtDiagram(surface: "clay",
+                                    youX: 0.7, youY: 0.92,
+                                    opponentX: 0.5, opponentY: 0.05,
+                                    ballOriginX: 0.5, ballOriginY: 0.05,
+                                    ballTargetX: 0.7, ballTargetY: 0.85,
+                                    scoreChip: nil)
+        case .rally:
+            return QuizCourtDiagram(surface: "clay",
+                                    youX: 0.5, youY: 0.88,
+                                    opponentX: 0.5, opponentY: 0.12,
+                                    ballOriginX: 0.5, ballOriginY: 0.18,
+                                    ballTargetX: 0.5, ballTargetY: 0.78,
+                                    scoreChip: nil)
+        case .net:
+            return QuizCourtDiagram(surface: "clay",
+                                    youX: 0.5, youY: 0.62,
+                                    opponentX: 0.5, opponentY: 0.12,
+                                    ballOriginX: 0.5, ballOriginY: 0.18,
+                                    ballTargetX: 0.5, ballTargetY: 0.55,
+                                    scoreChip: nil)
+        case .mental:
+            return QuizCourtDiagram(surface: "clay",
+                                    youX: 0.5, youY: 0.92,
+                                    opponentX: nil, opponentY: nil,
+                                    ballOriginX: nil, ballOriginY: nil,
+                                    ballTargetX: nil, ballTargetY: nil,
+                                    scoreChip: nil)
+        }
     }
 }
 
@@ -138,7 +202,7 @@ extension Quiz {
     }
 
     static func dailyQuiz(for date: Date = Date()) -> Quiz {
-        let all = questionBank
+        let all = levelBiasedBank()
         let count = min(5, all.count)
         guard count > 0 else {
             return Quiz(id: "today", title: "Today’s CourtIQ", questions: [])
@@ -152,6 +216,28 @@ extension Quiz {
             title: "Today’s CourtIQ",
             questions: questions
         )
+    }
+
+    /// Returns a question bank ordered so that questions matching the user’s
+    /// onboarding level appear first, while still including all questions so
+    /// the day-index rotation never runs dry.
+    private static func levelBiasedBank() -> [QuizQuestion] {
+        let level = UserDefaults.standard.string(forKey: "CourtIQ.onboardingLevel") ?? ""
+        let all = questionBank
+
+        let preferred: QuizDifficulty?
+        switch level {
+        case "beginner":         preferred = .easy
+        case "club":             preferred = nil          // mixed — no bias
+        case "advanced", "coach": preferred = .medium
+        default:                 preferred = nil
+        }
+
+        guard let preferred else { return all }
+
+        let primary   = all.filter { $0.difficulty == preferred }
+        let secondary = all.filter { $0.difficulty != preferred }
+        return primary + secondary
     }
 
     static func practiceQuiz(category: QuizCategory) -> Quiz {
