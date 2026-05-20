@@ -3,6 +3,11 @@ import SwiftUI
 struct MainTabView: View {
     @EnvironmentObject private var lang: LanguageManager
 
+    // 5 tabs only — iOS pushes a 6th into a "More" overflow that buries it.
+    // Matches is the post-pivot centerpiece so it gets primary placement.
+    // The community tip-discussion thread is still reachable from the
+    // tip card on Today (NavigationLink), so dropping it as a top-level
+    // tab loses no functionality.
     var body: some View {
         TabView {
             NavigationStack {
@@ -20,10 +25,10 @@ struct MainTabView: View {
             }
 
             NavigationStack {
-                CommunityFeedView()
+                MatchesListView()
             }
             .tabItem {
-                Label(lang.t("tab.community"), systemImage: "bubble.left.and.bubble.right.fill")
+                Label(lang.t("tab.matches"), systemImage: "pencil.and.list.clipboard")
             }
 
             NavigationStack {
@@ -31,13 +36,6 @@ struct MainTabView: View {
             }
             .tabItem {
                 Label(lang.t("tab.training"), systemImage: "figure.strengthtraining.traditional")
-            }
-
-            NavigationStack {
-                MatchesListView()
-            }
-            .tabItem {
-                Label(lang.t("tab.matches"), systemImage: "pencil.and.list.clipboard")
             }
 
             NavigationStack {
