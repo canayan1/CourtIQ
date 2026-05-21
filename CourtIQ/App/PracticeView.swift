@@ -81,14 +81,11 @@ struct PracticeView: View {
     }
 
     private var practiceHero: some View {
-        ZStack(alignment: .topTrailing) {
-            // Top-down clay court watermark
-            CourtTopDown(surface: .clay, lineOpacity: 0.5)
-                .opacity(0.18)
-                .frame(width: 130, height: 200)
-                .offset(x: 8, y: -10)
-                .allowsHitTesting(false)
-
+        // Same topLeading-anchored layout pattern as TodayView's hero:
+        // the ZStack alignment is .topLeading so the content VStack
+        // fills naturally; the court watermark places itself top-right
+        // via its own maxWidth alignment frame.
+        ZStack(alignment: .topLeading) {
             VStack(alignment: .leading, spacing: 12) {
                 Text(lang.t("practice.deliberate_reps"))
                     .font(.caption.weight(.semibold))
@@ -97,11 +94,25 @@ struct PracticeView: View {
 
                 Text(lang.t("practice.choose_pattern"))
                     .font(.system(size: 28, weight: .bold, design: .rounded))
+                    .foregroundStyle(AppPalette.ink)
+                    .fixedSize(horizontal: false, vertical: true)
 
                 Text(lang.t("practice.free_desc"))
                     .foregroundStyle(AppPalette.inkSoft)
+                    .fixedSize(horizontal: false, vertical: true)
             }
             .padding()
+            .frame(maxWidth: .infinity, alignment: .leading)
+
+            // Watermark anchored top-right via alignment frame so it
+            // never pulls the content layout with it.
+            CourtTopDown(surface: .clay, lineOpacity: 0.5)
+                .opacity(0.18)
+                .frame(width: 90, height: 160)
+                .padding(.top, 8)
+                .padding(.trailing, 8)
+                .allowsHitTesting(false)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
         }
         .background(AppPalette.parchment)
         .overlay(
@@ -136,6 +147,7 @@ struct PracticeView: View {
                 HStack {
                     Text(category.title)
                         .font(.headline)
+                        .foregroundStyle(AppPalette.ink)
                     if isLocked {
                         Image(systemName: "lock.fill")
                             .font(.caption)
@@ -145,6 +157,7 @@ struct PracticeView: View {
                 Text(category.summary)
                     .font(.subheadline)
                     .foregroundStyle(AppPalette.inkSoft)
+                    .fixedSize(horizontal: false, vertical: true)
             }
 
             Spacer()

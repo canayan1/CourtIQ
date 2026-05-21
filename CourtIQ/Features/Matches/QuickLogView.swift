@@ -129,10 +129,10 @@ struct QuickLogView: View {
 
     private var ratingsBlock: some View {
         VStack(spacing: 14) {
-            ratingRow(glyph: .serve,    value: $serve)
-            ratingRow(glyph: .backhand, value: $ret)
-            ratingRow(glyph: .mobility, value: $movement)
-            ratingRow(glyph: .target,   value: $mental)
+            ratingRow(glyph: .serve,    label: lang.t("matches.dim_serve"),    value: $serve)
+            ratingRow(glyph: .backhand, label: lang.t("matches.dim_return"),   value: $ret)
+            ratingRow(glyph: .mobility, label: lang.t("matches.dim_movement"), value: $movement)
+            ratingRow(glyph: .target,   label: lang.t("matches.dim_mental"),   value: $mental)
         }
         .padding(18)
         .background(AppPalette.parchment)
@@ -143,12 +143,22 @@ struct QuickLogView: View {
         .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
     }
 
-    private func ratingRow(glyph: TennisGlyphKind, value: Binding<Int>) -> some View {
-        HStack(spacing: 14) {
-            TennisGlyph(kind: glyph, color: AppPalette.ink, size: 26)
-                .frame(width: 30)
+    /// Each rating row pairs a tennis glyph + short label (Serve / Return
+    /// / Movement / Mental) so the meaning is obvious without prior
+    /// familiarity with our icon set. The dot-row is on the right.
+    private func ratingRow(glyph: TennisGlyphKind, label: String,
+                           value: Binding<Int>) -> some View {
+        HStack(spacing: 12) {
+            HStack(spacing: 8) {
+                TennisGlyph(kind: glyph, color: AppPalette.ink, size: 22)
+                    .frame(width: 26)
+                Text(label)
+                    .font(.system(size: 13, weight: .bold, design: .rounded))
+                    .foregroundStyle(AppPalette.ink)
+            }
+            .frame(width: 110, alignment: .leading)
 
-            HStack(spacing: 10) {
+            HStack(spacing: 8) {
                 ForEach(1...5, id: \.self) { dot in
                     Button {
                         Haptics.tap()
@@ -170,8 +180,10 @@ struct QuickLogView: View {
                     .buttonStyle(.plain)
                 }
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
+            .frame(maxWidth: .infinity, alignment: .trailing)
         }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("\(label): \(value.wrappedValue) of 5")
     }
 
     // MARK: - Takeaway

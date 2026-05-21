@@ -132,7 +132,8 @@ struct TourStep: View {
 
     // MARK: - New visuals (drill / pro shot / rings / matches / avatar)
 
-    /// Drill: top-down court with a tap dot showing what the user does.
+    /// Drill: top-down court with tap dot + YOU marker. Court + decorations
+    /// live inside a fixed 220x240 ZStack so offsets stay bounded.
     private var drillVisual: some View {
         ZStack {
             CourtTopDown(surface: .clay, lineOpacity: 0.95)
@@ -151,10 +152,13 @@ struct TourStep: View {
             courtMarker(label: "YOU", fill: AppPalette.clay)
                 .offset(x: 0, y: 95)
         }
+        .frame(width: 220, height: 240)
         .frame(maxWidth: .infinity, alignment: .center)
     }
 
-    /// Pro Shot: trophy badge + animated dashed trajectory hint.
+    /// Pro Shot: court + dashed pattern + trophy badge. Wrapped in a
+    /// 260x240 fixed ZStack so the trophy badge offset stays bounded
+    /// inside the parent's clip rather than bleeding into the title.
     private var proShotVisual: some View {
         ZStack {
             CourtTopDown(surface: .grass, lineOpacity: 0.95)
@@ -170,17 +174,18 @@ struct TourStep: View {
                             style: StrokeStyle(lineWidth: 2.2, lineCap: .round, dash: [3, 7]))
                 )
 
-            // Trophy floating top-right
+            // Trophy at top-right of bounded region (no longer overflowing).
             ZStack {
                 Circle()
                     .fill(AppPalette.gold.opacity(0.18))
-                    .frame(width: 64, height: 64)
+                    .frame(width: 60, height: 60)
                 Image(systemName: "trophy.fill")
-                    .font(.system(size: 28, weight: .bold))
+                    .font(.system(size: 26, weight: .bold))
                     .foregroundStyle(AppPalette.gold)
             }
-            .offset(x: 90, y: -90)
+            .offset(x: 80, y: -85)
         }
+        .frame(width: 260, height: 240)
         .frame(maxWidth: .infinity, alignment: .center)
     }
 
@@ -438,7 +443,16 @@ private struct TourPage: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 22) {
             Spacer().frame(height: 8)
+
+            // Hard-bound the visual frame so any .offset() decorations
+            // inside individual visuals can't bleed into the title block
+            // below. Without this clip the Pro Shot trophy badge (offset
+            // x:90, y:-90) was overlapping the title text on page 2.
             visual
+                .frame(maxWidth: .infinity)
+                .frame(height: 260)
+                .clipped()
+                .padding(.horizontal, 28)
 
             VStack(alignment: .leading, spacing: 10) {
                 Text(title)

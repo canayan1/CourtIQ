@@ -7,8 +7,15 @@ import UIKit
 /// opens their mail client with the recipient, subject, and a system-info
 /// footer already populated. They just type and hit send.
 enum FeedbackComposer {
-    /// Recipient address. Update before public beta.
-    static let recipient = "feedback@courtiq.app"
+    /// Recipient address. Reads from `Info.plist` key
+    /// `COURTIQ_FEEDBACK_EMAIL` so it can be overridden without a rebuild
+    /// (useful if the `courtiq.app` MX records aren't live yet at
+    /// submission time and we want to point at a personal mailbox).
+    static var recipient: String {
+        let override = Bundle.main.object(forInfoDictionaryKey: "COURTIQ_FEEDBACK_EMAIL") as? String
+        let cleaned = override?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        return cleaned.isEmpty ? "feedback@courtiq.app" : cleaned
+    }
 
     /// One entry point for all feedback flows.
     static func openMailComposer() {

@@ -121,38 +121,52 @@ struct MatchTrendDashboardView: View {
                 }
             }
 
-            Chart {
-                ForEach(points) { point in
-                    LineMark(
-                        x: .value("Date", point.date),
-                        y: .value("Rating", point.value)
-                    )
-                    .foregroundStyle(accent)
-                    .interpolationMethod(.catmullRom)
-                    .lineStyle(StrokeStyle(lineWidth: 2.4, lineCap: .round))
+            if points.isEmpty {
+                // No ratings yet on this dimension — show a quiet hint
+                // instead of an empty chart frame. Avoids weird zero-height
+                // chart rendering on some iOS versions.
+                HStack {
+                    Spacer()
+                    Text(lang.t("matches.dim_no_data"))
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(AppPalette.inkSoft)
+                    Spacer()
+                }
+                .frame(height: 110)
+            } else {
+                Chart {
+                    ForEach(points) { point in
+                        LineMark(
+                            x: .value("Date", point.date),
+                            y: .value("Rating", point.value)
+                        )
+                        .foregroundStyle(accent)
+                        .interpolationMethod(.catmullRom)
+                        .lineStyle(StrokeStyle(lineWidth: 2.4, lineCap: .round))
 
-                    PointMark(
-                        x: .value("Date", point.date),
-                        y: .value("Rating", point.value)
-                    )
-                    .foregroundStyle(accent)
-                    .symbolSize(36)
+                        PointMark(
+                            x: .value("Date", point.date),
+                            y: .value("Rating", point.value)
+                        )
+                        .foregroundStyle(accent)
+                        .symbolSize(36)
+                    }
                 }
-            }
-            .chartYScale(domain: 1...5)
-            .chartYAxis {
-                AxisMarks(values: [1, 3, 5]) { _ in
-                    AxisGridLine()
-                    AxisValueLabel()
+                .chartYScale(domain: 1...5)
+                .chartYAxis {
+                    AxisMarks(values: [1, 3, 5]) { _ in
+                        AxisGridLine()
+                        AxisValueLabel()
+                    }
                 }
-            }
-            .chartXAxis {
-                AxisMarks(values: .stride(by: .month, count: 1)) { _ in
-                    AxisGridLine()
-                    AxisValueLabel(format: .dateTime.month(.abbreviated), centered: true)
+                .chartXAxis {
+                    AxisMarks(values: .stride(by: .month, count: 1)) { _ in
+                        AxisGridLine()
+                        AxisValueLabel(format: .dateTime.month(.abbreviated), centered: true)
+                    }
                 }
+                .frame(height: 110)
             }
-            .frame(height: 110)
         }
         .padding(16)
         .background(AppPalette.parchment)

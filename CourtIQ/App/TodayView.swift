@@ -7,7 +7,9 @@ struct TodayView: View {
     @EnvironmentObject private var lang: LanguageManager
     @EnvironmentObject private var drillManager: CourtTapDrillManager
 
-    @State private var tipExpanded = false
+    // Tip body is expanded by default — collapsing was hiding the actual
+    // content (each tip is only ~80 words) and made the card feel empty.
+    @State private var tipExpanded = true
     @State private var showDrill = false
 
     private var dailyQuiz: Quiz { dailyQuizManager.todayQuiz }

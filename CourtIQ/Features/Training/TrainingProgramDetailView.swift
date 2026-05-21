@@ -90,30 +90,58 @@ struct TrainingProgramDetailView: View {
     }
 
     private var headerCard: some View {
-        VStack(alignment: .leading, spacing: 14) {
-            HStack {
-                Label(program.accessTier.title, systemImage: program.isPremium ? "crown.fill" : "sparkles")
-                    .font(.caption.weight(.bold))
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 8)
-                    .background(Color.white.opacity(0.16))
-                    .clipShape(Capsule())
+        // Visual-first hero: training gradient background + diagonal racket
+        // motif + 8-week strip showing your current week. The textual
+        // overview moves down with smaller weight so the visual carries
+        // the screen.
+        ZStack(alignment: .topLeading) {
+            // Diagonal racket motif (decorative)
+            TennisRacket(color: .white.opacity(0.20),
+                         accent: .white.opacity(0.4),
+                         angle: -22)
+                .frame(width: 130, height: 180)
+                .padding(.top, 4)
+                .padding(.trailing, -10)
+                .allowsHitTesting(false)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
 
-                Spacer()
+            VStack(alignment: .leading, spacing: 14) {
+                HStack(spacing: 8) {
+                    Image(systemName: program.isPremium ? "crown.fill" : "sparkles")
+                        .font(.caption.weight(.bold))
+                        .foregroundStyle(.white)
+                        .accessibilityLabel(program.accessTier.title)
 
-                Text("\(program.durationWeeks) weeks")
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(.white.opacity(0.85))
+                    Spacer()
+
+                    // Current week / total — replaces the old plain "8 weeks"
+                    Text("WK \(progress.selectedWeek) · \(program.durationWeeks)")
+                        .font(.system(size: 11, weight: .heavy, design: .rounded))
+                        .tracking(1.0)
+                        .foregroundStyle(.white.opacity(0.85))
+                }
+
+                Text(program.title)
+                    .font(.system(size: 22, weight: .heavy, design: .rounded))
+                    .foregroundStyle(.white)
+                    .fixedSize(horizontal: false, vertical: true)
+
+                // 8-week visual strip — filled to current week
+                HStack(spacing: 4) {
+                    ForEach(1...program.durationWeeks, id: \.self) { wk in
+                        RoundedRectangle(cornerRadius: 3, style: .continuous)
+                            .fill(.white.opacity(wk <= progress.selectedWeek ? 0.85 : 0.28))
+                            .frame(height: 6)
+                    }
+                }
+
+                Text(program.overview)
+                    .font(.subheadline)
+                    .foregroundStyle(.white.opacity(0.92))
+                    .fixedSize(horizontal: false, vertical: true)
             }
-
-            Text(program.title)
-                .font(.title2.bold())
-                .foregroundStyle(.white)
-
-            Text(program.overview)
-                .foregroundStyle(.white.opacity(0.92))
+            .padding()
         }
-        .padding()
         .background(AppPalette.trainingGradient)
         .clipShape(RoundedRectangle(cornerRadius: 26, style: .continuous))
     }
@@ -284,28 +312,53 @@ struct TrainingProgramDetailView: View {
                             selectedExercise = exercise
                         }
                     } label: {
-                        HStack(alignment: .top, spacing: 10) {
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text("\(exercise.localizedTitle(for: lang.language)) · \(exercise.prescription)")
-                                    .font(.subheadline.weight(.semibold))
+                        HStack(alignment: .top, spacing: 12) {
+                            // Visual icon for each exercise — strength tile.
+                            // Replaces the previous text-only row with a more
+                            // chunky, gym-card aesthetic.
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                    .fill(AppPalette.clay.opacity(0.12))
+                                    .frame(width: 40, height: 40)
+                                Image(systemName: exerciseGlyph(for: exercise))
+                                    .font(.system(size: 18, weight: .bold))
+                                    .foregroundStyle(AppPalette.clay)
+                            }
+
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(exercise.localizedTitle(for: lang.language))
+                                    .font(.subheadline.weight(.bold))
                                     .foregroundStyle(AppPalette.ink)
-                                Text(exercise.localizedIntent(for: lang.language))
-                                    .font(.caption)
-                                    .foregroundStyle(AppPalette.inkSoft)
-                                    .multilineTextAlignment(.leading)
+                                HStack(spacing: 6) {
+                                    Text(exercise.prescription)
+                                        .font(.caption.weight(.heavy))
+                                        .foregroundStyle(AppPalette.clay)
+                                        .padding(.horizontal, 6)
+                                        .padding(.vertical, 2)
+                                        .background(
+                                            Capsule().fill(AppPalette.clay.opacity(0.12))
+                                        )
+                                    Text(exercise.localizedIntent(for: lang.language))
+                                        .font(.caption)
+                                        .foregroundStyle(AppPalette.inkSoft)
+                                        .lineLimit(2)
+                                }
                             }
                             Spacer(minLength: 0)
                             if exercise.hasDetail {
                                 Image(systemName: "info.circle")
                                     .foregroundStyle(AppPalette.clay)
                                     .font(.subheadline)
-                                    .padding(.top, 2)
+                                    .padding(.top, 4)
                             }
                         }
-                        .padding(.vertical, 8)
-                        .padding(.horizontal, 10)
+                        .padding(10)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .background(AppPalette.sand.opacity(0.22))
+                        .background(AppPalette.sand.opacity(0.18))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                .stroke(AppPalette.sand.opacity(0.6), lineWidth: 1)
+                        )
                         .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                     }
                     .buttonStyle(.plain)
@@ -623,6 +676,33 @@ struct TrainingProgramDetailView: View {
             Text(content)
                 .font(.subheadline)
                 .foregroundStyle(AppPalette.inkSoft)
+        }
+    }
+
+    /// Map an exercise to a representative SF Symbol. Light heuristic
+    /// based on common keywords in the exercise title — falls back to a
+    /// generic dumbbell when nothing matches.
+    private func exerciseGlyph(for exercise: TrainingExercise) -> String {
+        let title = exercise.title.lowercased()
+        switch true {
+        case title.contains("jump") || title.contains("hop") || title.contains("plyo"):
+            return "arrow.up.right.circle.fill"
+        case title.contains("squat") || title.contains("lunge"):
+            return "figure.strengthtraining.functional"
+        case title.contains("push") || title.contains("press") || title.contains("bench"):
+            return "figure.strengthtraining.traditional"
+        case title.contains("pull") || title.contains("row"):
+            return "arrow.down.right.circle.fill"
+        case title.contains("plank") || title.contains("core") || title.contains("ab"):
+            return "figure.core.training"
+        case title.contains("sprint") || title.contains("run") || title.contains("cardio"):
+            return "figure.run"
+        case title.contains("stretch") || title.contains("mobility") || title.contains("foam"):
+            return "figure.cooldown"
+        case title.contains("balance") || title.contains("stability"):
+            return "figure.mind.and.body"
+        default:
+            return "dumbbell.fill"
         }
     }
 

@@ -434,6 +434,7 @@
 "matches.dim_mental" = "Mental";
 "matches.view_insights" = "İçgörüleri gör";
 "matches.view_calendar" = "Maç takvimi";
+"matches.dim_no_data" = "Henüz puan yok";
 
 /* ── Günlük Kort Tap Drill ── */
 "drill.card_kicker" = "Günlük drill";

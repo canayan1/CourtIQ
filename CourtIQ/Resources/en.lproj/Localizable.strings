@@ -434,6 +434,7 @@
 "matches.dim_mental" = "Mental";
 "matches.view_insights" = "View insights";
 "matches.view_calendar" = "Match calendar";
+"matches.dim_no_data" = "No ratings yet";
 
 /* ── Daily Court Tap Drill ── */
 "drill.card_kicker" = "Daily drill";
