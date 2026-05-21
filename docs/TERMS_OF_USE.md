@@ -243,5 +243,5 @@ We are not liable for any failure or delay in performance caused by events outsi
 **support@courtiq.app**
 
 Can Ayan
-Dublin, D04 C2V6, Ireland
+Dublin 4, Ireland
 Republic of Ireland

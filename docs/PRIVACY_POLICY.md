@@ -130,7 +130,7 @@ Some of our service providers (e.g. Apple, Firebase / Supabase if used) may proc
 **privacy@courtiq.app**
 
 Can Ayan
-Dublin, D04 C2V6, Ireland
+Dublin 4, Ireland
 Republic of Ireland
 
 (We are not yet required to appoint a Data Protection Officer under GDPR Art. 37. If that changes, we will update this policy with the DPO's contact.)
