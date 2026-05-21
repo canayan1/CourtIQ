@@ -2,7 +2,7 @@
 
 **Last updated:** May 2026
 
-By downloading, installing, or using CourtIQ ("the app"), you agree to these Terms of Use ("Terms"). If you do not agree, do not use the app. CourtIQ is published by **[Your Legal Entity Name]**, established in the Republic of Ireland ("we", "us", "our").
+By downloading, installing, or using CourtIQ ("the app"), you agree to these Terms of Use ("Terms"). If you do not agree, do not use the app. CourtIQ is published by **Can Ayan**, established in the Republic of Ireland ("we", "us", "our").
 
 Questions: **support@courtiq.app**
 
@@ -242,6 +242,6 @@ We are not liable for any failure or delay in performance caused by events outsi
 
 **support@courtiq.app**
 
-[Your Legal Entity Name]
-[Your Registered Address, Ireland]
+Can Ayan
+Dublin, D04 C2V6, Ireland
 Republic of Ireland

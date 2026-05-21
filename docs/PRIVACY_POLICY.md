@@ -2,7 +2,7 @@
 
 **Last updated:** May 2026
 
-CourtIQ ("we", "us") is a tennis IQ and training app published by **[Your Legal Entity Name]**, established in the Republic of Ireland. This policy explains what data we collect, why, and how you can control it. We are the **data controller** of your personal data under the EU General Data Protection Regulation (GDPR) and the Irish Data Protection Act 2018.
+CourtIQ ("we", "us") is a tennis IQ and training app published by **Can Ayan**, established in the Republic of Ireland. This policy explains what data we collect, why, and how you can control it. We are the **data controller** of your personal data under the EU General Data Protection Regulation (GDPR) and the Irish Data Protection Act 2018.
 
 We do **not** sell personal data, and we use only the data needed to run the app.
 
@@ -129,8 +129,8 @@ Some of our service providers (e.g. Apple, Firebase / Supabase if used) may proc
 
 **privacy@courtiq.app**
 
-[Your Legal Entity Name]
-[Your Registered Address, Ireland]
+Can Ayan
+Dublin, D04 C2V6, Ireland
 Republic of Ireland
 
 (We are not yet required to appoint a Data Protection Officer under GDPR Art. 37. If that changes, we will update this policy with the DPO's contact.)
