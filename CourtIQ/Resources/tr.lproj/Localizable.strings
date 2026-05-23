@@ -256,6 +256,20 @@
 "paywall.sign_in_required" = "Satın alma öncesinde Apple ile giriş yapılması gereklidir.";
 "paywall.sign_in_optional" = "İsteğe bağlı — premium aboneliğini cihazların arasında senkronlamak için Apple ile giriş yap.";
 "paywall.what_unlocks" = "Ne açılır";
+
+/* ── Tip-jar mode (launch window) ── */
+"paywall.tip_title" = "CourtIQ'yu Destekle";
+"paywall.tip_headline" = "CourtIQ lansman süresince ücretsiz.";
+"paywall.tip_body" = "Tüm özellikler — günlük drill, quizler, antrenman programları, mobility akışları, tam maç günlüğü — herkese açık. CourtIQ işine yaradıysa isteğe bağlı bir destek geliştirmenin devamını sağlar.";
+"paywall.tip_why" = "Neden destekleyesin?";
+"paywall.tip_reason_1" = "Uygulamayı bağımsız tutar — reklam yok, takip yok, yatırımcı yok.";
+"paywall.tip_reason_2" = "Sonraki özellikleri finanse eder (sesli notlar, partner modu, Apple Watch).";
+"paywall.tip_reason_3" = "CourtIQ'yu App Store'da tutan Apple Developer ücretini karşılar.";
+"paywall.tip_action" = "Bir destek bırak";
+"paywall.tip_offer_title" = "Yıllık destekçi";
+"paywall.tip_offer_detail" = "Yılda bir kez. Ayarlardan istediğin zaman iptal.";
+"paywall.tip_button" = "CourtIQ'yu Destekle";
+"paywall.tip_legal_note" = "Destekler Apple tarafından yıllık otomatik yenilenen abonelik olarak işlenir — bu sayede App Store ödeme kurallarına uygun. İstediğin zaman Ayarlar → Abonelikler'den iptal edebilirsin; iptal etsen bile hiçbir özellik kilitlenmez.";
 "paywall.choose_plan" = "Planını seç";
 "paywall.best_value" = "En iyi değer";
 "paywall.continue" = "Devam";

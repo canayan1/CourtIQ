@@ -50,6 +50,7 @@
 		A0000000000000000000E1 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000E0 /* NotificationManager.swift */; };
 		A0000000000000000000E3 /* NotificationPreAskSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000E2 /* NotificationPreAskSheet.swift */; };
 		A0000000000000000000F1 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000F0 /* Haptics.swift */; };
+		A00000000000000000016B /* LaunchOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000016A /* LaunchOffer.swift */; };
 		A000000000000000000101 /* TourStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000100 /* TourStep.swift */; };
 		A000000000000000000111 /* MatchEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000110 /* MatchEntry.swift */; };
 		A000000000000000000113 /* MatchEntryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000112 /* MatchEntryManager.swift */; };
@@ -125,6 +126,7 @@
 		A0000000000000000000E0 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotificationManager.swift; path = CourtIQ/Core/Utilities/NotificationManager.swift; sourceTree = "<group>"; };
 		A0000000000000000000E2 /* NotificationPreAskSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotificationPreAskSheet.swift; path = CourtIQ/Features/Onboarding/NotificationPreAskSheet.swift; sourceTree = "<group>"; };
 		A0000000000000000000F0 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Haptics.swift; path = CourtIQ/Core/Utilities/Haptics.swift; sourceTree = "<group>"; };
+		A00000000000000000016A /* LaunchOffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LaunchOffer.swift; path = CourtIQ/Core/Utilities/LaunchOffer.swift; sourceTree = "<group>"; };
 		A000000000000000000100 /* TourStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TourStep.swift; path = CourtIQ/Features/Onboarding/TourStep.swift; sourceTree = "<group>"; };
 		A000000000000000000110 /* MatchEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchEntry.swift; path = CourtIQ/Core/Models/MatchEntry.swift; sourceTree = "<group>"; };
 		A000000000000000000112 /* MatchEntryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchEntryManager.swift; path = CourtIQ/Core/Models/MatchEntryManager.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				A0000000000000000000E0 /* NotificationManager.swift */,
 				A0000000000000000000E2 /* NotificationPreAskSheet.swift */,
 				A0000000000000000000F0 /* Haptics.swift */,
+				A00000000000000000016A /* LaunchOffer.swift */,
 				A000000000000000000100 /* TourStep.swift */,
 				A000000000000000000110 /* MatchEntry.swift */,
 				A000000000000000000112 /* MatchEntryManager.swift */,
@@ -370,6 +373,7 @@
 				A0000000000000000000E1 /* NotificationManager.swift in Sources */,
 				A0000000000000000000E3 /* NotificationPreAskSheet.swift in Sources */,
 				A0000000000000000000F1 /* Haptics.swift in Sources */,
+				A00000000000000000016B /* LaunchOffer.swift in Sources */,
 				A000000000000000000101 /* TourStep.swift in Sources */,
 				A000000000000000000111 /* MatchEntry.swift in Sources */,
 				A000000000000000000113 /* MatchEntryManager.swift in Sources */,

@@ -256,6 +256,20 @@
 "paywall.sign_in_required" = "Sign in with Apple is required before purchase.";
 "paywall.sign_in_optional" = "Optional — sign in with Apple to sync premium across your devices.";
 "paywall.what_unlocks" = "What unlocks";
+
+/* ── Tip-jar mode (launch window, LaunchOffer.allFeaturesFree == true) ── */
+"paywall.tip_title" = "Support CourtIQ";
+"paywall.tip_headline" = "CourtIQ is free during launch.";
+"paywall.tip_body" = "Every feature — daily drill, quizzes, training programs, mobility flows, the full match journal — is open to everyone. If CourtIQ has been useful, an optional tip keeps it growing.";
+"paywall.tip_why" = "Why support?";
+"paywall.tip_reason_1" = "Keeps the app independent — no ads, no tracking, no investors.";
+"paywall.tip_reason_2" = "Funds the next features (voice notes, partner mode, watch app).";
+"paywall.tip_reason_3" = "Covers the Apple Developer fee that keeps CourtIQ on the store.";
+"paywall.tip_action" = "Leave a tip";
+"paywall.tip_offer_title" = "Annual supporter";
+"paywall.tip_offer_detail" = "One yearly tip. Cancel anytime in Settings.";
+"paywall.tip_button" = "Support CourtIQ";
+"paywall.tip_legal_note" = "Tips are processed by Apple as an annual auto-renewing subscription so they qualify for App Store payment handling. You can cancel anytime from Settings → Subscriptions; no features are locked if you do.";
 "paywall.choose_plan" = "Choose your plan";
 "paywall.best_value" = "Best value";
 "paywall.continue" = "Continue";
