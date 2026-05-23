@@ -39,8 +39,16 @@ final class MatchEntryManager: ObservableObject {
         )
     }
 
-    /// Remove an entry by id. Safe no-op if id is unknown.
+    /// Remove an entry by id. Safe no-op if id is unknown. Also cleans
+    /// up any attached voice notes so orphaned audio doesn't slowly
+    /// fill the user's storage.
     func delete(_ id: String) {
+        if let doomed = entries.first(where: { $0.id == id }) {
+            MatchMediaStore.removeAudio(named: [
+                doomed.preMatchAudioFile,
+                doomed.postMatchAudioFile
+            ])
+        }
         entries.removeAll { $0.id == id }
         persist()
     }

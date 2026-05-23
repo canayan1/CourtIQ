@@ -270,6 +270,19 @@
 "paywall.tip_offer_detail" = "One yearly tip. Cancel anytime in Settings.";
 "paywall.tip_button" = "Support CourtIQ";
 "paywall.tip_legal_note" = "Tips are processed by Apple as an annual auto-renewing subscription so they qualify for App Store payment handling. You can cancel anytime from Settings → Subscriptions; no features are locked if you do.";
+
+/* ── Voice notes (Match Journal v1.1.A) ── */
+"voice.record_start" = "Record a voice note";
+"voice.record_replace" = "Record a new voice note";
+"voice.recording_hint" = "Recording — tap stop when done";
+"voice.transcribing" = "Transcribing…";
+"voice.play" = "Play voice note";
+"voice.discard" = "Delete voice note";
+"voice.error_title" = "Can't record";
+"voice.permission_denied" = "Microphone access is required for voice notes. Enable it in Settings → CourtIQ.";
+"voice.audio_session_error" = "The audio system isn't available right now. Try again in a moment.";
+"voice.record_start_error" = "Couldn't start the recording. Try again.";
+"voice.storage_error" = "Couldn't save the recording to disk. Free up some space and try again.";
 "paywall.choose_plan" = "Choose your plan";
 "paywall.best_value" = "Best value";
 "paywall.continue" = "Continue";

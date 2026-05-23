@@ -42,10 +42,19 @@ struct MatchEntry: Codable, Identifiable, Hashable {
     var mentalRating: Int?
 
     // Long-form text fields. Empty string is fine — the UI shows them only
-    // when populated.
+    // when populated. Transcripts from voice notes flow into these same
+    // fields so search, trends, and rendering treat dictated entries
+    // identically to typed ones.
     var preMatchNotes: String
     var postMatchNotes: String
     var takeaway: String                // 0-200 chars, the "one thing" line
+
+    // Optional voice-note file names (e.g. "pre-<uuid>.m4a") stored under
+    // `MatchMediaStore.audioDirectory`. Nil means no audio recorded.
+    // Stored as bare file names — never absolute paths — so the data is
+    // portable across iCloud restores and Documents path changes.
+    var preMatchAudioFile: String?
+    var postMatchAudioFile: String?
 
     var isQuickLog: Bool
 
@@ -63,6 +72,8 @@ struct MatchEntry: Codable, Identifiable, Hashable {
         preMatchNotes: String = "",
         postMatchNotes: String = "",
         takeaway: String = "",
+        preMatchAudioFile: String? = nil,
+        postMatchAudioFile: String? = nil,
         isQuickLog: Bool = false
     ) {
         self.id = id
@@ -78,6 +89,8 @@ struct MatchEntry: Codable, Identifiable, Hashable {
         self.preMatchNotes = preMatchNotes
         self.postMatchNotes = postMatchNotes
         self.takeaway = takeaway
+        self.preMatchAudioFile = preMatchAudioFile
+        self.postMatchAudioFile = postMatchAudioFile
         self.isQuickLog = isQuickLog
     }
 

@@ -1,4 +1,5 @@
 import SwiftUI
+import AVFoundation
 
 /// Long-form match journal entry. Used for both creating a new journal
 /// entry (passing `entry: nil`) and editing/viewing an existing one. The
@@ -22,6 +23,20 @@ struct MatchJournalEntryView: View {
     @State private var postMatchNotes: String = ""
     @State private var takeaway: String = ""
 
+    // Voice notes — file names on disk, nil until user records one.
+    @State private var preMatchAudioFile: String?
+    @State private var postMatchAudioFile: String?
+
+    // One recorder per scope so the two sections can't compete for the
+    // mic / share waveform state.
+    @StateObject private var preRecorder = VoiceNoteRecorder()
+    @StateObject private var postRecorder = VoiceNoteRecorder()
+
+    // Stable entry ID computed once on hydrate so a brand-new entry
+    // can record audio against a known ID before save().
+    @State private var stableEntryID: String = UUID().uuidString
+
+    @State private var voiceErrorMessage: String?
     @State private var showDeleteConfirm = false
     @FocusState private var focusedField: Field?
 
@@ -80,6 +95,17 @@ struct MatchJournalEntryView: View {
                 }
             }
             Button(lang.t("common.cancel"), role: .cancel) {}
+        }
+        .alert(
+            lang.t("voice.error_title"),
+            isPresented: Binding(
+                get: { voiceErrorMessage != nil },
+                set: { if !$0 { voiceErrorMessage = nil } }
+            )
+        ) {
+            Button(lang.t("common.ok"), role: .cancel) {}
+        } message: {
+            Text(voiceErrorMessage ?? "")
         }
     }
 
@@ -202,7 +228,10 @@ struct MatchJournalEntryView: View {
             labelKey: "matches.pre_match_label",
             placeholderKey: "matches.pre_match_placeholder",
             text: $preMatchNotes,
-            field: .preMatch
+            field: .preMatch,
+            audioFile: $preMatchAudioFile,
+            recorder: preRecorder,
+            scope: .pre
         )
     }
 
@@ -213,7 +242,10 @@ struct MatchJournalEntryView: View {
             labelKey: "matches.post_match_label",
             placeholderKey: "matches.post_match_placeholder",
             text: $postMatchNotes,
-            field: .postMatch
+            field: .postMatch,
+            audioFile: $postMatchAudioFile,
+            recorder: postRecorder,
+            scope: .post
         )
     }
 
@@ -259,7 +291,10 @@ struct MatchJournalEntryView: View {
         labelKey: String,
         placeholderKey: String,
         text: Binding<String>,
-        field: Field
+        field: Field,
+        audioFile: Binding<String?>,
+        recorder: VoiceNoteRecorder,
+        scope: MatchMediaStore.AudioScope
     ) -> some View {
         VStack(alignment: .leading, spacing: 6) {
             HStack(spacing: 8) {
@@ -271,6 +306,12 @@ struct MatchJournalEntryView: View {
                     .tracking(0.6)
                     .foregroundStyle(AppPalette.inkSoft)
                     .textCase(.uppercase)
+                Spacer()
+                voiceControl(recorder: recorder, scope: scope, text: text, audioFile: audioFile)
+            }
+
+            if recorder.state == .recording {
+                recordingIndicator(recorder: recorder)
             }
 
             TextField(
@@ -288,6 +329,138 @@ struct MatchJournalEntryView: View {
                     .stroke(AppPalette.sand, lineWidth: 1)
             )
             .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+
+            // Existing audio playback chip (shown only when we have a
+            // saved file). Tap to play, long-press to discard.
+            if let fileName = audioFile.wrappedValue {
+                audioChip(fileName: fileName, audioFile: audioFile)
+            }
+        }
+    }
+
+    // MARK: - Voice note controls
+
+    /// Mic button. Tap to start, tap again to stop. When a recording
+    /// already exists it shows a "re-record" affordance instead.
+    @ViewBuilder
+    private func voiceControl(
+        recorder: VoiceNoteRecorder,
+        scope: MatchMediaStore.AudioScope,
+        text: Binding<String>,
+        audioFile: Binding<String?>
+    ) -> some View {
+        switch recorder.state {
+        case .recording:
+            Button {
+                Task {
+                    await recorder.stop()
+                    applyRecorderResult(recorder, text: text, audioFile: audioFile)
+                }
+            } label: {
+                Label("\(Int(recorder.elapsed))s", systemImage: "stop.circle.fill")
+                    .font(.caption.weight(.bold))
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 6)
+                    .background(Capsule().fill(AppPalette.alert))
+            }
+            .buttonStyle(.plain)
+        case .transcribing, .requestingPermission:
+            HStack(spacing: 6) {
+                ProgressView().scaleEffect(0.7)
+                Text(lang.t("voice.transcribing"))
+                    .font(.caption2.weight(.semibold))
+                    .foregroundStyle(AppPalette.inkSoft)
+            }
+        default:
+            Button {
+                Task {
+                    await recorder.start(entryID: stableEntryID, scope: scope)
+                }
+            } label: {
+                Image(systemName: audioFile.wrappedValue == nil ? "mic.fill" : "mic.badge.plus")
+                    .font(.system(size: 14, weight: .bold))
+                    .foregroundStyle(AppPalette.clay)
+                    .padding(8)
+                    .background(Circle().fill(AppPalette.clay.opacity(0.12)))
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel(lang.t(audioFile.wrappedValue == nil
+                                       ? "voice.record_start"
+                                       : "voice.record_replace"))
+        }
+    }
+
+    /// Thin live waveform replacement — three pulsing dots whose size
+    /// reacts to mic input level. Cheap, expressive, no Canvas overhead.
+    private func recordingIndicator(recorder: VoiceNoteRecorder) -> some View {
+        HStack(spacing: 6) {
+            ForEach(0..<3, id: \.self) { i in
+                Circle()
+                    .fill(AppPalette.alert)
+                    .frame(width: 6 + CGFloat(recorder.recordingLevel * 10),
+                           height: 6 + CGFloat(recorder.recordingLevel * 10))
+                    .opacity(0.5 + 0.5 * Double((i == 1) ? 1 : recorder.recordingLevel))
+                    .animation(.easeInOut(duration: 0.12), value: recorder.recordingLevel)
+            }
+            Text(lang.t("voice.recording_hint"))
+                .font(.caption2.weight(.semibold))
+                .foregroundStyle(AppPalette.alert)
+            Spacer()
+        }
+        .padding(.vertical, 2)
+    }
+
+    /// Inline chip representing a saved audio attachment. Tap to play
+    /// (handled by `VoiceNotePlayer.shared.toggle(...)`); X icon
+    /// deletes the file and clears the binding.
+    private func audioChip(fileName: String, audioFile: Binding<String?>) -> some View {
+        HStack(spacing: 8) {
+            Button {
+                VoiceNotePlayer.shared.toggle(fileName: fileName)
+            } label: {
+                Label(lang.t("voice.play"), systemImage: "play.circle.fill")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(AppPalette.clay)
+            }
+            .buttonStyle(.plain)
+
+            Spacer()
+
+            Button {
+                MatchMediaStore.removeAudio(named: [fileName])
+                audioFile.wrappedValue = nil
+            } label: {
+                Image(systemName: "xmark.circle.fill")
+                    .font(.subheadline)
+                    .foregroundStyle(AppPalette.inkSoft.opacity(0.6))
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel(lang.t("voice.discard"))
+        }
+        .padding(.horizontal, 10)
+        .padding(.vertical, 8)
+        .background(AppPalette.clay.opacity(0.06))
+        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+    }
+
+    /// Apply a finished recorder state into the bound text + audio file.
+    /// If transcription succeeded, we *append* (with a newline) when the
+    /// user has typed something already, so dictation never silently
+    /// overwrites their typing.
+    private func applyRecorderResult(
+        _ recorder: VoiceNoteRecorder,
+        text: Binding<String>,
+        audioFile: Binding<String?>
+    ) {
+        if case let .finished(transcript, fileName) = recorder.state {
+            audioFile.wrappedValue = fileName
+            let trimmed = transcript.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !trimmed.isEmpty else { return }
+            let existing = text.wrappedValue.trimmingCharacters(in: .whitespacesAndNewlines)
+            text.wrappedValue = existing.isEmpty ? trimmed : existing + "\n" + trimmed
+        } else if case let .failed(message) = recorder.state {
+            voiceErrorMessage = message
         }
     }
 
@@ -320,7 +493,7 @@ struct MatchJournalEntryView: View {
     private func save() {
         let trimmedTakeaway = takeaway.trimmingCharacters(in: .whitespacesAndNewlines)
         let newEntry = MatchEntry(
-            id: entry?.id ?? UUID().uuidString,
+            id: entry?.id ?? stableEntryID,
             date: date,
             opponentName: opponentName.trimmingCharacters(in: .whitespacesAndNewlines),
             surface: surface,
@@ -333,6 +506,8 @@ struct MatchJournalEntryView: View {
             preMatchNotes: preMatchNotes.trimmingCharacters(in: .whitespacesAndNewlines),
             postMatchNotes: postMatchNotes.trimmingCharacters(in: .whitespacesAndNewlines),
             takeaway: trimmedTakeaway,
+            preMatchAudioFile: preMatchAudioFile,
+            postMatchAudioFile: postMatchAudioFile,
             isQuickLog: false
         )
         matches.save(newEntry)
@@ -341,6 +516,10 @@ struct MatchJournalEntryView: View {
     }
 
     private func hydrate() {
+        // Always seed the stable entry ID so voice notes can attach to it
+        // even before the first save.
+        stableEntryID = entry?.id ?? UUID().uuidString
+
         guard let entry, date != entry.date else { return }
         date = entry.date
         opponentName = entry.opponentName
@@ -350,5 +529,43 @@ struct MatchJournalEntryView: View {
         preMatchNotes = entry.preMatchNotes
         postMatchNotes = entry.postMatchNotes
         takeaway = entry.takeaway
+        preMatchAudioFile = entry.preMatchAudioFile
+        postMatchAudioFile = entry.postMatchAudioFile
+    }
+}
+
+// MARK: - VoiceNotePlayer
+
+/// Singleton playback shim — there's only ever one audio note playing
+/// at a time, so a global player keeps tap-to-toggle behaviour simple
+/// without each chip wrestling its own AVAudioPlayer instance.
+@MainActor
+final class VoiceNotePlayer {
+    static let shared = VoiceNotePlayer()
+    private var player: AVAudioPlayer?
+    private var currentFile: String?
+
+    private init() {}
+
+    /// Toggle playback. If the same file is already playing, pause; if a
+    /// different file is playing, switch; if nothing is playing, start.
+    func toggle(fileName: String) {
+        if currentFile == fileName, player?.isPlaying == true {
+            player?.pause()
+            return
+        }
+        guard let url = MatchMediaStore.audioURL(forFileName: fileName) else { return }
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .spokenAudio)
+            try AVAudioSession.sharedInstance().setActive(true)
+            let p = try AVAudioPlayer(contentsOf: url)
+            p.prepareToPlay()
+            p.play()
+            player = p
+            currentFile = fileName
+        } catch {
+            // Playback is non-critical; failing silently is fine — the
+            // user can still see the transcript and re-record if needed.
+        }
     }
 }

@@ -44,6 +44,10 @@
 	<string>delete-account</string>
 	<key>COURTIQ_FEEDBACK_EMAIL</key>
 	<string></string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>CourtIQ records short voice notes for your match journal so you can reflect on a match without typing. Recordings stay on this device.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>CourtIQ transcribes your match voice notes on-device so the text appears in your journal immediately. Audio never leaves your iPhone.</string>
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIColorName</key>
