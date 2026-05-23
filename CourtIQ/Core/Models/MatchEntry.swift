@@ -56,6 +56,13 @@ struct MatchEntry: Codable, Identifiable, Hashable {
     var preMatchAudioFile: String?
     var postMatchAudioFile: String?
 
+    // Optional photo attachments — scorecards, gear, partner shots, etc.
+    // Stored as bare file names (e.g. "<entryID>-<n>.jpg") under
+    // `MatchMediaStore.photoDirectory(forEntry:)`. Capped at 4 per
+    // entry by the UI; the model itself doesn't enforce a limit so
+    // future bulk-import flows aren't artificially blocked.
+    var photoFileNames: [String]
+
     var isQuickLog: Bool
 
     init(
@@ -74,6 +81,7 @@ struct MatchEntry: Codable, Identifiable, Hashable {
         takeaway: String = "",
         preMatchAudioFile: String? = nil,
         postMatchAudioFile: String? = nil,
+        photoFileNames: [String] = [],
         isQuickLog: Bool = false
     ) {
         self.id = id
@@ -91,7 +99,40 @@ struct MatchEntry: Codable, Identifiable, Hashable {
         self.takeaway = takeaway
         self.preMatchAudioFile = preMatchAudioFile
         self.postMatchAudioFile = postMatchAudioFile
+        self.photoFileNames = photoFileNames
         self.isQuickLog = isQuickLog
+    }
+
+    // Older entries persisted before v1.1.B decoded with no
+    // `photoFileNames` key. Provide a defaulted decoder so they migrate
+    // silently to an empty array rather than failing the whole load.
+    enum CodingKeys: String, CodingKey {
+        case id, date, opponentName, surface, result, score
+        case serveRating, returnRating, movementRating, mentalRating
+        case preMatchNotes, postMatchNotes, takeaway
+        case preMatchAudioFile, postMatchAudioFile
+        case photoFileNames, isQuickLog
+    }
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        id = try c.decode(String.self, forKey: .id)
+        date = try c.decode(Date.self, forKey: .date)
+        opponentName = try c.decode(String.self, forKey: .opponentName)
+        surface = try c.decode(MatchSurface.self, forKey: .surface)
+        result = try c.decode(MatchResult.self, forKey: .result)
+        score = try c.decode(String.self, forKey: .score)
+        serveRating = try c.decodeIfPresent(Int.self, forKey: .serveRating)
+        returnRating = try c.decodeIfPresent(Int.self, forKey: .returnRating)
+        movementRating = try c.decodeIfPresent(Int.self, forKey: .movementRating)
+        mentalRating = try c.decodeIfPresent(Int.self, forKey: .mentalRating)
+        preMatchNotes = try c.decode(String.self, forKey: .preMatchNotes)
+        postMatchNotes = try c.decode(String.self, forKey: .postMatchNotes)
+        takeaway = try c.decode(String.self, forKey: .takeaway)
+        preMatchAudioFile = try c.decodeIfPresent(String.self, forKey: .preMatchAudioFile)
+        postMatchAudioFile = try c.decodeIfPresent(String.self, forKey: .postMatchAudioFile)
+        photoFileNames = try c.decodeIfPresent([String].self, forKey: .photoFileNames) ?? []
+        isQuickLog = try c.decode(Bool.self, forKey: .isQuickLog)
     }
 
     /// True when the entry has at least one rating dimension set. The

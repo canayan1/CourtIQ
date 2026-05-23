@@ -1,5 +1,6 @@
 import SwiftUI
 import AVFoundation
+import PhotosUI
 
 /// Long-form match journal entry. Used for both creating a new journal
 /// entry (passing `entry: nil`) and editing/viewing an existing one. The
@@ -27,6 +28,15 @@ struct MatchJournalEntryView: View {
     @State private var preMatchAudioFile: String?
     @State private var postMatchAudioFile: String?
 
+    // Photo attachments — bare file names; capped at maxPhotos by UI.
+    @State private var photoFileNames: [String] = []
+    @State private var pickerSelections: [PhotosPickerItem] = []
+    @State private var fullscreenPhoto: String?
+
+    /// 4 is a deliberate ceiling: enough for scorecard + 2 court angles
+    /// + gear photo, not so many that the entry view scrolls forever.
+    private let maxPhotos = 4
+
     // One recorder per scope so the two sections can't compete for the
     // mic / share waveform state.
     @StateObject private var preRecorder = VoiceNoteRecorder()
@@ -53,6 +63,7 @@ struct MatchJournalEntryView: View {
                 preMatchBlock
                 postMatchBlock
                 takeawayBlock
+                photoBlock
                 if isEditing { deleteButton }
             }
             .padding(.horizontal, 22)
@@ -285,6 +296,150 @@ struct MatchJournalEntryView: View {
         }
     }
 
+    // MARK: - Photo block
+
+    private var photoBlock: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(spacing: 8) {
+                Image(systemName: "photo.on.rectangle.angled")
+                    .foregroundStyle(AppPalette.clay)
+                    .font(.subheadline.weight(.bold))
+                Text(lang.t("matches.photos_label"))
+                    .font(.caption.weight(.heavy))
+                    .tracking(0.6)
+                    .foregroundStyle(AppPalette.inkSoft)
+                    .textCase(.uppercase)
+                Spacer()
+                if photoFileNames.count < maxPhotos {
+                    PhotosPicker(
+                        selection: $pickerSelections,
+                        maxSelectionCount: maxPhotos - photoFileNames.count,
+                        matching: .images,
+                        photoLibrary: .shared()
+                    ) {
+                        Image(systemName: "plus.circle.fill")
+                            .font(.system(size: 22, weight: .semibold))
+                            .foregroundStyle(AppPalette.clay)
+                    }
+                    .accessibilityLabel(lang.t("matches.add_photo"))
+                }
+            }
+
+            if photoFileNames.isEmpty {
+                Text(lang.t("matches.photos_empty"))
+                    .font(.caption2)
+                    .foregroundStyle(AppPalette.inkSoft.opacity(0.7))
+            } else {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 10) {
+                        ForEach(photoFileNames, id: \.self) { name in
+                            photoThumb(name: name)
+                        }
+                    }
+                    .padding(.horizontal, 2)
+                }
+            }
+        }
+        .onChange(of: pickerSelections) { _, items in
+            guard !items.isEmpty else { return }
+            Task { await importPhotos(items) }
+        }
+        .fullScreenCover(item: Binding(
+            get: { fullscreenPhoto.map(FullscreenPhoto.init) },
+            set: { fullscreenPhoto = $0?.fileName }
+        )) { wrapper in
+            fullscreenViewer(fileName: wrapper.fileName)
+        }
+    }
+
+    private func photoThumb(name: String) -> some View {
+        ZStack(alignment: .topTrailing) {
+            Group {
+                if let url = MatchMediaStore.photoURL(forFileName: name, entryID: stableEntryID),
+                   let data = try? Data(contentsOf: url),
+                   let img = UIImage(data: data) {
+                    Image(uiImage: img)
+                        .resizable()
+                        .scaledToFill()
+                } else {
+                    // File missing — placeholder rather than crash. User
+                    // can tap × to clear the dangling reference.
+                    Rectangle().fill(AppPalette.sand)
+                }
+            }
+            .frame(width: 96, height: 96)
+            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+            .onTapGesture {
+                fullscreenPhoto = name
+            }
+
+            Button {
+                MatchMediaStore.removePhoto(named: name, forEntry: stableEntryID)
+                photoFileNames.removeAll { $0 == name }
+            } label: {
+                Image(systemName: "xmark.circle.fill")
+                    .font(.system(size: 18, weight: .semibold))
+                    .foregroundStyle(.white, AppPalette.alert)
+                    .padding(4)
+            }
+            .accessibilityLabel(lang.t("matches.remove_photo"))
+        }
+    }
+
+    private func fullscreenViewer(fileName: String) -> some View {
+        ZStack {
+            Color.black.ignoresSafeArea()
+            if let url = MatchMediaStore.photoURL(forFileName: fileName, entryID: stableEntryID),
+               let data = try? Data(contentsOf: url),
+               let img = UIImage(data: data) {
+                Image(uiImage: img)
+                    .resizable()
+                    .scaledToFit()
+                    .ignoresSafeArea()
+            }
+            VStack {
+                HStack {
+                    Spacer()
+                    Button {
+                        fullscreenPhoto = nil
+                    } label: {
+                        Image(systemName: "xmark.circle.fill")
+                            .font(.system(size: 30, weight: .bold))
+                            .foregroundStyle(.white.opacity(0.85), .black.opacity(0.35))
+                    }
+                    .padding()
+                }
+                Spacer()
+            }
+        }
+        .onTapGesture { fullscreenPhoto = nil }
+    }
+
+    /// Loads picked items, transcodes to JPEG@0.7, writes via
+    /// MatchMediaStore. Runs sequentially so multi-select doesn't race
+    /// the index counter.
+    private func importPhotos(_ items: [PhotosPickerItem]) async {
+        var nextIndex = (photoFileNames.compactMap { Int($0.dropLast(4)) }.max() ?? -1) + 1
+        for item in items {
+            if let data = try? await item.loadTransferable(type: Data.self),
+               let img = UIImage(data: data),
+               let jpeg = img.jpegData(compressionQuality: 0.7),
+               let name = MatchMediaStore.writePhoto(jpeg, forEntry: stableEntryID, index: nextIndex) {
+                photoFileNames.append(name)
+                nextIndex += 1
+                if photoFileNames.count >= maxPhotos { break }
+            }
+        }
+        pickerSelections.removeAll()
+    }
+
+    /// Wrapper makes the file name itself the Identifiable item for
+    /// `fullScreenCover(item:)`.
+    private struct FullscreenPhoto: Identifiable {
+        let fileName: String
+        var id: String { fileName }
+    }
+
     private func noteSection(
         iconName: String,
         iconColor: Color,
@@ -508,6 +663,7 @@ struct MatchJournalEntryView: View {
             takeaway: trimmedTakeaway,
             preMatchAudioFile: preMatchAudioFile,
             postMatchAudioFile: postMatchAudioFile,
+            photoFileNames: photoFileNames,
             isQuickLog: false
         )
         matches.save(newEntry)
@@ -531,6 +687,7 @@ struct MatchJournalEntryView: View {
         takeaway = entry.takeaway
         preMatchAudioFile = entry.preMatchAudioFile
         postMatchAudioFile = entry.postMatchAudioFile
+        photoFileNames = entry.photoFileNames
     }
 }
 

@@ -23,6 +23,7 @@ final class MatchEntryManager: ObservableObject {
 
     /// Insert a new entry or update an existing one (matched by `id`).
     func save(_ entry: MatchEntry) {
+        let isNew = !entries.contains { $0.id == entry.id }
         if let index = entries.firstIndex(where: { $0.id == entry.id }) {
             entries[index] = entry
         } else {
@@ -37,17 +38,29 @@ final class MatchEntryManager: ObservableObject {
             totalMatches: totalEntries,
             tripleRingDays: TripleRingTracker.shared.count
         )
+        // v1.1.C: an entry today means we don't need to nag the user
+        // about logging today. The repeats:true rule keeps tomorrow's
+        // nudge queued automatically.
+        Task { @MainActor in
+            NotificationManager.shared.cancelTodaysMatchLogNudgeIfLoggedAlready()
+        }
+        // Background hint to UI that the pre-ask sheet is now warranted
+        // — the post-3rd-entry threshold avoids nagging brand-new users.
+        if isNew && totalEntries == 3 {
+            NotificationCenter.default.post(name: .courtiqShouldOfferNotificationPreAsk, object: nil)
+        }
     }
 
     /// Remove an entry by id. Safe no-op if id is unknown. Also cleans
-    /// up any attached voice notes so orphaned audio doesn't slowly
-    /// fill the user's storage.
+    /// up any attached voice notes and photos so orphaned media doesn't
+    /// slowly fill the user's storage.
     func delete(_ id: String) {
         if let doomed = entries.first(where: { $0.id == id }) {
             MatchMediaStore.removeAudio(named: [
                 doomed.preMatchAudioFile,
                 doomed.postMatchAudioFile
             ])
+            MatchMediaStore.removeAllPhotos(forEntry: doomed.id)
         }
         entries.removeAll { $0.id == id }
         persist()

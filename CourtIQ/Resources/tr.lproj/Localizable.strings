@@ -283,6 +283,12 @@
 "voice.audio_session_error" = "Ses sistemi şu an kullanılamıyor. Birazdan tekrar dene.";
 "voice.record_start_error" = "Kayıt başlatılamadı. Tekrar dene.";
 "voice.storage_error" = "Kayıt diske yazılamadı. Yer aç ve tekrar dene.";
+
+/* ── Match photos (v1.1.B) ── */
+"matches.photos_label" = "Fotoğraflar";
+"matches.photos_empty" = "En fazla 4 fotoğraf ekle — skor kartı, kort, ekipman.";
+"matches.add_photo" = "Fotoğraf ekle";
+"matches.remove_photo" = "Bu fotoğrafı kaldır";
 "paywall.choose_plan" = "Planını seç";
 "paywall.best_value" = "En iyi değer";
 "paywall.continue" = "Devam";
@@ -505,6 +511,23 @@
 "notif.permission.later" = "Belki sonra";
 "notif.daily.title" = "Bugünün CourtIQ'i hazır";
 "notif.daily.body" = "5 hızlı senaryo, 3 dakika. Streak'i bozma.";
+
+/* ── Match-log nudge + weekly digest (v1.1.C) ── */
+"notif.match_log.title" = "Bugün oynadın mı?";
+"notif.match_log.body" = "Maç tazeyken 30 saniye ayırıp logla.";
+"notif.weekly.title" = "Geçen tenis haftası";
+"notif.weekly.body" = "Trend grafiğin tazelendi — neyin değiştiğini gör.";
+
+/* ── Notification settings screen (v1.1.C) ── */
+"notif.settings.title" = "Bildirimler";
+"notif.settings.daily_reminder" = "Günlük quiz hatırlatıcı";
+"notif.settings.daily_reminder_desc" = "Sabah tek hatırlatıcı — quiz streak'in canlı kalsın.";
+"notif.settings.match_log" = "Maç logu dürtüsü";
+"notif.settings.match_log_desc" = "Akşam hatırlatıcı — bugünün maçını sıcağı sıcağına logla.";
+"notif.settings.weekly" = "Haftalık trend özeti";
+"notif.settings.weekly_desc" = "Pazartesi sabahı puanların, maçların ve en büyük değişimlerin özeti.";
+"notif.settings.system_disabled" = "iOS Ayarlar'da bildirimler kapalı — bu seçenekleri kullanmak için CourtIQ için bildirimleri aç.";
+"notif.settings.open_settings" = "iOS Ayarlar'ı aç";
 
 /* ── Legal ── */
 "legal.privacy" = "Gizlilik Politikası";

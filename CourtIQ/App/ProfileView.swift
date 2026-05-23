@@ -480,10 +480,39 @@ struct ProfileView: View {
         }
     }
 
+    private var notificationsSection: some View {
+        // Wired in v1.1.C — surfaces the per-channel toggles for the
+        // daily quiz reminder, the match-log nudge, and the weekly digest.
+        // Kept above the legal section so it sits next to the user-controls
+        // band rather than at the very bottom.
+        NavigationLink {
+            NotificationSettingsView()
+        } label: {
+            HStack {
+                Label(lang.t("notif.settings.title"), systemImage: "bell.badge.fill")
+                    .font(.subheadline)
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .font(.footnote.weight(.semibold))
+                    .foregroundStyle(.tertiary)
+            }
+            .padding()
+            .background(AppPalette.parchment)
+            .overlay(
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .strokeBorder(AppPalette.sand, lineWidth: 1)
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        }
+        .buttonStyle(.plain)
+    }
+
     private var legalSection: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text(lang.t("profile.section_policies"))
                 .font(.title3.bold())
+
+            notificationsSection
 
             ForEach(LegalDocument.allCases) { document in
                 NavigationLink {

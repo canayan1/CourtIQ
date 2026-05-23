@@ -42,11 +42,63 @@ enum MatchMediaStore {
         }
     }
 
+    // MARK: - Photos
+
+    /// Returns the absolute URL for a given bare photo file name.
+    /// Photos live under `MatchPhotos/<entryID>/<n>.jpg`; the entryID
+    /// folder lets us nuke an entry's photos in one `removeItem` call.
+    static func photoURL(forFileName fileName: String, entryID: String) -> URL? {
+        guard let dir = photoDirectoryURL(forEntry: entryID) else { return nil }
+        return dir.appendingPathComponent(fileName)
+    }
+
+    /// Allocates and writes a new JPEG file for the given entry. Returns
+    /// the bare file name (e.g. "3.jpg") for storage in `MatchEntry.photoFileNames`.
+    /// Writes are JPEG at `quality` (default 0.7) so a 4-photo entry
+    /// typically lands under ~1.5 MB.
+    @discardableResult
+    static func writePhoto(_ data: Data, forEntry entryID: String, index: Int, quality: CGFloat = 0.7) -> String? {
+        guard let dir = photoDirectoryURL(forEntry: entryID) else { return nil }
+        ensureDirectoryExists(dir)
+        let name = "\(index).jpg"
+        let url = dir.appendingPathComponent(name)
+        do {
+            try data.write(to: url, options: .atomic)
+            return name
+        } catch {
+            return nil
+        }
+    }
+
+    /// Wipe all photos for an entry — typically called from
+    /// `MatchEntryManager.delete`. Folder is recreated lazily next time
+    /// a write hits the same entry.
+    static func removeAllPhotos(forEntry entryID: String) {
+        guard let dir = photoDirectoryURL(forEntry: entryID) else { return }
+        try? FileManager.default.removeItem(at: dir)
+    }
+
+    /// Remove one photo (used when the user taps × on a single thumbnail).
+    static func removePhoto(named fileName: String, forEntry entryID: String) {
+        guard let url = photoURL(forFileName: fileName, entryID: entryID) else { return }
+        try? FileManager.default.removeItem(at: url)
+    }
+
     // MARK: - Internals
 
     enum AudioScope: String {
         case pre
         case post
+    }
+
+    private static func photoDirectoryURL(forEntry entryID: String) -> URL? {
+        guard let docs = FileManager.default.urls(
+            for: .documentDirectory,
+            in: .userDomainMask
+        ).first else { return nil }
+        return docs
+            .appendingPathComponent("MatchPhotos", isDirectory: true)
+            .appendingPathComponent(entryID, isDirectory: true)
     }
 
     private static func audioDirectoryURL() -> URL? {

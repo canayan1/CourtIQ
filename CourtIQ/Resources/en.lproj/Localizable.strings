@@ -283,6 +283,12 @@
 "voice.audio_session_error" = "The audio system isn't available right now. Try again in a moment.";
 "voice.record_start_error" = "Couldn't start the recording. Try again.";
 "voice.storage_error" = "Couldn't save the recording to disk. Free up some space and try again.";
+
+/* ── Match photos (v1.1.B) ── */
+"matches.photos_label" = "Photos";
+"matches.photos_empty" = "Attach up to 4 photos — scorecard, court, gear.";
+"matches.add_photo" = "Add a photo";
+"matches.remove_photo" = "Remove this photo";
 "paywall.choose_plan" = "Choose your plan";
 "paywall.best_value" = "Best value";
 "paywall.continue" = "Continue";
@@ -505,6 +511,23 @@
 "notif.permission.later" = "Maybe later";
 "notif.daily.title" = "Today's CourtIQ is ready";
 "notif.daily.body" = "5 quick scenarios, 3 minutes. Keep your streak alive.";
+
+/* ── Match-log nudge + weekly digest (v1.1.C) ── */
+"notif.match_log.title" = "Played today?";
+"notif.match_log.body" = "Spend 30 seconds logging your match while it's fresh.";
+"notif.weekly.title" = "Last week of tennis";
+"notif.weekly.body" = "Your trends just refreshed — open CourtIQ to see what moved.";
+
+/* ── Notification settings screen (v1.1.C) ── */
+"notif.settings.title" = "Notifications";
+"notif.settings.daily_reminder" = "Daily quiz reminder";
+"notif.settings.daily_reminder_desc" = "One nudge in the morning to keep your quiz streak alive.";
+"notif.settings.match_log" = "Match log nudge";
+"notif.settings.match_log_desc" = "Evening reminder to log today's match while it's fresh.";
+"notif.settings.weekly" = "Weekly trend digest";
+"notif.settings.weekly_desc" = "Monday morning recap of your ratings, matches, and biggest shifts.";
+"notif.settings.system_disabled" = "Notifications are off in iOS Settings — turn them on for CourtIQ to use these toggles.";
+"notif.settings.open_settings" = "Open iOS Settings";
 
 /* ── Legal ── */
 "legal.privacy" = "Privacy Policy";
