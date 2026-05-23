@@ -12,7 +12,6 @@ struct TodayView: View {
     @State private var tipExpanded = true
     @State private var showDrill = false
 
-    private var dailyQuiz: Quiz { dailyQuizManager.todayQuiz }
     private var tip: DailyTip { tipManager.todayTip }
 
     var body: some View {
@@ -219,10 +218,14 @@ struct TodayView: View {
                 .foregroundStyle(.white)
                 .monospacedDigit()
             if showGrace {
+                // Snowflake = grace day in play. `.help` is macOS-only and
+                // a no-op on iOS; we expose the hint via VoiceOver instead
+                // (the parent stack's accessibilityLabel below covers value
+                // semantics; this hint adds the grace context).
                 Image(systemName: "snowflake")
                     .font(.system(size: 11, weight: .bold))
                     .foregroundStyle(.white.opacity(0.85))
-                    .help(lang.t("today.streak_grace_hint"))
+                    .accessibilityHint(lang.t("today.streak_grace_hint"))
             }
         }
         .padding(.horizontal, 14)
@@ -298,49 +301,9 @@ struct TodayView: View {
         .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
     }
 
-    // MARK: - Daily Quiz
-
-    private var dailyQuizCard: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack {
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(lang.t("today.daily_iq"))
-                        .font(.headline)
-                    Text(dailyQuizManager.isCompletedToday ? lang.t("today.completed") : lang.t("today.ready"))
-                        .font(.caption)
-                        .foregroundStyle(dailyQuizManager.isCompletedToday ? AppPalette.moss : AppPalette.inkSoft)
-                }
-                Spacer()
-                infoChip(systemImage: "list.bullet", text: "\(dailyQuiz.questions.count) \(lang.t("today.questions"))")
-            }
-
-            Text(dailyQuiz.focusLabel)
-                .font(.title3.bold())
-
-            infoChip(systemImage: "target", text: dailyQuiz.primaryFocusTag ?? lang.t("today.match_awareness"))
-
-            NavigationLink {
-                QuizView(quiz: dailyQuiz) { summary in
-                    dailyQuizManager.recordCompletion(summary: summary, isDaily: true)
-                    session.updateCurrentFocus(summary.focusLabel)
-                    session.updateTopMistakePatterns(summary.mistakeTypes)
-                }
-            } label: {
-                Text(dailyQuizManager.isCompletedToday ? lang.t("today.review") : lang.t("today.start_quiz_btn"))
-                    .font(.headline)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 13)
-            }
-            .buttonStyle(.borderedProminent)
-        }
-        .padding()
-        .background(AppPalette.parchment)
-        .overlay(
-            RoundedRectangle(cornerRadius: 22, style: .continuous)
-                .strokeBorder(AppPalette.sand, lineWidth: 1)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
-    }
+    // Daily quiz lives in the Practice tab now (post-pivot) — the daily
+    // ritual on Today is Drill + Pro Shot + Rings + Tip + Mobility. Quiz
+    // stats still flow through DailyQuizManager via Practice completions.
 
     // MARK: - Mobility
 

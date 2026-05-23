@@ -3,6 +3,7 @@ import SwiftUI
 struct PracticeView: View {
     @EnvironmentObject private var session: UserSessionManager
     @EnvironmentObject private var lang: LanguageManager
+    @EnvironmentObject private var dailyQuizManager: DailyQuizManager
     @State private var showPaywall = false
 
     var body: some View {
@@ -17,9 +18,14 @@ struct PracticeView: View {
                     ForEach(QuizCategory.allCases) { category in
                         if session.isPremiumUnlocked {
                             NavigationLink {
-                                QuizView(quiz: Quiz.practiceQuiz(category: category)) {
+                                QuizView(quiz: Quiz.practiceQuiz(category: category)) { summary in
+                                    // Record into the same manager that powers
+                                    // Profile stats (totalQuizzesCompleted /
+                                    // weekly history). isDaily: false keeps the
+                                    // "completed today" daily-ritual flag intact.
+                                    dailyQuizManager.recordCompletion(summary: summary, isDaily: false)
                                     session.updateCurrentFocus(category.title)
-                                    session.updateTopMistakePatterns($0.mistakeTypes)
+                                    session.updateTopMistakePatterns(summary.mistakeTypes)
                                 }
                             } label: {
                                 practiceCard(for: category, isLocked: false)

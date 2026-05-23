@@ -53,9 +53,14 @@ struct PaywallView: View {
             Text(lang.t("paywall.intro_body"))
                 .foregroundStyle(AppPalette.inkSoft)
 
+            // Sign in is OPTIONAL — purchase works as guest via StoreKit's
+            // Apple-ID-tied entitlement (no in-app account required, per
+            // App Store Review §3.1.1). Signing in only adds cross-device
+            // progress sync. The block below offers it as a benefit, not a
+            // gate, so the reviewer (and any guest) can complete purchase.
             if !session.isSignedInWithApple {
                 VStack(alignment: .leading, spacing: 10) {
-                    Text(lang.t("paywall.sign_in_required"))
+                    Text(lang.t("paywall.sign_in_optional"))
                         .font(.subheadline.weight(.semibold))
                     SignInWithAppleButton(.continue) { request in
                         request.requestedScopes = [.fullName, .email]
@@ -147,7 +152,7 @@ struct PaywallView: View {
                         .padding(.vertical, 14)
                     }
                     .buttonStyle(.borderedProminent)
-                    .disabled(isWorking || session.subscriptionManager.isPremiumUnlocked || !session.isSignedInWithApple)
+                    .disabled(isWorking || session.subscriptionManager.isPremiumUnlocked)
                 }
                 .padding()
                 .background(AppPalette.parchment)

@@ -254,6 +254,7 @@
 "paywall.title" = "Tam Erişim";
 "paywall.subtitle" = "CourtIQ'nun tüm yığınını aç";
 "paywall.sign_in_required" = "Satın alma öncesinde Apple ile giriş yapılması gereklidir.";
+"paywall.sign_in_optional" = "İsteğe bağlı — premium aboneliğini cihazların arasında senkronlamak için Apple ile giriş yap.";
 "paywall.what_unlocks" = "Ne açılır";
 "paywall.choose_plan" = "Planını seç";
 "paywall.best_value" = "En iyi değer";

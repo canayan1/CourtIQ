@@ -254,6 +254,7 @@
 "paywall.title" = "All Access";
 "paywall.subtitle" = "Unlock the full CourtIQ stack";
 "paywall.sign_in_required" = "Sign in with Apple is required before purchase.";
+"paywall.sign_in_optional" = "Optional — sign in with Apple to sync premium across your devices.";
 "paywall.what_unlocks" = "What unlocks";
 "paywall.choose_plan" = "Choose your plan";
 "paywall.best_value" = "Best value";
