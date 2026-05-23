@@ -207,6 +207,16 @@ struct AthleteFigureCanvas: View {
                                      breathBias: breath)
         let bodyColor = ink
         let accent = clay
+        // Joint anchor + clothing strokes use a darker version of the
+        // body color so they read as anatomical detail rather than noise.
+        let jointColor = Color(red: 0.10, green: 0.07, blue: 0.04)
+
+        // Spine geometry — shared between the body silhouette and the
+        // clothing strokes so shorts/tank lines tilt with the torso
+        // during folds and rotations.
+        let spineDir = normalize(CGPoint(x: absolute.chest.x - absolute.pelvis.x,
+                                         y: absolute.chest.y - absolute.pelvis.y))
+        let spinePerp = CGPoint(x: -spineDir.y, y: spineDir.x)
 
         // 1. Ground shadow — soft ellipse under the feet, scales with foot spread.
         let leftFoot  = absolute.leftFoot
@@ -223,31 +233,102 @@ struct AthleteFigureCanvas: View {
         ctx.fill(Path(ellipseIn: shadowRect),
                  with: .color(bodyColor.opacity(0.18)))
 
-        // 2. Limbs go down so the body silhouette overlaps shoulders/hips
-        //    cleanly. Back limbs first (z-order behind body), then front.
+        // 2. Back-side limbs (z-order behind body silhouette).
         drawLimb(ctx: &ctx, from: absolute.pelvis, mid: absolute.leftKnee, end: absolute.leftFoot,
                  widthStart: s * 0.075, widthMid: s * 0.045, widthEnd: s * 0.035, color: bodyColor.opacity(0.92))
         drawLimb(ctx: &ctx, from: absolute.chest, mid: absolute.leftElbow, end: absolute.leftHand,
                  widthStart: s * 0.055, widthMid: s * 0.038, widthEnd: s * 0.030, color: bodyColor.opacity(0.92))
 
-        // 3. Body silhouette — one continuous closed path from pelvis
-        //    around shoulders, neck and head, back down the other side.
-        drawBodySilhouette(ctx: &ctx, pose: absolute, size: s, color: bodyColor)
+        // 3. Body silhouette + head.
+        drawBodySilhouette(ctx: &ctx, pose: absolute, size: s, color: bodyColor,
+                           spinePerp: spinePerp)
 
-        // 4. Front-side limbs in accent color so the figure has clear
-        //    fore/back depth even at small sizes.
+        // 4. Front-side limbs in accent color for fore/back depth.
         drawLimb(ctx: &ctx, from: absolute.pelvis, mid: absolute.rightKnee, end: absolute.rightFoot,
                  widthStart: s * 0.075, widthMid: s * 0.045, widthEnd: s * 0.035, color: accent)
         drawLimb(ctx: &ctx, from: absolute.chest, mid: absolute.rightElbow, end: absolute.rightHand,
                  widthStart: s * 0.055, widthMid: s * 0.038, widthEnd: s * 0.030, color: accent)
 
-        // 5. Subtle dashed ground line — gives spatial grounding.
+        // 5. Clothing hints — tank top hem across the chest, shorts hem
+        //    across the pelvis. Both tilt with the spine perpendicular.
+        drawClothing(ctx: &ctx, pose: absolute, size: s,
+                     spinePerp: spinePerp, lineColor: jointColor.opacity(0.55))
+
+        // 6. Joint anchor dots — small filled circles at elbow + knee
+        //    give the figure recognizable anatomy at thumbnail scale.
+        let jointR = s * 0.018
+        for joint in [absolute.leftElbow, absolute.rightElbow,
+                      absolute.leftKnee, absolute.rightKnee] {
+            ctx.fill(
+                Path(ellipseIn: CGRect(x: joint.x - jointR, y: joint.y - jointR,
+                                       width: jointR * 2, height: jointR * 2)),
+                with: .color(jointColor.opacity(0.85))
+            )
+        }
+
+        // 7. Head highlight — small parchment-tinted oval offset toward
+        //    upper-left so the head reads as a 3D sphere lit from above.
+        let headR: CGFloat = s * 0.080
+        let highlightR = headR * 0.35
+        let hx = absolute.head.x - headR * 0.30
+        let hy = absolute.head.y - headR * 0.35
+        let highlightRect = CGRect(x: hx - highlightR,
+                                   y: hy - highlightR,
+                                   width: highlightR * 2,
+                                   height: highlightR * 2)
+        ctx.fill(Path(ellipseIn: highlightRect),
+                 with: .color(Color(red: 1.0, green: 0.97, blue: 0.92).opacity(0.18)))
+
+        // 8. Subtle dashed ground line — spatial grounding.
         var ground = Path()
         let groundY = s * 0.94
         ground.move(to: CGPoint(x: s * 0.08, y: groundY))
         ground.addLine(to: CGPoint(x: s * 0.92, y: groundY))
         ctx.stroke(ground, with: .color(bodyColor.opacity(0.18)),
                    style: StrokeStyle(lineWidth: 1.5, dash: [4, 6]))
+    }
+
+    /// Draws thin contour lines suggesting a tank top hem (just below
+    /// the chest) and a shorts hem (just below the pelvis). Both tilt
+    /// with the spine so the figure looks dressed even mid-rotation.
+    private func drawClothing(ctx: inout GraphicsContext, pose: AthletePose,
+                              size s: CGFloat, spinePerp: CGPoint, lineColor: Color) {
+        let chest = pose.chest
+        let pelvis = pose.pelvis
+
+        // Tank top hem — slight curve across the upper torso.
+        let chestHalfW = s * 0.080
+        let tankCenter = CGPoint(x: chest.x + spinePerp.y * s * 0.04,
+                                 y: chest.y + spinePerp.x * s * 0.04 * -1)
+        // Simpler: keep the hem at the chest's vertical band, tilted
+        // perpendicular to the spine.
+        let _ = tankCenter
+        let tankL = offset(chest, by: spinePerp, mag: chestHalfW * 0.85)
+        let tankR = offset(chest, by: spinePerp, mag: -chestHalfW * 0.85)
+        var tank = Path()
+        tank.move(to: tankL)
+        // Gentle dip toward the center (suggests neckline curve).
+        let dip = CGPoint(
+            x: (tankL.x + tankR.x) / 2 + spinePerp.x * s * 0.02 * -1,
+            y: (tankL.y + tankR.y) / 2 + spinePerp.y * s * 0.02 * -1
+        )
+        tank.addQuadCurve(to: tankR, control: dip)
+        ctx.stroke(tank, with: .color(lineColor),
+                   style: StrokeStyle(lineWidth: max(1.2, s * 0.008), lineCap: .round))
+
+        // Shorts hem — straight perpendicular line just below the pelvis.
+        let hipHalfW = s * 0.060
+        let shortsOffsetAlongSpine = s * 0.06
+        // Move slightly downward along the spine (toward the legs).
+        let spineDown = CGPoint(x: -spinePerp.y, y: spinePerp.x)
+        let shortsCenter = offset(pelvis, by: spineDown, mag: shortsOffsetAlongSpine)
+        let shortsL = offset(shortsCenter, by: spinePerp, mag: hipHalfW * 1.05)
+        let shortsR = offset(shortsCenter, by: spinePerp, mag: -hipHalfW * 1.05)
+        var shorts = Path()
+        shorts.move(to: shortsL)
+        shorts.addLine(to: shortsR)
+        ctx.stroke(shorts, with: .color(lineColor),
+                   style: StrokeStyle(lineWidth: max(1.2, s * 0.008), lineCap: .round))
     }
 
     /// Tapered limb — three control points (origin, joint, end) with
@@ -298,7 +379,8 @@ struct AthleteFigureCanvas: View {
     /// stub) drawn as one filled shape. Head is rendered as a separate
     /// filled ellipse on top so the geometry stays predictable across
     /// any pose orientation (no fragile arc-direction math).
-    private func drawBodySilhouette(ctx: inout GraphicsContext, pose: AthletePose, size: CGFloat, color: Color) {
+    private func drawBodySilhouette(ctx: inout GraphicsContext, pose: AthletePose,
+                                    size: CGFloat, color: Color, spinePerp: CGPoint) {
         let pelvis = pose.pelvis
         let chest = pose.chest
         let head = pose.head
@@ -307,11 +389,6 @@ struct AthleteFigureCanvas: View {
         let hipHalfW: CGFloat = size * 0.058
         let chestHalfW: CGFloat = size * 0.080
         let neckHalfW: CGFloat = size * 0.028
-
-        // Direction of the spine — perpendiculars tilt the silhouette
-        // during forward folds and rotations.
-        let spineDir = normalize(CGPoint(x: chest.x - pelvis.x, y: chest.y - pelvis.y))
-        let spinePerp = CGPoint(x: -spineDir.y, y: spineDir.x)
 
         let pelvisL = offset(pelvis, by: spinePerp, mag: hipHalfW)
         let pelvisR = offset(pelvis, by: spinePerp, mag: -hipHalfW)
@@ -379,20 +456,41 @@ struct AthleteFigureCanvas: View {
     private var clay: Color { AppPalette.clay }
 }
 
-// MARK: - Breath dot
+// MARK: - Breath tempo strip
 
-/// Tiny pulsing chip used next to the pose hint copy. Acts as a visual
-/// anchor reinforcing that the figure is breathing in the same rhythm
-/// (`AthleteFigureCanvas.breathOffset`).
+/// Visual companion to the figure's breath modulation. Renders a row
+/// of small dots that progressively fill on each breath cycle — three
+/// breaths in, then resets. The active dot pulses in sync with the
+/// figure's chest expansion so the user can use the strip as a tempo
+/// metronome ("hold until all three light up").
 struct BreathDot: View {
+    /// Total dots displayed. Three matches the "Hold 3 breaths" copy
+    /// in the hero hint.
+    let count: Int = 3
+    /// Seconds per breath — matches `AthleteFigureCanvas.breathOffset`
+    /// (4s sine), so the dot pulse stays phase-locked with the figure.
+    let breathDuration: TimeInterval = 4.0
+
     var body: some View {
         TimelineView(.animation(minimumInterval: 1.0/30.0)) { context in
             let t = context.date.timeIntervalSinceReferenceDate
-            let scale = 1.0 + 0.2 * sin(t * 2 * .pi / 4.0)
-            Circle()
-                .fill(AppPalette.clay)
-                .frame(width: 6, height: 6)
-                .scaleEffect(scale)
+            // Determine which dot is "active" — completes one breath each
+            // breathDuration, wraps after `count` breaths.
+            let cyclePosition = t.truncatingRemainder(dividingBy: Double(count) * breathDuration)
+            let activeIndex = Int(cyclePosition / breathDuration)
+            let activePulse = 0.7 + 0.3 * abs(sin(t * 2 * .pi / breathDuration))
+
+            HStack(spacing: 5) {
+                ForEach(0..<count, id: \.self) { i in
+                    let isActive = i == activeIndex
+                    let isFilled = i <= activeIndex
+                    Circle()
+                        .fill(isFilled ? AppPalette.clay : AppPalette.sand)
+                        .frame(width: 7, height: 7)
+                        .scaleEffect(isActive ? activePulse : 1.0)
+                        .animation(.easeInOut(duration: 0.2), value: activeIndex)
+                }
+            }
         }
     }
 }
