@@ -817,6 +817,189 @@ struct AthletePose {
         leftFoot:    .init(x: 0.18, y: 0.92),
         rightFoot:   .init(x: 0.84, y: 0.84)
     )
+
+    /// Child's pose / kneeling reach — heels under hips, torso folded
+    /// forward, arms extended along the floor in front. Reads as a
+    /// rest/decompress pose.
+    static let childsPose = AthletePose(
+        head:        .init(x: 0.36, y: 0.74),
+        chest:       .init(x: 0.46, y: 0.72),
+        pelvis:      .init(x: 0.62, y: 0.78),
+        leftElbow:   .init(x: 0.30, y: 0.78),
+        rightElbow:  .init(x: 0.30, y: 0.74),
+        leftHand:    .init(x: 0.14, y: 0.84),
+        rightHand:   .init(x: 0.14, y: 0.80),
+        leftKnee:    .init(x: 0.62, y: 0.88),
+        rightKnee:   .init(x: 0.62, y: 0.84),
+        leftFoot:    .init(x: 0.78, y: 0.92),
+        rightFoot:   .init(x: 0.78, y: 0.92)
+    )
+
+    /// Standing reach and rotate — both arms swung overhead, torso
+    /// rotated through the spine. Tilted slightly for visual energy.
+    static let standingReachRotate = AthletePose(
+        head:        .init(x: 0.50, y: 0.20),
+        chest:       .init(x: 0.50, y: 0.36),
+        pelvis:      .init(x: 0.50, y: 0.58),
+        leftElbow:   .init(x: 0.34, y: 0.18),
+        rightElbow:  .init(x: 0.66, y: 0.16),
+        leftHand:    .init(x: 0.24, y: 0.04),
+        rightHand:   .init(x: 0.78, y: 0.02),
+        leftKnee:    .init(x: 0.46, y: 0.75),
+        rightKnee:   .init(x: 0.54, y: 0.75),
+        leftFoot:    .init(x: 0.44, y: 0.92),
+        rightFoot:   .init(x: 0.56, y: 0.92),
+        motionHint: MotionHint(
+            start:   .init(x: 0.20, y: 0.14),
+            end:     .init(x: 0.80, y: 0.10),
+            control: .init(x: 0.50, y: -0.04)
+        )
+    )
+
+    /// Standing hip circle — one knee lifted, leg circling. Captured
+    /// at the mid-arc with knee high and out.
+    static let hipCircle = AthletePose(
+        head:        .init(x: 0.48, y: 0.18),
+        chest:       .init(x: 0.48, y: 0.34),
+        pelvis:      .init(x: 0.50, y: 0.56),
+        leftElbow:   .init(x: 0.38, y: 0.46),
+        rightElbow:  .init(x: 0.62, y: 0.46),
+        leftHand:    .init(x: 0.32, y: 0.60),
+        rightHand:   .init(x: 0.68, y: 0.60),
+        leftKnee:    .init(x: 0.72, y: 0.62),
+        rightKnee:   .init(x: 0.52, y: 0.74),
+        leftFoot:    .init(x: 0.86, y: 0.80),
+        rightFoot:   .init(x: 0.52, y: 0.92)
+    )
+
+    /// Glute bridge — lying supine, knees bent, hips lifted. Approximated
+    /// in profile so the elevated pelvis reads as the highest point.
+    static let gluteBridge = AthletePose(
+        head:        .init(x: 0.16, y: 0.82),
+        chest:       .init(x: 0.30, y: 0.78),
+        pelvis:      .init(x: 0.48, y: 0.62),
+        leftElbow:   .init(x: 0.20, y: 0.88),
+        rightElbow:  .init(x: 0.22, y: 0.82),
+        leftHand:    .init(x: 0.10, y: 0.92),
+        rightHand:   .init(x: 0.12, y: 0.86),
+        leftKnee:    .init(x: 0.68, y: 0.60),
+        rightKnee:   .init(x: 0.70, y: 0.66),
+        leftFoot:    .init(x: 0.84, y: 0.92),
+        rightFoot:   .init(x: 0.86, y: 0.92)
+    )
+
+    /// Pigeon pose hold — front leg forward bent across the body,
+    /// back leg extended straight behind, torso reaching forward
+    /// over the front shin.
+    static let pigeonPose = AthletePose(
+        head:        .init(x: 0.40, y: 0.66),
+        chest:       .init(x: 0.46, y: 0.62),
+        pelvis:      .init(x: 0.56, y: 0.72),
+        leftElbow:   .init(x: 0.30, y: 0.72),
+        rightElbow:  .init(x: 0.30, y: 0.68),
+        leftHand:    .init(x: 0.14, y: 0.82),
+        rightHand:   .init(x: 0.14, y: 0.78),
+        leftKnee:    .init(x: 0.46, y: 0.84),
+        rightKnee:   .init(x: 0.74, y: 0.86),
+        leftFoot:    .init(x: 0.66, y: 0.92),
+        rightFoot:   .init(x: 0.90, y: 0.92)
+    )
+
+    /// Lateral lunge / Cossack squat reach — feet wide, one knee bent
+    /// deep, opposite leg straight out to the side, arms reaching to
+    /// the bent-knee side for balance.
+    static let lateralLungeReach = AthletePose(
+        head:        .init(x: 0.42, y: 0.40),
+        chest:       .init(x: 0.46, y: 0.54),
+        pelvis:      .init(x: 0.48, y: 0.68),
+        leftElbow:   .init(x: 0.30, y: 0.52),
+        rightElbow:  .init(x: 0.30, y: 0.66),
+        leftHand:    .init(x: 0.16, y: 0.60),
+        rightHand:   .init(x: 0.18, y: 0.78),
+        leftKnee:    .init(x: 0.34, y: 0.82),
+        rightKnee:   .init(x: 0.80, y: 0.78),
+        leftFoot:    .init(x: 0.22, y: 0.92),
+        rightFoot:   .init(x: 0.92, y: 0.92)
+    )
+
+    /// Seated spinal twist — sitting cross-legged or with one knee up,
+    /// torso rotated, opposite hand braced behind for support.
+    static let seatedSpinalTwist = AthletePose(
+        head:        .init(x: 0.46, y: 0.40),
+        chest:       .init(x: 0.50, y: 0.56),
+        pelvis:      .init(x: 0.50, y: 0.72),
+        leftElbow:   .init(x: 0.34, y: 0.50),
+        rightElbow:  .init(x: 0.68, y: 0.62),
+        leftHand:    .init(x: 0.22, y: 0.40),
+        rightHand:   .init(x: 0.80, y: 0.74),
+        leftKnee:    .init(x: 0.34, y: 0.86),
+        rightKnee:   .init(x: 0.68, y: 0.82),
+        leftFoot:    .init(x: 0.22, y: 0.92),
+        rightFoot:   .init(x: 0.72, y: 0.92),
+        motionHint: MotionHint(
+            start:   .init(x: 0.30, y: 0.34),
+            end:     .init(x: 0.66, y: 0.36),
+            control: .init(x: 0.50, y: 0.20)
+        )
+    )
+
+    // MARK: - Title → pose mapping
+
+    /// Best-effort lookup that maps a free-form mobility movement title
+    /// (from `mobility_flows.json`) to one of our canned poses.
+    /// Tennis content uses dozens of variants ("Standing hip circles",
+    /// "Walking knee hugs with rotation", "Wall angel slides", …) —
+    /// rather than handcraft 70 poses, we extract a handful of strong
+    /// signal words and fall through to the closest archetype.
+    ///
+    /// Order matters — most-specific keywords go first.
+    static func match(forTitle title: String) -> AthletePose {
+        let t = title.lowercased()
+
+        // Exact named moves
+        if t.contains("world") || (t.contains("greatest") && t.contains("stretch")) {
+            return .lungeTwist
+        }
+        if t.contains("pigeon") { return .pigeonPose }
+        if t.contains("child") { return .childsPose }
+        if t.contains("90/90") || t.contains("90 90") { return .nineNinety }
+        if t.contains("cossack") { return .lateralLungeReach }
+        if t.contains("glute bridge") || (t.contains("bridge") && t.contains("hip")) {
+            return .gluteBridge
+        }
+
+        // Categorical signal words
+        if t.contains("twist") || t.contains("rotat") || t.contains("open-book") ||
+           t.contains("open book") || t.contains("thoracic") || t.contains("windmill") ||
+           t.contains("spinal") {
+            return t.contains("seat") || t.contains("kneel") ? .seatedSpinalTwist : .tSpineWindmill
+        }
+        if t.contains("lunge") || t.contains("hip flexor") { return .lungeTwist }
+        if t.contains("calf") || t.contains("ankle") { return .calfWall }
+        if t.contains("forward fold") || t.contains("hamstring") || t.contains("hinge") ||
+           t.contains("toe tap") || t.contains("toe-touch") || t.contains("rdl") {
+            return .forwardFold
+        }
+        if t.contains("hip circle") || t.contains("hip swing") || t.contains("hip opener") ||
+           t.contains("knee hug") || t.contains("leg swing") {
+            return .hipCircle
+        }
+        if t.contains("reach") && (t.contains("standing") || t.contains("overhead")) {
+            return .standingReachRotate
+        }
+        if t.contains("squat") || t.contains("shoulder slide") || t.contains("wall angel") ||
+           t.contains("shoulder plate") {
+            return .standingReachRotate
+        }
+        if t.contains("supine") || t.contains("lying") || t.contains("foam roll") ||
+           t.contains("figure-four") || t.contains("figure four") || t.contains("sleeper") {
+            return .gluteBridge
+        }
+        if t.contains("seat") || t.contains("cross-legged") {
+            return .seatedSpinalTwist
+        }
+        return .standing
+    }
 }
 
 #Preview {

@@ -58,9 +58,10 @@ struct MobilityFlowDetailView: View {
                     )
                     .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
 
-                    // Sequence — numbered circles replace the "Sequence"
-                    // text header and bullet glyphs.
-                    VStack(alignment: .leading, spacing: 12) {
+                    // Sequence — numbered circles + a small procedural
+                    // figure thumbnail per movement, so the list itself
+                    // visually previews each pose.
+                    VStack(alignment: .leading, spacing: 16) {
                         ForEach(Array(flow.movements.enumerated()), id: \.element.id) { idx, movement in
                             HStack(alignment: .top, spacing: 12) {
                                 ZStack {
@@ -71,6 +72,12 @@ struct MobilityFlowDetailView: View {
                                         .font(.system(size: 11, weight: .heavy, design: .rounded))
                                         .foregroundStyle(AppPalette.clay)
                                 }
+
+                                AthleteFigureCanvas(
+                                    staticPose: AthletePose.match(forTitle: movement.title)
+                                )
+                                .frame(width: 56, height: 64)
+
                                 VStack(alignment: .leading, spacing: 4) {
                                     Text(movement.localizedTitle(for: lang.language))
                                         .font(.subheadline.weight(.semibold))
@@ -128,23 +135,34 @@ struct MobilityFlowDetailView: View {
     }
 
     private var header: some View {
-        ZStack(alignment: .topTrailing) {
-            // Grass-court hero with figure motif
+        // Hero is now a live procedural-figure animation cycling through
+        // up to three poses derived from the flow's first few movements.
+        // Falls back to a sensible default sequence so we always show
+        // motion even when the lookup misses.
+        VStack(alignment: .leading, spacing: 12) {
             ZStack {
-                CourtPerspective(surface: .grass)
-                TrajectoryArc(color: .white.opacity(0.5), dashed: true, lineWidth: 2)
-                    .padding(.horizontal, 20)
-                TennisGlyph(kind: .mobility, color: .white.opacity(0.92), size: 64)
-                    .frame(width: 64, height: 64)
-                    .offset(x: 90, y: 0)
-            }
-            .frame(height: 150)
-            .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
-            .allowsHitTesting(false)
+                RoundedRectangle(cornerRadius: 22, style: .continuous)
+                    .fill(AppPalette.parchment)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 22, style: .continuous)
+                            .stroke(AppPalette.sand, lineWidth: 1)
+                    )
+                CourtTopDown(surface: .clay, lineOpacity: 0.20)
+                    .opacity(0.28)
+                    .frame(width: 120, height: 180)
+                    .offset(x: 100, y: 0)
+                    .allowsHitTesting(false)
 
-            VStack(alignment: .leading, spacing: 8) {
-                Spacer().frame(height: 130)
-                Text(flow.title)
+                AthleteFigureCanvas(
+                    poseSequence: heroPoseSequence,
+                    loopDuration: 6.0
+                )
+                .frame(width: 240, height: 240)
+            }
+            .frame(height: 240)
+
+            VStack(alignment: .leading, spacing: 4) {
+                Text(flow.localizedTitle(for: lang.language))
                     .font(.title2.bold())
                 HStack(spacing: 12) {
                     Label(flow.duration, systemImage: "timer")
@@ -154,6 +172,17 @@ struct MobilityFlowDetailView: View {
                 .foregroundStyle(AppPalette.inkSoft)
             }
         }
+    }
+
+    /// Build the hero's pose sequence from the first three movements in
+    /// the flow. If the flow is shorter, pad with a neutral standing
+    /// pose so the animation always has something to interpolate against.
+    private var heroPoseSequence: [AthletePose] {
+        let derived = flow.movements
+            .prefix(3)
+            .map { AthletePose.match(forTitle: $0.title) }
+        guard !derived.isEmpty else { return [.standing, .forwardFold, .lungeTwist] }
+        return derived.count == 1 ? [derived[0], .standing] : Array(derived)
     }
 
     private var lockedCard: some View {
