@@ -640,5 +640,19 @@
 "ai.paywall_price_hint" = "€4.99/yıldan başlar. Ayarlar'dan istediğin zaman iptal.";
 "ai.paywall_legal" = "AI Koç, Anthropic Claude tarafından çalışır. Destekçi başına günde 50 mesaja kadar.";
 
+/* AI Koç — paste import */
+"ai.import_menu" = "ChatGPT'den içe aktar";
+"ai.import_title" = "İçeriği aktar";
+"ai.import_kicker" = "ChatGPT sohbetlerinden";
+"ai.import_headline" = "Tenis geçmişini CourtIQ'ya getir.";
+"ai.import_body" = "ChatGPT'deki tenis sohbetinin en faydalı kısmını yapıştır — koç bundan sonra hatırlar, oyununu her seferinde yeniden anlatmana gerek kalmaz.";
+"ai.import_placeholder" = "ChatGPT'den kopyaladığını buraya yapıştır…";
+"ai.import_char_count_format" = "%d / %d karakter";
+"ai.import_save_cta" = "Koç bağlamıma kaydet";
+"ai.import_saved_title" = "Kaydedildi";
+"ai.import_saved_body" = "Koç bundan sonra her sohbette bu bağlamı kullanacak.";
+"ai.import_privacy_kicker" = "Ne saklıyoruz";
+"ai.import_privacy_body" = "Sadece buraya yapıştırdığın metin, hesabınla ilişkili. CourtIQ'nun Supabase altyapısında saklanır, yalnızca koçluk bağlamı oluşturmak için kullanılır. İstediğin zaman değiştirebilir veya silebilirsin.";
+
 /* Common */
 "common.dismiss" = "Kapat";

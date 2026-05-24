@@ -118,6 +118,54 @@ final class AIChatClient: ObservableObject {
         persistToDisk()
     }
 
+    /// Upsert the user's imported ChatGPT context into Supabase. The
+    /// Edge Function reads this row server-side on every chat call and
+    /// embeds the summary into the cached system prefix so subsequent
+    /// turns don't have to pass the raw text from the client.
+    ///
+    /// The row is keyed (user_id, source) — passing the same source
+    /// overwrites the prior import rather than stacking duplicates.
+    func saveImportedContext(
+        summary: String,
+        rawExcerpt: String,
+        source: String = "chatgpt_paste",
+        session: SupabaseSession
+    ) async throws {
+        struct Row: Codable {
+            let user_id: String
+            let source: String
+            let summary: String
+            let raw_excerpt: String?
+            let imported_at: String
+            let updated_at: String
+        }
+        let now = ISO8601DateFormatter().string(from: Date())
+        let row = Row(
+            user_id: session.userID,
+            source: source,
+            summary: summary,
+            raw_excerpt: rawExcerpt,
+            imported_at: now,
+            updated_at: now
+        )
+        do {
+            // user_id column is filled by Supabase via the JWT's `sub`
+            // claim only when we go through the RLS default; the
+            // simplest path is to let the database default the id
+            // and supply just the writable fields. RLS check passes
+            // because we WITH CHECK auth.uid() = user_id at insert.
+            _ = try await client.upsertRows(
+                row,
+                into: "ai_imported_context",
+                onConflict: "user_id,source",
+                session: session
+            ) as [Row]
+        } catch {
+            lastError = humanReadable(error)
+            throw error
+        }
+    }
+
     // MARK: - Local mutation helpers
 
     private func upsertLocal(

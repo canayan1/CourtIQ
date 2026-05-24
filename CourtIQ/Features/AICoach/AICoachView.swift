@@ -10,6 +10,7 @@ struct AICoachView: View {
 
     @State private var openNewChat = false
     @State private var openThread: AIChatThread?
+    @State private var openImport = false
 
     var body: some View {
         ScrollView {
@@ -29,8 +30,17 @@ struct AICoachView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    openNewChat = true
+                Menu {
+                    Button {
+                        openNewChat = true
+                    } label: {
+                        Label(lang.t("ai.new_chat"), systemImage: "plus.bubble.fill")
+                    }
+                    Button {
+                        openImport = true
+                    } label: {
+                        Label(lang.t("ai.import_menu"), systemImage: "doc.append.fill")
+                    }
                 } label: {
                     Image(systemName: "plus.circle.fill")
                         .font(.title2)
@@ -52,6 +62,11 @@ struct AICoachView: View {
                     .environmentObject(lang)
                     .environmentObject(aiClient)
             }
+        }
+        .sheet(isPresented: $openImport) {
+            AICoachImportView()
+                .environmentObject(lang)
+                .environmentObject(aiClient)
         }
         .onAppear { aiClient.refreshQuotaForToday() }
     }

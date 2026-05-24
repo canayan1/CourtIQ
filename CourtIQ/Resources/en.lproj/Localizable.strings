@@ -640,5 +640,19 @@
 "ai.paywall_price_hint" = "From €4.99/year. Cancel anytime in Settings.";
 "ai.paywall_legal" = "AI Coach is powered by Anthropic Claude. Up to 50 messages per day per supporter.";
 
+/* AI Coach — paste import */
+"ai.import_menu" = "Import from ChatGPT";
+"ai.import_title" = "Import context";
+"ai.import_kicker" = "From your ChatGPT chats";
+"ai.import_headline" = "Bring your tennis history into CourtIQ.";
+"ai.import_body" = "Paste the most useful chunk of your ChatGPT tennis conversation — the coach will remember it from now on, so you don't have to re-explain your game.";
+"ai.import_placeholder" = "Paste your ChatGPT excerpt here…";
+"ai.import_char_count_format" = "%d / %d characters";
+"ai.import_save_cta" = "Save to my coach context";
+"ai.import_saved_title" = "Saved";
+"ai.import_saved_body" = "Your coach will use this context in every future chat.";
+"ai.import_privacy_kicker" = "What we store";
+"ai.import_privacy_body" = "Only the text you paste here, attached to your account. Stored on CourtIQ's Supabase backend, used solely to build your coaching context. You can replace or delete it anytime.";
+
 /* Common */
 "common.dismiss" = "Dismiss";

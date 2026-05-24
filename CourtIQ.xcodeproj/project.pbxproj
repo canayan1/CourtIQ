@@ -66,6 +66,7 @@
 		A000000000000000000185 /* AICoachView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000184 /* AICoachView.swift */; };
 		A000000000000000000187 /* AICoachThreadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000186 /* AICoachThreadView.swift */; };
 		A000000000000000000189 /* AICoachPaywallStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000188 /* AICoachPaywallStub.swift */; };
+		A00000000000000000018B /* AICoachImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000018A /* AICoachImportView.swift */; };
 		A000000000000000000101 /* TourStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000100 /* TourStep.swift */; };
 		A000000000000000000111 /* MatchEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000110 /* MatchEntry.swift */; };
 		A000000000000000000113 /* MatchEntryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000112 /* MatchEntryManager.swift */; };
@@ -157,6 +158,7 @@
 		A000000000000000000184 /* AICoachView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AICoachView.swift; path = CourtIQ/Features/AICoach/AICoachView.swift; sourceTree = "<group>"; };
 		A000000000000000000186 /* AICoachThreadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AICoachThreadView.swift; path = CourtIQ/Features/AICoach/AICoachThreadView.swift; sourceTree = "<group>"; };
 		A000000000000000000188 /* AICoachPaywallStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AICoachPaywallStub.swift; path = CourtIQ/Features/AICoach/AICoachPaywallStub.swift; sourceTree = "<group>"; };
+		A00000000000000000018A /* AICoachImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AICoachImportView.swift; path = CourtIQ/Features/AICoach/AICoachImportView.swift; sourceTree = "<group>"; };
 		A000000000000000000100 /* TourStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TourStep.swift; path = CourtIQ/Features/Onboarding/TourStep.swift; sourceTree = "<group>"; };
 		A000000000000000000110 /* MatchEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchEntry.swift; path = CourtIQ/Core/Models/MatchEntry.swift; sourceTree = "<group>"; };
 		A000000000000000000112 /* MatchEntryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchEntryManager.swift; path = CourtIQ/Core/Models/MatchEntryManager.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 				A000000000000000000184 /* AICoachView.swift */,
 				A000000000000000000186 /* AICoachThreadView.swift */,
 				A000000000000000000188 /* AICoachPaywallStub.swift */,
+				A00000000000000000018A /* AICoachImportView.swift */,
 				A000000000000000000100 /* TourStep.swift */,
 				A000000000000000000110 /* MatchEntry.swift */,
 				A000000000000000000112 /* MatchEntryManager.swift */,
@@ -434,6 +437,7 @@
 				A000000000000000000185 /* AICoachView.swift in Sources */,
 				A000000000000000000187 /* AICoachThreadView.swift in Sources */,
 				A000000000000000000189 /* AICoachPaywallStub.swift in Sources */,
+				A00000000000000000018B /* AICoachImportView.swift in Sources */,
 				A000000000000000000101 /* TourStep.swift in Sources */,
 				A000000000000000000111 /* MatchEntry.swift in Sources */,
 				A000000000000000000113 /* MatchEntryManager.swift in Sources */,
