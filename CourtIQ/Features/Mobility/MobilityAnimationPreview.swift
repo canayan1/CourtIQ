@@ -279,13 +279,144 @@ struct AthleteFigureCanvas: View {
         ctx.fill(Path(ellipseIn: highlightRect),
                  with: .color(Color(red: 1.0, green: 0.97, blue: 0.92).opacity(0.18)))
 
-        // 8. Subtle dashed ground line — spatial grounding.
+        // 8. Face — soft closed-eye marks. Two short horizontal strokes
+        //    in a parchment tint. "Eyes closed" reads as focused /
+        //    breathing rather than blank, which matches the meditative
+        //    intent of a mobility hold.
+        drawFace(ctx: &ctx, head: absolute.head, headR: headR, size: s)
+
+        // 9. Limb highlight stripes — thin parchment-tinted ribbons
+        //    along the top edge of each limb, simulating light from
+        //    upper-left. Painted after the base limbs but before
+        //    silhouette overlap concerns matter, since they live
+        //    visually on top of the limb fill.
+        drawLimbHighlight(ctx: &ctx, from: absolute.chest, mid: absolute.rightElbow,
+                          end: absolute.rightHand, size: s)
+        drawLimbHighlight(ctx: &ctx, from: absolute.pelvis, mid: absolute.rightKnee,
+                          end: absolute.rightFoot, size: s)
+
+        // 10. Motion arrow — pose-driven optional arc with arrowhead.
+        if let hint = pose.motionHint {
+            drawMotionArrow(ctx: &ctx, hint: hint, size: s)
+        }
+
+        // 11. Subtle dashed ground line — spatial grounding.
         var ground = Path()
         let groundY = s * 0.94
         ground.move(to: CGPoint(x: s * 0.08, y: groundY))
         ground.addLine(to: CGPoint(x: s * 0.92, y: groundY))
         ctx.stroke(ground, with: .color(bodyColor.opacity(0.18)),
                    style: StrokeStyle(lineWidth: 1.5, dash: [4, 6]))
+    }
+
+    /// Soft "eyes closed" face — two short horizontal strokes set
+    /// against the head fill. Avoids open-eye dots which read as
+    /// cartoonish at thumbnail scale.
+    private func drawFace(ctx: inout GraphicsContext, head: CGPoint, headR: CGFloat, size s: CGFloat) {
+        // Eyes sit slightly above head center, well inside the
+        // silhouette so they never bleed off the head edge mid-pose.
+        let eyeY = head.y - headR * 0.05
+        let eyeDX = headR * 0.32
+        let eyeLength = headR * 0.30
+        let eyeColor = Color(red: 1.0, green: 0.97, blue: 0.92).opacity(0.55)
+        let stroke = StrokeStyle(lineWidth: max(1.4, s * 0.010), lineCap: .round)
+
+        var leftEye = Path()
+        leftEye.move(to: CGPoint(x: head.x - eyeDX - eyeLength / 2, y: eyeY))
+        leftEye.addLine(to: CGPoint(x: head.x - eyeDX + eyeLength / 2, y: eyeY))
+        ctx.stroke(leftEye, with: .color(eyeColor), style: stroke)
+
+        var rightEye = Path()
+        rightEye.move(to: CGPoint(x: head.x + eyeDX - eyeLength / 2, y: eyeY))
+        rightEye.addLine(to: CGPoint(x: head.x + eyeDX + eyeLength / 2, y: eyeY))
+        ctx.stroke(rightEye, with: .color(eyeColor), style: stroke)
+    }
+
+    /// Thin parchment-tinted ribbon laid along the upper edge of a
+    /// limb to suggest a single overhead-left light source. Only
+    /// applied to the front-side limbs so it doesn't add visual
+    /// noise behind the body silhouette.
+    private func drawLimbHighlight(ctx: inout GraphicsContext,
+                                   from a: CGPoint, mid b: CGPoint, end c: CGPoint,
+                                   size s: CGFloat) {
+        // We render along the "upper" perpendicular — the one with
+        // the more negative y component, matching a top-left light.
+        let nAB = upwardPerpendicular(from: a, to: b)
+        let nBC = upwardPerpendicular(from: b, to: c)
+        let nB = normalize(CGPoint(x: (nAB.x + nBC.x) / 2,
+                                   y: (nAB.y + nBC.y) / 2))
+
+        // Stripe sits just inside the limb edge — narrow ribbon (~3 pt
+        // at full size) at low alpha so it reads as a soft highlight.
+        let stripeWidth = max(2.0, s * 0.012)
+
+        let aHi  = offset(a, by: nAB, mag: s * 0.020)
+        let bHi  = offset(b, by: nB,  mag: s * 0.012)
+        let cHi  = offset(c, by: nBC, mag: s * 0.008)
+        let aLo  = offset(a, by: nAB, mag: s * 0.020 - stripeWidth)
+        let bLo  = offset(b, by: nB,  mag: s * 0.012 - stripeWidth)
+        let cLo  = offset(c, by: nBC, mag: s * 0.008 - stripeWidth)
+
+        var stripe = Path()
+        stripe.move(to: aHi)
+        stripe.addQuadCurve(to: cHi, control: bHi)
+        stripe.addLine(to: cLo)
+        stripe.addQuadCurve(to: aLo, control: bLo)
+        stripe.closeSubpath()
+
+        let highlight = Color(red: 1.0, green: 0.97, blue: 0.92).opacity(0.22)
+        ctx.fill(stripe, with: .color(highlight))
+    }
+
+    /// Returns the perpendicular vector with the smaller (more
+    /// negative) y component — i.e. the one pointing "up" in screen
+    /// space, suitable for a top-light highlight.
+    private func upwardPerpendicular(from a: CGPoint, to b: CGPoint) -> CGPoint {
+        let n = perpendicular(from: a, to: b)
+        return n.y <= 0 ? n : CGPoint(x: -n.x, y: -n.y)
+    }
+
+    /// Pose-driven motion indicator. The hint defines start + end
+    /// points in normalized [0,1] and an optional curve control —
+    /// renderer adds a small arrowhead at the end.
+    private func drawMotionArrow(ctx: inout GraphicsContext, hint: MotionHint, size s: CGFloat) {
+        let start = CGPoint(x: hint.start.x * s, y: hint.start.y * s)
+        let end   = CGPoint(x: hint.end.x * s,   y: hint.end.y * s)
+        let control = CGPoint(x: hint.control.x * s, y: hint.control.y * s)
+
+        var arc = Path()
+        arc.move(to: start)
+        arc.addQuadCurve(to: end, control: control)
+
+        let arrowColor = clay.opacity(0.85)
+        let lineWidth: CGFloat = max(1.8, s * 0.012)
+        ctx.stroke(arc, with: .color(arrowColor),
+                   style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
+
+        // Arrowhead — two short strokes 30° off the local tangent at
+        // the end point. Approximate the tangent as (end - control).
+        let tx = end.x - control.x
+        let ty = end.y - control.y
+        let len = max(sqrt(tx * tx + ty * ty), 0.0001)
+        let tnx = tx / len
+        let tny = ty / len
+
+        let headSize = s * 0.045
+        let cos30: CGFloat = 0.866
+        let sin30: CGFloat = 0.5
+
+        let leftDX = -tnx * cos30 - tny * sin30
+        let leftDY = -tny * cos30 + tnx * sin30
+        let rightDX = -tnx * cos30 + tny * sin30
+        let rightDY = -tny * cos30 - tnx * sin30
+
+        var head = Path()
+        head.move(to: end)
+        head.addLine(to: CGPoint(x: end.x + leftDX * headSize, y: end.y + leftDY * headSize))
+        head.move(to: end)
+        head.addLine(to: CGPoint(x: end.x + rightDX * headSize, y: end.y + rightDY * headSize))
+        ctx.stroke(head, with: .color(arrowColor),
+                   style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
     }
 
     /// Draws thin contour lines suggesting a tank top hem (just below
@@ -497,6 +628,15 @@ struct BreathDot: View {
 
 // MARK: - Pose model
 
+/// Per-pose optional motion indicator. Normalized [0,1] positions —
+/// the renderer scales into pixel space. `control` is the QuadCurve
+/// control point so the arrow can arc rather than going straight.
+struct MotionHint: Equatable {
+    var start: CGPoint
+    var end: CGPoint
+    var control: CGPoint
+}
+
 /// Normalized [0,1] joint positions for the athlete figure. All poses
 /// face the viewer in profile (left-foot first when reading L→R).
 /// `lerp` blends two poses; `absolute(in:breathBias:)` projects into
@@ -513,6 +653,9 @@ struct AthletePose {
     var rightKnee: CGPoint
     var leftFoot: CGPoint
     var rightFoot: CGPoint
+    /// Optional motion arrow rendered on top of the figure. Use
+    /// sparingly — overuse adds visual chrome.
+    var motionHint: MotionHint? = nil
 
     func absolute(in size: CGSize, breathBias: CGFloat) -> AthletePose {
         // Breath modulates only the chest+head (ribs expand). Adds a
@@ -542,7 +685,10 @@ struct AthletePose {
     }
 
     static func lerp(_ a: AthletePose, _ b: AthletePose, _ t: Double) -> AthletePose {
-        AthletePose(
+        // Show the destination's motion hint once we cross the midpoint
+        // — interpolating arrow endpoints looks chaotic in motion.
+        let hint = t < 0.5 ? a.motionHint : b.motionHint
+        return AthletePose(
             head: lerpPt(a.head, b.head, t),
             chest: lerpPt(a.chest, b.chest, t),
             pelvis: lerpPt(a.pelvis, b.pelvis, t),
@@ -553,7 +699,8 @@ struct AthletePose {
             leftKnee: lerpPt(a.leftKnee, b.leftKnee, t),
             rightKnee: lerpPt(a.rightKnee, b.rightKnee, t),
             leftFoot: lerpPt(a.leftFoot, b.leftFoot, t),
-            rightFoot: lerpPt(a.rightFoot, b.rightFoot, t)
+            rightFoot: lerpPt(a.rightFoot, b.rightFoot, t),
+            motionHint: hint
         )
     }
 
@@ -596,7 +743,8 @@ struct AthletePose {
 
     /// World's Greatest Stretch — front (right) leg in a deep 90° lunge,
     /// back (left) leg straight behind, right arm rotated up and out,
-    /// left hand planted on the floor inside the front foot.
+    /// left hand planted on the floor inside the front foot. Motion
+    /// arrow traces the thoracic rotation arc above the head.
     static let lungeTwist = AthletePose(
         head:        .init(x: 0.55, y: 0.36),
         chest:       .init(x: 0.55, y: 0.52),
@@ -608,7 +756,12 @@ struct AthletePose {
         leftKnee:    .init(x: 0.32, y: 0.84),
         rightKnee:   .init(x: 0.66, y: 0.78),
         leftFoot:    .init(x: 0.18, y: 0.92),
-        rightFoot:   .init(x: 0.70, y: 0.92)
+        rightFoot:   .init(x: 0.70, y: 0.92),
+        motionHint: MotionHint(
+            start:   .init(x: 0.38, y: 0.20),
+            end:     .init(x: 0.72, y: 0.20),
+            control: .init(x: 0.55, y: 0.08)
+        )
     )
 
     /// Standing calf wall press — back leg straight, heel pressed back
@@ -628,8 +781,8 @@ struct AthletePose {
     )
 
     /// Side-lying T-spine windmill — torso open to the ceiling, top arm
-    /// reaching out and back. Approximated as a deep cross-body
-    /// rotation for the side profile renderer.
+    /// reaching out and back. Motion arrow traces the windmill sweep
+    /// from the chest up and over.
     static let tSpineWindmill = AthletePose(
         head:        .init(x: 0.45, y: 0.32),
         chest:       .init(x: 0.52, y: 0.46),
@@ -641,7 +794,12 @@ struct AthletePose {
         leftKnee:    .init(x: 0.48, y: 0.78),
         rightKnee:   .init(x: 0.60, y: 0.78),
         leftFoot:    .init(x: 0.42, y: 0.92),
-        rightFoot:   .init(x: 0.62, y: 0.92)
+        rightFoot:   .init(x: 0.62, y: 0.92),
+        motionHint: MotionHint(
+            start:   .init(x: 0.45, y: 0.30),
+            end:     .init(x: 0.86, y: 0.18),
+            control: .init(x: 0.78, y: 0.05)
+        )
     )
 
     /// 90/90 hip seat — front and back legs both at 90°, torso upright.
