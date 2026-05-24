@@ -52,22 +52,24 @@ private struct RootView: View {
     @EnvironmentObject private var session: UserSessionManager
     @EnvironmentObject private var lang: LanguageManager
 
-    // Re-render when the user accepts the health disclaimer.
-    @State private var healthAcceptedAt = HealthAcknowledgment.currentVersion
+    // Observe the health-acknowledgment version directly from UserDefaults
+    // via @AppStorage so SwiftUI re-renders the moment HealthAcknowledgment
+    // .recordAcceptance() writes the new version. The earlier `@State`
+    // trick relied on SwiftUI re-evaluating a static read on body, which
+    // wasn't reliably tearing down HealthAcknowledgmentView when the
+    // user tapped accept — leaving them stuck on the disclaimer screen.
+    @AppStorage("CourtIQ.healthAck.version") private var healthAckVersion: Int = 0
 
     @ViewBuilder
     var body: some View {
         Group {
             if !session.hasCompletedOnboarding {
                 OnboardingView()
-            } else if !HealthAcknowledgment.isAccepted {
+            } else if healthAckVersion < HealthAcknowledgment.currentVersion {
                 // Block access to training/mobility/quiz content until the
                 // user explicitly accepts the assumption-of-risk language.
                 NavigationStack {
-                    HealthAcknowledgmentView(onAccept: {
-                        // Trigger a re-render so MainTabView appears.
-                        healthAcceptedAt = HealthAcknowledgment.currentVersion + 1
-                    })
+                    HealthAcknowledgmentView(onAccept: { /* AppStorage drives the re-render */ })
                 }
             } else {
                 MainTabView()
