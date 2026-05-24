@@ -73,10 +73,8 @@ struct MobilityFlowDetailView: View {
                                         .foregroundStyle(AppPalette.clay)
                                 }
 
-                                AthleteFigureCanvas(
-                                    staticPose: AthletePose.match(forTitle: movement.title)
-                                )
-                                .frame(width: 56, height: 64)
+                                HybridMobilityFigureThumb(title: movement.title)
+                                    .frame(width: 56, height: 64)
 
                                 VStack(alignment: .leading, spacing: 4) {
                                     Text(movement.localizedTitle(for: lang.language))
@@ -135,31 +133,15 @@ struct MobilityFlowDetailView: View {
     }
 
     private var header: some View {
-        // Hero is now a live procedural-figure animation cycling through
-        // up to three poses derived from the flow's first few movements.
-        // Falls back to a sensible default sequence so we always show
-        // motion even when the lookup misses.
+        // Hybrid hero: SF Symbol figure (Apple-grade anatomy) + court
+        // watermark + motion arc + palette tint (CourtIQ identity).
+        // HybridMobilityFigureHero owns the cross-fade timing and the
+        // .symbolEffect breath; we just pass it the flow's movement
+        // titles so it can pick the right symbol sequence.
         VStack(alignment: .leading, spacing: 12) {
-            ZStack {
-                RoundedRectangle(cornerRadius: 22, style: .continuous)
-                    .fill(AppPalette.parchment)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 22, style: .continuous)
-                            .stroke(AppPalette.sand, lineWidth: 1)
-                    )
-                CourtTopDown(surface: .clay, lineOpacity: 0.20)
-                    .opacity(0.28)
-                    .frame(width: 120, height: 180)
-                    .offset(x: 100, y: 0)
-                    .allowsHitTesting(false)
-
-                AthleteFigureCanvas(
-                    poseSequence: heroPoseSequence,
-                    loopDuration: 6.0
-                )
-                .frame(width: 240, height: 240)
-            }
-            .frame(height: 240)
+            HybridMobilityFigureHero(
+                movementTitles: flow.movements.map(\.title)
+            )
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(flow.localizedTitle(for: lang.language))
@@ -172,17 +154,6 @@ struct MobilityFlowDetailView: View {
                 .foregroundStyle(AppPalette.inkSoft)
             }
         }
-    }
-
-    /// Build the hero's pose sequence from the first three movements in
-    /// the flow. If the flow is shorter, pad with a neutral standing
-    /// pose so the animation always has something to interpolate against.
-    private var heroPoseSequence: [AthletePose] {
-        let derived = flow.movements
-            .prefix(3)
-            .map { AthletePose.match(forTitle: $0.title) }
-        guard !derived.isEmpty else { return [.standing, .forwardFold, .lungeTwist] }
-        return derived.count == 1 ? [derived[0], .standing] : Array(derived)
     }
 
     private var lockedCard: some View {
