@@ -16,6 +16,8 @@ struct ProfileView: View {
     @State private var showResetConfirmation = false
     @State private var isDeleting = false
     @State private var isResetting = false
+    @State private var showAICoach = false
+    @State private var showAIPaywall = false
 
     var body: some View {
         ScrollView {
@@ -23,6 +25,7 @@ struct ProfileView: View {
                 avatarHeaderCard
                 profileHeader
                 LevelProgressionPathView()
+                aiCoachSection
                 streakSection
                 historySection
                 betaFeedbackSection
@@ -38,6 +41,21 @@ struct ProfileView: View {
                 PaywallView(source: "Profile")
                     .environmentObject(session)
             }
+        }
+        .sheet(isPresented: $showAICoach) {
+            NavigationStack {
+                AICoachView()
+                    .environmentObject(lang)
+                    .environmentObject(AIChatClient.shared)
+                    .environmentObject(session)
+                    .environmentObject(matchManager)
+                    .environmentObject(dailyQuizManager)
+            }
+        }
+        .sheet(isPresented: $showAIPaywall) {
+            AICoachPaywallStub()
+                .environmentObject(lang)
+                .environmentObject(session)
         }
         .confirmationDialog(lang.t("profile.delete_title"), isPresented: $showDeleteConfirmation, titleVisibility: .visible) {
             Button(lang.t("common.delete"), role: .destructive) {
@@ -478,6 +496,65 @@ struct ProfileView: View {
                 }
             }
         }
+    }
+
+    /// AI Coach entry card. AI Coach is the single premium-gated
+    /// feature during the middle-path launch — every other surface
+    /// honours `LaunchOffer.allFeaturesFree`, but this one checks the
+    /// real StoreKit entitlement so it gives the tip jar a meaningful
+    /// thing to unlock.
+    private var aiCoachSection: some View {
+        let isPremium = session.subscriptionManager.entitlementState.isPremium
+        return Button {
+            if isPremium {
+                showAICoach = true
+            } else {
+                showAIPaywall = true
+            }
+        } label: {
+            HStack(alignment: .center, spacing: 14) {
+                ZStack {
+                    Circle()
+                        .fill(AppPalette.clay.opacity(0.14))
+                        .frame(width: 48, height: 48)
+                    Image(systemName: "sparkles")
+                        .font(.system(size: 22, weight: .bold))
+                        .foregroundStyle(AppPalette.clay)
+                }
+                VStack(alignment: .leading, spacing: 4) {
+                    HStack(spacing: 8) {
+                        Text(lang.t("ai.title"))
+                            .font(.headline)
+                            .foregroundStyle(AppPalette.ink)
+                        if !isPremium {
+                            Text(lang.t("ai.premium_badge"))
+                                .font(.caption2.weight(.heavy))
+                                .padding(.horizontal, 6)
+                                .padding(.vertical, 2)
+                                .background(AppPalette.gold.opacity(0.18))
+                                .foregroundStyle(AppPalette.gold)
+                                .clipShape(Capsule())
+                        }
+                    }
+                    Text(lang.t("ai.card_subtitle"))
+                        .font(.caption)
+                        .foregroundStyle(AppPalette.inkSoft)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .font(.footnote.weight(.semibold))
+                    .foregroundStyle(.tertiary)
+            }
+            .padding(16)
+            .background(AppPalette.parchment)
+            .overlay(
+                RoundedRectangle(cornerRadius: 18, style: .continuous)
+                    .stroke(AppPalette.sand, lineWidth: 1)
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+        }
+        .buttonStyle(.plain)
     }
 
     private var notificationsSection: some View {

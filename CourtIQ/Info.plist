@@ -42,6 +42,8 @@
 	<string></string>
 	<key>COURTIQ_DELETE_ACCOUNT_FUNCTION</key>
 	<string>delete-account</string>
+	<key>COURTIQ_AI_CHAT_FUNCTION</key>
+	<string>ai-chat</string>
 	<key>COURTIQ_FEEDBACK_EMAIL</key>
 	<string></string>
 	<key>NSMicrophoneUsageDescription</key>

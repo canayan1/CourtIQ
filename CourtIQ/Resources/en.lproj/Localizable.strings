@@ -606,3 +606,39 @@
 
 /* ── App ── */
 "app.account_issue" = "Account issue";
+
+/* ── AI Coach (v1.x) ── */
+"ai.title" = "AI Coach";
+"ai.kicker" = "Tennis-specific coach";
+"ai.headline" = "Talk through a match. Get a drill before you leave the screen.";
+"ai.card_subtitle" = "Reflect on a match, plan the next one, get drill suggestions tailored to your data.";
+"ai.premium_badge" = "Premium";
+"ai.new_chat" = "New chat";
+"ai.start_first" = "Start your first chat";
+"ai.empty_title" = "No conversations yet";
+"ai.empty_body" = "Ask CourtIQ Coach about a match, a weak rating, or your next opponent. The coach already knows your journal.";
+"ai.recent_chats" = "Recent chats";
+"ai.no_messages_yet" = "(no messages yet)";
+"ai.composer_placeholder" = "Ask about a match, a drill, or a pattern…";
+"ai.send" = "Send";
+"ai.thread_hint_kicker" = "Quick prompts";
+"ai.thread_hint_body" = "Try \"yarın Begum'la oynayacağım, plan?\" or \"son 5 maçta mental hep 2/5, ne yapayım?\" — the coach has your match journal and quiz history.";
+"ai.quota_remaining_format" = "%d messages left today";
+"ai.quota_unknown" = "Daily quota refreshes at midnight";
+"ai.quota_resets" = "Resets at midnight local time";
+"ai.error_sign_in_required" = "Sign in with Apple to use AI Coach.";
+"ai.error_send_generic" = "Couldn't send. Check your connection and try again.";
+
+/* AI Coach paywall stub */
+"ai.paywall_headline" = "AI Coach is the one premium-only feature.";
+"ai.paywall_subhead" = "Everything else in CourtIQ is free during launch. AI Coach lives behind the supporter tip because it has a real per-message cost.";
+"ai.paywall_bullet_context" = "Knows your last 5 matches, ratings, and quiz mistake patterns — no re-explaining your game every time.";
+"ai.paywall_bullet_library" = "Suggests drills, mobility flows, and training programs you already have inside CourtIQ — by name.";
+"ai.paywall_bullet_import" = "Import your ChatGPT tennis chats so context isn't lost. Paste once, the coach remembers.";
+"ai.paywall_bullet_privacy" = "No third-party tracking. Your messages stay on Apple-grade infrastructure.";
+"ai.paywall_cta" = "Support CourtIQ to unlock";
+"ai.paywall_price_hint" = "From €4.99/year. Cancel anytime in Settings.";
+"ai.paywall_legal" = "AI Coach is powered by Anthropic Claude. Up to 50 messages per day per supporter.";
+
+/* Common */
+"common.dismiss" = "Dismiss";

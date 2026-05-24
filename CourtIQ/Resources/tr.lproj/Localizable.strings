@@ -606,3 +606,39 @@
 
 /* ── App ── */
 "app.account_issue" = "Hesap sorunu";
+
+/* ── AI Coach (v1.x) ── */
+"ai.title" = "AI Koç";
+"ai.kicker" = "Tenise özel koç";
+"ai.headline" = "Bir maç hakkında konuş. Ekranı kapatmadan bir drill al.";
+"ai.card_subtitle" = "Maç üzerine düşün, bir sonrakini planla, verilerine göre özel drill önerileri al.";
+"ai.premium_badge" = "Premium";
+"ai.new_chat" = "Yeni sohbet";
+"ai.start_first" = "İlk sohbetini başlat";
+"ai.empty_title" = "Henüz sohbet yok";
+"ai.empty_body" = "CourtIQ Koç'a bir maç, düşük bir rating veya bir sonraki rakibini sor. Koç günlüğünü zaten biliyor.";
+"ai.recent_chats" = "Son sohbetler";
+"ai.no_messages_yet" = "(henüz mesaj yok)";
+"ai.composer_placeholder" = "Bir maç, bir drill veya bir patern sor…";
+"ai.send" = "Gönder";
+"ai.thread_hint_kicker" = "Hızlı sorular";
+"ai.thread_hint_body" = "\"Yarın Begum'la oynayacağım, plan?\" veya \"son 5 maçta mental hep 2/5, ne yapayım?\" gibi sorular dene — koç maç günlüğüne ve quiz geçmişine erişiyor.";
+"ai.quota_remaining_format" = "Bugün %d mesaj hakkın kaldı";
+"ai.quota_unknown" = "Günlük kontenjan gece yarısı yenilenir";
+"ai.quota_resets" = "Yerel saatle gece yarısı sıfırlanır";
+"ai.error_sign_in_required" = "AI Koç'u kullanmak için Apple ile giriş yap.";
+"ai.error_send_generic" = "Gönderilemedi. Bağlantını kontrol et ve tekrar dene.";
+
+/* AI Koç paywall */
+"ai.paywall_headline" = "AI Koç, lansman süresince tek premium özellik.";
+"ai.paywall_subhead" = "CourtIQ'da diğer her şey lansman boyunca ücretsiz. AI Koç gerçek bir mesaj başı maliyete sahip olduğu için destek tip jar'ın arkasında.";
+"ai.paywall_bullet_context" = "Son 5 maçını, ratinglerini ve quiz hatalarını biliyor — her seferinde oyununu yeniden anlatmana gerek yok.";
+"ai.paywall_bullet_library" = "CourtIQ içinde zaten sahip olduğun drill'leri, mobility flow'larını ve antrenman programlarını adıyla öneriyor.";
+"ai.paywall_bullet_import" = "ChatGPT'deki tenis sohbetlerini içe aktar — bağlam kaybolmasın. Bir kez yapıştır, koç hatırlar.";
+"ai.paywall_bullet_privacy" = "Üçüncü taraf takip yok. Mesajların Apple kalitesinde altyapıda kalır.";
+"ai.paywall_cta" = "Açmak için CourtIQ'yu destekle";
+"ai.paywall_price_hint" = "€4.99/yıldan başlar. Ayarlar'dan istediğin zaman iptal.";
+"ai.paywall_legal" = "AI Koç, Anthropic Claude tarafından çalışır. Destekçi başına günde 50 mesaja kadar.";
+
+/* Common */
+"common.dismiss" = "Kapat";

@@ -12,6 +12,7 @@ struct AppConfiguration {
     let yearlyProductID: String
     let premiumEntitlementID: String
     let deleteAccountFunctionName: String
+    let aiChatFunctionName: String
 
     static let shared = AppConfiguration()
 
@@ -26,6 +27,7 @@ struct AppConfiguration {
         yearlyProductID = Self.stringValue(for: "COURTIQ_YEARLY_PRODUCT_ID", bundle: bundle) ?? "com.courtiq.premium.yearly"
         premiumEntitlementID = Self.stringValue(for: "COURTIQ_PREMIUM_ENTITLEMENT_ID", bundle: bundle) ?? "premium_all_access"
         deleteAccountFunctionName = Self.stringValue(for: "COURTIQ_DELETE_ACCOUNT_FUNCTION", bundle: bundle) ?? "delete-account"
+        aiChatFunctionName = Self.stringValue(for: "COURTIQ_AI_CHAT_FUNCTION", bundle: bundle) ?? "ai-chat"
     }
 
     var hasRemoteSyncConfiguration: Bool {
@@ -213,6 +215,23 @@ final class SupabaseRESTClient {
         ) as EmptyResponse
     }
 
+    /// Posts a single AI Coach turn to the `ai-chat` Edge Function and
+    /// returns the assistant reply + the user's remaining daily quota.
+    /// Wraps the same auth headers + endpoint shape as
+    /// `invokeDeleteAccount`; only differs in that it actually carries
+    /// a JSON request body and decodes a JSON response.
+    func invokeAIChat(
+        request payload: AIChatRequestPayload,
+        session currentSession: SupabaseSession
+    ) async throws -> AIChatResponsePayload {
+        try await functionRequest(
+            method: .post,
+            functionName: configuration.aiChatFunctionName,
+            body: payload,
+            session: currentSession
+        )
+    }
+
     func selectRows<Response: Decodable>(
         from table: String,
         queryItems: [URLQueryItem] = [],
@@ -324,6 +343,24 @@ final class SupabaseRESTClient {
         request.httpMethod = method.rawValue
         applyBaseHeaders(to: &request, session: session)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        return try await perform(request)
+    }
+
+    /// Body-carrying variant — Edge Functions that need structured input
+    /// (e.g. ai-chat takes the user's message + tennis context). Keeps
+    /// the same auth + endpoint shape as the no-body version.
+    private func functionRequest<Body: Encodable, Response: Decodable>(
+        method: HTTPMethod,
+        functionName: String,
+        body: Body,
+        session: SupabaseSession
+    ) async throws -> Response {
+        let url = try endpointURL(path: "functions/v1/\(functionName)")
+        var request = URLRequest(url: url)
+        request.httpMethod = method.rawValue
+        applyBaseHeaders(to: &request, session: session)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try Self.encoder.encode(body)
         return try await perform(request)
     }
 
