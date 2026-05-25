@@ -21,6 +21,12 @@ struct CourtTapDrillView: View {
     @State private var revealedZone: DrillZone? = nil
     @State private var sessionFinished = false
     @State private var showResult = false
+    /// One-time onboarding sheet so first-time users understand the
+    /// "tap where you'd hit" interaction before the court appears.
+    /// Persisted in UserDefaults — shown only on the very first session
+    /// the user ever starts.
+    @AppStorage("CourtIQ.Drill.introSeen.v1") private var introSeen: Bool = false
+    @State private var showIntro: Bool = false
 
     private var currentDrill: CourtTapDrill? {
         drills.indices.contains(currentIndex) ? drills[currentIndex] : nil
@@ -55,6 +61,14 @@ struct CourtTapDrillView: View {
                     .environmentObject(lang)
                     .environmentObject(drillManager)
             }
+        }
+        .sheet(isPresented: $showIntro) {
+            DrillIntroSheet {
+                introSeen = true
+                showIntro = false
+            }
+            .environmentObject(lang)
+            .presentationDetents([.medium, .large])
         }
     }
 
@@ -124,16 +138,44 @@ struct CourtTapDrillView: View {
             }
             .frame(height: 360)
 
-            // Rationale reveal (only after tap)
+            // Either the pre-tap prompt OR the post-tap rationale —
+            // never both at the same time. The pre-tap prompt is a
+            // gentle one-liner so first-time users always know they
+            // need to tap the court; it doesn't crowd the experience.
             if revealedZone != nil {
                 rationaleCard(for: drill)
                     .transition(.opacity.combined(with: .move(edge: .bottom)))
+                    .padding(.horizontal, 22)
+            } else {
+                preTapPrompt
                     .padding(.horizontal, 22)
             }
 
             Spacer(minLength: 0)
         }
         .padding(.top, 4)
+    }
+
+    /// Quiet bottom-of-screen prompt shown until the user taps. Mirrors
+    /// the rationale card's chrome so the post-tap reveal feels like a
+    /// natural state transition, not a screen change.
+    private var preTapPrompt: some View {
+        HStack(spacing: 10) {
+            Image(systemName: "hand.tap.fill")
+                .font(.subheadline.weight(.bold))
+                .foregroundStyle(AppPalette.clay)
+            Text(lang.t("drill.pretap_prompt"))
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(AppPalette.ink)
+            Spacer()
+        }
+        .padding(14)
+        .background(AppPalette.parchment)
+        .overlay(
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(AppPalette.clay.opacity(0.30), lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
     }
 
     // MARK: - Court illustration
@@ -335,6 +377,13 @@ struct CourtTapDrillView: View {
         taps = []
         revealedTap = nil
         revealedZone = nil
+        if !introSeen {
+            // Slight delay so the sheet animates over the populated
+            // court rather than over a blank screen.
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                showIntro = true
+            }
+        }
     }
 
     private func handleTap(at point: CGPoint, layout: CourtLayout, drill: CourtTapDrill) {
@@ -381,5 +430,110 @@ struct CourtTapDrillView: View {
         case "cream": return .cream
         default:      return .clay
         }
+    }
+}
+
+// MARK: - Intro sheet
+
+/// One-time onboarding for the Daily Court Drill. The "0 UI text"
+/// design rule meant first-time users opened the drill and were
+/// confronted with a court and markers with no explanation. This
+/// sheet appears once, primes the user on the three on-court
+/// symbols (clay = YOU, ink = OPPONENT, dashed line = incoming ball),
+/// states the goal in one sentence, and gets out of the way.
+struct DrillIntroSheet: View {
+    @EnvironmentObject private var lang: LanguageManager
+    var onDismiss: () -> Void
+
+    var body: some View {
+        VStack(spacing: 20) {
+            ZStack {
+                Circle()
+                    .fill(AppPalette.clay.opacity(0.12))
+                    .frame(width: 64, height: 64)
+                Image(systemName: "hand.tap.fill")
+                    .font(.system(size: 28, weight: .bold))
+                    .foregroundStyle(AppPalette.clay)
+            }
+            .padding(.top, 12)
+
+            VStack(spacing: 6) {
+                Text(lang.t("drill.intro_title"))
+                    .font(.system(size: 22, weight: .heavy, design: .rounded))
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(AppPalette.ink)
+                Text(lang.t("drill.intro_subtitle"))
+                    .font(.subheadline)
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(AppPalette.inkSoft)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            .padding(.horizontal, 22)
+
+            VStack(spacing: 12) {
+                legendRow(symbol: "circle.fill", tint: AppPalette.clay,
+                          text: lang.t("drill.intro_legend_you"))
+                legendRow(symbol: "circle.fill", tint: AppPalette.ink,
+                          text: lang.t("drill.intro_legend_op"))
+                legendRow(symbol: "arrow.up.right",
+                          tint: AppPalette.inkSoft,
+                          text: lang.t("drill.intro_legend_ball"),
+                          dashed: true)
+            }
+            .padding(.horizontal, 22)
+
+            Spacer(minLength: 0)
+
+            Button(action: onDismiss) {
+                Text(lang.t("drill.intro_cta"))
+                    .font(.system(size: 16, weight: .bold, design: .rounded))
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 14)
+                    .background(AppPalette.clay)
+                    .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+            }
+            .buttonStyle(.plain)
+            .padding(.horizontal, 22)
+            .padding(.bottom, 22)
+        }
+        .background(AppPalette.cream)
+    }
+
+    private func legendRow(symbol: String, tint: Color, text: String, dashed: Bool = false) -> some View {
+        HStack(spacing: 12) {
+            ZStack {
+                Circle()
+                    .fill(tint.opacity(0.14))
+                    .frame(width: 36, height: 36)
+                if dashed {
+                    // Approximate the on-court dashed trajectory marker.
+                    Path { p in
+                        p.move(to: CGPoint(x: 8, y: 28))
+                        p.addLine(to: CGPoint(x: 28, y: 8))
+                    }
+                    .stroke(tint, style: StrokeStyle(lineWidth: 2, lineCap: .round, dash: [3, 5]))
+                    .frame(width: 36, height: 36)
+                } else {
+                    Image(systemName: symbol)
+                        .font(.system(size: 12, weight: .heavy))
+                        .foregroundStyle(.white)
+                        .padding(6)
+                        .background(Circle().fill(tint))
+                }
+            }
+            Text(text)
+                .font(.subheadline)
+                .foregroundStyle(AppPalette.ink)
+                .fixedSize(horizontal: false, vertical: true)
+            Spacer()
+        }
+        .padding(12)
+        .background(AppPalette.parchment)
+        .overlay(
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .stroke(AppPalette.sand, lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
     }
 }

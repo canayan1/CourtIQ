@@ -529,6 +529,15 @@
 "drill.replay" = "Replay";
 "drill.next" = "Next";
 "drill.see_result" = "See result";
+
+/* Drill — first-run intro + pre-tap prompt */
+"drill.pretap_prompt" = "Tap the court where you'd hit the next shot.";
+"drill.intro_title" = "Daily Court Drill";
+"drill.intro_subtitle" = "Five fast tennis decisions. You see the scenario — tap where YOU'd hit the next shot. Score reveals the green / yellow / red zone after each tap.";
+"drill.intro_legend_you" = "Clay marker = YOU on the court.";
+"drill.intro_legend_op" = "Dark marker = your opponent's position.";
+"drill.intro_legend_ball" = "Dashed line = where the ball is coming to you from.";
+"drill.intro_cta" = "Got it — let's go";
 "drill.share" = "Share result";
 "drill.label_excellent" = "Pro read.";
 "drill.label_strong" = "Strong read.";

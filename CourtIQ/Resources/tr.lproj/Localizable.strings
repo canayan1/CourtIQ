@@ -529,6 +529,15 @@
 "drill.replay" = "Tekrar oyna";
 "drill.next" = "Sıradaki";
 "drill.see_result" = "Sonucu gör";
+
+/* Drill — ilk açılış tanıtımı + tap öncesi yönlendirme */
+"drill.pretap_prompt" = "Sıradaki vuruşu nereye atarsın — korta dokun.";
+"drill.intro_title" = "Günlük Kort Drill'i";
+"drill.intro_subtitle" = "Beş hızlı tenis kararı. Senaryoyu gör — SEN bir sonraki topu nereye atacaksan oraya dokun. Her dokunuştan sonra yeşil / sarı / kırmızı bölge sana puanını gösterir.";
+"drill.intro_legend_you" = "Clay (turuncu) işaretçi = SEN korttasın.";
+"drill.intro_legend_op" = "Koyu işaretçi = rakibinin pozisyonu.";
+"drill.intro_legend_ball" = "Kesik çizgi = topun sana nereden geldiği.";
+"drill.intro_cta" = "Anladım — başlayalım";
 "drill.share" = "Paylaş";
 "drill.label_excellent" = "Pro okuma.";
 "drill.label_strong" = "Güçlü okuma.";
