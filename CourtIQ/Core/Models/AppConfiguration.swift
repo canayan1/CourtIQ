@@ -176,6 +176,31 @@ final class SupabaseRESTClient {
         return response.sessionValue
     }
 
+    /// Mint an anonymous Supabase session — used by the AI Coach when
+    /// the user hasn't connected an Apple ID yet. Server returns a
+    /// real JWT we can use against `ai-chat` so RLS still scopes to
+    /// `auth.uid()`. Anonymous sign-ins must be enabled in the
+    /// Supabase project Auth settings (Sign In/Up → Allow anonymous
+    /// sign-ins).
+    func signInAnonymously() async throws -> SupabaseSession {
+        struct EmptyBody: Encodable {}
+        // The /auth/v1/signup endpoint with no email/password creates
+        // an anonymous user when the provider is enabled. Newer
+        // GoTrue versions accept an explicit `data.is_anonymous` flag
+        // but the bare-body call also works.
+        struct AnonRequest: Encodable {
+            let data: [String: Bool]
+            init() { self.data = ["is_anonymous": true] }
+        }
+        let response: AuthResponse = try await authRequest(
+            method: .post,
+            path: "auth/v1/signup",
+            queryItems: [],
+            body: AnonRequest()
+        )
+        return response.sessionValue
+    }
+
     func refresh(session currentSession: SupabaseSession) async throws -> SupabaseSession {
         let response: AuthResponse = try await authRequest(
             method: .post,

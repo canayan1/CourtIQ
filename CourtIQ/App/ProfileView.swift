@@ -502,9 +502,14 @@ struct ProfileView: View {
     /// feature during the middle-path launch — every other surface
     /// honours `LaunchOffer.allFeaturesFree`, but this one checks the
     /// real StoreKit entitlement so it gives the tip jar a meaningful
-    /// thing to unlock.
+    /// thing to unlock. DEBUG builds bypass the gate so we can test
+    /// the full chat flow without a real purchase.
     private var aiCoachSection: some View {
+        #if DEBUG
+        let isPremium = true
+        #else
         let isPremium = session.subscriptionManager.entitlementState.isPremium
+        #endif
         return Button {
             if isPremium {
                 showAICoach = true

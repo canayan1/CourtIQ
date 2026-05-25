@@ -130,6 +130,23 @@ final class AuthManager: ObservableObject {
         save()
     }
 
+    /// Mint an anonymous Supabase session on demand. Used by AI Coach
+    /// (and any future feature that needs `auth.uid()` server-side)
+    /// when the user hasn't connected Apple Sign-In yet. Cached for
+    /// the lifetime of the install — same anonymous user gets the
+    /// same row scoping on every subsequent call.
+    @discardableResult
+    func ensureAnonymousSession() async throws -> SupabaseSession {
+        if let remoteSession { return remoteSession }
+        guard AppConfiguration.shared.hasRemoteSyncConfiguration else {
+            throw RemoteDataError.missingConfiguration
+        }
+        let session = try await client.signInAnonymously()
+        remoteSession = session
+        save()
+        return session
+    }
+
     func signInWithApple(
         credential: ASAuthorizationAppleIDCredential,
         preserving existing: SessionIdentity?
@@ -616,6 +633,14 @@ final class UserSessionManager: ObservableObject {
 
     var remoteSession: SupabaseSession? {
         authManager.remoteSession
+    }
+
+    /// Forwarded to `AuthManager.ensureAnonymousSession()` — see there
+    /// for semantics. Used by AI Coach to mint an on-demand JWT for
+    /// guest users so the chat works before Apple Sign-In is set up.
+    @discardableResult
+    func ensureAnonymousSession() async throws -> SupabaseSession {
+        try await authManager.ensureAnonymousSession()
     }
 
     var isSignedInWithApple: Bool {

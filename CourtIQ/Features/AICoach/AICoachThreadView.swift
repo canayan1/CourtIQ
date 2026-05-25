@@ -234,7 +234,14 @@ struct AICoachThreadView: View {
         errorBanner = nil
         defer { isSending = false }
 
-        guard let supabaseSession = session.remoteSession else {
+        // Mint or reuse a Supabase session. AI Coach works without
+        // Apple Sign-In by falling back to anonymous auth — RLS still
+        // scopes by auth.uid(), the user just isn't connected across
+        // devices until they upgrade to Apple Sign-In later.
+        let supabaseSession: SupabaseSession
+        do {
+            supabaseSession = try await session.ensureAnonymousSession()
+        } catch {
             errorBanner = lang.t("ai.error_sign_in_required")
             input = toSend
             return

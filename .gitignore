@@ -6,3 +6,6 @@ xcuserdata/
 DerivedData/
 build/
 *.moved-aside
+
+# Supabase CLI temp state (project link credentials, schema diff cache)
+supabase/.temp/

@@ -46,10 +46,17 @@ final class VoiceNoteRecorder: ObservableObject {
     /// not soliloquy.
     let maxDuration: TimeInterval = 90
 
-    /// Locale used for transcription. We let the system pick — it matches
-    /// the user's preferred language on the device, which is what the
-    /// user expects when they speak.
-    private let recognizer: SFSpeechRecognizer? = SFSpeechRecognizer()
+    /// Locale used for transcription. Defaults to the user's app
+    /// language preference (LanguageManager) so a Turkish user gets
+    /// Turkish transcription even when the device locale is English.
+    /// Falls back to the system default when our preferred locale
+    /// isn't supported by SFSpeechRecognizer.
+    private let recognizer: SFSpeechRecognizer? = {
+        let preferred = LanguageManager.shared.language == .turkish
+            ? Locale(identifier: "tr-TR")
+            : Locale(identifier: "en-US")
+        return SFSpeechRecognizer(locale: preferred) ?? SFSpeechRecognizer()
+    }()
 
     // MARK: - Private state
 
@@ -228,9 +235,14 @@ final class VoiceNoteRecorder: ObservableObject {
 
         let request = SFSpeechURLRecognitionRequest(url: url)
         request.shouldReportPartialResults = false
-        if recognizer.supportsOnDeviceRecognition {
-            request.requiresOnDeviceRecognition = true
-        }
+        // Best-effort on-device transcription — many locales (notably
+        // Turkish) don't have on-device models, so we DON'T force it.
+        // When the model is local, Apple uses it automatically. When
+        // it isn't, the audio briefly hits Apple's servers (still free,
+        // no API token cost on our side, no third-party). This trades
+        // a small amount of privacy for substantially better Turkish
+        // transcription quality.
+        request.requiresOnDeviceRecognition = false
 
         return try await withCheckedThrowingContinuation { (cont: CheckedContinuation<String, Error>) in
             recognizer.recognitionTask(with: request) { result, error in

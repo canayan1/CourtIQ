@@ -1,0 +1,6 @@
+# Minimal Supabase project config for the CourtIQ AI Coach backend.
+# Generated to make the Supabase CLI recognise this directory as a
+# project root so `supabase db push` and `supabase functions deploy`
+# both work without spawning a nested `supabase/supabase/` folder.
+
+project_id = "ybnodzzrkwennzpwyjmr"

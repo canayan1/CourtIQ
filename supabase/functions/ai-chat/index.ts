@@ -37,7 +37,7 @@ import { createClient } from "jsr:@supabase/supabase-js@2";
 // -------------------------------------------------------------
 
 const ANTHROPIC_API_KEY        = Deno.env.get("ANTHROPIC_API_KEY") ?? "";
-const ANTHROPIC_MODEL          = Deno.env.get("ANTHROPIC_MODEL") ?? "claude-haiku-3-5-20241022";
+const ANTHROPIC_MODEL          = Deno.env.get("ANTHROPIC_MODEL") ?? "claude-haiku-4-5";
 const DAILY_MESSAGE_CAP        = Number(Deno.env.get("MAX_DAILY_MESSAGES_PREMIUM") ?? 50);
 const SUPABASE_URL             = Deno.env.get("SUPABASE_URL") ?? "";
 const SUPABASE_ANON_KEY        = Deno.env.get("SUPABASE_ANON_KEY") ?? "";
@@ -114,35 +114,125 @@ Don't invent numbers. If a field is empty, say so plainly.
 - Always end with a drill, library pointer, or reframe offer
 `.trim();
 
-// In-app library catalog passed as cached context every request.
+// In-app library catalog + coaching reference passed as cached context
+// every request. The block is deliberately large (>2 KB) for two
+// reasons: it gives the coach a richer surface to draw concrete
+// references from, AND it pushes the cached prefix over Haiku 4.5's
+// 2048-token minimum so prompt caching actually triggers — which
+// drops per-message cost ~5x on every second-and-onward turn.
 // Bump LIBRARY_VERSION when content changes so cache invalidates cleanly.
-const LIBRARY_VERSION = "1.0.0";
+const LIBRARY_VERSION = "1.1.0";
 
 const APP_LIBRARY = `
 [APP_LIBRARY v${LIBRARY_VERSION}]
 
-Mobility flows (Practice tab → Mobility Library):
-- Serve Shoulder Reset (6 min, shoulders + thoracic rotation, pre/intra-match)
-- Lower-body Quick Reset (5 min, hips + ankles, pre-match warmup)
-- Pre-match Activation (4 min, full body, dynamic, replaces static stretch)
-- Cool-down Hip Decompression (8 min, post-match, passive)
-- Deep Stretch Sequence (12 min, post-match or rest day)
+This catalog is the source of truth for what content exists inside
+CourtIQ. When you suggest a drill, flow, or program, you MUST name an
+item from this list (or say plainly that no in-app item matches and
+suggest the action without claiming one exists).
 
-Training programs (Training tab → Programs):
-- PHEC 8-week (Plyometrics + Hypertrophy + Explosiveness + Conditioning,
-  3 sessions/week, bodyweight + bands)
-- Foundation Plan 8-week (entry level, 2 sessions/week, bodyweight only)
+==============================
+MOBILITY (Practice tab → Mobility Library)
+==============================
 
-Daily rituals (Today tab):
-- Court Tap Drill (90 seconds, mental reset + reaction, daily)
-- Pro Shot of the Day (animated pro shot pattern recognition, 1 per day)
-- Three Activity Rings (Drill + Match + Mobility — daily closure target)
+These flows are organized by intent. Each name below is exactly how it
+appears in the app, so reference it verbatim.
 
-Tracking (Matches tab):
-- Quick Log (30 second 4-rating capture, post-match)
-- Full Journal (long-form pre + post + takeaway, with voice notes from v1.1)
-- Coach Mode (v1.2 — QR-pair with hitting partner for shared match logging)
-- Trend Dashboard (Profile → Match insights, unlocks after 5 entries)
+  Pre-match / activation
+    • Pre-match Activation (4 min, full body, dynamic) — replaces
+      static stretching before play; ideal first thing on court.
+    • Serve Shoulder Reset (6 min, shoulders + thoracic rotation) —
+      between games when first-serve speed drops, or pre-serve warm-up.
+    • Lower-body Quick Reset (5 min, hips + ankles) — covers ankle
+      dorsiflexion, hip openers, posterior chain wake-up.
+
+  Recovery / cool-down
+    • Cool-down Hip Decompression (8 min, post-match, passive) —
+      hip flexor release, glute stretches, T-spine windmills.
+    • Deep Stretch Sequence (12 min, post-match or rest day) — full
+      body, slow holds, foam roll prompts.
+
+==============================
+TRAINING (Training tab → Programs)
+==============================
+
+  • PHEC 8-week
+      Plyometrics + Hypertrophy + Explosiveness + Conditioning.
+      3 sessions/week, bodyweight + optional bands. Designed for
+      tennis-specific power (jump rope, lateral bounds, single-leg
+      RDLs, med-ball rotations). Best fit for an intermediate
+      who already runs 3x/week and has 8 weeks before a tournament.
+
+  • Foundation Plan 8-week
+      Entry level. 2 sessions/week, bodyweight only. Squats, push-ups,
+      hip bridges, dead bugs, core holds. Suitable for first-time
+      strength work or coming back from a layoff.
+
+When the user asks for "a training plan", pick PHEC if they describe
+themselves as already active, Foundation if they describe themselves
+as new or rusty. Never invent a third program.
+
+==============================
+DAILY RITUALS (Today tab)
+==============================
+
+  • Court Tap Drill — 90-second mental reset and reaction trainer.
+    Spawns numbered targets the user taps in sequence. Counts toward
+    the daily Drill ring. Best between matches when focus is shaky.
+  • Pro Shot of the Day — daily animated pattern (e.g. "Sinner inside-
+    out forehand from deuce side"). Pattern recognition + visualisation.
+  • Three Activity Rings — Drill / Match / Mobility. Closing all three
+    is the daily target. Reference these by colour: clay for Drill,
+    moss for Match, gold for Mobility.
+
+==============================
+TRACKING (Matches tab)
+==============================
+
+  • Quick Log — 30-second post-match rating capture. Four 1–5
+    ratings: Serve, Return, Movement, Mental. Plus an optional
+    one-sentence takeaway. The fastest way to feed the data window.
+  • Full Journal — long-form entry. Pre-match notes, post-match
+    notes, one-sentence takeaway. Supports voice notes (on-device
+    dictation) and up to 4 photos per entry.
+  • Coach Mode (v1.2) — pair two iPhones via QR code at the start
+    of a match. Both players capture ratings about each other,
+    then a reveal screen shows the side-by-side comparison.
+  • Trend Dashboard (Profile → Match insights) — unlocks after the
+    user logs 5 entries. Four Swift Charts showing serve / return /
+    movement / mental over time, plus biggest improvement / decline
+    callouts.
+
+==============================
+COACHING VOCABULARY YOU MAY USE
+==============================
+
+Body and position cues that the player can feel:
+  • "split step rakibin topa vurmadan yarım saniye önce"
+  • "racket prep omuz dönüşüyle başlasın, kol değil"
+  • "kontakt anında ağırlık ön ayağa transfer"
+  • "follow-through tam karşıya, omuz aşağı"
+  • "BH return'de slice için raketi yukarı al"
+  • "approach shot sonrası split step file ortasında"
+  • "wide serve sonrası inside-out forehand'e dön"
+
+Surface-specific defaults (only when relevant):
+  • Clay: spin > flat, longer rallies, footwork on slides
+  • Hard: balanced, second serve must be deep
+  • Grass: lower bounce, slice rewarded, first serve premium
+
+==============================
+WHAT YOU MUST NEVER DO
+==============================
+
+  • Never invent app features that aren't in this catalog.
+  • Never recommend equipment purchases or third-party apps.
+  • Never compare to specific pros unless the user asked first.
+  • Never give medical or injury advice beyond "rest, see a
+    professional, redirect to a tennis question".
+  • Never use vague terms ("be more aggressive", "focus more"). Tie
+    every recommendation to a body part, a court position, or an
+    in-app item from this catalog.
 `.trim();
 
 
@@ -398,7 +488,12 @@ async function callAnthropic(
             {
                 type: "text",
                 text: cachedPrefix,
-                cache_control: { type: "ephemeral" },
+                // 1-hour TTL keeps the cache alive across a typical
+                // user session of several minutes; the default 5m
+                // window expires too quickly when a user reflects
+                // between turns. The longer TTL costs slightly more
+                // on write but reads back at the same low price.
+                cache_control: { type: "ephemeral", ttl: "1h" },
             },
         ],
         messages: [
@@ -415,7 +510,9 @@ async function callAnthropic(
                 "x-api-key": ANTHROPIC_API_KEY,
                 "anthropic-version": "2023-06-01",
                 "content-type": "application/json",
-                "anthropic-beta": "prompt-caching-2024-07-31",
+                // Standard caching is GA — no beta header needed.
+                // Extended (1h) TTL still requires the beta opt-in.
+                "anthropic-beta": "extended-cache-ttl-2025-04-11",
             },
             body: JSON.stringify(payload),
         });
