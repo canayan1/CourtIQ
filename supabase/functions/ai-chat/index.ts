@@ -31,6 +31,7 @@
 
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "jsr:@supabase/supabase-js@2";
+import { TENNIS_COACH_MANUAL, MANUAL_VERSION } from "./tennis_manual.ts";
 
 // -------------------------------------------------------------
 // Config
@@ -50,7 +51,11 @@ const SUPABASE_SERVICE_ROLE    = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? ""
 // CourtIQ Coach system prompt (v0.2 — approved in chat 2026-05-24).
 // Kept inline so the function is self-contained and version-controlled
 // alongside the deployment. Bump COURTIQ_PROMPT_VERSION when iterating.
-const COURTIQ_PROMPT_VERSION = "0.2";
+// Bump on system prompt rewrites. v0.3 is the first version that
+// ships with the full Tennis Coach Manual layered into the cached
+// prefix — earlier versions were vanilla Haiku with a thin instruction
+// shim.
+const COURTIQ_PROMPT_VERSION = "0.3";
 
 const SYSTEM_PROMPT = `
 You are CourtIQ Coach — a tennis-specific reflection partner inside the
@@ -389,6 +394,7 @@ Deno.serve(async (req) => {
         messagesRemainingToday: Math.max(0, DAILY_MESSAGE_CAP - (used + 1)),
         usage,
         promptVersion: COURTIQ_PROMPT_VERSION,
+        manualVersion: MANUAL_VERSION,
     }), { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } });
 });
 
@@ -498,6 +504,7 @@ function buildCachedPrefix(
     return [
         SYSTEM_PROMPT,
         APP_LIBRARY,
+        TENNIS_COACH_MANUAL,
         "[USER_PROFILE]",
         profileLine,
         "[RECENT_MATCHES]",
