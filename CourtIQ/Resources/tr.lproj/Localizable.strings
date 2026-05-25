@@ -496,6 +496,21 @@
 "matches.calendar_not_logged" = "kayıt yok";
 "matches.trend_title" = "Maç içgörüleri";
 "matches.trend_locked_title" = "Trendleri açmak için 5 maç logla";
+
+/* Trend dashboard v2 — daha zengin içgörüler */
+"matches.trend_record" = "Kayıt";
+"matches.trend_win_rate" = "Kazanma oranı";
+"matches.trend_total_one" = "maç";
+"matches.trend_total_many" = "maç";
+"matches.trend_by_surface" = "Yüzeye göre";
+"matches.trend_momentum" = "Son momentum";
+"matches.trend_momentum_subtitle" = "Son 3 puanlanan kayıt vs öncesi 3";
+"matches.trend_per_surface_ratings" = "Yüzeye göre puanlar";
+"matches.trend_themes" = "Tekrar eden temalar";
+"matches.trend_themes_subtitle" = "2+ takeaway'de geçen kelimeler";
+"matches.surface_clay" = "Toprak";
+"matches.surface_grass" = "Çim";
+"matches.surface_hard" = "Sert";
 "matches.trend_up" = "En büyük gelişme";
 "matches.trend_down" = "En büyük düşüş";
 "matches.trend_volume" = "Aylık maç sayısı";

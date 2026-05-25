@@ -74,13 +74,26 @@ struct MatchTrendDashboardView: View {
 
     @ViewBuilder
     private var unlockedContent: some View {
-        // Insight cards row
+        // 1. W-L summary header — top-line read
+        recordSummaryCard
+
+        // 2. Surface breakdown — how often + win % per court
+        if !matches.surfaceBreakdown.allSatisfy({ $0.total == 0 }) {
+            surfaceBreakdownCard
+        }
+
+        // 3. Momentum — last 3 vs prior 3 across dimensions
+        if hasMomentumData {
+            momentumCard
+        }
+
+        // 4. Biggest improvement / decline
         HStack(spacing: 12) {
             biggestChangeCard(direction: .up)
             biggestChangeCard(direction: .down)
         }
 
-        // Four dimension charts
+        // 5. Four dimension charts (the existing line series)
         VStack(spacing: 14) {
             chartCard(glyph: .serve,    keyPath: \.serveRating,    accent: AppPalette.clay)
             chartCard(glyph: .backhand, keyPath: \.returnRating,   accent: AppPalette.moss)
@@ -88,8 +101,303 @@ struct MatchTrendDashboardView: View {
             chartCard(glyph: .target,   keyPath: \.mentalRating,   accent: AppPalette.gold)
         }
 
-        // Monthly volume
+        // 6. Per-surface rating matrix — only when ≥2 surfaces have data
+        if surfacesWithData.count >= 2 {
+            perSurfaceRatingsCard
+        }
+
+        // 7. Recurring takeaway themes
+        let themes = matches.topTakeawayThemes(limit: 3)
+        if !themes.isEmpty {
+            takeawayThemesCard(themes)
+        }
+
+        // 8. Monthly volume bar chart
         monthlyVolumeCard
+    }
+
+    // MARK: - 1. Record summary
+
+    private var recordSummaryCard: some View {
+        let s = matches.winRateSummary
+        let pct = s.ratio.map { Int(($0 * 100).rounded()) }
+        return HStack(spacing: 16) {
+            VStack(alignment: .leading, spacing: 4) {
+                Text(lang.t("matches.trend_record"))
+                    .font(.caption.weight(.heavy))
+                    .foregroundStyle(AppPalette.inkSoft)
+                    .textCase(.uppercase)
+                    .tracking(0.5)
+                HStack(alignment: .firstTextBaseline, spacing: 8) {
+                    Text("\(s.wins)")
+                        .font(.system(size: 32, weight: .heavy, design: .rounded))
+                        .foregroundStyle(AppPalette.moss)
+                    Text("–")
+                        .font(.system(size: 22, weight: .heavy, design: .rounded))
+                        .foregroundStyle(AppPalette.inkSoft.opacity(0.6))
+                    Text("\(s.losses)")
+                        .font(.system(size: 32, weight: .heavy, design: .rounded))
+                        .foregroundStyle(AppPalette.alert)
+                }
+                Text("\(s.total) " + lang.t(s.total == 1 ? "matches.trend_total_one" : "matches.trend_total_many"))
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(AppPalette.inkSoft)
+            }
+            Spacer()
+            if let pct {
+                VStack(alignment: .trailing, spacing: 4) {
+                    Text("\(pct)%")
+                        .font(.system(size: 32, weight: .heavy, design: .rounded))
+                        .foregroundStyle(AppPalette.ink)
+                        .monospacedDigit()
+                    Text(lang.t("matches.trend_win_rate"))
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(AppPalette.inkSoft)
+                }
+            }
+        }
+        .padding(16)
+        .background(AppPalette.parchment)
+        .overlay(
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .stroke(AppPalette.sand, lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+    }
+
+    // MARK: - 2. Surface breakdown
+
+    private var surfaceBreakdownCard: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text(lang.t("matches.trend_by_surface"))
+                .font(.caption.weight(.heavy))
+                .foregroundStyle(AppPalette.inkSoft)
+                .textCase(.uppercase)
+                .tracking(0.5)
+
+            ForEach(matches.surfaceBreakdown.filter { $0.total > 0 }) { row in
+                surfaceRow(row)
+            }
+        }
+        .padding(16)
+        .background(AppPalette.parchment)
+        .overlay(
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .stroke(AppPalette.sand, lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+    }
+
+    private func surfaceRow(_ row: MatchEntryManager.SurfaceBreakdown) -> some View {
+        let surfaceColor: Color = {
+            switch row.surface {
+            case .clay:  return AppPalette.CourtSurface.clay.base
+            case .grass: return AppPalette.CourtSurface.grass.base
+            case .hard:  return AppPalette.CourtSurface.hard.base
+            }
+        }()
+        let label = lang.t("matches.surface_\(row.surface.rawValue)")
+        let pct = row.ratio.map { Int(($0 * 100).rounded()) }
+        return HStack(spacing: 12) {
+            RoundedRectangle(cornerRadius: 6, style: .continuous)
+                .fill(surfaceColor)
+                .frame(width: 22, height: 26)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(label)
+                    .font(.subheadline.weight(.semibold))
+                Text("\(row.wins)W · \(row.losses)L")
+                    .font(.caption)
+                    .foregroundStyle(AppPalette.inkSoft)
+            }
+            Spacer()
+            if let pct {
+                Text("\(pct)%")
+                    .font(.system(size: 17, weight: .heavy, design: .rounded))
+                    .foregroundStyle(AppPalette.ink)
+                    .monospacedDigit()
+            }
+        }
+    }
+
+    // MARK: - 3. Momentum (last 3 vs prior 3)
+
+    private var hasMomentumData: Bool {
+        [\MatchEntry.serveRating, \.returnRating, \.movementRating, \.mentalRating]
+            .contains { matches.momentum($0) != nil }
+    }
+
+    private var momentumCard: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text(lang.t("matches.trend_momentum"))
+                .font(.caption.weight(.heavy))
+                .foregroundStyle(AppPalette.inkSoft)
+                .textCase(.uppercase)
+                .tracking(0.5)
+            Text(lang.t("matches.trend_momentum_subtitle"))
+                .font(.caption2)
+                .foregroundStyle(AppPalette.inkSoft.opacity(0.7))
+
+            VStack(spacing: 6) {
+                momentumRow(label: lang.t("coach.dim_serve"),    glyph: .serve,    keyPath: \.serveRating,    accent: AppPalette.clay)
+                momentumRow(label: lang.t("coach.dim_return"),   glyph: .backhand, keyPath: \.returnRating,   accent: AppPalette.moss)
+                momentumRow(label: lang.t("coach.dim_movement"), glyph: .mobility, keyPath: \.movementRating, accent: Color(red: 0.30, green: 0.55, blue: 0.80))
+                momentumRow(label: lang.t("coach.dim_mental"),   glyph: .target,   keyPath: \.mentalRating,   accent: AppPalette.gold)
+            }
+        }
+        .padding(16)
+        .background(AppPalette.parchment)
+        .overlay(
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .stroke(AppPalette.sand, lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+    }
+
+    @ViewBuilder
+    private func momentumRow(label: String, glyph: TennisGlyphKind, keyPath: KeyPath<MatchEntry, Int?>, accent: Color) -> some View {
+        if let m = matches.momentum(keyPath) {
+            let deltaSign: String = {
+                if m.delta > 0.05 { return "+" }
+                if m.delta < -0.05 { return "" }   // negative already has minus
+                return "·"
+            }()
+            let deltaTint: Color = m.delta > 0.05 ? AppPalette.moss : (m.delta < -0.05 ? AppPalette.alert : AppPalette.inkSoft)
+            HStack(spacing: 10) {
+                TennisGlyph(kind: glyph, color: accent, size: 18)
+                Text(label)
+                    .font(.subheadline.weight(.semibold))
+                Spacer()
+                Text(String(format: "%.1f → %.1f", m.prior, m.recent))
+                    .font(.system(size: 13, weight: .semibold, design: .monospaced))
+                    .foregroundStyle(AppPalette.inkSoft)
+                Text("\(deltaSign)\(String(format: "%.1f", m.delta))")
+                    .font(.system(size: 13, weight: .heavy, design: .monospaced))
+                    .foregroundStyle(deltaTint)
+                    .padding(.horizontal, 6)
+                    .padding(.vertical, 2)
+                    .background(deltaTint.opacity(0.12))
+                    .clipShape(Capsule())
+            }
+        } else {
+            EmptyView()
+        }
+    }
+
+    // MARK: - 6. Per-surface rating matrix
+
+    private var surfacesWithData: [MatchSurface] {
+        matches.surfaceBreakdown.filter { $0.total > 0 }.map(\.surface)
+    }
+
+    private var perSurfaceRatingsCard: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text(lang.t("matches.trend_per_surface_ratings"))
+                .font(.caption.weight(.heavy))
+                .foregroundStyle(AppPalette.inkSoft)
+                .textCase(.uppercase)
+                .tracking(0.5)
+
+            VStack(spacing: 8) {
+                ForEach(surfacesWithData) { surface in
+                    perSurfaceRow(surface)
+                }
+            }
+        }
+        .padding(16)
+        .background(AppPalette.parchment)
+        .overlay(
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .stroke(AppPalette.sand, lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+    }
+
+    private func perSurfaceRow(_ surface: MatchSurface) -> some View {
+        let surfaceColor: Color = {
+            switch surface {
+            case .clay:  return AppPalette.CourtSurface.clay.base
+            case .grass: return AppPalette.CourtSurface.grass.base
+            case .hard:  return AppPalette.CourtSurface.hard.base
+            }
+        }()
+        let s = matches.averageRating(\.serveRating,    on: surface)
+        let r = matches.averageRating(\.returnRating,   on: surface)
+        let m = matches.averageRating(\.movementRating, on: surface)
+        let n = matches.averageRating(\.mentalRating,   on: surface)
+        return HStack(spacing: 10) {
+            RoundedRectangle(cornerRadius: 6, style: .continuous)
+                .fill(surfaceColor)
+                .frame(width: 18, height: 22)
+            Text(lang.t("matches.surface_\(surface.rawValue)"))
+                .font(.subheadline.weight(.semibold))
+                .frame(width: 60, alignment: .leading)
+            Spacer()
+            HStack(spacing: 10) {
+                ratingPill(s, color: AppPalette.clay)
+                ratingPill(r, color: AppPalette.moss)
+                ratingPill(m, color: Color(red: 0.30, green: 0.55, blue: 0.80))
+                ratingPill(n, color: AppPalette.gold)
+            }
+        }
+    }
+
+    private func ratingPill(_ value: Double?, color: Color) -> some View {
+        Group {
+            if let v = value {
+                Text(String(format: "%.1f", v))
+                    .font(.system(size: 12, weight: .heavy, design: .rounded))
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 6)
+                    .padding(.vertical, 3)
+                    .background(color)
+                    .clipShape(Capsule())
+            } else {
+                Text("—")
+                    .font(.system(size: 12, weight: .bold, design: .rounded))
+                    .foregroundStyle(AppPalette.inkSoft.opacity(0.5))
+                    .frame(width: 22)
+            }
+        }
+    }
+
+    // MARK: - 7. Takeaway themes
+
+    private func takeawayThemesCard(_ themes: [(word: String, count: Int)]) -> some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text(lang.t("matches.trend_themes"))
+                .font(.caption.weight(.heavy))
+                .foregroundStyle(AppPalette.inkSoft)
+                .textCase(.uppercase)
+                .tracking(0.5)
+            Text(lang.t("matches.trend_themes_subtitle"))
+                .font(.caption2)
+                .foregroundStyle(AppPalette.inkSoft.opacity(0.7))
+
+            HStack(spacing: 8) {
+                ForEach(themes, id: \.word) { theme in
+                    HStack(spacing: 4) {
+                        Text(theme.word)
+                            .font(.subheadline.weight(.bold))
+                            .foregroundStyle(AppPalette.ink)
+                        Text("×\(theme.count)")
+                            .font(.caption.weight(.heavy))
+                            .foregroundStyle(AppPalette.clay)
+                            .monospacedDigit()
+                    }
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 6)
+                    .background(AppPalette.clay.opacity(0.10))
+                    .clipShape(Capsule())
+                }
+            }
+        }
+        .padding(16)
+        .background(AppPalette.parchment)
+        .overlay(
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .stroke(AppPalette.sand, lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
     }
 
     // MARK: - Dimension chart card

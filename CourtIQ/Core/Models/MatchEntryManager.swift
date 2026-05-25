@@ -174,6 +174,119 @@ final class MatchEntryManager: ObservableObject {
         return Double(values.reduce(0, +)) / Double(values.count)
     }
 
+    // MARK: - Richer insight aggregates (Trend dashboard v2)
+
+    /// W-L-Win% summary across all entries. Used by the dashboard
+    /// header card so users see a top-line read on their record.
+    struct WinRateSummary: Equatable {
+        let wins: Int
+        let losses: Int
+        var total: Int { wins + losses }
+        /// 0..1, or nil if no entries.
+        var ratio: Double? {
+            guard total > 0 else { return nil }
+            return Double(wins) / Double(total)
+        }
+    }
+
+    var winRateSummary: WinRateSummary {
+        let wins = entries.filter { $0.result == .won }.count
+        let losses = entries.filter { $0.result == .lost }.count
+        return WinRateSummary(wins: wins, losses: losses)
+    }
+
+    /// Per-surface breakdown: counts + win rate. Empty surfaces are
+    /// included so the dashboard always shows the same row order.
+    struct SurfaceBreakdown: Identifiable, Equatable {
+        let surface: MatchSurface
+        let wins: Int
+        let losses: Int
+        var id: String { surface.rawValue }
+        var total: Int { wins + losses }
+        var ratio: Double? {
+            guard total > 0 else { return nil }
+            return Double(wins) / Double(total)
+        }
+    }
+
+    var surfaceBreakdown: [SurfaceBreakdown] {
+        MatchSurface.allCases.map { surface in
+            let group = entries.filter { $0.surface == surface }
+            let wins = group.filter { $0.result == .won }.count
+            let losses = group.filter { $0.result == .lost }.count
+            return SurfaceBreakdown(surface: surface, wins: wins, losses: losses)
+        }
+    }
+
+    /// Average rating per dimension restricted to a single surface.
+    /// Nil when no matches on that surface have rated the dimension.
+    func averageRating(_ keyPath: KeyPath<MatchEntry, Int?>,
+                       on surface: MatchSurface) -> Double? {
+        let values = entries
+            .filter { $0.surface == surface }
+            .compactMap { $0[keyPath: keyPath] }
+        guard !values.isEmpty else { return nil }
+        return Double(values.reduce(0, +)) / Double(values.count)
+    }
+
+    /// "Last N vs prior N" momentum comparison for one rating
+    /// dimension. Used by the dashboard's momentum card so users
+    /// see whether their game is trending up or down recently.
+    /// Returns nil when there aren't 2*N rated entries to compare.
+    struct MomentumDelta: Equatable {
+        let recent: Double
+        let prior: Double
+        var delta: Double { recent - prior }
+    }
+
+    func momentum(_ keyPath: KeyPath<MatchEntry, Int?>,
+                  window: Int = 3) -> MomentumDelta? {
+        // entries already sorted newest-first; compactMap rating values
+        // in that order so "recent" = first N rated, "prior" = next N.
+        let rated = entries.compactMap { entry -> Int? in entry[keyPath: keyPath] }
+        guard rated.count >= window * 2 else { return nil }
+        let recent = Array(rated.prefix(window))
+        let prior = Array(rated.dropFirst(window).prefix(window))
+        let recentAvg = Double(recent.reduce(0, +)) / Double(recent.count)
+        let priorAvg = Double(prior.reduce(0, +)) / Double(prior.count)
+        return MomentumDelta(recent: recentAvg, prior: priorAvg)
+    }
+
+    /// Top-N most-mentioned single-word themes in takeaway lines.
+    /// Coach Mode and quick logs both feed into this — themes are the
+    /// fastest read on what's stuck in the player's head across their
+    /// matches.
+    func topTakeawayThemes(limit: Int = 3) -> [(word: String, count: Int)] {
+        // Tennis-domain stop words: filler that adds no signal even
+        // though it appears often (TR + EN). Lowercased compare.
+        let stop: Set<String> = [
+            "ve", "ile", "için", "ben", "bu", "şu", "o", "a", "an", "the", "and",
+            "to", "of", "in", "on", "at", "is", "was", "were", "have", "had",
+            "did", "do", "i", "my", "me", "you", "your", "he", "she", "we",
+            "they", "it", "be", "with", "for", "but", "or", "so", "than",
+            "match", "maç", "set", "game", "gameplay", "play", "playing",
+            "today", "bugun", "bugün", "çok", "cok", "iyi", "kötü", "kotu",
+            "yine", "tekrar", "yeni", "bir", "daha", "ama", "olmadı", "oldu",
+            "biraz", "kadar", "gibi", "her", "hep", "olarak", "gerek"
+        ]
+        var counts: [String: Int] = [:]
+        for entry in entries {
+            let words = entry.takeaway
+                .lowercased()
+                .components(separatedBy: CharacterSet.alphanumerics.inverted)
+                .filter { !$0.isEmpty && $0.count >= 3 && !stop.contains($0) }
+            for w in Set(words) {   // dedupe within one takeaway
+                counts[w, default: 0] += 1
+            }
+        }
+        return counts
+            .map { (word: $0.key, count: $0.value) }
+            .filter { $0.count >= 2 }   // need >=2 different matches mentioning it
+            .sorted { $0.count > $1.count }
+            .prefix(limit)
+            .map { $0 }
+    }
+
     // MARK: - Persistence
 
     private func persist() {

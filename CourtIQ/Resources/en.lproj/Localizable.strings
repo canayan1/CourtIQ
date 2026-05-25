@@ -496,6 +496,21 @@
 "matches.calendar_not_logged" = "no entry";
 "matches.trend_title" = "Match insights";
 "matches.trend_locked_title" = "Log 5 matches to unlock your trends";
+
+/* Trend dashboard v2 — richer insights */
+"matches.trend_record" = "Record";
+"matches.trend_win_rate" = "Win rate";
+"matches.trend_total_one" = "match";
+"matches.trend_total_many" = "matches";
+"matches.trend_by_surface" = "By surface";
+"matches.trend_momentum" = "Recent momentum";
+"matches.trend_momentum_subtitle" = "Last 3 rated entries vs prior 3";
+"matches.trend_per_surface_ratings" = "Ratings by surface";
+"matches.trend_themes" = "Recurring themes";
+"matches.trend_themes_subtitle" = "Words appearing in 2+ takeaways";
+"matches.surface_clay" = "Clay";
+"matches.surface_grass" = "Grass";
+"matches.surface_hard" = "Hard";
 "matches.trend_up" = "Biggest improvement";
 "matches.trend_down" = "Biggest decline";
 "matches.trend_volume" = "Matches per month";
