@@ -84,8 +84,14 @@ final class MatchEntryManager: ObservableObject {
 
     /// True once the user has 5+ entries with ratings — used to unlock the
     /// trend dashboard.
+    /// Trend dashboard opens once the user has logged ANY 5 entries —
+    /// not just rated ones. Full Journal entries currently have no
+    /// in-UI rating affordance, so requiring `hasRatings` was silently
+    /// locking out users who reflected via the long-form path. Chart
+    /// rendering still skips rating-less entries internally; we just
+    /// no longer hide the whole dashboard from journal-only users.
     var trendDashboardUnlocked: Bool {
-        entries.filter(\.hasRatings).count >= 5
+        entries.count >= 5
     }
 
     /// Set of `dayKey` strings for which the user logged at least one

@@ -31,7 +31,9 @@ struct MatchTrendDashboardView: View {
     // MARK: - Locked state
 
     private var lockedHero: some View {
-        let count = matches.entries.filter(\.hasRatings).count
+        // Count total entries (not just rated ones) so the progress bar
+        // tracks the same threshold `trendDashboardUnlocked` uses.
+        let count = matches.entries.count
         return VStack(spacing: 16) {
             ZStack {
                 Circle()
