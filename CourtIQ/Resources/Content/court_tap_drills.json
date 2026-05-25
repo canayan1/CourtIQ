@@ -5,49 +5,49 @@
     "titleTr": "Açık kort +1",
     "surface": "clay",
     "youX": 0.5,
-    "youY": 0.96,
-    "opponentX": 0.2,
-    "opponentY": 0.08,
-    "ballOriginX": 0.2,
-    "ballOriginY": 0.18,
-    "ballTargetX": 0.55,
-    "ballTargetY": 0.62,
+    "youY": 1.0,
+    "opponentX": 0.125,
+    "opponentY": 0.0,
+    "ballOriginX": 0.125,
+    "ballOriginY": 0.09,
+    "ballTargetX": 0.562,
+    "ballTargetY": 0.654,
     "scoreChip": "OPEN COURT",
     "greenZone": [
       [
-        0.55,
-        0.05
+        0.562,
+        0.0
       ],
       [
-        0.85,
-        0.05
+        0.938,
+        0.0
       ],
       [
-        0.85,
-        0.32
+        0.938,
+        0.269
       ],
       [
-        0.55,
-        0.32
+        0.562,
+        0.269
       ]
     ],
     "yellowZones": [
       [
         [
-          0.4,
-          0.05
+          0.375,
+          0.0
         ],
         [
-          0.55,
-          0.05
+          0.562,
+          0.0
         ],
         [
-          0.55,
-          0.25
+          0.562,
+          0.179
         ],
         [
-          0.4,
-          0.25
+          0.375,
+          0.179
         ]
       ]
     ],
@@ -67,50 +67,50 @@
     "title": "Defensive crosscourt",
     "titleTr": "Defansif crosscourt",
     "surface": "clay",
-    "youX": 0.1,
-    "youY": 0.88,
+    "youX": 0.0,
+    "youY": 0.987,
     "opponentX": 0.5,
-    "opponentY": 0.1,
+    "opponentY": 0.0,
     "ballOriginX": 0.5,
-    "ballOriginY": 0.2,
-    "ballTargetX": 0.12,
-    "ballTargetY": 0.8,
+    "ballOriginY": 0.115,
+    "ballTargetX": 0.025,
+    "ballTargetY": 0.885,
     "scoreChip": "DEFENSE",
     "greenZone": [
       [
-        0.05,
-        0.05
+        0.0,
+        0.0
       ],
       [
-        0.4,
-        0.05
+        0.375,
+        0.0
       ],
       [
-        0.4,
-        0.3
+        0.375,
+        0.244
       ],
       [
-        0.05,
-        0.3
+        0.0,
+        0.244
       ]
     ],
     "yellowZones": [
       [
         [
-          0.4,
-          0.05
+          0.375,
+          0.0
         ],
         [
-          0.65,
-          0.05
+          0.688,
+          0.0
         ],
         [
-          0.65,
-          0.3
+          0.688,
+          0.244
         ],
         [
-          0.4,
-          0.3
+          0.375,
+          0.244
         ]
       ]
     ],
@@ -131,49 +131,49 @@
     "titleTr": "Kısa top saldırı",
     "surface": "hard",
     "youX": 0.5,
-    "youY": 0.78,
-    "opponentX": 0.4,
-    "opponentY": 0.12,
-    "ballOriginX": 0.4,
-    "ballOriginY": 0.3,
-    "ballTargetX": 0.55,
-    "ballTargetY": 0.6,
+    "youY": 0.859,
+    "opponentX": 0.375,
+    "opponentY": 0.013,
+    "ballOriginX": 0.375,
+    "ballOriginY": 0.244,
+    "ballTargetX": 0.562,
+    "ballTargetY": 0.628,
     "scoreChip": "SHORT BALL",
     "greenZone": [
       [
-        0.62,
-        0.05
+        0.65,
+        0.0
       ],
       [
-        0.88,
-        0.05
+        0.975,
+        0.0
       ],
       [
-        0.88,
-        0.32
+        0.975,
+        0.269
       ],
       [
-        0.62,
-        0.32
+        0.65,
+        0.269
       ]
     ],
     "yellowZones": [
       [
         [
-          0.12,
-          0.05
+          0.025,
+          0.0
         ],
         [
-          0.32,
-          0.05
+          0.275,
+          0.0
         ],
         [
-          0.32,
-          0.25
+          0.275,
+          0.179
         ],
         [
-          0.12,
-          0.25
+          0.025,
+          0.179
         ]
       ]
     ],
@@ -193,50 +193,50 @@
     "title": "Wide serve +1",
     "titleTr": "Wide servis +1",
     "surface": "clay",
-    "youX": 0.45,
-    "youY": 0.96,
-    "opponentX": 0.18,
-    "opponentY": 0.05,
-    "ballOriginX": 0.2,
-    "ballOriginY": 0.2,
+    "youX": 0.437,
+    "youY": 1.0,
+    "opponentX": 0.1,
+    "opponentY": 0.0,
+    "ballOriginX": 0.125,
+    "ballOriginY": 0.115,
     "ballTargetX": 0.5,
-    "ballTargetY": 0.55,
+    "ballTargetY": 0.564,
     "scoreChip": "DEUCE +1",
     "greenZone": [
       [
-        0.55,
-        0.05
+        0.562,
+        0.0
       ],
       [
-        0.85,
-        0.05
+        0.938,
+        0.0
       ],
       [
-        0.85,
-        0.35
+        0.938,
+        0.308
       ],
       [
-        0.55,
-        0.35
+        0.562,
+        0.308
       ]
     ],
     "yellowZones": [
       [
         [
-          0.42,
-          0.05
+          0.4,
+          0.0
         ],
         [
-          0.58,
-          0.05
+          0.6,
+          0.0
         ],
         [
-          0.58,
-          0.3
+          0.6,
+          0.244
         ],
         [
-          0.42,
-          0.3
+          0.4,
+          0.244
         ]
       ]
     ],
@@ -257,49 +257,49 @@
     "titleTr": "Mid-court approach",
     "surface": "grass",
     "youX": 0.5,
-    "youY": 0.68,
-    "opponentX": 0.45,
-    "opponentY": 0.12,
-    "ballOriginX": 0.45,
-    "ballOriginY": 0.32,
+    "youY": 0.731,
+    "opponentX": 0.437,
+    "opponentY": 0.013,
+    "ballOriginX": 0.437,
+    "ballOriginY": 0.269,
     "ballTargetX": 0.5,
-    "ballTargetY": 0.58,
+    "ballTargetY": 0.603,
     "scoreChip": "APPROACH",
     "greenZone": [
       [
-        0.08,
-        0.03
+        0.0,
+        0.0
       ],
       [
-        0.32,
-        0.03
+        0.275,
+        0.0
       ],
       [
-        0.32,
-        0.18
+        0.275,
+        0.09
       ],
       [
-        0.08,
-        0.18
+        0.0,
+        0.09
       ]
     ],
     "yellowZones": [
       [
         [
-          0.62,
-          0.03
+          0.65,
+          0.0
         ],
         [
-          0.88,
-          0.03
+          0.975,
+          0.0
         ],
         [
-          0.88,
-          0.2
+          0.975,
+          0.115
         ],
         [
-          0.62,
-          0.2
+          0.65,
+          0.115
         ]
       ]
     ],
@@ -320,49 +320,49 @@
     "titleTr": "Volley yerleşimi",
     "surface": "grass",
     "youX": 0.5,
-    "youY": 0.55,
-    "opponentX": 0.7,
-    "opponentY": 0.12,
-    "ballOriginX": 0.7,
-    "ballOriginY": 0.2,
+    "youY": 0.564,
+    "opponentX": 0.75,
+    "opponentY": 0.013,
+    "ballOriginX": 0.75,
+    "ballOriginY": 0.115,
     "ballTargetX": 0.5,
     "ballTargetY": 0.5,
     "scoreChip": "1ST VOLLEY",
     "greenZone": [
       [
-        0.08,
-        0.03
+        0.0,
+        0.0
       ],
       [
-        0.32,
-        0.03
+        0.275,
+        0.0
       ],
       [
-        0.32,
-        0.25
+        0.275,
+        0.179
       ],
       [
-        0.08,
-        0.25
+        0.0,
+        0.179
       ]
     ],
     "yellowZones": [
       [
         [
-          0.42,
-          0.05
+          0.4,
+          0.0
         ],
         [
-          0.58,
-          0.05
+          0.6,
+          0.0
         ],
         [
-          0.58,
-          0.22
+          0.6,
+          0.141
         ],
         [
-          0.42,
-          0.22
+          0.4,
+          0.141
         ]
       ]
     ],
@@ -380,50 +380,50 @@
     "title": "Return target",
     "titleTr": "Return hedefi",
     "surface": "hard",
-    "youX": 0.3,
-    "youY": 0.92,
-    "opponentX": 0.4,
-    "opponentY": 0.05,
-    "ballOriginX": 0.4,
-    "ballOriginY": 0.05,
-    "ballTargetX": 0.16,
-    "ballTargetY": 0.82,
+    "youX": 0.25,
+    "youY": 1.0,
+    "opponentX": 0.375,
+    "opponentY": 0.0,
+    "ballOriginX": 0.375,
+    "ballOriginY": 0.0,
+    "ballTargetX": 0.075,
+    "ballTargetY": 0.91,
     "scoreChip": "AD · KICK",
     "greenZone": [
       [
-        0.4,
-        0.05
+        0.375,
+        0.0
       ],
       [
-        0.7,
-        0.05
+        0.75,
+        0.0
       ],
       [
-        0.7,
-        0.3
+        0.75,
+        0.244
       ],
       [
-        0.4,
-        0.3
+        0.375,
+        0.244
       ]
     ],
     "yellowZones": [
       [
         [
-          0.05,
-          0.05
+          0.0,
+          0.0
         ],
         [
-          0.35,
-          0.05
+          0.312,
+          0.0
         ],
         [
-          0.35,
-          0.25
+          0.312,
+          0.179
         ],
         [
-          0.05,
-          0.25
+          0.0,
+          0.179
         ]
       ]
     ],
@@ -443,50 +443,50 @@
     "title": "Behind the opponent",
     "titleTr": "Rakibin arkasına",
     "surface": "clay",
-    "youX": 0.7,
-    "youY": 0.88,
-    "opponentX": 0.3,
-    "opponentY": 0.1,
-    "ballOriginX": 0.3,
-    "ballOriginY": 0.18,
-    "ballTargetX": 0.72,
-    "ballTargetY": 0.78,
+    "youX": 0.75,
+    "youY": 0.987,
+    "opponentX": 0.25,
+    "opponentY": 0.0,
+    "ballOriginX": 0.25,
+    "ballOriginY": 0.09,
+    "ballTargetX": 0.775,
+    "ballTargetY": 0.859,
     "scoreChip": "MOMENTUM",
     "greenZone": [
       [
-        0.15,
-        0.05
+        0.062,
+        0.0
       ],
       [
-        0.42,
-        0.05
+        0.4,
+        0.0
       ],
       [
-        0.42,
-        0.28
+        0.4,
+        0.218
       ],
       [
-        0.15,
-        0.28
+        0.062,
+        0.218
       ]
     ],
     "yellowZones": [
       [
         [
-          0.62,
-          0.05
+          0.65,
+          0.0
         ],
         [
-          0.88,
-          0.05
+          0.975,
+          0.0
         ],
         [
-          0.88,
-          0.28
+          0.975,
+          0.218
         ],
         [
-          0.62,
-          0.28
+          0.65,
+          0.218
         ]
       ]
     ],
@@ -506,68 +506,68 @@
     "title": "Deep neutral rally",
     "titleTr": "Derin neutral ralli",
     "surface": "clay",
-    "youX": 0.3,
-    "youY": 0.92,
-    "opponentX": 0.7,
-    "opponentY": 0.08,
-    "ballOriginX": 0.7,
-    "ballOriginY": 0.18,
-    "ballTargetX": 0.3,
-    "ballTargetY": 0.85,
+    "youX": 0.25,
+    "youY": 1.0,
+    "opponentX": 0.75,
+    "opponentY": 0.0,
+    "ballOriginX": 0.75,
+    "ballOriginY": 0.09,
+    "ballTargetX": 0.25,
+    "ballTargetY": 0.949,
     "scoreChip": "NEUTRAL",
     "greenZone": [
       [
-        0.55,
-        0.05
+        0.562,
+        0.0
       ],
       [
-        0.88,
-        0.05
+        0.975,
+        0.0
       ],
       [
-        0.88,
-        0.22
+        0.975,
+        0.141
       ],
       [
-        0.55,
-        0.22
+        0.562,
+        0.141
       ]
     ],
     "yellowZones": [
       [
         [
-          0.1,
-          0.05
+          0.0,
+          0.0
         ],
         [
-          0.4,
-          0.05
+          0.375,
+          0.0
         ],
         [
-          0.4,
-          0.22
+          0.375,
+          0.141
         ],
         [
-          0.1,
-          0.22
+          0.0,
+          0.141
         ]
       ],
       [
         [
-          0.4,
-          0.22
+          0.375,
+          0.141
         ],
         [
-          0.62,
-          0.22
+          0.65,
+          0.141
         ],
         [
-          0.62,
-          0.42
+          0.65,
+          0.397
         ],
         [
-          0.4,
-          0.42
+          0.375,
+          0.397
         ]
       ]
     ],
@@ -585,50 +585,50 @@
     "title": "Net pass decision",
     "titleTr": "Net pass kararı",
     "surface": "hard",
-    "youX": 0.4,
-    "youY": 0.92,
+    "youX": 0.375,
+    "youY": 1.0,
     "opponentX": 0.5,
-    "opponentY": 0.45,
+    "opponentY": 0.436,
     "ballOriginX": 0.5,
-    "ballOriginY": 0.55,
-    "ballTargetX": 0.3,
-    "ballTargetY": 0.82,
+    "ballOriginY": 0.564,
+    "ballTargetX": 0.25,
+    "ballTargetY": 0.91,
     "scoreChip": "OPP AT NET",
     "greenZone": [
       [
-        0.06,
-        0.05
+        0.0,
+        0.0
       ],
       [
-        0.32,
-        0.05
+        0.275,
+        0.0
       ],
       [
-        0.32,
-        0.42
+        0.275,
+        0.397
       ],
       [
-        0.06,
-        0.42
+        0.0,
+        0.397
       ]
     ],
     "yellowZones": [
       [
         [
-          0.42,
-          0.02
+          0.4,
+          0.0
         ],
         [
-          0.58,
-          0.02
+          0.6,
+          0.0
         ],
         [
-          0.58,
-          0.18
+          0.6,
+          0.09
         ],
         [
-          0.42,
-          0.18
+          0.4,
+          0.09
         ]
       ]
     ],
@@ -648,50 +648,50 @@
     "title": "Lob over the net player",
     "titleTr": "File üstünden lob",
     "surface": "grass",
-    "youX": 0.55,
-    "youY": 0.92,
+    "youX": 0.562,
+    "youY": 1.0,
     "opponentX": 0.5,
-    "opponentY": 0.4,
+    "opponentY": 0.372,
     "ballOriginX": 0.5,
     "ballOriginY": 0.5,
-    "ballTargetX": 0.55,
-    "ballTargetY": 0.85,
+    "ballTargetX": 0.562,
+    "ballTargetY": 0.949,
     "scoreChip": "LOB OPTION",
     "greenZone": [
       [
-        0.06,
-        0.02
+        0.0,
+        0.0
       ],
       [
-        0.92,
-        0.02
+        1.0,
+        0.0
       ],
       [
-        0.92,
-        0.2
+        1.0,
+        0.115
       ],
       [
-        0.06,
-        0.2
+        0.0,
+        0.115
       ]
     ],
     "yellowZones": [
       [
         [
-          0.06,
-          0.2
+          0.0,
+          0.115
         ],
         [
-          0.42,
-          0.2
+          0.4,
+          0.115
         ],
         [
-          0.42,
-          0.42
+          0.4,
+          0.397
         ],
         [
-          0.06,
-          0.42
+          0.0,
+          0.397
         ]
       ]
     ],
@@ -709,50 +709,50 @@
     "title": "Inside-out forehand",
     "titleTr": "Inside-out forehand",
     "surface": "hard",
-    "youX": 0.35,
-    "youY": 0.88,
-    "opponentX": 0.65,
-    "opponentY": 0.1,
-    "ballOriginX": 0.65,
-    "ballOriginY": 0.2,
-    "ballTargetX": 0.35,
-    "ballTargetY": 0.8,
+    "youX": 0.312,
+    "youY": 0.987,
+    "opponentX": 0.688,
+    "opponentY": 0.0,
+    "ballOriginX": 0.688,
+    "ballOriginY": 0.115,
+    "ballTargetX": 0.312,
+    "ballTargetY": 0.885,
     "scoreChip": "RUN AROUND BH",
     "greenZone": [
       [
-        0.62,
-        0.05
+        0.65,
+        0.0
       ],
       [
-        0.9,
-        0.05
+        1.0,
+        0.0
       ],
       [
-        0.9,
-        0.28
+        1.0,
+        0.218
       ],
       [
-        0.62,
-        0.28
+        0.65,
+        0.218
       ]
     ],
     "yellowZones": [
       [
         [
-          0.42,
-          0.05
+          0.4,
+          0.0
         ],
         [
-          0.6,
-          0.05
+          0.625,
+          0.0
         ],
         [
-          0.6,
-          0.25
+          0.625,
+          0.179
         ],
         [
-          0.42,
-          0.25
+          0.4,
+          0.179
         ]
       ]
     ],
@@ -772,68 +772,68 @@
     "title": "Drop shot opportunity",
     "titleTr": "Drop shot fırsatı",
     "surface": "clay",
-    "youX": 0.45,
-    "youY": 0.7,
+    "youX": 0.437,
+    "youY": 0.756,
     "opponentX": 0.5,
-    "opponentY": 0.02,
+    "opponentY": 0.0,
     "ballOriginX": 0.5,
-    "ballOriginY": 0.18,
-    "ballTargetX": 0.48,
-    "ballTargetY": 0.52,
+    "ballOriginY": 0.09,
+    "ballTargetX": 0.475,
+    "ballTargetY": 0.526,
     "scoreChip": "OPP FAR BACK",
     "greenZone": [
       [
-        0.18,
-        0.42
+        0.1,
+        0.397
       ],
       [
-        0.42,
-        0.42
+        0.4,
+        0.397
       ],
       [
-        0.42,
-        0.55
+        0.4,
+        0.564
       ],
       [
-        0.18,
-        0.55
+        0.1,
+        0.564
       ]
     ],
     "yellowZones": [
       [
         [
-          0.55,
-          0.05
+          0.562,
+          0.0
         ],
         [
-          0.85,
-          0.05
+          0.938,
+          0.0
         ],
         [
-          0.85,
-          0.25
+          0.938,
+          0.179
         ],
         [
-          0.55,
-          0.25
+          0.562,
+          0.179
         ]
       ],
       [
         [
-          0.42,
-          0.42
+          0.4,
+          0.397
         ],
         [
-          0.62,
-          0.42
+          0.65,
+          0.397
         ],
         [
-          0.62,
-          0.55
+          0.65,
+          0.564
         ],
         [
-          0.42,
-          0.55
+          0.4,
+          0.564
         ]
       ]
     ],
@@ -851,50 +851,50 @@
     "title": "Body serve return",
     "titleTr": "Vücuda gelen servis return",
     "surface": "hard",
-    "youX": 0.45,
-    "youY": 0.95,
-    "opponentX": 0.4,
-    "opponentY": 0.05,
-    "ballOriginX": 0.4,
-    "ballOriginY": 0.05,
-    "ballTargetX": 0.48,
-    "ballTargetY": 0.88,
+    "youX": 0.437,
+    "youY": 1.0,
+    "opponentX": 0.375,
+    "opponentY": 0.0,
+    "ballOriginX": 0.375,
+    "ballOriginY": 0.0,
+    "ballTargetX": 0.475,
+    "ballTargetY": 0.987,
     "scoreChip": "BODY SERVE",
     "greenZone": [
       [
-        0.4,
-        0.05
+        0.375,
+        0.0
       ],
       [
-        0.6,
-        0.05
+        0.625,
+        0.0
       ],
       [
-        0.6,
-        0.3
+        0.625,
+        0.244
       ],
       [
-        0.4,
-        0.3
+        0.375,
+        0.244
       ]
     ],
     "yellowZones": [
       [
         [
-          0.06,
-          0.05
+          0.0,
+          0.0
         ],
         [
-          0.32,
-          0.05
+          0.275,
+          0.0
         ],
         [
-          0.32,
-          0.25
+          0.275,
+          0.179
         ],
         [
-          0.06,
-          0.25
+          0.0,
+          0.179
         ]
       ]
     ],
@@ -914,50 +914,50 @@
     "title": "High looper to backhand",
     "titleTr": "Backhand'e yüksek loop",
     "surface": "clay",
-    "youX": 0.2,
-    "youY": 0.9,
-    "opponentX": 0.55,
-    "opponentY": 0.1,
-    "ballOriginX": 0.55,
-    "ballOriginY": 0.2,
-    "ballTargetX": 0.15,
-    "ballTargetY": 0.8,
+    "youX": 0.125,
+    "youY": 1.0,
+    "opponentX": 0.562,
+    "opponentY": 0.0,
+    "ballOriginX": 0.562,
+    "ballOriginY": 0.115,
+    "ballTargetX": 0.062,
+    "ballTargetY": 0.885,
     "scoreChip": "BH UNDER HEIGHT",
     "greenZone": [
       [
-        0.55,
-        0.18
+        0.562,
+        0.09
       ],
       [
-        0.78,
-        0.18
+        0.85,
+        0.09
       ],
       [
-        0.78,
-        0.4
+        0.85,
+        0.372
       ],
       [
-        0.55,
-        0.4
+        0.562,
+        0.372
       ]
     ],
     "yellowZones": [
       [
         [
-          0.32,
-          0.05
+          0.275,
+          0.0
         ],
         [
-          0.55,
-          0.05
+          0.562,
+          0.0
         ],
         [
-          0.55,
-          0.22
+          0.562,
+          0.141
         ],
         [
-          0.32,
-          0.22
+          0.275,
+          0.141
         ]
       ]
     ],
@@ -968,6 +968,1910 @@
     "incomingSpeed": "slow",
     "incomingHeight": "high",
     "idealShotType": "slice",
+    "acceptableShotTypes": [
+      "topspin"
+    ]
+  },
+  {
+    "id": "drill_016",
+    "title": "Spanish X finisher",
+    "titleTr": "Spanish X bitirici",
+    "surface": "clay",
+    "youX": 0.4,
+    "youY": 0.78,
+    "opponentX": 0.8,
+    "opponentY": 0.05,
+    "ballOriginX": 0.8,
+    "ballOriginY": 0.1,
+    "ballTargetX": 0.45,
+    "ballTargetY": 0.62,
+    "scoreChip": "30-15",
+    "greenZone": [
+      [
+        0.13,
+        0.05
+      ],
+      [
+        0.35,
+        0.05
+      ],
+      [
+        0.35,
+        0.3
+      ],
+      [
+        0.13,
+        0.3
+      ]
+    ],
+    "yellowZones": [
+      [
+        [
+          0.62,
+          0.05
+        ],
+        [
+          0.85,
+          0.05
+        ],
+        [
+          0.85,
+          0.3
+        ],
+        [
+          0.62,
+          0.3
+        ]
+      ]
+    ],
+    "rationale": "Classic Spanish X exit — heavy CC to BH then inside-out FH into the open deuce corner. Behind-the-opponent into the ad corner is the yellow alternative.",
+    "rationaleTr": "Klasik Spanish X çıkışı — backhand'e ağır CC, sonra inside-out FH açık deuce köşesine. Rakibin arkasına ad köşesi de geçerli alternatif.",
+    "category": "patterns",
+    "incomingSpin": "topspin",
+    "incomingSpeed": "slow",
+    "incomingHeight": "mid",
+    "idealShotType": "flat",
+    "acceptableShotTypes": [
+      "topspin"
+    ]
+  },
+  {
+    "id": "drill_017",
+    "title": "Drop-and-lob setup",
+    "titleTr": "Drop ve lob kurulumu",
+    "surface": "clay",
+    "youX": 0.5,
+    "youY": 0.72,
+    "opponentX": 0.5,
+    "opponentY": 0.02,
+    "ballOriginX": 0.5,
+    "ballOriginY": 0.05,
+    "ballTargetX": 0.5,
+    "ballTargetY": 0.65,
+    "scoreChip": "15-30",
+    "greenZone": [
+      [
+        0.3,
+        0.42
+      ],
+      [
+        0.5,
+        0.42
+      ],
+      [
+        0.5,
+        0.49
+      ],
+      [
+        0.3,
+        0.49
+      ]
+    ],
+    "yellowZones": [
+      [
+        [
+          0.5,
+          0.42
+        ],
+        [
+          0.7,
+          0.42
+        ],
+        [
+          0.7,
+          0.49
+        ],
+        [
+          0.5,
+          0.49
+        ]
+      ]
+    ],
+    "rationale": "Drop-and-lob pattern starts here. Counter-puncher hates being pulled in. Sharp angled drop into the deuce service box maximises run distance.",
+    "rationaleTr": "Drop-and-lob pattern'ı burada başlar. Counter-puncher öne çekilmekten nefret eder. Deuce servis kutusuna açılı drop, koşma mesafesini maksimize eder.",
+    "category": "patterns",
+    "incomingSpin": "topspin",
+    "incomingSpeed": "slow",
+    "incomingHeight": "mid",
+    "idealShotType": "drop",
+    "acceptableShotTypes": []
+  },
+  {
+    "id": "drill_018",
+    "title": "Body jam return",
+    "titleTr": "Vücuda return",
+    "surface": "hard",
+    "youX": 0.3,
+    "youY": 0.97,
+    "opponentX": 0.42,
+    "opponentY": 0.03,
+    "ballOriginX": 0.42,
+    "ballOriginY": 0.03,
+    "ballTargetX": 0.32,
+    "ballTargetY": 0.85,
+    "scoreChip": "DEUCE",
+    "greenZone": [
+      [
+        0.4,
+        0.1
+      ],
+      [
+        0.6,
+        0.1
+      ],
+      [
+        0.6,
+        0.35
+      ],
+      [
+        0.4,
+        0.35
+      ]
+    ],
+    "yellowZones": [
+      [
+        [
+          0.13,
+          0.05
+        ],
+        [
+          0.32,
+          0.05
+        ],
+        [
+          0.32,
+          0.28
+        ],
+        [
+          0.13,
+          0.28
+        ]
+      ]
+    ],
+    "rationale": "High-percentage return: block to server's body to remove their +1 angles. Slice chip CC is the yellow when jammed too tight.",
+    "rationaleTr": "Yüksek persantajlı return: server'ın gövdesine block, +1 açılarını sil. Çok sıkışılmışsa slice chip CC sarı.",
+    "category": "return",
+    "incomingSpin": "flat",
+    "incomingSpeed": "fast",
+    "incomingHeight": "mid",
+    "idealShotType": "flat",
+    "acceptableShotTypes": [
+      "slice"
+    ]
+  },
+  {
+    "id": "drill_019",
+    "title": "Wide kick return neutralise",
+    "titleTr": "Wide kick return nötralizasyonu",
+    "surface": "clay",
+    "youX": 0.9,
+    "youY": 0.85,
+    "opponentX": 0.55,
+    "opponentY": 0.05,
+    "ballOriginX": 0.55,
+    "ballOriginY": 0.05,
+    "ballTargetX": 0.85,
+    "ballTargetY": 0.78,
+    "scoreChip": "30-30",
+    "greenZone": [
+      [
+        0.55,
+        0.05
+      ],
+      [
+        0.8,
+        0.05
+      ],
+      [
+        0.8,
+        0.28
+      ],
+      [
+        0.55,
+        0.28
+      ]
+    ],
+    "yellowZones": [
+      [
+        [
+          0.4,
+          0.2
+        ],
+        [
+          0.6,
+          0.2
+        ],
+        [
+          0.6,
+          0.4
+        ],
+        [
+          0.4,
+          0.4
+        ]
+      ]
+    ],
+    "rationale": "Deep crosscourt second-serve return is textbook — forces server back before they recover. Don't chase DTL from wide off the doubles alley.",
+    "rationaleTr": "Derin crosscourt ikinci servis return'ü kitap kuralı — server'ı toparlanmadan geriye iter. Dış alley'den DTL'ye gitme.",
+    "category": "return",
+    "incomingSpin": "kick",
+    "incomingSpeed": "medium",
+    "incomingHeight": "high",
+    "idealShotType": "topspin",
+    "acceptableShotTypes": [
+      "slice"
+    ]
+  },
+  {
+    "id": "drill_020",
+    "title": "1-2 punch deuce",
+    "titleTr": "Deuce 1-2 punch",
+    "surface": "hard",
+    "youX": 0.5,
+    "youY": 0.92,
+    "opponentX": 0.05,
+    "opponentY": 0.1,
+    "ballOriginX": 0.1,
+    "ballOriginY": 0.15,
+    "ballTargetX": 0.55,
+    "ballTargetY": 0.7,
+    "scoreChip": "40-15",
+    "greenZone": [
+      [
+        0.62,
+        0.05
+      ],
+      [
+        0.87,
+        0.05
+      ],
+      [
+        0.87,
+        0.28
+      ],
+      [
+        0.62,
+        0.28
+      ]
+    ],
+    "yellowZones": [
+      [
+        [
+          0.45,
+          0.05
+        ],
+        [
+          0.62,
+          0.05
+        ],
+        [
+          0.62,
+          0.28
+        ],
+        [
+          0.45,
+          0.28
+        ]
+      ]
+    ],
+    "rationale": "Textbook 1-2 punch: wide serve sets up the open-court +1 FH to the empty ad corner. Behind-the-opponent into centre is yellow if they've started sprinting back.",
+    "rationaleTr": "Klasik 1-2: wide servis sonrası açık ad köşesine +1 FH. Rakip merkeze koşmaya başlamışsa arkasına merkeze sarı alternatif.",
+    "category": "open_court",
+    "incomingSpin": "flat",
+    "incomingSpeed": "medium",
+    "incomingHeight": "mid",
+    "idealShotType": "flat",
+    "acceptableShotTypes": [
+      "topspin"
+    ]
+  },
+  {
+    "id": "drill_021",
+    "title": "Inside-out FH set up",
+    "titleTr": "Inside-out FH kurulumu",
+    "surface": "hard",
+    "youX": 0.32,
+    "youY": 0.92,
+    "opponentX": 0.5,
+    "opponentY": 0.05,
+    "ballOriginX": 0.5,
+    "ballOriginY": 0.1,
+    "ballTargetX": 0.3,
+    "ballTargetY": 0.85,
+    "scoreChip": "15-15",
+    "greenZone": [
+      [
+        0.65,
+        0.05
+      ],
+      [
+        0.87,
+        0.05
+      ],
+      [
+        0.87,
+        0.28
+      ],
+      [
+        0.65,
+        0.28
+      ]
+    ],
+    "yellowZones": [
+      [
+        [
+          0.13,
+          0.05
+        ],
+        [
+          0.35,
+          0.05
+        ],
+        [
+          0.35,
+          0.28
+        ],
+        [
+          0.13,
+          0.28
+        ]
+      ]
+    ],
+    "rationale": "Inside-out FH to opponent's BH corner — highest-leverage 3rd-shot pattern. Inside-in DTL is the surprise yellow if opponent overcommits to covering inside-out.",
+    "rationaleTr": "Inside-out FH rakibin BH köşesine — en yüksek leverage'lı 3. vuruş. Rakip inside-out'u kapatmaya yatkınsa inside-in DTL sürpriz sarı alternatif.",
+    "category": "patterns",
+    "incomingSpin": "topspin",
+    "incomingSpeed": "medium",
+    "incomingHeight": "mid",
+    "idealShotType": "topspin",
+    "acceptableShotTypes": [
+      "flat"
+    ]
+  },
+  {
+    "id": "drill_022",
+    "title": "BH slice approach DTL",
+    "titleTr": "BH slice approach DTL",
+    "surface": "grass",
+    "youX": 0.3,
+    "youY": 0.65,
+    "opponentX": 0.55,
+    "opponentY": 0.1,
+    "ballOriginX": 0.55,
+    "ballOriginY": 0.2,
+    "ballTargetX": 0.3,
+    "ballTargetY": 0.6,
+    "scoreChip": "0-15",
+    "greenZone": [
+      [
+        0.13,
+        0.05
+      ],
+      [
+        0.32,
+        0.05
+      ],
+      [
+        0.32,
+        0.22
+      ],
+      [
+        0.13,
+        0.22
+      ]
+    ],
+    "yellowZones": [
+      [
+        [
+          0.65,
+          0.05
+        ],
+        [
+          0.87,
+          0.05
+        ],
+        [
+          0.87,
+          0.22
+        ],
+        [
+          0.65,
+          0.22
+        ]
+      ]
+    ],
+    "rationale": "Deep DTL slice approach closes the CC passing lane. On grass the low bounce magnifies the slice — opponent will scrape it up.",
+    "rationaleTr": "Derin DTL slice approach CC pass kanalını kapatır. Çimde düşük seken slice etkisi büyür — rakip kazımak zorunda kalır.",
+    "category": "approach",
+    "incomingSpin": "slice",
+    "incomingSpeed": "slow",
+    "incomingHeight": "low",
+    "idealShotType": "slice",
+    "acceptableShotTypes": [
+      "flat"
+    ]
+  },
+  {
+    "id": "drill_023",
+    "title": "Lob over the opposite shoulder",
+    "titleTr": "Aksi omuz üstünden lob",
+    "surface": "hard",
+    "youX": 0.75,
+    "youY": 0.92,
+    "opponentX": 0.55,
+    "opponentY": 0.4,
+    "ballOriginX": 0.55,
+    "ballOriginY": 0.45,
+    "ballTargetX": 0.78,
+    "ballTargetY": 0.85,
+    "scoreChip": "30-40",
+    "greenZone": [
+      [
+        0.13,
+        0.02
+      ],
+      [
+        0.45,
+        0.02
+      ],
+      [
+        0.45,
+        0.2
+      ],
+      [
+        0.13,
+        0.2
+      ]
+    ],
+    "yellowZones": [
+      [
+        [
+          0.13,
+          0.2
+        ],
+        [
+          0.32,
+          0.2
+        ],
+        [
+          0.32,
+          0.45
+        ],
+        [
+          0.13,
+          0.45
+        ]
+      ]
+    ],
+    "rationale": "Lob-over-opposite-shoulder pattern — they turn 270° to chase. From wide on FH side a lob is higher percentage than threading a DTL pass.",
+    "rationaleTr": "Aksi omuz üstünden lob — rakip 270° dönmek zorunda. FH tarafından sıkıştığında DTL pass denemekten daha yüksek persantaj.",
+    "category": "net_game",
+    "incomingSpin": "flat",
+    "incomingSpeed": "fast",
+    "incomingHeight": "low",
+    "idealShotType": "lob",
+    "acceptableShotTypes": [
+      "topspin"
+    ]
+  },
+  {
+    "id": "drill_024",
+    "title": "Behind-the-opponent recovery exploit",
+    "titleTr": "Toparlanan rakibe arka vuruş",
+    "surface": "clay",
+    "youX": 0.55,
+    "youY": 0.88,
+    "opponentX": 0.85,
+    "opponentY": 0.12,
+    "ballOriginX": 0.85,
+    "ballOriginY": 0.18,
+    "ballTargetX": 0.5,
+    "ballTargetY": 0.78,
+    "scoreChip": "AD-IN",
+    "greenZone": [
+      [
+        0.65,
+        0.05
+      ],
+      [
+        0.87,
+        0.05
+      ],
+      [
+        0.87,
+        0.28
+      ],
+      [
+        0.65,
+        0.28
+      ]
+    ],
+    "yellowZones": [
+      [
+        [
+          0.13,
+          0.05
+        ],
+        [
+          0.35,
+          0.05
+        ],
+        [
+          0.35,
+          0.28
+        ],
+        [
+          0.13,
+          0.28
+        ]
+      ]
+    ],
+    "rationale": "Behind-the-opponent: they've committed momentum to recovery, can't reverse. Going to deuce corner works (open court) but they're already moving that way.",
+    "rationaleTr": "Behind-the-opponent: toparlanma momentum'unu vermiş, tersine dönemez. Deuce'a açık kort da olur ama oraya zaten gidiyor.",
+    "category": "patterns",
+    "incomingSpin": "topspin",
+    "incomingSpeed": "slow",
+    "incomingHeight": "mid",
+    "idealShotType": "topspin",
+    "acceptableShotTypes": [
+      "flat"
+    ]
+  },
+  {
+    "id": "drill_025",
+    "title": "Counter-puncher drop",
+    "titleTr": "Counter-puncher'a drop",
+    "surface": "clay",
+    "youX": 0.45,
+    "youY": 0.75,
+    "opponentX": 0.5,
+    "opponentY": 0.0,
+    "ballOriginX": 0.5,
+    "ballOriginY": 0.05,
+    "ballTargetX": 0.45,
+    "ballTargetY": 0.68,
+    "scoreChip": "0-0",
+    "greenZone": [
+      [
+        0.2,
+        0.4
+      ],
+      [
+        0.4,
+        0.4
+      ],
+      [
+        0.4,
+        0.49
+      ],
+      [
+        0.2,
+        0.49
+      ]
+    ],
+    "yellowZones": [
+      [
+        [
+          0.6,
+          0.4
+        ],
+        [
+          0.8,
+          0.4
+        ],
+        [
+          0.8,
+          0.49
+        ],
+        [
+          0.6,
+          0.49
+        ]
+      ],
+      [
+        [
+          0.65,
+          0.05
+        ],
+        [
+          0.87,
+          0.05
+        ],
+        [
+          0.87,
+          0.25
+        ],
+        [
+          0.65,
+          0.25
+        ]
+      ]
+    ],
+    "rationale": "Pusher camps deep — drop is the leverage play. Drop to BH side (deuce, righty) is hardest to chase. Deep ad-corner flat works but invites another moonball.",
+    "rationaleTr": "Pusher derinde kamp kurar — drop yüksek leverage. Deuce'a drop (sağlak için BH) en zor. Derin ad köşesi de işe yarar ama yeni bir moonball çağırır.",
+    "category": "patterns",
+    "incomingSpin": "topspin",
+    "incomingSpeed": "slow",
+    "incomingHeight": "high",
+    "idealShotType": "drop",
+    "acceptableShotTypes": [
+      "flat"
+    ]
+  },
+  {
+    "id": "drill_026",
+    "title": "First volley deep middle",
+    "titleTr": "Birinci volley derin orta",
+    "surface": "grass",
+    "youX": 0.45,
+    "youY": 0.62,
+    "opponentX": 0.2,
+    "opponentY": 0.92,
+    "ballOriginX": 0.2,
+    "ballOriginY": 0.85,
+    "ballTargetX": 0.4,
+    "ballTargetY": 0.55,
+    "scoreChip": "40-30",
+    "greenZone": [
+      [
+        0.55,
+        0.05
+      ],
+      [
+        0.8,
+        0.05
+      ],
+      [
+        0.8,
+        0.25
+      ],
+      [
+        0.55,
+        0.25
+      ]
+    ],
+    "yellowZones": [
+      [
+        [
+          0.4,
+          0.05
+        ],
+        [
+          0.55,
+          0.05
+        ],
+        [
+          0.55,
+          0.22
+        ],
+        [
+          0.4,
+          0.22
+        ]
+      ]
+    ],
+    "rationale": "First volley deep into the open court — don't try to angle short from low contact. Deep middle is the safe yellow that takes time away.",
+    "rationaleTr": "İlk volley derin açık korta — alçak temastan kısa açı denenmez. Derin orta zaman alan güvenli sarı.",
+    "category": "net_game",
+    "incomingSpin": "topspin",
+    "incomingSpeed": "medium",
+    "incomingHeight": "low",
+    "idealShotType": "flat",
+    "acceptableShotTypes": [
+      "slice"
+    ]
+  },
+  {
+    "id": "drill_027",
+    "title": "Stretched defense slice float",
+    "titleTr": "Stretched defansif slice",
+    "surface": "grass",
+    "youX": 0.08,
+    "youY": 0.92,
+    "opponentX": 0.55,
+    "opponentY": 0.08,
+    "ballOriginX": 0.55,
+    "ballOriginY": 0.18,
+    "ballTargetX": 0.1,
+    "ballTargetY": 0.85,
+    "scoreChip": "15-40",
+    "greenZone": [
+      [
+        0.3,
+        0.05
+      ],
+      [
+        0.65,
+        0.05
+      ],
+      [
+        0.65,
+        0.28
+      ],
+      [
+        0.3,
+        0.28
+      ]
+    ],
+    "yellowZones": [
+      [
+        [
+          0.13,
+          0.05
+        ],
+        [
+          0.32,
+          0.05
+        ],
+        [
+          0.32,
+          0.28
+        ],
+        [
+          0.13,
+          0.28
+        ]
+      ]
+    ],
+    "rationale": "When this stretched on grass, a high floated slice deep middle buys time to recover. CC slice is yellow but opponent will take it out of the air for a winner.",
+    "rationaleTr": "Çimde bu kadar stretched olunca derin orta yüksek slice float toparlanma için zaman kazandırır. CC slice sarı ama rakip havadan alıp bitirir.",
+    "category": "defense",
+    "incomingSpin": "flat",
+    "incomingSpeed": "fast",
+    "incomingHeight": "low",
+    "idealShotType": "slice",
+    "acceptableShotTypes": [
+      "topspin"
+    ]
+  },
+  {
+    "id": "drill_028",
+    "title": "High BH attack with slice",
+    "titleTr": "Yüksek BH'e slice ile saldırı",
+    "surface": "hard",
+    "youX": 0.15,
+    "youY": 0.92,
+    "opponentX": 0.55,
+    "opponentY": 0.08,
+    "ballOriginX": 0.55,
+    "ballOriginY": 0.18,
+    "ballTargetX": 0.18,
+    "ballTargetY": 0.85,
+    "scoreChip": "TB 4-3",
+    "greenZone": [
+      [
+        0.13,
+        0.05
+      ],
+      [
+        0.35,
+        0.05
+      ],
+      [
+        0.35,
+        0.28
+      ],
+      [
+        0.13,
+        0.28
+      ]
+    ],
+    "yellowZones": [
+      [
+        [
+          0.55,
+          0.05
+        ],
+        [
+          0.8,
+          0.05
+        ],
+        [
+          0.8,
+          0.28
+        ],
+        [
+          0.55,
+          0.28
+        ]
+      ]
+    ],
+    "rationale": "Low skidding slice DTL changes rhythm against an aggressive baseliner who feeds on pace. Deep CC topspin is the safer yellow but keeps them in their pattern.",
+    "rationaleTr": "Düşük kayan slice DTL hızla beslenen aggressive baseliner'a karşı ritim bozar. Derin CC topspin daha güvenli sarı ama rakibi pattern'ında tutar.",
+    "category": "defense",
+    "incomingSpin": "topspin",
+    "incomingSpeed": "medium",
+    "incomingHeight": "high",
+    "idealShotType": "slice",
+    "acceptableShotTypes": [
+      "topspin"
+    ]
+  },
+  {
+    "id": "drill_029",
+    "title": "Break point body return",
+    "titleTr": "Break point body return",
+    "surface": "hard",
+    "youX": 0.7,
+    "youY": 0.95,
+    "opponentX": 0.55,
+    "opponentY": 0.03,
+    "ballOriginX": 0.55,
+    "ballOriginY": 0.03,
+    "ballTargetX": 0.65,
+    "ballTargetY": 0.85,
+    "scoreChip": "BREAK PT",
+    "greenZone": [
+      [
+        0.4,
+        0.1
+      ],
+      [
+        0.6,
+        0.1
+      ],
+      [
+        0.6,
+        0.35
+      ],
+      [
+        0.4,
+        0.35
+      ]
+    ],
+    "yellowZones": [
+      [
+        [
+          0.65,
+          0.05
+        ],
+        [
+          0.85,
+          0.05
+        ],
+        [
+          0.85,
+          0.28
+        ],
+        [
+          0.65,
+          0.28
+        ]
+      ]
+    ],
+    "rationale": "Break point against big server: get ball back deep — body block removes +1 angles and forces them to manufacture. Don't try to rip a winner.",
+    "rationaleTr": "Big server'a karşı break point'te topu derin geri koy — body block +1 açılarını siler. Winner denemek hata.",
+    "category": "return",
+    "incomingSpin": "flat",
+    "incomingSpeed": "fast",
+    "incomingHeight": "mid",
+    "idealShotType": "flat",
+    "acceptableShotTypes": [
+      "topspin"
+    ]
+  },
+  {
+    "id": "drill_030",
+    "title": "Set point net rusher counter",
+    "titleTr": "Set point net rusher counter",
+    "surface": "grass",
+    "youX": 0.5,
+    "youY": 0.95,
+    "opponentX": 0.5,
+    "opponentY": 0.42,
+    "ballOriginX": 0.5,
+    "ballOriginY": 0.45,
+    "ballTargetX": 0.48,
+    "ballTargetY": 0.88,
+    "scoreChip": "SET PT",
+    "greenZone": [
+      [
+        0.13,
+        0.02
+      ],
+      [
+        0.45,
+        0.02
+      ],
+      [
+        0.45,
+        0.18
+      ],
+      [
+        0.13,
+        0.18
+      ]
+    ],
+    "yellowZones": [
+      [
+        [
+          0.13,
+          0.2
+        ],
+        [
+          0.32,
+          0.2
+        ],
+        [
+          0.32,
+          0.45
+        ],
+        [
+          0.13,
+          0.45
+        ]
+      ]
+    ],
+    "rationale": "Set point pressure — pick the highest-percentage play. Lob over BH shoulder against closing net rusher beats trying to thread a pass on the run.",
+    "rationaleTr": "Set point baskısında en yüksek persantaj. Kapanan net rusher'a karşı BH omuz üstünden lob, koşarken pass denemekten iyidir.",
+    "category": "net_game",
+    "incomingSpin": "flat",
+    "incomingSpeed": "fast",
+    "incomingHeight": "low",
+    "idealShotType": "lob",
+    "acceptableShotTypes": [
+      "topspin"
+    ]
+  },
+  {
+    "id": "drill_031",
+    "title": "Drop on slow second serve",
+    "titleTr": "Yavaş ikinci servise drop",
+    "surface": "clay",
+    "youX": 0.5,
+    "youY": 0.78,
+    "opponentX": 0.55,
+    "opponentY": 0.05,
+    "ballOriginX": 0.55,
+    "ballOriginY": 0.05,
+    "ballTargetX": 0.5,
+    "ballTargetY": 0.65,
+    "scoreChip": "30-15",
+    "greenZone": [
+      [
+        0.2,
+        0.4
+      ],
+      [
+        0.42,
+        0.4
+      ],
+      [
+        0.42,
+        0.49
+      ],
+      [
+        0.2,
+        0.49
+      ]
+    ],
+    "yellowZones": [
+      [
+        [
+          0.65,
+          0.05
+        ],
+        [
+          0.87,
+          0.05
+        ],
+        [
+          0.87,
+          0.25
+        ],
+        [
+          0.65,
+          0.25
+        ]
+      ]
+    ],
+    "rationale": "Opponent stays deep after serving — drop return is high-leverage. Flat attack into ad corner is conventional yellow.",
+    "rationaleTr": "Rakip servisten sonra derinde kalıyor — drop return yüksek leverage. Düz ad köşesine atak klasik sarı.",
+    "category": "return",
+    "incomingSpin": "topspin",
+    "incomingSpeed": "slow",
+    "incomingHeight": "mid",
+    "idealShotType": "drop",
+    "acceptableShotTypes": [
+      "flat"
+    ]
+  },
+  {
+    "id": "drill_032",
+    "title": "Crosscourt FH grinding rally",
+    "titleTr": "CC FH grinding ralli",
+    "surface": "clay",
+    "youX": 0.75,
+    "youY": 0.92,
+    "opponentX": 0.2,
+    "opponentY": 0.08,
+    "ballOriginX": 0.2,
+    "ballOriginY": 0.15,
+    "ballTargetX": 0.75,
+    "ballTargetY": 0.85,
+    "scoreChip": "30-30",
+    "greenZone": [
+      [
+        0.13,
+        0.05
+      ],
+      [
+        0.35,
+        0.05
+      ],
+      [
+        0.35,
+        0.25
+      ],
+      [
+        0.13,
+        0.25
+      ]
+    ],
+    "yellowZones": [
+      [
+        [
+          0.4,
+          0.05
+        ],
+        [
+          0.6,
+          0.05
+        ],
+        [
+          0.6,
+          0.25
+        ],
+        [
+          0.4,
+          0.25
+        ]
+      ]
+    ],
+    "rationale": "In a neutral CC grind on clay, patience beats variation. Deep CC heavy topspin until someone short-balls. DTL change is high-risk reset, not winner.",
+    "rationaleTr": "Clay'de neutral CC grind'da sabır varyasyondan iyidir. Kısa top gelene kadar derin CC ağır topspin. DTL değişiklik winner değil yüksek riskli reset.",
+    "category": "defense",
+    "incomingSpin": "topspin",
+    "incomingSpeed": "medium",
+    "incomingHeight": "high",
+    "idealShotType": "topspin",
+    "acceptableShotTypes": []
+  },
+  {
+    "id": "drill_033",
+    "title": "Approach to weak BH on hard",
+    "titleTr": "Hard'da zayıf BH'e approach",
+    "surface": "hard",
+    "youX": 0.55,
+    "youY": 0.72,
+    "opponentX": 0.4,
+    "opponentY": 0.1,
+    "ballOriginX": 0.4,
+    "ballOriginY": 0.18,
+    "ballTargetX": 0.55,
+    "ballTargetY": 0.62,
+    "scoreChip": "40-15",
+    "greenZone": [
+      [
+        0.65,
+        0.05
+      ],
+      [
+        0.87,
+        0.05
+      ],
+      [
+        0.87,
+        0.2
+      ],
+      [
+        0.65,
+        0.2
+      ]
+    ],
+    "yellowZones": [
+      [
+        [
+          0.13,
+          0.05
+        ],
+        [
+          0.32,
+          0.05
+        ],
+        [
+          0.32,
+          0.2
+        ],
+        [
+          0.13,
+          0.2
+        ]
+      ]
+    ],
+    "rationale": "Deep DTL approach to BH corner — closes CC pass lane AND targets weaker wing. CC FH approach is yellow but feeds their strength.",
+    "rationaleTr": "Derin DTL approach BH köşesine — CC pass kanalını kapatır VE zayıf kanada yönelir. CC FH approach sarı ama rakibin güçlü tarafını besler.",
+    "category": "approach",
+    "incomingSpin": "topspin",
+    "incomingSpeed": "slow",
+    "incomingHeight": "mid",
+    "idealShotType": "flat",
+    "acceptableShotTypes": [
+      "topspin"
+    ]
+  },
+  {
+    "id": "drill_034",
+    "title": "Reset slice off heavy topspin",
+    "titleTr": "Ağır topspine slice reset",
+    "surface": "clay",
+    "youX": 0.2,
+    "youY": 1.0,
+    "opponentX": 0.65,
+    "opponentY": 0.08,
+    "ballOriginX": 0.65,
+    "ballOriginY": 0.18,
+    "ballTargetX": 0.2,
+    "ballTargetY": 0.9,
+    "scoreChip": "15-30",
+    "greenZone": [
+      [
+        0.55,
+        0.18
+      ],
+      [
+        0.8,
+        0.18
+      ],
+      [
+        0.8,
+        0.4
+      ],
+      [
+        0.55,
+        0.4
+      ]
+    ],
+    "yellowZones": [
+      [
+        [
+          0.3,
+          0.1
+        ],
+        [
+          0.55,
+          0.1
+        ],
+        [
+          0.55,
+          0.3
+        ],
+        [
+          0.3,
+          0.3
+        ]
+      ]
+    ],
+    "rationale": "BH slice deep CC neutralises topspin barrage and buys recovery time. Trying to topspin-rip from over the shoulder is low-margin.",
+    "rationaleTr": "BH slice derin CC topspin yağmurunu nötralize eder ve toparlanma zamanı kazandırır. Omuz hizasında topspin riplemek düşük marj.",
+    "category": "defense",
+    "incomingSpin": "topspin",
+    "incomingSpeed": "medium",
+    "incomingHeight": "high",
+    "idealShotType": "slice",
+    "acceptableShotTypes": [
+      "topspin"
+    ]
+  },
+  {
+    "id": "drill_035",
+    "title": "Second-serve attack inside-in",
+    "titleTr": "İkinci servise inside-in atak",
+    "surface": "hard",
+    "youX": 0.3,
+    "youY": 0.85,
+    "opponentX": 0.4,
+    "opponentY": 0.05,
+    "ballOriginX": 0.4,
+    "ballOriginY": 0.05,
+    "ballTargetX": 0.35,
+    "ballTargetY": 0.75,
+    "scoreChip": "15-30",
+    "greenZone": [
+      [
+        0.13,
+        0.05
+      ],
+      [
+        0.32,
+        0.05
+      ],
+      [
+        0.32,
+        0.28
+      ],
+      [
+        0.13,
+        0.28
+      ]
+    ],
+    "yellowZones": [
+      [
+        [
+          0.62,
+          0.05
+        ],
+        [
+          0.85,
+          0.05
+        ],
+        [
+          0.85,
+          0.28
+        ],
+        [
+          0.62,
+          0.28
+        ]
+      ]
+    ],
+    "rationale": "On sit-up second serve, inside-in DTL is the surprise — opponent expects inside-out FH. Inside-out remains the textbook yellow.",
+    "rationaleTr": "Yumuşak ikinci serviste inside-in DTL sürpriz — rakip inside-out FH bekler. Inside-out klasik sarı.",
+    "category": "return",
+    "incomingSpin": "kick",
+    "incomingSpeed": "slow",
+    "incomingHeight": "high",
+    "idealShotType": "flat",
+    "acceptableShotTypes": [
+      "topspin"
+    ]
+  },
+  {
+    "id": "drill_036",
+    "title": "Net rusher passing DTL",
+    "titleTr": "Net rusher'a DTL pass",
+    "surface": "grass",
+    "youX": 0.2,
+    "youY": 0.92,
+    "opponentX": 0.45,
+    "opponentY": 0.4,
+    "ballOriginX": 0.45,
+    "ballOriginY": 0.45,
+    "ballTargetX": 0.2,
+    "ballTargetY": 0.85,
+    "scoreChip": "30-15",
+    "greenZone": [
+      [
+        0.13,
+        0.05
+      ],
+      [
+        0.32,
+        0.05
+      ],
+      [
+        0.32,
+        0.4
+      ],
+      [
+        0.13,
+        0.4
+      ]
+    ],
+    "yellowZones": [
+      [
+        [
+          0.13,
+          0.4
+        ],
+        [
+          0.32,
+          0.4
+        ],
+        [
+          0.32,
+          0.48
+        ],
+        [
+          0.13,
+          0.48
+        ]
+      ]
+    ],
+    "rationale": "DTL passing shot against a net rusher who leans CC. Low dipping CC at their feet is yellow if you don't trust the DTL line.",
+    "rationaleTr": "CC'ye yatkın net rusher'a karşı DTL pass. DTL'ye güvenmiyorsan ayaklarına alçak CC dipper sarı.",
+    "category": "net_game",
+    "incomingSpin": "flat",
+    "incomingSpeed": "medium",
+    "incomingHeight": "low",
+    "idealShotType": "flat",
+    "acceptableShotTypes": [
+      "topspin"
+    ]
+  },
+  {
+    "id": "drill_037",
+    "title": "Approach with topspin to BH high",
+    "titleTr": "BH'e yüksek topspin approach",
+    "surface": "clay",
+    "youX": 0.4,
+    "youY": 0.7,
+    "opponentX": 0.55,
+    "opponentY": 0.1,
+    "ballOriginX": 0.55,
+    "ballOriginY": 0.2,
+    "ballTargetX": 0.4,
+    "ballTargetY": 0.6,
+    "scoreChip": "40-30",
+    "greenZone": [
+      [
+        0.65,
+        0.05
+      ],
+      [
+        0.87,
+        0.05
+      ],
+      [
+        0.87,
+        0.22
+      ],
+      [
+        0.65,
+        0.22
+      ]
+    ],
+    "yellowZones": [
+      [
+        [
+          0.13,
+          0.05
+        ],
+        [
+          0.32,
+          0.05
+        ],
+        [
+          0.32,
+          0.22
+        ],
+        [
+          0.13,
+          0.22
+        ]
+      ]
+    ],
+    "rationale": "On clay, high bouncing topspin to BH corner sets up a weak floater you can volley away. DTL FH approach is conventional yellow but doesn't exploit BH height weakness.",
+    "rationaleTr": "Clay'de BH köşesine yüksek seken topspin zayıf floater'a kapı açar. DTL FH approach klasik sarı ama BH zayıflığını kullanmaz.",
+    "category": "approach",
+    "incomingSpin": "topspin",
+    "incomingSpeed": "slow",
+    "incomingHeight": "mid",
+    "idealShotType": "topspin",
+    "acceptableShotTypes": [
+      "flat"
+    ]
+  },
+  {
+    "id": "drill_038",
+    "title": "Forced BH slice DTL approach",
+    "titleTr": "Zorlu BH slice DTL approach",
+    "surface": "grass",
+    "youX": 0.3,
+    "youY": 0.68,
+    "opponentX": 0.5,
+    "opponentY": 0.1,
+    "ballOriginX": 0.5,
+    "ballOriginY": 0.2,
+    "ballTargetX": 0.28,
+    "ballTargetY": 0.6,
+    "scoreChip": "0-30",
+    "greenZone": [
+      [
+        0.13,
+        0.05
+      ],
+      [
+        0.32,
+        0.05
+      ],
+      [
+        0.32,
+        0.22
+      ],
+      [
+        0.13,
+        0.22
+      ]
+    ],
+    "yellowZones": [
+      [
+        [
+          0.4,
+          0.05
+        ],
+        [
+          0.6,
+          0.05
+        ],
+        [
+          0.6,
+          0.22
+        ],
+        [
+          0.4,
+          0.22
+        ]
+      ]
+    ],
+    "rationale": "On grass, skidding BH slice DTL is textbook — low bounce stays low for opponent. Don't try a CC slice and walk into their FH.",
+    "rationaleTr": "Çimde kayan BH slice DTL klasiktir — düşük seker. CC slice deyip rakibin FH'ine yürüme.",
+    "category": "approach",
+    "incomingSpin": "slice",
+    "incomingSpeed": "medium",
+    "incomingHeight": "low",
+    "idealShotType": "slice",
+    "acceptableShotTypes": [
+      "flat"
+    ]
+  },
+  {
+    "id": "drill_039",
+    "title": "Deuce break point high BH",
+    "titleTr": "Deuce break point yüksek BH",
+    "surface": "clay",
+    "youX": 0.2,
+    "youY": 0.95,
+    "opponentX": 0.7,
+    "opponentY": 0.05,
+    "ballOriginX": 0.7,
+    "ballOriginY": 0.15,
+    "ballTargetX": 0.18,
+    "ballTargetY": 0.85,
+    "scoreChip": "BREAK PT",
+    "greenZone": [
+      [
+        0.55,
+        0.05
+      ],
+      [
+        0.8,
+        0.05
+      ],
+      [
+        0.8,
+        0.28
+      ],
+      [
+        0.55,
+        0.28
+      ]
+    ],
+    "yellowZones": [
+      [
+        [
+          0.55,
+          0.18
+        ],
+        [
+          0.78,
+          0.18
+        ],
+        [
+          0.78,
+          0.4
+        ],
+        [
+          0.55,
+          0.4
+        ]
+      ]
+    ],
+    "rationale": "Break point — play percentages. Deep CC topspin keeps the rally even; slice loop is safer yellow when timing's off. DON'T attempt a DTL winner here.",
+    "rationaleTr": "Break point — persantaj oyna. Derin CC topspin ralliyi eşit tutar; timing iyi değilse yüksek slice loop sarı. Asla DTL winner deneme.",
+    "category": "defense",
+    "incomingSpin": "topspin",
+    "incomingSpeed": "slow",
+    "incomingHeight": "high",
+    "idealShotType": "topspin",
+    "acceptableShotTypes": [
+      "slice"
+    ]
+  },
+  {
+    "id": "drill_040",
+    "title": "Drop from inside baseline",
+    "titleTr": "Baseline içinden drop",
+    "surface": "hard",
+    "youX": 0.4,
+    "youY": 0.75,
+    "opponentX": 0.45,
+    "opponentY": 0.0,
+    "ballOriginX": 0.45,
+    "ballOriginY": 0.05,
+    "ballTargetX": 0.4,
+    "ballTargetY": 0.65,
+    "scoreChip": "30-0",
+    "greenZone": [
+      [
+        0.55,
+        0.4
+      ],
+      [
+        0.78,
+        0.4
+      ],
+      [
+        0.78,
+        0.49
+      ],
+      [
+        0.55,
+        0.49
+      ]
+    ],
+    "yellowZones": [
+      [
+        [
+          0.65,
+          0.05
+        ],
+        [
+          0.87,
+          0.05
+        ],
+        [
+          0.87,
+          0.2
+        ],
+        [
+          0.65,
+          0.2
+        ]
+      ]
+    ],
+    "rationale": "Opponent committed to backing up — sell the drop. Flat to ad corner is predictable yellow they're already prepared for.",
+    "rationaleTr": "Rakip geri çekilmeye yatırım yaptı — drop sat. Ad köşesi flat tahmin edilebilir sarı, rakip zaten hazırlandı.",
+    "category": "patterns",
+    "incomingSpin": "topspin",
+    "incomingSpeed": "slow",
+    "incomingHeight": "mid",
+    "idealShotType": "drop",
+    "acceptableShotTypes": [
+      "flat"
+    ]
+  },
+  {
+    "id": "drill_041",
+    "title": "Volley to open court",
+    "titleTr": "Açık korta volley",
+    "surface": "grass",
+    "youX": 0.3,
+    "youY": 0.55,
+    "opponentX": 0.8,
+    "opponentY": 0.85,
+    "ballOriginX": 0.8,
+    "ballOriginY": 0.8,
+    "ballTargetX": 0.32,
+    "ballTargetY": 0.52,
+    "scoreChip": "40-0",
+    "greenZone": [
+      [
+        0.13,
+        0.05
+      ],
+      [
+        0.4,
+        0.05
+      ],
+      [
+        0.4,
+        0.4
+      ],
+      [
+        0.13,
+        0.4
+      ]
+    ],
+    "yellowZones": [
+      [
+        [
+          0.55,
+          0.4
+        ],
+        [
+          0.78,
+          0.4
+        ],
+        [
+          0.78,
+          0.49
+        ],
+        [
+          0.55,
+          0.49
+        ]
+      ]
+    ],
+    "rationale": "Easy volley into open deuce side — punch deep, take time away. Drop volley to ad service box is alternative for diagonal sprint.",
+    "rationaleTr": "Açık deuce'a kolay volley — derin punch, zaman al. Diyagonal koşturmak istersen ad servis kutusuna drop volley alternatif.",
+    "category": "net_game",
+    "incomingSpin": "topspin",
+    "incomingSpeed": "slow",
+    "incomingHeight": "mid",
+    "idealShotType": "flat",
+    "acceptableShotTypes": [
+      "drop"
+    ]
+  },
+  {
+    "id": "drill_042",
+    "title": "Tiebreak serve +1",
+    "titleTr": "Tiebreak servis +1",
+    "surface": "hard",
+    "youX": 0.55,
+    "youY": 0.9,
+    "opponentX": 0.5,
+    "opponentY": 0.1,
+    "ballOriginX": 0.5,
+    "ballOriginY": 0.18,
+    "ballTargetX": 0.55,
+    "ballTargetY": 0.75,
+    "scoreChip": "TB 5-4",
+    "greenZone": [
+      [
+        0.13,
+        0.05
+      ],
+      [
+        0.35,
+        0.05
+      ],
+      [
+        0.35,
+        0.28
+      ],
+      [
+        0.13,
+        0.28
+      ]
+    ],
+    "yellowZones": [
+      [
+        [
+          0.65,
+          0.05
+        ],
+        [
+          0.87,
+          0.05
+        ],
+        [
+          0.87,
+          0.28
+        ],
+        [
+          0.65,
+          0.28
+        ]
+      ]
+    ],
+    "rationale": "Tiebreak — pick your best pattern, not your fanciest. Inside-out FH to BH corner is textbook 3rd-shot. Inside-in surprise is yellow but lower margin.",
+    "rationaleTr": "Tiebreak'te en iyi pattern'ini oyna, fanteziyi değil. Inside-out FH BH köşesine kitap kuralı. Inside-in sürpriz sarı ama düşük marj.",
+    "category": "patterns",
+    "incomingSpin": "flat",
+    "incomingSpeed": "slow",
+    "incomingHeight": "mid",
+    "idealShotType": "topspin",
+    "acceptableShotTypes": [
+      "flat"
+    ]
+  },
+  {
+    "id": "drill_043",
+    "title": "BH passing shot dipper",
+    "titleTr": "BH dipping pass",
+    "surface": "hard",
+    "youX": 0.7,
+    "youY": 0.9,
+    "opponentX": 0.6,
+    "opponentY": 0.42,
+    "ballOriginX": 0.6,
+    "ballOriginY": 0.45,
+    "ballTargetX": 0.7,
+    "ballTargetY": 0.82,
+    "scoreChip": "30-30",
+    "greenZone": [
+      [
+        0.13,
+        0.3
+      ],
+      [
+        0.32,
+        0.3
+      ],
+      [
+        0.32,
+        0.48
+      ],
+      [
+        0.13,
+        0.48
+      ]
+    ],
+    "yellowZones": [
+      [
+        [
+          0.65,
+          0.05
+        ],
+        [
+          0.87,
+          0.05
+        ],
+        [
+          0.87,
+          0.3
+        ],
+        [
+          0.65,
+          0.3
+        ]
+      ]
+    ],
+    "rationale": "Sharp dipping CC at the volleyer's feet — they must volley up, you get the second pass. Trying to thread DTL when they're closed is lower margin.",
+    "rationaleTr": "Volleyciye ayakları dibinde sharp CC dipper — yukarı volley yapmak zorunda, sen ikinci pass'i alırsın. Kapanmış rakibe DTL geçirmeye çalışmak düşük marj.",
+    "category": "net_game",
+    "incomingSpin": "flat",
+    "incomingSpeed": "medium",
+    "incomingHeight": "low",
+    "idealShotType": "topspin",
+    "acceptableShotTypes": [
+      "flat"
+    ]
+  },
+  {
+    "id": "drill_044",
+    "title": "Chip-and-charge return",
+    "titleTr": "Chip-and-charge return",
+    "surface": "grass",
+    "youX": 0.3,
+    "youY": 0.8,
+    "opponentX": 0.45,
+    "opponentY": 0.05,
+    "ballOriginX": 0.45,
+    "ballOriginY": 0.05,
+    "ballTargetX": 0.3,
+    "ballTargetY": 0.68,
+    "scoreChip": "0-30",
+    "greenZone": [
+      [
+        0.13,
+        0.05
+      ],
+      [
+        0.32,
+        0.05
+      ],
+      [
+        0.32,
+        0.22
+      ],
+      [
+        0.13,
+        0.22
+      ]
+    ],
+    "yellowZones": [
+      [
+        [
+          0.4,
+          0.05
+        ],
+        [
+          0.6,
+          0.05
+        ],
+        [
+          0.6,
+          0.22
+        ],
+        [
+          0.4,
+          0.22
+        ]
+      ]
+    ],
+    "rationale": "On grass against weak second serve, chip DTL deep and charge. Low bounce + transition = volley you can finish. Deep middle is yellow safe.",
+    "rationaleTr": "Çimde zayıf ikinci serviste DTL chip ve hücum. Düşük seken slice + transition = bitirebileceğin volley. Derin orta güvenli sarı.",
+    "category": "return",
+    "incomingSpin": "slice",
+    "incomingSpeed": "slow",
+    "incomingHeight": "low",
+    "idealShotType": "slice",
+    "acceptableShotTypes": [
+      "flat"
+    ]
+  },
+  {
+    "id": "drill_045",
+    "title": "Defensive lob from behind baseline",
+    "titleTr": "Baseline arkasından defansif lob",
+    "surface": "clay",
+    "youX": 0.45,
+    "youY": 1.0,
+    "opponentX": 0.5,
+    "opponentY": 0.4,
+    "ballOriginX": 0.5,
+    "ballOriginY": 0.2,
+    "ballTargetX": 0.45,
+    "ballTargetY": 0.95,
+    "scoreChip": "15-40",
+    "greenZone": [
+      [
+        0.13,
+        0.02
+      ],
+      [
+        0.45,
+        0.02
+      ],
+      [
+        0.45,
+        0.2
+      ],
+      [
+        0.13,
+        0.2
+      ]
+    ],
+    "yellowZones": [
+      [
+        [
+          0.45,
+          0.02
+        ],
+        [
+          0.87,
+          0.02
+        ],
+        [
+          0.87,
+          0.2
+        ],
+        [
+          0.45,
+          0.2
+        ]
+      ]
+    ],
+    "rationale": "Defensive lob is the only play from this position with a net player closing — over BH shoulder forces the harder overhead.",
+    "rationaleTr": "File'de kapanan rakipken bu pozisyondan tek seçenek defansif lob — BH omuz üstünden zor overhead'i zorla.",
+    "category": "defense",
+    "incomingSpin": "topspin",
+    "incomingSpeed": "fast",
+    "incomingHeight": "high",
+    "idealShotType": "lob",
     "acceptableShotTypes": [
       "topspin"
     ]

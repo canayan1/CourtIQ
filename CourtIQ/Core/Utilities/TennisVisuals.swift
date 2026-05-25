@@ -213,55 +213,86 @@ struct CourtTopDown: View {
     var surface: AppPalette.CourtSurface = .clay
     var lineOpacity: Double = 1.0
 
+    /// Coordinate convention (CRITICAL — drill JSON depends on it):
+    ///
+    ///   The doubles-court rectangle FILLS the rendered container so
+    ///   that callers can position markers (YOU / OP / ball) in
+    ///   normalized [0, 1] coordinates that map cleanly onto the court:
+    ///
+    ///     y = 0.000  top baseline (opponent's end)
+    ///     y = 0.231  top service line   (6.40m of 11.89m = 53.8%)
+    ///     y = 0.500  net
+    ///     y = 0.769  bottom service line
+    ///     y = 1.000  bottom baseline (your end)
+    ///
+    ///     x = 0.000  left doubles sideline
+    ///     x = 0.125  left singles sideline   (8.23m / 10.97m = 75%)
+    ///     x = 0.500  centre mark
+    ///     x = 0.875  right singles sideline
+    ///     x = 1.000  right doubles sideline
+    ///
+    ///   These ratios mirror ITF singles-court geometry — singles
+    ///   service line is 6.40m from a 11.89m half-court, singles court
+    ///   width is 8.23m of the 10.97m doubles total. The 1:2.17 aspect
+    ///   ratio (10.97/23.77 = 0.462 → height/width = 2.17) of a true
+    ///   doubles court is best honoured by sizing the container at a
+    ///   width:height of roughly 140:303 (drill view uses 140×360 to
+    ///   allow some letterbox).
     var body: some View {
         GeometryReader { geo in
-            let w = geo.size.width, h = geo.size.height
             ZStack {
                 LinearGradient(colors: [surface.base, surface.dark],
                                startPoint: .top, endPoint: .bottom)
 
                 Canvas { ctx, size in
                     let line = surface.line.opacity(lineOpacity)
-                    let outerX = size.width * 0.1, outerY = size.height * 0.11
-                    let innerX = size.width * 0.2
-                    let innerY = size.height * 0.22
+                    let w = size.width, h = size.height
 
-                    // Outer doubles
-                    let outer = CGRect(x: outerX, y: outerY,
-                                       width: size.width - outerX * 2,
-                                       height: size.height - outerY * 2)
+                    // Outer doubles court — the rectangle fills the
+                    // entire container so external markers can rely on
+                    // [0,1] normalized coords.
+                    let outer = CGRect(x: 0, y: 0, width: w, height: h)
                     ctx.stroke(Path(outer), with: .color(line), lineWidth: 2)
 
-                    // Singles sidelines
+                    // Singles sidelines (inset 12.5% from each side).
+                    let leftSingles = w * 0.125
+                    let rightSingles = w * 0.875
                     var sidelines = Path()
-                    sidelines.move(to: CGPoint(x: innerX, y: outerY))
-                    sidelines.addLine(to: CGPoint(x: innerX, y: size.height - outerY))
-                    sidelines.move(to: CGPoint(x: size.width - innerX, y: outerY))
-                    sidelines.addLine(to: CGPoint(x: size.width - innerX, y: size.height - outerY))
+                    sidelines.move(to: CGPoint(x: leftSingles, y: 0))
+                    sidelines.addLine(to: CGPoint(x: leftSingles, y: h))
+                    sidelines.move(to: CGPoint(x: rightSingles, y: 0))
+                    sidelines.addLine(to: CGPoint(x: rightSingles, y: h))
                     ctx.stroke(sidelines, with: .color(line), lineWidth: 1.6)
 
-                    // Service boxes (top and bottom horizontal lines)
+                    // Service lines at ITF-correct 53.8% of half-court
+                    // distance from the net (= 6.40m of 11.89m).
+                    let topServiceY = h * 0.231
+                    let bottomServiceY = h * 0.769
                     var service = Path()
-                    service.move(to: CGPoint(x: innerX, y: innerY * 1.5 + outerY))
-                    service.addLine(to: CGPoint(x: size.width - innerX, y: innerY * 1.5 + outerY))
-                    service.move(to: CGPoint(x: innerX, y: size.height - innerY * 1.5 - outerY))
-                    service.addLine(to: CGPoint(x: size.width - innerX,
-                                                y: size.height - innerY * 1.5 - outerY))
-                    // Center service line
-                    service.move(to: CGPoint(x: size.width / 2, y: innerY * 1.5 + outerY))
-                    service.addLine(to: CGPoint(x: size.width / 2,
-                                                y: size.height - innerY * 1.5 - outerY))
-                    ctx.stroke(service, with: .color(line), lineWidth: 1.6)
+                    service.move(to: CGPoint(x: leftSingles, y: topServiceY))
+                    service.addLine(to: CGPoint(x: rightSingles, y: topServiceY))
+                    service.move(to: CGPoint(x: leftSingles, y: bottomServiceY))
+                    service.addLine(to: CGPoint(x: rightSingles, y: bottomServiceY))
+                    // Centre service line runs net-to-service-line on
+                    // both sides; the gap in the middle is the net itself.
+                    service.move(to: CGPoint(x: w / 2, y: topServiceY))
+                    service.addLine(to: CGPoint(x: w / 2, y: bottomServiceY))
+                    ctx.stroke(service, with: .color(line), lineWidth: 1.4)
 
-                    // Net
+                    // Centre marks on both baselines — small 4 pt ticks.
+                    var centreMarks = Path()
+                    centreMarks.move(to: CGPoint(x: w / 2, y: 0))
+                    centreMarks.addLine(to: CGPoint(x: w / 2, y: 4))
+                    centreMarks.move(to: CGPoint(x: w / 2, y: h - 4))
+                    centreMarks.addLine(to: CGPoint(x: w / 2, y: h))
+                    ctx.stroke(centreMarks, with: .color(line), lineWidth: 2)
+
+                    // Net — thicker line + soft mesh band.
                     var net = Path()
-                    net.move(to: CGPoint(x: outerX * 0.6, y: size.height / 2))
-                    net.addLine(to: CGPoint(x: size.width - outerX * 0.6, y: size.height / 2))
+                    net.move(to: CGPoint(x: 0, y: h / 2))
+                    net.addLine(to: CGPoint(x: w, y: h / 2))
                     ctx.stroke(net, with: .color(line), lineWidth: 3)
-
-                    // Net mesh band
-                    let mesh = CGRect(x: outerX, y: size.height / 2 - 6,
-                                      width: size.width - outerX * 2, height: 12)
+                    let mesh = CGRect(x: 0, y: h / 2 - 6, width: w, height: 12)
                     ctx.fill(Path(mesh), with: .color(.white.opacity(0.07)))
                 }
             }

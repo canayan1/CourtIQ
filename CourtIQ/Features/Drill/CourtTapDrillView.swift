@@ -157,7 +157,9 @@ struct CourtTapDrillView: View {
                     handleTap(at: location, layout: layout, drill: drill)
                 }
             }
-            .frame(height: 360)
+            // 320pt gives ~303 of court + ~17 of padding (top chip + top
+            // incoming-ball card both anchor into this region).
+            .frame(height: 320)
 
             // Stage-driven bottom panel: prompt → shot picker → rationale.
             switch stage {
@@ -334,8 +336,12 @@ struct CourtTapDrillView: View {
     }
 
     private func courtLayout(in regionSize: CGSize) -> CourtLayout {
+        // ITF singles court is 8.23 m × 23.77 m (singles area).
+        // Doubles is 10.97 m × 23.77 m. The new CourtTopDown renders
+        // the doubles rectangle filling the entire container, so width
+        // : height must equal 10.97 : 23.77 = 1 : 2.167.
         let width: CGFloat = 140
-        let height: CGFloat = 300
+        let height: CGFloat = width * (23.77 / 10.97)  // ≈ 303
         let x = (regionSize.width - width) / 2
         let y = (regionSize.height - height) / 2
         return CourtLayout(
