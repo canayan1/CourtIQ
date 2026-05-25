@@ -15,6 +15,7 @@ struct AICoachThreadView: View {
     @EnvironmentObject private var session: UserSessionManager
     @EnvironmentObject private var matches: MatchEntryManager
     @EnvironmentObject private var dailyQuizManager: DailyQuizManager
+    @EnvironmentObject private var drillManager: CourtTapDrillManager
 
     @State private var input: String = ""
     @State private var workingThreadID: String?
@@ -299,6 +300,29 @@ struct AICoachThreadView: View {
                 )
             }
 
+        // Tactical profile — pick out the categories with enough reps
+        // to be credible (≥3 taps each). Skip the whole block if the
+        // user has done zero drills.
+        let established = drillManager.establishedTacticalProfile
+        let drillCount = drillManager.sessions.reduce(0) { $0 + $1.taps.count }
+        let tactical: AIChatContextPayload.TacticalProfilePayload?
+        if drillCount > 0 {
+            func s(_ cat: TacticalCategory) -> Double? {
+                established.first { $0.category == cat }?.score
+            }
+            tactical = AIChatContextPayload.TacticalProfilePayload(
+                openCourt: s(.openCourt),
+                defense: s(.defense),
+                approach: s(.approach),
+                patterns: s(.patterns),
+                netGame: s(.netGame),
+                return_: s(.return),
+                totalDrillsCompleted: drillCount
+            )
+        } else {
+            tactical = nil
+        }
+
         return AIChatContextPayload(
             profile: AIChatContextPayload.ProfilePayload(
                 level: UserDefaults.standard.string(forKey: "CourtIQ.onboardingLevel"),
@@ -311,6 +335,7 @@ struct AICoachThreadView: View {
                 lastSessions: recentQuizzes.isEmpty ? nil : recentQuizzes,
                 topMistakes: topMistakes.isEmpty ? nil : topMistakes
             ),
+            tacticalProfile: tactical,
             imported: nil   // Phase 3 will wire imported ChatGPT summary here
         )
     }

@@ -538,6 +538,26 @@
 "drill.intro_legend_op" = "Koyu işaretçi = rakibinin pozisyonu.";
 "drill.intro_legend_ball" = "Kesik çizgi = topun sana nereden geldiği.";
 "drill.intro_cta" = "Anladım — başlayalım";
+
+/* Taktik profil kartı */
+"drill.profile_kicker" = "Taktik profil";
+"drill.profile_title" = "Tenis IQ'n şu an nerede";
+"drill.profile_reps_format" = "%d tekrar";
+"drill.profile_footnote" = "Her kategoride yeşil / sarı / kırmızı dokunuş puanlarının ortalaması. Soluk satırlar henüz yeterli tekrar olmayan kategoriler (≥3 gerekli).";
+
+/* Kategori adları */
+"drill.cat.open_court" = "Açık kort";
+"drill.cat.defense" = "Savunma";
+"drill.cat.approach" = "Atak girişi";
+"drill.cat.patterns" = "Pattern'ler";
+"drill.cat.net_game" = "File oyunu";
+"drill.cat.return" = "Return";
+"drill.cat.open_court.summary" = "Açık kort alanını tanıma ve kullanma";
+"drill.cat.defense.summary" = "Zorlanınca toparlanma vuruşu seçimi";
+"drill.cat.approach.summary" = "Geçiş + file bitirme vuruşları";
+"drill.cat.patterns.summary" = "Klasik diziler (inside-out, arkasına, +1)";
+"drill.cat.net_game.summary" = "Volley yerleşimi, lob savunması";
+"drill.cat.return.summary" = "Return hedefi + risk yönetimi";
 "drill.share" = "Paylaş";
 "drill.label_excellent" = "Pro okuma.";
 "drill.label_strong" = "Güçlü okuma.";

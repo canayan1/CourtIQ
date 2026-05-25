@@ -52,7 +52,8 @@
       ]
     ],
     "rationale": "Open court forehand. Opponent is stranded wide.",
-    "rationaleTr": "Açık korta forehand. Rakip kort dışında kalmış."
+    "rationaleTr": "Açık korta forehand. Rakip kort dışında kalmış.",
+    "category": "open_court"
   },
   {
     "id": "drill_002",
@@ -107,7 +108,8 @@
       ]
     ],
     "rationale": "Deep crosscourt is the recovery shot. Down-the-line is high risk when stretched wide.",
-    "rationaleTr": "Derin crosscourt toparlanma vuruşu. Stretched durumda DTL yüksek risk."
+    "rationaleTr": "Derin crosscourt toparlanma vuruşu. Stretched durumda DTL yüksek risk.",
+    "category": "defense"
   },
   {
     "id": "drill_003",
@@ -162,7 +164,8 @@
       ]
     ],
     "rationale": "Take it inside-out to the open court. Going back behind the opponent is also strong but harder.",
-    "rationaleTr": "Inside-out açık korta. Rakibin arkasına gitmek de güçlü ama zor."
+    "rationaleTr": "Inside-out açık korta. Rakibin arkasına gitmek de güçlü ama zor.",
+    "category": "approach"
   },
   {
     "id": "drill_004",
@@ -217,7 +220,8 @@
       ]
     ],
     "rationale": "Open deuce side — opponent is way ad-wide.",
-    "rationaleTr": "Açık deuce tarafı — rakip ad-wide kaldı."
+    "rationaleTr": "Açık deuce tarafı — rakip ad-wide kaldı.",
+    "category": "open_court"
   },
   {
     "id": "drill_005",
@@ -272,7 +276,8 @@
       ]
     ],
     "rationale": "Deep down-the-line approach to the corner. Crosscourt is acceptable but opens the line for a pass.",
-    "rationaleTr": "Derin DTL approach köşeye. Crosscourt kabul edilebilir ama line'ı pass için açar."
+    "rationaleTr": "Derin DTL approach köşeye. Crosscourt kabul edilebilir ama line'ı pass için açar.",
+    "category": "approach"
   },
   {
     "id": "drill_006",
@@ -327,7 +332,8 @@
       ]
     ],
     "rationale": "First volley goes deep into the open court. Don't try to angle short.",
-    "rationaleTr": "İlk volley derin açık korta. Kısa açıya çalışma."
+    "rationaleTr": "İlk volley derin açık korta. Kısa açıya çalışma.",
+    "category": "net_game"
   },
   {
     "id": "drill_007",
@@ -382,7 +388,8 @@
       ]
     ],
     "rationale": "Crosscourt return back to server's body — neutralize the kick. Down-the-line is high risk.",
-    "rationaleTr": "Crosscourt return server'ın gövdesine — kick'i nötralize et. DTL yüksek risk."
+    "rationaleTr": "Crosscourt return server'ın gövdesine — kick'i nötralize et. DTL yüksek risk.",
+    "category": "return"
   },
   {
     "id": "drill_008",
@@ -437,7 +444,8 @@
       ]
     ],
     "rationale": "Opponent committed to recovery — hit back behind them. Easier than another open-court winner.",
-    "rationaleTr": "Rakip recovery'ye gitti — arkasına vur. Bir başka açık kort winner'ından kolay."
+    "rationaleTr": "Rakip recovery'ye gitti — arkasına vur. Bir başka açık kort winner'ından kolay.",
+    "category": "patterns"
   },
   {
     "id": "drill_009",
@@ -510,7 +518,8 @@
       ]
     ],
     "rationale": "Stay heavy crosscourt deep — patience. Down-the-line opens the court for them.",
-    "rationaleTr": "Crosscourt derin sabırlı kal. DTL kortu rakip için açar."
+    "rationaleTr": "Crosscourt derin sabırlı kal. DTL kortu rakip için açar.",
+    "category": "defense"
   },
   {
     "id": "drill_010",
@@ -565,7 +574,8 @@
       ]
     ],
     "rationale": "Down-the-line passing shot — opponent at net leans crosscourt. Lob is the backup.",
-    "rationaleTr": "DTL pass — file'deki rakip crosscourt'a yatkın. Lob yedek."
+    "rationaleTr": "DTL pass — file'deki rakip crosscourt'a yatkın. Lob yedek.",
+    "category": "net_game"
   },
   {
     "id": "drill_011",
@@ -620,7 +630,8 @@
       ]
     ],
     "rationale": "Deep lob over the opposite shoulder is the highest-percentage answer when squeezed at the baseline.",
-    "rationaleTr": "Aksi omuz üstünden derin lob — baseline'da sıkışınca en yüksek persantaj."
+    "rationaleTr": "Aksi omuz üstünden derin lob — baseline'da sıkışınca en yüksek persantaj.",
+    "category": "net_game"
   },
   {
     "id": "drill_012",
@@ -675,7 +686,8 @@
       ]
     ],
     "rationale": "Inside-out forehand to the opponent's backhand corner is the textbook 3rd-shot pattern.",
-    "rationaleTr": "Inside-out FH rakibin backhand köşesine — textbook 3. vuruş pattern'i."
+    "rationaleTr": "Inside-out FH rakibin backhand köşesine — textbook 3. vuruş pattern'i.",
+    "category": "patterns"
   },
   {
     "id": "drill_013",
@@ -748,7 +760,8 @@
       ]
     ],
     "rationale": "Opponent is camped 5m behind the baseline. Drop shot just over the net is the highest-leverage play.",
-    "rationaleTr": "Rakip baseline'ın 5m gerisinde. File üstüne drop shot en yüksek leverage."
+    "rationaleTr": "Rakip baseline'ın 5m gerisinde. File üstüne drop shot en yüksek leverage.",
+    "category": "patterns"
   },
   {
     "id": "drill_014",
@@ -803,7 +816,8 @@
       ]
     ],
     "rationale": "Block return back to the server's body — buy time, neutralize. Wide is risky on a jammed return.",
-    "rationaleTr": "Block return server'ın gövdesine — zaman kazan, nötralize et. Sıkıştığında wide risklidir."
+    "rationaleTr": "Block return server'ın gövdesine — zaman kazan, nötralize et. Sıkıştığında wide risklidir.",
+    "category": "return"
   },
   {
     "id": "drill_015",
@@ -858,6 +872,7 @@
       ]
     ],
     "rationale": "Loop a heavy ball back deep into their court — give yourself time to recover, don't go for a low-margin DTL winner.",
-    "rationaleTr": "Yüksek topspin derin onların kortuna — toparlanma için zaman kazan, low-margin DTL winner deneme."
+    "rationaleTr": "Yüksek topspin derin onların kortuna — toparlanma için zaman kazan, low-margin DTL winner deneme.",
+    "category": "defense"
   }
 ]

@@ -26,6 +26,9 @@ struct ProfileView: View {
                 profileHeader
                 LevelProgressionPathView()
                 aiCoachSection
+                TacticalProfileCard()
+                    .environmentObject(lang)
+                    .environmentObject(drillManager)
                 streakSection
                 historySection
                 betaFeedbackSection
@@ -50,6 +53,7 @@ struct ProfileView: View {
                     .environmentObject(session)
                     .environmentObject(matchManager)
                     .environmentObject(dailyQuizManager)
+                    .environmentObject(drillManager)
             }
         }
         .sheet(isPresented: $showAIPaywall) {

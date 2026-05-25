@@ -105,6 +105,52 @@ final class CourtTapDrillManager: ObservableObject {
         defaults.removeObject(forKey: sessionsKey)
     }
 
+    // MARK: - Tactical profile (v1)
+
+    /// Per-category 0–5 average across every drill the user has ever
+    /// completed. Joins each tap to its drill via the bundled drill
+    /// catalog so we can resolve `category` even from older sessions
+    /// that pre-date the category field. Categories with zero taps
+    /// surface as `score == nil` so the UI can render an "not enough
+    /// reps yet" state instead of pretending there's signal.
+    var tacticalProfile: [TacticalProfileEntry] {
+        let drillsByID = Dictionary(
+            uniqueKeysWithValues: CourtTapDrill.allDrills.map { ($0.id, $0) }
+        )
+
+        // Aggregate raw 0–20 zone scores per category.
+        var sumByCategory: [TacticalCategory: Int] = [:]
+        var countByCategory: [TacticalCategory: Int] = [:]
+        for session in sessions {
+            for tap in session.taps {
+                let drill = drillsByID[tap.drillID]
+                let categoryRaw = drill?.category ?? TacticalCategory.fallback.rawValue
+                let category = TacticalCategory(rawValue: categoryRaw) ?? .fallback
+                sumByCategory[category, default: 0] += tap.zone.score
+                countByCategory[category, default: 0] += 1
+            }
+        }
+
+        return TacticalCategory.allCases.map { cat in
+            guard let count = countByCategory[cat], count > 0 else {
+                return TacticalProfileEntry.empty(cat)
+            }
+            let sum = Double(sumByCategory[cat] ?? 0)
+            // sum is in 0...20*count; normalise to 0...5 by dividing
+            // by (4 * count). green = 20 → 5.0, yellow = 10 → 2.5,
+            // red = 0 → 0.0.
+            let score = sum / (4.0 * Double(count))
+            return TacticalProfileEntry(category: cat, score: score, sampleCount: count)
+        }
+    }
+
+    /// Convenience: filter the profile to categories with established
+    /// signal (≥3 taps). Used by AI Coach context so we never assert
+    /// "your X is weak" off one bad swing.
+    var establishedTacticalProfile: [TacticalProfileEntry] {
+        tacticalProfile.filter(\.isEstablished)
+    }
+
     // MARK: - Persistence
 
     private func persist() {

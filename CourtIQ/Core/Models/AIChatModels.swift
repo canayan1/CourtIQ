@@ -18,7 +18,16 @@ struct AIChatContextPayload: Encodable {
     let profile: ProfilePayload?
     let matches: [MatchPayload]?
     let quiz: QuizPayload?
+    let tacticalProfile: TacticalProfilePayload?
     let imported: String?
+
+    enum CodingKeys: String, CodingKey {
+        case profile
+        case matches
+        case quiz
+        case tacticalProfile = "tactical_profile"
+        case imported
+    }
 
     struct ProfilePayload: Encodable {
         let level: String?
@@ -54,6 +63,30 @@ struct AIChatContextPayload: Encodable {
         let score: Int
         let total: Int
         let focusLabel: String?
+    }
+
+    /// Server-side coach reads this and can say things like "your
+    /// Defensive Recovery is 1.8/5 across 12 reps — drill it".
+    /// Only includes categories where the user has at least 3 taps
+    /// so the AI doesn't anchor on a single noisy result.
+    struct TacticalProfilePayload: Encodable {
+        let openCourt: Double?
+        let defense: Double?
+        let approach: Double?
+        let patterns: Double?
+        let netGame: Double?
+        let return_: Double?
+        let totalDrillsCompleted: Int
+
+        enum CodingKeys: String, CodingKey {
+            case openCourt = "open_court"
+            case defense
+            case approach
+            case patterns
+            case netGame = "net_game"
+            case return_ = "return"
+            case totalDrillsCompleted = "total_drills_completed"
+        }
     }
 }
 

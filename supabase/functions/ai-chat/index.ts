@@ -104,7 +104,26 @@ Every response includes AT LEAST ONE of the following:
 Always reference specific numbers from the context block when relevant:
 "Your serve rating dropped from 4 to 2 over the last 3 matches"
 "Mental rating: 2/5 in 4 of your last 5 matches"
+"Your Defensive Recovery is 1.8/5 across 12 drill taps — weakest category"
 Don't invent numbers. If a field is empty, say so plainly.
+
+### The tactical profile block
+[TACTICAL_PROFILE] reports the user's 0-5 average per decision category
+from the Daily Court Drill. Treat it as a long-term skill map — the
+match journal tells you what happened today, the tactical profile
+tells you which decision archetypes consistently let them down. When
+the profile is established (≥3 drill taps per category), recommend
+drill practice that targets the WEAKEST category first. When the
+profile is sparse ("no established categories yet"), suggest the
+Today → Daily Court Drill itself as the way to build the read.
+
+Category meanings:
+  open_court  — recognising and exploiting open court space
+  defense     — recovery shot selection when stretched
+  approach    — transition + finishing shots into the net
+  patterns    — textbook sequences (inside-out, behind, +1)
+  net_game    — volley placement, lob defence
+  return      — serve return target + risk management
 
 ### Response length
 - Debrief / coaching: 150-250 words
@@ -401,6 +420,15 @@ interface ChatRequest {
             lastSessions?: Array<{ date: string; score: number; total: number; focusLabel?: string }>;
             topMistakes?: string[];
         };
+        tactical_profile?: {
+            open_court?: number;
+            defense?: number;
+            approach?: number;
+            patterns?: number;
+            net_game?: number;
+            "return"?: number;
+            total_drills_completed: number;
+        };
         imported?: string | null;
     };
 }
@@ -437,6 +465,32 @@ function buildCachedPrefix(
         ].filter(Boolean).join("\n")
         : "no quiz history";
 
+    // Tactical profile — categories with ≥3 taps each, formatted as
+    // "category 0–5 score". Only emitted when the user has drill
+    // history, otherwise the AI doesn't try to anchor on missing data.
+    const tp = context?.tacticalProfile;
+    let tacticalBlock = "no drill profile yet";
+    if (tp && tp.total_drills_completed > 0) {
+        const labels: Record<string, string> = {
+            open_court: "Open court awareness",
+            defense:    "Defensive recovery",
+            approach:   "Approach + finishing",
+            patterns:   "Tactical patterns",
+            net_game:   "Net game",
+            "return":   "Return strategy",
+        };
+        const rows: string[] = [];
+        for (const key of Object.keys(labels)) {
+            const v = (tp as Record<string, unknown>)[key];
+            if (typeof v === "number") {
+                rows.push(`${labels[key]}: ${v.toFixed(1)}/5`);
+            }
+        }
+        tacticalBlock = rows.length > 0
+            ? rows.join("\n") + `\n(over ${tp.total_drills_completed} drill taps)`
+            : `no established categories yet — ${tp.total_drills_completed} drill taps so far`;
+    }
+
     const importedBlock = importedSummary
         ? `[IMPORTED_CONTEXT]\n${importedSummary}`
         : "[IMPORTED_CONTEXT] none";
@@ -450,6 +504,8 @@ function buildCachedPrefix(
         matchesBlock,
         "[QUIZ_HISTORY]",
         quizBlock,
+        "[TACTICAL_PROFILE]",
+        tacticalBlock,
         importedBlock,
     ].join("\n\n");
 }

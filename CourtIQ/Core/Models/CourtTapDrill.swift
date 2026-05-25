@@ -10,6 +10,12 @@ struct CourtTapDrill: Codable, Identifiable, Hashable {
     let title: String
     var titleTr: String? = nil
     let surface: String           // "clay" | "grass" | "hard"
+    /// Which tactical category this scenario primarily exercises.
+    /// Optional in the wire format for backward compatibility — drills
+    /// without an explicit category fall through to `.patterns` so
+    /// existing user sessions aren't broken if we ship a new drill
+    /// before users update the app.
+    var category: String? = nil
     let youX: Double
     let youY: Double
     let opponentX: Double?

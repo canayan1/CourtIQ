@@ -538,6 +538,26 @@
 "drill.intro_legend_op" = "Dark marker = your opponent's position.";
 "drill.intro_legend_ball" = "Dashed line = where the ball is coming to you from.";
 "drill.intro_cta" = "Got it — let's go";
+
+/* Tactical profile card */
+"drill.profile_kicker" = "Tactical profile";
+"drill.profile_title" = "Where your tennis IQ stands";
+"drill.profile_reps_format" = "%d reps";
+"drill.profile_footnote" = "Average of your green / yellow / red tap scores in each category. Fades show categories without enough reps to be reliable (need ≥3).";
+
+/* Category names */
+"drill.cat.open_court" = "Open court";
+"drill.cat.defense" = "Defense";
+"drill.cat.approach" = "Approach";
+"drill.cat.patterns" = "Patterns";
+"drill.cat.net_game" = "Net game";
+"drill.cat.return" = "Return";
+"drill.cat.open_court.summary" = "Recognising and exploiting open court space";
+"drill.cat.defense.summary" = "Recovery shot selection when stretched";
+"drill.cat.approach.summary" = "Transition + finishing shots into the net";
+"drill.cat.patterns.summary" = "Textbook sequences (inside-out, behind, +1)";
+"drill.cat.net_game.summary" = "Volley placement, lob defence";
+"drill.cat.return.summary" = "Serve return target + risk management";
 "drill.share" = "Share result";
 "drill.label_excellent" = "Pro read.";
 "drill.label_strong" = "Strong read.";
