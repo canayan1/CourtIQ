@@ -16,6 +16,25 @@ struct CourtTapDrill: Codable, Identifiable, Hashable {
     /// existing user sessions aren't broken if we ship a new drill
     /// before users update the app.
     var category: String? = nil
+
+    /// V2 fields — characterise the INCOMING ball so the user can
+    /// reason about how to respond, and define which shot type the
+    /// scenario is asking for. All optional so v1 drill JSON keeps
+    /// decoding cleanly.
+    /// Incoming ball spin: "topspin" | "slice" | "flat" | "kick"
+    var incomingSpin: String? = nil
+    /// Incoming ball speed: "slow" | "medium" | "fast"
+    var incomingSpeed: String? = nil
+    /// Incoming ball bounce height: "low" | "mid" | "high"
+    var incomingHeight: String? = nil
+    /// Best shot type to play: "topspin" | "flat" | "slice" | "drop" | "lob"
+    /// When nil (v1 drills) the shot-type axis is skipped and only
+    /// location scoring applies, so old sessions don't break.
+    var idealShotType: String? = nil
+    /// Alternative shot types that score as yellow (partially correct).
+    /// E.g. on a defensive recovery the ideal is topspin but flat is
+    /// also acceptable. Empty list = only `idealShotType` is yellow+.
+    var acceptableShotTypes: [String]? = nil
     let youX: Double
     let youY: Double
     let opponentX: Double?
@@ -76,13 +95,42 @@ enum DrillZone: Codable, Hashable {
     }
 }
 
-/// What the user tapped on a single scenario — recorded so the result
-/// screen can replay the heat map.
+/// Five shot types the V2 drill picker offers. Lowercase raw values
+/// match the strings in `CourtTapDrill.idealShotType` so we can
+/// round-trip through JSON cleanly without a custom decoder.
+enum ShotType: String, Codable, CaseIterable, Identifiable, Hashable {
+    case topspin
+    case flat
+    case slice
+    case drop
+    case lob
+
+    var id: String { rawValue }
+    var localizationKey: String { "drill.shot.\(rawValue)" }
+    /// SF Symbol that visually hints at the trajectory.
+    var iconName: String {
+        switch self {
+        case .topspin: return "arrow.up.right.circle.fill"
+        case .flat:    return "arrow.right.circle.fill"
+        case .slice:   return "arrow.down.right.circle.fill"
+        case .drop:    return "arrow.down.to.line.circle.fill"
+        case .lob:     return "arrow.up.to.line.circle.fill"
+        }
+    }
+}
+
+/// What the user committed on a single scenario — location AND
+/// (when the scenario asks for it) shot type. `shotType` is optional
+/// so v1 drill sessions decode without crashing.
 struct DrillTap: Codable, Hashable {
     let drillID: String
     let tapX: Double                 // normalized court coord
     let tapY: Double
     let zone: DrillZone
+    var shotType: ShotType? = nil
+    /// Whether the chosen shot type matched the scenario's ideal /
+    /// acceptable list. nil when the scenario didn't ask for one.
+    var shotTypeCorrect: Bool? = nil
 }
 
 /// Summary record of one completed Daily Drill session (5 scenarios).

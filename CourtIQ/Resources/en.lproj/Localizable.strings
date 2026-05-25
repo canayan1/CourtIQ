@@ -558,6 +558,48 @@
 "drill.cat.patterns.summary" = "Textbook sequences (inside-out, behind, +1)";
 "drill.cat.net_game.summary" = "Volley placement, lob defence";
 "drill.cat.return.summary" = "Serve return target + risk management";
+
+/* Drill v2 — shot type picker + incoming ball */
+"drill.shot_picker_prompt" = "What shot do you play?";
+"drill.shot_correct_format" = "%@ — the right call.";
+"drill.shot_incorrect_format" = "%@ — better was %@.";
+"drill.shot.topspin" = "Topspin";
+"drill.shot.flat" = "Flat";
+"drill.shot.slice" = "Slice";
+"drill.shot.drop" = "Drop";
+"drill.shot.lob" = "Lob";
+"drill.incoming_kicker" = "INCOMING";
+"drill.spin.topspin" = "Topspin";
+"drill.spin.flat" = "Flat";
+"drill.spin.slice" = "Slice";
+"drill.spin.kick" = "Kick";
+"drill.speed.slow" = "Slow";
+"drill.speed.medium" = "Med";
+"drill.speed.fast" = "Fast";
+"drill.height.low" = "Low";
+"drill.height.mid" = "Mid";
+"drill.height.high" = "High";
+
+/* Play style profile card */
+"drill.style_kicker" = "Play style";
+"drill.style_pending" = "Your play style is forming";
+"drill.style_pending_progress_format" = "%d / %d shot picks until your archetype locks in";
+"drill.style_accuracy_format" = "Shot-type accuracy: %d%%";
+"drill.style_footnote_format" = "Built from %d shot picks across every Daily Drill. Refines as you play more.";
+
+/* Play style archetypes */
+"drill.archetype.topspinBaseliner" = "Topspin Baseliner";
+"drill.archetype.topspinBaseliner.summary" = "You play heavy, deep, percentage tennis. Topspin is your home base.";
+"drill.archetype.flatAggressor" = "Flat Aggressor";
+"drill.archetype.flatAggressor.summary" = "You play through the ball and want short rallies. Pace over spin.";
+"drill.archetype.sliceArtist" = "Slice Artist";
+"drill.archetype.sliceArtist.summary" = "You disrupt opponents with low, sliding balls. Defence is your weapon.";
+"drill.archetype.allCourt" = "All-Court Player";
+"drill.archetype.allCourt.summary" = "You mix shots based on the situation, not a default preference.";
+"drill.archetype.netRusher" = "Net Rusher";
+"drill.archetype.netRusher.summary" = "Drops and lobs in your mix — you love transitions and the net.";
+"drill.archetype.defensiveCounter" = "Defensive Counter-Puncher";
+"drill.archetype.defensiveCounter.summary" = "Topspin + slice combo says you absorb pace and turn it around.";
 "drill.share" = "Share result";
 "drill.label_excellent" = "Pro read.";
 "drill.label_strong" = "Strong read.";

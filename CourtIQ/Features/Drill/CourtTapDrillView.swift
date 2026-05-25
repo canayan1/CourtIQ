@@ -19,8 +19,20 @@ struct CourtTapDrillView: View {
     @State private var taps: [DrillTap] = []
     @State private var revealedTap: CGPoint? = nil
     @State private var revealedZone: DrillZone? = nil
+    @State private var pickedShotType: ShotType? = nil
+    @State private var shotTypeCorrect: Bool? = nil
     @State private var sessionFinished = false
     @State private var showResult = false
+
+    /// Three-stage interaction state machine. v2 drills run through
+    /// all three; v1 drills (no `idealShotType`) skip stage 2 entirely.
+    private enum InteractionStage { case awaitingLocation, awaitingShotType, revealing }
+    private var stage: InteractionStage {
+        if revealedZone == nil { return .awaitingLocation }
+        if let drill = currentDrill,
+           drill.idealShotType != nil, pickedShotType == nil { return .awaitingShotType }
+        return .revealing
+    }
     /// One-time onboarding sheet so first-time users understand the
     /// "tap where you'd hit" interaction before the court appears.
     /// Persisted in UserDefaults — shown only on the very first session
@@ -130,6 +142,15 @@ struct CourtTapDrillView: View {
                             .padding(.leading, 16)
                             .padding(.top, 16)
                     }
+
+                    // Incoming-ball attributes card (top-right) — v2
+                    // drills only. Tells the user WHAT to expect from
+                    // the bouncing ball: spin / speed / height. Lets
+                    // them reason about shot type before tapping.
+                    incomingBallCard(for: drill)
+                        .frame(maxWidth: .infinity, alignment: .topTrailing)
+                        .padding(.trailing, 16)
+                        .padding(.top, 16)
                 }
                 .contentShape(Rectangle())
                 .onTapGesture { location in
@@ -138,22 +159,74 @@ struct CourtTapDrillView: View {
             }
             .frame(height: 360)
 
-            // Either the pre-tap prompt OR the post-tap rationale —
-            // never both at the same time. The pre-tap prompt is a
-            // gentle one-liner so first-time users always know they
-            // need to tap the court; it doesn't crowd the experience.
-            if revealedZone != nil {
+            // Stage-driven bottom panel: prompt → shot picker → rationale.
+            switch stage {
+            case .awaitingLocation:
+                preTapPrompt
+                    .padding(.horizontal, 22)
+            case .awaitingShotType:
+                shotTypePicker(for: drill)
+                    .padding(.horizontal, 22)
+                    .transition(.opacity.combined(with: .move(edge: .bottom)))
+            case .revealing:
                 rationaleCard(for: drill)
                     .transition(.opacity.combined(with: .move(edge: .bottom)))
-                    .padding(.horizontal, 22)
-            } else {
-                preTapPrompt
                     .padding(.horizontal, 22)
             }
 
             Spacer(minLength: 0)
         }
         .padding(.top, 4)
+    }
+
+    /// Shot type palette — 5 icons in a row. User taps one to commit
+    /// the second axis of the decision. Each tap scores the choice
+    /// against the drill's idealShotType + acceptableShotTypes list
+    /// and advances to the reveal stage.
+    private func shotTypePicker(for drill: CourtTapDrill) -> some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(spacing: 8) {
+                Image(systemName: "scope")
+                    .font(.subheadline.weight(.bold))
+                    .foregroundStyle(AppPalette.clay)
+                Text(lang.t("drill.shot_picker_prompt"))
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(AppPalette.ink)
+            }
+            HStack(spacing: 8) {
+                ForEach(ShotType.allCases) { shot in
+                    shotTypeButton(shot, drill: drill)
+                }
+            }
+        }
+        .padding(14)
+        .background(AppPalette.parchment)
+        .overlay(
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(AppPalette.clay.opacity(0.30), lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+    }
+
+    private func shotTypeButton(_ shot: ShotType, drill: CourtTapDrill) -> some View {
+        Button {
+            commitShotType(shot, drill: drill)
+        } label: {
+            VStack(spacing: 4) {
+                Image(systemName: shot.iconName)
+                    .font(.system(size: 22, weight: .bold))
+                    .foregroundStyle(AppPalette.clay)
+                Text(lang.t(shot.localizationKey))
+                    .font(.system(size: 10, weight: .heavy, design: .rounded))
+                    .foregroundStyle(AppPalette.ink)
+                    .tracking(0.3)
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 10)
+            .background(AppPalette.clay.opacity(0.10))
+            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+        }
+        .buttonStyle(.plain)
     }
 
     /// Quiet bottom-of-screen prompt shown until the user taps. Mirrors
@@ -176,6 +249,69 @@ struct CourtTapDrillView: View {
                 .stroke(AppPalette.clay.opacity(0.30), lineWidth: 1)
         )
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+    }
+
+    /// Visual readout of the incoming ball's spin / speed / bounce
+    /// height. Lets the user reason about shot type before the picker
+    /// appears. Hidden for v1 drills (no incoming attributes).
+    @ViewBuilder
+    private func incomingBallCard(for drill: CourtTapDrill) -> some View {
+        if let spin = drill.incomingSpin,
+           let speed = drill.incomingSpeed,
+           let height = drill.incomingHeight {
+            VStack(alignment: .trailing, spacing: 3) {
+                Text(lang.t("drill.incoming_kicker"))
+                    .font(.system(size: 8, weight: .heavy, design: .rounded))
+                    .tracking(0.8)
+                    .foregroundStyle(.white.opacity(0.75))
+                HStack(spacing: 6) {
+                    ballAttrChip(icon: spinIcon(spin),
+                                 label: lang.t("drill.spin.\(spin)"))
+                    ballAttrChip(icon: speedIcon(speed),
+                                 label: lang.t("drill.speed.\(speed)"))
+                    ballAttrChip(icon: heightIcon(height),
+                                 label: lang.t("drill.height.\(height)"))
+                }
+            }
+            .padding(.horizontal, 8)
+            .padding(.vertical, 6)
+            .background(AppPalette.ink.opacity(0.85))
+            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+        }
+    }
+
+    private func ballAttrChip(icon: String, label: String) -> some View {
+        HStack(spacing: 3) {
+            Image(systemName: icon)
+                .font(.system(size: 9, weight: .bold))
+            Text(label)
+                .font(.system(size: 9, weight: .heavy, design: .rounded))
+                .tracking(0.3)
+        }
+        .foregroundStyle(.white)
+    }
+
+    private func spinIcon(_ s: String) -> String {
+        switch s {
+        case "topspin": return "arrow.up.right"
+        case "slice":   return "arrow.down.right"
+        case "kick":    return "arrow.up.forward"
+        default:        return "arrow.right" // flat
+        }
+    }
+    private func speedIcon(_ s: String) -> String {
+        switch s {
+        case "fast":   return "bolt.fill"
+        case "medium": return "speedometer"
+        default:       return "tortoise.fill"
+        }
+    }
+    private func heightIcon(_ h: String) -> String {
+        switch h {
+        case "high": return "chevron.up.2"
+        case "low":  return "chevron.down.2"
+        default:     return "chevron.up.chevron.down"
+        }
     }
 
     // MARK: - Court illustration
@@ -339,6 +475,30 @@ struct CourtTapDrillView: View {
                     .foregroundStyle(AppPalette.ink)
             }
 
+            // Shot type result line — only appears for v2 drills.
+            if let picked = pickedShotType,
+               let correct = shotTypeCorrect,
+               let idealRaw = drill.idealShotType,
+               let ideal = ShotType(rawValue: idealRaw) {
+                HStack(spacing: 8) {
+                    Image(systemName: correct ? "checkmark.seal.fill" : "xmark.seal.fill")
+                        .foregroundStyle(correct ? AppPalette.moss : AppPalette.alert)
+                    Text(correct
+                         ? String(format: lang.t("drill.shot_correct_format"),
+                                  lang.t(picked.localizationKey))
+                         : String(format: lang.t("drill.shot_incorrect_format"),
+                                  lang.t(picked.localizationKey),
+                                  lang.t(ideal.localizationKey)))
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(AppPalette.inkSoft)
+                        .fixedSize(horizontal: false, vertical: true)
+                    Spacer()
+                }
+                .padding(8)
+                .background((correct ? AppPalette.moss : AppPalette.alert).opacity(0.10))
+                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+            }
+
             Text(drill.localizedRationale(for: lang.language))
                 .font(.subheadline)
                 .foregroundStyle(AppPalette.inkSoft)
@@ -386,6 +546,11 @@ struct CourtTapDrillView: View {
         }
     }
 
+    /// Stage 1 of the v2 interaction: location commit. We score the
+    /// tap zone immediately so the user sees the green/yellow/red
+    /// reveal on the court itself, but we DON'T persist the tap yet —
+    /// the shot-type picker still needs to fire if the drill asks for
+    /// one. For v1 drills (no idealShotType), we persist right here.
     private func handleTap(at point: CGPoint, layout: CourtLayout, drill: CourtTapDrill) {
         guard revealedZone == nil else { return }
         guard let normalized = layout.normalize(point) else { return }
@@ -403,8 +568,51 @@ struct CourtTapDrillView: View {
         case .red:    Haptics.error()
         }
 
-        let tap = DrillTap(drillID: drill.id, tapX: normalized.x, tapY: normalized.y, zone: zone)
-        taps.append(tap)
+        // For v1-style drills without a shot-type axis, persist
+        // the tap straight away — we'll skip the picker and head
+        // to the reveal panel.
+        if drill.idealShotType == nil {
+            persistTap(drill: drill, tap: normalized, zone: zone,
+                       shot: nil, shotCorrect: nil)
+        }
+    }
+
+    /// Stage 2 of the v2 interaction: shot-type commit. Scores the
+    /// chosen shot type against the drill's ideal + acceptable list,
+    /// persists the full tap, then drops the user into the reveal
+    /// stage via the state-machine derived `stage`.
+    private func commitShotType(_ shot: ShotType, drill: CourtTapDrill) {
+        guard let zone = revealedZone, let tap = revealedTap else { return }
+        let ideal = drill.idealShotType.flatMap(ShotType.init(rawValue:))
+        let accepted = (drill.acceptableShotTypes ?? []).compactMap(ShotType.init(rawValue:))
+        let correct: Bool
+        if shot == ideal {
+            correct = true
+            Haptics.success()
+        } else if accepted.contains(shot) {
+            correct = true   // accepted-as-yellow still counts as "OK"
+            Haptics.warning()
+        } else {
+            correct = false
+            Haptics.error()
+        }
+        withAnimation(.easeOut(duration: 0.22)) {
+            pickedShotType = shot
+            shotTypeCorrect = correct
+        }
+        persistTap(drill: drill, tap: tap, zone: zone, shot: shot, shotCorrect: correct)
+    }
+
+    private func persistTap(drill: CourtTapDrill, tap: CGPoint, zone: DrillZone,
+                            shot: ShotType?, shotCorrect: Bool?) {
+        let dt = DrillTap(
+            drillID: drill.id,
+            tapX: tap.x, tapY: tap.y,
+            zone: zone,
+            shotType: shot,
+            shotTypeCorrect: shotCorrect
+        )
+        taps.append(dt)
     }
 
     private func advance() {
@@ -413,6 +621,8 @@ struct CourtTapDrillView: View {
                 currentIndex += 1
                 revealedTap = nil
                 revealedZone = nil
+                pickedShotType = nil
+                shotTypeCorrect = nil
             }
         } else {
             drillManager.recordSession(taps: taps)

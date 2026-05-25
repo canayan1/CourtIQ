@@ -323,6 +323,26 @@ struct AICoachThreadView: View {
             tactical = nil
         }
 
+        // Play style fingerprint — only included if the user has any
+        // v2 drill shots logged. AI Coach can then anchor coaching
+        // around archetype + preference patterns.
+        let psp = drillManager.playStyleProfile
+        let playStyle: AIChatContextPayload.PlayStylePayload?
+        if psp.totalShots > 0 {
+            playStyle = AIChatContextPayload.PlayStylePayload(
+                topspinPct: psp.percentages[.topspin],
+                flatPct:    psp.percentages[.flat],
+                slicePct:   psp.percentages[.slice],
+                dropPct:    psp.percentages[.drop],
+                lobPct:     psp.percentages[.lob],
+                shotTypeAccuracy: psp.shotTypeAccuracy,
+                archetype: psp.archetype?.rawValue,
+                totalShots: psp.totalShots
+            )
+        } else {
+            playStyle = nil
+        }
+
         return AIChatContextPayload(
             profile: AIChatContextPayload.ProfilePayload(
                 level: UserDefaults.standard.string(forKey: "CourtIQ.onboardingLevel"),
@@ -336,6 +356,7 @@ struct AICoachThreadView: View {
                 topMistakes: topMistakes.isEmpty ? nil : topMistakes
             ),
             tacticalProfile: tactical,
+            playStyle: playStyle,
             imported: nil   // Phase 3 will wire imported ChatGPT summary here
         )
     }

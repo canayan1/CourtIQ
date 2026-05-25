@@ -19,6 +19,7 @@ struct AIChatContextPayload: Encodable {
     let matches: [MatchPayload]?
     let quiz: QuizPayload?
     let tacticalProfile: TacticalProfilePayload?
+    let playStyle: PlayStylePayload?
     let imported: String?
 
     enum CodingKeys: String, CodingKey {
@@ -26,6 +27,7 @@ struct AIChatContextPayload: Encodable {
         case matches
         case quiz
         case tacticalProfile = "tactical_profile"
+        case playStyle = "play_style"
         case imported
     }
 
@@ -86,6 +88,31 @@ struct AIChatContextPayload: Encodable {
             case netGame = "net_game"
             case return_ = "return"
             case totalDrillsCompleted = "total_drills_completed"
+        }
+    }
+
+    /// Play-style fingerprint — feeds the AI Coach with the user's
+    /// shot-type preferences and (when there's enough data) a coarse
+    /// archetype label so it can say "you're a topspin baseliner".
+    struct PlayStylePayload: Encodable {
+        let topspinPct: Double?
+        let flatPct: Double?
+        let slicePct: Double?
+        let dropPct: Double?
+        let lobPct: Double?
+        let shotTypeAccuracy: Double?
+        let archetype: String?         // localised key — server treats as enum
+        let totalShots: Int
+
+        enum CodingKeys: String, CodingKey {
+            case topspinPct        = "topspin_pct"
+            case flatPct           = "flat_pct"
+            case slicePct          = "slice_pct"
+            case dropPct           = "drop_pct"
+            case lobPct            = "lob_pct"
+            case shotTypeAccuracy  = "shot_type_accuracy"
+            case archetype
+            case totalShots        = "total_shots"
         }
     }
 }

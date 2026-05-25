@@ -151,6 +151,46 @@ final class CourtTapDrillManager: ObservableObject {
         tacticalProfile.filter(\.isEstablished)
     }
 
+    // MARK: - Play style profile (v2)
+
+    /// Aggregates every v2 drill tap (taps that carry a chosen shot
+    /// type) into a play-style fingerprint. Counts, percentages,
+    /// accuracy, and a coarse archetype classification.
+    var playStyleProfile: PlayStyleProfile {
+        var counts: [ShotType: Int] = [:]
+        var correct = 0
+        var totalScored = 0
+
+        for session in sessions {
+            for tap in session.taps {
+                guard let st = tap.shotType else { continue }
+                counts[st, default: 0] += 1
+                if let was = tap.shotTypeCorrect {
+                    totalScored += 1
+                    if was { correct += 1 }
+                }
+            }
+        }
+
+        let total = counts.values.reduce(0, +)
+        guard total > 0 else { return .empty }
+
+        let pct = counts.mapValues { Double($0) / Double(total) }
+        let accuracy: Double? = totalScored > 0
+            ? Double(correct) / Double(totalScored) : nil
+        let archetype: PlayStyleArchetype? = total >= 10
+            ? PlayStyleArchetype.classify(pct)
+            : nil   // need at least 10 shot-type votes before classifying
+
+        return PlayStyleProfile(
+            totalShots: total,
+            counts: counts,
+            percentages: pct,
+            shotTypeAccuracy: accuracy,
+            archetype: archetype
+        )
+    }
+
     // MARK: - Persistence
 
     private func persist() {

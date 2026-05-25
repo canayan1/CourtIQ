@@ -558,6 +558,48 @@
 "drill.cat.patterns.summary" = "Klasik diziler (inside-out, arkasına, +1)";
 "drill.cat.net_game.summary" = "Volley yerleşimi, lob savunması";
 "drill.cat.return.summary" = "Return hedefi + risk yönetimi";
+
+/* Drill v2 — vuruş tipi seçici + gelen top */
+"drill.shot_picker_prompt" = "Hangi vuruşu atarsın?";
+"drill.shot_correct_format" = "%@ — doğru tercih.";
+"drill.shot_incorrect_format" = "%@ — daha iyisi %@ olurdu.";
+"drill.shot.topspin" = "Topspin";
+"drill.shot.flat" = "Düz";
+"drill.shot.slice" = "Slice";
+"drill.shot.drop" = "Drop";
+"drill.shot.lob" = "Lob";
+"drill.incoming_kicker" = "GELEN";
+"drill.spin.topspin" = "Topspin";
+"drill.spin.flat" = "Düz";
+"drill.spin.slice" = "Slice";
+"drill.spin.kick" = "Kick";
+"drill.speed.slow" = "Yavaş";
+"drill.speed.medium" = "Orta";
+"drill.speed.fast" = "Hızlı";
+"drill.height.low" = "Alçak";
+"drill.height.mid" = "Orta";
+"drill.height.high" = "Yüksek";
+
+/* Oyun stili profil kartı */
+"drill.style_kicker" = "Oyun stili";
+"drill.style_pending" = "Oyun stilin oturuyor";
+"drill.style_pending_progress_format" = "%d / %d vuruş tercihi sonra arketipin belli olacak";
+"drill.style_accuracy_format" = "Vuruş tipi doğruluğu: %%%d";
+"drill.style_footnote_format" = "Tüm Daily Drill'lerdeki %d vuruş tercihinden oluştu. Daha çok oynadıkça netleşir.";
+
+/* Oyun stili arketipleri */
+"drill.archetype.topspinBaseliner" = "Topspin Baseliner";
+"drill.archetype.topspinBaseliner.summary" = "Ağır, derin, yüzde tenisi oynuyorsun. Topspin senin evin.";
+"drill.archetype.flatAggressor" = "Düz Hücumcu";
+"drill.archetype.flatAggressor.summary" = "Topu içinden vuruyorsun, kısa raliler istiyorsun. Hız > spin.";
+"drill.archetype.sliceArtist" = "Slice Ustası";
+"drill.archetype.sliceArtist.summary" = "Alçak kayan toplarla rakibi bozarsın. Savunma silahın.";
+"drill.archetype.allCourt" = "All-Court Oyuncu";
+"drill.archetype.allCourt.summary" = "Duruma göre vuruş seçiyorsun, sabit bir tercihin yok.";
+"drill.archetype.netRusher" = "File Avcısı";
+"drill.archetype.netRusher.summary" = "Drop'lar ve lob'lar repertuvarında — transition ve file seviyorsun.";
+"drill.archetype.defensiveCounter" = "Savunma Counter-Puncher";
+"drill.archetype.defensiveCounter.summary" = "Topspin + slice kombosu, gelen hızı emiyor ve döndürüyorsun.";
 "drill.share" = "Paylaş";
 "drill.label_excellent" = "Pro okuma.";
 "drill.label_strong" = "Güçlü okuma.";

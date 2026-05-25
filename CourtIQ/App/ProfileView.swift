@@ -29,6 +29,9 @@ struct ProfileView: View {
                 TacticalProfileCard()
                     .environmentObject(lang)
                     .environmentObject(drillManager)
+                PlayStyleProfileCard()
+                    .environmentObject(lang)
+                    .environmentObject(drillManager)
                 streakSection
                 historySection
                 betaFeedbackSection

@@ -435,6 +435,16 @@ interface ChatRequest {
             "return"?: number;
             total_drills_completed: number;
         };
+        play_style?: {
+            topspin_pct?: number;
+            flat_pct?: number;
+            slice_pct?: number;
+            drop_pct?: number;
+            lob_pct?: number;
+            shot_type_accuracy?: number;
+            archetype?: string;
+            total_shots: number;
+        };
         imported?: string | null;
     };
 }
@@ -501,6 +511,28 @@ function buildCachedPrefix(
         ? `[IMPORTED_CONTEXT]\n${importedSummary}`
         : "[IMPORTED_CONTEXT] none";
 
+    // Play style fingerprint — preferences + archetype.
+    const ps = context?.play_style;
+    let styleBlock = "no play style data yet";
+    if (ps && ps.total_shots > 0) {
+        const pct = (n: number | undefined) => typeof n === "number"
+            ? `${Math.round(n * 100)}%`
+            : "—";
+        const accLine = ps.shot_type_accuracy != null
+            ? `Shot-type accuracy: ${Math.round(ps.shot_type_accuracy * 100)}%`
+            : "";
+        const archLine = ps.archetype
+            ? `Archetype: ${ps.archetype}`
+            : "Archetype: not yet established (need ≥10 shot picks)";
+        styleBlock = [
+            `Shot preference (over ${ps.total_shots} shot picks):`,
+            `  Topspin ${pct(ps.topspin_pct)} · Flat ${pct(ps.flat_pct)} · ` +
+            `Slice ${pct(ps.slice_pct)} · Drop ${pct(ps.drop_pct)} · Lob ${pct(ps.lob_pct)}`,
+            accLine,
+            archLine,
+        ].filter(Boolean).join("\n");
+    }
+
     return [
         SYSTEM_PROMPT,
         APP_LIBRARY,
@@ -513,6 +545,8 @@ function buildCachedPrefix(
         quizBlock,
         "[TACTICAL_PROFILE]",
         tacticalBlock,
+        "[PLAY_STYLE]",
+        styleBlock,
         importedBlock,
     ].join("\n\n");
 }
