@@ -17,9 +17,13 @@ struct TacticalProfileCard: View {
     @EnvironmentObject private var quizManager: DailyQuizManager
 
     var body: some View {
-        // Combined profile (drill + quiz fused) so quiz performance
-        // contributes to the same six-category map.
-        let profile = drillManager.combinedTacticalProfile(with: quizManager)
+        // Combined profile (drill + quiz fused + self-assessment as
+        // sparse-data baseline) so the user sees their tactical map
+        // populated even on day one.
+        let profile = drillManager.combinedTacticalProfile(
+            with: quizManager,
+            selfAssessment: SelfAssessmentStore.shared.load()
+        )
         let hasAnyData = profile.contains { ($0.score ?? 0) > 0 }
         if !hasAnyData {
             EmptyView()

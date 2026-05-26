@@ -155,8 +155,15 @@ final class CourtTapDrillManager: ObservableObject {
     /// readout. Each side contributes its samples + score; the combined
     /// score is the sample-count-weighted average. Empty buckets stay
     /// nil so the UI can fade rows without data.
+    ///
+    /// `selfAssessment` (optional) is used as a baseline ONLY for
+    /// categories where objective signal is sparse (<3 samples). Once
+    /// real drill/quiz data accumulates the self-rating is no longer
+    /// blended in — the user's actual reps speak louder than their
+    /// initial guess.
     func combinedTacticalProfile(
-        with quizManager: DailyQuizManager
+        with quizManager: DailyQuizManager,
+        selfAssessment: SelfAssessment? = nil
     ) -> [TacticalProfileEntry] {
         let drill = tacticalProfile
         let quiz = quizManager.quizTacticalProfile
@@ -166,18 +173,44 @@ final class CourtTapDrillManager: ObservableObject {
             let dCount = d?.sampleCount ?? 0
             let qCount = q?.sampleCount ?? 0
             let totalCount = dCount + qCount
-            guard totalCount > 0 else { return TacticalProfileEntry.empty(cat) }
-            let dScore = d?.score ?? 0
-            let qScore = q?.score ?? 0
-            // Weighted by sample count so a 30-rep drill cat doesn't get
-            // swamped by a 5-question quiz cat (and vice versa).
-            let combined = (dScore * Double(dCount) + qScore * Double(qCount))
-                         / Double(totalCount)
-            return TacticalProfileEntry(
-                category: cat,
-                score: combined,
-                sampleCount: totalCount
-            )
+
+            if totalCount >= 3 {
+                // Enough objective signal — ignore the self-assessment.
+                let dScore = d?.score ?? 0
+                let qScore = q?.score ?? 0
+                let combined = (dScore * Double(dCount) + qScore * Double(qCount))
+                             / Double(totalCount)
+                return TacticalProfileEntry(
+                    category: cat,
+                    score: combined,
+                    sampleCount: totalCount
+                )
+            }
+
+            // Sparse objective signal — fall back to (or blend with)
+            // the self-rating so the user sees SOMETHING rather than
+            // empty rows on day one. Self-assessment counts as 1
+            // "sample" so it never overshadows real data later.
+            if let selfScore = selfAssessment?.score(for: cat) {
+                let baseline = Double(selfScore)
+                if totalCount == 0 {
+                    return TacticalProfileEntry(category: cat,
+                                                score: baseline, sampleCount: 0)
+                }
+                let dScore = d?.score ?? 0
+                let qScore = q?.score ?? 0
+                let blended = (dScore * Double(dCount) + qScore * Double(qCount) + baseline)
+                            / Double(totalCount + 1)
+                return TacticalProfileEntry(category: cat,
+                                            score: blended, sampleCount: totalCount)
+            }
+
+            // No self-assessment, no objective signal → empty.
+            return totalCount > 0
+                ? TacticalProfileEntry(category: cat,
+                                       score: (d?.score ?? 0) * 0.5 + (q?.score ?? 0) * 0.5,
+                                       sampleCount: totalCount)
+                : TacticalProfileEntry.empty(cat)
         }
     }
 

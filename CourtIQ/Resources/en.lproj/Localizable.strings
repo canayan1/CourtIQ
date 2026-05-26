@@ -742,3 +742,10 @@
 
 /* Common */
 "common.dismiss" = "Dismiss";
+"onboarding.skip" = "Skip";
+
+/* Onboarding — tactical self-assessment */
+"self_assess.kicker" = "Tactical baseline";
+"self_assess.title" = "Where does your game stand right now?";
+"self_assess.body" = "Rate yourself 1 (weak) to 5 (strong) in each area. We'll use this as your starting profile and refine it as you drill and quiz. Not sure? Leave it at 3 — your real reps will overwrite it.";
+"self_assess.submit" = "Save my baseline";

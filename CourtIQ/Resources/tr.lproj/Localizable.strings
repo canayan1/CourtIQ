@@ -742,3 +742,10 @@
 
 /* Common */
 "common.dismiss" = "Kapat";
+"onboarding.skip" = "Geç";
+
+/* Onboarding — taktik öz-değerlendirme */
+"self_assess.kicker" = "Taktik baseline";
+"self_assess.title" = "Oyunun şu an nerede?";
+"self_assess.body" = "Her alanda kendine 1 (zayıf) ile 5 (güçlü) arası puan ver. Bu başlangıç profilin olur, drill ve quiz çözdükçe gerçek verinle üstü yazılır. Emin değilsen 3'te bırak.";
+"self_assess.submit" = "Baseline'ımı kaydet";

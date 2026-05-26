@@ -71,6 +71,8 @@
 		A00000000000000000018F /* TacticalProfileCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000018E /* TacticalProfileCard.swift */; };
 		A000000000000000000191 /* PlayStyleProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000190 /* PlayStyleProfile.swift */; };
 		A000000000000000000193 /* PlayStyleProfileCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000192 /* PlayStyleProfileCard.swift */; };
+		A000000000000000000195 /* SelfAssessment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000194 /* SelfAssessment.swift */; };
+		A000000000000000000197 /* SelfAssessmentStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000196 /* SelfAssessmentStep.swift */; };
 		A000000000000000000101 /* TourStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000100 /* TourStep.swift */; };
 		A000000000000000000111 /* MatchEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000110 /* MatchEntry.swift */; };
 		A000000000000000000113 /* MatchEntryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000112 /* MatchEntryManager.swift */; };
@@ -167,6 +169,8 @@
 		A00000000000000000018E /* TacticalProfileCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TacticalProfileCard.swift; path = CourtIQ/Features/Drill/TacticalProfileCard.swift; sourceTree = "<group>"; };
 		A000000000000000000190 /* PlayStyleProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlayStyleProfile.swift; path = CourtIQ/Core/Models/PlayStyleProfile.swift; sourceTree = "<group>"; };
 		A000000000000000000192 /* PlayStyleProfileCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlayStyleProfileCard.swift; path = CourtIQ/Features/Drill/PlayStyleProfileCard.swift; sourceTree = "<group>"; };
+		A000000000000000000194 /* SelfAssessment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelfAssessment.swift; path = CourtIQ/Core/Models/SelfAssessment.swift; sourceTree = "<group>"; };
+		A000000000000000000196 /* SelfAssessmentStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelfAssessmentStep.swift; path = CourtIQ/Features/Onboarding/SelfAssessmentStep.swift; sourceTree = "<group>"; };
 		A000000000000000000100 /* TourStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TourStep.swift; path = CourtIQ/Features/Onboarding/TourStep.swift; sourceTree = "<group>"; };
 		A000000000000000000110 /* MatchEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchEntry.swift; path = CourtIQ/Core/Models/MatchEntry.swift; sourceTree = "<group>"; };
 		A000000000000000000112 /* MatchEntryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchEntryManager.swift; path = CourtIQ/Core/Models/MatchEntryManager.swift; sourceTree = "<group>"; };
@@ -266,6 +270,8 @@
 				A00000000000000000018E /* TacticalProfileCard.swift */,
 				A000000000000000000190 /* PlayStyleProfile.swift */,
 				A000000000000000000192 /* PlayStyleProfileCard.swift */,
+				A000000000000000000194 /* SelfAssessment.swift */,
+				A000000000000000000196 /* SelfAssessmentStep.swift */,
 				A000000000000000000100 /* TourStep.swift */,
 				A000000000000000000110 /* MatchEntry.swift */,
 				A000000000000000000112 /* MatchEntryManager.swift */,
@@ -454,6 +460,8 @@
 				A00000000000000000018F /* TacticalProfileCard.swift in Sources */,
 				A000000000000000000191 /* PlayStyleProfile.swift in Sources */,
 				A000000000000000000193 /* PlayStyleProfileCard.swift in Sources */,
+				A000000000000000000195 /* SelfAssessment.swift in Sources */,
+				A000000000000000000197 /* SelfAssessmentStep.swift in Sources */,
 				A000000000000000000101 /* TourStep.swift in Sources */,
 				A000000000000000000111 /* MatchEntry.swift in Sources */,
 				A000000000000000000113 /* MatchEntryManager.swift in Sources */,

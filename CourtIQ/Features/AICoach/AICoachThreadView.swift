@@ -306,8 +306,12 @@ struct AICoachThreadView: View {
         // weighted by sample count. We still keep the ≥3-samples floor
         // before exposing a category to the AI so it doesn't anchor
         // on a single noisy result.
-        let combined = drillManager.combinedTacticalProfile(with: dailyQuizManager)
-            .filter(\.isEstablished)
+        let selfAssessment = SelfAssessmentStore.shared.load()
+        let combined = drillManager.combinedTacticalProfile(
+            with: dailyQuizManager,
+            selfAssessment: selfAssessment
+        )
+        .filter { $0.isEstablished || ($0.score ?? 0) > 0 }
         let totalDrillTaps = drillManager.sessions.reduce(0) { $0 + $1.taps.count }
         let totalQuizQs = dailyQuizManager.sessionHistory.reduce(0) {
             $0 + ($1.tacticalBuckets?.reduce(0) { $0 + $1.total } ?? 0)

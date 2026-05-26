@@ -32,13 +32,14 @@ struct OnboardingView: View {
         case 2: FocusStep(selected: $selectedFocus, dotIndex: 1, onBack: goBack, onNext: advance)
         case 3: FrequencyStep(selected: $selectedFrequency, dotIndex: 2, onBack: goBack, onNext: advance)
         case 4: PlanRevealStep(level: selectedLevel, focus: selectedFocus, frequency: selectedFrequency, dotIndex: 2, onBack: goBack, onNext: advance)
-        case 5: TourStep(dotIndex: 3, onBack: goBack, onNext: advance)
-        case 6: PaywallStep(dotIndex: 4, onBack: goBack, onSkip: advance)
+        case 5: SelfAssessmentStep(dotIndex: 3, onBack: goBack, onNext: advance)
+        case 6: TourStep(dotIndex: 3, onBack: goBack, onNext: advance)
+        case 7: PaywallStep(dotIndex: 4, onBack: goBack, onSkip: advance)
         default: AccountStep(dotIndex: 5, onAppleFinish: applyAndSignInApple, onGuestFinish: applyAndSignInGuest)
         }
     }
 
-    private func advance() { step = min(step + 1, 7) }
+    private func advance() { step = min(step + 1, 8) }
     private func goBack()  { step = max(step - 1, 0) }
 
     private func applyOnboardingAnswers() {
