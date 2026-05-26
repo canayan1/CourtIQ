@@ -20,6 +20,10 @@ final class QuizViewModel: ObservableObject {
 
     private let onComplete: ((QuizCompletionSummary) -> Void)?
     private var completionHandled = false
+    /// Tracks correctness per-question so the completion summary can
+    /// carry a tactical-category breakdown that feeds the user's
+    /// Tactical Profile alongside the drill data.
+    private var perQuestionCorrect: [String: Bool] = [:]
 
     init(quiz: Quiz, onComplete: ((QuizCompletionSummary) -> Void)? = nil) {
         self.quiz = quiz
@@ -156,6 +160,10 @@ final class QuizViewModel: ObservableObject {
         hasSubmittedCurrentAnswer = true
         let correct = selectedAnswerIsCorrect
         if correct { score += 1 }
+        // Record the per-question outcome for tactical bucketing.
+        if let q = currentQuestion {
+            perQuestionCorrect[q.id] = correct
+        }
         persistProgress()
         Task { @MainActor in
             correct ? Haptics.success() : Haptics.error()
@@ -195,8 +203,25 @@ final class QuizViewModel: ObservableObject {
             focusLabel: quiz.focusLabel,
             score: score,
             totalQuestions: quiz.questions.count,
-            mistakeTypes: quiz.primaryMistakeTypes
+            mistakeTypes: quiz.primaryMistakeTypes,
+            tacticalBuckets: buildTacticalBuckets()
         ))
+    }
+
+    /// Aggregate per-question correctness into TacticalCategory buckets.
+    /// Falls back to `.patterns` for questions without a tacticalCategory
+    /// hint so older bundled content still contributes meaningfully.
+    private func buildTacticalBuckets() -> [QuizTacticalBucket] {
+        var sums: [String: (correct: Int, total: Int)] = [:]
+        for q in quiz.questions {
+            let cat = q.tacticalCategory ?? TacticalCategory.fallback.rawValue
+            let prev = sums[cat] ?? (0, 0)
+            let wasCorrect = perQuestionCorrect[q.id] ?? false
+            sums[cat] = (prev.correct + (wasCorrect ? 1 : 0), prev.total + 1)
+        }
+        return sums.map { (cat, row) in
+            QuizTacticalBucket(category: cat, correct: row.correct, total: row.total)
+        }
     }
 
     // MARK: - Persistence

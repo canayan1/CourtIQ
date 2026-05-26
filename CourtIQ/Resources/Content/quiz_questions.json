@@ -33,7 +33,8 @@
       "ballTargetX": 0.55,
       "ballTargetY": 0.3,
       "scoreChip": "DEUCE COURT"
-    }
+    },
+    "tacticalCategory": "patterns"
   },
   {
     "id": "serve_022",
@@ -69,7 +70,8 @@
       "ballTargetX": 0.5,
       "ballTargetY": 0.55,
       "scoreChip": "AD COURT · +1 SHOT"
-    }
+    },
+    "tacticalCategory": "open_court"
   },
   {
     "id": "serve_023",
@@ -105,7 +107,8 @@
       "ballTargetX": 0.5,
       "ballTargetY": 0.32,
       "scoreChip": "3RD SET · 35% 1ST"
-    }
+    },
+    "tacticalCategory": "patterns"
   },
   {
     "id": "serve_024",
@@ -141,7 +144,8 @@
       "ballTargetX": 0.5,
       "ballTargetY": 0.32,
       "scoreChip": "2ND SERVE"
-    }
+    },
+    "tacticalCategory": "patterns"
   },
   {
     "id": "serve_025",
@@ -177,7 +181,8 @@
       "ballTargetX": 0.48,
       "ballTargetY": 0.32,
       "scoreChip": "30–40 BREAK PT"
-    }
+    },
+    "tacticalCategory": "patterns"
   },
   {
     "id": "serve_026",
@@ -213,7 +218,8 @@
       "ballTargetX": 0.55,
       "ballTargetY": 0.3,
       "scoreChip": "AD COURT"
-    }
+    },
+    "tacticalCategory": "patterns"
   },
   {
     "id": "serve_027",
@@ -237,7 +243,8 @@
       "Güçlü kapatmak için her zamankinden büyük at"
     ],
     "explanationTr": "Baskı altında yaklaşımı değiştirmek boğulmanın başlıca nedenidir. Liderliği getiren şeye sadık kal.",
-    "takeawayTr": "Seti kapatmak için seni lider yapan şekilde servis atmaya devam et."
+    "takeawayTr": "Seti kapatmak için seni lider yapan şekilde servis atmaya devam et.",
+    "tacticalCategory": "patterns"
   },
   {
     "id": "serve_028",
@@ -261,7 +268,8 @@
       "Düşük sıçrama için daha kısa at"
     ],
     "explanationTr": "Uzun kollu oyuncular açık servisleri iyi kapsar. Vücut servisi uzunluk avantajını ortadan kaldırır.",
-    "takeawayTr": "Uzun kollulara karşı gerdirme — sıkıştır."
+    "takeawayTr": "Uzun kollulara karşı gerdirme — sıkıştır.",
+    "tacticalCategory": "patterns"
   },
   {
     "id": "serve_029",
@@ -285,7 +293,8 @@
       "Hatayı silmek için büyük at"
     ],
     "explanationTr": "Çifte hatadan sonra yumuşatmak kısa ve saldırılabilir bir top üretir ve kaygı döngüsünü besler.",
-    "takeawayTr": "Çifte hata tek puandır — servis değiştirme sinyali değil."
+    "takeawayTr": "Çifte hata tek puandır — servis değiştirme sinyali değil.",
+    "tacticalCategory": "patterns"
   },
   {
     "id": "serve_030",
@@ -309,7 +318,8 @@
       "Aynı atış, daha çok hız"
     ],
     "explanationTr": "Alçak atılan top havada daha az kalır ve rüzgardan daha az etkilenir. Hız atış kaymasını düzeltmez.",
-    "takeawayTr": "Rüzgarda atışı kısalt — hızın peşinde koşma."
+    "takeawayTr": "Rüzgarda atışı kısalt — hızın peşinde koşma.",
+    "tacticalCategory": "patterns"
   },
   {
     "id": "return_021",
@@ -345,7 +355,8 @@
       "ballTargetX": 0.5,
       "ballTargetY": 0.88,
       "scoreChip": "DEFENSIVE BLOCK"
-    }
+    },
+    "tacticalCategory": "return"
   },
   {
     "id": "return_022",
@@ -381,7 +392,8 @@
       "ballTargetX": 0.5,
       "ballTargetY": 0.7,
       "scoreChip": "STEP IN"
-    }
+    },
+    "tacticalCategory": "return"
   },
   {
     "id": "return_023",
@@ -411,7 +423,8 @@
       "youX": 0.5,
       "youY": 0.92,
       "scoreChip": "BEFORE THE SERVE"
-    }
+    },
+    "tacticalCategory": "return"
   },
   {
     "id": "return_024",
@@ -447,7 +460,8 @@
       "ballTargetX": 0.16,
       "ballTargetY": 0.82,
       "scoreChip": "AD COURT · KICK"
-    }
+    },
+    "tacticalCategory": "return"
   },
   {
     "id": "return_025",
@@ -479,7 +493,8 @@
       "opponentX": 0.5,
       "opponentY": 0.05,
       "scoreChip": "SPLIT STEP"
-    }
+    },
+    "tacticalCategory": "return"
   },
   {
     "id": "return_026",
@@ -515,7 +530,8 @@
       "ballTargetX": 0.5,
       "ballTargetY": 0.7,
       "scoreChip": "2ND SERVE · KICK"
-    }
+    },
+    "tacticalCategory": "return"
   },
   {
     "id": "return_027",
@@ -539,7 +555,8 @@
       "Kalenin en arkasına düş"
     ],
     "explanationTr": "Derin çapraz dönüş, servisçiye dar açılar bırakır. Kortun orta üçte birini kaplamak çoğu yanıtı karşılamak için uygun pozisyondur.",
-    "takeawayTr": "Dönüş puanın sonu değildir — hemen toparlan."
+    "takeawayTr": "Dönüş puanın sonu değildir — hemen toparlan.",
+    "tacticalCategory": "return"
   },
   {
     "id": "return_028",
@@ -563,7 +580,8 @@
       "Sadece break point'te"
     ],
     "explanationTr": "30-0'da tahmin edilebilir ikinci servise chip-and-charge, kaleden yavaş rakibi zorlayan bir passing-shot durumuna sokar — kritik skor riski almadan.",
-    "takeawayTr": "Chip-and-charge tahmin edilebilir servislere ve düşük riskli anlara yakışır."
+    "takeawayTr": "Chip-and-charge tahmin edilebilir servislere ve düşük riskli anlara yakışır.",
+    "tacticalCategory": "return"
   },
   {
     "id": "return_029",
@@ -587,7 +605,8 @@
       "İpleri düzelt"
     ],
     "explanationTr": "Tek bir derin nefes odağını sabitler ve gerilimi sıfırlar. Kurulabilecek en temiz dönüş öncesi alışkanlıktır.",
-    "takeawayTr": "Her dönüş öncesi tek nefes — istisnasız."
+    "takeawayTr": "Her dönüş öncesi tek nefes — istisnasız.",
+    "tacticalCategory": "return"
   },
   {
     "id": "return_030",
@@ -611,7 +630,8 @@
       "Güvenli blokla, rally hatası bekle"
     ],
     "explanationTr": "Veri yeni bir ikinci servisi işaret eder. Saldırı pozisyonu servisçiyi zorlar, nötür bir saldırı dönüşü bile puan geometrisini değiştirir.",
-    "takeawayTr": "Break point bilinçli agresyonu ödüllendirir — ihtiyatı değil."
+    "takeawayTr": "Break point bilinçli agresyonu ödüllendirir — ihtiyatı değil.",
+    "tacticalCategory": "return"
   },
   {
     "id": "rally_021",
@@ -647,7 +667,8 @@
       "ballTargetX": 0.3,
       "ballTargetY": 0.82,
       "scoreChip": "NEUTRAL"
-    }
+    },
+    "tacticalCategory": "patterns"
   },
   {
     "id": "rally_022",
@@ -683,7 +704,8 @@
       "ballTargetX": 0.2,
       "ballTargetY": 0.78,
       "scoreChip": "HIGH BALL · BH"
-    }
+    },
+    "tacticalCategory": "open_court"
   },
   {
     "id": "rally_023",
@@ -719,7 +741,8 @@
       "ballTargetX": 0.78,
       "ballTargetY": 0.2,
       "scoreChip": "DEUCE · CC FH"
-    }
+    },
+    "tacticalCategory": "defense"
   },
   {
     "id": "rally_024",
@@ -751,7 +774,8 @@
       "opponentX": 0.5,
       "opponentY": 0.1,
       "scoreChip": "LONG RALLY"
-    }
+    },
+    "tacticalCategory": "patterns"
   },
   {
     "id": "rally_025",
@@ -783,7 +807,8 @@
       "opponentX": 0.5,
       "opponentY": 0.1,
       "scoreChip": "10+ SHOT RALLY"
-    }
+    },
+    "tacticalCategory": "approach"
   },
   {
     "id": "rally_026",
@@ -819,7 +844,8 @@
       "ballTargetX": 0.5,
       "ballTargetY": 0.62,
       "scoreChip": "SHORT REPLY"
-    }
+    },
+    "tacticalCategory": "patterns"
   },
   {
     "id": "rally_027",
@@ -843,7 +869,8 @@
       "Grip değiştir"
     ],
     "explanationTr": "Fileye olan mesafe marjı, hataları stil değiştirmeden azaltmanın en hızlı yoludur. 1 metre yukarı hataları kapatır — hız aynı kalabilir.",
-    "takeawayTr": "Hata yapıyorsan hızı değil, file üstü marjı artır."
+    "takeawayTr": "Hata yapıyorsan hızı değil, file üstü marjı artır.",
+    "tacticalCategory": "defense"
   },
   {
     "id": "rally_028",
@@ -867,7 +894,8 @@
       "Puanı kısaltmak için drop shot"
     ],
     "explanationTr": "O bölgedeki düşük spinli top geçiş tetiğidir. Niyetli düzleştirme sonraki yanıtı zorlar ve seni +2 bitirme pozisyonuna taşır.",
-    "takeawayTr": "Saldırı bölgeni bil — orta kort düşük spinli top orasıdır."
+    "takeawayTr": "Saldırı bölgeni bil — orta kort düşük spinli top orasıdır.",
+    "tacticalCategory": "patterns"
   },
   {
     "id": "rally_029",
@@ -891,7 +919,8 @@
       "Yorulduğunda"
     ],
     "explanationTr": "Temas anında nefes vermek karını sabitler ve soluğu ritmik tutar. Rally sırasında nefes tutmak gerilimi artırır ve daha hızlı yorar.",
-    "takeawayTr": "Her temasta nefes ver — her topta."
+    "takeawayTr": "Her temasta nefes ver — her topta.",
+    "tacticalCategory": "defense"
   },
   {
     "id": "rally_030",
@@ -915,7 +944,8 @@
       "Daha yüksek file marjı"
     ],
     "explanationTr": "Yön değişikliği topu hassas yönlendirmek için temas noktasının biraz önde olmasını ister. Hassasiyetsiz hız topu çizgi dışına gönderir.",
-    "takeawayTr": "Yön değişimi temas noktası meselesidir — hız değil."
+    "takeawayTr": "Yön değişimi temas noktası meselesidir — hız değil.",
+    "tacticalCategory": "approach"
   },
   {
     "id": "net_021",
@@ -951,7 +981,8 @@
       "ballTargetX": 0.2,
       "ballTargetY": 0.18,
       "scoreChip": "DTL APPROACH"
-    }
+    },
+    "tacticalCategory": "net_game"
   },
   {
     "id": "net_022",
@@ -987,7 +1018,8 @@
       "ballTargetX": 0.78,
       "ballTargetY": 0.4,
       "scoreChip": "CC PASS COMING"
-    }
+    },
+    "tacticalCategory": "net_game"
   },
   {
     "id": "net_023",
@@ -1023,7 +1055,8 @@
       "ballTargetX": 0.5,
       "ballTargetY": 0.4,
       "scoreChip": "VOLLEY CONTACT"
-    }
+    },
+    "tacticalCategory": "net_game"
   },
   {
     "id": "net_024",
@@ -1059,7 +1092,8 @@
       "ballTargetX": 0.5,
       "ballTargetY": 0.58,
       "scoreChip": "S&V · LOW BALL"
-    }
+    },
+    "tacticalCategory": "net_game"
   },
   {
     "id": "net_025",
@@ -1095,7 +1129,8 @@
       "ballTargetX": 0.5,
       "ballTargetY": 0.95,
       "scoreChip": "LOB OVER YOU"
-    }
+    },
+    "tacticalCategory": "net_game"
   },
   {
     "id": "net_026",
@@ -1131,7 +1166,8 @@
       "ballTargetX": 0.5,
       "ballTargetY": 0.5,
       "scoreChip": "HIGH FLOATER"
-    }
+    },
+    "tacticalCategory": "net_game"
   },
   {
     "id": "net_027",
@@ -1155,7 +1191,8 @@
       "Yumuşak alt dönüşlü slice"
     ],
     "explanationTr": "File önünde hız emme kısa ve sert bir salınımla gelir — büyük arka salınımla değil. Gücü rakip sağlar; sen yönü verirsin.",
-    "takeawayTr": "File önünde kısa salınım, sıkı tutuş — her zaman."
+    "takeawayTr": "File önünde kısa salınım, sıkı tutuş — her zaman.",
+    "tacticalCategory": "net_game"
   },
   {
     "id": "net_028",
@@ -1179,7 +1216,8 @@
       "Sektir ve koş"
     ],
     "explanationTr": "Yumuşak half-volley rakibin hızını kullanır, fileyi geçer ve zaman kazandırır. Sert olan çoğu zaman savrulur.",
-    "takeawayTr": "Half-volley bir hayatta kalma vuruşudur — yumuşak, derin, orta."
+    "takeawayTr": "Half-volley bir hayatta kalma vuruşudur — yumuşak, derin, orta.",
+    "tacticalCategory": "net_game"
   },
   {
     "id": "net_029",
@@ -1203,7 +1241,8 @@
       "Mobilite için servis çizgisinin arkasında"
     ],
     "explanationTr": "T'ye yakın olmak kenarı tam terk etmeden poach menzili sağlar. Çiftler file oyuncularının yeri orasıdır.",
-    "takeawayTr": "Çiftler file önü: T'ye kayık, poach'a hazır."
+    "takeawayTr": "Çiftler file önü: T'ye kayık, poach'a hazır.",
+    "tacticalCategory": "net_game"
   },
   {
     "id": "net_030",
@@ -1227,7 +1266,8 @@
       "Kısa drop volley"
     ],
     "explanationTr": "Toparlanan rakip ortaya doğru hareket eder. Açık ad köşesine derin volley yön değiştirmeye zorlar ve dengesiz yakalar — ya da hiç yetişemez.",
-    "takeawayTr": "File önünde toparlanma yönünün tersine vur — geldiği yere değil."
+    "takeawayTr": "File önünde toparlanma yönünün tersine vur — geldiği yere değil.",
+    "tacticalCategory": "net_game"
   },
   {
     "id": "mental_021",
@@ -1257,7 +1297,8 @@
       "youX": 0.5,
       "youY": 0.92,
       "scoreChip": "LOST 1ST SET 4–6"
-    }
+    },
+    "tacticalCategory": "patterns"
   },
   {
     "id": "mental_022",
@@ -1287,7 +1328,8 @@
       "youX": 0.5,
       "youY": 0.92,
       "scoreChip": "DISPUTED CALL"
-    }
+    },
+    "tacticalCategory": "defense"
   },
   {
     "id": "mental_023",
@@ -1317,7 +1359,8 @@
       "youX": 0.5,
       "youY": 0.92,
       "scoreChip": "TIEBREAK · 0–0"
-    }
+    },
+    "tacticalCategory": "patterns"
   },
   {
     "id": "mental_024",
@@ -1347,7 +1390,8 @@
       "youX": 0.5,
       "youY": 0.92,
       "scoreChip": "BREAK POINT"
-    }
+    },
+    "tacticalCategory": "defense"
   },
   {
     "id": "mental_025",
@@ -1377,7 +1421,8 @@
       "youX": 0.5,
       "youY": 0.92,
       "scoreChip": "BETWEEN POINTS"
-    }
+    },
+    "tacticalCategory": "patterns"
   },
   {
     "id": "mental_026",
@@ -1407,7 +1452,8 @@
       "youX": 0.5,
       "youY": 0.92,
       "scoreChip": "0–4 GAMES"
-    }
+    },
+    "tacticalCategory": "return"
   },
   {
     "id": "mental_027",
@@ -1431,7 +1477,8 @@
       "Bitirmek için daha hızlı oyna"
     ],
     "explanationTr": "Maç için servis atarken kırılmak sık karşılaşılan bir durumdur — öldürücü değildir. Tek derin nefes seni sıfırlar — şimdi rakip baskı altında servis atıyor.",
-    "takeawayTr": "Bir kırılma seti bitirmez — sıfırla ve yanıtla."
+    "takeawayTr": "Bir kırılma seti bitirmez — sıfırla ve yanıtla.",
+    "tacticalCategory": "patterns"
   },
   {
     "id": "mental_028",
@@ -1455,7 +1502,8 @@
       "Neyin ters gittiğini analiz et"
     ],
     "explanationTr": "Özgüven küçük zaferlerden yeniden inşa olur. En yüksek ihtimalli desenin puan kazanma şansını artırır ve bu inanca dönüşür.",
-    "takeawayTr": "Özgüveni güvenli desenlerle inşa et — kahramanlıkla değil."
+    "takeawayTr": "Özgüveni güvenli desenlerle inşa et — kahramanlıkla değil.",
+    "tacticalCategory": "defense"
   },
   {
     "id": "mental_029",
@@ -1479,7 +1527,8 @@
       "Sinirliyken maçı baştan izle"
     ],
     "explanationTr": "Yapılandırılmış 2+1 yansıma takıntıya dönmeden dersleri yakalar. Kaçınma öğrenmeyi kaçırır; sinirli izlemek dersi bozar.",
-    "takeawayTr": "Kısa yansıt, yakında yansıt — ama sakin yansıt."
+    "takeawayTr": "Kısa yansıt, yakında yansıt — ama sakin yansıt.",
+    "tacticalCategory": "net_game"
   },
   {
     "id": "mental_030",
@@ -1503,6 +1552,7 @@
       "Enerji saklamak için %50 vur"
     ],
     "explanationTr": "Agresif bir deseni görselleştirmek beyni ve bedeni yarışma durumuna hazırlar. Rahat ısınma rahat oyun hazırlar.",
-    "takeawayTr": "Yarışmak istediğin gibi ısın."
+    "takeawayTr": "Yarışmak istediğin gibi ısın.",
+    "tacticalCategory": "patterns"
   }
 ]

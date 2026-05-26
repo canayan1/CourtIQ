@@ -151,6 +151,36 @@ final class CourtTapDrillManager: ObservableObject {
         tacticalProfile.filter(\.isEstablished)
     }
 
+    /// Drill profile + quiz profile fused into a single per-category
+    /// readout. Each side contributes its samples + score; the combined
+    /// score is the sample-count-weighted average. Empty buckets stay
+    /// nil so the UI can fade rows without data.
+    func combinedTacticalProfile(
+        with quizManager: DailyQuizManager
+    ) -> [TacticalProfileEntry] {
+        let drill = tacticalProfile
+        let quiz = quizManager.quizTacticalProfile
+        return TacticalCategory.allCases.map { cat in
+            let d = drill.first { $0.category == cat }
+            let q = quiz.first { $0.category == cat }
+            let dCount = d?.sampleCount ?? 0
+            let qCount = q?.sampleCount ?? 0
+            let totalCount = dCount + qCount
+            guard totalCount > 0 else { return TacticalProfileEntry.empty(cat) }
+            let dScore = d?.score ?? 0
+            let qScore = q?.score ?? 0
+            // Weighted by sample count so a 30-rep drill cat doesn't get
+            // swamped by a 5-question quiz cat (and vice versa).
+            let combined = (dScore * Double(dCount) + qScore * Double(qCount))
+                         / Double(totalCount)
+            return TacticalProfileEntry(
+                category: cat,
+                score: combined,
+                sampleCount: totalCount
+            )
+        }
+    }
+
     // MARK: - Play style profile (v2)
 
     /// Aggregates every v2 drill tap (taps that carry a chosen shot

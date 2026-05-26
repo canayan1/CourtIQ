@@ -1,6 +1,16 @@
 import Foundation
 import Combine
 
+/// Per-question result keyed by tactical category. Bucketed at
+/// recording time so we don't need to re-lookup the question content
+/// every time we aggregate. Backwards-compatible (decodes as empty
+/// list for older sessions that pre-date the field).
+struct QuizTacticalBucket: Codable, Hashable {
+    let category: String   // TacticalCategory.rawValue
+    let correct: Int
+    let total: Int
+}
+
 struct QuizSessionRecord: Identifiable, Codable, Hashable {
     let id: String
     let quizID: String
@@ -11,6 +21,10 @@ struct QuizSessionRecord: Identifiable, Codable, Hashable {
     let mistakeTypes: [String]
     let completedAt: Date
     let isDaily: Bool
+    /// Optional per-tactical-category breakdown for this session.
+    /// Older sessions (pre v1.x) decode with nil here; aggregators
+    /// treat nil as "no tactical signal" and skip the row cleanly.
+    var tacticalBuckets: [QuizTacticalBucket]? = nil
 
     var accuracyText: String {
         "\(score)/\(totalQuestions)"
@@ -24,6 +38,7 @@ struct QuizCompletionSummary {
     let score: Int
     let totalQuestions: Int
     let mistakeTypes: [String]
+    var tacticalBuckets: [QuizTacticalBucket]? = nil
 }
 
 @MainActor
@@ -152,13 +167,46 @@ final class DailyQuizManager: ObservableObject {
             totalQuestions: summary.totalQuestions,
             mistakeTypes: summary.mistakeTypes,
             completedAt: Date(),
-            isDaily: isDaily
+            isDaily: isDaily,
+            tacticalBuckets: summary.tacticalBuckets
         )
 
         upsertLocal(record)
 
         Task {
             await push(record)
+        }
+    }
+
+    /// Per-category accuracy from quiz history — the quiz-side mirror of
+    /// `CourtTapDrillManager.tacticalProfile`. Returns one entry per
+    /// TacticalCategory; empty buckets surface as score=nil so the UI
+    /// can render them as "no quiz signal yet".
+    ///
+    /// Sums (correct, total) across ALL recorded sessions, then scales
+    /// the correct/total ratio to 0-5 to match the drill score range
+    /// so combined-profile math works without unit conversion.
+    var quizTacticalProfile: [TacticalProfileEntry] {
+        var sums: [String: (correct: Int, total: Int)] = [:]
+        for session in sessionHistory {
+            guard let buckets = session.tacticalBuckets else { continue }
+            for b in buckets {
+                let prev = sums[b.category] ?? (0, 0)
+                sums[b.category] = (prev.correct + b.correct, prev.total + b.total)
+            }
+        }
+        return TacticalCategory.allCases.map { cat in
+            guard let row = sums[cat.rawValue], row.total > 0 else {
+                return TacticalProfileEntry.empty(cat)
+            }
+            // 0-1 accuracy → 0-5 score so drill + quiz live in the same
+            // numeric space when combined.
+            let score = (Double(row.correct) / Double(row.total)) * 5.0
+            return TacticalProfileEntry(
+                category: cat,
+                score: score,
+                sampleCount: row.total
+            )
         }
     }
 

@@ -89,6 +89,12 @@ struct QuizQuestion: Identifiable, Codable, Hashable {
     var takeawayTr: String? = nil
     let mistakeType: String
     var diagram: QuizCourtDiagram? = nil
+    /// Maps the question to one of the six TacticalCategory values
+    /// (open_court | defense | approach | patterns | net_game | return)
+    /// so quiz performance feeds the same Tactical Profile as drills.
+    /// Optional in the wire format for backward compatibility; falls
+    /// through to `.patterns` when missing.
+    var tacticalCategory: String? = nil
 
     func localizedScenario(for lang: AppLanguage) -> String {
         lang == .turkish ? (scenarioTr ?? scenario) : scenario

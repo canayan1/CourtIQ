@@ -14,9 +14,12 @@ import SwiftUI
 struct TacticalProfileCard: View {
     @EnvironmentObject private var lang: LanguageManager
     @EnvironmentObject private var drillManager: CourtTapDrillManager
+    @EnvironmentObject private var quizManager: DailyQuizManager
 
     var body: some View {
-        let profile = drillManager.tacticalProfile
+        // Combined profile (drill + quiz fused) so quiz performance
+        // contributes to the same six-category map.
+        let profile = drillManager.combinedTacticalProfile(with: quizManager)
         let hasAnyData = profile.contains { ($0.score ?? 0) > 0 }
         if !hasAnyData {
             EmptyView()

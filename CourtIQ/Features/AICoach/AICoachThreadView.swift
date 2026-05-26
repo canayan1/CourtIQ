@@ -300,15 +300,23 @@ struct AICoachThreadView: View {
                 )
             }
 
-        // Tactical profile — pick out the categories with enough reps
-        // to be credible (≥3 taps each). Skip the whole block if the
-        // user has done zero drills.
-        let established = drillManager.establishedTacticalProfile
-        let drillCount = drillManager.sessions.reduce(0) { $0 + $1.taps.count }
+        // Tactical profile — combined drill + quiz signal. Quiz feeds
+        // the same 6-category map via DailyQuizManager.quizTacticalProfile,
+        // and CourtTapDrillManager.combinedTacticalProfile fuses both
+        // weighted by sample count. We still keep the ≥3-samples floor
+        // before exposing a category to the AI so it doesn't anchor
+        // on a single noisy result.
+        let combined = drillManager.combinedTacticalProfile(with: dailyQuizManager)
+            .filter(\.isEstablished)
+        let totalDrillTaps = drillManager.sessions.reduce(0) { $0 + $1.taps.count }
+        let totalQuizQs = dailyQuizManager.sessionHistory.reduce(0) {
+            $0 + ($1.tacticalBuckets?.reduce(0) { $0 + $1.total } ?? 0)
+        }
+        let totalSignals = totalDrillTaps + totalQuizQs
         let tactical: AIChatContextPayload.TacticalProfilePayload?
-        if drillCount > 0 {
+        if totalSignals > 0 {
             func s(_ cat: TacticalCategory) -> Double? {
-                established.first { $0.category == cat }?.score
+                combined.first { $0.category == cat }?.score
             }
             tactical = AIChatContextPayload.TacticalProfilePayload(
                 openCourt: s(.openCourt),
@@ -317,7 +325,7 @@ struct AICoachThreadView: View {
                 patterns: s(.patterns),
                 netGame: s(.netGame),
                 return_: s(.return),
-                totalDrillsCompleted: drillCount
+                totalDrillsCompleted: totalSignals
             )
         } else {
             tactical = nil
