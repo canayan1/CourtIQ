@@ -8,9 +8,45 @@
     "taglineTr": "Geniş deuce servis → açık korta forehand.",
     "surface": "grass",
     "shots": [
-      {"fromX": 0.50, "fromY": 0.96, "toX": 0.85, "toY": 0.32, "duration": 0.8, "youX": 0.50, "youY": 0.96, "opX": 0.45, "opY": 0.06, "label": "1. Wide serve", "labelTr": "1. Geniş servis"},
-      {"fromX": 0.85, "fromY": 0.32, "toX": 0.45, "toY": 0.86, "duration": 0.7, "youX": 0.50, "youY": 0.90, "opX": 0.85, "opY": 0.12, "label": "2. Stretched return", "labelTr": "2. Streched return"},
-      {"fromX": 0.45, "fromY": 0.86, "toX": 0.18, "toY": 0.18, "duration": 0.9, "youX": 0.45, "youY": 0.86, "opX": 0.85, "opY": 0.16, "label": "3. Open court forehand", "labelTr": "3. Açık korta forehand"}
+      {
+        "fromX": 0.5,
+        "fromY": 1.0897,
+        "toX": 0.8281,
+        "toY": 0.2692,
+        "duration": 0.8,
+        "youX": 0.5,
+        "youY": 1.0897,
+        "opX": 0.4531,
+        "opY": -0.0641,
+        "label": "1. Wide serve",
+        "labelTr": "1. Geniş servis"
+      },
+      {
+        "fromX": 0.8281,
+        "fromY": 0.2692,
+        "toX": 0.4531,
+        "toY": 0.9615,
+        "duration": 0.7,
+        "youX": 0.5,
+        "youY": 1.0128,
+        "opX": 0.8281,
+        "opY": 0.0128,
+        "label": "2. Stretched return",
+        "labelTr": "2. Streched return"
+      },
+      {
+        "fromX": 0.4531,
+        "fromY": 0.9615,
+        "toX": 0.2,
+        "toY": 0.0897,
+        "duration": 0.9,
+        "youX": 0.4531,
+        "youY": 0.9615,
+        "opX": 0.8281,
+        "opY": 0.0641,
+        "label": "3. Open court forehand",
+        "labelTr": "3. Açık korta forehand"
+      }
     ]
   },
   {
@@ -21,9 +57,45 @@
     "taglineTr": "Roger'ın sürpriz saldırısı — chip ve net.",
     "surface": "hard",
     "shots": [
-      {"fromX": 0.50, "fromY": 0.05, "toX": 0.55, "toY": 0.78, "duration": 0.7, "youX": 0.50, "youY": 0.78, "opX": 0.50, "opY": 0.05, "label": "1. Server hits the line", "labelTr": "1. Servis çizgide"},
-      {"fromX": 0.55, "fromY": 0.78, "toX": 0.55, "toY": 0.30, "duration": 0.55, "youX": 0.50, "youY": 0.55, "opX": 0.50, "opY": 0.05, "label": "2. Chip return + charge", "labelTr": "2. Chip return + ileri"},
-      {"fromX": 0.55, "fromY": 0.30, "toX": 0.12, "toY": 0.10, "duration": 0.6, "youX": 0.50, "youY": 0.42, "opX": 0.50, "opY": 0.20, "label": "3. Angle volley winner", "labelTr": "3. Açılı vole winner"}
+      {
+        "fromX": 0.5,
+        "fromY": -0.0769,
+        "toX": 0.5469,
+        "toY": 0.859,
+        "duration": 0.7,
+        "youX": 0.5,
+        "youY": 0.859,
+        "opX": 0.5,
+        "opY": -0.0769,
+        "label": "1. Server hits the line",
+        "labelTr": "1. Servis çizgide"
+      },
+      {
+        "fromX": 0.5469,
+        "fromY": 0.859,
+        "toX": 0.5469,
+        "toY": 0.2436,
+        "duration": 0.55,
+        "youX": 0.5,
+        "youY": 0.5641,
+        "opX": 0.5,
+        "opY": -0.0769,
+        "label": "2. Chip return + charge",
+        "labelTr": "2. Chip return + ileri"
+      },
+      {
+        "fromX": 0.5469,
+        "fromY": 0.2436,
+        "toX": 0.1437,
+        "toY": -0.0128,
+        "duration": 0.6,
+        "youX": 0.5,
+        "youY": 0.3974,
+        "opX": 0.5,
+        "opY": 0.1154,
+        "label": "3. Angle volley winner",
+        "labelTr": "3. Açılı vole winner"
+      }
     ]
   },
   {
@@ -34,9 +106,45 @@
     "taglineTr": "Alley dışından ağır crosscourt forehand.",
     "surface": "clay",
     "shots": [
-      {"fromX": 0.20, "fromY": 0.10, "toX": 0.05, "toY": 0.95, "duration": 0.9, "youX": 0.05, "youY": 0.95, "opX": 0.20, "opY": 0.10, "label": "1. Wide ball pulls you out", "labelTr": "1. Wide top seni çıkarır"},
-      {"fromX": 0.05, "fromY": 0.95, "toX": 0.78, "toY": 0.20, "duration": 1.1, "youX": 0.05, "youY": 0.95, "opX": 0.20, "opY": 0.10, "label": "2. Banana FH curls back in", "labelTr": "2. Banana FH geri kıvrılır"},
-      {"fromX": 0.78, "fromY": 0.20, "toX": 0.18, "toY": 0.82, "duration": 0.7, "youX": 0.40, "youY": 0.90, "opX": 0.78, "opY": 0.18, "label": "3. Time to recover", "labelTr": "3. Toparlanma vakti"}
+      {
+        "fromX": 0.2188,
+        "fromY": -0.0128,
+        "toX": 0.0781,
+        "toY": 1.0769,
+        "duration": 0.9,
+        "youX": 0.0781,
+        "youY": 1.0769,
+        "opX": 0.2188,
+        "opY": -0.0128,
+        "label": "1. Wide ball pulls you out",
+        "labelTr": "1. Wide top seni çıkarır"
+      },
+      {
+        "fromX": 0.0781,
+        "fromY": 1.0769,
+        "toX": 0.7625,
+        "toY": 0.1154,
+        "duration": 1.1,
+        "youX": 0.0781,
+        "youY": 1.0769,
+        "opX": 0.2188,
+        "opY": -0.0128,
+        "label": "2. Banana FH curls back in",
+        "labelTr": "2. Banana FH geri kıvrılır"
+      },
+      {
+        "fromX": 0.7625,
+        "fromY": 0.1154,
+        "toX": 0.2,
+        "toY": 0.9103,
+        "duration": 0.7,
+        "youX": 0.4062,
+        "youY": 1.0128,
+        "opX": 0.7625,
+        "opY": 0.0897,
+        "label": "3. Time to recover",
+        "labelTr": "3. Toparlanma vakti"
+      }
     ]
   },
   {
@@ -47,9 +155,45 @@
     "taglineTr": "Nadir agresif backhand line — yön değişimi.",
     "surface": "hard",
     "shots": [
-      {"fromX": 0.30, "fromY": 0.10, "toX": 0.25, "toY": 0.88, "duration": 0.85, "youX": 0.25, "youY": 0.88, "opX": 0.30, "opY": 0.10, "label": "1. Heavy CC into your BH", "labelTr": "1. Ağır CC backhand'e"},
-      {"fromX": 0.25, "fromY": 0.88, "toX": 0.20, "toY": 0.18, "duration": 0.8, "youX": 0.25, "youY": 0.88, "opX": 0.30, "opY": 0.10, "label": "2. BH DTL change", "labelTr": "2. BH DTL yön değişimi"},
-      {"fromX": 0.20, "fromY": 0.18, "toX": 0.80, "toY": 0.78, "duration": 0.85, "youX": 0.50, "youY": 0.88, "opX": 0.20, "opY": 0.18, "label": "3. Opponent stretched wide", "labelTr": "3. Rakip wide kaldı"}
+      {
+        "fromX": 0.3125,
+        "fromY": -0.0128,
+        "toX": 0.2656,
+        "toY": 0.9872,
+        "duration": 0.85,
+        "youX": 0.2656,
+        "youY": 0.9872,
+        "opX": 0.3125,
+        "opY": -0.0128,
+        "label": "1. Heavy CC into your BH",
+        "labelTr": "1. Ağır CC backhand'e"
+      },
+      {
+        "fromX": 0.2656,
+        "fromY": 0.9872,
+        "toX": 0.2188,
+        "toY": 0.0897,
+        "duration": 0.8,
+        "youX": 0.2656,
+        "youY": 0.9872,
+        "opX": 0.3125,
+        "opY": -0.0128,
+        "label": "2. BH DTL change",
+        "labelTr": "2. BH DTL yön değişimi"
+      },
+      {
+        "fromX": 0.2188,
+        "fromY": 0.0897,
+        "toX": 0.7812,
+        "toY": 0.859,
+        "duration": 0.85,
+        "youX": 0.5,
+        "youY": 0.9872,
+        "opX": 0.2188,
+        "opY": 0.0897,
+        "label": "3. Opponent stretched wide",
+        "labelTr": "3. Rakip wide kaldı"
+      }
     ]
   },
   {
@@ -60,9 +204,45 @@
     "taglineTr": "Wide çekildi, omuz üstünden lob, sıfırla.",
     "surface": "grass",
     "shots": [
-      {"fromX": 0.50, "fromY": 0.40, "toX": 0.05, "toY": 0.80, "duration": 0.8, "youX": 0.05, "youY": 0.80, "opX": 0.50, "opY": 0.40, "label": "1. Net player attacks", "labelTr": "1. File oyuncusu saldırır"},
-      {"fromX": 0.05, "fromY": 0.80, "toX": 0.92, "toY": 0.08, "duration": 1.1, "youX": 0.05, "youY": 0.80, "opX": 0.50, "opY": 0.40, "label": "2. Defensive lob over shoulder", "labelTr": "2. Omuz üstünden defansif lob"},
-      {"fromX": 0.92, "fromY": 0.08, "toX": 0.50, "toY": 0.85, "duration": 0.9, "youX": 0.50, "youY": 0.92, "opX": 0.92, "opY": 0.08, "label": "3. Neutral reset rally", "labelTr": "3. Neutral ralliyle sıfırlama"}
+      {
+        "fromX": 0.5,
+        "fromY": 0.3718,
+        "toX": 0.0781,
+        "toY": 0.8846,
+        "duration": 0.8,
+        "youX": 0.0781,
+        "youY": 0.8846,
+        "opX": 0.5,
+        "opY": 0.3718,
+        "label": "1. Net player attacks",
+        "labelTr": "1. File oyuncusu saldırır"
+      },
+      {
+        "fromX": 0.0781,
+        "fromY": 0.8846,
+        "toX": 0.8938,
+        "toY": -0.0385,
+        "duration": 1.1,
+        "youX": 0.0781,
+        "youY": 0.8846,
+        "opX": 0.5,
+        "opY": 0.3718,
+        "label": "2. Defensive lob over shoulder",
+        "labelTr": "2. Omuz üstünden defansif lob"
+      },
+      {
+        "fromX": 0.8938,
+        "fromY": -0.0385,
+        "toX": 0.5,
+        "toY": 0.9487,
+        "duration": 0.9,
+        "youX": 0.5,
+        "youY": 1.0385,
+        "opX": 0.8938,
+        "opY": -0.0385,
+        "label": "3. Neutral reset rally",
+        "labelTr": "3. Neutral ralliyle sıfırlama"
+      }
     ]
   },
   {
@@ -73,9 +253,45 @@
     "taglineTr": "Derin top rakibi geri iter → drop file öper.",
     "surface": "clay",
     "shots": [
-      {"fromX": 0.50, "fromY": 0.10, "toX": 0.50, "toY": 0.92, "duration": 0.8, "youX": 0.50, "youY": 0.92, "opX": 0.50, "opY": 0.05, "label": "1. Heavy deep ball", "labelTr": "1. Ağır derin top"},
-      {"fromX": 0.50, "fromY": 0.92, "toX": 0.50, "toY": 0.05, "duration": 0.9, "youX": 0.50, "youY": 0.92, "opX": 0.50, "opY": 0.02, "label": "2. Pushed off the baseline", "labelTr": "2. Baseline dışında kaldı"},
-      {"fromX": 0.50, "fromY": 0.05, "toX": 0.40, "toY": 0.42, "duration": 0.55, "youX": 0.50, "youY": 0.78, "opX": 0.50, "opY": 0.02, "label": "3. Drop shot kisses net", "labelTr": "3. Drop shot file öper"}
+      {
+        "fromX": 0.5,
+        "fromY": -0.0128,
+        "toX": 0.5,
+        "toY": 1.0385,
+        "duration": 0.8,
+        "youX": 0.5,
+        "youY": 1.0385,
+        "opX": 0.5,
+        "opY": -0.0769,
+        "label": "1. Heavy deep ball",
+        "labelTr": "1. Ağır derin top"
+      },
+      {
+        "fromX": 0.5,
+        "fromY": 1.0385,
+        "toX": 0.5,
+        "toY": -0.0769,
+        "duration": 0.9,
+        "youX": 0.5,
+        "youY": 1.0385,
+        "opX": 0.5,
+        "opY": -0.1154,
+        "label": "2. Pushed off the baseline",
+        "labelTr": "2. Baseline dışında kaldı"
+      },
+      {
+        "fromX": 0.5,
+        "fromY": -0.0769,
+        "toX": 0.4062,
+        "toY": 0.3974,
+        "duration": 0.55,
+        "youX": 0.5,
+        "youY": 0.859,
+        "opX": 0.5,
+        "opY": -0.1154,
+        "label": "3. Drop shot kisses net",
+        "labelTr": "3. Drop shot file öper"
+      }
     ]
   },
   {
@@ -86,10 +302,58 @@
     "taglineTr": "İki crosscourt korta açar, sonra DTL winner.",
     "surface": "hard",
     "shots": [
-      {"fromX": 0.30, "fromY": 0.10, "toX": 0.25, "toY": 0.88, "duration": 0.75, "youX": 0.25, "youY": 0.88, "opX": 0.30, "opY": 0.10, "label": "1. CC backhand", "labelTr": "1. CC backhand"},
-      {"fromX": 0.25, "fromY": 0.88, "toX": 0.75, "toY": 0.12, "duration": 0.75, "youX": 0.25, "youY": 0.88, "opX": 0.75, "opY": 0.12, "label": "2. CC stretches them", "labelTr": "2. CC rakibi açar"},
-      {"fromX": 0.75, "fromY": 0.12, "toX": 0.85, "toY": 0.82, "duration": 0.75, "youX": 0.50, "youY": 0.92, "opX": 0.75, "opY": 0.12, "label": "3. Back to your FH", "labelTr": "3. Tekrar forehand'e"},
-      {"fromX": 0.85, "fromY": 0.82, "toX": 0.92, "toY": 0.10, "duration": 0.7, "youX": 0.85, "youY": 0.82, "opX": 0.75, "opY": 0.12, "label": "4. DTL winner", "labelTr": "4. DTL winner"}
+      {
+        "fromX": 0.3125,
+        "fromY": -0.0128,
+        "toX": 0.2656,
+        "toY": 0.9872,
+        "duration": 0.75,
+        "youX": 0.2656,
+        "youY": 0.9872,
+        "opX": 0.3125,
+        "opY": -0.0128,
+        "label": "1. CC backhand",
+        "labelTr": "1. CC backhand"
+      },
+      {
+        "fromX": 0.2656,
+        "fromY": 0.9872,
+        "toX": 0.7344,
+        "toY": 0.0128,
+        "duration": 0.75,
+        "youX": 0.2656,
+        "youY": 0.9872,
+        "opX": 0.7344,
+        "opY": 0.0128,
+        "label": "2. CC stretches them",
+        "labelTr": "2. CC rakibi açar"
+      },
+      {
+        "fromX": 0.7344,
+        "fromY": 0.0128,
+        "toX": 0.8281,
+        "toY": 0.9103,
+        "duration": 0.75,
+        "youX": 0.5,
+        "youY": 1.0385,
+        "opX": 0.7344,
+        "opY": 0.0128,
+        "label": "3. Back to your FH",
+        "labelTr": "3. Tekrar forehand'e"
+      },
+      {
+        "fromX": 0.8281,
+        "fromY": 0.9103,
+        "toX": 0.8938,
+        "toY": -0.0128,
+        "duration": 0.7,
+        "youX": 0.8281,
+        "youY": 0.9103,
+        "opX": 0.7344,
+        "opY": 0.0128,
+        "label": "4. DTL winner",
+        "labelTr": "4. DTL winner"
+      }
     ]
   },
   {
@@ -100,10 +364,58 @@
     "taglineTr": "Baseline içine adım at, 2. servisi yırt.",
     "surface": "hard",
     "shots": [
-      {"fromX": 0.50, "fromY": 0.05, "toX": 0.50, "toY": 0.32, "duration": 0.6, "youX": 0.50, "youY": 0.70, "opX": 0.50, "opY": 0.05, "label": "1. Slow 2nd serve", "labelTr": "1. Yavaş 2. servis"},
-      {"fromX": 0.50, "fromY": 0.32, "toX": 0.85, "toY": 0.18, "duration": 0.55, "youX": 0.50, "youY": 0.62, "opX": 0.50, "opY": 0.05, "label": "2. Step in + drive", "labelTr": "2. İçeri adım + sert vuruş"},
-      {"fromX": 0.85, "fromY": 0.18, "toX": 0.30, "toY": 0.86, "duration": 0.65, "youX": 0.50, "youY": 0.62, "opX": 0.85, "opY": 0.18, "label": "3. Defensive scramble", "labelTr": "3. Defansif scramble"},
-      {"fromX": 0.30, "fromY": 0.86, "toX": 0.15, "toY": 0.10, "duration": 0.7, "youX": 0.30, "youY": 0.80, "opX": 0.85, "opY": 0.18, "label": "4. Inside-out FH winner", "labelTr": "4. Inside-out FH winner"}
+      {
+        "fromX": 0.5,
+        "fromY": -0.0769,
+        "toX": 0.5,
+        "toY": 0.2692,
+        "duration": 0.6,
+        "youX": 0.5,
+        "youY": 0.7564,
+        "opX": 0.5,
+        "opY": -0.0769,
+        "label": "1. Slow 2nd serve",
+        "labelTr": "1. Yavaş 2. servis"
+      },
+      {
+        "fromX": 0.5,
+        "fromY": 0.2692,
+        "toX": 0.8281,
+        "toY": 0.0897,
+        "duration": 0.55,
+        "youX": 0.5,
+        "youY": 0.6538,
+        "opX": 0.5,
+        "opY": -0.0769,
+        "label": "2. Step in + drive",
+        "labelTr": "2. İçeri adım + sert vuruş"
+      },
+      {
+        "fromX": 0.8281,
+        "fromY": 0.0897,
+        "toX": 0.3125,
+        "toY": 0.9615,
+        "duration": 0.65,
+        "youX": 0.5,
+        "youY": 0.6538,
+        "opX": 0.8281,
+        "opY": 0.0897,
+        "label": "3. Defensive scramble",
+        "labelTr": "3. Defansif scramble"
+      },
+      {
+        "fromX": 0.3125,
+        "fromY": 0.9615,
+        "toX": 0.1719,
+        "toY": -0.0128,
+        "duration": 0.7,
+        "youX": 0.3125,
+        "youY": 0.8846,
+        "opX": 0.8281,
+        "opY": 0.0897,
+        "label": "4. Inside-out FH winner",
+        "labelTr": "4. Inside-out FH winner"
+      }
     ]
   },
   {
@@ -114,10 +426,58 @@
     "taglineTr": "Ağır topspin yükseklik + derinlik kurar, sonra hızlan.",
     "surface": "clay",
     "shots": [
-      {"fromX": 0.30, "fromY": 0.92, "toX": 0.78, "toY": 0.10, "duration": 0.9, "youX": 0.30, "youY": 0.92, "opX": 0.78, "opY": 0.10, "label": "1. Heavy topspin to BH", "labelTr": "1. Backhand'e ağır topspin"},
-      {"fromX": 0.78, "fromY": 0.10, "toX": 0.30, "toY": 0.92, "duration": 0.9, "youX": 0.30, "youY": 0.92, "opX": 0.78, "opY": 0.10, "label": "2. Pushed back, same shot", "labelTr": "2. Geri itildi, aynı vuruş"},
-      {"fromX": 0.30, "fromY": 0.92, "toX": 0.78, "toY": 0.10, "duration": 0.7, "youX": 0.30, "youY": 0.78, "opX": 0.78, "opY": 0.05, "label": "3. Same again, deeper", "labelTr": "3. Yine aynı, daha derin"},
-      {"fromX": 0.78, "fromY": 0.10, "toX": 0.92, "toY": 0.78, "duration": 0.65, "youX": 0.45, "youY": 0.78, "opX": 0.78, "opY": 0.05, "label": "4. Accelerate to open court", "labelTr": "4. Hızlan, açık korta"}
+      {
+        "fromX": 0.3125,
+        "fromY": 1.0385,
+        "toX": 0.7625,
+        "toY": -0.0128,
+        "duration": 0.9,
+        "youX": 0.3125,
+        "youY": 1.0385,
+        "opX": 0.7625,
+        "opY": -0.0128,
+        "label": "1. Heavy topspin to BH",
+        "labelTr": "1. Backhand'e ağır topspin"
+      },
+      {
+        "fromX": 0.7625,
+        "fromY": -0.0128,
+        "toX": 0.3125,
+        "toY": 1.0385,
+        "duration": 0.9,
+        "youX": 0.3125,
+        "youY": 1.0385,
+        "opX": 0.7625,
+        "opY": -0.0128,
+        "label": "2. Pushed back, same shot",
+        "labelTr": "2. Geri itildi, aynı vuruş"
+      },
+      {
+        "fromX": 0.3125,
+        "fromY": 1.0385,
+        "toX": 0.7625,
+        "toY": -0.0128,
+        "duration": 0.7,
+        "youX": 0.3125,
+        "youY": 0.859,
+        "opX": 0.7625,
+        "opY": -0.0769,
+        "label": "3. Same again, deeper",
+        "labelTr": "3. Yine aynı, daha derin"
+      },
+      {
+        "fromX": 0.7625,
+        "fromY": -0.0128,
+        "toX": 0.8938,
+        "toY": 0.859,
+        "duration": 0.65,
+        "youX": 0.4531,
+        "youY": 0.859,
+        "opX": 0.7625,
+        "opY": -0.0769,
+        "label": "4. Accelerate to open court",
+        "labelTr": "4. Hızlan, açık korta"
+      }
     ]
   },
   {
@@ -128,10 +488,58 @@
     "taglineTr": "Alçak slice topu vuruş bölgesinin altında tutar, sonra net.",
     "surface": "grass",
     "shots": [
-      {"fromX": 0.50, "fromY": 0.10, "toX": 0.50, "toY": 0.65, "duration": 0.75, "youX": 0.50, "youY": 0.65, "opX": 0.50, "opY": 0.10, "label": "1. Short ball mid-court", "labelTr": "1. Mid-court'a kısa top"},
-      {"fromX": 0.50, "fromY": 0.65, "toX": 0.10, "toY": 0.12, "duration": 0.75, "youX": 0.50, "youY": 0.48, "opX": 0.50, "opY": 0.10, "label": "2. Low slice DTL approach", "labelTr": "2. Alçak slice DTL approach"},
-      {"fromX": 0.10, "fromY": 0.12, "toX": 0.45, "toY": 0.42, "duration": 0.6, "youX": 0.50, "youY": 0.40, "opX": 0.10, "opY": 0.12, "label": "3. Weak slice reply", "labelTr": "3. Zayıf slice cevabı"},
-      {"fromX": 0.45, "fromY": 0.42, "toX": 0.88, "toY": 0.10, "duration": 0.55, "youX": 0.50, "youY": 0.40, "opX": 0.10, "opY": 0.12, "label": "4. Crosscourt volley winner", "labelTr": "4. CC vole winner"}
+      {
+        "fromX": 0.5,
+        "fromY": -0.0128,
+        "toX": 0.5,
+        "toY": 0.6923,
+        "duration": 0.75,
+        "youX": 0.5,
+        "youY": 0.6923,
+        "opX": 0.5,
+        "opY": -0.0128,
+        "label": "1. Short ball mid-court",
+        "labelTr": "1. Mid-court'a kısa top"
+      },
+      {
+        "fromX": 0.5,
+        "fromY": 0.6923,
+        "toX": 0.125,
+        "toY": 0.0128,
+        "duration": 0.75,
+        "youX": 0.5,
+        "youY": 0.4744,
+        "opX": 0.5,
+        "opY": -0.0128,
+        "label": "2. Low slice DTL approach",
+        "labelTr": "2. Alçak slice DTL approach"
+      },
+      {
+        "fromX": 0.125,
+        "fromY": 0.0128,
+        "toX": 0.4531,
+        "toY": 0.3974,
+        "duration": 0.6,
+        "youX": 0.5,
+        "youY": 0.3718,
+        "opX": 0.125,
+        "opY": 0.0128,
+        "label": "3. Weak slice reply",
+        "labelTr": "3. Zayıf slice cevabı"
+      },
+      {
+        "fromX": 0.4531,
+        "fromY": 0.3974,
+        "toX": 0.8562,
+        "toY": -0.0128,
+        "duration": 0.55,
+        "youX": 0.5,
+        "youY": 0.3718,
+        "opX": 0.125,
+        "opY": 0.0128,
+        "label": "4. Crosscourt volley winner",
+        "labelTr": "4. CC vole winner"
+      }
     ]
   },
   {
@@ -142,10 +550,58 @@
     "taglineTr": "Baseline'ın 3 metre arkası, her topu sıfırla, hatayı bekle.",
     "surface": "hard",
     "shots": [
-      {"fromX": 0.30, "fromY": 0.10, "toX": 0.20, "toY": 0.86, "duration": 0.8, "youX": 0.20, "youY": 0.98, "opX": 0.30, "opY": 0.10, "label": "1. CC pulls you wide", "labelTr": "1. CC seni wide çeker"},
-      {"fromX": 0.20, "fromY": 0.86, "toX": 0.70, "toY": 0.15, "duration": 0.9, "youX": 0.50, "youY": 0.98, "opX": 0.70, "opY": 0.15, "label": "2. Deep reset to BH corner", "labelTr": "2. BH köşeye derin reset"},
-      {"fromX": 0.70, "fromY": 0.15, "toX": 0.80, "toY": 0.92, "duration": 0.8, "youX": 0.50, "youY": 0.98, "opX": 0.70, "opY": 0.15, "label": "3. They go for too much", "labelTr": "3. Çok zorlarlar"},
-      {"fromX": 0.80, "fromY": 0.92, "toX": 0.95, "toY": 1.05, "duration": 0.5, "youX": 0.50, "youY": 0.98, "opX": 0.70, "opY": 0.15, "label": "4. Forced error wide", "labelTr": "4. Wide hata"}
+      {
+        "fromX": 0.3125,
+        "fromY": -0.0128,
+        "toX": 0.2188,
+        "toY": 0.9615,
+        "duration": 0.8,
+        "youX": 0.2188,
+        "youY": 1.1154,
+        "opX": 0.3125,
+        "opY": -0.0128,
+        "label": "1. CC pulls you wide",
+        "labelTr": "1. CC seni wide çeker"
+      },
+      {
+        "fromX": 0.2188,
+        "fromY": 0.9615,
+        "toX": 0.6875,
+        "toY": 0.0513,
+        "duration": 0.9,
+        "youX": 0.5,
+        "youY": 1.1154,
+        "opX": 0.6875,
+        "opY": 0.0513,
+        "label": "2. Deep reset to BH corner",
+        "labelTr": "2. BH köşeye derin reset"
+      },
+      {
+        "fromX": 0.6875,
+        "fromY": 0.0513,
+        "toX": 0.7812,
+        "toY": 1.0385,
+        "duration": 0.8,
+        "youX": 0.5,
+        "youY": 1.1154,
+        "opX": 0.6875,
+        "opY": 0.0513,
+        "label": "3. They go for too much",
+        "labelTr": "3. Çok zorlarlar"
+      },
+      {
+        "fromX": 0.7812,
+        "fromY": 1.0385,
+        "toX": 0.9219,
+        "toY": 1.2051,
+        "duration": 0.5,
+        "youX": 0.5,
+        "youY": 1.1154,
+        "opX": 0.6875,
+        "opY": 0.0513,
+        "label": "4. Forced error wide",
+        "labelTr": "4. Wide hata"
+      }
     ]
   },
   {
@@ -156,8 +612,32 @@
     "taglineTr": "Backhand'i sola at, inside-in rakibin FH alley'ine.",
     "surface": "hard",
     "shots": [
-      {"fromX": 0.70, "fromY": 0.10, "toX": 0.20, "toY": 0.88, "duration": 0.85, "youX": 0.30, "youY": 0.88, "opX": 0.70, "opY": 0.10, "label": "1. Ball pulled to your BH", "labelTr": "1. Backhand'ine top"},
-      {"fromX": 0.20, "fromY": 0.88, "toX": 0.85, "toY": 0.18, "duration": 0.7, "youX": 0.30, "youY": 0.88, "opX": 0.85, "opY": 0.18, "label": "2. Inside-in FH winner", "labelTr": "2. Inside-in FH winner"}
+      {
+        "fromX": 0.6875,
+        "fromY": -0.0128,
+        "toX": 0.2188,
+        "toY": 0.9872,
+        "duration": 0.85,
+        "youX": 0.3125,
+        "youY": 0.9872,
+        "opX": 0.6875,
+        "opY": -0.0128,
+        "label": "1. Ball pulled to your BH",
+        "labelTr": "1. Backhand'ine top"
+      },
+      {
+        "fromX": 0.2188,
+        "fromY": 0.9872,
+        "toX": 0.8281,
+        "toY": 0.0897,
+        "duration": 0.7,
+        "youX": 0.3125,
+        "youY": 0.9872,
+        "opX": 0.8281,
+        "opY": 0.0897,
+        "label": "2. Inside-in FH winner",
+        "labelTr": "2. Inside-in FH winner"
+      }
     ]
   },
   {
@@ -168,9 +648,45 @@
     "taglineTr": "Ağır T servis FH winner kurar — pattern of patterns.",
     "surface": "grass",
     "shots": [
-      {"fromX": 0.50, "fromY": 0.96, "toX": 0.52, "toY": 0.28, "duration": 0.7, "youX": 0.50, "youY": 0.96, "opX": 0.50, "opY": 0.05, "label": "1. Heavy T serve", "labelTr": "1. Ağır T servis"},
-      {"fromX": 0.52, "fromY": 0.28, "toX": 0.55, "toY": 0.78, "duration": 0.6, "youX": 0.50, "youY": 0.86, "opX": 0.55, "opY": 0.10, "label": "2. Jammed BH return", "labelTr": "2. Sıkışmış BH return"},
-      {"fromX": 0.55, "fromY": 0.78, "toX": 0.92, "toY": 0.16, "duration": 0.7, "youX": 0.40, "youY": 0.82, "opX": 0.55, "opY": 0.10, "label": "3. FH winner crosscourt", "labelTr": "3. FH CC winner"}
+      {
+        "fromX": 0.5,
+        "fromY": 1.0897,
+        "toX": 0.5188,
+        "toY": 0.2179,
+        "duration": 0.7,
+        "youX": 0.5,
+        "youY": 1.0897,
+        "opX": 0.5,
+        "opY": -0.0769,
+        "label": "1. Heavy T serve",
+        "labelTr": "1. Ağır T servis"
+      },
+      {
+        "fromX": 0.5188,
+        "fromY": 0.2179,
+        "toX": 0.5469,
+        "toY": 0.859,
+        "duration": 0.6,
+        "youX": 0.5,
+        "youY": 0.9615,
+        "opX": 0.5469,
+        "opY": -0.0128,
+        "label": "2. Jammed BH return",
+        "labelTr": "2. Sıkışmış BH return"
+      },
+      {
+        "fromX": 0.5469,
+        "fromY": 0.859,
+        "toX": 0.8938,
+        "toY": 0.0641,
+        "duration": 0.7,
+        "youX": 0.4062,
+        "youY": 0.9103,
+        "opX": 0.5469,
+        "opY": -0.0128,
+        "label": "3. FH winner crosscourt",
+        "labelTr": "3. FH CC winner"
+      }
     ]
   },
   {
@@ -181,10 +697,58 @@
     "taglineTr": "Crosscourt backhand'ler rakip overcommit edene kadar, sonra DTL.",
     "surface": "hard",
     "shots": [
-      {"fromX": 0.20, "fromY": 0.10, "toX": 0.25, "toY": 0.85, "duration": 0.8, "youX": 0.25, "youY": 0.85, "opX": 0.20, "opY": 0.10, "label": "1. Heavy CC BH", "labelTr": "1. Ağır CC BH"},
-      {"fromX": 0.25, "fromY": 0.85, "toX": 0.18, "toY": 0.10, "duration": 0.7, "youX": 0.25, "youY": 0.85, "opX": 0.18, "opY": 0.10, "label": "2. Same CC, heavier", "labelTr": "2. Yine CC, daha ağır"},
-      {"fromX": 0.18, "fromY": 0.10, "toX": 0.18, "toY": 0.82, "duration": 0.7, "youX": 0.18, "youY": 0.82, "opX": 0.10, "opY": 0.10, "label": "3. Opp leans CC", "labelTr": "3. Rakip CC'ye yaslanır"},
-      {"fromX": 0.18, "fromY": 0.82, "toX": 0.92, "toY": 0.12, "duration": 0.75, "youX": 0.18, "youY": 0.82, "opX": 0.10, "opY": 0.10, "label": "4. BH DTL into open court", "labelTr": "4. BH DTL açık korta"}
+      {
+        "fromX": 0.2188,
+        "fromY": -0.0128,
+        "toX": 0.2656,
+        "toY": 0.9487,
+        "duration": 0.8,
+        "youX": 0.2656,
+        "youY": 0.9487,
+        "opX": 0.2188,
+        "opY": -0.0128,
+        "label": "1. Heavy CC BH",
+        "labelTr": "1. Ağır CC BH"
+      },
+      {
+        "fromX": 0.2656,
+        "fromY": 0.9487,
+        "toX": 0.2,
+        "toY": -0.0128,
+        "duration": 0.7,
+        "youX": 0.2656,
+        "youY": 0.9487,
+        "opX": 0.2,
+        "opY": -0.0128,
+        "label": "2. Same CC, heavier",
+        "labelTr": "2. Yine CC, daha ağır"
+      },
+      {
+        "fromX": 0.2,
+        "fromY": -0.0128,
+        "toX": 0.2,
+        "toY": 0.9103,
+        "duration": 0.7,
+        "youX": 0.2,
+        "youY": 0.9103,
+        "opX": 0.125,
+        "opY": -0.0128,
+        "label": "3. Opp leans CC",
+        "labelTr": "3. Rakip CC'ye yaslanır"
+      },
+      {
+        "fromX": 0.2,
+        "fromY": 0.9103,
+        "toX": 0.8938,
+        "toY": 0.0128,
+        "duration": 0.75,
+        "youX": 0.2,
+        "youY": 0.9103,
+        "opX": 0.125,
+        "opY": -0.0128,
+        "label": "4. BH DTL into open court",
+        "labelTr": "4. BH DTL açık korta"
+      }
     ]
   },
   {
@@ -195,10 +759,58 @@
     "taglineTr": "Sabırlı crosscourt FH puanı kurar — kısa topu bekle.",
     "surface": "clay",
     "shots": [
-      {"fromX": 0.70, "fromY": 0.10, "toX": 0.78, "toY": 0.85, "duration": 0.85, "youX": 0.78, "youY": 0.92, "opX": 0.70, "opY": 0.10, "label": "1. CC FH topspin", "labelTr": "1. CC FH topspin"},
-      {"fromX": 0.78, "fromY": 0.85, "toX": 0.72, "toY": 0.18, "duration": 0.85, "youX": 0.78, "youY": 0.92, "opX": 0.72, "opY": 0.18, "label": "2. Same shape, deeper", "labelTr": "2. Aynı şekil, daha derin"},
-      {"fromX": 0.72, "fromY": 0.18, "toX": 0.70, "toY": 0.55, "duration": 0.7, "youX": 0.65, "youY": 0.78, "opX": 0.72, "opY": 0.18, "label": "3. Short reply", "labelTr": "3. Kısa cevap"},
-      {"fromX": 0.70, "fromY": 0.55, "toX": 0.12, "toY": 0.12, "duration": 0.65, "youX": 0.65, "youY": 0.65, "opX": 0.72, "opY": 0.18, "label": "4. Inside-out FH winner", "labelTr": "4. Inside-out FH winner"}
+      {
+        "fromX": 0.6875,
+        "fromY": -0.0128,
+        "toX": 0.7625,
+        "toY": 0.9487,
+        "duration": 0.85,
+        "youX": 0.7625,
+        "youY": 1.0385,
+        "opX": 0.6875,
+        "opY": -0.0128,
+        "label": "1. CC FH topspin",
+        "labelTr": "1. CC FH topspin"
+      },
+      {
+        "fromX": 0.7625,
+        "fromY": 0.9487,
+        "toX": 0.7063,
+        "toY": 0.0897,
+        "duration": 0.85,
+        "youX": 0.7625,
+        "youY": 1.0385,
+        "opX": 0.7063,
+        "opY": 0.0897,
+        "label": "2. Same shape, deeper",
+        "labelTr": "2. Aynı şekil, daha derin"
+      },
+      {
+        "fromX": 0.7063,
+        "fromY": 0.0897,
+        "toX": 0.6875,
+        "toY": 0.5641,
+        "duration": 0.7,
+        "youX": 0.6406,
+        "youY": 0.859,
+        "opX": 0.7063,
+        "opY": 0.0897,
+        "label": "3. Short reply",
+        "labelTr": "3. Kısa cevap"
+      },
+      {
+        "fromX": 0.6875,
+        "fromY": 0.5641,
+        "toX": 0.1437,
+        "toY": 0.0128,
+        "duration": 0.65,
+        "youX": 0.6406,
+        "youY": 0.6923,
+        "opX": 0.7063,
+        "opY": 0.0897,
+        "label": "4. Inside-out FH winner",
+        "labelTr": "4. Inside-out FH winner"
+      }
     ]
   },
   {
@@ -209,9 +821,45 @@
     "taglineTr": "Düz alçak vuruşlar sekmeyi düşürür — rakip zamansız kalır.",
     "surface": "hard",
     "shots": [
-      {"fromX": 0.50, "fromY": 0.95, "toX": 0.50, "toY": 0.32, "duration": 0.6, "youX": 0.50, "youY": 0.95, "opX": 0.50, "opY": 0.05, "label": "1. Body serve", "labelTr": "1. Vücut servisi"},
-      {"fromX": 0.50, "fromY": 0.32, "toX": 0.55, "toY": 0.78, "duration": 0.55, "youX": 0.50, "youY": 0.92, "opX": 0.55, "opY": 0.10, "label": "2. Cramped block return", "labelTr": "2. Sıkışık block return"},
-      {"fromX": 0.55, "fromY": 0.78, "toX": 0.10, "toY": 0.18, "duration": 0.7, "youX": 0.50, "youY": 0.82, "opX": 0.55, "opY": 0.10, "label": "3. Flat drive into corner", "labelTr": "3. Köşeye düz drive"}
+      {
+        "fromX": 0.5,
+        "fromY": 1.0769,
+        "toX": 0.5,
+        "toY": 0.2692,
+        "duration": 0.6,
+        "youX": 0.5,
+        "youY": 1.0769,
+        "opX": 0.5,
+        "opY": -0.0769,
+        "label": "1. Body serve",
+        "labelTr": "1. Vücut servisi"
+      },
+      {
+        "fromX": 0.5,
+        "fromY": 0.2692,
+        "toX": 0.5469,
+        "toY": 0.859,
+        "duration": 0.55,
+        "youX": 0.5,
+        "youY": 1.0385,
+        "opX": 0.5469,
+        "opY": -0.0128,
+        "label": "2. Cramped block return",
+        "labelTr": "2. Sıkışık block return"
+      },
+      {
+        "fromX": 0.5469,
+        "fromY": 0.859,
+        "toX": 0.125,
+        "toY": 0.0897,
+        "duration": 0.7,
+        "youX": 0.5,
+        "youY": 0.9103,
+        "opX": 0.5469,
+        "opY": -0.0128,
+        "label": "3. Flat drive into corner",
+        "labelTr": "3. Köşeye düz drive"
+      }
     ]
   }
 ]
