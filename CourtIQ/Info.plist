@@ -4,61 +4,61 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>CourtIQ</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
-  <key>CFBundleIdentifier</key>
-  <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
-  <key>CFBundleDisplayName</key>
-  <string>CourtIQ</string>
-  <key>CFBundleName</key>
-  <string>CourtIQ</string>
-  <key>CFBundlePackageType</key>
-  <string>APPL</string>
-  <key>CFBundleShortVersionString</key>
-  <string>1.0</string>
-  <key>CFBundleVersion</key>
-  <string>4</string>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
-	<key>LSApplicationCategoryType</key>
-	<string>public.app-category.sports</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleName</key>
+	<string>CourtIQ</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>5</string>
+	<key>COURTIQ_AI_CHAT_FUNCTION</key>
+	<string>ai-chat</string>
+	<key>COURTIQ_DELETE_ACCOUNT_FUNCTION</key>
+	<string>delete-account</string>
+	<key>COURTIQ_FEEDBACK_EMAIL</key>
+	<string></string>
 	<key>COURTIQ_MONTHLY_PRODUCT_ID</key>
 	<string>com.courtiq.premium.monthly</string>
-	<key>COURTIQ_YEARLY_PRODUCT_ID</key>
-	<string>com.courtiq.premium.yearly</string>
 	<key>COURTIQ_PREMIUM_ENTITLEMENT_ID</key>
 	<string>premium_all_access</string>
 	<key>COURTIQ_PRIVACY_URL</key>
 	<string>https://canayan1.github.io/CourtIQ/PRIVACY_POLICY</string>
-	<key>COURTIQ_TERMS_URL</key>
-	<string>https://canayan1.github.io/CourtIQ/TERMS_OF_USE</string>
-	<key>COURTIQ_SUPPORT_URL</key>
-	<string>https://canayan1.github.io/CourtIQ/SUPPORT</string>
-	<key>COURTIQ_SUPABASE_URL</key>
-	<string>https://ybnodzzrkwennzpwyjmr.supabase.co</string>
-	<key>COURTIQ_SUPABASE_ANON_KEY</key>
-	<string>sb_publishable_3dFE1hOt3x48yKUCzpxugw_zYHg3dtn</string>
 	<key>COURTIQ_REVENUECAT_API_KEY</key>
 	<string></string>
-	<key>COURTIQ_DELETE_ACCOUNT_FUNCTION</key>
-	<string>delete-account</string>
-	<key>COURTIQ_AI_CHAT_FUNCTION</key>
-	<string>ai-chat</string>
-	<key>COURTIQ_FEEDBACK_EMAIL</key>
-	<string></string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>CourtIQ records short voice notes for your match journal so you can reflect on a match without typing. Recordings stay on this device.</string>
-	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>CourtIQ transcribes your match voice notes on-device so the text appears in your journal immediately. Audio never leaves your iPhone.</string>
-	<key>NSCameraUsageDescription</key>
-	<string>CourtIQ uses the camera to scan your partner's pairing QR code so you can log a match together. No video or photo is captured.</string>
-	<key>NSLocalNetworkUsageDescription</key>
-	<string>CourtIQ uses the local network (Bluetooth + Wi-Fi) to pair with your tennis partner's iPhone during Coach Mode. Pairing is direct phone-to-phone — no server, no cloud.</string>
+	<key>COURTIQ_SUPABASE_ANON_KEY</key>
+	<string>sb_publishable_3dFE1hOt3x48yKUCzpxugw_zYHg3dtn</string>
+	<key>COURTIQ_SUPABASE_URL</key>
+	<string>https://ybnodzzrkwennzpwyjmr.supabase.co</string>
+	<key>COURTIQ_SUPPORT_URL</key>
+	<string>https://canayan1.github.io/CourtIQ/SUPPORT</string>
+	<key>COURTIQ_TERMS_URL</key>
+	<string>https://canayan1.github.io/CourtIQ/TERMS_OF_USE</string>
+	<key>COURTIQ_YEARLY_PRODUCT_ID</key>
+	<string>com.courtiq.premium.yearly</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.sports</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
 	<key>NSBonjourServices</key>
 	<array>
 		<string>_courtiq-coach._tcp</string>
 		<string>_courtiq-coach._udp</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>CourtIQ uses the camera to scan your partner's pairing QR code so you can log a match together. No video or photo is captured.</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>CourtIQ uses the local network (Bluetooth + Wi-Fi) to pair with your tennis partner's iPhone during Coach Mode. Pairing is direct phone-to-phone — no server, no cloud.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>CourtIQ records short voice notes for your match journal so you can reflect on a match without typing. Recordings stay on this device.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>CourtIQ transcribes your match voice notes on-device so the text appears in your journal immediately. Audio never leaves your iPhone.</string>
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIColorName</key>
