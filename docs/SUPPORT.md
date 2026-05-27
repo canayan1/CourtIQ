@@ -28,7 +28,7 @@ We aim to respond within 24 hours.
 
 - [Privacy Policy](./PRIVACY_POLICY.md)
 - [Terms of Use](./TERMS_OF_USE.md)
-- [Moderation Policy](./MODERATION_POLICY.md) *(coming soon)*
+- [Moderation Policy](./MODERATION_POLICY.md)
 
 ## About
 

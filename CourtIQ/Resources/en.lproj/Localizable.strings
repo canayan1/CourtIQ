@@ -626,6 +626,13 @@
 "pro_shot.card_kicker" = "Today's pro shot";
 "pro_shot.play" = "Play";
 "pro_shot.replay" = "Play again";
+"pro_shot.you_hit" = "YOU hit";
+"pro_shot.op_hit" = "Opponent hit";
+"pro_shot.educational" = "Educational reference. Not affiliated with or endorsed by any player, the ATP, the WTA, or the ITF.";
+"pro_shot.intro_kicker" = "How to read this";
+"pro_shot.intro_title" = "Watch a real pattern unfold.";
+"pro_shot.intro_body" = "The yellow ball traces each shot's arc. YOU stay at the bottom, the opponent (OP) at the top. The hitting marker pulses, and the caption names the shot. Tap Play to start.";
+"pro_shot.intro_cta" = "Got it";
 
 /* ── Notifications ── */
 "notif.permission.title" = "Stay on streak";
@@ -714,6 +721,11 @@
 "ai.quota_resets" = "Resets at midnight local time";
 "ai.error_sign_in_required" = "Sign in with Apple to use AI Coach.";
 "ai.error_send_generic" = "Couldn't send. Check your connection and try again.";
+
+/* AI Coach safety disclaimer — shown above the first message in every thread */
+"ai.disclaimer_title" = "AI Coach is a reflection tool, not a doctor or your real coach.";
+"ai.disclaimer_body" = "Claude (Anthropic) writes these replies. It can invent drills, misread your match data, or get tactics wrong. Verify before you act, and never use it as medical or injury advice.";
+"ai.disclaimer_dismiss" = "Got it";
 
 /* AI Coach paywall stub */
 "ai.paywall_headline" = "AI Coach is the one premium-only feature.";

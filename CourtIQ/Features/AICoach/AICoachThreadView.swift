@@ -73,6 +73,11 @@ struct AICoachThreadView: View {
         ScrollViewReader { proxy in
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: 12) {
+                    // Safety + reliance disclaimer. Always shown at the top
+                    // of the scroll feed so users see it in fresh threads,
+                    // and remain reminded of it when scrolling back to read
+                    // earlier messages in long threads.
+                    disclaimerBanner
                     if messages.isEmpty { introHint }
                     ForEach(messages) { msg in
                         messageBubble(msg)
@@ -90,6 +95,38 @@ struct AICoachThreadView: View {
                 }
             }
         }
+    }
+
+    /// Persistent reminder that AI output is unverified and not medical
+    /// advice. Apple App Review Guideline 5.2.2 (AI-generated content)
+    /// + civil liability defence against "I followed the coach and got
+    /// hurt / lost a match" claims. Compact two-line copy so it doesn't
+    /// dominate the thread visually.
+    private var disclaimerBanner: some View {
+        HStack(alignment: .top, spacing: 10) {
+            Image(systemName: "exclamationmark.triangle.fill")
+                .font(.footnote.weight(.bold))
+                .foregroundStyle(AppPalette.clay)
+                .padding(.top, 1)
+            VStack(alignment: .leading, spacing: 4) {
+                Text(lang.t("ai.disclaimer_title"))
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(AppPalette.ink)
+                    .fixedSize(horizontal: false, vertical: true)
+                Text(lang.t("ai.disclaimer_body"))
+                    .font(.caption2)
+                    .foregroundStyle(AppPalette.inkSoft)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+        }
+        .padding(12)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppPalette.clay.opacity(0.08))
+        .overlay(
+            RoundedRectangle(cornerRadius: 10, style: .continuous)
+                .stroke(AppPalette.clay.opacity(0.25), lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
     }
 
     private var introHint: some View {

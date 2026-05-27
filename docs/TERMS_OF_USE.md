@@ -102,6 +102,31 @@ You are responsible for:
 - Hydration, nutrition, and rest;
 - Recognizing your own limits and stopping when you should.
 
+### 5.6 AI Coach and AI-generated content
+
+CourtIQ includes an **AI Coach** feature powered by a third-party large language model (currently **Claude**, developed by Anthropic PBC). AI-generated responses are produced by software, not by a human coach.
+
+You acknowledge and accept that AI Coach output may:
+
+- **Hallucinate** — invent drills, tactical patterns, training programs, opponents, statistics, or app features that do not actually exist;
+- **Misread your data** — misinterpret match notes, ratings, quiz history, or your tactical profile, even when that data is present and accurate;
+- **Contradict reality** — provide advice that runs against your actual experience, professional coaching you have received, or established tennis principles;
+- **Get tactics wrong** — recommend an approach, a shot selection, a return position, or a mental routine that is not appropriate for your level, opponent, surface, or specific match situation;
+- **Reflect biases or omissions** in its training data;
+- **Be unavailable, slow, or incorrect** at any time without prior notice.
+
+You are **solely responsible** for evaluating every AI Coach suggestion against your own judgment, your coach's input, and your real-world context before acting on it. The AI Coach is a **reflection tool**, not a substitute for a qualified human coach, physiotherapist, physician, or trainer.
+
+CourtIQ does not warrant, guarantee, or accept liability for:
+
+- The accuracy, completeness, reliability, currency, or usefulness of any AI Coach response;
+- Any decision you make, action you take, match you play, training you do, injury you suffer, money you spend, or relationship you alter on the basis of AI Coach output;
+- The availability or performance of the third-party AI provider's systems.
+
+The disclaimers, releases, and indemnifications in Sections 5.1–5.5, 6, 8, and 9 of these Terms apply in full to the AI Coach feature.
+
+If a response feels off, ignore it. If pain, injury, or medical concern is involved, see a qualified professional — not the AI.
+
 ---
 
 ## 6. Release of liability and indemnification
