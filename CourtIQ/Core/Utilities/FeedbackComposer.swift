@@ -8,13 +8,14 @@ import UIKit
 /// footer already populated. They just type and hit send.
 enum FeedbackComposer {
     /// Recipient address. Reads from `Info.plist` key
-    /// `COURTIQ_FEEDBACK_EMAIL` so it can be overridden without a rebuild
-    /// (useful if the `courtiq.app` MX records aren't live yet at
-    /// submission time and we want to point at a personal mailbox).
+    /// `COURTIQ_FEEDBACK_EMAIL` so it can be overridden without a rebuild.
+    /// We ship the developer's personal Gmail as the recipient — no
+    /// `courtiq.app` domain or email forwarding exists, so a fallback
+    /// has to be a real inbox the developer monitors.
     static var recipient: String {
         let override = Bundle.main.object(forInfoDictionaryKey: "COURTIQ_FEEDBACK_EMAIL") as? String
         let cleaned = override?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-        return cleaned.isEmpty ? "feedback@courtiq.app" : cleaned
+        return cleaned.isEmpty ? "canayan93@gmail.com" : cleaned
     }
 
     /// One entry point for all feedback flows.

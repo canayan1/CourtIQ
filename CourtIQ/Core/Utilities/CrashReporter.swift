@@ -65,7 +65,9 @@ final class CrashReporter: NSObject, MXMetricManagerSubscriber {
     nonisolated private func log(_ kind: String, summary: String? = nil, json: String) {
         let summaryLine = summary.map { " [\($0)]" } ?? ""
         // Print full JSON only to file/log — could be large.
+        #if DEBUG
         print("[CrashReporter] \(kind)\(summaryLine)")
+        #endif
         Task { @MainActor in
             self.logger.notice("\(kind, privacy: .public)\(summaryLine, privacy: .public)")
         }

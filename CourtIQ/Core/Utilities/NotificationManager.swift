@@ -85,7 +85,9 @@ final class NotificationManager: ObservableObject {
             }
         } catch {
             // Permission denied or system error — log only, don't block.
+            #if DEBUG
             print("[NotificationManager] requestAuthorization failed: \(error)")
+            #endif
         }
     }
 
@@ -113,7 +115,9 @@ final class NotificationManager: ObservableObject {
         )
         center.add(request) { error in
             if let error {
-                print("[NotificationManager] schedule failed: \(error)")
+                #if DEBUG
+            print("[NotificationManager] schedule failed: \(error)")
+            #endif
             }
         }
 
@@ -158,7 +162,9 @@ final class NotificationManager: ObservableObject {
         )
         center.add(request) { error in
             if let error {
-                print("[NotificationManager] match-log schedule failed: \(error)")
+                #if DEBUG
+            print("[NotificationManager] match-log schedule failed: \(error)")
+            #endif
             }
         }
         UserDefaults.standard.set(true, forKey: DefaultsKey.matchLogEnabled)
@@ -198,7 +204,9 @@ final class NotificationManager: ObservableObject {
         )
         center.add(request) { error in
             if let error {
-                print("[NotificationManager] weekly schedule failed: \(error)")
+                #if DEBUG
+            print("[NotificationManager] weekly schedule failed: \(error)")
+            #endif
             }
         }
         UserDefaults.standard.set(true, forKey: DefaultsKey.weeklyDigestEnabled)

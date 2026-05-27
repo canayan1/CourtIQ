@@ -23,13 +23,13 @@
 	<key>COURTIQ_DELETE_ACCOUNT_FUNCTION</key>
 	<string>delete-account</string>
 	<key>COURTIQ_FEEDBACK_EMAIL</key>
-	<string></string>
+	<string>canayan93@gmail.com</string>
 	<key>COURTIQ_MONTHLY_PRODUCT_ID</key>
 	<string>com.courtiq.premium.monthly</string>
 	<key>COURTIQ_PREMIUM_ENTITLEMENT_ID</key>
 	<string>premium_all_access</string>
 	<key>COURTIQ_PRIVACY_URL</key>
-	<string>https://canayan1.github.io/CourtIQ/PRIVACY_POLICY</string>
+	<string>https://canayan-ios-apps.vercel.app/apps/courtiq/privacy</string>
 	<key>COURTIQ_REVENUECAT_API_KEY</key>
 	<string></string>
 	<key>COURTIQ_SUPABASE_ANON_KEY</key>
@@ -37,9 +37,9 @@
 	<key>COURTIQ_SUPABASE_URL</key>
 	<string>https://ybnodzzrkwennzpwyjmr.supabase.co</string>
 	<key>COURTIQ_SUPPORT_URL</key>
-	<string>https://canayan1.github.io/CourtIQ/SUPPORT</string>
+	<string>https://canayan-ios-apps.vercel.app/apps/courtiq/support</string>
 	<key>COURTIQ_TERMS_URL</key>
-	<string>https://canayan1.github.io/CourtIQ/TERMS_OF_USE</string>
+	<string>https://canayan-ios-apps.vercel.app/apps/courtiq/terms</string>
 	<key>COURTIQ_YEARLY_PRODUCT_ID</key>
 	<string>com.courtiq.premium.yearly</string>
 	<key>LSApplicationCategoryType</key>
