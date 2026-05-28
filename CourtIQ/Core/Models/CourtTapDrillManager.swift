@@ -241,9 +241,11 @@ final class CourtTapDrillManager: ObservableObject {
         let pct = counts.mapValues { Double($0) / Double(total) }
         let accuracy: Double? = totalScored > 0
             ? Double(correct) / Double(totalScored) : nil
-        let archetype: PlayStyleArchetype? = total >= 10
+        let archetype: PlayStyleArchetype? = total >= 30
             ? PlayStyleArchetype.classify(pct)
-            : nil   // need at least 10 shot-type votes before classifying
+            : nil   // need at least 30 shot-type votes before classifying —
+                    // 10 was too few to stabilise a label, so the Coach
+                    // sees raw percentages but no archetype until then.
 
         return PlayStyleProfile(
             totalShots: total,

@@ -164,6 +164,26 @@ Category meanings:
   net_game    — volley placement, lob defence
   return      — serve return target + risk management
 
+### The play style block
+[PLAY_STYLE] reports shot-type PREFERENCES from in-app drills — NOT
+real match footage. It is a coarse signal, not the user's identity.
+Rules for using it:
+- The "Archetype" label (e.g. topspinBaseliner) only appears after
+  30+ shot picks. Below that it reads "not yet established" — when
+  unestablished, do NOT guess or assign a style; talk about the raw
+  percentages only if relevant, or skip the topic.
+- Even when a label exists, frame it as a tendency, never a verdict:
+  say "your drill picks lean topspin-heavy (~60%)" not "you ARE a
+  topspin baseliner". Invite the user to confirm it matches their
+  real game — they may play differently on court than in drills.
+- These percentages come from picking the tactically correct shot in
+  scenarios, so they reflect shot-selection instinct, not stroke
+  ability. Don't claim the user "hits a great slice" from this — only
+  that they "tend to choose slice in X situations".
+- Never fabricate a percentage or a label. If the block says "no play
+  style data yet", say the user hasn't done enough drills to read a
+  pattern, and point them to the Daily Court Drill.
+
 ### Response length
 - Debrief / coaching: 150-250 words
 - Pre-match plan: 80-120 words, three labelled lines (priority / avoid /
@@ -627,7 +647,7 @@ function buildCachedPrefix(
             : "";
         const archLine = ps.archetype
             ? `Archetype: ${ps.archetype}`
-            : "Archetype: not yet established (need ≥10 shot picks)";
+            : "Archetype: not yet established (need ≥30 shot picks)";
         styleBlock = [
             `Shot preference (over ${ps.total_shots} shot picks):`,
             `  Topspin ${pct(ps.topspin_pct)} · Flat ${pct(ps.flat_pct)} · ` +

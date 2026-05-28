@@ -510,12 +510,15 @@ struct ProfileView: View {
     /// honours `LaunchOffer.allFeaturesFree`, but this one checks the
     /// real StoreKit entitlement so it gives the tip jar a meaningful
     /// thing to unlock. DEBUG builds bypass the gate so we can test
-    /// the full chat flow without a real purchase.
+    /// the full chat flow without a real purchase. TestFlight builds
+    /// also bypass for developer accounts in `Self.devAccessAllowlist`
+    /// so the dev can dogfood AI Coach without buying their own tip.
     private var aiCoachSection: some View {
         #if DEBUG
         let isPremium = true
         #else
         let isPremium = session.subscriptionManager.entitlementState.isPremium
+            || Self.isDevAllowlistedAccount(session.profileStore.profile?.email)
         #endif
         return Button {
             if isPremium {
@@ -659,5 +662,27 @@ struct ProfileView: View {
             .background(accent.opacity(0.14))
             .foregroundStyle(accent)
             .clipShape(Capsule())
+    }
+
+    /// Developer accounts that get AI Coach access without owning a
+    /// real premium entitlement — covers TestFlight dogfooding without
+    /// having to fake a StoreKit purchase. Apple-private-relay aliases
+    /// of the same address are matched on the local-part prefix so the
+    /// gate keeps working if the user signs in via "Hide My Email".
+    private static let devAccessAllowlist: Set<String> = [
+        "canayan93@gmail.com"
+    ]
+
+    private static func isDevAllowlistedAccount(_ email: String?) -> Bool {
+        guard let raw = email?.lowercased().trimmingCharacters(in: .whitespacesAndNewlines),
+              !raw.isEmpty else { return false }
+        if devAccessAllowlist.contains(raw) { return true }
+        // Private-relay aliases look like `<random>@privaterelay.appleid.com`
+        // and Apple doesn't expose the underlying gmail mapping. Fall back
+        // to a known relay alias list — append below as needed.
+        let knownPrivateRelay: Set<String> = [
+            // e.g. "abc123@privaterelay.appleid.com"
+        ]
+        return knownPrivateRelay.contains(raw)
     }
 }

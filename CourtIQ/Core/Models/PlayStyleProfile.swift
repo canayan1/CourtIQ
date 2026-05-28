@@ -52,7 +52,9 @@ struct PlayStyleProfile: Equatable {
 /// Six coarse archetypes the profile can map to. The thresholds are
 /// deliberately wide — most rec players don't land cleanly in one
 /// bucket until 20-30 drills in, so we keep `nil` (unclassified) as
-/// a normal state during early use.
+/// a normal state during early use. A label is only assigned once the
+/// user has logged 30+ shot-type votes (see CourtTapDrillManager) so
+/// the archetype reflects a stable pattern, not early noise.
 enum PlayStyleArchetype: String, Codable {
     case topspinBaseliner      // ≥55% topspin
     case flatAggressor         // ≥45% flat
