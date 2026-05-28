@@ -505,21 +505,16 @@ struct ProfileView: View {
         }
     }
 
-    /// AI Coach entry card. AI Coach is the single premium-gated
-    /// feature during the middle-path launch — every other surface
-    /// honours `LaunchOffer.allFeaturesFree`, but this one checks the
-    /// real StoreKit entitlement so it gives the tip jar a meaningful
-    /// thing to unlock. DEBUG builds bypass the gate so we can test
-    /// the full chat flow without a real purchase. TestFlight builds
-    /// also bypass for developer accounts in `Self.devAccessAllowlist`
-    /// so the dev can dogfood AI Coach without buying their own tip.
+    /// AI Coach entry card. Gate is temporarily open to all users while
+    /// the Paid Applications Agreement is pending — restore premium-only
+    /// gating once IAP is live (flip `aiCoachOpenToAll` to false and
+    /// re-enable the entitlement + allowlist check below).
+    private static let aiCoachOpenToAll = true
+
     private var aiCoachSection: some View {
-        #if DEBUG
-        let isPremium = true
-        #else
-        let isPremium = session.subscriptionManager.entitlementState.isPremium
+        let isPremium = Self.aiCoachOpenToAll
+            || session.subscriptionManager.entitlementState.isPremium
             || Self.isDevAllowlistedAccount(session.profileStore.profile?.email)
-        #endif
         return Button {
             if isPremium {
                 showAICoach = true
