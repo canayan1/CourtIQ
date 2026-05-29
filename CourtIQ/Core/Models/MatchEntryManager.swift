@@ -78,9 +78,20 @@ final class MatchEntryManager: ObservableObject {
 
     // MARK: - Aggregations
 
-    var totalEntries: Int { entries.count }
-    var quickLogCount: Int { entries.filter(\.isQuickLog).count }
-    var journalCount: Int { entries.filter { !$0.isQuickLog }.count }
+    /// Every aggregate below reads from `committed` rather than `entries`
+    /// so in-progress drafts never skew the user's real statistics. A
+    /// draft defaults to a `.won` result, surface `.hard`, etc., so
+    /// counting it would silently inflate win rate, totals, and streak.
+    /// Drafts still live in `entries` so the list can surface them for
+    /// editing or deletion.
+    private var committed: [MatchEntry] { entries.filter { !$0.isDraft } }
+
+    /// Drafts only — used by the list to render a "resume / delete" row.
+    var drafts: [MatchEntry] { entries.filter(\.isDraft) }
+
+    var totalEntries: Int { committed.count }
+    var quickLogCount: Int { committed.filter(\.isQuickLog).count }
+    var journalCount: Int { committed.filter { !$0.isQuickLog }.count }
 
     /// True once the user has 5+ entries with ratings — used to unlock the
     /// trend dashboard.
@@ -91,13 +102,13 @@ final class MatchEntryManager: ObservableObject {
     /// rendering still skips rating-less entries internally; we just
     /// no longer hide the whole dashboard from journal-only users.
     var trendDashboardUnlocked: Bool {
-        entries.count >= 5
+        committed.count >= 5
     }
 
     /// Set of `dayKey` strings for which the user logged at least one
     /// entry. Used by the calendar view to highlight logged days.
     var loggedDayKeys: Set<String> {
-        Set(entries.map(\.dayKey))
+        Set(committed.map(\.dayKey))
     }
 
     /// True if the user has logged at least one match today.
@@ -156,7 +167,7 @@ final class MatchEntryManager: ObservableObject {
     /// Average rating across all rated entries for a given dimension.
     /// `nil` when no entry has rated that dimension.
     func averageRating(_ keyPath: KeyPath<MatchEntry, Int?>) -> Double? {
-        let values = entries.compactMap { $0[keyPath: keyPath] }
+        let values = committed.compactMap { $0[keyPath: keyPath] }
         guard !values.isEmpty else { return nil }
         return Double(values.reduce(0, +)) / Double(values.count)
     }
@@ -167,7 +178,7 @@ final class MatchEntryManager: ObservableObject {
     func averageRating(_ keyPath: KeyPath<MatchEntry, Int?>,
                        inLast days: Int) -> Double? {
         let cutoff = Calendar.current.date(byAdding: .day, value: -days, to: Date()) ?? Date()
-        let values = entries
+        let values = committed
             .filter { $0.date >= cutoff }
             .compactMap { $0[keyPath: keyPath] }
         guard !values.isEmpty else { return nil }
@@ -190,8 +201,8 @@ final class MatchEntryManager: ObservableObject {
     }
 
     var winRateSummary: WinRateSummary {
-        let wins = entries.filter { $0.result == .won }.count
-        let losses = entries.filter { $0.result == .lost }.count
+        let wins = committed.filter { $0.result == .won }.count
+        let losses = committed.filter { $0.result == .lost }.count
         return WinRateSummary(wins: wins, losses: losses)
     }
 
@@ -211,7 +222,7 @@ final class MatchEntryManager: ObservableObject {
 
     var surfaceBreakdown: [SurfaceBreakdown] {
         MatchSurface.allCases.map { surface in
-            let group = entries.filter { $0.surface == surface }
+            let group = committed.filter { $0.surface == surface }
             let wins = group.filter { $0.result == .won }.count
             let losses = group.filter { $0.result == .lost }.count
             return SurfaceBreakdown(surface: surface, wins: wins, losses: losses)
@@ -222,7 +233,7 @@ final class MatchEntryManager: ObservableObject {
     /// Nil when no matches on that surface have rated the dimension.
     func averageRating(_ keyPath: KeyPath<MatchEntry, Int?>,
                        on surface: MatchSurface) -> Double? {
-        let values = entries
+        let values = committed
             .filter { $0.surface == surface }
             .compactMap { $0[keyPath: keyPath] }
         guard !values.isEmpty else { return nil }
@@ -243,7 +254,7 @@ final class MatchEntryManager: ObservableObject {
                   window: Int = 3) -> MomentumDelta? {
         // entries already sorted newest-first; compactMap rating values
         // in that order so "recent" = first N rated, "prior" = next N.
-        let rated = entries.compactMap { entry -> Int? in entry[keyPath: keyPath] }
+        let rated = committed.compactMap { entry -> Int? in entry[keyPath: keyPath] }
         guard rated.count >= window * 2 else { return nil }
         let recent = Array(rated.prefix(window))
         let prior = Array(rated.dropFirst(window).prefix(window))
@@ -270,7 +281,7 @@ final class MatchEntryManager: ObservableObject {
             "biraz", "kadar", "gibi", "her", "hep", "olarak", "gerek"
         ]
         var counts: [String: Int] = [:]
-        for entry in entries {
+        for entry in committed {
             let words = entry.takeaway
                 .lowercased()
                 .components(separatedBy: CharacterSet.alphanumerics.inverted)

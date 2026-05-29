@@ -505,11 +505,15 @@ struct ProfileView: View {
         }
     }
 
-    /// AI Coach entry card. Gate is temporarily open to all users while
-    /// the Paid Applications Agreement is pending — restore premium-only
-    /// gating once IAP is live (flip `aiCoachOpenToAll` to false and
-    /// re-enable the entitlement + allowlist check below).
-    private static let aiCoachOpenToAll = true
+    /// AI Coach entry card. Premium-only gate is now LIVE: AI Coach is the
+    /// single paid feature (everything else stays free per the launch
+    /// tip-jar model). Access is granted when ANY of these hold:
+    ///   • `aiCoachOpenToAll` (kill-switch to reopen to everyone)
+    ///   • a real premium entitlement (StoreKit purchase)
+    ///   • a dev-allowlisted account (TestFlight dogfooding — see
+    ///     `devAccessAllowlist`), so the owner can test the gated feature
+    ///     on a real device without faking a purchase.
+    private static let aiCoachOpenToAll = false
 
     private var aiCoachSection: some View {
         let isPremium = Self.aiCoachOpenToAll

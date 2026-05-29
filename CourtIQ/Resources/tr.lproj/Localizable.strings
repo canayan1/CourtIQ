@@ -278,6 +278,7 @@
 "voice.transcribing" = "Yazıya dökülüyor…";
 "voice.play" = "Sesli notu çal";
 "voice.discard" = "Sesli notu sil";
+"voice.language_toggle" = "Çözümleme için konuşma dili";
 "voice.error_title" = "Kayıt yapılamıyor";
 "voice.permission_denied" = "Sesli notlar için mikrofon izni gerekli. Ayarlar → CourtIQ'dan aç.";
 "voice.audio_session_error" = "Ses sistemi şu an kullanılamıyor. Birazdan tekrar dene.";
@@ -478,6 +479,7 @@
 "matches.total_logged" = "Kayıt";
 "matches.streak_label" = "Streak";
 "matches.unknown_opponent" = "Antrenman maçı";
+"matches.draft_badge" = "Taslak";
 "matches.empty_title" = "Maç günlüğün burada başlar";
 "matches.empty_body" = "Oynadığın maçları logla. Servis, return, hareket ve mental odağını takip et — trendi izle.";
 "matches.first_log_cta" = "Maç logla";

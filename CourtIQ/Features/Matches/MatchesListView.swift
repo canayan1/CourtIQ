@@ -178,7 +178,11 @@ struct MatchesListView: View {
                         .foregroundStyle(AppPalette.ink)
                         .lineLimit(1)
 
-                    resultBadge(for: entry.result)
+                    if entry.isDraft {
+                        draftBadge
+                    } else {
+                        resultBadge(for: entry.result)
+                    }
                 }
 
                 Text(dateDisplay(entry.date))
@@ -210,6 +214,19 @@ struct MatchesListView: View {
     private func displayedOpponent(_ entry: MatchEntry) -> String {
         let trimmed = entry.opponentName.trimmingCharacters(in: .whitespacesAndNewlines)
         return trimmed.isEmpty ? lang.t("matches.unknown_opponent") : trimmed
+    }
+
+    /// Pill marking an unfinished, auto-saved entry. Tapping the row opens
+    /// it for editing; the user can finish (Save) or delete it.
+    private var draftBadge: some View {
+        Text(lang.t("matches.draft_badge"))
+            .font(.system(size: 9, weight: .heavy, design: .rounded))
+            .textCase(.uppercase)
+            .tracking(0.5)
+            .foregroundStyle(AppPalette.clay)
+            .padding(.horizontal, 7)
+            .padding(.vertical, 3)
+            .background(Capsule().fill(AppPalette.clay.opacity(0.14)))
     }
 
     private func resultBadge(for result: MatchResult) -> some View {

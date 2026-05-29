@@ -46,17 +46,52 @@ final class VoiceNoteRecorder: ObservableObject {
     /// not soliloquy.
     let maxDuration: TimeInterval = 90
 
-    /// Locale used for transcription. Defaults to the user's app
-    /// language preference (LanguageManager) so a Turkish user gets
-    /// Turkish transcription even when the device locale is English.
-    /// Falls back to the system default when our preferred locale
-    /// isn't supported by SFSpeechRecognizer.
-    private let recognizer: SFSpeechRecognizer? = {
-        let preferred = LanguageManager.shared.language == .turkish
-            ? Locale(identifier: "tr-TR")
-            : Locale(identifier: "en-US")
-        return SFSpeechRecognizer(locale: preferred) ?? SFSpeechRecognizer()
-    }()
+    /// Languages the user can dictate in. Kept deliberately small — the
+    /// two app languages — so the picker is a single tap, not a long
+    /// menu. The *spoken* language is independent of the app UI language:
+    /// Begum can brief in Turkish while the app runs in English.
+    enum TranscriptionLanguage: String, CaseIterable, Identifiable {
+        case english
+        case turkish
+
+        var id: String { rawValue }
+
+        /// BCP-47 locale fed to SFSpeechRecognizer.
+        var localeIdentifier: String {
+            switch self {
+            case .english: return "en-US"
+            case .turkish: return "tr-TR"
+            }
+        }
+
+        /// Short chip label shown next to the mic.
+        var shortLabel: String {
+            switch self {
+            case .english: return "EN"
+            case .turkish: return "TR"
+            }
+        }
+
+        /// Default spoken language follows the app UI language as the most
+        /// likely guess, but the user can override it per recording.
+        @MainActor
+        static var appDefault: TranscriptionLanguage {
+            LanguageManager.shared.language == .turkish ? .turkish : .english
+        }
+    }
+
+    /// The language the *next* recording will be transcribed in. Settable
+    /// from the UI before tapping record. Defaults to the app language.
+    @Published var language: TranscriptionLanguage = .appDefault
+
+    /// Recognizer is rebuilt lazily for the chosen language at stop()-time
+    /// so changing `language` between recordings always takes effect.
+    /// Falls back to the system default recognizer when the requested
+    /// locale isn't available on the device.
+    private func makeRecognizer() -> SFSpeechRecognizer? {
+        let locale = Locale(identifier: language.localeIdentifier)
+        return SFSpeechRecognizer(locale: locale) ?? SFSpeechRecognizer()
+    }
 
     // MARK: - Private state
 
@@ -229,7 +264,7 @@ final class VoiceNoteRecorder: ObservableObject {
     // MARK: - Transcription
 
     private func transcribe(url: URL) async throws -> String {
-        guard let recognizer, recognizer.isAvailable else {
+        guard let recognizer = makeRecognizer(), recognizer.isAvailable else {
             throw NSError(domain: "VoiceNoteRecorder", code: -1)
         }
 

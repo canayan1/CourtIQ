@@ -278,6 +278,7 @@
 "voice.transcribing" = "Transcribing…";
 "voice.play" = "Play voice note";
 "voice.discard" = "Delete voice note";
+"voice.language_toggle" = "Spoken language for transcription";
 "voice.error_title" = "Can't record";
 "voice.permission_denied" = "Microphone access is required for voice notes. Enable it in Settings → CourtIQ.";
 "voice.audio_session_error" = "The audio system isn't available right now. Try again in a moment.";
@@ -478,6 +479,7 @@
 "matches.total_logged" = "Logged";
 "matches.streak_label" = "Streak";
 "matches.unknown_opponent" = "Practice match";
+"matches.draft_badge" = "Draft";
 "matches.empty_title" = "Your match journal starts here";
 "matches.empty_body" = "Log the matches you play. Track how you serve, return, move, and stay focused — and watch the trend.";
 "matches.first_log_cta" = "Log a match";

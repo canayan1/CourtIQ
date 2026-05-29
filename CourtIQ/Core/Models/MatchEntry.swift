@@ -65,6 +65,14 @@ struct MatchEntry: Codable, Identifiable, Hashable {
 
     var isQuickLog: Bool
 
+    /// Draft / pre-save flag. An entry the user started filling in but
+    /// never explicitly tapped Save on is auto-persisted as a draft when
+    /// the editor is dismissed (e.g. an accidental swipe-down). Drafts are
+    /// fully editable and deletable later, but are excluded from every
+    /// aggregate (streak, win rate, totals, trends) so an in-progress log
+    /// never skews the user's real statistics. Tapping Save clears it.
+    var isDraft: Bool
+
     init(
         id: String = UUID().uuidString,
         date: Date = Date(),
@@ -82,7 +90,8 @@ struct MatchEntry: Codable, Identifiable, Hashable {
         preMatchAudioFile: String? = nil,
         postMatchAudioFile: String? = nil,
         photoFileNames: [String] = [],
-        isQuickLog: Bool = false
+        isQuickLog: Bool = false,
+        isDraft: Bool = false
     ) {
         self.id = id
         self.date = date
@@ -101,6 +110,7 @@ struct MatchEntry: Codable, Identifiable, Hashable {
         self.postMatchAudioFile = postMatchAudioFile
         self.photoFileNames = photoFileNames
         self.isQuickLog = isQuickLog
+        self.isDraft = isDraft
     }
 
     // Older entries persisted before v1.1.B decoded with no
@@ -111,7 +121,7 @@ struct MatchEntry: Codable, Identifiable, Hashable {
         case serveRating, returnRating, movementRating, mentalRating
         case preMatchNotes, postMatchNotes, takeaway
         case preMatchAudioFile, postMatchAudioFile
-        case photoFileNames, isQuickLog
+        case photoFileNames, isQuickLog, isDraft
     }
 
     init(from decoder: Decoder) throws {
@@ -133,6 +143,7 @@ struct MatchEntry: Codable, Identifiable, Hashable {
         postMatchAudioFile = try c.decodeIfPresent(String.self, forKey: .postMatchAudioFile)
         photoFileNames = try c.decodeIfPresent([String].self, forKey: .photoFileNames) ?? []
         isQuickLog = try c.decode(Bool.self, forKey: .isQuickLog)
+        isDraft = try c.decodeIfPresent(Bool.self, forKey: .isDraft) ?? false
     }
 
     /// True when the entry has at least one rating dimension set. The

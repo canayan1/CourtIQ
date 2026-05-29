@@ -50,6 +50,11 @@ struct MatchJournalEntryView: View {
     @State private var showDeleteConfirm = false
     @FocusState private var focusedField: Field?
 
+    /// Set true once the user explicitly Saves or Deletes. Guards the
+    /// `.onDisappear` auto-draft path so an explicit action isn't
+    /// shadowed by a second write when the view tears down.
+    @State private var didCommit = false
+
     private enum Field {
         case opponent, score, preMatch, postMatch, takeaway
     }
@@ -94,6 +99,7 @@ struct MatchJournalEntryView: View {
             }
         }
         .onAppear(perform: hydrate)
+        .onDisappear(perform: autosaveDraftIfNeeded)
         .confirmationDialog(
             lang.t("matches.delete_title"),
             isPresented: $showDeleteConfirm,
@@ -101,6 +107,7 @@ struct MatchJournalEntryView: View {
         ) {
             Button(lang.t("common.delete"), role: .destructive) {
                 if let id = entry?.id {
+                    didCommit = true
                     matches.delete(id)
                     dismiss()
                 }
@@ -462,6 +469,9 @@ struct MatchJournalEntryView: View {
                     .foregroundStyle(AppPalette.inkSoft)
                     .textCase(.uppercase)
                 Spacer()
+                if isRecorderIdle(recorder) {
+                    languageChip(recorder: recorder)
+                }
                 voiceControl(recorder: recorder, scope: scope, text: text, audioFile: audioFile)
             }
 
@@ -494,6 +504,35 @@ struct MatchJournalEntryView: View {
     }
 
     // MARK: - Voice note controls
+
+    /// True when the recorder is between recordings (idle/finished/failed)
+    /// — the window in which switching the spoken language is meaningful.
+    private func isRecorderIdle(_ recorder: VoiceNoteRecorder) -> Bool {
+        switch recorder.state {
+        case .recording, .transcribing, .requestingPermission: return false
+        default: return true
+        }
+    }
+
+    /// Tiny EN/TR pill that sets the language the *next* recording is
+    /// transcribed in — independent of the app's UI language. Solves the
+    /// "my partner briefed me in Turkish but the app only understood
+    /// English" problem: tap TR before recording.
+    private func languageChip(recorder: VoiceNoteRecorder) -> some View {
+        Button {
+            Haptics.tap()
+            recorder.language = recorder.language == .turkish ? .english : .turkish
+        } label: {
+            Text(recorder.language.shortLabel)
+                .font(.system(size: 11, weight: .heavy, design: .rounded))
+                .foregroundStyle(AppPalette.clay)
+                .frame(width: 26, height: 26)
+                .background(Circle().stroke(AppPalette.clay.opacity(0.35), lineWidth: 1.5))
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(lang.t("voice.language_toggle"))
+        .accessibilityValue(recorder.language.shortLabel)
+    }
 
     /// Mic button. Tap to start, tap again to stop. When a recording
     /// already exists it shows a "re-record" affordance instead.
@@ -645,9 +684,11 @@ struct MatchJournalEntryView: View {
             || !postMatchNotes.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
 
-    private func save() {
-        let trimmedTakeaway = takeaway.trimmingCharacters(in: .whitespacesAndNewlines)
-        let newEntry = MatchEntry(
+    /// Build a MatchEntry from the current field state. `asDraft` controls
+    /// whether the entry is flagged as a pre-save draft (excluded from
+    /// stats) or a fully committed log.
+    private func buildEntry(asDraft: Bool) -> MatchEntry {
+        MatchEntry(
             id: entry?.id ?? stableEntryID,
             date: date,
             opponentName: opponentName.trimmingCharacters(in: .whitespacesAndNewlines),
@@ -660,15 +701,34 @@ struct MatchJournalEntryView: View {
             mentalRating: entry?.mentalRating,
             preMatchNotes: preMatchNotes.trimmingCharacters(in: .whitespacesAndNewlines),
             postMatchNotes: postMatchNotes.trimmingCharacters(in: .whitespacesAndNewlines),
-            takeaway: trimmedTakeaway,
+            takeaway: takeaway.trimmingCharacters(in: .whitespacesAndNewlines),
             preMatchAudioFile: preMatchAudioFile,
             postMatchAudioFile: postMatchAudioFile,
             photoFileNames: photoFileNames,
-            isQuickLog: false
+            isQuickLog: false,
+            isDraft: asDraft
         )
-        matches.save(newEntry)
+    }
+
+    private func save() {
+        didCommit = true
+        matches.save(buildEntry(asDraft: false))
         Haptics.confirm()
         dismiss()
+    }
+
+    /// Called from `.onDisappear`. If the user backed out (swipe-down,
+    /// back button) without an explicit Save/Delete but has typed or
+    /// recorded something, persist the work so it's never lost. A brand-new
+    /// entry is stored as a draft; edits to an entry that was already a
+    /// draft keep it a draft; edits to a committed entry stay committed.
+    private func autosaveDraftIfNeeded() {
+        guard !didCommit, canSave else { return }
+        // For a new entry there's no prior record → it's a draft. For an
+        // existing entry, preserve whatever draft state it already had so
+        // we never silently demote a real log or promote an explicit one.
+        let asDraft = entry?.isDraft ?? true
+        matches.save(buildEntry(asDraft: asDraft))
     }
 
     private func hydrate() {
