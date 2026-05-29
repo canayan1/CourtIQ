@@ -63,6 +63,8 @@
 		A00000000000000000017F /* HybridMobilityFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000017E /* HybridMobilityFigure.swift */; };
 		A000000000000000000181 /* AIChatModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000180 /* AIChatModels.swift */; };
 		A000000000000000000183 /* AIChatClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000182 /* AIChatClient.swift */; };
+		A000000000000000000199 /* MatchMemoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000198 /* MatchMemoryStore.swift */; };
+		A00000000000000000019B /* MatchLogTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000019A /* MatchLogTutorialView.swift */; };
 		A000000000000000000185 /* AICoachView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000184 /* AICoachView.swift */; };
 		A000000000000000000187 /* AICoachThreadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000186 /* AICoachThreadView.swift */; };
 		A000000000000000000189 /* AICoachPaywallStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000188 /* AICoachPaywallStub.swift */; };
@@ -161,6 +163,8 @@
 		A00000000000000000017E /* HybridMobilityFigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HybridMobilityFigure.swift; path = CourtIQ/Features/Mobility/HybridMobilityFigure.swift; sourceTree = "<group>"; };
 		A000000000000000000180 /* AIChatModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AIChatModels.swift; path = CourtIQ/Core/Models/AIChatModels.swift; sourceTree = "<group>"; };
 		A000000000000000000182 /* AIChatClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AIChatClient.swift; path = CourtIQ/Core/Services/AIChatClient.swift; sourceTree = "<group>"; };
+		A000000000000000000198 /* MatchMemoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchMemoryStore.swift; path = CourtIQ/Core/Services/MatchMemoryStore.swift; sourceTree = "<group>"; };
+		A00000000000000000019A /* MatchLogTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchLogTutorialView.swift; path = CourtIQ/Features/Matches/MatchLogTutorialView.swift; sourceTree = "<group>"; };
 		A000000000000000000184 /* AICoachView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AICoachView.swift; path = CourtIQ/Features/AICoach/AICoachView.swift; sourceTree = "<group>"; };
 		A000000000000000000186 /* AICoachThreadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AICoachThreadView.swift; path = CourtIQ/Features/AICoach/AICoachThreadView.swift; sourceTree = "<group>"; };
 		A000000000000000000188 /* AICoachPaywallStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AICoachPaywallStub.swift; path = CourtIQ/Features/AICoach/AICoachPaywallStub.swift; sourceTree = "<group>"; };
@@ -262,6 +266,7 @@
 				A00000000000000000017E /* HybridMobilityFigure.swift */,
 				A000000000000000000180 /* AIChatModels.swift */,
 				A000000000000000000182 /* AIChatClient.swift */,
+				A000000000000000000198 /* MatchMemoryStore.swift */,
 				A000000000000000000184 /* AICoachView.swift */,
 				A000000000000000000186 /* AICoachThreadView.swift */,
 				A000000000000000000188 /* AICoachPaywallStub.swift */,
@@ -276,6 +281,7 @@
 				A000000000000000000110 /* MatchEntry.swift */,
 				A000000000000000000112 /* MatchEntryManager.swift */,
 				A000000000000000000114 /* MatchesListView.swift */,
+				A00000000000000000019A /* MatchLogTutorialView.swift */,
 				A000000000000000000116 /* QuickLogView.swift */,
 				A000000000000000000118 /* MatchJournalEntryView.swift */,
 				A00000000000000000011A /* LogStreakBadge.swift */,
@@ -452,6 +458,7 @@
 				A00000000000000000017F /* HybridMobilityFigure.swift in Sources */,
 				A000000000000000000181 /* AIChatModels.swift in Sources */,
 				A000000000000000000183 /* AIChatClient.swift in Sources */,
+				A000000000000000000199 /* MatchMemoryStore.swift in Sources */,
 				A000000000000000000185 /* AICoachView.swift in Sources */,
 				A000000000000000000187 /* AICoachThreadView.swift in Sources */,
 				A000000000000000000189 /* AICoachPaywallStub.swift in Sources */,
@@ -466,6 +473,7 @@
 				A000000000000000000111 /* MatchEntry.swift in Sources */,
 				A000000000000000000113 /* MatchEntryManager.swift in Sources */,
 				A000000000000000000115 /* MatchesListView.swift in Sources */,
+				A00000000000000000019B /* MatchLogTutorialView.swift in Sources */,
 				A000000000000000000117 /* QuickLogView.swift in Sources */,
 				A000000000000000000119 /* MatchJournalEntryView.swift in Sources */,
 				A00000000000000000011B /* LogStreakBadge.swift in Sources */,

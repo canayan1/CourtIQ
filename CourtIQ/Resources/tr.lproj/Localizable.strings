@@ -480,6 +480,17 @@
 "matches.streak_label" = "Streak";
 "matches.unknown_opponent" = "Antrenman maçı";
 "matches.draft_badge" = "Taslak";
+"matches.tutorial.nav_title" = "Maç loglama nasıl çalışır";
+"matches.tutorial.intro_title" = "Bir kez logla. Sonsuza dek öğren.";
+"matches.tutorial.intro_body" = "Logladığın her maç senin hikâyeni oluşturur — trendlerini, paternlerini ve AI Koçunun yaslandığı hafızayı.";
+"matches.tutorial.quick_title" = "Hızlı Log — 30 saniye";
+"matches.tutorial.quick_body" = "Servis, return, hareket ve mental oyununu 5 üzerinden puanla, bir de tek cümlelik çıkarım ekle. Korttan çıkar çıkmaz idealdir.";
+"matches.tutorial.journal_title" = "Tam Günlük — daha derin düşün";
+"matches.tutorial.journal_body" = "Maç öncesi plan ve maç sonrası notlar ekle — yazarak ya da sesli not olarak dikte ederek. Koçun için en zengin yakıt budur.";
+"matches.tutorial.coach_title" = "Koç Modu — birlikte logla";
+"matches.tutorial.coach_body" = "Partnerin ya da koçunla telefondan telefona eşleş, maçı iki taraftan da kaydet. Hesap yok, bulut yok — sadece iki telefon.";
+"matches.tutorial.payoff_title" = "Karşılığında ne alırsın";
+"matches.tutorial.payoff_body" = "Logların trend grafiklerini ve AI Koçunun okuduğu uzun vadeli bir hafızayı besler — böylece “mental puanın toprakta düşüyor” gibi paternleri yakalar ve genel tavsiye yerine gerçek geçmişine göre koçluk yapar.";
 "matches.empty_title" = "Maç günlüğün burada başlar";
 "matches.empty_body" = "Oynadığın maçları logla. Servis, return, hareket ve mental odağını takip et — trendi izle.";
 "matches.first_log_cta" = "Maç logla";

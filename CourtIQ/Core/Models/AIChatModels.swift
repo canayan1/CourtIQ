@@ -22,6 +22,14 @@ struct AIChatContextPayload: Encodable {
     let playStyle: PlayStylePayload?
     let imported: String?
 
+    /// Rolling, auto-compacted summary of the user's *older* match history
+    /// — everything beyond the verbatim recent window. Produced by the
+    /// `compact_matches` Edge Function mode and cached locally
+    /// (`MatchMemoryStore`). Lets the Coach reason over long-term patterns
+    /// ("your mental rating dips every time you play clay") without
+    /// shipping the entire match corpus on every turn.
+    let matchMemory: String?
+
     enum CodingKeys: String, CodingKey {
         case profile
         case matches
@@ -29,6 +37,7 @@ struct AIChatContextPayload: Encodable {
         case tacticalProfile = "tactical_profile"
         case playStyle = "play_style"
         case imported
+        case matchMemory = "match_memory"
     }
 
     struct ProfilePayload: Encodable {
@@ -46,6 +55,17 @@ struct AIChatContextPayload: Encodable {
         let surface: String?
         let ratings: RatingsPayload?
         let takeaway: String?
+        // Full reflection text (incl. voice-note transcripts) for the
+        // verbatim recent window. Truncated server-side to keep tokens
+        // bounded. Older matches are folded into `matchMemory` instead.
+        let preMatchNotes: String?
+        let postMatchNotes: String?
+
+        enum CodingKeys: String, CodingKey {
+            case date, opponentName, result, score, surface, ratings, takeaway
+            case preMatchNotes = "pre_match_notes"
+            case postMatchNotes = "post_match_notes"
+        }
     }
 
     struct RatingsPayload: Encodable {
@@ -115,6 +135,43 @@ struct AIChatContextPayload: Encodable {
             case totalShots        = "total_shots"
         }
     }
+}
+
+// MARK: - Match-memory compaction wire types
+
+/// Request body for the `compact_matches` mode of the `ai-chat` Edge
+/// Function. Folds the user's *older* match corpus (everything beyond the
+/// verbatim recent window) into a single rolling summary. Runs rarely
+/// (only when enough new matches have accrued), is NOT counted against the
+/// daily message cap, and is never persisted to `ai_messages`.
+struct AIMatchMemoryRequestPayload: Encodable {
+    /// Discriminates this from a normal chat turn server-side.
+    let mode: String
+    /// The previous rolling summary, if any. The server merges new matches
+    /// into this rather than re-summarising the whole corpus each time.
+    let existingMemory: String?
+    /// Verbatim text of the older matches to fold in (date + metadata +
+    /// notes + takeaway). Bounded client-side before sending.
+    let corpus: String
+
+    enum CodingKeys: String, CodingKey {
+        case mode
+        case existingMemory = "existing_memory"
+        case corpus
+    }
+
+    init(existingMemory: String?, corpus: String) {
+        self.mode = "compact_matches"
+        self.existingMemory = existingMemory
+        self.corpus = corpus
+    }
+}
+
+/// Response from the `compact_matches` mode. Just the merged rolling
+/// summary plus optional token usage for cost telemetry.
+struct AIMatchMemoryResponsePayload: Decodable {
+    let summary: String
+    let usage: AIChatResponsePayload.UsagePayload?
 }
 
 /// Response from the Edge Function on a successful turn. Failures

@@ -48,6 +48,21 @@ struct AICoachThreadView: View {
                 }
             }
         }
+        .task { await compactMatchMemoryIfNeeded() }
+    }
+
+    /// Fire-and-forget: fold any newly-aged-out matches into the rolling
+    /// long-term summary when the Coach opens. Throttled inside the store
+    /// so this stays a rare, cheap call. No UI feedback — purely improves
+    /// the context the next turn ships.
+    private func compactMatchMemoryIfNeeded() async {
+        let committed = matches.entries.filter { !$0.isDraft }
+        guard MatchMemoryStore.shared.shouldCompact(committed: committed) else { return }
+        guard let supabaseSession = try? await session.ensureAnonymousSession() else { return }
+        await aiClient.compactMatchMemoryIfNeeded(
+            committed: committed,
+            session: supabaseSession
+        )
     }
 
     // MARK: - Current thread
@@ -305,8 +320,13 @@ struct AICoachThreadView: View {
     /// always fresh. Pulls from the local stores we already maintain
     /// (matches, quiz, profile, onboarding).
     private func contextSnapshot() -> AIChatContextPayload {
-        let recentMatches: [AIChatContextPayload.MatchPayload] = matches.entries
-            .prefix(5)
+        // Only committed (non-draft) matches feed the Coach — an
+        // in-progress draft defaults to won/hard and would mislead it.
+        // The newest `recentWindowSize` go verbatim WITH notes; older ones
+        // are represented by the rolling `matchMemory` summary instead.
+        let committed = matches.entries.filter { !$0.isDraft }
+        let recentMatches: [AIChatContextPayload.MatchPayload] = committed
+            .prefix(MatchMemoryStore.recentWindowSize)
             .map { entry in
                 AIChatContextPayload.MatchPayload(
                     date: Self.dayKeyFormatter.string(from: entry.date),
@@ -320,7 +340,9 @@ struct AICoachThreadView: View {
                         movement: entry.movementRating,
                         mental: entry.mentalRating
                     ),
-                    takeaway: entry.takeaway.nilIfEmptyTrimmed
+                    takeaway: entry.takeaway.nilIfEmptyTrimmed,
+                    preMatchNotes: entry.preMatchNotes.nilIfEmptyTrimmed,
+                    postMatchNotes: entry.postMatchNotes.nilIfEmptyTrimmed
                 )
             }
 
@@ -406,7 +428,8 @@ struct AICoachThreadView: View {
             ),
             tacticalProfile: tactical,
             playStyle: playStyle,
-            imported: nil   // Phase 3 will wire imported ChatGPT summary here
+            imported: nil,  // Phase 3 will wire imported ChatGPT summary here
+            matchMemory: MatchMemoryStore.shared.memoryForContext
         )
     }
 

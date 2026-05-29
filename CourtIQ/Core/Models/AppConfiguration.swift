@@ -257,6 +257,23 @@ final class SupabaseRESTClient {
         )
     }
 
+    /// Fold a batch of older matches into the rolling long-term summary
+    /// via the `compact_matches` mode of the same Edge Function. Hits the
+    /// same endpoint as `invokeAIChat` but with a distinct request body —
+    /// the function branches on the `mode` field. Not counted against the
+    /// daily message cap server-side.
+    func invokeMatchMemoryCompaction(
+        request payload: AIMatchMemoryRequestPayload,
+        session currentSession: SupabaseSession
+    ) async throws -> AIMatchMemoryResponsePayload {
+        try await functionRequest(
+            method: .post,
+            functionName: configuration.aiChatFunctionName,
+            body: payload,
+            session: currentSession
+        )
+    }
+
     func selectRows<Response: Decodable>(
         from table: String,
         queryItems: [URLQueryItem] = [],

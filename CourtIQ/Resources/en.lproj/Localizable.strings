@@ -480,6 +480,17 @@
 "matches.streak_label" = "Streak";
 "matches.unknown_opponent" = "Practice match";
 "matches.draft_badge" = "Draft";
+"matches.tutorial.nav_title" = "How match logging works";
+"matches.tutorial.intro_title" = "Log it once. Learn from it forever.";
+"matches.tutorial.intro_body" = "Every match you log builds your story — your trends, your patterns, and the memory your AI Coach draws on.";
+"matches.tutorial.quick_title" = "Quick Log — 30 seconds";
+"matches.tutorial.quick_body" = "Rate your serve, return, movement, and mental game out of 5, plus one takeaway. Perfect right after you walk off court.";
+"matches.tutorial.journal_title" = "Full Journal — reflect deeper";
+"matches.tutorial.journal_body" = "Add pre-match plans and post-match notes — typed or dictated as a voice note. This is the richest fuel for your Coach.";
+"matches.tutorial.coach_title" = "Coach Mode — log together";
+"matches.tutorial.coach_body" = "Pair phone-to-phone with your partner or coach to capture a match from both sides. No account, no cloud — just the two phones.";
+"matches.tutorial.payoff_title" = "What you get back";
+"matches.tutorial.payoff_body" = "Your logs power trend charts and a long-term memory your AI Coach reads — so it spots patterns like “your mental rating dips on clay” and coaches you on your real history, not generic advice.";
 "matches.empty_title" = "Your match journal starts here";
 "matches.empty_body" = "Log the matches you play. Track how you serve, return, move, and stay focused — and watch the trend.";
 "matches.first_log_cta" = "Log a match";

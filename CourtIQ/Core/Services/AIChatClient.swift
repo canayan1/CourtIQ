@@ -166,6 +166,40 @@ final class AIChatClient: ObservableObject {
         }
     }
 
+    /// Fold the user's older matches into the rolling long-term summary,
+    /// if enough new ones have accrued and we're outside the throttle
+    /// window. Cheap and rare — safe to call every time the Coach opens.
+    /// Failures are swallowed (best-effort): the next turn just ships the
+    /// previous summary plus the recent verbatim window.
+    ///
+    /// `committed` MUST be the non-draft entries, newest-first.
+    func compactMatchMemoryIfNeeded(
+        committed: [MatchEntry],
+        session: SupabaseSession
+    ) async {
+        let store = MatchMemoryStore.shared
+        guard store.shouldCompact(committed: committed) else { return }
+        let pending = store.pendingOlderMatches(committed: committed)
+        guard !pending.isEmpty else { return }
+
+        let corpus = store.renderCorpus(pending)
+        let foldedIDs = pending.map(\.id)
+        do {
+            let response = try await client.invokeMatchMemoryCompaction(
+                request: AIMatchMemoryRequestPayload(
+                    existingMemory: store.memoryForContext,
+                    corpus: corpus
+                ),
+                session: session
+            )
+            let merged = response.summary.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !merged.isEmpty else { return }
+            store.recordCompaction(mergedSummary: merged, foldedIDs: foldedIDs)
+        } catch {
+            // Non-fatal: leave the store untouched and try again next open.
+        }
+    }
+
     // MARK: - Local mutation helpers
 
     private func upsertLocal(

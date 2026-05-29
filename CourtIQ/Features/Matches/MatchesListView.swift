@@ -16,6 +16,11 @@ struct MatchesListView: View {
     @State private var openQuickLog = false
     @State private var openJournal = false
     @State private var openCoachMode = false
+    @State private var showTutorial = false
+
+    /// One-shot flag so the tutorial auto-presents only on the first visit
+    /// to the Matches tab. Re-openable any time via the (i) button.
+    @AppStorage("CourtIQ.matchLogTutorialSeen.v1") private var tutorialSeen = false
 
     var body: some View {
         ScrollView {
@@ -36,6 +41,17 @@ struct MatchesListView: View {
         .background(AppPalette.cream)
         .navigationTitle(lang.t("tab.matches"))
         .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    Haptics.tap()
+                    showTutorial = true
+                } label: {
+                    Image(systemName: "questionmark.circle")
+                        .font(.title3)
+                        .foregroundStyle(AppPalette.inkSoft)
+                }
+                .accessibilityLabel(lang.t("matches.tutorial.nav_title"))
+            }
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     Haptics.tap()
@@ -47,6 +63,19 @@ struct MatchesListView: View {
                 }
                 .accessibilityLabel(lang.t("matches.new_entry"))
             }
+        }
+        .onAppear {
+            if !tutorialSeen {
+                tutorialSeen = true
+                // Defer so it doesn't fight the tab transition animation.
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                    showTutorial = true
+                }
+            }
+        }
+        .sheet(isPresented: $showTutorial) {
+            MatchLogTutorialView()
+                .environmentObject(lang)
         }
         .confirmationDialog(
             lang.t("matches.choose_type"),
