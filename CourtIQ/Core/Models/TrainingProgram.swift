@@ -12,6 +12,32 @@ enum TrainingAccessTier: String, Codable {
     }
 }
 
+enum TrainingLevel: String, Codable {
+    case beginner
+    case intermediate
+    case advanced
+
+    var title: String {
+        switch self {
+        case .beginner: return "Beginner"
+        case .intermediate: return "Intermediate"
+        case .advanced: return "Advanced"
+        }
+    }
+
+    var titleTr: String {
+        switch self {
+        case .beginner: return "Başlangıç"
+        case .intermediate: return "Orta"
+        case .advanced: return "İleri"
+        }
+    }
+
+    func localizedTitle(for lang: AppLanguage) -> String {
+        lang == .turkish ? titleTr : title
+    }
+}
+
 enum TrainingGoalCategory: String, CaseIterable, Identifiable, Codable {
     case hybridFoundation
     case betterFootwork
@@ -147,6 +173,10 @@ struct TrainingProgram: Identifiable, Codable, Hashable {
     let category: TrainingGoalCategory
     let title: String
     let accessTier: TrainingAccessTier
+    /// Intended training experience level. Optional so older content
+    /// without the field still decodes; defaults to nil (treated as
+    /// unspecified in the UI).
+    var level: TrainingLevel? = nil
     let durationWeeks: Int
     let overview: String
     let outcome: String
@@ -191,6 +221,7 @@ extension TrainingProgram {
         category: .hybridFoundation,
         title: "8-Week Tennis Hybrid Foundation",
         accessTier: .free,
+        level: .intermediate,
         durationWeeks: 8,
         overview: "Repeat a weekly mix of power, strength, and conditioning to build a stronger tennis base.",
         outcome: "A stronger lower body, cleaner force transfer into shots, and better repeat sprint conditioning.",

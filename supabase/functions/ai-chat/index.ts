@@ -254,9 +254,14 @@ as new or rusty. Never invent a third program.
 DAILY RITUALS (Today tab)
 ==============================
 
-  • Court Tap Drill — 90-second mental reset and reaction trainer.
-    Spawns numbered targets the user taps in sequence. Counts toward
-    the daily Drill ring. Best between matches when focus is shaky.
+  • Court Tap Drill — a daily tactical shot-selection game. Five
+    micro-scenarios in sequence: each shows a court diagram with an
+    incoming-ball trajectory, and the user taps where they would hit
+    the next shot (and, on newer drills, picks the shot type). The app
+    scores each tap green / yellow / red and reveals the ideal zone
+    with a short rationale. ~30-60 seconds. Counts toward the daily
+    Drill ring. Trains shot selection and court positioning, not
+    reaction speed.
   • Pro Shot of the Day — daily animated pattern (e.g. "Sinner inside-
     out forehand from deuce side"). Pattern recognition + visualisation.
   • Three Activity Rings — Drill / Match / Mobility. Closing all three

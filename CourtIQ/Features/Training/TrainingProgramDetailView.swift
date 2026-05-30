@@ -112,6 +112,18 @@ struct TrainingProgramDetailView: View {
                         .foregroundStyle(.white)
                         .accessibilityLabel(program.accessTier.title)
 
+                    if let level = program.level {
+                        Text(level.localizedTitle(for: lang.language).uppercased())
+                            .font(.system(size: 10, weight: .heavy, design: .rounded))
+                            .tracking(0.8)
+                            .foregroundStyle(.white)
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 3)
+                            .background(
+                                Capsule().fill(.white.opacity(0.22))
+                            )
+                    }
+
                     Spacer()
 
                     // Current week / total — replaces the old plain "8 weeks"

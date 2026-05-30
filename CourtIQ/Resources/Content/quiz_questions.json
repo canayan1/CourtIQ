@@ -503,22 +503,22 @@
     "focusTag": "second serve attack",
     "scenario": "Opponent's second serve averages 140 km/h with heavy kick. What's the best aggressive return pattern?",
     "options": [
-      "Move up and take it on the rise down the line",
-      "Stand back and loop it crosscourt",
-      "Block it safely and rally"
+      "Move up and take it on the rise, crosscourt",
+      "Move up but go down the line for a winner",
+      "Stand back and block it safely"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "Moving up denies the kick its bounce height. Taking it on the rise down the line opens the court for a +2 winner.",
-    "takeaway": "Attack a second serve by moving forward — not backward.",
-    "mistakeType": "retreating on second serve",
+    "explanation": "Moving up denies the kick its bounce height. Driving it crosscourt is the higher-percentage aggressive return — more court length and a lower net give you margin to set up a +1. Down the line is tempting but lower-percentage off a deep kicking ball.",
+    "takeaway": "Attack a second serve by moving forward — and go crosscourt for margin.",
+    "mistakeType": "low-percentage down-the-line return",
     "scenarioTr": "Rakibin ikinci servisi 140 km/h ağır kick'le geliyor. En iyi agresif dönüş deseni?",
     "optionsTr": [
-      "Öne gel, yükseliyorken çizgiye vur",
-      "Geride kal ve çaprazlamasına lup",
-      "Güvenli blokla rally'ye dön"
+      "Öne gel, yükseliyorken çapraz vur",
+      "Öne gel ama winner için çizgiye git",
+      "Geride kal ve güvenli blokla"
     ],
-    "explanationTr": "Öne gelmek kick'in sıçrama yüksekliğini yok eder. Yükselirken çizgiye vurmak +2 winner için sahayı açar.",
-    "takeawayTr": "İkinci servise saldırmak için öne gel — geri çekilme.",
+    "explanationTr": "Öne gelmek kick'in sıçrama yüksekliğini yok eder. Çapraz sürmek daha yüksek yüzdeli agresif dönüştür — daha uzun saha ve daha alçak file +1 kurmak için sana pay verir. Çizgiye vurmak cazip ama derin kick'li topta daha düşük yüzdeli.",
+    "takeawayTr": "İkinci servise saldırmak için öne gel — ve pay için çapraz git.",
     "diagram": {
       "surface": "clay",
       "youX": 0.5,

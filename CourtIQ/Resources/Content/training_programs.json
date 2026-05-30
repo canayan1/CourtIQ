@@ -1,6 +1,7 @@
 [
   {
     "accessTier": "free",
+    "level": "intermediate",
     "category": "hybridFoundation",
     "days": [
       {
@@ -1103,7 +1104,7 @@
     ],
     "id": "training-hybrid-foundation",
     "outcome": "A stronger lower body, cleaner force transfer into shots, better repeat-sprint conditioning, and enough muscle support to stay durable across court weeks.",
-    "overview": "Repeat this one-week structure for eight weeks to build strength, explosiveness, hypertrophy, and match-ready conditioning together without losing movement quality.",
+    "overview": "Repeat this one-week structure for eight weeks to build strength, explosiveness, hypertrophy, and match-ready conditioning together without losing movement quality. This is an intermediate plan: four hard days (1, 2, 4, 5) plus two lighter support days (3 and 6). New to structured training or in-season? Run only Days 1, 2 and 4 and treat the rest as optional until the load feels easy, then add days back one at a time.",
     "persistencePrompts": [
       "How explosive did your first step feel this week?",
       "How well did your legs recover between gym work and cardio days?",
@@ -1146,6 +1147,7 @@
   },
   {
     "accessTier": "premium",
+    "level": "intermediate",
     "category": "betterFootwork",
     "days": [
       {
@@ -1865,6 +1867,7 @@
   },
   {
     "accessTier": "premium",
+    "level": "intermediate",
     "category": "strongerShots",
     "days": [
       {
@@ -2442,6 +2445,7 @@
   },
   {
     "accessTier": "premium",
+    "level": "beginner",
     "category": "betterFlexibility",
     "days": [
       {
@@ -2827,6 +2831,7 @@
   },
   {
     "accessTier": "premium",
+    "level": "intermediate",
     "category": "matchConditioning",
     "days": [
       {
@@ -3375,6 +3380,7 @@
     "category": "hybridFoundation",
     "title": "8-Week Hybrid Power Continuation",
     "accessTier": "free",
+    "level": "advanced",
     "durationWeeks": 8,
     "overview": "The follow-on block after Hybrid Foundation. New rotational patterns, heavier elastic work, and match-speed conditioning — all introduced at moderate load so you earn the volume.",
     "outcome": "Sharper elastic power, cleaner rotational drive through the serve and forehand, and better repeat-sprint recovery.",
@@ -3900,6 +3906,7 @@
     "category": "betterFootwork",
     "title": "8-Week Footwork Reactive Speed Track",
     "accessTier": "premium",
+    "level": "advanced",
     "durationWeeks": 8,
     "overview": "The progression block after Better Footwork. Emphasises reactive starts, multi-directional chains, and deceleration strength — earned from the cleaner mechanics you built in cycle 1.",
     "outcome": "Faster first step from any stance, cleaner stops, and better chained movement without extra steps.",
@@ -4179,6 +4186,7 @@
     "category": "strongerShots",
     "title": "8-Week Shot Velocity Track",
     "accessTier": "premium",
+    "level": "advanced",
     "durationWeeks": 8,
     "overview": "The progression after Stronger Shots. Maximum intent work — heavier rotational loads paired with top-speed ball throws — to raise the ceiling of your shot speed without losing repeatability.",
     "outcome": "Noticeably higher top-end shot speed, better contact transfer from legs to racket, and fewer arm-only strokes under fatigue.",
@@ -4446,6 +4454,7 @@
     "category": "betterFlexibility",
     "title": "8-Week Active Range Track",
     "accessTier": "premium",
+    "level": "advanced",
     "durationWeeks": 8,
     "overview": "The continuation of Better Flexibility. Shifts emphasis from passive range to active range — controlled strength at end ranges, so your new flexibility shows up in your movement.",
     "outcome": "Range you can actually use mid-rally. Stronger end-range control in hips, shoulders, and thoracic rotation.",
@@ -4683,6 +4692,7 @@
     "category": "matchConditioning",
     "title": "8-Week Match Duration Engine",
     "accessTier": "premium",
+    "level": "advanced",
     "durationWeeks": 8,
     "overview": "The follow-on from Match Conditioning. Designed to push your work-capacity ceiling: longer high-quality rallies, higher average intensity across sessions, and matched-duration efforts that mirror a full match.",
     "outcome": "Able to maintain point quality deep into the third set, faster recovery between points, and better tolerance for long matches.",

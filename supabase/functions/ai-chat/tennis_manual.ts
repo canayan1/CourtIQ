@@ -59,8 +59,9 @@ Four zones the coach uses by name:
     overhead, drop-shot territory. Take time away aggressively.
 
 Percentage rules that anchor every tactical recommendation:
-  • Cross-court has 18% more court length than down-the-line.
-    Same shot, more margin. Default = cross-court unless attacking.
+  • Cross-court has a few percent more court length than down-the-
+    line (the net is also lower in the middle), so the same swing
+    clears with more margin. Default = cross-court unless attacking.
   • Down-the-line is +20% riskier but neutralises a rally
     pattern. Use it as a transition shot, not a rally shot.
   • Going to the open court is high-percentage when the opponent
@@ -145,8 +146,9 @@ THE HIGH-PERCENTAGE RETURN
 THE LOB-OVER-OPPOSITE-SHOULDER
   When at the baseline and a net player is at the net, lob
   OVER THEIR BACKHAND SHOULDER (the opposite shoulder from
-  their dominant hand). They have to turn 270° to chase it. The
-  cross-shoulder lob is 3x more effective than a same-shoulder lob.
+  their dominant hand). They have to turn and run around it rather
+  than reach up, which makes it much harder to recover than a lob
+  over the dominant shoulder.
 
 THE DEEP DOWN-THE-LINE APPROACH
   When taking a mid-court ball forward, hit it deep DTL to the
