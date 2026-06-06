@@ -10,7 +10,7 @@
 "common.saving" = "Kaydediliyor…";
 "common.deleting" = "Siliniyor…";
 "common.resetting" = "Sıfırlanıyor…";
-"common.unlock_all" = "Tam Erişimi Aç";
+"common.unlock_all" = "AI Koç'u Aç";
 "common.premium" = "Premium";
 "common.free" = "Ücretsiz";
 "common.start" = "Başla";
@@ -69,7 +69,7 @@
 "practice.mobility_desc" = "Tenis hareketi için özel hızlı sıfırlamalar, günlük hareket ve toparlanma akışları.";
 "practice.deliberate_reps" = "Bilinçli tekrarlar";
 "practice.choose_pattern" = "Geliştirmek istediğin deseni seç, sonra odaklı bir blok çalış.";
-"practice.free_desc" = "Günlük IQ, Bugün'de ücretsiz kalır. Tam Erişim, buradaki tekrarlanabilir beceri bloklarının tüm kütüphanesini açar ve premium ilerlemenizi bağlı cihazlar arasında senkronize eder.";
+"practice.free_desc" = "Tekrarlanabilir beceri bloklarının tüm kütüphanesi ücretsiz. İlerlemeni cihazlar arasında senkronlamak için giriş yap.";
 
 /* ── Training Hub ── */
 "training.title" = "Antrenman";
@@ -81,7 +81,7 @@
 "training.free_foundation" = "Ücretsiz Temel";
 "training.start_here" = "Buradan başla";
 "training.open_plan" = "8 Haftalık Planı Aç";
-"training.premium_tracks" = "Premium İzler";
+"training.premium_tracks" = "Antrenman Programları";
 "training.unlocked" = "Açıldı";
 "training.locked" = "Kilitli";
 
@@ -119,8 +119,8 @@
 "training.readiness" = "Hazırlık";
 "training.explosiveness" = "Patlayıcılık";
 "training.conditioning" = "Kondisyon";
-"training.premium_access" = "Premium Erişim";
-"training.premium_desc" = "Bu ilk premium katman, daha iyi ayak işleri, daha güçlü vuruşlar, daha iyi esneklik ve maç kondisyonu gibi kategoriye özel 8 haftalık planları açar.";
+"training.premium_access" = "Antrenman Programları";
+"training.premium_desc" = "Kategoriye özel 8 haftalık planlar — daha iyi ayak işleri, daha güçlü vuruşlar, esneklik ve maç kondisyonu. Hepsi ücretsiz.";
 "training.checkin_history" = "Kontrol Geçmişi";
 "training.checkin_empty" = "Bu plan için geçmiş oluşturmak üzere ilk haftalık süreklilik kontrolünü kaydet.";
 "training.discussion" = "Tartışma";
@@ -157,15 +157,15 @@
 /* ── Mobility ── */
 "mobility.library" = "Hareket Kütüphanesi";
 "mobility.title" = "Hareket & Toparlanma";
-"mobility.preview_desc" = "İlk iki akışı ücretsiz önizle. Tam Erişim, tüm tenise özel hareket ve toparlanma kütüphanesini açar.";
+"mobility.preview_desc" = "Tenise özel tüm hareket ve toparlanma kütüphanesi ücretsiz.";
 "mobility.goal" = "Hedef";
 "mobility.focus_areas" = "Odak alanları";
 "mobility.why" = "Tenis için neden önemli";
 "mobility.instructions" = "Talimatlar";
 "mobility.cues" = "Antrenör ipuçları";
 "mobility.sequence" = "Sıra";
-"mobility.premium" = "Premium akış";
-"mobility.locked_desc" = "Önizleme ilk iki akışla sınırlıdır. Tam Erişim, tüm hareket ve toparlanma kütüphanesini, arşivlenmiş içgörüleri ve premium tartışma gönderimini açar.";
+"mobility.premium" = "Hareket akışı";
+"mobility.locked_desc" = "Tüm hareket ve toparlanma kütüphanesi ücretsiz. Tartışmalara yazmak ve cihazlar arası senkron için Apple ile giriş yap.";
 "mobility.unlock" = "Hareket Kütüphanesini Aç";
 
 /* ── Community ── */
@@ -175,13 +175,13 @@
 "community.report_guideline" = "Bu yorumu inceleyeceğiz ve topluluk kurallarını ihlal ediyorsa işlem yapacağız.";
 "community.report_thanks" = "Bildirim için teşekkürler. Bu yorumu kısa süre içinde inceleyeceğiz.";
 "community.placeholder" = "Bu ipucu oyununda ne değiştiriyor?";
-"community.unlock" = "Topluluk erişimini aç";
+"community.unlock" = "Katılmak için giriş yap";
 "community.add_take" = "Görüşünü ekle";
 "community.edit_comment" = "Yorumu düzenle";
 "community.empty" = "Bugünün ipucu hakkında görüşünü ilk paylaşan sen ol.";
 "community.comments" = "yorum";
 "community.coach" = "Antrenör";
-"community.unlock_desc" = "Apple ile giriş yap ve sohbete katılmak için Tam Erişimi aç.";
+"community.unlock_desc" = "Sohbete katılmak için Apple ile giriş yap.";
 
 /* ── Profile ── */
 "profile.title" = "Profil";
@@ -204,7 +204,7 @@
 "profile.sign_out" = "Çıkış Yap";
 "profile.manage_sub" = "Aboneliği Yönet";
 "profile.restore" = "Satın Almaları Geri Yükle";
-"profile.view_plans" = "Tüm Erişim Planlarını Görüntüle";
+"profile.view_plans" = "AI Koç'u Aç";
 "profile.guest" = "Misafir";
 "profile.apple_id" = "Apple ID";
 "profile.guest_desc" = "Misafir modu, ilerlemeyi yalnızca bu cihazda kaydeder. Serinizi ve satın alma geçmişinizi korumak için Apple ile giriş yapın.";
@@ -220,7 +220,7 @@
 "onboarding.tip" = "Günün İpucu";
 "onboarding.tip_desc" = "Her sabah bir keskin taktik veya teknik içgörü — taktikler, teknik, fitness veya zihinsel oyun.";
 "onboarding.training" = "Antrenman Programları";
-"onboarding.training_desc" = "Ayak işleri, vuruş gücü, esneklik ve maç kondisyonu için 8 haftalık premium planlar — hepsi tenis için oluşturuldu.";
+"onboarding.training_desc" = "Ayak işleri, vuruş gücü, esneklik ve maç kondisyonu için 8 haftalık planlar — hepsi tenis için oluşturuldu.";
 "onboarding.mobility" = "Hareket & Toparlanma";
 "onboarding.mobility_desc" = "Kortun en çok yıprattığı alanları hedef alan maç öncesi, sonrası ve haftalık sıfırlama akışları.";
 "onboarding.go_all_access" = "Tam Erişime Geç";
@@ -251,16 +251,16 @@
 "onboarding.guest_desc" = "Misafir modu, ilerlemeyi yalnızca bu cihazda kaydeder. Serinizi ve satın alma geçmişinizi korumak için Apple ile giriş yapın.";
 
 /* ── Paywall ── */
-"paywall.title" = "Tam Erişim";
-"paywall.subtitle" = "CourtIQ'nun tüm yığınını aç";
+"paywall.title" = "AI Koç";
+"paywall.subtitle" = "Cebinde AI tenis koçun";
 "paywall.sign_in_required" = "Satın alma öncesinde Apple ile giriş yapılması gereklidir.";
 "paywall.sign_in_optional" = "İsteğe bağlı — premium aboneliğini cihazların arasında senkronlamak için Apple ile giriş yap.";
-"paywall.what_unlocks" = "Ne açılır";
+"paywall.what_unlocks" = "Neler var";
 
 /* ── Tip-jar mode (launch window) ── */
 "paywall.tip_title" = "CourtIQ'yu Destekle";
-"paywall.tip_headline" = "CourtIQ lansman süresince ücretsiz.";
-"paywall.tip_body" = "Tüm özellikler — günlük drill, quizler, antrenman programları, mobility akışları, tam maç günlüğü — herkese açık. CourtIQ işine yaradıysa isteğe bağlı bir destek geliştirmenin devamını sağlar.";
+"paywall.tip_headline" = "CourtIQ ücretsiz. AI Koç tek premium özellik.";
+"paywall.tip_body" = "Drill'ler, quizler, antrenman programları, mobility akışları ve tam maç günlüğü tamamen ücretsiz. Sadece AI Koç premium. CourtIQ işine yaradıysa isteğe bağlı bir destek geliştirmenin devamını sağlar.";
 "paywall.tip_why" = "Neden destekleyesin?";
 "paywall.tip_reason_1" = "Uygulamayı bağımsız tutar — reklam yok, takip yok, yatırımcı yok.";
 "paywall.tip_reason_2" = "Sonraki özellikleri finanse eder (sesli notlar, partner modu, Apple Watch).";
@@ -337,7 +337,7 @@
 "paywall.support" = "Destek";
 "paywall.subscription_note" = "Abonelikler, mevcut dönemin bitiminden en az 24 saat önce App Store ayarlarından iptal edilmediği sürece otomatik olarak yenilenir. Premium erişiminiz, başlatma sırasında ve geri yüklemeden sonra App Store'dan geri yüklenir.";
 "paywall.unlocked" = "Açıldı";
-"paywall.intro_body" = "Premium; tam antrenman kitaplığını, mobilite akışlarını, geçmiş quiz analizlerini ve topluluk katılımını açar.";
+"paywall.intro_body" = "Premium, AI Koç'u açar — maçlarını, ratinglerini ve quiz hatalarını bilen bir tenis sohbeti. CourtIQ'daki diğer her şey ücretsiz.";
 "paywall.products_loading" = "Abonelik seçenekleri yükleniyor…";
 
 /* ── Beta geri bildirim ── */
@@ -428,15 +428,15 @@
 "onb.plan.free_title" = "Sonsuza kadar ücretsiz — kart gerekmez";
 "onb.plan.free_body" = "Bir günlük quiz, temel plan ve mobilite önizlemeleri. Kart bilgisi gerekmez.";
 
-"onb.paywall.tag" = "PREMIUM ÖNİZLEME";
-"onb.paywall.title" = "All Access ne açıyor.";
-"onb.paywall.subtitle" = "Profilinden istediğin zaman abone olabilirsin — devam etmek için kart bilgisi gerekmez.";
+"onb.paywall.tag" = "AI KOÇ";
+"onb.paywall.title" = "AI Koç ile tanış.";
+"onb.paywall.subtitle" = "CourtIQ'daki diğer her şey ücretsiz. AI Koç'u Profil'den istediğin zaman açabilirsin.";
 "onb.paywall.included" = "Neler dahil";
-"onb.paywall.b1" = "Sınırsız günlük ve arşiv quiz'leri";
-"onb.paywall.b2" = "Premium antrenman track'leri + mobilite kitaplığı";
-"onb.paywall.b3" = "Geçmişiyle birlikte haftalık ısrar kontrolleri";
-"onb.paywall.b4" = "İçeriğe bağlı topluluk thread'lerinde yazma";
-"onb.paywall.b5" = "Her yeni koçluk paketine erken erişim";
+"onb.paywall.b1" = "Son 5 maçını, ratinglerini ve quiz hatalarını bilir";
+"onb.paywall.b2" = "Drill'lerini, mobility akışlarını ve planlarını adıyla önerir";
+"onb.paywall.b3" = "ChatGPT tenis sohbetlerini içe aktar, bağlam korunur";
+"onb.paywall.b4" = "Gizli — üçüncü taraf takip yok";
+"onb.paywall.b5" = "CourtIQ'daki diğer her şey ücretsiz kalır";
 
 "onb.account.title" = "İlerlemeni kaydet.";
 "onb.account.subtitle" = "İlerlemeni cihazlar arasında senkronize et.";
@@ -678,7 +678,7 @@
 "legal.support" = "Destek";
 "legal.moderation" = "Moderasyon Politikası";
 "legal.privacy_body" = "CourtIQ, misafir ilerlemeyi cihazınızda yerel olarak saklar. Apple ile giriş yaptığınızda, profiliniz, sınav geçmişiniz, antrenman kayıtlarınız, haftalık kontroller ve topluluk etkinliğiniz arka uç hizmetlerimiz aracılığıyla CourtIQ hesabınızla senkronize edilebilir. Kişisel verileri satmıyoruz ve yalnızca satın almalar, senkronizasyon, destek ve moderasyon için gereken verileri kullanıyoruz.";
-"legal.terms_body" = "CourtIQ Tam Erişim, premium antrenman programlarını, tüm hareket kütüphanesini, arşivlenmiş sınav içgörülerini ve premium topluluk katılımını açan otomatik yenilenen bir aboneliktir. Faturalandırma, App Store hesabınız aracılığıyla Apple tarafından gerçekleştirilir ve mevcut dönemin bitiminden en az 24 saat önce iptal edilmediği sürece otomatik olarak yenilenir.";
+"legal.terms_body" = "CourtIQ Premium, AI Koç'u açan otomatik yenilenen bir aboneliktir. CourtIQ'daki diğer her özellik ücretsizdir. Faturalandırma, App Store hesabınız aracılığıyla Apple tarafından gerçekleştirilir ve mevcut dönemin bitiminden en az 24 saat önce iptal edilmediği sürece otomatik olarak yenilenir.";
 "legal.support_body" = "Fatura sorunları, hesap soruları, senkronizasyon sorunları ve topluluk moderasyon talepleri için yayınlanan destek bağlantısı aracılığıyla destek alınabilir. Zararlı veya istismar edici topluluk içeriği bildirirseniz, moderasyon ekibi bunu CourtIQ'ya bağlı destek ve yönetici iş akışı aracılığıyla inceler.";
 "legal.moderation_body" = "Topluluk tartışması CourtIQ içeriğine bağlıdır. Oyuncular yorumları manuel moderatör incelemesi için bildirebilir. Saldırgan, istismar edici, spam niteliğinde veya güvensiz içerik kaldırılabilir ve tekrarlanan ihlaller hesap kısıtlamalarına veya topluluktan çıkarılmaya yol açabilir.";
 "legal.open_doc" = "Yayınlanan Belgeyi Aç";
@@ -741,14 +741,14 @@
 "ai.disclaimer_dismiss" = "Anladım";
 
 /* AI Koç paywall */
-"ai.paywall_headline" = "AI Koç, lansman süresince tek premium özellik.";
-"ai.paywall_subhead" = "CourtIQ'da diğer her şey lansman boyunca ücretsiz. AI Koç gerçek bir mesaj başı maliyete sahip olduğu için destek tip jar'ın arkasında.";
+"ai.paywall_headline" = "AI Koç, tek premium özellik.";
+"ai.paywall_subhead" = "CourtIQ'da diğer her şey ücretsiz. AI Koç, gerçek bir mesaj başı maliyeti olduğu için premium.";
 "ai.paywall_bullet_context" = "Son 5 maçını, ratinglerini ve quiz hatalarını biliyor — her seferinde oyununu yeniden anlatmana gerek yok.";
 "ai.paywall_bullet_library" = "CourtIQ içinde zaten sahip olduğun drill'leri, mobility flow'larını ve antrenman programlarını adıyla öneriyor.";
 "ai.paywall_bullet_import" = "ChatGPT'deki tenis sohbetlerini içe aktar — bağlam kaybolmasın. Bir kez yapıştır, koç hatırlar.";
 "ai.paywall_bullet_privacy" = "Üçüncü taraf takip yok. Mesajların Apple kalitesinde altyapıda kalır.";
 "ai.paywall_cta" = "Açmak için CourtIQ'yu destekle";
-"ai.paywall_price_hint" = "€4.99/yıldan başlar. Ayarlar'dan istediğin zaman iptal.";
+"ai.paywall_price_hint" = "Aylık veya yıllık. Ayarlar'dan istediğin zaman iptal.";
 "ai.paywall_legal" = "AI Koç, Anthropic Claude tarafından çalışır. Destekçi başına günde 50 mesaja kadar.";
 
 /* AI Koç — paste import */

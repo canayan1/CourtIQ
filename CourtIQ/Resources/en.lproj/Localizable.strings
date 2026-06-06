@@ -10,7 +10,7 @@
 "common.saving" = "Saving…";
 "common.deleting" = "Deleting…";
 "common.resetting" = "Resetting…";
-"common.unlock_all" = "Unlock All Access";
+"common.unlock_all" = "Unlock AI Coach";
 "common.premium" = "Premium";
 "common.free" = "Free";
 "common.start" = "Start";
@@ -69,7 +69,7 @@
 "practice.mobility_desc" = "Quick resets, daily mobility, and recovery flows built for tennis movement.";
 "practice.deliberate_reps" = "Deliberate reps";
 "practice.choose_pattern" = "Choose the pattern you want to sharpen, then run a focused block.";
-"practice.free_desc" = "Daily IQ stays free in Today. All Access unlocks the full library of repeatable skill blocks here and syncs your premium progress across signed-in devices.";
+"practice.free_desc" = "The full library of repeatable skill blocks is free. Sign in to sync your progress across devices.";
 
 /* ── Training Hub ── */
 "training.title" = "Training";
@@ -81,7 +81,7 @@
 "training.free_foundation" = "Free Foundation";
 "training.start_here" = "Start here";
 "training.open_plan" = "Open 8-Week Plan";
-"training.premium_tracks" = "Premium Tracks";
+"training.premium_tracks" = "Training Tracks";
 "training.unlocked" = "Unlocked";
 "training.locked" = "Locked";
 
@@ -119,8 +119,8 @@
 "training.readiness" = "Readiness";
 "training.explosiveness" = "Explosiveness";
 "training.conditioning" = "Conditioning";
-"training.premium_access" = "Premium Access";
-"training.premium_desc" = "This first premium layer unlocks category-specific 8-week plans like better footwork, stronger shots, better flexibility, and match conditioning.";
+"training.premium_access" = "Training Tracks";
+"training.premium_desc" = "Category-specific 8-week plans — better footwork, stronger shots, better flexibility, and match conditioning. All free.";
 "training.checkin_history" = "Check-in History";
 "training.checkin_empty" = "Save your first weekly persistence check to build a history for this plan.";
 "training.discussion" = "Discussion";
@@ -157,16 +157,16 @@
 /* ── Mobility ── */
 "mobility.library" = "Mobility Library";
 "mobility.title" = "Mobility & Recovery";
-"mobility.preview_desc" = "Preview the first two flows for free. All Access unlocks the full tennis-specific mobility and recovery library.";
+"mobility.preview_desc" = "The full tennis-specific mobility and recovery library is free to use.";
 "mobility.goal" = "Goal";
 "mobility.focus_areas" = "Focus areas";
 "mobility.why" = "Why it matters for tennis";
 "mobility.instructions" = "Instructions";
 "mobility.cues" = "Coaching cues";
 "mobility.sequence" = "Sequence";
-"mobility.premium" = "Premium flow";
-"mobility.locked_desc" = "Preview is limited to the first two flows. All Access unlocks the full mobility and recovery library, archived insights, and premium discussion posting.";
-"mobility.unlock" = "Unlock Mobility Library";
+"mobility.premium" = "Mobility flow";
+"mobility.locked_desc" = "The full mobility and recovery library is free. Sign in with Apple to post in discussions and sync across devices.";
+"mobility.unlock" = "Open Mobility Library";
 
 /* ── Community ── */
 "community.title" = "Discussion";
@@ -175,13 +175,13 @@
 "community.report_guideline" = "We'll review this comment and take action if it violates community guidelines.";
 "community.report_thanks" = "Thanks for the report. We'll review this comment shortly.";
 "community.placeholder" = "What does this tip change in your game?";
-"community.unlock" = "Unlock community access";
+"community.unlock" = "Sign in to join";
 "community.add_take" = "Add your take";
 "community.edit_comment" = "Edit comment";
 "community.empty" = "Be the first to share your take on today's tip.";
 "community.comments" = "comments";
 "community.coach" = "Coach";
-"community.unlock_desc" = "Sign in with Apple and unlock All Access to join the conversation.";
+"community.unlock_desc" = "Sign in with Apple to join the conversation.";
 
 /* ── Profile ── */
 "profile.title" = "Profile";
@@ -190,7 +190,7 @@
 "profile.reset_title" = "Reset local data?";
 "profile.reset_msg" = "This clears cached progress on this device. Synced account data will re-download on next launch.";
 "profile.quiz_empty" = "Complete your first daily quiz to start your archive.";
-"profile.unlock_history" = "See your full archive.";
+"profile.unlock_history" = "Your full quiz archive — free.";
 "profile.sign_in_hint" = "Sync progress across devices.";
 "profile.leave_guest" = "Leave Guest Preview";
 "profile.section_progress" = "Progress";
@@ -204,7 +204,7 @@
 "profile.sign_out" = "Sign Out";
 "profile.manage_sub" = "Manage Subscription";
 "profile.restore" = "Restore Purchases";
-"profile.view_plans" = "View All Access Plans";
+"profile.view_plans" = "Unlock AI Coach";
 "profile.guest" = "Guest";
 "profile.apple_id" = "Apple ID";
 "profile.guest_desc" = "Guest mode saves progress on this device only. Sign in with Apple to protect your streak and purchase history.";
@@ -220,7 +220,7 @@
 "onboarding.tip" = "Tip of the Day";
 "onboarding.tip_desc" = "One sharp tactic or technique insight each morning — tactics, technique, fitness, or mental game.";
 "onboarding.training" = "Training Programs";
-"onboarding.training_desc" = "8-week premium plans for footwork, shot power, flexibility, and match conditioning — all built for tennis.";
+"onboarding.training_desc" = "8-week plans for footwork, shot power, flexibility, and match conditioning — all built for tennis.";
 "onboarding.mobility" = "Mobility & Recovery";
 "onboarding.mobility_desc" = "Pre-match, post-match, and weekly reset flows targeting the areas court sport wrecks most.";
 "onboarding.go_all_access" = "Go All Access";
@@ -251,16 +251,16 @@
 "onboarding.guest_desc" = "Guest mode saves progress on this device only. Sign in with Apple to protect your streak and purchase history.";
 
 /* ── Paywall ── */
-"paywall.title" = "All Access";
-"paywall.subtitle" = "Unlock the full CourtIQ stack";
+"paywall.title" = "AI Coach";
+"paywall.subtitle" = "Your AI tennis coach, in your pocket";
 "paywall.sign_in_required" = "Sign in with Apple is required before purchase.";
 "paywall.sign_in_optional" = "Optional — sign in with Apple to sync premium across your devices.";
-"paywall.what_unlocks" = "What unlocks";
+"paywall.what_unlocks" = "What you get";
 
 /* ── Tip-jar mode (launch window, LaunchOffer.allFeaturesFree == true) ── */
 "paywall.tip_title" = "Support CourtIQ";
-"paywall.tip_headline" = "CourtIQ is free during launch.";
-"paywall.tip_body" = "Every feature — daily drill, quizzes, training programs, mobility flows, the full match journal — is open to everyone. If CourtIQ has been useful, an optional tip keeps it growing.";
+"paywall.tip_headline" = "CourtIQ is free. AI Coach is the one premium feature.";
+"paywall.tip_body" = "Drills, quizzes, training programs, mobility flows, and the full match journal are all free. Only the AI Coach is premium. If CourtIQ has been useful, an optional tip keeps it growing.";
 "paywall.tip_why" = "Why support?";
 "paywall.tip_reason_1" = "Keeps the app independent — no ads, no tracking, no investors.";
 "paywall.tip_reason_2" = "Funds the next features (voice notes, partner mode, watch app).";
@@ -337,7 +337,7 @@
 "paywall.support" = "Support";
 "paywall.subscription_note" = "Subscriptions renew automatically unless canceled in App Store settings at least 24 hours before the end of the current period. Your premium access is restored from the App Store on launch and after restore.";
 "paywall.unlocked" = "Unlocked";
-"paywall.intro_body" = "Premium unlocks the full training library, mobility flows, archived quiz insights, and community participation.";
+"paywall.intro_body" = "Premium unlocks the AI Coach — a tennis chat that knows your matches, ratings, and quiz patterns. Everything else in CourtIQ is free.";
 "paywall.products_loading" = "Loading subscription options…";
 
 /* ── Beta feedback ── */
@@ -428,15 +428,15 @@
 "onb.plan.free_title" = "Free forever — no card required";
 "onb.plan.free_body" = "One daily quiz, foundation plan, and mobility previews. No card needed.";
 
-"onb.paywall.tag" = "PREMIUM PREVIEW";
-"onb.paywall.title" = "What All Access unlocks.";
-"onb.paywall.subtitle" = "You can subscribe from your Profile anytime — no credit card required to keep going.";
+"onb.paywall.tag" = "AI COACH";
+"onb.paywall.title" = "Meet your AI Coach.";
+"onb.paywall.subtitle" = "Everything else in CourtIQ is free. You can unlock the AI Coach from your Profile anytime.";
 "onb.paywall.included" = "What's included";
-"onb.paywall.b1" = "Unlimited daily & archived quizzes";
-"onb.paywall.b2" = "Premium training tracks + mobility library";
-"onb.paywall.b3" = "Weekly persistence checks with history";
-"onb.paywall.b4" = "Post in content-linked community threads";
-"onb.paywall.b5" = "Early access to every new coaching pack";
+"onb.paywall.b1" = "Knows your last 5 matches, ratings & quiz patterns";
+"onb.paywall.b2" = "Suggests your drills, mobility flows & training plans by name";
+"onb.paywall.b3" = "Import your ChatGPT tennis chats so context carries over";
+"onb.paywall.b4" = "Private — no third-party tracking";
+"onb.paywall.b5" = "Everything else in CourtIQ stays free";
 
 "onb.account.title" = "Save your progress.";
 "onb.account.subtitle" = "Sync progress across devices.";
@@ -678,7 +678,7 @@
 "legal.support" = "Support";
 "legal.moderation" = "Moderation Policy";
 "legal.privacy_body" = "CourtIQ stores guest progress locally on your device. When you sign in with Apple, your profile, quiz history, training logs, weekly check-ins, and community activity can sync to your CourtIQ account through our backend services. We do not sell personal data, and we only use the data needed to run purchases, sync, support, and moderation.";
-"legal.terms_body" = "CourtIQ All Access is an auto-renewing subscription that unlocks premium training programs, the full mobility library, archived quiz insights, and premium community participation. Billing is handled by Apple through your App Store account and renews automatically unless canceled at least 24 hours before the end of the current period.";
+"legal.terms_body" = "CourtIQ Premium is an auto-renewing subscription that unlocks the AI Coach. Every other feature in CourtIQ is free. Billing is handled by Apple through your App Store account and renews automatically unless canceled at least 24 hours before the end of the current period.";
 "legal.support_body" = "Support is available through the published support link for billing issues, account questions, sync problems, and community moderation requests. If you report harmful or abusive community content, the moderation team reviews it through the support and admin workflow connected to CourtIQ.";
 "legal.moderation_body" = "Community discussion is anchored to CourtIQ content. Players can report comments for manual moderator review. Offensive, abusive, spammy, or unsafe content may be removed, and repeated violations can lead to account restrictions or removal from the community.";
 "legal.open_doc" = "Open Published Document";
@@ -741,14 +741,14 @@
 "ai.disclaimer_dismiss" = "Got it";
 
 /* AI Coach paywall stub */
-"ai.paywall_headline" = "AI Coach is the one premium-only feature.";
-"ai.paywall_subhead" = "Everything else in CourtIQ is free during launch. AI Coach lives behind the supporter tip because it has a real per-message cost.";
+"ai.paywall_headline" = "AI Coach is the one premium feature.";
+"ai.paywall_subhead" = "Everything else in CourtIQ is free. AI Coach is premium because it has a real per-message cost.";
 "ai.paywall_bullet_context" = "Knows your last 5 matches, ratings, and quiz mistake patterns — no re-explaining your game every time.";
 "ai.paywall_bullet_library" = "Suggests drills, mobility flows, and training programs you already have inside CourtIQ — by name.";
 "ai.paywall_bullet_import" = "Import your ChatGPT tennis chats so context isn't lost. Paste once, the coach remembers.";
 "ai.paywall_bullet_privacy" = "No third-party tracking. Your messages stay on Apple-grade infrastructure.";
 "ai.paywall_cta" = "Support CourtIQ to unlock";
-"ai.paywall_price_hint" = "From €4.99/year. Cancel anytime in Settings.";
+"ai.paywall_price_hint" = "Monthly or yearly. Cancel anytime in Settings.";
 "ai.paywall_legal" = "AI Coach is powered by Anthropic Claude. Up to 50 messages per day per supporter.";
 
 /* AI Coach — paste import */
