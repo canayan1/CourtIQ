@@ -1,23 +1,18 @@
 import SwiftUI
 import AuthenticationServices
 
-/// PaywallView wears two hats and which one is shown is decided by
-/// `LaunchOffer.allFeaturesFree`:
+/// PaywallView sells the AI Coach subscription — the single paid feature
+/// in CourtIQ. It shows the benefits of the Coach plus monthly/yearly
+/// offer cards, structured around what the subscription unlocks.
 ///
-///   • **Tip jar mode** (launch window, current default) — every Premium
-///     feature in the app is already open to all users. The paywall
-///     reframes itself as an optional "Support CourtIQ" surface so the
-///     StoreKit + Small Business Program plumbing stays warm and anyone
-///     who wants to contribute can. Only the yearly product is exposed
-///     so the price ladder reads as a single tip amount, not a "plans"
-///     selection.
+/// The legacy "tip jar" framing has been retired: AI Coach is a concrete
+/// premium feature, so it must be offered as a normal auto-renewing
+/// subscription per App Store §3.1.1 — never as an optional donation.
+/// `isTipJar` is kept as a hard `false` so the tip-only code paths stay
+/// out of the build while the structure remains easy to follow.
 ///
-///   • **Subscription mode** (default once the launch flag flips) — the
-///     traditional benefits + monthly/yearly offer cards. The user-facing
-///     copy is structured around what unlocks rather than what supports.
-///
-/// Both modes preserve Restore Purchases, Privacy, Terms, and Support
-/// links per App Store §3.1.2(a). Sign in with Apple is offered as a
+/// Restore Purchases, Privacy, Terms, and Support links are always
+/// present per App Store §3.1.2(a). Sign in with Apple is offered as a
 /// cross-device sync benefit, never as a purchase gate (App Store §3.1.1).
 struct PaywallView: View {
     let source: String
@@ -29,7 +24,11 @@ struct PaywallView: View {
     @State private var errorMessage: String?
     private let configuration = AppConfiguration.shared
 
-    private var isTipJar: Bool { LaunchOffer.allFeaturesFree }
+    // The paywall always sells the AI Coach subscription outright (no
+    // "tip jar" framing). AI Coach is a concrete premium feature, so it
+    // must be offered as a normal auto-renewing subscription per App
+    // Store Review §3.1.1 — not as an optional donation.
+    private var isTipJar: Bool { false }
 
     var body: some View {
         ScrollView {

@@ -223,7 +223,7 @@
 "onboarding.training_desc" = "Ayak işleri, vuruş gücü, esneklik ve maç kondisyonu için 8 haftalık planlar — hepsi tenis için oluşturuldu.";
 "onboarding.mobility" = "Hareket & Toparlanma";
 "onboarding.mobility_desc" = "Kortun en çok yıprattığı alanları hedef alan maç öncesi, sonrası ve haftalık sıfırlama akışları.";
-"onboarding.go_all_access" = "Tam Erişime Geç";
+"onboarding.go_all_access" = "Başla";
 "onboarding.free_week" = "İlk haftanız tamamen ücretsiz. Sonra size uyan planı seçin.";
 "onboarding.free_trial" = "7 gün ücretsiz — istediğiniz zaman iptal edin";
 "onboarding.annual" = "Yıllık";
@@ -423,10 +423,10 @@
 "onb.plan.training.1_2" = "Hafta sonu 2 günlük döngü";
 "onb.plan.training.default" = "Hibrit 4 günlük blok";
 "onb.plan.mobility.priority" = "Today sekmende öncelikli";
-"onb.plan.mobility.preview" = "Önizleme akışları açık";
+"onb.plan.mobility.preview" = "Tüm mobilite kütüphanesi dahil";
 "onb.plan.tip.desc" = "Her sabah küçük bir koçluk notu";
 "onb.plan.free_title" = "Sonsuza kadar ücretsiz — kart gerekmez";
-"onb.plan.free_body" = "Bir günlük quiz, temel plan ve mobilite önizlemeleri. Kart bilgisi gerekmez.";
+"onb.plan.free_body" = "Günlük quizler, tüm antrenman planları ve tam mobilite kütüphanesi — ücretsiz. Kart gerekmez.";
 
 "onb.paywall.tag" = "AI KOÇ";
 "onb.paywall.title" = "AI Koç ile tanış.";
@@ -747,9 +747,9 @@
 "ai.paywall_bullet_library" = "CourtIQ içinde zaten sahip olduğun drill'leri, mobility flow'larını ve antrenman programlarını adıyla öneriyor.";
 "ai.paywall_bullet_import" = "ChatGPT'deki tenis sohbetlerini içe aktar — bağlam kaybolmasın. Bir kez yapıştır, koç hatırlar.";
 "ai.paywall_bullet_privacy" = "Üçüncü taraf takip yok. Mesajların Apple kalitesinde altyapıda kalır.";
-"ai.paywall_cta" = "Açmak için CourtIQ'yu destekle";
+"ai.paywall_cta" = "AI Koç'u Aç";
 "ai.paywall_price_hint" = "Aylık veya yıllık. Ayarlar'dan istediğin zaman iptal.";
-"ai.paywall_legal" = "AI Koç, Anthropic Claude tarafından çalışır. Destekçi başına günde 50 mesaja kadar.";
+"ai.paywall_legal" = "AI Koç, Anthropic Claude tarafından çalışır. Günde 50 mesaja kadar.";
 
 /* AI Koç — paste import */
 "ai.import_menu" = "ChatGPT'den içe aktar";

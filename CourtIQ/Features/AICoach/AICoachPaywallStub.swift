@@ -1,10 +1,9 @@
 import SwiftUI
 
 /// Mini paywall shown when a non-premium user taps the AI Coach card.
-/// AI Coach is the ONE genuinely-paid feature during the middle-path
-/// launch (everything else is free via `LaunchOffer.allFeaturesFree`),
-/// so the copy needs to set that expectation cleanly without sounding
-/// like a generic "subscribe" wall.
+/// AI Coach is the ONE genuinely-paid feature in CourtIQ (every other
+/// surface is free), so the copy needs to set that expectation cleanly
+/// without sounding like a generic "subscribe" wall.
 struct AICoachPaywallStub: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var lang: LanguageManager

@@ -223,7 +223,7 @@
 "onboarding.training_desc" = "8-week plans for footwork, shot power, flexibility, and match conditioning — all built for tennis.";
 "onboarding.mobility" = "Mobility & Recovery";
 "onboarding.mobility_desc" = "Pre-match, post-match, and weekly reset flows targeting the areas court sport wrecks most.";
-"onboarding.go_all_access" = "Go All Access";
+"onboarding.go_all_access" = "Get Started";
 "onboarding.free_week" = "Your first week is completely free. Then choose the plan that fits.";
 "onboarding.free_trial" = "7 days free — cancel any time";
 "onboarding.annual" = "Annual";
@@ -423,10 +423,10 @@
 "onb.plan.training.1_2" = "Weekend 2-day loop";
 "onb.plan.training.default" = "Hybrid 4-day block";
 "onb.plan.mobility.priority" = "Prioritized in your Today hub";
-"onb.plan.mobility.preview" = "Preview flows unlocked";
+"onb.plan.mobility.preview" = "Full mobility library included";
 "onb.plan.tip.desc" = "One bite-sized coaching note every morning";
 "onb.plan.free_title" = "Free forever — no card required";
-"onb.plan.free_body" = "One daily quiz, foundation plan, and mobility previews. No card needed.";
+"onb.plan.free_body" = "Daily quizzes, all training plans, and the full mobility library — free. No card needed.";
 
 "onb.paywall.tag" = "AI COACH";
 "onb.paywall.title" = "Meet your AI Coach.";
@@ -747,9 +747,9 @@
 "ai.paywall_bullet_library" = "Suggests drills, mobility flows, and training programs you already have inside CourtIQ — by name.";
 "ai.paywall_bullet_import" = "Import your ChatGPT tennis chats so context isn't lost. Paste once, the coach remembers.";
 "ai.paywall_bullet_privacy" = "No third-party tracking. Your messages stay on Apple-grade infrastructure.";
-"ai.paywall_cta" = "Support CourtIQ to unlock";
+"ai.paywall_cta" = "Unlock AI Coach";
 "ai.paywall_price_hint" = "Monthly or yearly. Cancel anytime in Settings.";
-"ai.paywall_legal" = "AI Coach is powered by Anthropic Claude. Up to 50 messages per day per supporter.";
+"ai.paywall_legal" = "AI Coach is powered by Anthropic Claude. Up to 50 messages per day.";
 
 /* AI Coach — paste import */
 "ai.import_menu" = "Import from ChatGPT";

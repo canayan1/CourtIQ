@@ -12,17 +12,17 @@ enum EntitlementState: String, Codable {
 
     var title: String {
         switch self {
-        case .freePreview: return "Free Preview"
-        case .premiumAllAccess: return "All Access"
+        case .freePreview: return "Free"
+        case .premiumAllAccess: return "AI Coach"
         }
     }
 
     var description: String {
         switch self {
         case .freePreview:
-            return "Daily IQ, the foundation plan, and preview mobility flows stay unlocked."
+            return "Every CourtIQ feature is free. The AI Coach is the one optional upgrade."
         case .premiumAllAccess:
-            return "Premium training tracks, the full mobility library, archived insights, and community posting are unlocked."
+            return "AI Coach is unlocked — a tennis chat that knows your matches, ratings, and quiz patterns."
         }
     }
 
@@ -266,15 +266,15 @@ final class SubscriptionManager: ObservableObject {
     @Published private(set) var offers: [SubscriptionOffer]
     @Published private(set) var integrationMode: BillingIntegrationMode
 
+    // Premium == the AI Coach. Everything else in CourtIQ is free, so
+    // these benefits describe the Coach itself, not a content bundle.
     let premiumBenefits = [
-        "Unlimited daily quizzes",
-        "Full tip archive — every insight ever published",
-        "All 8-week training programs",
-        "All mobility and recovery flows",
-        "Ongoing fitness program updates as they ship",
-        "Early access to every new feature",
-        "Full quiz history and performance tracking",
-        "Cloud sync across signed-in devices"
+        "AI tennis coach you can chat with anytime",
+        "Knows your last 5 matches, ratings, and quiz mistake patterns",
+        "Suggests your drills, mobility flows, and training plans by name",
+        "Import your ChatGPT tennis chats so context carries over",
+        "Private — no third-party tracking",
+        "Up to 50 messages per day"
     ]
 
     private let configuration: AppConfiguration
@@ -294,14 +294,14 @@ final class SubscriptionManager: ObservableObject {
         self.offers = [
             SubscriptionOffer(
                 id: configuration.monthlyProductID,
-                title: "Monthly All Access",
+                title: "AI Coach — Monthly",
                 detail: "Billed monthly. Cancel anytime.",
                 priceDisplay: "—",
                 isFeatured: false
             ),
             SubscriptionOffer(
                 id: configuration.yearlyProductID,
-                title: "Annual All Access",
+                title: "AI Coach — Annual",
                 detail: "Best value vs monthly.",
                 priceDisplay: "—",
                 isFeatured: true
@@ -330,8 +330,15 @@ final class SubscriptionManager: ObservableObject {
     ///   • Re-introducing paid gating later is a single-flag flip,
     ///     and users who paid during the launch window retain
     ///     entitlement via `entitlementState.isPremium`.
+    /// Content gate for the non-AI-Coach surfaces (training, mobility,
+    /// quiz/practice, community, progression, history). In the shipping
+    /// model these are all FREE — the only paid feature is the AI Coach,
+    /// which gates independently on `entitlementState.isPremium` in its
+    /// own entry point. Keeping this `true` means none of the content
+    /// surfaces are ever locked, while the real subscription still drives
+    /// AI Coach access and the paywall.
     var isPremiumUnlocked: Bool {
-        LaunchOffer.allFeaturesFree || entitlementState.isPremium
+        true
     }
 
     func loadOfferings() async {
