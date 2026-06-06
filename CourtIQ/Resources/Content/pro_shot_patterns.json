@@ -32,7 +32,7 @@
         "opX": 0.8281,
         "opY": 0.0128,
         "label": "2. Stretched return",
-        "labelTr": "2. Streched return"
+        "labelTr": "2. Gerilmiş dönüş"
       },
       {
         "fromX": 0.4531,
@@ -52,6 +52,7 @@
   {
     "id": "fed_sabr",
     "title": "Federer · SABR",
+    "titleTr": "Federer · SABR",
     "playerName": "Roger Federer",
     "tagline": "Sneak Attack By Roger — chip and charge return.",
     "taglineTr": "Roger'ın sürpriz saldırısı — chip ve net.",
@@ -101,6 +102,7 @@
   {
     "id": "nadal_banana",
     "title": "Nadal · Banana FH",
+    "titleTr": "Nadal · Muz FH",
     "playerName": "Rafael Nadal",
     "tagline": "Heavy crosscourt forehand from outside the alley.",
     "taglineTr": "Alley dışından ağır crosscourt forehand.",
@@ -150,6 +152,7 @@
   {
     "id": "djokovic_bh_dtl",
     "title": "Djokovic · BH DTL",
+    "titleTr": "Djokovic · BH çizgi boyu",
     "playerName": "Novak Djokovic",
     "tagline": "Rare aggressive backhand down the line — change of direction.",
     "taglineTr": "Nadir agresif backhand line — yön değişimi.",
@@ -199,6 +202,7 @@
   {
     "id": "murray_lob_pass",
     "title": "Murray · Defensive lob",
+    "titleTr": "Murray · Savunma lobu",
     "playerName": "Andy Murray",
     "tagline": "Pulled wide, lob over the shoulder, reset the point.",
     "taglineTr": "Wide çekildi, omuz üstünden lob, sıfırla.",
@@ -248,6 +252,7 @@
   {
     "id": "alcaraz_drop",
     "title": "Alcaraz · Drop shot",
+    "titleTr": "Alcaraz · Drop shot",
     "playerName": "Carlos Alcaraz",
     "tagline": "Deep ball pushes opp back → soft drop kisses the net.",
     "taglineTr": "Derin top rakibi geri iter → drop file öper.",
@@ -297,6 +302,7 @@
   {
     "id": "sinner_3pattern",
     "title": "Sinner · Cross-cross-line",
+    "titleTr": "Sinner · Çapraz-çapraz-çizgi",
     "playerName": "Jannik Sinner",
     "tagline": "Two crosscourts to open the court, then DTL winner.",
     "taglineTr": "İki crosscourt korta açar, sonra DTL winner.",
@@ -359,6 +365,7 @@
   {
     "id": "sabalenka_2nd_return",
     "title": "Sabalenka · 2nd serve attack",
+    "titleTr": "Sabalenka · 2. servise atak",
     "playerName": "Aryna Sabalenka",
     "tagline": "Step inside the baseline and rip the second serve.",
     "taglineTr": "Baseline içine adım at, 2. servisi yırt.",
@@ -421,6 +428,7 @@
   {
     "id": "swiatek_topspin_build",
     "title": "Swiatek · Topspin build",
+    "titleTr": "Swiatek · Topspin kurulumu",
     "playerName": "Iga Świątek",
     "tagline": "Heavy topspin builds height + depth, then accelerate.",
     "taglineTr": "Ağır topspin yükseklik + derinlik kurar, sonra hızlan.",
@@ -483,6 +491,7 @@
   {
     "id": "tsitsipas_slice_approach",
     "title": "Tsitsipas · Slice approach",
+    "titleTr": "Tsitsipas · Slice ile file yaklaşımı",
     "playerName": "Stefanos Tsitsipas",
     "tagline": "Low slice keeps the ball below the strike zone, then net.",
     "taglineTr": "Alçak slice topu vuruş bölgesinin altında tutar, sonra net.",
@@ -545,6 +554,7 @@
   {
     "id": "medvedev_deep_reset",
     "title": "Medvedev · Deep reset",
+    "titleTr": "Medvedev · Derin sıfırlama",
     "playerName": "Daniil Medvedev",
     "tagline": "3 metres behind the baseline, reset every ball, wait for the error.",
     "taglineTr": "Baseline'ın 3 metre arkası, her topu sıfırla, hatayı bekle.",
@@ -607,6 +617,7 @@
   {
     "id": "rublev_inside_in",
     "title": "Rublev · Inside-in FH",
+    "titleTr": "Rublev · Inside-in FH",
     "playerName": "Andrey Rublev",
     "tagline": "Run around the backhand, hit inside-in to opponent's FH alley.",
     "taglineTr": "Backhand'i sola at, inside-in rakibin FH alley'ine.",
@@ -643,6 +654,7 @@
   {
     "id": "berrettini_serve_plus_one",
     "title": "Berrettini · Big serve+1",
+    "titleTr": "Berrettini · Güçlü servis+1",
     "playerName": "Matteo Berrettini",
     "tagline": "Heavy T serve sets up a forehand winner — pattern of patterns.",
     "taglineTr": "Ağır T servis FH winner kurar — pattern of patterns.",
@@ -692,6 +704,7 @@
   {
     "id": "zverev_bh_break",
     "title": "Zverev · BH break",
+    "titleTr": "Zverev · BH ile kırma",
     "playerName": "Alexander Zverev",
     "tagline": "Crosscourt backhands until opponent overcommits, then DTL.",
     "taglineTr": "Crosscourt backhand'ler rakip overcommit edene kadar, sonra DTL.",
@@ -754,6 +767,7 @@
   {
     "id": "ruud_clay_grind",
     "title": "Ruud · Clay construction",
+    "titleTr": "Ruud · Toprak kort kurgusu",
     "playerName": "Casper Ruud",
     "tagline": "Patient crosscourt FH builds the point — wait for the short ball.",
     "taglineTr": "Sabırlı crosscourt FH puanı kurar — kısa topu bekle.",
@@ -816,6 +830,7 @@
   {
     "id": "rybakina_flat_drive",
     "title": "Rybakina · Flat drive",
+    "titleTr": "Rybakina · Düz vuruş",
     "playerName": "Elena Rybakina",
     "tagline": "Low flat drives flatten the bounce — opponent runs out of time.",
     "taglineTr": "Düz alçak vuruşlar sekmeyi düşürür — rakip zamansız kalır.",

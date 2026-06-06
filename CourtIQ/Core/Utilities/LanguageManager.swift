@@ -87,9 +87,9 @@ final class LanguageManager: ObservableObject {
     var btnDeleteAccount: String        { r("Delete Account",    "Hesabı Sil",           "Eliminar Cuenta") }
     var btnResetData: String            { r("Reset Local Data",  "Yerel Verileri Sıfırla","Restablecer Datos") }
     var btnRestorePurchases: String     { r("Restore Purchases", "Satın Almaları Geri Yükle", "Restaurar Compras") }
-    var btnUnlockAllAccess: String      { r("Unlock All Access", "Tam Erişimi Aç",       "Desbloquear Acceso Total") }
+    var btnUnlockAllAccess: String      { r("Unlock AI Coach",   "AI Koç'u Aç",          "Desbloquear AI Coach") }
     var btnManageSubscription: String   { r("Manage Subscription","Aboneliği Yönet",     "Gestionar Suscripción") }
-    var btnViewPlans: String            { r("View All Access Plans","Erişim Planlarını Gör","Ver Planes de Acceso") }
+    var btnViewPlans: String            { r("Unlock AI Coach",   "AI Koç'u Aç",          "Desbloquear AI Coach") }
 
     var premiumBadge: String            { r("Premium",           "Premium",              "Premium") }
     var guestLabel: String              { r("Guest",             "Misafir",              "Invitado") }
@@ -120,14 +120,14 @@ final class LanguageManager: ObservableObject {
     // MARK: - Paywall / Upsell
 
     var unlockCommunity: String { r(
-        "Sign in with Apple and unlock All Access to join the conversation.",
-        "Konuşmaya katılmak için Apple ile giriş yap ve Tam Erişimi aç.",
-        "Inicia sesión con Apple y desbloquea el Acceso Total para unirte."
+        "Sign in with Apple to join the conversation.",
+        "Konuşmaya katılmak için Apple ile giriş yap.",
+        "Inicia sesión con Apple para unirte a la conversación."
     )}
 
     var unlockMobility: String { r(
-        "Preview is limited to the first two flows. All Access unlocks the full mobility and recovery library.",
-        "Önizleme yalnızca ilk iki akış ile sınırlıdır. Tam Erişim ile tüm mobilite kütüphanesini aç.",
-        "La vista previa se limita a los dos primeros flujos. Acceso Total desbloquea toda la biblioteca."
+        "The full mobility and recovery library is free to use.",
+        "Tüm mobilite ve toparlanma kütüphanesi ücretsiz.",
+        "Toda la biblioteca de movilidad y recuperación es gratuita."
     )}
 }

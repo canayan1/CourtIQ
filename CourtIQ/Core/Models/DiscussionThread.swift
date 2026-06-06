@@ -206,7 +206,7 @@ final class DiscussionStore: ObservableObject {
     func postComment(body: String, to threadID: String) async throws {
         guard UserSessionManager.shared.canWriteCommunityComment,
               let session = UserSessionManager.shared.remoteSession else {
-            throw RemoteDataError.message("Sign in with Apple and All Access are required to post.")
+            throw RemoteDataError.message("Sign in with Apple to post.")
         }
 
         guard !ContentModerationFilter.containsBannedContent(body) else {
@@ -231,7 +231,7 @@ final class DiscussionStore: ObservableObject {
     func updateComment(commentID: String, in threadID: String, body: String) async throws {
         guard UserSessionManager.shared.canWriteCommunityComment,
               let session = UserSessionManager.shared.remoteSession else {
-            throw RemoteDataError.message("Sign in with Apple and All Access are required to edit.")
+            throw RemoteDataError.message("Sign in with Apple to edit.")
         }
 
         guard !ContentModerationFilter.containsBannedContent(body) else {
@@ -254,7 +254,7 @@ final class DiscussionStore: ObservableObject {
     func toggleLike(commentID: String, in threadID: String) async throws {
         guard UserSessionManager.shared.canWriteCommunityComment,
               let session = UserSessionManager.shared.remoteSession else {
-            throw RemoteDataError.message("Sign in with Apple and All Access are required to like comments.")
+            throw RemoteDataError.message("Sign in with Apple to like comments.")
         }
 
         let viewerLikeID = "like-\(session.userID)-\(commentID)"
@@ -285,7 +285,7 @@ final class DiscussionStore: ObservableObject {
     func deleteComment(commentID: String, in threadID: String) async throws {
         guard UserSessionManager.shared.canWriteCommunityComment,
               let session = UserSessionManager.shared.remoteSession else {
-            throw RemoteDataError.message("Sign in with Apple and All Access are required to delete comments.")
+            throw RemoteDataError.message("Sign in with Apple to delete comments.")
         }
 
         try await client.deleteRows(
@@ -303,7 +303,7 @@ final class DiscussionStore: ObservableObject {
     func report(commentID: String, in threadID: String, reason: String) async throws {
         guard UserSessionManager.shared.canWriteCommunityComment,
               let session = UserSessionManager.shared.remoteSession else {
-            throw RemoteDataError.message("Sign in with Apple and All Access are required to report comments.")
+            throw RemoteDataError.message("Sign in with Apple to report comments.")
         }
 
         let report = RemoteCommentReportRecord(

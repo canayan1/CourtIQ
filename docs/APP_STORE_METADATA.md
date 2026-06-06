@@ -34,7 +34,7 @@ Daily court-tap drills, pro shot patterns, match journal, and mobility — built
 
 ## Keywords (100 chars max — comma separated, no spaces after commas)
 ```
-tennis,drill,quiz,training,mobility,coach,match,journal,strategy,decision,pro,iq,tactics,reading
+tennis,drill,quiz,training,mobility,ai coach,match,journal,strategy,decision,iq,tactics,reading
 ```
 
 Reasoning: leads with high-intent terms (`tennis`, `drill`, `quiz`), then differentiation (`match journal`, `strategy`, `decision`, `tactics`, `reading`). Drops generic fitness terms — we're not competing in that pool.
@@ -68,20 +68,22 @@ Plus what we already knew tennis players wanted:
 — A mobility library for warm-ups, resets, and recovery
 — Your tennis avatar, customizable across outfits, rackets, courts, and accents — gear unlocks as you log streaks, complete drills, and hit triple rings
 
-Free forever:
+AI COACH (optional upgrade)
+A tennis chat coach that actually knows your game. It remembers your recent matches and ratings, and suggests the drills, mobility flows, and training plans you already have inside CourtIQ — by name. Powered by Anthropic Claude. Your one optional upgrade; everything else is free.
+
+Free — the whole app:
 — Daily Court Drill
 — Pro Shot of the Day
 — Match Journal & Quick Log
 — Three Rings
-— Foundation training plan
-— Mobility previews
-— Your customizable avatar (starter gear)
+— All 8-week training programs
+— The full mobility library
+— Quiz history and trend insights
+— Community participation
+— Your customizable avatar
 
-All Access (premium subscription):
-— Premium 8-week training tracks: footwork, stronger shots, flexibility, match conditioning
-— Full mobility library
-— Archived quiz history and trend insights
-— Premium community participation
+The only paid feature:
+— AI Coach — a personal tennis chat coach (monthly or yearly subscription)
 
 Built in Ireland by a club tennis player who got tired of generic fitness apps. Available in English and Turkish.
 
@@ -122,20 +124,22 @@ Bilinen tenis ihtiyaçlarına ek:
 — Isınma, sıfırlama ve toparlanma için mobilite kitaplığı
 — Tenis avatarın — forma, raket, kort, aksesuar seçenekleriyle özelleştirilebilir; streak'ler, drill'ler ve üçlü halkalar yeni gear açar
 
-Sonsuza kadar ücretsiz:
+AI KOÇ (isteğe bağlı yükseltme)
+Oyununu gerçekten bilen bir tenis sohbet koçu. Son maçlarını ve puanlarını hatırlar; CourtIQ içinde zaten sahip olduğun drill'leri, mobilite akışlarını ve antrenman planlarını adıyla önerir. Anthropic Claude ile çalışır. Tek isteğe bağlı yükseltmen; gerisi ücretsiz.
+
+Ücretsiz — uygulamanın tamamı:
 — Günlük Kort Drill
 — Günün Pro Vuruşu
 — Maç Günlüğü & Quick Log
 — Üç Halka
-— Temel antrenman planı
-— Mobilite önizlemeleri
-— Özelleştirilebilir avatarın (başlangıç gear'ı)
-
-All Access (premium abonelik):
-— Premium 8 haftalık antrenman track'leri: footwork, daha sert vuruşlar, esneklik, maç kondisyonu
+— Tüm 8 haftalık antrenman programları
 — Tam mobilite kitaplığı
-— Geçmiş quiz arşivi ve trend içgörüleri
-— Premium topluluk katılımı
+— Quiz geçmişi ve trend içgörüleri
+— Topluluk katılımı
+— Özelleştirilebilir avatarın
+
+Tek ücretli özellik:
+— AI Koç — kişisel tenis sohbet koçu (aylık veya yıllık abonelik)
 
 İrlanda'da, kulüp seviyesinde tenis oynayan biri tarafından — jenerik fitness app'lerinden bıkıp yapılan bir uygulama. İngilizce ve Türkçe.
 
@@ -162,7 +166,10 @@ Welcome to CourtIQ.
 — Your customizable tennis avatar with unlockable gear
 — 8-week training programs (PHEC)
 — Mobility library
+— AI Coach (optional upgrade): a tennis chat coach that knows your matches and suggests your own drills and plans by name
 — Bilingual: English + Turkish
+
+Everything is free except the optional AI Coach subscription.
 ```
 
 ---
