@@ -92,8 +92,13 @@ Every response includes AT LEAST ONE of the following:
 
 3. **Reframe offer** — only when a clear pattern repeats across at least
    3 recent matches:
-   - Offer to rebuild their training program around the pattern
-   - End with: 'Reply "evet reframe" istersen.' (or "yes reframe")
+   - Offer, in plain language, to sketch an adjusted training focus around
+     the pattern, and ask if they'd like that. Do NOT instruct them to
+     type a special command or magic phrase — just ask a normal question
+     (e.g. "Want me to suggest how to adjust your training around this?").
+   - If they say yes, describe the adjusted focus in chat using the real
+     in-app programs/drills by name. There is no separate "rebuild" action
+     beyond your chat reply.
 
 ### Scope restriction — tennis only
 You are a tennis coach. You ONLY discuss tennis: technique, tactics,
@@ -609,6 +614,10 @@ interface ChatRequest {
         profile?: {
             level?: string;
             focus?: string;
+            // The iOS client encodes with `.convertToSnakeCase`, so these
+            // arrive snake_cased; camelCase kept as a defensive fallback.
+            top_mistake_patterns?: string[];
+            current_focus?: string;
             topMistakePatterns?: string[];
             currentFocus?: string;
         };
@@ -624,10 +633,23 @@ interface ChatRequest {
             post_match_notes?: string;
         }>;
         quiz?: {
-            lastSessions?: Array<{ date: string; score: number; total: number; focusLabel?: string }>;
+            // snake_case from the iOS client; camelCase fallback.
+            last_sessions?: Array<{ date: string; score: number; total: number; focus_label?: string; focusLabel?: string }>;
+            top_mistakes?: string[];
+            lastSessions?: Array<{ date: string; score: number; total: number; focus_label?: string; focusLabel?: string }>;
             topMistakes?: string[];
         };
         tactical_profile?: {
+            open_court?: number;
+            defense?: number;
+            approach?: number;
+            patterns?: number;
+            net_game?: number;
+            "return"?: number;
+            total_drills_completed: number;
+        };
+        // camelCase fallback for the tactical profile (defensive).
+        tacticalProfile?: {
             open_court?: number;
             defense?: number;
             approach?: number;
@@ -737,10 +759,15 @@ function buildCachedPrefix(
     const matches = context?.matches ?? [];
     const quiz = context?.quiz ?? {};
 
+    // The iOS client encodes with `.convertToSnakeCase`, so fields
+    // without an explicit CodingKey arrive snake_cased. Read both shapes
+    // (snake_case from the app, camelCase as a defensive fallback) so the
+    // profile/quiz/tactical context is never silently dropped.
     const profileLine = [
         p.level && `Level: ${p.level}`,
-        p.currentFocus && `Current focus: ${p.currentFocus}`,
-        p.topMistakePatterns?.length && `Top mistakes: ${p.topMistakePatterns.join(", ")}`,
+        (p.current_focus ?? p.currentFocus) && `Current focus: ${p.current_focus ?? p.currentFocus}`,
+        (p.top_mistake_patterns ?? p.topMistakePatterns)?.length &&
+            `Top mistakes: ${(p.top_mistake_patterns ?? p.topMistakePatterns).join(", ")}`,
     ].filter(Boolean).join(" · ") || "no profile data";
 
     // Per-note budget so a single long voice-note transcript can't blow
@@ -775,19 +802,24 @@ function buildCachedPrefix(
         ? memory.slice(0, 6000)
         : "no long-term match memory yet";
 
-    const quizBlock = (quiz.lastSessions?.length || quiz.topMistakes?.length)
+    const quizSessions = quiz.last_sessions ?? quiz.lastSessions;
+    const quizTopMistakes = quiz.top_mistakes ?? quiz.topMistakes;
+    const quizBlock = (quizSessions?.length || quizTopMistakes?.length)
         ? [
-            quiz.lastSessions?.length
-                ? `Recent quizzes: ${quiz.lastSessions.map(s => `${s.date} ${s.score}/${s.total}${s.focusLabel ? " (" + s.focusLabel + ")" : ""}`).join(", ")}`
+            quizSessions?.length
+                ? `Recent quizzes: ${quizSessions.map(s => {
+                    const label = s.focus_label ?? s.focusLabel;
+                    return `${s.date} ${s.score}/${s.total}${label ? " (" + label + ")" : ""}`;
+                  }).join(", ")}`
                 : null,
-            quiz.topMistakes?.length ? `Top mistake patterns: ${quiz.topMistakes.join(", ")}` : null,
+            quizTopMistakes?.length ? `Top mistake patterns: ${quizTopMistakes.join(", ")}` : null,
         ].filter(Boolean).join("\n")
         : "no quiz history";
 
     // Tactical profile — categories with ≥3 taps each, formatted as
     // "category 0–5 score". Only emitted when the user has drill
     // history, otherwise the AI doesn't try to anchor on missing data.
-    const tp = context?.tacticalProfile;
+    const tp = context?.tactical_profile ?? context?.tacticalProfile;
     let tacticalBlock = "no drill profile yet";
     if (tp && tp.total_drills_completed > 0) {
         const labels: Record<string, string> = {

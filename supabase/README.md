@@ -40,7 +40,7 @@ supabase db push
 
 # Set Edge Function secrets — function reads these at runtime
 supabase secrets set ANTHROPIC_API_KEY=sk-ant-...
-supabase secrets set ANTHROPIC_MODEL=claude-haiku-3-5-20241022
+supabase secrets set ANTHROPIC_MODEL=claude-haiku-4-5
 supabase secrets set MAX_DAILY_MESSAGES_PREMIUM=50
 # SUPABASE_URL, SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY are
 # auto-injected by Supabase — don't set them manually.

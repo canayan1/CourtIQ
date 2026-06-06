@@ -43,7 +43,7 @@ supabase db push
 
 # Secrets — function reads these at runtime
 supabase secrets set ANTHROPIC_API_KEY=sk-ant-...
-supabase secrets set ANTHROPIC_MODEL=claude-haiku-3-5-20241022
+supabase secrets set ANTHROPIC_MODEL=claude-haiku-4-5
 supabase secrets set MAX_DAILY_MESSAGES_PREMIUM=50
 
 # Deploy the function

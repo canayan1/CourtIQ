@@ -59,7 +59,7 @@ create table if not exists public.ai_messages (
     output_tokens           integer     not null default 0,
     cache_read_tokens       integer     not null default 0,
     cache_creation_tokens   integer     not null default 0,
-    model                   text        not null default 'claude-haiku-3-5',
+    model                   text        not null default 'claude-haiku-4-5',
     created_at              timestamptz not null default now()
 );
 
