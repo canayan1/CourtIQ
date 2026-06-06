@@ -4,3 +4,18 @@
 # both work without spawning a nested `supabase/supabase/` folder.
 
 project_id = "ybnodzzrkwennzpwyjmr"
+
+# Sign in with Apple (native iOS flow).
+# The app sends the Apple identity token to /auth/v1/token?grant_type=id_token,
+# so GoTrue only needs the provider enabled and the app's bundle ID listed as an
+# authorized client. No OAuth client secret is required for the native id_token
+# flow (that is only needed for the web redirect flow).
+[auth]
+enabled = true
+
+[auth.external.apple]
+enabled = true
+# Apple's identity tokens are issued for the app's bundle ID; list it here so
+# GoTrue accepts native id_token sign-ins from the iOS app.
+client_id = "com.canayan93.courtiq"
+secret = ""

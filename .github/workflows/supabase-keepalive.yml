@@ -1,0 +1,57 @@
+name: Supabase keep-alive
+
+# Free-tier Supabase projects are paused after ~1 week with no requests.
+# A paused project takes down BOTH the Apple sign-in endpoint
+# (/auth/v1/token) and the ai-chat Edge Function, which is exactly what
+# caused the App Review "Sign in with Apple error" rejection. This job
+# pings the project on a schedule so it never goes idle long enough to be
+# paused. It hits two public, unauthenticated endpoints (no secrets
+# required): the GoTrue settings endpoint and the Edge Function health
+# probe. A 200/401/4xx all count as "the box is awake".
+#
+# NOTE: This is a stopgap. The durable fix is upgrading the project to
+# the Supabase Pro plan, which is never auto-paused. Keep this workflow
+# even after upgrading — it is cheap insurance and a liveness canary.
+
+on:
+  schedule:
+    # Every day at 06:17 and 18:17 UTC (twice daily, odd minute to avoid
+    # the top-of-hour cron stampede on GitHub's shared runners).
+    - cron: "17 6 * * *"
+    - cron: "17 18 * * *"
+  workflow_dispatch: {}
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Supabase Auth + Edge Function
+        env:
+          SUPABASE_URL: https://ybnodzzrkwennzpwyjmr.supabase.co
+          # Publishable (anon) key is safe to embed — it is shipped in the
+          # iOS app binary and is designed to be public. RLS protects data.
+          SUPABASE_ANON_KEY: sb_publishable_3dFE1hOt3x48yKUCzpxugw_zYHg3dtn
+        run: |
+          set -uo pipefail
+          echo "Pinging GoTrue settings…"
+          auth_code=$(curl -sS -o /dev/null -w "%{http_code}" \
+            "$SUPABASE_URL/auth/v1/settings" \
+            -H "apikey: $SUPABASE_ANON_KEY")
+          echo "auth/v1/settings -> $auth_code"
+
+          echo "Pinging ai-chat Edge Function…"
+          fn_code=$(curl -sS -o /dev/null -w "%{http_code}" \
+            -X POST "$SUPABASE_URL/functions/v1/ai-chat" \
+            -H "apikey: $SUPABASE_ANON_KEY" \
+            -H "Content-Type: application/json" \
+            -d '{}')
+          echo "functions/v1/ai-chat -> $fn_code"
+
+          # Any HTTP response (even 401/400) means the project is awake.
+          # Only a connection failure (curl exit non-zero -> empty code,
+          # or 000) means the box is down.
+          if [ "$auth_code" = "000" ] || [ -z "$auth_code" ]; then
+            echo "::error::Supabase auth endpoint unreachable — project may be paused."
+            exit 1
+          fi
+          echo "Project is awake. ✅"

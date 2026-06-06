@@ -9,3 +9,9 @@ build/
 
 # Supabase CLI temp state (project link credentials, schema diff cache)
 supabase/.temp/
+
+# Local agent/session state
+.claude/
+
+# Build artifacts / archives
+*.zip
