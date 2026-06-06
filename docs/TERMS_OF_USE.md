@@ -4,7 +4,7 @@
 
 By downloading, installing, or using CourtIQ ("the app"), you agree to these Terms of Use ("Terms"). If you do not agree, do not use the app. CourtIQ is published by **Can Ayan**, established in the Republic of Ireland ("we", "us", "our").
 
-Questions: **support@courtiq.app**
+Questions: **info@kalibrefin.com**
 
 > **READ SECTIONS 5–10 CAREFULLY.** They contain important health and safety acknowledgments, an assumption-of-risk clause, a limitation of our liability, an indemnification by you, and our approach to dispute resolution. These affect your legal rights.
 >
@@ -193,7 +193,7 @@ Some jurisdictions do not allow the limitation or exclusion of liability for inc
 
 ### 10.1 Informal resolution first
 
-Before filing any claim, you agree to try to resolve it informally by emailing **support@courtiq.app** with a clear description of the dispute. We will try to respond within 30 days. Many disputes are resolved this way without escalating.
+Before filing any claim, you agree to try to resolve it informally by emailing **info@kalibrefin.com** with a clear description of the dispute. We will try to respond within 30 days. Many disputes are resolved this way without escalating.
 
 ### 10.2 Online dispute resolution (EU consumers)
 
@@ -265,7 +265,7 @@ We are not liable for any failure or delay in performance caused by events outsi
 
 ## 14. Contact
 
-**support@courtiq.app**
+**info@kalibrefin.com**
 
 Can Ayan
 Dublin 4, Ireland

@@ -7,4 +7,4 @@ A tennis IQ and training app for club and intermediate players.
 - **[Health & Safety Disclaimer](./HEALTH_DISCLAIMER)**
 - **[Support](./SUPPORT)**
 
-For questions: support@courtiq.app
+For questions: info@kalibrefin.com

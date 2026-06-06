@@ -20,8 +20,8 @@ Estimate: ~3 weeks of part-time work, top-to-bottom.
 - [ ] **CrashReporter.start()** wired in `CourtIQApp.init` (already done)
 - [ ] **Privacy Policy** and **Terms of Use** published to a public URL (use `docs/PRIVACY_POLICY.md` and `docs/TERMS_OF_USE.md` as starting drafts)
   - Easy hosting options: GitHub Pages, Notion (toggle "Share to web"), Vercel, Carrd
-  - Update placeholder fields: `[Your Legal Entity Name]`, `[Your Address]`, `[Your Jurisdiction]`, `feedback@courtiq.app`, `privacy@courtiq.app`, `support@courtiq.app`
-- [ ] Email addresses (`feedback@`, `privacy@`, `support@courtiq.app`) actually receive mail (or alias them to your personal inbox)
+  - Update placeholder fields: `[Your Legal Entity Name]`, `[Your Address]`, `[Your Jurisdiction]`, `info@kalibrefin.com`, `info@kalibrefin.com`, `info@kalibrefin.com`
+- [ ] Email addresses (`feedback@`, `privacy@`, `info@kalibrefin.com`) actually receive mail (or alias them to your personal inbox)
 
 ---
 
@@ -32,7 +32,7 @@ Estimate: ~3 weeks of part-time work, top-to-bottom.
 - [ ] Wait 5–15 minutes for build to appear in App Store Connect → TestFlight tab
 - [ ] Fill in **Test Information**:
   - Beta App Description (short, what testers should focus on)
-  - Beta App Feedback Email: `feedback@courtiq.app`
+  - Beta App Feedback Email: `info@kalibrefin.com`
   - Marketing URL: your landing page (or `https://courtiq.app`)
   - Privacy Policy URL: the one you published
 - [ ] Add Internal Testers (max 100): yourself + 3–5 closest friends/colleagues

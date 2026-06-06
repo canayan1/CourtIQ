@@ -17,13 +17,13 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>10</string>
+	<string>11</string>
 	<key>COURTIQ_AI_CHAT_FUNCTION</key>
 	<string>ai-chat</string>
 	<key>COURTIQ_DELETE_ACCOUNT_FUNCTION</key>
 	<string>delete-account</string>
 	<key>COURTIQ_FEEDBACK_EMAIL</key>
-	<string>canayan93@gmail.com</string>
+	<string>info@kalibrefin.com</string>
 	<key>COURTIQ_MONTHLY_PRODUCT_ID</key>
 	<string>com.courtiq.premium.monthly</string>
 	<key>COURTIQ_PREMIUM_ENTITLEMENT_ID</key>

@@ -48,7 +48,7 @@ This list is not exhaustive. We may act against any content or behaviour that ma
 If you see content that violates this policy:
 
 1. In-app: tap **⋯** on the comment, choose **Report**, and pick a reason. Your report is sent to the developer along with the content snapshot and your anonymous user ID.
-2. By email: send the offending content + a short description to **moderation@courtiq.app** (or, until the alias is configured, **canayan93@gmail.com** with subject "CourtIQ Moderation").
+2. By email: send the offending content + a short description to **info@kalibrefin.com**.
 
 Reporters are not exposed to the reported user. The reported user is not told who reported them.
 
@@ -72,7 +72,7 @@ Actions we may take, in escalating severity:
 
 If your content was removed or your account was restricted and you believe the decision was wrong:
 
-1. Email **moderation@courtiq.app** with the subject "Appeal" and explain what you believe is incorrect.
+1. Email **info@kalibrefin.com** with the subject "Appeal" and explain what you believe is incorrect.
 2. We will respond within 7 days, either reversing the decision or explaining why we maintain it.
 3. If you still disagree, you may contact the Irish Data Protection Commission (for privacy-related concerns) or seek independent legal advice. Our decision is otherwise final for the purposes of CourtIQ's internal moderation.
 
@@ -82,7 +82,7 @@ If your content was removed or your account was restricted and you believe the d
 
 If you believe content posted in CourtIQ infringes your copyright:
 
-1. Send a notice to **legal@courtiq.app** (or **canayan93@gmail.com** subject "CourtIQ Copyright") including:
+1. Send a notice to **info@kalibrefin.com** including:
    - Identification of the copyrighted work you claim is being infringed.
    - Identification of the specific content (thread/comment ID, screenshot, or URL) you want removed.
    - Your contact information (name, email, postal address).
@@ -113,9 +113,9 @@ We may update this policy as the community grows, as the law changes, or as we e
 
 ## 10. Contact
 
-- **Moderation:** moderation@courtiq.app (or canayan93@gmail.com)
-- **Copyright / Legal:** legal@courtiq.app (or canayan93@gmail.com)
-- **Privacy:** privacy@courtiq.app (or canayan93@gmail.com)
-- **General support:** support@courtiq.app (or see the in-app **Profile → Help** screen)
+- **Moderation:** info@kalibrefin.com
+- **Copyright / Legal:** info@kalibrefin.com
+- **Privacy:** info@kalibrefin.com
+- **General support:** info@kalibrefin.com (or see the in-app **Profile → Help** screen)
 
 CourtIQ is operated by Can Ayan, a sole-trader registered in Ireland. Address available on request via the contacts above.

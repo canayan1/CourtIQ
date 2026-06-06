@@ -4,7 +4,7 @@ Need help with CourtIQ? You're in the right place.
 
 ## Contact
 
-**Email:** support@courtiq.app
+**Email:** info@kalibrefin.com
 
 We aim to respond within 24 hours.
 

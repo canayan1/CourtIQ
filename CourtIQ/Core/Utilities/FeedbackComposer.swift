@@ -9,13 +9,13 @@ import UIKit
 enum FeedbackComposer {
     /// Recipient address. Reads from `Info.plist` key
     /// `COURTIQ_FEEDBACK_EMAIL` so it can be overridden without a rebuild.
-    /// We ship the developer's personal Gmail as the recipient — no
-    /// `courtiq.app` domain or email forwarding exists, so a fallback
-    /// has to be a real inbox the developer monitors.
+    /// The recipient is a real, monitored inbox. The fallback below must
+    /// stay in sync with `COURTIQ_FEEDBACK_EMAIL` in Info.plist so feedback
+    /// still reaches a live mailbox even if the plist key is ever dropped.
     static var recipient: String {
         let override = Bundle.main.object(forInfoDictionaryKey: "COURTIQ_FEEDBACK_EMAIL") as? String
         let cleaned = override?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-        return cleaned.isEmpty ? "canayan93@gmail.com" : cleaned
+        return cleaned.isEmpty ? "info@kalibrefin.com" : cleaned
     }
 
     /// One entry point for all feedback flows.

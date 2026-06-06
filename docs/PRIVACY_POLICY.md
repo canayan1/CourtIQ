@@ -6,7 +6,7 @@ CourtIQ ("we", "us") is a tennis IQ and training app published by **Can Ayan**, 
 
 We do **not** sell personal data, and we use only the data needed to run the app.
 
-If you have questions, contact us at **privacy@courtiq.app**.
+If you have questions, contact us at **info@kalibrefin.com**.
 
 ---
 
@@ -61,7 +61,7 @@ We retain account data while your account is active. When you delete your accoun
 
 You can:
 - **See your data** — most of it is shown in the app (Profile, Progress, History tabs).
-- **Export your data** (right to access / data portability) — email **privacy@courtiq.app** and we'll send a copy within 30 days.
+- **Export your data** (right to access / data portability) — email **info@kalibrefin.com** and we'll send a copy within 30 days.
 - **Correct inaccurate data** (right to rectification) — email us.
 - **Delete your data** (right to erasure / "right to be forgotten") — Profile → Delete account, or email us.
 - **Restrict or object to processing** — email us with the specifics.
@@ -90,7 +90,7 @@ We rely on the following legal bases:
 
 ## 5. Children
 
-CourtIQ requires users to be **at least 16 years old** — the strictest GDPR consent threshold. We do not knowingly collect data from anyone under 16. If you believe a child has signed up, contact **privacy@courtiq.app** and we will delete the account.
+CourtIQ requires users to be **at least 16 years old** — the strictest GDPR consent threshold. We do not knowingly collect data from anyone under 16. If you believe a child has signed up, contact **info@kalibrefin.com** and we will delete the account.
 
 ---
 
@@ -121,13 +121,13 @@ We may update this policy as the app evolves. Material changes will be announced
 
 ## 9. International data transfers
 
-Some of our service providers (e.g. Apple, Firebase / Supabase if used) may process your personal data outside the European Economic Area. Where this happens, we rely on the safeguards published by those providers — typically the European Commission's Standard Contractual Clauses or an applicable adequacy decision. You may request details of these safeguards by emailing privacy@courtiq.app.
+Some of our service providers (e.g. Apple, Firebase / Supabase if used) may process your personal data outside the European Economic Area. Where this happens, we rely on the safeguards published by those providers — typically the European Commission's Standard Contractual Clauses or an applicable adequacy decision. You may request details of these safeguards by emailing info@kalibrefin.com.
 
 ---
 
 ## 10. Contact
 
-**privacy@courtiq.app**
+**info@kalibrefin.com**
 
 Can Ayan
 Dublin 4, Ireland

@@ -50,7 +50,7 @@ I'll do find-and-replace across `docs/PRIVACY_POLICY.md`, `docs/TERMS_OF_USE.md`
 
 ## 3. Domain + email aliases  · ~10 min if `courtiq.app` not yet bought
 
-> App Store review will click `feedback@courtiq.app` to verify it works. Without a live mailbox, review may fail.
+> App Store review will click `info@kalibrefin.com` to verify it works. Without a live mailbox, review may fail.
 
 **If you don't own `courtiq.app`:**
 - Buy from **Cloudflare Registrar** (~$12/year, easiest DNS) or **Namecheap**
@@ -60,11 +60,11 @@ I'll do find-and-replace across `docs/PRIVACY_POLICY.md`, `docs/TERMS_OF_USE.md`
 1. Cloudflare dashboard → your domain → **Email** → **Email Routing**
 2. Click **Enable Email Routing** (auto-adds MX + TXT records)
 3. Create three custom aliases all pointing to your personal Gmail:
-   - `feedback@courtiq.app` → `your.personal@gmail.com`
-   - `support@courtiq.app` → `your.personal@gmail.com`
-   - `privacy@courtiq.app` → `your.personal@gmail.com`
+   - `info@kalibrefin.com` → `your.personal@gmail.com`
+   - `info@kalibrefin.com` → `your.personal@gmail.com`
+   - `info@kalibrefin.com` → `your.personal@gmail.com`
 4. Verify your Gmail address (one-click via the verification email Cloudflare sends)
-5. Send a test email to `feedback@courtiq.app` → should hit your inbox in seconds
+5. Send a test email to `info@kalibrefin.com` → should hit your inbox in seconds
 
 **Send me when done:**
 ```

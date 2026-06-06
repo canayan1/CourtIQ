@@ -109,9 +109,9 @@ Once you send me the values, I'll do a 30-second find-and-replace + push to GitH
 ### Phase C — Mailbox infrastructure (you, ~5 min via Cloudflare Email Routing)
 
 Three aliases on the `courtiq.app` domain pointing to your personal inbox:
-- `feedback@courtiq.app`
-- `support@courtiq.app`
-- `privacy@courtiq.app`
+- `info@kalibrefin.com`
+- `info@kalibrefin.com`
+- `info@kalibrefin.com`
 
 If you don't own `courtiq.app` yet — buy at Namecheap or Cloudflare ($12/yr). Without these, App Store review will mark the privacy contact as broken.
 
@@ -142,7 +142,7 @@ Once Phase A items 1-5 are done, the upload path is:
 4. Wait 5-15 min → build appears in App Store Connect → TestFlight tab
 5. Fill "Test Information":
    - What to test: copy from `docs/BETA_LAUNCH_CHECKLIST.md` Phase 1
-   - Feedback email: feedback@courtiq.app
+   - Feedback email: info@kalibrefin.com
    - Marketing URL: https://canayan1.github.io/CourtIQ/
    - Privacy Policy URL: https://canayan1.github.io/CourtIQ/PRIVACY_POLICY
 6. Add yourself as Internal Tester → install via TestFlight app on iPhone
