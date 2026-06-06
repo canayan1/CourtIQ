@@ -321,15 +321,6 @@ final class SubscriptionManager: ObservableObject {
         updatesTask?.cancel()
     }
 
-    /// During the public launch window CourtIQ ships with every Premium
-    /// feature unlocked for everyone — no subscription required. The
-    /// paywall stays in the codebase (transformed into a "Support
-    /// CourtIQ" tip jar) so that:
-    ///   • StoreKit + Apple Small Business Program plumbing stays warm
-    ///   • Anyone who taps it can still contribute
-    ///   • Re-introducing paid gating later is a single-flag flip,
-    ///     and users who paid during the launch window retain
-    ///     entitlement via `entitlementState.isPremium`.
     /// Content gate for the non-AI-Coach surfaces (training, mobility,
     /// quiz/practice, community, progression, history). In the shipping
     /// model these are all FREE — the only paid feature is the AI Coach,
