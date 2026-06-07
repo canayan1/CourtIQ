@@ -107,7 +107,7 @@ struct TrainingHubView: View {
                     .font(.title3.bold())
 
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("PHEC Program")
+                    Text("8-Week Training Block")
                         .font(.system(size: 24, weight: .black, design: .rounded))
                         .textCase(.uppercase)
                         .tracking(0.8)

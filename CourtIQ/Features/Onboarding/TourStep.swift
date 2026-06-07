@@ -300,8 +300,8 @@ struct TourStep: View {
                 .offset(x: 24, y: 10)
 
             VStack(alignment: .leading, spacing: 14) {
-                Text("PHEC")
-                    .font(.system(size: 36, weight: .black, design: .rounded))
+                Text("TRAINING")
+                    .font(.system(size: 32, weight: .black, design: .rounded))
                     .tracking(1.2)
                     .foregroundStyle(.white)
                 Text("8 WEEKS")
