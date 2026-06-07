@@ -153,10 +153,15 @@ struct ProfileView: View {
 
     // MARK: - Profile Header
 
-    /// IQ rating derived from quiz activity.
-    /// Formula: 10 pts per completed quiz + 5 pts per current streak day.
+    /// IQ rating derived from the user's actual decision-training activity.
+    /// Post-pivot the daily ritual is the Court Tap Drill, so drills count
+    /// alongside quizzes; the streak (now fed by the daily drill) rewards
+    /// consistency. Without this, a drill-only user would sit at 0 forever.
+    /// Formula: 10 pts per completed quiz + 10 pts per completed drill
+    /// + 5 pts per current streak day.
     private var iqRating: Int {
         dailyQuizManager.totalQuizzesCompleted * 10
+            + drillManager.sessions.count * 10
             + dailyQuizManager.currentStreak * 5
     }
 

@@ -178,6 +178,24 @@ final class DailyQuizManager: ObservableObject {
         }
     }
 
+    /// Mark today's daily ritual as complete from a non-quiz surface (the
+    /// Court Tap Drill is the daily ritual on the Today hub post-pivot).
+    /// This is what drives the home-screen streak, the weekly counter, and
+    /// the "completed today" state — so the daily drill keeps the streak
+    /// alive even though the quiz now lives in the Practice tab.
+    ///
+    /// Idempotent: completing the drill and a quiz on the same day still
+    /// counts that day once. Only the streak/calendar is touched here, not
+    /// `sessionHistory` (drills keep their own history in
+    /// `CourtTapDrillManager`).
+    func markDailyRitualComplete(on date: Date = Date()) {
+        let key = date.todayKey
+        guard !completedDates.contains(key) else { return }
+        completedDates.append(key)
+        completedDates.sort()
+        userDefaults.set(completedDates, forKey: completedKey)
+    }
+
     /// Per-category accuracy from quiz history — the quiz-side mirror of
     /// `CourtTapDrillManager.tacticalProfile`. Returns one entry per
     /// TacticalCategory; empty buckets surface as score=nil so the UI

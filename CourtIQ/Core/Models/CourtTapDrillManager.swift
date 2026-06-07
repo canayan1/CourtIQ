@@ -90,6 +90,10 @@ final class CourtTapDrillManager: ObservableObject {
         sessions.append(session)
         sessions.sort { $0.date > $1.date }
         persist()
+        // The Court Tap Drill is the daily ritual on the Today hub, so
+        // completing it keeps the home-screen streak / weekly counter
+        // alive (post-pivot the daily quiz moved to the Practice tab).
+        DailyQuizManager.shared.markDailyRitualComplete(on: date)
         // Fan out to the unlock system so avatar gear can be granted as
         // the user hits "10 drills completed", "30 drills", etc.
         AvatarManager.shared.checkMilestones(
