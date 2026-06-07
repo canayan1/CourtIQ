@@ -37,6 +37,22 @@ struct DoublesCopy {
     var next: String { t("Next", "İleri") }
     var back: String { t("Back", "Geri") }
     var seeResult: String { t("See result", "Sonucu gör") }
+    // Hand-off + who-banner (single-device flow)
+    func handoffTitle(_ name: String) -> String {
+        t("Pass the phone to \(name)", "Telefonu \(name)'e ver")
+    }
+    func handoffBody(_ name: String) -> String {
+        t("\(name) answers the same 8 questions as themselves. Your answers stay private.",
+          "\(name) aynı 8 soruyu kendisi için yanıtlar. Senin cevapların gizli kalır.")
+    }
+    func handoffCTA(_ name: String) -> String {
+        t("Start \(name)'s answers", "\(name) cevaplarına başla")
+    }
+    var answeringAsYou: String { t("Answering as you", "Sen olarak cevaplıyorsun") }
+    func answeringAsPartner(_ name: String) -> String {
+        t("Answering as \(name)", "\(name) olarak cevaplıyorsun")
+    }
+
     var serveStrengthLabel: String { t("Serve strength", "Servis gücü") }
     var returnStrengthLabel: String { t("Return strength", "Return gücü") }
     var scaleWeak: String { t("Weak", "Zayıf") }

@@ -1,26 +1,59 @@
 import SwiftUI
 
-/// Single-device doubles questionnaire: name the partner, fill your 8
-/// answers, hand the phone over for the partner's 8 answers, then see the
-/// result. (On-court QR pairing + remote invite come in later steps.)
+/// Single-device doubles questionnaire. Both players answer on the one
+/// phone, so the flow makes the hand-off unmistakable:
+///   name → YOU (1/2) → "pass the phone" → PARTNER (2/2) → result.
+/// Nothing is pre-selected, and Next/See-result stay disabled until every
+/// question is answered, so a result can never be computed against blank
+/// (defaulted) partner answers.
 struct DoublesQuestionnaireView: View {
     @EnvironmentObject private var lang: LanguageManager
-    @Environment(\.dismiss) private var dismiss
 
-    @State private var step = 0            // 0 = name, 1 = you, 2 = partner
+    /// Per-player answers, all optional until tapped.
+    private struct Draft {
+        var side: DoublesSide?
+        var net: NetComfort?
+        var comms: CommStyle?
+        var pressure: PressureStyle?
+        var formation: FormationComfort?
+        var hand: Handedness?
+        var serve: Int?
+        var ret: Int?
+        var isComplete: Bool {
+            side != nil && net != nil && comms != nil && pressure != nil &&
+            formation != nil && hand != nil && serve != nil && ret != nil
+        }
+        func build() -> DoublesProfile? {
+            guard let side, let net, let comms, let pressure,
+                  let formation, let hand, let serve, let ret else { return nil }
+            return DoublesProfile(preferredSide: side, netComfort: net, poach: .selective,
+                                  comms: comms, pressure: pressure, formation: formation,
+                                  handedness: hand, serveStrength: serve, returnStrength: ret)
+        }
+    }
+
+    private enum Step { case name, you, handoff, partner }
+
+    @State private var step: Step = .name
     @State private var partnerName = ""
-    @State private var me = DoublesProfile.unset
-    @State private var partner = DoublesProfile.unset
+    @State private var me = Draft()
+    @State private var partner = Draft()
     @State private var pushResult: DoublesPartnership?
 
     private var copy: DoublesCopy { DoublesCopy(lang: lang.language) }
-    private var active: Binding<DoublesProfile> { step == 1 ? $me : $partner }
     private var trimmedName: String { partnerName.trimmingCharacters(in: .whitespaces) }
+    private var editingMe: Bool { step == .you }
+    private var activeDraft: Draft { editingMe ? me : partner }
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 18) {
-                if step == 0 { nameStep } else { answersStep }
+                switch step {
+                case .name:    nameStep
+                case .you:     answersStep(forMe: true)
+                case .handoff: handoffStep
+                case .partner: answersStep(forMe: false)
+                }
             }
             .padding()
         }
@@ -34,13 +67,13 @@ struct DoublesQuestionnaireView: View {
 
     private var headerTitle: String {
         switch step {
-        case 1: return copy.youHeader
-        case 2: return copy.partnerHeader(trimmedName.isEmpty ? copy.sectionTitle : trimmedName)
-        default: return copy.newTestCTA
+        case .you:     return "1/2 · \(copy.youShort)"
+        case .partner: return "2/2 · \(trimmedName.isEmpty ? copy.sectionTitle : trimmedName)"
+        default:       return copy.newTestCTA
         }
     }
 
-    // MARK: Name step
+    // MARK: Name
     private var nameStep: some View {
         VStack(alignment: .leading, spacing: 14) {
             Text(copy.partnerNamePrompt).font(.title3.bold()).foregroundStyle(AppPalette.ink)
@@ -50,49 +83,82 @@ struct DoublesQuestionnaireView: View {
                 .background(AppPalette.parchment)
                 .overlay(RoundedRectangle(cornerRadius: 12).stroke(AppPalette.sand, lineWidth: 1))
                 .clipShape(RoundedRectangle(cornerRadius: 12))
-            primaryButton(copy.next, enabled: !trimmedName.isEmpty) { step = 1 }
+            primaryButton(copy.next, enabled: !trimmedName.isEmpty) { step = .you }
         }
     }
 
-    // MARK: Answers step (you / partner)
-    private var answersStep: some View {
+    // MARK: Hand-off interstitial
+    private var handoffStep: some View {
+        VStack(spacing: 18) {
+            Image(systemName: "arrow.left.arrow.right.circle.fill")
+                .font(.system(size: 56))
+                .foregroundStyle(AppPalette.clay)
+                .padding(.top, 24)
+            Text(copy.handoffTitle(trimmedName))
+                .font(.title3.bold()).multilineTextAlignment(.center).foregroundStyle(AppPalette.ink)
+            Text(copy.handoffBody(trimmedName))
+                .font(.subheadline).multilineTextAlignment(.center).foregroundStyle(AppPalette.inkSoft)
+                .fixedSize(horizontal: false, vertical: true)
+            primaryButton(copy.handoffCTA(trimmedName), enabled: true) { step = .partner }
+            secondaryButton(copy.back) { step = .you }
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.horizontal, 8)
+    }
+
+    // MARK: Answers (you / partner)
+    @ViewBuilder
+    private func answersStep(forMe: Bool) -> some View {
+        let d = Binding<Draft>(
+            get: { forMe ? me : partner },
+            set: { if forMe { me = $0 } else { partner = $0 } }
+        )
         VStack(alignment: .leading, spacing: 18) {
-            choice(copy.prompt(.courtSide), selection: active.preferredSide,
-                   options: DoublesSide.allCases) { copy.sideOption($0) }
-            choice(copy.prompt(.netBaseline), selection: active.netComfort,
-                   options: NetComfort.allCases) { copy.netOption($0) }
-            choice(copy.prompt(.comms), selection: active.comms,
-                   options: CommStyle.allCases) { copy.commsOption($0) }
-            choice(copy.prompt(.pressure), selection: active.pressure,
-                   options: PressureStyle.allCases) { copy.pressureOption($0) }
-            choice(copy.prompt(.formation), selection: active.formation,
-                   options: FormationComfort.allCases) { copy.formationOption($0) }
-            choice(copy.prompt(.handedness), selection: active.handedness,
-                   options: Handedness.allCases) { copy.handOption($0) }
-            strengthRow(copy.serveStrengthLabel, active.serveStrength)
-            strengthRow(copy.returnStrengthLabel, active.returnStrength)
+            whoBanner(forMe: forMe)
+            choice(copy.prompt(.courtSide), selection: d.side, options: DoublesSide.allCases) { copy.sideOption($0) }
+            choice(copy.prompt(.netBaseline), selection: d.net, options: NetComfort.allCases) { copy.netOption($0) }
+            choice(copy.prompt(.comms), selection: d.comms, options: CommStyle.allCases) { copy.commsOption($0) }
+            choice(copy.prompt(.pressure), selection: d.pressure, options: PressureStyle.allCases) { copy.pressureOption($0) }
+            choice(copy.prompt(.formation), selection: d.formation, options: FormationComfort.allCases) { copy.formationOption($0) }
+            choice(copy.prompt(.handedness), selection: d.hand, options: Handedness.allCases) { copy.handOption($0) }
+            strengthRow(copy.serveStrengthLabel, d.serve)
+            strengthRow(copy.returnStrengthLabel, d.ret)
 
             HStack(spacing: 12) {
-                secondaryButton(copy.back) { step -= 1 }
-                if step == 1 {
-                    primaryButton(copy.next, enabled: true) { step = 2 }
+                secondaryButton(copy.back) { step = forMe ? .name : .handoff }
+                if forMe {
+                    primaryButton(copy.next, enabled: me.isComplete) { step = .handoff }
                 } else {
-                    primaryButton(copy.seeResult, enabled: true) { finish() }
+                    primaryButton(copy.seeResult, enabled: partner.isComplete) { finish() }
                 }
             }
             .padding(.top, 4)
         }
     }
 
+    private func whoBanner(forMe: Bool) -> some View {
+        HStack(spacing: 10) {
+            Image(systemName: forMe ? "person.fill" : "person.crop.circle.badge.checkmark")
+                .foregroundStyle(AppPalette.clay)
+            Text(forMe ? copy.answeringAsYou : copy.answeringAsPartner(trimmedName))
+                .font(.subheadline.weight(.semibold)).foregroundStyle(AppPalette.ink)
+            Spacer()
+        }
+        .padding(.horizontal, 12).padding(.vertical, 10)
+        .background(AppPalette.clay.opacity(0.10))
+        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+    }
+
     private func finish() {
-        let p = DoublesPartnership(partnerName: trimmedName, myProfile: me, partnerProfile: partner)
+        guard let myProfile = me.build(), let partnerProfile = partner.build() else { return }
+        let p = DoublesPartnership(partnerName: trimmedName, myProfile: myProfile, partnerProfile: partnerProfile)
         DoublesStore.shared.save(p)
         pushResult = p
     }
 
-    // MARK: Reusable controls
+    // MARK: Reusable controls (optional selection — nothing pre-selected)
     @ViewBuilder
-    private func choice<T: Hashable>(_ prompt: String, selection: Binding<T>,
+    private func choice<T: Hashable>(_ prompt: String, selection: Binding<T?>,
                                      options: [T], label: @escaping (T) -> String) -> some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(prompt).font(.subheadline.weight(.semibold)).foregroundStyle(AppPalette.ink)
@@ -117,7 +183,7 @@ struct DoublesQuestionnaireView: View {
         }
     }
 
-    private func strengthRow(_ title: String, _ value: Binding<Int>) -> some View {
+    private func strengthRow(_ title: String, _ value: Binding<Int?>) -> some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(title).font(.subheadline.weight(.semibold)).foregroundStyle(AppPalette.ink)
             HStack(spacing: 8) {
@@ -136,10 +202,8 @@ struct DoublesQuestionnaireView: View {
                     .buttonStyle(.plain)
                 }
             }
-            HStack {
-                Text(copy.scaleWeak); Spacer(); Text(copy.scaleStrong)
-            }
-            .font(.caption2).foregroundStyle(AppPalette.inkSoft)
+            HStack { Text(copy.scaleWeak); Spacer(); Text(copy.scaleStrong) }
+                .font(.caption2).foregroundStyle(AppPalette.inkSoft)
         }
     }
 
@@ -147,16 +211,13 @@ struct DoublesQuestionnaireView: View {
         Button(action: action) {
             Text(title).font(.headline).frame(maxWidth: .infinity).padding(.vertical, 14)
         }
-        .buttonStyle(.borderedProminent)
-        .tint(AppPalette.clay)
-        .disabled(!enabled)
+        .buttonStyle(.borderedProminent).tint(AppPalette.clay).disabled(!enabled)
     }
 
     private func secondaryButton(_ title: String, _ action: @escaping () -> Void) -> some View {
         Button(action: action) {
             Text(title).font(.headline).padding(.vertical, 14).padding(.horizontal, 18)
         }
-        .buttonStyle(.bordered)
-        .tint(AppPalette.inkSoft)
+        .buttonStyle(.bordered).tint(AppPalette.inkSoft)
     }
 }
