@@ -72,22 +72,35 @@ final class NotificationManager: ObservableObject {
     // MARK: - Permission
 
     /// Requests OS-level permission then schedules the daily reminder if
-    /// granted. Safe to call multiple times — OS only prompts once.
+    /// granted. Use this from the onboarding pre-ask, where opting in
+    /// specifically means "turn on the daily reminder." Safe to call
+    /// multiple times — OS only prompts once.
     func requestPermissionAndSchedule(hour: Int = 9, minute: Int = 0) async {
+        let granted = await requestPermission()
+        if granted {
+            UserDefaults.standard.set(true, forKey: DefaultsKey.dailyEnabled)
+            scheduleDailyReminder(hour: hour, minute: minute)
+        }
+    }
+
+    /// Requests OS-level permission only, without scheduling anything.
+    /// Per-channel toggles use this so enabling one channel never has the
+    /// side effect of turning on (and scheduling) the daily reminder.
+    /// Returns whether permission is granted. Safe to call repeatedly.
+    @discardableResult
+    func requestPermission() async -> Bool {
         markPreAskShown()
         let center = UNUserNotificationCenter.current()
         do {
             let granted = try await center.requestAuthorization(options: [.alert, .badge, .sound])
             await refreshAuthorizationStatus()
-            if granted {
-                UserDefaults.standard.set(true, forKey: DefaultsKey.dailyEnabled)
-                scheduleDailyReminder(hour: hour, minute: minute)
-            }
+            return granted
         } catch {
             // Permission denied or system error — log only, don't block.
             #if DEBUG
             print("[NotificationManager] requestAuthorization failed: \(error)")
             #endif
+            return false
         }
     }
 

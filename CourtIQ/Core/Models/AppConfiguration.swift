@@ -468,11 +468,15 @@ final class SupabaseRESTClient {
 
         switch httpResponse.statusCode {
         case 200..<300:
-            if Response.self == EmptyResponse.self && data.isEmpty {
-                return EmptyResponse() as! Response
-            }
             if data.isEmpty {
-                return EmptyResponse() as! Response
+                // An empty 2xx body is only valid when the caller expects
+                // no content. If a concrete Decodable was requested but the
+                // server returned nothing, fail loudly instead of
+                // force-casting an EmptyResponse (which would crash).
+                if let empty = EmptyResponse() as? Response {
+                    return empty
+                }
+                throw RemoteDataError.invalidResponse
             }
             do {
                 return try Self.decoder.decode(Response.self, from: data)

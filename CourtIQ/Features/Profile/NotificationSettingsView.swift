@@ -92,12 +92,12 @@ struct NotificationSettingsView: View {
         .onChange(of: isOn.wrappedValue) { _, newValue in
             if newValue {
                 Task {
-                    await notifications.requestPermissionAndSchedule()
-                    await notifications.refreshAuthorizationStatus()
-                    // If permission is granted the manager has already
-                    // scheduled the daily quiz reminder; for our two
-                    // new channels we still need to fire their own
-                    // schedule. Permission denial flips us back off.
+                    // Request permission ONLY — no side-effect scheduling.
+                    // Each toggle then schedules just its own channel via
+                    // `enable()`, so turning on e.g. the match-log nudge
+                    // never silently turns on (and schedules) the daily
+                    // reminder too.
+                    await notifications.requestPermission()
                     if notifications.authorizationStatus == .authorized {
                         enable()
                     } else {

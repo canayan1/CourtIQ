@@ -505,14 +505,15 @@ struct ProfileView: View {
         }
     }
 
-    /// AI Coach entry card. Premium-only gate is now LIVE: AI Coach is the
-    /// single paid feature (everything else stays free per the launch
-    /// tip-jar model). Access is granted when ANY of these hold:
+    /// AI Coach entry card. AI Coach is the single paid feature; every
+    /// other surface in the app is free. Access is granted when ANY of
+    /// these hold:
     ///   • `aiCoachOpenToAll` (kill-switch to reopen to everyone)
     ///   • a real premium entitlement (StoreKit purchase)
-    ///   • a dev-allowlisted account (TestFlight dogfooding — see
-    ///     `devAccessAllowlist`), so the owner can test the gated feature
-    ///     on a real device without faking a purchase.
+    ///   • a dev-allowlisted account (DEBUG builds only — TestFlight
+    ///     dogfooding; see `isDevAllowlistedAccount`), so the owner can
+    ///     test the gated feature on a real device without faking a
+    ///     purchase. This path does not exist in App Store builds.
     private static let aiCoachOpenToAll = false
 
     private var aiCoachSection: some View {
@@ -663,25 +664,24 @@ struct ProfileView: View {
             .clipShape(Capsule())
     }
 
-    /// Developer accounts that get AI Coach access without owning a
-    /// real premium entitlement — covers TestFlight dogfooding without
-    /// having to fake a StoreKit purchase. Apple-private-relay aliases
-    /// of the same address are matched on the local-part prefix so the
-    /// gate keeps working if the user signs in via "Hide My Email".
-    private static let devAccessAllowlist: Set<String> = [
-        "canayan93@gmail.com"
-    ]
-
+    /// Developer-only AI Coach access for TestFlight dogfooding, so the
+    /// owner can test the gated feature on a real device without faking a
+    /// StoreKit purchase.
+    ///
+    /// This is compiled in **DEBUG builds only**. App Store (Release)
+    /// builds always return `false` here — no allowlist, no developer
+    /// email, and therefore no hidden/backdoor entitlement path in the
+    /// shipped binary (and no personal PII embedded in it).
     private static func isDevAllowlistedAccount(_ email: String?) -> Bool {
+        #if DEBUG
         guard let raw = email?.lowercased().trimmingCharacters(in: .whitespacesAndNewlines),
               !raw.isEmpty else { return false }
-        if devAccessAllowlist.contains(raw) { return true }
-        // Private-relay aliases look like `<random>@privaterelay.appleid.com`
-        // and Apple doesn't expose the underlying gmail mapping. Fall back
-        // to a known relay alias list — append below as needed.
-        let knownPrivateRelay: Set<String> = [
-            // e.g. "abc123@privaterelay.appleid.com"
+        let devAccessAllowlist: Set<String> = [
+            "canayan93@gmail.com"
         ]
-        return knownPrivateRelay.contains(raw)
+        return devAccessAllowlist.contains(raw)
+        #else
+        return false
+        #endif
     }
 }
