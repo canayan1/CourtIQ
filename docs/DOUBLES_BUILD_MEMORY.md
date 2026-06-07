@@ -90,9 +90,14 @@ Bands: ≥80 strong, 60–79 workable, <60 needs-plan. Recommendations
 formation by net/baseline mix). Full rules in FEATURE_SPEC_doubles_v1.1.md §3.
 
 ## 5. Implementation sequence (CHECK OFF AS DONE)
-- [ ] **Step 1**: `DoublesProfile`, `DoublesResult`, `DoublesCompatibility`
-      (pure scorer) + standalone swiftc test harness proving the logic.
-      Register the 3 logic files in pbxproj. App build green.
+- [x] **Step 1 DONE**: `DoublesProfile`, `DoublesResult`,
+      `DoublesCompatibility` (pure scorer) in `CourtIQ/Features/Doubles/`.
+      Validated via `./Scripts/check_doubles_scorer.sh` (22/22 pass).
+      Registered in pbxproj via the `xcodeproj` ruby gem (user-installed:
+      `gem install --user-install xcodeproj`; helper script was
+      `/tmp/add_doubles.rb`). App build green (all 3 compile in target).
+      Result is language-neutral (keys + ratings + slots) → UI localizes
+      in Step 2.
 - [ ] **Step 2**: Doubles tab + questionnaire UI + reveal/result + static
       prep sheet. Single-device fallback first (testable w/o two phones).
 - [ ] **Step 3**: On-court QR pairing (generalize CoachSession).
@@ -116,5 +121,12 @@ formation by net/baseline mix). Full rules in FEATURE_SPEC_doubles_v1.1.md §3.
 ## STATUS LOG (update after every step)
 - 2026-06-08 — Branch `feat/doubles-v1.1` created off the 1.0-fix branch.
   Wrote this memory doc + FEATURE_SPEC_doubles_v1.1.md. Confirmed: explicit
-  pbxproj refs, no XCTest target. **Next: Step 1 (models + scorer + swiftc
-  validation).**
+  pbxproj refs, no XCTest target.
+- 2026-06-08 — **Step 1 DONE.** Models + pure scorer in
+  `CourtIQ/Features/Doubles/` (DoublesProfile, DoublesResult,
+  DoublesCompatibility). swiftc harness `Scripts/doubles_scorer_check.swift`
+  + runner `Scripts/check_doubles_scorer.sh` → 22/22 pass. Files registered
+  in pbxproj (xcodeproj gem); app `xcodebuild build` SUCCEEDED. Ideal pair
+  → 99/strong; worst → 36/needsPlan. **Next: Step 2 (Doubles tab +
+  questionnaire UI + reveal + static prep sheet; single-device first; add
+  EN/TR localized strings keyed off DoublesDimension + rating).**
