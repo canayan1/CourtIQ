@@ -258,9 +258,9 @@
     "surface": "grass",
     "youX": 0.5,
     "youY": 0.731,
-    "opponentX": 0.437,
+    "opponentX": 0.72,
     "opponentY": 0.013,
-    "ballOriginX": 0.437,
+    "ballOriginX": 0.72,
     "ballOriginY": 0.269,
     "ballTargetX": 0.5,
     "ballTargetY": 0.603,
@@ -303,8 +303,8 @@
         ]
       ]
     ],
-    "rationale": "Deep down-the-line approach to the corner. Crosscourt is acceptable but opens the line for a pass.",
-    "rationaleTr": "Derin DTL approach köşeye. Crosscourt kabul edilebilir ama line'ı pass için açar.",
+    "rationale": "Opponent is pulled to the ad side, so approach deep into the open deuce corner — behind them, away from their recovery. Hitting back to their side gives them an easy pass.",
+    "rationaleTr": "Rakip ad tarafına çekildi — derin approach'u açık deuce köşesine, onların arkasına ve toparlanma yönünün tersine yap. Kendi taraflarına vurmak kolay pass verir.",
     "category": "approach",
     "incomingSpin": "flat",
     "incomingSpeed": "slow",
