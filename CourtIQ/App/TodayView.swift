@@ -21,6 +21,7 @@ struct TodayView: View {
                 ThreeRingsCard()
                 drillCard
                 ProShotCard()
+                doublesCard
                 tipCard
                 mobilityCard
             }
@@ -35,6 +36,47 @@ struct TodayView: View {
                     .environmentObject(drillManager)
             }
         }
+    }
+
+    // MARK: - Doubles compatibility (entry to the Doubles section)
+
+    private var doublesCard: some View {
+        NavigationLink {
+            DoublesHomeView()
+        } label: {
+            HStack(spacing: 14) {
+                ZStack {
+                    Circle().fill(AppPalette.moss.opacity(0.16)).frame(width: 48, height: 48)
+                    Image(systemName: "person.2.fill")
+                        .font(.system(size: 21, weight: .bold))
+                        .foregroundStyle(AppPalette.mossDeep)
+                }
+                VStack(alignment: .leading, spacing: 4) {
+                    HStack(spacing: 8) {
+                        Text(lang.language == .turkish ? "Çiftler uyumu" : "Doubles compatibility")
+                            .font(.headline).foregroundStyle(AppPalette.ink)
+                        Text(lang.language == .turkish ? "YENİ" : "NEW")
+                            .font(.caption2.weight(.heavy))
+                            .padding(.horizontal, 6).padding(.vertical, 2)
+                            .background(AppPalette.gold.opacity(0.18))
+                            .foregroundStyle(AppPalette.gold)
+                            .clipShape(Capsule())
+                    }
+                    Text(lang.language == .turkish
+                         ? "Partnerinle uyumunu test et, takım planını al."
+                         : "Test your partner chemistry and get your team plan.")
+                        .font(.caption).foregroundStyle(AppPalette.inkSoft)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                Spacer()
+                Image(systemName: "chevron.right").font(.footnote.weight(.semibold)).foregroundStyle(.tertiary)
+            }
+            .padding(16)
+            .background(AppPalette.parchment)
+            .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous).stroke(AppPalette.sand, lineWidth: 1))
+            .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+        }
+        .buttonStyle(.plain)
     }
 
     // MARK: - Daily Court Tap Drill (the new daily ritual)

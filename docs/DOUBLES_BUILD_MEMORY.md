@@ -98,8 +98,15 @@ formation by net/baseline mix). Full rules in FEATURE_SPEC_doubles_v1.1.md §3.
       `/tmp/add_doubles.rb`). App build green (all 3 compile in target).
       Result is language-neutral (keys + ratings + slots) → UI localizes
       in Step 2.
-- [ ] **Step 2**: Doubles tab + questionnaire UI + reveal/result + static
-      prep sheet. Single-device fallback first (testable w/o two phones).
+- [x] **Step 2 DONE**: Doubles UI (single-device flow) — `DoublesCopy`
+      (EN/TR inline), `DoublesPartnership` + `DoublesStore` (UserDefaults
+      persistence), `DoublesHomeView` (list + new test), `DoublesQuestionnaireView`
+      (name → your 8 answers → partner's 8 → result), `DoublesResultView`
+      (score ring, dimension breakdown, team setup, strengths/watch-outs,
+      static prep sheet, AI-plan teaser). Entry = a prominent "Doubles
+      compatibility" card on TodayView (tab bar is full at 5; final tab
+      placement deferred). Models made Hashable for navigationDestination.
+      App build SUCCEEDED. NOTE: QR pairing/invite/AI-plan still later steps.
 - [ ] **Step 3**: On-court QR pairing (generalize CoachSession).
 - [ ] **Step 4**: Remote invite link + `doubles_sessions` Supabase table.
 - [ ] **Step 5**: Persistence (`doubles_partnerships` table + local + sync).
@@ -127,6 +134,10 @@ formation by net/baseline mix). Full rules in FEATURE_SPEC_doubles_v1.1.md §3.
   DoublesCompatibility). swiftc harness `Scripts/doubles_scorer_check.swift`
   + runner `Scripts/check_doubles_scorer.sh` → 22/22 pass. Files registered
   in pbxproj (xcodeproj gem); app `xcodebuild build` SUCCEEDED. Ideal pair
-  → 99/strong; worst → 36/needsPlan. **Next: Step 2 (Doubles tab +
-  questionnaire UI + reveal + static prep sheet; single-device first; add
-  EN/TR localized strings keyed off DoublesDimension + rating).**
+  → 99/strong; worst → 36/needsPlan.
+- 2026-06-08 — **Step 2 DONE.** Full single-device doubles UI (6 files in
+  Features/Doubles) + Today entry card; EN/TR via DoublesCopy; partnerships
+  persist via DoublesStore (UserDefaults). App build SUCCEEDED. Installing a
+  dev build on the owner's connected iPhone 13 (iOS 26.5) for dogfooding
+  (does NOT touch the in-review 1.0). **Next: Step 3 (on-court QR pairing,
+  generalize CoachSession) — or iterate on Step 2 per device feedback.**

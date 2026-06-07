@@ -39,7 +39,7 @@ enum Handedness: String, Codable, CaseIterable {
     case right, left
 }
 
-struct DoublesProfile: Codable, Equatable {
+struct DoublesProfile: Codable, Equatable, Hashable {
     var preferredSide: DoublesSide
     var netComfort: NetComfort
     var poach: PoachTendency
