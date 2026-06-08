@@ -18,6 +18,15 @@ struct CourtIQApp: App {
         CrashReporter.shared.start()
         Task { @MainActor in Haptics.warmUp() }
 
+        // App Store preview / UI-test only: populate sample matches + quiz
+        // history so Matches and the trend dashboard render fully. Gated on a
+        // launch argument that only the preview UI test passes — never runs in
+        // normal use. (Not #if DEBUG because this project's Debug config does
+        // not define the DEBUG compilation condition.)
+        if ProcessInfo.processInfo.arguments.contains("-seedPreviewData") {
+            Task { @MainActor in Self.seedPreviewData() }
+        }
+
         // If the user previously authorized notifications, make sure the
         // daily reminder is re-scheduled (handles app upgrades / device
         // migrations where pending requests can be cleared).
@@ -27,6 +36,67 @@ struct CourtIQApp: App {
                NotificationManager.shared.dailyReminderEnabled {
                 NotificationManager.shared.scheduleDailyReminder()
             }
+        }
+    }
+
+    /// Inserts a realistic set of logged matches (gently improving ratings →
+    /// a clean upward trend) + a few quiz completions, so the App Store
+    /// preview shows populated Matches + a non-empty trend dashboard.
+    /// Deterministic ids make re-runs idempotent; guarded so it only seeds an
+    /// empty store. Reached only via the `-seedPreviewData` launch argument.
+    @MainActor
+    static func seedPreviewData() {
+        // Skip onboarding + health gate so the preview opens in the main app.
+        UserSessionManager.shared.debugMarkOnboarded()
+        HealthAcknowledgment.recordAcceptance()
+
+        let mm = MatchEntryManager.shared
+        guard mm.entries.isEmpty else { return }
+        let cal = Calendar.current
+        let now = Date()
+        // (dayOffset, serve, return, movement, mental, result, opponent, surface, score)
+        let rows: [(Int, Int, Int, Int, Int, MatchResult, String, MatchSurface, String)] = [
+            (-35, 2, 2, 2, 2, .lost, "Alex",   .hard,  "4-6, 3-6"),
+            (-28, 2, 3, 3, 2, .lost, "Jordan", .clay,  "5-7, 4-6"),
+            (-21, 3, 3, 3, 3, .won,  "Casey",  .hard,  "6-4, 4-6, 7-5"),
+            (-14, 3, 4, 4, 3, .won,  "Morgan", .grass, "6-3, 6-4"),
+            (-8,  4, 4, 4, 4, .won,  "Taylor", .hard,  "6-4, 6-4"),
+            (-3,  4, 5, 5, 5, .won,  "Sam",    .clay,  "6-2, 6-3"),
+            (-1,  5, 5, 5, 5, .won,  "Riley",  .hard,  "6-4, 6-2"),
+        ]
+        for (i, r) in rows.enumerated() {
+            let date = cal.date(byAdding: .day, value: r.0, to: now) ?? now
+            mm.save(MatchEntry(
+                id: "preview-match-\(i)",
+                date: date,
+                opponentName: r.6,
+                surface: r.7,
+                result: r.5,
+                score: r.8,
+                serveRating: r.1,
+                returnRating: r.2,
+                movementRating: r.3,
+                mentalRating: r.4,
+                postMatchNotes: "Stayed patient and moved well.",
+                takeaway: "Depth and patience won the big points",
+                isQuickLog: i % 2 == 0,
+                isDraft: false
+            ))
+        }
+        let dq = DailyQuizManager.shared
+        let quizzes: [(String, String, String, Int, Int, [String])] = [
+            ("preview-quiz-0", "Serve Patterns",   "Serve",  4, 5, ["forcing the second serve"]),
+            ("preview-quiz-1", "Return Depth",     "Return", 3, 5, ["floating the return"]),
+            ("preview-quiz-2", "Rally Tolerance",  "Rally",  5, 5, []),
+        ]
+        for q in quizzes {
+            dq.recordCompletion(
+                summary: QuizCompletionSummary(
+                    quizID: q.0, title: q.1, focusLabel: q.2,
+                    score: q.3, totalQuestions: q.4, mistakeTypes: q.5, tacticalBuckets: nil
+                ),
+                isDaily: true
+            )
         }
     }
 

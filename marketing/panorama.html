@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { background:#1E2938; }
+  /* Continuous flowing background across all frames (clay → moss). White
+     headlines stay legible because the gradient never reaches cream. */
+  .panorama {
+    display:flex;
+    width: 6600px;             /* 5 × 1320 */
+    height: 2868px;
+    background: linear-gradient(118deg,
+      #C65C31 0%, #BB5436 22%, #9C5A45 42%,
+      #6C8366 66%, #5A7560 84%, #4C6553 100%);
+    position:relative;
+    font-family: -apple-system, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  /* Faint court-line motif over the whole canvas for tennis context. */
+  .panorama::before {
+    content:""; position:absolute; inset:0;
+    background-image:
+      repeating-linear-gradient(118deg, rgba(255,255,255,.05) 0 2px, transparent 2px 220px);
+    pointer-events:none;
+  }
+  /* Soft glow blobs for depth. */
+  .panorama::after {
+    content:""; position:absolute; inset:0; pointer-events:none;
+    background:
+      radial-gradient(620px 620px at 18% 26%, rgba(255,255,255,.10), transparent 60%),
+      radial-gradient(720px 720px at 82% 78%, rgba(0,0,0,.14), transparent 62%);
+  }
+  .frame {
+    width:1320px; height:2868px;
+    display:flex; flex-direction:column; align-items:center;
+    position:relative; z-index:1;
+  }
+  .headline {
+    color:#fff;
+    font-weight:800;
+    font-size:70px;
+    line-height:1.1;
+    letter-spacing:-1.5px;
+    text-align:center;
+    padding:160px 96px 0;
+    text-shadow:0 3px 30px rgba(0,0,0,.22);
+  }
+  .headline .accent { color:#F4ECDD; }
+  .device {
+    margin-top:84px;
+    width:872px;
+    background:#11151C;
+    border-radius:78px;
+    padding:22px;
+    box-shadow:0 46px 110px rgba(0,0,0,.40), inset 0 0 0 2px rgba(255,255,255,.06);
+  }
+  .device img { width:100%; display:block; border-radius:58px; }
+</style>
+</head>
+<body>
+  <div class="panorama">
+    <div class="frame">
+      <div class="headline">Read the court.<br><span class="accent">Tap the smartest shot.</span></div>
+      <div class="device"><img src="file:///Users/can/Projects/CourtIQ/marketing/screens/02-drill.png"></div>
+    </div>
+    <div class="frame">
+      <div class="headline">Log every match.<br><span class="accent">Watch your game climb.</span></div>
+      <div class="device"><img src="file:///Users/can/Projects/CourtIQ/marketing/screens/06b-progress.png"></div>
+    </div>
+    <div class="frame">
+      <div class="headline">An AI coach that<br><span class="accent">remembers your matches.</span></div>
+      <div class="device"><img src="file:///Users/can/Projects/CourtIQ/marketing/screens/10-aicoach.png"></div>
+    </div>
+    <div class="frame">
+      <div class="headline">8-week training blocks,<br><span class="accent">built for tennis.</span></div>
+      <div class="device"><img src="file:///Users/can/Projects/CourtIQ/marketing/screens/08-training-detail.png"></div>
+    </div>
+    <div class="frame">
+      <div class="headline">Your daily tennis IQ,<br><span class="accent">in five minutes.</span></div>
+      <div class="device"><img src="file:///Users/can/Projects/CourtIQ/marketing/screens/01-today.png"></div>
+    </div>
+  </div>
+</body>
+</html>

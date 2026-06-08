@@ -870,6 +870,11 @@ final class UserSessionManager: ObservableObject {
         syncState = .synced(Date())
     }
 
+    /// Preview / UI-test only: mark onboarding complete so the App Store
+    /// preview launches straight into the main app. Reached only from the
+    /// `-seedPreviewData`-gated seeding path.
+    func debugMarkOnboarded() { completeOnboarding() }
+
     private func completeOnboarding() {
         hasCompletedOnboarding = true
         defaults.set(true, forKey: onboardingKey)

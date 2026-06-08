@@ -72,5 +72,26 @@ ships. Polish may ship as 1.0.1 or merge into 1.1 (decide later).
   REMAINING (optional, non-visible): vestigial `isPremiumUnlocked` dead
   branches in TodayView/MobilityLibraryView/PracticeView/ProfileView/
   LevelProgressionPathView evaluate to "unlocked" (true) so they don't show
-  premium framing — harmless dead code, tidy later. **Next: Workstream 3
-  (panoramic App Store screenshots).**
+  premium framing — harmless dead code, tidy later.
+- 2026-06-08 — **Workstream 3 (App Store visuals) DONE.** Owner pivoted to a
+  ~20s preview VIDEO + panoramic static set. macOS Accessibility blocks
+  cliclick/osascript (even after grant, needs Claude restart), so capture is
+  done via an XCUITest harness (`CourtIQUITests` target + shared scheme):
+  `testAppPreviewTour` launches with `-seedPreviewData`, tours the app, and
+  saves named XCUIScreenshots → exported from the .xcresult → assembled with
+  ffmpeg. Added a launch-arg-gated `CourtIQApp.seedPreviewData()` (+
+  `UserSessionManager.debugMarkOnboarded()`, `HealthAcknowledgment` accept)
+  that seeds 7 matches (upward trend) + 3 quizzes so Matches + the trend
+  dashboard render populated. NOTE: not `#if DEBUG` because this project's
+  Debug config doesn't define the DEBUG condition — the seed ships but is
+  inert (only the preview UI test passes the arg). **Pre-1.1-submit TODO:
+  strip the seed/`debugMarkOnboarded` or add DEBUG to the Debug config so it
+  compiles out of the release archive.**
+  Deliverables in `marketing/`: `courtiq_preview.mp4` (19.8s, 1320×2868, 9
+  populated screens, crossfades); `appstore/01-drill..05-today.png` (5
+  panoramic App Store frames, 1320×2868, continuous clay→moss background +
+  headlines + device mockups); `panorama.html` + `panorama_full.png` (source
+  + 6600×2868 master); `screens/` (raw clean captures, 9:41 status bar).
+  Upload to ASC after 1.0 clears. Optional refinements not done: in-app
+  Mobility frame (test couldn't find the entry), Ken Burns motion, headline
+  captions burned into the video.

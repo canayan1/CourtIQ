@@ -28,8 +28,9 @@ final class CourtIQAppPreviewUITest: XCTestCase {
     }
 
     func testAppPreviewTour() {
+        app.launchArguments = ["-seedPreviewData"]
         app.launch()
-        sleep(2)
+        sleep(4)
         snap("01-today")
 
         // Court Tap Drill — signature daily game
@@ -58,7 +59,16 @@ final class CourtIQAppPreviewUITest: XCTestCase {
 
         if tapIfExists(tabs.buttons["Matches"]) {
             sleep(2)
+            // First Matches visit shows a "how match logging works" sheet —
+            // dismiss it so the populated list + insights are visible.
+            _ = tapIfExists(app.buttons["Done"], 2)
+            sleep(1)
             snap("06-matches")
+            if tapIfExists(app.buttons["View insights"], 3) {
+                sleep(2)
+                snap("06b-progress")
+                _ = tapIfExists(app.navigationBars.buttons.element(boundBy: 0), 2)
+            }
         }
 
         if tapIfExists(tabs.buttons["Training"]) {
