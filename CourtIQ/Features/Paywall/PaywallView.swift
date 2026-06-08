@@ -213,7 +213,7 @@ struct PaywallView: View {
                         .padding(.vertical, 14)
                     }
                     .buttonStyle(.borderedProminent)
-                    .disabled(isWorking || session.subscriptionManager.isPremiumUnlocked && !isTipJar)
+                    .disabled(isWorking || session.subscriptionManager.entitlementState.isPremium && !isTipJar)
                 }
                 .padding()
                 .background(AppPalette.parchment)
@@ -249,7 +249,7 @@ struct PaywallView: View {
         if isTipJar {
             return lang.t("paywall.tip_button")
         }
-        return session.subscriptionManager.isPremiumUnlocked
+        return session.subscriptionManager.entitlementState.isPremium
             ? lang.t("paywall.unlocked")
             : lang.t("paywall.continue")
     }
