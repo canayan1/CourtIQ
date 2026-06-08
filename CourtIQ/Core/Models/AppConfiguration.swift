@@ -566,10 +566,46 @@ private struct AuthResponse: Decodable {
     }
 }
 
+/// A single JSON value decoded leniently. Supabase `user_metadata` mixes
+/// types (e.g. `email_verified` is a Bool, `full_name` a String), so we
+/// can't decode it straight into `[String: String]` — that throws and
+/// fails the whole auth response ("Could not decode server response",
+/// which broke Sign in with Apple while anonymous sign-in, whose metadata
+/// is empty, still worked).
+private enum JSONScalar: Decodable {
+    case string(String)
+    case other
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.singleValueContainer()
+        if let s = try? c.decode(String.self) {
+            self = .string(s)
+        } else {
+            self = .other   // bool / number / null / object / array — ignored
+        }
+    }
+
+    var stringValue: String? {
+        if case .string(let s) = self { return s }
+        return nil
+    }
+}
+
 private struct UserResponse: Decodable {
     let id: String
     let email: String?
     let userMetadata: [String: String]?
+
+    enum CodingKeys: String, CodingKey { case id, email, userMetadata }
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        id = try c.decode(String.self, forKey: .id)
+        email = try c.decodeIfPresent(String.self, forKey: .email)
+        // Keep only the string-valued metadata entries; ignore bools/etc.
+        let raw = (try? c.decodeIfPresent([String: JSONScalar].self, forKey: .userMetadata)) ?? nil
+        userMetadata = raw?.compactMapValues { $0.stringValue }
+    }
 
     var userValue: SupabaseAuthUser {
         SupabaseAuthUser(
