@@ -4,6 +4,10 @@ import SwiftUI
 /// them, answers their own 9 questions, and accepts — both accounts then share
 /// the partnership and its compatibility score.
 struct DoublesJoinView: View {
+    /// When set (e.g. from a universal-link tap), the code is prefilled and
+    /// looked up automatically on appear.
+    var prefillCode: String? = nil
+
     @EnvironmentObject private var lang: LanguageManager
     @EnvironmentObject private var session: UserSessionManager
     @ObservedObject private var service = DoublesService.shared
@@ -17,6 +21,7 @@ struct DoublesJoinView: View {
     @State private var isWorking = false
     @State private var error: String?
     @State private var result: DoublesPartnership?
+    @State private var didPrefill = false
 
     private var copy: DoublesCopy { DoublesCopy(lang: lang.language) }
     private var trimmedCode: String { code.trimmingCharacters(in: .whitespacesAndNewlines).uppercased() }
@@ -34,7 +39,14 @@ struct DoublesJoinView: View {
         .background(AppPalette.cream)
         .navigationTitle(copy.joinTitle)
         .navigationBarTitleDisplayMode(.inline)
-        .task { service.configure { try await session.ensureAnonymousSession() } }
+        .task {
+            service.configure { try await session.ensureAnonymousSession() }
+            if let prefillCode, !didPrefill {
+                didPrefill = true
+                code = prefillCode
+                await lookUp()
+            }
+        }
         .navigationDestination(item: $result) { DoublesResultView(partnership: $0) }
     }
 

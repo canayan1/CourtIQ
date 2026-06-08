@@ -13,6 +13,7 @@ struct CourtIQApp: App {
     @StateObject private var drillManager = CourtTapDrillManager.shared
     @StateObject private var avatarManager = AvatarManager.shared
     @StateObject private var proShotManager = ProShotPatternsManager.shared
+    @StateObject private var doublesLink = DoublesLinkRouter.shared
 
     init() {
         CrashReporter.shared.start()
@@ -44,6 +45,7 @@ struct CourtIQApp: App {
                 .environmentObject(drillManager)
                 .environmentObject(avatarManager)
                 .environmentObject(proShotManager)
+                .environmentObject(doublesLink)
         }
     }
 }
@@ -51,6 +53,7 @@ struct CourtIQApp: App {
 private struct RootView: View {
     @EnvironmentObject private var session: UserSessionManager
     @EnvironmentObject private var lang: LanguageManager
+    @EnvironmentObject private var doublesLink: DoublesLinkRouter
 
     // Observe the health-acknowledgment version directly from UserDefaults
     // via @AppStorage so SwiftUI re-renders the moment HealthAcknowledgment
@@ -85,6 +88,18 @@ private struct RootView: View {
             Button(lang.t("common.ok"), role: .cancel) {}
         } message: {
             Text(session.authErrorMessage ?? "")
+        }
+        // Doubles invite universal links: https://<host>/d/<CODE>
+        .onOpenURL { doublesLink.handle($0) }
+        .onContinueUserActivity(NSUserActivityTypeBrowsingWeb) { activity in
+            if let url = activity.webpageURL { doublesLink.handle(url) }
+        }
+        .sheet(item: $doublesLink.pendingInvite) { invite in
+            NavigationStack {
+                DoublesJoinView(prefillCode: invite.code)
+            }
+            .environmentObject(lang)
+            .environmentObject(session)
         }
     }
 }

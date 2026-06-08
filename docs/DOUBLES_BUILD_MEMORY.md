@@ -146,11 +146,24 @@ formation by net/baseline mix). Full rules in FEATURE_SPEC_doubles_v1.1.md §3.
       SUCCEEDED. Manual code entry works now; the shared link auto-opens the
       app only after Step 6 (Universal Links). NOT yet runtime-verified
       end-to-end across two accounts (needs two devices/sims).
-- [ ] **Step 6**: Universal Links — AASA at
-      `canayan-ios-apps.vercel.app/.well-known/apple-app-site-association`
-      (appID `DC8ALPY949.com.canayan93.courtiq`, paths `/d/*`) + Associated
-      Domains entitlement `applinks:canayan-ios-apps.vercel.app` + URL
-      handling in app + web fallback page `/d/<code>` on the Next.js site.
+- [~] **Step 6 IN PROGRESS — app side DONE, web side prepared (not deployed)**.
+      APP (committed, builds): Associated Domains entitlement
+      `applinks:canayan-ios-apps.vercel.app`; `DoublesLinkRouter`
+      (DoublesDeepLink.swift) parses `.../d/<CODE>`; CourtIQApp handles
+      `.onOpenURL` + `.onContinueUserActivity(NSUserActivityTypeBrowsingWeb)`
+      → sets the router → RootView presents `DoublesJoinView(prefillCode:)`
+      as a sheet; DoublesJoinView auto-peeks the prefilled code.
+      WEB (prepared in `/Users/can/Projects/canayanIOSapps`, NOT deployed —
+      needs owner approval): `public/.well-known/apple-app-site-association`
+      (appIDs [DC8ALPY949.com.canayan93.courtiq], components /d/*);
+      `src/app/d/[code]/page.tsx` (branded fallback w/ code + App Store CTA —
+      App Store URL is a TODO placeholder until 1.0 is live); `next.config.ts`
+      header sets AASA Content-Type application/json.
+      REMAINING for Step 6: (1) owner confirms the REAL prod domain matches
+      `canayan-ios-apps.vercel.app` (entitlement + AASA + share link must all
+      match); (2) deploy the web project; (3) enable the Associated Domains
+      capability for the App ID in the Apple Developer portal so the signed
+      1.1 archive carries the entitlement; (4) verify on device.
 - [ ] **Step 7**: Joint doubles match logging UI (log against a partnership;
       both partners see the list).
 - [ ] **Step 8 (later)**: Premium AI doubles game-plan (ai-chat context +
