@@ -7,38 +7,12 @@ import SwiftUI
 struct DoublesQuestionnaireView: View {
     @EnvironmentObject private var lang: LanguageManager
 
-    private struct Draft {
-        // tactical
-        var side: DoublesSide?
-        var net: NetComfort?
-        var hand: Handedness?
-        var formation: FormationComfort?
-        var serve: Int?
-        var ret: Int?
-        // chemistry
-        var comms: CommStyle?
-        var temperament: Temperament?
-        var goal: DoublesGoal?
-
-        var isComplete: Bool {
-            side != nil && net != nil && hand != nil && formation != nil &&
-            serve != nil && ret != nil && comms != nil && temperament != nil && goal != nil
-        }
-        func build() -> DoublesProfile? {
-            guard let side, let net, let hand, let formation, let serve, let ret,
-                  let comms, let temperament, let goal else { return nil }
-            return DoublesProfile(preferredSide: side, netComfort: net, handedness: hand,
-                                  formation: formation, serveStrength: serve, returnStrength: ret,
-                                  comms: comms, temperament: temperament, goal: goal)
-        }
-    }
-
     private enum Step { case name, you, handoff, partner }
 
     @State private var step: Step = .name
     @State private var partnerName = ""
-    @State private var me = Draft()
-    @State private var partner = Draft()
+    @State private var me = DoublesDraft()
+    @State private var partner = DoublesDraft()
     @State private var pushResult: DoublesPartnership?
 
     private var copy: DoublesCopy { DoublesCopy(lang: lang.language) }
@@ -100,24 +74,13 @@ struct DoublesQuestionnaireView: View {
 
     @ViewBuilder
     private func answersStep(forMe: Bool) -> some View {
-        let d = Binding<Draft>(get: { forMe ? me : partner },
-                               set: { if forMe { me = $0 } else { partner = $0 } })
+        let d = Binding<DoublesDraft>(get: { forMe ? me : partner },
+                                      set: { if forMe { me = $0 } else { partner = $0 } })
         let complete = (forMe ? me : partner).isComplete
         VStack(alignment: .leading, spacing: 18) {
             whoBanner(forMe: forMe)
 
-            sectionHeader(copy.sectionTacticalQ)
-            choice(copy.prompt(.courtSide), selection: d.side, options: DoublesSide.allCases) { copy.sideOption($0) }
-            choice(copy.prompt(.netBaseline), selection: d.net, options: NetComfort.allCases) { copy.netOption($0) }
-            choice(copy.prompt(.handedness), selection: d.hand, options: Handedness.allCases) { copy.handOption($0) }
-            choice(copy.prompt(.formation), selection: d.formation, options: FormationComfort.allCases) { copy.formationOption($0) }
-            strengthRow(copy.serveStrengthLabel, d.serve)
-            strengthRow(copy.returnStrengthLabel, d.ret)
-
-            sectionHeader(copy.sectionChemistryQ)
-            choice(copy.prompt(.comms), selection: d.comms, options: CommStyle.allCases) { copy.commsOption($0) }
-            choice(copy.prompt(.temperament), selection: d.temperament, options: Temperament.allCases) { copy.temperamentOption($0) }
-            choice(copy.prompt(.goal), selection: d.goal, options: DoublesGoal.allCases) { copy.goalOption($0) }
+            DoublesAnswerForm(draft: d, copy: copy)
 
             HStack(spacing: 12) {
                 secondaryButton(copy.back) { step = forMe ? .name : .handoff }
@@ -129,13 +92,6 @@ struct DoublesQuestionnaireView: View {
             }
             .padding(.top, 4)
         }
-    }
-
-    private func sectionHeader(_ title: String) -> some View {
-        Text(title.uppercased())
-            .font(.caption.weight(.heavy)).tracking(0.6)
-            .foregroundStyle(AppPalette.inkSoft)
-            .padding(.top, 6)
     }
 
     private func whoBanner(forMe: Bool) -> some View {
@@ -156,56 +112,6 @@ struct DoublesQuestionnaireView: View {
         let p = DoublesPartnership(partnerName: trimmedName, myProfile: myProfile, partnerProfile: partnerProfile)
         DoublesStore.shared.save(p)
         pushResult = p
-    }
-
-    @ViewBuilder
-    private func choice<T: Hashable>(_ prompt: String, selection: Binding<T?>,
-                                     options: [T], label: @escaping (T) -> String) -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text(prompt).font(.subheadline.weight(.semibold)).foregroundStyle(AppPalette.ink)
-            ForEach(options, id: \.self) { opt in
-                let sel = selection.wrappedValue == opt
-                Button { selection.wrappedValue = opt } label: {
-                    HStack {
-                        Text(label(opt)).font(.subheadline)
-                        Spacer()
-                        if sel { Image(systemName: "checkmark").font(.subheadline.bold()) }
-                    }
-                    .padding(.horizontal, 14).padding(.vertical, 11)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .background(sel ? AppPalette.clay.opacity(0.14) : AppPalette.parchment)
-                    .foregroundStyle(sel ? AppPalette.clay : AppPalette.ink)
-                    .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous)
-                        .stroke(sel ? AppPalette.clay : AppPalette.sand, lineWidth: 1))
-                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                }
-                .buttonStyle(.plain)
-            }
-        }
-    }
-
-    private func strengthRow(_ title: String, _ value: Binding<Int?>) -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text(title).font(.subheadline.weight(.semibold)).foregroundStyle(AppPalette.ink)
-            HStack(spacing: 8) {
-                ForEach(1...5, id: \.self) { n in
-                    let sel = value.wrappedValue == n
-                    Button { value.wrappedValue = n } label: {
-                        Text("\(n)")
-                            .font(.subheadline.bold())
-                            .frame(maxWidth: .infinity, minHeight: 40)
-                            .background(sel ? AppPalette.clay : AppPalette.parchment)
-                            .foregroundStyle(sel ? .white : AppPalette.ink)
-                            .overlay(RoundedRectangle(cornerRadius: 10, style: .continuous)
-                                .stroke(sel ? AppPalette.clay : AppPalette.sand, lineWidth: 1))
-                            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
-                    }
-                    .buttonStyle(.plain)
-                }
-            }
-            HStack { Text(copy.scaleWeak); Spacer(); Text(copy.scaleStrong) }
-                .font(.caption2).foregroundStyle(AppPalette.inkSoft)
-        }
     }
 
     private func primaryButton(_ title: String, enabled: Bool, _ action: @escaping () -> Void) -> some View {

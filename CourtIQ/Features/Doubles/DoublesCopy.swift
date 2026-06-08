@@ -225,6 +225,48 @@ struct DoublesCopy {
     }
     var aiPlanComingSoon: String { t("Coming soon", "Yakında") }
 
+    // MARK: Invite / Join (account-linked)
+    var inviteCTA: String { t("Invite a partner", "Partner davet et") }
+    var joinCTA: String { t("I have an invite code", "Davet kodum var") }
+    var singleDeviceCTA: String { t("Test on this phone", "Bu telefonda test et") }
+
+    var yourNamePrompt: String { t("How should your partner see you?", "Partnerin seni nasıl görsün?") }
+    var yourNamePlaceholder: String { t("Your name", "Adın") }
+
+    var inviteTitle: String { t("Invite a partner", "Partner davet et") }
+    var inviteIntro: String {
+        t("Answer your 9 questions, then send your partner a link. They install CourtIQ, answer theirs, and you both see the score.",
+          "9 soruyu yanıtla, sonra partnerine link gönder. CourtIQ'i indirip kendi sorularını yanıtlar; ikiniz de skoru görürsünüz.")
+    }
+    var createInviteCTA: String { t("Create invite link", "Davet linki oluştur") }
+    var inviteReadyTitle: String { t("Invite ready", "Davet hazır") }
+    var inviteReadyBody: String {
+        t("Send this to your partner. The moment they join, your compatibility score appears in your partnerships.",
+          "Bunu partnerine gönder. Katıldığı an uyum skorunuz partnerliklerinde görünür.")
+    }
+    var inviteCodeLabel: String { t("Invite code", "Davet kodu") }
+    var shareInvite: String { t("Share link", "Linki paylaş") }
+    func inviteShareMessage(link: String, code: String) -> String {
+        t("Let's check our doubles chemistry on CourtIQ 🎾\n\(link)\n(or enter code \(code) in the app)",
+          "CourtIQ'te çiftler uyumumuza bakalım 🎾\n\(link)\n(ya da uygulamada \(code) kodunu gir)")
+    }
+    var done: String { t("Done", "Bitti") }
+
+    var joinTitle: String { t("Join with a code", "Kodla katıl") }
+    var joinCodePrompt: String { t("Enter the invite code your partner sent", "Partnerinin gönderdiği davet kodunu gir") }
+    var joinCodePlaceholder: String { t("Invite code", "Davet kodu") }
+    var lookUp: String { t("Continue", "Devam") }
+    func invitedByLine(_ name: String) -> String { t("\(name) invited you to a doubles test.", "\(name) seni bir çiftler testine davet etti.") }
+    var someoneInvitedYou: String { t("You've been invited to a doubles test.", "Bir çiftler testine davet edildin.") }
+    var joinSeeScore: String { t("Join & see score", "Katıl & skoru gör") }
+
+    var pendingBadge: String { t("Waiting for partner", "Partner bekleniyor") }
+    var pendingNote: String { t("Waiting for your partner to join.", "Partnerinin katılması bekleniyor.") }
+    var inviteNotFound: String { t("That code didn't match an open invite.", "Bu kod açık bir davetle eşleşmedi.") }
+    var serverPartnershipsHeader: String { t("Linked partnerships", "Bağlı partnerlikler") }
+    var localPartnershipsHeader: String { t("On this phone", "Bu telefonda") }
+    var chooseHowTitle: String { t("Start a test", "Bir test başlat") }
+
     // MARK: misc
     var deletePartnership: String { t("Delete", "Sil") }
 }

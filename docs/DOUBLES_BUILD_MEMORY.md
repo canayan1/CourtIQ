@@ -134,10 +134,18 @@ formation by net/baseline mix). Full rules in FEATURE_SPEC_doubles_v1.1.md §3.
       listMatches + sign-in gating (Apple/anonymous). PostgREST path exists
       in AppConfiguration (`rest/v1/<table>`, ~line 417) + `functionRequest`
       for RPCs.
-- [ ] **Step 5**: Invite + join UX — after my half → "Invite partner" →
-      share universal link; join → sign in → test → both see score. Replace
-      local-only partnerships with server-backed (keep single-device "fill
-      both" fallback).
+- [x] **Step 5 DONE**: Invite + join UX wired to DoublesService. Extracted a
+      reusable `DoublesAnswerForm` (+ `DoublesDraft`) from the questionnaire;
+      `DoublesInviteView` (my 9 answers → `createInvite` → share code + link,
+      pending until accepted); `DoublesJoinView` (enter code → `peekInvite` →
+      my 9 answers → `acceptInvite` → result); `DoublesHomeView` now has
+      Invite / Join / single-device entries + a server partnerships list
+      (pending "waiting" rows + active rows → result), and configures the
+      service session in `.task`. `DoublesService` gained `currentUserID` +
+      `viewerPartnership(userID:)` to orient the shared result view. App build
+      SUCCEEDED. Manual code entry works now; the shared link auto-opens the
+      app only after Step 6 (Universal Links). NOT yet runtime-verified
+      end-to-end across two accounts (needs two devices/sims).
 - [ ] **Step 6**: Universal Links — AASA at
       `canayan-ios-apps.vercel.app/.well-known/apple-app-site-association`
       (appID `DC8ALPY949.com.canayan93.courtiq`, paths `/d/*`) + Associated
@@ -200,6 +208,15 @@ formation by net/baseline mix). Full rules in FEATURE_SPEC_doubles_v1.1.md §3.
   partnerships + invite peek/accept RPC + joint match log) + `callRPC` added
   to SupabaseRESTClient. Session via injected provider (anonymous/Apple).
   App build SUCCEEDED. NOT yet wired into UI (Step 5).
+- 2026-06-08 — **Step 5 DONE (resumed after 1.0 fixes + polish phase).**
+  Invite/Join UX wired to the Step-4 DoublesService. New: DoublesAnswerForm
+  (reusable 9-q form) + DoublesInviteView + DoublesJoinView; DoublesHomeView
+  rebuilt with 3 entries + server partnerships list; DoublesService gained
+  currentUserID + viewerPartnership(userID:). All 3 new files registered in
+  pbxproj (full-path/<group> style). Build SUCCEEDED. Release plan: ship
+  doubles + polish together as 1.1 (owner chose this). **Next: Step 6
+  (Universal Links: AASA + Associated Domains + URL handling + web /d/<code>
+  page) so the shared link opens the app; then Step 7 joint match-log UI.**
 - 2026-06-08 — ⛔ **PAUSED doubles: 1.0 (build 13) REJECTED AGAIN.** Pivot
   to fixing 1.0 (it blocks the 1.1 launch). Three issues: (1) 3.1.2(c) EULA
   link missing from App Store metadata (in-app Terms link exists in paywall;

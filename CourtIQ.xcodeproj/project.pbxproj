@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16002FEF5263CEF6D01B6E40 /* DoublesInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DFBC699C961CE7BC803B4A /* DoublesInviteView.swift */; };
 		2962E627E3490E4DBF9ECAFA /* DoublesCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29274B087647F696C6DC5407 /* DoublesCopy.swift */; };
 		42D6A58A8B0280B016D8C3A7 /* DoublesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD1697CA8AE51EA5DF5C744 /* DoublesService.swift */; };
 		8934F0431B9250FF178695DA /* DoublesQuestionnaireView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083A41EC8E7C7AAC767F6CBC /* DoublesQuestionnaireView.swift */; };
@@ -109,6 +110,8 @@
 		A6C23E3C6EDDBEB3C15129A6 /* DoublesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FB4EA3DDDB16F3630DE40F /* DoublesStore.swift */; };
 		AC1E3563944B0D3E4A96CB14 /* DoublesResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB18F8864A4FA1F1DFD0AA3 /* DoublesResult.swift */; };
 		B8681012113B3671A52DC5B7 /* DoublesResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711C227399F9B9B1FAF83361 /* DoublesResultView.swift */; };
+		BE0A27F3A107F573AF6D6916 /* DoublesAnswerForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A15AD082E431178446E3B3B /* DoublesAnswerForm.swift */; };
+		C1D79EBF000E325CE44A5EC9 /* DoublesJoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E00DD9F2EDFAEE955C63065 /* DoublesJoinView.swift */; };
 		C26900CB5905CD2F9B6286A5 /* DoublesProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E1B446511C087992AD61E2 /* DoublesProfile.swift */; };
 		D4D827C055058DF1AED2C3DD /* DoublesPartnership.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE3293917384C878A229C02 /* DoublesPartnership.swift */; };
 		EE369F4F2BA54812315FE57C /* DoublesCompatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B387A1D3F31C455951CAD2 /* DoublesCompatibility.swift */; };
@@ -116,9 +119,12 @@
 
 /* Begin PBXFileReference section */
 		083A41EC8E7C7AAC767F6CBC /* DoublesQuestionnaireView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesQuestionnaireView.swift; path = CourtIQ/Features/Doubles/DoublesQuestionnaireView.swift; sourceTree = "<group>"; };
+		1A15AD082E431178446E3B3B /* DoublesAnswerForm.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesAnswerForm.swift; path = CourtIQ/Features/Doubles/DoublesAnswerForm.swift; sourceTree = "<group>"; };
 		29274B087647F696C6DC5407 /* DoublesCopy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesCopy.swift; path = CourtIQ/Features/Doubles/DoublesCopy.swift; sourceTree = "<group>"; };
+		2E00DD9F2EDFAEE955C63065 /* DoublesJoinView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesJoinView.swift; path = CourtIQ/Features/Doubles/DoublesJoinView.swift; sourceTree = "<group>"; };
 		31FB4EA3DDDB16F3630DE40F /* DoublesStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesStore.swift; path = CourtIQ/Features/Doubles/DoublesStore.swift; sourceTree = "<group>"; };
 		36E1B446511C087992AD61E2 /* DoublesProfile.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesProfile.swift; path = CourtIQ/Features/Doubles/DoublesProfile.swift; sourceTree = "<group>"; };
+		39DFBC699C961CE7BC803B4A /* DoublesInviteView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesInviteView.swift; path = CourtIQ/Features/Doubles/DoublesInviteView.swift; sourceTree = "<group>"; };
 		5BD1697CA8AE51EA5DF5C744 /* DoublesService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesService.swift; path = CourtIQ/Features/Doubles/DoublesService.swift; sourceTree = "<group>"; };
 		711C227399F9B9B1FAF83361 /* DoublesResultView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesResultView.swift; path = CourtIQ/Features/Doubles/DoublesResultView.swift; sourceTree = "<group>"; };
 		87B387A1D3F31C455951CAD2 /* DoublesCompatibility.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesCompatibility.swift; path = CourtIQ/Features/Doubles/DoublesCompatibility.swift; sourceTree = "<group>"; };
@@ -385,6 +391,9 @@
 				083A41EC8E7C7AAC767F6CBC /* DoublesQuestionnaireView.swift */,
 				711C227399F9B9B1FAF83361 /* DoublesResultView.swift */,
 				5BD1697CA8AE51EA5DF5C744 /* DoublesService.swift */,
+				39DFBC699C961CE7BC803B4A /* DoublesInviteView.swift */,
+				2E00DD9F2EDFAEE955C63065 /* DoublesJoinView.swift */,
+				1A15AD082E431178446E3B3B /* DoublesAnswerForm.swift */,
 			);
 			name = Doubles;
 			sourceTree = SOURCE_ROOT;
@@ -557,6 +566,9 @@
 				8934F0431B9250FF178695DA /* DoublesQuestionnaireView.swift in Sources */,
 				B8681012113B3671A52DC5B7 /* DoublesResultView.swift in Sources */,
 				42D6A58A8B0280B016D8C3A7 /* DoublesService.swift in Sources */,
+				16002FEF5263CEF6D01B6E40 /* DoublesInviteView.swift in Sources */,
+				C1D79EBF000E325CE44A5EC9 /* DoublesJoinView.swift in Sources */,
+				BE0A27F3A107F573AF6D6916 /* DoublesAnswerForm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

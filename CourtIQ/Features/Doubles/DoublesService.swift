@@ -37,6 +37,21 @@ struct DoublesPartnershipRow: Codable, Identifiable, Equatable {
     /// True if the signed-in user is the inviter (vs the invitee). Used to
     /// orient the result ("You" = this device's player).
     func viewerIsInviter(_ userID: String) -> Bool { inviterUserId == userID }
+
+    /// Orient this row for the signed-in viewer so the shared result view
+    /// renders "you" (this device) vs "partner" correctly. Nil until both
+    /// halves are in.
+    func viewerPartnership(userID: String) -> DoublesPartnership? {
+        guard let inviteeProfile else { return nil }
+        let iAmInviter = viewerIsInviter(userID)
+        let mine = iAmInviter ? inviterProfile : inviteeProfile
+        let theirs = iAmInviter ? inviteeProfile : inviterProfile
+        let rawName = iAmInviter ? inviteeName : inviterName
+        let theirName = (rawName?.trimmingCharacters(in: .whitespaces)).flatMap { $0.isEmpty ? nil : $0 } ?? "Partner"
+        return DoublesPartnership(id: id, partnerName: theirName,
+                                  createdAt: createdAt ?? Date(),
+                                  myProfile: mine, partnerProfile: theirs)
+    }
 }
 
 struct DoublesInvitePeek: Decodable {
@@ -66,6 +81,9 @@ final class DoublesService: ObservableObject {
     @Published private(set) var partnerships: [DoublesPartnershipRow] = []
     @Published private(set) var isLoading = false
     @Published var lastError: String?
+    /// The signed-in user's id (anonymous or Apple). Used to orient a
+    /// partnership row's result as "you" vs "partner".
+    @Published private(set) var currentUserID: String?
 
     private let client = SupabaseRESTClient.shared
     private var sessionProvider: (() async throws -> SupabaseSession)?
@@ -81,7 +99,9 @@ final class DoublesService: ObservableObject {
 
     private func session() async throws -> SupabaseSession {
         guard let sessionProvider else { throw RemoteDataError.missingConfiguration }
-        return try await sessionProvider()
+        let s = try await sessionProvider()
+        if currentUserID != s.userID { currentUserID = s.userID }
+        return s
     }
 
     var isConfigured: Bool { client.isConfigured && sessionProvider != nil }
