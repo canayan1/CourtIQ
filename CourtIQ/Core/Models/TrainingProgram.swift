@@ -159,6 +159,19 @@ struct TrainingDayPlan: Identifiable, Codable, Hashable {
     let exercises: [TrainingExercise]
     let finisher: String
     let recovery: String
+    var titleTr: String? = nil
+    var focusTr: String? = nil
+    var objectiveTr: String? = nil
+    var warmupTr: String? = nil
+    var finisherTr: String? = nil
+    var recoveryTr: String? = nil
+
+    func localizedTitle(for lang: AppLanguage) -> String { lang == .turkish ? (titleTr ?? title) : title }
+    func localizedFocus(for lang: AppLanguage) -> String { lang == .turkish ? (focusTr ?? focus) : focus }
+    func localizedObjective(for lang: AppLanguage) -> String { lang == .turkish ? (objectiveTr ?? objective) : objective }
+    func localizedWarmup(for lang: AppLanguage) -> String { lang == .turkish ? (warmupTr ?? warmup) : warmup }
+    func localizedFinisher(for lang: AppLanguage) -> String { lang == .turkish ? (finisherTr ?? finisher) : finisher }
+    func localizedRecovery(for lang: AppLanguage) -> String { lang == .turkish ? (recoveryTr ?? recovery) : recovery }
 }
 
 struct TrainingPhase: Identifiable, Codable, Hashable {
@@ -166,6 +179,11 @@ struct TrainingPhase: Identifiable, Codable, Hashable {
     let weekRange: String
     let title: String
     let guidance: String
+    var titleTr: String? = nil
+    var guidanceTr: String? = nil
+
+    func localizedTitle(for lang: AppLanguage) -> String { lang == .turkish ? (titleTr ?? title) : title }
+    func localizedGuidance(for lang: AppLanguage) -> String { lang == .turkish ? (guidanceTr ?? guidance) : guidance }
 }
 
 struct TrainingProgram: Identifiable, Codable, Hashable {
@@ -188,6 +206,17 @@ struct TrainingProgram: Identifiable, Codable, Hashable {
     /// 8 weeks, the user progresses to the program with this ID. Nil means
     /// end of track.
     var followOnProgramID: String? = nil
+    var titleTr: String? = nil
+    var overviewTr: String? = nil
+    var outcomeTr: String? = nil
+    var emphasisTr: [String]? = nil
+    var persistencePromptsTr: [String]? = nil
+
+    func localizedTitle(for lang: AppLanguage) -> String { lang == .turkish ? (titleTr ?? title) : title }
+    func localizedOverview(for lang: AppLanguage) -> String { lang == .turkish ? (overviewTr ?? overview) : overview }
+    func localizedOutcome(for lang: AppLanguage) -> String { lang == .turkish ? (outcomeTr ?? outcome) : outcome }
+    func localizedEmphasis(for lang: AppLanguage) -> [String] { lang == .turkish ? (emphasisTr ?? emphasis) : emphasis }
+    func localizedPersistencePrompts(for lang: AppLanguage) -> [String] { lang == .turkish ? (persistencePromptsTr ?? persistencePrompts) : persistencePrompts }
 
     var isPremium: Bool {
         accessTier == .premium

@@ -16,7 +16,7 @@
         "notes": "Keep the chest lifted.",
         "title": "Arm circles with thoracic rotation",
         "titleTr": "Torasik rotasyonlu kol daireleri",
-        "notesTr": "Göğsü kaldırık tutun."
+        "notesTr": "Göğsü kalkık tutun."
       },
       {
         "duration": "90 sec",
@@ -32,7 +32,7 @@
         "notes": "Move from the mid-back, not the lower back.",
         "title": "Standing open-book reps",
         "titleTr": "Ayakta açık kitap tekrarları",
-        "notesTr": "Belden değil, orta sırtten hareket edin."
+        "notesTr": "Belden değil, orta sırttan hareket edin."
       },
       {
         "duration": "1 min",
@@ -57,12 +57,12 @@
     "titleTr": "Servis Omuz Sıfırlama",
     "goalTr": "Servisten önce omuz ve üst sırt hareketini tazelemek.",
     "instructionsTr": "Servis omzunuz hazır ve gerilimsiz hissedecek şekilde üst vücut serisini kontrollü tempoda uygulayın.",
-    "coachingCuesTr": "Kürek kemiğini aktif tutun, orta sırtten döndürün ve omuz kaldırmaktan kaçının.",
+    "coachingCuesTr": "Kürek kemiğini aktif tutun, orta sırttan döndürün ve omuz kaldırmaktan kaçının.",
     "whyItMattersTr": "Daha iyi omuz özgürlüğü ve torasik rotasyon, servis atışında daha pürüzsüz toss, daha temiz salınım yolu ve daha az kol gerginliği sağlar."
   },
   {
     "coachingCues": "Feel the range in your hips and ankles before you accept the first ball.",
-    "duration": "7 min",
+    "duration": "5 min",
     "focusAreas": [
       "hips",
       "ankles"
@@ -169,7 +169,7 @@
         "id": "quick-reset-003-5",
         "notes": "Move with control.",
         "title": "Standing hip hinge pulses",
-        "titleTr": "Ayakta kalça menteşe vurguları",
+        "titleTr": "Ayakta kalça menteşe atımları",
         "notesTr": "Kontrollü hareket edin."
       }
     ],
@@ -180,11 +180,11 @@
     "goalTr": "Uzun ralli veya setler arası hamstringlerde gevşeme sağlamak.",
     "instructionsTr": "Hamstring gerginliğini gidermek için bu hızlı akışı hareket kalitesini koruyarak uygulayın.",
     "coachingCuesTr": "Gövdenizde dik durun ve zorlamadan bacakların uzamasına izin verin.",
-    "whyItMattersTr": "Gevşemiş hamstringler uzun rallilerden sonra daha hızlı toparlanmanıza ve bir sonraki topda daha dinamik hareket etmenize yardımcı olur."
+    "whyItMattersTr": "Gevşemiş hamstringler uzun rallilerden sonra daha hızlı toparlanmanıza ve bir sonraki topta daha dinamik hareket etmenize yardımcı olur."
   },
   {
     "coachingCues": "Rotate from the mid-back, not from the low back.",
-    "duration": "6 min",
+    "duration": "5 min",
     "focusAreas": [
       "thoracicRotation",
       "shoulders"
@@ -240,12 +240,12 @@
     "titleTr": "Torasik Rotasyon Sıfırlama",
     "goalTr": "Orta sırt dönüşünü yeniden kazanmak ve vuruş rotasyonuna hazırlanmak.",
     "instructionsTr": "Agresif esnetme yapmadan temiz gövde hareketini yeniden kazanmak için bu rotasyon egzersizlerini uygulayın.",
-    "coachingCuesTr": "Belden değil, orta sırtten döndürün.",
+    "coachingCuesTr": "Belden değil, orta sırttan döndürün.",
     "whyItMattersTr": "Hareketli torasik omurga daha iyi raket baş hızını, vuruşlar arası toparlanmayı ve daha güvenli servis dönüşünü destekler."
   },
   {
     "coachingCues": "Stay steady through your breath and keep each joint moving in the direction you want to feel on court.",
-    "duration": "8 min",
+    "duration": "7 min",
     "focusAreas": [
       "hips",
       "shoulders",
@@ -307,7 +307,7 @@
   },
   {
     "coachingCues": "Avoid rushing and feel the rotation through the spine, not just the arms.",
-    "duration": "12 min",
+    "duration": "10 min",
     "focusAreas": [
       "thoracicRotation",
       "shoulders"
@@ -345,7 +345,7 @@
         "id": "daily-mobility-001-4",
         "notes": "Move slowly through each side.",
         "title": "Thread-the-needle press",
-        "titleTr": "İğneden iplik geçirme vurgusu",
+        "titleTr": "İğneden iplik geçirme itişi",
         "notesTr": "Her tarafta yavaşça hareket edin."
       },
       {
@@ -459,7 +459,7 @@
         "id": "daily-mobility-003-3",
         "notes": "Keep contact through the spine.",
         "title": "Wall angel slides",
-        "titleTr": "Duvar melek kayıkları",
+        "titleTr": "Duvar melek kaydırmaları",
         "notesTr": "Omurga boyunca temas koruyun."
       },
       {
@@ -536,7 +536,7 @@
         "id": "daily-mobility-004-5",
         "notes": "Keep the spine long.",
         "title": "Standing hip hinge pulses",
-        "titleTr": "Ayakta kalça menteşe vurguları",
+        "titleTr": "Ayakta kalça menteşe atımları",
         "notesTr": "Omurgayı uzun tutun."
       }
     ],
@@ -551,7 +551,7 @@
   },
   {
     "coachingCues": "Link each segment slowly and maintain awareness of the range you feel.",
-    "duration": "18 min",
+    "duration": "15 min",
     "focusAreas": [
       "hips",
       "thoracicRotation",
@@ -613,7 +613,7 @@
   },
   {
     "coachingCues": "Stay relaxed and let the muscles lengthen without force.",
-    "duration": "22 min",
+    "duration": "20 min",
     "focusAreas": [
       "hips",
       "hamstrings"
@@ -659,7 +659,7 @@
         "id": "recovery-001-5",
         "notes": "Keep the pelvis squared.",
         "title": "Supported figure-four release",
-        "titleTr": "Destekli rakam dört gevşemesi",
+        "titleTr": "Destekli dört rakamı gevşemesi",
         "notesTr": "Pelvisi paralel tutun."
       }
     ],
@@ -674,7 +674,7 @@
   },
   {
     "coachingCues": "Let each position settle before you move on.",
-    "duration": "24 min",
+    "duration": "20 min",
     "focusAreas": [
       "shoulders",
       "thoracicRotation"
@@ -729,7 +729,7 @@
     "whyItMatters": "Shoulder and spine recovery preserves serve quality and reduces the feel of fatigue in the upper body.",
     "titleTr": "Omuz & Omurga Toparlanması",
     "goalTr": "Yoğun vurma seansından sonra üst vücut gerginliğini gidermek.",
-    "instructionsTr": "Sertliği azaltmak ve rotasyonu yeniden kazanmak için oyunu bu üst vücut toparlanma rutinityle bitirin.",
+    "instructionsTr": "Sertliği azaltmak ve rotasyonu yeniden kazanmak için oyunu bu üst vücut toparlanma rutiniyle bitirin.",
     "coachingCuesTr": "Her pozisyonun oturmasına izin vermeden önce geçmeyin.",
     "whyItMattersTr": "Omuz ve omurga toparlanması servis kalitesini korur ve üst vücuttaki yorgunluk hissini azaltır."
   },
@@ -797,7 +797,7 @@
   },
   {
     "coachingCues": "Stay slow and let the positions feel restorative, not forced.",
-    "duration": "25 min",
+    "duration": "20 min",
     "focusAreas": [
       "shoulders",
       "hips",
@@ -859,7 +859,7 @@
   },
   {
     "coachingCues": "Breathe deeply and let each position settle into the joint instead of forcing the movement.",
-    "duration": "30 min",
+    "duration": "25 min",
     "focusAreas": [
       "hips",
       "shoulders",
@@ -906,7 +906,7 @@
         "id": "recovery-005-5",
         "notes": "Let the glute relax.",
         "title": "Supine figure-four release",
-        "titleTr": "Sırtüstü rakam dört gevşemesi",
+        "titleTr": "Sırtüstü dört rakamı gevşemesi",
         "notesTr": "Gluteusun gevşemesine izin verin."
       }
     ],

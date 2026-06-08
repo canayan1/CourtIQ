@@ -126,7 +126,7 @@
             "howToTr": [
               "Hafif diz bükümüyle tek bacakta durun — hazır, atletik pozisyon.",
               "Dış ayaktan yana itip diğer bacakla inin.",
-              "İnişi 1-2 saniye tutun — sabitleyın.",
+              "İnişi 1-2 saniye tutun — sabitleyin.",
               "Momentum için kolları kullanın."
             ],
             "tennisWhyTr": "Tenis hareketinin yaklaşık %70'i yan yöndedir. İtme, kontrollü iniş ve tekrar itmeye hazır olma becerisini eğitir — kovalama ve toparlanma deseni.",
@@ -176,7 +176,13 @@
         "recovery": "Walk 5 minutes, then do calf and hip flexor mobility.",
         "title": "Lower-Body Power + Acceleration",
         "type": "hybrid",
-        "warmup": "5 min bike, ankle rocks, world's greatest stretch, pogo hops, and 3 progressive accelerations."
+        "warmup": "5 min bike, ankle rocks, world's greatest stretch, pogo hops, and 3 progressive accelerations.",
+        "titleTr": "Alt Vücut Gücü + Hızlanma",
+        "focusTr": "Patlayıcı bacaklar, kalça itişi, ilk adım niyeti",
+        "objectiveTr": "Duruşunu ya da dengeni kaybetmeden itme hızı için ihtiyaç duyduğun kuvveti oluştur.",
+        "warmupTr": "5 dk bisiklet, ayak bileği sallamaları, dünyanın en iyi esnemesi (world's greatest stretch), pogo sıçramaları ve 3 kademeli hızlanma.",
+        "finisherTr": "8 x 15 sn assault bike sprinti, aralarda 45 sn rahat pedal.",
+        "recoveryTr": "5 dakika yürü, sonra baldır ve kalça fleksörü mobilitesi yap."
       },
       {
         "dayLabel": "Day 2",
@@ -305,7 +311,7 @@
             ],
             "tennisWhyTr": "Gövdenin birlikte döndürüp sabitlenmesini öğretir — tek elle backhand veya forehand vuruşunda tam olarak olan budur.",
             "watchOutsTr": [
-              "Beli bükmeyın — rotasyon sırt orta bölgesinden gelir.",
+              "Beli bükmeyin — rotasyon sırt orta bölgesinden gelir.",
               "Kolunuzla fırlatmayın — önce kürek kemiğiyle itin.",
               "Kaburga kemiklerini kalçaların üzerinde sıralı tutun — hile yapmak için geriye yaslanmayın."
             ]
@@ -339,7 +345,7 @@
             "watchOutsTr": [
               "Basarken kalçaları döndürmeyin — ileriye doğru düz kalın.",
               "Kaburga kemiklerini aşağıda tutun — bel bölgesini kaldırmayın.",
-              "Ön dizniz sallanıyorsa ağırlığı düşürün."
+              "Ön diziniz sallanıyorsa ağırlığı düşürün."
             ]
           }
         ],
@@ -350,7 +356,13 @@
         "recovery": "Gentle pec, lat, and thoracic mobility.",
         "title": "Upper-Body Strength + Aerobic Base",
         "type": "hybrid",
-        "warmup": "Band pull-aparts, thoracic rotations, shoulder wall slides, and 5 min rower."
+        "warmup": "Band pull-aparts, thoracic rotations, shoulder wall slides, and 5 min rower.",
+        "titleTr": "Üst Vücut Kuvveti + Aerobik Taban",
+        "focusTr": "Rotasyonel kuvvet, duruş, motor desteği",
+        "objectiveTr": "Aerobik tabanı canlı tutarken servisler ve yer vuruşları için daha güçlü üst vücut kuvvet aktarımı oluştur.",
+        "warmupTr": "Bant ayırmaları (pull-apart), torasik rotasyonlar, omuz duvar kaydırmaları ve 5 dk kürek.",
+        "finisherTr": "25-30 dk zone 2 bisiklet ya da eğimli yürüyüş.",
+        "recoveryTr": "Nazik göğüs (pectoral), lat ve torasik mobilite."
       },
       {
         "dayLabel": "Day 3",
@@ -415,7 +427,7 @@
             ],
             "tennisWhyTr": "Bu bir baz çizgisi rallisinin tam desenidir — geniş sprint, toparlan, tekrar geniş sprint. Hem sprinti hem de sert duruşu eğitir.",
             "watchOutsTr": [
-              "Yön değişikliklerinde diklemez durun — atletik kalın.",
+              "Yön değişikliklerinde dik durmayın — atletik kalın.",
               "Çizgiye elinizle temiz dokunun — kısayol almayın.",
               "Yorgunluk kaliteyi hızla düşürür. Tekrarlar arasında tam dinlenin."
             ]
@@ -492,7 +504,13 @@
         "recovery": "Easy walk and deep breathing for 5 minutes.",
         "title": "Court Conditioning + Mobility",
         "type": "cardio",
-        "warmup": "Dynamic lower-body warmup, 2 easy shuffles each way, and 2 build-up runs."
+        "warmup": "Dynamic lower-body warmup, 2 easy shuffles each way, and 2 build-up runs.",
+        "titleTr": "Kort Kondisyonu + Mobilite",
+        "focusTr": "Tekrarlı sprint kapasitesi ve hareket kalitesi",
+        "objectiveTr": "Günü gereksiz yorgunluğa çevirmeden kondisyonu yükselt.",
+        "warmupTr": "Dinamik alt vücut ısınması, her yöne 2 kolay shuffle ve 2 kademeli koşu.",
+        "finisherTr": "3 tur: 30 sn hızlı ayak, 30 sn dinlenme, 30 sn plank.",
+        "recoveryTr": "5 dakika kolay yürüyüş ve derin nefes."
       },
       {
         "dayLabel": "Day 4",
@@ -589,7 +607,7 @@
             ],
             "tennisWhyTr": "Baş üstü ve servis hareketi açısını düz bir presten daha iyi yakalar. Pres gücü oluştururken omuzu daha az zorlar.",
             "watchOutsTr": [
-              "Kuvvet üretmek için gövdeyi bükmeyın — bu bir pres, rotasyon değil.",
+              "Kuvvet üretmek için gövdeyi bükmeyin — bu bir pres, rotasyon değil.",
               "Kaburga kemiklerini aşağıda tutun — bel kaldırma.",
               "Dirseği öne, yukarı değil, yönlendirin."
             ]
@@ -666,7 +684,13 @@
         "recovery": "Hamstring, adductor, and trunk reset.",
         "title": "Full-Body Hypertrophy + Trunk",
         "type": "gym",
-        "warmup": "Bike 5 min, bodyweight squats, shoulder circles, dead bugs."
+        "warmup": "Bike 5 min, bodyweight squats, shoulder circles, dead bugs.",
+        "titleTr": "Tüm Vücut Hipertrofi + Gövde",
+        "focusTr": "Kas desteği, doku dayanıklılığı, gövde kontrolü",
+        "objectiveTr": "Tekrarlı kort yükü boyunca dayanıklı kalmak için yeterli kas ve tendon desteği ekle.",
+        "warmupTr": "5 dk bisiklet, vücut ağırlığıyla squat, omuz çevirmeleri, dead bug.",
+        "finisherTr": "6 dk dönüşümlü kızak çekişi ya da eğimli koşu bandı itişleri.",
+        "recoveryTr": "Hamstring, iç uyluk (adduktor) ve gövde sıfırlaması."
       },
       {
         "dayLabel": "Day 5",
@@ -840,7 +864,13 @@
         "recovery": "Foot, calf, and thoracic release.",
         "title": "Elasticity + Shot-Speed Transfer",
         "type": "hybrid",
-        "warmup": "Pogo series, skips, band rotations, and 2 medicine-ball rehearsal throws."
+        "warmup": "Pogo series, skips, band rotations, and 2 medicine-ball rehearsal throws.",
+        "titleTr": "Elastikiyet + Vuruş Hızı Aktarımı",
+        "focusTr": "Reaktif sertlik ve rotasyonel patlama",
+        "objectiveTr": "Kuvvet çalışmasını daha hızlı elastik çıktıya ve daha hızlı vuruş niyetine dönüştür.",
+        "warmupTr": "Pogo serisi, skip'ler, bant rotasyonları ve 2 sağlık topu prova atışı.",
+        "finisherTr": "Kürek ya da bisiklette 10 tur: 20 sn sert / 40 sn kolay.",
+        "recoveryTr": "Ayak, baldır ve torasik gevşetme."
       },
       {
         "dayLabel": "Day 6",
@@ -952,7 +982,7 @@
             "id": "fd6-4",
             "intent": "Serve shoulder maintenance.",
             "prescription": "3 x 15",
-            "tennisWhy": "Bulletproofs the serve shoulder. Tennis serves wear out the rotator cuff — this small, boring exercise is what prevents long-term damage.",
+            "tennisWhy": "Helps protect the serve shoulder. Tennis serves wear out the rotator cuff — this small, boring exercise helps reduce the risk of long-term damage.",
             "title": "Band external rotation",
             "watchOuts": [
               "Keep the elbow pinned to your side — don't let it drift.",
@@ -967,7 +997,7 @@
               "Ön kolu banda karşı dışa doğru (vücuttan uzağa) döndürün.",
               "Yavaşça geri dönün."
             ],
-            "tennisWhyTr": "Servis omzunu güçlendirir. Tenis servisleri rotator manşeti yorar — bu küçük, sıradan egzersiz uzun vadeli hasarı önleyen şeydir.",
+            "tennisWhyTr": "Servis omzunu korumaya yardım eder. Tenis servisleri rotator manşeti yorar — bu küçük, sıradan egzersiz uzun vadeli hasar riskini azaltmaya yardımcı olur.",
             "watchOutsTr": [
               "Dirseği yanınıza sabitlenmiş tutun — kaymasına izin vermeyin.",
               "Hafif direnç — bu bir güç kaldırma değil.",
@@ -1014,7 +1044,13 @@
         "recovery": "Keep this day easier than you think.",
         "title": "Endurance Engine + Recovery Strength",
         "type": "hybrid",
-        "warmup": "Easy 5 min cardio and joint mobility."
+        "warmup": "Easy 5 min cardio and joint mobility.",
+        "titleTr": "Dayanıklılık Motoru + Toparlanma Kuvveti",
+        "focusTr": "Düşük yoğunluklu motor desteği ve duruş",
+        "objectiveTr": "Bir yüksek stresli gün daha eklemeden maç dayanıklılığını destekle.",
+        "warmupTr": "Kolay 5 dk kardiyo ve eklem mobilitesi.",
+        "finisherTr": "Kalçalar, omuzlar ve t-omurga için 8-10 dk rehberli mobilite akışı.",
+        "recoveryTr": "Bu günü sandığından daha kolay tut."
       },
       {
         "dayLabel": "Day 7",
@@ -1049,7 +1085,7 @@
             "watchOutsTr": [
               "Rahatsızlık normaldir; keskin ağrı yükü azaltın demektir.",
               "Yavaş nefes alın — gergin kaslar gevşemez.",
-              "Doğrudan eklemler veya kemikler üzerinde rulomayın."
+              "Doğrudan eklemler veya kemikler üzerinde rulolamayın."
             ]
           },
           {
@@ -1074,7 +1110,7 @@
             "howToTr": [
               "Kalça: 90/90 geçişleri, her taraf 6 tekrar.",
               "Torasik: açık kitap, her taraf 6 tekrar.",
-              "Ayak bileği: diz-parmak ucu kayadonumu, her taraf 10 tekrar.",
+              "Ayak bileği: diz-parmak ucu sallanmaları, her taraf 10 tekrar.",
               "Omuz: duvar kaydırmaları, 10 tekrar."
             ],
             "tennisWhyTr": "Tenis pozisyonlarının gerektirdiği hareket açıklığını korur. Haftalık uygulayın — kısıtlamalar sessizce birikerek vuruş kalitesi düşüşü olarak ortaya çıkar.",
@@ -1092,7 +1128,13 @@
         "recovery": "Sleep, hydration, and an easy walk win the day.",
         "title": "Recovery / Off",
         "type": "recovery",
-        "warmup": "Optional 10 minute walk."
+        "warmup": "Optional 10 minute walk.",
+        "titleTr": "Toparlanma / İzin",
+        "focusTr": "Dinçliği geri kazan",
+        "objectiveTr": "İkinci haftaya sadece daha yorgun değil, daha iyi hissederek başla.",
+        "warmupTr": "İsteğe bağlı 10 dakikalık yürüyüş.",
+        "finisherTr": "Yok. Toparlanmayı gerçekten hafif tut.",
+        "recoveryTr": "Uyku, su tüketimi ve kolay bir yürüyüş günü kazandırır."
       }
     ],
     "durationWeeks": 8,
@@ -1115,35 +1157,59 @@
         "guidance": "Learn the movement patterns, leave one or two reps in reserve, and build consistency before chasing intensity.",
         "id": "phase-1",
         "title": "Base & Rhythm",
-        "weekRange": "Weeks 1-2"
+        "weekRange": "Weeks 1-2",
+        "titleTr": "Temel ve Ritim",
+        "guidanceTr": "Hareket kalıplarını öğren, bir-iki tekrarı yedekte bırak ve yoğunluğun peşine düşmeden önce tutarlılık oluştur."
       },
       {
         "guidance": "Add small load jumps or one extra set on primary lifts while keeping sprint and jump quality high.",
         "id": "phase-2",
         "title": "Load & Capacity",
-        "weekRange": "Weeks 3-4"
+        "weekRange": "Weeks 3-4",
+        "titleTr": "Yük ve Kapasite",
+        "guidanceTr": "Sprint ve sıçrama kalitesini yüksek tutarken ana hareketlerde küçük yük artışları ya da bir ekstra set ekle."
       },
       {
         "guidance": "Move the weights faster, trim fluff volume, and make every plyometric rep crisp and reactive.",
         "id": "phase-3",
         "title": "Power Conversion",
-        "weekRange": "Weeks 5-6"
+        "weekRange": "Weeks 5-6",
+        "titleTr": "Güce Dönüşüm",
+        "guidanceTr": "Ağırlıkları daha hızlı kaldır, gereksiz hacmi kırp ve her plyometrik tekrarı keskin ve reaktif yap."
       },
       {
         "guidance": "Cut total volume by roughly thirty percent so the body freshens up without losing rhythm.",
         "id": "phase-4",
         "title": "Deload & Reset",
-        "weekRange": "Week 7"
+        "weekRange": "Week 7",
+        "titleTr": "Deload ve Sıfırlama",
+        "guidanceTr": "Toplam hacmi yaklaşık yüzde otuz azalt ki vücut ritmi kaybetmeden tazelensin."
       },
       {
         "guidance": "Keep the sessions snappy, repeat your best loads, and use the persistence check to compare readiness versus week one.",
         "id": "phase-5",
         "title": "Sharpness Week",
-        "weekRange": "Week 8"
+        "weekRange": "Week 8",
+        "titleTr": "Keskinlik Haftası",
+        "guidanceTr": "Seansları tempolu tut, en iyi yüklerini tekrarla ve birinci haftaya kıyasla hazır olma durumunu karşılaştırmak için kalıcılık kontrolünü kullan."
       }
     ],
     "title": "8-Week Tennis Hybrid Foundation",
-    "followOnProgramID": "training-hybrid-progression"
+    "followOnProgramID": "training-hybrid-progression",
+    "titleTr": "8 Haftalık Tenis Hibrit Temel Programı",
+    "overviewTr": "Bu bir haftalık yapıyı sekiz hafta boyunca tekrarlayarak hareket kalitesini kaybetmeden kuvvet, patlayıcılık, hipertrofi ve maça hazır kondisyonu birlikte geliştir. Bu orta seviye bir plandır: dört zorlu gün (1, 2, 4, 5) artı iki daha hafif destek günü (3 ve 6). Yapılandırılmış antrenmana yeni mi başladın ya da sezon içinde misin? Sadece 1, 2 ve 4. günleri uygula; yük kolay gelene kadar gerisini opsiyonel say, sonra günleri birer birer geri ekle.",
+    "outcomeTr": "Daha güçlü bir alt vücut, vuruşlara daha temiz kuvvet aktarımı, daha iyi tekrarlı sprint kondisyonu ve kort haftaları boyunca dayanıklı kalmana yetecek kas desteği.",
+    "emphasisTr": [
+      "Plyometrik",
+      "Hipertrofi",
+      "Patlayıcı kuvvet",
+      "Kondisyon"
+    ],
+    "persistencePromptsTr": [
+      "Bu hafta ilk adımın ne kadar patlayıcı hissettirdi?",
+      "Gym çalışması ile kardiyo günleri arasında bacakların ne kadar iyi toparlandı?",
+      "Haftanın sonlarında yoğunluğu sürdürürken ne kadar kendinden emin hissettin?"
+    ]
   },
   {
     "accessTier": "premium",
@@ -1270,7 +1336,7 @@
             "titleTr": "Dirençli Yanal Shuffle",
             "intentTr": "Bant direncine karşı kalçaları alçak tutun ve yanal kuvvet üretimini sürdürün.",
             "howToTr": [
-              "Bandı dizlerin hemen üstüne doplayın.",
+              "Bandı dizlerin hemen üstüne dolayın.",
               "Atletik duruşa geçin, kalçalar geri, göğüs yukarı.",
               "Banda karşı kısa, hızlı adımlarla yana shuffle yapın.",
               "Kalçaları boyunca alçak tutun — yukarı aşağı sallanmayın."
@@ -1304,7 +1370,7 @@
             "howToTr": [
               "Ayaklar kalça genişliğinde, kollar arkada, dizler hazır duruşta bükülü.",
               "Kolları güçlü öne salın ve mümkün olduğunca ileri atlayın.",
-              "Her iki ayağa inin, yumuşak biçimde emın.",
+              "Her iki ayağa inin, yumuşak biçimde emin.",
               "Her tekrarı ölçün — tutarlılık veya hafif iyileşme hedefleyin."
             ],
             "tennisWhyTr": "Saf yatay güç — ilk adım hızının ham malzemesi. Daha iyi uzun atlama genellikle daha hızlı ilk adım anlamına gelir.",
@@ -1322,7 +1388,13 @@
         "recovery": "5 min walk, then calf stretching and hip flexor release on the floor.",
         "title": "Acceleration Mechanics",
         "type": "hybrid",
-        "warmup": "A-march, A-skip, ankle circles, wall drills x 3, and 2 build-up runs over 20 m."
+        "warmup": "A-march, A-skip, ankle circles, wall drills x 3, and 2 build-up runs over 20 m.",
+        "titleTr": "Hızlanma Mekaniği",
+        "focusTr": "İtme açıları ve yatay kuvvet",
+        "objectiveTr": "Vücuda alçak atletik duruştan hızlıca ileri ve yana fırlamayı öğret.",
+        "warmupTr": "A-march, A-skip, ayak bileği çevirmeleri, duvar egzersizleri x 3 ve 20 m üzerinde 2 kademeli koşu.",
+        "finisherTr": "6 kısa mekik tekrarı, her birinin arasında 30 sn dinlenme.",
+        "recoveryTr": "5 dk yürüyüş, sonra yerde baldır esnetme ve kalça fleksörü gevşetme."
       },
       {
         "dayLabel": "Day 2",
@@ -1466,7 +1538,7 @@
             "id": "fw-10",
             "intent": "Build hamstring resilience that protects the knee when braking hard.",
             "prescription": "3 x 5 eccentric",
-            "tennisWhy": "The gold standard for hamstring injury prevention in sprint sports. Reduces pulls on the sudden sprints and lunges tennis demands.",
+            "tennisWhy": "One of the best-supported exercises for reducing hamstring injury risk in sprint sports. Reduces pulls on the sudden sprints and lunges tennis demands.",
             "title": "Nordic curl",
             "watchOuts": [
               "Hardest hamstring exercise there is — start with partial range.",
@@ -1481,7 +1553,7 @@
               "Hamstringlerde direnerek yavaşça öne inin.",
               "Hamstringler tükenende ellere tutunun; geri itin."
             ],
-            "tennisWhyTr": "Sprint sporlarında hamstring sakatlık önlemede altın standart. Tenisin gerektirdiği ani sprint ve hamlelerde kas çekilmelerini azaltır.",
+            "tennisWhyTr": "Sprint sporlarında hamstring sakatlık riskini azaltmak için en iyi desteklenen egzersizlerden biri. Tenisin gerektirdiği ani sprint ve hamlelerde kas çekilmelerini azaltır.",
             "watchOutsTr": [
               "En zor hamstring egzersizi budur — kısmi hareket açıklığıyla başlayın.",
               "Kalçalardan bükülmeyin — diz başından başa düz çizgi.",
@@ -1496,7 +1568,13 @@
         "recovery": "Adductor release with 90/90 stretch and light quad foam roll.",
         "title": "Lateral Strength",
         "type": "gym",
-        "warmup": "Lateral lunges x 8 each way, clamshells x 15 / side, glute bridges x 12."
+        "warmup": "Lateral lunges x 8 each way, clamshells x 15 / side, glute bridges x 12.",
+        "titleTr": "Yanal Kuvvet",
+        "focusTr": "Yana frenleme ve yeniden hızlanma",
+        "objectiveTr": "Yavaşlama kuvvetini ve toparlanma adımlarını yöneten yanal yüklenme kalıplarını geliştir.",
+        "warmupTr": "Her yöne 8 yanal lunge, her tarafa 15 clamshell, 12 glute bridge.",
+        "finisherTr": "12 dk kolay bisiklet boşaltması — bacaklar döner, kalp atışı düşer.",
+        "recoveryTr": "90/90 esneme ile iç uyluk gevşetme ve hafif quad foam roll."
       },
       {
         "dayLabel": "Day 3",
@@ -1670,7 +1748,13 @@
         "recovery": "5 min easy walk, then deep breathing in supine position.",
         "title": "Reactive Agility",
         "type": "cardio",
-        "warmup": "Fast feet in place x 20 sec, low skips x 2, shuffle to back-pedal transitions x 4."
+        "warmup": "Fast feet in place x 20 sec, low skips x 2, shuffle to back-pedal transitions x 4.",
+        "titleTr": "Reaktif Çeviklik",
+        "focusTr": "Tepki ver ve yeniden konumlan",
+        "objectiveTr": "İlk okumadan ilk adıma daha hızlı geç ve topa dengeli bir pozisyonda var.",
+        "warmupTr": "Yerinde 20 sn hızlı ayak, 2 alçak skip, shuffle'dan geri kaçışa geçiş x 4.",
+        "finisherTr": "Duruşu geri kazanmak için 10 dk kalça ve torasik mobilite akışı.",
+        "recoveryTr": "5 dk kolay yürüyüş, sonra sırtüstü pozisyonda derin nefes."
       },
       {
         "dayLabel": "Day 4",
@@ -1704,7 +1788,7 @@
             "tennisWhyTr": "Ayak bileği sertliği split-step'i patlatır. Pogolar, ayaklarınızın kortta hafif hissettirmesi için o yaylı kaliteyi oluşturur.",
             "watchOutsTr": [
               "Derin diz bükümü yok — reaktifliği öldürür.",
-              "Dik durun — çökmeyın.",
+              "Dik durun — çökmeyin.",
               "Baldırlar ağrıyorsa set süresini kısaltın."
             ]
           },
@@ -1812,7 +1896,13 @@
         "recovery": "Foot massage with lacrosse ball, ankle mobility circles, plantar fascia stretch.",
         "title": "Foot & Ankle Support",
         "type": "recovery",
-        "warmup": "Ankle circles x 10 each direction, calf pumps x 15, toe walks x 20 m."
+        "warmup": "Ankle circles x 10 each direction, calf pumps x 15, toe walks x 20 m.",
+        "titleTr": "Ayak ve Ayak Bileği Desteği",
+        "focusTr": "Elastik alt bacak ve ayak dayanıklılığı",
+        "objectiveTr": "Ayakların uzun bir hafta boyunca kortu emebilmesi için reaktif ve dayanıklı kalmalarını sağla.",
+        "warmupTr": "Her yöne 10 ayak bileği çevirmesi, 15 baldır pompası, 20 m parmak ucu yürüyüşü.",
+        "finisherTr": "Yok — bu gün bilinçli olarak düşük yüklüdür.",
+        "recoveryTr": "Lacrosse topuyla ayak masajı, ayak bileği mobilite çevirmeleri, plantar fasya esnetme."
       }
     ],
     "durationWeeks": 8,
@@ -1835,35 +1925,59 @@
         "guidance": "Focus on movement pattern quality. Move at 80% speed, land cleanly, and never sacrifice posture for pace.",
         "id": "fw-phase-1",
         "title": "Pattern & Timing",
-        "weekRange": "Weeks 1-2"
+        "weekRange": "Weeks 1-2",
+        "titleTr": "Kalıp ve Zamanlama",
+        "guidanceTr": "Hareket kalıbı kalitesine odaklan. %80 hızda hareket et, temiz in ve duruşu asla hız için feda etme."
       },
       {
         "guidance": "Add resistance (band, sled) and extend sprint distances. Your body should feel challenged but not broken.",
         "id": "fw-phase-2",
         "title": "Load & Distance",
-        "weekRange": "Weeks 3-4"
+        "weekRange": "Weeks 3-4",
+        "titleTr": "Yük ve Mesafe",
+        "guidanceTr": "Direnç ekle (bant, kızak) ve sprint mesafelerini uzat. Vücudun zorlanmalı ama yıpranmamalı."
       },
       {
         "guidance": "Increase reaction speed and agility drill intensity. Every rep should feel like a match situation — read, decide, go.",
         "id": "fw-phase-3",
         "title": "Speed & Reaction",
-        "weekRange": "Weeks 5-6"
+        "weekRange": "Weeks 5-6",
+        "titleTr": "Hız ve Reaksiyon",
+        "guidanceTr": "Reaksiyon hızını ve çeviklik egzersizi yoğunluğunu artır. Her tekrar bir maç durumu gibi hissettirmeli — oku, karar ver, git."
       },
       {
         "guidance": "Cut volume by 30%. Use this week to absorb the training load — move well, not hard.",
         "id": "fw-phase-4",
         "title": "Deload & Coordination",
-        "weekRange": "Week 7"
+        "weekRange": "Week 7",
+        "titleTr": "Deload ve Koordinasyon",
+        "guidanceTr": "Hacmi %30 azalt. Bu haftayı antrenman yükünü özümsemek için kullan — sert değil, iyi hareket et."
       },
       {
         "guidance": "Replicate the best sessions from weeks 5-6 at match intensity. Use this as a before-and-after comparison.",
         "id": "fw-phase-5",
         "title": "Match-Speed Benchmark",
-        "weekRange": "Week 8"
+        "weekRange": "Week 8",
+        "titleTr": "Maç Hızı Kıyas Haftası",
+        "guidanceTr": "5-6. haftaların en iyi seanslarını maç yoğunluğunda tekrarla. Bunu bir önce-sonra karşılaştırması olarak kullan."
       }
     ],
     "title": "Better Footwork Performance Track",
-    "followOnProgramID": "training-footwork-progression"
+    "followOnProgramID": "training-footwork-progression",
+    "titleTr": "Daha İyi Ayak Çalışması Performans Programı",
+    "overviewTr": "İlk adım hızına, yavaşlama (frenleme) kuvvetine, çapraz adım verimliliğine ve yön değiştirme tekrarlanabilirliğine odaklanan 8 haftalık premium bir progresyon. Her hafta bir öncekinin üzerine inşa edilir — ileriye atlama.",
+    "outcomeTr": "Sekiz haftanın sonunda split adıma daha hafif girer, geniş toplarda daha keskin olur ve toparlanma adımlarında daha düzenli hissedersin.",
+    "emphasisTr": [
+      "Reaktif sıçramalar",
+      "Yavaşlama kuvveti",
+      "Çeviklik",
+      "Tekrarlı yön değiştirme kondisyonu"
+    ],
+    "persistencePromptsTr": [
+      "Bu hafta geniş bir topa tepki verirken ilk adımın ne kadar keskindi?",
+      "Geniş top toparlanma adımında vücudunu ne kadar iyi yavaşlatıp kontrol ettin?",
+      "Bir setin sonlarında zaten yorgunken toparlanma adımların ne kadar düzenli hissettirdi?"
+    ]
   },
   {
     "accessTier": "premium",
@@ -1995,7 +2109,7 @@
               "Tutacağı göğsünüzden düz dışarı itin.",
               "2 saniye tutun, rotasyonel çekime direnir, geri dönün."
             ],
-            "tennisWhyTr": "Anti-rotasyon, rotasyonun göz ardı edilen ikizisidir — temiz bir vuruş için her ikisi de gereklidir. Anti-rotasyon olmadan gücünüz sızdırılır.",
+            "tennisWhyTr": "Anti-rotasyon, rotasyonun göz ardı edilen ikizisidir — temiz bir vuruş için her ikisi de gereklidir. Anti-rotasyon olmadan gücünüz kaçar.",
             "watchOutsTr": [
               "Gövdenin dönmesine izin vermeyin — bant çekimine direnir.",
               "Dizler yumuşak, kalçalar dik.",
@@ -2042,7 +2156,13 @@
         "recovery": "Lat stretch in doorway, hip flexor lunge hold x 40 sec / side.",
         "title": "Rotational Power",
         "type": "hybrid",
-        "warmup": "Thoracic rotation x 8 / side, hip 90/90 switches x 6, band pull-aparts x 15, 3 rehearsal throws with light ball."
+        "warmup": "Thoracic rotation x 8 / side, hip 90/90 switches x 6, band pull-aparts x 15, 3 rehearsal throws with light ball.",
+        "titleTr": "Rotasyonel Güç",
+        "focusTr": "Kalçadan rakete kuvvet aktarımı",
+        "objectiveTr": "Doğrudan yer vuruşlarına ve servise taşınan rotasyonel güç dizilimini çalış.",
+        "warmupTr": "Her tarafa 8 torasik rotasyon, 6 kalça 90/90 geçişi, 15 bant ayırması, hafif topla 3 prova atışı.",
+        "finisherTr": "8 dk bisiklet aralığı — 20 sn sert, 40 sn kolay.",
+        "recoveryTr": "Kapı eşiğinde lat esnetme, her tarafa 40 sn kalça fleksörü lunge tutuşu."
       },
       {
         "dayLabel": "Day 2",
@@ -2186,7 +2306,7 @@
             "id": "ss-10",
             "intent": "Keep the elbow at 90 degrees and rotate slowly — this protects the serve shoulder.",
             "prescription": "3 x 15 / side",
-            "tennisWhy": "Every serve fires the rotator cuff hard. Without specific strengthening, it will break down — this is the fix.",
+            "tennisWhy": "Every serve fires the rotator cuff hard. Without specific strengthening, it can break down — this helps.",
             "title": "Band external rotation",
             "watchOuts": [
               "Elbow stays pinned at side.",
@@ -2201,7 +2321,7 @@
               "Ön kolu banda karşı dışa (vücuttan uzağa) döndürün.",
               "Yavaşça geri dönün, her tarafta 15 tekrar."
             ],
-            "tennisWhyTr": "Her servis rotator manşeti yoğun çalıştırır. Spesifik güçlendirme olmadan çöker — bu koruma egzersizidir.",
+            "tennisWhyTr": "Her servis rotator manşeti yoğun çalıştırır. Spesifik güçlendirme olmadan zorlanabilir — bu yardımcı olur.",
             "watchOutsTr": [
               "Dirsek yana sabitlenmiş kalmalı.",
               "Hafif bant kullanın — ağır yardımcı olmaz.",
@@ -2216,7 +2336,13 @@
         "recovery": "Pec stretch against wall, overhead lat reach, thoracic extension over foam roller.",
         "title": "Upper Push/Pull Strength",
         "type": "gym",
-        "warmup": "Band shoulder series: pull-aparts, dislocations, face pulls — 2 x 12 each."
+        "warmup": "Band shoulder series: pull-aparts, dislocations, face pulls — 2 x 12 each.",
+        "titleTr": "Üst İtme/Çekme Kuvveti",
+        "focusTr": "Üst vücut kuvvet üretimi ve omuz dayanıklılığı",
+        "objectiveTr": "Daha ağır servis ve sürdürülebilir yer vuruşu hızını destekleyen itme, çekme ve omuz stabilizasyonunu oluştur.",
+        "warmupTr": "Bant omuz serisi: ayırmalar, dislokasyonlar, face pull'lar — her biri 2 x 12.",
+        "finisherTr": "Anti-rotasyon kor devresi: her tarafa 3 x 8 Pallof tutuşu, 3 x 10 stir-the-pot.",
+        "recoveryTr": "Duvara karşı göğüs esnetme, baş üstü lat uzanması, foam roller üzerinde torasik ekstansiyon."
       },
       {
         "dayLabel": "Day 3",
@@ -2308,7 +2434,7 @@
             "howToTr": [
               "Ayaklar omuz genişliğinde, hızlı dörtte bir çömelme.",
               "Zemine patlayarak atlayın.",
-              "Yumuşak inin, darbeyi emın.",
+              "Yumuşak inin, darbeyi emin.",
               "Tekrarlar arasında tam sıfırlama."
             ],
             "tennisWhyTr": "Dikey patlayıcı güç — minyatür servis sıçraması. Hızlı konsantrik itişi öğretir.",
@@ -2390,7 +2516,13 @@
         "recovery": "Glute and hamstring reset: pigeon stretch x 60 sec / side, lying hamstring pull.",
         "title": "Lower-Body Drive",
         "type": "gym",
-        "warmup": "Hip openers x 8 / side, bodyweight jump squat x 5 with pause at landing, glute activation band walk."
+        "warmup": "Hip openers x 8 / side, bodyweight jump squat x 5 with pause at landing, glute activation band walk.",
+        "titleTr": "Alt Vücut İtişi",
+        "focusTr": "Yer kuvveti ve bacak itişi",
+        "objectiveTr": "Daha güçlü bacak yüklenmesi ve patlayıcı yer kuvveti oluştur — çoğu oyuncunun küçümsediği vuruş gücü kısmı.",
+        "warmupTr": "Her tarafa 8 kalça açıcı, inişte duraklamalı 5 vücut ağırlığı jump squat, glute aktivasyon bant yürüyüşü.",
+        "finisherTr": "4 x 200 m kürek sprinti, aralarda 60 sn dinlenme.",
+        "recoveryTr": "Glute ve hamstring sıfırlaması: her tarafa 60 sn pigeon esnetme, yatarak hamstring çekme."
       }
     ],
     "durationWeeks": 8,
@@ -2413,39 +2545,63 @@
         "guidance": "Focus on the movement quality: load the hip, link to the arm, finish with posture. Speed comes later.",
         "id": "ss-phase-1",
         "title": "Position & Control",
-        "weekRange": "Weeks 1-2"
+        "weekRange": "Weeks 1-2",
+        "titleTr": "Pozisyon ve Kontrol",
+        "guidanceTr": "Hareket kalitesine odaklan: kalçaya yüklen, kola bağla, duruşla bitir. Hız daha sonra gelir."
       },
       {
         "guidance": "Add load to the rotational and pressing exercises. Your positions should stay identical — only the resistance changes.",
         "id": "ss-phase-2",
         "title": "Load the Pattern",
-        "weekRange": "Weeks 3-4"
+        "weekRange": "Weeks 3-4",
+        "titleTr": "Kalıbı Yükle",
+        "guidanceTr": "Rotasyonel ve itme egzersizlerine yük ekle. Pozisyonların aynı kalmalı — sadece direnç değişir."
       },
       {
         "guidance": "Move explosively on every rep. The goal is intent — throw hard, push fast, land cleanly.",
         "id": "ss-phase-3",
         "title": "Velocity Focus",
-        "weekRange": "Weeks 5-6"
+        "weekRange": "Weeks 5-6",
+        "titleTr": "Hız Odağı",
+        "guidanceTr": "Her tekrarda patlayıcı hareket et. Amaç niyettir — sert at, hızlı it, temiz in."
       },
       {
         "guidance": "Reduce sets by one and drop weight 15-20%. Let the nervous system recover so it peaks in week 8.",
         "id": "ss-phase-4",
         "title": "Deload & Feel",
-        "weekRange": "Week 7"
+        "weekRange": "Week 7",
+        "titleTr": "Deload ve His",
+        "guidanceTr": "Set sayısını bir azalt ve ağırlığı %15-20 düşür. Sinir sisteminin toparlanmasına izin ver ki 8. haftada zirveye çıksın."
       },
       {
         "guidance": "Return to week 5-6 loads. Your body is fresh — notice how much more crisp the movement feels now.",
         "id": "ss-phase-5",
         "title": "Transfer Week",
-        "weekRange": "Week 8"
+        "weekRange": "Week 8",
+        "titleTr": "Aktarım Haftası",
+        "guidanceTr": "5-6. hafta yüklerine geri dön. Vücudun dinç — hareketin şimdi ne kadar daha keskin hissettirdiğine dikkat et."
       }
     ],
     "title": "Stronger Shots Power Track",
-    "followOnProgramID": "training-stronger-shots-progression"
+    "followOnProgramID": "training-stronger-shots-progression",
+    "titleTr": "Daha Güçlü Vuruşlar Kuvvet Programı",
+    "overviewTr": "Alt vücut kuvveti, rotasyonel sağlık topu çalışması, itme, çekme ve güç aktarımı çalışmasının premium bir karışımı — hepsi yer vuruşları ve servisteki kuvvet dizilimlerine özel olarak haritalanmış.",
+    "outcomeTr": "Daha az çabayla daha fazla hız üretir ve uzun maçlarda vuruş kalitesini daha geç döneme kadar korursun.",
+    "emphasisTr": [
+      "Rotasyonel güç",
+      "Üst vücut kuvveti",
+      "Bacak itişi",
+      "Vuruş tekrarlanabilirliği"
+    ],
+    "persistencePromptsTr": [
+      "Bu hafta vuruşu bırakmadan önce arka kalçana ne kadar iyi yüklendin?",
+      "Bacakların vuruş gücüne ne kadar katkı sağladı, yoksa topu kolla mı vurduğunu fark ettin?",
+      "Bir setin üçüncü ve dördüncü oyununda vuruş hızın ilkine kıyasla ne kadar tutarlı hissettirdi?"
+    ]
   },
   {
     "accessTier": "premium",
-    "level": "beginner",
+    "level": "intermediate",
     "category": "betterFlexibility",
     "days": [
       {
@@ -2480,7 +2636,7 @@
             "tennisWhyTr": "Kalça iç ve dış rotasyonu, temiz duruş ve toparlanma pozisyonları için gereklidir. Kilitli kalçalar kötü ayak çalışması olarak ortaya çıkar.",
             "watchOutsTr": [
               "Zorlamayın — mevcut hareket açıklığınızda oturun.",
-              "Omurgayı uzun tutun — dizin üzerine çökmeyın.",
+              "Omurgayı uzun tutun — dizin üzerine çökmeyin.",
               "Diz sıkışması hissederseniz pozisyonu ayarlayın."
             ]
           },
@@ -2556,7 +2712,13 @@
         "recovery": "Short walk outside if possible — movement helps hips settle after this work.",
         "title": "Hip & Hamstring Access",
         "type": "recovery",
-        "warmup": "5 min easy bike at low resistance, hip circles x 10 each direction, 3-way hip stretch."
+        "warmup": "5 min easy bike at low resistance, hip circles x 10 each direction, 3-way hip stretch.",
+        "titleTr": "Kalça ve Hamstring Erişimi",
+        "focusTr": "Kalça ve hamstring hareket açıklığı",
+        "objectiveTr": "Kalça derinliği gerektiren split adım inişini ve geniş top toparlanma pozisyonlarını geliştir.",
+        "warmupTr": "Düşük dirençte 5 dk kolay bisiklet, her yöne 10 kalça çevirmesi, 3 yönlü kalça esnetme.",
+        "finisherTr": "Sırtüstü pozisyonda 3 dk yavaş nefes — kalçaların yere düşmesine izin vermeye odaklan.",
+        "recoveryTr": "Mümkünse dışarıda kısa bir yürüyüş — hareket, bu çalışmadan sonra kalçaların oturmasına yardım eder."
       },
       {
         "dayLabel": "Day 2",
@@ -2666,7 +2828,13 @@
         "recovery": "Neck side-stretch x 30 sec each side, lat hang from a bar for 20 sec if available.",
         "title": "Thoracic + Shoulder Freedom",
         "type": "recovery",
-        "warmup": "Cat-cow x 10, band pull-aparts x 12, arm circles small to large x 10 each direction."
+        "warmup": "Cat-cow x 10, band pull-aparts x 12, arm circles small to large x 10 each direction.",
+        "titleTr": "Torasik + Omuz Serbestliği",
+        "focusTr": "Torasik rotasyon ve servis omuz pozisyonları",
+        "objectiveTr": "Rotator manşeti tahriş etmeden servis, smaç ve backhand hareket açıklığı için üst vücudu serbest bırak.",
+        "warmupTr": "10 cat-cow, 12 bant ayırması, her yöne küçükten büyüğe 10 kol çevirmesi.",
+        "finisherTr": "5 dk kolay kürek — uzun çekişler, torasik ekstansiyonu hisset.",
+        "recoveryTr": "Her tarafa 30 sn boyun yana esnetme, varsa bardan 20 sn lat asılması."
       },
       {
         "dayLabel": "Day 3",
@@ -2776,7 +2944,13 @@
         "recovery": "Keep everything today easy — this is the recovery session of the week.",
         "title": "Ankle + Recovery Flow",
         "type": "recovery",
-        "warmup": "Toe walks x 20 m, heel walks x 20 m, ankle circles x 10 each direction."
+        "warmup": "Toe walks x 20 m, heel walks x 20 m, ankle circles x 10 each direction.",
+        "titleTr": "Ayak Bileği + Toparlanma Akışı",
+        "focusTr": "Alt bacak hareket açıklığı ve kort yükü emilimi",
+        "objectiveTr": "Dorsifleksiyon hareket açıklığını geliştir ki ayak bilekleri ve dizler sert kort darbesini yukarı aktarmak yerine emsin.",
+        "warmupTr": "20 m parmak ucu yürüyüşü, 20 m topuk yürüyüşü, her yöne 10 ayak bileği çevirmesi.",
+        "finisherTr": "Düz yatarak 2 dk yavaş diyafram nefesi — sinir sistemine işinin bittiğini bildir.",
+        "recoveryTr": "Bugün her şeyi kolay tut — bu, haftanın toparlanma seansı."
       }
     ],
     "durationWeeks": 8,
@@ -2799,35 +2973,59 @@
         "guidance": "Move slowly into each position and map where you stop. Do not force range — find where you actually are.",
         "id": "bf-phase-1",
         "title": "Explore Range",
-        "weekRange": "Weeks 1-2"
+        "weekRange": "Weeks 1-2",
+        "titleTr": "Hareket Açıklığını Keşfet",
+        "guidanceTr": "Her pozisyona yavaşça gir ve nerede durduğunu haritala. Hareket açıklığını zorlama — gerçekte nerede olduğunu bul."
       },
       {
         "guidance": "Spend more time in the restricted areas. Add gentle load — bodyweight presses and hangs — to build tissue tolerance.",
         "id": "bf-phase-2",
         "title": "Build Tolerance",
-        "weekRange": "Weeks 3-4"
+        "weekRange": "Weeks 3-4",
+        "titleTr": "Tolerans Oluştur",
+        "guidanceTr": "Kısıtlı bölgelerde daha fazla zaman geçir. Doku toleransı oluşturmak için hafif yük ekle — vücut ağırlığıyla presler ve asılmalar."
       },
       {
         "guidance": "Work actively through the new range — move in and out with muscle control rather than passive stretching.",
         "id": "bf-phase-3",
         "title": "Active Range",
-        "weekRange": "Weeks 5-6"
+        "weekRange": "Weeks 5-6",
+        "titleTr": "Aktif Hareket Açıklığı",
+        "guidanceTr": "Yeni hareket açıklığında aktif olarak çalış — pasif esneme yerine kas kontrolüyle girip çık."
       },
       {
         "guidance": "Lighter week. Notice what has genuinely improved and which areas still need attention.",
         "id": "bf-phase-4",
         "title": "Consolidate",
-        "weekRange": "Week 7"
+        "weekRange": "Week 7",
+        "titleTr": "Pekiştirme",
+        "guidanceTr": "Daha hafif bir hafta. Gerçekten neyin geliştiğini ve hangi alanların hâlâ dikkat gerektirdiğini fark et."
       },
       {
         "guidance": "Apply your new range to tennis-specific positions — split-step landing, serve trophy position, wide-ball recovery.",
         "id": "bf-phase-5",
         "title": "Integration",
-        "weekRange": "Week 8"
+        "weekRange": "Week 8",
+        "titleTr": "Entegrasyon",
+        "guidanceTr": "Yeni hareket açıklığını tenise özgü pozisyonlara uygula — split adım inişi, servis kupa pozisyonu, geniş top toparlanması."
       }
     ],
     "title": "Better Flexibility Mobility Track",
-    "followOnProgramID": "training-flexibility-progression"
+    "followOnProgramID": "training-flexibility-progression",
+    "titleTr": "Daha İyi Esneklik Mobilite Programı",
+    "overviewTr": "Daha fazla kalça serbestliğine, torasik rotasyona, omuz erişimine ve alt bacak hareket açıklığına ihtiyaç duyan oyuncular için premium mobilite programı. Amaç kullanılabilir hareket açıklığıdır — sadece matta değil, maç stresi altında da işe yarayan pozisyonlar.",
+    "outcomeTr": "Tenis pozisyonlarına daha serbest girer, seanslar arası hareket açıklığını daha hızlı toparlar ve sekiz hafta sonra serviste ve geniş top toparlanmasında daha az kısıtlanma hissedersin.",
+    "emphasisTr": [
+      "Kalça mobilitesi",
+      "Torasik rotasyon",
+      "Servis omuz açıklığı",
+      "Toparlanma akışı"
+    ],
+    "persistencePromptsTr": [
+      "Bu hafta split adım inişin daha hafif veya daha serbest mi hissettirdi — kalçada biraz daha az kısıtlanma var mıydı?",
+      "Bu hafta hangi kısıtlanma en büyüktü — kalça, torasik, omuz mu yoksa ayak bileği mi?",
+      "Bu hafta uç hareket açıklığı pozisyonlarını bel bölgenden telafi etmeden tutabildin mi?"
+    ]
   },
   {
     "accessTier": "premium",
@@ -3006,7 +3204,13 @@
         "recovery": "5 min easy leg flush on bike, then lying hamstring stretch and calf release.",
         "title": "Repeat Sprint Builder",
         "type": "cardio",
-        "warmup": "5 min easy jog, high knees x 20 m, butt kicks x 20 m, 3 x 10 m build-up accelerations."
+        "warmup": "5 min easy jog, high knees x 20 m, butt kicks x 20 m, 3 x 10 m build-up accelerations.",
+        "titleTr": "Tekrarlı Sprint Geliştirici",
+        "focusTr": "Anaerobik tekrarlanabilirlik ve puan-kalıbı simülasyonu",
+        "objectiveTr": "Puanlar arası toparlanmayı geliştir ve bacaklar zaten ağırken hareket kalitesini koru.",
+        "warmupTr": "5 dk kolay jog, 20 m yüksek diz, 20 m butt kick, 3 x 10 m kademeli hızlanma.",
+        "finisherTr": "5 dk yürüyüş — hemen oturma dürtüsüne karşı koy.",
+        "recoveryTr": "Bisiklette 5 dk kolay bacak boşaltması, sonra yatarak hamstring esnetme ve baldır gevşetme."
       },
       {
         "dayLabel": "Day 2",
@@ -3118,7 +3322,7 @@
             "id": "mc-9",
             "intent": "Slow and controlled — this builds the ankle stiffness you need on hard courts.",
             "prescription": "3 x 12 / side",
-            "tennisWhy": "Ankle stiffness on hard courts — the small detail that prevents shin splints and boosts first-step snap.",
+            "tennisWhy": "Ankle stiffness on hard courts — the small detail that reduces the risk of shin splints and boosts first-step snap.",
             "title": "Single-leg calf raise",
             "watchOuts": [
               "Full range — partial reps don't build tendon.",
@@ -3133,7 +3337,7 @@
               "Topuk kaldırma üzerine basın.",
               "2-3 saniyede yavaşça indirin."
             ],
-            "tennisWhyTr": "Sert zeminde ayak bileği sertliği — incik ağrısını önleyen ve ilk adım patlamasını artıran küçük detay.",
+            "tennisWhyTr": "Sert zeminde ayak bileği sertliği — incik ağrısı riskini azaltan ve ilk adım patlamasını artıran küçük detay.",
             "watchOutsTr": [
               "Tam hareket açıklığı — kısmi tekrarlar tendon oluşturmaz.",
               "Acele etmeyin — eksantrik büyülü olan kısım.",
@@ -3148,7 +3352,13 @@
         "recovery": "Hydrate well — aerobic days flush waste products if you top up fluids.",
         "title": "Aerobic Base + Support Work",
         "type": "hybrid",
-        "warmup": "Easy 3 min spin or walk to raise heart rate gently."
+        "warmup": "Easy 3 min spin or walk to raise heart rate gently.",
+        "titleTr": "Aerobik Taban + Destek Çalışması",
+        "focusTr": "Aerobik taban ve destekleyici kuvvet",
+        "objectiveTr": "Puanlar arası daha hızlı toparlanmayı ve üçüncü sette daha iyi tempoyu sağlayan aerobik motoru oluştur.",
+        "warmupTr": "Kalp atışını nazikçe yükseltmek için kolay 3 dk pedal ya da yürüyüş.",
+        "finisherTr": "8 dk üst vücut ve kalça mobilite akışı.",
+        "recoveryTr": "İyi su iç — aerobik günler, sıvını tamamlarsan atık ürünleri temizler."
       },
       {
         "dayLabel": "Day 3",
@@ -3292,7 +3502,7 @@
             "id": "mc-14",
             "intent": "Adductor strength — holds the position when you are braced wide on the court.",
             "prescription": "3 x 20 sec / side",
-            "tennisWhy": "Adductor strength prevents groin pulls on wide lunges — one of tennis's most common injuries.",
+            "tennisWhy": "Adductor strength reduces the risk of groin pulls on wide lunges — one of tennis's most common injuries.",
             "title": "Copenhagen hold",
             "watchOuts": [
               "Hips must stay lifted.",
@@ -3307,7 +3517,7 @@
               "Kalçaları yerden kaldırmak için iç uyluğu sıkın.",
               "Her tarafta 20 saniye tutun."
             ],
-            "tennisWhyTr": "İç uyluk gücü, geniş hamlelerde kasık çekilmelerini önler — tenisin en yaygın sakatlıklarından biri.",
+            "tennisWhyTr": "İç uyluk gücü, geniş hamlelerde kasık çekilmesi riskini azaltır — tenisin en yaygın sakatlıklarından biri.",
             "watchOutsTr": [
               "Kalçalar kaldırılmış kalmalı.",
               "Ayak bileği versiyonunu değil, diz versiyonuyla başlayın.",
@@ -3322,7 +3532,13 @@
         "recovery": "Keep effort moderate — this is not the day to go extra hard.",
         "title": "Tempo & Core",
         "type": "hybrid",
-        "warmup": "Dynamic lower-body mobility: leg swings x 10, hip circles x 8, easy shuffles x 2."
+        "warmup": "Dynamic lower-body mobility: leg swings x 10, hip circles x 8, easy shuffles x 2.",
+        "titleTr": "Tempo ve Kor",
+        "focusTr": "Sürdürülebilir tempo ve yapısal dayanıklılık",
+        "objectiveTr": "Enerji sistemleri zorlanırken kaliteli hareketi ve vuruş hassasiyetini koruma yeteneğini çalış.",
+        "warmupTr": "Dinamik alt vücut mobilitesi: 10 bacak salınımı, 8 kalça çevirmesi, 2 kolay shuffle.",
+        "finisherTr": "5 dk kolay yürüyüş, ardından yatarak nefes ve tüm vücut gevşetme.",
+        "recoveryTr": "Çabayı orta tut — bu, fazladan sert gidilecek gün değil."
       }
     ],
     "durationWeeks": 8,
@@ -3345,35 +3561,59 @@
         "guidance": "Focus on pacing — learn what your sustainable hard effort feels like. Err on the side of too easy over too hard.",
         "id": "mc-phase-1",
         "title": "Establish Pace",
-        "weekRange": "Weeks 1-2"
+        "weekRange": "Weeks 1-2",
+        "titleTr": "Tempoyu Belirle",
+        "guidanceTr": "Tempolamaya odaklan — sürdürülebilir sert çabanın nasıl hissettirdiğini öğren. Çok sert yerine çok kolay tarafında hata yap."
       },
       {
         "guidance": "Add one or two more rounds to the sprint and shuttle work. Zone 2 duration extends by 5 minutes.",
         "id": "mc-phase-2",
         "title": "Build Volume",
-        "weekRange": "Weeks 3-4"
+        "weekRange": "Weeks 3-4",
+        "titleTr": "Hacim Oluştur",
+        "guidanceTr": "Sprint ve mekik çalışmasına bir-iki tur daha ekle. Zone 2 süresi 5 dakika uzar."
       },
       {
         "guidance": "Push the hard intervals harder. Rest periods stay the same — your goal is to get more output in the same window.",
         "id": "mc-phase-3",
         "title": "Intensity Block",
-        "weekRange": "Weeks 5-6"
+        "weekRange": "Weeks 5-6",
+        "titleTr": "Yoğunluk Bloğu",
+        "guidanceTr": "Sert aralıkları daha sert it. Dinlenme süreleri aynı kalır — amacın aynı pencerede daha fazla çıktı almak."
       },
       {
         "guidance": "Cut volume by 30%. Move well and stay sharp without accumulating more fatigue.",
         "id": "mc-phase-4",
         "title": "Freshen Up",
-        "weekRange": "Week 7"
+        "weekRange": "Week 7",
+        "titleTr": "Tazelen",
+        "guidanceTr": "Hacmi %30 azalt. Daha fazla yorgunluk biriktirmeden iyi hareket et ve keskin kal."
       },
       {
         "guidance": "Repeat the intensity block sessions with fresh legs. This is your benchmark — compare how these feel to week 5.",
         "id": "mc-phase-5",
         "title": "Benchmark",
-        "weekRange": "Week 8"
+        "weekRange": "Week 8",
+        "titleTr": "Kıyas",
+        "guidanceTr": "Yoğunluk bloğu seanslarını dinç bacaklarla tekrarla. Bu senin kıyasın — bunların 5. haftaya kıyasla nasıl hissettirdiğini karşılaştır."
       }
     ],
     "title": "Match Conditioning Engine Track",
-    "followOnProgramID": "training-conditioning-progression"
+    "followOnProgramID": "training-conditioning-progression",
+    "titleTr": "Maç Kondisyonu Motor Programı",
+    "overviewTr": "Puanlar arası daha iyi toparlanma, uzun seansların sonlarında daha fazla kalite ve oyunlar kızıştığında sinir sistemini keskin tutan aerobik tabanı isteyen oyuncular için premium kondisyon blokları.",
+    "outcomeTr": "Yorgunluk arttığında daha keskin bacaklar, daha temiz kararlar ve daha iyi duruş — ve üçüncü sete kadar maç kalitesini korursun.",
+    "emphasisTr": [
+      "Aerobik destek",
+      "Tekrarlı sprint kapasitesi",
+      "Tempo çalışması",
+      "Toparlanma kapasitesi"
+    ],
+    "persistencePromptsTr": [
+      "Bu hafta üçüncü setteki hareket kaliten ilk sete kıyasla nasıldı?",
+      "Sprint tekrarların ilk tekrardan on ikinci tekrara kadar kalitesini korudu mu, yoksa bir düşüş fark ettin mi?",
+      "Bu hafta zorlu puanlar veya kondisyon aralıkları arasında bacakların ne kadar hızlı toparlandığını hissettin?"
+    ]
   },
   {
     "id": "training-hybrid-progression",
@@ -3395,31 +3635,49 @@
         "id": "hybridp-phase-1",
         "weekRange": "Weeks 1-2",
         "title": "Adaptation",
-        "guidance": "New movement patterns at moderate load. Priority is clean technique and tolerance, not volume."
+        "guidance": "New movement patterns at moderate load. Priority is clean technique and tolerance, not volume.",
+        "titleTr": "Adaptasyon",
+        "guidanceTr": "Orta yükte yeni hareket kalıpları. Öncelik temiz teknik ve tolerans, hacim değil."
       },
       {
         "id": "hybridp-phase-2",
         "weekRange": "Week 3",
         "title": "Ramp",
-        "guidance": "Add load only where week-2 technique was clean. Keep rest generous between main lifts."
+        "guidance": "Add load only where week-2 technique was clean. Keep rest generous between main lifts.",
+        "titleTr": "Yükseliş",
+        "guidanceTr": "Yalnızca 2. hafta tekniğinin temiz olduğu yerlere yük ekle. Ana hareketler arasında dinlenmeyi cömert tut."
       },
       {
         "id": "hybridp-phase-3",
         "weekRange": "Week 4",
         "title": "Throwback Test Week",
-        "guidance": "Run one full week of the Hybrid Foundation program. This re-exposes your legs to the baseline movement pattern and confirms your base has consolidated before the new block's final stretch."
+        "guidance": "Run one full week of the Hybrid Foundation program. This re-exposes your legs to the baseline movement pattern and confirms your base has consolidated before the new block's final stretch.",
+        "titleTr": "Geri Dönüş Test Haftası",
+        "guidanceTr": "Hibrit Temel programının tam bir haftasını uygula. Bu, bacaklarını taban hareket kalıbına yeniden maruz bırakır ve yeni bloğun son etabından önce tabanının pekiştiğini doğrular."
       },
       {
         "id": "hybridp-phase-4",
-        "weekRange": "Weeks 5-7",
+        "weekRange": "Weeks 5-6",
         "title": "Consolidation",
-        "guidance": "Return to the new block. Build toward target loads and sharper outputs — intensity over volume."
+        "guidance": "Return to the new block. Build toward target loads and sharper outputs — intensity over volume.",
+        "titleTr": "Pekiştirme",
+        "guidanceTr": "Yeni bloğa dön. Hedef yüklere ve daha keskin çıktılara doğru ilerle — hacimden çok yoğunluk."
+      },
+      {
+        "guidance": "Cut total volume by roughly thirty percent — drop a set off each main lift and trim the conditioning rounds. Keep a little speed in the plyometrics but leave two or three reps in reserve everywhere. The goal is to arrive at the benchmark fresh, not fatigued.",
+        "id": "hybridp-phase-deload",
+        "title": "Deload & Reset",
+        "weekRange": "Week 7",
+        "titleTr": "Deload ve Sıfırlama",
+        "guidanceTr": "Toplam hacmi yaklaşık yüzde otuz azalt — her ana hareketten bir set düş ve kondisyon turlarını kırp. Plyometriklerde biraz hız koru ama her yerde iki-üç tekrarı yedekte bırak. Amaç, kıyas haftasına yorgun değil dinç ulaşmak."
       },
       {
         "id": "hybridp-phase-5",
         "weekRange": "Week 8",
         "title": "Benchmark",
-        "guidance": "Repeat a single high-quality session per theme to compare against week 2. Log a persistence check."
+        "guidance": "Repeat a single high-quality session per theme to compare against week 2. Log a persistence check.",
+        "titleTr": "Kıyas",
+        "guidanceTr": "2. haftaya kıyaslamak için tema başına tek bir yüksek kaliteli seans tekrarla. Bir kalıcılık kontrolü kaydet."
       }
     ],
     "days": [
@@ -3527,7 +3785,13 @@
           }
         ],
         "finisher": "6 x 12-second shuttle runs with 60-second walks.",
-        "recovery": "Walk 5 min, then hip and calf mobility."
+        "recovery": "Walk 5 min, then hip and calf mobility.",
+        "titleTr": "Rotasyonel Güç + Sprint",
+        "focusTr": "Rotasyonel kuvveti kort hızına aktar.",
+        "objectiveTr": "Sprint kalitesini keskin tutarken rotasyonel güç kalıplarını tanıt.",
+        "warmupTr": "5 dk bisiklet, kalça 90/90, torasik açık kitap (open-book), hafif sağlık topu slam.",
+        "finisherTr": "6 x 12 saniyelik mekik koşusu, aralarda 60 saniyelik yürüyüş.",
+        "recoveryTr": "5 dk yürü, sonra kalça ve baldır mobilitesi."
       },
       {
         "id": "hybridp-day-2",
@@ -3629,7 +3893,13 @@
           }
         ],
         "finisher": "Farmer carry 3 x 30m with heavy load.",
-        "recovery": "Chest and thoracic stretching, 5 min."
+        "recovery": "Chest and thoracic stretching, 5 min.",
+        "titleTr": "Üst Kontrast + Kor",
+        "focusTr": "Servis kolu hızı için ağır ve hızlıyı kontrastla.",
+        "objectiveTr": "Yük toleransı altında kol hızı oluşturmak için ağır bir presi hızlı bir atışla eşleştir.",
+        "warmupTr": "Bant ayırmaları, skapula çevirmeleri, hafif baş üstü pres, sağlık topu göğüs pası.",
+        "finisherTr": "Ağır yükle 3 x 30 m farmer carry.",
+        "recoveryTr": "Göğüs ve torasik esnetme, 5 dk."
       },
       {
         "id": "hybridp-day-3",
@@ -3671,7 +3941,13 @@
           }
         ],
         "finisher": "Hip flexor and calf mobility 8 min.",
-        "recovery": "Easy 5-min walk, then full-body stretch."
+        "recovery": "Easy 5-min walk, then full-body stretch.",
+        "titleTr": "Kort Kondisyonu + Mobilite",
+        "focusTr": "Maç yoğunluğunda korta özgü tekrarlı sprint.",
+        "objectiveTr": "Tenis biçimli mekiklerle tekrarlı sprint dayanıklılığı.",
+        "warmupTr": "5 dk jog, dinamik esnetmeler, 3 x 20 m stride.",
+        "finisherTr": "Kalça fleksörü ve baldır mobilitesi 8 dk.",
+        "recoveryTr": "Kolay 5 dk yürüyüş, sonra tüm vücut esnetme."
       },
       {
         "id": "hybridp-day-4",
@@ -3741,7 +4017,13 @@
           }
         ],
         "finisher": "Dead bug 3 x 8 / side, slow tempo.",
-        "recovery": "Quad and hamstring stretch, 6 min."
+        "recovery": "Quad and hamstring stretch, 6 min.",
+        "titleTr": "Alt Hipertrofi + Gövde",
+        "focusTr": "Hızdan ödün vermeden bacak hacmi oluştur.",
+        "objectiveTr": "Anti-ekstansiyon kor ile hipertrofi odaklı bacak çalışması.",
+        "warmupTr": "5 dk bisiklet, bantlı kalça açıcılar, goblet squat ısınma seti.",
+        "finisherTr": "Dead bug 3 x 8 / taraf, yavaş tempo.",
+        "recoveryTr": "Quad ve hamstring esnetme, 6 dk."
       },
       {
         "id": "hybridp-day-5",
@@ -3811,7 +4093,13 @@
           }
         ],
         "finisher": "Short shadow-swing drill with band resistance, 3 x 20 sec.",
-        "recovery": "Thoracic mobility, 5 min."
+        "recovery": "Thoracic mobility, 5 min.",
+        "titleTr": "Elastikiyet + Vuruş Hızı",
+        "focusTr": "Sıçrama (rebound) kuvveti ve temas noktası hızı.",
+        "objectiveTr": "Rotasyonel hız egzersizleriyle eşleştirilmiş plyometrikler.",
+        "warmupTr": "İp atlama 3 dk, kalça çevirmeleri, bantlı skapula çalışması.",
+        "finisherTr": "Bant direnciyle kısa gölge-vuruş egzersizi, 3 x 20 sn.",
+        "recoveryTr": "Torasik mobilite, 5 dk."
       },
       {
         "id": "hybridp-day-6",
@@ -3853,7 +4141,13 @@
           }
         ],
         "finisher": "Reverse plank hold 3 x 30 sec.",
-        "recovery": "Full-body stretch, 8 min."
+        "recovery": "Full-body stretch, 8 min.",
+        "titleTr": "Aerobik + Toparlanma Kuvveti",
+        "focusTr": "Toparlanma odaklı kuvvetle uzun aerobik taban.",
+        "objectiveTr": "Postural ve düzeltici kuvvetle eşleştirilmiş kolay aerobik çalışma.",
+        "warmupTr": "Dinamik yürüyüş 5 dk.",
+        "finisherTr": "Ters plank tutuşu 3 x 30 sn.",
+        "recoveryTr": "Tüm vücut esnetme, 8 dk."
       },
       {
         "id": "hybridp-day-7",
@@ -3891,7 +4185,13 @@
           }
         ],
         "finisher": "-",
-        "recovery": "Sleep priority."
+        "recovery": "Sleep priority.",
+        "titleTr": "Toparlanma / İzin",
+        "focusTr": "Tam toparlanma.",
+        "objectiveTr": "Yorgunluğa göre aktif toparlanma ya da tam dinlenme günü.",
+        "warmupTr": "-",
+        "finisherTr": "-",
+        "recoveryTr": "Uyku önceliği."
       }
     ],
     "persistencePrompts": [
@@ -3899,7 +4199,21 @@
       "How well did you recover between the elastic Day 1 and the volume Day 4?",
       "How did the Week 4 throwback feel — easier than week 1 of the foundation?"
     ],
-    "followOnProgramID": null
+    "followOnProgramID": null,
+    "titleTr": "8 Haftalık Hibrit Güç Devam Programı",
+    "overviewTr": "Hibrit Temel programının ardından gelen devam bloğu. Yeni rotasyonel hareket kalıpları, daha ağır elastik çalışma ve maç hızında kondisyon — hepsi orta yükte sunulur, böylece hacmi hak edersin.",
+    "outcomeTr": "Daha keskin elastik güç, servis ve forehand boyunca daha temiz rotasyonel itiş ve daha iyi tekrarlı sprint toparlanması.",
+    "emphasisTr": [
+      "Rotasyonel güç",
+      "Elastikiyet",
+      "Kontrast antrenman",
+      "Tekrarlı sprint"
+    ],
+    "persistencePromptsTr": [
+      "Bu hafta rotasyonel gücün temel bloğa kıyasla ne kadar keskin hissettirdi?",
+      "Elastik 1. gün ile hacim odaklı 4. gün arasında ne kadar iyi toparlandın?",
+      "4. hafta geri dönüş (throwback) nasıl hissettirdi — temel programın 1. haftasından daha kolay mıydı?"
+    ]
   },
   {
     "id": "training-footwork-progression",
@@ -3921,31 +4235,49 @@
         "id": "footworkp-phase-1",
         "weekRange": "Weeks 1-2",
         "title": "Adaptation",
-        "guidance": "New movement patterns at moderate load. Priority is clean technique and tolerance, not volume."
+        "guidance": "New movement patterns at moderate load. Priority is clean technique and tolerance, not volume.",
+        "titleTr": "Adaptasyon",
+        "guidanceTr": "Orta yükte yeni hareket kalıpları. Öncelik temiz teknik ve tolerans, hacim değil."
       },
       {
         "id": "footworkp-phase-2",
         "weekRange": "Week 3",
         "title": "Ramp",
-        "guidance": "Add load only where week-2 technique was clean. Keep rest generous between main lifts."
+        "guidance": "Add load only where week-2 technique was clean. Keep rest generous between main lifts.",
+        "titleTr": "Yükseliş",
+        "guidanceTr": "Yalnızca 2. hafta tekniğinin temiz olduğu yerlere yük ekle. Ana hareketler arasında dinlenmeyi cömert tut."
       },
       {
         "id": "footworkp-phase-3",
         "weekRange": "Week 4",
         "title": "Throwback Test Week",
-        "guidance": "Return to Better Footwork program for one week. The mechanics should feel easier now — this is a live benchmark of how much the base has strengthened."
+        "guidance": "Return to Better Footwork program for one week. The mechanics should feel easier now — this is a live benchmark of how much the base has strengthened.",
+        "titleTr": "Geri Dönüş Test Haftası",
+        "guidanceTr": "Bir haftalığına Daha İyi Ayak Çalışması programına dön. Mekanikler artık daha kolay hissettirmeli — bu, tabanın ne kadar güçlendiğine dair canlı bir kıyastır."
       },
       {
         "id": "footworkp-phase-4",
-        "weekRange": "Weeks 5-7",
+        "weekRange": "Weeks 5-6",
         "title": "Consolidation",
-        "guidance": "Return to the new block. Build toward target loads and sharper outputs — intensity over volume."
+        "guidance": "Return to the new block. Build toward target loads and sharper outputs — intensity over volume.",
+        "titleTr": "Pekiştirme",
+        "guidanceTr": "Yeni bloğa dön. Hedef yüklere ve daha keskin çıktılara doğru ilerle — hacimden çok yoğunluk."
+      },
+      {
+        "guidance": "Cut volume by about thirty percent — fewer reactive reps and shorter sprint counts. Keep the movements crisp and well-rested; this week is about absorbing the load and sharpening coordination, not chasing fatigue. Move well, not hard.",
+        "id": "footworkp-phase-deload",
+        "title": "Deload & Coordination",
+        "weekRange": "Week 7",
+        "titleTr": "Deload ve Koordinasyon",
+        "guidanceTr": "Hacmi yaklaşık yüzde otuz azalt — daha az reaktif tekrar ve daha kısa sprint sayıları. Hareketleri keskin ve iyi dinlenmiş tut; bu hafta yorgunluğun peşine düşmekle değil, yükü özümseyip koordinasyonu keskinleştirmekle ilgili. Sert değil, iyi hareket et."
       },
       {
         "id": "footworkp-phase-5",
         "weekRange": "Week 8",
         "title": "Benchmark",
-        "guidance": "Repeat a single high-quality session per theme to compare against week 2. Log a persistence check."
+        "guidance": "Repeat a single high-quality session per theme to compare against week 2. Log a persistence check.",
+        "titleTr": "Kıyas",
+        "guidanceTr": "2. haftaya kıyaslamak için tema başına tek bir yüksek kaliteli seans tekrarla. Bir kalıcılık kontrolü kaydet."
       }
     ],
     "days": [
@@ -3981,7 +4313,7 @@
               "Yönü rastgele seçer — sen tepki verip eşleşirsin.",
               "8 saniye sürekli tepki, sonra tam dinlenme."
             ],
-            "tennisWhyTr": "Top nereye gidecek biliyorsun — ama raketten çıkana kadar değil. Ayna sprint tahmini değil, dürüst tepkiyi eğitir.",
+            "tennisWhyTr": "Top raketten çıkana kadar nereye gideceğini asla bilemezsin. Ayna sprint tahmini değil, dürüst tepkiyi eğitir.",
             "watchOutsTr": [
               "Tekrarlar arası tam dinlen — hız hızla bozulur.",
               "Önceden hareket etmeye başlarsan dur — mesele tepki vermek."
@@ -4017,7 +4349,13 @@
           }
         ],
         "finisher": "Pogo hops 3 x 15 sec.",
-        "recovery": "Calf and ankle mobility."
+        "recovery": "Calf and ankle mobility.",
+        "titleTr": "Reaktif Başlangıçlar",
+        "focusTr": "Görsel veya işitsel işaretlere ilk adım tepkisi.",
+        "objectiveTr": "Programsız (önceden bilinmeyen) başlangıçları çalış.",
+        "warmupTr": "A-skip, yüksek diz, yanal shuffle, 3 x kısa sprint.",
+        "finisherTr": "Pogo sıçramaları 3 x 15 sn.",
+        "recoveryTr": "Baldır ve ayak bileği mobilitesi."
       },
       {
         "id": "footworkp-day-2",
@@ -4087,7 +4425,13 @@
           }
         ],
         "finisher": "Farmer carry 3 x 30m.",
-        "recovery": "Posterior chain stretch, 6 min."
+        "recovery": "Posterior chain stretch, 6 min.",
+        "titleTr": "Yavaşlama Kuvveti",
+        "focusTr": "Durmak için eksantrik kuvvet.",
+        "objectiveTr": "Geniş adımlar atmadan yön değiştirmeni sağlayan frenleme kuvvetini oluştur.",
+        "warmupTr": "5 dk bisiklet, bantlı yanal yürüyüşler, yavaş ters lunge.",
+        "finisherTr": "Farmer carry 3 x 30 m.",
+        "recoveryTr": "Arka zincir esnetme, 6 dk."
       },
       {
         "id": "footworkp-day-3",
@@ -4129,7 +4473,13 @@
           }
         ],
         "finisher": "Calf raises 3 x 15.",
-        "recovery": "Ankle and hip mobility."
+        "recovery": "Ankle and hip mobility.",
+        "titleTr": "Zincirlenmiş Çeviklik",
+        "focusTr": "Bağlantılı çok yönlü hareket.",
+        "objectiveTr": "Duraksamadan yön değiştirme dizilerini çalış.",
+        "warmupTr": "İp atlama 3 dk, carioca, çapraz adımlar.",
+        "finisherTr": "Baldır kaldırma (calf raise) 3 x 15.",
+        "recoveryTr": "Ayak bileği ve kalça mobilitesi."
       },
       {
         "id": "footworkp-day-4",
@@ -4171,7 +4521,13 @@
           }
         ],
         "finisher": "Self-massage foot sole, 5 min.",
-        "recovery": "Walk easy 10 min."
+        "recovery": "Walk easy 10 min.",
+        "titleTr": "Ayak ve Ayak Bileği Toparlanması",
+        "focusTr": "Doku bakımı.",
+        "objectiveTr": "Ayakları ve baldırları sağlıklı tutmak için düşük yoğunluklu çalışma.",
+        "warmupTr": "Kolay yürüyüş 3 dk.",
+        "finisherTr": "Ayak tabanı kendi kendine masaj, 5 dk.",
+        "recoveryTr": "Kolay yürüyüş 10 dk."
       }
     ],
     "persistencePrompts": [
@@ -4179,7 +4535,21 @@
       "Did chained direction changes feel quieter — fewer extra steps?",
       "How sharp did you feel in the Week 4 throwback drills?"
     ],
-    "followOnProgramID": null
+    "followOnProgramID": null,
+    "titleTr": "8 Haftalık Ayak Çalışması Reaktif Hız Programı",
+    "overviewTr": "Daha İyi Ayak Çalışması'nın ardından gelen progresyon bloğu. Reaktif başlangıçları, çok yönlü hareket zincirlerini ve yavaşlama kuvvetini vurgular — birinci döngüde inşa ettiğin daha temiz mekaniklerden kazanılır.",
+    "outcomeTr": "Her duruştan daha hızlı ilk adım, daha temiz duruşlar (frenleme) ve fazladan adım atmadan daha iyi zincirlenmiş hareket.",
+    "emphasisTr": [
+      "Reaktif hız",
+      "Yavaşlama",
+      "Zincir hareketler",
+      "Yön değiştirme"
+    ],
+    "persistencePromptsTr": [
+      "İlk adımın temel bloğa kıyasla nasıl hissettirdi?",
+      "Zincirlenmiş yön değişiklikleri daha sessiz mi hissettirdi — daha az fazladan adım?",
+      "4. hafta geri dönüş (throwback) çalışmalarında ne kadar keskin hissettin?"
+    ]
   },
   {
     "id": "training-stronger-shots-progression",
@@ -4201,31 +4571,49 @@
         "id": "strongp-phase-1",
         "weekRange": "Weeks 1-2",
         "title": "Adaptation",
-        "guidance": "New movement patterns at moderate load. Priority is clean technique and tolerance, not volume."
+        "guidance": "New movement patterns at moderate load. Priority is clean technique and tolerance, not volume.",
+        "titleTr": "Adaptasyon",
+        "guidanceTr": "Orta yükte yeni hareket kalıpları. Öncelik temiz teknik ve tolerans, hacim değil."
       },
       {
         "id": "strongp-phase-2",
         "weekRange": "Week 3",
         "title": "Ramp",
-        "guidance": "Add load only where week-2 technique was clean. Keep rest generous between main lifts."
+        "guidance": "Add load only where week-2 technique was clean. Keep rest generous between main lifts.",
+        "titleTr": "Yükseliş",
+        "guidanceTr": "Yalnızca 2. hafta tekniğinin temiz olduğu yerlere yük ekle. Ana hareketler arasında dinlenmeyi cömert tut."
       },
       {
         "id": "strongp-phase-3",
         "weekRange": "Week 4",
         "title": "Throwback Test Week",
-        "guidance": "Rerun one week of Stronger Shots. The base loads should feel lighter — confirming the body is ready for velocity-focused work."
+        "guidance": "Rerun one week of Stronger Shots. The base loads should feel lighter — confirming the body is ready for velocity-focused work.",
+        "titleTr": "Geri Dönüş Test Haftası",
+        "guidanceTr": "Daha Güçlü Vuruşlar'ın bir haftasını yeniden uygula. Taban yükler daha hafif hissettirmeli — bu, vücudun hıza odaklı çalışmaya hazır olduğunu doğrular."
       },
       {
         "id": "strongp-phase-4",
-        "weekRange": "Weeks 5-7",
+        "weekRange": "Weeks 5-6",
         "title": "Consolidation",
-        "guidance": "Return to the new block. Build toward target loads and sharper outputs — intensity over volume."
+        "guidance": "Return to the new block. Build toward target loads and sharper outputs — intensity over volume.",
+        "titleTr": "Pekiştirme",
+        "guidanceTr": "Yeni bloğa dön. Hedef yüklere ve daha keskin çıktılara doğru ilerle — hacimden çok yoğunluk."
+      },
+      {
+        "guidance": "Drop a set off the heavy rotation and pressing work and pull the load back fifteen to twenty percent. Keep the throws fast but few. Let the nervous system recover so the velocity work in week 8 feels its sharpest.",
+        "id": "strongp-phase-deload",
+        "title": "Deload & Feel",
+        "weekRange": "Week 7",
+        "titleTr": "Deload ve His",
+        "guidanceTr": "Ağır rotasyon ve itme çalışmasından bir set düş ve yükü yüzde on beş-yirmi geri çek. Atışları hızlı ama az tut. Sinir sisteminin toparlanmasına izin ver ki 8. haftadaki hız çalışması en keskin haline ulaşsın."
       },
       {
         "id": "strongp-phase-5",
         "weekRange": "Week 8",
         "title": "Benchmark",
-        "guidance": "Repeat a single high-quality session per theme to compare against week 2. Log a persistence check."
+        "guidance": "Repeat a single high-quality session per theme to compare against week 2. Log a persistence check.",
+        "titleTr": "Kıyas",
+        "guidanceTr": "2. haftaya kıyaslamak için tema başına tek bir yüksek kaliteli seans tekrarla. Bir kalıcılık kontrolü kaydet."
       }
     ],
     "days": [
@@ -4299,7 +4687,13 @@
           }
         ],
         "finisher": "Short-range shadow swings with intent.",
-        "recovery": "Hip and thoracic mobility."
+        "recovery": "Hip and thoracic mobility.",
+        "titleTr": "Ağır Rotasyon",
+        "focusTr": "Hızlı sağlık topu bırakışıyla ağır yüklü rotasyon.",
+        "objectiveTr": "Ağır kablo (cable) rotasyonunu hızlı atışlarla kontrastla.",
+        "warmupTr": "5 dk bisiklet, kalça 90/90, torasik rotasyonlar.",
+        "finisherTr": "Niyetle kısa mesafe gölge vuruşları.",
+        "recoveryTr": "Kalça ve torasik mobilite."
       },
       {
         "id": "strongp-day-2",
@@ -4369,7 +4763,13 @@
           }
         ],
         "finisher": "Face-pulls 3 x 15.",
-        "recovery": "Chest and shoulder stretch."
+        "recovery": "Chest and shoulder stretch.",
+        "titleTr": "Üst İtme-Çekme Gücü",
+        "focusTr": "Ağır itme/çekmeyi hızlı atışlarla kontrastla.",
+        "objectiveTr": "Patlayıcı aktarımla eşleştirilmiş ağır üst vücut çalışması.",
+        "warmupTr": "Bant çalışması, skapula aktivasyonu, şınav ısınma seti.",
+        "finisherTr": "Face-pull 3 x 15.",
+        "recoveryTr": "Göğüs ve omuz esnetme."
       },
       {
         "id": "strongp-day-3",
@@ -4439,7 +4839,13 @@
           }
         ],
         "finisher": "Walking lunges 2 x 20m.",
-        "recovery": "Full lower-body stretch."
+        "recovery": "Full lower-body stretch.",
+        "titleTr": "Alt İtiş + Sıçrama",
+        "focusTr": "Sıçramayla eşleştirilmiş ağır bacak itişi.",
+        "objectiveTr": "Vuruş tabanı için alt vücut kontrastı.",
+        "warmupTr": "5 dk bisiklet, goblet squat ısınması.",
+        "finisherTr": "Yürüyen lunge 2 x 20 m.",
+        "recoveryTr": "Tüm alt vücut esnetme."
       }
     ],
     "persistencePrompts": [
@@ -4447,7 +4853,21 @@
       "How steady was your velocity when tired — could you still hit with intent?",
       "How did the Week 4 throwback loads feel compared to the first cycle?"
     ],
-    "followOnProgramID": null
+    "followOnProgramID": null,
+    "titleTr": "8 Haftalık Vuruş Hızı Programı",
+    "overviewTr": "Daha Güçlü Vuruşlar'ın ardından gelen progresyon. Maksimum niyet çalışması — daha ağır rotasyonel yükler en yüksek hızdaki top atışlarıyla eşleştirilir — vuruş hızının tavanını tekrarlanabilirliği kaybetmeden yükseltmek için.",
+    "outcomeTr": "Belirgin şekilde daha yüksek tepe vuruş hızı, bacaklardan rakete daha iyi temas aktarımı ve yorgunluk altında daha az sadece-kol vuruşu.",
+    "emphasisTr": [
+      "Tepe hız",
+      "Ağır rotasyon",
+      "Aktarım çalışmaları",
+      "Kontrast antrenman"
+    ],
+    "persistencePromptsTr": [
+      "Kontrast günlerinden sonra antrenmanda vuruş hızın daha yüksek mi hissettirdi?",
+      "Yorgunken hızın ne kadar istikrarlıydı — hâlâ niyetle vurabildin mi?",
+      "4. hafta geri dönüş (throwback) yükleri ilk döngüye kıyasla nasıl hissettirdi?"
+    ]
   },
   {
     "id": "training-flexibility-progression",
@@ -4469,31 +4889,49 @@
         "id": "flexp-phase-1",
         "weekRange": "Weeks 1-2",
         "title": "Adaptation",
-        "guidance": "New movement patterns at moderate load. Priority is clean technique and tolerance, not volume."
+        "guidance": "New movement patterns at moderate load. Priority is clean technique and tolerance, not volume.",
+        "titleTr": "Adaptasyon",
+        "guidanceTr": "Orta yükte yeni hareket kalıpları. Öncelik temiz teknik ve tolerans, hacim değil."
       },
       {
         "id": "flexp-phase-2",
         "weekRange": "Week 3",
         "title": "Ramp",
-        "guidance": "Add load only where week-2 technique was clean. Keep rest generous between main lifts."
+        "guidance": "Add load only where week-2 technique was clean. Keep rest generous between main lifts.",
+        "titleTr": "Yükseliş",
+        "guidanceTr": "Yalnızca 2. hafta tekniğinin temiz olduğu yerlere yük ekle. Ana hareketler arasında dinlenmeyi cömert tut."
       },
       {
         "id": "flexp-phase-3",
         "weekRange": "Week 4",
         "title": "Throwback Test Week",
-        "guidance": "Rerun one week of Better Flexibility. Compare how the passive ranges feel — the new range should hold easier."
+        "guidance": "Rerun one week of Better Flexibility. Compare how the passive ranges feel — the new range should hold easier.",
+        "titleTr": "Geri Dönüş Test Haftası",
+        "guidanceTr": "Daha İyi Esneklik'in bir haftasını yeniden uygula. Pasif hareket açıklıklarının nasıl hissettirdiğini karşılaştır — yeni hareket açıklığı daha kolay korunmalı."
       },
       {
         "id": "flexp-phase-4",
-        "weekRange": "Weeks 5-7",
+        "weekRange": "Weeks 5-6",
         "title": "Consolidation",
-        "guidance": "Return to the new block. Build toward target loads and sharper outputs — intensity over volume."
+        "guidance": "Return to the new block. Build toward target loads and sharper outputs — intensity over volume.",
+        "titleTr": "Pekiştirme",
+        "guidanceTr": "Yeni bloğa dön. Hedef hareket açıklıklarına ve daha keskin kontrole doğru ilerle — hacimden çok kalite."
+      },
+      {
+        "guidance": "A genuinely light week. Drop the loaded end-range work back to bodyweight, hold your easiest ranges, and let the tissue settle. Notice which ranges now feel like home and which still need attention before the final benchmark.",
+        "id": "flexp-phase-light",
+        "title": "Consolidate",
+        "weekRange": "Week 7",
+        "titleTr": "Pekiştirme",
+        "guidanceTr": "Gerçekten hafif bir hafta. Yüklü uç hareket açıklığı çalışmasını vücut ağırlığına indir, en kolay hareket açıklıklarını koru ve dokunun oturmasına izin ver. Hangi hareket açıklıklarının artık tanıdık geldiğini ve son kıyastan önce hangilerinin hâlâ dikkat gerektirdiğini fark et."
       },
       {
         "id": "flexp-phase-5",
         "weekRange": "Week 8",
         "title": "Benchmark",
-        "guidance": "Repeat a single high-quality session per theme to compare against week 2. Log a persistence check."
+        "guidance": "Repeat a single high-quality session per theme to compare against week 2. Log a persistence check.",
+        "titleTr": "Kıyas",
+        "guidanceTr": "2. haftaya kıyaslamak için tema başına tek bir yüksek kaliteli seans tekrarla. Bir kalıcılık kontrolü kaydet."
       }
     ],
     "days": [
@@ -4501,7 +4939,7 @@
         "id": "flexp-day-1",
         "dayLabel": "Day 1",
         "title": "Hip Active Range",
-        "type": "recovery",
+        "type": "hybrid",
         "duration": "40 min",
         "focus": "Controlled active range for hips.",
         "objective": "Work the range you have, under control.",
@@ -4565,16 +5003,22 @@
           }
         ],
         "finisher": "Deep squat hold 2 min cumulative.",
-        "recovery": "Walk 5 min."
+        "recovery": "Walk 5 min.",
+        "titleTr": "Kalça Aktif Hareket Açıklığı",
+        "focusTr": "Kalçalar için kontrollü aktif hareket açıklığı.",
+        "objectiveTr": "Sahip olduğun hareket açıklığında, kontrollü biçimde çalış.",
+        "warmupTr": "Nefes egzersizleri 2 dk, kalça çevirmeleri.",
+        "finisherTr": "Derin squat tutuşu, toplamda 2 dk.",
+        "recoveryTr": "5 dk yürü."
       },
       {
         "id": "flexp-day-2",
         "dayLabel": "Day 2",
         "title": "Shoulder End-Range Strength",
-        "type": "recovery",
+        "type": "hybrid",
         "duration": "35 min",
         "focus": "Controlled strength at shoulder end ranges.",
-        "objective": "Make the new shoulder range bulletproof.",
+        "objective": "Help protect the new shoulder range.",
         "warmup": "Scapular circles, band pull-aparts.",
         "exercises": [
           {
@@ -4635,13 +5079,19 @@
           }
         ],
         "finisher": "Hang from a bar 3 x 20 sec.",
-        "recovery": "Chest opener stretch."
+        "recovery": "Chest opener stretch.",
+        "titleTr": "Omuz Uç Hareket Açıklığı Kuvveti",
+        "focusTr": "Omuz uç hareket açıklıklarında kontrollü kuvvet.",
+        "objectiveTr": "Yeni omuz hareket açıklığını güçlendir.",
+        "warmupTr": "Skapula çevirmeleri, bant ayırmaları.",
+        "finisherTr": "Bardan asılma 3 x 20 sn.",
+        "recoveryTr": "Göğüs açıcı esnetme."
       },
       {
         "id": "flexp-day-3",
         "dayLabel": "Day 3",
         "title": "Loaded Mobility Flow",
-        "type": "recovery",
+        "type": "hybrid",
         "duration": "30 min",
         "focus": "Put the range under light load.",
         "objective": "A flow that cycles through the key tennis ranges with a light weight.",
@@ -4677,7 +5127,13 @@
           }
         ],
         "finisher": "Diaphragmatic breathing 5 min.",
-        "recovery": "Walk easy 5 min."
+        "recovery": "Walk easy 5 min.",
+        "titleTr": "Yüklü Mobilite Akışı",
+        "focusTr": "Hareket açıklığını hafif yük altına koy.",
+        "objectiveTr": "Hafif bir ağırlıkla temel tenis hareket açıklıklarını döngüye sokan bir akış.",
+        "warmupTr": "Nefes çalışması 3 dk.",
+        "finisherTr": "Diyafram nefesi 5 dk.",
+        "recoveryTr": "Kolay yürüyüş 5 dk."
       }
     ],
     "persistencePrompts": [
@@ -4685,7 +5141,21 @@
       "How confident did the end-range shoulder work make you feel on serves?",
       "How tight did old ranges feel during the Week 4 throwback?"
     ],
-    "followOnProgramID": null
+    "followOnProgramID": null,
+    "titleTr": "8 Haftalık Aktif Hareket Açıklığı Programı",
+    "overviewTr": "Daha İyi Esneklik'in devamı. Vurguyu pasif hareket açıklığından aktif hareket açıklığına kaydırır — uç hareket açıklıklarında kontrollü kuvvet, böylece yeni esnekliğin hareketinde ortaya çıkar.",
+    "outcomeTr": "Ralli ortasında gerçekten kullanabileceğin hareket açıklığı. Kalça, omuz ve torasik rotasyonda daha güçlü uç hareket açıklığı kontrolü.",
+    "emphasisTr": [
+      "Aktif hareket açıklığı",
+      "Uç hareket açıklığı kuvveti",
+      "Yüklü mobilite",
+      "Kontrol"
+    ],
+    "persistencePromptsTr": [
+      "Yeni hareket açıklığın maçlarda ortaya çıktı mı — ralli ortasında daha az gergin mi hissettin?",
+      "Uç hareket açıklığı omuz çalışması serviste seni ne kadar kendinden emin hissettirdi?",
+      "4. hafta geri dönüş (throwback) sırasında eski hareket açıklıkları ne kadar gergin hissettirdi?"
+    ]
   },
   {
     "id": "training-conditioning-progression",
@@ -4707,31 +5177,49 @@
         "id": "condp-phase-1",
         "weekRange": "Weeks 1-2",
         "title": "Adaptation",
-        "guidance": "New movement patterns at moderate load. Priority is clean technique and tolerance, not volume."
+        "guidance": "New movement patterns at moderate load. Priority is clean technique and tolerance, not volume.",
+        "titleTr": "Adaptasyon",
+        "guidanceTr": "Orta yükte yeni hareket kalıpları. Öncelik temiz teknik ve tolerans, hacim değil."
       },
       {
         "id": "condp-phase-2",
         "weekRange": "Week 3",
         "title": "Ramp",
-        "guidance": "Add load only where week-2 technique was clean. Keep rest generous between main lifts."
+        "guidance": "Add load only where week-2 technique was clean. Keep rest generous between main lifts.",
+        "titleTr": "Yükseliş",
+        "guidanceTr": "Yalnızca 2. hafta tekniğinin temiz olduğu yerlere yük ekle. Ana hareketler arasında dinlenmeyi cömert tut."
       },
       {
         "id": "condp-phase-3",
         "weekRange": "Week 4",
         "title": "Throwback Test Week",
-        "guidance": "Rerun one week of Match Conditioning. The baseline volumes should feel easier now — this is the test."
+        "guidance": "Rerun one week of Match Conditioning. The baseline volumes should feel easier now — this is the test.",
+        "titleTr": "Geri Dönüş Test Haftası",
+        "guidanceTr": "Maç Kondisyonu'nun bir haftasını yeniden uygula. Taban hacimler artık daha kolay hissettirmeli — test budur."
       },
       {
         "id": "condp-phase-4",
-        "weekRange": "Weeks 5-7",
+        "weekRange": "Weeks 5-6",
         "title": "Consolidation",
-        "guidance": "Return to the new block. Build toward target loads and sharper outputs — intensity over volume."
+        "guidance": "Return to the new block. Build toward target loads and sharper outputs — intensity over volume.",
+        "titleTr": "Pekiştirme",
+        "guidanceTr": "Yeni bloğa dön. Hedef yüklere ve daha keskin çıktılara doğru ilerle — hacimden çok yoğunluk."
+      },
+      {
+        "guidance": "Cut total volume by roughly thirty percent — fewer high-intensity repeats and shorter match-duration efforts. Keep one or two sharp intervals so the legs stay tuned, but bank the recovery so you peak at the benchmark.",
+        "id": "condp-phase-deload",
+        "title": "Freshen Up",
+        "weekRange": "Week 7",
+        "titleTr": "Tazelen",
+        "guidanceTr": "Toplam hacmi yaklaşık yüzde otuz azalt — daha az yüksek yoğunluklu tekrar ve daha kısa maç süresi çabaları. Bacakların ayarda kalması için bir-iki keskin aralık koru ama toparlanmayı biriktir ki kıyas haftasında zirveye çıkasın."
       },
       {
         "id": "condp-phase-5",
         "weekRange": "Week 8",
         "title": "Benchmark",
-        "guidance": "Repeat a single high-quality session per theme to compare against week 2. Log a persistence check."
+        "guidance": "Repeat a single high-quality session per theme to compare against week 2. Log a persistence check.",
+        "titleTr": "Kıyas",
+        "guidanceTr": "2. haftaya kıyaslamak için tema başına tek bir yüksek kaliteli seans tekrarla. Bir kalıcılık kontrolü kaydet."
       }
     ],
     "days": [
@@ -4775,7 +5263,13 @@
           }
         ],
         "finisher": "5-min easy cooldown jog.",
-        "recovery": "Full-body stretch."
+        "recovery": "Full-body stretch.",
+        "titleTr": "Yüksek Yoğunluklu Tekrarlar",
+        "focusTr": "Sıkı dinlenmeyle yüksek yoğunluklu aralıkları tekrarla.",
+        "objectiveTr": "Maç yoğunluğunda çalışma-dinlenme oranıyla tekrarlı sprint çalış.",
+        "warmupTr": "8 dk jog, dinamik esnetme, 4 x 20 m stride.",
+        "finisherTr": "5 dk kolay soğuma jogu.",
+        "recoveryTr": "Tüm vücut esnetme."
       },
       {
         "id": "condp-day-2",
@@ -4843,7 +5337,13 @@
           }
         ],
         "finisher": "Dead bug 3 x 8.",
-        "recovery": "Hip and hamstring stretch."
+        "recovery": "Hip and hamstring stretch.",
+        "titleTr": "Tempo + Kor",
+        "focusTr": "Kor çalışmasıyla tempo koşusu.",
+        "objectiveTr": "Anti-rotasyon kor ile eşik temposunda sürdürülen çaba.",
+        "warmupTr": "5 dk jog, aktivasyonlar.",
+        "finisherTr": "Dead bug 3 x 8.",
+        "recoveryTr": "Kalça ve hamstring esnetme."
       },
       {
         "id": "condp-day-3",
@@ -4885,7 +5385,13 @@
           }
         ],
         "finisher": "Cooldown jog 5 min.",
-        "recovery": "Legs up the wall, 10 min."
+        "recovery": "Legs up the wall, 10 min.",
+        "titleTr": "Maç Süresi Çabası",
+        "focusTr": "Değişken yoğunlukta uzun seans.",
+        "objectiveTr": "Bir maçın süresini ve değişkenliğini simüle et.",
+        "warmupTr": "10 dk jog, dinamik esnetme.",
+        "finisherTr": "Soğuma jogu 5 dk.",
+        "recoveryTr": "Bacaklar duvara dayalı (legs up the wall), 10 dk."
       }
     ],
     "persistencePrompts": [
@@ -4893,6 +5399,20 @@
       "How fresh did your legs feel in hour 2 of long sessions?",
       "How did match-duration workouts compare to the Week 4 throwback?"
     ],
-    "followOnProgramID": null
+    "followOnProgramID": null,
+    "titleTr": "8 Haftalık Maç Süresi Motor Programı",
+    "overviewTr": "Maç Kondisyonu'nun devamı. İş kapasitesi tavanını yükseltmek için tasarlandı: daha uzun yüksek kaliteli ralliler, seanslar boyunca daha yüksek ortalama yoğunluk ve tam bir maçı yansıtan eşleştirilmiş süreli çabalar.",
+    "outcomeTr": "Üçüncü setin derinliklerine kadar puan kalitesini koruyabilme, puanlar arası daha hızlı toparlanma ve uzun maçlara karşı daha iyi tolerans.",
+    "emphasisTr": [
+      "İş kapasitesi",
+      "Yüksek yoğunluklu tekrarlar",
+      "Maç süresi kapasitesi",
+      "Toparlanma verimliliği"
+    ],
+    "persistencePromptsTr": [
+      "Puanlar arasında bir önceki bloğa göre daha hızlı mı toparlandın?",
+      "Uzun seansların 2. saatinde bacakların ne kadar dinç hissettirdi?",
+      "Maç süresi antrenmanları 4. hafta geri dönüşüne (throwback) kıyasla nasıldı?"
+    ]
   }
 ]

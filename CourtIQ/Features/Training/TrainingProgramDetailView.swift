@@ -70,7 +70,7 @@ struct TrainingProgramDetailView: View {
             if threadID == nil {
                 threadID = discussionStore.thread(
                     for: ContentNodeID(targetType: .trainingSession, targetID: program.id),
-                    title: program.title,
+                    title: program.localizedTitle(for: lang.language),
                     subtitle: program.category.summary,
                     starterPrompt: "Which day of this plan feels most useful for your tennis goals right now?"
                 ).id
@@ -133,7 +133,7 @@ struct TrainingProgramDetailView: View {
                         .foregroundStyle(.white.opacity(0.85))
                 }
 
-                Text(program.title)
+                Text(program.localizedTitle(for: lang.language))
                     .font(.system(size: 22, weight: .heavy, design: .rounded))
                     .foregroundStyle(.white)
                     .fixedSize(horizontal: false, vertical: true)
@@ -147,7 +147,7 @@ struct TrainingProgramDetailView: View {
                     }
                 }
 
-                Text(program.overview)
+                Text(program.localizedOverview(for: lang.language))
                     .font(.subheadline)
                     .foregroundStyle(.white.opacity(0.92))
                     .fixedSize(horizontal: false, vertical: true)
@@ -243,10 +243,10 @@ struct TrainingProgramDetailView: View {
                 Image(systemName: "chart.line.uptrend.xyaxis")
                     .font(.caption.weight(.bold))
                     .foregroundStyle(AppPalette.clay)
-                Text("\(phase.weekRange) · \(phase.title)")
+                Text("\(phase.weekRange) · \(phase.localizedTitle(for: lang.language))")
                     .font(.subheadline.weight(.heavy))
             }
-            Text(phase.guidance)
+            Text(phase.localizedGuidance(for: lang.language))
                 .font(.subheadline)
                 .foregroundStyle(AppPalette.inkSoft)
         }
@@ -275,9 +275,9 @@ struct TrainingProgramDetailView: View {
         return VStack(alignment: .leading, spacing: 14) {
             HStack(alignment: .top) {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("\(day.dayLabel) · \(day.title)")
+                    Text("\(day.dayLabel) · \(day.localizedTitle(for: lang.language))")
                         .font(.title3.bold())
-                    Text("\(day.type.title) · \(day.duration) · \(day.focus)")
+                    Text("\(day.type.title) · \(day.duration) · \(day.localizedFocus(for: lang.language))")
                         .font(.caption)
                         .foregroundStyle(AppPalette.inkSoft)
                 }
@@ -306,8 +306,8 @@ struct TrainingProgramDetailView: View {
             // Feedback banners removed — the mark-done button's state
             // already confirms completion.
 
-            timelineBlock(icon: "flag.fill",   content: day.objective)
-            timelineBlock(icon: "flame.fill",  content: day.warmup)
+            timelineBlock(icon: "flag.fill",   content: day.localizedObjective(for: lang.language))
+            timelineBlock(icon: "flame.fill",  content: day.localizedWarmup(for: lang.language))
 
             VStack(alignment: .leading, spacing: 8) {
                 HStack(spacing: 8) {
@@ -378,8 +378,8 @@ struct TrainingProgramDetailView: View {
                 }
             }
 
-            timelineBlock(icon: "bolt.fill",       content: day.finisher)
-            timelineBlock(icon: "figure.cooldown", content: day.recovery)
+            timelineBlock(icon: "bolt.fill",       content: day.localizedFinisher(for: lang.language))
+            timelineBlock(icon: "figure.cooldown", content: day.localizedRecovery(for: lang.language))
         }
         .padding()
         .background(cardFill)
@@ -421,9 +421,9 @@ struct TrainingProgramDetailView: View {
             // Long descriptive paragraph removed — the rating rows below
             // are self-evidently a check-in.
 
-            ratingRow(title: program.persistencePrompts[safe: 0] ?? lang.t("training.readiness"), value: $readiness)
-            ratingRow(title: program.persistencePrompts[safe: 1] ?? lang.t("training.explosiveness"), value: $explosiveness)
-            ratingRow(title: program.persistencePrompts[safe: 2] ?? lang.t("training.conditioning"), value: $conditioning)
+            ratingRow(title: program.localizedPersistencePrompts(for: lang.language)[safe: 0] ?? lang.t("training.readiness"), value: $readiness)
+            ratingRow(title: program.localizedPersistencePrompts(for: lang.language)[safe: 1] ?? lang.t("training.explosiveness"), value: $explosiveness)
+            ratingRow(title: program.localizedPersistencePrompts(for: lang.language)[safe: 2] ?? lang.t("training.conditioning"), value: $conditioning)
 
             // Coach-note header removed; the placeholder + icon row below
             // is enough scaffolding.
@@ -468,7 +468,7 @@ struct TrainingProgramDetailView: View {
                 .foregroundStyle(AppPalette.inkSoft)
 
             VStack(alignment: .leading, spacing: 8) {
-                ForEach(program.emphasis, id: \.self) { emphasis in
+                ForEach(program.localizedEmphasis(for: lang.language), id: \.self) { emphasis in
                     Label(emphasis, systemImage: "checkmark.circle")
                         .font(.subheadline)
                 }
@@ -630,10 +630,10 @@ struct TrainingProgramDetailView: View {
                         .foregroundStyle(AppPalette.inkSoft)
                 }
 
-                Text(next.title)
+                Text(next.localizedTitle(for: lang.language))
                     .font(.title3.bold())
 
-                Text(next.overview)
+                Text(next.localizedOverview(for: lang.language))
                     .font(.subheadline)
                     .foregroundStyle(AppPalette.inkSoft)
                     .fixedSize(horizontal: false, vertical: true)

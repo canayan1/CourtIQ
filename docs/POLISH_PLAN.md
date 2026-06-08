@@ -42,4 +42,22 @@ ships. Polish may ship as 1.0.1 or merge into 1.1 (decide later).
 ## STATUS LOG
 - 2026-06-08 — 1.0 (build 14) + both subs all WAITING_FOR_REVIEW (submitted).
   Started polish phase. Order: Content QC → Limits/Promises → Screenshots.
-  Created `feat/polish`. **Next: Content QC (inventory + audit content files).**
+  Created `feat/polish`.
+- 2026-06-08 — **Workstream 1 (Content QC) DONE.** Audited all 5 content
+  JSONs via parallel agents (verdict: genuinely high-quality, evidence-based,
+  NO fabrication; quiz answers all correct, training/mobility sound). Fixed
+  (CRITICAL+MAJOR+MINOR): court_tap_drills (9-drill Y-geometry mirror +
+  drill_004/015/025/065/072 labels + 065 title FH/BH + 069/070 corner wording
+  + 007 chip); pro_shot_patterns (nadal_banana geometry, rublev→inside-out,
+  fed_sabr 2nd-serve, TR taglines); mobility_flows (9 duration headers
+  recomputed + ~10 TR typos); quiz_questions (rally_023 açıortay, km/h→
+  qualitative, line-judge→self-officiated, net_022, tacticalCategory tags
+  re-derived — IS used by QuizViewModel.buildTacticalBuckets); training_programs
+  (deload weeks added to 4 advanced progressions, footwork TR inversion,
+  flexibility level→intermediate, overclaims softened, recovery→hybrid day
+  types, TR typos, **FULL EN/TR localization** of program/phase/day fields).
+  Model: added *Tr fields + localizedX(for:) accessors to TrainingProgram/
+  Phase/DayPlan. Views: wired TrainingProgramDetailView + TrainingHubView (16
+  sites) to localized accessors. All JSON valid; app BUILD SUCCEEDED; 10
+  programs fully localized (0 missing *Tr). **Next: Workstream 2 (Limits &
+  promises consistency).**

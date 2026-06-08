@@ -54,8 +54,8 @@
     "title": "Federer · SABR",
     "titleTr": "Federer · SABR",
     "playerName": "Roger Federer",
-    "tagline": "Sneak Attack By Roger — chip and charge return.",
-    "taglineTr": "Roger'ın sürpriz saldırısı — chip ve net.",
+    "tagline": "Sneak Attack By Roger — chip and charge the weak second serve.",
+    "taglineTr": "Roger'ın sürpriz saldırısı — zayıf 2. servise chip ve net.",
     "surface": "hard",
     "shots": [
       {
@@ -68,8 +68,8 @@
         "youY": 0.859,
         "opX": 0.5,
         "opY": -0.0769,
-        "label": "1. Server hits the line",
-        "labelTr": "1. Servis çizgide"
+        "label": "1. Weak 2nd serve",
+        "labelTr": "1. Zayıf 2. servis"
       },
       {
         "fromX": 0.5469,
@@ -111,10 +111,10 @@
       {
         "fromX": 0.2188,
         "fromY": -0.0128,
-        "toX": 0.0781,
+        "toX": 0.8531,
         "toY": 1.0769,
         "duration": 0.9,
-        "youX": 0.0781,
+        "youX": 0.8531,
         "youY": 1.0769,
         "opX": 0.2188,
         "opY": -0.0128,
@@ -122,12 +122,12 @@
         "labelTr": "1. Wide top seni çıkarır"
       },
       {
-        "fromX": 0.0781,
+        "fromX": 0.8531,
         "fromY": 1.0769,
-        "toX": 0.7625,
+        "toX": 0.1875,
         "toY": 0.1154,
         "duration": 1.1,
-        "youX": 0.0781,
+        "youX": 0.8531,
         "youY": 1.0769,
         "opX": 0.2188,
         "opY": -0.0128,
@@ -135,14 +135,14 @@
         "labelTr": "2. Banana FH geri kıvrılır"
       },
       {
-        "fromX": 0.7625,
+        "fromX": 0.1875,
         "fromY": 0.1154,
         "toX": 0.2,
         "toY": 0.9103,
         "duration": 0.7,
         "youX": 0.4062,
         "youY": 1.0128,
-        "opX": 0.7625,
+        "opX": 0.1875,
         "opY": 0.0897,
         "label": "3. Time to recover",
         "labelTr": "3. Toparlanma vakti"
@@ -155,7 +155,7 @@
     "titleTr": "Djokovic · BH çizgi boyu",
     "playerName": "Novak Djokovic",
     "tagline": "Rare aggressive backhand down the line — change of direction.",
-    "taglineTr": "Nadir agresif backhand line — yön değişimi.",
+    "taglineTr": "Nadir agresif backhand çizgi boyu — yön değişimi.",
     "surface": "hard",
     "shots": [
       {
@@ -616,11 +616,11 @@
   },
   {
     "id": "rublev_inside_in",
-    "title": "Rublev · Inside-in FH",
-    "titleTr": "Rublev · Inside-in FH",
+    "title": "Rublev · Inside-out FH",
+    "titleTr": "Rublev · Inside-out FH",
     "playerName": "Andrey Rublev",
-    "tagline": "Run around the backhand, hit inside-in to opponent's FH alley.",
-    "taglineTr": "Backhand'i sola at, inside-in rakibin FH alley'ine.",
+    "tagline": "Run around the backhand, hit inside-out to opponent's FH alley.",
+    "taglineTr": "Backhand'i sola at, inside-out rakibin FH alley'ine.",
     "surface": "hard",
     "shots": [
       {
@@ -646,8 +646,8 @@
         "youY": 0.9872,
         "opX": 0.8281,
         "opY": 0.0897,
-        "label": "2. Inside-in FH winner",
-        "labelTr": "2. Inside-in FH winner"
+        "label": "2. Inside-out FH winner",
+        "labelTr": "2. Inside-out FH winner"
       }
     ]
   },
@@ -657,7 +657,7 @@
     "titleTr": "Berrettini · Güçlü servis+1",
     "playerName": "Matteo Berrettini",
     "tagline": "Heavy T serve sets up a forehand winner — pattern of patterns.",
-    "taglineTr": "Ağır T servis FH winner kurar — pattern of patterns.",
+    "taglineTr": "Ağır T servis FH winner kurar — kalıpların kalıbı.",
     "surface": "grass",
     "shots": [
       {

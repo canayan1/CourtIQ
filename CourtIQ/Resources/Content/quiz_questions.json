@@ -363,7 +363,7 @@
     "category": "returnPlay",
     "difficulty": "medium",
     "focusTag": "return position adjustment",
-    "scenario": "Your opponent's first serve averages below 160 km/h. Where should you stand to return?",
+    "scenario": "Your opponent's first serve is noticeably slower and looks attackable. Where should you stand to return?",
     "options": [
       "Inside the baseline to take time away",
       "Two steps behind the baseline to give yourself time",
@@ -373,7 +373,7 @@
     "explanation": "Against slower serves, stepping inside the baseline takes time away from the server's next shot and pressures them immediately.",
     "takeaway": "Return position is a weapon — match it to the server's pace.",
     "mistakeType": "static return position",
-    "scenarioTr": "Rakibin ilk servis ortalaması 160 km/h'nin altında. Karşılamak için nerede durmalısın?",
+    "scenarioTr": "Rakibin ilk servisi belirgin şekilde yavaş ve saldırılabilir görünüyor. Karşılamak için nerede durmalısın?",
     "optionsTr": [
       "Kale çizgisinin içinde — zaman çal",
       "Kaleden iki adım geride — zaman kazan",
@@ -501,7 +501,7 @@
     "category": "returnPlay",
     "difficulty": "medium",
     "focusTag": "second serve attack",
-    "scenario": "Opponent's second serve averages 140 km/h with heavy kick. What's the best aggressive return pattern?",
+    "scenario": "Opponent's second serve is a sitter-ish kick that bounces up around shoulder height. What's the best aggressive return pattern?",
     "options": [
       "Move up and take it on the rise, crosscourt",
       "Move up but go down the line for a winner",
@@ -511,7 +511,7 @@
     "explanation": "Moving up denies the kick its bounce height. Driving it crosscourt is the higher-percentage aggressive return — more court length and a lower net give you margin to set up a +1. Down the line is tempting but lower-percentage off a deep kicking ball.",
     "takeaway": "Attack a second serve by moving forward — and go crosscourt for margin.",
     "mistakeType": "low-percentage down-the-line return",
-    "scenarioTr": "Rakibin ikinci servisi 140 km/h ağır kick'le geliyor. En iyi agresif dönüş deseni?",
+    "scenarioTr": "Rakibin ikinci servisi omuz hizasına kadar sıçrayan, saldırılabilir cinsten bir kick. En iyi agresif dönüş deseni?",
     "optionsTr": [
       "Öne gel, yükseliyorken çapraz vur",
       "Öne gel ama winner için çizgiye git",
@@ -720,7 +720,7 @@
     ],
     "correctAnswerIndex": 0,
     "explanation": "Recovery isn't a fixed spot — it's the midpoint of your opponent's available reply angles. After a crosscourt from deuce, that's slightly ad side of centre.",
-    "takeaway": "Recover to the angle bisector — not the centre.",
+    "takeaway": "Recover to the middle of their possible reply angles — not the centre mark.",
     "mistakeType": "static recovery to centre",
     "scenarioTr": "Deuce taraftan ağır çapraz forehand attın. Nereye toparlanırsın?",
     "optionsTr": [
@@ -729,7 +729,7 @@
       "Vurduğun kort tarafı"
     ],
     "explanationTr": "Toparlanma sabit bir nokta değildir — rakibin olası yanıt açılarının orta noktasıdır. Deuce taraftan çaprazdan sonra ortaya göre hafif ad tarafa kayar.",
-    "takeawayTr": "Açı ikizkenarına toparlan — ortaya değil.",
+    "takeawayTr": "Rakibin olası yanıt açılarının ortasına toparlan — orta işarete değil.",
     "diagram": {
       "surface": "clay",
       "youX": 0.25,
@@ -808,7 +808,7 @@
       "opponentY": 0.1,
       "scoreChip": "10+ SHOT RALLY"
     },
-    "tacticalCategory": "approach"
+    "tacticalCategory": "patterns"
   },
   {
     "id": "rally_026",
@@ -920,7 +920,7 @@
     ],
     "explanationTr": "Temas anında nefes vermek karını sabitler ve soluğu ritmik tutar. Rally sırasında nefes tutmak gerilimi artırır ve daha hızlı yorar.",
     "takeawayTr": "Her temasta nefes ver — her topta.",
-    "tacticalCategory": "defense"
+    "tacticalCategory": "patterns"
   },
   {
     "id": "rally_030",
@@ -945,7 +945,7 @@
     ],
     "explanationTr": "Yön değişikliği topu hassas yönlendirmek için temas noktasının biraz önde olmasını ister. Hassasiyetsiz hız topu çizgi dışına gönderir.",
     "takeawayTr": "Yön değişimi temas noktası meselesidir — hız değil.",
-    "tacticalCategory": "approach"
+    "tacticalCategory": "patterns"
   },
   {
     "id": "net_021",
@@ -1001,12 +1001,12 @@
     "mistakeType": "static volley position",
     "scenarioTr": "Rakip çapraz pass atmaya hazırlanıyor. Volley'i nereden alırsın?",
     "optionsTr": [
-      "Çapraz çizgiye doğru kaydır — pass rotasını ikiye böl",
+      "Çapraz çizgiye doğru kaydır — pas hattını ikiye böl",
       "Tam orta çizgide",
       "File bandına çok yakın"
     ],
-    "explanationTr": "Çapraz tarafa kaymak birincil pass rotasını kapar ama çizgi tarafını terk etmez. Muhtemel atışı önce savunuyorsun.",
-    "takeawayTr": "Volley pozisyonunu bariz pass rotasına doğru kaydır.",
+    "explanationTr": "Çapraz tarafa kaymak birincil pas hattını kapar ama çizgi tarafını terk etmez. Muhtemel atışı önce savunuyorsun.",
+    "takeawayTr": "Volley pozisyonunu bariz pas hattına doğru kaydır.",
     "diagram": {
       "surface": "clay",
       "youX": 0.45,
@@ -1308,17 +1308,17 @@
     "scenario": "A line call goes against you and you believe it was wrong. What's the 90-second response?",
     "options": [
       "Towel, breath, and commit to the next point",
-      "Argue with the line judge",
+      "Argue the call with your opponent",
       "Play the next point angry to punish them"
     ],
     "correctAnswerIndex": 0,
     "explanation": "A 90-second reset — towel, breath, next-point commitment — is the routine pros use. Anger in the next point doubles the damage: you lose the disputed point and the next one.",
     "takeaway": "One bad call shouldn't cost you two points.",
     "mistakeType": "playing angry after a bad call",
-    "scenarioTr": "Çizgi hakemi aleyhine karar verdi ve yanlış olduğunu düşünüyorsun. 90 saniyelik yanıt ne?",
+    "scenarioTr": "Rakibin verdiği aut kararı aleyhine çıktı ve yanlış olduğunu düşünüyorsun. 90 saniyelik yanıt ne?",
     "optionsTr": [
       "Havlu, nefes, sonraki puana söz",
-      "Çizgi hakemiyle tartış",
+      "Kararı rakibinle tartış",
       "Cezalandırmak için sinirli oyna"
     ],
     "explanationTr": "90 saniyelik sıfırlama — havlu, nefes, sonraki puana söz — profesyonellerin kullandığı rutindir. Sonraki puanda öfke hasarı ikiye katlar.",
@@ -1453,7 +1453,7 @@
       "youY": 0.92,
       "scoreChip": "0–4 GAMES"
     },
-    "tacticalCategory": "return"
+    "tacticalCategory": "patterns"
   },
   {
     "id": "mental_027",
@@ -1528,7 +1528,7 @@
     ],
     "explanationTr": "Yapılandırılmış 2+1 yansıma takıntıya dönmeden dersleri yakalar. Kaçınma öğrenmeyi kaçırır; sinirli izlemek dersi bozar.",
     "takeawayTr": "Kısa yansıt, yakında yansıt — ama sakin yansıt.",
-    "tacticalCategory": "net_game"
+    "tacticalCategory": "patterns"
   },
   {
     "id": "mental_030",
