@@ -1,34 +1,35 @@
 import SwiftUI
 
-/// Single-device doubles questionnaire. Both players answer on the one
-/// phone, so the flow makes the hand-off unmistakable:
-///   name → YOU (1/2) → "pass the phone" → PARTNER (2/2) → result.
-/// Nothing is pre-selected, and Next/See-result stay disabled until every
-/// question is answered, so a result can never be computed against blank
-/// (defaulted) partner answers.
+/// Single-device doubles questionnaire (9 questions: 6 tactical + 3
+/// chemistry). The hand-off between the two players is explicit, nothing
+/// is pre-selected, and Next/See-result stay disabled until every question
+/// is answered — so a result can't be computed against blank answers.
 struct DoublesQuestionnaireView: View {
     @EnvironmentObject private var lang: LanguageManager
 
-    /// Per-player answers, all optional until tapped.
     private struct Draft {
+        // tactical
         var side: DoublesSide?
         var net: NetComfort?
-        var comms: CommStyle?
-        var pressure: PressureStyle?
-        var formation: FormationComfort?
         var hand: Handedness?
+        var formation: FormationComfort?
         var serve: Int?
         var ret: Int?
+        // chemistry
+        var comms: CommStyle?
+        var temperament: Temperament?
+        var goal: DoublesGoal?
+
         var isComplete: Bool {
-            side != nil && net != nil && comms != nil && pressure != nil &&
-            formation != nil && hand != nil && serve != nil && ret != nil
+            side != nil && net != nil && hand != nil && formation != nil &&
+            serve != nil && ret != nil && comms != nil && temperament != nil && goal != nil
         }
         func build() -> DoublesProfile? {
-            guard let side, let net, let comms, let pressure,
-                  let formation, let hand, let serve, let ret else { return nil }
-            return DoublesProfile(preferredSide: side, netComfort: net, poach: .selective,
-                                  comms: comms, pressure: pressure, formation: formation,
-                                  handedness: hand, serveStrength: serve, returnStrength: ret)
+            guard let side, let net, let hand, let formation, let serve, let ret,
+                  let comms, let temperament, let goal else { return nil }
+            return DoublesProfile(preferredSide: side, netComfort: net, handedness: hand,
+                                  formation: formation, serveStrength: serve, returnStrength: ret,
+                                  comms: comms, temperament: temperament, goal: goal)
         }
     }
 
@@ -42,8 +43,6 @@ struct DoublesQuestionnaireView: View {
 
     private var copy: DoublesCopy { DoublesCopy(lang: lang.language) }
     private var trimmedName: String { partnerName.trimmingCharacters(in: .whitespaces) }
-    private var editingMe: Bool { step == .you }
-    private var activeDraft: Draft { editingMe ? me : partner }
 
     var body: some View {
         ScrollView {
@@ -60,9 +59,7 @@ struct DoublesQuestionnaireView: View {
         .background(AppPalette.cream)
         .navigationTitle(headerTitle)
         .navigationBarTitleDisplayMode(.inline)
-        .navigationDestination(item: $pushResult) { p in
-            DoublesResultView(partnership: p)
-        }
+        .navigationDestination(item: $pushResult) { p in DoublesResultView(partnership: p) }
     }
 
     private var headerTitle: String {
@@ -73,7 +70,6 @@ struct DoublesQuestionnaireView: View {
         }
     }
 
-    // MARK: Name
     private var nameStep: some View {
         VStack(alignment: .leading, spacing: 14) {
             Text(copy.partnerNamePrompt).font(.title3.bold()).foregroundStyle(AppPalette.ink)
@@ -87,13 +83,10 @@ struct DoublesQuestionnaireView: View {
         }
     }
 
-    // MARK: Hand-off interstitial
     private var handoffStep: some View {
         VStack(spacing: 18) {
             Image(systemName: "arrow.left.arrow.right.circle.fill")
-                .font(.system(size: 56))
-                .foregroundStyle(AppPalette.clay)
-                .padding(.top, 24)
+                .font(.system(size: 56)).foregroundStyle(AppPalette.clay).padding(.top, 24)
             Text(copy.handoffTitle(trimmedName))
                 .font(.title3.bold()).multilineTextAlignment(.center).foregroundStyle(AppPalette.ink)
             Text(copy.handoffBody(trimmedName))
@@ -102,38 +95,47 @@ struct DoublesQuestionnaireView: View {
             primaryButton(copy.handoffCTA(trimmedName), enabled: true) { step = .partner }
             secondaryButton(copy.back) { step = .you }
         }
-        .frame(maxWidth: .infinity)
-        .padding(.horizontal, 8)
+        .frame(maxWidth: .infinity).padding(.horizontal, 8)
     }
 
-    // MARK: Answers (you / partner)
     @ViewBuilder
     private func answersStep(forMe: Bool) -> some View {
-        let d = Binding<Draft>(
-            get: { forMe ? me : partner },
-            set: { if forMe { me = $0 } else { partner = $0 } }
-        )
+        let d = Binding<Draft>(get: { forMe ? me : partner },
+                               set: { if forMe { me = $0 } else { partner = $0 } })
+        let complete = (forMe ? me : partner).isComplete
         VStack(alignment: .leading, spacing: 18) {
             whoBanner(forMe: forMe)
+
+            sectionHeader(copy.sectionTacticalQ)
             choice(copy.prompt(.courtSide), selection: d.side, options: DoublesSide.allCases) { copy.sideOption($0) }
             choice(copy.prompt(.netBaseline), selection: d.net, options: NetComfort.allCases) { copy.netOption($0) }
-            choice(copy.prompt(.comms), selection: d.comms, options: CommStyle.allCases) { copy.commsOption($0) }
-            choice(copy.prompt(.pressure), selection: d.pressure, options: PressureStyle.allCases) { copy.pressureOption($0) }
-            choice(copy.prompt(.formation), selection: d.formation, options: FormationComfort.allCases) { copy.formationOption($0) }
             choice(copy.prompt(.handedness), selection: d.hand, options: Handedness.allCases) { copy.handOption($0) }
+            choice(copy.prompt(.formation), selection: d.formation, options: FormationComfort.allCases) { copy.formationOption($0) }
             strengthRow(copy.serveStrengthLabel, d.serve)
             strengthRow(copy.returnStrengthLabel, d.ret)
+
+            sectionHeader(copy.sectionChemistryQ)
+            choice(copy.prompt(.comms), selection: d.comms, options: CommStyle.allCases) { copy.commsOption($0) }
+            choice(copy.prompt(.temperament), selection: d.temperament, options: Temperament.allCases) { copy.temperamentOption($0) }
+            choice(copy.prompt(.goal), selection: d.goal, options: DoublesGoal.allCases) { copy.goalOption($0) }
 
             HStack(spacing: 12) {
                 secondaryButton(copy.back) { step = forMe ? .name : .handoff }
                 if forMe {
-                    primaryButton(copy.next, enabled: me.isComplete) { step = .handoff }
+                    primaryButton(copy.next, enabled: complete) { step = .handoff }
                 } else {
-                    primaryButton(copy.seeResult, enabled: partner.isComplete) { finish() }
+                    primaryButton(copy.seeResult, enabled: complete) { finish() }
                 }
             }
             .padding(.top, 4)
         }
+    }
+
+    private func sectionHeader(_ title: String) -> some View {
+        Text(title.uppercased())
+            .font(.caption.weight(.heavy)).tracking(0.6)
+            .foregroundStyle(AppPalette.inkSoft)
+            .padding(.top, 6)
     }
 
     private func whoBanner(forMe: Bool) -> some View {
@@ -156,7 +158,6 @@ struct DoublesQuestionnaireView: View {
         pushResult = p
     }
 
-    // MARK: Reusable controls (optional selection — nothing pre-selected)
     @ViewBuilder
     private func choice<T: Hashable>(_ prompt: String, selection: Binding<T?>,
                                      options: [T], label: @escaping (T) -> String) -> some View {

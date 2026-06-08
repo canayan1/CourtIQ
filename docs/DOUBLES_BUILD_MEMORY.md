@@ -137,7 +137,18 @@ formation by net/baseline mix). Full rules in FEATURE_SPEC_doubles_v1.1.md §3.
   → 99/strong; worst → 36/needsPlan.
 - 2026-06-08 — **Step 2 DONE.** Full single-device doubles UI (6 files in
   Features/Doubles) + Today entry card; EN/TR via DoublesCopy; partnerships
-  persist via DoublesStore (UserDefaults). App build SUCCEEDED. Installing a
-  dev build on the owner's connected iPhone 13 (iOS 26.5) for dogfooding
-  (does NOT touch the in-review 1.0). **Next: Step 3 (on-court QR pairing,
-  generalize CoachSession) — or iterate on Step 2 per device feedback.**
+  persist via DoublesStore (UserDefaults). Installed dev build on owner's
+  iPhone 13 (iOS 26.5) — does NOT touch the in-review 1.0.
+- 2026-06-08 — **Step 2 REWORKED per device feedback** ("score unclear,
+  recommendations odd, questions insufficient"). Engine is now TWO-AXIS:
+  TACTICAL (courtSide, netBaseline, handedness, formation, serve) +
+  CHEMISTRY (comms, temperament[NEW], goal[NEW]); dropped poach/pressure.
+  9 questions (6 tactical + 3 chemistry). DoublesResult gained
+  tacticalScore/chemistryScore; DoublesDimension gained `axis`. Result
+  screen now shows overall + two axis bars, a per-dimension breakdown with
+  BOTH players' answers, and team-setup recommendations WITH reasons.
+  DoublesStore key bumped v1→v2 (profile shape changed). Scorer harness
+  rewritten → 26/26 pass (ideal 100; tac-good/chem-bad 68 [tac100/chem35];
+  tac-bad/chem-good 64 [tac36/chem91]). App build SUCCEEDED; reinstalled on
+  iPhone 13. **Next: owner feedback on transparent result; then Step 3
+  (on-court QR pairing via CoachSession).**

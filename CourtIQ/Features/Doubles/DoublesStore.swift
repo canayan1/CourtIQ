@@ -12,7 +12,9 @@ final class DoublesStore: ObservableObject {
     @Published private(set) var partnerships: [DoublesPartnership] = []
 
     private let defaults: UserDefaults
-    private let key = "CourtIQ.doubles.partnerships.v1"
+    // v2: DoublesProfile gained chemistry fields (temperament/goal) and
+    // dropped poach/pressure — old v1 blobs won't decode, so use a new key.
+    private let key = "CourtIQ.doubles.partnerships.v2"
 
     init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
