@@ -746,7 +746,7 @@
 "ai.paywall_bullet_context" = "Knows your last 5 matches, ratings, and quiz mistake patterns — no re-explaining your game every time.";
 "ai.paywall_bullet_library" = "Suggests drills, mobility flows, and training programs you already have inside CourtIQ — by name.";
 "ai.paywall_bullet_import" = "Import your ChatGPT tennis chats so context isn't lost. Paste once, the coach remembers.";
-"ai.paywall_bullet_privacy" = "No third-party tracking. Your messages stay on Apple-grade infrastructure.";
+"ai.paywall_bullet_privacy" = "No ads or third-party tracking. Chats go to Anthropic's Claude to generate replies and are stored privately to your account.";
 "ai.paywall_cta" = "Unlock AI Coach";
 "ai.paywall_price_hint" = "Monthly or yearly. Cancel anytime in Settings.";
 "ai.paywall_legal" = "AI Coach is powered by Anthropic Claude. Up to 50 messages per day.";

@@ -746,7 +746,7 @@
 "ai.paywall_bullet_context" = "Son 5 maçını, ratinglerini ve quiz hatalarını biliyor — her seferinde oyununu yeniden anlatmana gerek yok.";
 "ai.paywall_bullet_library" = "CourtIQ içinde zaten sahip olduğun drill'leri, mobility flow'larını ve antrenman programlarını adıyla öneriyor.";
 "ai.paywall_bullet_import" = "ChatGPT'deki tenis sohbetlerini içe aktar — bağlam kaybolmasın. Bir kez yapıştır, koç hatırlar.";
-"ai.paywall_bullet_privacy" = "Üçüncü taraf takip yok. Mesajların Apple kalitesinde altyapıda kalır.";
+"ai.paywall_bullet_privacy" = "Reklam veya üçüncü taraf takibi yok. Sohbetler yanıt üretmek için Anthropic Claude'a gider ve hesabına özel saklanır.";
 "ai.paywall_cta" = "AI Koç'u Aç";
 "ai.paywall_price_hint" = "Aylık veya yıllık. Ayarlar'dan istediğin zaman iptal.";
 "ai.paywall_legal" = "AI Koç, Anthropic Claude tarafından çalışır. Günde 50 mesaja kadar.";

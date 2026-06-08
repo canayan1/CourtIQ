@@ -204,7 +204,7 @@ Rules for using it:
 // 2048-token minimum so prompt caching actually triggers — which
 // drops per-message cost ~5x on every second-and-onward turn.
 // Bump LIBRARY_VERSION when content changes so cache invalidates cleanly.
-const LIBRARY_VERSION = "1.1.0";
+const LIBRARY_VERSION = "1.2.0";
 
 const APP_LIBRARY = `
 [APP_LIBRARY v${LIBRARY_VERSION}]
@@ -221,39 +221,56 @@ MOBILITY (Practice tab → Mobility Library)
 These flows are organized by intent. Each name below is exactly how it
 appears in the app, so reference it verbatim.
 
-  Pre-match / activation
-    • Pre-match Activation (4 min, full body, dynamic) — replaces
-      static stretching before play; ideal first thing on court.
-    • Serve Shoulder Reset (6 min, shoulders + thoracic rotation) —
-      between games when first-serve speed drops, or pre-serve warm-up.
-    • Lower-body Quick Reset (5 min, hips + ankles) — covers ankle
-      dorsiflexion, hip openers, posterior chain wake-up.
+  Quick resets (pre-match / between sets, short)
+    • Serve Shoulder Reset (6 min) — shoulder + upper-back motion before serving.
+    • Hips & Ankle Warm-Up (7 min) — prime the lower body for split-step speed.
+    • Hamstring Release Flow (5 min) — loosen hamstrings after long rallies / between sets.
+    • Thoracic Rotation Reset (6 min) — mid-back twist for groundstroke rotation.
+    • Match Day Energy Reset (8 min) — reduce stiffness, reset range between sets.
 
-  Recovery / cool-down
-    • Cool-down Hip Decompression (8 min, post-match, passive) —
-      hip flexor release, glute stretches, T-spine windmills.
-    • Deep Stretch Sequence (12 min, post-match or rest day) — full
-      body, slow holds, foam roll prompts.
+  Daily mobility (maintenance, 10–18 min)
+    • Court-Ready Rotation Sequence (12 min) — thoracic + shoulder mobility for rotation.
+    • Lower-Body Movement Circuit (15 min) — hip + hamstring range for change of direction.
+    • Shoulder Freedom Routine (10 min) — shoulder mobility for serving / overheads.
+    • Ankle & Lower Leg Support (11 min) — ankle resilience for quick directional changes.
+    • Full-Body Tennis Flow (18 min) — connect hips, shoulders, spine for court movement.
+
+  Recovery (post-match / rest day, longer)
+    • Post-Match Hip & Hamstring Recovery (22 min) — release the lower body after a long match.
+    • Shoulder & Spine Recovery (24 min) — ease upper-body tension after a hard hitting session.
+    • Match-Day Lower-Body Reset (20 min) — reset legs + ankles after a long practice / match.
+    • Court-to-Couch Recovery (25 min) — full-body release after a long tennis day.
+    • Long-Play Joint Recovery (30 min) — joint recovery after extended court time.
 
 ==============================
 TRAINING (Training tab → Programs)
 ==============================
 
-  • PHEC 8-week
-      Plyometrics + Hypertrophy + Explosiveness + Conditioning.
-      3 sessions/week, bodyweight + optional bands. Designed for
-      tennis-specific power (jump rope, lateral bounds, single-leg
-      RDLs, med-ball rotations). Best fit for an intermediate
-      who already runs 3x/week and has 8 weeks before a tournament.
+All programs are 8 weeks and free.
 
-  • Foundation Plan 8-week
-      Entry level. 2 sessions/week, bodyweight only. Squats, push-ups,
-      hip bridges, dead bugs, core holds. Suitable for first-time
-      strength work or coming back from a layoff.
+  Foundation + focused tracks (start here):
+    • 8-Week Tennis Hybrid Foundation (intermediate) — full-body strength,
+      explosiveness, conditioning. The best default when they're unsure.
+    • Better Footwork Performance Track (intermediate) — split step,
+      wide-ball reach, recovery steps.
+    • Stronger Shots Power Track (intermediate) — more pace with less
+      effort, sustained shot quality late in matches.
+    • Better Flexibility Mobility Track (beginner) — free up tennis
+      positions, faster range recovery.
+    • Match Conditioning Engine Track (intermediate) — sharper legs and
+      decisions as fatigue rises.
 
-When the user asks for "a training plan", pick PHEC if they describe
-themselves as already active, Foundation if they describe themselves
-as new or rusty. Never invent a third program.
+  Advanced continuations (after the matching track above):
+    • 8-Week Hybrid Power Continuation — elastic power, rotational drive.
+    • 8-Week Footwork Reactive Speed Track — faster first step, cleaner stops.
+    • 8-Week Shot Velocity Track — higher top-end shot speed, leg-to-racket transfer.
+    • 8-Week Active Range Track — usable mid-rally range, end-range control.
+    • 8-Week Match Duration Engine — maintain quality deep into the third set.
+
+For a general request pick "8-Week Tennis Hybrid Foundation"; pick a focused
+track when they name a weakness (footwork, power, flexibility, conditioning).
+Advanced continuations follow their matching track. Never invent a program
+that isn't on this list.
 
 ==============================
 DAILY RITUALS (Today tab)
