@@ -355,6 +355,22 @@ final class SupabaseRESTClient {
         ) as EmptyResponse
     }
 
+    /// Calls a Postgres function (RPC) via PostgREST (`rest/v1/rpc/<fn>`).
+    /// Used by the Doubles invite flow (peek/accept) where the caller isn't
+    /// yet a row participant, so plain table RLS can't serve the lookup.
+    func callRPC<Body: Encodable, Response: Decodable>(
+        _ function: String,
+        args: Body,
+        session: SupabaseSession
+    ) async throws -> Response {
+        try await databaseRequest(
+            method: .post,
+            table: "rpc/\(function)",
+            body: args,
+            session: session
+        )
+    }
+
     private func authRequest<Response: Decodable, Body: Encodable>(
         method: HTTPMethod,
         path: String,

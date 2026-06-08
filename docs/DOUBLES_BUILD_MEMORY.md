@@ -192,6 +192,24 @@ formation by net/baseline mix). Full rules in FEATURE_SPEC_doubles_v1.1.md §3.
   partner installs + signs up; both see the score; joint match logging is
   in v1.1 too. Updated §1 decisions + §5 step plan. **Step 3 schema written:**
   `supabase/migrations/20260608000000_doubles_tables.sql` (partnerships +
-  matches + RLS + peek/accept RPCs). NOT YET DEPLOYED — needs owner approval
-  to push to prod Supabase (additive/safe). **Next: get deploy approval, then
-  Step 4 (DoublesService client).**
+  matches + RLS + peek/accept RPCs).
+- 2026-06-08 — **Step 3 DEPLOYED** to prod Supabase via `supabase db push`
+  (owner approved). `migration list` shows local+remote in sync; tables +
+  RPCs live and auth-gated. Did not touch existing tables / in-review 1.0.
+- 2026-06-08 — **Step 4 DONE**: `DoublesService.swift` (server-backed
+  partnerships + invite peek/accept RPC + joint match log) + `callRPC` added
+  to SupabaseRESTClient. Session via injected provider (anonymous/Apple).
+  App build SUCCEEDED. NOT yet wired into UI (Step 5).
+- 2026-06-08 — ⛔ **PAUSED doubles: 1.0 (build 13) REJECTED AGAIN.** Pivot
+  to fixing 1.0 (it blocks the 1.1 launch). Three issues: (1) 3.1.2(c) EULA
+  link missing from App Store metadata (in-app Terms link exists in paywall;
+  need Terms URL in ASC description/EULA field); (2) 2.1(a) Apple sign-in
+  STILL errors in review (backend healthy now: apple provider true, health
+  200, no nonce bug → suspect Supabase Apple "Client IDs" missing bundle id,
+  or transient free-tier pause during review); (3) 2.1(b) IAP "Unlocked
+  button unresponsive" — ROOT CAUSE: paywall uses `isPremiumUnlocked` (hard-
+  wired true for content-free model) → purchase button shows "Unlocked" +
+  disabled. Fix: paywall must use `entitlementState.isPremium` (real sub),
+  not `isPremiumUnlocked`. 1.0 fixes go on a separate branch off
+  `fix/app-store-rejection-build11` (build 13 state), NOT the doubles branch.
+  **Resume doubles at Step 5 after 1.0 ships.**
