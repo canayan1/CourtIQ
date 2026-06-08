@@ -30,15 +30,27 @@ A doubles compatibility test: two players answer ~8 quick questions, get a
 order, return sides, formation) + strengths/watch-outs. FREE. A premium AI
 game-plan layers on top.
 
-**Locked decisions:**
-- Vision: personal trainer + strong doubles tool (NOT a social platform).
-- Pairing **Model A.5**: on-court QR (reuse Coach Mode / MultipeerConnectivity)
-  + remote invite link (light Supabase backend). Single-device fallback too.
-  NO social graph (no accounts-add-each-other) → no App Store Guideline 1.2.
-- New top-level **Doubles** tab.
-- Partnerships saved to the user's own account (synced) + local cache.
-- FREE: test + deterministic score + static prep sheet. PREMIUM: AI plan
-  (reuses the AI Coach premium gate + ai-chat edge function).
+**Locked decisions (REVISED 2026-06-08 after device dogfooding):**
+- Vision: personal trainer + strong doubles tool. A private 1:1 partner
+  link is fine (NOT a public social feed → no heavy Guideline 1.2 UGC).
+- **PAIRING PIVOT → account-linked invite link (was A.5/QR).** On-court QR
+  & single-device hand-off felt awkward in real use. New primary flow:
+  inviter does their half → shares a **WhatsApp/universal link** → partner
+  **installs the app + creates an account** → does their own half → **both
+  accounts see the compatibility score**. Keep single-device "fill both
+  yourself" as a quick fallback. (QR/MultipeerConnectivity is dropped for
+  v1.1.)
+- **Accounts REQUIRED** for the invite flow (reuses existing Supabase Auth:
+  Apple + anonymous + email; account deletion already exists via edge fn →
+  App Store 5.1.1(v) satisfied). Privacy label must disclose profile shared
+  with the invited partner.
+- **Joint doubles MATCH LOGGING is IN this version** (owner's call): once
+  two accounts are linked as partners, either can log a doubles match and
+  both see it.
+- Entry: prominent Doubles card on Today (tab bar full at 5; final
+  placement deferred).
+- FREE: test + score + static prep + match logging. PREMIUM: AI plan
+  (reuses AI Coach gate + ai-chat) — later step.
 
 ## 2. Key build facts / gotchas
 - **Xcode project uses EXPLICIT file references** (no
@@ -107,12 +119,36 @@ formation by net/baseline mix). Full rules in FEATURE_SPEC_doubles_v1.1.md §3.
       compatibility" card on TodayView (tab bar is full at 5; final tab
       placement deferred). Models made Hashable for navigationDestination.
       App build SUCCEEDED. NOTE: QR pairing/invite/AI-plan still later steps.
-- [ ] **Step 3**: On-court QR pairing (generalize CoachSession).
-- [ ] **Step 4**: Remote invite link + `doubles_sessions` Supabase table.
-- [ ] **Step 5**: Persistence (`doubles_partnerships` table + local + sync).
-- [ ] **Step 6**: Premium AI game-plan (extend ai-chat context +
+  ⚠️ Steps 3–7 below were REVISED 2026-06-08 (account-linked pivot). The
+  two-axis engine (§4) and single-device UI (kept as fallback) stand.
+- [ ] **Step 3 (REVISED)**: Backend schema — Supabase migration
+      `doubles_partnerships` (code, inviter/invitee user_id + name + profile
+      jsonb, status) + `doubles_matches` (partnership_id, logged_by, date,
+      won, score, opponents, notes) + RLS (both participants r/w) + two
+      SECURITY DEFINER RPCs: `peek_doubles_invite(code)` and
+      `accept_doubles_invite(code,name,profile)`. Write file now; DEPLOY TO
+      PROD NEEDS OWNER APPROVAL (additive/safe; shared project with in-review
+      1.0 but doesn't touch existing tables).
+- [ ] **Step 4**: `DoublesService` (client) — REST/RPC: createInvite,
+      peekInvite, acceptInvite, listPartnerships, getPartnership, logMatch,
+      listMatches + sign-in gating (Apple/anonymous). PostgREST path exists
+      in AppConfiguration (`rest/v1/<table>`, ~line 417) + `functionRequest`
+      for RPCs.
+- [ ] **Step 5**: Invite + join UX — after my half → "Invite partner" →
+      share universal link; join → sign in → test → both see score. Replace
+      local-only partnerships with server-backed (keep single-device "fill
+      both" fallback).
+- [ ] **Step 6**: Universal Links — AASA at
+      `canayan-ios-apps.vercel.app/.well-known/apple-app-site-association`
+      (appID `DC8ALPY949.com.canayan93.courtiq`, paths `/d/*`) + Associated
+      Domains entitlement `applinks:canayan-ios-apps.vercel.app` + URL
+      handling in app + web fallback page `/d/<code>` on the Next.js site.
+- [ ] **Step 7**: Joint doubles match logging UI (log against a partnership;
+      both partners see the list).
+- [ ] **Step 8 (later)**: Premium AI doubles game-plan (ai-chat context +
       tennis_manual doubles section; deploy).
-- [ ] **Step 7 (optional)**: seed doubles drills/quizzes (audit gap).
+- App Store: account deletion already exists (5.1.1(v) ✓); add privacy
+  disclosure that the profile is shared with the invited partner.
 
 ## 6. How to resume after a reset
 1. `git branch --show-current` → should be `feat/doubles-v1.1`. If not,
@@ -150,5 +186,12 @@ formation by net/baseline mix). Full rules in FEATURE_SPEC_doubles_v1.1.md §3.
   DoublesStore key bumped v1→v2 (profile shape changed). Scorer harness
   rewritten → 26/26 pass (ideal 100; tac-good/chem-bad 68 [tac100/chem35];
   tac-bad/chem-good 64 [tac36/chem91]). App build SUCCEEDED; reinstalled on
-  iPhone 13. **Next: owner feedback on transparent result; then Step 3
-  (on-court QR pairing via CoachSession).**
+  iPhone 13.
+- 2026-06-08 — **PAIRING PIVOT** (owner feedback: on-court QR/hand-off too
+  awkward; WhatsApp link is better). New model = account-linked invite link;
+  partner installs + signs up; both see the score; joint match logging is
+  in v1.1 too. Updated §1 decisions + §5 step plan. **Step 3 schema written:**
+  `supabase/migrations/20260608000000_doubles_tables.sql` (partnerships +
+  matches + RLS + peek/accept RPCs). NOT YET DEPLOYED — needs owner approval
+  to push to prod Supabase (additive/safe). **Next: get deploy approval, then
+  Step 4 (DoublesService client).**
