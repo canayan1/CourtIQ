@@ -39,6 +39,17 @@ ships. Polish may ship as 1.0.1 or merge into 1.1 (decide later).
   parchment #FCF7EE, sand #E1D1B8, ink #1E2938, gold #D99E19.
 - ASC helper: `/tmp/asc.py GET/POST/PATCH/DELETE <path> [json]`.
 
+## RELEASE DECISION (2026-06-08)
+**Ship polish + doubles together as 1.1 (owner chose option B).** Polish
+(`feat/polish`) is done and waits for doubles. 1.0 (build 14) is in review;
+neither polish nor doubles is in it. Path to 1.1: 1.0 clears → finish doubles
+(`feat/doubles-v1.1`, resume Step 5 invite/join UX) → merge `feat/polish` +
+doubles → bump 1.1 + new build → submit. Doubles is now the critical path.
+**Before the 1.1 submit archive:** (1) add a Doubles frame to the App Store
+visuals (video + panorama) since 1.1 introduces doubles; (2) strip the
+launch-arg seed (`CourtIQApp.seedPreviewData` / `debugMarkOnboarded`) or add
+DEBUG to the Debug config so it compiles out of the release build.
+
 ## STATUS LOG
 - 2026-06-08 — 1.0 (build 14) + both subs all WAITING_FOR_REVIEW (submitted).
   Started polish phase. Order: Content QC → Limits/Promises → Screenshots.
