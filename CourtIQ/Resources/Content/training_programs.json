@@ -1212,7 +1212,7 @@
     ]
   },
   {
-    "accessTier": "premium",
+    "accessTier": "free",
     "level": "intermediate",
     "category": "betterFootwork",
     "days": [
@@ -1980,7 +1980,7 @@
     ]
   },
   {
-    "accessTier": "premium",
+    "accessTier": "free",
     "level": "intermediate",
     "category": "strongerShots",
     "days": [
@@ -2600,7 +2600,7 @@
     ]
   },
   {
-    "accessTier": "premium",
+    "accessTier": "free",
     "level": "intermediate",
     "category": "betterFlexibility",
     "days": [
@@ -3028,7 +3028,7 @@
     ]
   },
   {
-    "accessTier": "premium",
+    "accessTier": "free",
     "level": "intermediate",
     "category": "matchConditioning",
     "days": [
@@ -4219,7 +4219,7 @@
     "id": "training-footwork-progression",
     "category": "betterFootwork",
     "title": "8-Week Footwork Reactive Speed Track",
-    "accessTier": "premium",
+    "accessTier": "free",
     "level": "advanced",
     "durationWeeks": 8,
     "overview": "The progression block after Better Footwork. Emphasises reactive starts, multi-directional chains, and deceleration strength — earned from the cleaner mechanics you built in cycle 1.",
@@ -4555,7 +4555,7 @@
     "id": "training-stronger-shots-progression",
     "category": "strongerShots",
     "title": "8-Week Shot Velocity Track",
-    "accessTier": "premium",
+    "accessTier": "free",
     "level": "advanced",
     "durationWeeks": 8,
     "overview": "The progression after Stronger Shots. Maximum intent work — heavier rotational loads paired with top-speed ball throws — to raise the ceiling of your shot speed without losing repeatability.",
@@ -4873,7 +4873,7 @@
     "id": "training-flexibility-progression",
     "category": "betterFlexibility",
     "title": "8-Week Active Range Track",
-    "accessTier": "premium",
+    "accessTier": "free",
     "level": "advanced",
     "durationWeeks": 8,
     "overview": "The continuation of Better Flexibility. Shifts emphasis from passive range to active range — controlled strength at end ranges, so your new flexibility shows up in your movement.",
@@ -5161,7 +5161,7 @@
     "id": "training-conditioning-progression",
     "category": "matchConditioning",
     "title": "8-Week Match Duration Engine",
-    "accessTier": "premium",
+    "accessTier": "free",
     "level": "advanced",
     "durationWeeks": 8,
     "overview": "The follow-on from Match Conditioning. Designed to push your work-capacity ceiling: longer high-quality rallies, higher average intensity across sessions, and matched-duration efforts that mirror a full match.",

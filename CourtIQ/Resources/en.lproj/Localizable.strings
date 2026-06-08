@@ -84,6 +84,8 @@
 "training.premium_tracks" = "Training Tracks";
 "training.unlocked" = "Unlocked";
 "training.locked" = "Locked";
+"training.more_tracks" = "More Tracks";
+"training.pick_focus" = "Pick a focus area";
 
 /* ── Training Detail ── */
 "training.cycle_week" = "Cycle Week";

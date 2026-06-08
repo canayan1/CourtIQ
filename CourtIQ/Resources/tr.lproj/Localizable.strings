@@ -84,6 +84,8 @@
 "training.premium_tracks" = "Antrenman Programları";
 "training.unlocked" = "Açıldı";
 "training.locked" = "Kilitli";
+"training.more_tracks" = "Diğer Programlar";
+"training.pick_focus" = "Bir odak alanı seç";
 
 /* ── Training Detail ── */
 "training.cycle_week" = "Döngü Haftası";

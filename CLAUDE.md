@@ -48,7 +48,7 @@ CourtIQ/
 
 ### Scenario-Based Quizzes
 - Multi-step scenarios with branching logic stored in Firestore (`quizzes` collection)
-- Free tier: 3 quizzes/day; Premium: unlimited
+- All quizzes are free (no daily cap)
 - Results persisted locally via SwiftData and synced to Firestore for cross-device progress
 
 ### FAQ
@@ -65,17 +65,21 @@ CourtIQ/
 - Synced to Firestore on demand; merged on sign-in across devices
 - Charts with Swift Charts framework (weekly/monthly views)
 
-## Freemium Model
+## Monetization Model
 
-| Feature | Free | Premium |
-|---|---|---|
-| Daily tip (today only) | Yes | Yes + full archive |
-| Quizzes per day | 3 | Unlimited |
-| Progress history | 7 days | Full history |
-| Detailed quiz explanations | No | Yes |
-| Offline mode | Limited | Full |
+**All in-app content is FREE** — daily court-tap drills, daily tips, scenario
+quizzes (no daily cap), pro shot patterns, FAQ, training programs, mobility
+flows, match journal, and full progress history. There is no content paywall.
 
-Premium unlocked via StoreKit 2 (monthly / annual subscription).
+**The one premium feature is the AI Coach** — a tennis chat that knows the
+user's profile, recent matches, and quiz mistake patterns. It is premium
+because it has a real per-message (Anthropic) cost. Unlocked via StoreKit 2
+(monthly / annual auto-renewable subscription), capped at 50 messages/day.
+
+Gating: the content gate `UserSessionManager.isPremiumUnlocked` is hard-wired
+`true` (everything unlocked). The AI Coach gates independently on the real
+StoreKit entitlement (`entitlementState.isPremium`). The paywall sells only
+the AI Coach.
 
 ## Firebase Setup
 

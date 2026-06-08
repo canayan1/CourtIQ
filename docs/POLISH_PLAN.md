@@ -59,5 +59,18 @@ ships. Polish may ship as 1.0.1 or merge into 1.1 (decide later).
   Model: added *Tr fields + localizedX(for:) accessors to TrainingProgram/
   Phase/DayPlan. Views: wired TrainingProgramDetailView + TrainingHubView (16
   sites) to localized accessors. All JSON valid; app BUILD SUCCEEDED; 10
-  programs fully localized (0 missing *Tr). **Next: Workstream 2 (Limits &
-  promises consistency).**
+  programs fully localized (0 missing *Tr).
+- 2026-06-08 — **Workstream 2 (Limits & promises) — owner confirmed content
+  is fully free, AI Coach the only paid feature.** Done: set all 10 training
+  programs accessTier premium→free; restructured TrainingHubView (removed the
+  empty "Premium Tracks"/locked framing → unified "More Tracks" list, neutral
+  styling, no crowns/locks); fixed frequencyBanner "once premium unlocked"
+  copy; added training.more_tracks/pick_focus strings (EN+TR); updated
+  CLAUDE.md Monetization Model (content free, AI Coach only paid, 50 msg/day —
+  was a stale freemium table). Verified AI Coach "50 messages/day" claim
+  matches the server cap (MAX_DAILY_MESSAGES_PREMIUM ?? 50). Build SUCCEEDED.
+  REMAINING (optional, non-visible): vestigial `isPremiumUnlocked` dead
+  branches in TodayView/MobilityLibraryView/PracticeView/ProfileView/
+  LevelProgressionPathView evaluate to "unlocked" (true) so they don't show
+  premium framing — harmless dead code, tidy later. **Next: Workstream 3
+  (panoramic App Store screenshots).**

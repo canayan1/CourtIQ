@@ -57,7 +57,7 @@ struct TrainingHubView: View {
         switch freq {
         case "1-2": return ("1–2 days/week", "The foundation plan fits neatly into two sessions — exactly your schedule.")
         case "3-4": return ("3–4 days/week", "The 4-day weekly loop in the foundation plan is built for your rhythm.")
-        case "5+":  return ("5+ days/week", "High-frequency players get the most from the Match Conditioning track once premium is unlocked.")
+        case "5+":  return ("5+ days/week", "High-frequency players get the most from the Match Conditioning track.")
         default:    return nil
         }
     }
@@ -150,9 +150,9 @@ struct TrainingHubView: View {
 
     private var premiumTracks: some View {
         VStack(alignment: .leading, spacing: 14) {
-            sectionHeader(title: lang.t("training.premium_tracks"), subtitle: session.isPremiumUnlocked ? lang.t("training.unlocked") : lang.t("training.locked"))
+            sectionHeader(title: lang.t("training.more_tracks"), subtitle: lang.t("training.pick_focus"))
 
-            ForEach(programs.filter(\.isPremium)) { program in
+            ForEach(programs.filter { $0.id != TrainingProgram.featuredProgram.id }) { program in
                 NavigationLink {
                     TrainingProgramDetailView(program: program)
                 } label: {
@@ -161,18 +161,13 @@ struct TrainingHubView: View {
                             .font(.title2)
                             .foregroundStyle(.white)
                             .frame(width: 52, height: 52)
-                            .background(session.isPremiumUnlocked ? AppPalette.moss : AppPalette.inkSoft)
+                            .background(AppPalette.moss)
                             .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
 
                         VStack(alignment: .leading, spacing: 6) {
                             HStack {
                                 Text(program.localizedTitle(for: lang.language))
                                     .font(.headline)
-                                if !session.isPremiumUnlocked {
-                                    Image(systemName: "lock.fill")
-                                        .font(.caption)
-                                        .foregroundStyle(AppPalette.inkSoft)
-                                }
                             }
 
                             Text(program.category.summary)
