@@ -481,7 +481,15 @@ final class SupabaseRESTClient {
             do {
                 return try Self.decoder.decode(Response.self, from: data)
             } catch {
+                #if DEBUG
+                // Surface the exact decode failure on dev builds so we can
+                // pinpoint which field/type the server returned. Release
+                // builds keep the generic message.
+                let body = String(data: data.prefix(900), encoding: .utf8) ?? "<non-utf8>"
+                throw RemoteDataError.message("Decode failed [\(Response.self)]: \(error)\n---\n\(body)")
+                #else
                 throw RemoteDataError.message("Could not decode server response.")
+                #endif
             }
         case 401, 403:
             throw RemoteDataError.unauthorized
