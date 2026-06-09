@@ -50,7 +50,7 @@ struct ProfileView: View {
         }
         .sheet(isPresented: $showAICoach) {
             NavigationStack {
-                AICoachView()
+                AICoachGate()
                     .environmentObject(lang)
                     .environmentObject(AIChatClient.shared)
                     .environmentObject(session)

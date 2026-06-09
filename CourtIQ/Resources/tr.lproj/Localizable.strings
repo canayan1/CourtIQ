@@ -734,6 +734,7 @@
 "ai.quota_resets" = "Yerel saatle gece yarısı sıfırlanır";
 "ai.error_sign_in_required" = "AI Koç'u kullanmak için Apple ile giriş yap.";
 "ai.error_send_generic" = "Gönderilemedi. Bağlantını kontrol et ve tekrar dene.";
+"ai.error_connect" = "AI Koç'a ulaşılamadı. Bağlantını kontrol edip tekrar dene.";
 
 /* AI Koç güvenlik uyarısı — her thread'in ilk mesajı üstünde gösterilir */
 "ai.disclaimer_title" = "AI Koç bir düşünme aracı, doktor ya da gerçek koçun değil.";
@@ -749,7 +750,7 @@
 "ai.paywall_bullet_privacy" = "Reklam veya üçüncü taraf takibi yok. Sohbetler yanıt üretmek için Anthropic Claude'a gider ve hesabına özel saklanır.";
 "ai.paywall_cta" = "AI Koç'u Aç";
 "ai.paywall_price_hint" = "Aylık veya yıllık. Ayarlar'dan istediğin zaman iptal.";
-"ai.paywall_legal" = "AI Koç, Anthropic Claude tarafından çalışır. Günde 50 mesaja kadar.";
+"ai.paywall_legal" = "AI Koç, Anthropic Claude tarafından çalışır. Günde 30 mesaja kadar.";
 
 /* AI Koç — paste import */
 "ai.import_menu" = "ChatGPT'den içe aktar";

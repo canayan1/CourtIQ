@@ -274,7 +274,7 @@ final class SubscriptionManager: ObservableObject {
         "Suggests your drills, mobility flows, and training plans by name",
         "Import your ChatGPT tennis chats so context carries over",
         "Private — no third-party tracking",
-        "Up to 50 messages per day"
+        "Up to 30 messages per day"
     ]
 
     private let configuration: AppConfiguration

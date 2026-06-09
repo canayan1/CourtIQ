@@ -734,6 +734,7 @@
 "ai.quota_resets" = "Resets at midnight local time";
 "ai.error_sign_in_required" = "Sign in with Apple to use AI Coach.";
 "ai.error_send_generic" = "Couldn't send. Check your connection and try again.";
+"ai.error_connect" = "Couldn't reach the AI Coach. Check your connection and try again.";
 
 /* AI Coach safety disclaimer — shown above the first message in every thread */
 "ai.disclaimer_title" = "AI Coach is a reflection tool, not a doctor or your real coach.";
@@ -749,7 +750,7 @@
 "ai.paywall_bullet_privacy" = "No ads or third-party tracking. Chats go to Anthropic's Claude to generate replies and are stored privately to your account.";
 "ai.paywall_cta" = "Unlock AI Coach";
 "ai.paywall_price_hint" = "Monthly or yearly. Cancel anytime in Settings.";
-"ai.paywall_legal" = "AI Coach is powered by Anthropic Claude. Up to 50 messages per day.";
+"ai.paywall_legal" = "AI Coach is powered by Anthropic Claude. Up to 30 messages per day.";
 
 /* AI Coach — paste import */
 "ai.import_menu" = "Import from ChatGPT";

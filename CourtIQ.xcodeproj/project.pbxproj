@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01E3B5805B3AC2D9B83BCC20 /* AICoachConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5431D73E4D73B3EE01C53B1 /* AICoachConsentView.swift */; };
 		A000000000000000000020 /* CourtIQApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000010 /* CourtIQApp.swift */; };
 		A000000000000000000021 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000011 /* MainTabView.swift */; };
 		A000000000000000000022 /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000012 /* PracticeView.swift */; };
@@ -42,39 +43,16 @@
 		A000000000000000000062 /* PlayerProgressionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000061 /* PlayerProgressionManager.swift */; };
 		A000000000000000000064 /* LevelProgressionPathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000063 /* LevelProgressionPathView.swift */; };
 		A000000000000000000066 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000065 /* LanguageManager.swift */; };
+		A00000000000000000006A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A000000000000000000069 /* Localizable.strings */; };
 		A0000000000000000000B1 /* TennisVisuals.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000B0 /* TennisVisuals.swift */; };
 		A0000000000000000000B3 /* FeedbackComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000B2 /* FeedbackComposer.swift */; };
 		A0000000000000000000B5 /* CrashReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000B4 /* CrashReporter.swift */; };
+		A0000000000000000000C1 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000C0 /* PrivacyInfo.xcprivacy */; };
 		A0000000000000000000D1 /* HealthAcknowledgmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000D0 /* HealthAcknowledgmentView.swift */; };
 		A0000000000000000000D3 /* TrainSafelyBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000D2 /* TrainSafelyBanner.swift */; };
 		A0000000000000000000E1 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000E0 /* NotificationManager.swift */; };
 		A0000000000000000000E3 /* NotificationPreAskSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000E2 /* NotificationPreAskSheet.swift */; };
 		A0000000000000000000F1 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000F0 /* Haptics.swift */; };
-		A00000000000000000016B /* LaunchOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000016A /* LaunchOffer.swift */; };
-		A00000000000000000016D /* MatchMediaStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000016C /* MatchMediaStore.swift */; };
-		A00000000000000000016F /* VoiceNoteRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000016E /* VoiceNoteRecorder.swift */; };
-		A000000000000000000171 /* NotificationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000170 /* NotificationSettingsView.swift */; };
-		A000000000000000000173 /* CoachSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000172 /* CoachSession.swift */; };
-		A000000000000000000175 /* CoachPairView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000174 /* CoachPairView.swift */; };
-		A000000000000000000177 /* CoachQuickLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000176 /* CoachQuickLogView.swift */; };
-		A000000000000000000179 /* CoachReveal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000178 /* CoachReveal.swift */; };
-		A00000000000000000017B /* MobilityAnimationPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000017A /* MobilityAnimationPreview.swift */; };
-		A00000000000000000017D /* FigureApproachComparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000017C /* FigureApproachComparison.swift */; };
-		A00000000000000000017F /* HybridMobilityFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000017E /* HybridMobilityFigure.swift */; };
-		A000000000000000000181 /* AIChatModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000180 /* AIChatModels.swift */; };
-		A000000000000000000183 /* AIChatClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000182 /* AIChatClient.swift */; };
-		A000000000000000000199 /* MatchMemoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000198 /* MatchMemoryStore.swift */; };
-		A00000000000000000019B /* MatchLogTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000019A /* MatchLogTutorialView.swift */; };
-		A000000000000000000185 /* AICoachView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000184 /* AICoachView.swift */; };
-		A000000000000000000187 /* AICoachThreadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000186 /* AICoachThreadView.swift */; };
-		A000000000000000000189 /* AICoachPaywallStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000188 /* AICoachPaywallStub.swift */; };
-		A00000000000000000018B /* AICoachImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000018A /* AICoachImportView.swift */; };
-		A00000000000000000018D /* TacticalProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000018C /* TacticalProfile.swift */; };
-		A00000000000000000018F /* TacticalProfileCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000018E /* TacticalProfileCard.swift */; };
-		A000000000000000000191 /* PlayStyleProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000190 /* PlayStyleProfile.swift */; };
-		A000000000000000000193 /* PlayStyleProfileCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000192 /* PlayStyleProfileCard.swift */; };
-		A000000000000000000195 /* SelfAssessment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000194 /* SelfAssessment.swift */; };
-		A000000000000000000197 /* SelfAssessmentStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000196 /* SelfAssessmentStep.swift */; };
 		A000000000000000000101 /* TourStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000100 /* TourStep.swift */; };
 		A000000000000000000111 /* MatchEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000110 /* MatchEntry.swift */; };
 		A000000000000000000113 /* MatchEntryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000112 /* MatchEntryManager.swift */; };
@@ -89,6 +67,7 @@
 		A000000000000000000135 /* CourtTapDrillManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000134 /* CourtTapDrillManager.swift */; };
 		A000000000000000000137 /* CourtTapDrillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000136 /* CourtTapDrillView.swift */; };
 		A000000000000000000139 /* DrillResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000138 /* DrillResultView.swift */; };
+		A00000000000000000013B /* court_tap_drills.json in Resources */ = {isa = PBXBuildFile; fileRef = A00000000000000000013A /* court_tap_drills.json */; };
 		A000000000000000000141 /* ActivityRingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000140 /* ActivityRingsView.swift */; };
 		A000000000000000000151 /* AvatarConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000150 /* AvatarConfig.swift */; };
 		A000000000000000000153 /* AvatarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000152 /* AvatarManager.swift */; };
@@ -99,9 +78,31 @@
 		A000000000000000000165 /* ProShotAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000164 /* ProShotAnimationView.swift */; };
 		A000000000000000000167 /* ProShotCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000166 /* ProShotCard.swift */; };
 		A000000000000000000169 /* pro_shot_patterns.json in Resources */ = {isa = PBXBuildFile; fileRef = A000000000000000000168 /* pro_shot_patterns.json */; };
-		A00000000000000000013B /* court_tap_drills.json in Resources */ = {isa = PBXBuildFile; fileRef = A00000000000000000013A /* court_tap_drills.json */; };
-		A00000000000000000006A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A000000000000000000069 /* Localizable.strings */; };
-		A0000000000000000000C1 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000C0 /* PrivacyInfo.xcprivacy */; };
+		A00000000000000000016B /* LaunchOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000016A /* LaunchOffer.swift */; };
+		A00000000000000000016D /* MatchMediaStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000016C /* MatchMediaStore.swift */; };
+		A00000000000000000016F /* VoiceNoteRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000016E /* VoiceNoteRecorder.swift */; };
+		A000000000000000000171 /* NotificationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000170 /* NotificationSettingsView.swift */; };
+		A000000000000000000173 /* CoachSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000172 /* CoachSession.swift */; };
+		A000000000000000000175 /* CoachPairView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000174 /* CoachPairView.swift */; };
+		A000000000000000000177 /* CoachQuickLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000176 /* CoachQuickLogView.swift */; };
+		A000000000000000000179 /* CoachReveal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000178 /* CoachReveal.swift */; };
+		A00000000000000000017B /* MobilityAnimationPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000017A /* MobilityAnimationPreview.swift */; };
+		A00000000000000000017D /* FigureApproachComparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000017C /* FigureApproachComparison.swift */; };
+		A00000000000000000017F /* HybridMobilityFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000017E /* HybridMobilityFigure.swift */; };
+		A000000000000000000181 /* AIChatModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000180 /* AIChatModels.swift */; };
+		A000000000000000000183 /* AIChatClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000182 /* AIChatClient.swift */; };
+		A000000000000000000185 /* AICoachView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000184 /* AICoachView.swift */; };
+		A000000000000000000187 /* AICoachThreadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000186 /* AICoachThreadView.swift */; };
+		A000000000000000000189 /* AICoachPaywallStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000188 /* AICoachPaywallStub.swift */; };
+		A00000000000000000018B /* AICoachImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000018A /* AICoachImportView.swift */; };
+		A00000000000000000018D /* TacticalProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000018C /* TacticalProfile.swift */; };
+		A00000000000000000018F /* TacticalProfileCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000018E /* TacticalProfileCard.swift */; };
+		A000000000000000000191 /* PlayStyleProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000190 /* PlayStyleProfile.swift */; };
+		A000000000000000000193 /* PlayStyleProfileCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000192 /* PlayStyleProfileCard.swift */; };
+		A000000000000000000195 /* SelfAssessment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000194 /* SelfAssessment.swift */; };
+		A000000000000000000197 /* SelfAssessmentStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000196 /* SelfAssessmentStep.swift */; };
+		A000000000000000000199 /* MatchMemoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000198 /* MatchMemoryStore.swift */; };
+		A00000000000000000019B /* MatchLogTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000019A /* MatchLogTutorialView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -142,39 +143,17 @@
 		A000000000000000000061 /* PlayerProgressionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlayerProgressionManager.swift; path = CourtIQ/Core/Models/PlayerProgressionManager.swift; sourceTree = "<group>"; };
 		A000000000000000000063 /* LevelProgressionPathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LevelProgressionPathView.swift; path = CourtIQ/Features/Profile/LevelProgressionPathView.swift; sourceTree = "<group>"; };
 		A000000000000000000065 /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LanguageManager.swift; path = CourtIQ/Core/Utilities/LanguageManager.swift; sourceTree = "<group>"; };
+		A000000000000000000067 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = CourtIQ/Resources/en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A000000000000000000068 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = CourtIQ/Resources/tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A0000000000000000000B0 /* TennisVisuals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TennisVisuals.swift; path = CourtIQ/Core/Utilities/TennisVisuals.swift; sourceTree = "<group>"; };
 		A0000000000000000000B2 /* FeedbackComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeedbackComposer.swift; path = CourtIQ/Core/Utilities/FeedbackComposer.swift; sourceTree = "<group>"; };
 		A0000000000000000000B4 /* CrashReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CrashReporter.swift; path = CourtIQ/Core/Utilities/CrashReporter.swift; sourceTree = "<group>"; };
+		A0000000000000000000C0 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = CourtIQ/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		A0000000000000000000D0 /* HealthAcknowledgmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HealthAcknowledgmentView.swift; path = CourtIQ/Features/Legal/HealthAcknowledgmentView.swift; sourceTree = "<group>"; };
 		A0000000000000000000D2 /* TrainSafelyBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrainSafelyBanner.swift; path = CourtIQ/Features/Legal/TrainSafelyBanner.swift; sourceTree = "<group>"; };
 		A0000000000000000000E0 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotificationManager.swift; path = CourtIQ/Core/Utilities/NotificationManager.swift; sourceTree = "<group>"; };
 		A0000000000000000000E2 /* NotificationPreAskSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotificationPreAskSheet.swift; path = CourtIQ/Features/Onboarding/NotificationPreAskSheet.swift; sourceTree = "<group>"; };
 		A0000000000000000000F0 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Haptics.swift; path = CourtIQ/Core/Utilities/Haptics.swift; sourceTree = "<group>"; };
-		A00000000000000000016A /* LaunchOffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LaunchOffer.swift; path = CourtIQ/Core/Utilities/LaunchOffer.swift; sourceTree = "<group>"; };
-		A00000000000000000016C /* MatchMediaStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchMediaStore.swift; path = CourtIQ/Core/Utilities/MatchMediaStore.swift; sourceTree = "<group>"; };
-		A00000000000000000016E /* VoiceNoteRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceNoteRecorder.swift; path = CourtIQ/Core/Utilities/VoiceNoteRecorder.swift; sourceTree = "<group>"; };
-		A000000000000000000170 /* NotificationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotificationSettingsView.swift; path = CourtIQ/Features/Profile/NotificationSettingsView.swift; sourceTree = "<group>"; };
-		A000000000000000000172 /* CoachSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoachSession.swift; path = CourtIQ/Features/CoachMode/CoachSession.swift; sourceTree = "<group>"; };
-		A000000000000000000174 /* CoachPairView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoachPairView.swift; path = CourtIQ/Features/CoachMode/CoachPairView.swift; sourceTree = "<group>"; };
-		A000000000000000000176 /* CoachQuickLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoachQuickLogView.swift; path = CourtIQ/Features/CoachMode/CoachQuickLogView.swift; sourceTree = "<group>"; };
-		A000000000000000000178 /* CoachReveal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoachReveal.swift; path = CourtIQ/Features/CoachMode/CoachReveal.swift; sourceTree = "<group>"; };
-		A00000000000000000017A /* MobilityAnimationPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MobilityAnimationPreview.swift; path = CourtIQ/Features/Mobility/MobilityAnimationPreview.swift; sourceTree = "<group>"; };
-		A00000000000000000017C /* FigureApproachComparison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FigureApproachComparison.swift; path = CourtIQ/Features/Mobility/FigureApproachComparison.swift; sourceTree = "<group>"; };
-		A00000000000000000017E /* HybridMobilityFigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HybridMobilityFigure.swift; path = CourtIQ/Features/Mobility/HybridMobilityFigure.swift; sourceTree = "<group>"; };
-		A000000000000000000180 /* AIChatModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AIChatModels.swift; path = CourtIQ/Core/Models/AIChatModels.swift; sourceTree = "<group>"; };
-		A000000000000000000182 /* AIChatClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AIChatClient.swift; path = CourtIQ/Core/Services/AIChatClient.swift; sourceTree = "<group>"; };
-		A000000000000000000198 /* MatchMemoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchMemoryStore.swift; path = CourtIQ/Core/Services/MatchMemoryStore.swift; sourceTree = "<group>"; };
-		A00000000000000000019A /* MatchLogTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchLogTutorialView.swift; path = CourtIQ/Features/Matches/MatchLogTutorialView.swift; sourceTree = "<group>"; };
-		A000000000000000000184 /* AICoachView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AICoachView.swift; path = CourtIQ/Features/AICoach/AICoachView.swift; sourceTree = "<group>"; };
-		A000000000000000000186 /* AICoachThreadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AICoachThreadView.swift; path = CourtIQ/Features/AICoach/AICoachThreadView.swift; sourceTree = "<group>"; };
-		A000000000000000000188 /* AICoachPaywallStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AICoachPaywallStub.swift; path = CourtIQ/Features/AICoach/AICoachPaywallStub.swift; sourceTree = "<group>"; };
-		A00000000000000000018A /* AICoachImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AICoachImportView.swift; path = CourtIQ/Features/AICoach/AICoachImportView.swift; sourceTree = "<group>"; };
-		A00000000000000000018C /* TacticalProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TacticalProfile.swift; path = CourtIQ/Core/Models/TacticalProfile.swift; sourceTree = "<group>"; };
-		A00000000000000000018E /* TacticalProfileCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TacticalProfileCard.swift; path = CourtIQ/Features/Drill/TacticalProfileCard.swift; sourceTree = "<group>"; };
-		A000000000000000000190 /* PlayStyleProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlayStyleProfile.swift; path = CourtIQ/Core/Models/PlayStyleProfile.swift; sourceTree = "<group>"; };
-		A000000000000000000192 /* PlayStyleProfileCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlayStyleProfileCard.swift; path = CourtIQ/Features/Drill/PlayStyleProfileCard.swift; sourceTree = "<group>"; };
-		A000000000000000000194 /* SelfAssessment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelfAssessment.swift; path = CourtIQ/Core/Models/SelfAssessment.swift; sourceTree = "<group>"; };
-		A000000000000000000196 /* SelfAssessmentStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelfAssessmentStep.swift; path = CourtIQ/Features/Onboarding/SelfAssessmentStep.swift; sourceTree = "<group>"; };
 		A000000000000000000100 /* TourStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TourStep.swift; path = CourtIQ/Features/Onboarding/TourStep.swift; sourceTree = "<group>"; };
 		A000000000000000000110 /* MatchEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchEntry.swift; path = CourtIQ/Core/Models/MatchEntry.swift; sourceTree = "<group>"; };
 		A000000000000000000112 /* MatchEntryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchEntryManager.swift; path = CourtIQ/Core/Models/MatchEntryManager.swift; sourceTree = "<group>"; };
@@ -189,6 +168,7 @@
 		A000000000000000000134 /* CourtTapDrillManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CourtTapDrillManager.swift; path = CourtIQ/Core/Models/CourtTapDrillManager.swift; sourceTree = "<group>"; };
 		A000000000000000000136 /* CourtTapDrillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CourtTapDrillView.swift; path = CourtIQ/Features/Drill/CourtTapDrillView.swift; sourceTree = "<group>"; };
 		A000000000000000000138 /* DrillResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DrillResultView.swift; path = CourtIQ/Features/Drill/DrillResultView.swift; sourceTree = "<group>"; };
+		A00000000000000000013A /* court_tap_drills.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = court_tap_drills.json; path = CourtIQ/Resources/Content/court_tap_drills.json; sourceTree = "<group>"; };
 		A000000000000000000140 /* ActivityRingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActivityRingsView.swift; path = CourtIQ/Features/Rings/ActivityRingsView.swift; sourceTree = "<group>"; };
 		A000000000000000000150 /* AvatarConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AvatarConfig.swift; path = CourtIQ/Core/Models/AvatarConfig.swift; sourceTree = "<group>"; };
 		A000000000000000000152 /* AvatarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AvatarManager.swift; path = CourtIQ/Core/Models/AvatarManager.swift; sourceTree = "<group>"; };
@@ -199,10 +179,32 @@
 		A000000000000000000164 /* ProShotAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProShotAnimationView.swift; path = CourtIQ/Features/ProShot/ProShotAnimationView.swift; sourceTree = "<group>"; };
 		A000000000000000000166 /* ProShotCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProShotCard.swift; path = CourtIQ/Features/ProShot/ProShotCard.swift; sourceTree = "<group>"; };
 		A000000000000000000168 /* pro_shot_patterns.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = pro_shot_patterns.json; path = CourtIQ/Resources/Content/pro_shot_patterns.json; sourceTree = "<group>"; };
-		A00000000000000000013A /* court_tap_drills.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = court_tap_drills.json; path = CourtIQ/Resources/Content/court_tap_drills.json; sourceTree = "<group>"; };
-		A000000000000000000067 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = CourtIQ/Resources/en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		A000000000000000000068 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = CourtIQ/Resources/tr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		A0000000000000000000C0 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = CourtIQ/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		A00000000000000000016A /* LaunchOffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LaunchOffer.swift; path = CourtIQ/Core/Utilities/LaunchOffer.swift; sourceTree = "<group>"; };
+		A00000000000000000016C /* MatchMediaStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchMediaStore.swift; path = CourtIQ/Core/Utilities/MatchMediaStore.swift; sourceTree = "<group>"; };
+		A00000000000000000016E /* VoiceNoteRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoiceNoteRecorder.swift; path = CourtIQ/Core/Utilities/VoiceNoteRecorder.swift; sourceTree = "<group>"; };
+		A000000000000000000170 /* NotificationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotificationSettingsView.swift; path = CourtIQ/Features/Profile/NotificationSettingsView.swift; sourceTree = "<group>"; };
+		A000000000000000000172 /* CoachSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoachSession.swift; path = CourtIQ/Features/CoachMode/CoachSession.swift; sourceTree = "<group>"; };
+		A000000000000000000174 /* CoachPairView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoachPairView.swift; path = CourtIQ/Features/CoachMode/CoachPairView.swift; sourceTree = "<group>"; };
+		A000000000000000000176 /* CoachQuickLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoachQuickLogView.swift; path = CourtIQ/Features/CoachMode/CoachQuickLogView.swift; sourceTree = "<group>"; };
+		A000000000000000000178 /* CoachReveal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoachReveal.swift; path = CourtIQ/Features/CoachMode/CoachReveal.swift; sourceTree = "<group>"; };
+		A00000000000000000017A /* MobilityAnimationPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MobilityAnimationPreview.swift; path = CourtIQ/Features/Mobility/MobilityAnimationPreview.swift; sourceTree = "<group>"; };
+		A00000000000000000017C /* FigureApproachComparison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FigureApproachComparison.swift; path = CourtIQ/Features/Mobility/FigureApproachComparison.swift; sourceTree = "<group>"; };
+		A00000000000000000017E /* HybridMobilityFigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HybridMobilityFigure.swift; path = CourtIQ/Features/Mobility/HybridMobilityFigure.swift; sourceTree = "<group>"; };
+		A000000000000000000180 /* AIChatModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AIChatModels.swift; path = CourtIQ/Core/Models/AIChatModels.swift; sourceTree = "<group>"; };
+		A000000000000000000182 /* AIChatClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AIChatClient.swift; path = CourtIQ/Core/Services/AIChatClient.swift; sourceTree = "<group>"; };
+		A000000000000000000184 /* AICoachView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AICoachView.swift; path = CourtIQ/Features/AICoach/AICoachView.swift; sourceTree = "<group>"; };
+		A000000000000000000186 /* AICoachThreadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AICoachThreadView.swift; path = CourtIQ/Features/AICoach/AICoachThreadView.swift; sourceTree = "<group>"; };
+		A000000000000000000188 /* AICoachPaywallStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AICoachPaywallStub.swift; path = CourtIQ/Features/AICoach/AICoachPaywallStub.swift; sourceTree = "<group>"; };
+		A00000000000000000018A /* AICoachImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AICoachImportView.swift; path = CourtIQ/Features/AICoach/AICoachImportView.swift; sourceTree = "<group>"; };
+		A00000000000000000018C /* TacticalProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TacticalProfile.swift; path = CourtIQ/Core/Models/TacticalProfile.swift; sourceTree = "<group>"; };
+		A00000000000000000018E /* TacticalProfileCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TacticalProfileCard.swift; path = CourtIQ/Features/Drill/TacticalProfileCard.swift; sourceTree = "<group>"; };
+		A000000000000000000190 /* PlayStyleProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlayStyleProfile.swift; path = CourtIQ/Core/Models/PlayStyleProfile.swift; sourceTree = "<group>"; };
+		A000000000000000000192 /* PlayStyleProfileCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlayStyleProfileCard.swift; path = CourtIQ/Features/Drill/PlayStyleProfileCard.swift; sourceTree = "<group>"; };
+		A000000000000000000194 /* SelfAssessment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelfAssessment.swift; path = CourtIQ/Core/Models/SelfAssessment.swift; sourceTree = "<group>"; };
+		A000000000000000000196 /* SelfAssessmentStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelfAssessmentStep.swift; path = CourtIQ/Features/Onboarding/SelfAssessmentStep.swift; sourceTree = "<group>"; };
+		A000000000000000000198 /* MatchMemoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchMemoryStore.swift; path = CourtIQ/Core/Services/MatchMemoryStore.swift; sourceTree = "<group>"; };
+		A00000000000000000019A /* MatchLogTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchLogTutorialView.swift; path = CourtIQ/Features/Matches/MatchLogTutorialView.swift; sourceTree = "<group>"; };
+		B5431D73E4D73B3EE01C53B1 /* AICoachConsentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AICoachConsentView.swift; path = CourtIQ/Features/AICoach/AICoachConsentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,6 +326,7 @@
 				A000000000000000000049 /* mobility_flows.json */,
 				A000000000000000000005 /* Products */,
 				36A5E7C12F95D37A00BCD7DA /* Recovered References */,
+				B5431D73E4D73B3EE01C53B1 /* AICoachConsentView.swift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -493,6 +496,7 @@
 				A000000000000000000163 /* ProShotPatternsManager.swift in Sources */,
 				A000000000000000000165 /* ProShotAnimationView.swift in Sources */,
 				A000000000000000000167 /* ProShotCard.swift in Sources */,
+				01E3B5805B3AC2D9B83BCC20 /* AICoachConsentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
