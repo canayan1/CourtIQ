@@ -37,6 +37,35 @@ final class CourtIQAppPreviewUITest: XCTestCase {
         snap("00-paywall")
     }
 
+    /// Captures the AI Swing Analysis feature for the App Store screenshot
+    /// set. -previewSwing lands onboarded + premium (no paywall) and starts the
+    /// Swing Analysis screen in the result state with a sample forehand analysis.
+    func testSwingCapture() {
+        app.launchArguments = ["-previewSwing"]
+        app.launch()
+
+        // Wait until premium has been granted and the app lands on the main
+        // tabs (the swing card lives on Today). The card may be below the fold,
+        // so scroll it into view before tapping.
+        let card = app.buttons["todaySwingAnalysisCard"]
+        _ = card.waitForExistence(timeout: 20)
+        if !card.isHittable { app.swipeUp(); sleep(1) }
+        if card.waitForExistence(timeout: 4) && card.isHittable {
+            card.tap()
+            sleep(3)
+        }
+        snap("06-swing-result")
+
+        // "Analyze another" sits below the analysis — scroll it into view, then
+        // tap to reset the flow to the stroke picker (setup step).
+        let again = app.buttons["Analyze another"]
+        if !again.exists || !again.isHittable { app.swipeUp(); sleep(1) }
+        if tapIfExists(again, 3) || tapIfExists(app.staticTexts["Analyze another"], 2) {
+            sleep(2)
+            snap("07-swing-picker")
+        }
+    }
+
     func testAppPreviewTour() {
         app.launchArguments = ["-seedPreviewData"]
         app.launch()

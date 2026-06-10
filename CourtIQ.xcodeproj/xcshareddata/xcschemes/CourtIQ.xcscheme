@@ -37,6 +37,16 @@
          </BuildableReference>
       </MacroExpansion>
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1EE96FC5D4A60669456E340B"
+               BuildableName = "CourtIQUITests.xctest"
+               BlueprintName = "CourtIQUITests"
+               ReferencedContainer = "container:CourtIQ.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

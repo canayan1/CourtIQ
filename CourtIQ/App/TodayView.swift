@@ -20,8 +20,8 @@ struct TodayView: View {
             VStack(alignment: .leading, spacing: 16) {
                 heroCard
                 ThreeRingsCard()
-                tennisProfileCard
                 swingAnalysisCard
+                tennisProfileCard
                 drillCard
                 ProShotCard()
                 tipCard
@@ -96,18 +96,73 @@ struct TodayView: View {
 
     @ViewBuilder
     private var swingAnalysisCard: some View {
+        let isTR = lang.language == .turkish
         NavigationLink {
             SwingAnalysisView()
         } label: {
-            tennisProfileRow(
-                icon: "video.fill", tint: AppPalette.gold,
-                eyebrow: lang.language == .turkish ? "AI Swing Analizi" : "AI Swing Analysis",
-                title: lang.language == .turkish
-                    ? "Kısa bir video çek, tekniğini AI yorumlasın"
-                    : "Record a short clip — AI coaches your technique"
-            )
+            ZStack(alignment: .topLeading) {
+                // Filled gradient feature background — gold → clay so the card
+                // reads as the showcase hero, distinct from the parchment list
+                // cards below it.
+                LinearGradient(
+                    colors: [AppPalette.gold, AppPalette.clay],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+
+                // Oversized play glyph watermark in the corner.
+                Image(systemName: "play.rectangle.fill")
+                    .font(.system(size: 120, weight: .bold))
+                    .foregroundStyle(.white.opacity(0.12))
+                    .offset(x: 18, y: -10)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                    .allowsHitTesting(false)
+
+                VStack(alignment: .leading, spacing: 14) {
+                    HStack(spacing: 10) {
+                        Image(systemName: "video.fill")
+                            .font(.system(size: 22, weight: .bold))
+                            .foregroundStyle(.white)
+                        // "NEW" badge.
+                        Text(isTR ? "YENİ" : "NEW")
+                            .font(.caption2.weight(.heavy))
+                            .tracking(0.8)
+                            .foregroundStyle(AppPalette.clay)
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
+                            .background(Capsule().fill(.white))
+                        Spacer()
+                    }
+
+                    Text(isTR ? "AI Swing Analizi" : "AI Swing Analysis")
+                        .font(.system(size: 26, weight: .heavy, design: .rounded))
+                        .foregroundStyle(.white)
+                        .fixedSize(horizontal: false, vertical: true)
+
+                    Text(isTR
+                        ? "Vuruşunu çek — tekniğine kare kare anında AI koçluğu al."
+                        : "Record your swing — get instant AI coaching on your technique, frame by frame.")
+                        .font(.subheadline.weight(.medium))
+                        .foregroundStyle(.white.opacity(0.92))
+                        .fixedSize(horizontal: false, vertical: true)
+
+                    // CTA chip.
+                    HStack(spacing: 6) {
+                        Text(isTR ? "Vuruşumu analiz et →" : "Analyze my swing →")
+                            .font(.system(size: 15, weight: .bold, design: .rounded))
+                            .foregroundStyle(AppPalette.clay)
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 11)
+                    .background(Capsule().fill(.white))
+                }
+                .padding(20)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
         }
         .buttonStyle(.plain)
+        .accessibilityIdentifier("todaySwingAnalysisCard")
     }
 
     // MARK: - Daily Court Tap Drill (the new daily ritual)

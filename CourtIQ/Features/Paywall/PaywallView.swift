@@ -65,6 +65,15 @@ struct PaywallView: View {
                 }
 
                 footerRow
+#if DEBUG
+                Button(t("Dev: enter app (debug only)", "Dev: uygulamaya gir (sadece debug)")) {
+                    manager.debugGrantPremium()
+                }
+                .font(.caption2)
+                .foregroundStyle(AppPalette.inkSoft.opacity(0.5))
+                .frame(maxWidth: .infinity)
+                .padding(.top, 4)
+#endif
             }
             .padding()
         }

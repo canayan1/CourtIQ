@@ -38,6 +38,16 @@ struct CourtIQApp: App {
             }
         }
 
+        // Swing-analysis capture only: onboarded + premium + health-acknowledged
+        // so launching lands on the main tabs (no paywall). Reuses the proven
+        // seedPreviewData() path (same grant logic as -seedPreviewData) so the
+        // app reliably lands on Today. SwingAnalysisView itself starts in the
+        // result state showing a sample analysis when this arg is present, so
+        // no video/network is needed for the screenshot.
+        if ProcessInfo.processInfo.arguments.contains("-previewSwing") {
+            Task { @MainActor in Self.seedPreviewData() }
+        }
+
         // If the user previously authorized notifications, make sure the
         // daily reminder is re-scheduled (handles app upgrades / device
         // migrations where pending requests can be cleared).

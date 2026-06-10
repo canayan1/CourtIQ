@@ -537,6 +537,12 @@ struct OnboardingFlowView: View {
                 ForEach(Array(slides.enumerated()), id: \.offset) { _, slide in
                     VStack(alignment: .leading, spacing: 18) {
                         Spacer()
+                        ZStack {
+                            Circle().fill(AppPalette.clay.opacity(0.14)).frame(width: 72, height: 72)
+                            Image(systemName: slide.symbol)
+                                .font(.system(size: 34, weight: .bold))
+                                .foregroundStyle(AppPalette.clay)
+                        }
                         Text(slide.headline)
                             .font(.system(size: 30, weight: .bold, design: .rounded))
                             .foregroundStyle(AppPalette.ink)

@@ -21,9 +21,37 @@ struct SwingAnalysisView: View {
         case result(String)
     }
 
-    @State private var phase: Phase = .setup
+    @State private var phase: Phase
     @State private var stroke: SwingStroke = .forehand
     @State private var handedness: SwingHandedness = .right
+
+    init() {
+        // App Store screenshot harness (launch-arg gated): start in the result
+        // state showing a realistic sample analysis so the capture shows a
+        // finished coaching readout — no video, no network call.
+        if ProcessInfo.processInfo.arguments.contains("-previewSwing") {
+            _phase = State(initialValue: .result(Self.previewSampleAnalysis))
+        } else {
+            _phase = State(initialValue: .setup)
+        }
+    }
+
+    /// Sample forehand analysis for the App Store screenshot harness only.
+    /// Mirrors the live output format: **bold headers** + "•" bullets.
+    private static let previewSampleAnalysis = """
+    **What's working**
+    • Your unit turn is early and complete — shoulders and hips coil together as the ball leaves your opponent's strings, which is exactly where racquet-head speed comes from.
+    • Semi-western grip is well-suited to your swing path; you're getting clean topspin and a safe net-clearance margin.
+    • Good balance through the shot — your head stays still and your eyes track the contact zone rather than drifting up to the target too early.
+
+    **Top fixes**
+    • Contact point is creeping a touch late, slightly behind your front hip. Meet the ball a half-step further in front so you can drive through it instead of brushing up the back. Cue: "catch it out front."
+    • Your follow-through wraps low across the body. Finish higher — over the opposite shoulder — to add depth and keep the ball heavy under pressure.
+    • Footwork into the shot is a little flat-footed. Add a small split-step and a final adjustment step so you load the outside leg and push up through contact rather than reaching with the arm.
+
+    **One thing to try next session**
+    • Shadow-swing ten forehands focusing only on contact out in front of your front hip, then feed yourself twenty balls holding that same spacing. Groove the early-and-out-front contact before adding pace — rhythm first, power second.
+    """
 
     @State private var pickerSource: UIImagePickerController.SourceType?
     @State private var pendingVideoURL: URL?      // selected but awaiting consent

@@ -414,10 +414,12 @@ final class SubscriptionManager: ObservableObject {
     }
 
     func refreshEntitlements() async {
-        // Preview seed (`-seedPreviewData`) forces premium so the seeded
-        // App Store preview can render the full app past the hard paywall —
-        // otherwise the empty sandbox entitlements would downgrade it.
-        if ProcessInfo.processInfo.arguments.contains("-seedPreviewData") {
+        // Preview seeds (`-seedPreviewData` / `-previewSwing`) force premium so
+        // the seeded App Store preview can render the full app past the hard
+        // paywall — otherwise the empty sandbox entitlements would downgrade it
+        // (the StoreKit refresh races the debug grant and would win).
+        let previewArgs = ProcessInfo.processInfo.arguments
+        if previewArgs.contains("-seedPreviewData") || previewArgs.contains("-previewSwing") {
             entitlementState = .premiumAllAccess
             saveEntitlement()
             return

@@ -134,26 +134,36 @@ struct OnboardingCopy {
     var reviewLater: String { t("Maybe later", "Belki sonra") }
 
     // MARK: 15 — Evidence carousel ("why DropVolley is different")
-    struct EvidenceSlide { let headline: String; let support: String }
+    struct EvidenceSlide { let headline: String; let support: String; let symbol: String }
     var evidenceSlides: [EvidenceSlide] {
         [
+            EvidenceSlide(
+                headline: t("See your swing like a coach does",
+                            "Vuruşunu bir koç gibi gör"),
+                support: t("Film a quick swing and DropVolley's AI breaks down your technique — grip, contact point, follow-through.",
+                           "Kısa bir vuruş çek; DropVolley'in AI'ı tekniğini çözümlesin — grip, temas noktası, takip."),
+                symbol: "video.fill"
+            ),
             EvidenceSlide(
                 headline: t("Other apps fix your strokes.\nDropVolley fixes your decisions.",
                             "Diğer uygulamalar vuruşunu düzeltir.\nDropVolley kararlarını düzeltir."),
                 support: t("Matches are won between the ears — by the shot you choose, not just the one you hit.",
-                           "Maçlar kafada kazanılır — vurduğun değil, seçtiğin vuruşla.")
+                           "Maçlar kafada kazanılır — vurduğun değil, seçtiğin vuruşla."),
+                symbol: "brain.head.profile"
             ),
             EvidenceSlide(
                 headline: t("A coach that remembers\nevery match.",
                             "Her maçı hatırlayan\nbir koç."),
                 support: t("Your AI Coach knows your level, your style, and your last result — and coaches from it.",
-                           "AI Koç'un seviyeni, stilini ve son skorunu bilir — ona göre yönlendirir.")
+                           "AI Koç'un seviyeni, stilini ve son skorunu bilir — ona göre yönlendirir."),
+                symbol: "brain.head.profile"
             ),
             EvidenceSlide(
                 headline: t("Know your real game —\nnot just a rating.",
                             "Gerçek oyununu bil —\nsadece bir puanı değil."),
                 support: t("Your Tennis Profile shows exactly where you stand and what to work on next.",
-                           "Tenis Profilin tam olarak nerede olduğunu ve sıradaki adımı gösterir.")
+                           "Tenis Profilin tam olarak nerede olduğunu ve sıradaki adımı gösterir."),
+                symbol: "chart.bar.fill"
             ),
         ]
     }
