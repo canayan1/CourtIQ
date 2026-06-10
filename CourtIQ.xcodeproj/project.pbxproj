@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		01E3B5805B3AC2D9B83BCC20 /* AICoachConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5431D73E4D73B3EE01C53B1 /* AICoachConsentView.swift */; };
+		37CFB2A76B818800CC50DB26 /* TennisProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05402E3DB1FAD67D0AA4FB6 /* TennisProfile.swift */; };
+		48C4087920AD7AE0BF5F3C5C /* TennisProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3FE68853468703A4B5AC96 /* TennisProfileStore.swift */; };
+		5F71E0F3BD2E9BA2AC5CC711 /* TennisProfileCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7C2AA916BE624A71B6017F /* TennisProfileCopy.swift */; };
 		A000000000000000000020 /* CourtIQApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000010 /* CourtIQApp.swift */; };
 		A000000000000000000021 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000011 /* MainTabView.swift */; };
 		A000000000000000000022 /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000012 /* PracticeView.swift */; };
@@ -99,9 +102,12 @@
 		A000000000000000000197 /* SelfAssessmentStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000196 /* SelfAssessmentStep.swift */; };
 		A000000000000000000199 /* MatchMemoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000198 /* MatchMemoryStore.swift */; };
 		A00000000000000000019B /* MatchLogTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000019A /* MatchLogTutorialView.swift */; };
+		A9B92CCD5D6A1DDCE15C8C3B /* TennisProfileScoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EC46A67E526C59A182B12D /* TennisProfileScoring.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B7C2AA916BE624A71B6017F /* TennisProfileCopy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TennisProfileCopy.swift; path = CourtIQ/Features/TennisProfile/TennisProfileCopy.swift; sourceTree = "<group>"; };
+		59EC46A67E526C59A182B12D /* TennisProfileScoring.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TennisProfileScoring.swift; path = CourtIQ/Features/TennisProfile/TennisProfileScoring.swift; sourceTree = "<group>"; };
 		A00000000000000000000D /* CourtIQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CourtIQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A00000000000000000000F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = CourtIQ/Info.plist; sourceTree = "<group>"; };
 		A000000000000000000010 /* CourtIQApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CourtIQApp.swift; path = CourtIQ/App/CourtIQApp.swift; sourceTree = "<group>"; };
@@ -197,6 +203,8 @@
 		A000000000000000000198 /* MatchMemoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchMemoryStore.swift; path = CourtIQ/Core/Services/MatchMemoryStore.swift; sourceTree = "<group>"; };
 		A00000000000000000019A /* MatchLogTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchLogTutorialView.swift; path = CourtIQ/Features/Matches/MatchLogTutorialView.swift; sourceTree = "<group>"; };
 		B5431D73E4D73B3EE01C53B1 /* AICoachConsentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AICoachConsentView.swift; path = CourtIQ/Features/AICoach/AICoachConsentView.swift; sourceTree = "<group>"; };
+		F05402E3DB1FAD67D0AA4FB6 /* TennisProfile.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TennisProfile.swift; path = CourtIQ/Features/TennisProfile/TennisProfile.swift; sourceTree = "<group>"; };
+		FB3FE68853468703A4B5AC96 /* TennisProfileStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TennisProfileStore.swift; path = CourtIQ/Features/TennisProfile/TennisProfileStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,6 +323,10 @@
 				A000000000000000000005 /* Products */,
 				36A5E7C12F95D37A00BCD7DA /* Recovered References */,
 				B5431D73E4D73B3EE01C53B1 /* AICoachConsentView.swift */,
+				F05402E3DB1FAD67D0AA4FB6 /* TennisProfile.swift */,
+				59EC46A67E526C59A182B12D /* TennisProfileScoring.swift */,
+				4B7C2AA916BE624A71B6017F /* TennisProfileCopy.swift */,
+				FB3FE68853468703A4B5AC96 /* TennisProfileStore.swift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -481,6 +493,10 @@
 				A000000000000000000165 /* ProShotAnimationView.swift in Sources */,
 				A000000000000000000167 /* ProShotCard.swift in Sources */,
 				01E3B5805B3AC2D9B83BCC20 /* AICoachConsentView.swift in Sources */,
+				37CFB2A76B818800CC50DB26 /* TennisProfile.swift in Sources */,
+				A9B92CCD5D6A1DDCE15C8C3B /* TennisProfileScoring.swift in Sources */,
+				5F71E0F3BD2E9BA2AC5CC711 /* TennisProfileCopy.swift in Sources */,
+				48C4087920AD7AE0BF5F3C5C /* TennisProfileStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
