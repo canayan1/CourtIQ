@@ -124,7 +124,16 @@ struct OnboardingCopy {
     var strengthsHeader: String { t("Your strengths", "Güçlü yönlerin") }
     var growthHeader: String { t("Grow these next", "Sıradaki gelişim") }
 
-    // MARK: 14 — Evidence carousel ("why DropVolley is different")
+    // MARK: 14 — Leave a review
+    var reviewTitle: String { t("Loving your plan?", "Planını sevdin mi?") }
+    var reviewBody: String {
+        t("A quick review helps DropVolley grow — and helps other players find it. 🎾",
+          "Kısa bir değerlendirme DropVolley'in büyümesine — ve başka oyuncuların bulmasına — çok yardımcı olur. 🎾")
+    }
+    var reviewRate: String { t("Rate DropVolley", "DropVolley'i değerlendir") }
+    var reviewLater: String { t("Maybe later", "Belki sonra") }
+
+    // MARK: 15 — Evidence carousel ("why DropVolley is different")
     struct EvidenceSlide { let headline: String; let support: String }
     var evidenceSlides: [EvidenceSlide] {
         [

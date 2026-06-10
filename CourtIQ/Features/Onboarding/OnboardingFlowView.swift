@@ -1,4 +1,5 @@
 import SwiftUI
+import StoreKit
 
 /// High-conversion, question-heavy onboarding for the hard-paywall model. The
 /// flow asks a lot of short questions to build the user's Tennis Profile, runs
@@ -42,7 +43,8 @@ struct OnboardingFlowView: View {
         case commitment     // 11 drills/day (flow-local Int)
         case building       // 12 labor illusion
         case result         // 13 personalized reveal
-        case evidence       // 14 "why DropVolley is different" carousel
+        case review         // 14 leave-a-review ask (peak enthusiasm)
+        case evidence       // 15 "why DropVolley is different" carousel
     }
 
     /// Steps that show the top progress bar + Back/Continue chrome. Welcome and
@@ -95,6 +97,8 @@ struct OnboardingFlowView: View {
                         advance()
                     }
                 }
+            case .review:
+                reviewScreen
             case .evidence:
                 evidenceScreen
             default:
@@ -458,7 +462,73 @@ struct OnboardingFlowView: View {
         }
     }
 
-    // MARK: 14 — Evidence carousel
+    // MARK: 14 — Leave a review (peak enthusiasm, right after the reveal)
+
+    private var reviewScreen: some View {
+        VStack(alignment: .leading, spacing: 24) {
+            Spacer()
+
+            ZStack {
+                Circle().fill(AppPalette.clay.opacity(0.14)).frame(width: 72, height: 72)
+                Image(systemName: "star.fill")
+                    .font(.system(size: 34, weight: .bold))
+                    .foregroundStyle(AppPalette.clay)
+            }
+
+            Text(copy.reviewTitle)
+                .font(.system(size: 32, weight: .bold, design: .rounded))
+                .foregroundStyle(AppPalette.ink)
+                .fixedSize(horizontal: false, vertical: true)
+
+            Text(copy.reviewBody)
+                .font(.body)
+                .foregroundStyle(AppPalette.inkSoft)
+                .fixedSize(horizontal: false, vertical: true)
+
+            Spacer()
+
+            VStack(spacing: 10) {
+                Button {
+                    requestReview()
+                    advance()
+                } label: {
+                    Text(copy.reviewRate)
+                        .font(.headline)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 14)
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(AppPalette.clay)
+
+                Button {
+                    advance()
+                } label: {
+                    Text(copy.reviewLater)
+                        .font(.headline)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 12)
+                }
+                .buttonStyle(.bordered)
+                .tint(AppPalette.inkSoft)
+            }
+        }
+        .padding(24)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        .background(AppPalette.cream)
+    }
+
+    /// Triggers the native App Store review prompt in the active window scene.
+    private func requestReview() {
+        guard let scene = UIApplication.shared.connectedScenes
+            .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene else { return }
+        if #available(iOS 18.0, *) {
+            AppStore.requestReview(in: scene)
+        } else {
+            SKStoreReviewController.requestReview(in: scene)
+        }
+    }
+
+    // MARK: 15 — Evidence carousel
 
     private var evidenceScreen: some View {
         let slides = copy.evidenceSlides
@@ -598,7 +668,7 @@ struct OnboardingFlowView: View {
 
     private var currentStepComplete: Bool {
         switch step {
-        case .welcome, .building, .result, .evidence:
+        case .welcome, .building, .result, .review, .evidence:
             return true
         case .goal:        return goal != nil
         case .experience:  return experience != nil
