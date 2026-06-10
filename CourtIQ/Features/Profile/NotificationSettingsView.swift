@@ -1,7 +1,7 @@
 import SwiftUI
 import UserNotifications
 
-/// Per-channel toggle screen for CourtIQ's local notifications.
+/// Per-channel toggle screen for DropVolley's local notifications.
 /// Shipped with v1.1.C alongside the match-log nudge + weekly digest;
 /// also exposes the existing daily quiz reminder so users have one
 /// place to manage everything.

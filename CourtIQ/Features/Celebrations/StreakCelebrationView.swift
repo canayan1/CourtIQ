@@ -141,7 +141,7 @@ struct StreakCelebrationView: View {
     // MARK: - Share
 
     private func shareStreak() {
-        let text = "I'm on a \(streakDays)-day streak on CourtIQ! 🎾"
+        let text = "I'm on a \(streakDays)-day streak on DropVolley! 🎾"
         let av = UIActivityViewController(activityItems: [text], applicationActivities: nil)
         UIApplication.shared.connectedScenes
             .compactMap { $0 as? UIWindowScene }

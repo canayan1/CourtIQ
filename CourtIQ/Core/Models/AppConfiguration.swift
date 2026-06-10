@@ -1,7 +1,7 @@
 import Foundation
 
 struct AppConfiguration {
-    let appName = "CourtIQ"
+    let appName = "DropVolley"
     let privacyPolicyURL: URL?
     let termsOfUseURL: URL?
     let supportURL: URL?

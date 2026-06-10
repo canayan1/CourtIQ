@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// PaywallView is CourtIQ's single hard paywall (no free tier — premium
+/// PaywallView is DropVolley's single hard paywall (no free tier — premium
 /// unlocks the whole app). It presents the value of the subscription, two
 /// auto-renewing plan cards (Annual featured + pre-selected, Weekly), a
 /// single primary CTA that purchases the selected plan, the required

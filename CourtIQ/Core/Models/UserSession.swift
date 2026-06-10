@@ -20,7 +20,7 @@ enum EntitlementState: String, Codable {
     var description: String {
         switch self {
         case .freePreview:
-            return "Every CourtIQ feature is free. The AI Coach is the one optional upgrade."
+            return "Every DropVolley feature is free. The AI Coach is the one optional upgrade."
         case .premiumAllAccess:
             return "AI Coach is unlocked — a tennis chat that knows your matches, ratings, and quiz patterns."
         }
@@ -176,10 +176,10 @@ final class AuthManager: ObservableObject {
             providedName.nilIfBlank,
             session.fullName?.nilIfBlank,
             existing?.displayName.nilIfBlank,
-            "CourtIQ Player"
+            "DropVolley Player"
         ]
         .compactMap { $0 }
-        .first ?? "CourtIQ Player"
+        .first ?? "DropVolley Player"
 
         identity = SessionIdentity(
             id: session.userID,
@@ -224,7 +224,7 @@ final class AuthManager: ObservableObject {
                 let user = try await client.fetchCurrentUser(session: refreshedSession)
                 identity = SessionIdentity(
                     id: user.id,
-                    displayName: identity?.displayName ?? user.fullName ?? "CourtIQ Player",
+                    displayName: identity?.displayName ?? user.fullName ?? "DropVolley Player",
                     email: user.email ?? identity?.email,
                     provider: .apple
                 )

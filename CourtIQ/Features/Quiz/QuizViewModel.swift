@@ -106,9 +106,9 @@ final class QuizViewModel: ObservableObject {
         }
         return """
         \(emoji)
-        \(score)/\(total) on today's CourtIQ quiz — \(quiz.focusLabel).
+        \(score)/\(total) on today's DropVolley quiz — \(quiz.focusLabel).
         Train your tennis IQ daily: courtiq.app
-        #CourtIQ #TennisIQ
+        #DropVolley #TennisIQ
         """
     }
 
@@ -127,8 +127,8 @@ final class QuizViewModel: ObservableObject {
         \(options)
 
         What's your call? (DM me the answer)
-        Training daily with CourtIQ 👇
-        courtiq.app #CourtIQ #TennisIQ
+        Training daily with DropVolley 👇
+        courtiq.app #DropVolley #TennisIQ
         """
     }
 

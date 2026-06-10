@@ -1,7 +1,7 @@
 import SwiftUI
 
 /// Mini paywall shown when a non-premium user taps the AI Coach card.
-/// AI Coach is the ONE genuinely-paid feature in CourtIQ (every other
+/// AI Coach is the ONE genuinely-paid feature in DropVolley (every other
 /// surface is free), so the copy needs to set that expectation cleanly
 /// without sounding like a generic "subscribe" wall.
 struct AICoachPaywallStub: View {

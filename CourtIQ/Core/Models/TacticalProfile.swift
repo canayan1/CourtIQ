@@ -2,7 +2,7 @@ import Foundation
 
 // MARK: - Tactical categories
 //
-// CourtIQ's Daily Court Drill measures six distinct flavours of
+// DropVolley's Daily Court Drill measures six distinct flavours of
 // tactical decision-making. Every drill in `court_tap_drills.json`
 // belongs to exactly one category (via the `category` field). As the
 // user works through drills over time, their per-category running

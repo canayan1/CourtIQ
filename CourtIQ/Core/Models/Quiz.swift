@@ -211,7 +211,7 @@ extension Quiz {
         let all = levelBiasedBank()
         let count = min(5, all.count)
         guard count > 0 else {
-            return Quiz(id: "today", title: "Today’s CourtIQ", questions: [])
+            return Quiz(id: "today", title: "Today’s DropVolley", questions: [])
         }
 
         let start = dayIndex(for: date) % all.count
@@ -219,7 +219,7 @@ extension Quiz {
 
         return Quiz(
             id: "daily-\(dateKey(from: date))",
-            title: "Today’s CourtIQ",
+            title: "Today’s DropVolley",
             questions: questions
         )
     }

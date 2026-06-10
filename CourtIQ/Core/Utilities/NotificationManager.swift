@@ -251,7 +251,7 @@ final class NotificationManager: ObservableObject {
         }
     }
 
-    /// Opens iOS Settings → CourtIQ so the user can flip notifications back on
+    /// Opens iOS Settings → DropVolley so the user can flip notifications back on
     /// if they hard-denied earlier.
     func openSystemSettings() {
         guard let url = URL(string: UIApplication.openSettingsURLString) else { return }

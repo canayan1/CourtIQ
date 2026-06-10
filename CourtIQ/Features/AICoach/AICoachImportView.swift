@@ -5,7 +5,7 @@ import SwiftUI
 /// tennis conversation, pastes it here, and saves it as a single
 /// "imported context" row in Supabase. Every subsequent AI Coach
 /// chat then loads this row server-side as cached context, so the
-/// coach behaves like it remembers the user's pre-CourtIQ tennis
+/// coach behaves like it remembers the user's pre-DropVolley tennis
 /// history.
 ///
 /// Why this isn't AI-summarised yet: keeping v1 simple. A future

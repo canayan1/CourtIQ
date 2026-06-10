@@ -2,9 +2,9 @@ import Foundation
 
 /// Historical note — intentionally empty.
 ///
-/// CourtIQ originally shipped a launch promo where a single
+/// DropVolley originally shipped a launch promo where a single
 /// `allFeaturesFree` flag opened every premium gate and reframed the
-/// paywall as a "Support CourtIQ" tip jar. That model has been retired
+/// paywall as a "Support DropVolley" tip jar. That model has been retired
 /// in favour of the final, permanent pricing:
 ///
 ///   • Every content surface (training, mobility, quiz/practice,

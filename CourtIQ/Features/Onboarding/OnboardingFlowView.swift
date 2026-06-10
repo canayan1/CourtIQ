@@ -3,7 +3,7 @@ import SwiftUI
 /// High-conversion, question-heavy onboarding for the hard-paywall model. The
 /// flow asks a lot of short questions to build the user's Tennis Profile, runs
 /// a labor-illusion "building your plan" beat, reveals a personalized result,
-/// makes the "why CourtIQ is different" case, then hands off to the paywall via
+/// makes the "why DropVolley is different" case, then hands off to the paywall via
 /// `onComplete`.
 ///
 /// It REUSES the existing Tennis Profile engine — every answer accumulates into
@@ -42,7 +42,7 @@ struct OnboardingFlowView: View {
         case commitment     // 11 drills/day (flow-local Int)
         case building       // 12 labor illusion
         case result         // 13 personalized reveal
-        case evidence       // 14 "why CourtIQ is different" carousel
+        case evidence       // 14 "why DropVolley is different" carousel
     }
 
     /// Steps that show the top progress bar + Back/Continue chrome. Welcome and

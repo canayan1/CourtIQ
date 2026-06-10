@@ -155,7 +155,7 @@ struct DrillResultView: View {
     private var shareableText: String {
         let pct = Int((Double(session.score) / Double(session.maxScore)) * 100)
         return """
-        CourtIQ · Drill #\(session.dayNumber)
+        DropVolley · Drill #\(session.dayNumber)
         🎾 \(session.emojiString) \(pct)%
         courtiq.app
         """

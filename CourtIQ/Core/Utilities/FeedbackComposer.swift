@@ -30,7 +30,7 @@ enum FeedbackComposer {
     }
 
     private static func mailURL() -> URL? {
-        let subject = "CourtIQ Beta Feedback"
+        let subject = "DropVolley Beta Feedback"
         let body = """
 
 
@@ -56,7 +56,7 @@ enum FeedbackComposer {
         let locale = Locale.current.identifier
 
         return """
-        App: CourtIQ \(app) (\(build))
+        App: DropVolley \(app) (\(build))
         iOS: \(ios)
         Device: \(device)
         Locale: \(locale)

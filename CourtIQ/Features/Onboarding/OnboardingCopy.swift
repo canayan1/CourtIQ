@@ -124,13 +124,13 @@ struct OnboardingCopy {
     var strengthsHeader: String { t("Your strengths", "Güçlü yönlerin") }
     var growthHeader: String { t("Grow these next", "Sıradaki gelişim") }
 
-    // MARK: 14 — Evidence carousel ("why CourtIQ is different")
+    // MARK: 14 — Evidence carousel ("why DropVolley is different")
     struct EvidenceSlide { let headline: String; let support: String }
     var evidenceSlides: [EvidenceSlide] {
         [
             EvidenceSlide(
-                headline: t("Other apps fix your strokes.\nCourtIQ fixes your decisions.",
-                            "Diğer uygulamalar vuruşunu düzeltir.\nCourtIQ kararlarını düzeltir."),
+                headline: t("Other apps fix your strokes.\nDropVolley fixes your decisions.",
+                            "Diğer uygulamalar vuruşunu düzeltir.\nDropVolley kararlarını düzeltir."),
                 support: t("Matches are won between the ears — by the shot you choose, not just the one you hit.",
                            "Maçlar kafada kazanılır — vurduğun değil, seçtiğin vuruşla.")
             ),

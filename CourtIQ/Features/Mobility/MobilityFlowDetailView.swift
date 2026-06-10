@@ -110,7 +110,7 @@ struct MobilityFlowDetailView: View {
 
     private var header: some View {
         // Hybrid hero: SF Symbol figure (Apple-grade anatomy) + court
-        // watermark + motion arc + palette tint (CourtIQ identity).
+        // watermark + motion arc + palette tint (DropVolley identity).
         // HybridMobilityFigureHero owns the cross-fade timing and the
         // .symbolEffect breath; we just pass it the flow's movement
         // titles so it can pick the right symbol sequence.

@@ -257,7 +257,7 @@ private struct WelcomeStep: View {
 
                 Spacer().frame(height: 44)
 
-                Text("CourtIQ")
+                Text("DropVolley")
                     .font(.system(size: 44, weight: .heavy, design: .rounded))
                     .foregroundStyle(.white)
 

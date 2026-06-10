@@ -59,7 +59,7 @@ struct AICoachConsentView: View {
                     .fixedSize(horizontal: false, vertical: true)
 
                 VStack(alignment: .leading, spacing: 10) {
-                    Text(t("To answer you, CourtIQ sends Anthropic:", "Sana yanıt vermek için CourtIQ, Anthropic'e şunları gönderir:"))
+                    Text(t("To answer you, DropVolley sends Anthropic:", "Sana yanıt vermek için DropVolley, Anthropic'e şunları gönderir:"))
                         .font(.subheadline.weight(.semibold)).foregroundStyle(AppPalette.ink)
                     bullet(t("The messages you type to the Coach", "Koç'a yazdığın mesajlar"))
                     bullet(t("Your profile (skill level and focus)", "Profilin (seviye ve odak)"))

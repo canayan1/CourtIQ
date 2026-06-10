@@ -98,7 +98,7 @@ struct FigureApproachComparison: View {
         }
     }
 
-    // MARK: - Approach 3 — SF Symbol + CourtIQ overlays
+    // MARK: - Approach 3 — SF Symbol + DropVolley overlays
 
     private var hybridSection: some View {
         VStack(alignment: .leading, spacing: 10) {

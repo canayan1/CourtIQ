@@ -4,7 +4,7 @@ import SwiftUI
 //
 // Production-grade figure renderer for mobility / training surfaces.
 // Pairs Apple's SF Symbol figure library (anatomically correct,
-// professionally drawn, free) with CourtIQ-specific chrome (court
+// professionally drawn, free) with DropVolley-specific chrome (court
 // watermark, motion arc, breath-tempo strip, palette tinting,
 // .symbolEffect breath animation).
 //
@@ -12,7 +12,7 @@ import SwiftUI
 //   • `HybridMobilityFigureHero` — full-size animated hero. Cycles
 //     through the matched SF Symbols of the first N movements in
 //     the flow, cross-fading between them. Court backdrop and
-//     optional motion arc give it CourtIQ identity.
+//     optional motion arc give it DropVolley identity.
 //   • `HybridMobilityFigureThumb` — small static figure for the
 //     per-movement row in the sequence list. No chrome, just the
 //     tinted symbol so the list reads tidy at thumbnail scale.
