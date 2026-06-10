@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { background:#1E2938; }
+  .panorama {
+    display:flex;
+    width: 6600px;             /* 5 × 1320 */
+    height: 2868px;
+    background: linear-gradient(118deg,
+      #C65C31 0%, #BB5436 22%, #9C5A45 42%,
+      #6C8366 66%, #5A7560 84%, #4C6553 100%);
+    position:relative;
+    font-family: -apple-system, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  .panorama::before {
+    content:""; position:absolute; inset:0;
+    background-image:
+      repeating-linear-gradient(118deg, rgba(255,255,255,.05) 0 2px, transparent 2px 220px);
+    pointer-events:none;
+  }
+  .panorama::after {
+    content:""; position:absolute; inset:0; pointer-events:none;
+    background:
+      radial-gradient(620px 620px at 18% 26%, rgba(255,255,255,.10), transparent 60%),
+      radial-gradient(720px 720px at 82% 78%, rgba(0,0,0,.14), transparent 62%);
+  }
+  .frame {
+    width:1320px; height:2868px;
+    display:flex; flex-direction:column; align-items:center;
+    position:relative; z-index:1;
+  }
+  /* The "other apps fail" eyebrow — the evidence hook. */
+  .eyebrow {
+    display:flex; align-items:center; gap:18px;
+    margin:150px 90px 0;
+    color:rgba(255,255,255,.66);
+    font-weight:600; font-size:43px; line-height:1.15;
+    letter-spacing:-.5px; text-align:left;
+  }
+  .eyebrow .x {
+    flex:0 0 auto;
+    width:54px; height:54px; border-radius:50%;
+    background:rgba(17,21,28,.28);
+    color:#F4C9B8; font-size:34px; font-weight:800;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:inset 0 0 0 2px rgba(255,255,255,.14);
+  }
+  /* The CourtIQ payoff — big, bold, the answer. */
+  .headline {
+    color:#fff; font-weight:800; font-size:90px; line-height:1.04;
+    letter-spacing:-2px; text-align:center;
+    padding:30px 80px 0;
+    text-shadow:0 3px 30px rgba(0,0,0,.24);
+  }
+  .headline .accent { color:#F4ECDD; }
+  .device {
+    margin-top:74px;
+    width:912px;
+    background:#11151C;
+    border-radius:80px;
+    padding:22px;
+    box-shadow:0 46px 110px rgba(0,0,0,.40), inset 0 0 0 2px rgba(255,255,255,.06);
+  }
+  .device img { width:100%; display:block; border-radius:60px; }
+</style>
+</head>
+<body>
+  <div class="panorama">
+
+    <div class="frame">
+      <div class="eyebrow"><span class="x">&times;</span><span>Other tennis apps treat every player the same.</span></div>
+      <div class="headline">CourtIQ knows<br><span class="accent">your</span> game.</div>
+      <div class="device"><img src="file:///Users/can/Projects/CourtIQ/marketing/screens/01b-tennis-profile.png"></div>
+    </div>
+
+    <div class="frame">
+      <div class="eyebrow"><span class="x">&times;</span><span>Generic tips never fix what's actually wrong.</span></div>
+      <div class="headline">An AI coach that<br><span class="accent">remembers every match.</span></div>
+      <div class="device"><img src="file:///Users/can/Projects/CourtIQ/marketing/screens/10-aicoach.png"></div>
+    </div>
+
+    <div class="frame">
+      <div class="eyebrow"><span class="x">&times;</span><span>You can't watch your way to tennis IQ.</span></div>
+      <div class="headline">Train the<br><span class="accent">decisions that win.</span></div>
+      <div class="device"><img src="file:///Users/can/Projects/CourtIQ/marketing/screens/02-drill.png"></div>
+    </div>
+
+    <div class="frame">
+      <div class="eyebrow"><span class="x">&times;</span><span>Stop guessing whether you're improving.</span></div>
+      <div class="headline">Watch your game<br><span class="accent">actually climb.</span></div>
+      <div class="device"><img src="file:///Users/can/Projects/CourtIQ/marketing/screens/06b-progress.png"></div>
+    </div>
+
+    <div class="frame">
+      <div class="eyebrow"><span class="x">&times;</span><span>Random workouts won't win you matches.</span></div>
+      <div class="headline">Training built<br><span class="accent">for tennis.</span></div>
+      <div class="device"><img src="file:///Users/can/Projects/CourtIQ/marketing/screens/07-training.png"></div>
+    </div>
+
+  </div>
+</body>
+</html>
