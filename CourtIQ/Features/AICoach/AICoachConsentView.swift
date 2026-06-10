@@ -63,6 +63,7 @@ struct AICoachConsentView: View {
                         .font(.subheadline.weight(.semibold)).foregroundStyle(AppPalette.ink)
                     bullet(t("The messages you type to the Coach", "Koç'a yazdığın mesajlar"))
                     bullet(t("Your profile (skill level and focus)", "Profilin (seviye ve odak)"))
+                    bullet(t("Your Tennis Profile (level, style, and goals)", "Tenis Profilin (seviye, stil ve hedefler)"))
                     bullet(t("Your recent matches, scores, and self-ratings", "Son maçların, skorların ve öz-değerlendirmelerin"))
                     bullet(t("Your quiz mistake patterns", "Quiz hata desenlerin"))
                 }
