@@ -25,6 +25,19 @@ struct CourtIQApp: App {
             Task { @MainActor in Self.seedPreviewData() }
         }
 
+        // Paywall capture only: onboarded + health-acknowledged but NOT
+        // premium, so the hard-paywall gate renders the paywall (with the
+        // .storekit prices) for the App Store / subscription review screenshot.
+        if ProcessInfo.processInfo.arguments.contains("-previewPaywall") {
+            Task { @MainActor in
+                UserSessionManager.shared.debugMarkOnboarded()
+                HealthAcknowledgment.recordAcceptance()
+                // Clear any persisted premium (from a prior seeded run) so the
+                // hard-paywall gate actually renders the paywall.
+                UserSessionManager.shared.subscriptionManager.resetLocalEntitlements()
+            }
+        }
+
         // If the user previously authorized notifications, make sure the
         // daily reminder is re-scheduled (handles app upgrades / device
         // migrations where pending requests can be cleared).

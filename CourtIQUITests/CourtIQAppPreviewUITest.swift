@@ -27,6 +27,16 @@ final class CourtIQAppPreviewUITest: XCTestCase {
         return false
     }
 
+    /// Captures the hard-paywall (with prices) for the App Store screenshot
+    /// set + the subscription review screenshot. Runs after the tour
+    /// (alphabetical), so it resets the seeded premium via -previewPaywall.
+    func testPaywallCapture() {
+        app.launchArguments = ["-previewPaywall"]
+        app.launch()
+        sleep(5)
+        snap("00-paywall")
+    }
+
     func testAppPreviewTour() {
         app.launchArguments = ["-seedPreviewData"]
         app.launch()

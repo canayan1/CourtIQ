@@ -340,6 +340,10 @@ final class SubscriptionManager: ObservableObject {
     func loadOfferings() async {
         do {
             let products = try await Product.products(for: [configuration.weeklyProductID, configuration.annualProductID])
+            if products.isEmpty && ProcessInfo.processInfo.arguments.contains("-previewPaywall") {
+                seedPreviewPaywallOffers()
+                return
+            }
             productsByID = Dictionary(uniqueKeysWithValues: products.map { ($0.id, $0) })
             integrationMode = productsByID.isEmpty ? .productConfigurationMissing : .storeKitDirect
 
@@ -371,8 +375,29 @@ final class SubscriptionManager: ObservableObject {
                                          perWeekText: "Just \(perWeek)/week", saveBadge: saveBadge, trialText: trialText)
             }
         } catch {
-            integrationMode = .productConfigurationMissing
+            if ProcessInfo.processInfo.arguments.contains("-previewPaywall") {
+                seedPreviewPaywallOffers()
+            } else {
+                integrationMode = .productConfigurationMissing
+            }
         }
+    }
+
+    /// Screenshot only (`-previewPaywall`): seed the paywall with the real
+    /// $9.99 / $59.99 prices so it renders fully without live StoreKit
+    /// products. Never reached in normal use.
+    private func seedPreviewPaywallOffers() {
+        offers = [
+            SubscriptionOffer(id: configuration.annualProductID, title: "Annual",
+                              detail: "3 days free, then billed yearly. Cancel anytime.",
+                              priceDisplay: "$59.99 / year", isFeatured: true,
+                              perWeekText: "Just $1.15/week", saveBadge: "Save 88%",
+                              trialText: "Free for 3 days, then $59.99/year"),
+            SubscriptionOffer(id: configuration.weeklyProductID, title: "Weekly",
+                              detail: "Billed weekly. Cancel anytime.",
+                              priceDisplay: "$9.99 / week", isFeatured: false)
+        ]
+        integrationMode = .storeKitDirect
     }
 
     private static func periodText(_ period: Product.SubscriptionPeriod) -> String {
@@ -389,6 +414,14 @@ final class SubscriptionManager: ObservableObject {
     }
 
     func refreshEntitlements() async {
+        // Preview seed (`-seedPreviewData`) forces premium so the seeded
+        // App Store preview can render the full app past the hard paywall —
+        // otherwise the empty sandbox entitlements would downgrade it.
+        if ProcessInfo.processInfo.arguments.contains("-seedPreviewData") {
+            entitlementState = .premiumAllAccess
+            saveEntitlement()
+            return
+        }
         var hasPremium = false
 
         for await result in Transaction.currentEntitlements {
