@@ -18,6 +18,9 @@ import SwiftUI
 /// a graceful loading state instead of broken/empty price cards.
 struct PaywallView: View {
     let source: String
+    /// When false (the hard-paywall gate), the dismiss/"Done" control is
+    /// hidden so the user cannot bypass the wall without subscribing.
+    var allowsDismiss: Bool = true
 
     @Environment(\.dismiss) private var dismiss
     @Environment(\.openURL) private var openURL
@@ -69,8 +72,10 @@ struct PaywallView: View {
         .navigationTitle(t("Go Premium", "Premium’a Geç"))
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button(t("Done", "Bitti")) { dismiss() }
+            if allowsDismiss {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(t("Done", "Bitti")) { dismiss() }
+                }
             }
         }
         .alert(t("Account issue", "Hesap sorunu"), isPresented: Binding(get: {

@@ -909,7 +909,7 @@ final class UserSessionManager: ObservableObject {
     /// `-seedPreviewData`-gated seeding path.
     func debugMarkOnboarded() { completeOnboarding() }
 
-    private func completeOnboarding() {
+    func completeOnboarding() {
         hasCompletedOnboarding = true
         defaults.set(true, forKey: onboardingKey)
     }

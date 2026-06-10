@@ -131,7 +131,15 @@ private struct RootView: View {
     var body: some View {
         Group {
             if !session.hasCompletedOnboarding {
-                OnboardingView()
+                OnboardingFlowView(onComplete: { session.completeOnboarding() })
+            } else if !session.subscriptionManager.entitlementState.isPremium {
+                // Hard paywall — no free tier. The app cannot be entered
+                // without an active subscription (or trial). This gate
+                // re-renders when the entitlement changes, because
+                // SubscriptionManager forwards objectWillChange to `session`.
+                NavigationStack {
+                    PaywallView(source: "Gate", allowsDismiss: false)
+                }
             } else if healthAckVersion < HealthAcknowledgment.currentVersion {
                 // Block access to training/mobility/quiz content until the
                 // user explicitly accepts the assumption-of-risk language.
