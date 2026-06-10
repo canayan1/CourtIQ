@@ -44,6 +44,7 @@ struct CourtIQApp: App {
     @MainActor
     static func seedPreviewData() {
         UserSessionManager.shared.debugMarkOnboarded()
+        UserSessionManager.shared.subscriptionManager.debugGrantPremium()
         HealthAcknowledgment.recordAcceptance()
 
         let mm = MatchEntryManager.shared

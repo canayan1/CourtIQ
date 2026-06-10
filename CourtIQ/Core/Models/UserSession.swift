@@ -444,6 +444,14 @@ final class SubscriptionManager: ObservableObject {
         saveEntitlement()
     }
 
+    /// Preview / UI-test only: grant premium so the seeded preview can enter
+    /// the app past the hard paywall. Reached only via the `-seedPreviewData`
+    /// seeding path — never in normal use.
+    func debugGrantPremium() {
+        entitlementState = .premiumAllAccess
+        saveEntitlement()
+    }
+
     func startListener() {
         guard updatesTask == nil else { return }
 

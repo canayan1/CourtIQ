@@ -1,0 +1,74 @@
+{
+  "appPolicies" : {
+    "eula" : "",
+    "policies" : [ ]
+  },
+  "identifier" : "A1B2C3D4",
+  "nonRenewingSubscriptions" : [ ],
+  "products" : [ ],
+  "settings" : {
+    "_applicationInternalID" : "6773753464",
+    "_developerTeamID" : "DC8ALPY949",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 0
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "21500001",
+      "localizations" : [ ],
+      "name" : "CourtIQ Premium",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [ ],
+          "codeOffers" : [ ],
+          "displayPrice" : "59.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "21500011",
+          "introductoryOffer" : {
+            "internalID" : "21500021",
+            "paymentMode" : "free",
+            "subscriptionPeriod" : "P3D"
+          },
+          "localizations" : [
+            {
+              "description" : "Full access to CourtIQ, billed yearly",
+              "displayName" : "Annual",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.courtiq.premium.annual",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "CourtIQ Annual",
+          "subscriptionGroupID" : "21500001",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [ ],
+          "codeOffers" : [ ],
+          "displayPrice" : "9.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "21500012",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Full access to CourtIQ, billed weekly",
+              "displayName" : "Weekly",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.courtiq.premium.weekly",
+          "recurringSubscriptionPeriod" : "P1W",
+          "referenceName" : "CourtIQ Weekly",
+          "subscriptionGroupID" : "21500001",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}
