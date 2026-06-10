@@ -6,6 +6,7 @@ struct TodayView: View {
     @EnvironmentObject private var tipManager: TipManager
     @EnvironmentObject private var lang: LanguageManager
     @EnvironmentObject private var drillManager: CourtTapDrillManager
+    @ObservedObject private var tennisProfileStore = TennisProfileStore.shared
 
     // Tip body is expanded by default — collapsing was hiding the actual
     // content (each tip is only ~80 words) and made the card feel empty.
@@ -19,6 +20,7 @@ struct TodayView: View {
             VStack(alignment: .leading, spacing: 16) {
                 heroCard
                 ThreeRingsCard()
+                tennisProfileCard
                 drillCard
                 ProShotCard()
                 tipCard
@@ -35,6 +37,57 @@ struct TodayView: View {
                     .environmentObject(drillManager)
             }
         }
+    }
+
+    // MARK: - Tennis Profile entry
+
+    @ViewBuilder
+    private var tennisProfileCard: some View {
+        let copy = TennisProfileCopy(lang: lang.language)
+        if let profile = tennisProfileStore.profile {
+            NavigationLink {
+                TennisProfileResultView(profile: profile)
+            } label: {
+                tennisProfileRow(
+                    icon: "figure.tennis", tint: AppPalette.moss,
+                    eyebrow: copy.sectionTitle,
+                    title: "\(copy.levelTitle(profile.result.level)) · \(copy.archetypeTitle(profile.result.archetype))"
+                )
+            }
+            .buttonStyle(.plain)
+        } else {
+            NavigationLink {
+                TennisProfileQuestionnaireView()
+            } label: {
+                tennisProfileRow(
+                    icon: "figure.tennis", tint: AppPalette.clay,
+                    eyebrow: copy.entryTitle,
+                    title: copy.entrySubtitle
+                )
+            }
+            .buttonStyle(.plain)
+        }
+    }
+
+    private func tennisProfileRow(icon: String, tint: Color, eyebrow: String, title: String) -> some View {
+        HStack(spacing: 14) {
+            ZStack {
+                Circle().fill(tint.opacity(0.16)).frame(width: 46, height: 46)
+                Image(systemName: icon).font(.title3).foregroundStyle(tint)
+            }
+            VStack(alignment: .leading, spacing: 3) {
+                Text(eyebrow).font(.caption.weight(.heavy)).tracking(0.4).foregroundStyle(AppPalette.inkSoft)
+                Text(title).font(.subheadline.weight(.semibold)).foregroundStyle(AppPalette.ink)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            Spacer()
+            Image(systemName: "chevron.right").font(.footnote.weight(.semibold)).foregroundStyle(.tertiary)
+        }
+        .padding(14)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppPalette.parchment)
+        .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous).stroke(AppPalette.sand, lineWidth: 1))
+        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
     }
 
     // MARK: - Daily Court Tap Drill (the new daily ritual)
