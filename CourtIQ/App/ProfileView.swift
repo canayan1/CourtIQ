@@ -46,6 +46,7 @@ struct ProfileView: View {
             NavigationStack {
                 PaywallView(source: "Profile")
                     .environmentObject(session)
+                    .environmentObject(lang)
             }
         }
         .sheet(isPresented: $showAICoach) {

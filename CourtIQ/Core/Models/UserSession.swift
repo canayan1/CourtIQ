@@ -72,6 +72,12 @@ struct SubscriptionOffer: Identifiable, Hashable {
     let detail: String
     let priceDisplay: String
     let isFeatured: Bool
+    /// Per-week breakdown for anchoring (e.g. "Just $1.15/week"). Annual only.
+    var perWeekText: String? = nil
+    /// Savings badge vs paying weekly (e.g. "Save 88%"). Annual only.
+    var saveBadge: String? = nil
+    /// Free-trial disclosure (e.g. "Free for 3 days, then $59.99/year"). Annual only.
+    var trialText: String? = nil
 }
 
 enum SubscriptionError: LocalizedError {
@@ -339,18 +345,47 @@ final class SubscriptionManager: ObservableObject {
 
             offers = offers.map { offer in
                 guard let product = productsByID[offer.id] else { return offer }
-                let suffix = offer.id == configuration.annualProductID ? " / year" : " / week"
-                return SubscriptionOffer(
-                    id: offer.id,
-                    title: offer.title,
-                    detail: offer.detail,
-                    priceDisplay: product.displayPrice + suffix,
-                    isFeatured: offer.isFeatured
-                )
+                let isAnnual = offer.id == configuration.annualProductID
+                let suffix = isAnnual ? " / year" : " / week"
+                guard isAnnual else {
+                    return SubscriptionOffer(id: offer.id, title: offer.title, detail: offer.detail,
+                                             priceDisplay: product.displayPrice + suffix, isFeatured: offer.isFeatured)
+                }
+                // Annual: per-week anchor, savings vs paying weekly, trial text.
+                let perWeek = (product.price / Decimal(52)).formatted(product.priceFormatStyle)
+                var saveBadge: String? = nil
+                if let weekly = productsByID[configuration.weeklyProductID] {
+                    let annualized = weekly.price * Decimal(52)
+                    if annualized > 0 {
+                        let pct = ((annualized - product.price) / annualized) * 100
+                        let rounded = (pct as NSDecimalNumber).intValue
+                        if rounded > 0 { saveBadge = "Save \(rounded)%" }
+                    }
+                }
+                var trialText: String? = nil
+                if let intro = product.subscription?.introductoryOffer, intro.paymentMode == .freeTrial {
+                    trialText = "Free for \(Self.periodText(intro.period)), then \(product.displayPrice)/year"
+                }
+                return SubscriptionOffer(id: offer.id, title: offer.title, detail: offer.detail,
+                                         priceDisplay: product.displayPrice + suffix, isFeatured: offer.isFeatured,
+                                         perWeekText: "Just \(perWeek)/week", saveBadge: saveBadge, trialText: trialText)
             }
         } catch {
             integrationMode = .productConfigurationMissing
         }
+    }
+
+    private static func periodText(_ period: Product.SubscriptionPeriod) -> String {
+        let n = period.value
+        let unit: String
+        switch period.unit {
+        case .day:   unit = n == 1 ? "day" : "days"
+        case .week:  unit = n == 1 ? "week" : "weeks"
+        case .month: unit = n == 1 ? "month" : "months"
+        case .year:  unit = n == 1 ? "year" : "years"
+        @unknown default: unit = "days"
+        }
+        return "\(n) \(unit)"
     }
 
     func refreshEntitlements() async {
