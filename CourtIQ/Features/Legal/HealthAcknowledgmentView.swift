@@ -96,7 +96,7 @@ struct HealthAcknowledgmentView: View {
                 .foregroundStyle(AppPalette.inkSoft)
 
             if let url = configuration.privacyPolicyURL.flatMap({ _ in
-                URL(string: "https://canayan-ios-apps.vercel.app/apps/courtiq/health-disclaimer")
+                URL(string: "https://canayan-ios-apps.vercel.app/apps/dropvolley/health-disclaimer")
             }) {
                 Link(destination: url) {
                     Label(lang.t("health.full_disclaimer_link"), systemImage: "arrow.up.right.square")
