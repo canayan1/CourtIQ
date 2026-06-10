@@ -21,6 +21,7 @@ struct TodayView: View {
                 heroCard
                 ThreeRingsCard()
                 tennisProfileCard
+                swingAnalysisCard
                 drillCard
                 ProShotCard()
                 tipCard
@@ -89,6 +90,24 @@ struct TodayView: View {
         .background(AppPalette.parchment)
         .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous).stroke(AppPalette.sand, lineWidth: 1))
         .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+    }
+
+    // MARK: - AI Swing Analysis entry
+
+    @ViewBuilder
+    private var swingAnalysisCard: some View {
+        NavigationLink {
+            SwingAnalysisView()
+        } label: {
+            tennisProfileRow(
+                icon: "video.fill", tint: AppPalette.gold,
+                eyebrow: lang.language == .turkish ? "AI Swing Analizi" : "AI Swing Analysis",
+                title: lang.language == .turkish
+                    ? "Kısa bir video çek, tekniğini AI yorumlasın"
+                    : "Record a short clip — AI coaches your technique"
+            )
+        }
+        .buttonStyle(.plain)
     }
 
     // MARK: - Daily Court Tap Drill (the new daily ritual)

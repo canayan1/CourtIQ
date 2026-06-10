@@ -49,9 +49,11 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>CourtIQ uses the camera to scan your partner's pairing QR code so you can log a match together. No video or photo is captured.</string>
+	<string>DropVolley uses the camera so you can record a short swing video for AI technique analysis.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>CourtIQ records short voice notes for your match journal so you can reflect on a match without typing. Recordings stay on this device.</string>
+	<string>Recording a swing video captures audio with the video. DropVolley only analyzes the video frames, not the audio.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>DropVolley lets you choose an existing swing video from your library for AI technique analysis.</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>CourtIQ transcribes your match voice notes on-device so the text appears in your journal immediately. Audio never leaves your iPhone.</string>
 	<key>UILaunchScreen</key>
