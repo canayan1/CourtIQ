@@ -30,6 +30,11 @@ struct AIChatContextPayload: Encodable {
     /// shipping the entire match corpus on every turn.
     let matchMemory: String?
 
+    /// The player's self-assessed Tennis Profile (level, style archetype,
+    /// strengths, growth areas) + the goals they've adopted — so the Coach
+    /// can personalize to who the player is and what they're working toward.
+    let tennisProfile: TennisProfilePayload?
+
     enum CodingKeys: String, CodingKey {
         case profile
         case matches
@@ -38,6 +43,25 @@ struct AIChatContextPayload: Encodable {
         case playStyle = "play_style"
         case imported
         case matchMemory = "match_memory"
+        case tennisProfile = "tennis_profile"
+    }
+
+    /// Self-assessed Tennis Profile, in plain English for the prompt.
+    struct TennisProfilePayload: Encodable {
+        let level: String          // e.g. "Intermediate"
+        let levelRef: String       // e.g. "NTRP ~3.0"
+        let archetype: String      // e.g. "Aggressive baseliner"
+        let strengths: [String]    // dimension names
+        let growthAreas: [String]  // dimension names
+        let goals: [String]        // adopted goal titles
+        enum CodingKeys: String, CodingKey {
+            case level
+            case levelRef = "level_ref"
+            case archetype
+            case strengths
+            case growthAreas = "growth_areas"
+            case goals
+        }
     }
 
     struct ProfilePayload: Encodable {

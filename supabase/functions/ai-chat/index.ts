@@ -55,7 +55,7 @@ const SUPABASE_SERVICE_ROLE    = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? ""
 // ships with the full Tennis Coach Manual layered into the cached
 // prefix — earlier versions were vanilla Haiku with a thin instruction
 // shim.
-const COURTIQ_PROMPT_VERSION = "0.4";
+const COURTIQ_PROMPT_VERSION = "0.5";
 
 const SYSTEM_PROMPT = `
 You are CourtIQ Coach — a tennis-specific reflection partner inside the
@@ -188,6 +188,18 @@ Rules for using it:
 - Never fabricate a percentage or a label. If the block says "no play
   style data yet", say the user hasn't done enough drills to read a
   pattern, and point them to the Daily Court Drill.
+
+### The tennis profile block
+[TENNIS_PROFILE] is the player's OWN self-assessment — their stated level,
+play-style archetype, strengths, growth areas, and the goals they chose.
+Rules:
+- Personalize to it: pitch advice at their level and lean into their style.
+- When relevant, tie coaching to their growth areas and explicitly to the
+  goals they set ("this builds toward your goal of a reliable second serve").
+- It's self-reported — treat it as their perspective, not ground truth; if
+  their match data contradicts it, gently reconcile the two.
+- If it says "no self-assessed tennis profile yet", invite them to take the
+  Tennis Profile on the Today tab.
 
 ### Response length
 - Debrief / coaching: 150-250 words
@@ -691,6 +703,15 @@ interface ChatRequest {
         /// window in `matches`). Lets the Coach reason over long-term
         /// patterns without shipping the whole corpus each turn.
         match_memory?: string | null;
+        /// The player's self-assessed Tennis Profile + adopted goals.
+        tennis_profile?: {
+            level?: string;
+            level_ref?: string;
+            archetype?: string;
+            strengths?: string[];
+            growth_areas?: string[];
+            goals?: string[];
+        };
     };
 }
 
@@ -885,6 +906,20 @@ function buildCachedPrefix(
         ].filter(Boolean).join("\n");
     }
 
+    // Self-assessed Tennis Profile — the player's own read on their level,
+    // style, strengths, growth areas, and the goals they chose to chase.
+    const tpf = context?.tennis_profile;
+    let tennisProfileBlock = "no self-assessed tennis profile yet";
+    if (tpf && (tpf.level || tpf.archetype)) {
+        const lines: string[] = [];
+        if (tpf.level) lines.push(`Self-assessed level: ${tpf.level}${tpf.level_ref ? " (" + tpf.level_ref + ")" : ""}`);
+        if (tpf.archetype) lines.push(`Play style: ${tpf.archetype}`);
+        if (tpf.strengths?.length) lines.push(`Strengths: ${tpf.strengths.join(", ")}`);
+        if (tpf.growth_areas?.length) lines.push(`Growth areas: ${tpf.growth_areas.join(", ")}`);
+        if (tpf.goals?.length) lines.push(`Goals they've set: ${tpf.goals.join("; ")}`);
+        tennisProfileBlock = lines.join("\n");
+    }
+
     return [
         SYSTEM_PROMPT,
         APP_LIBRARY,
@@ -901,6 +936,8 @@ function buildCachedPrefix(
         tacticalBlock,
         "[PLAY_STYLE]",
         styleBlock,
+        "[TENNIS_PROFILE]",
+        tennisProfileBlock,
         importedBlock,
     ].join("\n\n");
 }

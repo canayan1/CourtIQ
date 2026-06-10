@@ -433,6 +433,22 @@ struct AICoachThreadView: View {
             playStyle = nil
         }
 
+        // Self-assessed Tennis Profile (level, style, strengths, growth) +
+        // adopted goals — sent in English so the Coach personalizes to it.
+        let tennisProfilePayload: AIChatContextPayload.TennisProfilePayload? = {
+            guard let p = TennisProfileStore.shared.profile else { return nil }
+            let en = TennisProfileCopy(lang: .english)
+            let r = p.result
+            return AIChatContextPayload.TennisProfilePayload(
+                level: en.levelTitle(r.level),
+                levelRef: en.levelNTRP(r.level),
+                archetype: en.archetypeTitle(r.archetype),
+                strengths: r.strengths.map { en.dimension($0) },
+                growthAreas: r.growthAreas.map { en.dimension($0) },
+                goals: p.adoptedGoals.map { en.goalTitle($0.titleKey) }
+            )
+        }()
+
         return AIChatContextPayload(
             profile: AIChatContextPayload.ProfilePayload(
                 level: UserDefaults.standard.string(forKey: "CourtIQ.onboardingLevel"),
@@ -448,7 +464,8 @@ struct AICoachThreadView: View {
             tacticalProfile: tactical,
             playStyle: playStyle,
             imported: nil,  // Phase 3 will wire imported ChatGPT summary here
-            matchMemory: MatchMemoryStore.shared.memoryForContext
+            matchMemory: MatchMemoryStore.shared.memoryForContext,
+            tennisProfile: tennisProfilePayload
         )
     }
 

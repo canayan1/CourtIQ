@@ -96,7 +96,7 @@ struct TennisProfileCopy {
     var goalsHeader: String { t("Suggested goals", "Önerilen hedefler") }
     var goalsSubhead: String { t("Pick the goals you want to chase — your Coach will help.", "Takip etmek istediğin hedefleri seç — Koç'un yardımcı olur.") }
     var adoptGoals: String { t("Save my goals", "Hedeflerimi kaydet") }
-    var aiTeaser: String { t("Saved. Your profile and goals will guide your training — and your AI Coach.", "Kaydedildi. Profilin ve hedeflerin antrenmanına — ve AI Koç'una — yön verecek.") }
+    var aiTeaser: String { t("Your AI Coach now knows your profile and goals — and will coach you toward them.", "AI Koç'un artık profilini ve hedeflerini biliyor — ve seni onlara doğru yönlendirir.") }
     var myGoalsHeader: String { t("Your goals", "Hedeflerin") }
 
     // MARK: Goals (coaching-standard development priorities)
