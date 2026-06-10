@@ -31,13 +31,6 @@ struct MatchLogTutorialView: View {
                         title: lang.t("matches.tutorial.journal_title"),
                         body: lang.t("matches.tutorial.journal_body")
                     )
-                    modeCard(
-                        icon: "person.2.fill",
-                        tint: AppPalette.moss,
-                        title: lang.t("matches.tutorial.coach_title"),
-                        body: lang.t("matches.tutorial.coach_body")
-                    )
-
                     payoffCard
                 }
                 .padding()

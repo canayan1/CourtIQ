@@ -15,7 +15,6 @@ struct MatchesListView: View {
     @State private var showingComposerChoice = false
     @State private var openQuickLog = false
     @State private var openJournal = false
-    @State private var openCoachMode = false
     @State private var showTutorial = false
 
     /// One-shot flag so the tutorial auto-presents only on the first visit
@@ -84,13 +83,7 @@ struct MatchesListView: View {
         ) {
             Button(lang.t("matches.quick_log")) { openQuickLog = true }
             Button(lang.t("matches.full_journal")) { openJournal = true }
-            Button(lang.t("matches.coach_mode")) { openCoachMode = true }
             Button(lang.t("common.cancel"), role: .cancel) {}
-        }
-        .sheet(isPresented: $openCoachMode) {
-            CoachPairView()
-                .environmentObject(matches)
-                .environmentObject(lang)
         }
         .sheet(isPresented: $openQuickLog) {
             NavigationStack {

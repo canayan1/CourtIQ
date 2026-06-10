@@ -4,11 +4,9 @@ struct MobilityFlowDetailView: View {
     let flow: MobilityFlow
 
     @EnvironmentObject private var session: UserSessionManager
-    @EnvironmentObject private var discussionStore: DiscussionStore
     @EnvironmentObject private var progressionManager: PlayerProgressionManager
     @EnvironmentObject private var lang: LanguageManager
     @State private var showPaywall = false
-    @State private var threadID: String?
     @State private var mobilityRecorded = false
 
     private var previewFlowIDs: Set<String> {
@@ -17,11 +15,6 @@ struct MobilityFlowDetailView: View {
 
     private var hasAccess: Bool {
         session.isPremiumUnlocked || previewFlowIDs.contains(flow.id)
-    }
-
-    private var thread: DiscussionThread? {
-        guard let threadID else { return nil }
-        return discussionStore.thread(withID: threadID)
     }
 
     var body: some View {
@@ -94,8 +87,6 @@ struct MobilityFlowDetailView: View {
                     )
                     .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
                 }
-
-                discussionSection
             }
             .padding()
         }
@@ -107,21 +98,6 @@ struct MobilityFlowDetailView: View {
                 progressionManager.recordMobilitySession()
                 MobilityFlowSessionTracker.shared.recordStarted()
                 mobilityRecorded = true
-            }
-
-            if threadID == nil {
-                threadID = discussionStore.thread(
-                    for: ContentNodeID(targetType: .mobilityFlow, targetID: flow.id),
-                    title: flow.title,
-                    subtitle: flow.goal,
-                    starterPrompt: "How do you use this flow in your tennis week?"
-                ).id
-            }
-
-            if let threadID {
-                Task {
-                    try? await discussionStore.refreshThread(threadID: threadID)
-                }
             }
         }
         .sheet(isPresented: $showPaywall) {
@@ -171,28 +147,6 @@ struct MobilityFlowDetailView: View {
         }
         .frame(maxWidth: .infinity)
         .padding(22)
-        .background(AppPalette.parchment)
-        .overlay(
-            RoundedRectangle(cornerRadius: 20, style: .continuous)
-                .stroke(AppPalette.sand, lineWidth: 1)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-    }
-
-    private var discussionSection: some View {
-        // Header + 12-word hint collapsed to icon + chevron row.
-        HStack(spacing: 10) {
-            Image(systemName: "bubble.left.and.bubble.right.fill")
-                .font(.subheadline.weight(.bold))
-                .foregroundStyle(AppPalette.clay)
-            Text(lang.t("training.discussion"))
-                .font(.subheadline.weight(.semibold))
-            Spacer()
-            Image(systemName: "chevron.right")
-                .font(.footnote.weight(.semibold))
-                .foregroundStyle(.tertiary)
-        }
-        .padding()
         .background(AppPalette.parchment)
         .overlay(
             RoundedRectangle(cornerRadius: 20, style: .continuous)

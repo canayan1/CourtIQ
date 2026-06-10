@@ -5,9 +5,8 @@ struct MainTabView: View {
 
     // 5 tabs only — iOS pushes a 6th into a "More" overflow that buries it.
     // Matches is the post-pivot centerpiece so it gets primary placement.
-    // The community tip-discussion thread is still reachable from the
-    // tip card on Today (NavigationLink), so dropping it as a top-level
-    // tab loses no functionality.
+    // v1.0 ships with no user-generated content: the community tip-discussion
+    // surface is not exposed in navigation anywhere.
     var body: some View {
         TabView {
             NavigationStack {

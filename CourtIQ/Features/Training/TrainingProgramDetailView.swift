@@ -5,7 +5,6 @@ struct TrainingProgramDetailView: View {
 
     @EnvironmentObject private var session: UserSessionManager
     @EnvironmentObject private var progress: TrainingProgressManager
-    @EnvironmentObject private var discussionStore: DiscussionStore
     @EnvironmentObject private var progressionManager: PlayerProgressionManager
     @EnvironmentObject private var dailyQuiz: DailyQuizManager
     @EnvironmentObject private var lang: LanguageManager
@@ -16,7 +15,6 @@ struct TrainingProgramDetailView: View {
     @State private var notes = ""
     @State private var selectedEntryID: String?
     @State private var showPaywall = false
-    @State private var threadID: String?
     @State private var selectedExercise: TrainingExercise?
 
     private var hasAccess: Bool {
@@ -41,7 +39,6 @@ struct TrainingProgramDetailView: View {
                     phaseCard
                     checkInHistoryCard
                     followOnCard
-                    discussionCard
                 } else {
                     lockedCard
                 }
@@ -67,21 +64,7 @@ struct TrainingProgramDetailView: View {
             if selectedEntryID == nil {
                 selectedEntryID = weeklyEntries.first?.id
             }
-            if threadID == nil {
-                threadID = discussionStore.thread(
-                    for: ContentNodeID(targetType: .trainingSession, targetID: program.id),
-                    title: program.title,
-                    subtitle: program.category.summary,
-                    starterPrompt: "Which day of this plan feels most useful for your tennis goals right now?"
-                ).id
-            }
             loadCheckIn()
-
-            if let threadID {
-                Task {
-                    try? await discussionStore.refreshThread(threadID: threadID)
-                }
-            }
         }
         .onChange(of: progress.selectedWeek) { _, _ in
             selectedEntryID = weeklyEntries.first?.id
@@ -556,11 +539,6 @@ struct TrainingProgramDetailView: View {
             .stroke(AppPalette.sand, lineWidth: 1)
     }
 
-    private var thread: DiscussionThread? {
-        guard let threadID else { return nil }
-        return discussionStore.thread(withID: threadID)
-    }
-
     private var checkInHistoryCard: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text(lang.t("training.checkin_history"))
@@ -659,26 +637,6 @@ struct TrainingProgramDetailView: View {
             .overlay(cardStroke(cornerRadius: 20))
             .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
         }
-    }
-
-    private var discussionCard: some View {
-        // Header + 12-word hint collapsed into a single icon row that
-        // implies "tap to discuss."
-        HStack(spacing: 10) {
-            Image(systemName: "bubble.left.and.bubble.right.fill")
-                .font(.subheadline.weight(.bold))
-                .foregroundStyle(AppPalette.clay)
-            Text(lang.t("training.discussion"))
-                .font(.subheadline.weight(.semibold))
-            Spacer()
-            Image(systemName: "chevron.right")
-                .font(.footnote.weight(.semibold))
-                .foregroundStyle(.tertiary)
-        }
-        .padding()
-        .background(cardFill)
-        .overlay(cardStroke(cornerRadius: 20))
-        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
     }
 
     private func textBlock(title: String, content: String) -> some View {
