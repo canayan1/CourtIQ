@@ -16,7 +16,7 @@
     {
       "id" : "21500001",
       "localizations" : [ ],
-      "name" : "CourtIQ Premium",
+      "name" : "DropVolley Premium",
       "subscriptions" : [
         {
           "adHocOffers" : [ ],
@@ -32,14 +32,14 @@
           },
           "localizations" : [
             {
-              "description" : "Full access to CourtIQ, billed yearly",
+              "description" : "Full access to DropVolley, billed yearly",
               "displayName" : "Annual",
               "locale" : "en_US"
             }
           ],
           "productID" : "com.courtiq.premium.annual",
           "recurringSubscriptionPeriod" : "P1Y",
-          "referenceName" : "CourtIQ Annual",
+          "referenceName" : "DropVolley Annual",
           "subscriptionGroupID" : "21500001",
           "type" : "RecurringSubscription"
         },
@@ -53,14 +53,14 @@
           "introductoryOffer" : null,
           "localizations" : [
             {
-              "description" : "Full access to CourtIQ, billed weekly",
+              "description" : "Full access to DropVolley, billed weekly",
               "displayName" : "Weekly",
               "locale" : "en_US"
             }
           ],
           "productID" : "com.courtiq.premium.weekly",
           "recurringSubscriptionPeriod" : "P1W",
-          "referenceName" : "CourtIQ Weekly",
+          "referenceName" : "DropVolley Weekly",
           "subscriptionGroupID" : "21500001",
           "type" : "RecurringSubscription"
         }
