@@ -12,6 +12,7 @@
 		40B005397ED3CCD0B527A1D9 /* TennisProfileResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0557CE18D7A694CEF536677C /* TennisProfileResultView.swift */; };
 		48C4087920AD7AE0BF5F3C5C /* TennisProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3FE68853468703A4B5AC96 /* TennisProfileStore.swift */; };
 		5F71E0F3BD2E9BA2AC5CC711 /* TennisProfileCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7C2AA916BE624A71B6017F /* TennisProfileCopy.swift */; };
+		9951D0CC2EF78EAF560B3E98 /* CourtIQAppPreviewUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C98DCFD79E34F8766234FD /* CourtIQAppPreviewUITest.swift */; };
 		A000000000000000000020 /* CourtIQApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000010 /* CourtIQApp.swift */; };
 		A000000000000000000021 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000011 /* MainTabView.swift */; };
 		A000000000000000000022 /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000012 /* PracticeView.swift */; };
@@ -105,13 +106,26 @@
 		A00000000000000000019B /* MatchLogTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000019A /* MatchLogTutorialView.swift */; };
 		A9B92CCD5D6A1DDCE15C8C3B /* TennisProfileScoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EC46A67E526C59A182B12D /* TennisProfileScoring.swift */; };
 		BB07C4ADCC7163742CDD7034 /* TennisProfileQuestionnaireView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D5B2D2F6843DCDF39EC336 /* TennisProfileQuestionnaireView.swift */; };
+		F630E427B39E6175B97B2857 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 728F3484008DAA9A8D9F95FC /* Foundation.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7967EE66321338298E0BB737 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A000000000000000000000 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A000000000000000000006;
+			remoteInfo = CourtIQ;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		04D5B2D2F6843DCDF39EC336 /* TennisProfileQuestionnaireView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TennisProfileQuestionnaireView.swift; path = CourtIQ/Features/TennisProfile/TennisProfileQuestionnaireView.swift; sourceTree = "<group>"; };
 		0557CE18D7A694CEF536677C /* TennisProfileResultView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TennisProfileResultView.swift; path = CourtIQ/Features/TennisProfile/TennisProfileResultView.swift; sourceTree = "<group>"; };
 		4B7C2AA916BE624A71B6017F /* TennisProfileCopy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TennisProfileCopy.swift; path = CourtIQ/Features/TennisProfile/TennisProfileCopy.swift; sourceTree = "<group>"; };
 		59EC46A67E526C59A182B12D /* TennisProfileScoring.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TennisProfileScoring.swift; path = CourtIQ/Features/TennisProfile/TennisProfileScoring.swift; sourceTree = "<group>"; };
+		728F3484008DAA9A8D9F95FC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		82C98DCFD79E34F8766234FD /* CourtIQAppPreviewUITest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CourtIQAppPreviewUITest.swift; path = CourtIQUITests/CourtIQAppPreviewUITest.swift; sourceTree = "<group>"; };
 		A00000000000000000000D /* CourtIQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CourtIQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A00000000000000000000F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = CourtIQ/Info.plist; sourceTree = "<group>"; };
 		A000000000000000000010 /* CourtIQApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CourtIQApp.swift; path = CourtIQ/App/CourtIQApp.swift; sourceTree = "<group>"; };
@@ -208,10 +222,19 @@
 		A00000000000000000019A /* MatchLogTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchLogTutorialView.swift; path = CourtIQ/Features/Matches/MatchLogTutorialView.swift; sourceTree = "<group>"; };
 		B5431D73E4D73B3EE01C53B1 /* AICoachConsentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AICoachConsentView.swift; path = CourtIQ/Features/AICoach/AICoachConsentView.swift; sourceTree = "<group>"; };
 		F05402E3DB1FAD67D0AA4FB6 /* TennisProfile.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TennisProfile.swift; path = CourtIQ/Features/TennisProfile/TennisProfile.swift; sourceTree = "<group>"; };
+		F9EE92467572A4EAAAE0B125 /* CourtIQUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CourtIQUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB3FE68853468703A4B5AC96 /* TennisProfileStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TennisProfileStore.swift; path = CourtIQ/Features/TennisProfile/TennisProfileStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2A731268862A5E3AC1754431 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F630E427B39E6175B97B2857 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A00000000000000000000B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -222,6 +245,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A452508E882D4D1A153AE73 /* CourtIQUITests */ = {
+			isa = PBXGroup;
+			children = (
+				82C98DCFD79E34F8766234FD /* CourtIQAppPreviewUITest.swift */,
+			);
+			name = CourtIQUITests;
+			sourceTree = SOURCE_ROOT;
+		};
 		36A5E7C12F95D37A00BCD7DA /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -333,6 +364,8 @@
 				FB3FE68853468703A4B5AC96 /* TennisProfileStore.swift */,
 				04D5B2D2F6843DCDF39EC336 /* TennisProfileQuestionnaireView.swift */,
 				0557CE18D7A694CEF536677C /* TennisProfileResultView.swift */,
+				EB8D2E0C285335FE3C7A3ECE /* Frameworks */,
+				1A452508E882D4D1A153AE73 /* CourtIQUITests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -340,13 +373,48 @@
 			isa = PBXGroup;
 			children = (
 				A00000000000000000000D /* CourtIQ.app */,
+				F9EE92467572A4EAAAE0B125 /* CourtIQUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A1B0EC333762493B1AF7BAE1 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				728F3484008DAA9A8D9F95FC /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		EB8D2E0C285335FE3C7A3ECE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A1B0EC333762493B1AF7BAE1 /* iOS */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1EE96FC5D4A60669456E340B /* CourtIQUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 515D58A67B3C858B7779F0E7 /* Build configuration list for PBXNativeTarget "CourtIQUITests" */;
+			buildPhases = (
+				85A441F2A3C15F3890765F01 /* Sources */,
+				2A731268862A5E3AC1754431 /* Frameworks */,
+				A919BCEF5AD72766BF4B6954 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				66930E349614DC5C65579663 /* PBXTargetDependency */,
+			);
+			name = CourtIQUITests;
+			productName = CourtIQUITests;
+			productReference = F9EE92467572A4EAAAE0B125 /* CourtIQUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		A000000000000000000006 /* CourtIQ */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A000000000000000000007 /* Build configuration list for PBXNativeTarget "CourtIQ" */;
@@ -388,6 +456,7 @@
 			projectRoot = "";
 			targets = (
 				A000000000000000000006 /* CourtIQ */,
+				1EE96FC5D4A60669456E340B /* CourtIQUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -408,9 +477,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A919BCEF5AD72766BF4B6954 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		85A441F2A3C15F3890765F01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9951D0CC2EF78EAF560B3E98 /* CourtIQAppPreviewUITest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A00000000000000000000A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -510,6 +594,15 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		66930E349614DC5C65579663 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CourtIQ;
+			target = A000000000000000000006 /* CourtIQ */;
+			targetProxy = 7967EE66321338298E0BB737 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		A000000000000000000069 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
@@ -523,6 +616,39 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		55B1C5470381EFE152FB07AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGNING_ALLOWED = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.canayan93.courtiq.uitests;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CourtIQ;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8C8DBC22961D54B7F4EA8F20 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGNING_ALLOWED = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.canayan93.courtiq.uitests;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CourtIQ;
+			};
+			name = Debug;
+		};
 		A000000000000000000002 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -607,6 +733,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		515D58A67B3C858B7779F0E7 /* Build configuration list for PBXNativeTarget "CourtIQUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55B1C5470381EFE152FB07AC /* Release */,
+				8C8DBC22961D54B7F4EA8F20 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A000000000000000000001 /* Build configuration list for PBXProject "CourtIQ" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

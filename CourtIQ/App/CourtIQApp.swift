@@ -18,6 +18,13 @@ struct CourtIQApp: App {
         CrashReporter.shared.start()
         Task { @MainActor in Haptics.warmUp() }
 
+        // App Store preview / UI-test only: populate sample data so the
+        // preview screenshots show populated screens. Launch-arg gated —
+        // never runs in normal use.
+        if ProcessInfo.processInfo.arguments.contains("-seedPreviewData") {
+            Task { @MainActor in Self.seedPreviewData() }
+        }
+
         // If the user previously authorized notifications, make sure the
         // daily reminder is re-scheduled (handles app upgrades / device
         // migrations where pending requests can be cleared).
@@ -27,6 +34,66 @@ struct CourtIQApp: App {
                NotificationManager.shared.dailyReminderEnabled {
                 NotificationManager.shared.scheduleDailyReminder()
             }
+        }
+    }
+
+    /// App Store preview / UI-test only (launch-arg gated): completes
+    /// onboarding + the health gate and seeds a realistic set of matches,
+    /// quiz history, and a Tennis Profile so the preview screenshots show
+    /// fully-populated screens. Idempotent.
+    @MainActor
+    static func seedPreviewData() {
+        UserSessionManager.shared.debugMarkOnboarded()
+        HealthAcknowledgment.recordAcceptance()
+
+        let mm = MatchEntryManager.shared
+        if mm.entries.isEmpty {
+            let cal = Calendar.current
+            let now = Date()
+            let rows: [(Int, Int, Int, Int, Int, MatchResult, String, MatchSurface, String)] = [
+                (-35, 2, 2, 2, 2, .lost, "Alex",   .hard,  "4-6, 3-6"),
+                (-28, 2, 3, 3, 2, .lost, "Jordan", .clay,  "5-7, 4-6"),
+                (-21, 3, 3, 3, 3, .won,  "Casey",  .hard,  "6-4, 4-6, 7-5"),
+                (-14, 3, 4, 4, 3, .won,  "Morgan", .grass, "6-3, 6-4"),
+                (-8,  4, 4, 4, 4, .won,  "Taylor", .hard,  "6-4, 6-4"),
+                (-3,  4, 5, 5, 5, .won,  "Sam",    .clay,  "6-2, 6-3"),
+                (-1,  5, 5, 5, 5, .won,  "Riley",  .hard,  "6-4, 6-2"),
+            ]
+            for (i, r) in rows.enumerated() {
+                let date = cal.date(byAdding: .day, value: r.0, to: now) ?? now
+                mm.save(MatchEntry(
+                    id: "preview-match-\(i)", date: date, opponentName: r.6, surface: r.7,
+                    result: r.5, score: r.8, serveRating: r.1, returnRating: r.2,
+                    movementRating: r.3, mentalRating: r.4,
+                    postMatchNotes: "Stayed patient and moved well.",
+                    takeaway: "Depth and patience won the big points",
+                    isQuickLog: i % 2 == 0, isDraft: false))
+            }
+            let dq = DailyQuizManager.shared
+            let quizzes: [(String, String, String, Int, Int, [String])] = [
+                ("preview-quiz-0", "Serve Patterns",  "Serve",  4, 5, ["forcing the second serve"]),
+                ("preview-quiz-1", "Return Depth",    "Return", 3, 5, ["floating the return"]),
+                ("preview-quiz-2", "Rally Tolerance", "Rally",  5, 5, []),
+            ]
+            for q in quizzes {
+                dq.recordCompletion(summary: QuizCompletionSummary(
+                    quizID: q.0, title: q.1, focusLabel: q.2, score: q.3,
+                    totalQuestions: q.4, mistakeTypes: q.5, tacticalBuckets: nil), isDaily: true)
+            }
+        }
+
+        // Tennis Profile — a solid club aggressive baseliner with serve + net
+        // as growth areas, so the preview profile screen reads richly.
+        let tps = TennisProfileStore.shared
+        if tps.profile == nil {
+            let answers = TennisProfileAnswers(
+                experience: .threeToTenYears, frequency: .twiceThrice, matchExperience: .leagueMatches,
+                levelSelf: .dependableDirected,
+                ratings: [.forehand: 4, .backhand: 4, .serve: 2, .ret: 3, .net: 2, .movement: 4],
+                pressure: .goForIt, want: .compete)
+            var profile = TennisProfile(answers: answers)
+            profile.adoptedGoals = profile.result.suggestedGoals
+            tps.save(profile)
         }
     }
 

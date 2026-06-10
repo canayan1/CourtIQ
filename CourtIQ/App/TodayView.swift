@@ -55,6 +55,7 @@ struct TodayView: View {
                 )
             }
             .buttonStyle(.plain)
+            .accessibilityIdentifier("todayTennisProfileCard")
         } else {
             NavigationLink {
                 TennisProfileQuestionnaireView()
