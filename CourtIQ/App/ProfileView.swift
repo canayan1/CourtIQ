@@ -60,9 +60,11 @@ struct ProfileView: View {
             }
         }
         .sheet(isPresented: $showAIPaywall) {
-            AICoachPaywallStub()
-                .environmentObject(lang)
-                .environmentObject(session)
+            NavigationStack {
+                PaywallView(source: "AICoach")
+                    .environmentObject(lang)
+                    .environmentObject(session)
+            }
         }
         .confirmationDialog(lang.t("profile.delete_title"), isPresented: $showDeleteConfirmation, titleVisibility: .visible) {
             Button(lang.t("common.delete"), role: .destructive) {

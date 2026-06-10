@@ -62,6 +62,12 @@ struct PaywallView: View {
         } message: {
             Text(errorMessage ?? "")
         }
+        .task {
+            // Re-load StoreKit products every time the paywall opens so a
+            // failed/cold initial load (or a just-accepted Paid Apps
+            // Agreement) doesn't leave the purchase buttons non-functional.
+            await session.subscriptionManager.loadOfferings()
+        }
     }
 
     private var header: some View {
