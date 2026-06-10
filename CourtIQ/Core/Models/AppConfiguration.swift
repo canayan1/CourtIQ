@@ -8,8 +8,8 @@ struct AppConfiguration {
     let supabaseURL: URL?
     let supabaseAnonKey: String?
     let revenueCatAPIKey: String?
-    let monthlyProductID: String
-    let yearlyProductID: String
+    let weeklyProductID: String
+    let annualProductID: String
     let premiumEntitlementID: String
     let deleteAccountFunctionName: String
     let aiChatFunctionName: String
@@ -23,8 +23,8 @@ struct AppConfiguration {
         supabaseURL = Self.urlValue(for: "COURTIQ_SUPABASE_URL", bundle: bundle)
         supabaseAnonKey = Self.stringValue(for: "COURTIQ_SUPABASE_ANON_KEY", bundle: bundle)?.nilIfBlank
         revenueCatAPIKey = Self.stringValue(for: "COURTIQ_REVENUECAT_API_KEY", bundle: bundle)?.nilIfBlank
-        monthlyProductID = Self.stringValue(for: "COURTIQ_MONTHLY_PRODUCT_ID", bundle: bundle) ?? "com.courtiq.premium.monthly"
-        yearlyProductID = Self.stringValue(for: "COURTIQ_YEARLY_PRODUCT_ID", bundle: bundle) ?? "com.courtiq.premium.yearly"
+        weeklyProductID = Self.stringValue(for: "COURTIQ_WEEKLY_PRODUCT_ID", bundle: bundle) ?? "com.courtiq.premium.weekly"
+        annualProductID = Self.stringValue(for: "COURTIQ_ANNUAL_PRODUCT_ID", bundle: bundle) ?? "com.courtiq.premium.annual"
         premiumEntitlementID = Self.stringValue(for: "COURTIQ_PREMIUM_ENTITLEMENT_ID", bundle: bundle) ?? "premium_all_access"
         deleteAccountFunctionName = Self.stringValue(for: "COURTIQ_DELETE_ACCOUNT_FUNCTION", bundle: bundle) ?? "delete-account"
         aiChatFunctionName = Self.stringValue(for: "COURTIQ_AI_CHAT_FUNCTION", bundle: bundle) ?? "ai-chat"

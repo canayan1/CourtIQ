@@ -266,15 +266,14 @@ final class SubscriptionManager: ObservableObject {
     @Published private(set) var offers: [SubscriptionOffer]
     @Published private(set) var integrationMode: BillingIntegrationMode
 
-    // Premium == the AI Coach. Everything else in CourtIQ is free, so
-    // these benefits describe the Coach itself, not a content bundle.
+    // Premium unlocks the whole app (hard-paywall model — no free tier).
     let premiumBenefits = [
-        "AI tennis coach you can chat with anytime",
-        "Knows your last 5 matches, ratings, and quiz mistake patterns",
-        "Suggests your drills, mobility flows, and training plans by name",
-        "Import your ChatGPT tennis chats so context carries over",
-        "Private — no third-party tracking",
-        "Up to 30 messages per day"
+        "Daily court-sense drills that train your tennis IQ",
+        "Unlimited scenario quizzes with detailed explanations",
+        "Your personal Tennis Profile + development goals",
+        "Match journal with progress insights and trends",
+        "Tennis-specific training plans + full mobility library",
+        "AI coach that remembers your matches and coaches to your goals"
     ]
 
     private let configuration: AppConfiguration
@@ -293,18 +292,18 @@ final class SubscriptionManager: ObservableObject {
         // `product.displayPrice`, which respects the user's storefront.
         self.offers = [
             SubscriptionOffer(
-                id: configuration.monthlyProductID,
-                title: "AI Coach — Monthly",
-                detail: "Billed monthly. Cancel anytime.",
-                priceDisplay: "—",
-                isFeatured: false
-            ),
-            SubscriptionOffer(
-                id: configuration.yearlyProductID,
-                title: "AI Coach — Annual",
-                detail: "Best value vs monthly.",
+                id: configuration.annualProductID,
+                title: "Annual",
+                detail: "3 days free, then billed yearly. Cancel anytime.",
                 priceDisplay: "—",
                 isFeatured: true
+            ),
+            SubscriptionOffer(
+                id: configuration.weeklyProductID,
+                title: "Weekly",
+                detail: "Billed weekly. Cancel anytime.",
+                priceDisplay: "—",
+                isFeatured: false
             )
         ]
         self.integrationMode = .productConfigurationMissing
@@ -334,13 +333,13 @@ final class SubscriptionManager: ObservableObject {
 
     func loadOfferings() async {
         do {
-            let products = try await Product.products(for: [configuration.monthlyProductID, configuration.yearlyProductID])
+            let products = try await Product.products(for: [configuration.weeklyProductID, configuration.annualProductID])
             productsByID = Dictionary(uniqueKeysWithValues: products.map { ($0.id, $0) })
             integrationMode = productsByID.isEmpty ? .productConfigurationMissing : .storeKitDirect
 
             offers = offers.map { offer in
                 guard let product = productsByID[offer.id] else { return offer }
-                let suffix = offer.id == configuration.yearlyProductID ? " / year" : " / month"
+                let suffix = offer.id == configuration.annualProductID ? " / year" : " / week"
                 return SubscriptionOffer(
                     id: offer.id,
                     title: offer.title,
@@ -359,7 +358,7 @@ final class SubscriptionManager: ObservableObject {
 
         for await result in Transaction.currentEntitlements {
             guard case .verified(let transaction) = result else { continue }
-            guard transaction.productID == configuration.monthlyProductID || transaction.productID == configuration.yearlyProductID else {
+            guard transaction.productID == configuration.weeklyProductID || transaction.productID == configuration.annualProductID else {
                 continue
             }
 
