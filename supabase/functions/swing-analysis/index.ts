@@ -18,6 +18,10 @@ const SWING_MODEL         = Deno.env.get("SWING_MODEL") ?? "claude-sonnet-4-6";
 const SUPABASE_URL        = Deno.env.get("SUPABASE_URL") ?? "";
 const SUPABASE_ANON_KEY   = Deno.env.get("SUPABASE_ANON_KEY") ?? "";
 
+// Hard usage caps (cost control for the Claude vision calls). Tunable via env.
+const DAILY_CAP   = Number(Deno.env.get("SWING_DAILY_CAP") ?? "3");
+const MONTHLY_CAP = Number(Deno.env.get("SWING_MONTHLY_CAP") ?? "30");
+
 const MAX_FRAMES = 10;
 const MAX_FRAME_BYTES = 1_600_000; // ~1.6MB base64 per frame
 
@@ -94,6 +98,23 @@ Deno.serve(async (req) => {
     }
   }
 
+  // Hard usage cap (cost control). RLS scopes the count to this user's own rows.
+  const now = new Date();
+  const dayStart = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate())).toISOString();
+  const monthStart = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1)).toISOString();
+  const { count: dayCount } = await supabase
+    .from("swing_analyses").select("id", { count: "exact", head: true })
+    .gte("created_at", dayStart);
+  if ((dayCount ?? 0) >= DAILY_CAP) {
+    return json({ error: `You've reached today's limit of ${DAILY_CAP} swing analyses. Come back tomorrow.` }, 429);
+  }
+  const { count: monthCount } = await supabase
+    .from("swing_analyses").select("id", { count: "exact", head: true })
+    .gte("created_at", monthStart);
+  if ((monthCount ?? 0) >= MONTHLY_CAP) {
+    return json({ error: `You've reached this month's limit of ${MONTHLY_CAP} swing analyses.` }, 429);
+  }
+
   // Build the vision message: frames in order, then the instruction.
   const content: unknown[] = frames.map((data, i) => ([
     { type: "text", text: `Frame ${i + 1} of ${frames.length}:` },
@@ -134,6 +155,9 @@ Deno.serve(async (req) => {
   if (!text) {
     return json({ error: "Empty analysis." }, 502);
   }
+
+  // Record successful usage against the cap (best-effort; RLS enforces own-row).
+  await supabase.from("swing_analyses").insert({ user_id: user.id });
 
   return json({ analysis: text, stroke, model: SWING_MODEL }, 200);
 });
