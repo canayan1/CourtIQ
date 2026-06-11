@@ -424,6 +424,16 @@ final class SubscriptionManager: ObservableObject {
             saveEntitlement()
             return
         }
+#if DEBUG
+        // On-device debug builds: skip the hard paywall so the app is usable for
+        // testing without a Sandbox purchase. Pass `-previewPaywall` to exercise
+        // the real paywall instead. (Release/App Store builds never hit this.)
+        if !previewArgs.contains("-previewPaywall") {
+            entitlementState = .premiumAllAccess
+            saveEntitlement()
+            return
+        }
+#endif
         var hasPremium = false
 
         for await result in Transaction.currentEntitlements {

@@ -33,8 +33,8 @@ struct SwingAnalysisCopy {
 
     var filmingTipTitle: String { t("How to film", "Nasıl çekilir") }
     var filmingTipBody: String {
-        t("Film from the side, 10–15 seconds, with your full body in frame.",
-          "Yandan çek, 10–15 saniye, tüm vücudun karede olsun.")
+        t("Film from the side, 6–10 seconds — one clean swing with your full body in frame, in good even light. A steady phone (lean it or use a tripod) reads best.",
+          "Yandan çek, 6–10 saniye — iyi ve eşit ışıkta, tüm vücudun karede, tek temiz vuruş. Sabit telefon (bir yere yasla ya da tripod) en iyi sonucu verir.")
     }
     var continueCTA: String { t("Continue", "Devam") }
 
@@ -42,8 +42,8 @@ struct SwingAnalysisCopy {
     var step2Kicker: String { t("Step 2 of 2", "Adım 2 / 2") }
     var captureTitle: String { t("Add your swing video", "Vuruş videonu ekle") }
     var captureSubtitle: String {
-        t("Record a new clip or choose one from your library. Keep it short — about 10–15 seconds.",
-          "Yeni bir klip çek ya da galerinden seç. Kısa tut — yaklaşık 10–15 saniye.")
+        t("Record a new clip or choose one from your library. Keep it short — about 6–10 seconds.",
+          "Yeni bir klip çek ya da galerinden seç. Kısa tut — yaklaşık 6–10 saniye.")
     }
     var recordCTA: String { t("Record a swing", "Vuruş çek") }
     var libraryCTA: String { t("Choose from library", "Galeriden seç") }
@@ -72,8 +72,8 @@ struct SwingAnalysisCopy {
           "Bu klibi analiz edemedik. Lütfen tekrar dene.")
     }
     var errorTooShort: String {
-        t("That clip was too short or unreadable. Try a 10–15 second video.",
-          "Bu klip çok kısa ya da okunamadı. 10–15 saniyelik bir video dene.")
+        t("That clip was too short or unreadable. Try a 6–10 second video.",
+          "Bu klip çok kısa ya da okunamadı. 6–10 saniyelik bir video dene.")
     }
     var errorConnect: String {
         t("We couldn't reach the analysis service. Check your connection and try again.",

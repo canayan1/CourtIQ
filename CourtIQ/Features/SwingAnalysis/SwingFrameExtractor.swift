@@ -9,14 +9,20 @@ enum SwingFrameExtractor {
     enum ExtractionError: LocalizedError {
         case unreadableVideo
         case notEnoughFrames
+        case tooLong
 
         var errorDescription: String? {
             switch self {
             case .unreadableVideo:  return "The video could not be read."
             case .notEnoughFrames:  return "Not enough frames could be extracted from the video."
+            case .tooLong:          return "Please use a clip under 20 seconds — a single swing is plenty."
             }
         }
     }
+
+    /// Hard cap on clip length. A single swing fits easily; longer clips spread
+    /// the sampled frames too thin and waste analysis on dead time.
+    static let maxDurationSeconds: Double = 21
 
     /// Target number of frames sampled across the clip. The edge function
     /// accepts 2–10; 8 gives the model a good motion sequence without bloating
@@ -34,6 +40,7 @@ enum SwingFrameExtractor {
 
         let duration = try await loadDurationSeconds(for: asset)
         guard duration > 0 else { throw ExtractionError.unreadableVideo }
+        guard duration <= maxDurationSeconds else { throw ExtractionError.tooLong }
 
         let generator = AVAssetImageGenerator(asset: asset)
         generator.appliesPreferredTrackTransform = true
