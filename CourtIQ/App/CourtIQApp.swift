@@ -87,11 +87,12 @@ struct CourtIQApp: App {
                 let date = cal.date(byAdding: .day, value: r.0, to: now) ?? now
                 mm.save(MatchEntry(
                     id: "preview-match-\(i)", date: date, opponentName: r.6, surface: r.7,
-                    result: r.5, score: r.8, serveRating: r.1, returnRating: r.2,
+                    status: .completed, result: r.5, score: r.8,
+                    serveRating: r.1, returnRating: r.2,
                     movementRating: r.3, mentalRating: r.4,
                     postMatchNotes: "Stayed patient and moved well.",
                     takeaway: "Depth and patience won the big points",
-                    isQuickLog: i % 2 == 0, isDraft: false))
+                    isDraft: false))
             }
             let dq = DailyQuizManager.shared
             let quizzes: [(String, String, String, Int, Int, [String])] = [

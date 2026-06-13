@@ -20,16 +20,16 @@ struct MatchLogTutorialView: View {
                     intro
 
                     modeCard(
-                        icon: "bolt.fill",
-                        tint: AppPalette.gold,
-                        title: lang.t("matches.tutorial.quick_title"),
-                        body: lang.t("matches.tutorial.quick_body")
+                        icon: "checkmark.seal.fill",
+                        tint: AppPalette.moss,
+                        title: lang.t("matches.tutorial.played_title"),
+                        body: lang.t("matches.tutorial.played_body")
                     )
                     modeCard(
-                        icon: "book.closed.fill",
+                        icon: "calendar.badge.clock",
                         tint: AppPalette.clay,
-                        title: lang.t("matches.tutorial.journal_title"),
-                        body: lang.t("matches.tutorial.journal_body")
+                        title: lang.t("matches.tutorial.upcoming_title"),
+                        body: lang.t("matches.tutorial.upcoming_body")
                     )
                     payoffCard
                 }

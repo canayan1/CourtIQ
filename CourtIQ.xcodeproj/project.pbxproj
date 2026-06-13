@@ -68,8 +68,16 @@
 		A000000000000000000111 /* MatchEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000110 /* MatchEntry.swift */; };
 		A000000000000000000113 /* MatchEntryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000112 /* MatchEntryManager.swift */; };
 		A000000000000000000115 /* MatchesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000114 /* MatchesListView.swift */; };
-		A000000000000000000117 /* QuickLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000116 /* QuickLogView.swift */; };
 		A000000000000000000119 /* MatchJournalEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000118 /* MatchJournalEntryView.swift */; };
+		A0000000000000000001B0 /* MatchAnalysisService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000001A0 /* MatchAnalysisService.swift */; };
+		A0000000000000000001B1 /* MatchAnalysisReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000001A1 /* MatchAnalysisReportView.swift */; };
+		A0000000000000000001B2 /* MatchAnalyzingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000001A2 /* MatchAnalyzingView.swift */; };
+		A0000000000000000001B3 /* MatchEntryFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000001A3 /* MatchEntryFlowView.swift */; };
+		A0000000000000000001B4 /* MatchFormComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000001A4 /* MatchFormComponents.swift */; };
+		A0000000000000000001B5 /* MatchUpcomingFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000001A5 /* MatchUpcomingFormView.swift */; };
+		A0000000000000000001B6 /* MatchPlayedFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000001A6 /* MatchPlayedFormView.swift */; };
+		A0000000000000000001B7 /* MatchAddResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000001A7 /* MatchAddResultView.swift */; };
+		A0000000000000000001B8 /* MatchDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000001A8 /* MatchDetailView.swift */; };
 		A00000000000000000011B /* LogStreakBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000011A /* LogStreakBadge.swift */; };
 		A00000000000000000011D /* MatchCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000011C /* MatchCalendarView.swift */; };
 		A00000000000000000011F /* MatchTrendDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000011E /* MatchTrendDashboardView.swift */; };
@@ -192,8 +200,16 @@
 		A000000000000000000110 /* MatchEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchEntry.swift; path = CourtIQ/Core/Models/MatchEntry.swift; sourceTree = "<group>"; };
 		A000000000000000000112 /* MatchEntryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchEntryManager.swift; path = CourtIQ/Core/Models/MatchEntryManager.swift; sourceTree = "<group>"; };
 		A000000000000000000114 /* MatchesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchesListView.swift; path = CourtIQ/Features/Matches/MatchesListView.swift; sourceTree = "<group>"; };
-		A000000000000000000116 /* QuickLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuickLogView.swift; path = CourtIQ/Features/Matches/QuickLogView.swift; sourceTree = "<group>"; };
 		A000000000000000000118 /* MatchJournalEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchJournalEntryView.swift; path = CourtIQ/Features/Matches/MatchJournalEntryView.swift; sourceTree = "<group>"; };
+		A0000000000000000001A0 /* MatchAnalysisService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchAnalysisService.swift; path = CourtIQ/Features/Matches/MatchAnalysisService.swift; sourceTree = "<group>"; };
+		A0000000000000000001A1 /* MatchAnalysisReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchAnalysisReportView.swift; path = CourtIQ/Features/Matches/MatchAnalysisReportView.swift; sourceTree = "<group>"; };
+		A0000000000000000001A2 /* MatchAnalyzingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchAnalyzingView.swift; path = CourtIQ/Features/Matches/MatchAnalyzingView.swift; sourceTree = "<group>"; };
+		A0000000000000000001A3 /* MatchEntryFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchEntryFlowView.swift; path = CourtIQ/Features/Matches/MatchEntryFlowView.swift; sourceTree = "<group>"; };
+		A0000000000000000001A4 /* MatchFormComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchFormComponents.swift; path = CourtIQ/Features/Matches/MatchFormComponents.swift; sourceTree = "<group>"; };
+		A0000000000000000001A5 /* MatchUpcomingFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchUpcomingFormView.swift; path = CourtIQ/Features/Matches/MatchUpcomingFormView.swift; sourceTree = "<group>"; };
+		A0000000000000000001A6 /* MatchPlayedFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchPlayedFormView.swift; path = CourtIQ/Features/Matches/MatchPlayedFormView.swift; sourceTree = "<group>"; };
+		A0000000000000000001A7 /* MatchAddResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchAddResultView.swift; path = CourtIQ/Features/Matches/MatchAddResultView.swift; sourceTree = "<group>"; };
+		A0000000000000000001A8 /* MatchDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchDetailView.swift; path = CourtIQ/Features/Matches/MatchDetailView.swift; sourceTree = "<group>"; };
 		A00000000000000000011A /* LogStreakBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LogStreakBadge.swift; path = CourtIQ/Features/Matches/LogStreakBadge.swift; sourceTree = "<group>"; };
 		A00000000000000000011C /* MatchCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchCalendarView.swift; path = CourtIQ/Features/Matches/MatchCalendarView.swift; sourceTree = "<group>"; };
 		A00000000000000000011E /* MatchTrendDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchTrendDashboardView.swift; path = CourtIQ/Features/Matches/MatchTrendDashboardView.swift; sourceTree = "<group>"; };
@@ -335,8 +351,16 @@
 				A000000000000000000112 /* MatchEntryManager.swift */,
 				A000000000000000000114 /* MatchesListView.swift */,
 				A00000000000000000019A /* MatchLogTutorialView.swift */,
-				A000000000000000000116 /* QuickLogView.swift */,
 				A000000000000000000118 /* MatchJournalEntryView.swift */,
+				A0000000000000000001A0 /* MatchAnalysisService.swift */,
+				A0000000000000000001A1 /* MatchAnalysisReportView.swift */,
+				A0000000000000000001A2 /* MatchAnalyzingView.swift */,
+				A0000000000000000001A3 /* MatchEntryFlowView.swift */,
+				A0000000000000000001A4 /* MatchFormComponents.swift */,
+				A0000000000000000001A5 /* MatchUpcomingFormView.swift */,
+				A0000000000000000001A6 /* MatchPlayedFormView.swift */,
+				A0000000000000000001A7 /* MatchAddResultView.swift */,
+				A0000000000000000001A8 /* MatchDetailView.swift */,
 				A00000000000000000011A /* LogStreakBadge.swift */,
 				A00000000000000000011C /* MatchCalendarView.swift */,
 				A00000000000000000011E /* MatchTrendDashboardView.swift */,
@@ -593,8 +617,16 @@
 				A000000000000000000113 /* MatchEntryManager.swift in Sources */,
 				A000000000000000000115 /* MatchesListView.swift in Sources */,
 				A00000000000000000019B /* MatchLogTutorialView.swift in Sources */,
-				A000000000000000000117 /* QuickLogView.swift in Sources */,
 				A000000000000000000119 /* MatchJournalEntryView.swift in Sources */,
+				A0000000000000000001B0 /* MatchAnalysisService.swift in Sources */,
+				A0000000000000000001B1 /* MatchAnalysisReportView.swift in Sources */,
+				A0000000000000000001B2 /* MatchAnalyzingView.swift in Sources */,
+				A0000000000000000001B3 /* MatchEntryFlowView.swift in Sources */,
+				A0000000000000000001B4 /* MatchFormComponents.swift in Sources */,
+				A0000000000000000001B5 /* MatchUpcomingFormView.swift in Sources */,
+				A0000000000000000001B6 /* MatchPlayedFormView.swift in Sources */,
+				A0000000000000000001B7 /* MatchAddResultView.swift in Sources */,
+				A0000000000000000001B8 /* MatchDetailView.swift in Sources */,
 				A00000000000000000011B /* LogStreakBadge.swift in Sources */,
 				A00000000000000000011D /* MatchCalendarView.swift in Sources */,
 				A00000000000000000011F /* MatchTrendDashboardView.swift in Sources */,

@@ -535,6 +535,42 @@
 "matches.view_calendar" = "Match calendar";
 "matches.dim_no_data" = "No ratings yet";
 
+/* ── Match log: pre/post flow (v1.2) ── */
+"matches.flow_choose_title" = "Is this match already played, or coming up?";
+"matches.flow_played" = "Already played";
+"matches.flow_played_sub" = "Log the result, your ratings, and get an AI breakdown.";
+"matches.flow_upcoming" = "Coming up";
+"matches.flow_upcoming_sub" = "Plan ahead. Add the result after you play.";
+"matches.had_plan_question" = "Did you have a plan before the match?";
+"matches.upcoming_title" = "Upcoming match";
+"matches.upcoming_badge" = "Upcoming";
+"matches.add_result_cta" = "Add result";
+"matches.add_result_title" = "Add your result";
+"common.yes" = "Yes";
+"common.no" = "No";
+"matches.tutorial.played_title" = "Played a match — log it";
+"matches.tutorial.played_body" = "Add the result, your self-ratings, and a few notes. You'll get an AI breakdown of how it went and what to work on.";
+"matches.tutorial.upcoming_title" = "Match coming up — plan it";
+"matches.tutorial.upcoming_body" = "Jot a tactical plan before you play. Optionally let AI react to it. We'll remind you to add the result afterward.";
+
+/* AI match analysis */
+"matches.ai_comment_plan_cta" = "Have AI comment on my plan";
+"matches.ai_pre_title" = "AI on your plan";
+"matches.ai_pre_analyzing_title" = "Reviewing your plan";
+"matches.ai_report_title" = "AI match analysis";
+"matches.ai_report_analyzing_title" = "Analyzing your match";
+"matches.ai_failed" = "Couldn't reach the AI just now. You can save and try later.";
+"matches.ai_failed_title" = "Couldn't generate the report";
+"matches.ai_failed_body" = "Your match is saved. The AI was unreachable — tap retry to generate the analysis.";
+"matches.ai_retry" = "Retry analysis";
+"matches.ai_step_reading_plan" = "Reading your tactical plan";
+"matches.ai_step_opponent" = "Weighing the matchup";
+"matches.ai_step_tactics" = "Pressure-testing the tactics";
+"matches.ai_step_reading_match" = "Reading your match notes";
+"matches.ai_step_ratings" = "Cross-checking your self-ratings";
+"matches.ai_step_patterns" = "Spotting patterns vs your history";
+"matches.ai_step_writing" = "Writing your coaching notes";
+
 /* ── Daily Court Tap Drill ── */
 "drill.card_kicker" = "Daily drill";
 "drill.card_title" = "Read the court. Tap the smartest shot.";
@@ -658,6 +694,8 @@
 /* ── Match-log nudge + weekly digest (v1.1.C) ── */
 "notif.match_log.title" = "Played today?";
 "notif.match_log.body" = "Spend 30 seconds logging your match while it's fresh.";
+"notif.match_result.title" = "How did your match go?";
+"notif.match_result.body" = "How did your match vs %@ go? Add the result.";
 "notif.weekly.title" = "Last week of tennis";
 "notif.weekly.body" = "Your trends just refreshed — open CourtIQ to see what moved.";
 

@@ -11,10 +11,9 @@ import SwiftUI
 struct MatchesListView: View {
     @EnvironmentObject private var matches: MatchEntryManager
     @EnvironmentObject private var lang: LanguageManager
+    @EnvironmentObject private var session: UserSessionManager
 
-    @State private var showingComposerChoice = false
-    @State private var openQuickLog = false
-    @State private var openJournal = false
+    @State private var openNewEntry = false
     @State private var showTutorial = false
 
     /// One-shot flag so the tutorial auto-presents only on the first visit
@@ -54,7 +53,7 @@ struct MatchesListView: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     Haptics.tap()
-                    showingComposerChoice = true
+                    openNewEntry = true
                 } label: {
                     Image(systemName: "plus.circle.fill")
                         .font(.title2)
@@ -76,27 +75,12 @@ struct MatchesListView: View {
             MatchLogTutorialView()
                 .environmentObject(lang)
         }
-        .confirmationDialog(
-            lang.t("matches.choose_type"),
-            isPresented: $showingComposerChoice,
-            titleVisibility: .visible
-        ) {
-            Button(lang.t("matches.quick_log")) { openQuickLog = true }
-            Button(lang.t("matches.full_journal")) { openJournal = true }
-            Button(lang.t("common.cancel"), role: .cancel) {}
-        }
-        .sheet(isPresented: $openQuickLog) {
+        .sheet(isPresented: $openNewEntry) {
             NavigationStack {
-                QuickLogView()
+                MatchEntryFlowView()
                     .environmentObject(matches)
                     .environmentObject(lang)
-            }
-        }
-        .sheet(isPresented: $openJournal) {
-            NavigationStack {
-                MatchJournalEntryView(entry: nil)
-                    .environmentObject(matches)
-                    .environmentObject(lang)
+                    .environmentObject(session)
             }
         }
     }
@@ -170,9 +154,10 @@ struct MatchesListView: View {
         VStack(spacing: 10) {
             ForEach(matches.entries) { entry in
                 NavigationLink {
-                    MatchJournalEntryView(entry: entry)
+                    MatchDetailView(entryID: entry.id)
                         .environmentObject(matches)
                         .environmentObject(lang)
+                        .environmentObject(session)
                 } label: {
                     entryRow(entry)
                 }
@@ -202,8 +187,10 @@ struct MatchesListView: View {
 
                     if entry.isDraft {
                         draftBadge
-                    } else {
-                        resultBadge(for: entry.result)
+                    } else if entry.status == .upcoming {
+                        upcomingBadge
+                    } else if let result = entry.result {
+                        resultBadge(for: result)
                     }
                 }
 
@@ -214,10 +201,10 @@ struct MatchesListView: View {
 
             Spacer()
 
-            if entry.isQuickLog {
-                Image(systemName: "bolt.fill")
+            if entry.aiReport != nil || entry.aiPreComment != nil {
+                Image(systemName: "sparkles")
                     .font(.caption.weight(.bold))
-                    .foregroundStyle(AppPalette.gold)
+                    .foregroundStyle(AppPalette.clay)
             }
 
             Image(systemName: "chevron.right")
@@ -242,6 +229,18 @@ struct MatchesListView: View {
     /// it for editing; the user can finish (Save) or delete it.
     private var draftBadge: some View {
         Text(lang.t("matches.draft_badge"))
+            .font(.system(size: 9, weight: .heavy, design: .rounded))
+            .textCase(.uppercase)
+            .tracking(0.5)
+            .foregroundStyle(AppPalette.clay)
+            .padding(.horizontal, 7)
+            .padding(.vertical, 3)
+            .background(Capsule().fill(AppPalette.clay.opacity(0.14)))
+    }
+
+    /// Pill marking a planned, not-yet-played match.
+    private var upcomingBadge: some View {
+        Text(lang.t("matches.upcoming_badge"))
             .font(.system(size: 9, weight: .heavy, design: .rounded))
             .textCase(.uppercase)
             .tracking(0.5)
@@ -304,7 +303,7 @@ struct MatchesListView: View {
 
             Button {
                 Haptics.tap()
-                showingComposerChoice = true
+                openNewEntry = true
             } label: {
                 Label(lang.t("matches.first_log_cta"), systemImage: "plus")
                     .font(.system(size: 16, weight: .bold, design: .rounded))

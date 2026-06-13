@@ -638,7 +638,9 @@ struct MatchTrendDashboardView: View {
         let monthsBack = 6
 
         var dict: [Date: Int] = [:]
-        for entry in matches.entries {
+        // Count only played matches — upcoming (planned) entries sit in the
+        // future and would inflate a month that hasn't happened yet.
+        for entry in matches.entries where entry.status == .completed && !entry.isDraft {
             let comps = calendar.dateComponents([.year, .month], from: entry.date)
             if let bucketDate = calendar.date(from: comps) {
                 dict[bucketDate, default: 0] += 1

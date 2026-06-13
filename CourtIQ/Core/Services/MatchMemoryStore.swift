@@ -78,8 +78,11 @@ final class MatchMemoryStore: ObservableObject {
     /// been folded into the summary. `committed` MUST be the non-draft
     /// entries sorted newest-first.
     func pendingOlderMatches(committed: [MatchEntry]) -> [MatchEntry] {
-        guard committed.count > Self.recentWindowSize else { return [] }
-        let older = committed[Self.recentWindowSize...]
+        // Only completed (played) matches feed the Coach's long-term memory;
+        // upcoming/planned entries carry no result to reason over.
+        let played = committed.filter { $0.status == .completed && $0.result != nil }
+        guard played.count > Self.recentWindowSize else { return [] }
+        let older = played[Self.recentWindowSize...]
         return older.filter { !compactedMatchIDs.contains($0.id) }
     }
 
@@ -108,7 +111,10 @@ final class MatchMemoryStore: ObservableObject {
     private static func renderMatch(_ e: MatchEntry) -> String {
         var lines: [String] = []
         let day = MatchEntry.dayKeyFormatter.string(from: e.date)
-        var header = "\(day) — \(e.result.rawValue) on \(e.surface.rawValue)"
+        // Upcoming matches have no result yet; render the status instead so
+        // the summary never claims an unplayed match was won/lost.
+        let outcome = e.result?.rawValue ?? "upcoming"
+        var header = "\(day) — \(outcome) on \(e.surface.rawValue)"
         if !e.score.trimmingCharacters(in: .whitespaces).isEmpty {
             header += " (\(e.score))"
         }

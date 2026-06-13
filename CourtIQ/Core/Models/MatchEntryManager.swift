@@ -62,6 +62,10 @@ final class MatchEntryManager: ObservableObject {
             ])
             MatchMediaStore.removeAllPhotos(forEntry: doomed.id)
         }
+        // Drop any pending "add your result" reminder for this match.
+        Task { @MainActor in
+            NotificationManager.shared.cancelUpcomingMatchResultReminder(entryID: id)
+        }
         entries.removeAll { $0.id == id }
         persist()
     }
@@ -86,12 +90,23 @@ final class MatchEntryManager: ObservableObject {
     /// editing or deletion.
     private var committed: [MatchEntry] { entries.filter { !$0.isDraft } }
 
+    /// Completed (played) non-draft matches that carry an actual result.
+    /// This is the basis for every W/L / win-rate / streak / rating
+    /// aggregate — upcoming (planned) matches are intentionally excluded so
+    /// an unplayed match never skews real statistics.
+    private var played: [MatchEntry] {
+        committed.filter { $0.status == .completed && $0.result != nil }
+    }
+
     /// Drafts only — used by the list to render a "resume / delete" row.
     var drafts: [MatchEntry] { entries.filter(\.isDraft) }
 
+    /// Upcoming (planned) non-draft matches, newest-first.
+    var upcoming: [MatchEntry] {
+        committed.filter { $0.status == .upcoming }
+    }
+
     var totalEntries: Int { committed.count }
-    var quickLogCount: Int { committed.filter(\.isQuickLog).count }
-    var journalCount: Int { committed.filter { !$0.isQuickLog }.count }
 
     /// True once the user has 5+ entries with ratings — used to unlock the
     /// trend dashboard.
@@ -201,8 +216,8 @@ final class MatchEntryManager: ObservableObject {
     }
 
     var winRateSummary: WinRateSummary {
-        let wins = committed.filter { $0.result == .won }.count
-        let losses = committed.filter { $0.result == .lost }.count
+        let wins = played.filter { $0.result == .won }.count
+        let losses = played.filter { $0.result == .lost }.count
         return WinRateSummary(wins: wins, losses: losses)
     }
 
@@ -222,7 +237,7 @@ final class MatchEntryManager: ObservableObject {
 
     var surfaceBreakdown: [SurfaceBreakdown] {
         MatchSurface.allCases.map { surface in
-            let group = committed.filter { $0.surface == surface }
+            let group = played.filter { $0.surface == surface }
             let wins = group.filter { $0.result == .won }.count
             let losses = group.filter { $0.result == .lost }.count
             return SurfaceBreakdown(surface: surface, wins: wins, losses: losses)

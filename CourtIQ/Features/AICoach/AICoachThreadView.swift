@@ -343,14 +343,19 @@ struct AICoachThreadView: View {
         // in-progress draft defaults to won/hard and would mislead it.
         // The newest `recentWindowSize` go verbatim WITH notes; older ones
         // are represented by the rolling `matchMemory` summary instead.
-        let committed = matches.entries.filter { !$0.isDraft }
+        // Only completed (played) matches with a result feed the Coach — an
+        // in-progress draft defaults to won/hard, and an upcoming match has
+        // no result yet; either would mislead it.
+        let committed = matches.entries.filter {
+            !$0.isDraft && $0.status == .completed && $0.result != nil
+        }
         let recentMatches: [AIChatContextPayload.MatchPayload] = committed
             .prefix(MatchMemoryStore.recentWindowSize)
             .map { entry in
                 AIChatContextPayload.MatchPayload(
                     date: Self.dayKeyFormatter.string(from: entry.date),
                     opponentName: entry.opponentName.nilIfEmptyTrimmed,
-                    result: entry.result.rawValue,
+                    result: (entry.result ?? .won).rawValue,
                     score: entry.score.nilIfEmptyTrimmed,
                     surface: entry.surface.rawValue,
                     ratings: AIChatContextPayload.RatingsPayload(

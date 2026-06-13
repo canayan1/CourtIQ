@@ -64,6 +64,10 @@ struct MatchJournalEntryView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
+                if let report = entry?.aiReport?.trimmingCharacters(in: .whitespacesAndNewlines),
+                   !report.isEmpty {
+                    MatchAnalysisCard(title: lang.t("matches.ai_report_title"), report: report)
+                }
                 metaBlock
                 preMatchBlock
                 postMatchBlock
@@ -693,6 +697,8 @@ struct MatchJournalEntryView: View {
             date: date,
             opponentName: opponentName.trimmingCharacters(in: .whitespacesAndNewlines),
             surface: surface,
+            // This editor only ever edits already-completed matches.
+            status: .completed,
             result: result,
             score: score.trimmingCharacters(in: .whitespacesAndNewlines),
             serveRating: entry?.serveRating,
@@ -705,6 +711,10 @@ struct MatchJournalEntryView: View {
             preMatchAudioFile: preMatchAudioFile,
             postMatchAudioFile: postMatchAudioFile,
             photoFileNames: photoFileNames,
+            // Preserve AI fields so editing notes never discards a report.
+            aiPreComment: entry?.aiPreComment,
+            aiReport: entry?.aiReport,
+            hadPlan: entry?.hadPlan,
             isQuickLog: false,
             isDraft: asDraft
         )
@@ -740,7 +750,7 @@ struct MatchJournalEntryView: View {
         date = entry.date
         opponentName = entry.opponentName
         surface = entry.surface
-        result = entry.result
+        result = entry.result ?? .won
         score = entry.score
         preMatchNotes = entry.preMatchNotes
         postMatchNotes = entry.postMatchNotes

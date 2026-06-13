@@ -535,6 +535,42 @@
 "matches.view_calendar" = "Maç takvimi";
 "matches.dim_no_data" = "Henüz puan yok";
 
+/* ── Maç günlüğü: maç öncesi/sonrası akış (v1.2) ── */
+"matches.flow_choose_title" = "Bu maç oynandı mı, yoksa yaklaşıyor mu?";
+"matches.flow_played" = "Oynandı";
+"matches.flow_played_sub" = "Sonucu ve puanlarını gir, AI analizi al.";
+"matches.flow_upcoming" = "Yaklaşıyor";
+"matches.flow_upcoming_sub" = "Önceden planla. Maçtan sonra sonucu ekle.";
+"matches.had_plan_question" = "Maçtan önce bir planın var mıydı?";
+"matches.upcoming_title" = "Yaklaşan maç";
+"matches.upcoming_badge" = "Yaklaşan";
+"matches.add_result_cta" = "Sonucu ekle";
+"matches.add_result_title" = "Sonucunu ekle";
+"common.yes" = "Evet";
+"common.no" = "Hayır";
+"matches.tutorial.played_title" = "Maç oynadın — logla";
+"matches.tutorial.played_body" = "Sonucu, öz puanlarını ve birkaç not ekle. Maçın nasıl geçtiğine ve neye çalışman gerektiğine dair AI analizi al.";
+"matches.tutorial.upcoming_title" = "Yaklaşan maç — planla";
+"matches.tutorial.upcoming_body" = "Oynamadan önce taktik planını yaz. İstersen AI yorum yapsın. Sonrasında sonucu eklemen için hatırlatırız.";
+
+/* AI maç analizi */
+"matches.ai_comment_plan_cta" = "AI planımı yorumlasın";
+"matches.ai_pre_title" = "AI planın hakkında";
+"matches.ai_pre_analyzing_title" = "Planın inceleniyor";
+"matches.ai_report_title" = "AI maç analizi";
+"matches.ai_report_analyzing_title" = "Maçın analiz ediliyor";
+"matches.ai_failed" = "Şu an AI'a ulaşılamadı. Kaydedip sonra deneyebilirsin.";
+"matches.ai_failed_title" = "Rapor oluşturulamadı";
+"matches.ai_failed_body" = "Maçın kaydedildi. AI'a ulaşılamadı — analizi oluşturmak için tekrar dene.";
+"matches.ai_retry" = "Analizi tekrar dene";
+"matches.ai_step_reading_plan" = "Taktik planın okunuyor";
+"matches.ai_step_opponent" = "Eşleşme değerlendiriliyor";
+"matches.ai_step_tactics" = "Taktikler sınanıyor";
+"matches.ai_step_reading_match" = "Maç notların okunuyor";
+"matches.ai_step_ratings" = "Öz puanların karşılaştırılıyor";
+"matches.ai_step_patterns" = "Geçmişine göre örüntüler aranıyor";
+"matches.ai_step_writing" = "Koçluk notların yazılıyor";
+
 /* ── Günlük Kort Tap Drill ── */
 "drill.card_kicker" = "Günlük drill";
 "drill.card_title" = "Kortu oku. En akıllı vuruşa dokun.";
@@ -658,6 +694,8 @@
 /* ── Match-log nudge + weekly digest (v1.1.C) ── */
 "notif.match_log.title" = "Bugün oynadın mı?";
 "notif.match_log.body" = "Maç tazeyken 30 saniye ayırıp logla.";
+"notif.match_result.title" = "Maçın nasıl geçti?";
+"notif.match_result.body" = "%@ ile maçın nasıl geçti? Sonucu ekle.";
 "notif.weekly.title" = "Geçen tenis haftası";
 "notif.weekly.body" = "Trend grafiğin tazelendi — neyin değiştiğini gör.";
 

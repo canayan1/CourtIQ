@@ -15,6 +15,10 @@ final class NotificationManager: ObservableObject {
         static let dailyReminder = "courtiq.daily_reminder"
         static let matchLogNudge = "courtiq.match_log_nudge"     // v1.1.C
         static let weeklyDigest = "courtiq.weekly_digest"        // v1.1.C
+        /// Prefix for one-shot "add your result" reminders tied to a
+        /// specific upcoming match. The full id appends the entry's id so
+        /// each scheduled match has its own cancellable request.
+        static let upcomingMatchResultPrefix = "courtiq.match_result." // v1.2
     }
 
     private enum DefaultsKey {
@@ -187,6 +191,70 @@ final class NotificationManager: ObservableObject {
         UNUserNotificationCenter.current()
             .removePendingNotificationRequests(withIdentifiers: [RequestID.matchLogNudge])
         UserDefaults.standard.set(false, forKey: DefaultsKey.matchLogEnabled)
+    }
+
+    // MARK: - Upcoming-match result reminder (v1.2)
+
+    /// Schedule a one-shot reminder ~`hoursAfter` hours after an upcoming
+    /// match starts, nudging the user to come back and add the result.
+    /// Best-effort: requests permission if still undetermined, no-ops if the
+    /// fire time is already in the past. The request id embeds the entry id
+    /// so it can be individually cancelled when the match is completed or
+    /// deleted.
+    func scheduleUpcomingMatchResultReminder(
+        entryID: String,
+        opponentName: String,
+        matchDate: Date,
+        hoursAfter: Double = 3
+    ) {
+        let fireDate = matchDate.addingTimeInterval(hoursAfter * 3600)
+        guard fireDate > Date() else { return }
+
+        Task {
+            // Only schedule if we have (or can get) permission. We don't
+            // force a prompt here beyond what the app already asked for.
+            await refreshAuthorizationStatus()
+            guard authorizationStatus == .authorized
+                    || authorizationStatus == .provisional
+                    || authorizationStatus == .ephemeral else { return }
+
+            let center = UNUserNotificationCenter.current()
+            let content = UNMutableNotificationContent()
+            content.title = LanguageManager.shared.t("notif.match_result.title")
+            let opp = opponentName.trimmingCharacters(in: .whitespacesAndNewlines)
+            let body = LanguageManager.shared.t("notif.match_result.body")
+            content.body = opp.isEmpty
+                ? body.replacingOccurrences(of: "%@", with: LanguageManager.shared.t("matches.unknown_opponent"))
+                : body.replacingOccurrences(of: "%@", with: opp)
+            content.sound = .default
+            content.threadIdentifier = "courtiq.match_result"
+
+            let comps = Calendar.current.dateComponents(
+                [.year, .month, .day, .hour, .minute], from: fireDate
+            )
+            let trigger = UNCalendarNotificationTrigger(dateMatching: comps, repeats: false)
+            let request = UNNotificationRequest(
+                identifier: RequestID.upcomingMatchResultPrefix + entryID,
+                content: content,
+                trigger: trigger
+            )
+            center.add(request) { error in
+                if let error {
+                    #if DEBUG
+                    print("[NotificationManager] match-result schedule failed: \(error)")
+                    #endif
+                }
+            }
+        }
+    }
+
+    /// Cancel a previously scheduled "add result" reminder (match completed
+    /// or deleted). Safe no-op if none pending.
+    func cancelUpcomingMatchResultReminder(entryID: String) {
+        UNUserNotificationCenter.current()
+            .removePendingNotificationRequests(
+                withIdentifiers: [RequestID.upcomingMatchResultPrefix + entryID]
+            )
     }
 
     // MARK: - Weekly digest (v1.1.C)
