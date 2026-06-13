@@ -1,13 +1,10 @@
 import Foundation
+import AVFoundation
 
-/// Calls the `swing-analysis` Supabase edge function. Extracts frames from the
-/// chosen clip, attaches the caller's Supabase JWT, POSTs the frames, and
-/// returns the AI coaching text (or throws on an `{error}` / HTTP failure).
-///
-/// Mirrors the AI Coach networking contract exactly: same `apikey` +
-/// `Authorization: Bearer <accessToken>` headers and the same
-/// `functions/v1/<name>` endpoint shape as `AppConfiguration`'s function
-/// requests.
+/// Calls the `swing-analysis` Supabase edge function. Compresses the chosen clip
+/// to 720p, attaches the caller's Supabase JWT, POSTs the video (which the
+/// function sends to Gemini for native video understanding), and returns the AI
+/// coaching text (or throws on an `{error}` / HTTP failure).
 @MainActor
 final class SwingAnalysisService {
 
@@ -19,20 +16,23 @@ final class SwingAnalysisService {
         self.urlSession = urlSession
     }
 
-    /// Function path component. Overridable via Info.plist for parity with the
-    /// other configurable function names, defaulting to "swing-analysis".
     private var functionName: String {
         (Bundle.main.object(forInfoDictionaryKey: "COURTIQ_SWING_ANALYSIS_FUNCTION") as? String)?
             .trimmingCharacters(in: .whitespacesAndNewlines)
             .nonEmpty ?? "swing-analysis"
     }
 
+    /// Inline-data requests to Gemini cap around 20MB; keep the encoded video
+    /// safely under that. Longer/larger clips should be shortened.
+    private static let maxBase64Bytes = 19_000_000
+
     // MARK: - Request / response shapes
 
     private struct Request: Encodable {
         let stroke: String
         let handedness: String?
-        let frames: [String]
+        let video: String       // base64 mp4 (no data: prefix)
+        let mimeType: String
     }
 
     private struct Response: Decodable {
@@ -42,19 +42,31 @@ final class SwingAnalysisService {
         let error: String?
     }
 
+    enum PrepError: LocalizedError {
+        case couldNotPrepare
+        case tooLarge
+        var errorDescription: String? {
+            switch self {
+            case .couldNotPrepare: return "The video could not be read."
+            case .tooLarge:        return "That clip is too large — try a shorter one."
+            }
+        }
+    }
+
     // MARK: - Public API
 
-    /// Extracts frames from `videoURL`, calls the edge function with the given
+    /// Compresses `videoURL` to 720p, calls the edge function with the given
     /// `stroke` (+ optional `handedness`) and `session` JWT, and returns the
-    /// analysis text. Throws `RemoteDataError` on configuration / HTTP / server
-    /// errors, or `SwingFrameExtractor.ExtractionError` if the clip is unusable.
+    /// analysis text. Throws `RemoteDataError` / `PrepError` on failures.
     func analyze(
         videoURL: URL,
         stroke: SwingStroke,
         handedness: SwingHandedness?,
         session: SupabaseSession
     ) async throws -> String {
-        let frames = try await SwingFrameExtractor.extractFrames(from: videoURL)
+        let videoData = try await Self.compressedVideoData(from: videoURL)
+        let base64 = videoData.base64EncodedString()
+        guard base64.count <= Self.maxBase64Bytes else { throw PrepError.tooLarge }
 
         guard let baseURL = configuration.supabaseURL else {
             throw RemoteDataError.missingConfiguration
@@ -72,7 +84,8 @@ final class SwingAnalysisService {
         let payload = Request(
             stroke: stroke.rawValue,
             handedness: handedness?.rawValue,
-            frames: frames
+            video: base64,
+            mimeType: "video/mp4"
         )
         request.httpBody = try JSONEncoder().encode(payload)
 
@@ -81,28 +94,47 @@ final class SwingAnalysisService {
             throw RemoteDataError.invalidResponse
         }
 
-        // Try to decode the structured body for both success and error cases —
-        // the function returns `{error}` with a non-2xx status in most paths.
         let decoded = try? JSONDecoder().decode(Response.self, from: data)
 
         switch http.statusCode {
         case 200..<300:
-            if let analysis = decoded?.analysis?.nonEmpty {
-                return analysis
-            }
-            if let serverError = decoded?.error?.nonEmpty {
-                throw RemoteDataError.message(serverError)
-            }
+            if let analysis = decoded?.analysis?.nonEmpty { return analysis }
+            if let serverError = decoded?.error?.nonEmpty { throw RemoteDataError.message(serverError) }
             throw RemoteDataError.invalidResponse
         case 401, 403:
             throw RemoteDataError.unauthorized
         default:
-            if let serverError = decoded?.error?.nonEmpty {
-                throw RemoteDataError.message(serverError)
-            }
+            if let serverError = decoded?.error?.nonEmpty { throw RemoteDataError.message(serverError) }
             throw RemoteDataError.message(
                 HTTPURLResponse.localizedString(forStatusCode: http.statusCode)
             )
+        }
+    }
+
+    // MARK: - Compression
+
+    /// Exports the clip to a 720p MP4 to keep the upload small. Falls back to the
+    /// original bytes if an export session can't be created.
+    private static func compressedVideoData(from url: URL) async throws -> Data {
+        let asset = AVURLAsset(url: url)
+        guard let export = AVAssetExportSession(asset: asset, presetName: AVAssetExportPreset1280x720) else {
+            return try Data(contentsOf: url)
+        }
+        let outURL = FileManager.default.temporaryDirectory
+            .appendingPathComponent(UUID().uuidString + ".mp4")
+        export.outputURL = outURL
+        export.outputFileType = .mp4
+        export.shouldOptimizeForNetworkUse = true
+
+        return try await withCheckedThrowingContinuation { continuation in
+            export.exportAsynchronously {
+                defer { try? FileManager.default.removeItem(at: outURL) }
+                if export.status == .completed, let data = try? Data(contentsOf: outURL) {
+                    continuation.resume(returning: data)
+                } else {
+                    continuation.resume(throwing: export.error ?? PrepError.couldNotPrepare)
+                }
+            }
         }
     }
 }

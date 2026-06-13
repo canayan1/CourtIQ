@@ -1,29 +1,30 @@
-// swing-analysis — DropVolley AI swing analysis.
+// swing-analysis — DropVolley AI swing & footwork analysis (Google Gemini).
 //
-// Receives a handful of JPEG frames sampled from a short swing video and asks
-// Claude (vision) to coach the player's stroke technique. Mirrors the ai-chat
-// function's auth (Supabase JWT) + Anthropic call. Off until the user opts in
-// (the client gates on an explicit consent screen disclosing that frames are
-// sent to Anthropic).
+// Receives a short swing/footwork video and asks Gemini (native video
+// understanding) to coach the player's technique or movement. Mirrors the
+// ai-chat auth (Supabase JWT) + the swing_analyses usage cap. Off until the
+// user opts in (the client gates on an explicit consent screen).
 //
-// Body: { stroke: "forehand"|"backhand"|"serve"|"volley", handedness?: "right"|"left",
-//         frames: string[] (base64 JPEG, no data: prefix) }
+// Body: { stroke: "forehand"|"backhand"|"serve"|"volley"|"footwork",
+//         handedness?: "right"|"left",
+//         video: <base64 (no data: prefix)>, mimeType: "video/mp4" }
 // Auth: Bearer <Supabase JWT> (Authorization header)
 
 import { createClient } from "jsr:@supabase/supabase-js@2";
 
-const ANTHROPIC_API_KEY   = Deno.env.get("ANTHROPIC_API_KEY") ?? "";
-// Vision analysis benefits from a stronger model than the chat coach; tunable.
-const SWING_MODEL         = Deno.env.get("SWING_MODEL") ?? "claude-sonnet-4-6";
-const SUPABASE_URL        = Deno.env.get("SUPABASE_URL") ?? "";
-const SUPABASE_ANON_KEY   = Deno.env.get("SUPABASE_ANON_KEY") ?? "";
+const GEMINI_API_KEY = Deno.env.get("GEMINI_API_KEY") ?? "";
+// Gemini handles video natively; flash is fast + cheap, pro is stronger. Tunable.
+const GEMINI_MODEL   = Deno.env.get("SWING_GEMINI_MODEL") ?? "gemini-2.5-flash";
+const SUPABASE_URL      = Deno.env.get("SUPABASE_URL") ?? "";
+const SUPABASE_ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY") ?? "";
 
-// Hard usage caps (cost control for the Claude vision calls). Tunable via env.
+// Hard usage caps (cost control). Tunable via env.
 const DAILY_CAP   = Number(Deno.env.get("SWING_DAILY_CAP") ?? "3");
 const MONTHLY_CAP = Number(Deno.env.get("SWING_MONTHLY_CAP") ?? "30");
 
-const MAX_FRAMES = 10;
-const MAX_FRAME_BYTES = 1_600_000; // ~1.6MB base64 per frame
+// Gemini inline-data requests cap at ~20MB total. The client compresses to
+// 720p; this guards the request from overflowing inline limits.
+const MAX_VIDEO_B64 = 20_000_000;
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -39,29 +40,29 @@ const STROKES: Record<string, string> = {
   footwork: "footwork and on-court movement",
 };
 
-function systemPrompt(stroke: string, handedness: string | null, frameCount: number): string {
+function systemPrompt(stroke: string, handedness: string | null): string {
   const hand = handedness ? `The player is ${handedness}-handed. ` : "";
   if (stroke === "footwork") {
     return [
       "You are an expert, encouraging tennis coach giving a player feedback on their FOOTWORK and on-court movement.",
-      `You are shown ${frameCount} still frames sampled in time order from a wider video of the player moving and hitting on court. ${hand}`,
-      "Analyze ONLY what you can actually see across the frames — split-step timing, first-step explosiveness and direction, distance and spacing to the ball, base and stance width, balance through the shot, and recovery back toward the middle of the court.",
-      "Then give feedback in this structure with short bold headers:",
+      `You are shown a short video of the player moving and hitting on court. ${hand}`,
+      "Analyze ONLY what you can actually see — split-step timing, first-step explosiveness and direction, distance and spacing to the ball, base and stance width, balance through the shot, and recovery back toward the middle of the court.",
+      "Give feedback in this structure with short bold headers:",
       "• **What's working** — 2-3 specific strengths you can see.",
       "• **Top fixes** — 2-3 prioritized improvements, each with a concrete cue or a quick footwork drill.",
       "• **One thing to try next session** — a single focus.",
-      "Rules: Be specific and honest but constructive and motivating. If the angle or frames hide something (e.g. you can't see the feet, the split-step, or the recovery), say so plainly instead of guessing. Do not invent details you cannot see. Keep it ~200-280 words. Address the player as 'you'.",
+      "Rules: Be specific and honest but constructive and motivating. If the angle hides something (e.g. you can't see the feet, the split-step, or the recovery), say so plainly instead of guessing. Do not invent details you cannot see. Keep it ~200-280 words. Address the player as 'you'. Output plain text with the bold headers, no preamble.",
     ].join("\n");
   }
   return [
     "You are an expert, encouraging tennis coach giving a player feedback on their technique.",
-    `You are shown ${frameCount} still frames sampled in time order from a short video of the player hitting a ${STROKES[stroke] ?? stroke}. ${hand}`,
-    "Analyze ONLY what you can actually see across the frames — preparation and grip, unit turn and backswing, stance and balance, contact point and racquet position, follow-through, and footwork/recovery. ",
-    "Then give feedback in this structure with short bold headers:",
+    `You are shown a short video of the player hitting a ${STROKES[stroke] ?? stroke}. ${hand}`,
+    "Analyze ONLY what you can actually see — preparation and grip, unit turn and backswing, stance and balance, contact point and racquet position, follow-through, and footwork/recovery.",
+    "Give feedback in this structure with short bold headers:",
     "• **What's working** — 2-3 specific strengths you can see.",
     "• **Top fixes** — 2-3 prioritized improvements, each with a concrete cue or a quick drill.",
     "• **One thing to try next session** — a single focus.",
-    "Rules: Be specific and honest but constructive and motivating. If a frame is too blurry or the angle hides something (e.g. you can't see the grip or the contact point), say so plainly instead of guessing. Do not invent details you cannot see. Keep it ~200-280 words. Address the player as 'you'.",
+    "Rules: Be specific and honest but constructive and motivating. If the video is too blurry or the angle hides something (e.g. you can't see the grip or the contact point), say so plainly instead of guessing. Do not invent details you cannot see. Keep it ~200-280 words. Address the player as 'you'. Output plain text with the bold headers, no preamble.",
   ].join("\n");
 }
 
@@ -69,12 +70,8 @@ Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders, status: 204 });
   }
-  if (req.method !== "POST") {
-    return json({ error: "Method not allowed" }, 405);
-  }
-  if (!ANTHROPIC_API_KEY) {
-    return json({ error: "AI is not configured." }, 503);
-  }
+  if (req.method !== "POST") return json({ error: "Method not allowed" }, 405);
+  if (!GEMINI_API_KEY) return json({ error: "AI is not configured." }, 503);
 
   // Auth — same Supabase JWT scheme as ai-chat.
   const authHeader = req.headers.get("Authorization") ?? "";
@@ -82,11 +79,9 @@ Deno.serve(async (req) => {
     global: { headers: { Authorization: authHeader } },
   });
   const { data: { user }, error: userErr } = await supabase.auth.getUser();
-  if (userErr || !user) {
-    return json({ error: "Not authenticated." }, 401);
-  }
+  if (userErr || !user) return json({ error: "Not authenticated." }, 401);
 
-  let body: { stroke?: string; handedness?: string; frames?: string[] };
+  let body: { stroke?: string; handedness?: string; video?: string; mimeType?: string };
   try {
     body = await req.json();
   } catch {
@@ -94,85 +89,73 @@ Deno.serve(async (req) => {
   }
 
   const stroke = (body.stroke ?? "").toLowerCase();
-  if (!STROKES[stroke]) {
-    return json({ error: "Unknown stroke." }, 400);
-  }
+  if (!STROKES[stroke]) return json({ error: "Unknown stroke." }, 400);
   const handedness = body.handedness === "left" || body.handedness === "right" ? body.handedness : null;
-  const frames = Array.isArray(body.frames) ? body.frames : [];
-  if (frames.length < 2) {
-    return json({ error: "Need at least 2 frames." }, 400);
-  }
-  if (frames.length > MAX_FRAMES) {
-    return json({ error: `Too many frames (max ${MAX_FRAMES}).` }, 400);
-  }
-  for (const f of frames) {
-    if (typeof f !== "string" || f.length === 0 || f.length > MAX_FRAME_BYTES) {
-      return json({ error: "A frame is missing or too large." }, 400);
-    }
+  const video = typeof body.video === "string" ? body.video : "";
+  const mimeType = typeof body.mimeType === "string" && body.mimeType ? body.mimeType : "video/mp4";
+  if (!video) return json({ error: "No video provided." }, 400);
+  if (video.length > MAX_VIDEO_B64) {
+    return json({ error: "That clip is too large. Use a shorter clip." }, 413);
   }
 
-  // Hard usage cap (cost control). RLS scopes the count to this user's own rows.
+  // Hard usage cap (cost control). RLS scopes the count to this user's rows.
   const now = new Date();
   const dayStart = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate())).toISOString();
   const monthStart = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1)).toISOString();
   const { count: dayCount } = await supabase
-    .from("swing_analyses").select("id", { count: "exact", head: true })
-    .gte("created_at", dayStart);
+    .from("swing_analyses").select("id", { count: "exact", head: true }).gte("created_at", dayStart);
   if ((dayCount ?? 0) >= DAILY_CAP) {
     return json({ error: `You've reached today's limit of ${DAILY_CAP} swing analyses. Come back tomorrow.` }, 429);
   }
   const { count: monthCount } = await supabase
-    .from("swing_analyses").select("id", { count: "exact", head: true })
-    .gte("created_at", monthStart);
+    .from("swing_analyses").select("id", { count: "exact", head: true }).gte("created_at", monthStart);
   if ((monthCount ?? 0) >= MONTHLY_CAP) {
     return json({ error: `You've reached this month's limit of ${MONTHLY_CAP} swing analyses.` }, 429);
   }
 
-  // Build the vision message: frames in order, then the instruction.
-  const content: unknown[] = frames.map((data, i) => ([
-    { type: "text", text: `Frame ${i + 1} of ${frames.length}:` },
-    { type: "image", source: { type: "base64", media_type: "image/jpeg", data } },
-  ])).flat();
-  content.push({ type: "text", text: `Coach my ${STROKES[stroke] ?? stroke} based on these frames.` });
+  // Gemini: native video understanding via inline data.
+  const geminiBody = {
+    systemInstruction: { parts: [{ text: systemPrompt(stroke, handedness) }] },
+    contents: [{
+      role: "user",
+      parts: [
+        { inline_data: { mime_type: mimeType, data: video } },
+        { text: `Coach my ${STROKES[stroke] ?? stroke} from this video.` },
+      ],
+    }],
+    generationConfig: { maxOutputTokens: 1024, temperature: 0.6 },
+  };
 
   let resp: Response;
   try {
-    resp = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: {
-        "x-api-key": ANTHROPIC_API_KEY,
-        "anthropic-version": "2023-06-01",
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        model: SWING_MODEL,
-        max_tokens: 1024,
-        system: systemPrompt(stroke, handedness, frames.length),
-        messages: [{ role: "user", content }],
-      }),
-    });
+    resp = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`,
+      { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(geminiBody) },
+    );
   } catch (_e) {
     return json({ error: "Could not reach the analysis service." }, 502);
   }
 
   if (!resp.ok) {
     const detail = await resp.text();
-    console.error("anthropic error", resp.status, detail.slice(0, 300));
+    console.error("gemini error", resp.status, detail.slice(0, 400));
     return json({ error: "The analysis service returned an error." }, 502);
   }
 
   const data = await resp.json();
-  const text = Array.isArray(data?.content)
-    ? data.content.filter((b: { type: string }) => b.type === "text").map((b: { text: string }) => b.text).join("\n").trim()
+  const parts = data?.candidates?.[0]?.content?.parts;
+  const text = Array.isArray(parts)
+    ? parts.map((p: { text?: string }) => p.text ?? "").join("\n").trim()
     : "";
   if (!text) {
+    console.error("gemini empty", JSON.stringify(data).slice(0, 400));
     return json({ error: "Empty analysis." }, 502);
   }
 
   // Record successful usage against the cap (best-effort; RLS enforces own-row).
   await supabase.from("swing_analyses").insert({ user_id: user.id });
 
-  return json({ analysis: text, stroke, model: SWING_MODEL }, 200);
+  return json({ analysis: text, stroke, model: GEMINI_MODEL }, 200);
 });
 
 function json(obj: unknown, status: number): Response {
