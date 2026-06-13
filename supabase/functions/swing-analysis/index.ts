@@ -36,10 +36,23 @@ const STROKES: Record<string, string> = {
   backhand: "backhand groundstroke",
   serve: "serve",
   volley: "volley",
+  footwork: "footwork and on-court movement",
 };
 
 function systemPrompt(stroke: string, handedness: string | null, frameCount: number): string {
   const hand = handedness ? `The player is ${handedness}-handed. ` : "";
+  if (stroke === "footwork") {
+    return [
+      "You are an expert, encouraging tennis coach giving a player feedback on their FOOTWORK and on-court movement.",
+      `You are shown ${frameCount} still frames sampled in time order from a wider video of the player moving and hitting on court. ${hand}`,
+      "Analyze ONLY what you can actually see across the frames — split-step timing, first-step explosiveness and direction, distance and spacing to the ball, base and stance width, balance through the shot, and recovery back toward the middle of the court.",
+      "Then give feedback in this structure with short bold headers:",
+      "• **What's working** — 2-3 specific strengths you can see.",
+      "• **Top fixes** — 2-3 prioritized improvements, each with a concrete cue or a quick footwork drill.",
+      "• **One thing to try next session** — a single focus.",
+      "Rules: Be specific and honest but constructive and motivating. If the angle or frames hide something (e.g. you can't see the feet, the split-step, or the recovery), say so plainly instead of guessing. Do not invent details you cannot see. Keep it ~200-280 words. Address the player as 'you'.",
+    ].join("\n");
+  }
   return [
     "You are an expert, encouraging tennis coach giving a player feedback on their technique.",
     `You are shown ${frameCount} still frames sampled in time order from a short video of the player hitting a ${STROKES[stroke] ?? stroke}. ${hand}`,

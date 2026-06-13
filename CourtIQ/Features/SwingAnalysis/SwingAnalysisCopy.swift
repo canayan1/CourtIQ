@@ -12,7 +12,7 @@ struct SwingAnalysisCopy {
 
     // MARK: Step 1 — stroke + handedness
     var step1Kicker: String { t("Step 1 of 2", "Adım 1 / 2") }
-    var pickStrokeTitle: String { t("What stroke are you filming?", "Hangi vuruşu çekiyorsun?") }
+    var pickStrokeTitle: String { t("What do you want analyzed?", "Neyi analiz edelim?") }
     var pickHandednessTitle: String { t("Which hand do you play with?", "Hangi elinle oynuyorsun?") }
 
     func stroke(_ s: SwingStroke) -> String {
@@ -21,6 +21,7 @@ struct SwingAnalysisCopy {
         case .backhand: return t("Backhand", "Backhand")
         case .serve:    return t("Serve", "Servis")
         case .volley:   return t("Volley", "Vole")
+        case .footwork: return t("Footwork & movement", "Footwork & hareket")
         }
     }
 
@@ -32,9 +33,13 @@ struct SwingAnalysisCopy {
     }
 
     var filmingTipTitle: String { t("How to film", "Nasıl çekilir") }
-    var filmingTipBody: String {
-        t("Film from the side, 6–10 seconds — one clean swing with your full body in frame, in good even light. A steady phone (lean it or use a tripod) reads best.",
-          "Yandan çek, 6–10 saniye — iyi ve eşit ışıkta, tüm vücudun karede, tek temiz vuruş. Sabit telefon (bir yere yasla ya da tripod) en iyi sonucu verir.")
+    func filmingTipBody(_ s: SwingStroke) -> String {
+        if s.isFootwork {
+            return t("Film from behind or wide from the side, full body and the court around you in frame. Move and hit a few balls so your footwork is visible — good even light, steady phone.",
+                     "Arkadan ya da yandan geniş çek — tüm vücudun ve etrafındaki kort karede. Birkaç top oyna ki ayak işin görünsün. İyi ışık, sabit telefon.")
+        }
+        return t("Film from the side, 6–10 seconds — one clean swing with your full body in frame, in good even light. A steady phone (lean it or use a tripod) reads best.",
+                 "Yandan çek, 6–10 saniye — iyi ve eşit ışıkta, tüm vücudun karede, tek temiz vuruş. Sabit telefon (bir yere yasla ya da tripod) en iyi sonucu verir.")
     }
     var continueCTA: String { t("Continue", "Devam") }
 
@@ -42,8 +47,8 @@ struct SwingAnalysisCopy {
     var step2Kicker: String { t("Step 2 of 2", "Adım 2 / 2") }
     var captureTitle: String { t("Add your swing video", "Vuruş videonu ekle") }
     var captureSubtitle: String {
-        t("Record a new clip or choose one from your library. Keep it short — about 6–10 seconds.",
-          "Yeni bir klip çek ya da galerinden seç. Kısa tut — yaklaşık 6–10 saniye.")
+        t("Record a new clip or choose one from your library.",
+          "Yeni bir klip çek ya da galerinden seç.")
     }
     var recordCTA: String { t("Record a swing", "Vuruş çek") }
     var libraryCTA: String { t("Choose from library", "Galeriden seç") }

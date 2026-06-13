@@ -20,9 +20,11 @@ enum SwingFrameExtractor {
         }
     }
 
-    /// Hard cap on clip length. A single swing fits easily; longer clips spread
-    /// the sampled frames too thin and waste analysis on dead time.
-    static let maxDurationSeconds: Double = 21
+    /// Hard cap on clip length. TEMPORARILY RAISED for testing (no practical
+    /// limit) — for production, set back to ~20–30s for stroke mode (footwork
+    /// mode can stay higher). A single swing fits in well under 20s; longer
+    /// clips spread the sampled frames too thin for stroke mechanics.
+    static let maxDurationSeconds: Double = 600
 
     /// Target number of frames sampled across the clip. The edge function
     /// accepts 2–10; 8 gives the model a good motion sequence without bloating

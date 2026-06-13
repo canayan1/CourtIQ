@@ -149,7 +149,7 @@ struct SwingAnalysisView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(copy.filmingTipTitle)
                     .font(.caption.weight(.semibold)).foregroundStyle(AppPalette.ink)
-                Text(copy.filmingTipBody)
+                Text(copy.filmingTipBody(stroke))
                     .font(.caption).foregroundStyle(AppPalette.inkSoft)
                     .fixedSize(horizontal: false, vertical: true)
             }

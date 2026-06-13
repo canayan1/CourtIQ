@@ -5,8 +5,12 @@ import SwiftUI
 /// The stroke the user is filming. Sent to the edge function as a lowercase
 /// rawValue ("forehand" | "backhand" | "serve" | "volley").
 enum SwingStroke: String, CaseIterable, Identifiable {
-    case forehand, backhand, serve, volley
+    case forehand, backhand, serve, volley, footwork
     var id: String { rawValue }
+
+    /// Footwork is a movement analysis, not a stroke — handled by a separate
+    /// prompt server-side and a different filming guide.
+    var isFootwork: Bool { self == .footwork }
 
     var systemImage: String {
         switch self {
@@ -14,6 +18,7 @@ enum SwingStroke: String, CaseIterable, Identifiable {
         case .backhand: return "figure.tennis"
         case .serve:    return "arrow.up.circle"
         case .volley:   return "hand.raised"
+        case .footwork: return "figure.run"
         }
     }
 }
