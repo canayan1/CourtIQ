@@ -128,7 +128,10 @@ Deno.serve(async (req) => {
 
   // Gemini: native video understanding via inline data.
   const geminiBody = {
-    systemInstruction: { parts: [{ text: systemPrompt(stroke, handedness) }] },
+    systemInstruction: { parts: [
+      { text: systemPrompt(stroke, handedness) },
+      { text: "Begin your ENTIRE reply with a line exactly like 'SCORE: 63' — a single integer 0-100 rating the overall technique shown (for a Whole session, an overall score across the strokes). Be discerning: most recreational players land 40-70; reserve 85+ for genuinely advanced technique. Put a blank line after that score line, then the analysis." },
+    ] },
     contents: [{
       role: "user",
       parts: [
@@ -168,10 +171,21 @@ Deno.serve(async (req) => {
     return json({ error: "Empty analysis." }, 502);
   }
 
+  // Pull the leading "SCORE: NN" line out into a structured field.
+  let score: number | null = null;
+  let analysis = text.trim();
+  const firstLine = analysis.split("\n")[0] ?? "";
+  const m = firstLine.match(/SCORE:\s*(\d{1,3})/i);
+  if (m) {
+    const n = parseInt(m[1], 10);
+    if (n >= 0 && n <= 100) score = n;
+    analysis = analysis.split("\n").slice(1).join("\n").trim();
+  }
+
   // Record successful usage against the cap (best-effort; RLS enforces own-row).
   await supabase.from("swing_analyses").insert({ user_id: user.id });
 
-  return json({ analysis: text, stroke, model: GEMINI_MODEL }, 200);
+  return json({ analysis, score, stroke, model: GEMINI_MODEL }, 200);
 });
 
 function json(obj: unknown, status: number): Response {
