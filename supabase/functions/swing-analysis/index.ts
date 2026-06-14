@@ -40,11 +40,21 @@ const STROKES: Record<string, string> = {
   backhand: "backhand groundstroke",
   serve: "serve",
   volley: "volley",
+  session: "full hitting session with multiple stroke types",
   footwork: "footwork and on-court movement",
 };
 
 function systemPrompt(stroke: string, handedness: string | null): string {
   const hand = handedness ? `The player is ${handedness}-handed. ` : "";
+  if (stroke === "session") {
+    return [
+      "You are an expert, encouraging tennis coach. This video is a hitting session that may contain MULTIPLE stroke types — serves, forehands, backhands, volleys.",
+      `Watch the whole clip carefully. ${hand}First identify which stroke types actually appear, then give feedback GROUPED BY stroke type.`,
+      "For each stroke type you see, use a bold header with the stroke name (e.g. '**Forehand**', '**Backhand**', '**Serve**') followed by 2-3 specific points — what's working and the top fix you can actually see for that stroke.",
+      "End with a final '**Overall**' header: the single biggest priority across all of the player's strokes.",
+      "Rules: Begin DIRECTLY with the first stroke's bold header — no opening paragraph. Only cover stroke types that actually appear; skip the rest. Cite SPECIFIC things you see (not generic tips). Be honest but motivating. Don't invent details. ~250-350 words, plain text with the bold headers, address the player as 'you'.",
+    ].join("\n");
+  }
   if (stroke === "footwork") {
     return [
       "You are an expert, encouraging tennis coach giving a player feedback on their FOOTWORK and on-court movement.",
