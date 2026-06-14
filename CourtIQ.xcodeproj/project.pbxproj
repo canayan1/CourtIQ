@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		01E3B5805B3AC2D9B83BCC20 /* AICoachConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5431D73E4D73B3EE01C53B1 /* AICoachConsentView.swift */; };
 		065E60992E196985B3FD8E65 /* SwingAnalysisService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB312EFDFBC3D468DFBD276 /* SwingAnalysisService.swift */; };
+		A000000000000000000201 /* SwingAnalysisStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000200 /* SwingAnalysisStore.swift */; };
+		A000000000000000000203 /* SwingReportText.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000202 /* SwingReportText.swift */; };
+		A000000000000000000205 /* SwingHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000204 /* SwingHistoryView.swift */; };
 		135446F7924B9D8A9FAABA50 /* VideoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161E8A1AEB1F9F5949EB117B /* VideoPicker.swift */; };
 		1A275837D4E1234623ADF76B /* OnboardingResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A78F773019502E640D876E /* OnboardingResultView.swift */; };
 		37CFB2A76B818800CC50DB26 /* TennisProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05402E3DB1FAD67D0AA4FB6 /* TennisProfile.swift */; };
@@ -255,6 +258,9 @@
 		C2A78F773019502E640D876E /* OnboardingResultView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OnboardingResultView.swift; path = CourtIQ/Features/Onboarding/OnboardingResultView.swift; sourceTree = "<group>"; };
 		C99C6606DBC58D08EB834A69 /* OnboardingCopy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OnboardingCopy.swift; path = CourtIQ/Features/Onboarding/OnboardingCopy.swift; sourceTree = "<group>"; };
 		CFB312EFDFBC3D468DFBD276 /* SwingAnalysisService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwingAnalysisService.swift; path = CourtIQ/Features/SwingAnalysis/SwingAnalysisService.swift; sourceTree = "<group>"; };
+		A000000000000000000200 /* SwingAnalysisStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwingAnalysisStore.swift; path = CourtIQ/Features/SwingAnalysis/SwingAnalysisStore.swift; sourceTree = "<group>"; };
+		A000000000000000000202 /* SwingReportText.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwingReportText.swift; path = CourtIQ/Features/SwingAnalysis/SwingReportText.swift; sourceTree = "<group>"; };
+		A000000000000000000204 /* SwingHistoryView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwingHistoryView.swift; path = CourtIQ/Features/SwingAnalysis/SwingHistoryView.swift; sourceTree = "<group>"; };
 		E37DF1FBA78574C22ADBF282 /* SwingFrameExtractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwingFrameExtractor.swift; path = CourtIQ/Features/SwingAnalysis/SwingFrameExtractor.swift; sourceTree = "<group>"; };
 		F05402E3DB1FAD67D0AA4FB6 /* TennisProfile.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TennisProfile.swift; path = CourtIQ/Features/TennisProfile/TennisProfile.swift; sourceTree = "<group>"; };
 		F4876BF5C57563475BDC86FF /* SwingAnalysisCopy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwingAnalysisCopy.swift; path = CourtIQ/Features/SwingAnalysis/SwingAnalysisCopy.swift; sourceTree = "<group>"; };
@@ -420,6 +426,9 @@
 				E37DF1FBA78574C22ADBF282 /* SwingFrameExtractor.swift */,
 				CFB312EFDFBC3D468DFBD276 /* SwingAnalysisService.swift */,
 				B1C1F0C3D2F961F7294836E6 /* SwingAnalysisView.swift */,
+				A000000000000000000200 /* SwingAnalysisStore.swift */,
+				A000000000000000000202 /* SwingReportText.swift */,
+				A000000000000000000204 /* SwingHistoryView.swift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -661,6 +670,9 @@
 				CC1C0316005DD09AB30EE8F4 /* SwingFrameExtractor.swift in Sources */,
 				065E60992E196985B3FD8E65 /* SwingAnalysisService.swift in Sources */,
 				CC1F6A22C438B041E97699BD /* SwingAnalysisView.swift in Sources */,
+				A000000000000000000201 /* SwingAnalysisStore.swift in Sources */,
+				A000000000000000000203 /* SwingReportText.swift in Sources */,
+				A000000000000000000205 /* SwingHistoryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

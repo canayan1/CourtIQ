@@ -75,6 +75,34 @@ struct SwingAnalysisCopy {
     var resultTitle: String { t("Your coaching notes", "Koçluk notların") }
     var analyzeAnotherCTA: String { t("Analyze another", "Bir tane daha analiz et") }
 
+    // MARK: Score
+    /// Label shown under the big "NN / 100" score on the result + detail screens.
+    var scoreLabel: String { t("Swing score", "Vuruş skoru") }
+    var scoreOutOf: String { t("/ 100", "/ 100") }
+    /// Compact badge, e.g. "82/100", used in history rows + headers.
+    func scoreBadge(_ score: Int) -> String { "\(score)/100" }
+
+    // MARK: History
+    var historyTitle: String { t("My swings", "Vuruşlarım") }
+    var historyNavTitle: String { t("My swings", "Vuruşlarım") }
+    /// Toolbar / row entry point to the history list.
+    var historyEntryCTA: String { t("History", "Geçmiş") }
+    var historyEmpty: String {
+        t("Your saved swing reports will appear here.",
+          "Kaydettiğin swing raporları burada görünecek.")
+    }
+    var viewAllReportsCTA: String { t("View all my reports", "Tüm raporlarımı gör") }
+    var deleteCTA: String { t("Delete", "Sil") }
+    var savedVideoTitle: String { t("Your swing", "Vuruşun") }
+
+    /// A relative, localized phrase for `date` ("2 days ago" / "2 gün önce").
+    func relativeDate(_ date: Date) -> String {
+        let formatter = RelativeDateTimeFormatter()
+        formatter.unitsStyle = .full
+        formatter.locale = Locale(identifier: lang == .turkish ? "tr_TR" : "en_US")
+        return formatter.localizedString(for: date, relativeTo: Date())
+    }
+
     // MARK: Errors
     var errorTitle: String { t("Something went wrong", "Bir şeyler ters gitti") }
     var errorGeneric: String {

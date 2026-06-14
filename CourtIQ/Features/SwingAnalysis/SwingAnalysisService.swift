@@ -5,6 +5,13 @@ import AVFoundation
 /// to 720p, attaches the caller's Supabase JWT, POSTs the video (which the
 /// function sends to Gemini for native video understanding), and returns the AI
 /// coaching text (or throws on an `{error}` / HTTP failure).
+/// The decoded result of a swing analysis: the coaching text plus an optional
+/// 0–100 score (the edge function may return `null` for the score).
+struct SwingAnalysisResult {
+    let analysis: String
+    let score: Int?
+}
+
 @MainActor
 final class SwingAnalysisService {
 
@@ -37,6 +44,7 @@ final class SwingAnalysisService {
 
     private struct Response: Decodable {
         let analysis: String?
+        let score: Int?
         let stroke: String?
         let model: String?
         let error: String?
@@ -63,7 +71,7 @@ final class SwingAnalysisService {
         stroke: SwingStroke,
         handedness: SwingHandedness?,
         session: SupabaseSession
-    ) async throws -> String {
+    ) async throws -> SwingAnalysisResult {
         let videoData = try await Self.compressedVideoData(from: videoURL)
         let base64 = videoData.base64EncodedString()
         guard base64.count <= Self.maxBase64Bytes else { throw PrepError.tooLarge }
@@ -98,7 +106,9 @@ final class SwingAnalysisService {
 
         switch http.statusCode {
         case 200..<300:
-            if let analysis = decoded?.analysis?.nonEmpty { return analysis }
+            if let analysis = decoded?.analysis?.nonEmpty {
+                return SwingAnalysisResult(analysis: analysis, score: decoded?.score)
+            }
             if let serverError = decoded?.error?.nonEmpty { throw RemoteDataError.message(serverError) }
             throw RemoteDataError.invalidResponse
         case 401, 403:

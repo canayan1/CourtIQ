@@ -18,7 +18,7 @@ struct SwingAnalysisView: View {
         case setup        // step 1: stroke + handedness
         case capture      // step 2: record / library
         case analyzing
-        case result(String)
+        case result(text: String, score: Int?)
     }
 
     @State private var phase: Phase
@@ -30,7 +30,7 @@ struct SwingAnalysisView: View {
         // state showing a realistic sample analysis so the capture shows a
         // finished coaching readout — no video, no network call.
         if ProcessInfo.processInfo.arguments.contains("-previewSwing") {
-            _phase = State(initialValue: .result(Self.previewSampleAnalysis))
+            _phase = State(initialValue: .result(text: Self.previewSampleAnalysis, score: 82))
         } else {
             _phase = State(initialValue: .setup)
         }
@@ -60,6 +60,8 @@ struct SwingAnalysisView: View {
     @State private var errorMessage: String?
     @State private var showError = false
 
+    @State private var showHistory = false
+
     var body: some View {
         ZStack {
             AppPalette.cream.ignoresSafeArea()
@@ -67,6 +69,19 @@ struct SwingAnalysisView: View {
         }
         .navigationTitle(copy.navTitle)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    showHistory = true
+                } label: {
+                    Label(copy.historyEntryCTA, systemImage: "clock.arrow.circlepath")
+                }
+                .tint(AppPalette.clay)
+            }
+        }
+        .navigationDestination(isPresented: $showHistory) {
+            SwingHistoryView()
+        }
         // Camera / library picker.
         .sheet(item: $pickerSource) { source in
             VideoPicker(sourceType: source) { url in
@@ -104,7 +119,7 @@ struct SwingAnalysisView: View {
         case .setup:        setupStep
         case .capture:      captureStep
         case .analyzing:    analyzingStep
-        case .result(let text): resultStep(text)
+        case .result(let text, let score): resultStep(text: text, score: score)
         }
     }
 
@@ -222,9 +237,14 @@ struct SwingAnalysisView: View {
 
     // MARK: - Step 3: result
 
-    private func resultStep(_ text: String) -> some View {
+    private func resultStep(text: String, score: Int?) -> some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 18) {
+                if let score {
+                    SwingScoreView(score: score, copy: copy)
+                        .frame(maxWidth: .infinity)
+                }
+
                 HStack(spacing: 8) {
                     Image(systemName: "sparkles")
                         .font(.headline).foregroundStyle(AppPalette.clay)
@@ -232,7 +252,7 @@ struct SwingAnalysisView: View {
                         .font(.title3.bold()).foregroundStyle(AppPalette.ink)
                 }
 
-                AnalysisTextView(text: text)
+                SwingReportText(text: text)
                     .padding(16)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .background(AppPalette.parchment)
@@ -247,6 +267,10 @@ struct SwingAnalysisView: View {
                     phase = .setup
                 }
                 .padding(.top, 4)
+
+                secondaryButton(copy.viewAllReportsCTA, systemImage: "clock.arrow.circlepath") {
+                    showHistory = true
+                }
             }
             .padding(20)
         }
@@ -270,13 +294,22 @@ struct SwingAnalysisView: View {
         Task {
             do {
                 let supabaseSession = try await ensureSessionWithRetry()
-                let analysis = try await service.analyze(
+                let result = try await service.analyze(
                     videoURL: videoURL,
                     stroke: stroke,
                     handedness: handedness,
                     session: supabaseSession
                 )
-                phase = .result(analysis)
+                // Persist the analysis (video on device + report + score) so the
+                // user can browse it later from History.
+                await SwingAnalysisStore.shared.add(
+                    analysis: result.analysis,
+                    score: result.score,
+                    stroke: stroke,
+                    handedness: handedness,
+                    videoURL: videoURL
+                )
+                phase = .result(text: result.analysis, score: result.score)
             } catch let err as SwingFrameExtractor.ExtractionError {
                 _ = err
                 presentError(copy.errorTooShort)
@@ -373,67 +406,6 @@ struct SwingAnalysisView: View {
         }
         .buttonStyle(.bordered)
         .tint(AppPalette.clay)
-    }
-}
-
-// MARK: - Markdown-ish renderer
-
-/// Renders the AI analysis text. The function emits **bold headers** and
-/// bullet "•" lines. We render line-by-line: blank lines become spacing,
-/// bullet lines get a hanging "•", and inline `**bold**` spans are parsed to
-/// bold via AttributedString (with a graceful plain-text fallback).
-private struct AnalysisTextView: View {
-    let text: String
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            ForEach(Array(lines.enumerated()), id: \.offset) { _, line in
-                lineView(line)
-            }
-        }
-    }
-
-    private var lines: [String] {
-        text
-            .replacingOccurrences(of: "\r\n", with: "\n")
-            .components(separatedBy: "\n")
-    }
-
-    @ViewBuilder
-    private func lineView(_ raw: String) -> some View {
-        let trimmed = raw.trimmingCharacters(in: .whitespaces)
-        if trimmed.isEmpty {
-            Color.clear.frame(height: 4)
-        } else if trimmed.hasPrefix("•") || trimmed.hasPrefix("- ") || trimmed.hasPrefix("* ") {
-            let body = String(trimmed.dropFirst(trimmed.hasPrefix("•") ? 1 : 2))
-                .trimmingCharacters(in: .whitespaces)
-            HStack(alignment: .top, spacing: 8) {
-                Text("•")
-                    .font(.subheadline.weight(.bold))
-                    .foregroundStyle(AppPalette.clay)
-                styled(body)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-            }
-        } else {
-            styled(trimmed)
-                .frame(maxWidth: .infinity, alignment: .leading)
-        }
-    }
-
-    /// Parse `**bold**` inline spans. Falls back to plain text if the markdown
-    /// parser can't handle the string.
-    private func styled(_ s: String) -> Text {
-        if let attributed = try? AttributedString(
-            markdown: s,
-            options: .init(interpretedSyntax: .inlineOnlyPreservingWhitespace)
-        ) {
-            return Text(attributed)
-                .font(.subheadline)
-                .foregroundColor(AppPalette.ink)
-        }
-        return Text(s)
-            .font(.subheadline)
-            .foregroundColor(AppPalette.ink)
     }
 }
 
