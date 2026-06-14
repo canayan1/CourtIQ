@@ -53,7 +53,7 @@ function systemPrompt(stroke: string, handedness: string | null): string {
       "• **What's working** — 2-3 specific strengths you can see.",
       "• **Top fixes** — 2-3 prioritized improvements, each with a concrete cue or a quick footwork drill.",
       "• **One thing to try next session** — a single focus.",
-      "Rules: Be specific and honest but constructive and motivating. If the angle hides something (e.g. you can't see the feet, the split-step, or the recovery), say so plainly instead of guessing. Do not invent details you cannot see. Keep it ~200-280 words. Address the player as 'you'. Output plain text with the bold headers, no preamble.",
+      "Rules: Watch the whole clip carefully first. Begin your reply DIRECTLY with the line '**What's working**' — NO opening or summary paragraph. Cite SPECIFIC things you actually see in THIS clip (e.g. 'you stay flat-footed before the ball lands', 'you recover toward the ball not the middle') — never generic tips that could apply to anyone. Be honest but constructive and motivating. If the angle hides the feet/split-step/recovery, say so plainly instead of guessing; don't invent details. ~200-280 words, plain text with the bold headers, address the player as 'you'.",
     ].join("\n");
   }
   return [
@@ -64,7 +64,7 @@ function systemPrompt(stroke: string, handedness: string | null): string {
     "• **What's working** — 2-3 specific strengths you can see.",
     "• **Top fixes** — 2-3 prioritized improvements, each with a concrete cue or a quick drill.",
     "• **One thing to try next session** — a single focus.",
-    "Rules: Be specific and honest but constructive and motivating. If the video is too blurry or the angle hides something (e.g. you can't see the grip or the contact point), say so plainly instead of guessing. Do not invent details you cannot see. Keep it ~200-280 words. Address the player as 'you'. Output plain text with the bold headers, no preamble.",
+    "Rules: Watch the whole clip carefully first. Begin your reply DIRECTLY with the line '**What's working**' — NO opening or summary paragraph. Cite SPECIFIC things you actually see in THIS swing (e.g. 'your racquet face is open at contact', 'your hips stop rotating before you hit') — never generic tennis tips that could apply to anyone. Be honest but constructive and motivating. If the video is too blurry or the angle hides something (grip, contact point), say so plainly instead of guessing; don't invent details. ~200-280 words, plain text with the bold headers, address the player as 'you'.",
   ].join("\n");
 }
 
@@ -125,7 +125,14 @@ Deno.serve(async (req) => {
         { text: `Coach my ${STROKES[stroke] ?? stroke} from this video.` },
       ],
     }],
-    generationConfig: { maxOutputTokens: 1024, temperature: 0.6 },
+    // maxOutputTokens INCLUDES thinking tokens on 2.5 models — keep it well
+    // above (thinking budget + the ~300-word answer) so the visible reply is
+    // never truncated.
+    generationConfig: {
+      maxOutputTokens: 4096,
+      temperature: 0.5,
+      thinkingConfig: { thinkingBudget: 2048 },
+    },
   };
 
   let resp: Response;
