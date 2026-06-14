@@ -102,6 +102,7 @@ final class MatchAnalysisService {
     /// - `.pre`      → opponent, surface, plan.
     /// - `.compound` → everything: plan, result + score, ratings, notes,
     ///   takeaway.
+    @MainActor
     static func buildSummary(for entry: MatchEntry, mode: Mode, language: AppLanguage) -> String {
         var lines: [String] = []
         let surface = entry.surface.rawValue
@@ -135,6 +136,14 @@ final class MatchAnalysisService {
 
             let take = entry.takeaway.trimmingCharacters(in: .whitespacesAndNewlines)
             if !take.isEmpty { lines.append("Takeaway: \(take)") }
+        }
+
+        // Personalize: append the player's Tennis Profile + a brief recent-match
+        // trend so the analysis references their real level/style/goals and
+        // recent form instead of generic advice. Optional — absent if the
+        // player hasn't completed a profile or logged any matches.
+        if let playerContext = PlayerContext.forMatch() {
+            lines.append(playerContext)
         }
 
         return lines.joined(separator: "\n")

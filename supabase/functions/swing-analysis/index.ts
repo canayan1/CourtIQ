@@ -7,7 +7,8 @@
 //
 // Body: { stroke: "forehand"|"backhand"|"serve"|"volley"|"footwork",
 //         handedness?: "right"|"left",
-//         video: <base64 (no data: prefix)>, mimeType: "video/mp4" }
+//         video: <base64 (no data: prefix)>, mimeType: "video/mp4",
+//         context?: <compact, privacy-safe player context to personalize coaching> }
 // Auth: Bearer <Supabase JWT> (Authorization header)
 
 import { createClient } from "jsr:@supabase/supabase-js@2";
@@ -94,7 +95,7 @@ Deno.serve(async (req) => {
   const { data: { user }, error: userErr } = await supabase.auth.getUser();
   if (userErr || !user) return json({ error: "Not authenticated." }, 401);
 
-  let body: { stroke?: string; handedness?: string; video?: string; mimeType?: string };
+  let body: { stroke?: string; handedness?: string; video?: string; mimeType?: string; context?: string };
   try {
     body = await req.json();
   } catch {
@@ -106,6 +107,12 @@ Deno.serve(async (req) => {
   const handedness = body.handedness === "left" || body.handedness === "right" ? body.handedness : null;
   const video = typeof body.video === "string" ? body.video : "";
   const mimeType = typeof body.mimeType === "string" && body.mimeType ? body.mimeType : "video/mp4";
+  // Optional, compact, privacy-safe player context (profile + recent scores)
+  // the client builds to PERSONALIZE the coaching. Trimmed + length-capped so a
+  // malformed client can't bloat the prompt. Stays fully optional.
+  const context = typeof body.context === "string"
+    ? body.context.trim().slice(0, 800)
+    : "";
   if (!video) return json({ error: "No video provided." }, 400);
   if (video.length > MAX_VIDEO_B64) {
     return json({ error: "That clip is too large. Use a shorter clip." }, 413);
@@ -127,11 +134,20 @@ Deno.serve(async (req) => {
   }
 
   // Gemini: native video understanding via inline data.
+  const systemParts: Array<{ text: string }> = [
+    { text: systemPrompt(stroke, handedness) },
+    { text: "Begin your ENTIRE reply with a line exactly like 'SCORE: 63' — a single integer 0-100 rating the overall technique shown (for a Whole session, an overall score across the strokes). Be discerning: most recreational players land 40-70; reserve 85+ for genuinely advanced technique. Put a blank line after that score line, then the analysis." },
+  ];
+  // Personalization: when the client sends player context, give the coach a
+  // second instruction part so it tailors the feedback to this player. Optional
+  // — absent context leaves the prompt unchanged.
+  if (context) {
+    systemParts.push({
+      text: `PLAYER CONTEXT (use this to personalize your coaching — reference it where relevant, do NOT just repeat it back): ${context}`,
+    });
+  }
   const geminiBody = {
-    systemInstruction: { parts: [
-      { text: systemPrompt(stroke, handedness) },
-      { text: "Begin your ENTIRE reply with a line exactly like 'SCORE: 63' — a single integer 0-100 rating the overall technique shown (for a Whole session, an overall score across the strokes). Be discerning: most recreational players land 40-70; reserve 85+ for genuinely advanced technique. Put a blank line after that score line, then the analysis." },
-    ] },
+    systemInstruction: { parts: systemParts },
     contents: [{
       role: "user",
       parts: [

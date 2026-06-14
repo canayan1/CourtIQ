@@ -40,6 +40,9 @@ final class SwingAnalysisService {
         let handedness: String?
         let video: String       // base64 mp4 (no data: prefix)
         let mimeType: String
+        /// Optional, compact, privacy-safe player context (profile + recent
+        /// scores) so the AI personalizes its coaching. Omitted when nil.
+        let context: String?
     }
 
     private struct Response: Decodable {
@@ -70,6 +73,7 @@ final class SwingAnalysisService {
         videoURL: URL,
         stroke: SwingStroke,
         handedness: SwingHandedness?,
+        context: String? = nil,
         session: SupabaseSession
     ) async throws -> SwingAnalysisResult {
         let videoData = try await Self.compressedVideoData(from: videoURL)
@@ -93,7 +97,8 @@ final class SwingAnalysisService {
             stroke: stroke.rawValue,
             handedness: handedness?.rawValue,
             video: base64,
-            mimeType: "video/mp4"
+            mimeType: "video/mp4",
+            context: context?.nonEmpty
         )
         request.httpBody = try JSONEncoder().encode(payload)
 

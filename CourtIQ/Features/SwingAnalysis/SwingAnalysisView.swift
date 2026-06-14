@@ -294,10 +294,14 @@ struct SwingAnalysisView: View {
         Task {
             do {
                 let supabaseSession = try await ensureSessionWithRetry()
+                // Personalize: feed the AI the player's profile + recent scores
+                // for this stroke so the coaching references their real game.
+                let playerContext = PlayerContext.forSwing(stroke: stroke)
                 let result = try await service.analyze(
                     videoURL: videoURL,
                     stroke: stroke,
                     handedness: handedness,
+                    context: playerContext,
                     session: supabaseSession
                 )
                 // Persist the analysis (video on device + report + score) so the
