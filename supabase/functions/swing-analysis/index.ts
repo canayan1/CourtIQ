@@ -15,8 +15,9 @@ import { createClient } from "jsr:@supabase/supabase-js@2";
 // Video uses a dedicated BILLED key (no training on user video + higher limits);
 // falls back to the shared key if the dedicated one isn't set.
 const GEMINI_API_KEY = Deno.env.get("GEMINI_VIDEO_API_KEY") ?? Deno.env.get("GEMINI_API_KEY") ?? "";
-// Premium hero feature → default to the stronger Pro model. Tunable via env.
-const GEMINI_MODEL   = Deno.env.get("SWING_GEMINI_MODEL") ?? "gemini-2.5-pro";
+// Free tier can't reliably serve Pro — default to Flash. Set SWING_GEMINI_MODEL
+// to gemini-2.5-pro on the BILLED video key for premium quality.
+const GEMINI_MODEL   = Deno.env.get("SWING_GEMINI_MODEL") ?? "gemini-2.5-flash";
 const SUPABASE_URL      = Deno.env.get("SUPABASE_URL") ?? "";
 const SUPABASE_ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY") ?? "";
 
@@ -128,11 +129,7 @@ Deno.serve(async (req) => {
     // maxOutputTokens INCLUDES thinking tokens on 2.5 models — keep it well
     // above (thinking budget + the ~300-word answer) so the visible reply is
     // never truncated.
-    generationConfig: {
-      maxOutputTokens: 4096,
-      temperature: 0.5,
-      thinkingConfig: { thinkingBudget: 2048 },
-    },
+    generationConfig: { maxOutputTokens: 4096, temperature: 0.5 },
   };
 
   let resp: Response;
