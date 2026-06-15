@@ -130,23 +130,20 @@ struct MatchesListView: View {
             HStack(spacing: 12) {
                 Image(systemName: "chart.line.uptrend.xyaxis")
                     .font(.title3)
-                    .foregroundStyle(AppPalette.clay)
+                    .foregroundStyle(.white)
                     .frame(width: 28)
                 Text(lang.t("matches.view_insights"))
                     .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(AppPalette.ink)
+                    .foregroundStyle(.white)
                 Spacer()
                 Image(systemName: "chevron.right")
                     .font(.footnote.weight(.semibold))
-                    .foregroundStyle(.tertiary)
+                    .foregroundStyle(.white.opacity(0.9))
             }
             .padding(14)
-            .background(AppPalette.parchment)
-            .overlay(
-                RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    .stroke(AppPalette.sand, lineWidth: 1)
-            )
-            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+            // Duotone court photo + .bottom scrim; light foreground keeps the
+            // shortcut legible (it's a navigation card, not a chart).
+            .brandedPhoto("PhotoCourt", scrim: .bottom, cornerRadius: 16)
         }
         .buttonStyle(PressableCardStyle())
     }
@@ -186,7 +183,7 @@ struct MatchesListView: View {
                 HStack(spacing: 8) {
                     Text(displayedOpponent(entry))
                         .font(.system(size: 16, weight: .semibold, design: .rounded))
-                        .foregroundStyle(AppPalette.ink)
+                        .foregroundStyle(.white)
                         .lineLimit(1)
 
                     if entry.isDraft {
@@ -200,7 +197,7 @@ struct MatchesListView: View {
 
                 Text(dateDisplay(entry.date))
                     .font(.caption)
-                    .foregroundStyle(AppPalette.inkSoft)
+                    .foregroundStyle(.white.opacity(0.85))
             }
 
             Spacer()
@@ -208,20 +205,17 @@ struct MatchesListView: View {
             if entry.aiReport != nil || entry.aiPreComment != nil {
                 Image(systemName: "sparkles")
                     .font(.caption.weight(.bold))
-                    .foregroundStyle(AppPalette.clay)
+                    .foregroundStyle(.white)
             }
 
             Image(systemName: "chevron.right")
                 .font(.footnote.weight(.semibold))
-                .foregroundStyle(.tertiary)
+                .foregroundStyle(.white.opacity(0.7))
         }
         .padding(14)
-        .background(AppPalette.parchment)
-        .overlay(
-            RoundedRectangle(cornerRadius: 18, style: .continuous)
-                .stroke(AppPalette.sand, lineWidth: 1)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+        // Duotone match photo + .bottom scrim; row text/icons flip to white so
+        // the opponent + date + badges stay legible over the photo.
+        .brandedPhoto("PhotoMatch", scrim: .bottom, cornerRadius: 18)
     }
 
     private func displayedOpponent(_ entry: MatchEntry) -> String {
@@ -236,10 +230,10 @@ struct MatchesListView: View {
             .font(.system(size: 9, weight: .heavy, design: .rounded))
             .textCase(.uppercase)
             .tracking(0.5)
-            .foregroundStyle(AppPalette.clay)
+            .foregroundStyle(.white)
             .padding(.horizontal, 7)
             .padding(.vertical, 3)
-            .background(Capsule().fill(AppPalette.clay.opacity(0.14)))
+            .background(Capsule().fill(.white.opacity(0.22)))
     }
 
     /// Pill marking a planned, not-yet-played match.
@@ -248,10 +242,10 @@ struct MatchesListView: View {
             .font(.system(size: 9, weight: .heavy, design: .rounded))
             .textCase(.uppercase)
             .tracking(0.5)
-            .foregroundStyle(AppPalette.clay)
+            .foregroundStyle(.white)
             .padding(.horizontal, 7)
             .padding(.vertical, 3)
-            .background(Capsule().fill(AppPalette.clay.opacity(0.14)))
+            .background(Capsule().fill(.white.opacity(0.22)))
     }
 
     private func resultBadge(for result: MatchResult) -> some View {
@@ -285,22 +279,22 @@ struct MatchesListView: View {
         VStack(spacing: 18) {
             ZStack {
                 Circle()
-                    .fill(AppPalette.clay.opacity(0.10))
+                    .fill(.white.opacity(0.16))
                     .frame(width: 96, height: 96)
                 Image(systemName: "scribble.variable")
                     .font(.system(size: 42, weight: .medium))
-                    .foregroundStyle(AppPalette.clay)
+                    .foregroundStyle(.white)
             }
             .padding(.top, 30)
 
             Text(lang.t("matches.empty_title"))
                 .font(.system(size: 22, weight: .heavy, design: .rounded))
-                .foregroundStyle(AppPalette.ink)
+                .foregroundStyle(.white)
                 .multilineTextAlignment(.center)
 
             Text(lang.t("matches.empty_body"))
                 .font(.subheadline)
-                .foregroundStyle(AppPalette.inkSoft)
+                .foregroundStyle(.white.opacity(0.85))
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 24)
                 .fixedSize(horizontal: false, vertical: true)
@@ -311,10 +305,10 @@ struct MatchesListView: View {
             } label: {
                 Label(lang.t("matches.first_log_cta"), systemImage: "plus")
                     .font(.system(size: 16, weight: .bold, design: .rounded))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(AppPalette.clay)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 14)
-                    .background(AppPalette.clay)
+                    .background(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
             }
             .buttonStyle(.plain)
@@ -323,6 +317,10 @@ struct MatchesListView: View {
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 32)
+        // Empty-state hero on a duotone match photo with a strong .hero scrim;
+        // all foreground flips to white (CTA inverts to white-on-clay) so the
+        // first-log nudge clears contrast over the photo.
+        .brandedPhoto("PhotoMatch", scrim: .hero, cornerRadius: 24)
     }
 }
 

@@ -120,7 +120,16 @@ struct TrainView: View {
         // Fixed-height flagship strip: clamp so the icon + two-line title don't
         // overflow the 72pt min-height at the largest accessibility sizes.
         .dynamicTypeSize(...DynamicTypeSize.accessibility2)
-        .background(AppPalette.swingHeroGradient)
+        // Duotone forehand photo over the gold→clay gradient: the photo + scrim
+        // sit on top of the gradient so the strip reads as one warm clay
+        // surface. Light foreground (white icon/title/chevron) is unchanged.
+        .background(
+            ZStack {
+                AppPalette.swingHeroGradient
+                BrandedPhotoBackground(name: "PhotoForehand", scrim: .hero)
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+        )
         .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
     }
 
@@ -132,7 +141,8 @@ struct TrainView: View {
         } label: {
             LockableTile(sfSymbol: "rectangle.stack",
                          title: lang.t("train.practice"),
-                         minHeight: 112)
+                         minHeight: 112,
+                         photo: "PhotoTraining")
         }
         .buttonStyle(PressableCardStyle())
     }
@@ -145,7 +155,8 @@ struct TrainView: View {
         } label: {
             LockableTile(sfSymbol: "figure.walk",
                          title: lang.t("train.recover"),
-                         minHeight: 112)
+                         minHeight: 112,
+                         photo: "PhotoMobility")
         }
         .buttonStyle(PressableCardStyle())
     }
@@ -160,7 +171,8 @@ struct TrainView: View {
             } label: {
                 LockableTile(sfSymbol: "figure.strengthtraining.traditional",
                              title: lang.t("train.programs"),
-                             minHeight: 112)
+                             minHeight: 112,
+                             photo: "PhotoCourt")
             }
             .buttonStyle(PressableCardStyle())
         } else {
@@ -170,7 +182,8 @@ struct TrainView: View {
                 LockableTile(sfSymbol: "figure.strengthtraining.traditional",
                              title: lang.t("train.programs"),
                              locked: true,
-                             minHeight: 112)
+                             minHeight: 112,
+                             photo: "PhotoCourt")
             }
             .buttonStyle(PressableCardStyle())
         }

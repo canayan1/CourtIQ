@@ -190,14 +190,14 @@ struct DoublesInviteSection: View {
             HStack(spacing: 10) {
                 Image(systemName: "person.2.wave.2.fill")
                     .font(.title2)
-                    .foregroundStyle(AppPalette.clay)
+                    .foregroundStyle(.white)
                 Text(copy.sectionTitle)
                     .font(.headline)
-                    .foregroundStyle(AppPalette.ink)
+                    .foregroundStyle(.white)
             }
             Text(copy.sectionSubtitle)
                 .font(.subheadline)
-                .foregroundStyle(AppPalette.inkSoft)
+                .foregroundStyle(.white.opacity(0.9))
 
             HStack(spacing: 10) {
                 Button {
@@ -205,11 +205,12 @@ struct DoublesInviteSection: View {
                 } label: {
                     Label(copy.invitePartnerCTA, systemImage: "paperplane.fill")
                         .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(AppPalette.clay)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 11)
+                        .background(.white, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
                 }
-                .buttonStyle(.borderedProminent)
-                .tint(AppPalette.clay)
+                .buttonStyle(.plain)
                 .disabled(isWorking)
 
                 Button {
@@ -217,26 +218,30 @@ struct DoublesInviteSection: View {
                 } label: {
                     Label(copy.haveCodeCTA, systemImage: "qrcode")
                         .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 11)
+                        .background(
+                            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                .stroke(.white.opacity(0.7), lineWidth: 1.5)
+                        )
                 }
-                .buttonStyle(.bordered)
-                .tint(AppPalette.moss)
+                .buttonStyle(.plain)
                 .disabled(isWorking)
             }
 
             if isWorking {
-                ProgressView().frame(maxWidth: .infinity)
+                ProgressView()
+                    .tint(.white)
+                    .frame(maxWidth: .infinity)
             }
         }
         .padding(18)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(AppPalette.parchment)
-        .overlay(
-            RoundedRectangle(cornerRadius: 20, style: .continuous)
-                .stroke(AppPalette.sand, lineWidth: 1)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+        // Invite hero on a duotone doubles photo with a strong .hero scrim; all
+        // foreground flips to white and the CTAs invert (white fill / white
+        // outline) so they read over the photo.
+        .brandedPhoto("PhotoDoubles", scrim: .hero, cornerRadius: 20)
     }
 
     // MARK: Active pairings
@@ -397,35 +402,32 @@ struct DoublesPartnershipRow: View {
         } label: {
             HStack(spacing: 14) {
                 ZStack {
-                    Circle().fill(AppPalette.moss.opacity(0.16)).frame(width: 46, height: 46)
+                    Circle().fill(.white.opacity(0.18)).frame(width: 46, height: 46)
                     Image(systemName: "person.2.fill")
                         .font(.title3)
-                        .foregroundStyle(AppPalette.moss)
+                        .foregroundStyle(.white)
                 }
                 VStack(alignment: .leading, spacing: 3) {
                     Text(partnership.partnerDisplayName(forCurrentUserId: currentUserId))
                         .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(AppPalette.ink)
+                        .foregroundStyle(.white)
                     Text(store.score(forPartnership: partnership.id) == nil ? copy.runReportCTA : copy.viewReportCTA)
                         .font(.caption)
-                        .foregroundStyle(AppPalette.inkSoft)
+                        .foregroundStyle(.white.opacity(0.85))
                 }
                 Spacer(minLength: 0)
                 if let score = store.score(forPartnership: partnership.id) {
-                    DoublesScoreBadge(score: score, copy: doublesCopy)
+                    DoublesScoreBadge(score: score, copy: doublesCopy, onPhoto: true)
                 }
                 Image(systemName: "chevron.right")
                     .font(.footnote.weight(.semibold))
-                    .foregroundStyle(.tertiary)
+                    .foregroundStyle(.white.opacity(0.7))
             }
             .padding(14)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(AppPalette.parchment)
-            .overlay(
-                RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .stroke(AppPalette.sand, lineWidth: 1)
-            )
-            .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+            // Active pairing row on a duotone doubles photo; foreground flips to
+            // white so the partner name + CTA read over the scrim.
+            .brandedPhoto("PhotoDoubles", scrim: .bottom, cornerRadius: 18)
         }
         .buttonStyle(.plain)
         .navigationDestination(isPresented: $showReport) {

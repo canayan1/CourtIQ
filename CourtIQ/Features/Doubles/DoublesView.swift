@@ -82,40 +82,37 @@ struct DoublesView: View {
     private func row(_ partner: DoublesPartner) -> some View {
         HStack(spacing: 14) {
             ZStack {
-                Circle().fill(AppPalette.moss.opacity(0.16)).frame(width: 46, height: 46)
+                Circle().fill(.white.opacity(0.18)).frame(width: 46, height: 46)
                 Image(systemName: "person.2.fill")
                     .font(.title3)
-                    .foregroundStyle(AppPalette.moss)
+                    .foregroundStyle(.white)
             }
 
             VStack(alignment: .leading, spacing: 3) {
                 Text(partner.name)
                     .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(AppPalette.ink)
+                    .foregroundStyle(.white)
                 if let level = partner.level {
                     Text(copy.level(level))
                         .font(.caption)
-                        .foregroundStyle(AppPalette.inkSoft)
+                        .foregroundStyle(.white.opacity(0.85))
                 }
             }
 
             Spacer(minLength: 0)
 
             if let score = store.latestScore(forPartner: partner.id) {
-                DoublesScoreBadge(score: score, copy: copy)
+                DoublesScoreBadge(score: score, copy: copy, onPhoto: true)
             }
             Image(systemName: "chevron.right")
                 .font(.footnote.weight(.semibold))
-                .foregroundStyle(.tertiary)
+                .foregroundStyle(.white.opacity(0.7))
         }
         .padding(14)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(AppPalette.parchment)
-        .overlay(
-            RoundedRectangle(cornerRadius: 18, style: .continuous)
-                .stroke(AppPalette.sand, lineWidth: 1)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+        // Manual partner card on a duotone doubles photo; foreground flips to
+        // white so the name + level read over the scrim.
+        .brandedPhoto("PhotoDoubles", scrim: .bottom, cornerRadius: 18)
     }
 
     private var emptyState: some View {

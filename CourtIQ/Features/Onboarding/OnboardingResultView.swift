@@ -62,30 +62,30 @@ struct OnboardingResultView: View {
 
     private var levelHero: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Eyebrow(copy.levelHeader)
+            Text(copy.levelHeader)
+                .font(.system(.caption2, design: .rounded).weight(.semibold))
+                .textCase(.uppercase)
+                .tracking(0.8)
+                .foregroundStyle(.white.opacity(0.85))
 
             HStack(alignment: .firstTextBaseline, spacing: 10) {
                 Text(tpCopy.levelTitle(result.level))
                     .font(.system(.title, design: .rounded).weight(.bold))
-                    .foregroundStyle(AppPalette.ink)
+                    .foregroundStyle(.white)
                 Text(tpCopy.levelNTRP(result.level))
                     .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(AppPalette.inkSoft)
+                    .foregroundStyle(.white.opacity(0.85))
             }
 
             Text(tpCopy.levelBlurb(result.level))
                 .font(.subheadline)
-                .foregroundStyle(AppPalette.inkSoft)
+                .foregroundStyle(.white.opacity(0.9))
                 .fixedSize(horizontal: false, vertical: true)
         }
         .padding(18)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(AppPalette.parchment)
-        .overlay(
-            RoundedRectangle(cornerRadius: 24, style: .continuous)
-                .stroke(AppPalette.clay.opacity(0.5), lineWidth: 1.5)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+        // Marquee result hero: duotone hero photo + .hero scrim, light text.
+        .brandedPhoto("PhotoHero", scrim: .hero, cornerRadius: 24)
     }
 
     private var planLine: some View {

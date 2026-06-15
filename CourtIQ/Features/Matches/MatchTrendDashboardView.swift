@@ -123,42 +123,44 @@ struct MatchTrendDashboardView: View {
         let pct = s.ratio.map { Int(($0 * 100).rounded()) }
         return HStack(spacing: 16) {
             VStack(alignment: .leading, spacing: 4) {
-                Eyebrow(lang.t("matches.trend_record"))
+                Text(lang.t("matches.trend_record"))
+                    .font(.system(.caption2, design: .rounded).weight(.semibold))
+                    .textCase(.uppercase)
+                    .tracking(0.8)
+                    .foregroundStyle(.white.opacity(0.85))
                 HStack(alignment: .firstTextBaseline, spacing: 8) {
                     Text("\(s.wins)")
                         .font(.system(size: 32, weight: .heavy, design: .rounded))
-                        .foregroundStyle(AppPalette.moss)
+                        .foregroundStyle(.white)
                     Text("–")
                         .font(.system(size: 22, weight: .heavy, design: .rounded))
-                        .foregroundStyle(AppPalette.inkSoft.opacity(0.6))
+                        .foregroundStyle(.white.opacity(0.6))
                     Text("\(s.losses)")
                         .font(.system(size: 32, weight: .heavy, design: .rounded))
-                        .foregroundStyle(AppPalette.alert)
+                        .foregroundStyle(.white.opacity(0.7))
                 }
                 Text("\(s.total) " + lang.t(s.total == 1 ? "matches.trend_total_one" : "matches.trend_total_many"))
                     .font(.caption.weight(.semibold))
-                    .foregroundStyle(AppPalette.inkSoft)
+                    .foregroundStyle(.white.opacity(0.85))
             }
             Spacer()
             if let pct {
                 VStack(alignment: .trailing, spacing: 4) {
                     Text("\(pct)%")
                         .font(.system(size: 32, weight: .heavy, design: .rounded))
-                        .foregroundStyle(AppPalette.ink)
+                        .foregroundStyle(.white)
                         .monospacedDigit()
                     Text(lang.t("matches.trend_win_rate"))
                         .font(.caption.weight(.semibold))
-                        .foregroundStyle(AppPalette.inkSoft)
+                        .foregroundStyle(.white.opacity(0.85))
                 }
             }
         }
         .padding(16)
-        .background(AppPalette.parchment)
-        .overlay(
-            RoundedRectangle(cornerRadius: 18, style: .continuous)
-                .stroke(AppPalette.sand, lineWidth: 1)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+        // ONLY the top record summary gets a duotone court photo (white
+        // foreground). All chart/stat panels below stay on clean parchment —
+        // charts on a photo would be illegible.
+        .brandedPhoto("PhotoCourt", scrim: .hero, cornerRadius: 18)
     }
 
     // MARK: - 2. Surface breakdown

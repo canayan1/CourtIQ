@@ -131,14 +131,19 @@ struct ProShotAnimationView: View {
         VStack(alignment: .leading, spacing: 6) {
             Text(pattern.localizedTitle(for: lang.language))
                 .font(.system(size: 24, weight: .heavy, design: .rounded))
-                .foregroundStyle(AppPalette.ink)
+                .foregroundStyle(.white)
             Text(pattern.localizedTagline(for: lang.language))
                 .font(.subheadline)
-                .foregroundStyle(AppPalette.inkSoft)
+                .foregroundStyle(.white.opacity(0.9))
                 .fixedSize(horizontal: false, vertical: true)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.horizontal, 22)
+        .padding(18)
+        // Title/tagline band on a duotone gear photo (.bottom scrim) — it sits
+        // ABOVE the court animation, so it doesn't fight the court diagram or
+        // the moving ball/markers (those keep their clean parchment surface).
+        .brandedPhoto("PhotoGear", scrim: .bottom, cornerRadius: 20)
+        .padding(.horizontal, 18)
         .padding(.bottom, 14)
     }
 

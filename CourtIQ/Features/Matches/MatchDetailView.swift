@@ -85,28 +85,26 @@ struct MatchDetailView: View {
             VStack(alignment: .leading, spacing: 8) {
                 HStack(spacing: 8) {
                     Image(systemName: "calendar.badge.clock")
-                        .foregroundStyle(AppPalette.clay)
+                        .foregroundStyle(.white)
                     Text(upcomingBadge)
                         .font(.caption.weight(.heavy))
                         .textCase(.uppercase)
                         .tracking(0.6)
-                        .foregroundStyle(AppPalette.clay)
+                        .foregroundStyle(.white.opacity(0.9))
                 }
                 Text(displayedOpponent)
                     .font(.system(size: 22, weight: .heavy, design: .rounded))
-                    .foregroundStyle(AppPalette.ink)
+                    .foregroundStyle(.white)
                 Text(dateDisplay)
                     .font(.subheadline)
-                    .foregroundStyle(AppPalette.inkSoft)
+                    .foregroundStyle(.white.opacity(0.85))
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(16)
-            .background(AppPalette.parchment)
-            .overlay(
-                RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .stroke(AppPalette.sand, lineWidth: 1)
-            )
-            .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+            // Detail header hero on a duotone match photo; foreground flips to
+            // white so the opponent + date read over the scrim. The plan + AI
+            // cards below stay on clean parchment (dense text).
+            .brandedPhoto("PhotoMatch", scrim: .hero, cornerRadius: 18)
         }
 
         private var planCard: some View {

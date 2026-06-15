@@ -663,28 +663,38 @@ struct DrillIntroSheet: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            ZStack {
-                Circle()
-                    .fill(AppPalette.clay.opacity(0.12))
-                    .frame(width: 64, height: 64)
-                Image(systemName: "hand.tap.fill")
-                    .font(.system(size: 28, weight: .bold))
-                    .foregroundStyle(AppPalette.clay)
-            }
-            .padding(.top, 12)
+            // Intro hero on a duotone court photo (.hero scrim) — the icon +
+            // title + subtitle flip to white. The color-coded legend rows below
+            // stay on clean parchment so the clay/ink markers remain meaningful.
+            VStack(spacing: 14) {
+                ZStack {
+                    Circle()
+                        .fill(.white.opacity(0.18))
+                        .frame(width: 64, height: 64)
+                    Image(systemName: "hand.tap.fill")
+                        .font(.system(size: 28, weight: .bold))
+                        .foregroundStyle(.white)
+                }
 
-            VStack(spacing: 6) {
-                Text(lang.t("drill.intro_title"))
-                    .font(.system(size: 22, weight: .heavy, design: .rounded))
-                    .multilineTextAlignment(.center)
-                    .foregroundStyle(AppPalette.ink)
-                Text(lang.t("drill.intro_subtitle"))
-                    .font(.subheadline)
-                    .multilineTextAlignment(.center)
-                    .foregroundStyle(AppPalette.inkSoft)
-                    .fixedSize(horizontal: false, vertical: true)
+                VStack(spacing: 6) {
+                    Text(lang.t("drill.intro_title"))
+                        .font(.system(size: 22, weight: .heavy, design: .rounded))
+                        .multilineTextAlignment(.center)
+                        .foregroundStyle(.white)
+                    Text(lang.t("drill.intro_subtitle"))
+                        .font(.subheadline)
+                        .multilineTextAlignment(.center)
+                        .foregroundStyle(.white.opacity(0.9))
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                .padding(.horizontal, 22)
             }
-            .padding(.horizontal, 22)
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 28)
+            .padding(.horizontal, 18)
+            .brandedPhoto("PhotoCourt", scrim: .hero, cornerRadius: 24)
+            .padding(.horizontal, 18)
+            .padding(.top, 12)
 
             VStack(spacing: 12) {
                 legendRow(symbol: "circle.fill", tint: AppPalette.clay,

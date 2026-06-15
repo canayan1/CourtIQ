@@ -72,15 +72,18 @@ struct MatchAnalysisCard: View {
     @State private var justCopied = false
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 0) {
+            // Header band on a duotone court photo (white foreground). Only the
+            // header gets the photo — the dense report body below stays on the
+            // clean parchment surface for legibility.
             HStack(spacing: 8) {
                 Image(systemName: "sparkles")
                     .font(.subheadline.weight(.bold))
-                    .foregroundStyle(AppPalette.clay)
+                    .foregroundStyle(.white)
                 Text(title)
                     .font(.caption.weight(.heavy))
                     .tracking(0.6)
-                    .foregroundStyle(AppPalette.inkSoft)
+                    .foregroundStyle(.white.opacity(0.9))
                     .textCase(.uppercase)
 
                 Spacer(minLength: 8)
@@ -89,7 +92,7 @@ struct MatchAnalysisCard: View {
                 ShareLink(item: report) {
                     Image(systemName: "square.and.arrow.up")
                         .font(.footnote.weight(.bold))
-                        .foregroundStyle(AppPalette.clay)
+                        .foregroundStyle(.white)
                         .frame(width: 32, height: 32)
                 }
                 .accessibilityLabel(lang.t("common.share"))
@@ -106,14 +109,18 @@ struct MatchAnalysisCard: View {
                 } label: {
                     Image(systemName: justCopied ? "checkmark" : "doc.on.doc")
                         .font(.footnote.weight(.bold))
-                        .foregroundStyle(justCopied ? AppPalette.moss : AppPalette.clay)
+                        .foregroundStyle(justCopied ? .white : .white.opacity(0.95))
                         .frame(width: 32, height: 32)
                 }
                 .accessibilityLabel(lang.t(justCopied ? "common.copied" : "common.copy"))
             }
+            .padding(16)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .brandedPhoto("PhotoCourt", scrim: .full, cornerRadius: 16)
+
             MatchAnalysisReportView(text: report)
+                .padding(16)
         }
-        .padding(16)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(AppPalette.parchment)
         .overlay(
