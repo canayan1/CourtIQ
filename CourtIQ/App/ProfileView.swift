@@ -171,30 +171,32 @@ struct ProfileView: View {
                         .font(.caption.weight(.heavy))
                         .tracking(0.6)
                         .textCase(.uppercase)
-                        .foregroundStyle(.white.opacity(0.85))
+                        .foregroundStyle(AppPalette.inkSoft)
                     Text(lang.t("avatar.tap_to_customize"))
                         .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(AppPalette.ink)
                     HStack(spacing: 4) {
                         Image(systemName: "lock.open.fill")
                             .font(.caption2.weight(.bold))
                         Text("\(avatarManager.unlockedIDs.count)/\(AvatarManager.unlockRules.count)")
                             .font(.caption2.weight(.bold))
                     }
-                    .foregroundStyle(.white)
+                    .foregroundStyle(AppPalette.clay)
                 }
 
                 Spacer()
 
                 Image(systemName: "chevron.right")
                     .font(.footnote.weight(.semibold))
-                    .foregroundStyle(.white.opacity(0.7))
+                    .foregroundStyle(.tertiary)
             }
             .padding(14)
-            // Identity header on a duotone hero photo; foreground flips to white
-            // so the avatar label + unlock count read over the scrim. The
-            // analytics cards below (IQ badge, rings, streak) stay on parchment.
-            .brandedPhoto("PhotoHero", scrim: .hero, cornerRadius: 22)
+            .background(AppPalette.parchment)
+            .overlay(
+                RoundedRectangle(cornerRadius: 22, style: .continuous)
+                    .stroke(AppPalette.sand, lineWidth: 1)
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
         }
         .buttonStyle(.plain)
         .sheet(isPresented: $showLockerRoom) {
@@ -598,23 +600,22 @@ struct ProfileView: View {
     private func tennisProfileRowLabel(tint: Color, eyebrow: String, title: String) -> some View {
         HStack(spacing: 14) {
             ZStack {
-                Circle().fill(.white.opacity(0.18)).frame(width: 46, height: 46)
-                Image(systemName: "figure.tennis").font(.title3).foregroundStyle(.white)
+                Circle().fill(tint.opacity(0.16)).frame(width: 46, height: 46)
+                Image(systemName: "figure.tennis").font(.title3).foregroundStyle(tint)
             }
             VStack(alignment: .leading, spacing: 3) {
-                Text(eyebrow).font(.caption.weight(.heavy)).tracking(0.4).foregroundStyle(.white.opacity(0.85))
-                Text(title).font(.subheadline.weight(.semibold)).foregroundStyle(.white)
+                Text(eyebrow).font(.caption.weight(.heavy)).tracking(0.4).foregroundStyle(AppPalette.inkSoft)
+                Text(title).font(.subheadline.weight(.semibold)).foregroundStyle(AppPalette.ink)
                     .fixedSize(horizontal: false, vertical: true)
             }
             Spacer()
-            Image(systemName: "chevron.right").font(.footnote.weight(.semibold)).foregroundStyle(.white.opacity(0.7))
+            Image(systemName: "chevron.right").font(.footnote.weight(.semibold)).foregroundStyle(.tertiary)
         }
         .padding(14)
         .frame(maxWidth: .infinity, alignment: .leading)
-        // Tennis profile row on a duotone court photo; foreground flips to white
-        // so the label + summary read over the scrim. The `tint` arg still
-        // distinguishes the route semantically but the surface is unified.
-        .brandedPhoto("PhotoCourt", scrim: .bottom, cornerRadius: 18)
+        .background(AppPalette.parchment)
+        .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous).stroke(AppPalette.sand, lineWidth: 1))
+        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
     }
 
     private var notificationsSection: some View {

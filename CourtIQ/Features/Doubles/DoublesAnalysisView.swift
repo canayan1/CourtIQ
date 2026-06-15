@@ -59,7 +59,7 @@ struct DoublesAnalysisView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 18) {
                 if let score {
-                    DoublesScoreView(score: score, copy: copy, onPhoto: true)
+                    DoublesScoreView(score: score, copy: copy)
                         .frame(maxWidth: .infinity)
                 }
 

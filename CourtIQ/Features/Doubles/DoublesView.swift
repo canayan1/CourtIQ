@@ -82,37 +82,40 @@ struct DoublesView: View {
     private func row(_ partner: DoublesPartner) -> some View {
         HStack(spacing: 14) {
             ZStack {
-                Circle().fill(.white.opacity(0.18)).frame(width: 46, height: 46)
+                Circle().fill(AppPalette.moss.opacity(0.16)).frame(width: 46, height: 46)
                 Image(systemName: "person.2.fill")
                     .font(.title3)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(AppPalette.moss)
             }
 
             VStack(alignment: .leading, spacing: 3) {
                 Text(partner.name)
                     .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(AppPalette.ink)
                 if let level = partner.level {
                     Text(copy.level(level))
                         .font(.caption)
-                        .foregroundStyle(.white.opacity(0.85))
+                        .foregroundStyle(AppPalette.inkSoft)
                 }
             }
 
             Spacer(minLength: 0)
 
             if let score = store.latestScore(forPartner: partner.id) {
-                DoublesScoreBadge(score: score, copy: copy, onPhoto: true)
+                DoublesScoreBadge(score: score, copy: copy)
             }
             Image(systemName: "chevron.right")
                 .font(.footnote.weight(.semibold))
-                .foregroundStyle(.white.opacity(0.7))
+                .foregroundStyle(.tertiary)
         }
         .padding(14)
         .frame(maxWidth: .infinity, alignment: .leading)
-        // Manual partner card on a duotone doubles photo; foreground flips to
-        // white so the name + level read over the scrim.
-        .brandedPhoto("PhotoDoubles", scrim: .bottom, cornerRadius: 18)
+        .background(AppPalette.parchment)
+        .overlay(
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .stroke(AppPalette.sand, lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
     }
 
     private var emptyState: some View {

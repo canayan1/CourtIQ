@@ -183,17 +183,7 @@ struct HomeView: View {
         // Dense horizontal hero (icon + title + fixed 54pt ring): clamp so the
         // row stays composed at the largest sizes instead of crushing the ring.
         .dynamicTypeSize(...DynamicTypeSize.accessibility2)
-        // Duotone serve photo over a clay base: the clay fills first, then the
-        // desaturated→clay-multiplied photo + hero scrim sit on top, so the
-        // surface reads as one warm clay family (richer than the old flat fill).
-        // Light foreground (white icon/title/ring) is unchanged.
-        .background(
-            ZStack {
-                AppPalette.clay
-                BrandedPhotoBackground(name: "PhotoServe", scrim: .hero)
-            }
-            .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
-        )
+        .background(AppPalette.clay)
         .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
     }
 
@@ -226,8 +216,7 @@ struct HomeView: View {
         ) {
             FeatureTile(sfSymbol: "list.clipboard.fill",
                         title: lang.t("home.tile_matches"),
-                        minHeight: 112,
-                        photo: "PhotoMatch") {
+                        minHeight: 112) {
                 Haptics.tap()
                 tabRouter.selection = .matches
             }
@@ -235,8 +224,7 @@ struct HomeView: View {
 
             FeatureTile(sfSymbol: "bubble.left.and.text.bubble.right.fill",
                         title: lang.t("home.tile_coach"),
-                        minHeight: 112,
-                        photo: "PhotoCoach") {
+                        minHeight: 112) {
                 Haptics.tap()
                 tabRouter.selection = .coach
             }
@@ -244,8 +232,7 @@ struct HomeView: View {
 
             FeatureTile(sfSymbol: "person.2.fill",
                         title: lang.t("home.tile_doubles"),
-                        minHeight: 112,
-                        photo: "PhotoDoubles") {
+                        minHeight: 112) {
                 Haptics.tap()
                 tabRouter.selection = .doubles
             }
@@ -253,8 +240,7 @@ struct HomeView: View {
 
             FeatureTile(sfSymbol: "scope",
                         title: lang.t("home.tile_drill"),
-                        minHeight: 112,
-                        photo: "PhotoFootwork") {
+                        minHeight: 112) {
                 Haptics.tap()
                 showDrill = true
             }

@@ -29,18 +29,6 @@ enum QuizCategory: String, CaseIterable, Identifiable, Codable {
         }
     }
 
-    /// Duotone photo used as the branded background for this category's quiz
-    /// tile (serve→serve, return→net, rally→forehand, net→net, mental→match).
-    var photo: String {
-        switch self {
-        case .serve: return "PhotoServe"
-        case .returnPlay: return "PhotoNet"
-        case .rally: return "PhotoForehand"
-        case .net: return "PhotoNet"
-        case .mental: return "PhotoMatch"
-        }
-    }
-
     var summary: String {
         switch self {
         case .serve:

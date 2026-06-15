@@ -15,7 +15,7 @@ struct DoublesReportDetailView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 18) {
                     if let score = report.score {
-                        DoublesScoreView(score: score, copy: copy, onPhoto: true)
+                        DoublesScoreView(score: score, copy: copy)
                             .frame(maxWidth: .infinity)
                     }
 

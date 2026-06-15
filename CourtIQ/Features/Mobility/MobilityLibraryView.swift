@@ -91,34 +91,37 @@ struct MobilityLibraryView: View {
             Image(systemName: icon(for: flow.type))
                 .font(.title3.weight(.semibold))
                 .symbolRenderingMode(.hierarchical)
-                .foregroundStyle(.white)
+                .foregroundStyle(AppPalette.clay)
                 .frame(width: 30)
 
             Text(flow.localizedTitle(for: lang.language))
                 .font(.headline)
-                .foregroundStyle(.white)
+                .foregroundStyle(AppPalette.ink)
 
             Spacer(minLength: 8)
 
             if isLocked {
                 Image(systemName: "lock.fill")
                     .font(.caption)
-                    .foregroundStyle(.white.opacity(0.9))
+                    .foregroundStyle(AppPalette.inkSoft)
             } else {
                 Text(flow.duration)
                     .font(.caption.weight(.semibold))
-                    .foregroundStyle(.white.opacity(0.85))
+                    .foregroundStyle(AppPalette.inkSoft)
             }
 
             Image(systemName: "chevron.right")
                 .font(.footnote.weight(.semibold))
-                .foregroundStyle(.white.opacity(0.7))
+                .foregroundStyle(.tertiary)
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
-        // Flow row on a duotone mobility photo; foreground flips to white so the
-        // title + duration + lock read over the scrim.
-        .brandedPhoto("PhotoMobility", scrim: .bottom, cornerRadius: 22)
+        .background(AppPalette.parchment)
+        .overlay(
+            RoundedRectangle(cornerRadius: 22, style: .continuous)
+                .stroke(AppPalette.sand, lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(flow.localizedTitle(for: lang.language))
         .accessibilityValue(isLocked ? lang.t("mobility.premium") : flow.duration)

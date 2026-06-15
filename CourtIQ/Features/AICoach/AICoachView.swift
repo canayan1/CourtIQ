@@ -162,30 +162,32 @@ struct AICoachView: View {
         return HStack(alignment: .top, spacing: 12) {
             Image(systemName: "text.bubble.fill")
                 .font(.title3)
-                .foregroundStyle(.white)
+                .foregroundStyle(AppPalette.clay)
             VStack(alignment: .leading, spacing: 4) {
                 Text(thread.title)
                     .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(AppPalette.ink)
                     .lineLimit(1)
                 Text(preview)
                     .font(.caption)
-                    .foregroundStyle(.white.opacity(0.85))
+                    .foregroundStyle(AppPalette.inkSoft)
                     .lineLimit(2)
                 Text(relativeDate(thread.lastMessageAt))
                     .font(.caption2)
-                    .foregroundStyle(.white.opacity(0.7))
+                    .foregroundStyle(AppPalette.inkSoft.opacity(0.7))
             }
             Spacer()
             Image(systemName: "chevron.right")
                 .font(.footnote.weight(.semibold))
-                .foregroundStyle(.white.opacity(0.7))
+                .foregroundStyle(.tertiary)
         }
         .padding(14)
-        // Thread row on a duotone coach photo; foreground flips to white so the
-        // title + preview read over the scrim. Chat message bubbles inside the
-        // thread stay on clean surfaces for legibility.
-        .brandedPhoto("PhotoCoach", scrim: .bottom, cornerRadius: 14)
+        .background(AppPalette.parchment)
+        .overlay(
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(AppPalette.sand, lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
     }
 
     private func relativeDate(_ d: Date) -> String {

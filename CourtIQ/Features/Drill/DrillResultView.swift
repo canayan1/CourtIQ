@@ -53,37 +53,31 @@ struct DrillResultView: View {
         VStack(spacing: 10) {
             ZStack {
                 Circle()
-                    .stroke(.white.opacity(0.28), lineWidth: 8)
+                    .stroke(AppPalette.sand, lineWidth: 8)
                     .frame(width: 168, height: 168)
                 Circle()
                     .trim(from: 0, to: CGFloat(session.score) / CGFloat(session.maxScore))
-                    .stroke(.white, style: StrokeStyle(lineWidth: 8, lineCap: .round))
+                    .stroke(scoreColor, style: StrokeStyle(lineWidth: 8, lineCap: .round))
                     .rotationEffect(.degrees(-90))
                     .frame(width: 168, height: 168)
 
                 VStack(spacing: 0) {
                     Text("\(session.score)")
                         .font(.system(size: 50, weight: .heavy, design: .rounded))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(AppPalette.ink)
                         .monospacedDigit()
                     Text("/ \(session.maxScore)")
                         .font(.system(size: 14, weight: .bold, design: .rounded))
-                        .foregroundStyle(.white.opacity(0.85))
+                        .foregroundStyle(AppPalette.inkSoft)
                         .monospacedDigit()
                 }
             }
 
             Text(scoreLabel)
                 .font(.system(size: 18, weight: .heavy, design: .rounded))
-                .foregroundStyle(.white)
+                .foregroundStyle(scoreColor)
         }
         .padding(.top, 16)
-        .padding(.bottom, 20)
-        .frame(maxWidth: .infinity)
-        // Result score hero on a duotone footwork photo (.hero scrim); the ring
-        // + numbers flip to white for legibility. The emoji-tap recap + share
-        // cards below stay on the clean cream/parchment surface.
-        .brandedPhoto("PhotoFootwork", scrim: .hero, cornerRadius: 24)
     }
 
     private var emojiRow: some View {
@@ -142,6 +136,13 @@ struct DrillResultView: View {
     }
 
     // MARK: - Computed values
+
+    private var scoreColor: Color {
+        let pct = Double(session.score) / Double(session.maxScore)
+        if pct >= 0.8 { return AppPalette.moss }
+        if pct >= 0.5 { return AppPalette.gold }
+        return AppPalette.alert
+    }
 
     private var scoreLabel: String {
         let pct = Double(session.score) / Double(session.maxScore)

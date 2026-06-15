@@ -25,19 +25,6 @@ enum ActivityKind {
         case .quiz:    return "checklist"
         }
     }
-
-    /// The duotone photo used as the card's branded background, chosen to match
-    /// the activity: swing→a stroke shot, match→match, doubles→doubles,
-    /// drill→ball, quiz→court.
-    var photo: String {
-        switch self {
-        case .swing:   return "PhotoForehand"
-        case .match:   return "PhotoMatch"
-        case .doubles: return "PhotoDoubles"
-        case .drill:   return "PhotoBall"
-        case .quiz:    return "PhotoCourt"
-        }
-    }
 }
 
 // MARK: - Metric
@@ -238,11 +225,11 @@ struct ActivityCard: View {
                 Image(systemName: activity.kind.symbol)
                     .font(.subheadline.weight(.semibold))
                     .symbolRenderingMode(.hierarchical)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(AppPalette.clay)
                 Spacer(minLength: 0)
                 Text(CompactRelativeTime.string(for: activity.date))
                     .font(.caption2)
-                    .foregroundStyle(.white.opacity(0.85))
+                    .foregroundStyle(AppPalette.inkSoft)
             }
 
             HStack {
@@ -253,7 +240,7 @@ struct ActivityCard: View {
 
             Text(activity.label)
                 .font(.subheadline)
-                .foregroundStyle(.white)
+                .foregroundStyle(AppPalette.ink)
                 .lineLimit(1)
         }
         .frame(width: 112, alignment: .leading)
@@ -261,23 +248,25 @@ struct ActivityCard: View {
         // Fixed-width rail card: clamp very large sizes so the label + metric
         // stay inside the 112pt card instead of truncating hard.
         .dynamicTypeSize(...DynamicTypeSize.accessibility2)
-        // Per-kind duotone photo + .bottom scrim; light foreground above keeps
-        // text/icons legible. ScoreRing flips to white over the scrim.
-        .brandedPhoto(activity.kind.photo, scrim: .bottom, cornerRadius: 20)
+        .background(AppPalette.parchment)
+        .overlay(
+            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .stroke(AppPalette.sand, lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
     }
 
     @ViewBuilder
     private var metricView: some View {
         switch activity.metric {
         case .score(let value):
-            ScoreRing(size: 34, score: value, accent: .white,
-                      track: .white.opacity(0.3))
+            ScoreRing(size: 34, score: value)
         case .result(let result):
             resultPill(result)
         case .fraction(let correct, let total):
             Text("\(correct)/\(total)")
                 .font(.system(.title3, design: .rounded).weight(.heavy))
-                .foregroundStyle(.white)
+                .foregroundStyle(AppPalette.ink)
                 .monospacedDigit()
                 .frame(height: 34)
         }

@@ -113,29 +113,25 @@ struct PaywallView: View {
         VStack(alignment: .leading, spacing: 10) {
             ZStack {
                 Circle()
-                    .fill(Color.white.opacity(0.18))
+                    .fill(AppPalette.clay.opacity(0.14))
                     .frame(width: 60, height: 60)
                 Image(systemName: "trophy.fill")
                     .font(.system(size: 28, weight: .bold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(AppPalette.clay)
             }
 
             Text(t("Unlock your full tennis game", "Tüm tenis oyununu aç"))
                 .font(.system(.title, design: .rounded).weight(.bold))
-                .foregroundStyle(.white)
+                .foregroundStyle(AppPalette.ink)
                 .fixedSize(horizontal: false, vertical: true)
 
             Text(t(
                 "Every drill, quiz, training plan, and your AI coach — all in one membership.",
                 "Tüm drilller, sınavlar, antrenman planları ve AI koçun — tek üyelikte."
             ))
-            .foregroundStyle(.white.opacity(0.9))
+            .foregroundStyle(AppPalette.inkSoft)
             .fixedSize(horizontal: false, vertical: true)
         }
-        .padding(20)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        // Marquee paywall header: duotone hero photo + .hero scrim, light text.
-        .brandedPhoto("PhotoHero", scrim: .hero, cornerRadius: 24)
     }
 
     // MARK: - 2. Value recap

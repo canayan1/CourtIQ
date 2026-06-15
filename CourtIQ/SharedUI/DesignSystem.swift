@@ -22,104 +22,6 @@ enum Motion {
     static let stagger: Double = 0.07
 }
 
-// MARK: - Branded photo background (single-tone / duotone)
-
-/// Turns any of the bundled tennis photos (`Image("Photo…")`) into a cohesive,
-/// legible card background in ONE consistent treatment so all 14 disparate
-/// shots read as one warm clay family ("tek ton, yedirilmiş"):
-///
-///  1. `Image(name).resizable().scaledToFill().clipped()` fills the card.
-///  2. **Single-tone (duotone):** `.saturation(0)` strips color, then
-///     `.colorMultiply(AppPalette.clay)` maps whites→clay and darks→deep clay.
-///  3. **Legibility scrim:** an `AppPalette.ink` overlay (gradient or uniform)
-///     so light foreground text/icons always clear ~4.5:1 contrast.
-///
-/// Cards using this MUST switch their foreground to LIGHT (white/cream) text +
-/// icons. Static — no motion, so Reduce Motion is irrelevant here.
-struct BrandedPhotoBackground: View {
-    /// Where the darkening scrim concentrates, per surface type.
-    enum Scrim {
-        /// Bottom-weighted gradient — for cards with text pinned to the bottom.
-        case bottom
-        /// Uniform veil — for cards whose content sits anywhere/centered.
-        case full
-        /// Stronger bottom gradient — for big marquee heroes.
-        case hero
-    }
-
-    let name: String
-    var scrim: Scrim = .bottom
-
-    var body: some View {
-        Image(name)
-            .resizable()
-            .scaledToFill()
-            .clipped()
-            .saturation(0)
-            .colorMultiply(BrandedPhotoBackground.tone)
-            .overlay(scrimOverlay)
-            .clipped()
-            .accessibilityHidden(true)
-    }
-
-    @ViewBuilder
-    private var scrimOverlay: some View {
-        switch scrim {
-        case .bottom:
-            LinearGradient(
-                colors: [AppPalette.ink.opacity(Tuning.bottomTop),
-                         AppPalette.ink.opacity(Tuning.bottomBottom)],
-                startPoint: .top,
-                endPoint: .bottom
-            )
-        case .full:
-            AppPalette.ink.opacity(Tuning.full)
-        case .hero:
-            LinearGradient(
-                colors: [AppPalette.ink.opacity(Tuning.heroTop),
-                         AppPalette.ink.opacity(Tuning.heroBottom)],
-                startPoint: .top,
-                endPoint: .bottom
-            )
-        }
-    }
-
-    // MARK: Tuning — the single calibration surface for the whole app
-
-    /// The brand tone every photo is multiplied toward. Change this one value to
-    /// re-key the entire photo system to a different brand color.
-    static let tone: Color = AppPalette.clay
-
-    /// All scrim opacities grouped so the parent can dial legibility app-wide
-    /// from one place. Higher = darker = more legible (but flatter) photo.
-    enum Tuning {
-        static let bottomTop: Double = 0.10      // .bottom — light at the top
-        static let bottomBottom: Double = 0.55   // .bottom — dark at the bottom
-        static let full: Double = 0.40           // .full  — uniform veil
-        static let heroTop: Double = 0.25        // .hero  — still readable up top
-        static let heroBottom: Double = 0.70     // .hero  — strong base for big text
-    }
-}
-
-extension View {
-    /// Places a `BrandedPhotoBackground` behind the view, clipped to the given
-    /// rounded shape, and stamps it as the view's `.background`. The caller is
-    /// responsible for switching its own foreground to LIGHT (white/cream).
-    ///
-    /// Keeps a surface's existing corner radius + clipping by re-clipping the
-    /// composited result to the same `RoundedRectangle`.
-    func brandedPhoto(
-        _ name: String,
-        scrim: BrandedPhotoBackground.Scrim = .bottom,
-        cornerRadius: CGFloat = 20
-    ) -> some View {
-        self.background(
-            BrandedPhotoBackground(name: name, scrim: scrim)
-                .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
-        )
-    }
-}
-
 // MARK: - Pressable card style
 
 /// Scales a tappable card/tile down to 0.95 while pressed, with a spring.
@@ -197,32 +99,6 @@ struct ScoreRing: View {
     }
 }
 
-// MARK: - Shared tile background
-
-/// The shared background recipe for `FeatureTile` / `LockableTile`. When
-/// `photo` is nil it keeps the original parchment fill + sand stroke; when set
-/// it swaps in a duotone `BrandedPhotoBackground` (`.bottom` scrim) so the same
-/// tile becomes a photo card with a single line of code. Either way the corner
-/// radius + clipping match the originals (20pt continuous).
-private struct TileBackground: ViewModifier {
-    let photo: String?
-
-    func body(content: Content) -> some View {
-        if let photo {
-            content
-                .brandedPhoto(photo, scrim: .bottom, cornerRadius: 20)
-        } else {
-            content
-                .background(AppPalette.parchment)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 20, style: .continuous)
-                        .stroke(AppPalette.sand, lineWidth: 1)
-                )
-                .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-        }
-    }
-}
-
 // MARK: - Feature tile
 
 /// A square-ish tappable card with a hierarchical SF Symbol + a one-word title.
@@ -233,17 +109,9 @@ struct FeatureTile: View {
     let title: String
     var accent: Color = AppPalette.clay
     var minHeight: CGFloat = 96
-    /// When set, the tile renders a `BrandedPhotoBackground` (duotone photo +
-    /// `.bottom` scrim) with a LIGHT foreground. When nil, the original
-    /// parchment look is preserved.
-    var photo: String? = nil
     let action: () -> Void
 
     @State private var bounce = 0
-
-    /// Photo tiles flip icon + label to white over the scrim for legibility.
-    private var foreground: Color { photo == nil ? AppPalette.ink : .white }
-    private var iconAccent: Color { photo == nil ? accent : .white }
 
     var body: some View {
         Button {
@@ -254,18 +122,23 @@ struct FeatureTile: View {
                 Image(systemName: sfSymbol)
                     .font(.title2.weight(.semibold))
                     .symbolRenderingMode(.hierarchical)
-                    .foregroundStyle(iconAccent)
+                    .foregroundStyle(accent)
                     .symbolEffect(.bounce, value: bounce)
 
                 Spacer(minLength: 0)
 
                 Text(title)
                     .font(.headline)
-                    .foregroundStyle(foreground)
+                    .foregroundStyle(AppPalette.ink)
             }
             .frame(maxWidth: .infinity, minHeight: minHeight, alignment: .leading)
             .padding(16)
-            .modifier(TileBackground(photo: photo))
+            .background(AppPalette.parchment)
+            .overlay(
+                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                    .stroke(AppPalette.sand, lineWidth: 1)
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
         }
         .buttonStyle(PressableCardStyle())
         // Fixed-height tile: clamp very large sizes so the icon + title don't
@@ -293,15 +166,6 @@ struct LockableTile: View {
     var locked: Bool = false
     var accent: Color = AppPalette.clay
     var minHeight: CGFloat = 96
-    /// When set, the tile renders a `BrandedPhotoBackground` (duotone photo +
-    /// `.bottom` scrim) with a LIGHT foreground. When nil, the original
-    /// parchment look is preserved.
-    var photo: String? = nil
-
-    /// Photo tiles flip icon + label to white over the scrim for legibility.
-    private var foreground: Color { photo == nil ? AppPalette.ink : .white }
-    private var iconAccent: Color { photo == nil ? accent : .white }
-    private var lockTint: Color { photo == nil ? AppPalette.inkSoft : .white.opacity(0.9) }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -309,12 +173,12 @@ struct LockableTile: View {
                 Image(systemName: sfSymbol)
                     .font(.title2.weight(.semibold))
                     .symbolRenderingMode(.hierarchical)
-                    .foregroundStyle(iconAccent)
+                    .foregroundStyle(accent)
                 Spacer(minLength: 0)
                 if locked {
                     Image(systemName: "lock.fill")
                         .font(.caption)
-                        .foregroundStyle(lockTint)
+                        .foregroundStyle(AppPalette.inkSoft)
                 }
             }
 
@@ -322,11 +186,16 @@ struct LockableTile: View {
 
             Text(title)
                 .font(.headline)
-                .foregroundStyle(foreground)
+                .foregroundStyle(AppPalette.ink)
         }
         .frame(maxWidth: .infinity, minHeight: minHeight, alignment: .leading)
         .padding(16)
-        .modifier(TileBackground(photo: photo))
+        .background(AppPalette.parchment)
+        .overlay(
+            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .stroke(AppPalette.sand, lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
         // Fixed-height tile: clamp very large sizes so the icon + title don't
         // overflow the minHeight box. Scales up to accessibility2, then holds.
         .dynamicTypeSize(...DynamicTypeSize.accessibility2)

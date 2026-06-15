@@ -74,20 +74,23 @@ struct SwingScoreView: View {
         VStack(spacing: 10) {
             // Kinetic peak moment: the ring fills 0→score and the number rolls
             // up on appear (Reduce-Motion-safe inside `ScoreRing`). Mirrors the
-            // doubles compatibility score. White over the duotone serve hero.
-            ScoreRing(size: 120, score: score, accent: .white,
-                      track: .white.opacity(0.28))
+            // doubles compatibility score.
+            ScoreRing(size: 120, score: score)
 
             Text(copy.scoreLabel)
                 .font(.caption.weight(.heavy))
-                .foregroundStyle(.white.opacity(0.9))
+                .foregroundStyle(AppPalette.inkSoft)
                 .textCase(.uppercase)
                 .tracking(0.5)
         }
         .padding(.vertical, 18)
         .frame(maxWidth: .infinity)
-        // Marquee score hero: duotone serve photo + .hero scrim behind the ring.
-        .brandedPhoto("PhotoServe", scrim: .hero, cornerRadius: 16)
+        .background(AppPalette.parchment)
+        .overlay(
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .stroke(AppPalette.sand, lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
     }
 }
 

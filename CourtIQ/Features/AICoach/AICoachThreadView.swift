@@ -148,19 +148,21 @@ struct AICoachThreadView: View {
         VStack(alignment: .leading, spacing: 10) {
             Label(lang.t("ai.thread_hint_kicker"), systemImage: "sparkles")
                 .font(.system(.caption, design: .rounded).weight(.heavy))
-                .foregroundStyle(.white)
+                .foregroundStyle(AppPalette.clay)
                 .textCase(.uppercase)
                 .tracking(0.5)
             Text(lang.t("ai.thread_hint_body"))
                 .font(.subheadline)
-                .foregroundStyle(.white.opacity(0.9))
+                .foregroundStyle(AppPalette.inkSoft)
         }
-        .padding(18)
+        .padding(16)
         .frame(maxWidth: .infinity, alignment: .leading)
-        // Chat empty-state intro on a duotone coach photo (.hero scrim); white
-        // foreground keeps the hint legible. Actual message bubbles below are
-        // never put on a photo (legibility of dense conversation text).
-        .brandedPhoto("PhotoCoach", scrim: .hero, cornerRadius: 14)
+        .background(AppPalette.parchment)
+        .overlay(
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(AppPalette.sand, lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
     }
 
     @ViewBuilder

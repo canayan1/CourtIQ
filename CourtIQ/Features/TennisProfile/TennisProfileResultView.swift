@@ -43,30 +43,30 @@ struct TennisProfileResultView: View {
 
     private var levelHero: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text(copy.levelHeader)
-                .font(.system(.caption2, design: .rounded).weight(.semibold))
-                .textCase(.uppercase)
-                .tracking(0.8)
-                .foregroundStyle(.white.opacity(0.85))
+            Eyebrow(copy.levelHeader)
 
             HStack(alignment: .firstTextBaseline, spacing: 10) {
                 Text(copy.levelTitle(result.level))
                     .font(.system(.title, design: .rounded).weight(.bold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(AppPalette.ink)
                 Text(copy.levelNTRP(result.level))
                     .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(.white.opacity(0.85))
+                    .foregroundStyle(AppPalette.inkSoft)
             }
 
             Text(copy.levelBlurb(result.level))
                 .font(.subheadline)
-                .foregroundStyle(.white.opacity(0.9))
+                .foregroundStyle(AppPalette.inkSoft)
                 .fixedSize(horizontal: false, vertical: true)
         }
         .padding(18)
         .frame(maxWidth: .infinity, alignment: .leading)
-        // Marquee level hero: duotone hero photo + .hero scrim, light text.
-        .brandedPhoto("PhotoHero", scrim: .hero, cornerRadius: 24)
+        .background(AppPalette.parchment)
+        .overlay(
+            RoundedRectangle(cornerRadius: 24, style: .continuous)
+                .stroke(AppPalette.clay.opacity(0.5), lineWidth: 1.5)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
     }
 
     // MARK: Style

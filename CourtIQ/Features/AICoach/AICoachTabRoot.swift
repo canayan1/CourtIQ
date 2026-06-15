@@ -98,18 +98,12 @@ struct AICoachTabRoot: View {
                     .padding(20)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                // Marquee coach landing: duotone coach photo over the gold→clay
-                // gradient + .hero scrim. Foreground is already all white.
                 .background(
-                    ZStack {
-                        LinearGradient(
-                            colors: [AppPalette.gold, AppPalette.clay],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                        BrandedPhotoBackground(name: "PhotoCoach", scrim: .hero)
-                    }
-                    .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+                    LinearGradient(
+                        colors: [AppPalette.gold, AppPalette.clay],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
                 )
                 .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
             }
