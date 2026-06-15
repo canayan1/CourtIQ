@@ -51,14 +51,19 @@ struct BrandedPhotoBackground: View {
     var scrim: Scrim = .bottom
 
     var body: some View {
-        Image(name)
-            .resizable()
-            .scaledToFill()
-            .clipped()
-            // Cohesive but not muddy: keep some of the photo's life, warm it
-            // toward the brand clay with a moderate multiply, then scrim for text.
-            .saturation(0.45)
-            .overlay(BrandedPhotoBackground.tone.opacity(0.42).blendMode(.multiply))
+        // Color.clear takes exactly the host's proposed size; the photo is an
+        // overlay clipped to those bounds. This prevents scaledToFill from
+        // overflowing its card and overlapping neighbors (the layout bug).
+        Color.clear
+            .overlay(
+                Image(name)
+                    .resizable()
+                    .scaledToFill()
+                    // Cohesive but not muddy: keep some of the photo's life, warm
+                    // it toward the brand clay, then scrim for text legibility.
+                    .saturation(0.45)
+                    .overlay(BrandedPhotoBackground.tone.opacity(0.42).blendMode(.multiply))
+            )
             .overlay(scrimOverlay)
             .clipped()
             .accessibilityHidden(true)
