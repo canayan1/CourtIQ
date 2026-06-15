@@ -14,6 +14,7 @@ struct MatchesListView: View {
     @EnvironmentObject private var session: UserSessionManager
 
     @State private var openNewEntry = false
+    @State private var showMentalCheck = false
     @State private var showTutorial = false
     @State private var appeared = false
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -27,6 +28,8 @@ struct MatchesListView: View {
             VStack(alignment: .leading, spacing: 16) {
                 streakHeader
                     .reveal(appeared: appeared, index: 0, reduceMotion: reduceMotion)
+                mentalCheckShortcut
+                    .reveal(appeared: appeared, index: 1, reduceMotion: reduceMotion)
                 if matches.entries.isEmpty {
                     emptyState
                         .reveal(appeared: appeared, index: 1, reduceMotion: reduceMotion)
@@ -55,6 +58,17 @@ struct MatchesListView: View {
                         .foregroundStyle(AppPalette.inkSoft)
                 }
                 .accessibilityLabel(lang.t("matches.tutorial.nav_title"))
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    Haptics.tap()
+                    showMentalCheck = true
+                } label: {
+                    Image(systemName: "brain.head.profile")
+                        .font(.title3)
+                        .foregroundStyle(AppPalette.clay)
+                }
+                .accessibilityLabel(lang.t("mental.nav_title"))
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
@@ -90,6 +104,13 @@ struct MatchesListView: View {
                     .environmentObject(session)
             }
         }
+        .sheet(isPresented: $showMentalCheck) {
+            NavigationStack {
+                MentalCheckView()
+                    .environmentObject(lang)
+                    .environmentObject(session)
+            }
+        }
     }
 
     // MARK: - Streak header
@@ -117,6 +138,45 @@ struct MatchesListView: View {
                 .stroke(AppPalette.sand, lineWidth: 1)
         )
         .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+    }
+
+    // MARK: - Mental check shortcut
+
+    /// Always-visible, findable entry to the pre-match mental check. Tapping
+    /// presents `MentalCheckView` as a sheet.
+    private var mentalCheckShortcut: some View {
+        Button {
+            Haptics.tap()
+            showMentalCheck = true
+        } label: {
+            HStack(spacing: 12) {
+                Image(systemName: "brain.head.profile")
+                    .font(.title3)
+                    .foregroundStyle(AppPalette.clay)
+                    .frame(width: 28)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(lang.t("mental.shortcut_title"))
+                        .font(.subheadline.weight(.bold))
+                        .foregroundStyle(AppPalette.ink)
+                    Text(lang.t("mental.shortcut_subtitle"))
+                        .font(.caption)
+                        .foregroundStyle(AppPalette.inkSoft)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                Spacer()
+                Image(systemName: "sparkles")
+                    .font(.footnote.weight(.bold))
+                    .foregroundStyle(AppPalette.clay)
+            }
+            .padding(16)
+            .background(AppPalette.parchment)
+            .overlay(
+                RoundedRectangle(cornerRadius: 18, style: .continuous)
+                    .stroke(AppPalette.sand, lineWidth: 1)
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+        }
+        .buttonStyle(PressableCardStyle())
     }
 
     // MARK: - Insight shortcut

@@ -39,8 +39,10 @@ struct MatchDetailView: View {
 
         let entry: MatchEntry
         @State private var showAddResult = false
+        @State private var showMentalCheck = false
         @State private var showDeleteConfirm = false
         @Environment(\.dismiss) private var dismiss
+        @EnvironmentObject private var session: UserSessionManager
 
         var body: some View {
             ScrollView {
@@ -53,6 +55,7 @@ struct MatchDetailView: View {
                        !comment.isEmpty {
                         MatchAnalysisCard(title: lang.t("matches.ai_pre_title"), report: comment)
                     }
+                    mentalCheckButton
                     addResultButton
                     deleteButton
                 }
@@ -66,6 +69,13 @@ struct MatchDetailView: View {
                     MatchAddResultView(entry: entry)
                         .environmentObject(matches)
                         .environmentObject(lang)
+                }
+            }
+            .sheet(isPresented: $showMentalCheck) {
+                NavigationStack {
+                    MentalCheckView()
+                        .environmentObject(lang)
+                        .environmentObject(session)
                 }
             }
             .confirmationDialog(
@@ -125,6 +135,20 @@ struct MatchDetailView: View {
                     .stroke(AppPalette.sand, lineWidth: 1)
             )
             .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+        }
+
+        private var mentalCheckButton: some View {
+            Button {
+                Haptics.tap()
+                showMentalCheck = true
+            } label: {
+                Label(lang.t("mental.shortcut_title"), systemImage: "brain.head.profile")
+                    .font(.subheadline.weight(.bold))
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 12)
+            }
+            .buttonStyle(.bordered)
+            .tint(AppPalette.clay)
         }
 
         private var addResultButton: some View {

@@ -34,6 +34,7 @@ final class MatchAnalysisService {
     enum Mode: String {
         case pre
         case compound
+        case mental
     }
 
     // MARK: - Request / response shapes

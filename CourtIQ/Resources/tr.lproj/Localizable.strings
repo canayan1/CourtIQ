@@ -632,6 +632,28 @@
 "matches.ai_step_patterns" = "Geçmişine göre örüntüler aranıyor";
 "matches.ai_step_writing" = "Koçluk notların yazılıyor";
 
+/* Maç öncesi zihinsel kontrol */
+"mental.nav_title" = "Zihinsel kontrol";
+"mental.eyebrow" = "Maç öncesi";
+"mental.headline" = "Nasıl hissediyorsun?";
+"mental.subhead" = "Birkaç hızlı dokunuş yap, bugünkü maçın için kısa bir zihinsel rutin vereyim.";
+"mental.energy" = "Enerji";
+"mental.confidence" = "Özgüven";
+"mental.nerves" = "Gerginlik";
+"mental.context_label" = "Bağlam (isteğe bağlı)";
+"mental.context_placeholder" = "ör. toprak kortta daha güçlü bir rakiple oynuyorum";
+"mental.get_plan_cta" = "Zihinsel planımı al";
+"mental.plan_title" = "Maç öncesi planın";
+"mental.analyzing_title" = "Rutinin hazırlanıyor";
+"mental.step_reading" = "Kontrolün okunuyor";
+"mental.step_settling" = "Rutin sana göre ayarlanıyor";
+"mental.step_writing" = "Zihinsel planın yazılıyor";
+"mental.failed_title" = "Planın oluşturulamadı";
+"mental.failed_body" = "Yapay zekâya şu an ulaşılamadı — tekrar denemek için dokun.";
+"mental.retry" = "Tekrar dene";
+"mental.shortcut_title" = "Zihinsel kontrol";
+"mental.shortcut_subtitle" = "Şu anki hissine göre ayarlanmış hızlı bir maç öncesi rutin.";
+
 /* ── Günlük Kort Tap Drill ── */
 "drill.card_kicker" = "Günlük drill";
 "drill.card_title" = "Kortu oku. En akıllı vuruşa dokun.";

@@ -36,6 +36,17 @@ function systemPrompt(mode: string): string {
       "Rules: ~160-200 words. Be specific and motivating. Don't invent details the player didn't give. This is performance/mental-game coaching, not therapy or medical advice. Plain text with the bold headers, no preamble. Address the player as 'you'.",
     ].join("\n");
   }
+  if (mode === "mental") {
+    return [
+      "You are an expert tennis performance/mental-game coach. The player gives a quick PRE-MATCH mental self-check: energy, confidence, and nerves (each 1–5) and optional context (opponent/situation).",
+      "Return a SHORT, concrete pre-match mental routine with short bold headers:",
+      "• **Settle** — one cue to calm nerves now (e.g. a slow breathing reset before serving).",
+      "• **Focus** — the single thing to lock onto out there (a process goal, not outcome).",
+      "• **Reframe** — turn their stated nerves/doubt into a constructive thought.",
+      "• **Between points** — one simple reset routine.",
+      "Rules: ~120-160 words, specific to THEIR numbers/context, encouraging, performance coaching NOT therapy or medical advice, no preamble, address as 'you'.",
+    ].join("\n");
+  }
   // compound
   return [
     "You are an expert, encouraging tennis coach reviewing a match the player just logged.",
@@ -68,7 +79,7 @@ Deno.serve(async (req) => {
     return json({ error: "Invalid JSON." }, 400);
   }
 
-  const mode = body.mode === "pre" ? "pre" : "compound";
+  const mode = body.mode === "pre" ? "pre" : body.mode === "mental" ? "mental" : "compound";
   const summary = (typeof body.summary === "string" ? body.summary : "").trim();
   if (!summary) return json({ error: "No match details provided." }, 400);
   if (summary.length > MAX_SUMMARY) return json({ error: "Too much detail." }, 413);

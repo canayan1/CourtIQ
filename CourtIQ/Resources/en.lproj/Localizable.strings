@@ -632,6 +632,28 @@
 "matches.ai_step_patterns" = "Spotting patterns vs your history";
 "matches.ai_step_writing" = "Writing your coaching notes";
 
+/* Pre-match mental check */
+"mental.nav_title" = "Mental check";
+"mental.eyebrow" = "Pre-match";
+"mental.headline" = "How are you feeling?";
+"mental.subhead" = "A few quick taps and I'll give you a short mental routine for today's match.";
+"mental.energy" = "Energy";
+"mental.confidence" = "Confidence";
+"mental.nerves" = "Nerves";
+"mental.context_label" = "Context (optional)";
+"mental.context_placeholder" = "e.g. playing a stronger opponent on clay";
+"mental.get_plan_cta" = "Get my mental plan";
+"mental.plan_title" = "Your pre-match plan";
+"mental.analyzing_title" = "Building your routine";
+"mental.step_reading" = "Reading your check-in";
+"mental.step_settling" = "Tuning the routine to you";
+"mental.step_writing" = "Writing your mental plan";
+"mental.failed_title" = "Couldn't build your plan";
+"mental.failed_body" = "The AI was unreachable just now — tap retry to try again.";
+"mental.retry" = "Retry";
+"mental.shortcut_title" = "Mental check";
+"mental.shortcut_subtitle" = "A quick pre-match routine, tuned to how you feel right now.";
+
 /* ── Daily Court Tap Drill ── */
 "drill.card_kicker" = "Daily drill";
 "drill.card_title" = "Read the court. Tap the smartest shot.";
