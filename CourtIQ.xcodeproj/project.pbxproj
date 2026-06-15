@@ -29,6 +29,7 @@
 		8CD188FE56C7D92CF1FF809F /* OnboardingFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDDBDA9A7035EE3626F5589 /* OnboardingFlowView.swift */; };
 		9951D0CC2EF78EAF560B3E98 /* CourtIQAppPreviewUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C98DCFD79E34F8766234FD /* CourtIQAppPreviewUITest.swift */; };
 		9D842976741595D48320DD61 /* DoublesAnalysisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC40F35CB6A1E4FC8E5641D /* DoublesAnalysisView.swift */; };
+		9F058BB47733B75F46ED587A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32EFA2E45204668CCB9AA07 /* HomeView.swift */; };
 		A000000000000000000020 /* CourtIQApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000010 /* CourtIQApp.swift */; };
 		A000000000000000000021 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000011 /* MainTabView.swift */; };
 		A000000000000000000022 /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000012 /* PracticeView.swift */; };
@@ -136,6 +137,7 @@
 		A9B92CCD5D6A1DDCE15C8C3B /* TennisProfileScoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EC46A67E526C59A182B12D /* TennisProfileScoring.swift */; };
 		AA3AA69753F41AE12A5CF8C4 /* DoublesInviteModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C866AF47AA54ECA889AD22 /* DoublesInviteModels.swift */; };
 		BB07C4ADCC7163742CDD7034 /* TennisProfileQuestionnaireView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D5B2D2F6843DCDF39EC336 /* TennisProfileQuestionnaireView.swift */; };
+		C42C3CFF6843C67C68E8FB6F /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AA3AEFE28E84B4C9E60F40 /* DesignSystem.swift */; };
 		C763EB69F9265F6B439BA23D /* SwingAnalysisConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82706820737C1C2313D111A2 /* SwingAnalysisConsentView.swift */; };
 		CC1C0316005DD09AB30EE8F4 /* SwingFrameExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DF1FBA78574C22ADBF282 /* SwingFrameExtractor.swift */; };
 		CC1F6A22C438B041E97699BD /* SwingAnalysisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C1F0C3D2F961F7294836E6 /* SwingAnalysisView.swift */; };
@@ -166,6 +168,7 @@
 		37C76AC798603AB4C9DC3688 /* DoublesService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesService.swift; path = CourtIQ/Features/Doubles/DoublesService.swift; sourceTree = "<group>"; };
 		3F14568EE361FE4FD8E1B19F /* OnboardingBuildingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OnboardingBuildingView.swift; path = CourtIQ/Features/Onboarding/OnboardingBuildingView.swift; sourceTree = "<group>"; };
 		4B7C2AA916BE624A71B6017F /* TennisProfileCopy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TennisProfileCopy.swift; path = CourtIQ/Features/TennisProfile/TennisProfileCopy.swift; sourceTree = "<group>"; };
+		53AA3AEFE28E84B4C9E60F40 /* DesignSystem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignSystem.swift; path = CourtIQ/SharedUI/DesignSystem.swift; sourceTree = "<group>"; };
 		59EC46A67E526C59A182B12D /* TennisProfileScoring.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TennisProfileScoring.swift; path = CourtIQ/Features/TennisProfile/TennisProfileScoring.swift; sourceTree = "<group>"; };
 		5C76C9F72D768EDAA7C746CB /* DoublesInviteStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesInviteStore.swift; path = CourtIQ/Features/Doubles/DoublesInviteStore.swift; sourceTree = "<group>"; };
 		66A2F457CF051744945B3545 /* AICoachTabRoot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AICoachTabRoot.swift; path = CourtIQ/Features/AICoach/AICoachTabRoot.swift; sourceTree = "<group>"; };
@@ -289,6 +292,7 @@
 		B4DA2D95FBB8002248B38F6C /* DoublesPartnerFormView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesPartnerFormView.swift; path = CourtIQ/Features/Doubles/DoublesPartnerFormView.swift; sourceTree = "<group>"; };
 		B5431D73E4D73B3EE01C53B1 /* AICoachConsentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AICoachConsentView.swift; path = CourtIQ/Features/AICoach/AICoachConsentView.swift; sourceTree = "<group>"; };
 		C2A78F773019502E640D876E /* OnboardingResultView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OnboardingResultView.swift; path = CourtIQ/Features/Onboarding/OnboardingResultView.swift; sourceTree = "<group>"; };
+		C32EFA2E45204668CCB9AA07 /* HomeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = CourtIQ/App/HomeView.swift; sourceTree = "<group>"; };
 		C99C6606DBC58D08EB834A69 /* OnboardingCopy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OnboardingCopy.swift; path = CourtIQ/Features/Onboarding/OnboardingCopy.swift; sourceTree = "<group>"; };
 		CE15DB976B12A4D023D76BF2 /* DoublesReportDetailView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesReportDetailView.swift; path = CourtIQ/Features/Doubles/DoublesReportDetailView.swift; sourceTree = "<group>"; };
 		CFB312EFDFBC3D468DFBD276 /* SwingAnalysisService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwingAnalysisService.swift; path = CourtIQ/Features/SwingAnalysis/SwingAnalysisService.swift; sourceTree = "<group>"; };
@@ -467,6 +471,8 @@
 				FF5A9D15805AB520576E3578 /* Doubles */,
 				2552A4998FE130E11DD2183F /* TrainView.swift */,
 				66A2F457CF051744945B3545 /* AICoachTabRoot.swift */,
+				C32EFA2E45204668CCB9AA07 /* HomeView.swift */,
+				53AA3AEFE28E84B4C9E60F40 /* DesignSystem.swift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -749,6 +755,8 @@
 				0B41552D544B03FFBB348B54 /* DoublesInviteViews.swift in Sources */,
 				77E5C7A03F1A2BF3C94AE188 /* TrainView.swift in Sources */,
 				E64FC67205E8603D8EA31A06 /* AICoachTabRoot.swift in Sources */,
+				9F058BB47733B75F46ED587A /* HomeView.swift in Sources */,
+				C42C3CFF6843C67C68E8FB6F /* DesignSystem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

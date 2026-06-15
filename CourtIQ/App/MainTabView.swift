@@ -1,26 +1,35 @@
 import SwiftUI
 
+/// Routes tab selection so the Home tiles can SWITCH tabs (Matches / Coach /
+/// Doubles) rather than push a duplicate of those screens inside the Home
+/// NavigationStack.
+final class TabRouter: ObservableObject {
+    enum Tab: Hashable { case home, train, matches, doubles, coach }
+    @Published var selection: Tab = .home
+}
+
 struct MainTabView: View {
     @EnvironmentObject private var lang: LanguageManager
+    @StateObject private var tabRouter = TabRouter()
 
     // 5 tabs only — iOS pushes a 6th into a "More" overflow that buries it.
-    // Phase 1 IA redesign:
-    //   1. Today   — daily orchestrator; Profile ("Me") now lives behind the
-    //                avatar button in the Today header, NOT a tab.
-    //   2. Train   — the improve hub: merges the old Practice + Training tabs
-    //                and absorbs the improvement tools that used to sit on Today.
-    //   3. Matches — unchanged, the post-pivot centerpiece.
-    //   4. Doubles — the doubles compatibility surface, promoted to a tab.
-    //   5. Coach   — the AI Coach, promoted out of Profile into its own tab.
-    // No Community tab: v1.0 ships with no user-generated content.
+    // Phase 1 IA redesign + action-first Home:
+    //   1. Home    — action-first landing (flagship swing hero + 2×2 grid).
+    //                Profile ("Me") lives behind the avatar button in the
+    //                Home header, NOT a tab.
+    //   2. Train   — the improve hub.
+    //   3. Matches — the post-pivot centerpiece.
+    //   4. Doubles — the doubles compatibility surface.
+    //   5. Coach   — the AI Coach.
     var body: some View {
-        TabView {
+        TabView(selection: $tabRouter.selection) {
             NavigationStack {
-                TodayView()
+                HomeView()
             }
             .tabItem {
-                Label(lang.t("tab.today"), systemImage: "sun.max.fill")
+                Label(lang.t("tab.home"), systemImage: "house.fill")
             }
+            .tag(TabRouter.Tab.home)
 
             NavigationStack {
                 TrainView()
@@ -28,6 +37,7 @@ struct MainTabView: View {
             .tabItem {
                 Label(lang.t("tab.train"), systemImage: "figure.strengthtraining.traditional")
             }
+            .tag(TabRouter.Tab.train)
 
             NavigationStack {
                 MatchesListView()
@@ -35,6 +45,7 @@ struct MainTabView: View {
             .tabItem {
                 Label(lang.t("tab.matches"), systemImage: "pencil.and.list.clipboard")
             }
+            .tag(TabRouter.Tab.matches)
 
             NavigationStack {
                 DoublesView()
@@ -42,6 +53,7 @@ struct MainTabView: View {
             .tabItem {
                 Label(lang.t("tab.doubles"), systemImage: "person.2.fill")
             }
+            .tag(TabRouter.Tab.doubles)
 
             NavigationStack {
                 AICoachTabRoot()
@@ -49,8 +61,10 @@ struct MainTabView: View {
             .tabItem {
                 Label(lang.t("tab.coach"), systemImage: "sparkles")
             }
+            .tag(TabRouter.Tab.coach)
         }
         .tint(AppPalette.clay)
+        .environmentObject(tabRouter)
         .id(lang.language)
     }
 }

@@ -28,6 +28,16 @@
 "tab.train" = "Train";
 "tab.doubles" = "Doubles";
 "tab.coach" = "Coach";
+"tab.home" = "Home";
+
+/* ── Home (action-first redesign) ── */
+"home.analyze_title" = "Analyze your swing";
+"home.analyze_caption" = "Record · 0–100 score";
+"home.your_game" = "Your game";
+"home.tile_matches" = "Matches";
+"home.tile_coach" = "Coach";
+"home.tile_doubles" = "Doubles";
+"home.tile_drill" = "Drill";
 
 /* ── Train hub (Phase 1 IA redesign) ── */
 "train.subtitle" = "Improve";

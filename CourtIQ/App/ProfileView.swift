@@ -26,6 +26,11 @@ struct ProfileView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
+                greetingHeader
+                ThreeRingsCard()
+                    .environmentObject(drillManager)
+                    .environmentObject(matchManager)
+                    .environmentObject(lang)
                 avatarHeaderCard
                 tennisProfileRow
                 profileHeader
@@ -85,6 +90,27 @@ struct ProfileView: View {
             Button(lang.t("common.cancel"), role: .cancel) {}
         } message: {
             Text(lang.t("profile.reset_msg"))
+        }
+    }
+
+    // MARK: - Greeting (relocated from the old Today)
+
+    /// Time-based greeting + the player's name. Relocated here from the old
+    /// Today landing alongside the activity rings.
+    private var greetingHeader: some View {
+        Text("\(greetingLine), \(session.displayName)")
+            .font(.system(size: 26, weight: .bold, design: .rounded))
+            .foregroundStyle(AppPalette.ink)
+            .fixedSize(horizontal: false, vertical: true)
+            .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private var greetingLine: String {
+        let hour = Calendar.current.component(.hour, from: Date())
+        switch hour {
+        case 5..<12:  return lang.t("today.greeting_morning")
+        case 12..<17: return lang.t("today.greeting_afternoon")
+        default:      return lang.t("today.greeting_evening")
         }
     }
 

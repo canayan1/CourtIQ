@@ -1,3 +1,4 @@
+// Superseded by HomeView (action-first redesign)
 import SwiftUI
 
 /// The daily orchestrator (Phase 1 IA redesign). Today is now a lean landing:
