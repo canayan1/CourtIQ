@@ -65,6 +65,39 @@ SCORE: 64
 **One thing to try next session**
 • Feed yourself 30 forehands focused only on contact out in front — spacing and rhythm first, pace second.`;
 
+// A second gold example (serve) so the format generalizes beyond groundstrokes.
+const FEW_SHOT_SERVE = `A second EXAMPLE — a serve (again a different player; produce your own from THIS video):
+
+SCORE: 58
+
+**What's working**
+• Relaxed Continental grip and an unhurried rhythm into the toss.
+• Good extension — you reach up to contact rather than hitting from a cramped, low position.
+
+**Top fixes**
+• Almost no leg drive — your knees barely bend, so the power is all arm. Cue: "bend, then push the ground away and jump up to the ball." Drill: serve from an exaggerated knee-bend, landing inside the baseline on your front foot.
+• Flat "frying-pan" finish with no pronation — the racquet face stays square instead of rolling through. Cue: "palm in → palm flat → palm out: throw the edge, then the face, at the ball." Drill: slow shadow serves rolling the forearm through contact.
+• The racquet doesn't fully drop behind your back before you swing up, which shortens the whip. Cue: "let the racquet head fall to scratch your back, then explode up."
+
+**One thing to try next session**
+• 20 serves at 70% pace, focused only on the leg drive + the palm-in-to-palm-out roll — racquet speed comes from the whip, not the arm.`;
+
+// Expert coaching reference (USTA / Tennis Australia / peer-reviewed
+// biomechanics). The checkpoints + faults to assess against, and — critically —
+// an honest list of what a single side-on phone clip CANNOT show, so the AI
+// never fabricates a measurement.
+const COACHING_REFERENCE = `COACHING REFERENCE — assess what you actually see against these expert checkpoints (USTA / Tennis Australia / biomechanics). Apply them; don't recite them.
+
+GROUNDSTROKES (forehand, backhand): ready position & early prep → UNIT TURN first (shoulders/trunk turn before the arm — "show your back shoulder to the net"; "arming the ball" with no turn is the #1 club fault) → racquet drops BELOW the ball → low-to-high swing through a long hitting zone with a stable racquet face (scooping/hitting UP instead of swinging low-to-high THROUGH is common — cue "drop under it, finish high over the shoulder") → CONTACT out in front of the front hip (late contact behind the hip is usually caused by LATE PREP/footwork — diagnose the root, not just the swing) → balanced, high finish. One-handed backhand: a firm, laid-back wrist at contact (a wristy, collapsing wrist is the classic 1HBH fault).
+SERVE: stance + relaxed Continental grip → knee bend & LEG DRIVE up into the ball ("push the ground away / jump to the ball"; no leg drive is a top club fault) → racquet drops behind the back (tip down), elbow leads up → contact at FULL EXTENSION, up and slightly in front → PRONATION through contact ("palm in → palm flat → palm out"; a flat "frying-pan/waiter's" finish with no pronation is the classic weak-serve fault).
+VOLLEY: short backswing, Continental grip, step in, BLOCK/punch (not a full swing), contact in front.
+FOOTWORK: split-step AS the opponent strikes ("small hop, land as they hit"; no/late split is the root of most late, off-balance shots) → explosive first step pushing off the outside foot → spacing about an arm's length from the ball (adjust with small steps, don't reach) → recover toward the middle after each ball.
+
+WHAT A SIDE-ON PHONE CLIP CAN vs CANNOT SHOW — be honest, NEVER fabricate a number:
+• You CAN judge: swing path (low-to-high), racquet drop, contact point relative to the front hip, leg drive & extension, balance, finish height, split-step timing.
+• You CANNOT reliably judge from one side-on clip: exact joint angles in degrees, shoulder/hip "separation angle", internal shoulder rotation, the grip on the far hand, lateral spacing, or court positioning/recovery geometry. Describe DIRECTION ("wrist laid back vs collapsing", "deep vs shallow knee bend"), never invent degrees. If the angle hides something, say so plainly instead of guessing.
+The kinetic chain (legs→hips→trunk→shoulder→arm→racquet) is the right teaching lens but a heuristic, not a rigid law — cue smooth, sequenced acceleration; don't be dogmatic about exact timing.`;
+
 function systemPrompt(stroke: string, handedness: string | null): string {
   const hand = handedness ? `The player is ${handedness}-handed. ` : "";
   if (stroke === "session") {
@@ -156,8 +189,10 @@ Deno.serve(async (req) => {
   // Gemini: native video understanding via inline data.
   const systemParts: Array<{ text: string }> = [
     { text: systemPrompt(stroke, handedness) },
+    { text: COACHING_REFERENCE },
     { text: "Begin your ENTIRE reply with a line exactly like 'SCORE: 63' — a single integer 0-100 rating the overall technique shown (for a Whole session, an overall score across the strokes). Be discerning: most recreational players land 40-70; reserve 85+ for genuinely advanced technique. Put a blank line after that score line, then the analysis." },
     { text: FEW_SHOT_EXAMPLE },
+    { text: FEW_SHOT_SERVE },
   ];
   // Personalization: when the client sends player context, give the coach a
   // second instruction part so it tailors the feedback to this player. Optional
