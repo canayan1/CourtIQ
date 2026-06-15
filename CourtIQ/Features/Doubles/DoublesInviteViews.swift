@@ -117,6 +117,18 @@ struct DoublesInviteCopy {
     var genericError: String {
         t("Please try again.", "Lütfen tekrar dene.")
     }
+
+    // Invite no longer acceptable (peek branch)
+    var alreadyPairedTitle: String { t("You're already paired", "Zaten eşleştiniz") }
+    var alreadyPairedMessage: String {
+        t("You and this partner are already linked — check your pairings to see your compatibility report.",
+          "Sen ve bu partner zaten bağlısınız — uyum raporunu görmek için eşleşmelerine bak.")
+    }
+    var inviteUsedTitle: String { t("Invite no longer available", "Davet artık geçerli değil") }
+    var inviteUsedMessage: String {
+        t("This invite was already used or has expired. Ask your partner for a fresh code.",
+          "Bu davet kullanılmış ya da süresi dolmuş. Partnerinden yeni bir kod iste.")
+    }
 }
 
 // MARK: - Invite section (embedded at top of DoublesView)
@@ -272,14 +284,20 @@ struct DoublesInviteSection: View {
                 showInviteSheet = true
             } label: {
                 Image(systemName: "square.and.arrow.up")
+                    .frame(minWidth: 44, minHeight: 44)
+                    .contentShape(Rectangle())
             }
             .tint(AppPalette.clay)
+            .accessibilityLabel(copy.reshareCTA)
             Button {
                 Task { await refresh() }
             } label: {
                 Image(systemName: "arrow.clockwise")
+                    .frame(minWidth: 44, minHeight: 44)
+                    .contentShape(Rectangle())
             }
             .tint(AppPalette.moss)
+            .accessibilityLabel(copy.refreshCTA)
         }
         .padding(14)
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -315,6 +333,7 @@ struct DoublesInviteSection: View {
                 store.upsert(partnership)
                 createdPartnership = partnership
                 showInviteSheet = true
+                Haptics.success()
             } catch {
                 present(error)
             }
@@ -583,9 +602,11 @@ struct DoublesInviteShareSheet: View {
                         HStack(spacing: 10) {
                             Button {
                                 copyToPasteboard(partnership.code)
-                                copiedCode = true
+                                markCopied(.code)
                             } label: {
-                                Label(copiedCode ? copy.copied : copy.copyCode, systemImage: "doc.on.doc")
+                                Label(copiedCode ? copy.copied : copy.copyCode,
+                                      systemImage: copiedCode ? "checkmark" : "doc.on.doc")
+                                    .contentTransition(.symbolEffect(.replace))
                                     .frame(maxWidth: .infinity)
                                     .padding(.vertical, 10)
                             }
@@ -594,15 +615,19 @@ struct DoublesInviteShareSheet: View {
 
                             Button {
                                 copyToPasteboard(link.absoluteString)
-                                copiedLink = true
+                                markCopied(.link)
                             } label: {
-                                Label(copiedLink ? copy.copied : copy.copyLink, systemImage: "link")
+                                Label(copiedLink ? copy.copied : copy.copyLink,
+                                      systemImage: copiedLink ? "checkmark" : "link")
+                                    .contentTransition(.symbolEffect(.replace))
                                     .frame(maxWidth: .infinity)
                                     .padding(.vertical, 10)
                             }
                             .buttonStyle(.bordered)
                             .tint(AppPalette.moss)
                         }
+                        .animation(.snappy, value: copiedCode)
+                        .animation(.snappy, value: copiedLink)
                     }
                     .padding(24)
                 }
@@ -617,10 +642,29 @@ struct DoublesInviteShareSheet: View {
         }
     }
 
+    private enum CopyTarget { case code, link }
+
     private func copyToPasteboard(_ string: String) {
         #if canImport(UIKit)
         UIPasteboard.general.string = string
         #endif
+    }
+
+    /// Flip the matching "Copied" flag on with a subtle tap, then auto-reset it
+    /// after ~1.5s so the confirmation doesn't stick around.
+    private func markCopied(_ target: CopyTarget) {
+        Haptics.tap()
+        switch target {
+        case .code: copiedCode = true
+        case .link: copiedLink = true
+        }
+        Task {
+            try? await Task.sleep(nanoseconds: 1_500_000_000)
+            switch target {
+            case .code: copiedCode = false
+            case .link: copiedLink = false
+            }
+        }
     }
 }
 
@@ -636,7 +680,14 @@ struct DoublesAcceptSheet: View {
     private var copy: DoublesInviteCopy { DoublesInviteCopy(lang: lang.language) }
     private let service = DoublesInviteService()
 
-    private enum Step { case enterCode, confirm(inviterName: String) }
+    private enum Step {
+        case enterCode
+        case confirm(inviterName: String)
+        /// Peek told us the code can't be accepted (already paired, or used /
+        /// expired). We show a clear, friendly state instead of falling through
+        /// to the confirm step and dumping a raw server error.
+        case unavailable(title: String, message: String)
+    }
     @State private var step: Step = .enterCode
     @State private var code = ""
     @State private var isWorking = false
@@ -683,6 +734,8 @@ struct DoublesAcceptSheet: View {
                     enterCodeStep
                 case .confirm(let inviterName):
                     confirmStep(inviterName: inviterName)
+                case .unavailable(let title, let message):
+                    unavailableStep(title: title, message: message)
                 }
                 if isWorking { ProgressView() }
             }
@@ -753,6 +806,33 @@ struct DoublesAcceptSheet: View {
         }
     }
 
+    private func unavailableStep(title: String, message: String) -> some View {
+        VStack(spacing: 18) {
+            Image(systemName: "checkmark.seal.fill")
+                .font(.system(size: 40))
+                .foregroundStyle(AppPalette.moss)
+            Text(title)
+                .font(.title3.weight(.bold))
+                .foregroundStyle(AppPalette.ink)
+                .multilineTextAlignment(.center)
+            Text(message)
+                .font(.subheadline)
+                .foregroundStyle(AppPalette.inkSoft)
+                .multilineTextAlignment(.center)
+
+            Button {
+                dismiss()
+            } label: {
+                Text(copy.doneCTA)
+                    .font(.headline)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 13)
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(AppPalette.clay)
+        }
+    }
+
     // MARK: Actions
 
     private func peek() {
@@ -762,6 +842,24 @@ struct DoublesAcceptSheet: View {
             do {
                 let supabaseSession = try await ensureSession()
                 let result = try await service.peekInvite(code: trimmedCode, session: supabaseSession)
+
+                // Branch on the peek result BEFORE the confirm step so an
+                // already-accepted / used / expired code shows a clear, friendly
+                // state rather than falling through and dumping a raw server error.
+                if result.alreadyMember {
+                    step = .unavailable(title: copy.alreadyPairedTitle,
+                                        message: copy.alreadyPairedMessage)
+                    return
+                }
+                let normalizedStatus = result.status
+                    .trimmingCharacters(in: .whitespacesAndNewlines)
+                    .lowercased()
+                if normalizedStatus != "pending" {
+                    step = .unavailable(title: copy.inviteUsedTitle,
+                                        message: copy.inviteUsedMessage)
+                    return
+                }
+
                 let name = result.inviterName?.trimmingCharacters(in: .whitespacesAndNewlines)
                 step = .confirm(inviterName: (name?.isEmpty == false ? name! : "A player"))
             } catch {
@@ -787,6 +885,7 @@ struct DoublesAcceptSheet: View {
                     myProfile: myProfile,
                     session: supabaseSession
                 )
+                Haptics.success()
                 onAccepted()
                 dismiss()
             } catch {

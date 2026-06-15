@@ -123,11 +123,7 @@ struct MatchTrendDashboardView: View {
         let pct = s.ratio.map { Int(($0 * 100).rounded()) }
         return HStack(spacing: 16) {
             VStack(alignment: .leading, spacing: 4) {
-                Text(lang.t("matches.trend_record"))
-                    .font(.caption.weight(.heavy))
-                    .foregroundStyle(AppPalette.inkSoft)
-                    .textCase(.uppercase)
-                    .tracking(0.5)
+                Eyebrow(lang.t("matches.trend_record"))
                 HStack(alignment: .firstTextBaseline, spacing: 8) {
                     Text("\(s.wins)")
                         .font(.system(size: 32, weight: .heavy, design: .rounded))
@@ -169,11 +165,7 @@ struct MatchTrendDashboardView: View {
 
     private var surfaceBreakdownCard: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text(lang.t("matches.trend_by_surface"))
-                .font(.caption.weight(.heavy))
-                .foregroundStyle(AppPalette.inkSoft)
-                .textCase(.uppercase)
-                .tracking(0.5)
+            Eyebrow(lang.t("matches.trend_by_surface"))
 
             ForEach(matches.surfaceBreakdown.filter { $0.total > 0 }) { row in
                 surfaceRow(row)
@@ -228,11 +220,7 @@ struct MatchTrendDashboardView: View {
 
     private var momentumCard: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text(lang.t("matches.trend_momentum"))
-                .font(.caption.weight(.heavy))
-                .foregroundStyle(AppPalette.inkSoft)
-                .textCase(.uppercase)
-                .tracking(0.5)
+            Eyebrow(lang.t("matches.trend_momentum"))
             Text(lang.t("matches.trend_momentum_subtitle"))
                 .font(.caption2)
                 .foregroundStyle(AppPalette.inkSoft.opacity(0.7))
@@ -291,11 +279,7 @@ struct MatchTrendDashboardView: View {
 
     private var perSurfaceRatingsCard: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text(lang.t("matches.trend_per_surface_ratings"))
-                .font(.caption.weight(.heavy))
-                .foregroundStyle(AppPalette.inkSoft)
-                .textCase(.uppercase)
-                .tracking(0.5)
+            Eyebrow(lang.t("matches.trend_per_surface_ratings"))
 
             VStack(spacing: 8) {
                 ForEach(surfacesWithData) { surface in
@@ -364,11 +348,7 @@ struct MatchTrendDashboardView: View {
 
     private func takeawayThemesCard(_ themes: [(word: String, count: Int)]) -> some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text(lang.t("matches.trend_themes"))
-                .font(.caption.weight(.heavy))
-                .foregroundStyle(AppPalette.inkSoft)
-                .textCase(.uppercase)
-                .tracking(0.5)
+            Eyebrow(lang.t("matches.trend_themes"))
             Text(lang.t("matches.trend_themes_subtitle"))
                 .font(.caption2)
                 .foregroundStyle(AppPalette.inkSoft.opacity(0.7))
@@ -508,11 +488,7 @@ struct MatchTrendDashboardView: View {
                 Image(systemName: arrow)
                     .font(.caption.weight(.bold))
                     .foregroundStyle(tint)
-                Text(lang.t(labelKey))
-                    .font(.caption.weight(.heavy))
-                    .tracking(0.4)
-                    .textCase(.uppercase)
-                    .foregroundStyle(AppPalette.inkSoft)
+                Eyebrow(lang.t(labelKey))
             }
 
             HStack(spacing: 8) {
@@ -552,11 +528,7 @@ struct MatchTrendDashboardView: View {
             HStack(spacing: 8) {
                 Image(systemName: "calendar")
                     .foregroundStyle(AppPalette.clay)
-                Text(lang.t("matches.trend_volume"))
-                    .font(.caption.weight(.heavy))
-                    .tracking(0.4)
-                    .textCase(.uppercase)
-                    .foregroundStyle(AppPalette.inkSoft)
+                Eyebrow(lang.t("matches.trend_volume"))
             }
 
             Chart {

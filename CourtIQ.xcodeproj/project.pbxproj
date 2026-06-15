@@ -27,7 +27,6 @@
 		7077F4E9DBD8C6119B70D01A /* DoublesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C76AC798603AB4C9DC3688 /* DoublesService.swift */; };
 		754033EA2869BE6DBB623611 /* DoublesPartnerFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA2D95FBB8002248B38F6C /* DoublesPartnerFormView.swift */; };
 		77E5C7A03F1A2BF3C94AE188 /* TrainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2552A4998FE130E11DD2183F /* TrainView.swift */; };
-		803D58DA080F62B6039E75E1 /* TrainRecoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67096DC5B2EA03C7C212CFB /* TrainRecoverView.swift */; };
 		862D526A29888767C02706F3 /* OnboardingCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99C6606DBC58D08EB834A69 /* OnboardingCopy.swift */; };
 		8CD188FE56C7D92CF1FF809F /* OnboardingFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDDBDA9A7035EE3626F5589 /* OnboardingFlowView.swift */; };
 		8D8D4A834044265ECD0D4722 /* TrainProgramsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0556A0C64DB8336DFA363B3 /* TrainProgramsView.swift */; };
@@ -301,7 +300,6 @@
 		C99C6606DBC58D08EB834A69 /* OnboardingCopy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OnboardingCopy.swift; path = CourtIQ/Features/Onboarding/OnboardingCopy.swift; sourceTree = "<group>"; };
 		CE15DB976B12A4D023D76BF2 /* DoublesReportDetailView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesReportDetailView.swift; path = CourtIQ/Features/Doubles/DoublesReportDetailView.swift; sourceTree = "<group>"; };
 		CFB312EFDFBC3D468DFBD276 /* SwingAnalysisService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwingAnalysisService.swift; path = CourtIQ/Features/SwingAnalysis/SwingAnalysisService.swift; sourceTree = "<group>"; };
-		D67096DC5B2EA03C7C212CFB /* TrainRecoverView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TrainRecoverView.swift; path = CourtIQ/Features/Training/TrainRecoverView.swift; sourceTree = "<group>"; };
 		DCE6B71AA96A58FC48936B26 /* DoublesInviteViews.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesInviteViews.swift; path = CourtIQ/Features/Doubles/DoublesInviteViews.swift; sourceTree = "<group>"; };
 		E0556A0C64DB8336DFA363B3 /* TrainProgramsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TrainProgramsView.swift; path = CourtIQ/Features/Training/TrainProgramsView.swift; sourceTree = "<group>"; };
 		E37DF1FBA78574C22ADBF282 /* SwingFrameExtractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwingFrameExtractor.swift; path = CourtIQ/Features/SwingAnalysis/SwingFrameExtractor.swift; sourceTree = "<group>"; };
@@ -482,7 +480,6 @@
 				C32EFA2E45204668CCB9AA07 /* HomeView.swift */,
 				53AA3AEFE28E84B4C9E60F40 /* DesignSystem.swift */,
 				E59972A086F7FB607351D71D /* TrainPracticeView.swift */,
-				D67096DC5B2EA03C7C212CFB /* TrainRecoverView.swift */,
 				E0556A0C64DB8336DFA363B3 /* TrainProgramsView.swift */,
 				17264A46BEA1F34B6E375CCD /* RecentActivity.swift */,
 			);
@@ -770,7 +767,6 @@
 				9F058BB47733B75F46ED587A /* HomeView.swift in Sources */,
 				C42C3CFF6843C67C68E8FB6F /* DesignSystem.swift in Sources */,
 				1A5CB2C747712855620C22EF /* TrainPracticeView.swift in Sources */,
-				803D58DA080F62B6039E75E1 /* TrainRecoverView.swift in Sources */,
 				8D8D4A834044265ECD0D4722 /* TrainProgramsView.swift in Sources */,
 				6C288EA33A513977B60D0F93 /* RecentActivity.swift in Sources */,
 			);

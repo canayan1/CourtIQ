@@ -25,27 +25,44 @@ struct ProfileView: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .leading, spacing: 28) {
+                // Greeting sits above the bands — it's the page's own title.
                 greetingHeader
-                ThreeRingsCard()
-                    .environmentObject(drillManager)
-                    .environmentObject(matchManager)
-                    .environmentObject(lang)
-                avatarHeaderCard
-                tennisProfileRow
-                profileHeader
-                LevelProgressionPathView()
-                TacticalProfileCard()
-                    .environmentObject(lang)
-                    .environmentObject(drillManager)
-                PlayStyleProfileCard()
-                    .environmentObject(lang)
-                    .environmentObject(drillManager)
-                streakSection
-                historySection
-                betaFeedbackSection
-                accountSection
-                legalSection
+
+                // IDENTITY — who you are at a glance.
+                band(lang.t("profile.band_identity")) {
+                    avatarHeaderCard
+                    profileHeader
+                    tennisProfileRow
+                }
+
+                // YOUR GAME — your tactical fingerprint + path.
+                band(lang.t("profile.band_game")) {
+                    LevelProgressionPathView()
+                    TacticalProfileCard()
+                        .environmentObject(lang)
+                        .environmentObject(drillManager)
+                    PlayStyleProfileCard()
+                        .environmentObject(lang)
+                        .environmentObject(drillManager)
+                }
+
+                // PROGRESS — rings, streak, quiz history.
+                band(lang.t("profile.band_progress")) {
+                    ThreeRingsCard()
+                        .environmentObject(drillManager)
+                        .environmentObject(matchManager)
+                        .environmentObject(lang)
+                    streakSection
+                    historySection
+                }
+
+                // ACCOUNT — feedback, controls, notifications, legal.
+                band(lang.t("profile.band_account")) {
+                    betaFeedbackSection
+                    accountSection
+                    legalSection
+                }
             }
             .padding()
         }
@@ -90,6 +107,22 @@ struct ProfileView: View {
             Button(lang.t("common.cancel"), role: .cancel) {}
         } message: {
             Text(lang.t("profile.reset_msg"))
+        }
+    }
+
+    // MARK: - Band
+
+    /// A labeled group of related cards. An `Eyebrow` header sits above the
+    /// stack with tight intra-band spacing; the body's larger spacing
+    /// separates one band from the next.
+    @ViewBuilder
+    private func band<Content: View>(
+        _ title: String,
+        @ViewBuilder content: () -> Content
+    ) -> some View {
+        VStack(alignment: .leading, spacing: 14) {
+            Eyebrow(title)
+            content()
         }
     }
 
@@ -294,7 +327,8 @@ struct ProfileView: View {
         VStack(alignment: .leading, spacing: 14) {
             HStack {
                 Text(lang.t("profile.section_quiz"))
-                    .font(.title3.bold())
+                    .font(.subheadline.weight(.bold))
+                    .foregroundStyle(AppPalette.ink)
                 Spacer()
                 if !session.isPremiumUnlocked {
                     Text(lang.t("common.premium"))
@@ -393,7 +427,8 @@ struct ProfileView: View {
     private var betaFeedbackSection: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text(lang.t("beta.section_title"))
-                .font(.title3.bold())
+                .font(.subheadline.weight(.bold))
+                .foregroundStyle(AppPalette.ink)
 
             VStack(alignment: .leading, spacing: 10) {
                 HStack(alignment: .top, spacing: 12) {
@@ -437,9 +472,6 @@ struct ProfileView: View {
 
     private var accountSection: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text(lang.t("profile.section_account"))
-                .font(.title3.bold())
-
             if !session.isSignedInWithApple {
                 VStack(alignment: .leading, spacing: 10) {
                     Text(lang.t("profile.sign_in_hint"))
@@ -616,7 +648,8 @@ struct ProfileView: View {
     private var legalSection: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text(lang.t("profile.section_policies"))
-                .font(.title3.bold())
+                .font(.subheadline.weight(.bold))
+                .foregroundStyle(AppPalette.ink)
 
             notificationsSection
 

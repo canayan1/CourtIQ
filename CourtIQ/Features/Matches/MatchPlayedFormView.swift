@@ -68,12 +68,23 @@ struct MatchPlayedFormView: View {
 
     private var form: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 22) {
+            VStack(alignment: .leading, spacing: 18) {
                 planSection
-                metaBlock
-                MatchFormComponents.RatingsBlock(
-                    serve: $serve, ret: $ret, movement: $movement, mental: $mental
-                )
+
+                // Match details — grouped under one header.
+                VStack(alignment: .leading, spacing: 10) {
+                    Eyebrow(lang.t("matches.section_details"))
+                    metaBlock
+                }
+
+                // Ratings — grouped under one header.
+                VStack(alignment: .leading, spacing: 10) {
+                    Eyebrow(lang.t("matches.section_ratings"))
+                    MatchFormComponents.RatingsBlock(
+                        serve: $serve, ret: $ret, movement: $movement, mental: $mental
+                    )
+                }
+
                 MatchFormComponents.NoteField(
                     iconName: "checkmark.seal.fill",
                     iconColor: AppPalette.moss,
@@ -117,9 +128,7 @@ struct MatchPlayedFormView: View {
                 Image(systemName: "target")
                     .foregroundStyle(AppPalette.clay)
                     .font(.subheadline.weight(.bold))
-                Text(lang.t("matches.had_plan_question"))
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(AppPalette.ink)
+                Eyebrow(lang.t("matches.had_plan_label"))
             }
 
             HStack(spacing: 0) {
@@ -205,11 +214,7 @@ struct MatchPlayedFormView: View {
                 Image(systemName: "lightbulb.fill")
                     .foregroundStyle(AppPalette.gold)
                     .font(.subheadline.weight(.bold))
-                Text(lang.t("matches.takeaway_label"))
-                    .font(.caption.weight(.heavy))
-                    .tracking(0.6)
-                    .foregroundStyle(AppPalette.inkSoft)
-                    .textCase(.uppercase)
+                Eyebrow(lang.t("matches.takeaway_label"))
             }
             TextField(lang.t("matches.takeaway_placeholder"), text: $takeaway, axis: .vertical)
                 .focused($focusedField, equals: .takeaway)
@@ -308,7 +313,11 @@ struct MatchPlayedFormView: View {
         phase = .analyzing
 
         Task {
-            async let minHold: Void = Task.sleep(nanoseconds: 12_000_000_000) as Void
+            // Run the AI call and a SHORT minimum floor concurrently. The total
+            // analyzing time = max(callTime, 3.5s): the labor-illusion still
+            // reads, but a fast network reveals as soon as the floor elapses
+            // instead of always waiting a hard 12s.
+            async let minHold: Void = Task.sleep(nanoseconds: 3_500_000_000) as Void
             let result: Result<String, Error>
             do {
                 let supabaseSession = try await ensureSessionWithRetry()
@@ -330,8 +339,10 @@ struct MatchPlayedFormView: View {
                 var updated = entry
                 updated.aiReport = report
                 matches.save(updated)
+                Haptics.success()
                 phase = .reveal(report: report)
             case .failure:
+                Haptics.error()
                 phase = .reveal(report: nil)
             }
         }

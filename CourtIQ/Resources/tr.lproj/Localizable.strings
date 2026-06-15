@@ -84,6 +84,12 @@
 "today.a11y_day_streak" = "Gün streak";
 "today.a11y_this_week" = "Bu hafta";
 "common.share" = "Paylaş";
+"common.copy" = "Kopyala";
+"common.copied" = "Kopyalandı";
+"profile.band_identity" = "Kimlik";
+"profile.band_game" = "Oyununuz";
+"profile.band_progress" = "İlerleme";
+"profile.band_account" = "Hesap";
 "training.a11y_sessions_done" = "Bu hafta tamamlanan seanslar";
 
 /* ── Boş durumlar ── */
@@ -208,6 +214,7 @@
 /* ── Mobility ── */
 "mobility.library" = "Hareket Kütüphanesi";
 "mobility.title" = "Hareket & Toparlanma";
+"mobility.headline" = "Seanslar arası iyi hareket et";
 "mobility.preview_desc" = "Tenise özel tüm hareket ve toparlanma kütüphanesi ücretsiz.";
 "mobility.goal" = "Hedef";
 "mobility.focus_areas" = "Odak alanları";
@@ -593,6 +600,9 @@
 "matches.flow_upcoming" = "Yaklaşıyor";
 "matches.flow_upcoming_sub" = "Önceden planla. Maçtan sonra sonucu ekle.";
 "matches.had_plan_question" = "Maçtan önce bir planın var mıydı?";
+"matches.had_plan_label" = "Maç planı";
+"matches.section_details" = "Maç detayları";
+"matches.section_ratings" = "Oyununu puanla";
 "matches.upcoming_title" = "Yaklaşan maç";
 "matches.upcoming_badge" = "Yaklaşan";
 "matches.add_result_cta" = "Sonucu ekle";

@@ -84,6 +84,12 @@
 "today.a11y_day_streak" = "Day streak";
 "today.a11y_this_week" = "This week";
 "common.share" = "Share";
+"common.copy" = "Copy";
+"common.copied" = "Copied";
+"profile.band_identity" = "Identity";
+"profile.band_game" = "Your game";
+"profile.band_progress" = "Progress";
+"profile.band_account" = "Account";
 "training.a11y_sessions_done" = "Sessions completed this week";
 
 /* ── Empty states ── */
@@ -208,6 +214,7 @@
 /* ── Mobility ── */
 "mobility.library" = "Mobility Library";
 "mobility.title" = "Mobility & Recovery";
+"mobility.headline" = "Move well between sessions";
 "mobility.preview_desc" = "The full tennis-specific mobility and recovery library is free to use.";
 "mobility.goal" = "Goal";
 "mobility.focus_areas" = "Focus areas";
@@ -593,6 +600,9 @@
 "matches.flow_upcoming" = "Coming up";
 "matches.flow_upcoming_sub" = "Plan ahead. Add the result after you play.";
 "matches.had_plan_question" = "Did you have a plan before the match?";
+"matches.had_plan_label" = "Match plan";
+"matches.section_details" = "Match details";
+"matches.section_ratings" = "Rate your game";
 "matches.upcoming_title" = "Upcoming match";
 "matches.upcoming_badge" = "Upcoming";
 "matches.add_result_cta" = "Add result";

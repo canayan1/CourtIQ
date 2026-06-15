@@ -1,66 +1,56 @@
 import SwiftUI
 
+/// Mobility & Recovery library, brought up to the DesignSystem bar (Phase 2 /
+/// Wave 2): an `Eyebrow` section header per flow type, pressable cards
+/// (`PressableCardStyle`) with a staggered `Motion.entrance` reveal, and rows
+/// trimmed to icon + short title + a 1–2 word meta. The long goal / coaching
+/// sentences now live only in `MobilityFlowDetailView`. All flows + premium
+/// behavior are preserved.
 struct MobilityLibraryView: View {
     @EnvironmentObject private var session: UserSessionManager
     @EnvironmentObject private var lang: LanguageManager
+
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
     private let flows = MobilityFlow.sampleFlows
+
+    @State private var appeared = false
 
     private var previewFlowIDs: Set<String> {
         Set(flows.prefix(2).map(\.id))
     }
 
+    /// SF Symbol per flow type, matching the icon language used elsewhere.
+    private func icon(for type: MobilityFlowType) -> String {
+        switch type {
+        case .quickReset:   return "bolt.heart"
+        case .dailyMobility: return "figure.cooldown"
+        case .recovery:     return "figure.walk"
+        }
+    }
+
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                premiumHeader
+            VStack(alignment: .leading, spacing: 24) {
+                header
 
-                ForEach(MobilityFlowType.allCases) { type in
-                    VStack(alignment: .leading, spacing: 12) {
-                        Text(type.title)
-                            .font(.title3.bold())
+                ForEach(Array(MobilityFlowType.allCases.enumerated()), id: \.element.id) { typeIndex, type in
+                    let typeFlows = flows.filter { $0.type == type }
+                    if !typeFlows.isEmpty {
+                        VStack(alignment: .leading, spacing: 12) {
+                            Eyebrow(type.title)
 
-                        ForEach(flows.filter { $0.type == type }) { flow in
-                            NavigationLink {
-                                MobilityFlowDetailView(flow: flow)
-                            } label: {
-                                HStack(alignment: .top, spacing: 14) {
-                                    VStack(alignment: .leading, spacing: 8) {
-                                        HStack {
-                                            Text(flow.localizedTitle(for: lang.language))
-                                                .font(.headline)
-                                            if !session.isPremiumUnlocked && !previewFlowIDs.contains(flow.id) {
-                                                Image(systemName: "lock.fill")
-                                                    .font(.caption)
-                                                    .foregroundStyle(AppPalette.inkSoft)
-                                            }
-                                        }
-                                        Text(flow.localizedGoal(for: lang.language))
-                                            .font(.subheadline)
-                                            .foregroundStyle(AppPalette.inkSoft)
-
-                                        HStack(spacing: 10) {
-                                            Label(flow.duration, systemImage: "timer")
-                                            Label(flow.focusLabel, systemImage: "target")
-                                        }
-                                        .font(.caption.weight(.semibold))
-                                        .foregroundStyle(AppPalette.inkSoft)
-                                    }
-
-                                    Spacer()
-
-                                    Image(systemName: "chevron.right")
-                                        .font(.footnote.weight(.semibold))
-                                        .foregroundStyle(.tertiary)
+                            ForEach(Array(typeFlows.enumerated()), id: \.element.id) { flowIndex, flow in
+                                NavigationLink {
+                                    MobilityFlowDetailView(flow: flow)
+                                } label: {
+                                    flowRow(flow)
                                 }
-                                .padding()
-                                .background(AppPalette.parchment)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 22, style: .continuous)
-                                        .stroke(AppPalette.sand, lineWidth: 1)
-                                )
-                                .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+                                .buttonStyle(PressableCardStyle())
+                                .reveal(appeared: appeared,
+                                        index: typeIndex + flowIndex,
+                                        reduceMotion: reduceMotion)
                             }
-                            .buttonStyle(.plain)
                         }
                     }
                 }
@@ -69,31 +59,90 @@ struct MobilityLibraryView: View {
         }
         .navigationTitle(lang.t("mobility.library"))
         .background(AppPalette.cream)
+        .onAppear {
+            if reduceMotion {
+                appeared = true
+            } else if !appeared {
+                withAnimation(Motion.entrance) { appeared = true }
+            }
+        }
     }
 
-    private var premiumHeader: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack {
-                Text(lang.t("mobility.title"))
-                    .font(.title3.weight(.semibold))
-                Spacer()
-                Text(session.premiumStatus.title)
+    // MARK: - Header
+
+    private var header: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Eyebrow(lang.t("mobility.title"))
+            Text(lang.t("mobility.headline"))
+                .font(.system(size: 26, weight: .bold, design: .rounded))
+                .foregroundStyle(AppPalette.ink)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+    }
+
+    // MARK: - Flow row
+
+    /// Trimmed row: type icon + short title + a 1–2 word meta (duration). The
+    /// long goal/coaching copy is intentionally pushed into the detail view.
+    private func flowRow(_ flow: MobilityFlow) -> some View {
+        let isLocked = !session.isPremiumUnlocked && !previewFlowIDs.contains(flow.id)
+
+        return HStack(spacing: 14) {
+            Image(systemName: icon(for: flow.type))
+                .font(.title3.weight(.semibold))
+                .symbolRenderingMode(.hierarchical)
+                .foregroundStyle(AppPalette.clay)
+                .frame(width: 30)
+
+            Text(flow.localizedTitle(for: lang.language))
+                .font(.headline)
+                .foregroundStyle(AppPalette.ink)
+
+            Spacer(minLength: 8)
+
+            if isLocked {
+                Image(systemName: "lock.fill")
+                    .font(.caption)
+                    .foregroundStyle(AppPalette.inkSoft)
+            } else {
+                Text(flow.duration)
                     .font(.caption.weight(.semibold))
-                    .padding(6)
-                    .background((session.isPremiumUnlocked ? AppPalette.moss : AppPalette.clay).opacity(0.16))
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .foregroundStyle(AppPalette.inkSoft)
             }
 
-            Text(lang.t("mobility.preview_desc"))
-                .font(.subheadline)
-                .foregroundStyle(AppPalette.inkSoft)
+            Image(systemName: "chevron.right")
+                .font(.footnote.weight(.semibold))
+                .foregroundStyle(.tertiary)
         }
         .padding()
+        .frame(maxWidth: .infinity, alignment: .leading)
         .background(AppPalette.parchment)
         .overlay(
-            RoundedRectangle(cornerRadius: 24, style: .continuous)
+            RoundedRectangle(cornerRadius: 22, style: .continuous)
                 .stroke(AppPalette.sand, lineWidth: 1)
         )
-        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(flow.localizedTitle(for: lang.language))
+        .accessibilityValue(isLocked ? lang.t("mobility.premium") : flow.duration)
+    }
+}
+
+// MARK: - Staggered entrance modifier
+
+private extension View {
+    /// Mirrors the Train hub's tactile staggered entrance; Reduce-Motion safe.
+    @ViewBuilder
+    func reveal(appeared: Bool, index: Int, reduceMotion: Bool) -> some View {
+        if reduceMotion {
+            self.opacity(appeared ? 1 : 0)
+        } else {
+            self
+                .opacity(appeared ? 1 : 0)
+                .offset(y: appeared ? 0 : 14)
+                .scaleEffect(appeared ? 1 : 0.97)
+                .animation(Motion.entrance.delay(Double(index) * Motion.stagger),
+                           value: appeared)
+        }
     }
 }

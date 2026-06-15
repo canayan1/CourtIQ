@@ -212,7 +212,10 @@ struct MatchAddResultView: View {
         phase = .analyzing
 
         Task {
-            async let minHold: Void = Task.sleep(nanoseconds: 12_000_000_000) as Void
+            // Run the AI call and a SHORT minimum floor concurrently. Total
+            // analyzing time = max(callTime, 3.5s) — keeps the labor-illusion
+            // but reveals promptly on a fast network instead of a hard 12s.
+            async let minHold: Void = Task.sleep(nanoseconds: 3_500_000_000) as Void
             let result: Result<String, Error>
             do {
                 let supabaseSession = try await ensureSessionWithRetry()
@@ -233,8 +236,10 @@ struct MatchAddResultView: View {
                 var updated = completed
                 updated.aiReport = report
                 matches.save(updated)
+                Haptics.success()
                 phase = .reveal(report: report)
             case .failure:
+                Haptics.error()
                 phase = .reveal(report: nil)
             }
         }

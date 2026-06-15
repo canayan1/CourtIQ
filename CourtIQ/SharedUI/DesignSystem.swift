@@ -144,3 +144,57 @@ struct FeatureTile: View {
         .accessibilityLabel(title)
     }
 }
+
+// MARK: - Lockable tile
+
+/// The single, shared square-ish category/quiz tile used across the app
+/// (Train hub category cards + Practice quiz tiles). It is a *label-only*
+/// view — wrap it in a `NavigationLink` or `Button` and apply
+/// `PressableCardStyle()` at the call site, exactly like the old hand-rolled
+/// `CategoryCard` / `quizTile` recipes it replaces.
+///
+/// Visuals are identical to those recipes: a hierarchical SF Symbol, an
+/// optional top-right lock glyph, and a one/two-word title pinned to the
+/// bottom. `minHeight` lets the Train hub (112) and Practice (96) keep their
+/// existing proportions.
+struct LockableTile: View {
+    let sfSymbol: String
+    let title: String
+    var locked: Bool = false
+    var accent: Color = AppPalette.clay
+    var minHeight: CGFloat = 96
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack {
+                Image(systemName: sfSymbol)
+                    .font(.system(size: 24, weight: .semibold))
+                    .symbolRenderingMode(.hierarchical)
+                    .foregroundStyle(accent)
+                Spacer(minLength: 0)
+                if locked {
+                    Image(systemName: "lock.fill")
+                        .font(.caption)
+                        .foregroundStyle(AppPalette.inkSoft)
+                }
+            }
+
+            Spacer(minLength: 0)
+
+            Text(title)
+                .font(.headline)
+                .foregroundStyle(AppPalette.ink)
+        }
+        .frame(maxWidth: .infinity, minHeight: minHeight, alignment: .leading)
+        .padding(16)
+        .background(AppPalette.parchment)
+        .overlay(
+            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .stroke(AppPalette.sand, lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(title)
+        .accessibilityAddTraits(locked ? .isButton : [])
+    }
+}

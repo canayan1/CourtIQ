@@ -34,14 +34,17 @@ struct TrainPracticeView: View {
                                     session.updateTopMistakePatterns(summary.mistakeTypes)
                                 }
                             } label: {
-                                quizTile(for: category, isLocked: false)
+                                LockableTile(sfSymbol: category.systemImage,
+                                             title: category.title)
                             }
                             .buttonStyle(PressableCardStyle())
                         } else {
                             Button {
                                 showPaywall = true
                             } label: {
-                                quizTile(for: category, isLocked: true)
+                                LockableTile(sfSymbol: category.systemImage,
+                                             title: category.title,
+                                             locked: true)
                             }
                             .buttonStyle(PressableCardStyle())
                         }
@@ -93,37 +96,6 @@ struct TrainPracticeView: View {
     }
 
     // MARK: - Tiles
-
-    private func quizTile(for category: QuizCategory, isLocked: Bool) -> some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack {
-                Image(systemName: category.systemImage)
-                    .font(.system(size: 22, weight: .semibold))
-                    .symbolRenderingMode(.hierarchical)
-                    .foregroundStyle(AppPalette.clay)
-                Spacer(minLength: 0)
-                if isLocked {
-                    Image(systemName: "lock.fill")
-                        .font(.caption)
-                        .foregroundStyle(AppPalette.inkSoft)
-                }
-            }
-
-            Spacer(minLength: 0)
-
-            Text(category.title)
-                .font(.headline)
-                .foregroundStyle(AppPalette.ink)
-        }
-        .frame(maxWidth: .infinity, minHeight: 96, alignment: .leading)
-        .padding(16)
-        .background(AppPalette.parchment)
-        .overlay(
-            RoundedRectangle(cornerRadius: 20, style: .continuous)
-                .stroke(AppPalette.sand, lineWidth: 1)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-    }
 
     private func iconRow(systemImage: String, title: String) -> some View {
         HStack(spacing: 14) {

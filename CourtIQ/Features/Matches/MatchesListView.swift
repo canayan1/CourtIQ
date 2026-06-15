@@ -15,6 +15,8 @@ struct MatchesListView: View {
 
     @State private var openNewEntry = false
     @State private var showTutorial = false
+    @State private var appeared = false
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     /// One-shot flag so the tutorial auto-presents only on the first visit
     /// to the Matches tab. Re-openable any time via the (i) button.
@@ -24,13 +26,17 @@ struct MatchesListView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 streakHeader
+                    .reveal(appeared: appeared, index: 0, reduceMotion: reduceMotion)
                 if matches.entries.isEmpty {
                     emptyState
+                        .reveal(appeared: appeared, index: 1, reduceMotion: reduceMotion)
                 } else {
                     insightShortcuts
+                        .reveal(appeared: appeared, index: 1, reduceMotion: reduceMotion)
                     MatchCalendarView()
                         .environmentObject(matches)
                         .environmentObject(lang)
+                        .reveal(appeared: appeared, index: 2, reduceMotion: reduceMotion)
                     entryList
                 }
             }
@@ -63,6 +69,7 @@ struct MatchesListView: View {
             }
         }
         .onAppear {
+            withAnimation(Motion.entrance) { appeared = true }
             if !tutorialSeen {
                 tutorialSeen = true
                 // Defer so it doesn't fight the tab transition animation.
@@ -98,11 +105,7 @@ struct MatchesListView: View {
                 Text("\(matches.totalEntries)")
                     .font(.system(size: 28, weight: .heavy, design: .rounded))
                     .foregroundStyle(AppPalette.ink)
-                Text(lang.t("matches.total_logged"))
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(AppPalette.inkSoft)
-                    .textCase(.uppercase)
-                    .tracking(0.6)
+                Eyebrow(lang.t("matches.total_logged"))
             }
 
             Spacer()
@@ -145,14 +148,14 @@ struct MatchesListView: View {
             )
             .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
         }
-        .buttonStyle(.plain)
+        .buttonStyle(PressableCardStyle())
     }
 
     // MARK: - Entry list
 
     private var entryList: some View {
         VStack(spacing: 10) {
-            ForEach(matches.entries) { entry in
+            ForEach(Array(matches.entries.enumerated()), id: \.element.id) { index, entry in
                 NavigationLink {
                     MatchDetailView(entryID: entry.id)
                         .environmentObject(matches)
@@ -161,7 +164,8 @@ struct MatchesListView: View {
                 } label: {
                     entryRow(entry)
                 }
-                .buttonStyle(.plain)
+                .buttonStyle(PressableCardStyle())
+                .reveal(appeared: appeared, index: 3 + index, reduceMotion: reduceMotion)
             }
         }
     }
@@ -319,5 +323,26 @@ struct MatchesListView: View {
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 32)
+    }
+}
+
+// MARK: - Staggered entrance modifier
+
+private extension View {
+    /// Tactile entrance: opacity + a small rise + slight scale, staggered by
+    /// index with a bouncy spring. A no-op (instant) under Reduce Motion.
+    /// Mirrors the Home/Train reveal so Matches shares one motion language.
+    @ViewBuilder
+    func reveal(appeared: Bool, index: Int, reduceMotion: Bool) -> some View {
+        if reduceMotion {
+            self.opacity(appeared ? 1 : 0)
+        } else {
+            self
+                .opacity(appeared ? 1 : 0)
+                .offset(y: appeared ? 0 : 14)
+                .scaleEffect(appeared ? 1 : 0.96)
+                .animation(Motion.entrance.delay(Double(index) * Motion.stagger),
+                           value: appeared)
+        }
     }
 }

@@ -121,6 +121,8 @@ struct DoublesAnalysisView: View {
                 DoublesReport(partnerId: partner.id, score: result.score, reportText: result.report)
             )
             phase = .result(text: result.report, score: result.score)
+            // Peak moment: the compatibility score just landed.
+            Haptics.success()
         } catch RemoteDataError.missingConfiguration {
             presentError(copy.errorConnect)
         } catch {

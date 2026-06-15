@@ -140,9 +140,10 @@ struct MatchUpcomingFormView: View {
         analyzing = true
         let snapshot = currentEntry(status: .upcoming)
         Task {
-            // Run the call + a minimum ~12s display concurrently so it
-            // always feels like real analysis.
-            async let minHold: Void = Task.sleep(nanoseconds: 12_000_000_000) as Void
+            // Run the call + a SHORT minimum floor concurrently so it still
+            // feels like real analysis, but reveals as soon as the call
+            // returns past the floor instead of a hard 12s.
+            async let minHold: Void = Task.sleep(nanoseconds: 3_500_000_000) as Void
             let result: Result<String, Error>
             do {
                 let supabaseSession = try await ensureSessionWithRetry()

@@ -8,15 +8,11 @@ struct DoublesScoreView: View {
     let copy: DoublesCopy
 
     var body: some View {
-        VStack(spacing: 4) {
-            HStack(alignment: .firstTextBaseline, spacing: 4) {
-                Text("\(score)")
-                    .font(.system(size: 56, weight: .heavy, design: .rounded))
-                    .foregroundStyle(AppPalette.clay)
-                Text(copy.scoreOutOf)
-                    .font(.title3.weight(.semibold))
-                    .foregroundStyle(AppPalette.inkSoft)
-            }
+        VStack(spacing: 10) {
+            // Kinetic peak moment: the ring fills 0→score and the number rolls
+            // up on appear (Reduce-Motion-safe inside `ScoreRing`).
+            ScoreRing(size: 116, score: score)
+
             Text(copy.scoreLabel)
                 .font(.caption.weight(.heavy))
                 .foregroundStyle(AppPalette.inkSoft)

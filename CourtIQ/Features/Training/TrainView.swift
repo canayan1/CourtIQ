@@ -11,6 +11,7 @@ struct TrainView: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     @State private var appeared = false
+    @State private var showProgramsPaywall = false
     @Namespace private var ns
 
     var body: some View {
@@ -37,6 +38,13 @@ struct TrainView: View {
         }
         .background(AppPalette.cream)
         .navigationTitle(lang.t("tab.train"))
+        .sheet(isPresented: $showProgramsPaywall) {
+            NavigationStack {
+                PaywallView(source: "Programs")
+                    .environmentObject(session)
+                    .environmentObject(lang)
+            }
+        }
         .onAppear {
             if reduceMotion {
                 appeared = true
@@ -119,73 +127,50 @@ struct TrainView: View {
         NavigationLink {
             TrainPracticeView()
         } label: {
-            CategoryCard(symbol: "rectangle.stack",
-                         title: lang.t("train.practice"))
+            LockableTile(sfSymbol: "rectangle.stack",
+                         title: lang.t("train.practice"),
+                         minHeight: 112)
         }
         .buttonStyle(PressableCardStyle())
     }
 
+    /// Recover links DIRECTLY to the Mobility Library (the old TrainRecoverView
+    /// one-row corridor was removed).
     private var recoverCard: some View {
         NavigationLink {
-            TrainRecoverView()
+            MobilityLibraryView()
         } label: {
-            CategoryCard(symbol: "figure.walk",
-                         title: lang.t("train.recover"))
+            LockableTile(sfSymbol: "figure.walk",
+                         title: lang.t("train.recover"),
+                         minHeight: 112)
         }
         .buttonStyle(PressableCardStyle())
     }
 
+    /// Premium-gated: free users get the paywall sheet (no cosmetic-lock
+    /// navigation); premium users push the programs list.
+    @ViewBuilder
     private var programsCard: some View {
-        NavigationLink {
-            TrainProgramsView()
-        } label: {
-            CategoryCard(symbol: "figure.strengthtraining.traditional",
-                         title: lang.t("train.programs"),
-                         locked: !session.isPremiumUnlocked)
-        }
-        .buttonStyle(PressableCardStyle())
-    }
-}
-
-// MARK: - Category card
-
-/// A FeatureTile-recipe card with an SF Symbol + a one/two-word title, plus an
-/// optional lock glyph. Sentence-free — the icon + word carry meaning (matching
-/// the Home tiles). Used on the Train hub grid.
-struct CategoryCard: View {
-    let symbol: String
-    let title: String
-    var locked: Bool = false
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack {
-                Image(systemName: symbol)
-                    .font(.system(size: 24, weight: .semibold))
-                    .symbolRenderingMode(.hierarchical)
-                    .foregroundStyle(AppPalette.clay)
-                Spacer(minLength: 0)
-                if locked {
-                    Image(systemName: "lock.fill")
-                        .font(.caption)
-                        .foregroundStyle(AppPalette.inkSoft)
-                }
+        if session.isPremiumUnlocked {
+            NavigationLink {
+                TrainProgramsView()
+            } label: {
+                LockableTile(sfSymbol: "figure.strengthtraining.traditional",
+                             title: lang.t("train.programs"),
+                             minHeight: 112)
             }
-
-            Spacer(minLength: 0)
-
-            Text(title)
-                .font(.headline)
-                .foregroundStyle(AppPalette.ink)
+            .buttonStyle(PressableCardStyle())
+        } else {
+            Button {
+                showProgramsPaywall = true
+            } label: {
+                LockableTile(sfSymbol: "figure.strengthtraining.traditional",
+                             title: lang.t("train.programs"),
+                             locked: true,
+                             minHeight: 112)
+            }
+            .buttonStyle(PressableCardStyle())
         }
-        .frame(maxWidth: .infinity, minHeight: 112, alignment: .leading)
-        .padding(16)
-        .background(AppPalette.parchment)
-        .overlay(
-            RoundedRectangle(cornerRadius: 20, style: .continuous)
-                .stroke(AppPalette.sand, lineWidth: 1)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
     }
 }
 
