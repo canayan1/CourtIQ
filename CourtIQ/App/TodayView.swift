@@ -21,6 +21,7 @@ struct TodayView: View {
                 heroCard
                 ThreeRingsCard()
                 swingAnalysisCard
+                doublesCard
                 tennisProfileCard
                 drillCard
                 ProShotCard()
@@ -163,6 +164,24 @@ struct TodayView: View {
         }
         .buttonStyle(.plain)
         .accessibilityIdentifier("todaySwingAnalysisCard")
+    }
+
+    // MARK: - Doubles Compatibility entry
+
+    @ViewBuilder
+    private var doublesCard: some View {
+        let copy = DoublesCopy(lang: lang.language)
+        NavigationLink {
+            DoublesView()
+        } label: {
+            tennisProfileRow(
+                icon: "person.2.fill", tint: AppPalette.moss,
+                eyebrow: copy.cardEyebrow,
+                title: copy.cardTitle
+            )
+        }
+        .buttonStyle(.plain)
+        .accessibilityIdentifier("todayDoublesCard")
     }
 
     // MARK: - Daily Court Tap Drill (the new daily ritual)
