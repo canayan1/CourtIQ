@@ -38,6 +38,12 @@
 "train.programs" = "Programlar";
 "train.analyze_title" = "AI Swing Analizi";
 "train.analyze_desc" = "Vuruşunu çek — kare kare anında AI koçluğu al.";
+"train.flagship" = "Öne çıkan";
+"train.analyze_cta" = "Vuruş çek";
+"train.analyze_section_desc" = "Tekniğini bir AI koçun gözünden gör.";
+"train.practice_section_desc" = "Bilinçli tekrarlar — testler, antrenmanlar ve imza vuruşlar.";
+"train.recover_section_desc" = "Seanslar arası toparlan ve iyi hareket et.";
+"train.programs_section_desc" = "Zamanla gelişmen için yapılandırılmış çok haftalık bloklar.";
 "train.daily_drill_title" = "Günlük antrenman";
 "train.daily_drill_desc" = "Bugünün Court Tap hedef çalışması.";
 "train.pro_shot_title" = "Pro vuruş";

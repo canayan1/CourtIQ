@@ -20,7 +20,7 @@ struct TrainView: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .leading, spacing: 28) {
                 hero
 
                 analyzeSection
@@ -92,28 +92,75 @@ struct TrainView: View {
 
     private var analyzeSection: some View {
         VStack(alignment: .leading, spacing: 14) {
-            sectionTitle(lang.t("train.analyze"))
+            sectionHeader(lang.t("train.analyze"), subtitle: lang.t("train.analyze_section_desc"))
 
             NavigationLink {
                 SwingAnalysisView()
             } label: {
-                iconRow(
-                    systemImage: "video.fill",
-                    iconTint: AppPalette.clay,
-                    title: lang.t("train.analyze_title"),
-                    subtitle: lang.t("train.analyze_desc")
-                )
+                swingHero
             }
             .buttonStyle(.plain)
             .accessibilityIdentifier("trainSwingAnalysisCard")
         }
     }
 
+    /// Flagship hero for AI Swing Analysis — a larger gold→clay accent card that
+    /// stands above the rest of the hub. History is reachable from
+    /// SwingAnalysisView's own toolbar once opened.
+    private var swingHero: some View {
+        ZStack(alignment: .topTrailing) {
+            TennisRacket(color: .white.opacity(0.16), accent: .white.opacity(0.32), angle: -22)
+                .frame(width: 120, height: 168)
+                .offset(x: 26, y: -6)
+                .allowsHitTesting(false)
+
+            VStack(alignment: .leading, spacing: 12) {
+                HStack(spacing: 8) {
+                    Image(systemName: "sparkles")
+                        .font(.caption.weight(.bold))
+                    Text(lang.t("train.flagship"))
+                        .font(.caption.weight(.heavy))
+                        .tracking(0.6)
+                        .textCase(.uppercase)
+                }
+                .foregroundStyle(.white.opacity(0.92))
+
+                Text(lang.t("train.analyze_title"))
+                    .font(.system(size: 24, weight: .black, design: .rounded))
+                    .foregroundStyle(.white)
+                    .fixedSize(horizontal: false, vertical: true)
+
+                Text(lang.t("train.analyze_desc"))
+                    .font(.subheadline.weight(.medium))
+                    .foregroundStyle(.white.opacity(0.9))
+                    .fixedSize(horizontal: false, vertical: true)
+
+                HStack(spacing: 8) {
+                    Image(systemName: "video.fill")
+                    Text(lang.t("train.analyze_cta"))
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                        .font(.footnote.weight(.bold))
+                }
+                .font(.system(size: 15, weight: .bold, design: .rounded))
+                .foregroundStyle(.white)
+                .padding(.vertical, 12)
+                .padding(.horizontal, 14)
+                .background(.white.opacity(0.16))
+                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+            }
+            .padding()
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppPalette.swingHeroGradient)
+        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+    }
+
     // MARK: - Practice
 
     private var practiceSection: some View {
         VStack(alignment: .leading, spacing: 14) {
-            sectionTitle(lang.t("train.practice"))
+            sectionHeader(lang.t("train.practice"), subtitle: lang.t("train.practice_section_desc"))
 
             // The 5 quiz category cards — ported verbatim from PracticeView.
             ForEach(QuizCategory.allCases) { category in
@@ -178,7 +225,7 @@ struct TrainView: View {
 
     private var recoverSection: some View {
         VStack(alignment: .leading, spacing: 14) {
-            sectionTitle(lang.t("train.recover"))
+            sectionHeader(lang.t("train.recover"), subtitle: lang.t("train.recover_section_desc"))
 
             NavigationLink {
                 MobilityLibraryView()
@@ -198,7 +245,7 @@ struct TrainView: View {
 
     private var programsSection: some View {
         VStack(alignment: .leading, spacing: 14) {
-            sectionTitle(lang.t("train.programs"))
+            sectionHeader(lang.t("train.programs"), subtitle: lang.t("train.programs_section_desc"))
 
             featuredCard
             premiumTracks
@@ -316,9 +363,19 @@ struct TrainView: View {
 
     // MARK: - Building blocks
 
-    private func sectionTitle(_ text: String) -> some View {
-        Text(text)
-            .font(.title3.bold())
+    /// Section header with a title and a one-line subtitle. The subtitle gives
+    /// each section a quick "what's this for" cue so the hub reads as four
+    /// distinct zones instead of a wall of equal cards.
+    private func sectionHeader(_ title: String, subtitle: String) -> some View {
+        VStack(alignment: .leading, spacing: 3) {
+            Text(title)
+                .font(.title3.bold())
+                .foregroundStyle(AppPalette.ink)
+            Text(subtitle)
+                .font(.subheadline)
+                .foregroundStyle(AppPalette.inkSoft)
+                .fixedSize(horizontal: false, vertical: true)
+        }
     }
 
     private func programSectionHeader(title: String, subtitle: String) -> some View {

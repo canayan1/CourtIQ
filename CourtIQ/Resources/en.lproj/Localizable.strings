@@ -38,6 +38,12 @@
 "train.programs" = "Programs";
 "train.analyze_title" = "AI Swing Analysis";
 "train.analyze_desc" = "Record your swing — get instant AI coaching, frame by frame.";
+"train.flagship" = "Flagship";
+"train.analyze_cta" = "Record a swing";
+"train.analyze_section_desc" = "See your technique through an AI coach's eyes.";
+"train.practice_section_desc" = "Deliberate reps — quizzes, drills, and signature shots.";
+"train.recover_section_desc" = "Reset and move well between sessions.";
+"train.programs_section_desc" = "Structured multi-week blocks to build over time.";
 "train.daily_drill_title" = "Daily drill";
 "train.daily_drill_desc" = "Today's Court Tap target practice.";
 "train.pro_shot_title" = "Pro shot";

@@ -62,4 +62,11 @@ enum AppPalette {
         startPoint: .topLeading,
         endPoint: .bottomTrailing
     )
+
+    /// Gold→clay accent for the flagship AI Swing Analysis hero on the Train hub.
+    static let swingHeroGradient = LinearGradient(
+        colors: [gold, clayBright, clay],
+        startPoint: .topLeading,
+        endPoint: .bottomTrailing
+    )
 }

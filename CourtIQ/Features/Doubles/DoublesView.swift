@@ -30,29 +30,29 @@ struct DoublesView: View {
         }
         .navigationTitle(copy.navTitle)
         .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    showAddPartner = true
-                } label: {
-                    Label(copy.addPartnerCTA, systemImage: "plus")
-                }
-                .tint(AppPalette.clay)
-            }
-        }
+        // The invite loop is the hero; the manual "Add partner" affordance lives
+        // inside the secondary manual section below. A duplicate toolbar "+"
+        // (also opening DoublesPartnerFormView) was redundant and removed.
         .navigationDestination(isPresented: $showAddPartner) {
             DoublesPartnerFormView()
         }
     }
 
-    /// The existing manual ("quick read") flow, embedded below the invite loop.
+    /// The existing manual ("quick read") flow, embedded below the invite loop
+    /// as the clearly SECONDARY path. A divider + softer header set it apart
+    /// from the invite hero above.
     private var manualSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            HStack {
+            Divider()
+                .overlay(AppPalette.sand)
+                .padding(.bottom, 2)
+
+            HStack(alignment: .firstTextBaseline) {
                 Text(inviteCopy.manualHeader)
-                    .font(.subheadline.weight(.bold))
-                    .foregroundStyle(AppPalette.ink)
-                Spacer(minLength: 0)
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(AppPalette.inkSoft)
+                    .fixedSize(horizontal: false, vertical: true)
+                Spacer(minLength: 8)
                 Button {
                     showAddPartner = true
                 } label: {
