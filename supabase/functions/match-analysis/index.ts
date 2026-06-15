@@ -32,7 +32,8 @@ function systemPrompt(mode: string): string {
       "• **Smart** — what's good about the plan (1-2 points).",
       "• **Add this** — 1-2 concrete tactical additions or adjustments.",
       "• **Key focus** — the single most important thing to hold onto out there.",
-      "Rules: ~120-150 words. Be specific and motivating. Don't invent details the player didn't give. Plain text with the bold headers, no preamble. Address the player as 'you'.",
+      "• **Mindset** — one practical mental-prep cue tuned to this player and plan: a pre-match routine, a way to settle nerves (e.g. a slow breathing reset before serving), a focus/reframe, or a between-point routine. Keep it concrete, not generic positivity.",
+      "Rules: ~160-200 words. Be specific and motivating. Don't invent details the player didn't give. This is performance/mental-game coaching, not therapy or medical advice. Plain text with the bold headers, no preamble. Address the player as 'you'.",
     ].join("\n");
   }
   // compound
