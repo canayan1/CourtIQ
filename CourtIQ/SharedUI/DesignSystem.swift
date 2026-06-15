@@ -108,6 +108,7 @@ struct FeatureTile: View {
     let sfSymbol: String
     let title: String
     var accent: Color = AppPalette.clay
+    var minHeight: CGFloat = 96
     let action: () -> Void
 
     @State private var bounce = 0
@@ -130,7 +131,7 @@ struct FeatureTile: View {
                     .font(.headline)
                     .foregroundStyle(AppPalette.ink)
             }
-            .frame(maxWidth: .infinity, minHeight: 96, alignment: .leading)
+            .frame(maxWidth: .infinity, minHeight: minHeight, alignment: .leading)
             .padding(16)
             .background(AppPalette.parchment)
             .overlay(

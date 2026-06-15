@@ -33,6 +33,14 @@ struct HomeView: View {
         swingStore.records.first(where: { $0.score != nil })?.score
     }
 
+    /// Scored swings, newest first, capped at 8 — the source for the recent rail.
+    private var scoredSwings: [SwingAnalysisRecord] {
+        Array(swingStore.records.filter { $0.score != nil }.prefix(8))
+    }
+
+    /// Current daily streak — sourced the same way Profile reads it.
+    private var streakDays: Int { dailyQuizManager.currentStreak }
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
@@ -46,6 +54,24 @@ struct HomeView: View {
                         .reveal(appeared: appeared, index: 1, reduceMotion: reduceMotion)
 
                     grid
+                }
+
+                VStack(alignment: .leading, spacing: 12) {
+                    HStack {
+                        Eyebrow(lang.t("home.recent"))
+                        Spacer()
+                        if streakDays > 0 {
+                            Text(String(format: lang.t("home.streak_days"), streakDays))
+                                .font(.caption)
+                                .foregroundStyle(AppPalette.inkSoft)
+                        }
+                    }
+                    .reveal(appeared: appeared, index: 6, reduceMotion: reduceMotion)
+
+                    RecentSwingsStrip(records: scoredSwings,
+                                      store: swingStore,
+                                      lang: lang)
+                        .reveal(appeared: appeared, index: 7, reduceMotion: reduceMotion)
                 }
             }
             .padding(20)
@@ -149,7 +175,7 @@ struct HomeView: View {
 
             heroRing
         }
-        .padding(20)
+        .padding(24)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(AppPalette.clay)
         .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
@@ -183,32 +209,164 @@ struct HomeView: View {
             spacing: 10
         ) {
             FeatureTile(sfSymbol: "list.clipboard.fill",
-                        title: lang.t("home.tile_matches")) {
+                        title: lang.t("home.tile_matches"),
+                        minHeight: 112) {
                 Haptics.tap()
                 tabRouter.selection = .matches
             }
             .reveal(appeared: appeared, index: 2, reduceMotion: reduceMotion)
 
             FeatureTile(sfSymbol: "bubble.left.and.text.bubble.right.fill",
-                        title: lang.t("home.tile_coach")) {
+                        title: lang.t("home.tile_coach"),
+                        minHeight: 112) {
                 Haptics.tap()
                 tabRouter.selection = .coach
             }
             .reveal(appeared: appeared, index: 3, reduceMotion: reduceMotion)
 
             FeatureTile(sfSymbol: "person.2.fill",
-                        title: lang.t("home.tile_doubles")) {
+                        title: lang.t("home.tile_doubles"),
+                        minHeight: 112) {
                 Haptics.tap()
                 tabRouter.selection = .doubles
             }
             .reveal(appeared: appeared, index: 4, reduceMotion: reduceMotion)
 
             FeatureTile(sfSymbol: "scope",
-                        title: lang.t("home.tile_drill")) {
+                        title: lang.t("home.tile_drill"),
+                        minHeight: 112) {
                 Haptics.tap()
                 showDrill = true
             }
             .reveal(appeared: appeared, index: 5, reduceMotion: reduceMotion)
+        }
+    }
+}
+
+// MARK: - Recent swings rail
+
+/// The lower-half "recent swings" band on Home. Shows up to 8 scored swings as
+/// a horizontal rail that bleeds off the right edge to signal "more". When the
+/// user has no scored swings yet it renders a single full-width first-use hint
+/// card instead, so the band is never empty.
+struct RecentSwingsStrip: View {
+    let records: [SwingAnalysisRecord]
+    @ObservedObject var store: SwingAnalysisStore
+    @ObservedObject var lang: LanguageManager
+
+    var body: some View {
+        if records.isEmpty {
+            firstSwingHint
+        } else {
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 12) {
+                    ForEach(records) { record in
+                        NavigationLink {
+                            SwingReportDetailView(record: record)
+                        } label: {
+                            SwingThumbCard(record: record, store: store)
+                        }
+                        .buttonStyle(PressableCardStyle())
+                    }
+                }
+                .padding(.leading, 16)
+                .padding(.trailing, 4)
+            }
+            // Cancel the parent's 20pt horizontal padding so cards can sit a
+            // 16pt inset from the screen edge and bleed off the right.
+            .padding(.horizontal, -20)
+        }
+    }
+
+    private var firstSwingHint: some View {
+        NavigationLink {
+            SwingAnalysisView()
+        } label: {
+            HStack(spacing: 12) {
+                Image(systemName: "video.badge.plus")
+                    .font(.title2)
+                    .foregroundStyle(AppPalette.inkSoft)
+                Text(lang.t("home.first_swing"))
+                    .font(.subheadline)
+                    .foregroundStyle(AppPalette.ink)
+                Spacer(minLength: 0)
+            }
+            .padding(16)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(AppPalette.parchment)
+            .overlay(
+                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                    .stroke(style: StrokeStyle(lineWidth: 1, dash: [6, 4]))
+                    .foregroundStyle(AppPalette.sand)
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+        }
+        .buttonStyle(PressableCardStyle())
+    }
+}
+
+/// A compact ~120×150 card for a single scored swing: thumbnail on top, a small
+/// score ring + a one-word stroke label on the bottom. Taps open the same swing
+/// report detail the history list uses.
+struct SwingThumbCard: View {
+    let record: SwingAnalysisRecord
+    @ObservedObject var store: SwingAnalysisStore
+
+    private var strokeLabel: String {
+        switch record.stroke {
+        case .forehand: return "Forehand"
+        case .backhand: return "Backhand"
+        case .serve:    return "Serve"
+        case .volley:   return "Volley"
+        case .session:  return "Session"
+        case .footwork: return "Footwork"
+        case .none:     return record.strokeRaw.capitalized
+        }
+    }
+
+    private var glyph: String { record.stroke?.systemImage ?? "figure.tennis" }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            thumbnail
+                .frame(width: 120, height: 90)
+                .clipped()
+
+            HStack(spacing: 8) {
+                if let score = record.score {
+                    ScoreRing(size: 30, score: score)
+                }
+                Text(strokeLabel)
+                    .font(.subheadline)
+                    .foregroundStyle(AppPalette.ink)
+                    .lineLimit(1)
+                Spacer(minLength: 0)
+            }
+            .padding(.horizontal, 10)
+            .padding(.vertical, 10)
+        }
+        .frame(width: 120)
+        .background(AppPalette.parchment)
+        .overlay(
+            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .stroke(AppPalette.sand, lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+    }
+
+    @ViewBuilder
+    private var thumbnail: some View {
+        if let image = store.thumbnailImage(for: record) {
+            Image(uiImage: image)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+        } else {
+            ZStack {
+                AppPalette.parchment
+                Image(systemName: glyph)
+                    .font(.title2)
+                    .foregroundStyle(AppPalette.inkSoft)
+            }
         }
     }
 }

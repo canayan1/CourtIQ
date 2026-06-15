@@ -38,6 +38,9 @@
 "home.tile_coach" = "Coach";
 "home.tile_doubles" = "Doubles";
 "home.tile_drill" = "Drill";
+"home.recent" = "Recent";
+"home.streak_days" = "%d day streak";
+"home.first_swing" = "Film your first swing";
 
 /* ── Train hub (Phase 1 IA redesign) ── */
 "train.subtitle" = "Improve";
@@ -58,6 +61,14 @@
 "train.daily_drill_desc" = "Today's Court Tap target practice.";
 "train.pro_shot_title" = "Pro shot";
 "train.pro_shot_desc" = "Today's signature pattern, animated.";
+"train.flagship_swing" = "Swing";
+"train.cat_practice_stat" = "5 quizzes · drill · pro shot";
+"train.cat_recover_stat" = "Mobility";
+"train.cat_programs_premium" = "Premium";
+"train.cat_programs_tracks" = "5 tracks";
+"train.drill_label" = "Drill";
+"train.pro_shot_label" = "Pro shot";
+"train.mobility_label" = "Mobility";
 
 /* ── Today hub (Phase 1 IA redesign) ── */
 "today.focus" = "Today's focus";

@@ -38,6 +38,9 @@
 "home.tile_coach" = "Koç";
 "home.tile_doubles" = "Çiftler";
 "home.tile_drill" = "Antren";
+"home.recent" = "Son";
+"home.streak_days" = "%d günlük seri";
+"home.first_swing" = "İlk vuruşunu çek";
 
 /* ── Train hub (Phase 1 IA redesign) ── */
 "train.subtitle" = "Geliştir";
@@ -58,6 +61,14 @@
 "train.daily_drill_desc" = "Bugünün Court Tap hedef çalışması.";
 "train.pro_shot_title" = "Pro vuruş";
 "train.pro_shot_desc" = "Bugünün imza paterni, animasyonlu.";
+"train.flagship_swing" = "Vuruş";
+"train.cat_practice_stat" = "5 test · antren · pro vuruş";
+"train.cat_recover_stat" = "Mobilite";
+"train.cat_programs_premium" = "Premium";
+"train.cat_programs_tracks" = "5 parkur";
+"train.drill_label" = "Antren";
+"train.pro_shot_label" = "Pro vuruş";
+"train.mobility_label" = "Mobilite";
 
 /* ── Today hub (Phase 1 IA redesign) ── */
 "today.focus" = "Bugünün odağı";
