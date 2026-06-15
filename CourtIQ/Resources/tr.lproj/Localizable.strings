@@ -25,6 +25,35 @@
 "tab.community" = "Topluluk";
 "tab.training" = "Antrenman";
 "tab.profile" = "Profil";
+"tab.train" = "Çalış";
+"tab.doubles" = "Çiftler";
+"tab.coach" = "Koç";
+
+/* ── Train hub (Phase 1 IA redesign) ── */
+"train.subtitle" = "Geliştir";
+"train.headline" = "Oyununun her parçasını keskinleştir";
+"train.analyze" = "Analiz";
+"train.practice" = "Pratik";
+"train.recover" = "Toparlan";
+"train.programs" = "Programlar";
+"train.analyze_title" = "AI Swing Analizi";
+"train.analyze_desc" = "Vuruşunu çek — kare kare anında AI koçluğu al.";
+"train.daily_drill_title" = "Günlük antrenman";
+"train.daily_drill_desc" = "Bugünün Court Tap hedef çalışması.";
+"train.pro_shot_title" = "Pro vuruş";
+"train.pro_shot_desc" = "Bugünün imza paterni, animasyonlu.";
+
+/* ── Today hub (Phase 1 IA redesign) ── */
+"today.focus" = "Bugünün odağı";
+"today.up_next" = "Sıradaki";
+"today.tip_of_day" = "Günün ipucu";
+"today.profile_a11y" = "Profili aç";
+
+/* ── Coach tab landing (Phase 1 IA redesign) ── */
+"coach.landing_kicker" = "AI Koç";
+"coach.landing_title" = "Kişisel AI tenis koçun";
+"coach.landing_body" = "Tenis Profilin, son maçların ve quiz geçmişine göre taktik, teknik ve maç hazırlığı için sana özel tavsiyeler al.";
+"coach.unlock" = "AI Koç'u Aç";
 
 /* ── Today ── */
 "today.day_streak" = "günlük seri";

@@ -4,9 +4,15 @@ struct MainTabView: View {
     @EnvironmentObject private var lang: LanguageManager
 
     // 5 tabs only — iOS pushes a 6th into a "More" overflow that buries it.
-    // Matches is the post-pivot centerpiece so it gets primary placement.
-    // v1.0 ships with no user-generated content: the community tip-discussion
-    // surface is not exposed in navigation anywhere.
+    // Phase 1 IA redesign:
+    //   1. Today   — daily orchestrator; Profile ("Me") now lives behind the
+    //                avatar button in the Today header, NOT a tab.
+    //   2. Train   — the improve hub: merges the old Practice + Training tabs
+    //                and absorbs the improvement tools that used to sit on Today.
+    //   3. Matches — unchanged, the post-pivot centerpiece.
+    //   4. Doubles — the doubles compatibility surface, promoted to a tab.
+    //   5. Coach   — the AI Coach, promoted out of Profile into its own tab.
+    // No Community tab: v1.0 ships with no user-generated content.
     var body: some View {
         TabView {
             NavigationStack {
@@ -17,10 +23,10 @@ struct MainTabView: View {
             }
 
             NavigationStack {
-                PracticeView()
+                TrainView()
             }
             .tabItem {
-                Label(lang.t("tab.practice"), systemImage: "book.closed.fill")
+                Label(lang.t("tab.train"), systemImage: "figure.strengthtraining.traditional")
             }
 
             NavigationStack {
@@ -31,17 +37,17 @@ struct MainTabView: View {
             }
 
             NavigationStack {
-                TrainingHubView()
+                DoublesView()
             }
             .tabItem {
-                Label(lang.t("tab.training"), systemImage: "figure.strengthtraining.traditional")
+                Label(lang.t("tab.doubles"), systemImage: "person.2.fill")
             }
 
             NavigationStack {
-                ProfileView()
+                AICoachTabRoot()
             }
             .tabItem {
-                Label(lang.t("tab.profile"), systemImage: "person.crop.circle.fill")
+                Label(lang.t("tab.coach"), systemImage: "sparkles")
             }
         }
         .tint(AppPalette.clay)

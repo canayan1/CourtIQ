@@ -9,6 +9,7 @@ struct ProfileView: View {
     @EnvironmentObject private var avatarManager: AvatarManager
     @EnvironmentObject private var drillManager: CourtTapDrillManager
     @EnvironmentObject private var matchManager: MatchEntryManager
+    @ObservedObject private var tennisProfileStore = TennisProfileStore.shared
     @State private var showLockerRoom = false
 
     @State private var showPaywall = false
@@ -16,16 +17,19 @@ struct ProfileView: View {
     @State private var showResetConfirmation = false
     @State private var isDeleting = false
     @State private var isResetting = false
-    @State private var showAICoach = false
-    @State private var showAIPaywall = false
+
+    /// When ProfileView is presented as a sheet (from the Today avatar button),
+    /// `dismiss` is non-trivial and we show a Done button. When it is pushed in
+    /// a NavigationStack, the toolbar item is harmless.
+    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 avatarHeaderCard
+                tennisProfileRow
                 profileHeader
                 LevelProgressionPathView()
-                aiCoachSection
                 TacticalProfileCard()
                     .environmentObject(lang)
                     .environmentObject(drillManager)
@@ -42,29 +46,20 @@ struct ProfileView: View {
         }
         .background(AppPalette.cream)
         .navigationTitle(lang.t("profile.title"))
+        .toolbar {
+            // Present a Done button only when shown modally (Today avatar
+            // button). Pushed in a NavigationStack the dismiss closes nothing
+            // visible, so we gate on the presentation by always offering it —
+            // SwiftUI's dismiss is a no-op when there is nothing to dismiss.
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(lang.t("common.done")) { dismiss() }
+            }
+        }
         .sheet(isPresented: $showPaywall) {
             NavigationStack {
                 PaywallView(source: "Profile")
                     .environmentObject(session)
                     .environmentObject(lang)
-            }
-        }
-        .sheet(isPresented: $showAICoach) {
-            NavigationStack {
-                AICoachGate()
-                    .environmentObject(lang)
-                    .environmentObject(AIChatClient.shared)
-                    .environmentObject(session)
-                    .environmentObject(matchManager)
-                    .environmentObject(dailyQuizManager)
-                    .environmentObject(drillManager)
-            }
-        }
-        .sheet(isPresented: $showAIPaywall) {
-            NavigationStack {
-                PaywallView(source: "AICoach")
-                    .environmentObject(lang)
-                    .environmentObject(session)
             }
         }
         .confirmationDialog(lang.t("profile.delete_title"), isPresented: $showDeleteConfirmation, titleVisibility: .visible) {
@@ -513,71 +508,56 @@ struct ProfileView: View {
         }
     }
 
-    /// AI Coach entry card. AI Coach is the single paid feature; every
-    /// other surface in the app is free. Access is granted when ANY of
-    /// these hold:
-    ///   • `aiCoachOpenToAll` (kill-switch to reopen to everyone)
-    ///   • a real premium entitlement (StoreKit purchase)
-    ///   • a dev-allowlisted account (DEBUG builds only — TestFlight
-    ///     dogfooding; see `isDevAllowlistedAccount`), so the owner can
-    ///     test the gated feature on a real device without faking a
-    ///     purchase. This path does not exist in App Store builds.
-    private static let aiCoachOpenToAll = false
-
-    private var aiCoachSection: some View {
-        let isPremium = Self.aiCoachOpenToAll
-            || session.subscriptionManager.entitlementState.isPremium
-            || Self.isDevAllowlistedAccount(session.profileStore.profile?.email)
-        return Button {
-            if isPremium {
-                showAICoach = true
-            } else {
-                showAIPaywall = true
+    /// Tennis Profile entry. Its Today card was removed in the Phase 1 IA
+    /// redesign, so the entry now lives here near the top of Profile. Routes
+    /// to the result view if a profile exists, else the questionnaire.
+    @ViewBuilder
+    private var tennisProfileRow: some View {
+        let copy = TennisProfileCopy(lang: lang.language)
+        if let profile = tennisProfileStore.profile {
+            NavigationLink {
+                TennisProfileResultView(profile: profile)
+            } label: {
+                tennisProfileRowLabel(
+                    tint: AppPalette.moss,
+                    eyebrow: copy.sectionTitle,
+                    title: "\(copy.levelTitle(profile.result.level)) · \(copy.archetypeTitle(profile.result.archetype))"
+                )
             }
-        } label: {
-            HStack(alignment: .center, spacing: 14) {
-                ZStack {
-                    Circle()
-                        .fill(AppPalette.clay.opacity(0.14))
-                        .frame(width: 48, height: 48)
-                    Image(systemName: "sparkles")
-                        .font(.system(size: 22, weight: .bold))
-                        .foregroundStyle(AppPalette.clay)
-                }
-                VStack(alignment: .leading, spacing: 4) {
-                    HStack(spacing: 8) {
-                        Text(lang.t("ai.title"))
-                            .font(.headline)
-                            .foregroundStyle(AppPalette.ink)
-                        if !isPremium {
-                            Text(lang.t("ai.premium_badge"))
-                                .font(.caption2.weight(.heavy))
-                                .padding(.horizontal, 6)
-                                .padding(.vertical, 2)
-                                .background(AppPalette.gold.opacity(0.18))
-                                .foregroundStyle(AppPalette.gold)
-                                .clipShape(Capsule())
-                        }
-                    }
-                    Text(lang.t("ai.card_subtitle"))
-                        .font(.caption)
-                        .foregroundStyle(AppPalette.inkSoft)
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-                Spacer()
-                Image(systemName: "chevron.right")
-                    .font(.footnote.weight(.semibold))
-                    .foregroundStyle(.tertiary)
+            .buttonStyle(.plain)
+        } else {
+            NavigationLink {
+                TennisProfileQuestionnaireView()
+            } label: {
+                tennisProfileRowLabel(
+                    tint: AppPalette.clay,
+                    eyebrow: copy.entryTitle,
+                    title: copy.entrySubtitle
+                )
             }
-            .padding(16)
-            .background(AppPalette.parchment)
-            .overlay(
-                RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .stroke(AppPalette.sand, lineWidth: 1)
-            )
-            .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .buttonStyle(.plain)
         }
-        .buttonStyle(.plain)
+    }
+
+    private func tennisProfileRowLabel(tint: Color, eyebrow: String, title: String) -> some View {
+        HStack(spacing: 14) {
+            ZStack {
+                Circle().fill(tint.opacity(0.16)).frame(width: 46, height: 46)
+                Image(systemName: "figure.tennis").font(.title3).foregroundStyle(tint)
+            }
+            VStack(alignment: .leading, spacing: 3) {
+                Text(eyebrow).font(.caption.weight(.heavy)).tracking(0.4).foregroundStyle(AppPalette.inkSoft)
+                Text(title).font(.subheadline.weight(.semibold)).foregroundStyle(AppPalette.ink)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            Spacer()
+            Image(systemName: "chevron.right").font(.footnote.weight(.semibold)).foregroundStyle(.tertiary)
+        }
+        .padding(14)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppPalette.parchment)
+        .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous).stroke(AppPalette.sand, lineWidth: 1))
+        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
     }
 
     private var notificationsSection: some View {
@@ -670,26 +650,5 @@ struct ProfileView: View {
             .background(accent.opacity(0.14))
             .foregroundStyle(accent)
             .clipShape(Capsule())
-    }
-
-    /// Developer-only AI Coach access for TestFlight dogfooding, so the
-    /// owner can test the gated feature on a real device without faking a
-    /// StoreKit purchase.
-    ///
-    /// This is compiled in **DEBUG builds only**. App Store (Release)
-    /// builds always return `false` here — no allowlist, no developer
-    /// email, and therefore no hidden/backdoor entitlement path in the
-    /// shipped binary (and no personal PII embedded in it).
-    private static func isDevAllowlistedAccount(_ email: String?) -> Bool {
-        #if DEBUG
-        guard let raw = email?.lowercased().trimmingCharacters(in: .whitespacesAndNewlines),
-              !raw.isEmpty else { return false }
-        let devAccessAllowlist: Set<String> = [
-            "canayan93@gmail.com"
-        ]
-        return devAccessAllowlist.contains(raw)
-        #else
-        return false
-        #endif
     }
 }

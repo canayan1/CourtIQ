@@ -1,17 +1,28 @@
 import SwiftUI
 
+/// The daily orchestrator (Phase 1 IA redesign). Today is now a lean landing:
+/// greeting/hero stats, rings, a single "Today's focus" (the daily Court-Tap
+/// drill), and an "Up next" list (tip of the day + mobility quick reset).
+///
+/// The improvement tools that used to live here — Swing Analysis, Pro Shot,
+/// the Tennis Profile card, the Doubles card — have moved to the Train tab,
+/// the Coach/Doubles tabs, and Profile respectively. Profile ("Me") is reached
+/// via the avatar button in the top-right toolbar.
 struct TodayView: View {
     @EnvironmentObject private var dailyQuizManager: DailyQuizManager
     @EnvironmentObject private var session: UserSessionManager
     @EnvironmentObject private var tipManager: TipManager
     @EnvironmentObject private var lang: LanguageManager
     @EnvironmentObject private var drillManager: CourtTapDrillManager
-    @ObservedObject private var tennisProfileStore = TennisProfileStore.shared
+    @EnvironmentObject private var avatarManager: AvatarManager
+    @EnvironmentObject private var matchManager: MatchEntryManager
+    @EnvironmentObject private var progressionManager: PlayerProgressionManager
 
     // Tip body is expanded by default — collapsing was hiding the actual
     // content (each tip is only ~80 words) and made the card feel empty.
     @State private var tipExpanded = true
     @State private var showDrill = false
+    @State private var showProfile = false
 
     private var tip: DailyTip { tipManager.todayTip }
 
@@ -20,18 +31,24 @@ struct TodayView: View {
             VStack(alignment: .leading, spacing: 16) {
                 heroCard
                 ThreeRingsCard()
-                swingAnalysisCard
-                doublesCard
-                tennisProfileCard
-                drillCard
-                ProShotCard()
-                tipCard
-                mobilityCard
+                focusCard
+
+                VStack(alignment: .leading, spacing: 12) {
+                    Text(lang.t("today.up_next"))
+                        .font(.title3.bold())
+                    tipCard
+                    mobilityCard
+                }
             }
             .padding()
         }
         .background(AppPalette.cream)
         .navigationTitle(lang.t("tab.today"))
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                avatarButton
+            }
+        }
         .fullScreenCover(isPresented: $showDrill) {
             NavigationStack {
                 CourtTapDrillView()
@@ -39,219 +56,104 @@ struct TodayView: View {
                     .environmentObject(drillManager)
             }
         }
-    }
-
-    // MARK: - Tennis Profile entry
-
-    @ViewBuilder
-    private var tennisProfileCard: some View {
-        let copy = TennisProfileCopy(lang: lang.language)
-        if let profile = tennisProfileStore.profile {
-            NavigationLink {
-                TennisProfileResultView(profile: profile)
-            } label: {
-                tennisProfileRow(
-                    icon: "figure.tennis", tint: AppPalette.moss,
-                    eyebrow: copy.sectionTitle,
-                    title: "\(copy.levelTitle(profile.result.level)) · \(copy.archetypeTitle(profile.result.archetype))"
-                )
+        .sheet(isPresented: $showProfile) {
+            NavigationStack {
+                ProfileView()
+                    .environmentObject(session)
+                    .environmentObject(dailyQuizManager)
+                    .environmentObject(progressionManager)
+                    .environmentObject(lang)
+                    .environmentObject(avatarManager)
+                    .environmentObject(drillManager)
+                    .environmentObject(matchManager)
             }
-            .buttonStyle(.plain)
-            .accessibilityIdentifier("todayTennisProfileCard")
-        } else {
-            NavigationLink {
-                TennisProfileQuestionnaireView()
-            } label: {
-                tennisProfileRow(
-                    icon: "figure.tennis", tint: AppPalette.clay,
-                    eyebrow: copy.entryTitle,
-                    title: copy.entrySubtitle
-                )
-            }
-            .buttonStyle(.plain)
         }
     }
 
-    private func tennisProfileRow(icon: String, tint: Color, eyebrow: String, title: String) -> some View {
-        HStack(spacing: 14) {
-            ZStack {
-                Circle().fill(tint.opacity(0.16)).frame(width: 46, height: 46)
-                Image(systemName: icon).font(.title3).foregroundStyle(tint)
-            }
-            VStack(alignment: .leading, spacing: 3) {
-                Text(eyebrow).font(.caption.weight(.heavy)).tracking(0.4).foregroundStyle(AppPalette.inkSoft)
-                Text(title).font(.subheadline.weight(.semibold)).foregroundStyle(AppPalette.ink)
-                    .fixedSize(horizontal: false, vertical: true)
-            }
-            Spacer()
-            Image(systemName: "chevron.right").font(.footnote.weight(.semibold)).foregroundStyle(.tertiary)
-        }
-        .padding(14)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(AppPalette.parchment)
-        .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous).stroke(AppPalette.sand, lineWidth: 1))
-        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
-    }
+    // MARK: - Profile avatar (Today header)
 
-    // MARK: - AI Swing Analysis entry
-
-    @ViewBuilder
-    private var swingAnalysisCard: some View {
-        let isTR = lang.language == .turkish
-        NavigationLink {
-            SwingAnalysisView()
+    private var avatarButton: some View {
+        Button {
+            Haptics.tap()
+            showProfile = true
         } label: {
-            ZStack(alignment: .topLeading) {
-                // Filled gradient feature background — gold → clay so the card
-                // reads as the showcase hero, distinct from the parchment list
-                // cards below it.
-                LinearGradient(
-                    colors: [AppPalette.gold, AppPalette.clay],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
+            TennisAvatarView(config: avatarManager.config, size: 30)
+                .clipShape(Circle())
+                .overlay(Circle().stroke(AppPalette.sand, lineWidth: 1))
+        }
+        .accessibilityLabel(lang.t("today.profile_a11y"))
+    }
 
-                // Oversized play glyph watermark in the corner.
-                Image(systemName: "play.rectangle.fill")
-                    .font(.system(size: 120, weight: .bold))
-                    .foregroundStyle(.white.opacity(0.12))
-                    .offset(x: 18, y: -10)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+    // MARK: - Today's focus (the daily Court Tap drill)
+
+    private var focusCard: some View {
+        let done = drillManager.completedToday
+        let todaysSession = drillManager.todaysSession
+        let pct = todaysSession.map { Double($0.score) / Double($0.maxScore) } ?? 0
+
+        return VStack(alignment: .leading, spacing: 12) {
+            ZStack(alignment: .topTrailing) {
+                // Court watermark
+                CourtTopDown(surface: .clay, lineOpacity: 0.35)
+                    .opacity(0.10)
+                    .frame(width: 90, height: 140)
+                    .offset(x: 8, y: 8)
                     .allowsHitTesting(false)
 
-                VStack(alignment: .leading, spacing: 14) {
-                    HStack(spacing: 10) {
-                        Image(systemName: "video.fill")
-                            .font(.system(size: 22, weight: .bold))
-                            .foregroundStyle(.white)
-                        // "NEW" badge.
-                        Text(isTR ? "YENİ" : "NEW")
-                            .font(.caption2.weight(.heavy))
-                            .tracking(0.8)
-                            .foregroundStyle(AppPalette.clay)
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 4)
-                            .background(Capsule().fill(.white))
-                        Spacer()
-                    }
-
-                    Text(isTR ? "AI Swing Analizi" : "AI Swing Analysis")
-                        .font(.system(size: 26, weight: .heavy, design: .rounded))
-                        .foregroundStyle(.white)
-                        .fixedSize(horizontal: false, vertical: true)
-
-                    Text(isTR
-                        ? "Vuruşunu çek — tekniğine kare kare anında AI koçluğu al."
-                        : "Record your swing — get instant AI coaching on your technique, frame by frame.")
-                        .font(.subheadline.weight(.medium))
-                        .foregroundStyle(.white.opacity(0.92))
-                        .fixedSize(horizontal: false, vertical: true)
-
-                    // CTA chip.
-                    HStack(spacing: 6) {
-                        Text(isTR ? "Vuruşumu analiz et →" : "Analyze my swing →")
-                            .font(.system(size: 15, weight: .bold, design: .rounded))
-                            .foregroundStyle(AppPalette.clay)
-                    }
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 11)
-                    .background(Capsule().fill(.white))
-                }
-                .padding(20)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            }
-            .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
-        }
-        .buttonStyle(.plain)
-        .accessibilityIdentifier("todaySwingAnalysisCard")
-    }
-
-    // MARK: - Doubles Compatibility entry
-
-    @ViewBuilder
-    private var doublesCard: some View {
-        let copy = DoublesCopy(lang: lang.language)
-        NavigationLink {
-            DoublesView()
-        } label: {
-            tennisProfileRow(
-                icon: "person.2.fill", tint: AppPalette.moss,
-                eyebrow: copy.cardEyebrow,
-                title: copy.cardTitle
-            )
-        }
-        .buttonStyle(.plain)
-        .accessibilityIdentifier("todayDoublesCard")
-    }
-
-    // MARK: - Daily Court Tap Drill (the new daily ritual)
-
-    private var drillCard: some View {
-        let done = drillManager.completedToday
-        let session = drillManager.todaysSession
-        let pct = session.map { Double($0.score) / Double($0.maxScore) } ?? 0
-
-        return ZStack(alignment: .topTrailing) {
-            // Court watermark
-            CourtTopDown(surface: .clay, lineOpacity: 0.35)
-                .opacity(0.10)
-                .frame(width: 90, height: 140)
-                .offset(x: 8, y: 8)
-                .allowsHitTesting(false)
-
-            VStack(alignment: .leading, spacing: 12) {
-                HStack(spacing: 8) {
-                    Image(systemName: "scope")
-                        .font(.caption.weight(.bold))
-                        .foregroundStyle(AppPalette.clay)
-                    Text(lang.t("drill.card_kicker"))
-                        .font(.caption.weight(.heavy))
-                        .tracking(0.6)
-                        .textCase(.uppercase)
-                        .foregroundStyle(AppPalette.clay)
-                    Spacer()
-                    if done {
-                        Image(systemName: "checkmark.seal.fill")
-                            .font(.subheadline.weight(.bold))
-                            .foregroundStyle(AppPalette.moss)
-                    }
-                }
-
-                Text(lang.t("drill.card_title"))
-                    .font(.system(size: 22, weight: .heavy, design: .rounded))
-                    .foregroundStyle(AppPalette.ink)
-
-                if let session = session {
+                VStack(alignment: .leading, spacing: 12) {
                     HStack(spacing: 8) {
-                        ForEach(Array(session.taps.enumerated()), id: \.offset) { _, tap in
-                            Text(tap.zone.emoji)
-                                .font(.system(size: 20))
+                        Image(systemName: "scope")
+                            .font(.caption.weight(.bold))
+                            .foregroundStyle(AppPalette.clay)
+                        Text(lang.t("today.focus"))
+                            .font(.caption.weight(.heavy))
+                            .tracking(0.6)
+                            .textCase(.uppercase)
+                            .foregroundStyle(AppPalette.clay)
+                        Spacer()
+                        if done {
+                            Image(systemName: "checkmark.seal.fill")
+                                .font(.subheadline.weight(.bold))
+                                .foregroundStyle(AppPalette.moss)
                         }
-                        Spacer()
-                        Text("\(Int(pct * 100))%")
-                            .font(.system(size: 16, weight: .heavy, design: .rounded))
-                            .foregroundStyle(AppPalette.ink)
-                            .monospacedDigit()
                     }
-                }
 
-                Button {
-                    showDrill = true
-                } label: {
-                    HStack(spacing: 8) {
-                        Image(systemName: done ? "arrow.clockwise" : "play.fill")
-                        Text(done ? lang.t("drill.replay") : lang.t("drill.start"))
+                    Text(lang.t("drill.card_title"))
+                        .font(.system(size: 22, weight: .heavy, design: .rounded))
+                        .foregroundStyle(AppPalette.ink)
+
+                    if let todaysSession {
+                        HStack(spacing: 8) {
+                            ForEach(Array(todaysSession.taps.enumerated()), id: \.offset) { _, tap in
+                                Text(tap.zone.emoji)
+                                    .font(.system(size: 20))
+                            }
+                            Spacer()
+                            Text("\(Int(pct * 100))%")
+                                .font(.system(size: 16, weight: .heavy, design: .rounded))
+                                .foregroundStyle(AppPalette.ink)
+                                .monospacedDigit()
+                        }
                     }
-                    .font(.system(size: 15, weight: .bold, design: .rounded))
-                    .foregroundStyle(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 12)
-                    .background(AppPalette.clay)
-                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+
+                    Button {
+                        showDrill = true
+                    } label: {
+                        HStack(spacing: 8) {
+                            Image(systemName: done ? "arrow.clockwise" : "play.fill")
+                            Text(done ? lang.t("drill.replay") : lang.t("drill.start"))
+                        }
+                        .font(.system(size: 15, weight: .bold, design: .rounded))
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 12)
+                        .background(AppPalette.clay)
+                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                    }
+                    .buttonStyle(.plain)
                 }
-                .buttonStyle(.plain)
+                .padding(16)
             }
-            .padding(16)
         }
         .background(AppPalette.parchment)
         .overlay(
@@ -448,11 +350,7 @@ struct TodayView: View {
         .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
     }
 
-    // Daily quiz lives in the Practice tab now (post-pivot) — the daily
-    // ritual on Today is Drill + Pro Shot + Rings + Tip + Mobility. Quiz
-    // stats still flow through DailyQuizManager via Practice completions.
-
-    // MARK: - Mobility
+    // MARK: - Mobility quick reset
 
     @ViewBuilder
     private var mobilityCard: some View {
@@ -501,16 +399,6 @@ struct TodayView: View {
     }
 
     // MARK: - Helpers
-
-    private var premiumBadge: some View {
-        Text(lang.t("common.premium"))
-            .font(.caption.weight(.semibold))
-            .padding(.horizontal, 8)
-            .padding(.vertical, 4)
-            .background(AppPalette.clay.opacity(0.12))
-            .foregroundStyle(AppPalette.clay)
-            .clipShape(Capsule())
-    }
 
     private func infoChip(systemImage: String, text: String) -> some View {
         Label(text, systemImage: systemImage)

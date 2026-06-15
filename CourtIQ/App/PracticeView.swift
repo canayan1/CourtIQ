@@ -1,3 +1,4 @@
+// Superseded by TrainView (Phase 1 IA redesign)
 import SwiftUI
 
 struct PracticeView: View {

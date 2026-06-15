@@ -25,6 +25,35 @@
 "tab.community" = "Community";
 "tab.training" = "Training";
 "tab.profile" = "Profile";
+"tab.train" = "Train";
+"tab.doubles" = "Doubles";
+"tab.coach" = "Coach";
+
+/* ── Train hub (Phase 1 IA redesign) ── */
+"train.subtitle" = "Improve";
+"train.headline" = "Sharpen every part of your game";
+"train.analyze" = "Analyze";
+"train.practice" = "Practice";
+"train.recover" = "Recover";
+"train.programs" = "Programs";
+"train.analyze_title" = "AI Swing Analysis";
+"train.analyze_desc" = "Record your swing — get instant AI coaching, frame by frame.";
+"train.daily_drill_title" = "Daily drill";
+"train.daily_drill_desc" = "Today's Court Tap target practice.";
+"train.pro_shot_title" = "Pro shot";
+"train.pro_shot_desc" = "Today's signature pattern, animated.";
+
+/* ── Today hub (Phase 1 IA redesign) ── */
+"today.focus" = "Today's focus";
+"today.up_next" = "Up next";
+"today.tip_of_day" = "Tip of the day";
+"today.profile_a11y" = "Open profile";
+
+/* ── Coach tab landing (Phase 1 IA redesign) ── */
+"coach.landing_kicker" = "AI Coach";
+"coach.landing_title" = "Your personal AI tennis coach";
+"coach.landing_body" = "Get tailored advice on tactics, technique, and match prep — informed by your Tennis Profile, recent matches, and quiz history.";
+"coach.unlock" = "Unlock AI Coach";
 
 /* ── Today ── */
 "today.day_streak" = "day streak";
