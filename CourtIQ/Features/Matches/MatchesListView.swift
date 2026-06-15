@@ -183,7 +183,7 @@ struct MatchesListView: View {
                 HStack(spacing: 8) {
                     Text(displayedOpponent(entry))
                         .font(.system(size: 16, weight: .semibold, design: .rounded))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(AppPalette.clayText)
                         .lineLimit(1)
 
                     if entry.isDraft {
@@ -197,7 +197,7 @@ struct MatchesListView: View {
 
                 Text(dateDisplay(entry.date))
                     .font(.caption)
-                    .foregroundStyle(.white.opacity(0.85))
+                    .foregroundStyle(AppPalette.clayText.opacity(0.7))
             }
 
             Spacer()
@@ -205,17 +205,22 @@ struct MatchesListView: View {
             if entry.aiReport != nil || entry.aiPreComment != nil {
                 Image(systemName: "sparkles")
                     .font(.caption.weight(.bold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(AppPalette.clayText)
             }
 
             Image(systemName: "chevron.right")
                 .font(.footnote.weight(.semibold))
-                .foregroundStyle(.white.opacity(0.9))
+                .foregroundStyle(AppPalette.clayText.opacity(0.7))
         }
         .padding(14)
-        // "Hero + select cards": each match entry row gets a PhotoMatch
-        // background; foreground flips to white over the duotone scrim.
-        .brandedPhoto("PhotoMatch", scrim: .bottom, cornerRadius: 18)
+        // Solid clay tint (was a PhotoMatch background); deep clay text. The
+        // surface-icon tile and W/L pill keep their own semantic colors.
+        .background(AppPalette.clayTint)
+        .overlay(
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .stroke(AppPalette.clay.opacity(0.25), lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
     }
 
     private func displayedOpponent(_ entry: MatchEntry) -> String {

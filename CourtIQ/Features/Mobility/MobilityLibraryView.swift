@@ -91,34 +91,38 @@ struct MobilityLibraryView: View {
             Image(systemName: icon(for: flow.type))
                 .font(.title3.weight(.semibold))
                 .symbolRenderingMode(.hierarchical)
-                .foregroundStyle(.white)
+                .foregroundStyle(AppPalette.mossText)
                 .frame(width: 30)
 
             Text(flow.localizedTitle(for: lang.language))
                 .font(.headline)
-                .foregroundStyle(.white)
+                .foregroundStyle(AppPalette.mossText)
 
             Spacer(minLength: 8)
 
             if isLocked {
                 Image(systemName: "lock.fill")
                     .font(.caption)
-                    .foregroundStyle(.white.opacity(0.9))
+                    .foregroundStyle(AppPalette.mossText)
             } else {
                 Text(flow.duration)
                     .font(.caption.weight(.semibold))
-                    .foregroundStyle(.white.opacity(0.9))
+                    .foregroundStyle(AppPalette.mossText.opacity(0.7))
             }
 
             Image(systemName: "chevron.right")
                 .font(.footnote.weight(.semibold))
-                .foregroundStyle(.white.opacity(0.9))
+                .foregroundStyle(AppPalette.mossText.opacity(0.7))
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
-        // "Hero + select cards": each mobility flow row gets a PhotoMobility
-        // background; foreground flips to white over the duotone scrim.
-        .brandedPhoto("PhotoMobility", scrim: .bottom, cornerRadius: 22)
+        // Solid moss tint (was a PhotoMobility background); deep moss text.
+        .background(AppPalette.mossTint)
+        .overlay(
+            RoundedRectangle(cornerRadius: 22, style: .continuous)
+                .stroke(AppPalette.moss.opacity(0.25), lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(flow.localizedTitle(for: lang.language))
         .accessibilityValue(isLocked ? lang.t("mobility.premium") : flow.duration)

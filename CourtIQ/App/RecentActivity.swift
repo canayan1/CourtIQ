@@ -195,6 +195,35 @@ enum CompactRelativeTime {
 struct ActivityCard: View {
     let activity: RecentActivity
 
+    /// Per-kind solid tint background. swing/match/drill→clay, doubles→moss,
+    /// quiz→gold.
+    private var tint: Color {
+        switch activity.kind {
+        case .swing, .match, .drill: return AppPalette.clayTint
+        case .doubles:               return AppPalette.mossTint
+        case .quiz:                  return AppPalette.goldTint
+        }
+    }
+
+    /// Deep same-family foreground (icon / title / metric) for this card.
+    private var text: Color {
+        switch activity.kind {
+        case .swing, .match, .drill: return AppPalette.clayText
+        case .doubles:               return AppPalette.mossText
+        case .quiz:                  return AppPalette.goldText
+        }
+    }
+
+    /// Feature MID color — used as the ScoreRing accent so the ring stays
+    /// legible on the light tint, and as the low-opacity border color.
+    private var mid: Color {
+        switch activity.kind {
+        case .swing, .match, .drill: return AppPalette.clay
+        case .doubles:               return AppPalette.moss
+        case .quiz:                  return AppPalette.gold
+        }
+    }
+
     var body: some View {
         switch activity.route {
         case .swing(let record):
@@ -225,11 +254,11 @@ struct ActivityCard: View {
                 Image(systemName: activity.kind.symbol)
                     .font(.subheadline.weight(.semibold))
                     .symbolRenderingMode(.hierarchical)
-                    .foregroundStyle(AppPalette.clay)
+                    .foregroundStyle(text)
                 Spacer(minLength: 0)
                 Text(CompactRelativeTime.string(for: activity.date))
                     .font(.caption2)
-                    .foregroundStyle(AppPalette.inkSoft)
+                    .foregroundStyle(text.opacity(0.7))
             }
 
             HStack {
@@ -240,7 +269,7 @@ struct ActivityCard: View {
 
             Text(activity.label)
                 .font(.subheadline)
-                .foregroundStyle(AppPalette.ink)
+                .foregroundStyle(text)
                 .lineLimit(1)
         }
         .frame(width: 112, alignment: .leading)
@@ -248,10 +277,11 @@ struct ActivityCard: View {
         // Fixed-width rail card: clamp very large sizes so the label + metric
         // stay inside the 112pt card instead of truncating hard.
         .dynamicTypeSize(...DynamicTypeSize.accessibility2)
-        .background(AppPalette.parchment)
+        // Solid per-feature tint (no photo/parchment) with deep same-family text.
+        .background(tint)
         .overlay(
             RoundedRectangle(cornerRadius: 20, style: .continuous)
-                .stroke(AppPalette.sand, lineWidth: 1)
+                .stroke(mid.opacity(0.25), lineWidth: 1)
         )
         .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
     }
@@ -260,13 +290,14 @@ struct ActivityCard: View {
     private var metricView: some View {
         switch activity.metric {
         case .score(let value):
-            ScoreRing(size: 34, score: value)
+            // Ring accent = feature MID color so it reads on the light tint.
+            ScoreRing(size: 34, score: value, accent: mid)
         case .result(let result):
             resultPill(result)
         case .fraction(let correct, let total):
             Text("\(correct)/\(total)")
                 .font(.system(.title3, design: .rounded).weight(.heavy))
-                .foregroundStyle(AppPalette.ink)
+                .foregroundStyle(text)
                 .monospacedDigit()
                 .frame(height: 34)
         }

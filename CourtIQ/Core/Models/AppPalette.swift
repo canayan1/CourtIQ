@@ -17,6 +17,17 @@ enum AppPalette {
     static let mossDeep = Color(red: 78 / 255, green: 106 / 255, blue: 74 / 255)
     static let gold = Color(red: 217 / 255, green: 158 / 255, blue: 25 / 255)
 
+    // Soft per-feature tints + matching deep same-family text colors. Used by
+    // the three "tinted card" surfaces (Recent activity, Matches rows, Recover
+    // rows) that drop their photo/parchment background for a solid brand color.
+    // Each text/tint pair clears WCAG ~4.5:1.
+    static let clayTint = Color(red: 242 / 255, green: 223 / 255, blue: 212 / 255)
+    static let clayText = Color(red: 150 / 255, green: 70 / 255, blue: 38 / 255)
+    static let mossTint = Color(red: 221 / 255, green: 231 / 255, blue: 218 / 255)
+    static let mossText = Color(red: 60 / 255, green: 92 / 255, blue: 60 / 255)
+    static let goldTint = Color(red: 236 / 255, green: 226 / 255, blue: 200 / 255)
+    static let goldText = Color(red: 130 / 255, green: 100 / 255, blue: 28 / 255)
+
     // Court surface colors — used by tennis components
     enum CourtSurface {
         case clay, grass, hard, cream, night
