@@ -45,6 +45,26 @@ const STROKES: Record<string, string> = {
   footwork: "footwork and on-court movement",
 };
 
+// A gold-standard sample analysis used as a few-shot quality bar — calibrates
+// the model's specificity, cue/drill quality, and output format. It is a
+// DIFFERENT player's forehand; the model must produce its own observations from
+// the actual video, adapted to whatever stroke it is given.
+const FEW_SHOT_EXAMPLE = `Here is an EXAMPLE of the depth, specificity, and cue quality expected. It is a sample for a different player's forehand — do NOT reuse its content; produce your own observations from THIS video, adapted to the stroke you are given:
+
+SCORE: 64
+
+**What's working**
+• Your unit turn starts early — your shoulders coil as the ball crosses the net, which is where racquet-head speed comes from.
+• Semi-western grip with a clean low-to-high path; you get real topspin and safe net clearance.
+
+**Top fixes**
+• Contact is a touch behind your front hip, so you brush up the back of the ball instead of driving through it. Cue: "catch it out in front of your front knee." Drill: 20 drop-feeds, exaggerating contact half a step earlier.
+• Your off-arm drops as you start the forward swing, so your shoulders open early and the ball sails long. Cue: "point your off-hand at the ball and hold it until contact."
+• You're still loading the front foot at contact — hitting off your back foot. Drill: shadow-swing stepping in, weight finishing on the front foot.
+
+**One thing to try next session**
+• Feed yourself 30 forehands focused only on contact out in front — spacing and rhythm first, pace second.`;
+
 function systemPrompt(stroke: string, handedness: string | null): string {
   const hand = handedness ? `The player is ${handedness}-handed. ` : "";
   if (stroke === "session") {
@@ -137,6 +157,7 @@ Deno.serve(async (req) => {
   const systemParts: Array<{ text: string }> = [
     { text: systemPrompt(stroke, handedness) },
     { text: "Begin your ENTIRE reply with a line exactly like 'SCORE: 63' — a single integer 0-100 rating the overall technique shown (for a Whole session, an overall score across the strokes). Be discerning: most recreational players land 40-70; reserve 85+ for genuinely advanced technique. Put a blank line after that score line, then the analysis." },
+    { text: FEW_SHOT_EXAMPLE },
   ];
   // Personalization: when the client sends player context, give the coach a
   // second instruction part so it tailors the feedback to this player. Optional
