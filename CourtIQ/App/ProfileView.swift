@@ -171,32 +171,29 @@ struct ProfileView: View {
                         .font(.caption.weight(.heavy))
                         .tracking(0.6)
                         .textCase(.uppercase)
-                        .foregroundStyle(AppPalette.inkSoft)
+                        .foregroundStyle(.white.opacity(0.85))
                     Text(lang.t("avatar.tap_to_customize"))
                         .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(AppPalette.ink)
+                        .foregroundStyle(.white)
                     HStack(spacing: 4) {
                         Image(systemName: "lock.open.fill")
                             .font(.caption2.weight(.bold))
                         Text("\(avatarManager.unlockedIDs.count)/\(AvatarManager.unlockRules.count)")
                             .font(.caption2.weight(.bold))
                     }
-                    .foregroundStyle(AppPalette.clay)
+                    .foregroundStyle(.white)
                 }
 
                 Spacer()
 
                 Image(systemName: "chevron.right")
                     .font(.footnote.weight(.semibold))
-                    .foregroundStyle(.tertiary)
+                    .foregroundStyle(.white.opacity(0.9))
             }
             .padding(14)
-            .background(AppPalette.parchment)
-            .overlay(
-                RoundedRectangle(cornerRadius: 22, style: .continuous)
-                    .stroke(AppPalette.sand, lineWidth: 1)
-            )
-            .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+            // "Hero + select cards": the avatar/identity header card gets a
+            // PhotoHero marquee background; foreground flips to white.
+            .brandedPhoto("PhotoHero", scrim: .hero, cornerRadius: 22)
         }
         .buttonStyle(.plain)
         .sheet(isPresented: $showLockerRoom) {
@@ -600,22 +597,22 @@ struct ProfileView: View {
     private func tennisProfileRowLabel(tint: Color, eyebrow: String, title: String) -> some View {
         HStack(spacing: 14) {
             ZStack {
-                Circle().fill(tint.opacity(0.16)).frame(width: 46, height: 46)
-                Image(systemName: "figure.tennis").font(.title3).foregroundStyle(tint)
+                Circle().fill(.white.opacity(0.18)).frame(width: 46, height: 46)
+                Image(systemName: "figure.tennis").font(.title3).foregroundStyle(.white)
             }
             VStack(alignment: .leading, spacing: 3) {
-                Text(eyebrow).font(.caption.weight(.heavy)).tracking(0.4).foregroundStyle(AppPalette.inkSoft)
-                Text(title).font(.subheadline.weight(.semibold)).foregroundStyle(AppPalette.ink)
+                Text(eyebrow).font(.caption.weight(.heavy)).tracking(0.4).foregroundStyle(.white.opacity(0.85))
+                Text(title).font(.subheadline.weight(.semibold)).foregroundStyle(.white)
                     .fixedSize(horizontal: false, vertical: true)
             }
             Spacer()
-            Image(systemName: "chevron.right").font(.footnote.weight(.semibold)).foregroundStyle(.tertiary)
+            Image(systemName: "chevron.right").font(.footnote.weight(.semibold)).foregroundStyle(.white.opacity(0.9))
         }
         .padding(14)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(AppPalette.parchment)
-        .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous).stroke(AppPalette.sand, lineWidth: 1))
-        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+        // "Hero + select cards": the Tennis profile row gets a PhotoCourt
+        // background; foreground flips to white over the duotone scrim.
+        .brandedPhoto("PhotoCourt", scrim: .bottom, cornerRadius: 18)
     }
 
     private var notificationsSection: some View {

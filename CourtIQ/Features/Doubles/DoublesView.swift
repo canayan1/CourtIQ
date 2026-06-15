@@ -82,20 +82,20 @@ struct DoublesView: View {
     private func row(_ partner: DoublesPartner) -> some View {
         HStack(spacing: 14) {
             ZStack {
-                Circle().fill(AppPalette.moss.opacity(0.16)).frame(width: 46, height: 46)
+                Circle().fill(.white.opacity(0.18)).frame(width: 46, height: 46)
                 Image(systemName: "person.2.fill")
                     .font(.title3)
-                    .foregroundStyle(AppPalette.moss)
+                    .foregroundStyle(.white)
             }
 
             VStack(alignment: .leading, spacing: 3) {
                 Text(partner.name)
                     .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(AppPalette.ink)
+                    .foregroundStyle(.white)
                 if let level = partner.level {
                     Text(copy.level(level))
                         .font(.caption)
-                        .foregroundStyle(AppPalette.inkSoft)
+                        .foregroundStyle(.white.opacity(0.85))
                 }
             }
 
@@ -106,16 +106,13 @@ struct DoublesView: View {
             }
             Image(systemName: "chevron.right")
                 .font(.footnote.weight(.semibold))
-                .foregroundStyle(.tertiary)
+                .foregroundStyle(.white.opacity(0.9))
         }
         .padding(14)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(AppPalette.parchment)
-        .overlay(
-            RoundedRectangle(cornerRadius: 18, style: .continuous)
-                .stroke(AppPalette.sand, lineWidth: 1)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+        // "Hero + select cards": manual partner cards get a PhotoDoubles
+        // background; foreground flips to white over the duotone scrim.
+        .brandedPhoto("PhotoDoubles", scrim: .bottom, cornerRadius: 18)
     }
 
     private var emptyState: some View {

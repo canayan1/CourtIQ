@@ -162,32 +162,29 @@ struct AICoachView: View {
         return HStack(alignment: .top, spacing: 12) {
             Image(systemName: "text.bubble.fill")
                 .font(.title3)
-                .foregroundStyle(AppPalette.clay)
+                .foregroundStyle(.white)
             VStack(alignment: .leading, spacing: 4) {
                 Text(thread.title)
                     .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(AppPalette.ink)
+                    .foregroundStyle(.white)
                     .lineLimit(1)
                 Text(preview)
                     .font(.caption)
-                    .foregroundStyle(AppPalette.inkSoft)
+                    .foregroundStyle(.white.opacity(0.85))
                     .lineLimit(2)
                 Text(relativeDate(thread.lastMessageAt))
                     .font(.caption2)
-                    .foregroundStyle(AppPalette.inkSoft.opacity(0.7))
+                    .foregroundStyle(.white.opacity(0.7))
             }
             Spacer()
             Image(systemName: "chevron.right")
                 .font(.footnote.weight(.semibold))
-                .foregroundStyle(.tertiary)
+                .foregroundStyle(.white.opacity(0.9))
         }
         .padding(14)
-        .background(AppPalette.parchment)
-        .overlay(
-            RoundedRectangle(cornerRadius: 14, style: .continuous)
-                .stroke(AppPalette.sand, lineWidth: 1)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        // "Hero + select cards": each Coach thread-list row gets a PhotoCoach
+        // background; foreground flips to white over the duotone scrim.
+        .brandedPhoto("PhotoCoach", scrim: .bottom, cornerRadius: 14)
     }
 
     private func relativeDate(_ d: Date) -> String {

@@ -237,6 +237,12 @@ private struct WelcomeStep: View {
         ZStack {
             AppPalette.heroGradient.ignoresSafeArea()
 
+            // Duotone photo layered over the brand gradient (ZStack: gradient
+            // then photo), mirroring Home's hero. Court lines + content stay on
+            // top; foreground is already white.
+            BrandedPhotoBackground(name: "PhotoHero", scrim: .hero)
+                .ignoresSafeArea()
+
             TennisCourtLinesView()
                 .foregroundStyle(Color.white.opacity(0.07))
                 .ignoresSafeArea()

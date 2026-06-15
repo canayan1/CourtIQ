@@ -72,48 +72,14 @@ struct MatchAnalysisCard: View {
     @State private var justCopied = false
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack(spacing: 8) {
-                Image(systemName: "sparkles")
-                    .font(.subheadline.weight(.bold))
-                    .foregroundStyle(AppPalette.clay)
-                Text(title)
-                    .font(.caption.weight(.heavy))
-                    .tracking(0.6)
-                    .foregroundStyle(AppPalette.inkSoft)
-                    .textCase(.uppercase)
-
-                Spacer(minLength: 8)
-
-                // Share the report verbatim — it's the payoff of the flow.
-                ShareLink(item: report) {
-                    Image(systemName: "square.and.arrow.up")
-                        .font(.footnote.weight(.bold))
-                        .foregroundStyle(AppPalette.clay)
-                        .frame(width: 32, height: 32)
-                }
-                .accessibilityLabel(lang.t("common.share"))
-
-                // Copy the report text to the pasteboard.
-                Button {
-                    Haptics.tap()
-                    UIPasteboard.general.string = report
-                    withAnimation(Motion.reveal) { justCopied = true }
-                    Task {
-                        try? await Task.sleep(nanoseconds: 1_600_000_000)
-                        withAnimation(Motion.reveal) { justCopied = false }
-                    }
-                } label: {
-                    Image(systemName: justCopied ? "checkmark" : "doc.on.doc")
-                        .font(.footnote.weight(.bold))
-                        .foregroundStyle(justCopied ? AppPalette.moss : AppPalette.clay)
-                        .frame(width: 32, height: 32)
-                }
-                .accessibilityLabel(lang.t(justCopied ? "common.copied" : "common.copy"))
-            }
+        VStack(alignment: .leading, spacing: 0) {
+            // "Hero + select cards": ONLY the report card header band gets a
+            // PhotoCourt background (white fg over the .full duotone scrim).
+            // The report body below stays clean on parchment.
+            headerBand
             MatchAnalysisReportView(text: report)
+                .padding(16)
         }
-        .padding(16)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(AppPalette.parchment)
         .overlay(
@@ -121,5 +87,49 @@ struct MatchAnalysisCard: View {
                 .stroke(AppPalette.sand, lineWidth: 1)
         )
         .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+    }
+
+    private var headerBand: some View {
+        HStack(spacing: 8) {
+            Image(systemName: "sparkles")
+                .font(.subheadline.weight(.bold))
+                .foregroundStyle(.white)
+            Text(title)
+                .font(.caption.weight(.heavy))
+                .tracking(0.6)
+                .foregroundStyle(.white.opacity(0.9))
+                .textCase(.uppercase)
+
+            Spacer(minLength: 8)
+
+            // Share the report verbatim — it's the payoff of the flow.
+            ShareLink(item: report) {
+                Image(systemName: "square.and.arrow.up")
+                    .font(.footnote.weight(.bold))
+                    .foregroundStyle(.white)
+                    .frame(width: 32, height: 32)
+            }
+            .accessibilityLabel(lang.t("common.share"))
+
+            // Copy the report text to the pasteboard.
+            Button {
+                Haptics.tap()
+                UIPasteboard.general.string = report
+                withAnimation(Motion.reveal) { justCopied = true }
+                Task {
+                    try? await Task.sleep(nanoseconds: 1_600_000_000)
+                    withAnimation(Motion.reveal) { justCopied = false }
+                }
+            } label: {
+                Image(systemName: justCopied ? "checkmark" : "doc.on.doc")
+                    .font(.footnote.weight(.bold))
+                    .foregroundStyle(justCopied ? .white : .white)
+                    .frame(width: 32, height: 32)
+            }
+            .accessibilityLabel(lang.t(justCopied ? "common.copied" : "common.copy"))
+        }
+        .padding(16)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .brandedPhoto("PhotoCourt", scrim: .full, cornerRadius: 0)
     }
 }

@@ -52,31 +52,39 @@ struct DrillResultView: View {
     private var scoreHero: some View {
         VStack(spacing: 10) {
             ZStack {
+                // On the photo hero the ring track flips to a translucent white
+                // so the score ring stays legible over the duotone scrim.
                 Circle()
-                    .stroke(AppPalette.sand, lineWidth: 8)
+                    .stroke(.white.opacity(0.28), lineWidth: 8)
                     .frame(width: 168, height: 168)
                 Circle()
                     .trim(from: 0, to: CGFloat(session.score) / CGFloat(session.maxScore))
-                    .stroke(scoreColor, style: StrokeStyle(lineWidth: 8, lineCap: .round))
+                    .stroke(.white, style: StrokeStyle(lineWidth: 8, lineCap: .round))
                     .rotationEffect(.degrees(-90))
                     .frame(width: 168, height: 168)
 
                 VStack(spacing: 0) {
                     Text("\(session.score)")
                         .font(.system(size: 50, weight: .heavy, design: .rounded))
-                        .foregroundStyle(AppPalette.ink)
+                        .foregroundStyle(.white)
                         .monospacedDigit()
                     Text("/ \(session.maxScore)")
                         .font(.system(size: 14, weight: .bold, design: .rounded))
-                        .foregroundStyle(AppPalette.inkSoft)
+                        .foregroundStyle(.white.opacity(0.85))
                         .monospacedDigit()
                 }
             }
 
             Text(scoreLabel)
                 .font(.system(size: 18, weight: .heavy, design: .rounded))
-                .foregroundStyle(scoreColor)
+                .foregroundStyle(.white)
         }
+        .padding(.vertical, 24)
+        .padding(.horizontal, 16)
+        .frame(maxWidth: .infinity)
+        // "Hero + select cards": the drill result score hero gets a PhotoFootwork
+        // marquee background; the score ring + numbers flip to white.
+        .brandedPhoto("PhotoFootwork", scrim: .hero, cornerRadius: 24)
         .padding(.top, 16)
     }
 

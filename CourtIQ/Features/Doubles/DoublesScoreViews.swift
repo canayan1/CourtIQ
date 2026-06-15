@@ -10,23 +10,22 @@ struct DoublesScoreView: View {
     var body: some View {
         VStack(spacing: 10) {
             // Kinetic peak moment: the ring fills 0→score and the number rolls
-            // up on appear (Reduce-Motion-safe inside `ScoreRing`).
-            ScoreRing(size: 116, score: score)
+            // up on appear (Reduce-Motion-safe inside `ScoreRing`). On the photo
+            // hero the ring flips to white accent + a translucent white track.
+            ScoreRing(size: 116, score: score,
+                      accent: .white, track: .white.opacity(0.28))
 
             Text(copy.scoreLabel)
                 .font(.caption.weight(.heavy))
-                .foregroundStyle(AppPalette.inkSoft)
+                .foregroundStyle(.white.opacity(0.9))
                 .textCase(.uppercase)
                 .tracking(0.5)
         }
         .padding(.vertical, 18)
         .frame(maxWidth: .infinity)
-        .background(AppPalette.parchment)
-        .overlay(
-            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .stroke(AppPalette.sand, lineWidth: 1)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        // "Hero + select cards": the doubles compatibility score hero gets a
+        // PhotoDoubles background (white ScoreRing + label over the scrim).
+        .brandedPhoto("PhotoDoubles", scrim: .hero, cornerRadius: 16)
     }
 }
 

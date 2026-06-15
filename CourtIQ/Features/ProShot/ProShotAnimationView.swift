@@ -131,15 +131,19 @@ struct ProShotAnimationView: View {
         VStack(alignment: .leading, spacing: 6) {
             Text(pattern.localizedTitle(for: lang.language))
                 .font(.system(size: 24, weight: .heavy, design: .rounded))
-                .foregroundStyle(AppPalette.ink)
+                .foregroundStyle(.white)
             Text(pattern.localizedTagline(for: lang.language))
                 .font(.subheadline)
-                .foregroundStyle(AppPalette.inkSoft)
+                .foregroundStyle(.white.opacity(0.9))
                 .fixedSize(horizontal: false, vertical: true)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 22)
-        .padding(.bottom, 14)
+        .padding(.vertical, 16)
+        // "Hero + select cards": the title/tagline header band sits ABOVE (not
+        // over) the court animation, so it gets a PhotoGear band; foreground
+        // flips to white. The court animation below stays clean.
+        .brandedPhoto("PhotoGear", scrim: .bottom, cornerRadius: 0)
     }
 
     // MARK: - Court

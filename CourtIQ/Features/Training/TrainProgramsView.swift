@@ -32,7 +32,8 @@ struct TrainProgramsView: View {
 
             VStack(alignment: .leading, spacing: 16) {
                 programSectionHeader(title: lang.t("training.free_foundation"),
-                                     subtitle: lang.t("training.start_here"))
+                                     subtitle: lang.t("training.start_here"),
+                                     onPhoto: true)
 
                 Text(program.title)
                     .font(.title3.bold())
@@ -63,7 +64,14 @@ struct TrainProgramsView: View {
             }
             .padding()
         }
-        .background(AppPalette.trainingGradient)
+        // Layer the duotone photo OVER the existing brand gradient (ZStack:
+        // gradient then photo), mirroring Home's hero / the Train flagship.
+        .background(
+            ZStack {
+                AppPalette.trainingGradient
+                BrandedPhotoBackground(name: "PhotoCourt", scrim: .hero)
+            }
+        )
         .foregroundStyle(.white)
         .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
     }
@@ -87,37 +95,35 @@ struct TrainProgramsView: View {
 
                         Text(program.title)
                             .font(.headline)
-                            .foregroundStyle(AppPalette.ink)
+                            .foregroundStyle(.white)
 
                         if !session.isPremiumUnlocked {
                             Image(systemName: "lock.fill")
                                 .font(.caption)
-                                .foregroundStyle(AppPalette.inkSoft)
+                                .foregroundStyle(.white.opacity(0.9))
                         }
 
                         Spacer()
                     }
                     .padding()
-                    .background(AppPalette.parchment)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 22, style: .continuous)
-                            .stroke(AppPalette.sand, lineWidth: 1)
-                    )
-                    .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+                    .brandedPhoto("PhotoCourt", scrim: .bottom, cornerRadius: 22)
                 }
                 .buttonStyle(PressableCardStyle())
             }
         }
     }
 
-    private func programSectionHeader(title: String, subtitle: String) -> some View {
+    /// `onPhoto` flips the subtitle to a legible light tint when the header sits
+    /// on a duotone photo surface (the featured card); off-photo it keeps the
+    /// original inkSoft.
+    private func programSectionHeader(title: String, subtitle: String, onPhoto: Bool = false) -> some View {
         HStack {
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
                     .font(.title3.bold())
                 Text(subtitle)
                     .font(.subheadline)
-                    .foregroundStyle(AppPalette.inkSoft)
+                    .foregroundStyle(onPhoto ? Color.white.opacity(0.85) : AppPalette.inkSoft)
             }
             Spacer()
         }

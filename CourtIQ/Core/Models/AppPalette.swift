@@ -3,7 +3,9 @@ import SwiftUI
 enum AppPalette {
     static let clay = Color(red: 198 / 255, green: 92 / 255, blue: 49 / 255)
     static let clayBright = Color(red: 228 / 255, green: 137 / 255, blue: 79 / 255)
-    static let cream = Color(red: 244 / 255, green: 236 / 255, blue: 221 / 255)
+    // Deepened from (244,236,221) → a warmer oat so the lighter parchment cards
+    // and the photo cards separate from the page background with real contrast.
+    static let cream = Color(red: 233 / 255, green: 222 / 255, blue: 203 / 255)
     static let parchment = Color(red: 252 / 255, green: 247 / 255, blue: 238 / 255)
     static let sand = Color(red: 225 / 255, green: 209 / 255, blue: 184 / 255)
     static let ink = Color(red: 30 / 255, green: 41 / 255, blue: 56 / 255)

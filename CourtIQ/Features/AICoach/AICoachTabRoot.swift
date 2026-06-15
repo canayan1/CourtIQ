@@ -98,12 +98,18 @@ struct AICoachTabRoot: View {
                     .padding(20)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
+                // Duotone photo layered OVER the existing brand gradient
+                // (ZStack: gradient then photo), mirroring Home's hero. The
+                // sparkles glyph + content stay on top; foreground is white.
                 .background(
-                    LinearGradient(
-                        colors: [AppPalette.gold, AppPalette.clay],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
+                    ZStack {
+                        LinearGradient(
+                            colors: [AppPalette.gold, AppPalette.clay],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                        BrandedPhotoBackground(name: "PhotoCoach", scrim: .hero)
+                    }
                 )
                 .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
             }

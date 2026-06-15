@@ -35,7 +35,8 @@ struct TrainPracticeView: View {
                                 }
                             } label: {
                                 LockableTile(sfSymbol: category.systemImage,
-                                             title: category.title)
+                                             title: category.title,
+                                             photo: Self.photo(for: category))
                             }
                             .buttonStyle(PressableCardStyle())
                         } else {
@@ -44,7 +45,8 @@ struct TrainPracticeView: View {
                             } label: {
                                 LockableTile(sfSymbol: category.systemImage,
                                              title: category.title,
-                                             locked: true)
+                                             locked: true,
+                                             photo: Self.photo(for: category))
                             }
                             .buttonStyle(PressableCardStyle())
                         }
@@ -55,7 +57,8 @@ struct TrainPracticeView: View {
                     showDrill = true
                 } label: {
                     iconRow(systemImage: "scope",
-                            title: lang.t("train.drill_label"))
+                            title: lang.t("train.drill_label"),
+                            photo: "PhotoFootwork")
                 }
                 .buttonStyle(PressableCardStyle())
 
@@ -64,7 +67,8 @@ struct TrainPracticeView: View {
                         showProShot = true
                     } label: {
                         iconRow(systemImage: "trophy.fill",
-                                title: lang.t("train.pro_shot_label"))
+                                title: lang.t("train.pro_shot_label"),
+                                photo: "PhotoGear")
                     }
                     .buttonStyle(PressableCardStyle())
                 }
@@ -97,30 +101,63 @@ struct TrainPracticeView: View {
 
     // MARK: - Tiles
 
-    private func iconRow(systemImage: String, title: String) -> some View {
-        HStack(spacing: 14) {
+    /// Per-category photo for the 5 quiz tiles (see prompt mapping).
+    private static func photo(for category: QuizCategory) -> String {
+        switch category {
+        case .serve:      return "PhotoServe"
+        case .returnPlay: return "PhotoNet"
+        case .rally:      return "PhotoForehand"
+        case .net:        return "PhotoNet"
+        case .mental:     return "PhotoMatch"
+        }
+    }
+
+    /// Feature row. When `photo` is set, it becomes a duotone photo card with a
+    /// LIGHT (white) foreground over a `.bottom` scrim; otherwise it keeps the
+    /// original parchment + sand-stroke look.
+    private func iconRow(systemImage: String, title: String, photo: String? = nil) -> some View {
+        let fg: Color = photo == nil ? AppPalette.ink : .white
+        let iconTint: Color = photo == nil ? AppPalette.clay : .white
+        return HStack(spacing: 14) {
             Image(systemName: systemImage)
                 .font(.title2)
-                .foregroundStyle(AppPalette.clay)
+                .foregroundStyle(iconTint)
                 .frame(width: 28)
 
             Text(title)
                 .font(.headline)
-                .foregroundStyle(AppPalette.ink)
+                .foregroundStyle(fg)
 
             Spacer()
 
             Image(systemName: "chevron.right")
                 .font(.footnote.weight(.semibold))
-                .foregroundStyle(.tertiary)
+                .foregroundStyle(photo == nil ? Color.secondary.opacity(0.6) : .white.opacity(0.9))
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(AppPalette.parchment)
-        .overlay(
-            RoundedRectangle(cornerRadius: 22, style: .continuous)
-                .stroke(AppPalette.sand, lineWidth: 1)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .modifier(IconRowBackground(photo: photo))
+    }
+}
+
+/// Background recipe for `iconRow`: duotone photo (`.bottom` scrim) when a photo
+/// is set, else the original parchment fill + sand stroke. Mirrors the
+/// `TileBackground` pattern at 22pt radius.
+private struct IconRowBackground: ViewModifier {
+    let photo: String?
+
+    func body(content: Content) -> some View {
+        if let photo {
+            content
+                .brandedPhoto(photo, scrim: .bottom, cornerRadius: 22)
+        } else {
+            content
+                .background(AppPalette.parchment)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 22, style: .continuous)
+                        .stroke(AppPalette.sand, lineWidth: 1)
+                )
+                .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+        }
     }
 }

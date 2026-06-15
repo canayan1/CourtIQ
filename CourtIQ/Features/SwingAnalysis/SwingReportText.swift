@@ -75,22 +75,20 @@ struct SwingScoreView: View {
             // Kinetic peak moment: the ring fills 0→score and the number rolls
             // up on appear (Reduce-Motion-safe inside `ScoreRing`). Mirrors the
             // doubles compatibility score.
-            ScoreRing(size: 120, score: score)
+            ScoreRing(size: 120, score: score, accent: .white,
+                      track: .white.opacity(0.28))
 
             Text(copy.scoreLabel)
                 .font(.caption.weight(.heavy))
-                .foregroundStyle(AppPalette.inkSoft)
+                .foregroundStyle(.white)
                 .textCase(.uppercase)
                 .tracking(0.5)
         }
         .padding(.vertical, 18)
         .frame(maxWidth: .infinity)
-        .background(AppPalette.parchment)
-        .overlay(
-            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .stroke(AppPalette.sand, lineWidth: 1)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        // Marquee peak moment: duotone photo hero behind the ScoreRing (ring +
+        // label flipped to white over the `.hero` scrim).
+        .brandedPhoto("PhotoServe", scrim: .hero, cornerRadius: 16)
     }
 }
 
