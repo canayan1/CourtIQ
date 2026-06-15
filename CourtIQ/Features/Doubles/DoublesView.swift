@@ -11,13 +11,21 @@ struct DoublesView: View {
 
     @State private var showAddPartner = false
 
+    private var inviteCopy: DoublesInviteCopy { DoublesInviteCopy(lang: lang.language) }
+
     var body: some View {
         ZStack {
             AppPalette.cream.ignoresSafeArea()
-            if store.partners.isEmpty {
-                emptyState
-            } else {
-                list
+            ScrollView {
+                VStack(alignment: .leading, spacing: 22) {
+                    // The viral invite loop — pair up with a real partner.
+                    DoublesInviteSection()
+
+                    // Secondary path: the existing solo "analyze a partner
+                    // manually" flow, kept fully intact below the invite loop.
+                    manualSection
+                }
+                .padding(20)
             }
         }
         .navigationTitle(copy.navTitle)
@@ -37,19 +45,37 @@ struct DoublesView: View {
         }
     }
 
-    private var list: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 10) {
-                ForEach(store.partners) { partner in
-                    NavigationLink {
-                        DoublesPartnerDetailView(partnerId: partner.id)
-                    } label: {
-                        row(partner)
+    /// The existing manual ("quick read") flow, embedded below the invite loop.
+    private var manualSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack {
+                Text(inviteCopy.manualHeader)
+                    .font(.subheadline.weight(.bold))
+                    .foregroundStyle(AppPalette.ink)
+                Spacer(minLength: 0)
+                Button {
+                    showAddPartner = true
+                } label: {
+                    Label(copy.addPartnerCTA, systemImage: "plus")
+                        .font(.subheadline.weight(.semibold))
+                }
+                .tint(AppPalette.clay)
+            }
+
+            if store.partners.isEmpty {
+                emptyState
+            } else {
+                VStack(alignment: .leading, spacing: 10) {
+                    ForEach(store.partners) { partner in
+                        NavigationLink {
+                            DoublesPartnerDetailView(partnerId: partner.id)
+                        } label: {
+                            row(partner)
+                        }
+                        .buttonStyle(.plain)
                     }
-                    .buttonStyle(.plain)
                 }
             }
-            .padding(20)
         }
     }
 
@@ -93,26 +119,11 @@ struct DoublesView: View {
     }
 
     private var emptyState: some View {
-        VStack(spacing: 16) {
-            Image(systemName: "person.2.fill")
-                .font(.system(size: 40))
-                .foregroundStyle(AppPalette.moss)
-            Text(copy.listEmpty)
-                .font(.subheadline)
-                .foregroundStyle(AppPalette.inkSoft)
-                .multilineTextAlignment(.center)
-            Button {
-                showAddPartner = true
-            } label: {
-                Label(copy.addPartnerCTA, systemImage: "plus")
-                    .font(.headline)
-                    .padding(.horizontal, 18)
-                    .padding(.vertical, 12)
-            }
-            .buttonStyle(.borderedProminent)
-            .tint(AppPalette.clay)
-        }
-        .padding(40)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        Text(copy.listEmpty)
+            .font(.subheadline)
+            .foregroundStyle(AppPalette.inkSoft)
+            .multilineTextAlignment(.leading)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.vertical, 8)
     }
 }
