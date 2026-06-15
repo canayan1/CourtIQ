@@ -801,7 +801,7 @@
 "ai.composer_placeholder" = "Ask about a match, a drill, or a pattern…";
 "ai.send" = "Send";
 "ai.thread_hint_kicker" = "Quick prompts";
-"ai.thread_hint_body" = "Try \"yarın Begum'la oynayacağım, plan?\" or \"son 5 maçta mental hep 2/5, ne yapayım?\" — the coach has your match journal and quiz history.";
+"ai.thread_hint_body" = "Try \"playing Begum tomorrow — what's my game plan?\" or \"my mental score has been 2/5 the last 5 matches, what do I do?\" — the coach has your match journal and quiz history.";
 "ai.quota_remaining_format" = "%d messages left today";
 "ai.quota_unknown" = "Daily quota refreshes at midnight";
 "ai.quota_resets" = "Resets at midnight local time";
