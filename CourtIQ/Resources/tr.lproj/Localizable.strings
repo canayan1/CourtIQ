@@ -32,7 +32,6 @@
 
 /* ── Home (action-first redesign) ── */
 "home.analyze_title" = "Vuruşunu analiz et";
-"home.analyze_caption" = "Kaydet · 0–100 puan";
 "home.your_game" = "Oyunun";
 "home.tile_matches" = "Maçlar";
 "home.tile_coach" = "Koç";
@@ -62,10 +61,6 @@
 "train.pro_shot_title" = "Pro vuruş";
 "train.pro_shot_desc" = "Bugünün imza paterni, animasyonlu.";
 "train.flagship_swing" = "Vuruş";
-"train.cat_practice_stat" = "5 test · antren · pro vuruş";
-"train.cat_recover_stat" = "Mobilite";
-"train.cat_programs_premium" = "Premium";
-"train.cat_programs_tracks" = "5 parkur";
 "train.drill_label" = "Antren";
 "train.pro_shot_label" = "Pro vuruş";
 "train.mobility_label" = "Mobilite";

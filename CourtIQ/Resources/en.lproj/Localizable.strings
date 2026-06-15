@@ -32,7 +32,6 @@
 
 /* ── Home (action-first redesign) ── */
 "home.analyze_title" = "Analyze your swing";
-"home.analyze_caption" = "Record · 0–100 score";
 "home.your_game" = "Your game";
 "home.tile_matches" = "Matches";
 "home.tile_coach" = "Coach";
@@ -62,10 +61,6 @@
 "train.pro_shot_title" = "Pro shot";
 "train.pro_shot_desc" = "Today's signature pattern, animated.";
 "train.flagship_swing" = "Swing";
-"train.cat_practice_stat" = "5 quizzes · drill · pro shot";
-"train.cat_recover_stat" = "Mobility";
-"train.cat_programs_premium" = "Premium";
-"train.cat_programs_tracks" = "5 tracks";
 "train.drill_label" = "Drill";
 "train.pro_shot_label" = "Pro shot";
 "train.mobility_label" = "Mobility";

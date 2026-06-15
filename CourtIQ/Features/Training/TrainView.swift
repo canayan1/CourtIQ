@@ -120,8 +120,7 @@ struct TrainView: View {
             TrainPracticeView()
         } label: {
             CategoryCard(symbol: "rectangle.stack",
-                         title: lang.t("train.practice"),
-                         stat: lang.t("train.cat_practice_stat"))
+                         title: lang.t("train.practice"))
         }
         .buttonStyle(PressableCardStyle())
     }
@@ -131,8 +130,7 @@ struct TrainView: View {
             TrainRecoverView()
         } label: {
             CategoryCard(symbol: "figure.walk",
-                         title: lang.t("train.recover"),
-                         stat: lang.t("train.cat_recover_stat"))
+                         title: lang.t("train.recover"))
         }
         .buttonStyle(PressableCardStyle())
     }
@@ -143,9 +141,7 @@ struct TrainView: View {
         } label: {
             CategoryCard(symbol: "figure.strengthtraining.traditional",
                          title: lang.t("train.programs"),
-                         stat: session.isPremiumUnlocked
-                            ? lang.t("train.cat_programs_tracks")
-                            : lang.t("train.cat_programs_premium"))
+                         locked: !session.isPremiumUnlocked)
         }
         .buttonStyle(PressableCardStyle())
     }
@@ -153,12 +149,12 @@ struct TrainView: View {
 
 // MARK: - Category card
 
-/// A FeatureTile-recipe card with an SF Symbol, a one/two-word title, a small
-/// inkSoft stat line, and an optional lock badge. Used on the Train hub grid.
+/// A FeatureTile-recipe card with an SF Symbol + a one/two-word title, plus an
+/// optional lock glyph. Sentence-free — the icon + word carry meaning (matching
+/// the Home tiles). Used on the Train hub grid.
 struct CategoryCard: View {
     let symbol: String
     let title: String
-    let stat: String
     var locked: Bool = false
 
     var body: some View {
@@ -178,15 +174,9 @@ struct CategoryCard: View {
 
             Spacer(minLength: 0)
 
-            VStack(alignment: .leading, spacing: 3) {
-                Text(title)
-                    .font(.headline)
-                    .foregroundStyle(AppPalette.ink)
-                Text(stat)
-                    .font(.caption)
-                    .foregroundStyle(AppPalette.inkSoft)
-                    .lineLimit(1)
-            }
+            Text(title)
+                .font(.headline)
+                .foregroundStyle(AppPalette.ink)
         }
         .frame(maxWidth: .infinity, minHeight: 112, alignment: .leading)
         .padding(16)

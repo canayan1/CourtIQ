@@ -23,6 +23,7 @@
 		55179DACCC1C248000E0C9C0 /* DoublesCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78DBEEACC92870A3FFFBD7C /* DoublesCopy.swift */; };
 		5F71E0F3BD2E9BA2AC5CC711 /* TennisProfileCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7C2AA916BE624A71B6017F /* TennisProfileCopy.swift */; };
 		658859037DBF2D3A4E6F1179 /* DoublesReportDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15DB976B12A4D023D76BF2 /* DoublesReportDetailView.swift */; };
+		6C288EA33A513977B60D0F93 /* RecentActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17264A46BEA1F34B6E375CCD /* RecentActivity.swift */; };
 		7077F4E9DBD8C6119B70D01A /* DoublesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C76AC798603AB4C9DC3688 /* DoublesService.swift */; };
 		754033EA2869BE6DBB623611 /* DoublesPartnerFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA2D95FBB8002248B38F6C /* DoublesPartnerFormView.swift */; };
 		77E5C7A03F1A2BF3C94AE188 /* TrainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2552A4998FE130E11DD2183F /* TrainView.swift */; };
@@ -167,6 +168,7 @@
 		0557CE18D7A694CEF536677C /* TennisProfileResultView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TennisProfileResultView.swift; path = CourtIQ/Features/TennisProfile/TennisProfileResultView.swift; sourceTree = "<group>"; };
 		0A7ED880F0D31CAEA68D596A /* DoublesStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesStore.swift; path = CourtIQ/Features/Doubles/DoublesStore.swift; sourceTree = "<group>"; };
 		161E8A1AEB1F9F5949EB117B /* VideoPicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VideoPicker.swift; path = CourtIQ/Features/SwingAnalysis/VideoPicker.swift; sourceTree = "<group>"; };
+		17264A46BEA1F34B6E375CCD /* RecentActivity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CourtIQ/App/RecentActivity.swift; sourceTree = "<group>"; };
 		2552A4998FE130E11DD2183F /* TrainView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TrainView.swift; path = CourtIQ/Features/Training/TrainView.swift; sourceTree = "<group>"; };
 		37C76AC798603AB4C9DC3688 /* DoublesService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesService.swift; path = CourtIQ/Features/Doubles/DoublesService.swift; sourceTree = "<group>"; };
 		3F14568EE361FE4FD8E1B19F /* OnboardingBuildingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OnboardingBuildingView.swift; path = CourtIQ/Features/Onboarding/OnboardingBuildingView.swift; sourceTree = "<group>"; };
@@ -482,6 +484,7 @@
 				E59972A086F7FB607351D71D /* TrainPracticeView.swift */,
 				D67096DC5B2EA03C7C212CFB /* TrainRecoverView.swift */,
 				E0556A0C64DB8336DFA363B3 /* TrainProgramsView.swift */,
+				17264A46BEA1F34B6E375CCD /* RecentActivity.swift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -769,6 +772,7 @@
 				1A5CB2C747712855620C22EF /* TrainPracticeView.swift in Sources */,
 				803D58DA080F62B6039E75E1 /* TrainRecoverView.swift in Sources */,
 				8D8D4A834044265ECD0D4722 /* TrainProgramsView.swift in Sources */,
+				6C288EA33A513977B60D0F93 /* RecentActivity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
