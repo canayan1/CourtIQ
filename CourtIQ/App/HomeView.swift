@@ -183,8 +183,7 @@ struct HomeView: View {
         // Dense horizontal hero (icon + title + fixed 54pt ring): clamp so the
         // row stays composed at the largest sizes instead of crushing the ring.
         .dynamicTypeSize(...DynamicTypeSize.accessibility2)
-        .background(AppPalette.clay)
-        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .brandedPhoto("PhotoServe", scrim: .hero, cornerRadius: 24)
     }
 
     @ViewBuilder
@@ -216,7 +215,8 @@ struct HomeView: View {
         ) {
             FeatureTile(sfSymbol: "list.clipboard.fill",
                         title: lang.t("home.tile_matches"),
-                        minHeight: 112) {
+                        minHeight: 112,
+                        photo: "PhotoMatch") {
                 Haptics.tap()
                 tabRouter.selection = .matches
             }
@@ -224,7 +224,8 @@ struct HomeView: View {
 
             FeatureTile(sfSymbol: "bubble.left.and.text.bubble.right.fill",
                         title: lang.t("home.tile_coach"),
-                        minHeight: 112) {
+                        minHeight: 112,
+                        photo: "PhotoCoach") {
                 Haptics.tap()
                 tabRouter.selection = .coach
             }
@@ -232,7 +233,8 @@ struct HomeView: View {
 
             FeatureTile(sfSymbol: "person.2.fill",
                         title: lang.t("home.tile_doubles"),
-                        minHeight: 112) {
+                        minHeight: 112,
+                        photo: "PhotoDoubles") {
                 Haptics.tap()
                 tabRouter.selection = .doubles
             }
@@ -240,7 +242,8 @@ struct HomeView: View {
 
             FeatureTile(sfSymbol: "scope",
                         title: lang.t("home.tile_drill"),
-                        minHeight: 112) {
+                        minHeight: 112,
+                        photo: "PhotoFootwork") {
                 Haptics.tap()
                 showDrill = true
             }

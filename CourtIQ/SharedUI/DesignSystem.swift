@@ -55,8 +55,10 @@ struct BrandedPhotoBackground: View {
             .resizable()
             .scaledToFill()
             .clipped()
-            .saturation(0)
-            .colorMultiply(BrandedPhotoBackground.tone)
+            // Cohesive but not muddy: keep some of the photo's life, warm it
+            // toward the brand clay with a moderate multiply, then scrim for text.
+            .saturation(0.45)
+            .overlay(BrandedPhotoBackground.tone.opacity(0.42).blendMode(.multiply))
             .overlay(scrimOverlay)
             .clipped()
             .accessibilityHidden(true)
@@ -93,11 +95,11 @@ struct BrandedPhotoBackground: View {
     /// All scrim opacities grouped so the parent can dial legibility app-wide
     /// from one place. Higher = darker = more legible (but flatter) photo.
     enum Tuning {
-        static let bottomTop: Double = 0.10      // .bottom — light at the top
-        static let bottomBottom: Double = 0.55   // .bottom — dark at the bottom
-        static let full: Double = 0.40           // .full  — uniform veil
-        static let heroTop: Double = 0.25        // .hero  — still readable up top
-        static let heroBottom: Double = 0.70     // .hero  — strong base for big text
+        static let bottomTop: Double = 0.12      // .bottom — light at the top
+        static let bottomBottom: Double = 0.64   // .bottom — dark at the bottom
+        static let full: Double = 0.42           // .full  — uniform veil
+        static let heroTop: Double = 0.28        // .hero  — still readable up top
+        static let heroBottom: Double = 0.74     // .hero  — strong base for big text
     }
 }
 
