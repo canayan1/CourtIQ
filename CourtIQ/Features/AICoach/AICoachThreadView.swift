@@ -147,7 +147,7 @@ struct AICoachThreadView: View {
     private var introHint: some View {
         VStack(alignment: .leading, spacing: 10) {
             Label(lang.t("ai.thread_hint_kicker"), systemImage: "sparkles")
-                .font(.caption.weight(.heavy))
+                .font(.system(.caption, design: .rounded).weight(.heavy))
                 .foregroundStyle(AppPalette.clay)
                 .textCase(.uppercase)
                 .tracking(0.5)

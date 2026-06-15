@@ -60,7 +60,7 @@ struct TrainView: View {
         VStack(alignment: .leading, spacing: 6) {
             Eyebrow(lang.t("train.subtitle"))
             Text(lang.t("train.headline"))
-                .font(.system(size: 28, weight: .bold, design: .rounded))
+                .font(.system(.title, design: .rounded).weight(.bold))
                 .foregroundStyle(AppPalette.ink)
                 .fixedSize(horizontal: false, vertical: true)
         }
@@ -100,12 +100,12 @@ struct TrainView: View {
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(lang.t("train.flagship"))
-                    .font(.system(size: 11, weight: .semibold, design: .rounded))
+                    .font(.system(.caption2, design: .rounded).weight(.semibold))
                     .textCase(.uppercase)
                     .tracking(0.8)
                     .foregroundStyle(.white.opacity(0.85))
                 Text(lang.t("train.flagship_swing"))
-                    .font(.system(size: 18, weight: .bold, design: .rounded))
+                    .font(.system(.title3, design: .rounded).weight(.bold))
                     .foregroundStyle(.white)
             }
 
@@ -117,6 +117,9 @@ struct TrainView: View {
         }
         .padding(.horizontal, 18)
         .frame(maxWidth: .infinity, minHeight: 72, alignment: .leading)
+        // Fixed-height flagship strip: clamp so the icon + two-line title don't
+        // overflow the 72pt min-height at the largest accessibility sizes.
+        .dynamicTypeSize(...DynamicTypeSize.accessibility2)
         .background(AppPalette.swingHeroGradient)
         .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
     }

@@ -314,6 +314,9 @@ struct SwingAnalysisView: View {
                     videoURL: videoURL
                 )
                 phase = .result(text: result.analysis, score: result.score)
+                // Celebrate the landing of the swing result — the flagship peak
+                // moment, mirroring the doubles score reveal.
+                Haptics.success()
             } catch let err as SwingFrameExtractor.ExtractionError {
                 _ = err
                 presentError(copy.errorTooShort)
@@ -356,10 +359,10 @@ struct SwingAnalysisView: View {
 
     private func kicker(_ text: String) -> some View {
         Text(text)
-            .font(.caption.weight(.heavy))
+            .font(.system(.caption2, design: .rounded).weight(.semibold))
             .foregroundStyle(AppPalette.clay)
             .textCase(.uppercase)
-            .tracking(0.5)
+            .tracking(0.8)
     }
 
     private func optionRow(_ title: String, isSelected: Bool, _ action: @escaping () -> Void) -> some View {
@@ -381,7 +384,7 @@ struct SwingAnalysisView: View {
             )
             .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         }
-        .buttonStyle(.plain)
+        .buttonStyle(PressableCardStyle())
     }
 
     private func primaryButton(_ title: String, systemImage: String? = nil, _ action: @escaping () -> Void) -> some View {

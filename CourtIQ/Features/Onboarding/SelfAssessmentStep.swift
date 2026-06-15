@@ -74,12 +74,12 @@ struct SelfAssessmentStep: View {
     private var header: some View {
         VStack(alignment: .leading, spacing: 6) {
             Label(lang.t("self_assess.kicker"), systemImage: "scope")
-                .font(.caption.weight(.heavy))
+                .font(.system(.caption, design: .rounded).weight(.heavy))
                 .foregroundStyle(AppPalette.clay)
                 .textCase(.uppercase)
                 .tracking(0.6)
             Text(lang.t("self_assess.title"))
-                .font(.system(size: 24, weight: .heavy, design: .rounded))
+                .font(.system(.title2, design: .rounded).weight(.heavy))
                 .foregroundStyle(AppPalette.ink)
         }
     }
@@ -102,7 +102,7 @@ struct SelfAssessmentStep: View {
                     .foregroundStyle(AppPalette.ink)
                 Spacer()
                 Text("\(value)/5")
-                    .font(.system(size: 14, weight: .heavy, design: .rounded))
+                    .font(.system(.subheadline, design: .rounded).weight(.heavy))
                     .foregroundStyle(AppPalette.clay)
                     .monospacedDigit()
             }
@@ -141,13 +141,14 @@ struct SelfAssessmentStep: View {
         VStack(spacing: 0) {
             Button(action: submit) {
                 Text(lang.t("self_assess.submit"))
-                    .font(.system(size: 17, weight: .bold, design: .rounded))
+                    .font(.system(.headline, design: .rounded).weight(.bold))
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
                     .background(AppPalette.clay)
                     .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
             }
+            .buttonStyle(PressableCardStyle())
             .padding(.horizontal, 22)
             .padding(.top, 14)
             .padding(.bottom, 24)

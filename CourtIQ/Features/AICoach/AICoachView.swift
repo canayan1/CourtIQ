@@ -74,12 +74,12 @@ struct AICoachView: View {
     private var header: some View {
         VStack(alignment: .leading, spacing: 6) {
             Label(lang.t("ai.kicker"), systemImage: "sparkles")
-                .font(.caption.weight(.heavy))
+                .font(.system(.caption, design: .rounded).weight(.heavy))
                 .foregroundStyle(AppPalette.clay)
                 .textCase(.uppercase)
                 .tracking(0.6)
             Text(lang.t("ai.headline"))
-                .font(.system(size: 22, weight: .heavy, design: .rounded))
+                .font(.system(.title2, design: .rounded).weight(.heavy))
                 .foregroundStyle(AppPalette.ink)
                 .fixedSize(horizontal: false, vertical: true)
         }
@@ -144,11 +144,7 @@ struct AICoachView: View {
 
     private var threadList: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text(lang.t("ai.recent_chats"))
-                .font(.caption.weight(.heavy))
-                .foregroundStyle(AppPalette.inkSoft)
-                .textCase(.uppercase)
-                .tracking(0.5)
+            Eyebrow(lang.t("ai.recent_chats"))
 
             ForEach(aiClient.threads) { thread in
                 Button {
@@ -156,7 +152,7 @@ struct AICoachView: View {
                 } label: {
                     threadRow(thread)
                 }
-                .buttonStyle(.plain)
+                .buttonStyle(PressableCardStyle())
             }
         }
     }

@@ -44,7 +44,7 @@ struct Eyebrow: View {
 
     var body: some View {
         Text(text)
-            .font(.system(size: 11, weight: .semibold, design: .rounded))
+            .font(.system(.caption2, design: .rounded).weight(.semibold))
             .textCase(.uppercase)
             .tracking(0.8)
             .foregroundStyle(AppPalette.inkSoft)
@@ -120,7 +120,7 @@ struct FeatureTile: View {
         } label: {
             VStack(alignment: .leading, spacing: 14) {
                 Image(systemName: sfSymbol)
-                    .font(.system(size: 24, weight: .semibold))
+                    .font(.title2.weight(.semibold))
                     .symbolRenderingMode(.hierarchical)
                     .foregroundStyle(accent)
                     .symbolEffect(.bounce, value: bounce)
@@ -141,6 +141,9 @@ struct FeatureTile: View {
             .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
         }
         .buttonStyle(PressableCardStyle())
+        // Fixed-height tile: clamp very large sizes so the icon + title don't
+        // overflow the minHeight box. Scales up to accessibility2, then holds.
+        .dynamicTypeSize(...DynamicTypeSize.accessibility2)
         .accessibilityLabel(title)
     }
 }
@@ -168,7 +171,7 @@ struct LockableTile: View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
                 Image(systemName: sfSymbol)
-                    .font(.system(size: 24, weight: .semibold))
+                    .font(.title2.weight(.semibold))
                     .symbolRenderingMode(.hierarchical)
                     .foregroundStyle(accent)
                 Spacer(minLength: 0)
@@ -193,6 +196,9 @@ struct LockableTile: View {
                 .stroke(AppPalette.sand, lineWidth: 1)
         )
         .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+        // Fixed-height tile: clamp very large sizes so the icon + title don't
+        // overflow the minHeight box. Scales up to accessibility2, then holds.
+        .dynamicTypeSize(...DynamicTypeSize.accessibility2)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(title)
         .accessibilityAddTraits(locked ? .isButton : [])

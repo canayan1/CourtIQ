@@ -125,6 +125,12 @@ struct CourtIQApp: App {
     var body: some Scene {
         WindowGroup {
             RootView()
+                // Lock the app to light mode app-wide. The hardcoded warm
+                // AppPalette has no dark variants, so we pin the scheme rather
+                // than risk UIKit/system controls (Form/List/.secondary/sheets)
+                // rendering dark and mismatching the palette. Belt-and-suspenders
+                // alongside UIUserInterfaceStyle=Light in Info.plist.
+                .preferredColorScheme(.light)
                 .environmentObject(session)
                 .environmentObject(dailyQuizManager)
                 .environmentObject(trainingProgress)

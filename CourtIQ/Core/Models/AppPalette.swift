@@ -7,7 +7,9 @@ enum AppPalette {
     static let parchment = Color(red: 252 / 255, green: 247 / 255, blue: 238 / 255)
     static let sand = Color(red: 225 / 255, green: 209 / 255, blue: 184 / 255)
     static let ink = Color(red: 30 / 255, green: 41 / 255, blue: 56 / 255)
-    static let inkSoft = Color(red: 96 / 255, green: 91 / 255, blue: 84 / 255)
+    // Darkened from (96,91,84) → (74,70,64): same warm hue, lower luminance so
+    // secondary/caption/eyebrow text clears WCAG 4.5:1 on parchment/cream.
+    static let inkSoft = Color(red: 74 / 255, green: 70 / 255, blue: 64 / 255)
     static let moss = Color(red: 108 / 255, green: 131 / 255, blue: 102 / 255)
     static let alert = Color(red: 150 / 255, green: 73 / 255, blue: 42 / 255)
     static let mossDeep = Color(red: 78 / 255, green: 106 / 255, blue: 74 / 255)

@@ -70,7 +70,7 @@ struct HomeView: View {
                         Spacer()
                         if streakDays > 0 {
                             Label("\(streakDays)", systemImage: "flame.fill")
-                                .font(.system(size: 13, weight: .bold, design: .rounded))
+                                .font(.system(.footnote, design: .rounded).weight(.bold))
                                 .foregroundStyle(AppPalette.clay)
                                 .labelStyle(.titleAndIcon)
                                 .accessibilityLabel(String(format: lang.t("home.streak_days"), streakDays))
@@ -164,13 +164,13 @@ struct HomeView: View {
     private var heroLabel: some View {
         HStack(spacing: 16) {
             Image(systemName: "video.fill")
-                .font(.system(size: 34, weight: .semibold))
+                .font(.largeTitle.weight(.semibold))
                 .foregroundStyle(.white)
                 .symbolEffect(.bounce, value: heroBounce)
                 .frame(width: 56)
 
             Text(lang.t("home.analyze_title"))
-                .font(.system(size: 18, weight: .semibold))
+                .font(.title3.weight(.semibold))
                 .foregroundStyle(.white)
                 .fixedSize(horizontal: false, vertical: true)
 
@@ -180,6 +180,9 @@ struct HomeView: View {
         }
         .padding(24)
         .frame(maxWidth: .infinity, alignment: .leading)
+        // Dense horizontal hero (icon + title + fixed 54pt ring): clamp so the
+        // row stays composed at the largest sizes instead of crushing the ring.
+        .dynamicTypeSize(...DynamicTypeSize.accessibility2)
         .background(AppPalette.clay)
         .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
     }

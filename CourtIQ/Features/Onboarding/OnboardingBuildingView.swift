@@ -34,7 +34,7 @@ struct OnboardingBuildingView: View {
                     .progressViewStyle(.circular)
                     .tint(AppPalette.clay)
                 Text(copy.buildingTitle)
-                    .font(.system(size: 26, weight: .bold, design: .rounded))
+                    .font(.system(.title2, design: .rounded).weight(.bold))
                     .foregroundStyle(AppPalette.ink)
             }
 

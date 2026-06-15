@@ -60,19 +60,20 @@ struct AICoachTabRoot: View {
                     Image(systemName: "sparkles")
                         .font(.system(size: 100, weight: .bold))
                         .foregroundStyle(.white.opacity(0.14))
+                        .accessibilityHidden(true)
                         .offset(x: 12, y: -6)
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
                         .allowsHitTesting(false)
 
                     VStack(alignment: .leading, spacing: 14) {
                         Label(lang.t("coach.landing_kicker"), systemImage: "sparkles")
-                            .font(.caption.weight(.heavy))
+                            .font(.system(.caption, design: .rounded).weight(.heavy))
                             .textCase(.uppercase)
                             .tracking(0.6)
                             .foregroundStyle(.white.opacity(0.92))
 
                         Text(lang.t("coach.landing_title"))
-                            .font(.system(size: 26, weight: .heavy, design: .rounded))
+                            .font(.system(.title, design: .rounded).weight(.heavy))
                             .foregroundStyle(.white)
                             .fixedSize(horizontal: false, vertical: true)
 
@@ -91,7 +92,7 @@ struct AICoachTabRoot: View {
                                 .padding(.vertical, 14)
                                 .background(Capsule().fill(.white))
                         }
-                        .buttonStyle(.plain)
+                        .buttonStyle(PressableCardStyle())
                         .padding(.top, 4)
                     }
                     .padding(20)

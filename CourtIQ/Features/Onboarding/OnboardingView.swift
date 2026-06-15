@@ -100,7 +100,7 @@ private struct QuestionTopBar: View {
                         .fill(AppPalette.inkSoft.opacity(0.08))
                         .frame(width: 34, height: 34)
                     Image(systemName: "chevron.left")
-                        .font(.system(size: 14, weight: .semibold))
+                        .font(.subheadline.weight(.semibold))
                         .foregroundStyle(AppPalette.ink)
                 }
             }
@@ -111,8 +111,9 @@ private struct QuestionTopBar: View {
             Spacer()
 
             Text(stepLabel)
-                .font(.system(size: 12, weight: .semibold, design: .monospaced))
+                .font(.system(.caption, design: .monospaced).weight(.semibold))
                 .foregroundStyle(AppPalette.inkSoft)
+                .dynamicTypeSize(...DynamicTypeSize.accessibility2)
         }
         .padding(.horizontal, 20)
         .padding(.top, 62)
@@ -145,7 +146,7 @@ private struct OnboardingOptionCard: View {
                     switch symbol {
                     case .letter(let l):
                         Text(l)
-                            .font(.system(size: 18, weight: .bold, design: .rounded))
+                            .font(.system(.title3, design: .rounded).weight(.bold))
                             .foregroundStyle(isSelected ? AppPalette.clay : AppPalette.inkSoft)
                     case .sf(let name):
                         Image(systemName: name)
@@ -157,7 +158,7 @@ private struct OnboardingOptionCard: View {
                 // Text
                 VStack(alignment: .leading, spacing: 3) {
                     Text(title)
-                        .font(.system(size: 16, weight: .bold, design: .rounded))
+                        .font(.system(.body, design: .rounded).weight(.bold))
                         .foregroundStyle(AppPalette.ink)
                     Text(desc)
                         .font(.caption)
@@ -188,7 +189,7 @@ private struct OnboardingOptionCard: View {
             .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
             .shadow(color: isSelected ? AppPalette.clay.opacity(0.14) : .clear, radius: 8, y: 3)
         }
-        .buttonStyle(.plain)
+        .buttonStyle(PressableCardStyle())
         .animation(.easeInOut(duration: 0.15), value: isSelected)
     }
 }
@@ -207,17 +208,17 @@ private struct OnboardingCTABar: View {
                     Text(label)
                     if enabled {
                         Image(systemName: "chevron.right")
-                            .font(.system(size: 14, weight: .semibold))
+                            .font(.footnote.weight(.semibold))
                     }
                 }
-                .font(.system(size: 17, weight: .bold, design: .rounded))
+                .font(.system(.headline, design: .rounded).weight(.bold))
                 .foregroundStyle(.white)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 16)
                 .background(enabled ? AppPalette.clay : AppPalette.sand)
                 .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
             }
-            .buttonStyle(.plain)
+            .buttonStyle(PressableCardStyle())
         }
         .padding(.horizontal, 24)
         .padding(.top, 12)
@@ -258,14 +259,16 @@ private struct WelcomeStep: View {
                 Spacer().frame(height: 44)
 
                 Text("DropVolley")
-                    .font(.system(size: 44, weight: .heavy, design: .rounded))
+                    .font(.system(.largeTitle, design: .rounded).weight(.heavy))
                     .foregroundStyle(.white)
+                    .dynamicTypeSize(...DynamicTypeSize.accessibility2)
 
                 Spacer().frame(height: 14)
 
                 Text(lang.t("onb.welcome.tagline"))
-                    .font(.system(size: 21, weight: .bold, design: .rounded))
+                    .font(.system(.title3, design: .rounded).weight(.bold))
                     .foregroundStyle(.white.opacity(0.9))
+                    .multilineTextAlignment(.center)
 
                 Spacer().frame(height: 12)
 
@@ -277,18 +280,19 @@ private struct WelcomeStep: View {
                 VStack(spacing: 14) {
                     Button(action: onNext) {
                         Text(lang.t("onb.welcome.cta"))
-                            .font(.system(size: 17, weight: .bold, design: .rounded))
+                            .font(.system(.headline, design: .rounded).weight(.bold))
                             .foregroundStyle(AppPalette.clay)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 17)
                             .background(Color.white)
                             .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                     }
-                    .buttonStyle(.plain)
+                    .buttonStyle(PressableCardStyle())
 
                     Text(lang.t("onb.welcome.footer"))
-                        .font(.system(size: 11, weight: .semibold, design: .monospaced))
+                        .font(.system(.caption2, design: .monospaced).weight(.semibold))
                         .foregroundStyle(.white.opacity(0.55))
+                        .multilineTextAlignment(.center)
                 }
                 .padding(.horizontal, 28)
                 .padding(.bottom, 52)
@@ -305,6 +309,8 @@ private struct LevelStep: View {
     let onBack: () -> Void
     let onNext: () -> Void
     @EnvironmentObject private var lang: LanguageManager
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var appeared = false
 
     private var options: [(id: String, letter: String, title: String, desc: String)] {
         [
@@ -323,12 +329,12 @@ private struct LevelStep: View {
                 VStack(alignment: .leading, spacing: 26) {
                     // Subtitle removed — the title is the question, repetition adds nothing.
                     Text(lang.t("onb.level.title"))
-                        .font(.system(size: 30, weight: .heavy, design: .rounded))
+                        .font(.system(.title, design: .rounded).weight(.heavy))
                         .foregroundStyle(AppPalette.ink)
                         .padding(.horizontal, 24)
 
                     VStack(spacing: 10) {
-                        ForEach(options, id: \.id) { opt in
+                        ForEach(Array(options.enumerated()), id: \.element.id) { index, opt in
                             OnboardingOptionCard(
                                 isSelected: selected == opt.id,
                                 symbol: .letter(opt.letter),
@@ -336,6 +342,7 @@ private struct LevelStep: View {
                                 desc: opt.desc,
                                 onTap: { selected = opt.id }
                             )
+                            .onboardingReveal(appeared: appeared, index: index, reduceMotion: reduceMotion)
                         }
                     }
                     .padding(.horizontal, 20)
@@ -347,6 +354,10 @@ private struct LevelStep: View {
             OnboardingCTABar(label: lang.t("onb.cta.continue"), enabled: !selected.isEmpty, onTap: onNext)
         }
         .background(AppPalette.cream)
+        .onAppear {
+            if reduceMotion { appeared = true }
+            else if !appeared { withAnimation(Motion.entrance) { appeared = true } }
+        }
     }
 }
 
@@ -358,6 +369,8 @@ private struct FocusStep: View {
     let onBack: () -> Void
     let onNext: () -> Void
     @EnvironmentObject private var lang: LanguageManager
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var appeared = false
 
     private var options: [(id: String, sf: String, title: String, desc: String)] {
         [
@@ -375,12 +388,12 @@ private struct FocusStep: View {
             ScrollView(showsIndicators: false) {
                 VStack(alignment: .leading, spacing: 26) {
                     Text(lang.t("onb.focus.title"))
-                        .font(.system(size: 30, weight: .heavy, design: .rounded))
+                        .font(.system(.title, design: .rounded).weight(.heavy))
                         .foregroundStyle(AppPalette.ink)
                         .padding(.horizontal, 24)
 
                     VStack(spacing: 10) {
-                        ForEach(options, id: \.id) { opt in
+                        ForEach(Array(options.enumerated()), id: \.element.id) { index, opt in
                             OnboardingOptionCard(
                                 isSelected: selected == opt.id,
                                 symbol: .sf(opt.sf),
@@ -388,6 +401,7 @@ private struct FocusStep: View {
                                 desc: opt.desc,
                                 onTap: { selected = opt.id }
                             )
+                            .onboardingReveal(appeared: appeared, index: index, reduceMotion: reduceMotion)
                         }
                     }
                     .padding(.horizontal, 20)
@@ -399,6 +413,10 @@ private struct FocusStep: View {
             OnboardingCTABar(label: lang.t("onb.cta.continue"), enabled: !selected.isEmpty, onTap: onNext)
         }
         .background(AppPalette.cream)
+        .onAppear {
+            if reduceMotion { appeared = true }
+            else if !appeared { withAnimation(Motion.entrance) { appeared = true } }
+        }
     }
 }
 
@@ -410,6 +428,8 @@ private struct FrequencyStep: View {
     let onBack: () -> Void
     let onNext: () -> Void
     @EnvironmentObject private var lang: LanguageManager
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var appeared = false
 
     private var options: [(id: String, letter: String, title: String, desc: String)] {
         [
@@ -426,12 +446,12 @@ private struct FrequencyStep: View {
             ScrollView(showsIndicators: false) {
                 VStack(alignment: .leading, spacing: 26) {
                     Text(lang.t("onb.freq.title"))
-                        .font(.system(size: 30, weight: .heavy, design: .rounded))
+                        .font(.system(.title, design: .rounded).weight(.heavy))
                         .foregroundStyle(AppPalette.ink)
                         .padding(.horizontal, 24)
 
                     VStack(spacing: 10) {
-                        ForEach(options, id: \.id) { opt in
+                        ForEach(Array(options.enumerated()), id: \.element.id) { index, opt in
                             OnboardingOptionCard(
                                 isSelected: selected == opt.id,
                                 symbol: .letter(opt.letter),
@@ -439,6 +459,7 @@ private struct FrequencyStep: View {
                                 desc: opt.desc,
                                 onTap: { selected = opt.id }
                             )
+                            .onboardingReveal(appeared: appeared, index: index, reduceMotion: reduceMotion)
                         }
                     }
                     .padding(.horizontal, 20)
@@ -450,6 +471,10 @@ private struct FrequencyStep: View {
             OnboardingCTABar(label: lang.t("onb.cta.build_plan"), enabled: !selected.isEmpty, onTap: onNext)
         }
         .background(AppPalette.cream)
+        .onAppear {
+            if reduceMotion { appeared = true }
+            else if !appeared { withAnimation(Motion.entrance) { appeared = true } }
+        }
     }
 }
 
@@ -494,7 +519,7 @@ private struct PlanRevealStep: View {
                             .fill(AppPalette.inkSoft.opacity(0.08))
                             .frame(width: 34, height: 34)
                         Image(systemName: "chevron.left")
-                            .font(.system(size: 14, weight: .semibold))
+                            .font(.footnote.weight(.semibold))
                             .foregroundStyle(AppPalette.ink)
                     }
                 }
@@ -511,7 +536,7 @@ private struct PlanRevealStep: View {
                     // Tag + title
                     VStack(alignment: .leading, spacing: 10) {
                         Label(lang.t("onb.plan.tag"), systemImage: "sparkles")
-                            .font(.system(size: 12, weight: .bold))
+                            .font(.caption.weight(.bold))
                             .foregroundStyle(AppPalette.moss)
                             .padding(.horizontal, 12)
                             .padding(.vertical, 6)
@@ -519,7 +544,7 @@ private struct PlanRevealStep: View {
                             .clipShape(Capsule())
 
                         Text(lang.t("onb.plan.title"))
-                            .font(.system(size: 30, weight: .heavy, design: .rounded))
+                            .font(.system(.title, design: .rounded).weight(.heavy))
                             .foregroundStyle(AppPalette.ink)
                     }
 
@@ -541,7 +566,7 @@ private struct PlanRevealStep: View {
                             .foregroundStyle(AppPalette.moss)
                             .font(.system(size: 20))
                         Text(lang.t("onb.plan.free_title"))
-                            .font(.system(size: 15, weight: .bold, design: .rounded))
+                            .font(.system(.subheadline, design: .rounded).weight(.bold))
                             .foregroundStyle(AppPalette.moss)
                         Spacer()
                     }
@@ -580,7 +605,7 @@ private struct PlanRevealRow: View {
             }
             VStack(alignment: .leading, spacing: 3) {
                 Text(title)
-                    .font(.system(size: 15, weight: .bold, design: .rounded))
+                    .font(.system(.subheadline, design: .rounded).weight(.bold))
                     .foregroundStyle(AppPalette.ink)
                 Text(desc)
                     .font(.caption)
@@ -624,7 +649,7 @@ private struct PaywallStep: View {
                             .fill(AppPalette.inkSoft.opacity(0.08))
                             .frame(width: 34, height: 34)
                         Image(systemName: "chevron.left")
-                            .font(.system(size: 14, weight: .semibold))
+                            .font(.footnote.weight(.semibold))
                             .foregroundStyle(AppPalette.ink)
                     }
                 }
@@ -647,7 +672,7 @@ private struct PaywallStep: View {
                     // Header — preview, not purchase
                     VStack(alignment: .leading, spacing: 8) {
                         Label(lang.t("onb.paywall.tag"), systemImage: "sparkles")
-                            .font(.system(size: 12, weight: .bold))
+                            .font(.caption.weight(.bold))
                             .foregroundStyle(AppPalette.moss)
                             .padding(.horizontal, 12)
                             .padding(.vertical, 6)
@@ -655,7 +680,7 @@ private struct PaywallStep: View {
                             .clipShape(Capsule())
 
                         Text(lang.t("onb.paywall.title"))
-                            .font(.system(size: 30, weight: .heavy, design: .rounded))
+                            .font(.system(.title, design: .rounded).weight(.heavy))
                             .foregroundStyle(AppPalette.ink)
                     }
 
@@ -666,7 +691,7 @@ private struct PaywallStep: View {
                         ForEach(benefits, id: \.self) { benefit in
                             HStack(alignment: .top, spacing: 10) {
                                 Image(systemName: "checkmark")
-                                    .font(.system(size: 13, weight: .semibold))
+                                    .font(.caption.weight(.semibold))
                                     .foregroundStyle(AppPalette.clay)
                                     .frame(width: 18)
                                     .padding(.top, 1)
@@ -692,14 +717,14 @@ private struct PaywallStep: View {
             VStack(spacing: 0) {
                 Button(action: onSkip) {
                     Text(lang.t("onb.cta.continue"))
-                        .font(.system(size: 17, weight: .bold, design: .rounded))
+                        .font(.system(.headline, design: .rounded).weight(.bold))
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 16)
                         .background(AppPalette.clay)
                         .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                 }
-                .buttonStyle(.plain)
+                .buttonStyle(PressableCardStyle())
                 .padding(.horizontal, 22)
                 .padding(.top, 14)
                 .padding(.bottom, 34)
@@ -736,7 +761,8 @@ private struct PaywallPlanCard: View {
                         Text(title).font(.headline)
                         if let badge {
                             Text(badge)
-                                .font(.system(size: 9, weight: .bold))
+                                .font(.system(.caption2, design: .rounded).weight(.bold))
+                                .dynamicTypeSize(...DynamicTypeSize.accessibility2)
                                 .padding(.horizontal, 6).padding(.vertical, 3)
                                 .background(AppPalette.clay.opacity(0.12))
                                 .foregroundStyle(AppPalette.clay)
@@ -749,7 +775,7 @@ private struct PaywallPlanCard: View {
                 Spacer()
 
                 HStack(alignment: .firstTextBaseline, spacing: 1) {
-                    Text(price).font(.system(size: 20, weight: .bold, design: .rounded))
+                    Text(price).font(.system(.title3, design: .rounded).weight(.bold))
                     Text(period).font(.caption.weight(.semibold)).foregroundStyle(AppPalette.inkSoft)
                 }
             }
@@ -760,7 +786,7 @@ private struct PaywallPlanCard: View {
             .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
             .shadow(color: isSelected ? AppPalette.clay.opacity(0.12) : .clear, radius: 8, y: 3)
         }
-        .buttonStyle(.plain)
+        .buttonStyle(PressableCardStyle())
         .animation(.easeInOut(duration: 0.15), value: isSelected)
     }
 }
@@ -799,7 +825,7 @@ private struct AccountStep: View {
 
                 VStack(spacing: 10) {
                     Text(lang.t("onb.account.title"))
-                        .font(.system(size: 28, weight: .heavy, design: .rounded))
+                        .font(.system(.title, design: .rounded).weight(.heavy))
                         .foregroundStyle(AppPalette.ink)
                         .multilineTextAlignment(.center)
 
@@ -821,7 +847,7 @@ private struct AccountStep: View {
 
                     Button(action: onGuestFinish) {
                         Text(lang.t("onb.account.guest"))
-                            .font(.system(size: 16, weight: .bold, design: .rounded))
+                            .font(.system(.body, design: .rounded).weight(.bold))
                             .foregroundStyle(AppPalette.ink)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 15)
@@ -830,7 +856,7 @@ private struct AccountStep: View {
                                 .stroke(AppPalette.sand, lineWidth: 1.5))
                             .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
                     }
-                    .buttonStyle(.plain)
+                    .buttonStyle(PressableCardStyle())
                 }
                 .padding(.horizontal, 28)
 
@@ -844,5 +870,25 @@ private struct AccountStep: View {
             Spacer()
         }
         .background(AppPalette.cream)
+    }
+}
+
+// MARK: - Staggered entrance modifier
+
+private extension View {
+    /// Mirrors the Train hub / Mobility library tactile staggered entrance;
+    /// Reduce-Motion safe (fades in place when Reduce Motion is on).
+    @ViewBuilder
+    func onboardingReveal(appeared: Bool, index: Int, reduceMotion: Bool) -> some View {
+        if reduceMotion {
+            self.opacity(appeared ? 1 : 0)
+        } else {
+            self
+                .opacity(appeared ? 1 : 0)
+                .offset(y: appeared ? 0 : 14)
+                .scaleEffect(appeared ? 1 : 0.97)
+                .animation(Motion.entrance.delay(Double(index) * Motion.stagger),
+                           value: appeared)
+        }
     }
 }

@@ -43,13 +43,11 @@ struct TennisProfileResultView: View {
 
     private var levelHero: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text(copy.levelHeader.uppercased())
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(AppPalette.inkSoft)
+            Eyebrow(copy.levelHeader)
 
             HStack(alignment: .firstTextBaseline, spacing: 10) {
                 Text(copy.levelTitle(result.level))
-                    .font(.system(size: 28, weight: .bold, design: .rounded))
+                    .font(.system(.title, design: .rounded).weight(.bold))
                     .foregroundStyle(AppPalette.ink)
                 Text(copy.levelNTRP(result.level))
                     .font(.subheadline.weight(.semibold))
@@ -187,7 +185,7 @@ struct TennisProfileResultView: View {
             )
             .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         }
-        .buttonStyle(.plain)
+        .buttonStyle(PressableCardStyle())
     }
 
     // MARK: Actions

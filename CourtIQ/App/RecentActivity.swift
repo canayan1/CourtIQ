@@ -223,7 +223,7 @@ struct ActivityCard: View {
         VStack(alignment: .leading, spacing: 10) {
             HStack(spacing: 4) {
                 Image(systemName: activity.kind.symbol)
-                    .font(.system(size: 16, weight: .semibold))
+                    .font(.subheadline.weight(.semibold))
                     .symbolRenderingMode(.hierarchical)
                     .foregroundStyle(AppPalette.clay)
                 Spacer(minLength: 0)
@@ -245,6 +245,9 @@ struct ActivityCard: View {
         }
         .frame(width: 112, alignment: .leading)
         .padding(14)
+        // Fixed-width rail card: clamp very large sizes so the label + metric
+        // stay inside the 112pt card instead of truncating hard.
+        .dynamicTypeSize(...DynamicTypeSize.accessibility2)
         .background(AppPalette.parchment)
         .overlay(
             RoundedRectangle(cornerRadius: 20, style: .continuous)
@@ -262,7 +265,7 @@ struct ActivityCard: View {
             resultPill(result)
         case .fraction(let correct, let total):
             Text("\(correct)/\(total)")
-                .font(.system(size: 20, weight: .heavy, design: .rounded))
+                .font(.system(.title3, design: .rounded).weight(.heavy))
                 .foregroundStyle(AppPalette.ink)
                 .monospacedDigit()
                 .frame(height: 34)

@@ -55,20 +55,18 @@ struct OnboardingResultView: View {
 
     private var kicker: some View {
         Text(copy.resultReadyKicker)
-            .font(.caption.weight(.bold))
+            .font(.system(.caption, design: .rounded).weight(.bold))
             .tracking(1.5)
             .foregroundStyle(AppPalette.clay)
     }
 
     private var levelHero: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text(copy.levelHeader.uppercased())
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(AppPalette.inkSoft)
+            Eyebrow(copy.levelHeader)
 
             HStack(alignment: .firstTextBaseline, spacing: 10) {
                 Text(tpCopy.levelTitle(result.level))
-                    .font(.system(size: 28, weight: .bold, design: .rounded))
+                    .font(.system(.title, design: .rounded).weight(.bold))
                     .foregroundStyle(AppPalette.ink)
                 Text(tpCopy.levelNTRP(result.level))
                     .font(.subheadline.weight(.semibold))

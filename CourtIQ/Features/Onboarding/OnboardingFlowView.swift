@@ -123,7 +123,7 @@ struct OnboardingFlowView: View {
             }
 
             Text(copy.welcomeTitle)
-                .font(.system(size: 32, weight: .bold, design: .rounded))
+                .font(.system(.title, design: .rounded).weight(.bold))
                 .foregroundStyle(AppPalette.ink)
                 .fixedSize(horizontal: false, vertical: true)
 
@@ -431,7 +431,8 @@ struct OnboardingFlowView: View {
                         commitment = n
                     } label: {
                         Text("\(n)")
-                            .font(.system(size: 28, weight: .bold, design: .rounded))
+                            .font(.system(.title, design: .rounded).weight(.bold))
+                            .dynamicTypeSize(...DynamicTypeSize.accessibility2)
                             .frame(maxWidth: .infinity, minHeight: 72)
                             .background(isSelected ? AppPalette.clay : AppPalette.parchment)
                             .foregroundStyle(isSelected ? AppPalette.parchment : AppPalette.ink)
@@ -476,7 +477,7 @@ struct OnboardingFlowView: View {
             }
 
             Text(copy.reviewTitle)
-                .font(.system(size: 32, weight: .bold, design: .rounded))
+                .font(.system(.title, design: .rounded).weight(.bold))
                 .foregroundStyle(AppPalette.ink)
                 .fixedSize(horizontal: false, vertical: true)
 
@@ -544,7 +545,7 @@ struct OnboardingFlowView: View {
                                 .foregroundStyle(AppPalette.clay)
                         }
                         Text(slide.headline)
-                            .font(.system(size: 30, weight: .bold, design: .rounded))
+                            .font(.system(.title, design: .rounded).weight(.bold))
                             .foregroundStyle(AppPalette.ink)
                             .fixedSize(horizontal: false, vertical: true)
                         Text(slide.support)
@@ -614,7 +615,7 @@ struct OnboardingFlowView: View {
             )
             .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         }
-        .buttonStyle(.plain)
+        .buttonStyle(PressableCardStyle())
     }
 
     private func multiSelectRow(_ title: String, isSelected: Bool, _ action: @escaping () -> Void) -> some View {
@@ -637,7 +638,7 @@ struct OnboardingFlowView: View {
             )
             .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         }
-        .buttonStyle(.plain)
+        .buttonStyle(PressableCardStyle())
     }
 
     // MARK: Navigation chrome (question steps only)

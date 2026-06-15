@@ -121,7 +121,7 @@ struct PaywallView: View {
             }
 
             Text(t("Unlock your full tennis game", "Tüm tenis oyununu aç"))
-                .font(.system(size: 28, weight: .bold, design: .rounded))
+                .font(.system(.title, design: .rounded).weight(.bold))
                 .foregroundStyle(AppPalette.ink)
                 .fixedSize(horizontal: false, vertical: true)
 
@@ -218,7 +218,7 @@ struct PaywallView: View {
 
                 // Price is the most prominent pricing element.
                 Text(offer.priceDisplay)
-                    .font(.system(size: 26, weight: .heavy, design: .rounded))
+                    .font(.system(.title2, design: .rounded).weight(.heavy))
                     .foregroundStyle(AppPalette.ink)
 
                 if offer.isFeatured, let perWeek = offer.perWeekText {
@@ -244,7 +244,7 @@ struct PaywallView: View {
             )
             .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
         }
-        .buttonStyle(.plain)
+        .buttonStyle(PressableCardStyle())
     }
 
     private func selectionIndicator(isSelected: Bool) -> some View {

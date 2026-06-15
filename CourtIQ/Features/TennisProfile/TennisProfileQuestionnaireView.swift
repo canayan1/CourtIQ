@@ -255,7 +255,7 @@ struct TennisProfileQuestionnaireView: View {
             )
             .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         }
-        .buttonStyle(.plain)
+        .buttonStyle(PressableCardStyle())
     }
 
     // MARK: Navigation buttons

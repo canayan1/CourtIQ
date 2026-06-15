@@ -7,6 +7,8 @@ import AVKit
 struct SwingHistoryView: View {
     @EnvironmentObject private var lang: LanguageManager
     @StateObject private var store = SwingAnalysisStore.shared
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var appeared = false
 
     private var copy: SwingAnalysisCopy { SwingAnalysisCopy(lang: lang.language) }
 
@@ -25,7 +27,7 @@ struct SwingHistoryView: View {
 
     private var list: some View {
         List {
-            ForEach(store.records) { record in
+            ForEach(Array(store.records.enumerated()), id: \.element.id) { index, record in
                 ZStack {
                     NavigationLink {
                         SwingReportDetailView(record: record)
@@ -34,6 +36,7 @@ struct SwingHistoryView: View {
 
                     row(record)
                 }
+                .reveal(appeared: appeared, index: index, reduceMotion: reduceMotion)
                 .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
                 .listRowBackground(Color.clear)
                 .listRowSeparator(.hidden)
@@ -46,6 +49,10 @@ struct SwingHistoryView: View {
         }
         .listStyle(.plain)
         .scrollContentBackground(.hidden)
+        .onAppear {
+            if reduceMotion { appeared = true }
+            else if !appeared { withAnimation(Motion.entrance) { appeared = true } }
+        }
     }
 
     private func row(_ record: SwingAnalysisRecord) -> some View {
@@ -203,5 +210,25 @@ struct SwingReportDetailView: View {
     private var strokeLabel: String {
         if let stroke = record.stroke { return copy.stroke(stroke) }
         return record.strokeRaw.capitalized
+    }
+}
+
+// MARK: - Staggered entrance modifier
+
+private extension View {
+    /// Mirrors the Train hub / Mobility library tactile staggered entrance;
+    /// Reduce-Motion safe (fades in place when Reduce Motion is on).
+    @ViewBuilder
+    func reveal(appeared: Bool, index: Int, reduceMotion: Bool) -> some View {
+        if reduceMotion {
+            self.opacity(appeared ? 1 : 0)
+        } else {
+            self
+                .opacity(appeared ? 1 : 0)
+                .offset(y: appeared ? 0 : 14)
+                .scaleEffect(appeared ? 1 : 0.97)
+                .animation(Motion.entrance.delay(Double(index) * Motion.stagger),
+                           value: appeared)
+        }
     }
 }
