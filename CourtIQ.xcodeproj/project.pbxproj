@@ -11,6 +11,7 @@
 		04396426DB8C48523158DAE8 /* DoublesPartnerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE5A32EE22AD86ED0541B11 /* DoublesPartnerDetailView.swift */; };
 		04417858354D72CCE86F2F10 /* DoublesInviteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C76C9F72D768EDAA7C746CB /* DoublesInviteStore.swift */; };
 		065E60992E196985B3FD8E65 /* SwingAnalysisService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB312EFDFBC3D468DFBD276 /* SwingAnalysisService.swift */; };
+		0AAADD31BD44014E79EDB9E9 /* OnboardingShowcaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927A207D42C4218A423E76D /* OnboardingShowcaseView.swift */; };
 		0B41552D544B03FFBB348B54 /* DoublesInviteViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE6B71AA96A58FC48936B26 /* DoublesInviteViews.swift */; };
 		135446F7924B9D8A9FAABA50 /* VideoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161E8A1AEB1F9F5949EB117B /* VideoPicker.swift */; };
 		1A0F95264370ED920024C8A7 /* MentalCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00B10E3A8A0478FF6C61632 /* MentalCheckView.swift */; };
@@ -296,6 +297,7 @@
 		B1C1F0C3D2F961F7294836E6 /* SwingAnalysisView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwingAnalysisView.swift; path = CourtIQ/Features/SwingAnalysis/SwingAnalysisView.swift; sourceTree = "<group>"; };
 		B4DA2D95FBB8002248B38F6C /* DoublesPartnerFormView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesPartnerFormView.swift; path = CourtIQ/Features/Doubles/DoublesPartnerFormView.swift; sourceTree = "<group>"; };
 		B5431D73E4D73B3EE01C53B1 /* AICoachConsentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AICoachConsentView.swift; path = CourtIQ/Features/AICoach/AICoachConsentView.swift; sourceTree = "<group>"; };
+		B927A207D42C4218A423E76D /* OnboardingShowcaseView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OnboardingShowcaseView.swift; path = CourtIQ/Features/Onboarding/OnboardingShowcaseView.swift; sourceTree = "<group>"; };
 		C2A78F773019502E640D876E /* OnboardingResultView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OnboardingResultView.swift; path = CourtIQ/Features/Onboarding/OnboardingResultView.swift; sourceTree = "<group>"; };
 		C32EFA2E45204668CCB9AA07 /* HomeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = CourtIQ/App/HomeView.swift; sourceTree = "<group>"; };
 		C99C6606DBC58D08EB834A69 /* OnboardingCopy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OnboardingCopy.swift; path = CourtIQ/Features/Onboarding/OnboardingCopy.swift; sourceTree = "<group>"; };
@@ -485,6 +487,7 @@
 				E0556A0C64DB8336DFA363B3 /* TrainProgramsView.swift */,
 				17264A46BEA1F34B6E375CCD /* RecentActivity.swift */,
 				E00B10E3A8A0478FF6C61632 /* MentalCheckView.swift */,
+				B927A207D42C4218A423E76D /* OnboardingShowcaseView.swift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -773,6 +776,7 @@
 				8D8D4A834044265ECD0D4722 /* TrainProgramsView.swift in Sources */,
 				6C288EA33A513977B60D0F93 /* RecentActivity.swift in Sources */,
 				1A0F95264370ED920024C8A7 /* MentalCheckView.swift in Sources */,
+				0AAADD31BD44014E79EDB9E9 /* OnboardingShowcaseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,6 +13,94 @@ struct OnboardingCopy {
     var next: String { t("Continue", "Devam") }
     var back: String { t("Back", "Geri") }
     var getStarted: String { t("Get started", "Başla") }
+    var skip: String { t("Skip", "Atla") }
+    var showcaseContinue: String { t("Continue", "Devam") }
+
+    // MARK: 0 — Hook / positioning (opens the app)
+    var hookEyebrow: String { t("DROPVOLLEY", "DROPVOLLEY") }
+    var hookTitle: String { t("Train your Tennis IQ.", "Tenis IQ'nu eğit.") }
+    var hookSubtitle: String {
+        t("AI coaching for the part of tennis no one else teaches — your swing, your decisions, your match craft.",
+          "Kimsenin öğretmediği tarafa AI koçluğu — vuruşun, kararların, maç ustalığın.")
+    }
+
+    // MARK: Feature showcase (real-world examples)
+    var showcaseSwingEyebrow: String { t("AI SWING ANALYSIS", "AI VURUŞ ANALİZİ") }
+    var showcaseSwingHeadline: String {
+        t("Film a swing, get a 0–100 score + frame-by-frame AI coaching.",
+          "Bir vuruş çek; 0–100 puan ve kare kare AI koçluğu al.")
+    }
+    var showcaseSwingSampleTitle: String { t("Forehand · Sample", "Forehand · Örnek") }
+    var showcaseSwingBullet1: String {
+        t("Clean unit turn — shoulders coil early, giving you time to load.",
+          "Temiz gövde dönüşü — omuzlar erken kuruluyor, yüklenmeye zaman tanıyor.")
+    }
+    var showcaseSwingBullet2: String {
+        t("Follow-through cuts short — finish over the shoulder for more topspin.",
+          "Bitiriş kısa kalıyor — daha çok topspin için omuz üstünden bitir.")
+    }
+
+    var showcaseMatchEyebrow: String { t("AI MATCH COACHING", "AI MAÇ KOÇLUĞU") }
+    var showcaseMatchHeadline: String {
+        t("Log a match — AI tells you exactly what to fix.",
+          "Bir maç kaydet — AI tam olarak neyi düzelteceğini söylesin.")
+    }
+    var showcaseMatchSampleTitle: String { t("Match report · Sample", "Maç raporu · Örnek") }
+    var showcaseMatchLine1: String {
+        t("You lost the long rallies — your patience dipped after the 5th ball.",
+          "Uzun ralileri kaybettin — 5. toptan sonra sabrın düştü.")
+    }
+    var showcaseMatchLine2: String {
+        t("Fix: rally to a target depth before going for the line.",
+          "Çözüm: çizgiye gitmeden önce hedef derinliğe oyna.")
+    }
+
+    var showcaseDoublesEyebrow: String { t("DOUBLES COMPATIBILITY", "DOUBLES UYUMU") }
+    var showcaseDoublesHeadline: String {
+        t("See how you and your partner fit — invite them in one tap.",
+          "Partnerinle uyumunu gör — tek dokunuşla davet et.")
+    }
+    var showcaseDoublesScoreLabel: String { t("Compatibility · Sample", "Uyum · Örnek") }
+    var showcaseDoublesCaption: String {
+        t("Your baseline patience covers their net aggression.",
+          "Senin baseline sabrın, onların file agresifliğini tamamlıyor.")
+    }
+
+    var showcaseQuizEyebrow: String { t("TENNIS IQ QUIZZES", "TENİS IQ SINAVLARI") }
+    var showcaseQuizHeadline: String {
+        t("Sharpen real match decisions, daily.",
+          "Gerçek maç kararlarını her gün keskinleştir.")
+    }
+    var showcaseQuizSampleTitle: String { t("Today's drill · Sample", "Günün çalışması · Örnek") }
+    var showcaseQuizPrompt: String {
+        t("Down 30–40 on serve. Where do you go?",
+          "Serviste 30–40 gerideysin. Nereye servis atarsın?")
+    }
+    var showcaseQuizAnswer: String {
+        t("Wide to pull them off court — open the court for ball two.",
+          "Geniş at, onu sahadan çıkar — ikinci top için sahayı aç.")
+    }
+
+    var showcaseCoachEyebrow: String { t("AI COACH", "AI KOÇ") }
+    var showcaseCoachHeadline: String {
+        t("Ask anything — it already knows your game.",
+          "İstediğini sor — oyununu zaten biliyor.")
+    }
+    var showcaseCoachSampleTitle: String { t("AI Coach · Sample", "AI Koç · Örnek") }
+    var showcaseCoachQuestion: String {
+        t("How do I beat a pusher?",
+          "Top çeviren birini nasıl yenerim?")
+    }
+    var showcaseCoachReply: String {
+        t("For your aggressive baseline game: take time away early, finish at net.",
+          "Senin agresif baseline oyunun için: erken zaman al, fileyi bitiriş için kullan.")
+    }
+
+    var sampleBadge: String { t("Example", "Örnek") }
+
+    // MARK: Bridge into the questionnaire
+    var bridgeEyebrow: String { t("NOW THE PERSONAL PART", "ŞİMDİ KİŞİSEL KISIM") }
+    var bridgeTitle: String { t("Now let's build YOUR profile.", "Şimdi SENİN profilini oluşturalım.") }
 
     // MARK: 1 — Welcome / hook
     var welcomeTitle: String {

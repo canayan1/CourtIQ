@@ -30,7 +30,9 @@ struct OnboardingFlowView: View {
     // MARK: Ordered steps
 
     private enum Step: Int, CaseIterable {
-        case welcome        // 1  hook
+        case hook           // 0  positioning hook (full-bleed PhotoHero)
+        case showcase       // 0b feature showcase carousel (real examples)
+        case welcome        // 1  bridge into the profile questionnaire
         case goal           // 2  framing goal (flow-local)
         case experience     // 3  TennisExperience
         case frequency      // 4  PlayFrequency
@@ -53,7 +55,7 @@ struct OnboardingFlowView: View {
         [.goal, .experience, .frequency, .match, .level, .strokes, .weaknesses, .sliders, .want, .commitment]
     }
 
-    @State private var step: Step = .welcome
+    @State private var step: Step = .hook
 
     // MARK: Answer state — nothing pre-selected
 
@@ -81,6 +83,10 @@ struct OnboardingFlowView: View {
     var body: some View {
         Group {
             switch step {
+            case .hook:
+                OnboardingHookView { advance() }
+            case .showcase:
+                OnboardingShowcaseView { advance() }
             case .welcome:
                 welcomeScreen
             case .building:
@@ -109,20 +115,22 @@ struct OnboardingFlowView: View {
         .animation(.easeInOut, value: step)
     }
 
-    // MARK: 1 — Welcome / hook
+    // MARK: 1 — Bridge into the profile questionnaire
 
     private var welcomeScreen: some View {
-        VStack(alignment: .leading, spacing: 24) {
+        VStack(alignment: .leading, spacing: 20) {
             Spacer()
 
             ZStack {
                 Circle().fill(AppPalette.clay.opacity(0.14)).frame(width: 72, height: 72)
-                Image(systemName: "brain.head.profile")
+                Image(systemName: "person.crop.circle.badge.checkmark")
                     .font(.system(size: 34, weight: .bold))
                     .foregroundStyle(AppPalette.clay)
             }
 
-            Text(copy.welcomeTitle)
+            Eyebrow(copy.bridgeEyebrow)
+
+            Text(copy.bridgeTitle)
                 .font(.system(.title, design: .rounded).weight(.bold))
                 .foregroundStyle(AppPalette.ink)
                 .fixedSize(horizontal: false, vertical: true)
@@ -146,6 +154,7 @@ struct OnboardingFlowView: View {
             Spacer()
 
             Button {
+                Haptics.tap()
                 advance()
             } label: {
                 Text(copy.getStarted)
@@ -675,7 +684,7 @@ struct OnboardingFlowView: View {
 
     private var currentStepComplete: Bool {
         switch step {
-        case .welcome, .building, .result, .review, .evidence:
+        case .hook, .showcase, .welcome, .building, .result, .review, .evidence:
             return true
         case .goal:        return goal != nil
         case .experience:  return experience != nil
@@ -694,6 +703,7 @@ struct OnboardingFlowView: View {
 
     private func advance() {
         guard let next = Step(rawValue: step.rawValue + 1) else { return }
+        Haptics.tap()
         // Build + save the profile exactly when we leave the last question
         // (commitment) and enter the building screen.
         if step == .commitment {
