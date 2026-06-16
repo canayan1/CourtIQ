@@ -83,6 +83,9 @@ struct CourtIQApp: App {
                 (-3,  4, 5, 5, 5, .won,  "Sam",    .clay,  "6-2, 6-3"),
                 (-1,  5, 5, 5, 5, .won,  "Riley",  .hard,  "6-4, 6-2"),
             ]
+            // The most-recent match (last row) carries a full AI report so the
+            // match-detail screenshot shows a finished coaching readout.
+            let lastIndex = rows.count - 1
             for (i, r) in rows.enumerated() {
                 let date = cal.date(byAdding: .day, value: r.0, to: now) ?? now
                 mm.save(MatchEntry(
@@ -92,6 +95,7 @@ struct CourtIQApp: App {
                     movementRating: r.3, mentalRating: r.4,
                     postMatchNotes: "Stayed patient and moved well.",
                     takeaway: "Depth and patience won the big points",
+                    aiReport: i == lastIndex ? Self.previewMatchReport : nil,
                     isDraft: false))
             }
             let dq = DailyQuizManager.shared
@@ -120,7 +124,66 @@ struct CourtIQApp: App {
             profile.adoptedGoals = profile.result.suggestedGoals
             tps.save(profile)
         }
+
+        // Swing analysis — seed one scored forehand so the Home hero ring shows
+        // a real score (82) and the swing history list is populated. No video on
+        // disk; the thumbnail loader tolerates the missing file.
+        SwingAnalysisStore.shared.debugSeedRecord(
+            id: UUID(uuidString: "00000000-0000-0000-0000-0000000000A1")!,
+            date: Calendar.current.date(byAdding: .day, value: -2, to: Date()) ?? Date(),
+            stroke: .forehand, handedness: .right, score: 82,
+            analysis: previewSwingReport)
+
+        // Doubles — seed one partner + a compatibility report so the Doubles tab
+        // shows a partner card with its compatibility score badge.
+        let ds = DoublesStore.shared
+        if ds.partners.isEmpty {
+            let partnerID = UUID(uuidString: "00000000-0000-0000-0000-0000000000B2")!
+            ds.save(DoublesPartner(
+                id: partnerID, name: "Jordan",
+                levelRaw: "4", handednessRaw: SwingHandedness.left.rawValue,
+                styleRaw: TennisArchetype.aggressiveBaseliner.rawValue,
+                strengths: "Big lefty serve, comfortable at net",
+                weaknesses: "Backhand under pressure, can over-hit"))
+            ds.addReport(DoublesReport(
+                partnerId: partnerID, score: 87, reportText: previewDoublesReport))
+        }
     }
+
+    /// Sample AI match report for the App Store screenshot harness only.
+    private static let previewMatchReport = """
+    **The story of the match**
+    • You closed out a tight one 6-4, 6-2 by staying disciplined on the big points and making your opponent play one more ball. The serve held up and your movement kept you in neutral rallies long enough to flip them.
+
+    **What carried you**
+    • First-serve placement was excellent — you kept pulling them wide and then took the open court.
+    • You stayed patient in the long exchanges instead of forcing early, which is exactly the pattern you've been training.
+
+    **One thing to sharpen**
+    • Second-serve return court position drifted back a step late in set two. Step in and take it earlier to keep applying pressure.
+    """
+
+    /// Sample swing analysis text for the seeded Home hero / history record.
+    private static let previewSwingReport = """
+    **What's working**
+    • Early, complete unit turn — shoulders and hips coil together for clean racquet-head speed.
+    • Good balance through the shot; head stays still and eyes track the contact zone.
+
+    **Top fixes**
+    • Meet the ball a half-step further out front so you drive through it. Cue: "catch it out front."
+    • Finish higher — over the opposite shoulder — to add depth under pressure.
+    """
+
+    /// Sample doubles compatibility report for the seeded Doubles partner.
+    private static let previewDoublesReport = """
+    **Why you click**
+    • A righty/lefty pairing covers both alleys naturally and gives you two strong serves into the deuce and ad courts.
+    • Your patience plus Jordan's net presence is a classic build-then-finish combination.
+
+    **Plays to run**
+    • Use the I-formation on big points to hide Jordan's poach off the lefty serve.
+    • When you're returning, look to chip-and-charge behind a low return so Jordan can close.
+    """
 
     var body: some Scene {
         WindowGroup {
