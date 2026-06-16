@@ -125,7 +125,7 @@ struct TennisProfileCopy {
         case "goal.net.detail":         return t("Close the net on short balls and put away the first volley.", "Kısa toplarda fileyi kapat ve ilk voleyi bitir.")
         case "goal.movement.detail":    return t("Split-step on every opponent contact and recover to the middle after each shot.", "Rakip her vuruşta split-step yap ve her vuruştan sonra ortaya toparlan.")
         case "goal.compete.detail":     return t("Log your matches and review what wins and loses points for you.", "Maçlarını logla ve sana puan kazandıran/kaybettiren şeyleri gözden geçir.")
-        case "goal.technique.detail":   return t("Pick one stroke and drill it deliberately each session.", "Bir vuruş seç ve her antrenmanda bilinçli çalış.")
+        case "goal.technique.detail":   return t("Pick one stroke and drill it with focus each session.", "Bir vuruş seç ve her antrenmanda bilinçli çalış.")
         case "goal.fitness.detail":     return t("Follow a training block so you're still moving well late in matches.", "Bir antrenman bloğu uygula ki maç sonunda hâlâ iyi hareket edesin.")
         case "goal.consistency.detail": return t("Target rallies of 10+ balls before you go for a winner.", "Vinner denemeden önce 10+ toplu ralliler hedefle.")
         case "goal.fun.detail":         return t("Keep a simple streak going — consistency beats intensity.", "Basit bir seri tut — istikrar yoğunluğu yener.")

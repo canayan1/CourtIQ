@@ -39,7 +39,7 @@
 "home.tile_drill" = "Antren";
 "home.recent" = "Son";
 "home.streak_days" = "%d günlük seri";
-"home.first_swing" = "İlk vuruşunu çek";
+"home.first_swing" = "İlk vuruşunu çek, puanını al";
 
 /* ── Train hub (Phase 1 IA redesign) ── */
 "train.subtitle" = "Geliştir";
@@ -244,7 +244,7 @@
 /* ── Profile ── */
 "profile.title" = "Profil";
 "profile.delete_title" = "Hesap silinsin mi?";
-"profile.delete_msg" = "Bu, hesabını, senkronize ilerlemenini ve CourtIQ'daki topluluk içeriğini kalıcı olarak siler.";
+"profile.delete_msg" = "Bu, hesabını, senkronize ilerlemenini ve DropVolley'daki topluluk içeriğini kalıcı olarak siler.";
 "profile.reset_title" = "Yerel veriler sıfırlansın mı?";
 "profile.reset_msg" = "Bu, bu cihazdaki önbelleğe alınmış ilerlemeyi temizler. Senkronize hesap verileri bir sonraki başlatmada yeniden indirilecektir.";
 "profile.quiz_empty" = "Arşivini başlatmak için ilk günlük sınavını tamamla.";
@@ -272,7 +272,7 @@
 "onboarding.subtitle" = "Günlük kararlar. Akıllı alışkanlıklar. Daha keskin bir oyun.";
 "onboarding.get_started" = "Başla";
 "onboarding.everything" = "Her şey tek yerde";
-"onboarding.everything_desc" = "CourtIQ, tenis haftanın her bölümünü kapsıyor — sahada ve dışında.";
+"onboarding.everything_desc" = "DropVolley, tenis haftanın her bölümünü kapsıyor — sahada ve dışında.";
 "onboarding.daily_iq" = "Günlük IQ Sınavı";
 "onboarding.daily_iq_desc" = "Her gün yeni bir senaryo. Gerçek maç durumları, çoktan seçmeli, anında antrenör geri bildirimi. Kararlar içgüdüye dönüşür.";
 "onboarding.tip" = "Günün İpucu";
@@ -316,17 +316,17 @@
 "paywall.what_unlocks" = "Neler var";
 
 /* ── Tip-jar mode (launch window) ── */
-"paywall.tip_title" = "CourtIQ'yu Destekle";
-"paywall.tip_headline" = "CourtIQ ücretsiz. AI Koç tek premium özellik.";
-"paywall.tip_body" = "Drill'ler, quizler, antrenman programları, mobility akışları ve tam maç günlüğü tamamen ücretsiz. Sadece AI Koç premium. CourtIQ işine yaradıysa isteğe bağlı bir destek geliştirmenin devamını sağlar.";
+"paywall.tip_title" = "DropVolley'yu Destekle";
+"paywall.tip_headline" = "DropVolley ücretsiz. AI Koç tek premium özellik.";
+"paywall.tip_body" = "Drill'ler, quizler, antrenman programları, mobility akışları ve tam maç günlüğü tamamen ücretsiz. Sadece AI Koç premium. DropVolley işine yaradıysa isteğe bağlı bir destek geliştirmenin devamını sağlar.";
 "paywall.tip_why" = "Neden destekleyesin?";
 "paywall.tip_reason_1" = "Uygulamayı bağımsız tutar — reklam yok, takip yok, yatırımcı yok.";
 "paywall.tip_reason_2" = "Sonraki özellikleri finanse eder (sesli notlar, partner modu, Apple Watch).";
-"paywall.tip_reason_3" = "CourtIQ'yu App Store'da tutan Apple Developer ücretini karşılar.";
+"paywall.tip_reason_3" = "DropVolley'yu App Store'da tutan Apple Developer ücretini karşılar.";
 "paywall.tip_action" = "Bir destek bırak";
 "paywall.tip_offer_title" = "Yıllık destekçi";
 "paywall.tip_offer_detail" = "Yılda bir kez. Ayarlardan istediğin zaman iptal.";
-"paywall.tip_button" = "CourtIQ'yu Destekle";
+"paywall.tip_button" = "DropVolley'yu Destekle";
 "paywall.tip_legal_note" = "Destekler Apple tarafından yıllık otomatik yenilenen abonelik olarak işlenir — bu sayede App Store ödeme kurallarına uygun. İstediğin zaman Ayarlar → Abonelikler'den iptal edebilirsin; iptal etsen bile hiçbir özellik kilitlenmez.";
 
 /* ── Voice notes (Match Journal v1.1.A) ── */
@@ -338,7 +338,7 @@
 "voice.discard" = "Sesli notu sil";
 "voice.language_toggle" = "Çözümleme için konuşma dili";
 "voice.error_title" = "Kayıt yapılamıyor";
-"voice.permission_denied" = "Sesli notlar için mikrofon izni gerekli. Ayarlar → CourtIQ'dan aç.";
+"voice.permission_denied" = "Sesli notlar için mikrofon izni gerekli. Ayarlar → DropVolley'dan aç.";
 "voice.audio_session_error" = "Ses sistemi şu an kullanılamıyor. Birazdan tekrar dene.";
 "voice.record_start_error" = "Kayıt başlatılamadı. Tekrar dene.";
 "voice.storage_error" = "Kayıt diske yazılamadı. Yer aç ve tekrar dene.";
@@ -395,7 +395,7 @@
 "paywall.support" = "Destek";
 "paywall.subscription_note" = "Abonelikler, mevcut dönemin bitiminden en az 24 saat önce App Store ayarlarından iptal edilmediği sürece otomatik olarak yenilenir. Premium erişiminiz, başlatma sırasında ve geri yüklemeden sonra App Store'dan geri yüklenir.";
 "paywall.unlocked" = "Açıldı";
-"paywall.intro_body" = "Premium, AI Koç'u açar — maçlarını, ratinglerini ve quiz hatalarını bilen bir tenis sohbeti. CourtIQ'daki diğer her şey ücretsiz.";
+"paywall.intro_body" = "Premium, AI Koç'u açar — maçlarını, ratinglerini ve quiz hatalarını bilen bir tenis sohbeti. DropVolley'daki diğer her şey ücretsiz.";
 "paywall.products_loading" = "Abonelik seçenekleri yükleniyor…";
 
 /* ── Beta geri bildirim ── */
@@ -407,19 +407,19 @@
 /* ── Sağlık & Güvenlik ── */
 "health.eyebrow" = "BAŞLAMADAN ÖNCE";
 "health.title" = "Güvenli antrenman.";
-"health.subtitle" = "CourtIQ tenisçiler tarafından yapıldı, doktorlar değil. Antrenman, mobilite veya fiziksel içeriği kullanmadan önce lütfen şunları oku ve onayla.";
-"health.bullet_not_medical" = "CourtIQ tıbbi tavsiye, teşhis veya tedavi değildir. Doktor, fizyoterapist, sertifikalı antrenör veya koçun yerini tutmaz.";
+"health.subtitle" = "DropVolley tenisçiler tarafından yapıldı, doktorlar değil. Antrenman, mobilite veya fiziksel içeriği kullanmadan önce lütfen şunları oku ve onayla.";
+"health.bullet_not_medical" = "DropVolley tıbbi tavsiye, teşhis veya tedavi değildir. Doktor, fizyoterapist, sertifikalı antrenör veya koçun yerini tutmaz.";
 "health.bullet_consult_doctor" = "Herhangi bir yeni fiziksel aktiviteye başlamadan önce mutlaka kalifiye bir sağlık profesyoneliyle konuş — özellikle kalp, eklem ya da kas-iskelet rahatsızlığın varsa, hamile isen, sakatlıktan iyileşiyorsan veya son 6 ayda düzenli egzersiz yapmadıysan.";
-"health.bullet_stop_if_pain" = "CourtIQ'i kullanırken ya da sonrasında ağrı, baş dönmesi, nefes darlığı, göğüs rahatsızlığı veya alışılmadık herhangi bir belirti hissedersen hemen dur ve tıbbi yardım al.";
-"health.bullet_assume_risk" = "Tenis, kuvvet antrenmanı, plyometrik, mobilite ve kondisyon çalışması ciddi yaralanma dahil olmak üzere doğal bir sakatlanma riski taşır. CourtIQ'i kullanarak bu riski bilerek ve gönüllü olarak kabul ediyorsun.";
-"health.bullet_self_directed" = "CourtIQ kendi kendine yönlendirilen bir uygulamadır. App üzerinden bir koç tarafından denetlenmiyorsun. Tekniğinden, ekipmanından, ısınmandan, toparlanmandan ve kendi sınırlarını bilmekten sen sorumlusun.";
+"health.bullet_stop_if_pain" = "DropVolley'i kullanırken ya da sonrasında ağrı, baş dönmesi, nefes darlığı, göğüs rahatsızlığı veya alışılmadık herhangi bir belirti hissedersen hemen dur ve tıbbi yardım al.";
+"health.bullet_assume_risk" = "Tenis, kuvvet antrenmanı, plyometrik, mobilite ve kondisyon çalışması ciddi yaralanma dahil olmak üzere doğal bir sakatlanma riski taşır. DropVolley'i kullanarak bu riski bilerek ve gönüllü olarak kabul ediyorsun.";
+"health.bullet_self_directed" = "DropVolley kendi kendine yönlendirilen bir uygulamadır. App üzerinden bir koç tarafından denetlenmiyorsun. Tekniğinden, ekipmanından, ısınmandan, toparlanmandan ve kendi sınırlarını bilmekten sen sorumlusun.";
 "health.read_more" = "TAM METNİ OKU";
 "health.full_disclaimer_link" = "Tam Sağlık ve Güvenlik Beyanı";
 "health.confirm_toggle" = "Yukarıdaki maddeleri okudum ve fiziksel aktivitenin risklerini anlıyorum.";
 "health.confirm_required_hint" = "DEVAM ETMEK İÇİN BU TOGGLE'I AÇ";
 "health.confirm_done_hint" = "DEVAM ETMEYE HAZIR";
 "health.accept" = "Anladım ve kabul ediyorum";
-"health.footer_note" = "Yukarıdaki butona dokunarak Sağlık ve Güvenlik Beyanı ile Kullanım Koşulları'nı okuduğunu, anladığını ve kabul ettiğini onaylıyorsun. CourtIQ'i kendi sorumluluğunla kullanmayı kabul ediyorsun.";
+"health.footer_note" = "Yukarıdaki butona dokunarak Sağlık ve Güvenlik Beyanı ile Kullanım Koşulları'nı okuduğunu, anladığını ve kabul ettiğini onaylıyorsun. DropVolley'i kendi sorumluluğunla kullanmayı kabul ediyorsun.";
 "health.banner_title" = "Güvenli antrenman";
 "health.banner_body" = "Önce ısın. Güvenli teknik ve uygun yük kullan. Bir şey ters hissedersen dur.";
 
@@ -488,13 +488,13 @@
 
 "onb.paywall.tag" = "AI KOÇ";
 "onb.paywall.title" = "AI Koç ile tanış.";
-"onb.paywall.subtitle" = "CourtIQ'daki diğer her şey ücretsiz. AI Koç'u Profil'den istediğin zaman açabilirsin.";
+"onb.paywall.subtitle" = "DropVolley'daki diğer her şey ücretsiz. AI Koç'u Profil'den istediğin zaman açabilirsin.";
 "onb.paywall.included" = "Neler dahil";
 "onb.paywall.b1" = "Son 5 maçını, ratinglerini ve quiz hatalarını bilir";
 "onb.paywall.b2" = "Drill'lerini, mobility akışlarını ve planlarını adıyla önerir";
 "onb.paywall.b3" = "ChatGPT tenis sohbetlerini içe aktar, bağlam korunur";
 "onb.paywall.b4" = "Gizli — üçüncü taraf takip yok";
-"onb.paywall.b5" = "CourtIQ'daki diğer her şey ücretsiz kalır";
+"onb.paywall.b5" = "DropVolley'daki diğer her şey ücretsiz kalır";
 
 "onb.account.title" = "İlerlemeni kaydet.";
 "onb.account.subtitle" = "İlerlemeni cihazlar arasında senkronize et.";
@@ -775,7 +775,7 @@
 "notif.permission.body" = "Her sabah küçük bir hatırlatma — bugünün quiz'i gözünden kaçmasın.";
 "notif.permission.enable" = "Hatırlatmaları aç";
 "notif.permission.later" = "Belki sonra";
-"notif.daily.title" = "Bugünün CourtIQ'i hazır";
+"notif.daily.title" = "Bugünün DropVolley'i hazır";
 "notif.daily.body" = "5 hızlı senaryo, 3 dakika. Streak'i bozma.";
 
 /* ── Match-log nudge + weekly digest (v1.1.C) ── */
@@ -794,7 +794,7 @@
 "notif.settings.match_log_desc" = "Akşam hatırlatıcı — bugünün maçını sıcağı sıcağına logla.";
 "notif.settings.weekly" = "Haftalık trend özeti";
 "notif.settings.weekly_desc" = "Pazartesi sabahı puanların, maçların ve en büyük değişimlerin özeti.";
-"notif.settings.system_disabled" = "iOS Ayarlar'da bildirimler kapalı — bu seçenekleri kullanmak için CourtIQ için bildirimleri aç.";
+"notif.settings.system_disabled" = "iOS Ayarlar'da bildirimler kapalı — bu seçenekleri kullanmak için DropVolley için bildirimleri aç.";
 "notif.settings.open_settings" = "iOS Ayarlar'ı aç";
 
 /* ── Legal ── */
@@ -802,10 +802,10 @@
 "legal.terms" = "Kullanım Koşulları";
 "legal.support" = "Destek";
 "legal.moderation" = "Moderasyon Politikası";
-"legal.privacy_body" = "CourtIQ, misafir ilerlemeyi cihazınızda yerel olarak saklar. Apple ile giriş yaptığınızda, profiliniz, sınav geçmişiniz, antrenman kayıtlarınız, haftalık kontroller ve topluluk etkinliğiniz arka uç hizmetlerimiz aracılığıyla CourtIQ hesabınızla senkronize edilebilir. Kişisel verileri satmıyoruz ve yalnızca satın almalar, senkronizasyon, destek ve moderasyon için gereken verileri kullanıyoruz.";
-"legal.terms_body" = "CourtIQ Premium, AI Koç'u açan otomatik yenilenen bir aboneliktir. CourtIQ'daki diğer her özellik ücretsizdir. Faturalandırma, App Store hesabınız aracılığıyla Apple tarafından gerçekleştirilir ve mevcut dönemin bitiminden en az 24 saat önce iptal edilmediği sürece otomatik olarak yenilenir.";
-"legal.support_body" = "Fatura sorunları, hesap soruları, senkronizasyon sorunları ve topluluk moderasyon talepleri için yayınlanan destek bağlantısı aracılığıyla destek alınabilir. Zararlı veya istismar edici topluluk içeriği bildirirseniz, moderasyon ekibi bunu CourtIQ'ya bağlı destek ve yönetici iş akışı aracılığıyla inceler.";
-"legal.moderation_body" = "Topluluk tartışması CourtIQ içeriğine bağlıdır. Oyuncular yorumları manuel moderatör incelemesi için bildirebilir. Saldırgan, istismar edici, spam niteliğinde veya güvensiz içerik kaldırılabilir ve tekrarlanan ihlaller hesap kısıtlamalarına veya topluluktan çıkarılmaya yol açabilir.";
+"legal.privacy_body" = "DropVolley, misafir ilerlemeyi cihazınızda yerel olarak saklar. Apple ile giriş yaptığınızda, profiliniz, sınav geçmişiniz, antrenman kayıtlarınız, haftalık kontroller ve topluluk etkinliğiniz arka uç hizmetlerimiz aracılığıyla DropVolley hesabınızla senkronize edilebilir. Kişisel verileri satmıyoruz ve yalnızca satın almalar, senkronizasyon, destek ve moderasyon için gereken verileri kullanıyoruz.";
+"legal.terms_body" = "DropVolley Premium, AI Koç'u açan otomatik yenilenen bir aboneliktir. DropVolley'daki diğer her özellik ücretsizdir. Faturalandırma, App Store hesabınız aracılığıyla Apple tarafından gerçekleştirilir ve mevcut dönemin bitiminden en az 24 saat önce iptal edilmediği sürece otomatik olarak yenilenir.";
+"legal.support_body" = "Fatura sorunları, hesap soruları, senkronizasyon sorunları ve topluluk moderasyon talepleri için yayınlanan destek bağlantısı aracılığıyla destek alınabilir. Zararlı veya istismar edici topluluk içeriği bildirirseniz, moderasyon ekibi bunu DropVolley'ya bağlı destek ve yönetici iş akışı aracılığıyla inceler.";
+"legal.moderation_body" = "Topluluk tartışması DropVolley içeriğine bağlıdır. Oyuncular yorumları manuel moderatör incelemesi için bildirebilir. Saldırgan, istismar edici, spam niteliğinde veya güvensiz içerik kaldırılabilir ve tekrarlanan ihlaller hesap kısıtlamalarına veya topluluktan çıkarılmaya yol açabilir.";
 "legal.open_doc" = "Yayınlanan Belgeyi Aç";
 
 /* ── Progression ── */
@@ -847,7 +847,7 @@
 "ai.new_chat" = "Yeni sohbet";
 "ai.start_first" = "İlk sohbetini başlat";
 "ai.empty_title" = "Henüz sohbet yok";
-"ai.empty_body" = "CourtIQ Koç'a bir maç, düşük bir rating veya bir sonraki rakibini sor. Koç günlüğünü zaten biliyor.";
+"ai.empty_body" = "DropVolley Koç'a bir maç, düşük bir rating veya bir sonraki rakibini sor. Koç günlüğünü zaten biliyor.";
 "ai.recent_chats" = "Son sohbetler";
 "ai.no_messages_yet" = "(henüz mesaj yok)";
 "ai.composer_placeholder" = "Bir maç, bir drill veya bir patern sor…";
@@ -869,9 +869,9 @@
 
 /* AI Koç paywall */
 "ai.paywall_headline" = "AI Koç, tek premium özellik.";
-"ai.paywall_subhead" = "CourtIQ'da diğer her şey ücretsiz. AI Koç, gerçek bir mesaj başı maliyeti olduğu için premium.";
+"ai.paywall_subhead" = "DropVolley'da diğer her şey ücretsiz. AI Koç, gerçek bir mesaj başı maliyeti olduğu için premium.";
 "ai.paywall_bullet_context" = "Son 5 maçını, ratinglerini ve quiz hatalarını biliyor — her seferinde oyununu yeniden anlatmana gerek yok.";
-"ai.paywall_bullet_library" = "CourtIQ içinde zaten sahip olduğun drill'leri, mobility flow'larını ve antrenman programlarını adıyla öneriyor.";
+"ai.paywall_bullet_library" = "DropVolley içinde zaten sahip olduğun drill'leri, mobility flow'larını ve antrenman programlarını adıyla öneriyor.";
 "ai.paywall_bullet_import" = "ChatGPT'deki tenis sohbetlerini içe aktar — bağlam kaybolmasın. Bir kez yapıştır, koç hatırlar.";
 "ai.paywall_bullet_privacy" = "Reklam veya üçüncü taraf takibi yok. Sohbetler yanıt üretmek için Anthropic Claude'a gider ve hesabına özel saklanır.";
 "ai.paywall_cta" = "AI Koç'u Aç";
@@ -882,7 +882,7 @@
 "ai.import_menu" = "ChatGPT'den içe aktar";
 "ai.import_title" = "İçeriği aktar";
 "ai.import_kicker" = "ChatGPT sohbetlerinden";
-"ai.import_headline" = "Tenis geçmişini CourtIQ'ya getir.";
+"ai.import_headline" = "Tenis geçmişini DropVolley'ya getir.";
 "ai.import_body" = "ChatGPT'deki tenis sohbetinin en faydalı kısmını yapıştır — koç bundan sonra hatırlar, oyununu her seferinde yeniden anlatmana gerek kalmaz.";
 "ai.import_placeholder" = "ChatGPT'den kopyaladığını buraya yapıştır…";
 "ai.import_char_count_format" = "%d / %d karakter";
@@ -890,7 +890,7 @@
 "ai.import_saved_title" = "Kaydedildi";
 "ai.import_saved_body" = "Koç bundan sonra her sohbette bu bağlamı kullanacak.";
 "ai.import_privacy_kicker" = "Ne saklıyoruz";
-"ai.import_privacy_body" = "Sadece buraya yapıştırdığın metin, hesabınla ilişkili. CourtIQ'nun Supabase altyapısında saklanır, yalnızca koçluk bağlamı oluşturmak için kullanılır. İstediğin zaman değiştirebilir veya silebilirsin.";
+"ai.import_privacy_body" = "Sadece buraya yapıştırdığın metin, hesabınla ilişkili. DropVolley'nun Supabase altyapısında saklanır, yalnızca koçluk bağlamı oluşturmak için kullanılır. İstediğin zaman değiştirebilir veya silebilirsin.";
 
 /* Common */
 "common.dismiss" = "Kapat";

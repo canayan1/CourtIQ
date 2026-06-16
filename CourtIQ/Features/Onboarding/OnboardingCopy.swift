@@ -27,7 +27,7 @@ struct OnboardingCopy {
     // MARK: Feature showcase (real-world examples)
     var showcaseSwingEyebrow: String { t("AI SWING ANALYSIS", "AI VURUŞ ANALİZİ") }
     var showcaseSwingHeadline: String {
-        t("Film a swing, get a 0–100 score + frame-by-frame AI coaching.",
+        t("Record a swing, get a 0–100 score + frame-by-frame AI coaching.",
           "Bir vuruş çek; 0–100 puan ve kare kare AI koçluğu al.")
     }
     var showcaseSwingSampleTitle: String { t("Forehand · Sample", "Forehand · Örnek") }
@@ -177,7 +177,7 @@ struct OnboardingCopy {
         t("Matching scenario drills to your \(weakness)…", "Senaryo çalışmalarını \(weakness) ile eşliyoruz…")
     }
     func buildCalibrating(_ perDay: Int) -> String {
-        t("Calibrating your \(perDay)/day plan…", "Günde \(perDay)'lik planını ayarlıyoruz…")
+        t("Setting up your \(perDay)/day plan…", "Günde \(perDay)'lik planını ayarlıyoruz…")
     }
     var buildFinalizing: String { t("Finalizing your Tennis Profile…", "Tenis Profilini tamamlıyoruz…") }
     var buildGenericFocus: String { t("game", "oyunun") }
@@ -228,7 +228,7 @@ struct OnboardingCopy {
             EvidenceSlide(
                 headline: t("See your swing like a coach does",
                             "Vuruşunu bir koç gibi gör"),
-                support: t("Film a quick swing and DropVolley's AI breaks down your technique — grip, contact point, follow-through.",
+                support: t("Record a quick swing and DropVolley's AI breaks down your technique — grip, contact point, follow-through.",
                            "Kısa bir vuruş çek; DropVolley'in AI'ı tekniğini çözümlesin — grip, temas noktası, takip."),
                 symbol: "video.fill"
             ),

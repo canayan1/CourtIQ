@@ -39,7 +39,7 @@
 "home.tile_drill" = "Drill";
 "home.recent" = "Recent";
 "home.streak_days" = "%d day streak";
-"home.first_swing" = "Film your first swing";
+"home.first_swing" = "Record your first swing, get a score";
 
 /* ── Train hub (Phase 1 IA redesign) ── */
 "train.subtitle" = "Improve";
@@ -53,9 +53,9 @@
 "train.flagship" = "Flagship";
 "train.analyze_cta" = "Record a swing";
 "train.analyze_section_desc" = "See your technique through an AI coach's eyes.";
-"train.practice_section_desc" = "Deliberate reps — quizzes, drills, and signature shots.";
+"train.practice_section_desc" = "Focused reps — quizzes, drills, and signature shots.";
 "train.recover_section_desc" = "Reset and move well between sessions.";
-"train.programs_section_desc" = "Structured multi-week blocks to build over time.";
+"train.programs_section_desc" = "Multi-week plans you build on over time.";
 "train.daily_drill_title" = "Daily drill";
 "train.daily_drill_desc" = "Today's Court Tap target practice.";
 "train.pro_shot_title" = "Pro shot";
@@ -74,7 +74,7 @@
 /* ── Coach tab landing (Phase 1 IA redesign) ── */
 "coach.landing_kicker" = "AI Coach";
 "coach.landing_title" = "Your personal AI tennis coach";
-"coach.landing_body" = "Get tailored advice on tactics, technique, and match prep — informed by your Tennis Profile, recent matches, and quiz history.";
+"coach.landing_body" = "Get advice on tactics, technique, and match prep — based on your Tennis Profile, recent matches, and quiz history.";
 "coach.unlock" = "Unlock AI Coach";
 
 /* ── Today ── */
@@ -124,7 +124,7 @@
 "practice.support_work" = "Support Work";
 "practice.mobility_library" = "Mobility & Recovery Library";
 "practice.mobility_desc" = "Quick resets, daily mobility, and recovery flows built for tennis movement.";
-"practice.deliberate_reps" = "Deliberate reps";
+"practice.deliberate_reps" = "Focused reps";
 "practice.choose_pattern" = "Choose the pattern you want to sharpen, then run a focused block.";
 "practice.free_desc" = "The full library of repeatable skill blocks is free. Sign in to sync your progress across devices.";
 
@@ -163,12 +163,12 @@
 "training.finisher" = "Finisher";
 "training.recovery" = "Recovery";
 "training.recovery_reset" = "Recovery Reset";
-"training.recovery_hint" = "Use this day for a full reset so the next training block still feels explosive.";
+"training.recovery_hint" = "Use this day for a full reset so the next training block still feels powerful.";
 "training.recommended_flow" = "Recommended flow";
 "training.recommended_desc" = "20-30 min easy walk or bike, hip and thoracic mobility, calves, adductors, and soft tissue work.";
 "training.recovery_goal" = "Come back fresher, not flat. Keep blood flow high and overall stress low.";
 "training.optional_note" = "Optional note";
-"training.heavy_week_hint" = "If the week felt heavy, use this day to downshift before the persistence check.";
+"training.heavy_week_hint" = "If the week felt heavy, use this day to ease off before the persistence check.";
 "training.persistence_check" = "Persistence Check";
 "training.persistence_desc" = "Finish the week with a short check-in so your progress stays visible across the full 8-week run.";
 "training.coach_note" = "Coach note";
@@ -244,7 +244,7 @@
 /* ── Profile ── */
 "profile.title" = "Profile";
 "profile.delete_title" = "Delete account?";
-"profile.delete_msg" = "This permanently deletes your account, synced progress, and community content from CourtIQ.";
+"profile.delete_msg" = "This permanently deletes your account, synced progress, and community content from DropVolley.";
 "profile.reset_title" = "Reset local data?";
 "profile.reset_msg" = "This clears cached progress on this device. Synced account data will re-download on next launch.";
 "profile.quiz_empty" = "Complete your first daily quiz to start your archive.";
@@ -272,7 +272,7 @@
 "onboarding.subtitle" = "Daily decisions. Smart habits. A sharper game.";
 "onboarding.get_started" = "Get Started";
 "onboarding.everything" = "Everything in one place";
-"onboarding.everything_desc" = "CourtIQ covers every part of your tennis week — on and off the court.";
+"onboarding.everything_desc" = "DropVolley covers every part of your tennis week — on and off the court.";
 "onboarding.daily_iq" = "Daily IQ Quiz";
 "onboarding.daily_iq_desc" = "A new scenario every day. Real match situations, multiple choices, instant coaching feedback. Decisions become instinct.";
 "onboarding.tip" = "Tip of the Day";
@@ -316,17 +316,17 @@
 "paywall.what_unlocks" = "What you get";
 
 /* ── Tip-jar mode (launch window, LaunchOffer.allFeaturesFree == true) ── */
-"paywall.tip_title" = "Support CourtIQ";
-"paywall.tip_headline" = "CourtIQ is free. AI Coach is the one premium feature.";
-"paywall.tip_body" = "Drills, quizzes, training programs, mobility flows, and the full match journal are all free. Only the AI Coach is premium. If CourtIQ has been useful, an optional tip keeps it growing.";
+"paywall.tip_title" = "Support DropVolley";
+"paywall.tip_headline" = "DropVolley is free. AI Coach is the one premium feature.";
+"paywall.tip_body" = "Drills, quizzes, training programs, mobility flows, and the full match journal are all free. Only the AI Coach is premium. If DropVolley has been useful, an optional tip keeps it growing.";
 "paywall.tip_why" = "Why support?";
 "paywall.tip_reason_1" = "Keeps the app independent — no ads, no tracking, no investors.";
 "paywall.tip_reason_2" = "Funds the next features (voice notes, partner mode, watch app).";
-"paywall.tip_reason_3" = "Covers the Apple Developer fee that keeps CourtIQ on the store.";
+"paywall.tip_reason_3" = "Covers the Apple Developer fee that keeps DropVolley on the store.";
 "paywall.tip_action" = "Leave a tip";
 "paywall.tip_offer_title" = "Annual supporter";
 "paywall.tip_offer_detail" = "One yearly tip. Cancel anytime in Settings.";
-"paywall.tip_button" = "Support CourtIQ";
+"paywall.tip_button" = "Support DropVolley";
 "paywall.tip_legal_note" = "Tips are processed by Apple as an annual auto-renewing subscription so they qualify for App Store payment handling. You can cancel anytime from Settings → Subscriptions; no features are locked if you do.";
 
 /* ── Voice notes (Match Journal v1.1.A) ── */
@@ -338,7 +338,7 @@
 "voice.discard" = "Delete voice note";
 "voice.language_toggle" = "Spoken language for transcription";
 "voice.error_title" = "Can't record";
-"voice.permission_denied" = "Microphone access is required for voice notes. Enable it in Settings → CourtIQ.";
+"voice.permission_denied" = "Microphone access is required for voice notes. Enable it in Settings → DropVolley.";
 "voice.audio_session_error" = "The audio system isn't available right now. Try again in a moment.";
 "voice.record_start_error" = "Couldn't start the recording. Try again.";
 "voice.storage_error" = "Couldn't save the recording to disk. Free up some space and try again.";
@@ -395,7 +395,7 @@
 "paywall.support" = "Support";
 "paywall.subscription_note" = "Subscriptions renew automatically unless canceled in App Store settings at least 24 hours before the end of the current period. Your premium access is restored from the App Store on launch and after restore.";
 "paywall.unlocked" = "Unlocked";
-"paywall.intro_body" = "Premium unlocks the AI Coach — a tennis chat that knows your matches, ratings, and quiz patterns. Everything else in CourtIQ is free.";
+"paywall.intro_body" = "Premium unlocks the AI Coach — a tennis chat that knows your matches, ratings, and quiz patterns. Everything else in DropVolley is free.";
 "paywall.products_loading" = "Loading subscription options…";
 
 /* ── Beta feedback ── */
@@ -407,19 +407,19 @@
 /* ── Health & Safety ── */
 "health.eyebrow" = "BEFORE YOU START";
 "health.title" = "Train safely.";
-"health.subtitle" = "CourtIQ is built by tennis players, not doctors. Please read and acknowledge a few things before you use the training, mobility, or any physical content in this app.";
-"health.bullet_not_medical" = "CourtIQ is not medical advice, diagnosis, or treatment. It is not a substitute for a doctor, physiotherapist, certified trainer, or coach.";
+"health.subtitle" = "DropVolley is built by tennis players, not doctors. Please read and acknowledge a few things before you use the training, mobility, or any physical content in this app.";
+"health.bullet_not_medical" = "DropVolley is not medical advice, diagnosis, or treatment. It is not a substitute for a doctor, physiotherapist, certified trainer, or coach.";
 "health.bullet_consult_doctor" = "Speak to a qualified medical professional before starting any new physical activity — especially if you have any heart, joint, or musculoskeletal condition, are pregnant, are recovering from injury, or have not exercised regularly in the past 6 months.";
-"health.bullet_stop_if_pain" = "If you feel pain, dizziness, shortness of breath, chest discomfort, or any unusual symptom during or after using CourtIQ, stop immediately and seek medical attention.";
-"health.bullet_assume_risk" = "Tennis, strength training, plyometrics, mobility, and conditioning carry an inherent risk of injury — including serious injury or worse. You knowingly and voluntarily accept this risk by using CourtIQ.";
-"health.bullet_self_directed" = "CourtIQ is self-directed. You are not supervised by a coach through the app. You are responsible for your technique, equipment, warm-up, recovery, and knowing your limits.";
+"health.bullet_stop_if_pain" = "If you feel pain, dizziness, shortness of breath, chest discomfort, or any unusual symptom during or after using DropVolley, stop immediately and seek medical attention.";
+"health.bullet_assume_risk" = "Tennis, strength training, plyometrics, mobility, and conditioning carry an inherent risk of injury — including serious injury or worse. You knowingly and voluntarily accept this risk by using DropVolley.";
+"health.bullet_self_directed" = "DropVolley is self-directed. You are not supervised by a coach through the app. You are responsible for your technique, equipment, warm-up, recovery, and knowing your limits.";
 "health.read_more" = "READ THE FULL DOCUMENT";
 "health.full_disclaimer_link" = "Full Health & Safety Disclaimer";
 "health.confirm_toggle" = "I have read the points above and I understand the risks of physical activity.";
 "health.confirm_required_hint" = "TOGGLE THIS ON TO CONTINUE";
 "health.confirm_done_hint" = "READY TO CONTINUE";
 "health.accept" = "I understand and agree";
-"health.footer_note" = "By tapping the button above you confirm that you have read, understood, and agree to the Health & Safety Disclaimer and Terms of Use. You agree to use CourtIQ at your own risk.";
+"health.footer_note" = "By tapping the button above you confirm that you have read, understood, and agree to the Health & Safety Disclaimer and Terms of Use. You agree to use DropVolley at your own risk.";
 "health.banner_title" = "Train safely";
 "health.banner_body" = "Warm up first. Use safe technique and weight. Stop if anything feels wrong.";
 
@@ -436,7 +436,7 @@
 
 "onb.level.step" = "1 / 3";
 "onb.level.title" = "Where are you\non court?";
-"onb.level.subtitle" = "We'll calibrate quiz difficulty and practice blocks.";
+"onb.level.subtitle" = "We'll set quiz difficulty and practice blocks.";
 "onb.level.beginner.title" = "Beginner";
 "onb.level.beginner.desc" = "Learning rallies, still finding consistency";
 "onb.level.club.title" = "Club player";
@@ -488,13 +488,13 @@
 
 "onb.paywall.tag" = "AI COACH";
 "onb.paywall.title" = "Meet your AI Coach.";
-"onb.paywall.subtitle" = "Everything else in CourtIQ is free. You can unlock the AI Coach from your Profile anytime.";
+"onb.paywall.subtitle" = "Everything else in DropVolley is free. You can unlock the AI Coach from your Profile anytime.";
 "onb.paywall.included" = "What's included";
 "onb.paywall.b1" = "Knows your last 5 matches, ratings & quiz patterns";
 "onb.paywall.b2" = "Suggests your drills, mobility flows & training plans by name";
 "onb.paywall.b3" = "Import your ChatGPT tennis chats so context carries over";
 "onb.paywall.b4" = "Private — no third-party tracking";
-"onb.paywall.b5" = "Everything else in CourtIQ stays free";
+"onb.paywall.b5" = "Everything else in DropVolley stays free";
 
 "onb.account.title" = "Save your progress.";
 "onb.account.subtitle" = "Sync progress across devices.";
@@ -630,9 +630,9 @@
 "matches.ai_retry" = "Retry analysis";
 "matches.ai_step_reading_plan" = "Reading your tactical plan";
 "matches.ai_step_opponent" = "Weighing the matchup";
-"matches.ai_step_tactics" = "Pressure-testing the tactics";
+"matches.ai_step_tactics" = "Testing the tactics";
 "matches.ai_step_reading_match" = "Reading your match notes";
-"matches.ai_step_ratings" = "Cross-checking your self-ratings";
+"matches.ai_step_ratings" = "Checking your self-ratings";
 "matches.ai_step_patterns" = "Spotting patterns vs your history";
 "matches.ai_step_writing" = "Writing your coaching notes";
 
@@ -775,7 +775,7 @@
 "notif.permission.body" = "Get one quick nudge each morning so today's quiz doesn't slip past you.";
 "notif.permission.enable" = "Enable reminders";
 "notif.permission.later" = "Maybe later";
-"notif.daily.title" = "Today's CourtIQ is ready";
+"notif.daily.title" = "Today's DropVolley is ready";
 "notif.daily.body" = "5 quick scenarios, 3 minutes. Keep your streak alive.";
 
 /* ── Match-log nudge + weekly digest (v1.1.C) ── */
@@ -784,7 +784,7 @@
 "notif.match_result.title" = "How did your match go?";
 "notif.match_result.body" = "How did your match vs %@ go? Add the result.";
 "notif.weekly.title" = "Last week of tennis";
-"notif.weekly.body" = "Your trends just refreshed — open CourtIQ to see what moved.";
+"notif.weekly.body" = "Your trends just refreshed — open DropVolley to see what moved.";
 
 /* ── Notification settings screen (v1.1.C) ── */
 "notif.settings.title" = "Notifications";
@@ -794,7 +794,7 @@
 "notif.settings.match_log_desc" = "Evening reminder to log today's match while it's fresh.";
 "notif.settings.weekly" = "Weekly trend digest";
 "notif.settings.weekly_desc" = "Monday morning recap of your ratings, matches, and biggest shifts.";
-"notif.settings.system_disabled" = "Notifications are off in iOS Settings — turn them on for CourtIQ to use these toggles.";
+"notif.settings.system_disabled" = "Notifications are off in iOS Settings — turn them on for DropVolley to use these toggles.";
 "notif.settings.open_settings" = "Open iOS Settings";
 
 /* ── Legal ── */
@@ -802,10 +802,10 @@
 "legal.terms" = "Terms of Use";
 "legal.support" = "Support";
 "legal.moderation" = "Moderation Policy";
-"legal.privacy_body" = "CourtIQ stores guest progress locally on your device. When you sign in with Apple, your profile, quiz history, training logs, weekly check-ins, and community activity can sync to your CourtIQ account through our backend services. We do not sell personal data, and we only use the data needed to run purchases, sync, support, and moderation.";
-"legal.terms_body" = "CourtIQ Premium is an auto-renewing subscription that unlocks the AI Coach. Every other feature in CourtIQ is free. Billing is handled by Apple through your App Store account and renews automatically unless canceled at least 24 hours before the end of the current period.";
-"legal.support_body" = "Support is available through the published support link for billing issues, account questions, sync problems, and community moderation requests. If you report harmful or abusive community content, the moderation team reviews it through the support and admin workflow connected to CourtIQ.";
-"legal.moderation_body" = "Community discussion is anchored to CourtIQ content. Players can report comments for manual moderator review. Offensive, abusive, spammy, or unsafe content may be removed, and repeated violations can lead to account restrictions or removal from the community.";
+"legal.privacy_body" = "DropVolley stores guest progress locally on your device. When you sign in with Apple, your profile, quiz history, training logs, weekly check-ins, and community activity can sync to your DropVolley account through our backend services. We do not sell personal data, and we only use the data needed to run purchases, sync, support, and moderation.";
+"legal.terms_body" = "DropVolley Premium is an auto-renewing subscription that unlocks the AI Coach. Every other feature in DropVolley is free. Billing is handled by Apple through your App Store account and renews automatically unless canceled at least 24 hours before the end of the current period.";
+"legal.support_body" = "Support is available through the published support link for billing issues, account questions, sync problems, and community moderation requests. If you report harmful or abusive community content, the moderation team reviews it through the support and admin workflow connected to DropVolley.";
+"legal.moderation_body" = "Community discussion is anchored to DropVolley content. Players can report comments for manual moderator review. Offensive, abusive, spammy, or unsafe content may be removed, and repeated violations can lead to account restrictions or removal from the community.";
 "legal.open_doc" = "Open Published Document";
 
 /* ── Progression ── */
@@ -842,12 +842,12 @@
 "ai.title" = "AI Coach";
 "ai.kicker" = "Tennis-specific coach";
 "ai.headline" = "Talk through a match. Get a drill before you leave the screen.";
-"ai.card_subtitle" = "Reflect on a match, plan the next one, get drill suggestions tailored to your data.";
+"ai.card_subtitle" = "Reflect on a match, plan the next one, get drill suggestions matched to your data.";
 "ai.premium_badge" = "Premium";
 "ai.new_chat" = "New chat";
 "ai.start_first" = "Start your first chat";
 "ai.empty_title" = "No conversations yet";
-"ai.empty_body" = "Ask CourtIQ Coach about a match, a weak rating, or your next opponent. The coach already knows your journal.";
+"ai.empty_body" = "Ask the coach about a match, a weak rating, or your next opponent. The coach already knows your journal.";
 "ai.recent_chats" = "Recent chats";
 "ai.no_messages_yet" = "(no messages yet)";
 "ai.composer_placeholder" = "Ask about a match, a drill, or a pattern…";
@@ -869,9 +869,9 @@
 
 /* AI Coach paywall stub */
 "ai.paywall_headline" = "AI Coach is the one premium feature.";
-"ai.paywall_subhead" = "Everything else in CourtIQ is free. AI Coach is premium because it has a real per-message cost.";
+"ai.paywall_subhead" = "Everything else in DropVolley is free. AI Coach is premium because it has a real per-message cost.";
 "ai.paywall_bullet_context" = "Knows your last 5 matches, ratings, and quiz mistake patterns — no re-explaining your game every time.";
-"ai.paywall_bullet_library" = "Suggests drills, mobility flows, and training programs you already have inside CourtIQ — by name.";
+"ai.paywall_bullet_library" = "Suggests drills, mobility flows, and training programs you already have inside DropVolley — by name.";
 "ai.paywall_bullet_import" = "Import your ChatGPT tennis chats so context isn't lost. Paste once, the coach remembers.";
 "ai.paywall_bullet_privacy" = "No ads or third-party tracking. Chats go to Anthropic's Claude to generate replies and are stored privately to your account.";
 "ai.paywall_cta" = "Unlock AI Coach";
@@ -882,7 +882,7 @@
 "ai.import_menu" = "Import from ChatGPT";
 "ai.import_title" = "Import context";
 "ai.import_kicker" = "From your ChatGPT chats";
-"ai.import_headline" = "Bring your tennis history into CourtIQ.";
+"ai.import_headline" = "Bring your tennis history into DropVolley.";
 "ai.import_body" = "Paste the most useful chunk of your ChatGPT tennis conversation — the coach will remember it from now on, so you don't have to re-explain your game.";
 "ai.import_placeholder" = "Paste your ChatGPT excerpt here…";
 "ai.import_char_count_format" = "%d / %d characters";
@@ -890,7 +890,7 @@
 "ai.import_saved_title" = "Saved";
 "ai.import_saved_body" = "Your coach will use this context in every future chat.";
 "ai.import_privacy_kicker" = "What we store";
-"ai.import_privacy_body" = "Only the text you paste here, attached to your account. Stored on CourtIQ's Supabase backend, used solely to build your coaching context. You can replace or delete it anytime.";
+"ai.import_privacy_body" = "Only the text you paste here, attached to your account. Stored on DropVolley's Supabase backend, used solely to build your coaching context. You can replace or delete it anytime.";
 
 /* Common */
 "common.dismiss" = "Dismiss";
