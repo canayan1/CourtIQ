@@ -17,7 +17,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>21</string>
+	<string>22</string>
 	<key>COURTIQ_AI_CHAT_FUNCTION</key>
 	<string>ai-chat</string>
 	<key>COURTIQ_DELETE_ACCOUNT_FUNCTION</key>
@@ -56,8 +56,6 @@
 	<string>DropVolley lets you choose an existing swing video from your library for AI technique analysis.</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>CourtIQ transcribes your match voice notes on-device so the text appears in your journal immediately. Audio never leaves your iPhone.</string>
-	<key>UIUserInterfaceStyle</key>
-	<string>Light</string>
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIColorName</key>
@@ -67,5 +65,7 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 </dict>
 </plist>
