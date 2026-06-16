@@ -85,10 +85,12 @@ Every response includes AT LEAST ONE of the following:
 
 2. **In-app library pointer** — surface content the user already has, by
    name + location:
-   - "Today → Court Tap Drill"
-   - "Practice → Mobility Library → <flow name>"
-   - "Training → <program name>"
-   - "Matches → Quick Log"
+   - "Home → Analyze your swing" (AI swing analysis)
+   - "Home → Daily drill" (Court Tap)
+   - "Train → Recover → Mobility → <flow name>"
+   - "Train → Programs → <program name>"
+   - "Matches → Log a match"  ·  "Matches → Mental check" (pre-match)
+   - "Doubles → invite your partner" (compatibility)
 
 3. **Reframe offer** — only when a clear pattern repeats across at least
    3 recent matches:

@@ -19,6 +19,11 @@ struct MatchEntryFlowView: View {
     @EnvironmentObject private var lang: LanguageManager
     @EnvironmentObject private var session: UserSessionManager
 
+    /// Optional date to pre-fill the new entry's date picker with (e.g. a
+    /// day tapped in the calendar). Default nil keeps existing call sites
+    /// working and falls back to "now".
+    var initialDate: Date? = nil
+
     private enum Step {
         case choose
         case upcoming
@@ -33,9 +38,9 @@ struct MatchEntryFlowView: View {
             case .choose:
                 chooseStep
             case .upcoming:
-                MatchUpcomingFormView(onDone: { dismiss() })
+                MatchUpcomingFormView(initialDate: initialDate, onDone: { dismiss() })
             case .played:
-                MatchPlayedFormView(onDone: { dismiss() })
+                MatchPlayedFormView(initialDate: initialDate, onDone: { dismiss() })
             }
         }
         .background(AppPalette.cream)

@@ -11,6 +11,9 @@ struct MatchPlayedFormView: View {
     @EnvironmentObject private var lang: LanguageManager
     @EnvironmentObject private var session: UserSessionManager
 
+    /// Optional date to seed the date picker with (e.g. a tapped calendar day).
+    var initialDate: Date? = nil
+
     let onDone: () -> Void
 
     private enum Phase {
@@ -63,6 +66,7 @@ struct MatchPlayedFormView: View {
                 revealStep(report: report)
             }
         }
+        .onAppear { if let initialDate { date = initialDate } }
     }
 
     // MARK: - Form

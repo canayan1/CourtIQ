@@ -14,6 +14,10 @@ struct MatchCalendarView: View {
     /// How many trailing weeks to display, ending on today.
     var weeksToShow: Int = 7
 
+    /// Fired when the user taps a day cell, passing that cell's date.
+    /// Optional so existing call sites (e.g. Profile) keep working unchanged.
+    var onSelectDay: ((Date) -> Void)? = nil
+
     private let calendar = Calendar(identifier: .iso8601)
 
     var body: some View {
@@ -36,7 +40,22 @@ struct MatchCalendarView: View {
                     HStack(spacing: 6) {
                         ForEach(0..<7, id: \.self) { day in
                             let date = dates[week * 7 + day]
-                            dayCell(date: date)
+                            if let onSelectDay {
+                                Button {
+                                    Haptics.tap()
+                                    onSelectDay(date)
+                                } label: {
+                                    dayCell(date: date)
+                                }
+                                .buttonStyle(.plain)
+                                // Keep the 30pt visual but guarantee a ≥44pt
+                                // tappable target via an invisible content shape.
+                                .frame(maxWidth: .infinity)
+                                .frame(minHeight: 44)
+                                .contentShape(Rectangle())
+                            } else {
+                                dayCell(date: date)
+                            }
                         }
                     }
                 }

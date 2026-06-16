@@ -9,6 +9,10 @@ struct MatchUpcomingFormView: View {
     @EnvironmentObject private var lang: LanguageManager
     @EnvironmentObject private var session: UserSessionManager
 
+    /// Optional date to seed the date picker with (e.g. a calendar day the
+    /// user tapped). Default nil falls back to "now".
+    var initialDate: Date? = nil
+
     /// Called once the entry is saved and the flow should close.
     let onDone: () -> Void
 
@@ -38,6 +42,7 @@ struct MatchUpcomingFormView: View {
                 form
             }
         }
+        .onAppear { if let initialDate { date = initialDate } }
     }
 
     // MARK: - Form

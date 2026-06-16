@@ -14,6 +14,8 @@ struct MatchesListView: View {
     @EnvironmentObject private var session: UserSessionManager
 
     @State private var openNewEntry = false
+    @State private var newEntryDate: Date? = nil
+    @State private var selectedEntry: MatchEntry? = nil
     @State private var showMentalCheck = false
     @State private var showTutorial = false
     @State private var appeared = false
@@ -22,6 +24,19 @@ struct MatchesListView: View {
     /// One-shot flag so the tutorial auto-presents only on the first visit
     /// to the Matches tab. Re-openable any time via the (i) button.
     @AppStorage("CourtIQ.matchLogTutorialSeen.v1") private var tutorialSeen = false
+
+    /// Calendar day tap: open the most recent entry on that day, or start a
+    /// new entry pre-filled with that date if the day has none.
+    private func handleDayTap(_ date: Date) {
+        let cal = Calendar.current
+        let onDay = matches.entries.filter { cal.isDate($0.date, inSameDayAs: date) }
+        if let entry = onDay.max(by: { $0.date < $1.date }) {
+            selectedEntry = entry
+        } else {
+            newEntryDate = date
+            openNewEntry = true
+        }
+    }
 
     var body: some View {
         ScrollView {
@@ -38,7 +53,7 @@ struct MatchesListView: View {
                 } else {
                     insightShortcuts
                         .reveal(appeared: appeared, index: 1, reduceMotion: reduceMotion)
-                    MatchCalendarView()
+                    MatchCalendarView(onSelectDay: handleDayTap)
                         .environmentObject(matches)
                         .environmentObject(lang)
                         .reveal(appeared: appeared, index: 2, reduceMotion: reduceMotion)
@@ -98,13 +113,19 @@ struct MatchesListView: View {
             MatchLogTutorialView()
                 .environmentObject(lang)
         }
-        .sheet(isPresented: $openNewEntry) {
+        .sheet(isPresented: $openNewEntry, onDismiss: { newEntryDate = nil }) {
             NavigationStack {
-                MatchEntryFlowView()
+                MatchEntryFlowView(initialDate: newEntryDate)
                     .environmentObject(matches)
                     .environmentObject(lang)
                     .environmentObject(session)
             }
+        }
+        .navigationDestination(item: $selectedEntry) { entry in
+            MatchDetailView(entryID: entry.id)
+                .environmentObject(matches)
+                .environmentObject(lang)
+                .environmentObject(session)
         }
         .sheet(isPresented: $showMentalCheck) {
             NavigationStack {
