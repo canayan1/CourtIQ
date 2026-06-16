@@ -26,18 +26,25 @@ struct SwingAnalysisView: View {
     @State private var handedness: SwingHandedness = .right
 
     init() {
+#if DEBUG
         // App Store screenshot harness (launch-arg gated): start in the result
         // state showing a realistic sample analysis so the capture shows a
-        // finished coaching readout — no video, no network call.
+        // finished coaching readout — no video, no network call. Excluded from
+        // Release builds.
         if ProcessInfo.processInfo.arguments.contains("-previewSwing") {
             _phase = State(initialValue: .result(text: Self.previewSampleAnalysis, score: 82))
         } else {
             _phase = State(initialValue: .setup)
         }
+#else
+        _phase = State(initialValue: .setup)
+#endif
     }
 
+#if DEBUG
     /// Sample forehand analysis for the App Store screenshot harness only.
     /// Mirrors the live output format: **bold headers** + "•" bullets.
+    /// Excluded from Release builds.
     private static let previewSampleAnalysis = """
     **What's working**
     • Your unit turn is early and complete — shoulders and hips coil together as the ball leaves your opponent's strings, which is exactly where racquet-head speed comes from.
@@ -52,6 +59,7 @@ struct SwingAnalysisView: View {
     **One thing to try next session**
     • Shadow-swing ten forehands focusing only on contact out in front of your front hip, then feed yourself twenty balls holding that same spacing. Groove the early-and-out-front contact before adding pace — rhythm first, power second.
     """
+#endif
 
     @State private var pickerSource: UIImagePickerController.SourceType?
     @State private var pendingVideoURL: URL?      // selected but awaiting consent

@@ -18,9 +18,10 @@ struct CourtIQApp: App {
         CrashReporter.shared.start()
         Task { @MainActor in Haptics.warmUp() }
 
+#if DEBUG
         // App Store preview / UI-test only: populate sample data so the
         // preview screenshots show populated screens. Launch-arg gated —
-        // never runs in normal use.
+        // never runs in normal use. Excluded from Release builds entirely.
         if ProcessInfo.processInfo.arguments.contains("-seedPreviewData") {
             Task { @MainActor in Self.seedPreviewData() }
         }
@@ -47,6 +48,7 @@ struct CourtIQApp: App {
         if ProcessInfo.processInfo.arguments.contains("-previewSwing") {
             Task { @MainActor in Self.seedPreviewData() }
         }
+#endif
 
         // If the user previously authorized notifications, make sure the
         // daily reminder is re-scheduled (handles app upgrades / device
@@ -60,10 +62,11 @@ struct CourtIQApp: App {
         }
     }
 
+#if DEBUG
     /// App Store preview / UI-test only (launch-arg gated): completes
     /// onboarding + the health gate and seeds a realistic set of matches,
     /// quiz history, and a Tennis Profile so the preview screenshots show
-    /// fully-populated screens. Idempotent.
+    /// fully-populated screens. Idempotent. Excluded from Release builds.
     @MainActor
     static func seedPreviewData() {
         UserSessionManager.shared.debugMarkOnboarded()
@@ -184,6 +187,7 @@ struct CourtIQApp: App {
     • Use the I-formation on big points to hide Jordan's poach off the lefty serve.
     • When you're returning, look to chip-and-charge behind a low return so Jordan can close.
     """
+#endif
 
     var body: some Scene {
         WindowGroup {

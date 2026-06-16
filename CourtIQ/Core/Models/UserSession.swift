@@ -340,10 +340,12 @@ final class SubscriptionManager: ObservableObject {
     func loadOfferings() async {
         do {
             let products = try await Product.products(for: [configuration.weeklyProductID, configuration.annualProductID])
+#if DEBUG
             if products.isEmpty && ProcessInfo.processInfo.arguments.contains("-previewPaywall") {
                 seedPreviewPaywallOffers()
                 return
             }
+#endif
             productsByID = Dictionary(uniqueKeysWithValues: products.map { ($0.id, $0) })
             integrationMode = productsByID.isEmpty ? .productConfigurationMissing : .storeKitDirect
 
@@ -375,17 +377,22 @@ final class SubscriptionManager: ObservableObject {
                                          perWeekText: "Just \(perWeek)/week", saveBadge: saveBadge, trialText: trialText)
             }
         } catch {
+#if DEBUG
             if ProcessInfo.processInfo.arguments.contains("-previewPaywall") {
                 seedPreviewPaywallOffers()
             } else {
                 integrationMode = .productConfigurationMissing
             }
+#else
+            integrationMode = .productConfigurationMissing
+#endif
         }
     }
 
+#if DEBUG
     /// Screenshot only (`-previewPaywall`): seed the paywall with the real
     /// $9.99 / $59.99 prices so it renders fully without live StoreKit
-    /// products. Never reached in normal use.
+    /// products. Never reached in normal use. Excluded from Release builds.
     private func seedPreviewPaywallOffers() {
         offers = [
             SubscriptionOffer(id: configuration.annualProductID, title: "Annual",
@@ -399,6 +406,7 @@ final class SubscriptionManager: ObservableObject {
         ]
         integrationMode = .storeKitDirect
     }
+#endif
 
     private static func periodText(_ period: Product.SubscriptionPeriod) -> String {
         let n = period.value
@@ -414,6 +422,7 @@ final class SubscriptionManager: ObservableObject {
     }
 
     func refreshEntitlements() async {
+#if DEBUG
         // Preview seeds (`-seedPreviewData` / `-previewSwing`) force premium so
         // the seeded App Store preview can render the full app past the hard
         // paywall — otherwise the empty sandbox entitlements would downgrade it
@@ -424,10 +433,10 @@ final class SubscriptionManager: ObservableObject {
             saveEntitlement()
             return
         }
-#if DEBUG
         // On-device debug builds: skip the hard paywall so the app is usable for
         // testing without a Sandbox purchase. Pass `-previewPaywall` to exercise
-        // the real paywall instead. (Release/App Store builds never hit this.)
+        // the real paywall instead. (Release/App Store builds never hit this —
+        // this entire auto-grant block is compiled out of Release.)
         if !previewArgs.contains("-previewPaywall") {
             entitlementState = .premiumAllAccess
             saveEntitlement()
@@ -489,13 +498,15 @@ final class SubscriptionManager: ObservableObject {
         saveEntitlement()
     }
 
+#if DEBUG
     /// Preview / UI-test only: grant premium so the seeded preview can enter
     /// the app past the hard paywall. Reached only via the `-seedPreviewData`
-    /// seeding path — never in normal use.
+    /// seeding path — never in normal use. Excluded from Release builds.
     func debugGrantPremium() {
         entitlementState = .premiumAllAccess
         saveEntitlement()
     }
+#endif
 
     func startListener() {
         guard updatesTask == nil else { return }
@@ -957,10 +968,12 @@ final class UserSessionManager: ObservableObject {
         syncState = .synced(Date())
     }
 
+#if DEBUG
     /// Preview / UI-test only: mark onboarding complete so the App Store
     /// preview opens straight into the main app. Reached only from the
-    /// `-seedPreviewData`-gated seeding path.
+    /// `-seedPreviewData`-gated seeding path. Excluded from Release builds.
     func debugMarkOnboarded() { completeOnboarding() }
+#endif
 
     func completeOnboarding() {
         hasCompletedOnboarding = true

@@ -114,11 +114,13 @@ final class SwingAnalysisStore: ObservableObject {
         persist()
     }
 
+#if DEBUG
     /// Preview / UI-test only (reached from the `-seedPreviewData` path): inject
     /// a finished swing record carrying a score + analysis text, WITHOUT any
     /// on-device video/thumbnail. The Home hero ring reads only `score` and the
     /// history thumbnail loader tolerates a missing file, so the screenshots
     /// render a populated swing score. Idempotent on the supplied id.
+    /// Excluded from Release builds.
     func debugSeedRecord(
         id: UUID,
         date: Date,
@@ -142,6 +144,7 @@ final class SwingAnalysisStore: ObservableObject {
         records.sort { $0.date > $1.date }
         persist()
     }
+#endif
 
     /// Removes a record and its on-device video + thumbnail files.
     func delete(_ record: SwingAnalysisRecord) {
