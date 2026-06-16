@@ -49,6 +49,12 @@ struct MatchEntry: Codable, Identifiable, Hashable {
     let id: String
     var date: Date
     var opponentName: String
+
+    /// Optional free-text tournament / event name (e.g. "Club Champs").
+    /// Nil or empty means a casual/practice match. Additive: old saved
+    /// entries decode with no `tournament` key and default to nil.
+    var tournament: String?
+
     var surface: MatchSurface
 
     /// Whether this match is upcoming (planned) or completed (played).
@@ -119,6 +125,7 @@ struct MatchEntry: Codable, Identifiable, Hashable {
         id: String = UUID().uuidString,
         date: Date = Date(),
         opponentName: String = "",
+        tournament: String? = nil,
         surface: MatchSurface = .hard,
         status: MatchStatus = .completed,
         result: MatchResult? = nil,
@@ -142,6 +149,7 @@ struct MatchEntry: Codable, Identifiable, Hashable {
         self.id = id
         self.date = date
         self.opponentName = opponentName
+        self.tournament = tournament
         self.surface = surface
         self.status = status
         self.result = result
@@ -167,7 +175,7 @@ struct MatchEntry: Codable, Identifiable, Hashable {
     // `photoFileNames` key. Provide a defaulted decoder so they migrate
     // silently to an empty array rather than failing the whole load.
     enum CodingKeys: String, CodingKey {
-        case id, date, opponentName, surface, status, result, score
+        case id, date, opponentName, tournament, surface, status, result, score
         case serveRating, returnRating, movementRating, mentalRating
         case preMatchNotes, postMatchNotes, takeaway
         case preMatchAudioFile, postMatchAudioFile
@@ -180,6 +188,8 @@ struct MatchEntry: Codable, Identifiable, Hashable {
         id = try c.decode(String.self, forKey: .id)
         date = try c.decode(Date.self, forKey: .date)
         opponentName = try c.decode(String.self, forKey: .opponentName)
+        // Additive field — old entries have no `tournament` key.
+        tournament = try c.decodeIfPresent(String.self, forKey: .tournament)
         surface = try c.decode(MatchSurface.self, forKey: .surface)
         // Old entries have no `status` key → they were all played matches,
         // so default to .completed (keeps them in W/L stats).
@@ -203,6 +213,14 @@ struct MatchEntry: Codable, Identifiable, Hashable {
         hadPlan = try c.decodeIfPresent(Bool.self, forKey: .hadPlan)
         isQuickLog = try c.decodeIfPresent(Bool.self, forKey: .isQuickLog) ?? false
         isDraft = try c.decodeIfPresent(Bool.self, forKey: .isDraft) ?? false
+    }
+
+    /// Trimmed tournament name, or nil when blank — the UI shows the
+    /// tournament label only when this is non-nil.
+    var displayTournament: String? {
+        guard let raw = tournament?.trimmingCharacters(in: .whitespacesAndNewlines),
+              !raw.isEmpty else { return nil }
+        return raw
     }
 
     /// Convenience: a planned, not-yet-played match.

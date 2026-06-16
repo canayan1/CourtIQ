@@ -555,6 +555,10 @@
 "matches.takeaway_label" = "One takeaway";
 "matches.takeaway_placeholder" = "One thing you'll change next time…";
 "matches.opponent_placeholder" = "Opponent name";
+"matches.tournament_placeholder" = "Tournament (optional) — e.g. Club Champs";
+"matches.legend_win" = "Win";
+"matches.legend_loss" = "Loss";
+"matches.legend_upcoming" = "Upcoming";
 "matches.score_placeholder" = "Score (e.g. 6-4, 3-6, 7-5)";
 "matches.pre_match_label" = "Pre-match plan";
 "matches.pre_match_placeholder" = "What's your tactical plan against this opponent?";
@@ -853,6 +857,7 @@
 "ai.quota_remaining_format" = "%d messages left today";
 "ai.quota_unknown" = "Daily quota refreshes at midnight";
 "ai.quota_resets" = "Resets at midnight local time";
+"ai.quota_reached" = "Daily limit reached — resets at midnight.";
 "ai.error_sign_in_required" = "Sign in with Apple to use AI Coach.";
 "ai.error_send_generic" = "Couldn't send. Check your connection and try again.";
 "ai.error_connect" = "Couldn't reach the AI Coach. Check your connection and try again.";

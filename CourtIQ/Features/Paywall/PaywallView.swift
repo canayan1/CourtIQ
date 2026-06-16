@@ -24,12 +24,14 @@ struct PaywallView: View {
 
     @Environment(\.dismiss) private var dismiss
     @Environment(\.openURL) private var openURL
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @EnvironmentObject private var session: UserSessionManager
     @EnvironmentObject private var lang: LanguageManager
 
     @State private var selectedOfferID: String?
     @State private var isWorking = false
     @State private var errorMessage: String?
+    @State private var showExample = false
 
     private let configuration = AppConfiguration.shared
 
@@ -55,6 +57,7 @@ struct PaywallView: View {
                 header
                 benefitsCard
                 credibilityLine
+                exampleSection
 
                 if productsReady {
                     planCards
@@ -179,6 +182,126 @@ struct PaywallView: View {
             .foregroundStyle(AppPalette.inkSoft)
             .fixedSize(horizontal: false, vertical: true)
         }
+    }
+
+    // MARK: - 3b. "See an example" preview
+
+    /// A reveal affordance + a STATIC, clearly-labeled sample of premium AI
+    /// output (a swing report: 0–100 score + a few coaching bullets). Shows
+    /// the value before the wall WITHOUT granting functional usage. The
+    /// "Example" label keeps it honest — this is not real user data.
+    private var exampleSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Button {
+                withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.25)) {
+                    showExample.toggle()
+                }
+            } label: {
+                HStack(spacing: 8) {
+                    Image(systemName: "eye")
+                        .font(.subheadline.weight(.bold))
+                    Text(showExample
+                         ? t("Hide example", "Örneği gizle")
+                         : t("See an example", "Bir örnek gör"))
+                        .font(.subheadline.weight(.bold))
+                    Spacer(minLength: 0)
+                    Image(systemName: showExample ? "chevron.up" : "chevron.down")
+                        .font(.footnote.weight(.bold))
+                }
+                .foregroundStyle(AppPalette.clay)
+                .padding(.vertical, 12)
+                .padding(.horizontal, 16)
+                .frame(maxWidth: .infinity)
+                .background(AppPalette.clay.opacity(0.08))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 14, style: .continuous)
+                        .stroke(AppPalette.clay.opacity(0.25), lineWidth: 1)
+                )
+                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+            }
+            .buttonStyle(PressableCardStyle())
+
+            if showExample {
+                sampleReportCard
+                    .transition(.opacity)
+            }
+        }
+    }
+
+    /// Static sample swing report, styled like the real `MatchAnalysisCard`
+    /// (photo header band + parchment body). An "Example" pill makes clear
+    /// this is illustrative, not the user's own analysis.
+    private var sampleReportCard: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            // Header band with score + Example pill (mirrors the real card).
+            HStack(spacing: 12) {
+                ScoreRing(size: 64, score: 82, accent: .white,
+                          track: .white.opacity(0.28))
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(t("Forehand · Sample", "Forehand · Örnek"))
+                        .font(.caption.weight(.heavy))
+                        .tracking(0.6)
+                        .foregroundStyle(.white.opacity(0.9))
+                        .textCase(.uppercase)
+                    Text(t("Swing score 82 / 100", "Vuruş skoru 82 / 100"))
+                        .font(.headline)
+                        .foregroundStyle(.white)
+                }
+                Spacer(minLength: 8)
+                Text(t("Example", "Örnek"))
+                    .font(.caption2.weight(.heavy))
+                    .textCase(.uppercase)
+                    .tracking(0.5)
+                    .foregroundStyle(AppPalette.clay)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(Capsule().fill(.white))
+            }
+            .padding(16)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .brandedPhoto("PhotoServe", scrim: .full, cornerRadius: 0)
+
+            SwingReportText(text: sampleReportText)
+                .padding(16)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppPalette.parchment)
+        .overlay(
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .stroke(AppPalette.sand, lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(t("Example AI swing report", "Örnek AI vuruş raporu"))
+    }
+
+    private var sampleReportText: String {
+        t(
+            """
+            **What's working**
+            • Clean unit turn — your shoulders coil early, giving you time to load.
+            • Solid contact point out in front, so the ball comes off with pace.
+
+            **What to work on**
+            • Your follow-through cuts short — finish over the shoulder for more topspin.
+            • Add a small split-step before the swing to set up balance.
+
+            **Try this next**
+            • 10 shadow swings focusing on a full, relaxed finish.
+            """,
+            """
+            **İyi olanlar**
+            • Temiz gövde dönüşü — omuzların erken kuruluyor, yüklenmek için zaman tanıyor.
+            • Vuruş noktası önde ve sağlam, bu yüzden top hızlı çıkıyor.
+
+            **Geliştirilecekler**
+            • Bitiriş kısa kalıyor — daha çok topspin için omuz üstünden bitir.
+            • Vuruştan önce küçük bir split-step ekleyerek dengeni kur.
+
+            **Sırada bunu dene**
+            • Tam, rahat bir bitirişe odaklanarak 10 gölge vuruş.
+            """
+        )
     }
 
     // MARK: - 4. Plan cards

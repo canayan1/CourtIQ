@@ -17,6 +17,7 @@ struct MatchJournalEntryView: View {
 
     @State private var date: Date = Date()
     @State private var opponentName: String = ""
+    @State private var tournament: String = ""
     @State private var surface: MatchSurface = .hard
     @State private var result: MatchResult = .won
     @State private var score: String = ""
@@ -56,7 +57,7 @@ struct MatchJournalEntryView: View {
     @State private var didCommit = false
 
     private enum Field {
-        case opponent, score, preMatch, postMatch, takeaway
+        case opponent, tournament, score, preMatch, postMatch, takeaway
     }
 
     private var isEditing: Bool { entry != nil }
@@ -149,6 +150,20 @@ struct MatchJournalEntryView: View {
                 text: $opponentName
             )
             .focused($focusedField, equals: .opponent)
+            .font(.system(size: 18, weight: .semibold, design: .rounded))
+            .padding(12)
+            .background(AppPalette.parchment)
+            .overlay(
+                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    .stroke(AppPalette.sand, lineWidth: 1)
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+
+            TextField(
+                lang.t("matches.tournament_placeholder"),
+                text: $tournament
+            )
+            .focused($focusedField, equals: .tournament)
             .font(.system(size: 18, weight: .semibold, design: .rounded))
             .padding(12)
             .background(AppPalette.parchment)
@@ -696,6 +711,8 @@ struct MatchJournalEntryView: View {
             id: entry?.id ?? stableEntryID,
             date: date,
             opponentName: opponentName.trimmingCharacters(in: .whitespacesAndNewlines),
+            tournament: tournament.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                ? nil : tournament.trimmingCharacters(in: .whitespacesAndNewlines),
             surface: surface,
             // This editor only ever edits already-completed matches.
             status: .completed,
@@ -749,6 +766,7 @@ struct MatchJournalEntryView: View {
         guard let entry, date != entry.date else { return }
         date = entry.date
         opponentName = entry.opponentName
+        tournament = entry.tournament ?? ""
         surface = entry.surface
         result = entry.result ?? .won
         score = entry.score

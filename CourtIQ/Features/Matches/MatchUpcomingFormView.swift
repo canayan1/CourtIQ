@@ -14,6 +14,7 @@ struct MatchUpcomingFormView: View {
 
     @State private var date: Date = Date()
     @State private var opponentName: String = ""
+    @State private var tournament: String = ""
     @State private var surface: MatchSurface = .hard
     @State private var plan: String = ""
 
@@ -55,6 +56,11 @@ struct MatchUpcomingFormView: View {
                 MatchFormComponents.BoxedField(
                     placeholder: lang.t("matches.opponent_placeholder"),
                     text: $opponentName
+                )
+
+                MatchFormComponents.BoxedField(
+                    placeholder: lang.t("matches.tournament_placeholder"),
+                    text: $tournament
                 )
 
                 MatchFormComponents.SurfacePicker(surface: $surface)
@@ -192,6 +198,8 @@ struct MatchUpcomingFormView: View {
             id: entryID,
             date: date,
             opponentName: opponentName.trimmingCharacters(in: .whitespacesAndNewlines),
+            tournament: tournament.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                ? nil : tournament.trimmingCharacters(in: .whitespacesAndNewlines),
             surface: surface,
             status: status,
             result: nil,

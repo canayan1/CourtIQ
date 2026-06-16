@@ -28,6 +28,8 @@ struct MatchesListView: View {
             VStack(alignment: .leading, spacing: 16) {
                 streakHeader
                     .reveal(appeared: appeared, index: 0, reduceMotion: reduceMotion)
+                colorLegend
+                    .reveal(appeared: appeared, index: 0, reduceMotion: reduceMotion)
                 mentalCheckShortcut
                     .reveal(appeared: appeared, index: 1, reduceMotion: reduceMotion)
                 if matches.entries.isEmpty {
@@ -138,6 +140,39 @@ struct MatchesListView: View {
                 .stroke(AppPalette.sand, lineWidth: 1)
         )
         .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+    }
+
+    // MARK: - Color legend
+
+    /// Subtle row explaining the semantic colors used across rows + calendar:
+    /// moss = win, alert = loss, clay = upcoming. Keeps the dots
+    /// self-explanatory without adding chrome.
+    private var colorLegend: some View {
+        HStack(spacing: 10) {
+            legendChip(color: AppPalette.moss, label: lang.t("matches.legend_win"))
+            legendChip(color: AppPalette.alert, label: lang.t("matches.legend_loss"))
+            legendChip(color: AppPalette.clay, label: lang.t("matches.legend_upcoming"))
+            Spacer(minLength: 0)
+        }
+        .accessibilityElement(children: .combine)
+    }
+
+    private func legendChip(color: Color, label: String) -> some View {
+        HStack(spacing: 6) {
+            Circle()
+                .fill(color)
+                .frame(width: 10, height: 10)
+            Text(label)
+                .font(.caption2.weight(.semibold))
+                .foregroundStyle(AppPalette.inkSoft)
+        }
+        .padding(.horizontal, 10)
+        .padding(.vertical, 6)
+        .background(AppPalette.parchment)
+        .overlay(
+            Capsule().stroke(AppPalette.sand, lineWidth: 1)
+        )
+        .clipShape(Capsule())
     }
 
     // MARK: - Mental check shortcut
@@ -258,6 +293,15 @@ struct MatchesListView: View {
                 Text(dateDisplay(entry.date))
                     .font(.caption)
                     .foregroundStyle(AppPalette.clayText.opacity(0.7))
+
+                if let tournament = entry.displayTournament {
+                    Label(tournament, systemImage: "trophy.fill")
+                        .font(.system(size: 10, weight: .heavy, design: .rounded))
+                        .textCase(.uppercase)
+                        .tracking(0.4)
+                        .foregroundStyle(AppPalette.clayText.opacity(0.85))
+                        .lineLimit(1)
+                }
             }
 
             Spacer()

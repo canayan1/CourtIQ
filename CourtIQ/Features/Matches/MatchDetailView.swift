@@ -105,6 +105,13 @@ struct MatchDetailView: View {
                 Text(displayedOpponent)
                     .font(.system(size: 22, weight: .heavy, design: .rounded))
                     .foregroundStyle(.white)
+                if let tournament = entry.displayTournament {
+                    Label(tournament, systemImage: "trophy.fill")
+                        .font(.caption.weight(.heavy))
+                        .textCase(.uppercase)
+                        .tracking(0.5)
+                        .foregroundStyle(.white.opacity(0.9))
+                }
                 Text(dateDisplay)
                     .font(.subheadline)
                     .foregroundStyle(.white.opacity(0.9))

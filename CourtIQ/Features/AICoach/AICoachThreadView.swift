@@ -27,6 +27,7 @@ struct AICoachThreadView: View {
         VStack(spacing: 0) {
             messagesList
             if let err = errorBanner { banner(err) }
+            if quotaReached { quotaBanner }
             composer
         }
         .background(AppPalette.cream)
@@ -39,6 +40,10 @@ struct AICoachThreadView: View {
             }
         }
         .onAppear {
+            // Drop a stale "0 left" from a previous day so the composer
+            // isn't wrongly disabled on a fresh day. Server is the source
+            // of truth on the next real send.
+            aiClient.refreshQuotaForToday()
             workingThreadID = thread?.id
             // Bring up the keyboard the moment a brand-new chat opens —
             // the user came here to type, not to admire the empty space.
@@ -244,6 +249,36 @@ struct AICoachThreadView: View {
         .overlay(Rectangle().fill(AppPalette.alert.opacity(0.18)).frame(height: 1), alignment: .top)
     }
 
+    // MARK: - Quota-reached banner
+
+    /// True once the server has told us there are zero messages left today.
+    /// `remainingToday` is nil until the first call lands (or after a
+    /// fresh-day reset), so we only treat an explicit 0 as exhausted —
+    /// never an unknown.
+    private var quotaReached: Bool {
+        aiClient.remainingToday == 0
+    }
+
+    /// Inline notice shown above the composer when the daily quota is spent.
+    /// Pairs with the disabled composer so the user understands *why* they
+    /// can't type, instead of sending and hitting a generic error.
+    private var quotaBanner: some View {
+        HStack(spacing: 8) {
+            Image(systemName: "bolt.slash.fill")
+                .foregroundStyle(AppPalette.clay)
+            Text(lang.t("ai.quota_reached"))
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(AppPalette.ink)
+                .fixedSize(horizontal: false, vertical: true)
+            Spacer(minLength: 0)
+        }
+        .padding(.horizontal, 14)
+        .padding(.vertical, 10)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppPalette.clay.opacity(0.08))
+        .overlay(Rectangle().fill(AppPalette.clay.opacity(0.18)).frame(height: 1), alignment: .top)
+    }
+
     // MARK: - Composer
 
     private var composer: some View {
@@ -251,6 +286,7 @@ struct AICoachThreadView: View {
             TextField(lang.t("ai.composer_placeholder"), text: $input, axis: .vertical)
                 .focused($inputFocused)
                 .lineLimit(1...5)
+                .disabled(quotaReached)
                 .padding(10)
                 .background(AppPalette.parchment)
                 .overlay(
@@ -258,6 +294,7 @@ struct AICoachThreadView: View {
                         .stroke(AppPalette.sand, lineWidth: 1)
                 )
                 .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                .opacity(quotaReached ? 0.5 : 1)
 
             Button {
                 Task { await tappedSend() }
@@ -274,7 +311,8 @@ struct AICoachThreadView: View {
     }
 
     private var canSend: Bool {
-        !input.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        !quotaReached
+            && !input.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
 
     private func tappedSend() async {

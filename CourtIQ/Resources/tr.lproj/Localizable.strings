@@ -555,6 +555,10 @@
 "matches.takeaway_label" = "Tek çıkarım";
 "matches.takeaway_placeholder" = "Bir dahaki sefere değiştireceğin bir şey…";
 "matches.opponent_placeholder" = "Rakip adı";
+"matches.tournament_placeholder" = "Turnuva (isteğe bağlı) — örn. Kulüp Şampiyonası";
+"matches.legend_win" = "Galibiyet";
+"matches.legend_loss" = "Mağlubiyet";
+"matches.legend_upcoming" = "Yaklaşan";
 "matches.score_placeholder" = "Skor (örn 6-4, 3-6, 7-5)";
 "matches.pre_match_label" = "Maç öncesi plan";
 "matches.pre_match_placeholder" = "Bu rakibe karşı taktik planın ne?";
@@ -853,6 +857,7 @@
 "ai.quota_remaining_format" = "Bugün %d mesaj hakkın kaldı";
 "ai.quota_unknown" = "Günlük kontenjan gece yarısı yenilenir";
 "ai.quota_resets" = "Yerel saatle gece yarısı sıfırlanır";
+"ai.quota_reached" = "Günlük sınıra ulaşıldı — gece yarısı sıfırlanır.";
 "ai.error_sign_in_required" = "AI Koç'u kullanmak için Apple ile giriş yap.";
 "ai.error_send_generic" = "Gönderilemedi. Bağlantını kontrol et ve tekrar dene.";
 "ai.error_connect" = "AI Koç'a ulaşılamadı. Bağlantını kontrol edip tekrar dene.";

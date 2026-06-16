@@ -28,6 +28,7 @@ struct MatchPlayedFormView: View {
     // Meta
     @State private var date: Date = Date()
     @State private var opponentName: String = ""
+    @State private var tournament: String = ""
     @State private var surface: MatchSurface = .hard
     @State private var result: MatchResult = .won
     @State private var score: String = ""
@@ -193,6 +194,11 @@ struct MatchPlayedFormView: View {
                 text: $opponentName
             )
 
+            MatchFormComponents.BoxedField(
+                placeholder: lang.t("matches.tournament_placeholder"),
+                text: $tournament
+            )
+
             HStack(spacing: 12) {
                 MatchFormComponents.SurfacePicker(surface: $surface)
                 MatchFormComponents.ResultPicker(result: $result)
@@ -353,6 +359,8 @@ struct MatchPlayedFormView: View {
             id: entryID,
             date: date,
             opponentName: opponentName.trimmingCharacters(in: .whitespacesAndNewlines),
+            tournament: tournament.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                ? nil : tournament.trimmingCharacters(in: .whitespacesAndNewlines),
             surface: surface,
             status: .completed,
             result: result,
