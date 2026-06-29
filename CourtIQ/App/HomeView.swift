@@ -53,6 +53,12 @@ struct HomeView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
                 header
+                    // Hit-test the profile button ABOVE the hero. The hero's
+                    // iOS 18 zoom-transition source bleeds its tap region up
+                    // into this header row, so without this the corner profile
+                    // tap was landing on the swing NavigationLink instead of
+                    // the profile button.
+                    .zIndex(1)
 
                 heroSection
                     .reveal(appeared: appeared, index: 0, reduceMotion: reduceMotion)
@@ -187,6 +193,9 @@ struct HomeView: View {
         // row stays composed at the largest sizes instead of crushing the ring.
         .dynamicTypeSize(...DynamicTypeSize.accessibility2)
         .brandedPhoto("PhotoServe", scrim: .hero, cornerRadius: 24)
+        // Constrain the hero's tap region to exactly the card so it can't bleed
+        // into the header above (paired with the header's .zIndex(1)).
+        .contentShape(Rectangle())
     }
 
     @ViewBuilder
