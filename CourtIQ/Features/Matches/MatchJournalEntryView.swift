@@ -14,6 +14,9 @@ struct MatchJournalEntryView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var matches: MatchEntryManager
     @EnvironmentObject private var lang: LanguageManager
+    @EnvironmentObject private var session: UserSessionManager
+
+    private let service = MatchAnalysisService()
 
     @State private var date: Date = Date()
     @State private var opponentName: String = ""
@@ -56,6 +59,10 @@ struct MatchJournalEntryView: View {
     /// shadowed by a second write when the view tears down.
     @State private var didCommit = false
 
+    /// Re-analysis (after an edit) state + the first-run consent gate.
+    @State private var isReanalyzing = false
+    @State private var showConsent = false
+
     private enum Field {
         case opponent, tournament, score, preMatch, postMatch, takeaway
     }
@@ -65,9 +72,13 @@ struct MatchJournalEntryView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
-                if let report = entry?.aiReport?.trimmingCharacters(in: .whitespacesAndNewlines),
-                   !report.isEmpty {
-                    MatchAnalysisCard(title: lang.t("matches.ai_report_title"), report: report)
+                if isReanalyzing {
+                    reanalyzingCard
+                } else if let report = liveReport {
+                    VStack(alignment: .leading, spacing: 10) {
+                        MatchAnalysisCard(title: lang.t("matches.ai_report_title"), report: report)
+                        reanalyzeButton
+                    }
                 }
                 metaBlock
                 preMatchBlock
@@ -85,6 +96,12 @@ struct MatchJournalEntryView: View {
                          ? lang.t("matches.journal_title_edit")
                          : lang.t("matches.journal_title_new"))
         .navigationBarTitleDisplayMode(.inline)
+        // First-run disclosure before re-analysis sends profile data to Gemini.
+        .sheet(isPresented: $showConsent) {
+            NavigationStack {
+                AIConsentView(spec: .match) { reanalyze() }
+            }
+        }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 if !isEditing {
@@ -703,6 +720,93 @@ struct MatchJournalEntryView: View {
             || !postMatchNotes.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
 
+    /// The live record from the store (the captured `entry` is an immutable
+    /// snapshot that never reflects a re-analysis).
+    private var liveEntry: MatchEntry? {
+        matches.entry(withID: entry?.id ?? stableEntryID)
+    }
+
+    /// AI report read LIVE so a fresh re-analysis shows immediately.
+    private var liveReport: String? {
+        let r = liveEntry?.aiReport?.trimmingCharacters(in: .whitespacesAndNewlines)
+        return (r?.isEmpty == false) ? r : nil
+    }
+
+    private var reanalyzingCard: some View {
+        HStack(spacing: 12) {
+            ProgressView().tint(AppPalette.clay)
+            Text(lang.language == .turkish ? "Analiz güncelleniyor…" : "Updating analysis…")
+                .font(.subheadline).foregroundStyle(AppPalette.inkSoft)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(16)
+        .background(AppPalette.parchment)
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+    }
+
+    private var reanalyzeButton: some View {
+        Button { reanalyze() } label: {
+            Label(lang.language == .turkish ? "Yeniden analiz et" : "Re-analyze",
+                  systemImage: "arrow.triangle.2.circlepath")
+                .font(.subheadline.weight(.semibold))
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 11)
+        }
+        .buttonStyle(.bordered)
+        .tint(AppPalette.clay)
+    }
+
+    /// Re-run the compound AI analysis on the freshly-edited match so the
+    /// report reflects the latest changes (it was previously frozen at the
+    /// time of first analysis). Persists edits, gates on consent, then updates
+    /// `aiReport` in place.
+    private func reanalyze() {
+        let edited = buildEntry(asDraft: false)
+        matches.save(edited)
+        focusedField = nil
+        guard AIConsent.isAccepted(.match) else { showConsent = true; return }
+        isReanalyzing = true
+        Task {
+            async let minHold: Void = Task.sleep(nanoseconds: 2_500_000_000) as Void
+            var fresh: String?
+            do {
+                let supabaseSession = try await ensureSessionWithRetry()
+                let summary = MatchAnalysisService.buildSummary(
+                    for: edited, mode: .compound, language: lang.language
+                )
+                fresh = try await service.analyze(
+                    mode: .compound, summary: summary, session: supabaseSession
+                )
+            } catch {
+                fresh = nil
+            }
+            try? await minHold
+            if let fresh {
+                var updated = edited
+                updated.aiReport = fresh
+                matches.save(updated)
+                Haptics.success()
+            } else {
+                Haptics.error()
+            }
+            isReanalyzing = false
+        }
+    }
+
+    private func ensureSessionWithRetry(attempts: Int = 3) async throws -> SupabaseSession {
+        var lastError: Error?
+        for i in 0..<attempts {
+            do { return try await session.ensureAnonymousSession() }
+            catch {
+                lastError = error
+                if i < attempts - 1 {
+                    try? await Task.sleep(nanoseconds: UInt64(700_000_000) * UInt64(i + 1))
+                }
+            }
+        }
+        throw lastError ?? RemoteDataError.missingConfiguration
+    }
+
     /// Build a MatchEntry from the current field state. `asDraft` controls
     /// whether the entry is flagged as a pre-save draft (excluded from
     /// stats) or a fully committed log.
@@ -729,9 +833,11 @@ struct MatchJournalEntryView: View {
             postMatchAudioFile: postMatchAudioFile,
             photoFileNames: photoFileNames,
             // Preserve AI fields so editing notes never discards a report.
-            aiPreComment: entry?.aiPreComment,
-            aiReport: entry?.aiReport,
-            hadPlan: entry?.hadPlan,
+            // Read from the LIVE store (not the captured `entry`, which never
+            // updates) so a fresh re-analysis isn't clobbered on autosave.
+            aiPreComment: liveEntry?.aiPreComment ?? entry?.aiPreComment,
+            aiReport: liveEntry?.aiReport ?? entry?.aiReport,
+            hadPlan: liveEntry?.hadPlan ?? entry?.hadPlan,
             isQuickLog: false,
             isDraft: asDraft
         )
