@@ -130,8 +130,11 @@ struct HomeView: View {
                 Haptics.tap()
                 showProfile = true
             } label: {
-                TennisAvatarView(config: avatarManager.config, size: 30)
-                    .clipShape(Circle())
+                Image(systemName: "figure.tennis")
+                    .font(.system(size: 19, weight: .semibold))
+                    .foregroundStyle(AppPalette.clay)
+                    .frame(width: 40, height: 40)
+                    .background(AppPalette.parchment, in: Circle())
                     .overlay(Circle().stroke(AppPalette.sand, lineWidth: 1))
             }
             .accessibilityLabel(lang.t("today.profile_a11y"))

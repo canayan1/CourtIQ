@@ -78,7 +78,7 @@ struct ProShotAnimationView: View {
     enum Hitter { case you, op }
 
     var body: some View {
-        ZStack {
+        ZStack(alignment: .topLeading) {
             VStack(spacing: 0) {
                 topBar
                 headerInfo
@@ -94,6 +94,23 @@ struct ProShotAnimationView: View {
                     .transition(.opacity)
                     .zIndex(10)
             }
+
+            // Close (X) lives ABOVE the intro overlay so it ALWAYS dismisses the
+            // screen. Previously the intro (zIndex 10) covered the top-bar X, so
+            // the first tap only dismissed the intro — the "X doesn't work" bug.
+            Button {
+                dismiss()
+            } label: {
+                Image(systemName: "xmark")
+                    .font(.headline.weight(.semibold))
+                    .foregroundStyle(showIntro ? .white : AppPalette.ink)
+                    .padding(12)
+                    .contentShape(Rectangle())
+            }
+            .padding(.leading, 10)
+            .padding(.top, 4)
+            .zIndex(20)
+            .accessibilityLabel(lang.t("common.close"))
         }
         .onAppear {
             prime()
@@ -106,13 +123,9 @@ struct ProShotAnimationView: View {
 
     private var topBar: some View {
         HStack {
-            Button {
-                dismiss()
-            } label: {
-                Image(systemName: "xmark")
-                    .font(.headline.weight(.semibold))
-                    .foregroundStyle(AppPalette.ink)
-            }
+            // X moved to a top-level overlay (always above the intro); keep a
+            // matching spacer so the player name stays centered.
+            Color.clear.frame(width: 22, height: 22)
             Spacer()
             Text(pattern.playerName)
                 .font(.caption.weight(.heavy))
