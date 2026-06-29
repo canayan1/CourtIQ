@@ -26,7 +26,6 @@ struct HomeView: View {
     @State private var showProfile = false
     @State private var showDrill = false
     @State private var heroBounce = false
-    @Namespace private var ns
 
     /// Latest swing score (0–100) for the hero ring, if any swing has been
     /// scored. nil → first-use state (a play glyph, no number).
@@ -52,14 +51,6 @@ struct HomeView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
-                header
-                    // Hit-test the profile button ABOVE the hero. The hero's
-                    // iOS 18 zoom-transition source bleeds its tap region up
-                    // into this header row, so without this the corner profile
-                    // tap was landing on the swing NavigationLink instead of
-                    // the profile button.
-                    .zIndex(1)
-
                 heroSection
                     .reveal(appeared: appeared, index: 0, reduceMotion: reduceMotion)
 
@@ -91,6 +82,16 @@ struct HomeView: View {
             .padding(20)
         }
         .background(AppPalette.cream)
+        // Header pinned ABOVE the scroll content as its own layer, so the
+        // hero's NavigationLink can never capture taps meant for the profile
+        // button — this is what was hijacking the top-right icon into Swing.
+        .safeAreaInset(edge: .top, spacing: 0) {
+            header
+                .padding(.horizontal, 20)
+                .padding(.top, 4)
+                .padding(.bottom, 10)
+                .background(AppPalette.cream)
+        }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar(.hidden, for: .navigationBar)
         .onAppear {
@@ -149,25 +150,18 @@ struct HomeView: View {
 
     // MARK: - Flagship hero
 
-    @ViewBuilder
     private var heroSection: some View {
-        if #available(iOS 18, *) {
-            NavigationLink {
-                SwingAnalysisView()
-                    .navigationTransition(.zoom(sourceID: "swing", in: ns))
-            } label: {
-                heroLabel
-            }
-            .buttonStyle(PressableCardStyle())
-            .matchedTransitionSource(id: "swing", in: ns)
-        } else {
-            NavigationLink {
-                SwingAnalysisView()
-            } label: {
-                heroLabel
-            }
-            .buttonStyle(PressableCardStyle())
+        // Plain NavigationLink — NO iOS 18 zoom transition. The zoom's
+        // `matchedTransitionSource` bled the hero's tap region up across the
+        // top of the screen, so taps anywhere near the top (including the
+        // profile button) were hijacked into opening Swing. Dropping the zoom
+        // restores normal, card-bounded hit-testing.
+        NavigationLink {
+            SwingAnalysisView()
+        } label: {
+            heroLabel
         }
+        .buttonStyle(PressableCardStyle())
     }
 
     private var heroLabel: some View {
