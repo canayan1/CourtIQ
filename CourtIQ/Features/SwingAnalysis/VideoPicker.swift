@@ -17,15 +17,23 @@ struct VideoPicker: UIViewControllerRepresentable {
 
     func makeUIViewController(context: Context) -> UIImagePickerController {
         let picker = UIImagePickerController()
+        // Movie-only. Set mediaTypes BEFORE switching the camera into its video
+        // capture mode: UIKit validates `cameraCaptureMode` against the allowed
+        // `mediaTypes` and throws an exception (app crash) if movie capture
+        // isn't permitted yet — which is exactly what "Record a swing" hit.
+        picker.mediaTypes = [UTType.movie.identifier]
         // Guard against simulators / devices without a camera: fall back to
         // the library so we never present an unusable controller.
         if sourceType == .camera, UIImagePickerController.isSourceTypeAvailable(.camera) {
             picker.sourceType = .camera
-            picker.cameraCaptureMode = .video
+            if let modes = UIImagePickerController.availableCaptureModes(for: .rear) ??
+                           UIImagePickerController.availableCaptureModes(for: .front),
+               modes.contains(NSNumber(value: UIImagePickerController.CameraCaptureMode.video.rawValue)) {
+                picker.cameraCaptureMode = .video
+            }
         } else {
             picker.sourceType = .photoLibrary
         }
-        picker.mediaTypes = [UTType.movie.identifier]
         picker.videoMaximumDuration = 20
         picker.videoQuality = .typeHigh
         picker.delegate = context.coordinator
