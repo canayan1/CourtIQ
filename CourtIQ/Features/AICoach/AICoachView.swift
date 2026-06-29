@@ -153,6 +153,14 @@ struct AICoachView: View {
                     threadRow(thread)
                 }
                 .buttonStyle(PressableCardStyle())
+                .contextMenu {
+                    Button(role: .destructive) {
+                        Haptics.tap()
+                        aiClient.deleteThreadLocally(id: thread.id)
+                    } label: {
+                        Label(lang.t("common.delete"), systemImage: "trash")
+                    }
+                }
             }
         }
     }
