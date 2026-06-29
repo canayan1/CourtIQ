@@ -43,8 +43,8 @@ struct SwingAnalysisCopy {
             return t("Film your whole hit — serves, forehands, backhands together. Side view, full body in frame, good even light. The AI identifies each stroke and breaks it down separately.",
                      "Tüm antrenmanını çek — servis, forehand, backhand bir arada. Yandan, tüm vücut karede, iyi ışık. AI her vuruşu tanıyıp ayrı ayrı çözümler.")
         }
-        return t("Film from the side, 6–10 seconds — one clean swing with your full body in frame, in good even light. A steady phone (lean it or use a tripod) reads best.",
-                 "Yandan çek, 6–10 saniye — iyi ve eşit ışıkta, tüm vücudun karede, tek temiz vuruş. Sabit telefon (bir yere yasla ya da tripod) en iyi sonucu verir.")
+        return t("Film from the side with your full body in frame, in good even light — and hit 2–3 reps, not just one. Repeated swings let the AI spot the faults that recur, which is far more reliable than reading a single swing. A steady phone (lean it or use a tripod) reads best.",
+                 "Yandan, tüm vücudun karede ve iyi eşit ışıkta çek — tek vuruş değil, 2–3 tekrar yap. Tekrarlı vuruşlar AI'ın tekrar eden hataları yakalamasını sağlar; bu tek vuruşu okumaktan çok daha güvenilir. Sabit telefon (yasla ya da tripod) en iyisidir.")
     }
     var continueCTA: String { t("Continue", "Devam") }
 
