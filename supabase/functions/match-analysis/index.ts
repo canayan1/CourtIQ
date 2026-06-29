@@ -87,7 +87,9 @@ Deno.serve(async (req) => {
   const geminiBody = {
     systemInstruction: { parts: [{ text: systemPrompt(mode) }] },
     contents: [{ role: "user", parts: [{ text: summary }] }],
-    generationConfig: { maxOutputTokens: 1024, temperature: 0.6 },
+    // maxOutputTokens INCLUDES thinking tokens on gemini-2.5 models; 1024 can be
+    // eaten by thinking and truncate the report mid-sentence. Give it room.
+    generationConfig: { maxOutputTokens: 4096, temperature: 0.6 },
   };
 
   let resp: Response;

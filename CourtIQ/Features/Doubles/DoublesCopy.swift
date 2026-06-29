@@ -100,6 +100,11 @@ struct DoublesCopy {
 
     /// A relative, localized phrase for `date` ("2 days ago" / "2 gün önce").
     func relativeDate(_ date: Date) -> String {
+        // Within a minute, RelativeDateTimeFormatter reads as "in 0 seconds";
+        // show a friendly "just now" for a freshly generated report instead.
+        if abs(date.timeIntervalSinceNow) < 60 {
+            return t("just now", "az önce")
+        }
         let formatter = RelativeDateTimeFormatter()
         formatter.unitsStyle = .full
         formatter.locale = Locale(identifier: lang == .turkish ? "tr_TR" : "en_US")
