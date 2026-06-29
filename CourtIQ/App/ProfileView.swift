@@ -10,6 +10,8 @@ struct ProfileView: View {
     @EnvironmentObject private var drillManager: CourtTapDrillManager
     @EnvironmentObject private var matchManager: MatchEntryManager
     @ObservedObject private var tennisProfileStore = TennisProfileStore.shared
+    @ObservedObject private var swingStore = SwingAnalysisStore.shared
+    @ObservedObject private var doublesStore = DoublesStore.shared
     @State private var showLockerRoom = false
 
     @State private var showPaywall = false
@@ -22,6 +24,8 @@ struct ProfileView: View {
     /// `dismiss` is non-trivial and we show a Done button. When it is pushed in
     /// a NavigationStack, the toolbar item is harmless.
     @Environment(\.dismiss) private var dismiss
+
+    private func t(_ en: String, _ tr: String) -> String { lang.language == .turkish ? tr : en }
 
     var body: some View {
         ScrollView {
@@ -55,6 +59,12 @@ struct ProfileView: View {
                         .environmentObject(lang)
                     streakSection
                     historySection
+                }
+
+                // ACTIVITY — what you've used + your doubles partners.
+                band(t("Activity", "Aktivite")) {
+                    activitySummarySection
+                    partnersSection
                 }
 
                 // ACCOUNT — feedback, controls, notifications, legal.
@@ -617,6 +627,68 @@ struct ProfileView: View {
         // "Hero + select cards": the Tennis profile row gets a PhotoCourt
         // background; foreground flips to white over the duotone scrim.
         .brandedPhoto("PhotoCourt", scrim: .bottom, cornerRadius: 18)
+    }
+
+    /// "What you've used" — counts across the app's core surfaces.
+    private var activityStats: [(label: String, value: Int)] {
+        [
+            (t("Swings", "Vuruşlar"), swingStore.records.count),
+            (t("Matches", "Maçlar"), matchManager.entries.count),
+            (t("Drills", "Drill'ler"), drillManager.sessions.count),
+            (t("Quizzes", "Quizler"), dailyQuizManager.totalQuizzesCompleted),
+        ]
+    }
+
+    private var activitySummarySection: some View {
+        LazyVGrid(columns: [GridItem(.flexible(), spacing: 10), GridItem(.flexible(), spacing: 10)], spacing: 10) {
+            ForEach(activityStats, id: \.label) { stat in
+                VStack(spacing: 4) {
+                    Text("\(stat.value)")
+                        .font(.system(size: 26, weight: .heavy, design: .rounded))
+                        .foregroundStyle(AppPalette.clay)
+                    Text(stat.label)
+                        .font(.caption)
+                        .foregroundStyle(AppPalette.inkSoft)
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 14)
+                .background(AppPalette.parchment)
+                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous).stroke(AppPalette.sand, lineWidth: 1))
+            }
+        }
+    }
+
+    private var partnersSection: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(t("Doubles partners", "Çift partnerlerin"))
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(AppPalette.ink)
+            if doublesStore.partners.isEmpty {
+                Text(t("No partners yet — invite one from the Doubles tab.", "Henüz partner yok — Doubles sekmesinden davet et."))
+                    .font(.footnote)
+                    .foregroundStyle(AppPalette.inkSoft)
+                    .fixedSize(horizontal: false, vertical: true)
+            } else {
+                ForEach(doublesStore.partners) { partner in
+                    HStack(spacing: 10) {
+                        Image(systemName: "person.fill")
+                            .font(.footnote)
+                            .foregroundStyle(AppPalette.moss)
+                        Text(partner.name)
+                            .font(.subheadline)
+                            .foregroundStyle(AppPalette.ink)
+                        Spacer()
+                    }
+                    .padding(.vertical, 4)
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(16)
+        .background(AppPalette.parchment)
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).stroke(AppPalette.sand, lineWidth: 1))
     }
 
     private var notificationsSection: some View {
