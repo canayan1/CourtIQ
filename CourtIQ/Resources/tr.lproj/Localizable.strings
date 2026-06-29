@@ -4,6 +4,7 @@
 "common.done" = "Bitti";
 "common.save" = "Kaydet";
 "common.delete" = "Sil";
+"common.close" = "Kapat";
 "common.edit" = "Düzenle";
 "common.report" = "Bildir";
 "common.post" = "Gönder";
@@ -245,6 +246,7 @@
 "profile.title" = "Profil";
 "profile.delete_title" = "Hesap silinsin mi?";
 "profile.delete_msg" = "Bu, hesabını, senkronize ilerlemenini ve DropVolley'daki topluluk içeriğini kalıcı olarak siler.";
+"profile.delete_account" = "Hesabı Sil";
 "profile.reset_title" = "Yerel veriler sıfırlansın mı?";
 "profile.reset_msg" = "Bu, bu cihazdaki önbelleğe alınmış ilerlemeyi temizler. Senkronize hesap verileri bir sonraki başlatmada yeniden indirilecektir.";
 "profile.quiz_empty" = "Arşivini başlatmak için ilk günlük sınavını tamamla.";

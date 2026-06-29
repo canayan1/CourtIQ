@@ -101,7 +101,7 @@ struct SwingAnalysisView: View {
         // First-run consent before any frame leaves the device.
         .sheet(isPresented: $showConsent) {
             NavigationStack {
-                SwingAnalysisConsentView(onAccepted: {
+                AIConsentView(spec: .swing, onAccepted: {
                     // Consent recorded → continue with the clip we held back.
                     if let url = pendingVideoURL {
                         startAnalysis(videoURL: url)
@@ -111,7 +111,9 @@ struct SwingAnalysisView: View {
         }
         .alert(copy.errorTitle, isPresented: $showError) {
             Button(copy.retryCTA) {
-                if let url = pendingVideoURL { startAnalysis(videoURL: url) }
+                // Route through handlePicked so a retry re-checks consent
+                // (e.g. if the consent version was bumped mid-session).
+                if let url = pendingVideoURL { handlePicked(url) }
             }
             Button(copy.cancelCTA, role: .cancel) { phase = .capture }
         } message: {
@@ -290,7 +292,7 @@ struct SwingAnalysisView: View {
     /// the device; otherwise go straight to analysis.
     private func handlePicked(_ url: URL) {
         pendingVideoURL = url
-        if SwingAnalysisConsent.isAccepted {
+        if AIConsent.isAccepted(.swing) {
             startAnalysis(videoURL: url)
         } else {
             showConsent = true

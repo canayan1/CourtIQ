@@ -231,12 +231,15 @@ private struct RootView: View {
             if !session.hasCompletedOnboarding {
                 OnboardingFlowView(onComplete: { session.completeOnboarding() })
             } else if !session.subscriptionManager.entitlementState.isPremium {
-                // Hard paywall — no free tier. The app cannot be entered
-                // without an active subscription (or trial). This gate
-                // re-renders when the entitlement changes, because
-                // SubscriptionManager forwards objectWillChange to `session`.
+                // Subscription gate — premium unlocks the full app. The user
+                // can always tap "Back" to return to onboarding without
+                // purchasing, so the "Go Premium" page is never a dead-end
+                // (App Store Guideline 5.6). Re-renders when the entitlement
+                // changes (SubscriptionManager forwards objectWillChange).
                 NavigationStack {
-                    PaywallView(source: "Gate", allowsDismiss: false)
+                    PaywallView(source: "Gate", allowsDismiss: false, onExit: {
+                        session.returnToOnboarding()
+                    })
                 }
             } else if healthAckVersion < HealthAcknowledgment.currentVersion {
                 // Block access to training/mobility/quiz content until the

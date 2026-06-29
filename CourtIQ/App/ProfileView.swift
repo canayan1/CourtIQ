@@ -516,8 +516,12 @@ struct ProfileView: View {
             }
             .buttonStyle(.bordered)
 
-            if session.isSignedInWithApple {
-                Button(isDeleting ? lang.t("common.deleting") : lang.t("common.delete"), role: .destructive) {
+            // Account deletion (Guideline 5.1.1(v)) must be reachable for ANY
+            // signed-in state — including Guest, who has a local profile and
+            // (once an AI feature is used) an anonymous server session. This
+            // was previously gated on Apple sign-in only, hiding it from guests.
+            if session.isSignedInWithApple || session.isGuest {
+                Button(isDeleting ? lang.t("common.deleting") : lang.t("profile.delete_account"), role: .destructive) {
                     showDeleteConfirmation = true
                 }
                 .buttonStyle(.bordered)

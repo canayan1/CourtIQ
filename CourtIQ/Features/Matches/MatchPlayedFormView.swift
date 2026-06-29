@@ -24,6 +24,9 @@ struct MatchPlayedFormView: View {
 
     @State private var phase: Phase = .form
 
+    /// First-run consent before any match detail is sent to Google (Gemini).
+    @State private var showConsent = false
+
     // Plan
     @State private var hadPlan: Bool = false
     @State private var plan: String = ""
@@ -67,6 +70,12 @@ struct MatchPlayedFormView: View {
             }
         }
         .onAppear { if let initialDate { date = initialDate } }
+        // First-run disclosure before any match detail leaves the device.
+        .sheet(isPresented: $showConsent) {
+            NavigationStack {
+                AIConsentView(spec: .match) { startAnalysis() }
+            }
+        }
     }
 
     // MARK: - Form
@@ -320,6 +329,9 @@ struct MatchPlayedFormView: View {
         let entry = buildEntry(report: matches.entry(withID: entryID)?.aiReport)
         matches.save(entry)
         focusedField = nil
+        // Gate the third-party AI send on explicit consent (first run only).
+        // The match is already saved locally above, so declining loses nothing.
+        guard AIConsent.isAccepted(.match) else { showConsent = true; return }
         phase = .analyzing
 
         Task {

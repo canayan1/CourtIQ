@@ -21,6 +21,10 @@ struct PaywallView: View {
     /// When false (the hard-paywall gate), the dismiss/"Done" control is
     /// hidden so the user cannot bypass the wall without subscribing.
     var allowsDismiss: Bool = true
+    /// Optional escape hatch for the launch gate: shows a "Back" control that
+    /// returns the user to onboarding without purchasing, so the "Go Premium"
+    /// page is never a dead-end (App Store Guideline 5.6).
+    var onExit: (() -> Void)? = nil
 
     @Environment(\.dismiss) private var dismiss
     @Environment(\.openURL) private var openURL
@@ -84,6 +88,17 @@ struct PaywallView: View {
         .navigationTitle(t("Go Premium", "Premium’a Geç"))
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
+            if let onExit {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        onExit()
+                    } label: {
+                        Label(t("Back", "Geri"), systemImage: "chevron.left")
+                            .labelStyle(.titleAndIcon)
+                    }
+                    .tint(AppPalette.inkSoft)
+                }
+            }
             if allowsDismiss {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(t("Done", "Bitti")) { dismiss() }
@@ -453,12 +468,27 @@ struct PaywallView: View {
                     .foregroundStyle(AppPalette.ink)
             }
             Text(t(
-                "Hang tight — fetching current pricing from the App Store. If this persists, check your connection and try again.",
-                "Bir saniye — App Store’dan güncel fiyatlar alınıyor. Sürerse bağlantını kontrol edip tekrar dene."
+                "Hang tight — fetching current pricing from the App Store. If this persists, check your connection and tap Try again.",
+                "Bir saniye — App Store’dan güncel fiyatlar alınıyor. Sürerse bağlantını kontrol edip Tekrar Dene’ye dokun."
             ))
             .font(.footnote)
             .foregroundStyle(AppPalette.inkSoft)
             .fixedSize(horizontal: false, vertical: true)
+
+            // Explicit retry so a cold/failed StoreKit load on the (non-
+            // dismissible) gate never strands the reviewer on a spinner with
+            // no way to recover — the prior "purchase flow did not display".
+            Button {
+                Task { await manager.loadOfferings() }
+            } label: {
+                Label(t("Try again", "Tekrar Dene"), systemImage: "arrow.clockwise")
+                    .font(.subheadline.weight(.bold))
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 12)
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(AppPalette.clay)
+            .padding(.top, 4)
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)

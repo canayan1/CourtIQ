@@ -860,9 +860,26 @@ final class UserSessionManager: ObservableObject {
         }
     }
 
+    /// Returns the user to onboarding from the subscription gate WITHOUT
+    /// signing out or wiping data — so the "Go Premium" page is always
+    /// escapable (App Store Guideline 5.6). Profile + session persist;
+    /// finishing onboarding again brings the user back to the paywall.
+    func returnToOnboarding() {
+        hasCompletedOnboarding = false
+        defaults.set(false, forKey: onboardingKey)
+    }
+
     func deleteAccount() async {
         do {
-            try await authManager.deleteAccount()
+            // Delete the server-side account when one exists — an Apple account
+            // or an anonymous guest session. A pure-local guest has no remote
+            // account, so just clear the local identity. Either way the local
+            // data wipe below runs, so the account is fully removed in-app.
+            if authManager.remoteSession != nil {
+                try await authManager.deleteAccount()
+            } else {
+                await authManager.signOut()
+            }
             profileStore.deleteLocal()
             DailyQuizManager.shared.resetLocalData()
             TrainingProgressManager.shared.resetLocalData()

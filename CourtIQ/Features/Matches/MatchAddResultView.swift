@@ -33,6 +33,9 @@ struct MatchAddResultView: View {
     @FocusState private var focusedField: Field?
     private enum Field { case score, post, takeaway }
 
+    /// First-run consent before any match detail is sent to Google (Gemini).
+    @State private var showConsent = false
+
     private let service = MatchAnalysisService()
 
     var body: some View {
@@ -51,6 +54,12 @@ struct MatchAddResultView: View {
         }
         .navigationTitle(lang.t("matches.add_result_title"))
         .navigationBarTitleDisplayMode(.inline)
+        // First-run disclosure before any match detail leaves the device.
+        .sheet(isPresented: $showConsent) {
+            NavigationStack {
+                AIConsentView(spec: .match) { startAnalysis() }
+            }
+        }
     }
 
     private var form: some View {
@@ -209,6 +218,9 @@ struct MatchAddResultView: View {
         // The "add your result" reminder is no longer needed.
         NotificationManager.shared.cancelUpcomingMatchResultReminder(entryID: entry.id)
         focusedField = nil
+        // Gate the third-party AI send on explicit consent (first run only).
+        // The result is already saved locally above, so declining loses nothing.
+        guard AIConsent.isAccepted(.match) else { showConsent = true; return }
         phase = .analyzing
 
         Task {

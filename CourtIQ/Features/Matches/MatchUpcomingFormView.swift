@@ -26,6 +26,9 @@ struct MatchUpcomingFormView: View {
     @State private var analyzing = false
     @State private var analysisFailed = false
 
+    /// First-run consent before the plan is sent to Google (Gemini).
+    @State private var showConsent = false
+
     @FocusState private var focused: Bool
 
     private let service = MatchAnalysisService()
@@ -43,6 +46,12 @@ struct MatchUpcomingFormView: View {
             }
         }
         .onAppear { if let initialDate { date = initialDate } }
+        // First-run disclosure before the plan leaves the device.
+        .sheet(isPresented: $showConsent) {
+            NavigationStack {
+                AIConsentView(spec: .match) { requestPreComment() }
+            }
+        }
     }
 
     // MARK: - Form
@@ -147,6 +156,8 @@ struct MatchUpcomingFormView: View {
     // MARK: - Actions
 
     private func requestPreComment() {
+        // Gate the third-party AI send on explicit consent (first run only).
+        guard AIConsent.isAccepted(.match) else { showConsent = true; return }
         analysisFailed = false
         analyzing = true
         let snapshot = currentEntry(status: .upcoming)

@@ -437,6 +437,7 @@ struct DoublesPartnershipReportView: View {
     @EnvironmentObject private var lang: LanguageManager
     @EnvironmentObject private var session: UserSessionManager
     @ObservedObject private var store = DoublesInviteStore.shared
+    @Environment(\.dismiss) private var dismiss
 
     let partnership: DoublesPartnership
 
@@ -446,6 +447,9 @@ struct DoublesPartnershipReportView: View {
     private enum Phase { case analyzing, ready(DoublesReport), failed }
     @State private var phase: Phase = .analyzing
     @State private var errorMessage: String?
+
+    /// First-run consent before any profile data is sent to Google (Gemini).
+    @State private var showConsent = false
 
     private var currentUserId: String? {
         session.remoteSession.flatMap { DoublesInviteService.authUserId(from: $0) }
@@ -459,6 +463,15 @@ struct DoublesPartnershipReportView: View {
         .navigationTitle(copy.reportTitle)
         .navigationBarTitleDisplayMode(.inline)
         .task { await ensureReport() }
+        // First-run disclosure before any profile data leaves the device.
+        // Declining ("Not now") pops back instead of stranding the spinner.
+        .sheet(isPresented: $showConsent, onDismiss: {
+            if !AIConsent.isAccepted(.doubles) { dismiss() }
+        }) {
+            NavigationStack {
+                AIConsentView(spec: .doubles) { Task { await runAnalysis(force: true) } }
+            }
+        }
     }
 
     @ViewBuilder
@@ -494,6 +507,8 @@ struct DoublesPartnershipReportView: View {
     }
 
     private func runAnalysis(force: Bool) async {
+        // Gate the third-party send on explicit consent (first run only).
+        guard AIConsent.isAccepted(.doubles) else { showConsent = true; return }
         phase = .analyzing
         guard let partnerProfile = partnership.partnerProfile(forCurrentUserId: currentUserId) else {
             errorMessage = copy.errorGeneric

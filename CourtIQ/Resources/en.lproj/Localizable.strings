@@ -4,6 +4,7 @@
 "common.done" = "Done";
 "common.save" = "Save";
 "common.delete" = "Delete";
+"common.close" = "Close";
 "common.edit" = "Edit";
 "common.report" = "Report";
 "common.post" = "Post";
@@ -245,6 +246,7 @@
 "profile.title" = "Profile";
 "profile.delete_title" = "Delete account?";
 "profile.delete_msg" = "This permanently deletes your account, synced progress, and community content from DropVolley.";
+"profile.delete_account" = "Delete Account";
 "profile.reset_title" = "Reset local data?";
 "profile.reset_msg" = "This clears cached progress on this device. Synced account data will re-download on next launch.";
 "profile.quiz_empty" = "Complete your first daily quiz to start your archive.";

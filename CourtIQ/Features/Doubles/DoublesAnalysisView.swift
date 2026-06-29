@@ -25,6 +25,9 @@ struct DoublesAnalysisView: View {
     @State private var errorMessage: String?
     @State private var showError = false
 
+    /// First-run consent before any profile data is sent to Google (Gemini).
+    @State private var showConsent = false
+
     /// Minimum time we hold the analyzing screen so it always feels like real
     /// work (matches the swing/match labor-illusion convention).
     private let minimumDisplay: UInt64 = 12_000_000_000
@@ -37,6 +40,15 @@ struct DoublesAnalysisView: View {
         .navigationTitle(copy.navTitle)
         .navigationBarTitleDisplayMode(.inline)
         .task { await runAnalysis() }
+        // First-run disclosure before any profile data leaves the device.
+        // Declining ("Not now") pops back instead of stranding the spinner.
+        .sheet(isPresented: $showConsent, onDismiss: {
+            if !AIConsent.isAccepted(.doubles) { dismiss() }
+        }) {
+            NavigationStack {
+                AIConsentView(spec: .doubles) { Task { await runAnalysis() } }
+            }
+        }
         .alert(copy.errorTitle, isPresented: $showError) {
             Button(copy.retryCTA) { Task { await runAnalysis() } }
             Button(copy.cancelCTA, role: .cancel) { dismiss() }
@@ -103,6 +115,8 @@ struct DoublesAnalysisView: View {
     // MARK: - Actions
 
     private func runAnalysis() async {
+        // Gate the third-party send on explicit consent (first run only).
+        guard AIConsent.isAccepted(.doubles) else { showConsent = true; return }
         phase = .analyzing
         do {
             // Run the network call concurrently with a minimum-display timer so

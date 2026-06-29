@@ -36,7 +36,7 @@ struct AICoachGate: View {
 /// Anthropic. Plain-language: what is sent, who it goes to, and a clear choice.
 struct AICoachConsentView: View {
     @EnvironmentObject private var lang: LanguageManager
-    @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var tabRouter: TabRouter
 
     private func t(_ en: String, _ tr: String) -> String { lang.language == .turkish ? tr : en }
 
@@ -94,7 +94,10 @@ struct AICoachConsentView: View {
                     .buttonStyle(.borderedProminent).tint(AppPalette.clay)
 
                     Button {
-                        dismiss()
+                        // This consent screen IS the Coach tab's root content
+                        // (not a sheet), so dismiss() is a no-op here — send the
+                        // user back to Home instead of a dead button.
+                        tabRouter.selection = .home
                     } label: {
                         Text(t("Not now", "Şimdi değil"))
                             .font(.headline).frame(maxWidth: .infinity).padding(.vertical, 12)

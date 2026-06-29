@@ -33,6 +33,9 @@ struct MentalCheckView: View {
     @State private var nerves = 3
     @State private var context: String = ""
 
+    /// First-run consent before any data is sent to Google (Gemini).
+    @State private var showConsent = false
+
     @FocusState private var contextFocused: Bool
 
     private let service = MatchAnalysisService()
@@ -53,6 +56,12 @@ struct MentalCheckView: View {
         }
         .navigationTitle(lang.t("mental.nav_title"))
         .navigationBarTitleDisplayMode(.inline)
+        // First-run disclosure before any answer leaves the device.
+        .sheet(isPresented: $showConsent) {
+            NavigationStack {
+                AIConsentView(spec: .mental) { startAnalysis() }
+            }
+        }
     }
 
     // MARK: - Form
@@ -276,6 +285,8 @@ struct MentalCheckView: View {
     /// short minimum-display floor. Re-runnable from the failure card.
     private func startAnalysis() {
         contextFocused = false
+        // Gate the third-party send on explicit consent.
+        guard AIConsent.isAccepted(.mental) else { showConsent = true; return }
         phase = .analyzing
 
         Task {
