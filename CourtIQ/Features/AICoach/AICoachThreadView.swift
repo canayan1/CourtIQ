@@ -8,6 +8,10 @@ struct AICoachThreadView: View {
     /// `nil` = brand-new thread that doesn't exist yet on the server.
     /// First `send()` allocates the server-side `chatId`.
     let thread: AIChatThread?
+    /// Optional pre-filled composer text for a brand-new thread — e.g. the
+    /// "Discuss with Coach" entry from a swing analysis seeds the report here
+    /// so the user can review/edit it and send as their opening message.
+    var seedDraft: String? = nil
 
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var lang: LanguageManager
@@ -45,6 +49,11 @@ struct AICoachThreadView: View {
             // of truth on the next real send.
             aiClient.refreshQuotaForToday()
             workingThreadID = thread?.id
+            // Seed the composer for a brand-new thread (e.g. "Discuss with
+            // Coach" from a swing analysis) so the user can review + send it.
+            if thread == nil, let seed = seedDraft, input.isEmpty {
+                input = seed
+            }
             // Bring up the keyboard the moment a brand-new chat opens —
             // the user came here to type, not to admire the empty space.
             if thread == nil {

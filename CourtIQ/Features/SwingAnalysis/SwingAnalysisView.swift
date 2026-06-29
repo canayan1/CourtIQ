@@ -8,6 +8,12 @@ import UIKit
 struct SwingAnalysisView: View {
     @EnvironmentObject private var lang: LanguageManager
     @EnvironmentObject private var session: UserSessionManager
+    // Forwarded into the "Discuss with Coach" sheet so AICoachThreadView has the
+    // full context it needs. (aiClient isn't injected at the app root — only in
+    // the Coach tab — so it's referenced via its shared singleton instead.)
+    @EnvironmentObject private var matches: MatchEntryManager
+    @EnvironmentObject private var dailyQuizManager: DailyQuizManager
+    @EnvironmentObject private var drillManager: CourtTapDrillManager
 
     private var copy: SwingAnalysisCopy { SwingAnalysisCopy(lang: lang.language) }
     private let service = SwingAnalysisService()
@@ -69,6 +75,7 @@ struct SwingAnalysisView: View {
     @State private var showError = false
 
     @State private var showHistory = false
+    @State private var coachSeed: CoachSeed?
 
     var body: some View {
         ZStack {
@@ -123,6 +130,19 @@ struct SwingAnalysisView: View {
             Button(copy.cancelCTA, role: .cancel) { phase = .capture }
         } message: {
             Text(errorMessage ?? copy.errorGeneric)
+        }
+        // "Discuss with Coach": open a new AI Coach thread seeded with this
+        // analysis so the user can dig into it / push back on the AI's read.
+        .sheet(item: $coachSeed) { seed in
+            NavigationStack {
+                AICoachThreadView(thread: nil, seedDraft: seed.text)
+                    .environmentObject(lang)
+                    .environmentObject(AIChatClient.shared)
+                    .environmentObject(session)
+                    .environmentObject(matches)
+                    .environmentObject(dailyQuizManager)
+                    .environmentObject(drillManager)
+            }
         }
     }
 
@@ -277,11 +297,15 @@ struct SwingAnalysisView: View {
                     )
                     .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
 
-                primaryButton(copy.analyzeAnotherCTA, systemImage: "arrow.counterclockwise") {
+                primaryButton(discussCoachCTA, systemImage: "bubble.left.and.text.bubble.right.fill") {
+                    coachSeed = CoachSeed(text: coachSeedText(for: text))
+                }
+                .padding(.top, 4)
+
+                secondaryButton(copy.analyzeAnotherCTA, systemImage: "arrow.counterclockwise") {
                     pendingVideoURL = nil
                     phase = .setup
                 }
-                .padding(.top, 4)
 
                 secondaryButton(copy.viewAllReportsCTA, systemImage: "clock.arrow.circlepath") {
                     showHistory = true
@@ -289,6 +313,28 @@ struct SwingAnalysisView: View {
             }
             .padding(20)
         }
+    }
+
+    private var discussCoachCTA: String {
+        lang.language == .turkish ? "Koç'la tartış" : "Discuss with Coach"
+    }
+
+    /// Seed text for "Discuss with Coach": frames the report + invites the
+    /// player to push back on anything the AI got wrong. Editable before send.
+    private func coachSeedText(for analysis: String) -> String {
+        let strokeName = copy.stroke(stroke)
+        if lang.language == .turkish {
+            return "AI \(strokeName) analizimi aldım. İşte yorum:\n\n\(analysis)\n\nBuna göre önce neye odaklanmalıyım ve nasıl çalışmalıyım? Katılmadığım bir yorum varsa tartışalım."
+        }
+        return "I just got my AI \(strokeName) swing analysis. Here's what it said:\n\n\(analysis)\n\nBased on this, what should I focus on first and how should I drill it? Let's discuss anything that might not be right."
+    }
+
+    /// Identifiable wrapper so the "Discuss with Coach" sheet receives the seed
+    /// at presentation time — .sheet(item:) avoids the .sheet(isPresented:)
+    /// stale-capture where the seed read back empty.
+    private struct CoachSeed: Identifiable {
+        let id = UUID()
+        let text: String
     }
 
     // MARK: - Actions
