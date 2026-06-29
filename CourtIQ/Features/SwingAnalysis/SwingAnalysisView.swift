@@ -90,11 +90,16 @@ struct SwingAnalysisView: View {
         .navigationDestination(isPresented: $showHistory) {
             SwingHistoryView()
         }
-        // Camera / library picker.
-        .sheet(item: $pickerSource) { source in
+        // Camera / library picker. The next step (consent gate or analysis) is
+        // started in `onDismiss` — never synchronously inside the picker
+        // callback — so the picker sheet is fully gone before the consent sheet
+        // appears. Two sheets transitioning in the same runloop tick race, and
+        // the consent sheet silently fails to present: the flow then looked like
+        // it "auto-closed" back to the capture step right after a clip was picked.
+        .sheet(item: $pickerSource, onDismiss: continueAfterPick) { source in
             VideoPicker(sourceType: source) { url in
-                pickerSource = nil
-                if let url { handlePicked(url) }
+                pendingVideoURL = url   // nil if the user cancelled
+                pickerSource = nil      // dismiss → fires onDismiss
             }
             .ignoresSafeArea()
         }
@@ -288,10 +293,24 @@ struct SwingAnalysisView: View {
 
     // MARK: - Actions
 
+    /// Continue once the picker sheet has FULLY dismissed (its `onDismiss`).
+    /// Deferring to here — instead of acting synchronously inside the picker
+    /// callback — guarantees only one sheet is ever transitioning at a time, so
+    /// the consent sheet reliably presents instead of being dropped mid-race.
+    private func continueAfterPick() {
+        guard let url = pendingVideoURL else { return }   // cancelled → nothing to do
+        routeAfterPick(url)
+    }
+
     /// A clip was picked/recorded. Gate on consent before any frame leaves
     /// the device; otherwise go straight to analysis.
     private func handlePicked(_ url: URL) {
         pendingVideoURL = url
+        routeAfterPick(url)
+    }
+
+    /// Consent-gate router: first run → consent sheet; otherwise analyze.
+    private func routeAfterPick(_ url: URL) {
         if AIConsent.isAccepted(.swing) {
             startAnalysis(videoURL: url)
         } else {
