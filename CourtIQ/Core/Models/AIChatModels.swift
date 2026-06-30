@@ -209,17 +209,18 @@ struct AIChatResponsePayload: Decodable {
     let promptVersion: String?
 
     struct UsagePayload: Decodable {
+        // NO explicit CodingKeys. The shared response decoder uses
+        // `.convertFromSnakeCase`, which already maps the server's
+        // `input_tokens` → `inputTokens`, `output_tokens` → `outputTokens`,
+        // etc. Re-declaring snake_case CodingKeys here CONFLICTS with that:
+        // the decoder looks up the already-camelCased key against a
+        // snake_case CodingKey → `keyNotFound` → the WHOLE
+        // AIChatResponsePayload fails to decode (= the "Decode failed" the
+        // AI Coach was throwing once `usage` was present in the reply).
         let inputTokens: Int
         let outputTokens: Int
         let cacheCreationInputTokens: Int?
         let cacheReadInputTokens: Int?
-
-        enum CodingKeys: String, CodingKey {
-            case inputTokens = "input_tokens"
-            case outputTokens = "output_tokens"
-            case cacheCreationInputTokens = "cache_creation_input_tokens"
-            case cacheReadInputTokens = "cache_read_input_tokens"
-        }
     }
 }
 
