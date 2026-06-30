@@ -647,7 +647,13 @@ Deno.serve(async (req) => {
         reply,
         chatId,
         messagesRemainingToday: Math.max(0, DAILY_MESSAGE_CAP - (used + 1)),
-        usage,
+        // `usage` intentionally OMITTED from the response. Existing app builds
+        // (live 1.0, in-review 1.0.1, and dev) decode with .convertFromSnakeCase
+        // but UsagePayload declared snake_case CodingKeys (input_tokens, …), so a
+        // present `usage` object made the WHOLE response fail to decode
+        // ("Decode failed" / "Could not decode server response") — the AI Coach
+        // breakage. The client never reads `usage`; usage is still tracked in
+        // ai_usage_daily server-side. (Client decode also fixed for 1.0.2.)
         promptVersion: COURTIQ_PROMPT_VERSION,
         manualVersion: MANUAL_VERSION,
     }), { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } });
