@@ -2,13 +2,37 @@
 
 > **Purpose:** single entry point to continue development in a fresh chat.
 > New session: read this file + `CLAUDE.md` first, then proceed.
-> **Last updated:** 2026-06-24.
+> **Last updated:** 2026-06-30.
 
 ## TL;DR
 - **App is LIVE** on the App Store: *DropVolley: Tennis IQ Coach* (App ID `6773753464`), **v1.0 approved**.
 - Repo working tree is **clean**; branch `fix/app-store-rejection-build14` is the de-facto working line (stale name — see Housekeeping).
 - This session shipped: **Doubles quiz feature** (committed, build-complete) + **AI Drill Coach content v2** (committed, coach-vetted, build NOT started).
 - The old "do not touch the in-review app" constraint is **lifted** (app is live) — future changes go into a new version.
+
+## 2026-06-30 session — fixes, deploys, GEO, 1.0.1 submitted
+**App Store:** **v1.0.1 (build 26) submitted → `WAITING_FOR_REVIEW`.** Archived/uploaded via Xcode 26 + the ASC API key; reworded "What's New" (polish tone, EN+TR); **upgraded App Store screenshots uploaded via the ASC API** (7 each for en-US + tr, all `COMPLETE`). **Expedited review = a pending MANUAL step for the owner** (no API): developer.apple.com/contact/app-store/?topic=expedite.
+> ⚠️ Build 26 was archived BEFORE the doubles quiz + peak-moment haptics were committed → those are **NOT in 1.0.1**; they ship in the **next build (1.0.2)**. The edge-function changes below are **already live for every app version**.
+
+**Edge functions deployed — LIVE now (project `ybnodzzrkwennzpwyjmr`):**
+- `doubles-analysis` + `match-analysis` — `maxOutputTokens` 1024→4096 (gemini-2.5-flash *thinking* was eating the budget → reports truncated mid-sentence, leaving a raw `**`).
+- `swing-analysis` — prompt calibration: hedge hard-to-judge visual calls (e.g. ball-toss direction); prioritise faults that **recur** across multiple reps; filming tip now asks for 2–3 reps.
+- `ai-chat` — manual **v1.2.0** adds **SECTION 11 — Doubles strategy** (A4-grounded). The Coach now knows doubles.
+
+**App fixes/improvements (committed; ship in 1.0.2):**
+- **Home profile icon opened Swing, not Profile** — the hero's iOS-18 zoom-transition source bled its tap region into the header. Fixed (header pinned in `safeAreaInset` + zoom dropped). Verified in the simulator.
+- **Swing "Record a swing" crashed** — `cameraCaptureMode = .video` set before `mediaTypes` included movie. Fixed (mediaTypes first).
+- **Swing capture auto-closed before consent** — two `.sheet`s raced; consent now fires in the picker's `onDismiss`.
+- **AI Coach:** long-press a thread → Delete.
+- **Swing result → "Discuss with Coach"** — opens a new Coach thread seeded with the analysis.
+- **Matches → "Re-analyze"** an edited match (stale `aiReport` no longer sticks; read live from the store).
+- **Peak-moment haptics:** quiz completion + doubles partnership report reveal (the ScoreRings were already in place).
+
+**Web GEO (deployed to PRODUCTION — repo `~/Projects/canayanIOSapps`, `canayan-ios-apps.vercel.app`):** DropVolley flipped from in-review/waitlist → **live + App Store download link**; added **MobileApplication JSON-LD** per app + rich metadata/keywords/OpenGraph + `metadataBase`. Deploys via `vercel --prod` CLI (no git remote; scope `canayan1`, project `canayan-ios-apps`).
+
+**Doubles content (P0):** quiz ✓ (10 bilingual scenarios `doubles_001–010`) + AI manual SECTION 11 ✓ (live). **Remaining:** doubles tips (DailyTip pool), Pro Shot doubles patterns, Court Tap doubles drill.
+
+**Repo:** branch was **ahead 17 of origin (unpushed)** at this update. Owner commits in parallel (the doubles quiz landed across `66a2e11`/`30cf1a7`/`62b0081` from concurrent committing — content is clean, no dupes).
 
 ## App Store status
 - **v1.0 was rejected Jun 16 (build 24):**
