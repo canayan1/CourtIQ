@@ -4,7 +4,8 @@
 
 ## Progress log (this session)
 **Fixed + build-green:** C1 Coach-bypass · CourtTapDrill coord-guard · QuizView localized-options crash · VoiceNoteRecorder hang (resume-once+timeout) · VoiceOver labels (SelfAssessmentStep raw-slug, MentalCheckView/MatchFormComponents English) · ProfileView "IQ RATING" · Spanish hidden from the language picker (no `es.lproj`).
-**Verified non-issue:** M1 product IDs (real products match code defaults).
+**Verified non-issue:** M1 product IDs (real products match code defaults). **Batch C** (no decode bug — all 3 services match their functions' camelCase contracts; the audit's `.convertToSnakeCase` re-route would have BROKEN swing's `mimeType` → left as-is).
+**Also localized:** TrainingHubView (10 EN+TR keys — plan-match, frequency notes, 8-week block). Remaining Training: TrainProgramsView/DetailView chrome + the program-content data-layer (separate translation project).
 **Discovered:** `StreakCelebrationView` is **dead code** (never instantiated) — remove or wire up.
 **Deliberately deferred:** day-key timezone (changing it risks shifting existing streak keys — needs a migration); Training label localization (partial — program *content* is English at the data layer, a larger translation effort); TennisVisuals "DAYS" (reusable component, needs `lang` threaded carefully); Batch C networking dedup (live-working code — do with verification).
 
@@ -25,7 +26,7 @@
 - [ ] **Ensure App Store/TestFlight builds are Release.** DEBUG auto-grants premium (`UserSession.swift:434`, correctly `#if DEBUG`) → any Debug-config dogfood build burns the LLM budget freely.
 
 ## 🟠 HIGH — correctness / latent bugs
-- [ ] **Latent decode-mismatch bug.** `MatchAnalysisService`/`DoublesService`/`SwingAnalysisService` use bare `JSONEncoder()/JSONDecoder()` **without** the `.convert*SnakeCase` strategy the rest of the app + `SupabaseRESTClient` use → same class as the "Decode failed" that broke the Coach. → route the 3 services through a generic `SupabaseRESTClient.invokeFunction`.
+- [x] **"Latent decode-mismatch" — INVESTIGATED → NO bug, and the proposed fix was dangerous.** All 3 services' fields already match their edge functions' **camelCase** contracts (match `{mode,summary}`/`{report,error}` + doubles `{summary}`/`{...}` are single-word; swing sends `mimeType` and the function reads `body.mimeType` at swing-analysis:198). Routing through the `.convertToSnakeCase` client (the audit's suggestion) would send `mime_type` and **break swing analysis**. → **Left serialization unchanged.** Only real value left is a boilerplate-only dedup that *preserves* each camelCase contract — low payoff (no bug), deferred.
 - [ ] **`CourtTapDrill.swift:67/71`** — force-indexes coordinate pairs `$0[0]/$0[1]` from `[[Double]]` JSON; a pair with <2 elements crashes. (JSON currently clean.) → guard `count >= 2`.
 - [ ] **`QuizView.swift:154`** — iterates `question.options.indices` but indexes `localizedOptions` (`optionsTr ?? options`); a TR translation with a different count → out-of-range crash in Turkish. (JSON currently clean.) → iterate `localizedOptions.indices` / validate parity.
 - [ ] **`VoiceNoteRecorder.swift:282`** — the transcription continuation never resumes if recognition yields neither a final result nor an error → `stop()` hangs in `.transcribing`. → add a timeout / terminal resume.

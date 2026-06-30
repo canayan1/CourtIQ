@@ -35,7 +35,7 @@ struct TrainingHubView: View {
                     .foregroundStyle(AppPalette.moss)
                     .frame(width: 28)
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Plan matched to \(info.days)")
+                    Text(String(format: lang.t("training.plan_matched"), info.days))
                         .font(.system(size: 13, weight: .bold, design: .rounded))
                         .foregroundStyle(AppPalette.moss)
                     Text(info.note)
@@ -56,9 +56,9 @@ struct TrainingHubView: View {
 
     private func frequencyInfo(for freq: String) -> (days: String, note: String)? {
         switch freq {
-        case "1-2": return ("1–2 days/week", "The foundation plan fits neatly into two sessions — exactly your schedule.")
-        case "3-4": return ("3–4 days/week", "The 4-day weekly loop in the foundation plan is built for your rhythm.")
-        case "5+":  return ("5+ days/week", "High-frequency players get the most from the Match Conditioning track once premium is unlocked.")
+        case "1-2": return (lang.t("training.freq_12_days"), lang.t("training.freq_12_note"))
+        case "3-4": return (lang.t("training.freq_34_days"), lang.t("training.freq_34_note"))
+        case "5+":  return (lang.t("training.freq_5_days"), lang.t("training.freq_5_note"))
         default:    return nil
         }
     }
@@ -108,12 +108,12 @@ struct TrainingHubView: View {
                     .font(.title3.bold())
 
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("8-Week Training Block")
+                    Text(lang.t("training.block_title"))
                         .font(.system(size: 24, weight: .black, design: .rounded))
                         .textCase(.uppercase)
                         .tracking(0.8)
                         .foregroundStyle(.white)
-                    Text("Plyometrics, hypertrophy, explosiveness, conditioning")
+                    Text(lang.t("training.block_focus"))
                         .font(.subheadline.weight(.medium))
                         .fixedSize(horizontal: false, vertical: true)
                         .foregroundStyle(.white.opacity(0.88))
@@ -128,7 +128,7 @@ struct TrainingHubView: View {
                     }
                 }
 
-                Text("Repeat the weekly structure for 8 weeks, log each session, and compare your persistence checks over time.")
+                Text(lang.t("training.block_repeat"))
                     .font(.subheadline)
                     .foregroundStyle(.white.opacity(0.9))
 

@@ -903,3 +903,15 @@
 "self_assess.title" = "Where does your game stand right now?";
 "self_assess.body" = "Rate yourself 1 (weak) to 5 (strong) in each area. We'll use this as your starting profile and refine it as you drill and quiz. Not sure? Leave it at 3 — your real reps will overwrite it.";
 "self_assess.submit" = "Save my baseline";
+
+/* Training hub */
+"training.plan_matched" = "Plan matched to %@";
+"training.freq_12_days" = "1–2 days/week";
+"training.freq_12_note" = "The foundation plan fits neatly into two sessions — exactly your schedule.";
+"training.freq_34_days" = "3–4 days/week";
+"training.freq_34_note" = "The 4-day weekly loop in the foundation plan is built for your rhythm.";
+"training.freq_5_days" = "5+ days/week";
+"training.freq_5_note" = "High-frequency players get the most from the Match Conditioning track once premium is unlocked.";
+"training.block_title" = "8-Week Training Block";
+"training.block_focus" = "Plyometrics, hypertrophy, explosiveness, conditioning";
+"training.block_repeat" = "Repeat the weekly structure for 8 weeks, log each session, and compare your persistence checks over time.";

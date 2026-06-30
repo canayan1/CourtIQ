@@ -903,3 +903,15 @@
 "self_assess.title" = "Oyunun şu an nerede?";
 "self_assess.body" = "Her alanda kendine 1 (zayıf) ile 5 (güçlü) arası puan ver. Bu başlangıç profilin olur, drill ve quiz çözdükçe gerçek verinle üstü yazılır. Emin değilsen 3'te bırak.";
 "self_assess.submit" = "Baseline'ımı kaydet";
+
+/* Antrenman merkezi */
+"training.plan_matched" = "Plan %@ için ayarlandı";
+"training.freq_12_days" = "1–2 gün/hafta";
+"training.freq_12_note" = "Temel plan iki antrenmana tam oturuyor — tam senin programın.";
+"training.freq_34_days" = "3–4 gün/hafta";
+"training.freq_34_note" = "Temel plandaki 4 günlük haftalık döngü tam senin ritmine göre.";
+"training.freq_5_days" = "5+ gün/hafta";
+"training.freq_5_note" = "Yüksek sıklıkta antrenman yapanlar, premium açılınca Maç Kondisyonu programından en çok faydayı görür.";
+"training.block_title" = "8 Haftalık Antrenman Bloğu";
+"training.block_focus" = "Pliometri, hipertrofi, patlayıcılık, kondisyon";
+"training.block_repeat" = "Haftalık yapıyı 8 hafta tekrarla, her antrenmanı kaydet ve istikrar kontrollerini zaman içinde karşılaştır.";
