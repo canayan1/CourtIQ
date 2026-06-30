@@ -109,6 +109,7 @@ struct TrainPracticeView: View {
         case .rally:      return "PhotoForehand"
         case .net:        return "PhotoNet"
         case .mental:     return "PhotoMatch"
+        case .doubles:    return "PhotoDoubles"
         }
     }
 

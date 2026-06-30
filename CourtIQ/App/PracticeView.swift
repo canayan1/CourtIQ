@@ -136,6 +136,7 @@ struct PracticeView: View {
         case .rally:      return .forehand
         case .net:        return .volley
         case .mental:     return .target
+        case .doubles:    return .volley
         }
     }
 
