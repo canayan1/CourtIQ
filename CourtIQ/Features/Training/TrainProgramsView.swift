@@ -38,7 +38,7 @@ struct TrainProgramsView: View {
                 Text(program.title)
                     .font(.title3.bold())
 
-                Text("8-Week Training Block")
+                Text(lang.t("training.block_title"))
                     .font(.system(.title2, design: .rounded).weight(.black))
                     .textCase(.uppercase)
                     .tracking(0.8)

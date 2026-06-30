@@ -915,3 +915,7 @@
 "training.block_title" = "8 Haftalık Antrenman Bloğu";
 "training.block_focus" = "Pliometri, hipertrofi, patlayıcılık, kondisyon";
 "training.block_repeat" = "Haftalık yapıyı 8 hafta tekrarla, her antrenmanı kaydet ve istikrar kontrollerini zaman içinde karşılaştır.";
+"training.whats_next" = "Sırada ne var";
+"training.after_week8" = "8. haftadan sonra";
+"training.weeks_8" = "8 hafta";
+"training.progression_71" = "7+1 ilerleme: 3 hafta yeni adaptasyon uyarısı, 4. haftada bu plandan bir test haftası, ardından 8. haftaya kadar pekiştirme.";

@@ -600,10 +600,10 @@ struct TrainingProgramDetailView: View {
                 HStack(spacing: 8) {
                     Image(systemName: "arrow.right.circle.fill")
                         .foregroundStyle(AppPalette.clay)
-                    Text(nearingEnd ? "What's next" : "After week 8")
+                    Text(nearingEnd ? lang.t("training.whats_next") : lang.t("training.after_week8"))
                         .font(.headline)
                     Spacer()
-                    Text("8 weeks")
+                    Text(lang.t("training.weeks_8"))
                         .font(.caption.weight(.semibold))
                         .foregroundStyle(AppPalette.inkSoft)
                 }
@@ -616,7 +616,7 @@ struct TrainingProgramDetailView: View {
                     .foregroundStyle(AppPalette.inkSoft)
                     .fixedSize(horizontal: false, vertical: true)
 
-                Text("7+1 progression: new adaptation stimulus for 3 weeks, a throwback test week from this plan in week 4, then consolidation through week 8.")
+                Text(lang.t("training.progression_71"))
                     .font(.caption)
                     .foregroundStyle(AppPalette.inkSoft)
                     .fixedSize(horizontal: false, vertical: true)

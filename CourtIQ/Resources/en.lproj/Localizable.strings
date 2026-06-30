@@ -915,3 +915,7 @@
 "training.block_title" = "8-Week Training Block";
 "training.block_focus" = "Plyometrics, hypertrophy, explosiveness, conditioning";
 "training.block_repeat" = "Repeat the weekly structure for 8 weeks, log each session, and compare your persistence checks over time.";
+"training.whats_next" = "What's next";
+"training.after_week8" = "After week 8";
+"training.weeks_8" = "8 weeks";
+"training.progression_71" = "7+1 progression: new adaptation stimulus for 3 weeks, a throwback test week from this plan in week 4, then consolidation through week 8.";
