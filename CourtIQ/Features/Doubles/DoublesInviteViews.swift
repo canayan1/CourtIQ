@@ -532,6 +532,9 @@ struct DoublesPartnershipReportView: View {
             )
             store.setReport(report, forPartnership: partnership.id)
             phase = .ready(report)
+            // Peak moment: the compatibility score just landed (parity with
+            // DoublesAnalysisView's reveal).
+            Haptics.success()
         } catch {
             errorMessage = (error as? RemoteDataError)?.errorDescription ?? copy.errorGeneric
             phase = .failed

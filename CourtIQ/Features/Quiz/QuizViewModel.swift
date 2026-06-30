@@ -197,6 +197,11 @@ final class QuizViewModel: ObservableObject {
     private func triggerCompletionOnce() {
         guard !completionHandled else { return }
         completionHandled = true
+        // Completion peak moment — celebrate a clean sweep, otherwise a
+        // positive landing. (Per-question haptics already fire on submit.)
+        Task { @MainActor in
+            score == quiz.questions.count ? Haptics.celebrate() : Haptics.success()
+        }
         onComplete?(QuizCompletionSummary(
             quizID: quiz.id,
             title: quiz.title,
