@@ -1,4 +1,7 @@
 import Foundation
+#if canImport(RevenueCat)
+import RevenueCat
+#endif
 
 struct AppConfiguration {
     let appName = "DropVolley"
@@ -51,6 +54,72 @@ struct AppConfiguration {
             return nil
         }
         return URL(string: value)
+    }
+}
+
+/// Thin wrapper around the RevenueCat SDK.
+///
+/// RevenueCat runs in **observer mode** (`purchasesAreCompletedBy: .myApp`):
+/// the app keeps its own raw-StoreKit-2 purchase flow (`SubscriptionManager`)
+/// and RevenueCat merely *observes* the resulting transactions. We do NOT use
+/// it to drive the paywall or the in-app entitlement — `Transaction
+/// .currentEntitlements` remains the source of truth for the UI. RevenueCat
+/// exists for ONE reason: so the backend can verify a caller is actually a
+/// paying user. The AI Coach / swing / doubles / match Edge Functions look the
+/// caller up by their Supabase uid (`logIn` aliases the RevenueCat customer to
+/// that uid), which closes the "anyone with the public anon key can call the
+/// paid functions and burn the LLM budget" hole — without server-side
+/// entitlement the client paywall is bypassable via direct API calls.
+///
+/// Every entry point is a no-op when `COURTIQ_REVENUECAT_API_KEY` is absent
+/// (dev / preview), so the app behaves exactly as before until the key ships.
+enum RevenueCatManager {
+    /// Configure the SDK once, at launch. Observer mode + StoreKit 2.
+    static func configure() {
+        #if canImport(RevenueCat)
+        guard let key = AppConfiguration.shared.revenueCatAPIKey else { return }
+        Purchases.logLevel = .warn
+        Purchases.configure(
+            with: Configuration.Builder(withAPIKey: key)
+                .with(purchasesAreCompletedBy: .myApp, storeKitVersion: .storeKit2)
+                .build()
+        )
+        #endif
+    }
+
+    /// Alias the RevenueCat customer to the Supabase uid so the Edge Functions
+    /// can verify entitlement by the same id they read from the caller's JWT.
+    /// Safe to call repeatedly; called on every session establishment/restore.
+    static func identify(_ supabaseUserID: String) {
+        #if canImport(RevenueCat)
+        guard AppConfiguration.shared.revenueCatAPIKey != nil,
+              Purchases.isConfigured,
+              !supabaseUserID.isEmpty else { return }
+        Task { _ = try? await Purchases.shared.logIn(supabaseUserID) }
+        #endif
+    }
+
+    /// Push the device's StoreKit transactions to RevenueCat so the backend
+    /// reflects a fresh purchase/restore promptly (belt-and-suspenders on top
+    /// of observer mode's automatic transaction observation).
+    static func syncPurchases() {
+        #if canImport(RevenueCat)
+        guard AppConfiguration.shared.revenueCatAPIKey != nil, Purchases.isConfigured else { return }
+        Task { _ = try? await Purchases.shared.syncPurchases() }
+        #endif
+    }
+}
+
+/// One-time "taste" of the premium AI for non-premium users — lets a player
+/// experience the wow once (their first swing analysis) before the paywall,
+/// the highest-converting freemium pattern. Bounded cost (one paid Gemini
+/// video call). When the RevenueCat server gate is enforced, a matching
+/// server-side free-allowance is added; until then this client flag gates it.
+enum FreeTaste {
+    private static let swingKey = "CourtIQ.freeTaste.swingUsed"
+    static var swingUsed: Bool {
+        get { UserDefaults.standard.bool(forKey: swingKey) }
+        set { UserDefaults.standard.set(newValue, forKey: swingKey) }
     }
 }
 

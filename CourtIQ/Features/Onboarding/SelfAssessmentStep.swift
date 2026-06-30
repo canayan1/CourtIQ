@@ -122,7 +122,7 @@ struct SelfAssessmentStep: View {
                             .frame(width: 28, height: 28)
                     }
                     .buttonStyle(.plain)
-                    .accessibilityLabel("\(i) of 5 for \(cat.rawValue)")
+                    .accessibilityLabel("\(lang.t(cat.localizationKey)): \(i)")
                 }
             }
         }

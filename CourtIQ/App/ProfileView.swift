@@ -247,7 +247,7 @@ struct ProfileView: View {
                 )
 
                 VStack(spacing: 6) {
-                    Text("IQ RATING")
+                    Text(t("IQ RATING", "IQ PUANI"))
                         .font(.system(size: 11, weight: .heavy, design: .rounded))
                         .tracking(1.6)
                         .foregroundStyle(AppPalette.inkSoft)
@@ -548,7 +548,7 @@ struct ProfileView: View {
                 .font(.title3.bold())
 
             HStack(spacing: 10) {
-                ForEach(AppLanguage.allCases) { option in
+                ForEach(AppLanguage.allCases.filter { $0 != .spanish }) { option in
                     Button {
                         lang.language = option
                     } label: {

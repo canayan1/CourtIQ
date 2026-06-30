@@ -210,7 +210,7 @@ struct MentalCheckView: View {
             }
         }
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel("\(label): \(value.wrappedValue) of 5")
+        .accessibilityLabel("\(label): \(value.wrappedValue)")
     }
 
     // MARK: - Reveal step

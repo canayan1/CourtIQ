@@ -198,7 +198,7 @@ enum MatchFormComponents {
                 .frame(maxWidth: .infinity, alignment: .trailing)
             }
             .accessibilityElement(children: .ignore)
-            .accessibilityLabel("\(label): \(value.wrappedValue) of 5")
+            .accessibilityLabel("\(label): \(value.wrappedValue)")
         }
     }
 }

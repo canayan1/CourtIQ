@@ -48,6 +48,50 @@ const SUPABASE_ANON_KEY        = Deno.env.get("SUPABASE_ANON_KEY") ?? "";
 // user's JWT so RLS keeps users scoped to their own rows.
 const SUPABASE_SERVICE_ROLE    = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
 
+// -------------------------------------------------------------
+// RevenueCat server-side entitlement gate
+// -------------------------------------------------------------
+// The client paywall is bypassable via direct API calls (the anon key is
+// public by design), so the backend independently verifies the caller is a
+// paying user before spending the LLM budget. The iOS app aliases its
+// RevenueCat customer id to the Supabase uid (RevenueCatManager.identify),
+// so we look the caller up by user.id.
+//
+// Deployed behind REQUIRE_ENTITLEMENT so it can ship dark and be flipped ON
+// only once a RevenueCat-enabled build is live — older builds have no RC
+// record and must NOT be locked out. Fails OPEN on any RevenueCat API error
+// so a RevenueCat outage never locks out paying users; the prepaid budget
+// cap is the backstop for the brief abuse window that would open.
+const REVENUECAT_SECRET_KEY    = Deno.env.get("REVENUECAT_SECRET_KEY") ?? "";
+const REQUIRE_ENTITLEMENT      = (Deno.env.get("REQUIRE_ENTITLEMENT") ?? "false").toLowerCase() === "true";
+const ENTITLEMENT_ID           = Deno.env.get("PREMIUM_ENTITLEMENT_ID") ?? "premium_all_access";
+
+// Per-instance positive cache to avoid a RevenueCat round trip on every turn.
+const entitlementCache = new Map<string, { entitled: boolean; at: number }>();
+const ENTITLEMENT_TTL_MS = 10 * 60 * 1000;
+
+async function isEntitled(userId: string): Promise<boolean> {
+    if (!REQUIRE_ENTITLEMENT) return true;        // gate dark → allow (rollout)
+    if (!REVENUECAT_SECRET_KEY) return true;      // misconfigured → fail open
+    const hit = entitlementCache.get(userId);
+    if (hit && Date.now() - hit.at < ENTITLEMENT_TTL_MS) return hit.entitled;
+    try {
+        const res = await fetch(
+            `https://api.revenuecat.com/v1/subscribers/${encodeURIComponent(userId)}`,
+            { headers: { Authorization: `Bearer ${REVENUECAT_SECRET_KEY}` } },
+        );
+        if (!res.ok) return true;                 // RC error → fail open (don't punish payers)
+        const body = await res.json();
+        const ent = body?.subscriber?.entitlements?.[ENTITLEMENT_ID];
+        const expires = ent?.expires_date as string | null | undefined;
+        const entitled = !!ent && (expires == null || new Date(expires).getTime() > Date.now());
+        entitlementCache.set(userId, { entitled, at: Date.now() });
+        return entitled;
+    } catch {
+        return true;                              // network error → fail open
+    }
+}
+
 // DropVolley Coach system prompt (v0.2 — approved in chat 2026-05-24).
 // Kept inline so the function is self-contained and version-controlled
 // alongside the deployment. Bump COURTIQ_PROMPT_VERSION when iterating.
@@ -530,6 +574,13 @@ Deno.serve(async (req) => {
     const { data: { user }, error: userErr } = await supabase.auth.getUser();
     if (userErr || !user) {
         return jsonErr(401, "invalid_jwt");
+    }
+
+    // -- Server-side entitlement gate (see REQUIRE_ENTITLEMENT above). Placed
+    //    before the compaction branch so EVERY Anthropic call is behind it.
+    //    No-op until the gate is flipped on post-1.0.2-rollout. --
+    if (!(await isEntitled(user.id))) {
+        return jsonErr(402, "entitlement_required", { needsUpgrade: true });
     }
 
     // -- Parse + validate body --

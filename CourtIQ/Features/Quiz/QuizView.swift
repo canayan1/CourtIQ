@@ -140,7 +140,9 @@ struct QuizView: View {
     private func answerOptions(_ question: QuizQuestion) -> some View {
         VStack(spacing: 12) {
             let localizedOptions = question.localizedOptions(for: lang.language)
-            ForEach(question.options.indices, id: \.self) { index in
+            // Iterate the LOCALIZED array's indices — a Turkish translation with a
+            // different option count would otherwise crash on localizedOptions[index].
+            ForEach(localizedOptions.indices, id: \.self) { index in
                 Button {
                     viewModel.selectOption(index)
                 } label: {

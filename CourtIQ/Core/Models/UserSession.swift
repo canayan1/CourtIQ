@@ -106,7 +106,16 @@ enum SubscriptionError: LocalizedError {
 @MainActor
 final class AuthManager: ObservableObject {
     @Published private(set) var identity: SessionIdentity?
-    @Published private(set) var remoteSession: SupabaseSession?
+    @Published private(set) var remoteSession: SupabaseSession? {
+        didSet {
+            // Keep the RevenueCat customer id aligned with the Supabase uid so
+            // the Edge Functions can verify entitlement by the JWT's uid. Fires
+            // on anonymous mint, Apple sign-in, and session restore.
+            if let id = remoteSession?.userID, !id.isEmpty {
+                RevenueCatManager.identify(id)
+            }
+        }
+    }
 
     private let defaults = UserDefaults.standard
     private let client = SupabaseRESTClient.shared
@@ -475,6 +484,7 @@ final class SubscriptionManager: ObservableObject {
             }
             await transaction.finish()
             await refreshEntitlements()
+            RevenueCatManager.syncPurchases()
         case .pending:
             throw SubscriptionError.purchasePending
         case .userCancelled:
@@ -488,6 +498,7 @@ final class SubscriptionManager: ObservableObject {
         do {
             try await AppStore.sync()
             await refreshEntitlements()
+            RevenueCatManager.syncPurchases()
         } catch {
             UserSessionManager.shared.registerSyncError("Purchases could not be restored right now.")
         }

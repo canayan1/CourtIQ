@@ -280,13 +280,30 @@ final class VoiceNoteRecorder: ObservableObject {
         request.requiresOnDeviceRecognition = false
 
         return try await withCheckedThrowingContinuation { (cont: CheckedContinuation<String, Error>) in
-            recognizer.recognitionTask(with: request) { result, error in
-                if let error {
-                    cont.resume(throwing: error)
-                    return
+            // Resume-once guard + safety timeout. If recognition yields neither a
+            // final result NOR an error (pathological empty/corrupt audio), the
+            // continuation would otherwise never resume and stop() would hang in
+            // .transcribing forever. The timeout resumes with an empty transcript
+            // (the caller keeps the recorded audio regardless).
+            let lock = NSLock()
+            var done = false
+            func finish(_ outcome: Result<String, Error>) {
+                lock.lock(); defer { lock.unlock() }
+                guard !done else { return }
+                done = true
+                switch outcome {
+                case .success(let text): cont.resume(returning: text)
+                case .failure(let err):  cont.resume(throwing: err)
                 }
+            }
+            let task = recognizer.recognitionTask(with: request) { result, error in
+                if let error { finish(.failure(error)); return }
                 guard let result, result.isFinal else { return }
-                cont.resume(returning: result.bestTranscription.formattedString)
+                finish(.success(result.bestTranscription.formattedString))
+            }
+            DispatchQueue.global().asyncAfter(deadline: .now() + 90) {
+                task.cancel()
+                finish(.success(""))
             }
         }
     }

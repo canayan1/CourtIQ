@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F4D689E4217B817DAA69B4A7 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 325B817E77DD62D36909AF94 /* RevenueCat */; };
 		01E3B5805B3AC2D9B83BCC20 /* AICoachConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5431D73E4D73B3EE01C53B1 /* AICoachConsentView.swift */; };
 		04396426DB8C48523158DAE8 /* DoublesPartnerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE5A32EE22AD86ED0541B11 /* DoublesPartnerDetailView.swift */; };
 		04417858354D72CCE86F2F10 /* DoublesInviteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C76C9F72D768EDAA7C746CB /* DoublesInviteStore.swift */; };
@@ -25,7 +26,7 @@
 		55179DACCC1C248000E0C9C0 /* DoublesCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78DBEEACC92870A3FFFBD7C /* DoublesCopy.swift */; };
 		5F71E0F3BD2E9BA2AC5CC711 /* TennisProfileCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7C2AA916BE624A71B6017F /* TennisProfileCopy.swift */; };
 		658859037DBF2D3A4E6F1179 /* DoublesReportDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15DB976B12A4D023D76BF2 /* DoublesReportDetailView.swift */; };
-		6C288EA33A513977B60D0F93 /* RecentActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17264A46BEA1F34B6E375CCD /* RecentActivity.swift */; };
+		6C288EA33A513977B60D0F93 /* CourtIQ/App/RecentActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17264A46BEA1F34B6E375CCD /* CourtIQ/App/RecentActivity.swift */; };
 		7077F4E9DBD8C6119B70D01A /* DoublesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C76AC798603AB4C9DC3688 /* DoublesService.swift */; };
 		754033EA2869BE6DBB623611 /* DoublesPartnerFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA2D95FBB8002248B38F6C /* DoublesPartnerFormView.swift */; };
 		77E5C7A03F1A2BF3C94AE188 /* TrainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2552A4998FE130E11DD2183F /* TrainView.swift */; };
@@ -33,7 +34,6 @@
 		8CD188FE56C7D92CF1FF809F /* OnboardingFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDDBDA9A7035EE3626F5589 /* OnboardingFlowView.swift */; };
 		8D8D4A834044265ECD0D4722 /* TrainProgramsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0556A0C64DB8336DFA363B3 /* TrainProgramsView.swift */; };
 		9951D0CC2EF78EAF560B3E98 /* CourtIQAppPreviewUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C98DCFD79E34F8766234FD /* CourtIQAppPreviewUITest.swift */; };
-		A1B2C3D4E5F60718293A4B5C /* AppStoreScreenshotUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60718293A4B5D /* AppStoreScreenshotUITest.swift */; };
 		9D842976741595D48320DD61 /* DoublesAnalysisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC40F35CB6A1E4FC8E5641D /* DoublesAnalysisView.swift */; };
 		9F058BB47733B75F46ED587A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32EFA2E45204668CCB9AA07 /* HomeView.swift */; };
 		A000000000000000000020 /* CourtIQApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000010 /* CourtIQApp.swift */; };
@@ -139,6 +139,7 @@
 		A000000000000000000203 /* SwingReportText.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000202 /* SwingReportText.swift */; };
 		A000000000000000000205 /* SwingHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000204 /* SwingHistoryView.swift */; };
 		A0096F05CC68BCC9782F96C5 /* OnboardingBuildingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F14568EE361FE4FD8E1B19F /* OnboardingBuildingView.swift */; };
+		A1B2C3D4E5F60718293A4B5C /* AppStoreScreenshotUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60718293A4B5D /* AppStoreScreenshotUITest.swift */; };
 		A1C4746F62056F7A23B534A5 /* DoublesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB81618134F53053DBEE96 /* DoublesView.swift */; };
 		A9B92CCD5D6A1DDCE15C8C3B /* TennisProfileScoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EC46A67E526C59A182B12D /* TennisProfileScoring.swift */; };
 		AA3AA69753F41AE12A5CF8C4 /* DoublesInviteModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C866AF47AA54ECA889AD22 /* DoublesInviteModels.swift */; };
@@ -170,7 +171,7 @@
 		0557CE18D7A694CEF536677C /* TennisProfileResultView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TennisProfileResultView.swift; path = CourtIQ/Features/TennisProfile/TennisProfileResultView.swift; sourceTree = "<group>"; };
 		0A7ED880F0D31CAEA68D596A /* DoublesStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesStore.swift; path = CourtIQ/Features/Doubles/DoublesStore.swift; sourceTree = "<group>"; };
 		161E8A1AEB1F9F5949EB117B /* VideoPicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VideoPicker.swift; path = CourtIQ/Features/SwingAnalysis/VideoPicker.swift; sourceTree = "<group>"; };
-		17264A46BEA1F34B6E375CCD /* RecentActivity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CourtIQ/App/RecentActivity.swift; sourceTree = "<group>"; };
+		17264A46BEA1F34B6E375CCD /* CourtIQ/App/RecentActivity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CourtIQ/App/RecentActivity.swift; sourceTree = "<group>"; };
 		2552A4998FE130E11DD2183F /* TrainView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TrainView.swift; path = CourtIQ/Features/Training/TrainView.swift; sourceTree = "<group>"; };
 		37C76AC798603AB4C9DC3688 /* DoublesService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesService.swift; path = CourtIQ/Features/Doubles/DoublesService.swift; sourceTree = "<group>"; };
 		3F14568EE361FE4FD8E1B19F /* OnboardingBuildingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OnboardingBuildingView.swift; path = CourtIQ/Features/Onboarding/OnboardingBuildingView.swift; sourceTree = "<group>"; };
@@ -183,7 +184,6 @@
 		789F5FB71B3FD7288973D0C9 /* PlayerContext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PlayerContext.swift; path = CourtIQ/Core/Models/PlayerContext.swift; sourceTree = "<group>"; };
 		82706820737C1C2313D111A2 /* SwingAnalysisConsentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwingAnalysisConsentView.swift; path = CourtIQ/Features/SwingAnalysis/SwingAnalysisConsentView.swift; sourceTree = "<group>"; };
 		82C98DCFD79E34F8766234FD /* CourtIQAppPreviewUITest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CourtIQAppPreviewUITest.swift; path = CourtIQUITests/CourtIQAppPreviewUITest.swift; sourceTree = "<group>"; };
-		A1B2C3D4E5F60718293A4B5D /* AppStoreScreenshotUITest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppStoreScreenshotUITest.swift; path = CourtIQUITests/AppStoreScreenshotUITest.swift; sourceTree = "<group>"; };
 		8CC40F35CB6A1E4FC8E5641D /* DoublesAnalysisView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesAnalysisView.swift; path = CourtIQ/Features/Doubles/DoublesAnalysisView.swift; sourceTree = "<group>"; };
 		8EBB81618134F53053DBEE96 /* DoublesView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesView.swift; path = CourtIQ/Features/Doubles/DoublesView.swift; sourceTree = "<group>"; };
 		8EDDBDA9A7035EE3626F5589 /* OnboardingFlowView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OnboardingFlowView.swift; path = CourtIQ/Features/Onboarding/OnboardingFlowView.swift; sourceTree = "<group>"; };
@@ -295,6 +295,7 @@
 		A000000000000000000200 /* SwingAnalysisStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwingAnalysisStore.swift; path = CourtIQ/Features/SwingAnalysis/SwingAnalysisStore.swift; sourceTree = "<group>"; };
 		A000000000000000000202 /* SwingReportText.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwingReportText.swift; path = CourtIQ/Features/SwingAnalysis/SwingReportText.swift; sourceTree = "<group>"; };
 		A000000000000000000204 /* SwingHistoryView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwingHistoryView.swift; path = CourtIQ/Features/SwingAnalysis/SwingHistoryView.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F60718293A4B5D /* AppStoreScreenshotUITest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppStoreScreenshotUITest.swift; path = CourtIQUITests/AppStoreScreenshotUITest.swift; sourceTree = "<group>"; };
 		A5AC30870C3CE0B44AD67AB3 /* DoublesModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesModels.swift; path = CourtIQ/Features/Doubles/DoublesModels.swift; sourceTree = "<group>"; };
 		B1C1F0C3D2F961F7294836E6 /* SwingAnalysisView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwingAnalysisView.swift; path = CourtIQ/Features/SwingAnalysis/SwingAnalysisView.swift; sourceTree = "<group>"; };
 		B4DA2D95FBB8002248B38F6C /* DoublesPartnerFormView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesPartnerFormView.swift; path = CourtIQ/Features/Doubles/DoublesPartnerFormView.swift; sourceTree = "<group>"; };
@@ -331,6 +332,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4D689E4217B817DAA69B4A7 /* RevenueCat in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,7 +490,7 @@
 				53AA3AEFE28E84B4C9E60F40 /* DesignSystem.swift */,
 				E59972A086F7FB607351D71D /* TrainPracticeView.swift */,
 				E0556A0C64DB8336DFA363B3 /* TrainProgramsView.swift */,
-				17264A46BEA1F34B6E375CCD /* RecentActivity.swift */,
+				17264A46BEA1F34B6E375CCD /* CourtIQ/App/RecentActivity.swift */,
 				E00B10E3A8A0478FF6C61632 /* MentalCheckView.swift */,
 				B927A207D42C4218A423E76D /* OnboardingShowcaseView.swift */,
 			);
@@ -573,6 +575,9 @@
 			);
 			dependencies = (
 			);
+			packageProductDependencies = (
+				325B817E77DD62D36909AF94 /* RevenueCat */,
+			);
 			name = CourtIQ;
 			productName = CourtIQ;
 			productReference = A00000000000000000000D /* CourtIQ.app */;
@@ -597,6 +602,9 @@
 				tr,
 			);
 			mainGroup = A000000000000000000004;
+			packageReferences = (
+				361601AB2FF3ED13001F8B8D /* XCRemoteSwiftPackageReference "purchases-ios" */,
+			);
 			productRefGroup = A000000000000000000005 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -778,7 +786,7 @@
 				C42C3CFF6843C67C68E8FB6F /* DesignSystem.swift in Sources */,
 				1A5CB2C747712855620C22EF /* TrainPracticeView.swift in Sources */,
 				8D8D4A834044265ECD0D4722 /* TrainProgramsView.swift in Sources */,
-				6C288EA33A513977B60D0F93 /* RecentActivity.swift in Sources */,
+				6C288EA33A513977B60D0F93 /* CourtIQ/App/RecentActivity.swift in Sources */,
 				1A0F95264370ED920024C8A7 /* MentalCheckView.swift in Sources */,
 				0AAADD31BD44014E79EDB9E9 /* OnboardingShowcaseView.swift in Sources */,
 			);
@@ -956,6 +964,25 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		361601AB2FF3ED13001F8B8D /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.80.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		325B817E77DD62D36909AF94 /* RevenueCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 361601AB2FF3ED13001F8B8D /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = RevenueCat;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A000000000000000000000 /* Project object */;
 }

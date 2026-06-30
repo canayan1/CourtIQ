@@ -16,6 +16,37 @@ const GEMINI_MODEL   = Deno.env.get("MATCH_GEMINI_MODEL") ?? "gemini-2.5-flash";
 const SUPABASE_URL      = Deno.env.get("SUPABASE_URL") ?? "";
 const SUPABASE_ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY") ?? "";
 
+// --- RevenueCat server-side entitlement gate (see ai-chat for full rationale) ---
+// Ships behind REQUIRE_ENTITLEMENT (dark until flipped on post-1.0.2). Fails OPEN
+// on any RevenueCat error so an outage never locks out paying users; the prepaid
+// budget cap is the backstop for the brief abuse window that would open.
+const REVENUECAT_SECRET_KEY = Deno.env.get("REVENUECAT_SECRET_KEY") ?? "";
+const REQUIRE_ENTITLEMENT   = (Deno.env.get("REQUIRE_ENTITLEMENT") ?? "false").toLowerCase() === "true";
+const ENTITLEMENT_ID        = Deno.env.get("PREMIUM_ENTITLEMENT_ID") ?? "premium_all_access";
+const entitlementCache = new Map<string, { entitled: boolean; at: number }>();
+const ENTITLEMENT_TTL_MS = 10 * 60 * 1000;
+async function isEntitled(userId: string): Promise<boolean> {
+  if (!REQUIRE_ENTITLEMENT) return true;          // gate dark -> allow (rollout)
+  if (!REVENUECAT_SECRET_KEY) return true;        // misconfigured -> fail open
+  const hit = entitlementCache.get(userId);
+  if (hit && Date.now() - hit.at < ENTITLEMENT_TTL_MS) return hit.entitled;
+  try {
+    const res = await fetch(
+      `https://api.revenuecat.com/v1/subscribers/${encodeURIComponent(userId)}`,
+      { headers: { Authorization: `Bearer ${REVENUECAT_SECRET_KEY}` } },
+    );
+    if (!res.ok) return true;                     // RC error -> fail open
+    const body = await res.json();
+    const ent = body?.subscriber?.entitlements?.[ENTITLEMENT_ID];
+    const expires = ent?.expires_date as string | null | undefined;
+    const entitled = !!ent && (expires == null || new Date(expires).getTime() > Date.now());
+    entitlementCache.set(userId, { entitled, at: Date.now() });
+    return entitled;
+  } catch {
+    return true;                                  // network error -> fail open
+  }
+}
+
 const MAX_SUMMARY = 6000;
 
 const corsHeaders = {
@@ -71,6 +102,9 @@ Deno.serve(async (req) => {
   });
   const { data: { user }, error: userErr } = await supabase.auth.getUser();
   if (userErr || !user) return json({ error: "Not authenticated." }, 401);
+
+  // Server-side entitlement gate (no-op until REQUIRE_ENTITLEMENT is flipped on).
+  if (!(await isEntitled(user.id))) return json({ error: "entitlement_required", needsUpgrade: true }, 402);
 
   let body: { mode?: string; summary?: string };
   try {

@@ -201,6 +201,12 @@ final class QuizViewModel: ObservableObject {
         // positive landing. (Per-question haptics already fire on submit.)
         Task { @MainActor in
             score == quiz.questions.count ? Haptics.celebrate() : Haptics.success()
+            // Ask for an App Store review after a genuinely good result (a
+            // satisfaction moment). Gated + capped inside RatingPrompt. This is
+            // a FREE, high-volume surface, so it's our main ratings driver.
+            if score * 5 >= quiz.questions.count * 3 {   // >= 60%
+                RatingPrompt.registerWin()
+            }
         }
         onComplete?(QuizCompletionSummary(
             quizID: quiz.id,

@@ -16,6 +16,7 @@ struct CourtIQApp: App {
 
     init() {
         CrashReporter.shared.start()
+        RevenueCatManager.configure()
         Task { @MainActor in Haptics.warmUp() }
 
 #if DEBUG
@@ -230,17 +231,6 @@ private struct RootView: View {
         Group {
             if !session.hasCompletedOnboarding {
                 OnboardingFlowView(onComplete: { session.completeOnboarding() })
-            } else if !session.subscriptionManager.entitlementState.isPremium {
-                // Subscription gate — premium unlocks the full app. The user
-                // can always tap "Back" to return to onboarding without
-                // purchasing, so the "Go Premium" page is never a dead-end
-                // (App Store Guideline 5.6). Re-renders when the entitlement
-                // changes (SubscriptionManager forwards objectWillChange).
-                NavigationStack {
-                    PaywallView(source: "Gate", allowsDismiss: false, onExit: {
-                        session.returnToOnboarding()
-                    })
-                }
             } else if healthAckVersion < HealthAcknowledgment.currentVersion {
                 // Block access to training/mobility/quiz content until the
                 // user explicitly accepts the assumption-of-risk language.

@@ -64,11 +64,13 @@ struct CourtTapDrill: Codable, Identifiable, Hashable {
     }
 
     var greenPolygon: [CGPoint] {
-        greenZone.map { CGPoint(x: $0[0], y: $0[1]) }
+        // Guard the coordinate-pair length — JSON types these as [[Double]], so a
+        // malformed pair (<2 elements) would crash on $0[0]/$0[1].
+        greenZone.compactMap { $0.count >= 2 ? CGPoint(x: $0[0], y: $0[1]) : nil }
     }
 
     var yellowPolygons: [[CGPoint]] {
-        yellowZones.map { ring in ring.map { CGPoint(x: $0[0], y: $0[1]) } }
+        yellowZones.map { ring in ring.compactMap { $0.count >= 2 ? CGPoint(x: $0[0], y: $0[1]) : nil } }
     }
 }
 
