@@ -1804,5 +1804,203 @@
     "explanationTr": "Ortayı daraltan file oyuncusunun üstünden lob, puanı sıfırlar ve onu file'den uzaklaştırır; lob'a saygı duyup daha az poach yapar. Poach'ın içine daha sert vurmak tam da onların istediğidir.",
     "takeawayTr": "Fazla hevesli bir poach'çıyı lob'la cezalandır — ortayı geri kazandırır.",
     "tacticalCategory": "return"
+  },
+  {
+    "id": "serve_hard_1",
+    "category": "serve",
+    "difficulty": "hard",
+    "focusTag": "reading a return tendency",
+    "scenario": "Deuce court, 30-30. You've noticed the returner chips a short, floaty backhand every time you serve into their body. What's the highest-value play?",
+    "options": [
+      "Serve the body again, then step in and take the short chip early with a forehand",
+      "Go for a flat ace down the T",
+      "Serve wide to their forehand to open the court"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "You've read a reliable tendency. The body serve jams the backhand and forces the short floater — so trigger it on purpose, anticipate the reply, move in, and attack it on the rise. You're hunting the +1, not the ace.",
+    "takeaway": "When you've read a return tendency, serve to trigger it — then pounce on the predictable reply.",
+    "mistakeType": "ignoring a read for a low-percentage ace",
+    "scenarioTr": "Deuce bölgesi, 30-30. Rakip, gövdesine servis attığında her seferinde kısa, yumuşak bir backhand chip atıyor. En değerli oyun ne?",
+    "optionsTr": [
+      "Tekrar gövdeye servis at, sonra öne çıkıp kısa chip'i forehand'le erken al",
+      "T'den düz bir as dene",
+      "Forehand'ine açık servis atıp sahayı aç"
+    ],
+    "explanationTr": "Güvenilir bir eğilim okudun. Gövde servisi backhand'i sıkıştırıp kısa topu zorluyor — o yüzden bilerek tetikle, cevabı önceden kestir, öne çık ve topu yükselirken vur. As değil, +1 peşindesin.",
+    "takeawayTr": "Bir karşılama eğilimi okuduysan, onu tetikleyecek servisi at — sonra tahmin edilebilir cevabın üstüne çök.",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.45,
+      "youY": 0.96,
+      "opponentX": 0.22,
+      "opponentY": 0.06,
+      "ballOriginX": 0.45,
+      "ballOriginY": 0.96,
+      "ballTargetX": 0.34,
+      "ballTargetY": 0.3,
+      "scoreChip": "DEUCE · 30-30"
+    },
+    "tacticalCategory": "patterns"
+  },
+  {
+    "id": "return_hard_1",
+    "category": "returnPlay",
+    "difficulty": "hard",
+    "focusTag": "returning a big serve",
+    "scenario": "4-5 down, 0-30 on the return, fast court, against a big server who goes 70% to your backhand. Where do you stand and what's the goal?",
+    "options": [
+      "Shade a half-step toward the backhand and block deep down the middle",
+      "Hold your normal spot and try to rip a clean winner",
+      "Back up two metres and slice every return"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Against a bomb on a fast court the realistic goal is a neutral return, not a winner. Shade toward the 70% target, shorten to a block, and aim deep down the middle — it cuts the server's next angle and buys time to recover.",
+    "takeaway": "Vs a big server: shade to the pattern, block deep middle, accept neutral — survive before you attack.",
+    "mistakeType": "going for a winner off an unreturnable serve",
+    "scenarioTr": "4-5 geride, karşılamada 0-30, hızlı kort, backhand'ine %70 giden güçlü bir servisçiye karşı. Nerede durursun, hedefin ne?",
+    "optionsTr": [
+      "Yarım adım backhand'e kay ve ortadan derin blokla",
+      "Normal yerinde dur ve temiz bir winner vurmaya çalış",
+      "İki metre geri çekil ve her karşılamayı slice'la"
+    ],
+    "explanationTr": "Hızlı kortta bomba servise karşı gerçekçi hedef winner değil, nötr bir karşılamadır. %70'lik hedefe doğru kay, vuruşu kısaltıp blokla ve ortadan derin at — bu, servisçinin bir sonraki açısını keser ve toparlanmana zaman kazandırır.",
+    "takeawayTr": "Güçlü servisçiye karşı: desene göre kay, ortadan derin blokla, nötrü kabul et — saldırmadan önce hayatta kal.",
+    "diagram": {
+      "surface": "grass",
+      "youX": 0.66,
+      "youY": 0.96,
+      "opponentX": 0.5,
+      "opponentY": 0.06,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.12,
+      "ballTargetX": 0.7,
+      "ballTargetY": 0.84,
+      "scoreChip": "4-5 · 0-30 · RETURN"
+    },
+    "tacticalCategory": "return"
+  },
+  {
+    "id": "rally_hard_1",
+    "category": "rally",
+    "difficulty": "hard",
+    "focusTag": "changing the diagonal",
+    "scenario": "A long crosscourt forehand exchange, both deep. Your opponent's crosscourt is landing a little shorter each ball. What's the highest-percentage way to change the pattern?",
+    "options": [
+      "Wait for the short ball, step in, and go inside-out forehand to their backhand",
+      "Rip it down the line off the next deep ball",
+      "Keep grinding the same crosscourt and wait for the error"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "The shortening ball is your cue. Changing direction off a deep ball is low-percentage — instead, wait for the short one, step in, and flip the diagonal inside-out to their backhand. You change the pattern from strength, not desperation.",
+    "takeaway": "Change direction off the SHORT ball, not the deep one — let the rally hand you the opening.",
+    "mistakeType": "changing direction off a deep defensive ball",
+    "scenarioTr": "Uzun bir çapraz forehand alışverişi, ikiniz de derindesiniz. Rakibin çaprazı her topta biraz daha kısa düşüyor. Deseni değiştirmenin en yüksek ihtimalli yolu ne?",
+    "optionsTr": [
+      "Kısa topu bekle, öne çık ve içeriden-dışarı (inside-out) forehand'le backhand'ine at",
+      "Bir sonraki derin topta çizgiye sert vur",
+      "Aynı çaprazı öğütmeye devam edip hatayı bekle"
+    ],
+    "explanationTr": "Kısalan top senin işaretin. Derin toptan yön değiştirmek düşük ihtimallidir — bunun yerine kısa topu bekle, öne çık ve çaprazı inside-out backhand'ine çevir. Deseni çaresizlikten değil, güçten değiştirirsin.",
+    "takeawayTr": "Yönü KISA toptan değiştir, derinden değil — açığı rallinin sana vermesine izin ver.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.2,
+      "youY": 0.92,
+      "opponentX": 0.2,
+      "opponentY": 0.08,
+      "ballOriginX": 0.26,
+      "ballOriginY": 0.82,
+      "ballTargetX": 0.76,
+      "ballTargetY": 0.2,
+      "scoreChip": "INSIDE-OUT FH"
+    },
+    "tacticalCategory": "patterns"
+  },
+  {
+    "id": "net_hard_1",
+    "category": "net",
+    "difficulty": "hard",
+    "focusTag": "volleying from the service line",
+    "scenario": "You approached down the line and you're at the service line — not yet at the net — as your opponent loads up for a crosscourt pass. What's the play?",
+    "options": [
+      "Split-step, cover the crosscourt, and punch the volley deep behind them",
+      "Sprint all the way to the net and guess a side",
+      "Retreat to the baseline to retrieve the pass"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "From the service line you can't angle a volley safely. Your DTL approach already closed the line, so split-step, cover the higher-percentage crosscourt pass, and punch the volley DEEP behind the moving opponent — depth over a risky angle from too far back.",
+    "takeaway": "Caught at the service line: split, cover the crosscourt, volley deep behind them — not a fancy angle.",
+    "mistakeType": "attempting an angled volley from too far back",
+    "scenarioTr": "Çizgi boyunca (down-the-line) yaklaştın ve servis çizgisindesin — henüz file'de değil — rakip çapraz geçiş için hazırlanırken. Oyun ne?",
+    "optionsTr": [
+      "Split-step at, çaprazı kapat ve voleyi onların arkasına derin vur",
+      "File'ye kadar koş ve bir tarafı tahmin et",
+      "Geçişi almak için baseline'a geri çekil"
+    ],
+    "explanationTr": "Servis çizgisinden voleyi güvenle açılandıramazsın. DTL yaklaşman çizgiyi zaten kapattı; o yüzden split-step at, daha yüksek ihtimalli çapraz geçişi kapat ve voleyi hareket eden rakibin arkasına DERİN vur — çok geriden riskli bir açı yerine derinlik.",
+    "takeawayTr": "Servis çizgisinde yakalandın: split at, çaprazı kapat, voleyi onların arkasına derin vur — süslü açı değil.",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.32,
+      "youY": 0.55,
+      "opponentX": 0.24,
+      "opponentY": 0.06,
+      "ballOriginX": 0.32,
+      "ballOriginY": 0.55,
+      "ballTargetX": 0.42,
+      "ballTargetY": 0.16,
+      "scoreChip": "AT THE SERVICE LINE"
+    },
+    "tacticalCategory": "netGame"
+  },
+  {
+    "id": "mental_hard_1",
+    "category": "mental",
+    "difficulty": "hard",
+    "focusTag": "resetting after a choke",
+    "scenario": "You served for the set at 5-3 and got broken to 5-4 after two double faults. What's the reset for the next game?",
+    "options": [
+      "Lengthen your between-point routine and recommit to a high-percentage target",
+      "Go for broke immediately to win the break back",
+      "Replay the double faults in your head to fix the toss"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "After a choke-break the fix is process, not panic. Slow your tempo between points, breathe, and reset to a bigger target (margin over the lines). Don't chase the break back recklessly or ruminate on the misses — play the next point on its own merits.",
+    "takeaway": "After a choke: slow the tempo, widen your margins, play the next point — don't chase or ruminate.",
+    "mistakeType": "panicking or ruminating after a costly game",
+    "scenarioTr": "5-3'te set için servis attın ve iki çift hatadan sonra 5-4'e break yedin. Bir sonraki oyun için reset ne?",
+    "optionsTr": [
+      "Puanlar arası rutinini uzat ve yüksek ihtimalli bir hedefe yeniden bağlan",
+      "Break'i hemen geri almak için her şeyi göze al",
+      "Servisini düzeltmek için çift hataları kafanda tekrar oynat"
+    ],
+    "explanationTr": "Choke-break'ten sonra çözüm panik değil, süreçtir. Puanlar arası temponu yavaşlat, nefes al ve daha büyük bir hedefe (çizgilerden pay) dön. Break'i pervasızca kovalama ya da kaçırdıklarını kafanda evirip çevirme — bir sonraki puanı kendi başına oyna.",
+    "takeawayTr": "Choke'tan sonra: tempoyu yavaşlat, paylarını genişlet, bir sonraki puanı oyna — kovalama ya da geviş getirme.",
+    "tacticalCategory": "patterns"
+  },
+  {
+    "id": "doubles_hard_1",
+    "category": "doubles",
+    "difficulty": "hard",
+    "focusTag": "disrupting a hot returner",
+    "scenario": "You're serving in doubles, partner at the net. The returner has burned your partner twice with crosscourt returns dipping at their feet. Best adjustment?",
+    "options": [
+      "Switch to I-formation (or fake a poach) to scramble the returner's target",
+      "Tell your partner to back off toward the service line",
+      "Just serve harder up the T every time"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "The returner has a comfortable, grooved target — crosscourt at the net player's feet. Take it away by hiding where the net player will be: I-formation or a fake poach forces the returner to decide late and abandon a pattern that's been working.",
+    "takeaway": "When a returner grooves a target, hide your net player — I-formation or a fake resets their decision.",
+    "mistakeType": "staying predictable against a hot returner",
+    "scenarioTr": "Doubles'ta servis atıyorsun, partnerin file'de. Karşılayan, partnerini iki kez ayaklarına düşen çapraz karşılamalarla yaktı. En iyi ayar ne?",
+    "optionsTr": [
+      "I-formation'a geç (ya da sahte poach yap) ve karşılayanın hedefini boz",
+      "Partnerine servis çizgisine doğru geri çekilmesini söyle",
+      "Sadece her seferinde T'den daha sert servis at"
+    ],
+    "explanationTr": "Karşılayanın rahat, oturmuş bir hedefi var — file oyuncusunun ayaklarına çapraz. File oyuncusunun nerede olacağını gizleyerek bunu elinden al: I-formation ya da sahte poach, karşılayanı geç karar vermeye ve işe yarayan deseni bırakmaya zorlar.",
+    "takeawayTr": "Karşılayan bir hedefi oturttuysa file oyuncunu gizle — I-formation ya da sahte hamle kararını sıfırlar.",
+    "tacticalCategory": "patterns"
   }
 ]

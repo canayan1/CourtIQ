@@ -53,11 +53,13 @@ enum QuizCategory: String, CaseIterable, Identifiable, Codable {
 enum QuizDifficulty: String, Codable {
     case easy
     case medium
+    case hard
 
     var title: String {
         switch self {
         case .easy: return "Foundation"
         case .medium: return "Match Pressure"
+        case .hard: return "Advanced Tactics"
         }
     }
 }
@@ -249,7 +251,7 @@ extension Quiz {
         switch level {
         case "beginner":         preferred = .easy
         case "club":             preferred = nil          // mixed — no bias
-        case "advanced", "coach": preferred = .medium
+        case "advanced", "coach": preferred = .hard
         default:                 preferred = nil
         }
 
