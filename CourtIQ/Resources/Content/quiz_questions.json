@@ -1554,5 +1554,255 @@
     "explanationTr": "Agresif bir deseni görselleştirmek beyni ve bedeni yarışma durumuna hazırlar. Rahat ısınma rahat oyun hazırlar.",
     "takeawayTr": "Yarışmak istediğin gibi ısın.",
     "tacticalCategory": "patterns"
+  },
+  {
+    "id": "doubles_001",
+    "category": "doubles",
+    "difficulty": "easy",
+    "focusTag": "both-up formation",
+    "scenario": "You and your partner are one-up-one-back. Your baseline partner gets a short, floaty ball mid-court. What should you both do?",
+    "options": [
+      "Both move up to the net together behind the approach",
+      "Stay put — keep one player back to cover",
+      "Partner hits it and retreats to the baseline"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "A short ball is your cue to get BOTH players to the net. The both-up formation wins the majority of club points, so your partner approaches and joins you.",
+    "takeaway": "Short ball = both up. The team that reaches the net first usually wins the point.",
+    "mistakeType": "camping in one-up-one-back",
+    "scenarioTr": "Sen ve partnerin biri-önde-biri-arkada dizilimindesiniz. Arkadaki partnerin kısa, yumuşak bir top alıyor. İkiniz ne yapmalısınız?",
+    "optionsTr": [
+      "İkiniz birlikte file'ye çıkın (yaklaşma vuruşunun arkasından)",
+      "Olduğunuz yerde kalın — biriniz arkada kalsın",
+      "Partner vurup baseline'a geri çekilsin"
+    ],
+    "explanationTr": "Kısa top, ikinizi de file'ye çıkarma işaretidir. Her ikisi de file'de (both-up) dizilimi kulüp puanlarının çoğunu kazanır; partnerin yaklaşıp sana katılır.",
+    "takeawayTr": "Kısa top = ikiniz de file'ye. File'ye önce ulaşan takım genelde puanı alır.",
+    "tacticalCategory": "patterns"
+  },
+  {
+    "id": "doubles_002",
+    "category": "doubles",
+    "difficulty": "easy",
+    "focusTag": "net player positioning",
+    "scenario": "You're the net player while your partner serves. Where should you start to begin the point?",
+    "options": [
+      "Centred, ready to poach the middle",
+      "Tight to your alley to protect the line",
+      "Back near the service line, playing it safe"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Start central and look to poach the middle — most balls travel through the middle, and guarding the alley gives away the bigger target. Cover the alley only on an obviously wide ball.",
+    "takeaway": "The net player's #1 job is the middle, not the alley.",
+    "mistakeType": "net player glued to the alley",
+    "scenarioTr": "Partnerin servis atarken sen file oyuncususun. Puana başlamak için nerede durmalısın?",
+    "optionsTr": [
+      "Ortada, ortadan çıkmaya (poach) hazır",
+      "Koridora yapışık, çizgiyi korumak için",
+      "Servis çizgisine yakın, garantici"
+    ],
+    "explanationTr": "Ortada başla ve ortadan poach'a bak — topların çoğu ortadan gelir; koridoru korumak daha büyük hedefi açık bırakır. Koridoru sadece bariz geniş topta kapat.",
+    "takeawayTr": "File oyuncusunun bir numaralı işi orta, koridor değil.",
+    "tacticalCategory": "net_game"
+  },
+  {
+    "id": "doubles_003",
+    "category": "doubles",
+    "difficulty": "medium",
+    "focusTag": "first volley by height",
+    "scenario": "You're serving and volleying. The return comes back LOW at your feet. Where do you place the first volley?",
+    "options": [
+      "Deep to the baseline returner, or low through the middle",
+      "Hard at the opposing net player",
+      "A soft drop into their service box"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "On a low/defensive ball, don't reflexively aim at the net player — a low volley there is an easy put-away for them. Go deep to the baseliner or low through the middle and keep climbing to the net.",
+    "takeaway": "First-volley target depends on height: a low ball goes deep/middle, not at the net player.",
+    "mistakeType": "first volley auto-aimed at the net player",
+    "scenarioTr": "Servis-vole oynuyorsun. Karşılama ayaklarına ALÇAK geliyor. İlk voleyi nereye koyarsın?",
+    "optionsTr": [
+      "Derine, baseline'daki returner'a — ya da alçak, ortadan",
+      "Sert, karşı file oyuncusuna",
+      "Servis kutusuna yumuşak bir drop"
+    ],
+    "explanationTr": "Alçak/defansif topta refleksle file oyuncusuna vurma — oradaki alçak vole onlara kolay sayı olur. Derine baseliner'a ya da alçak ortadan oyna ve file'ye çıkmaya devam et.",
+    "takeawayTr": "İlk vole hedefi yüksekliğe bağlı: alçak top derine/ortaya gider, file oyuncusuna değil.",
+    "tacticalCategory": "net_game"
+  },
+  {
+    "id": "doubles_004",
+    "category": "doubles",
+    "difficulty": "easy",
+    "focusTag": "doubles return",
+    "scenario": "You're returning serve in doubles against a team with one player at the net. What's the priority on your return?",
+    "options": [
+      "Keep it LOW, cross-court at the volleyer's feet",
+      "Drive it deep and flat down the middle",
+      "Loop it high cross-court for safety"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "A low cross-court return at the incoming volleyer's feet is the hardest ball to attack. A floaty/high return is poach bait. Your goal is to get your team forward, not to win it outright.",
+    "takeaway": "Doubles return = low at the volleyer's feet. Floaters get poached.",
+    "mistakeType": "floaty cross-court returns",
+    "scenarioTr": "Biri file'de olan bir takıma karşı çiftlerde karşılama yapıyorsun. Karşılamada öncelik ne?",
+    "optionsTr": [
+      "ALÇAK tut, çaprazda voleyi yapanın ayaklarına",
+      "Derine ve düz, ortadan sertçe",
+      "Güvenli olsun diye yükseğe, çaprazda lob gibi"
+    ],
+    "explanationTr": "Voleye gelenin ayaklarına alçak çapraz karşılama, saldırması en zor toptur. Yüksek/yumuşak karşılama poach yemidir. Amaç puanı tek vuruşta bitirmek değil, takımını öne taşımak.",
+    "takeawayTr": "Çiftlerde karşılama = voleyi yapanın ayaklarına alçak. Yumuşak toplar poach yer.",
+    "tacticalCategory": "return"
+  },
+  {
+    "id": "doubles_005",
+    "category": "doubles",
+    "difficulty": "medium",
+    "focusTag": "poach timing",
+    "scenario": "You decide to poach. When exactly do you commit to crossing?",
+    "options": [
+      "Just after the serve bounces, as the returner starts the forward swing",
+      "The instant your partner tosses to serve",
+      "After the return has already cleared the net"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Commit just after the serve bounces, as the returner starts their forward swing — early enough to cross and cut off the middle, late enough that they can't redirect the ball behind you.",
+    "takeaway": "Poach as the returner starts the swing — not too early, not too late.",
+    "mistakeType": "mistimed poach",
+    "scenarioTr": "Poach yapmaya karar verdin. Tam olarak ne zaman çıkarsın?",
+    "optionsTr": [
+      "Servis sektikten hemen sonra, returner ileri vuruşa başlarken",
+      "Partnerin servise atış yaptığı an",
+      "Karşılama file'yi çoktan geçtikten sonra"
+    ],
+    "explanationTr": "Servis sektikten hemen sonra, returner ileri vuruşa başlarken çık — ortayı kesmek için yeterince erken, arkana yönlendirilemeyecek kadar geç.",
+    "takeawayTr": "Returner vuruşa başlarken poach yap — ne çok erken, ne çok geç.",
+    "tacticalCategory": "net_game"
+  },
+  {
+    "id": "doubles_006",
+    "category": "doubles",
+    "difficulty": "medium",
+    "focusTag": "lob switch",
+    "scenario": "The opponents lob over your partner's head to the open side. Who takes the ball, and what do you call?",
+    "options": [
+      "You (the un-lobbed player) call 'switch' and cross to cover",
+      "Your partner sprints back to chase their own side",
+      "Both of you retreat to the baseline and reset"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "On a lob over one player, the UN-lobbed partner calls 'switch' and crosses to cover the open side, while the lobbed player rotates across to the other side. Rotating as a unit beats both scrambling backward.",
+    "takeaway": "Lobbed over your partner? You call 'switch' and cross. Move as a unit.",
+    "mistakeType": "both chase the lob",
+    "scenarioTr": "Rakip, partnerinin kafasından açık tarafa lob attı. Topu kim alır ve sen ne dersin?",
+    "optionsTr": [
+      "Sen (lob yemeyen oyuncu) 'switch' deyip çapraz geçip kapatırsın",
+      "Partnerin kendi tarafını kovalamak için geri koşar",
+      "İkiniz de baseline'a çekilip sıfırlarsınız"
+    ],
+    "explanationTr": "Bir oyuncunun üstünden lob gelince, lob YEMEYEN partner 'switch' der ve açık tarafı kapatmak için çapraz geçer; lob yiyen oyuncu diğer tarafa döner. Birim olarak dönmek, ikinizin de geri savrulmasından iyidir.",
+    "takeawayTr": "Partnerinin üstünden lob mu? Sen 'switch' deyip çapraz geç. Birim gibi hareket et.",
+    "tacticalCategory": "patterns"
+  },
+  {
+    "id": "doubles_007",
+    "category": "doubles",
+    "difficulty": "medium",
+    "focusTag": "serve to set up poach",
+    "scenario": "Your partner is at the net ready to poach. Where should you serve to set them up?",
+    "options": [
+      "To the body or the T, pulling the return toward the middle",
+      "Wide, to open the angle for yourself",
+      "A soft, high serve to start the point safely"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "A serve to the body or the T pulls the return toward the middle — exactly where your net partner can poach. A wide serve opens angles AWAY from your poacher. Keep your first-serve percentage high too.",
+    "takeaway": "Serve body/T to feed your partner's poach; protect first-serve %.",
+    "mistakeType": "serve placement that doesn't set up the partner",
+    "scenarioTr": "Partnerin file'de poach'a hazır. Onu kurmak için nereye servis atmalısın?",
+    "optionsTr": [
+      "Vücuda ya da T'ye — karşılamayı ortaya çeker",
+      "Geniş (wide), kendine açı açmak için",
+      "Puana güvenli başlamak için yumuşak, yüksek servis"
+    ],
+    "explanationTr": "Vücuda ya da T'ye servis, karşılamayı ortaya çeker — tam da file partnerinin poach yapabileceği yere. Geniş servis ise açıları poach'çından UZAĞA açar. İlk servis yüzdeni de yüksek tut.",
+    "takeawayTr": "Partnerinin poach'ını beslemek için vücuda/T'ye servis at; ilk servis yüzdeni koru.",
+    "tacticalCategory": "patterns"
+  },
+  {
+    "id": "doubles_008",
+    "category": "doubles",
+    "difficulty": "easy",
+    "focusTag": "middle coverage",
+    "scenario": "A ball comes right down the middle between you and your partner. Who should take it?",
+    "options": [
+      "The pre-agreed player — by default, the one whose forehand is in the middle",
+      "Whoever happens to be closer in that instant",
+      "Both go for it, to be safe"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "'Down the middle solves the riddle.' Pre-decide who takes the middle (default: the forehand player) so two racquets don't collide or both leave it. Decide before the point, not during it.",
+    "takeaway": "Pre-assign the middle to the forehand player. Don't decide mid-point.",
+    "mistakeType": "nobody (or both) covers the middle",
+    "scenarioTr": "Top, sen ve partnerinin tam ortasından geliyor. Kim almalı?",
+    "optionsTr": [
+      "Önceden anlaşılan oyuncu — varsayılan olarak forehand'i ortada olan",
+      "O an kim daha yakınsa",
+      "Garanti olsun diye ikiniz birden"
+    ],
+    "explanationTr": "'Down the middle solves the riddle.' Ortayı kimin alacağını önceden belirle (varsayılan: forehand oyuncusu) ki iki raket çarpışmasın ya da ikisi de bırakmasın. Puan sırasında değil, öncesinde karar ver.",
+    "takeawayTr": "Ortayı önceden forehand oyuncusuna ata. Puan ortasında karar verme.",
+    "tacticalCategory": "patterns"
+  },
+  {
+    "id": "doubles_009",
+    "category": "doubles",
+    "difficulty": "medium",
+    "focusTag": "both-back defense",
+    "scenario": "A big server is crushing your partner's return and picking off your net player. What formation adjustment helps?",
+    "options": [
+      "Briefly go both-back to absorb the serve, then climb back to net",
+      "Keep one-up and hope the net player reacts faster",
+      "Move both-up immediately to pressure them"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Both-back is a defensive reset against a big serve or a heavy lobbing team — it buys time and protects the exposed net player. It's temporary: absorb, reset, then work your way back to the net.",
+    "takeaway": "Both-back is a temporary shield vs a big serve — not a permanent plan.",
+    "mistakeType": "leaving the net player exposed to a big serve",
+    "scenarioTr": "Sert bir servisçi partnerinin karşılamasını eziyor ve file oyuncunu avlıyor. Hangi dizilim ayarı yardımcı olur?",
+    "optionsTr": [
+      "Kısa süre both-back olup servisi sönümle, sonra file'ye geri çık",
+      "Biri-önde kal ve file oyuncusu daha hızlı tepki versin diye um",
+      "Baskı için hemen ikiniz de file'ye çık"
+    ],
+    "explanationTr": "Both-back (ikiniz de arkada), sert servise ya da çok lob atan takıma karşı defansif sıfırlamadır — zaman kazandırır ve açıkta kalan file oyuncusunu korur. Geçicidir: sönümle, sıfırla, sonra file'ye dön.",
+    "takeawayTr": "Both-back, sert servise karşı geçici bir kalkandır — kalıcı plan değil.",
+    "tacticalCategory": "defense"
+  },
+  {
+    "id": "doubles_010",
+    "category": "doubles",
+    "difficulty": "medium",
+    "focusTag": "beat an aggressive poacher",
+    "scenario": "The opposing net player keeps poaching and crowding the middle, eating your returns. How do you make them pay?",
+    "options": [
+      "Lob the aggressive net player to push them off the net",
+      "Hit harder cross-court through the same spot",
+      "Aim every return down their alley"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "A lob over the crowding net player resets the point and pushes them off the net, making them respect the lob and poach less. Hitting harder into the poach is exactly what they want.",
+    "takeaway": "Punish an over-eager poacher with a lob — it buys back the middle.",
+    "mistakeType": "feeding an aggressive poacher",
+    "scenarioTr": "Karşı file oyuncusu sürekli poach yapıp ortayı daraltıyor, karşılamalarını yiyor. Bedelini nasıl ödetirsin?",
+    "optionsTr": [
+      "Agresif file oyuncusunu lob'la, file'den uzaklaştır",
+      "Aynı noktadan daha sert çapraz vur",
+      "Her karşılamayı onların koridoruna at"
+    ],
+    "explanationTr": "Ortayı daraltan file oyuncusunun üstünden lob, puanı sıfırlar ve onu file'den uzaklaştırır; lob'a saygı duyup daha az poach yapar. Poach'ın içine daha sert vurmak tam da onların istediğidir.",
+    "takeawayTr": "Fazla hevesli bir poach'çıyı lob'la cezalandır — ortayı geri kazandırır.",
+    "tacticalCategory": "return"
   }
 ]
