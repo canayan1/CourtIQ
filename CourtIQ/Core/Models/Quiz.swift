@@ -6,6 +6,7 @@ enum QuizCategory: String, CaseIterable, Identifiable, Codable {
     case rally
     case net
     case mental
+    case doubles
 
     var id: String { rawValue }
 
@@ -16,6 +17,7 @@ enum QuizCategory: String, CaseIterable, Identifiable, Codable {
         case .rally: return "Rally"
         case .net: return "Net Play"
         case .mental: return "Mental"
+        case .doubles: return "Doubles"
         }
     }
 
@@ -26,6 +28,7 @@ enum QuizCategory: String, CaseIterable, Identifiable, Codable {
         case .rally: return "arrow.left.and.right.circle.fill"
         case .net: return "square.grid.3x1.below.line.grid.1x2"
         case .mental: return "brain.head.profile"
+        case .doubles: return "person.2.fill"
         }
     }
 
@@ -41,6 +44,8 @@ enum QuizCategory: String, CaseIterable, Identifiable, Codable {
             return "Sharpen transition choices, closing footwork, and volley selection."
         case .mental:
             return "Stay composed under pressure and recover faster between points."
+        case .doubles:
+            return "Win the net, poach the middle, and move as a connected pair."
         }
     }
 }
@@ -155,6 +160,15 @@ struct QuizQuestion: Identifiable, Codable, Hashable {
                                     opponentX: nil, opponentY: nil,
                                     ballOriginX: nil, ballOriginY: nil,
                                     ballTargetX: nil, ballTargetY: nil,
+                                    scoreChip: nil)
+        case .doubles:
+            // Net-poach framing: you at the net (deuce side), returner deep
+            // cross, the return coming back through the middle.
+            return QuizCourtDiagram(surface: "clay",
+                                    youX: 0.30, youY: 0.60,
+                                    opponentX: 0.70, opponentY: 0.10,
+                                    ballOriginX: 0.70, ballOriginY: 0.10,
+                                    ballTargetX: 0.45, ballTargetY: 0.50,
                                     scoreChip: nil)
         }
     }
