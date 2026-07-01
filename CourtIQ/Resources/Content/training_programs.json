@@ -1371,13 +1371,19 @@
           }
         ],
         "finisher": "6 short shuttle repeats with 30 sec rest between each.",
+        "finisherTr": "Aralarda 30 sn dinlenmeyle 6 kısa mekik tekrarı.",
         "focus": "Push-off angles and horizontal force",
+        "focusTr": "İtiş açıları ve yatay kuvvet",
         "id": "footwork-1",
         "objective": "Teach the body to project forward and sideways fast from a low athletic stance.",
+        "objectiveTr": "Vücuda alçak atletik duruştan öne ve yana hızlı fırlamayı öğret.",
         "recovery": "5 min walk, then calf stretching and hip flexor release on the floor.",
+        "recoveryTr": "5 dk yürü, sonra yerde baldır esnetme ve kalça fleksör gevşetme.",
         "title": "Acceleration Mechanics",
+        "titleTr": "Hızlanma Mekaniği",
         "type": "hybrid",
-        "warmup": "A-march, A-skip, ankle circles, wall drills x 3, and 2 build-up runs over 20 m."
+        "warmup": "A-march, A-skip, ankle circles, wall drills x 3, and 2 build-up runs over 20 m.",
+        "warmupTr": "A-march, A-skip, ayak bileği çevirmeleri, duvar drilleri x3 ve 20 m üzerinde 2 kademeli koşu."
       },
       {
         "dayLabel": "Day 2",
@@ -1545,13 +1551,19 @@
           }
         ],
         "finisher": "12 min easy bike flush — legs spin, heart rate drops.",
+        "finisherTr": "12 dk kolay bisiklet flush — bacaklar döner, nabız düşer.",
         "focus": "Side-to-side braking and re-acceleration",
+        "focusTr": "Yana frenleme ve yeniden hızlanma",
         "id": "footwork-2",
         "objective": "Improve deceleration strength and the lateral loading patterns that drive recovery steps.",
+        "objectiveTr": "Yavaşlama kuvvetini ve toparlanma adımlarını süren yanal yüklenme desenlerini geliştir.",
         "recovery": "Adductor release with 90/90 stretch and light quad foam roll.",
+        "recoveryTr": "90/90 esnemeyle adduktor gevşetme ve hafif quad foam roll.",
         "title": "Lateral Strength",
+        "titleTr": "Yanal Kuvvet",
         "type": "gym",
-        "warmup": "Lateral lunges x 8 each way, clamshells x 15 / side, glute bridges x 12."
+        "warmup": "Lateral lunges x 8 each way, clamshells x 15 / side, glute bridges x 12.",
+        "warmupTr": "Her yöne 8 yanal lunge, taraf başına 15 clamshell, 12 glute bridge."
       },
       {
         "dayLabel": "Day 3",
@@ -1719,13 +1731,19 @@
           }
         ],
         "finisher": "10 min hip and thoracic mobility flow to restore posture.",
+        "finisherTr": "Duruşu yeniden kazanmak için 10 dk kalça ve torasik mobilite akışı.",
         "focus": "React and reposition",
+        "focusTr": "Reaksiyon ver ve yeniden konumlan",
         "id": "footwork-3",
         "objective": "Move from first read to first step faster and arrive at the ball in a balanced position.",
+        "objectiveTr": "İlk okumadan ilk adıma daha hızlı geç ve topa dengeli bir pozisyonda ulaş.",
         "recovery": "5 min easy walk, then deep breathing in supine position.",
+        "recoveryTr": "5 dk kolay yürüyüş, sonra sırtüstü pozisyonda derin nefes.",
         "title": "Reactive Agility",
+        "titleTr": "Reaktif Çeviklik",
         "type": "cardio",
-        "warmup": "Fast feet in place x 20 sec, low skips x 2, shuffle to back-pedal transitions x 4."
+        "warmup": "Fast feet in place x 20 sec, low skips x 2, shuffle to back-pedal transitions x 4.",
+        "warmupTr": "Yerinde hızlı ayaklar 20 sn, alçak skip x2, shuffle'dan geri-koşuya geçiş x4."
       },
       {
         "dayLabel": "Day 4",
@@ -1861,13 +1879,19 @@
           }
         ],
         "finisher": "None — this day is intentionally low load.",
+        "finisherTr": "Yok — bu gün bilinçli olarak düşük yük.",
         "focus": "Elastic lower leg and foot durability",
+        "focusTr": "Elastik alt bacak ve ayak dayanıklılığı",
         "id": "footwork-4",
         "objective": "Keep feet reactive and resilient so they can absorb the court across a long week.",
+        "objectiveTr": "Ayakları reaktif ve dayanıklı tut ki uzun bir hafta boyunca kortu absorbe edebilsinler.",
         "recovery": "Foot massage with lacrosse ball, ankle mobility circles, plantar fascia stretch.",
+        "recoveryTr": "Lacrosse topuyla ayak masajı, ayak bileği mobilite çevirmeleri, plantar fasya esnetme.",
         "title": "Foot & Ankle Support",
+        "titleTr": "Ayak & Ayak Bileği Desteği",
         "type": "recovery",
-        "warmup": "Ankle circles x 10 each direction, calf pumps x 15, toe walks x 20 m."
+        "warmup": "Ankle circles x 10 each direction, calf pumps x 15, toe walks x 20 m.",
+        "warmupTr": "Her yöne 10 ayak bileği çevirme, 15 baldır pompası, 20 m parmak ucu yürüyüşü."
       }
     ],
     "durationWeeks": 8,
@@ -2104,13 +2128,19 @@
           }
         ],
         "finisher": "8 min bike intervals — 20 sec hard, 40 sec easy.",
+        "finisherTr": "8 dk bisiklet aralığı — 20 sn sert, 40 sn kolay.",
         "focus": "Hip-to-racket force transfer",
+        "focusTr": "Kalçadan rakete kuvvet aktarımı",
         "id": "shots-1",
         "objective": "Train the rotational power sequence that carries directly to groundstrokes and serve.",
+        "objectiveTr": "Yer vuruşlarına ve servise doğrudan taşınan rotasyonel güç dizisini çalıştır.",
         "recovery": "Lat stretch in doorway, hip flexor lunge hold x 40 sec / side.",
+        "recoveryTr": "Kapı eşiğinde lat esnetme, taraf başına 40 sn kalça fleksör lunge tutuşu.",
         "title": "Rotational Power",
+        "titleTr": "Rotasyonel Güç",
         "type": "hybrid",
-        "warmup": "Thoracic rotation x 8 / side, hip 90/90 switches x 6, band pull-aparts x 15, 3 rehearsal throws with light ball."
+        "warmup": "Thoracic rotation x 8 / side, hip 90/90 switches x 6, band pull-aparts x 15, 3 rehearsal throws with light ball.",
+        "warmupTr": "Taraf başına 8 torasik rotasyon, 6 kalça 90/90 geçiş, 15 band pull-apart, hafif topla 3 prova atışı."
       },
       {
         "dayLabel": "Day 2",
@@ -2278,13 +2308,19 @@
           }
         ],
         "finisher": "Core anti-rotation circuit: 3 x 8 / side Pallof hold, 3 x 10 stir-the-pot.",
+        "finisherTr": "Anti-rotasyon core devresi: taraf başına 3x8 Pallof tutuşu, 3x10 stir-the-pot.",
         "focus": "Upper-body force production and shoulder durability",
+        "focusTr": "Üst vücut kuvvet üretimi ve omuz dayanıklılığı",
         "id": "shots-2",
         "objective": "Build the pressing, pulling, and shoulder stability that supports heavier serving and sustained groundstroke pace.",
+        "objectiveTr": "Daha ağır servisi ve sürekli yer vuruşu temposunu destekleyen itme, çekme ve omuz stabilitesini inşa et.",
         "recovery": "Pec stretch against wall, overhead lat reach, thoracic extension over foam roller.",
+        "recoveryTr": "Duvarda göğüs esnetme, baş üstü lat uzanması, foam roller üzerinde torasik ekstansiyon.",
         "title": "Upper Push/Pull Strength",
+        "titleTr": "Üst Vücut İtme/Çekme Kuvveti",
         "type": "gym",
-        "warmup": "Band shoulder series: pull-aparts, dislocations, face pulls — 2 x 12 each."
+        "warmup": "Band shoulder series: pull-aparts, dislocations, face pulls — 2 x 12 each.",
+        "warmupTr": "Band omuz serisi: pull-apart, dislocation, face pull — her biri 2x12."
       },
       {
         "dayLabel": "Day 3",
@@ -2452,13 +2488,19 @@
           }
         ],
         "finisher": "4 x 200 m row sprints with 60 sec rest.",
+        "finisherTr": "60 sn dinlenmeyle 4x200 m kürek sprinti.",
         "focus": "Ground force and leg drive",
+        "focusTr": "Yer kuvveti ve bacak itişi",
         "id": "shots-3",
         "objective": "Create stronger leg loading and explosive ground force — the part of shot power that most players underestimate.",
+        "objectiveTr": "Daha güçlü bacak yüklenmesi ve patlayıcı yer kuvveti yarat — oyuncuların en çok küçümsediği vuruş gücü kısmı.",
         "recovery": "Glute and hamstring reset: pigeon stretch x 60 sec / side, lying hamstring pull.",
+        "recoveryTr": "Glute ve hamstring sıfırlama: taraf başına 60 sn pigeon esnetme, sırtüstü hamstring çekme.",
         "title": "Lower-Body Drive",
+        "titleTr": "Alt Vücut İtişi",
         "type": "gym",
-        "warmup": "Hip openers x 8 / side, bodyweight jump squat x 5 with pause at landing, glute activation band walk."
+        "warmup": "Hip openers x 8 / side, bodyweight jump squat x 5 with pause at landing, glute activation band walk.",
+        "warmupTr": "Taraf başına 8 kalça açıcı, inişte durakla 5 vücut ağırlığı jump squat, band yürüyüşüyle glute aktivasyonu."
       }
     ],
     "durationWeeks": 8,
@@ -2631,13 +2673,19 @@
           }
         ],
         "finisher": "3 min slow breathing in supine position — focus on letting the hips drop to the floor.",
+        "finisherTr": "Sırtüstü pozisyonda 3 dk yavaş nefes — kalçaların yere düşmesine izin vermeye odaklan.",
         "focus": "Hip and hamstring range",
+        "focusTr": "Kalça ve hamstring menzili",
         "id": "flex-1",
         "objective": "Improve the split-step landing and wide-ball recovery positions that demand hip depth.",
+        "objectiveTr": "Kalça derinliği gerektiren split-step inişini ve geniş top toparlama pozisyonlarını geliştir.",
         "recovery": "Short walk outside if possible — movement helps hips settle after this work.",
+        "recoveryTr": "Mümkünse dışarıda kısa bir yürüyüş — hareket, bu çalışmadan sonra kalçaların oturmasına yardım eder.",
         "title": "Hip & Hamstring Access",
+        "titleTr": "Kalça & Hamstring Erişimi",
         "type": "recovery",
-        "warmup": "5 min easy bike at low resistance, hip circles x 10 each direction, 3-way hip stretch."
+        "warmup": "5 min easy bike at low resistance, hip circles x 10 each direction, 3-way hip stretch.",
+        "warmupTr": "Düşük dirençte 5 dk kolay bisiklet, her yöne 10 kalça çevirme, 3 yönlü kalça esnetme."
       },
       {
         "dayLabel": "Day 2",
@@ -2741,13 +2789,19 @@
           }
         ],
         "finisher": "5 min easy row — long strokes, feel the thoracic extension.",
+        "finisherTr": "5 dk kolay kürek — uzun çekişler, torasik ekstansiyonu hisset.",
         "focus": "Thoracic rotation and serve shoulder positions",
+        "focusTr": "Torasik rotasyon ve servis omuz pozisyonları",
         "id": "flex-2",
         "objective": "Free the upper body for serve, overhead, and backhand range without irritating the rotator cuff.",
+        "objectiveTr": "Rotator cuff'ı tahriş etmeden üst vücudu servis, smaç ve backhand menzili için serbest bırak.",
         "recovery": "Neck side-stretch x 30 sec each side, lat hang from a bar for 20 sec if available.",
+        "recoveryTr": "Her tarafa 30 sn boyun yan esnetme, varsa 20 sn barda lat asılması.",
         "title": "Thoracic + Shoulder Freedom",
+        "titleTr": "Torasik + Omuz Özgürlüğü",
         "type": "recovery",
-        "warmup": "Cat-cow x 10, band pull-aparts x 12, arm circles small to large x 10 each direction."
+        "warmup": "Cat-cow x 10, band pull-aparts x 12, arm circles small to large x 10 each direction.",
+        "warmupTr": "10 cat-cow, 12 band pull-apart, her yöne küçükten büyüğe 10 kol çevirme."
       },
       {
         "dayLabel": "Day 3",
@@ -2851,13 +2905,19 @@
           }
         ],
         "finisher": "2 min slow diaphragmatic breathing lying flat — signal to the nervous system that you are done.",
+        "finisherTr": "Sırtüstü yatarak 2 dk yavaş diyafram nefesi — sinir sistemine bittiğini bildir.",
         "focus": "Lower-leg range and court-load absorption",
+        "focusTr": "Alt bacak menzili ve kort-yükü absorbe etme",
         "id": "flex-3",
         "objective": "Improve dorsiflexion range so the ankles and knees absorb hard-court impact instead of transferring it upward.",
+        "objectiveTr": "Dorsifleksiyon menzilini artır ki sert kort darbesini yukarı aktarmak yerine ayak bilekleri ve dizler absorbe etsin.",
         "recovery": "Keep everything today easy — this is the recovery session of the week.",
+        "recoveryTr": "Bugün her şeyi hafif tut — bu haftanın toparlanma seansı.",
         "title": "Ankle + Recovery Flow",
+        "titleTr": "Ayak Bileği + Toparlanma Akışı",
         "type": "recovery",
-        "warmup": "Toe walks x 20 m, heel walks x 20 m, ankle circles x 10 each direction."
+        "warmup": "Toe walks x 20 m, heel walks x 20 m, ankle circles x 10 each direction.",
+        "warmupTr": "20 m parmak ucu yürüyüşü, 20 m topuk yürüyüşü, her yöne 10 ayak bileği çevirme."
       }
     ],
     "durationWeeks": 8,
@@ -3094,13 +3154,19 @@
           }
         ],
         "finisher": "5 min walk — resist the urge to sit down immediately.",
+        "finisherTr": "5 dk yürü — hemen oturma isteğine diren.",
         "focus": "Anaerobic repeatability and point-pattern simulation",
+        "focusTr": "Anaerobik tekrarlanabilirlik ve puan-deseni simülasyonu",
         "id": "cond-1",
         "objective": "Improve recovery between points and maintain movement quality when the legs are already heavy.",
+        "objectiveTr": "Puanlar arası toparlanmayı geliştir ve bacaklar zaten ağırken hareket kalitesini koru.",
         "recovery": "5 min easy leg flush on bike, then lying hamstring stretch and calf release.",
+        "recoveryTr": "Bisiklette 5 dk kolay bacak flush, sonra sırtüstü hamstring esnetme ve baldır gevşetme.",
         "title": "Repeat Sprint Builder",
+        "titleTr": "Tekrar Sprint İnşacısı",
         "type": "cardio",
-        "warmup": "5 min easy jog, high knees x 20 m, butt kicks x 20 m, 3 x 10 m build-up accelerations."
+        "warmup": "5 min easy jog, high knees x 20 m, butt kicks x 20 m, 3 x 10 m build-up accelerations.",
+        "warmupTr": "5 dk kolay koşu, 20 m high knees, 20 m butt kick, 3x10 m kademeli hızlanma."
       },
       {
         "dayLabel": "Day 2",
@@ -3236,13 +3302,19 @@
           }
         ],
         "finisher": "8 min upper-body and hip mobility flow.",
+        "finisherTr": "8 dk üst vücut ve kalça mobilite akışı.",
         "focus": "Aerobic base and supporting strength",
+        "focusTr": "Aerobik taban ve destekleyici kuvvet",
         "id": "cond-2",
         "objective": "Build the aerobic engine that allows faster recovery between points and better pace in the third set.",
+        "objectiveTr": "Puanlar arası daha hızlı toparlanmayı ve üçüncü sette daha iyi tempoyu sağlayan aerobik motoru inşa et.",
         "recovery": "Hydrate well — aerobic days flush waste products if you top up fluids.",
+        "recoveryTr": "Bol su iç — aerobik günler, sıvıyı tamamlarsan atık ürünleri temizler.",
         "title": "Aerobic Base + Support Work",
+        "titleTr": "Aerobik Taban + Destek Çalışması",
         "type": "hybrid",
-        "warmup": "Easy 3 min spin or walk to raise heart rate gently."
+        "warmup": "Easy 3 min spin or walk to raise heart rate gently.",
+        "warmupTr": "Nabzı hafifçe yükseltmek için kolay 3 dk pedal ya da yürüyüş."
       },
       {
         "dayLabel": "Day 3",
@@ -3410,13 +3482,19 @@
           }
         ],
         "finisher": "5 min easy walk followed by lying position breathing and full-body release.",
+        "finisherTr": "5 dk kolay yürüyüş, ardından sırtüstü nefes ve tüm vücut gevşetme.",
         "focus": "Sustainable pace and structural resilience",
+        "focusTr": "Sürdürülebilir tempo ve yapısal dayanıklılık",
         "id": "cond-3",
         "objective": "Train the ability to hold quality movement and shot precision when energy systems are being taxed.",
+        "objectiveTr": "Enerji sistemleri zorlanırken kaliteli hareketi ve vuruş isabetini koruma becerisini çalıştır.",
         "recovery": "Keep effort moderate — this is not the day to go extra hard.",
+        "recoveryTr": "Eforu orta tut — bu, ekstra sert gidilecek gün değil.",
         "title": "Tempo & Core",
+        "titleTr": "Tempo & Core",
         "type": "hybrid",
-        "warmup": "Dynamic lower-body mobility: leg swings x 10, hip circles x 8, easy shuffles x 2."
+        "warmup": "Dynamic lower-body mobility: leg swings x 10, hip circles x 8, easy shuffles x 2.",
+        "warmupTr": "Dinamik alt vücut mobilitesi: 10 bacak salınımı, 8 kalça çevirme, 2 kolay shuffle."
       }
     ],
     "durationWeeks": 8,
@@ -3547,11 +3625,15 @@
         "id": "hybridp-day-1",
         "dayLabel": "Day 1",
         "title": "Rotational Power + Sprint",
+        "titleTr": "Rotasyonel Güç + Sprint",
         "type": "hybrid",
         "duration": "70 min",
         "focus": "Transfer rotational force into court speed.",
+        "focusTr": "Rotasyonel kuvveti kort hızına aktar.",
         "objective": "Introduce rotational power patterns while keeping sprint quality sharp.",
+        "objectiveTr": "Sprint kalitesini keskin tutarken rotasyonel güç desenlerini tanıt.",
         "warmup": "Bike 5 min, hip 90/90, thoracic open-book, med-ball slams light.",
+        "warmupTr": "5 dk bisiklet, kalça 90/90, torasik open-book, hafif med-ball slam.",
         "exercises": [
           {
             "id": "hybridp-d1-1",
@@ -3647,17 +3729,23 @@
           }
         ],
         "finisher": "6 x 12-second shuttle runs with 60-second walks.",
-        "recovery": "Walk 5 min, then hip and calf mobility."
+        "finisherTr": "60 sn yürüyüşlerle 6 x 12 sn mekik koşusu.",
+        "recovery": "Walk 5 min, then hip and calf mobility.",
+        "recoveryTr": "5 dk yürü, sonra kalça ve baldır mobilitesi."
       },
       {
         "id": "hybridp-day-2",
         "dayLabel": "Day 2",
         "title": "Upper Contrast + Core",
+        "titleTr": "Üst Vücut Kontrast + Core",
         "type": "gym",
         "duration": "70 min",
         "focus": "Contrast heavy and fast for serving arm speed.",
+        "focusTr": "Servis kolu hızı için ağır ve hızlıyı zıtla.",
         "objective": "Pair a heavy press with a fast throw to build arm speed under load tolerance.",
+        "objectiveTr": "Yük toleransı altında kol hızı için ağır bir presi hızlı bir atışla eşleştir.",
         "warmup": "Band pull-aparts, scapular circles, light overhead press, med-ball chest pass.",
+        "warmupTr": "Band pull-apart, skapular çevirmeler, hafif baş üstü pres, med-ball göğüs pası.",
         "exercises": [
           {
             "id": "hybridp-d2-1",
@@ -3749,17 +3837,23 @@
           }
         ],
         "finisher": "Farmer carry 3 x 30m with heavy load.",
-        "recovery": "Chest and thoracic stretching, 5 min."
+        "finisherTr": "Ağır yükle 3 x 30 m farmer carry.",
+        "recovery": "Chest and thoracic stretching, 5 min.",
+        "recoveryTr": "Göğüs ve torasik esnetme, 5 dk."
       },
       {
         "id": "hybridp-day-3",
         "dayLabel": "Day 3",
         "title": "Court Conditioning + Mobility",
+        "titleTr": "Kort Kondisyonu + Mobilite",
         "type": "cardio",
         "duration": "55 min",
         "focus": "Court-specific repeat sprint at match intensity.",
+        "focusTr": "Maç yoğunluğunda korta özgü tekrar sprint.",
         "objective": "Repeat-sprint endurance using tennis-shaped shuttles.",
+        "objectiveTr": "Tenis-biçimli mekiklerle tekrar-sprint dayanıklılığı.",
         "warmup": "Jog 5 min, dynamic stretches, 3 x 20m strides.",
+        "warmupTr": "5 dk koşu, dinamik esnemeler, 3 x 20 m stride.",
         "exercises": [
           {
             "id": "hybridp-d3-1",
@@ -3791,17 +3885,23 @@
           }
         ],
         "finisher": "Hip flexor and calf mobility 8 min.",
-        "recovery": "Easy 5-min walk, then full-body stretch."
+        "finisherTr": "8 dk kalça fleksör ve baldır mobilitesi.",
+        "recovery": "Easy 5-min walk, then full-body stretch.",
+        "recoveryTr": "Kolay 5 dk yürüyüş, sonra tüm vücut esnetme."
       },
       {
         "id": "hybridp-day-4",
         "dayLabel": "Day 4",
         "title": "Lower Hypertrophy + Trunk",
+        "titleTr": "Alt Vücut Hipertrofi + Gövde",
         "type": "gym",
         "duration": "70 min",
         "focus": "Build leg volume without sacrificing speed.",
+        "focusTr": "Hızdan ödün vermeden bacak hacmi inşa et.",
         "objective": "Hypertrophy-focused leg work with anti-extension core.",
+        "objectiveTr": "Anti-ekstansiyon core ile hipertrofi odaklı bacak çalışması.",
         "warmup": "Bike 5 min, banded hip openers, goblet squat warmup set.",
+        "warmupTr": "5 dk bisiklet, bantlı kalça açıcılar, goblet squat ısınma seti.",
         "exercises": [
           {
             "id": "hybridp-d4-1",
@@ -3861,17 +3961,23 @@
           }
         ],
         "finisher": "Dead bug 3 x 8 / side, slow tempo.",
-        "recovery": "Quad and hamstring stretch, 6 min."
+        "finisherTr": "Taraf başına 3 x 8 dead bug, yavaş tempo.",
+        "recovery": "Quad and hamstring stretch, 6 min.",
+        "recoveryTr": "Quad ve hamstring esnetme, 6 dk."
       },
       {
         "id": "hybridp-day-5",
         "dayLabel": "Day 5",
         "title": "Elasticity + Shot Speed",
+        "titleTr": "Elastikiyet + Vuruş Hızı",
         "type": "hybrid",
         "duration": "65 min",
         "focus": "Rebound strength and contact-point speed.",
+        "focusTr": "Sıçrama kuvveti ve temas-noktası hızı.",
         "objective": "Plyometrics paired with rotational speed drills.",
+        "objectiveTr": "Rotasyonel hız drilleriyle eşleştirilmiş pliometri.",
         "warmup": "Jump rope 3 min, hip circles, banded scapular work.",
+        "warmupTr": "3 dk ip atlama, kalça çevirmeleri, bantlı skapular çalışma.",
         "exercises": [
           {
             "id": "hybridp-d5-1",
@@ -3931,17 +4037,23 @@
           }
         ],
         "finisher": "Short shadow-swing drill with band resistance, 3 x 20 sec.",
-        "recovery": "Thoracic mobility, 5 min."
+        "finisherTr": "Band direnciyle kısa gölge-vuruş drilli, 3 x 20 sn.",
+        "recovery": "Thoracic mobility, 5 min.",
+        "recoveryTr": "Torasik mobilite, 5 dk."
       },
       {
         "id": "hybridp-day-6",
         "dayLabel": "Day 6",
         "title": "Aerobic + Recovery Strength",
+        "titleTr": "Aerobik + Toparlanma Kuvveti",
         "type": "hybrid",
         "duration": "55 min",
         "focus": "Long aerobic base with recovery-focused strength.",
+        "focusTr": "Toparlanma odaklı kuvvetle uzun aerobik taban.",
         "objective": "Easy aerobic work paired with postural and corrective strength.",
+        "objectiveTr": "Duruş ve düzeltici kuvvetle eşleştirilmiş kolay aerobik çalışma.",
         "warmup": "Dynamic walk 5 min.",
+        "warmupTr": "5 dk dinamik yürüyüş.",
         "exercises": [
           {
             "id": "hybridp-d6-1",
@@ -3973,16 +4085,21 @@
           }
         ],
         "finisher": "Reverse plank hold 3 x 30 sec.",
-        "recovery": "Full-body stretch, 8 min."
+        "finisherTr": "3 x 30 sn ters plank tutuşu.",
+        "recovery": "Full-body stretch, 8 min.",
+        "recoveryTr": "Tüm vücut esnetme, 8 dk."
       },
       {
         "id": "hybridp-day-7",
         "dayLabel": "Day 7",
         "title": "Recovery / Off",
+        "titleTr": "Toparlanma / Dinlenme",
         "type": "recovery",
         "duration": "20-30 min",
         "focus": "Full recovery.",
+        "focusTr": "Tam toparlanma.",
         "objective": "Active recovery or full rest day depending on fatigue.",
+        "objectiveTr": "Yorgunluğa göre aktif toparlanma ya da tam dinlenme günü.",
         "warmup": "-",
         "exercises": [
           {
@@ -4011,7 +4128,8 @@
           }
         ],
         "finisher": "-",
-        "recovery": "Sleep priority."
+        "recovery": "Sleep priority.",
+        "recoveryTr": "Uyku önceliği."
       }
     ],
     "persistencePrompts": [
@@ -4086,11 +4204,15 @@
         "id": "footworkp-day-1",
         "dayLabel": "Day 1",
         "title": "Reactive Starts",
+        "titleTr": "Reaktif Başlangıçlar",
         "type": "hybrid",
         "duration": "60 min",
         "focus": "First-step reaction to visual or audio cues.",
+        "focusTr": "Görsel veya işitsel işaretlere ilk-adım reaksiyonu.",
         "objective": "Train unprogrammed starts.",
+        "objectiveTr": "Programsız başlangıçları çalıştır.",
         "warmup": "A-skips, high knees, lateral shuffles, 3 x short sprints.",
+        "warmupTr": "A-skip, high knees, yanal shuffle, 3 x kısa sprint.",
         "exercises": [
           {
             "id": "footworkp-d1-1",
@@ -4150,17 +4272,23 @@
           }
         ],
         "finisher": "Pogo hops 3 x 15 sec.",
-        "recovery": "Calf and ankle mobility."
+        "finisherTr": "3 x 15 sn pogo sıçraması.",
+        "recovery": "Calf and ankle mobility.",
+        "recoveryTr": "Baldır ve ayak bileği mobilitesi."
       },
       {
         "id": "footworkp-day-2",
         "dayLabel": "Day 2",
         "title": "Deceleration Strength",
+        "titleTr": "Yavaşlama Kuvveti",
         "type": "gym",
         "duration": "65 min",
         "focus": "Eccentric strength for stopping.",
+        "focusTr": "Durmak için eksantrik kuvvet.",
         "objective": "Build the braking force that lets you change direction without wide steps.",
+        "objectiveTr": "Geniş adım atmadan yön değiştirmeni sağlayan frenleme kuvvetini inşa et.",
         "warmup": "Bike 5 min, banded lateral walks, slow reverse lunges.",
+        "warmupTr": "5 dk bisiklet, bantlı yanal yürüyüşler, yavaş ters lunge.",
         "exercises": [
           {
             "id": "footworkp-d2-1",
@@ -4220,17 +4348,23 @@
           }
         ],
         "finisher": "Farmer carry 3 x 30m.",
-        "recovery": "Posterior chain stretch, 6 min."
+        "finisherTr": "3 x 30 m farmer carry.",
+        "recovery": "Posterior chain stretch, 6 min.",
+        "recoveryTr": "Arka zincir esnetme, 6 dk."
       },
       {
         "id": "footworkp-day-3",
         "dayLabel": "Day 3",
         "title": "Chained Agility",
+        "titleTr": "Zincirli Çeviklik",
         "type": "cardio",
         "duration": "50 min",
         "focus": "Linked multi-directional movement.",
+        "focusTr": "Bağlı çok yönlü hareket.",
         "objective": "Train sequences of direction change without pauses.",
+        "objectiveTr": "Duraksız yön-değiştirme dizilerini çalıştır.",
         "warmup": "Jump rope 3 min, carioca, crossovers.",
+        "warmupTr": "3 dk ip atlama, carioca, crossover.",
         "exercises": [
           {
             "id": "footworkp-d3-1",
@@ -4262,17 +4396,23 @@
           }
         ],
         "finisher": "Calf raises 3 x 15.",
-        "recovery": "Ankle and hip mobility."
+        "finisherTr": "3 x 15 baldır kaldırma.",
+        "recovery": "Ankle and hip mobility.",
+        "recoveryTr": "Ayak bileği ve kalça mobilitesi."
       },
       {
         "id": "footworkp-day-4",
         "dayLabel": "Day 4",
         "title": "Foot & Ankle Recovery",
+        "titleTr": "Ayak & Ayak Bileği Toparlanması",
         "type": "recovery",
         "duration": "35 min",
         "focus": "Tissue maintenance.",
+        "focusTr": "Doku bakımı.",
         "objective": "Low-intensity work to keep feet and calves healthy.",
+        "objectiveTr": "Ayakları ve baldırları sağlıklı tutmak için düşük yoğunluklu çalışma.",
         "warmup": "Easy walk 3 min.",
+        "warmupTr": "3 dk kolay yürüyüş.",
         "exercises": [
           {
             "id": "footworkp-d4-1",
@@ -4304,7 +4444,9 @@
           }
         ],
         "finisher": "Self-massage foot sole, 5 min.",
-        "recovery": "Walk easy 10 min."
+        "finisherTr": "5 dk ayak tabanı kendine masaj.",
+        "recovery": "Walk easy 10 min.",
+        "recoveryTr": "10 dk kolay yürüyüş."
       }
     ],
     "persistencePrompts": [
@@ -4379,11 +4521,15 @@
         "id": "strongp-day-1",
         "dayLabel": "Day 1",
         "title": "Heavy Rotation",
+        "titleTr": "Ağır Rotasyon",
         "type": "hybrid",
         "duration": "65 min",
         "focus": "Heavy loaded rotation with fast med-ball release.",
+        "focusTr": "Hızlı med-ball bırakışıyla ağır yüklü rotasyon.",
         "objective": "Contrast heavy cable rotation with fast throws.",
+        "objectiveTr": "Ağır kablo rotasyonunu hızlı atışlarla zıtla.",
         "warmup": "Bike 5 min, hip 90/90, thoracic rotations.",
+        "warmupTr": "5 dk bisiklet, kalça 90/90, torasik rotasyonlar.",
         "exercises": [
           {
             "id": "strongp-d1-1",
@@ -4445,17 +4591,23 @@
           }
         ],
         "finisher": "Short-range shadow swings with intent.",
-        "recovery": "Hip and thoracic mobility."
+        "finisherTr": "Niyetli kısa-mesafe gölge vuruşları.",
+        "recovery": "Hip and thoracic mobility.",
+        "recoveryTr": "Kalça ve torasik mobilite."
       },
       {
         "id": "strongp-day-2",
         "dayLabel": "Day 2",
         "title": "Upper Push-Pull Power",
+        "titleTr": "Üst Vücut İtme-Çekme Gücü",
         "type": "gym",
         "duration": "70 min",
         "focus": "Contrast heavy push/pull with fast throws.",
+        "focusTr": "Ağır itme/çekmeyi hızlı atışlarla zıtla.",
         "objective": "Heavy upper work paired with explosive transfer.",
+        "objectiveTr": "Patlayıcı aktarımla eşleştirilmiş ağır üst vücut çalışması.",
         "warmup": "Band work, scapular activation, push-up warmup set.",
+        "warmupTr": "Band çalışması, skapular aktivasyon, şınav ısınma seti.",
         "exercises": [
           {
             "id": "strongp-d2-1",
@@ -4515,17 +4667,23 @@
           }
         ],
         "finisher": "Face-pulls 3 x 15.",
-        "recovery": "Chest and shoulder stretch."
+        "finisherTr": "3 x 15 face-pull.",
+        "recovery": "Chest and shoulder stretch.",
+        "recoveryTr": "Göğüs ve omuz esnetme."
       },
       {
         "id": "strongp-day-3",
         "dayLabel": "Day 3",
         "title": "Lower Drive + Jump",
+        "titleTr": "Alt Vücut İtiş + Sıçrama",
         "type": "gym",
         "duration": "65 min",
         "focus": "Heavy leg drive paired with jumping.",
+        "focusTr": "Sıçramayla eşleştirilmiş ağır bacak itişi.",
         "objective": "Lower-body contrast for shot base.",
+        "objectiveTr": "Vuruş tabanı için alt vücut kontrastı.",
         "warmup": "Bike 5 min, goblet squat warmup.",
+        "warmupTr": "5 dk bisiklet, goblet squat ısınma.",
         "exercises": [
           {
             "id": "strongp-d3-1",
@@ -4585,7 +4743,9 @@
           }
         ],
         "finisher": "Walking lunges 2 x 20m.",
-        "recovery": "Full lower-body stretch."
+        "finisherTr": "2 x 20 m yürüyen lunge.",
+        "recovery": "Full lower-body stretch.",
+        "recoveryTr": "Tam alt vücut esnetme."
       }
     ],
     "persistencePrompts": [
@@ -4660,11 +4820,15 @@
         "id": "flexp-day-1",
         "dayLabel": "Day 1",
         "title": "Hip Active Range",
+        "titleTr": "Kalça Aktif Menzil",
         "type": "recovery",
         "duration": "40 min",
         "focus": "Controlled active range for hips.",
+        "focusTr": "Kalçalar için kontrollü aktif menzil.",
         "objective": "Work the range you have, under control.",
+        "objectiveTr": "Sahip olduğun menzili kontrol altında çalış.",
         "warmup": "Breath drills 2 min, hip circles.",
+        "warmupTr": "2 dk nefes drilleri, kalça çevirmeleri.",
         "exercises": [
           {
             "id": "flexp-d1-1",
@@ -4724,17 +4888,23 @@
           }
         ],
         "finisher": "Deep squat hold 2 min cumulative.",
-        "recovery": "Walk 5 min."
+        "finisherTr": "Toplam 2 dk derin squat tutuşu.",
+        "recovery": "Walk 5 min.",
+        "recoveryTr": "5 dk yürü."
       },
       {
         "id": "flexp-day-2",
         "dayLabel": "Day 2",
         "title": "Shoulder End-Range Strength",
+        "titleTr": "Omuz Uç-Menzil Kuvveti",
         "type": "recovery",
         "duration": "35 min",
         "focus": "Controlled strength at shoulder end ranges.",
+        "focusTr": "Omuz uç menzillerinde kontrollü kuvvet.",
         "objective": "Make the new shoulder range bulletproof.",
+        "objectiveTr": "Yeni omuz menzilini kurşun geçirmez yap.",
         "warmup": "Scapular circles, band pull-aparts.",
+        "warmupTr": "Skapular çevirmeler, band pull-apart.",
         "exercises": [
           {
             "id": "flexp-d2-1",
@@ -4794,17 +4964,23 @@
           }
         ],
         "finisher": "Hang from a bar 3 x 20 sec.",
-        "recovery": "Chest opener stretch."
+        "finisherTr": "3 x 20 sn barda asılma.",
+        "recovery": "Chest opener stretch.",
+        "recoveryTr": "Göğüs açıcı esnetme."
       },
       {
         "id": "flexp-day-3",
         "dayLabel": "Day 3",
         "title": "Loaded Mobility Flow",
+        "titleTr": "Yüklü Mobilite Akışı",
         "type": "recovery",
         "duration": "30 min",
         "focus": "Put the range under light load.",
+        "focusTr": "Menzili hafif yük altına koy.",
         "objective": "A flow that cycles through the key tennis ranges with a light weight.",
+        "objectiveTr": "Hafif ağırlıkla temel tenis menzillerini gezen bir akış.",
         "warmup": "Breath work 3 min.",
+        "warmupTr": "3 dk nefes çalışması.",
         "exercises": [
           {
             "id": "flexp-d3-1",
@@ -4836,7 +5012,9 @@
           }
         ],
         "finisher": "Diaphragmatic breathing 5 min.",
-        "recovery": "Walk easy 5 min."
+        "finisherTr": "5 dk diyafram nefesi.",
+        "recovery": "Walk easy 5 min.",
+        "recoveryTr": "5 dk kolay yürüyüş."
       }
     ],
     "persistencePrompts": [
@@ -4911,11 +5089,15 @@
         "id": "condp-day-1",
         "dayLabel": "Day 1",
         "title": "High-Intensity Repeats",
+        "titleTr": "Yüksek Yoğunluklu Tekrarlar",
         "type": "cardio",
         "duration": "60 min",
         "focus": "Repeat high-intensity intervals with tight rest.",
+        "focusTr": "Kısa dinlenmeyle yüksek yoğunluklu aralık tekrarları.",
         "objective": "Train repeat sprint with match-intensity work-to-rest ratio.",
+        "objectiveTr": "Maç-yoğunluğu çalışma-dinlenme oranıyla tekrar sprint çalış.",
         "warmup": "Jog 8 min, dynamic stretch, 4 x 20m strides.",
+        "warmupTr": "8 dk koşu, dinamik esnetme, 4 x 20 m stride.",
         "exercises": [
           {
             "id": "condp-d1-1",
@@ -4947,17 +5129,23 @@
           }
         ],
         "finisher": "5-min easy cooldown jog.",
-        "recovery": "Full-body stretch."
+        "finisherTr": "5 dk kolay soğuma koşusu.",
+        "recovery": "Full-body stretch.",
+        "recoveryTr": "Tüm vücut esnetme."
       },
       {
         "id": "condp-day-2",
         "dayLabel": "Day 2",
         "title": "Tempo + Core",
+        "titleTr": "Tempo + Core",
         "type": "hybrid",
         "duration": "55 min",
         "focus": "Tempo running with core work.",
+        "focusTr": "Core çalışmasıyla tempo koşusu.",
         "objective": "Sustained effort at threshold pace with anti-rotation core.",
+        "objectiveTr": "Anti-rotasyon core ile eşik temposunda sürekli efor.",
         "warmup": "Jog 5 min, activations.",
+        "warmupTr": "5 dk koşu, aktivasyonlar.",
         "exercises": [
           {
             "id": "condp-d2-1",
@@ -5015,17 +5203,23 @@
           }
         ],
         "finisher": "Dead bug 3 x 8.",
-        "recovery": "Hip and hamstring stretch."
+        "finisherTr": "3 x 8 dead bug.",
+        "recovery": "Hip and hamstring stretch.",
+        "recoveryTr": "Kalça ve hamstring esnetme."
       },
       {
         "id": "condp-day-3",
         "dayLabel": "Day 3",
         "title": "Match-Duration Effort",
+        "titleTr": "Maç-Süresi Eforu",
         "type": "cardio",
         "duration": "75 min",
         "focus": "Long session at varied intensity.",
+        "focusTr": "Değişken yoğunlukta uzun seans.",
         "objective": "Simulate the duration and variability of a match.",
+        "objectiveTr": "Bir maçın süresini ve değişkenliğini simüle et.",
         "warmup": "Jog 10 min, dynamic stretch.",
+        "warmupTr": "10 dk koşu, dinamik esnetme.",
         "exercises": [
           {
             "id": "condp-d3-1",
@@ -5057,7 +5251,9 @@
           }
         ],
         "finisher": "Cooldown jog 5 min.",
-        "recovery": "Legs up the wall, 10 min."
+        "finisherTr": "5 dk soğuma koşusu.",
+        "recovery": "Legs up the wall, 10 min.",
+        "recoveryTr": "Bacaklar duvarda, 10 dk."
       }
     ],
     "persistencePrompts": [
