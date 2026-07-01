@@ -1115,32 +1115,42 @@
     "phases": [
       {
         "guidance": "Learn the movement patterns, leave one or two reps in reserve, and build consistency before chasing intensity.",
+        "guidanceTr": "Hareket desenlerini öğren, bir iki tekrarı yedekte bırak ve yoğunluğun peşine düşmeden önce istikrarı inşa et.",
         "id": "phase-1",
         "title": "Base & Rhythm",
+        "titleTr": "Temel & Ritim",
         "weekRange": "Weeks 1-2"
       },
       {
         "guidance": "Add small load jumps or one extra set on primary lifts while keeping sprint and jump quality high.",
+        "guidanceTr": "Sprint ve sıçrama kalitesini yüksek tutarken ana kaldırışlarda küçük yük artışları ya da bir ekstra set ekle.",
         "id": "phase-2",
         "title": "Load & Capacity",
+        "titleTr": "Yük & Kapasite",
         "weekRange": "Weeks 3-4"
       },
       {
         "guidance": "Move the weights faster, trim fluff volume, and make every plyometric rep crisp and reactive.",
+        "guidanceTr": "Ağırlıkları daha hızlı hareket ettir, gereksiz hacmi kırp ve her pliometrik tekrarı keskin ve reaktif yap.",
         "id": "phase-3",
         "title": "Power Conversion",
+        "titleTr": "Güce Dönüştürme",
         "weekRange": "Weeks 5-6"
       },
       {
         "guidance": "Cut total volume by roughly thirty percent so the body freshens up without losing rhythm.",
+        "guidanceTr": "Toplam hacmi yaklaşık yüzde otuz azalt ki vücut ritmi kaybetmeden tazelensin.",
         "id": "phase-4",
         "title": "Deload & Reset",
+        "titleTr": "Yük Azaltma & Sıfırlama",
         "weekRange": "Week 7"
       },
       {
         "guidance": "Keep the sessions snappy, repeat your best loads, and use the persistence check to compare readiness versus week one.",
+        "guidanceTr": "Seansları tempolu tut, en iyi yüklerini tekrarla ve hazır olma durumunu birinci haftayla karşılaştırmak için istikrar kontrolünü kullan.",
         "id": "phase-5",
         "title": "Sharpness Week",
+        "titleTr": "Keskinlik Haftası",
         "weekRange": "Week 8"
       }
     ],
@@ -1838,32 +1848,42 @@
     "phases": [
       {
         "guidance": "Focus on movement pattern quality. Move at 80% speed, land cleanly, and never sacrifice posture for pace.",
+        "guidanceTr": "Hareket deseni kalitesine odaklan. %80 hızla hareket et, temiz in ve asla duruşu hıza feda etme.",
         "id": "fw-phase-1",
         "title": "Pattern & Timing",
+        "titleTr": "Desen & Zamanlama",
         "weekRange": "Weeks 1-2"
       },
       {
         "guidance": "Add resistance (band, sled) and extend sprint distances. Your body should feel challenged but not broken.",
+        "guidanceTr": "Direnç ekle (bant, kızak) ve sprint mesafelerini uzat. Vücudun zorlanmalı ama kırılmamalı.",
         "id": "fw-phase-2",
         "title": "Load & Distance",
+        "titleTr": "Yük & Mesafe",
         "weekRange": "Weeks 3-4"
       },
       {
         "guidance": "Increase reaction speed and agility drill intensity. Every rep should feel like a match situation — read, decide, go.",
+        "guidanceTr": "Reaksiyon hızını ve çeviklik drill'i yoğunluğunu artır. Her tekrar bir maç durumu gibi hissettirmeli — oku, karar ver, git.",
         "id": "fw-phase-3",
         "title": "Speed & Reaction",
+        "titleTr": "Hız & Reaksiyon",
         "weekRange": "Weeks 5-6"
       },
       {
         "guidance": "Cut volume by 30%. Use this week to absorb the training load — move well, not hard.",
+        "guidanceTr": "Hacmi %30 azalt. Bu haftayı antrenman yükünü sindirmek için kullan — sert değil, iyi hareket et.",
         "id": "fw-phase-4",
         "title": "Deload & Coordination",
+        "titleTr": "Yük Azaltma & Koordinasyon",
         "weekRange": "Week 7"
       },
       {
         "guidance": "Replicate the best sessions from weeks 5-6 at match intensity. Use this as a before-and-after comparison.",
+        "guidanceTr": "5-6. haftaların en iyi seanslarını maç yoğunluğunda tekrarla. Bunu bir önce-sonra karşılaştırması olarak kullan.",
         "id": "fw-phase-5",
         "title": "Match-Speed Benchmark",
+        "titleTr": "Maç Hızı Kıyaslaması",
         "weekRange": "Week 8"
       }
     ],
@@ -2419,32 +2439,42 @@
     "phases": [
       {
         "guidance": "Focus on the movement quality: load the hip, link to the arm, finish with posture. Speed comes later.",
+        "guidanceTr": "Hareket kalitesine odaklan: kalçayı yükle, kola bağla, duruşla bitir. Hız sonra gelir.",
         "id": "ss-phase-1",
         "title": "Position & Control",
+        "titleTr": "Pozisyon & Kontrol",
         "weekRange": "Weeks 1-2"
       },
       {
         "guidance": "Add load to the rotational and pressing exercises. Your positions should stay identical — only the resistance changes.",
+        "guidanceTr": "Rotasyonel ve itme egzersizlerine yük ekle. Pozisyonların aynı kalmalı — sadece direnç değişir.",
         "id": "ss-phase-2",
         "title": "Load the Pattern",
+        "titleTr": "Deseni Yükle",
         "weekRange": "Weeks 3-4"
       },
       {
         "guidance": "Move explosively on every rep. The goal is intent — throw hard, push fast, land cleanly.",
+        "guidanceTr": "Her tekrarda patlayıcı hareket et. Amaç niyet — sert at, hızlı it, temiz in.",
         "id": "ss-phase-3",
         "title": "Velocity Focus",
+        "titleTr": "Hız Odağı",
         "weekRange": "Weeks 5-6"
       },
       {
         "guidance": "Reduce sets by one and drop weight 15-20%. Let the nervous system recover so it peaks in week 8.",
+        "guidanceTr": "Set sayısını bir azalt ve ağırlığı %15-20 düşür. Sinir sistemi toparlansın ki 8. haftada zirve yapsın.",
         "id": "ss-phase-4",
         "title": "Deload & Feel",
+        "titleTr": "Yük Azaltma & Hissetme",
         "weekRange": "Week 7"
       },
       {
         "guidance": "Return to week 5-6 loads. Your body is fresh — notice how much more crisp the movement feels now.",
+        "guidanceTr": "5-6. hafta yüklerine dön. Vücudun taze — hareketin şimdi ne kadar daha keskin hissettirdiğini fark et.",
         "id": "ss-phase-5",
         "title": "Transfer Week",
+        "titleTr": "Aktarım Haftası",
         "weekRange": "Week 8"
       }
     ],
@@ -2808,32 +2838,42 @@
     "phases": [
       {
         "guidance": "Move slowly into each position and map where you stop. Do not force range — find where you actually are.",
+        "guidanceTr": "Her pozisyona yavaşça gir ve nerede durduğunu belirle. Menzili zorlama — gerçekte nerede olduğunu bul.",
         "id": "bf-phase-1",
         "title": "Explore Range",
+        "titleTr": "Menzili Keşfet",
         "weekRange": "Weeks 1-2"
       },
       {
         "guidance": "Spend more time in the restricted areas. Add gentle load — bodyweight presses and hangs — to build tissue tolerance.",
+        "guidanceTr": "Kısıtlı bölgelerde daha çok zaman geçir. Doku toleransı için hafif yük ekle — vücut ağırlığıyla presler ve asılmalar.",
         "id": "bf-phase-2",
         "title": "Build Tolerance",
+        "titleTr": "Tolerans İnşa Et",
         "weekRange": "Weeks 3-4"
       },
       {
         "guidance": "Work actively through the new range — move in and out with muscle control rather than passive stretching.",
+        "guidanceTr": "Yeni menzilde aktif çalış — pasif esneme yerine kas kontrolüyle gir ve çık.",
         "id": "bf-phase-3",
         "title": "Active Range",
+        "titleTr": "Aktif Menzil",
         "weekRange": "Weeks 5-6"
       },
       {
         "guidance": "Lighter week. Notice what has genuinely improved and which areas still need attention.",
+        "guidanceTr": "Daha hafif hafta. Neyin gerçekten geliştiğini ve hangi bölgelerin hâlâ dikkat gerektirdiğini fark et.",
         "id": "bf-phase-4",
         "title": "Consolidate",
+        "titleTr": "Pekiştir",
         "weekRange": "Week 7"
       },
       {
         "guidance": "Apply your new range to tennis-specific positions — split-step landing, serve trophy position, wide-ball recovery.",
+        "guidanceTr": "Yeni menzilini tenise özgü pozisyonlara uygula — split-step inişi, servis trophy pozisyonu, geniş top toparlaması.",
         "id": "bf-phase-5",
         "title": "Integration",
+        "titleTr": "Entegrasyon",
         "weekRange": "Week 8"
       }
     ],
@@ -3357,32 +3397,42 @@
     "phases": [
       {
         "guidance": "Focus on pacing — learn what your sustainable hard effort feels like. Err on the side of too easy over too hard.",
+        "guidanceTr": "Tempoya odaklan — sürdürülebilir zorlu eforunun nasıl hissettirdiğini öğren. Fazla zor yerine fazla kolay tarafta kal.",
         "id": "mc-phase-1",
         "title": "Establish Pace",
+        "titleTr": "Tempoyu Oturt",
         "weekRange": "Weeks 1-2"
       },
       {
         "guidance": "Add one or two more rounds to the sprint and shuttle work. Zone 2 duration extends by 5 minutes.",
+        "guidanceTr": "Sprint ve mekik çalışmasına bir iki tur daha ekle. Zone 2 süresi 5 dakika uzar.",
         "id": "mc-phase-2",
         "title": "Build Volume",
+        "titleTr": "Hacim İnşa Et",
         "weekRange": "Weeks 3-4"
       },
       {
         "guidance": "Push the hard intervals harder. Rest periods stay the same — your goal is to get more output in the same window.",
+        "guidanceTr": "Zorlu aralıkları daha da zorla. Dinlenme süreleri aynı kalır — amaç aynı sürede daha çok çıktı almak.",
         "id": "mc-phase-3",
         "title": "Intensity Block",
+        "titleTr": "Yoğunluk Bloğu",
         "weekRange": "Weeks 5-6"
       },
       {
         "guidance": "Cut volume by 30%. Move well and stay sharp without accumulating more fatigue.",
+        "guidanceTr": "Hacmi %30 azalt. Daha fazla yorgunluk biriktirmeden iyi hareket et ve keskin kal.",
         "id": "mc-phase-4",
         "title": "Freshen Up",
+        "titleTr": "Tazelen",
         "weekRange": "Week 7"
       },
       {
         "guidance": "Repeat the intensity block sessions with fresh legs. This is your benchmark — compare how these feel to week 5.",
+        "guidanceTr": "Yoğunluk bloğu seanslarını taze bacaklarla tekrarla. Bu senin kıyaslaman — bunların 5. haftaya göre nasıl hissettirdiğini karşılaştır.",
         "id": "mc-phase-5",
         "title": "Benchmark",
+        "titleTr": "Kıyaslama",
         "weekRange": "Week 8"
       }
     ],
@@ -3413,31 +3463,41 @@
         "id": "hybridp-phase-1",
         "weekRange": "Weeks 1-2",
         "title": "Adaptation",
-        "guidance": "New movement patterns at moderate load. Priority is clean technique and tolerance, not volume."
+        "titleTr": "Adaptasyon",
+        "guidance": "New movement patterns at moderate load. Priority is clean technique and tolerance, not volume.",
+        "guidanceTr": "Orta yükte yeni hareket desenleri. Öncelik hacim değil, temiz teknik ve tolerans."
       },
       {
         "id": "hybridp-phase-2",
         "weekRange": "Week 3",
         "title": "Ramp",
-        "guidance": "Add load only where week-2 technique was clean. Keep rest generous between main lifts."
+        "titleTr": "Yükseliş",
+        "guidance": "Add load only where week-2 technique was clean. Keep rest generous between main lifts.",
+        "guidanceTr": "Yalnızca 2. hafta tekniğinin temiz olduğu yerlerde yük ekle. Ana kaldırışlar arası dinlenmeyi bol tut."
       },
       {
         "id": "hybridp-phase-3",
         "weekRange": "Week 4",
         "title": "Throwback Test Week",
-        "guidance": "Run one full week of the Hybrid Foundation program. This re-exposes your legs to the baseline movement pattern and confirms your base has consolidated before the new block's final stretch."
+        "titleTr": "Geri Dönüş Test Haftası",
+        "guidance": "Run one full week of the Hybrid Foundation program. This re-exposes your legs to the baseline movement pattern and confirms your base has consolidated before the new block's final stretch.",
+        "guidanceTr": "Hibrit Temeli programının bir tam haftasını uygula. Bu, bacaklarını temel hareket desenine yeniden maruz bırakır ve yeni bloğun son etabından önce tabanının pekiştiğini teyit eder."
       },
       {
         "id": "hybridp-phase-4",
         "weekRange": "Weeks 5-7",
         "title": "Consolidation",
-        "guidance": "Return to the new block. Build toward target loads and sharper outputs — intensity over volume."
+        "titleTr": "Pekiştirme",
+        "guidance": "Return to the new block. Build toward target loads and sharper outputs — intensity over volume.",
+        "guidanceTr": "Yeni bloğa dön. Hedef yüklere ve daha keskin çıktılara doğru inşa et — hacimden çok yoğunluk."
       },
       {
         "id": "hybridp-phase-5",
         "weekRange": "Week 8",
         "title": "Benchmark",
-        "guidance": "Repeat a single high-quality session per theme to compare against week 2. Log a persistence check."
+        "titleTr": "Kıyaslama",
+        "guidance": "Repeat a single high-quality session per theme to compare against week 2. Log a persistence check.",
+        "guidanceTr": "2. haftayla karşılaştırmak için tema başına tek bir yüksek kaliteli seansı tekrarla. Bir istikrar kontrolü kaydet."
       }
     ],
     "days": [
@@ -3942,31 +4002,41 @@
         "id": "footworkp-phase-1",
         "weekRange": "Weeks 1-2",
         "title": "Adaptation",
-        "guidance": "New movement patterns at moderate load. Priority is clean technique and tolerance, not volume."
+        "titleTr": "Adaptasyon",
+        "guidance": "New movement patterns at moderate load. Priority is clean technique and tolerance, not volume.",
+        "guidanceTr": "Orta yükte yeni hareket desenleri. Öncelik hacim değil, temiz teknik ve tolerans."
       },
       {
         "id": "footworkp-phase-2",
         "weekRange": "Week 3",
         "title": "Ramp",
-        "guidance": "Add load only where week-2 technique was clean. Keep rest generous between main lifts."
+        "titleTr": "Yükseliş",
+        "guidance": "Add load only where week-2 technique was clean. Keep rest generous between main lifts.",
+        "guidanceTr": "Yalnızca 2. hafta tekniğinin temiz olduğu yerlerde yük ekle. Ana kaldırışlar arası dinlenmeyi bol tut."
       },
       {
         "id": "footworkp-phase-3",
         "weekRange": "Week 4",
         "title": "Throwback Test Week",
-        "guidance": "Return to Better Footwork program for one week. The mechanics should feel easier now — this is a live benchmark of how much the base has strengthened."
+        "titleTr": "Geri Dönüş Test Haftası",
+        "guidance": "Return to Better Footwork program for one week. The mechanics should feel easier now — this is a live benchmark of how much the base has strengthened.",
+        "guidanceTr": "Bir hafta Daha İyi Ayak Çalışması programına dön. Mekanik şimdi daha kolay hissettirmeli — bu, tabanın ne kadar güçlendiğinin canlı bir kıyaslamasıdır."
       },
       {
         "id": "footworkp-phase-4",
         "weekRange": "Weeks 5-7",
         "title": "Consolidation",
-        "guidance": "Return to the new block. Build toward target loads and sharper outputs — intensity over volume."
+        "titleTr": "Pekiştirme",
+        "guidance": "Return to the new block. Build toward target loads and sharper outputs — intensity over volume.",
+        "guidanceTr": "Yeni bloğa dön. Hedef yüklere ve daha keskin çıktılara doğru inşa et — hacimden çok yoğunluk."
       },
       {
         "id": "footworkp-phase-5",
         "weekRange": "Week 8",
         "title": "Benchmark",
-        "guidance": "Repeat a single high-quality session per theme to compare against week 2. Log a persistence check."
+        "titleTr": "Kıyaslama",
+        "guidance": "Repeat a single high-quality session per theme to compare against week 2. Log a persistence check.",
+        "guidanceTr": "2. haftayla karşılaştırmak için tema başına tek bir yüksek kaliteli seansı tekrarla. Bir istikrar kontrolü kaydet."
       }
     ],
     "days": [
@@ -4225,31 +4295,41 @@
         "id": "strongp-phase-1",
         "weekRange": "Weeks 1-2",
         "title": "Adaptation",
-        "guidance": "New movement patterns at moderate load. Priority is clean technique and tolerance, not volume."
+        "titleTr": "Adaptasyon",
+        "guidance": "New movement patterns at moderate load. Priority is clean technique and tolerance, not volume.",
+        "guidanceTr": "Orta yükte yeni hareket desenleri. Öncelik hacim değil, temiz teknik ve tolerans."
       },
       {
         "id": "strongp-phase-2",
         "weekRange": "Week 3",
         "title": "Ramp",
-        "guidance": "Add load only where week-2 technique was clean. Keep rest generous between main lifts."
+        "titleTr": "Yükseliş",
+        "guidance": "Add load only where week-2 technique was clean. Keep rest generous between main lifts.",
+        "guidanceTr": "Yalnızca 2. hafta tekniğinin temiz olduğu yerlerde yük ekle. Ana kaldırışlar arası dinlenmeyi bol tut."
       },
       {
         "id": "strongp-phase-3",
         "weekRange": "Week 4",
         "title": "Throwback Test Week",
-        "guidance": "Rerun one week of Stronger Shots. The base loads should feel lighter — confirming the body is ready for velocity-focused work."
+        "titleTr": "Geri Dönüş Test Haftası",
+        "guidance": "Rerun one week of Stronger Shots. The base loads should feel lighter — confirming the body is ready for velocity-focused work.",
+        "guidanceTr": "Daha Güçlü Vuruşlar'ın bir haftasını yeniden çalış. Temel yükler daha hafif hissettirmeli — vücudun hız odaklı çalışmaya hazır olduğunu doğrular."
       },
       {
         "id": "strongp-phase-4",
         "weekRange": "Weeks 5-7",
         "title": "Consolidation",
-        "guidance": "Return to the new block. Build toward target loads and sharper outputs — intensity over volume."
+        "titleTr": "Pekiştirme",
+        "guidance": "Return to the new block. Build toward target loads and sharper outputs — intensity over volume.",
+        "guidanceTr": "Yeni bloğa dön. Hedef yüklere ve daha keskin çıktılara doğru inşa et — hacimden çok yoğunluk."
       },
       {
         "id": "strongp-phase-5",
         "weekRange": "Week 8",
         "title": "Benchmark",
-        "guidance": "Repeat a single high-quality session per theme to compare against week 2. Log a persistence check."
+        "titleTr": "Kıyaslama",
+        "guidance": "Repeat a single high-quality session per theme to compare against week 2. Log a persistence check.",
+        "guidanceTr": "2. haftayla karşılaştırmak için tema başına tek bir yüksek kaliteli seansı tekrarla. Bir istikrar kontrolü kaydet."
       }
     ],
     "days": [
@@ -4496,31 +4576,41 @@
         "id": "flexp-phase-1",
         "weekRange": "Weeks 1-2",
         "title": "Adaptation",
-        "guidance": "New movement patterns at moderate load. Priority is clean technique and tolerance, not volume."
+        "titleTr": "Adaptasyon",
+        "guidance": "New movement patterns at moderate load. Priority is clean technique and tolerance, not volume.",
+        "guidanceTr": "Orta yükte yeni hareket desenleri. Öncelik hacim değil, temiz teknik ve tolerans."
       },
       {
         "id": "flexp-phase-2",
         "weekRange": "Week 3",
         "title": "Ramp",
-        "guidance": "Add load only where week-2 technique was clean. Keep rest generous between main lifts."
+        "titleTr": "Yükseliş",
+        "guidance": "Add load only where week-2 technique was clean. Keep rest generous between main lifts.",
+        "guidanceTr": "Yalnızca 2. hafta tekniğinin temiz olduğu yerlerde yük ekle. Ana kaldırışlar arası dinlenmeyi bol tut."
       },
       {
         "id": "flexp-phase-3",
         "weekRange": "Week 4",
         "title": "Throwback Test Week",
-        "guidance": "Rerun one week of Better Flexibility. Compare how the passive ranges feel — the new range should hold easier."
+        "titleTr": "Geri Dönüş Test Haftası",
+        "guidance": "Rerun one week of Better Flexibility. Compare how the passive ranges feel — the new range should hold easier.",
+        "guidanceTr": "Daha İyi Esneklik'in bir haftasını yeniden çalış. Pasif menzillerin nasıl hissettirdiğini karşılaştır — yeni menzil daha kolay tutmalı."
       },
       {
         "id": "flexp-phase-4",
         "weekRange": "Weeks 5-7",
         "title": "Consolidation",
-        "guidance": "Return to the new block. Build toward target loads and sharper outputs — intensity over volume."
+        "titleTr": "Pekiştirme",
+        "guidance": "Return to the new block. Build toward target loads and sharper outputs — intensity over volume.",
+        "guidanceTr": "Yeni bloğa dön. Hedef yüklere ve daha keskin çıktılara doğru inşa et — hacimden çok yoğunluk."
       },
       {
         "id": "flexp-phase-5",
         "weekRange": "Week 8",
         "title": "Benchmark",
-        "guidance": "Repeat a single high-quality session per theme to compare against week 2. Log a persistence check."
+        "titleTr": "Kıyaslama",
+        "guidance": "Repeat a single high-quality session per theme to compare against week 2. Log a persistence check.",
+        "guidanceTr": "2. haftayla karşılaştırmak için tema başına tek bir yüksek kaliteli seansı tekrarla. Bir istikrar kontrolü kaydet."
       }
     ],
     "days": [
@@ -4737,31 +4827,41 @@
         "id": "condp-phase-1",
         "weekRange": "Weeks 1-2",
         "title": "Adaptation",
-        "guidance": "New movement patterns at moderate load. Priority is clean technique and tolerance, not volume."
+        "titleTr": "Adaptasyon",
+        "guidance": "New movement patterns at moderate load. Priority is clean technique and tolerance, not volume.",
+        "guidanceTr": "Orta yükte yeni hareket desenleri. Öncelik hacim değil, temiz teknik ve tolerans."
       },
       {
         "id": "condp-phase-2",
         "weekRange": "Week 3",
         "title": "Ramp",
-        "guidance": "Add load only where week-2 technique was clean. Keep rest generous between main lifts."
+        "titleTr": "Yükseliş",
+        "guidance": "Add load only where week-2 technique was clean. Keep rest generous between main lifts.",
+        "guidanceTr": "Yalnızca 2. hafta tekniğinin temiz olduğu yerlerde yük ekle. Ana kaldırışlar arası dinlenmeyi bol tut."
       },
       {
         "id": "condp-phase-3",
         "weekRange": "Week 4",
         "title": "Throwback Test Week",
-        "guidance": "Rerun one week of Match Conditioning. The baseline volumes should feel easier now — this is the test."
+        "titleTr": "Geri Dönüş Test Haftası",
+        "guidance": "Rerun one week of Match Conditioning. The baseline volumes should feel easier now — this is the test.",
+        "guidanceTr": "Maç Kondisyonu'nun bir haftasını yeniden çalış. Temel hacimler şimdi daha kolay hissettirmeli — test bu."
       },
       {
         "id": "condp-phase-4",
         "weekRange": "Weeks 5-7",
         "title": "Consolidation",
-        "guidance": "Return to the new block. Build toward target loads and sharper outputs — intensity over volume."
+        "titleTr": "Pekiştirme",
+        "guidance": "Return to the new block. Build toward target loads and sharper outputs — intensity over volume.",
+        "guidanceTr": "Yeni bloğa dön. Hedef yüklere ve daha keskin çıktılara doğru inşa et — hacimden çok yoğunluk."
       },
       {
         "id": "condp-phase-5",
         "weekRange": "Week 8",
         "title": "Benchmark",
-        "guidance": "Repeat a single high-quality session per theme to compare against week 2. Log a persistence check."
+        "titleTr": "Kıyaslama",
+        "guidance": "Repeat a single high-quality session per theme to compare against week 2. Log a persistence check.",
+        "guidanceTr": "2. haftayla karşılaştırmak için tema başına tek bir yüksek kaliteli seansı tekrarla. Bir istikrar kontrolü kaydet."
       }
     ],
     "days": [

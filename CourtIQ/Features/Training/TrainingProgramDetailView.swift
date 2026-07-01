@@ -226,10 +226,10 @@ struct TrainingProgramDetailView: View {
                 Image(systemName: "chart.line.uptrend.xyaxis")
                     .font(.caption.weight(.bold))
                     .foregroundStyle(AppPalette.clay)
-                Text("\(phase.weekRange) · \(phase.title)")
+                Text("\(phase.weekRange) · \(phase.localizedTitle(for: lang.language))")
                     .font(.subheadline.weight(.heavy))
             }
-            Text(phase.guidance)
+            Text(phase.localizedGuidance(for: lang.language))
                 .font(.subheadline)
                 .foregroundStyle(AppPalette.inkSoft)
         }

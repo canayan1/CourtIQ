@@ -165,7 +165,12 @@ struct TrainingPhase: Identifiable, Codable, Hashable {
     let id: String
     let weekRange: String
     let title: String
+    var titleTr: String? = nil
     let guidance: String
+    var guidanceTr: String? = nil
+
+    func localizedTitle(for lang: AppLanguage) -> String { lang == .turkish ? (titleTr ?? title) : title }
+    func localizedGuidance(for lang: AppLanguage) -> String { lang == .turkish ? (guidanceTr ?? guidance) : guidance }
 }
 
 struct TrainingProgram: Identifiable, Codable, Hashable {
