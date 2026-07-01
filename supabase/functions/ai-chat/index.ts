@@ -82,9 +82,12 @@ async function isEntitled(userId: string): Promise<boolean> {
         );
         if (!res.ok) return true;                 // RC error → fail open (don't punish payers)
         const body = await res.json();
-        const ent = body?.subscriber?.entitlements?.[ENTITLEMENT_ID];
-        const expires = ent?.expires_date as string | null | undefined;
-        const entitled = !!ent && (expires == null || new Date(expires).getTime() > Date.now());
+        // Single premium entitlement in this project + its RC identifier is a
+        // display-style string, so treat ANY active (non-expired) entitlement as
+        // premium instead of matching an exact key. Robust to the identifier/renames.
+        const ents = (body?.subscriber?.entitlements ?? {}) as Record<string, { expires_date?: string | null }>;
+        const nowMs = Date.now();
+        const entitled = Object.values(ents).some((e) => e && (e.expires_date == null || new Date(e.expires_date).getTime() > nowMs));
         entitlementCache.set(userId, { entitled, at: Date.now() });
         return entitled;
     } catch {
