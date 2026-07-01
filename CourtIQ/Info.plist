@@ -24,8 +24,6 @@
 	<string>delete-account</string>
 	<key>COURTIQ_FEEDBACK_EMAIL</key>
 	<string>info@kalibrefin.com</string>
-	<key>COURTIQ_MONTHLY_PRODUCT_ID</key>
-	<string>com.courtiq.premium.monthly</string>
 	<key>COURTIQ_PREMIUM_ENTITLEMENT_ID</key>
 	<string>premium_all_access</string>
 	<key>COURTIQ_PRIVACY_URL</key>
@@ -40,8 +38,6 @@
 	<string>https://canayan-ios-apps.vercel.app/apps/dropvolley/support</string>
 	<key>COURTIQ_TERMS_URL</key>
 	<string>https://canayan-ios-apps.vercel.app/apps/dropvolley/terms</string>
-	<key>COURTIQ_YEARLY_PRODUCT_ID</key>
-	<string>com.courtiq.premium.yearly</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationCategoryType</key>
