@@ -1,12 +1,9 @@
 import SwiftUI
 
-/// Action-first Home ("Home B"): a flagship swing hero + a 2×2 feature grid.
-/// Minimal text, ONE accent (clay) on the hero + active states, and a
-/// TACTILE + KINETIC entrance (bouncy staggered reveal + a kinetic score ring).
-///
-/// Supersedes TodayView as the first tab. The old greeting + activity rings
-/// moved to Profile ("Me"); this screen is purely about launching the four
-/// improvement surfaces, led by the swing analyzer.
+/// Action-first Home. The **AI Coach** is the flagship hero; **Swing** and
+/// **Tennis IQ** sit directly below as co-equal surfaces; Matches / Doubles /
+/// Drill follow. A unified Recent feed closes the screen. One accent (clay),
+/// tactile staggered entrance. Profile ("Me") lives behind the header avatar.
 struct HomeView: View {
     @EnvironmentObject private var session: UserSessionManager
     @EnvironmentObject private var dailyQuizManager: DailyQuizManager
@@ -27,12 +24,6 @@ struct HomeView: View {
     @State private var showDrill = false
     @State private var heroBounce = false
 
-    /// Latest swing score (0–100) for the hero ring, if any swing has been
-    /// scored. nil → first-use state (a play glyph, no number).
-    private var latestSwingScore: Int? {
-        swingStore.records.first(where: { $0.score != nil })?.score
-    }
-
     /// The unified Recent feed: the most recent activities across swing, match,
     /// doubles, drill, and quiz, merged newest-first and capped at 8.
     private var recentActivity: [RecentActivity] {
@@ -48,10 +39,13 @@ struct HomeView: View {
     /// Current daily streak — sourced the same way Profile reads it.
     private var streakDays: Int { dailyQuizManager.currentStreak }
 
+    private let columns = [GridItem(.flexible(), spacing: 10),
+                           GridItem(.flexible(), spacing: 10)]
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
-                heroSection
+                coachHero
                     .reveal(appeared: appeared, index: 0, reduceMotion: reduceMotion)
 
                 VStack(alignment: .leading, spacing: 12) {
@@ -59,6 +53,9 @@ struct HomeView: View {
                         .reveal(appeared: appeared, index: 1, reduceMotion: reduceMotion)
 
                     grid
+
+                    drillRow
+                        .reveal(appeared: appeared, index: 6, reduceMotion: reduceMotion)
                 }
 
                 VStack(alignment: .leading, spacing: 12) {
@@ -73,18 +70,17 @@ struct HomeView: View {
                                 .accessibilityLabel(String(format: lang.t("home.streak_days"), streakDays))
                         }
                     }
-                    .reveal(appeared: appeared, index: 6, reduceMotion: reduceMotion)
+                    .reveal(appeared: appeared, index: 7, reduceMotion: reduceMotion)
 
                     RecentActivityStrip(activities: recentActivity, lang: lang)
-                        .reveal(appeared: appeared, index: 7, reduceMotion: reduceMotion)
+                        .reveal(appeared: appeared, index: 8, reduceMotion: reduceMotion)
                 }
             }
             .padding(20)
         }
         .background(AppPalette.cream)
-        // Header pinned ABOVE the scroll content as its own layer, so the
-        // hero's NavigationLink can never capture taps meant for the profile
-        // button — this is what was hijacking the top-right icon into Swing.
+        // Header pinned ABOVE the scroll content as its own layer so the hero's
+        // tap region can never capture taps meant for the profile button.
         .safeAreaInset(edge: .top, spacing: 0) {
             header
                 .padding(.horizontal, 20)
@@ -148,113 +144,131 @@ struct HomeView: View {
         }
     }
 
-    // MARK: - Flagship hero
+    // MARK: - Flagship hero: AI Coach
 
-    private var heroSection: some View {
-        // Plain NavigationLink — NO iOS 18 zoom transition. The zoom's
-        // `matchedTransitionSource` bled the hero's tap region up across the
-        // top of the screen, so taps anywhere near the top (including the
-        // profile button) were hijacked into opening Swing. Dropping the zoom
-        // restores normal, card-bounded hit-testing.
-        NavigationLink {
-            SwingAnalysisView()
+    private var coachHero: some View {
+        // Coach is a tab, so the hero switches tabs (Button) rather than pushing.
+        Button {
+            Haptics.tap()
+            tabRouter.selection = .coach
         } label: {
-            heroLabel
+            coachHeroLabel
         }
         .buttonStyle(PressableCardStyle())
     }
 
-    private var heroLabel: some View {
+    private var coachHeroLabel: some View {
         HStack(spacing: 16) {
-            Image(systemName: "video.fill")
+            Image(systemName: "bubble.left.and.text.bubble.right.fill")
                 .font(.largeTitle.weight(.semibold))
                 .foregroundStyle(.white)
                 .symbolEffect(.bounce, value: heroBounce)
                 .frame(width: 56)
 
-            Text(lang.t("home.analyze_title"))
-                .font(.title3.weight(.semibold))
-                .foregroundStyle(.white)
-                .fixedSize(horizontal: false, vertical: true)
+            VStack(alignment: .leading, spacing: 4) {
+                Text(lang.t("home.coach_hero_title"))
+                    .font(.title3.weight(.semibold))
+                    .foregroundStyle(.white)
+                    .fixedSize(horizontal: false, vertical: true)
+                Text(lang.t("home.coach_hero_subtitle"))
+                    .font(.subheadline)
+                    .foregroundStyle(.white.opacity(0.9))
+                    .fixedSize(horizontal: false, vertical: true)
+            }
 
             Spacer(minLength: 8)
 
-            heroRing
+            Image(systemName: "chevron.right")
+                .font(.headline.weight(.semibold))
+                .foregroundStyle(.white.opacity(0.9))
         }
         .padding(24)
         .frame(maxWidth: .infinity, alignment: .leading)
-        // Dense horizontal hero (icon + title + fixed 54pt ring): clamp so the
-        // row stays composed at the largest sizes instead of crushing the ring.
         .dynamicTypeSize(...DynamicTypeSize.accessibility2)
-        .brandedPhoto("PhotoServe", scrim: .hero, cornerRadius: 24)
-        // Constrain the hero's tap region to exactly the card so it can't bleed
-        // into the header above (paired with the header's .zIndex(1)).
+        .brandedPhoto("PhotoCoach", scrim: .hero, cornerRadius: 24)
         .contentShape(Rectangle())
     }
 
-    @ViewBuilder
-    private var heroRing: some View {
-        if let score = latestSwingScore {
-            ScoreRing(size: 54, score: score, accent: .white,
-                      track: .white.opacity(0.28))
-        } else {
-            // First-use: no score yet → a play glyph instead of a number.
-            ZStack {
-                Circle()
-                    .stroke(.white.opacity(0.28), lineWidth: 54 * 0.11)
-                Image(systemName: "play.fill")
-                    .font(.system(size: 20, weight: .bold))
-                    .foregroundStyle(.white)
+    // MARK: - Co-equal (Swing + IQ) + secondary (Matches + Doubles) grid
+
+    private var grid: some View {
+        LazyVGrid(columns: columns, spacing: 10) {
+            // Top row: the two co-equal surfaces.
+            NavigationLink {
+                SwingAnalysisView()
+            } label: {
+                LockableTile(sfSymbol: "video.fill",
+                             title: lang.t("home.tile_swing"),
+                             photo: "PhotoServe")
             }
-            .frame(width: 54, height: 54)
-            .accessibilityHidden(true)
+            .buttonStyle(PressableCardStyle())
+            .reveal(appeared: appeared, index: 2, reduceMotion: reduceMotion)
+
+            NavigationLink {
+                QuizView(quiz: Quiz.dailyQuiz()) { summary in
+                    // Same manager that powers Profile stats + the streak;
+                    // isDaily: true marks today's ritual complete.
+                    dailyQuizManager.recordCompletion(summary: summary, isDaily: true)
+                    session.updateTopMistakePatterns(summary.mistakeTypes)
+                }
+            } label: {
+                LockableTile(sfSymbol: "brain.head.profile",
+                             title: lang.t("home.tile_iq"),
+                             photo: "PhotoForehand")
+            }
+            .buttonStyle(PressableCardStyle())
+            .reveal(appeared: appeared, index: 3, reduceMotion: reduceMotion)
+
+            // Second row: secondary surfaces (tab switches).
+            Button {
+                Haptics.tap()
+                tabRouter.selection = .matches
+            } label: {
+                LockableTile(sfSymbol: "list.clipboard.fill",
+                             title: lang.t("home.tile_matches"),
+                             photo: "PhotoMatch")
+            }
+            .buttonStyle(PressableCardStyle())
+            .reveal(appeared: appeared, index: 4, reduceMotion: reduceMotion)
+
+            Button {
+                Haptics.tap()
+                tabRouter.selection = .doubles
+            } label: {
+                LockableTile(sfSymbol: "person.2.fill",
+                             title: lang.t("home.tile_doubles"),
+                             photo: "PhotoDoubles")
+            }
+            .buttonStyle(PressableCardStyle())
+            .reveal(appeared: appeared, index: 5, reduceMotion: reduceMotion)
         }
     }
 
-    // MARK: - 2×2 feature grid
+    // MARK: - Drill (full-width secondary row)
 
-    private var grid: some View {
-        LazyVGrid(
-            columns: [GridItem(.flexible(), spacing: 10),
-                      GridItem(.flexible(), spacing: 10)],
-            spacing: 10
-        ) {
-            FeatureTile(sfSymbol: "list.clipboard.fill",
-                        title: lang.t("home.tile_matches"),
-                        minHeight: 112,
-                        photo: "PhotoMatch") {
-                Haptics.tap()
-                tabRouter.selection = .matches
+    private var drillRow: some View {
+        Button {
+            Haptics.tap()
+            showDrill = true
+        } label: {
+            HStack(spacing: 14) {
+                Image(systemName: "scope")
+                    .font(.title2)
+                    .foregroundStyle(.white)
+                    .frame(width: 28)
+                Text(lang.t("home.tile_drill"))
+                    .font(.headline)
+                    .foregroundStyle(.white)
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .font(.footnote.weight(.semibold))
+                    .foregroundStyle(.white.opacity(0.9))
             }
-            .reveal(appeared: appeared, index: 2, reduceMotion: reduceMotion)
-
-            FeatureTile(sfSymbol: "bubble.left.and.text.bubble.right.fill",
-                        title: lang.t("home.tile_coach"),
-                        minHeight: 112,
-                        photo: "PhotoCoach") {
-                Haptics.tap()
-                tabRouter.selection = .coach
-            }
-            .reveal(appeared: appeared, index: 3, reduceMotion: reduceMotion)
-
-            FeatureTile(sfSymbol: "person.2.fill",
-                        title: lang.t("home.tile_doubles"),
-                        minHeight: 112,
-                        photo: "PhotoDoubles") {
-                Haptics.tap()
-                tabRouter.selection = .doubles
-            }
-            .reveal(appeared: appeared, index: 4, reduceMotion: reduceMotion)
-
-            FeatureTile(sfSymbol: "scope",
-                        title: lang.t("home.tile_drill"),
-                        minHeight: 112,
-                        photo: "PhotoFootwork") {
-                Haptics.tap()
-                showDrill = true
-            }
-            .reveal(appeared: appeared, index: 5, reduceMotion: reduceMotion)
+            .padding()
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .brandedPhoto("PhotoFootwork", scrim: .bottom, cornerRadius: 22)
         }
+        .buttonStyle(PressableCardStyle())
     }
 }
 

@@ -33,6 +33,10 @@
 
 /* ── Home (action-first redesign) ── */
 "home.analyze_title" = "Analyze your swing";
+"home.coach_hero_title" = "Ask your AI Coach";
+"home.coach_hero_subtitle" = "Tactics, matches, your whole game";
+"home.tile_swing" = "Swing Analysis";
+"home.tile_iq" = "Tennis IQ";
 "home.your_game" = "Your game";
 "home.tile_matches" = "Matches";
 "home.tile_coach" = "Coach";

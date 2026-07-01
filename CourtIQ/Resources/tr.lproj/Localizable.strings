@@ -33,6 +33,10 @@
 
 /* ── Home (action-first redesign) ── */
 "home.analyze_title" = "Vuruşunu analiz et";
+"home.coach_hero_title" = "AI Koçuna sor";
+"home.coach_hero_subtitle" = "Taktik, maçlar, tüm oyunun";
+"home.tile_swing" = "Vuruş Analizi";
+"home.tile_iq" = "Tenis IQ";
 "home.your_game" = "Oyunun";
 "home.tile_matches" = "Maçlar";
 "home.tile_coach" = "Koç";
