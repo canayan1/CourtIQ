@@ -104,7 +104,7 @@ struct TrainingHubView: View {
                 sectionHeader(title: lang.t("training.free_foundation"),
                               subtitle: lang.t("training.start_here"))
 
-                Text(program.title)
+                Text(program.localizedTitle(for: lang.language))
                     .font(.title3.bold())
 
                 VStack(alignment: .leading, spacing: 6) {
@@ -167,7 +167,7 @@ struct TrainingHubView: View {
 
                         VStack(alignment: .leading, spacing: 6) {
                             HStack {
-                                Text(program.title)
+                                Text(program.localizedTitle(for: lang.language))
                                     .font(.headline)
                                 if !session.isPremiumUnlocked {
                                     Image(systemName: "lock.fill")

@@ -172,6 +172,7 @@ struct TrainingProgram: Identifiable, Codable, Hashable {
     let id: String
     let category: TrainingGoalCategory
     let title: String
+    var titleTr: String? = nil
     let accessTier: TrainingAccessTier
     /// Intended training experience level. Optional so older content
     /// without the field still decodes; defaults to nil (treated as
@@ -179,8 +180,14 @@ struct TrainingProgram: Identifiable, Codable, Hashable {
     var level: TrainingLevel? = nil
     let durationWeeks: Int
     let overview: String
+    var overviewTr: String? = nil
     let outcome: String
+    var outcomeTr: String? = nil
     let emphasis: [String]
+
+    func localizedTitle(for lang: AppLanguage) -> String { lang == .turkish ? (titleTr ?? title) : title }
+    func localizedOverview(for lang: AppLanguage) -> String { lang == .turkish ? (overviewTr ?? overview) : overview }
+    func localizedOutcome(for lang: AppLanguage) -> String { lang == .turkish ? (outcomeTr ?? outcome) : outcome }
     let phases: [TrainingPhase]
     let days: [TrainingDayPlan]
     let persistencePrompts: [String]

@@ -35,7 +35,7 @@ struct TrainProgramsView: View {
                                      subtitle: lang.t("training.start_here"),
                                      onPhoto: true)
 
-                Text(program.title)
+                Text(program.localizedTitle(for: lang.language))
                     .font(.title3.bold())
 
                 Text(lang.t("training.block_title"))
@@ -93,7 +93,7 @@ struct TrainProgramsView: View {
                             .background(session.isPremiumUnlocked ? AppPalette.moss : AppPalette.inkSoft)
                             .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
 
-                        Text(program.title)
+                        Text(program.localizedTitle(for: lang.language))
                             .font(.headline)
                             .foregroundStyle(.white)
 

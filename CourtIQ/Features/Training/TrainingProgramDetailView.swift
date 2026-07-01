@@ -116,7 +116,7 @@ struct TrainingProgramDetailView: View {
                         .foregroundStyle(.white.opacity(0.85))
                 }
 
-                Text(program.title)
+                Text(program.localizedTitle(for: lang.language))
                     .font(.system(size: 22, weight: .heavy, design: .rounded))
                     .foregroundStyle(.white)
                     .fixedSize(horizontal: false, vertical: true)
@@ -130,7 +130,7 @@ struct TrainingProgramDetailView: View {
                     }
                 }
 
-                Text(program.overview)
+                Text(program.localizedOverview(for: lang.language))
                     .font(.subheadline)
                     .foregroundStyle(.white.opacity(0.92))
                     .fixedSize(horizontal: false, vertical: true)
@@ -608,10 +608,10 @@ struct TrainingProgramDetailView: View {
                         .foregroundStyle(AppPalette.inkSoft)
                 }
 
-                Text(next.title)
+                Text(next.localizedTitle(for: lang.language))
                     .font(.title3.bold())
 
-                Text(next.overview)
+                Text(next.localizedOverview(for: lang.language))
                     .font(.subheadline)
                     .foregroundStyle(AppPalette.inkSoft)
                     .fixedSize(horizontal: false, vertical: true)

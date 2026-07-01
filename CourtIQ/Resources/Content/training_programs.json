@@ -1104,7 +1104,9 @@
     ],
     "id": "training-hybrid-foundation",
     "outcome": "A stronger lower body, cleaner force transfer into shots, better repeat-sprint conditioning, and enough muscle support to stay durable across court weeks.",
+    "outcomeTr": "Daha güçlü bir alt vücut, vuruşlara daha temiz kuvvet aktarımı, daha iyi tekrar-sprint kondisyonu ve kort haftaları boyunca dayanıklı kalmaya yetecek kas desteği.",
     "overview": "Repeat this one-week structure for eight weeks to build strength, explosiveness, hypertrophy, and match-ready conditioning together without losing movement quality. This is an intermediate plan: four hard days (1, 2, 4, 5) plus two lighter support days (3 and 6). New to structured training or in-season? Run only Days 1, 2 and 4 and treat the rest as optional until the load feels easy, then add days back one at a time.",
+    "overviewTr": "Bu tek haftalık yapıyı sekiz hafta boyunca tekrarlayarak kuvvet, patlayıcılık, hipertrofi ve maça hazır kondisyonu hareket kalitesini kaybetmeden birlikte inşa et. Bu orta seviye bir plan: dört yoğun gün (1, 2, 4, 5) artı iki hafif destek günü (3 ve 6). Yapılandırılmış antrenmana yeni misin ya da sezon içinde misin? Sadece 1., 2. ve 4. günleri yap; yük kolay gelene kadar gerisini opsiyonel say, sonra günleri birer birer geri ekle.",
     "persistencePrompts": [
       "How explosive did your first step feel this week?",
       "How well did your legs recover between gym work and cardio days?",
@@ -1143,6 +1145,7 @@
       }
     ],
     "title": "8-Week Tennis Hybrid Foundation",
+    "titleTr": "8 Haftalık Tenis Hibrit Temeli",
     "followOnProgramID": "training-hybrid-progression"
   },
   {
@@ -1824,7 +1827,9 @@
     ],
     "id": "training-footwork",
     "outcome": "You feel lighter into the split step, sharper on wide balls, and more organised on recovery steps by the end of eight weeks.",
+    "outcomeTr": "Sekiz haftanın sonunda split step'e daha hafif girer, geniş toplarda daha keskin ve toparlanma adımlarında daha düzenli hissedersin.",
     "overview": "A premium 8-week progression focused on first-step quickness, deceleration strength, crossover efficiency, and change-of-direction repeatability. Each week builds on the last — do not skip ahead.",
+    "overviewTr": "İlk adım hızına, yavaşlama kuvvetine, çapraz adım verimliliğine ve yön değiştirme tekrarlanabilirliğine odaklanan premium 8 haftalık bir ilerleme. Her hafta bir öncekinin üzerine kurulur — ileri atlama.",
     "persistencePrompts": [
       "How sharp did your first step feel when reacting to a wide ball this week?",
       "How well did you decelerate and control your body on the wide-ball recovery step?",
@@ -1863,6 +1868,7 @@
       }
     ],
     "title": "Better Footwork Performance Track",
+    "titleTr": "Daha İyi Ayak Çalışması Performans Programı",
     "followOnProgramID": "training-footwork-progression"
   },
   {
@@ -2402,7 +2408,9 @@
     ],
     "id": "training-stronger-shots",
     "outcome": "You create more pace with less effort and sustain shot quality deeper into long matches.",
+    "outcomeTr": "Daha az çabayla daha fazla hız üretir ve uzun maçlarda vuruş kaliteni daha derine taşırsın.",
     "overview": "A premium blend of lower-body strength, rotational medicine-ball work, pressing, pulling, and power transfer work — all mapped specifically to the force sequences in groundstrokes and serve.",
+    "overviewTr": "Alt vücut kuvveti, rotasyonel sağlık topu çalışması, itme, çekme ve güç aktarımının premium bir karışımı — hepsi yer vuruşları ve servisteki kuvvet dizilerine özel olarak eşlenmiş.",
     "persistencePrompts": [
       "How well did you load through your back hip before releasing the shot this week?",
       "How much did your legs contribute to shot power, or did you catch yourself arming the ball?",
@@ -2441,6 +2449,7 @@
       }
     ],
     "title": "Stronger Shots Power Track",
+    "titleTr": "Daha Güçlü Vuruşlar Güç Programı",
     "followOnProgramID": "training-stronger-shots-progression"
   },
   {
@@ -2788,7 +2797,9 @@
     ],
     "id": "training-flexibility",
     "outcome": "You move into tennis positions more freely, recover range faster between sessions, and feel less restriction on serves and wide-ball recovery after eight weeks.",
+    "outcomeTr": "Tenis pozisyonlarına daha özgür girer, seanslar arası menzili daha hızlı toparlar ve sekiz hafta sonra serviste ve geniş top toparlamalarında daha az kısıtlanma hissedersin.",
     "overview": "Premium mobility programming for players who need more hip freedom, thoracic rotation, shoulder access, and lower-leg range. The goal is usable range — positions that hold up under match stress, not just on the mat.",
+    "overviewTr": "Daha fazla kalça özgürlüğü, torasik rotasyon, omuz erişimi ve alt bacak menzili gereken oyuncular için premium mobilite programı. Amaç kullanılabilir menzil — sadece matta değil, maç stresi altında da işe yarayan pozisyonlar.",
     "persistencePrompts": [
       "Did your split-step landing feel lighter or more free this week — any less restriction at the hip?",
       "Which restriction felt biggest this week — hip, thoracic, shoulder, or ankle?",
@@ -2827,6 +2838,7 @@
       }
     ],
     "title": "Better Flexibility Mobility Track",
+    "titleTr": "Daha İyi Esneklik Mobilite Programı",
     "followOnProgramID": "training-flexibility-progression"
   },
   {
@@ -3334,7 +3346,9 @@
     ],
     "id": "training-conditioning",
     "outcome": "Sharper legs, cleaner decisions, and better posture when fatigue rises — and you maintain match quality deeper into a third set.",
+    "outcomeTr": "Daha keskin bacaklar, daha temiz kararlar ve yorgunluk arttığında daha iyi duruş — ve maç kaliteni üçüncü sette daha derine taşırsın.",
     "overview": "Premium conditioning blocks for players who want better recovery between points, more quality late in long sessions, and the aerobic base that keeps the nervous system sharp when games get tight.",
+    "overviewTr": "Puanlar arası daha iyi toparlanma, uzun seanslarda daha geç düşen kalite ve oyunlar sıkılaştığında sinir sistemini keskin tutan aerobik tabanı isteyen oyuncular için premium kondisyon blokları.",
     "persistencePrompts": [
       "How did your movement quality in the third set compare to the first set this week?",
       "Did your sprint reps stay consistent in quality from rep one to rep twelve, or did you notice a drop-off?",
@@ -3373,17 +3387,21 @@
       }
     ],
     "title": "Match Conditioning Engine Track",
+    "titleTr": "Maç Kondisyonu Motor Programı",
     "followOnProgramID": "training-conditioning-progression"
   },
   {
     "id": "training-hybrid-progression",
     "category": "hybridFoundation",
     "title": "8-Week Hybrid Power Continuation",
+    "titleTr": "8 Haftalık Hibrit Güç Devamı",
     "accessTier": "free",
     "level": "advanced",
     "durationWeeks": 8,
     "overview": "The follow-on block after Hybrid Foundation. New rotational patterns, heavier elastic work, and match-speed conditioning — all introduced at moderate load so you earn the volume.",
+    "overviewTr": "Hibrit Temeli'nden sonraki takip bloğu. Yeni rotasyonel desenler, daha ağır elastik çalışma ve maç hızında kondisyon — hepsi orta yükte başlatılır, böylece hacmi hak edersin.",
     "outcome": "Sharper elastic power, cleaner rotational drive through the serve and forehand, and better repeat-sprint recovery.",
+    "outcomeTr": "Daha keskin elastik güç, serviste ve forehand'de daha temiz rotasyonel itiş ve daha iyi tekrar-sprint toparlanması.",
     "emphasis": [
       "Rotational power",
       "Elasticity",
@@ -3905,11 +3923,14 @@
     "id": "training-footwork-progression",
     "category": "betterFootwork",
     "title": "8-Week Footwork Reactive Speed Track",
+    "titleTr": "8 Haftalık Ayak Çalışması Reaktif Hız Programı",
     "accessTier": "premium",
     "level": "advanced",
     "durationWeeks": 8,
     "overview": "The progression block after Better Footwork. Emphasises reactive starts, multi-directional chains, and deceleration strength — earned from the cleaner mechanics you built in cycle 1.",
+    "overviewTr": "Daha İyi Ayak Çalışması'ndan sonraki ilerleme bloğu. Reaktif başlangıçlara, çok yönlü zincirlere ve yavaşlama kuvvetine vurgu yapar — 1. döngüde kurduğun temiz mekanikten kazanılır.",
     "outcome": "Faster first step from any stance, cleaner stops, and better chained movement without extra steps.",
+    "outcomeTr": "Her duruştan daha hızlı ilk adım, daha temiz duruşlar ve fazladan adım atmadan daha iyi zincirlenmiş hareket.",
     "emphasis": [
       "Reactive speed",
       "Deceleration",
@@ -4185,11 +4206,14 @@
     "id": "training-stronger-shots-progression",
     "category": "strongerShots",
     "title": "8-Week Shot Velocity Track",
+    "titleTr": "8 Haftalık Vuruş Hızı Programı",
     "accessTier": "premium",
     "level": "advanced",
     "durationWeeks": 8,
     "overview": "The progression after Stronger Shots. Maximum intent work — heavier rotational loads paired with top-speed ball throws — to raise the ceiling of your shot speed without losing repeatability.",
+    "overviewTr": "Daha Güçlü Vuruşlar'dan sonraki ilerleme. Maksimum niyet çalışması — daha ağır rotasyonel yükler, en yüksek hızda top atışlarıyla eşleştirilir — tekrarlanabilirliği kaybetmeden vuruş hızının tavanını yükseltmek için.",
     "outcome": "Noticeably higher top-end shot speed, better contact transfer from legs to racket, and fewer arm-only strokes under fatigue.",
+    "outcomeTr": "Belirgin şekilde daha yüksek üst-uç vuruş hızı, bacaklardan rakete daha iyi temas aktarımı ve yorgunlukta daha az sadece-kol vuruşu.",
     "emphasis": [
       "Peak velocity",
       "Heavy rotation",
@@ -4453,11 +4477,14 @@
     "id": "training-flexibility-progression",
     "category": "betterFlexibility",
     "title": "8-Week Active Range Track",
+    "titleTr": "8 Haftalık Aktif Menzil Programı",
     "accessTier": "premium",
     "level": "advanced",
     "durationWeeks": 8,
     "overview": "The continuation of Better Flexibility. Shifts emphasis from passive range to active range — controlled strength at end ranges, so your new flexibility shows up in your movement.",
+    "overviewTr": "Daha İyi Esneklik'in devamı. Vurguyu pasif menzilden aktif menzile kaydırır — uç menzillerde kontrollü kuvvet, böylece yeni esnekliğin hareketinde görünür.",
     "outcome": "Range you can actually use mid-rally. Stronger end-range control in hips, shoulders, and thoracic rotation.",
+    "outcomeTr": "Ralli ortasında gerçekten kullanabileceğin menzil. Kalça, omuz ve torasik rotasyonda daha güçlü uç-menzil kontrolü.",
     "emphasis": [
       "Active range",
       "End-range strength",
@@ -4691,11 +4718,14 @@
     "id": "training-conditioning-progression",
     "category": "matchConditioning",
     "title": "8-Week Match Duration Engine",
+    "titleTr": "8 Haftalık Maç Süresi Motoru",
     "accessTier": "premium",
     "level": "advanced",
     "durationWeeks": 8,
     "overview": "The follow-on from Match Conditioning. Designed to push your work-capacity ceiling: longer high-quality rallies, higher average intensity across sessions, and matched-duration efforts that mirror a full match.",
+    "overviewTr": "Maç Kondisyonu'nun devamı. İş kapasitesi tavanını zorlamak için tasarlandı: daha uzun yüksek kaliteli ralliler, seanslar boyunca daha yüksek ortalama yoğunluk ve tam bir maçı yansıtan eşleştirilmiş-süre eforları.",
     "outcome": "Able to maintain point quality deep into the third set, faster recovery between points, and better tolerance for long matches.",
+    "outcomeTr": "Üçüncü sette derinlere kadar puan kalitesini koruyabilme, puanlar arası daha hızlı toparlanma ve uzun maçlara daha iyi tolerans.",
     "emphasis": [
       "Work capacity",
       "High-intensity repeats",
