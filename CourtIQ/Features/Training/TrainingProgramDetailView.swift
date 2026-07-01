@@ -258,9 +258,9 @@ struct TrainingProgramDetailView: View {
         return VStack(alignment: .leading, spacing: 14) {
             HStack(alignment: .top) {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("\(day.dayLabel) · \(day.title)")
+                    Text("\(day.dayLabel) · \(day.localizedTitle(for: lang.language))")
                         .font(.title3.bold())
-                    Text("\(day.type.title) · \(day.duration) · \(day.focus)")
+                    Text("\(day.type.title) · \(day.duration) · \(day.localizedFocus(for: lang.language))")
                         .font(.caption)
                         .foregroundStyle(AppPalette.inkSoft)
                 }
@@ -289,8 +289,8 @@ struct TrainingProgramDetailView: View {
             // Feedback banners removed — the mark-done button's state
             // already confirms completion.
 
-            timelineBlock(icon: "flag.fill",   content: day.objective)
-            timelineBlock(icon: "flame.fill",  content: day.warmup)
+            timelineBlock(icon: "flag.fill",   content: day.localizedObjective(for: lang.language))
+            timelineBlock(icon: "flame.fill",  content: day.localizedWarmup(for: lang.language))
 
             VStack(alignment: .leading, spacing: 8) {
                 HStack(spacing: 8) {
@@ -361,8 +361,8 @@ struct TrainingProgramDetailView: View {
                 }
             }
 
-            timelineBlock(icon: "bolt.fill",       content: day.finisher)
-            timelineBlock(icon: "figure.cooldown", content: day.recovery)
+            timelineBlock(icon: "bolt.fill",       content: day.localizedFinisher(for: lang.language))
+            timelineBlock(icon: "figure.cooldown", content: day.localizedRecovery(for: lang.language))
         }
         .padding()
         .background(cardFill)

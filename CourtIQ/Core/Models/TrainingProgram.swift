@@ -151,14 +151,27 @@ struct TrainingDayPlan: Identifiable, Codable, Hashable {
     let id: String
     let dayLabel: String
     let title: String
+    var titleTr: String? = nil
     let type: TrainingDayType
     let duration: String
     let focus: String
+    var focusTr: String? = nil
     let objective: String
+    var objectiveTr: String? = nil
     let warmup: String
+    var warmupTr: String? = nil
     let exercises: [TrainingExercise]
     let finisher: String
+    var finisherTr: String? = nil
     let recovery: String
+    var recoveryTr: String? = nil
+
+    func localizedTitle(for lang: AppLanguage) -> String { lang == .turkish ? (titleTr ?? title) : title }
+    func localizedFocus(for lang: AppLanguage) -> String { lang == .turkish ? (focusTr ?? focus) : focus }
+    func localizedObjective(for lang: AppLanguage) -> String { lang == .turkish ? (objectiveTr ?? objective) : objective }
+    func localizedWarmup(for lang: AppLanguage) -> String { lang == .turkish ? (warmupTr ?? warmup) : warmup }
+    func localizedFinisher(for lang: AppLanguage) -> String { lang == .turkish ? (finisherTr ?? finisher) : finisher }
+    func localizedRecovery(for lang: AppLanguage) -> String { lang == .turkish ? (recoveryTr ?? recovery) : recovery }
 }
 
 struct TrainingPhase: Identifiable, Codable, Hashable {
