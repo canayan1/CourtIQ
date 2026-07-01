@@ -1,10 +1,12 @@
 import SwiftUI
 
-/// PaywallView is DropVolley's single hard paywall (no free tier — premium
-/// unlocks the whole app). It presents the value of the subscription, two
-/// auto-renewing plan cards (Annual featured + pre-selected, Weekly), a
-/// single primary CTA that purchases the selected plan, the required
-/// auto-renew disclosure, and the Restore / Terms / Privacy footer.
+/// PaywallView is DropVolley's subscription upsell, shown contextually when a
+/// free user hits a premium gate (AI Coach, swing analysis beyond the free
+/// taste, the full tip/quiz archive). Premium unlocks the whole app. It
+/// presents the value of the subscription, two auto-renewing plan cards
+/// (Annual featured + pre-selected, Weekly), a single primary CTA that
+/// purchases the selected plan, the required auto-renew disclosure, and the
+/// Restore / Terms / Privacy footer.
 ///
 /// Compliance (App Store Review §3.1.1 / §3.1.2):
 /// - Honest value recap (no fabricated user counts or star ratings).
