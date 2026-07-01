@@ -49,6 +49,7 @@ async function isEntitled(userId: string): Promise<boolean> {
 }
 
 const MAX_SUMMARY = 6000;
+const GLOBAL_DAILY_CAP = Number(Deno.env.get("GLOBAL_DAILY_CALL_CAP") ?? "1500");
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -90,6 +91,17 @@ Deno.serve(async (req) => {
   const summary = (typeof body.summary === "string" ? body.summary : "").trim();
   if (!summary) return json({ error: "No player details provided." }, 400);
   if (summary.length > MAX_SUMMARY) return json({ error: "Too much detail." }, 413);
+
+  // Global daily budget breaker (cost cap). Atomically bumps a shared counter
+  // and refuses once the whole app crosses GLOBAL_DAILY_CALL_CAP for the day, so
+  // a spam/abuse burst can never drain the prepaid AI budget. Fails OPEN on a DB
+  // blip — the ceiling is a backstop, not a reason to break a legit request.
+  try {
+    const { data: globalCount } = await supabase.rpc("bump_global_usage");
+    if (typeof globalCount === "number" && globalCount > GLOBAL_DAILY_CAP) {
+      return json({ error: "The AI service is busy right now. Please try again shortly." }, 503);
+    }
+  } catch (_e) { /* fail open */ }
 
   const geminiBody = {
     systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },

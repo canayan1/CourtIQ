@@ -59,6 +59,7 @@ async function isEntitled(userId: string): Promise<boolean> {
 // Hard usage caps (cost control). Tunable via env.
 const DAILY_CAP   = Number(Deno.env.get("SWING_DAILY_CAP") ?? "3");
 const MONTHLY_CAP = Number(Deno.env.get("SWING_MONTHLY_CAP") ?? "30");
+const GLOBAL_DAILY_CAP = Number(Deno.env.get("GLOBAL_DAILY_CALL_CAP") ?? "1500");
 
 // Gemini inline-data requests cap at ~20MB total. The client compresses to
 // 720p; this guards the request from overflowing inline limits.
@@ -224,6 +225,17 @@ Deno.serve(async (req) => {
   if ((monthCount ?? 0) >= MONTHLY_CAP) {
     return json({ error: `You've reached this month's limit of ${MONTHLY_CAP} swing analyses.` }, 429);
   }
+
+  // Global daily budget breaker (cost cap). Atomically bumps a shared counter
+  // and refuses once the whole app crosses GLOBAL_DAILY_CALL_CAP for the day, so
+  // an abuse burst (incl. the reinstall bypass of the per-user cap above) can
+  // never drain the prepaid AI budget. Fails OPEN on a DB blip.
+  try {
+    const { data: globalCount } = await supabase.rpc("bump_global_usage");
+    if (typeof globalCount === "number" && globalCount > GLOBAL_DAILY_CAP) {
+      return json({ error: "The AI service is busy right now. Please try again shortly." }, 503);
+    }
+  } catch (_e) { /* fail open */ }
 
   // Gemini: native video understanding via inline data.
   const systemParts: Array<{ text: string }> = [
