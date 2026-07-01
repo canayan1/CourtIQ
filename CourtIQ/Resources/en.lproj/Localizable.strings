@@ -6,6 +6,7 @@
 "common.delete" = "Delete";
 "common.close" = "Close";
 "common.edit" = "Edit";
+"common.details" = "Details";
 "common.report" = "Report";
 "common.post" = "Post";
 "common.saving" = "Saving…";

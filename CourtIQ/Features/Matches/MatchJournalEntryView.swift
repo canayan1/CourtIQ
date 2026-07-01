@@ -451,6 +451,7 @@ struct MatchJournalEntryView: View {
                             .foregroundStyle(.white.opacity(0.85), .black.opacity(0.35))
                     }
                     .padding()
+                    .accessibilityLabel(lang.t("common.close"))
                 }
                 Spacer()
             }

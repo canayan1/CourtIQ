@@ -72,6 +72,7 @@ struct LevelProgressionPathView: View {
                     .font(.title3)
             }
             .buttonStyle(.plain)
+            .accessibilityLabel(lang.t("common.details"))
         }
     }
 

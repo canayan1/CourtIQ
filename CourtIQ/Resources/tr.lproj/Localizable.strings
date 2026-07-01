@@ -6,6 +6,7 @@
 "common.delete" = "Sil";
 "common.close" = "Kapat";
 "common.edit" = "Düzenle";
+"common.details" = "Ayrıntılar";
 "common.report" = "Bildir";
 "common.post" = "Gönder";
 "common.saving" = "Kaydediliyor…";

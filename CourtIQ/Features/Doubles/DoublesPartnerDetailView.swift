@@ -42,6 +42,7 @@ struct DoublesPartnerDetailView: View {
                         Image(systemName: "square.and.pencil")
                     }
                     .tint(AppPalette.clay)
+                    .accessibilityLabel(lang.t("common.edit"))
                 }
             }
         }
