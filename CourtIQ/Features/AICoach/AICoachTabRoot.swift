@@ -18,15 +18,8 @@ struct AICoachTabRoot: View {
 
     @State private var showPaywall = false
 
-    /// Kill-switch to reopen the AI Coach to everyone — mirrors
-    /// ProfileView.aiCoachOpenToAll.
-    private static let aiCoachOpenToAll = false
-
-    private var isPremium: Bool {
-        Self.aiCoachOpenToAll
-            || session.subscriptionManager.entitlementState.isPremium
-            || Self.isDevAllowlistedAccount(session.profileStore.profile?.email)
-    }
+    /// AI Coach access — single source of truth in `PremiumGate`.
+    private var isPremium: Bool { PremiumGate.canUseAICoach(session) }
 
     var body: some View {
         Group {
@@ -118,19 +111,4 @@ struct AICoachTabRoot: View {
         .background(AppPalette.cream)
     }
 
-    /// Developer-only AI Coach access for TestFlight dogfooding. Compiled in
-    /// DEBUG builds only; Release always returns false. Mirrors the identical
-    /// helper in ProfileView so the two entry points gate identically.
-    private static func isDevAllowlistedAccount(_ email: String?) -> Bool {
-        #if DEBUG
-        guard let raw = email?.lowercased().trimmingCharacters(in: .whitespacesAndNewlines),
-              !raw.isEmpty else { return false }
-        let devAccessAllowlist: Set<String> = [
-            "canayan93@gmail.com"
-        ]
-        return devAccessAllowlist.contains(raw)
-        #else
-        return false
-        #endif
-    }
 }

@@ -123,6 +123,47 @@ enum FreeTaste {
     }
 }
 
+/// Single source of truth for premium feature access (per CLAUDE.md: premium
+/// gating lives in one `PremiumGate` utility). Shipping model: all CONTENT is
+/// free; only the money-burning AI is premium — the **AI Coach** (Anthropic)
+/// and **AI swing analysis** (paid Gemini video key). Real access = the
+/// StoreKit entitlement (auto-granted in DEBUG); RevenueCat mirrors it
+/// server-side for the Edge gate. Consolidates the previously-scattered
+/// `entitlementState.isPremium` / dev-allowlist / kill-switch checks.
+enum PremiumGate {
+    /// Ops kill-switch to reopen the AI Coach to everyone.
+    static let aiCoachOpenToAll = false
+
+    /// All non-AI content (quizzes, tips, training, mobility, match logging).
+    static let contentUnlocked = true
+
+    /// Raw StoreKit entitlement. (DEBUG auto-grants it — see refreshEntitlements.)
+    @MainActor static func isPremium(_ session: UserSessionManager) -> Bool {
+        session.subscriptionManager.entitlementState.isPremium
+    }
+
+    /// AI Coach: premium, the kill-switch, or a dev-allowlisted account.
+    @MainActor static func canUseAICoach(_ session: UserSessionManager) -> Bool {
+        aiCoachOpenToAll || isPremium(session) || isDevAllowlisted(session.profileStore.profile?.email)
+    }
+
+    /// AI swing analysis: premium/dev, or the one free "taste" (FreeTaste).
+    @MainActor static func canUseSwingAnalysis(_ session: UserSessionManager) -> Bool {
+        isPremium(session) || isDevAllowlisted(session.profileStore.profile?.email) || !FreeTaste.swingUsed
+    }
+
+    /// Developer-only access for TestFlight dogfooding. DEBUG only; Release false.
+    static func isDevAllowlisted(_ email: String?) -> Bool {
+        #if DEBUG
+        guard let raw = email?.lowercased().trimmingCharacters(in: .whitespacesAndNewlines),
+              !raw.isEmpty else { return false }
+        return ["canayan93@gmail.com"].contains(raw)
+        #else
+        return false
+        #endif
+    }
+}
+
 enum RemoteSyncState: Equatable {
     case localOnly
     case unavailable

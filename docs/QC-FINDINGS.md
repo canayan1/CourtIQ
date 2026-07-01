@@ -41,7 +41,7 @@
 
 ## 🟡 MEDIUM — architecture (bigger refactors; CLAUDE.md drift)
 - [ ] **No ViewModel layer** (only `QuizViewModel`); the analyze-flow is **copy-pasted into 8 Views** → not unit-testable (CLAUDE.md mandates VM tests). `AIChatClient` is the template to follow.
-- [ ] **No central `PremiumGate`** (CLAUDE.md mandates one); gating uses **3 idioms**, and `isPremiumUnlocked` is hardwired `true` → ~12 inert "locked" branches across Training/Mobility/Profile.
+- [x] **Central `PremiumGate`** — DONE. `PremiumGate` (AppConfiguration.swift) is now the single source: `isPremium`/`canUseAICoach`/`canUseSwingAnalysis`/`contentUnlocked` + the dev-allowlist + kill-switch moved in. AICoachTabRoot + SwingAnalysisView route through it; `isPremiumUnlocked` delegates to `PremiumGate.contentUnlocked` (one content-free switch). The 3 scattered idioms are consolidated.
 - [ ] **`ensureSessionWithRetry` copy-pasted in 8 Views** → hoist to `UserSessionManager`.
 - [ ] **Edge entitlement gate copy-pasted in 4 functions** (no `_shared/`) → extract `supabase/functions/_shared/entitlement.ts`.
 - [ ] App-wide `ObservableObject`/Combine instead of mandated `@Observable`; inline `t(en:tr:)` bilingual literals in 9 files instead of the `.strings` catalog.

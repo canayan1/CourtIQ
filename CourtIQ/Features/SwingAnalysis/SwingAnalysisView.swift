@@ -309,12 +309,10 @@ struct SwingAnalysisView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
 
                 primaryButton(discussCoachCTA, systemImage: "bubble.left.and.text.bubble.right.fill") {
-                    // The AI Coach is premium (paid Anthropic). The swing result
-                    // screen is reachable on the free taste, so gate the coach
-                    // hand-off here too — otherwise a non-premium user could open
-                    // a full Coach chat for free from this screen (the Coach tab
-                    // is gated, but this sheet bypassed it).
-                    guard session.subscriptionManager.entitlementState.isPremium else {
+                    // The AI Coach is premium; the swing result is reachable on
+                    // the free taste, so gate the coach hand-off too (same gate
+                    // as the Coach tab — PremiumGate).
+                    guard PremiumGate.canUseAICoach(session) else {
                         showPaywall = true
                         return
                     }
@@ -385,12 +383,11 @@ struct SwingAnalysisView: View {
     }
 
     private func startAnalysis(videoURL: URL) {
-        // Freemium gate: the AI swing analysis spends the paid Gemini video
-        // key, so it is premium-only — EXCEPT the very first analysis is a free
-        // "taste" (the wow that drives the upgrade). (In DEBUG,
-        // refreshEntitlements auto-grants premium, so dogfooding still works.)
-        let isPremium = session.subscriptionManager.entitlementState.isPremium
-        guard isPremium || !FreeTaste.swingUsed else {
+        // Freemium gate: AI swing analysis is premium (paid Gemini video key),
+        // EXCEPT the very first analysis is a free "taste". Single source of
+        // truth in PremiumGate. (DEBUG auto-grants premium for dogfooding.)
+        let isPremium = PremiumGate.isPremium(session)
+        guard PremiumGate.canUseSwingAnalysis(session) else {
             showPaywall = true
             return
         }

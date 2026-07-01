@@ -343,7 +343,7 @@ final class SubscriptionManager: ObservableObject {
     /// surfaces are ever locked, while the real subscription still drives
     /// AI Coach access and the paywall.
     var isPremiumUnlocked: Bool {
-        true
+        PremiumGate.contentUnlocked
     }
 
     func loadOfferings() async {
