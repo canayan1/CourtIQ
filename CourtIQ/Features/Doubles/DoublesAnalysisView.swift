@@ -5,6 +5,9 @@ import SwiftUI
 /// concurrently and held for a minimum window, then a report screen with the big
 /// score + the AI report (reusing `SwingReportText`). Saves a `DoublesReport` on
 /// success. On failure: a friendly alert with retry.
+///
+/// The analyze orchestration lives in `DoublesAnalysisViewModel` so the View
+/// stays declarative and the flow is unit-testable with a stub service.
 struct DoublesAnalysisView: View {
     @EnvironmentObject private var lang: LanguageManager
     @EnvironmentObject private var session: UserSessionManager
@@ -13,24 +16,7 @@ struct DoublesAnalysisView: View {
     let partner: DoublesPartner
 
     private var copy: DoublesCopy { DoublesCopy(lang: lang.language) }
-    private let service = DoublesService()
-    @StateObject private var store = DoublesStore.shared
-
-    private enum Phase {
-        case analyzing
-        case result(text: String, score: Int?)
-    }
-
-    @State private var phase: Phase = .analyzing
-    @State private var errorMessage: String?
-    @State private var showError = false
-
-    /// First-run consent before any profile data is sent to Google (Gemini).
-    @State private var showConsent = false
-
-    /// Minimum time we hold the analyzing screen so it always feels like real
-    /// work (matches the swing/match labor-illusion convention).
-    private let minimumDisplay: UInt64 = 12_000_000_000
+    @State private var vm = DoublesAnalysisViewModel()
 
     var body: some View {
         ZStack {
@@ -39,27 +25,27 @@ struct DoublesAnalysisView: View {
         }
         .navigationTitle(copy.navTitle)
         .navigationBarTitleDisplayMode(.inline)
-        .task { await runAnalysis() }
+        .task { await run() }
         // First-run disclosure before any profile data leaves the device.
         // Declining ("Not now") pops back instead of stranding the spinner.
-        .sheet(isPresented: $showConsent, onDismiss: {
+        .sheet(isPresented: $vm.showConsent, onDismiss: {
             if !AIConsent.isAccepted(.doubles) { dismiss() }
         }) {
             NavigationStack {
-                AIConsentView(spec: .doubles) { Task { await runAnalysis() } }
+                AIConsentView(spec: .doubles) { Task { await run() } }
             }
         }
-        .alert(copy.errorTitle, isPresented: $showError) {
-            Button(copy.retryCTA) { Task { await runAnalysis() } }
+        .alert(copy.errorTitle, isPresented: $vm.showError) {
+            Button(copy.retryCTA) { Task { await run() } }
             Button(copy.cancelCTA, role: .cancel) { dismiss() }
         } message: {
-            Text(errorMessage ?? copy.errorGeneric)
+            Text(vm.errorMessage ?? copy.errorGeneric)
         }
     }
 
     @ViewBuilder
     private var content: some View {
-        switch phase {
+        switch vm.phase {
         case .analyzing:
             MatchAnalyzingView(title: copy.analyzingTitle, stepLabels: copy.analyzingSteps)
         case .result(let text, let score):
@@ -112,9 +98,73 @@ struct DoublesAnalysisView: View {
         lang.language == .turkish ? "Bitti" : "Done"
     }
 
-    // MARK: - Actions
+    private func run() async {
+        await vm.run(
+            partner: partner,
+            language: lang.language,
+            copy: copy,
+            ensureSession: { try await session.ensureSessionWithRetry() }
+        )
+    }
+}
 
-    private func runAnalysis() async {
+// MARK: - ViewModel
+
+/// Abstraction over the doubles analysis network call so the view model can be
+/// unit-tested with a stub. `DoublesService` is the production implementation.
+protocol DoublesAnalyzing {
+    func analyze(
+        partner: DoublesPartner,
+        language: AppLanguage,
+        session: SupabaseSession
+    ) async throws -> (report: String, score: Int?)
+}
+
+extension DoublesService: DoublesAnalyzing {}
+
+/// Owns the doubles-analysis flow — consent gate, labor-illusion loading window,
+/// session retry, service call, persistence, and error mapping — so the View is
+/// purely declarative. Inject a stub `DoublesAnalyzing` (and `minimumDisplay: 0`)
+/// to unit-test the orchestration without the network or the 12s wait.
+@MainActor @Observable
+final class DoublesAnalysisViewModel {
+    enum Phase {
+        case analyzing
+        case result(text: String, score: Int?)
+    }
+
+    private(set) var phase: Phase = .analyzing
+    var errorMessage: String?
+    var showError = false
+    /// First-run consent before any profile data is sent to Google (Gemini).
+    var showConsent = false
+
+    private let service: DoublesAnalyzing
+    private let store: DoublesStore
+    /// Minimum time we hold the analyzing screen so it always feels like real
+    /// work (matches the swing/match labor-illusion convention).
+    private let minimumDisplay: UInt64
+
+    init(
+        service: DoublesAnalyzing? = nil,
+        store: DoublesStore = .shared,
+        minimumDisplay: UInt64 = 12_000_000_000
+    ) {
+        // Construct the default service inside the (main-actor) init body —
+        // its initializer is @MainActor-isolated and can't be a default arg.
+        self.service = service ?? DoublesService()
+        self.store = store
+        self.minimumDisplay = minimumDisplay
+    }
+
+    /// `ensureSession` is passed in by the View (`session.ensureSessionWithRetry`)
+    /// so the model doesn't depend on `UserSessionManager` and stays testable.
+    func run(
+        partner: DoublesPartner,
+        language: AppLanguage,
+        copy: DoublesCopy,
+        ensureSession: () async throws -> SupabaseSession
+    ) async {
         // Gate the third-party send on explicit consent (first run only).
         guard AIConsent.isAccepted(.doubles) else { showConsent = true; return }
         phase = .analyzing
@@ -122,10 +172,10 @@ struct DoublesAnalysisView: View {
             // Run the network call concurrently with a minimum-display timer so
             // the loading animation always plays for ~12s (labor illusion).
             async let minimum: Void = Task.sleep(nanoseconds: minimumDisplay)
-            let supabaseSession = try await session.ensureSessionWithRetry()
+            let supabaseSession = try await ensureSession()
             let result = try await service.analyze(
                 partner: partner,
-                language: lang.language,
+                language: language,
                 session: supabaseSession
             )
             try? await minimum
@@ -138,16 +188,14 @@ struct DoublesAnalysisView: View {
             // Peak moment: the compatibility score just landed.
             Haptics.success()
         } catch RemoteDataError.missingConfiguration {
-            presentError(copy.errorConnect)
+            present(copy.errorConnect)
         } catch {
-            let message = (error as? RemoteDataError)?.errorDescription ?? copy.errorGeneric
-            presentError(message)
+            present((error as? RemoteDataError)?.errorDescription ?? copy.errorGeneric)
         }
     }
 
-    private func presentError(_ message: String) {
+    private func present(_ message: String) {
         errorMessage = message
         showError = true
     }
-
 }
