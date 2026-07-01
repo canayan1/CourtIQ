@@ -516,7 +516,7 @@ struct DoublesPartnershipReportView: View {
             return
         }
         do {
-            async let minimum: Void = Task.sleep(nanoseconds: 12_000_000_000)
+            async let minimum: Void = Task.sleep(nanoseconds: 3_500_000_000)
             let supabaseSession = try await ensureSession()
             let result = try await service.analyze(
                 partner: partnerProfile.asPartner(),

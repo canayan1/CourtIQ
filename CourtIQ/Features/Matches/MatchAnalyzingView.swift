@@ -2,7 +2,7 @@ import SwiftUI
 
 /// Labor-illusion loading screen for match analysis — the same stepped,
 /// named-progress beat as `OnboardingBuildingView`, retuned so the full
-/// sequence runs ~12s (the minimum we hold the analysis on screen so it
+/// sequence runs a few seconds (the minimum we hold the analysis on screen so it
 /// always feels like real work). Purely visual: the AI call runs
 /// concurrently in the parent; this view just animates and never blocks.
 struct MatchAnalyzingView: View {
@@ -15,9 +15,9 @@ struct MatchAnalyzingView: View {
     @State private var fill: CGFloat = 0
     @State private var started = false
 
-    /// Seconds each step takes to fill. With ~5-6 steps this lands the
-    /// sequence comfortably in the 12s minimum-display window.
-    private let perStep: Double = 2.2
+    /// Seconds each step takes to fill. Sized so the first few named steps
+    /// play within the ~3.5s minimum-display window the callers hold.
+    private let perStep: Double = 1.0
 
     var body: some View {
         VStack(alignment: .leading, spacing: 28) {
@@ -104,7 +104,7 @@ struct MatchAnalyzingView: View {
 
     /// Loops the steps once. When the last step would complete it instead
     /// loops the final step's fill so the animation keeps breathing if the
-    /// network call outruns the 12s window — the parent decides when to
+    /// network call outruns the hold — the parent decides when to
     /// reveal the report.
     private func runSequence() async {
         for index in stepLabels.indices {

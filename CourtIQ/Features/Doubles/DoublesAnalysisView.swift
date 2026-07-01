@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Runs a compatibility analysis for one partner: a ~12s labor-illusion loading
+/// Runs a compatibility analysis for one partner: a brief labor-illusion loading
 /// screen (reusing `MatchAnalyzingView`) with the network call running
 /// concurrently and held for a minimum window, then a report screen with the big
 /// score + the AI report (reusing `SwingReportText`). Saves a `DoublesReport` on
@@ -125,7 +125,7 @@ extension DoublesService: DoublesAnalyzing {}
 /// Owns the doubles-analysis flow — consent gate, labor-illusion loading window,
 /// session retry, service call, persistence, and error mapping — so the View is
 /// purely declarative. Inject a stub `DoublesAnalyzing` (and `minimumDisplay: 0`)
-/// to unit-test the orchestration without the network or the 12s wait.
+/// to unit-test the orchestration without the network or the labor-illusion wait.
 @MainActor @Observable
 final class DoublesAnalysisViewModel {
     enum Phase {
@@ -148,7 +148,7 @@ final class DoublesAnalysisViewModel {
     init(
         service: DoublesAnalyzing? = nil,
         store: DoublesStore = .shared,
-        minimumDisplay: UInt64 = 12_000_000_000
+        minimumDisplay: UInt64 = 3_500_000_000
     ) {
         // Construct the default service inside the (main-actor) init body —
         // its initializer is @MainActor-isolated and can't be a default arg.
@@ -170,7 +170,7 @@ final class DoublesAnalysisViewModel {
         phase = .analyzing
         do {
             // Run the network call concurrently with a minimum-display timer so
-            // the loading animation always plays for ~12s (labor illusion).
+            // the loading animation plays for a short beat (labor illusion).
             async let minimum: Void = Task.sleep(nanoseconds: minimumDisplay)
             let supabaseSession = try await ensureSession()
             let result = try await service.analyze(
