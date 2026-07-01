@@ -23,7 +23,7 @@
     "explanationTr": "Rakip kayınca T çizgisi açılır. T servisi fazla hız gerektirmeden öngörüyü cezalandırır.",
     "takeawayTr": "Desenler okununca yön değiştir, hız değil.",
     "diagram": {
-      "surface": "clay",
+      "surface": "hard",
       "youX": 0.45,
       "youY": 0.96,
       "opponentX": 0.2,
@@ -97,7 +97,7 @@
     "explanationTr": "Yorgunluk kinetik zinciri kısaltır. Hızı azaltıp spin eklemek servisin etkisini korur.",
     "takeawayTr": "Yorgunken hızı yerleşime çevir — as peşinde koşma.",
     "diagram": {
-      "surface": "clay",
+      "surface": "grass",
       "youX": 0.5,
       "youY": 0.96,
       "opponentX": 0.5,
@@ -134,7 +134,7 @@
     "explanationTr": "Geride duran rakip, omuz hizasından yukarı vurmak zorunda kaldığı yüksek sıçrayan toplara karşı zayıftır.",
     "takeawayTr": "Geride duruyorlarsa topu sıçrat — ortaya atmadan.",
     "diagram": {
-      "surface": "clay",
+      "surface": "grass",
       "youX": 0.5,
       "youY": 0.96,
       "opponentX": 0.5,
@@ -171,7 +171,7 @@
     "explanationTr": "Break point'te en değerli sonuç ilk servisi içeri atmaktır. %80 hızla atılan servis de puan kazandırır; kaçırılmış servis agresif karşılayana inisiyatif verir.",
     "takeawayTr": "Break point as değil, ilk servis yüzdesi meselesidir.",
     "diagram": {
-      "surface": "clay",
+      "surface": "hard",
       "youX": 0.5,
       "youY": 0.96,
       "opponentX": 0.5,
@@ -208,7 +208,7 @@
     "explanationTr": "Kort kenarına kayması T'yi tam olarak açar ve sıkışmış bir backhand dönüşü zorlar.",
     "takeawayTr": "Her servis öncesi karşıladığı pozisyonu oku — kendine göre değil ona göre servis at.",
     "diagram": {
-      "surface": "clay",
+      "surface": "hard",
       "youX": 0.45,
       "youY": 0.96,
       "opponentX": 0.78,
@@ -269,6 +269,18 @@
     ],
     "explanationTr": "Uzun kollu oyuncular açık servisleri iyi kapsar. Vücut servisi uzunluk avantajını ortadan kaldırır.",
     "takeawayTr": "Uzun kollulara karşı gerdirme — sıkıştır.",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.5,
+      "youY": 0.96,
+      "opponentX": 0.5,
+      "opponentY": 0.08,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.96,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.32,
+      "scoreChip": "BODY SERVE"
+    },
     "tacticalCategory": "patterns"
   },
   {
@@ -382,7 +394,7 @@
     "explanationTr": "Yavaş servislere karşı kaleden öne adım atmak rakibin sonraki vuruşundan zaman çalar.",
     "takeawayTr": "Karşılama pozisyonu silahtır — servisçinin hızına göre ayarla.",
     "diagram": {
-      "surface": "clay",
+      "surface": "hard",
       "youX": 0.5,
       "youY": 0.78,
       "opponentX": 0.5,
@@ -419,7 +431,7 @@
     "explanationTr": "Temas öncesi verilen kararlar daha sakin ve temizdir. Temas anında verilen tepkisel kararlar tereddütlü vuruşlara yol açar.",
     "takeawayTr": "Dönüş yönüne servis atılmadan önce karar ver.",
     "diagram": {
-      "surface": "clay",
+      "surface": "grass",
       "youX": 0.5,
       "youY": 0.92,
       "scoreChip": "BEFORE THE SERVE"
@@ -487,7 +499,7 @@
     "explanationTr": "Servis vuruşundan hemen önce inmek, ayakların yere değmek üzereyken servisin atılmasıyla patlamalı itme sağlar.",
     "takeawayTr": "Split'e servis vuruşundan hemen önce in — sonra değil.",
     "diagram": {
-      "surface": "clay",
+      "surface": "hard",
       "youX": 0.5,
       "youY": 0.9,
       "opponentX": 0.5,
@@ -520,7 +532,7 @@
     "explanationTr": "Öne gelmek kick'in sıçrama yüksekliğini yok eder. Çapraz sürmek daha yüksek yüzdeli agresif dönüştür — daha uzun saha ve daha alçak file +1 kurmak için sana pay verir. Çizgiye vurmak cazip ama derin kick'li topta daha düşük yüzdeli.",
     "takeawayTr": "İkinci servise saldırmak için öne gel — ve pay için çapraz git.",
     "diagram": {
-      "surface": "clay",
+      "surface": "hard",
       "youX": 0.5,
       "youY": 0.8,
       "opponentX": 0.5,
@@ -556,6 +568,18 @@
     ],
     "explanationTr": "Derin çapraz dönüş, servisçiye dar açılar bırakır. Kortun orta üçte birini kaplamak çoğu yanıtı karşılamak için uygun pozisyondur.",
     "takeawayTr": "Dönüş puanın sonu değildir — hemen toparlan.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.7,
+      "youY": 0.92,
+      "opponentX": 0.3,
+      "opponentY": 0.08,
+      "ballOriginX": 0.7,
+      "ballOriginY": 0.85,
+      "ballTargetX": 0.3,
+      "ballTargetY": 0.16,
+      "scoreChip": "RECOVER MIDDLE"
+    },
     "tacticalCategory": "return"
   },
   {
@@ -581,6 +605,18 @@
     ],
     "explanationTr": "30-0'da tahmin edilebilir ikinci servise chip-and-charge, kaleden yavaş rakibi zorlayan bir passing-shot durumuna sokar — kritik skor riski almadan.",
     "takeawayTr": "Chip-and-charge tahmin edilebilir servislere ve düşük riskli anlara yakışır.",
+    "diagram": {
+      "surface": "grass",
+      "youX": 0.5,
+      "youY": 0.9,
+      "opponentX": 0.5,
+      "opponentY": 0.1,
+      "ballOriginX": 0.45,
+      "ballOriginY": 0.85,
+      "ballTargetX": 0.42,
+      "ballTargetY": 0.16,
+      "scoreChip": "CHIP & CHARGE · 30-0"
+    },
     "tacticalCategory": "return"
   },
   {
@@ -631,6 +667,18 @@
     ],
     "explanationTr": "Veri yeni bir ikinci servisi işaret eder. Saldırı pozisyonu servisçiyi zorlar, nötür bir saldırı dönüşü bile puan geometrisini değiştirir.",
     "takeawayTr": "Break point bilinçli agresyonu ödüllendirir — ihtiyatı değil.",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.6,
+      "youY": 0.86,
+      "opponentX": 0.5,
+      "opponentY": 0.1,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.14,
+      "ballTargetX": 0.32,
+      "ballTargetY": 0.2,
+      "scoreChip": "15-40 · ATTACK 2ND"
+    },
     "tacticalCategory": "return"
   },
   {
@@ -694,7 +742,7 @@
     "explanationTr": "Moonball zamanın üzerinde çalışır. Kalenin içinde yükseliyorken vurmak o zamanı elinden alır ve savunma toplarını saldırı toplarına çevirir.",
     "takeawayTr": "Moonball seni geriye itmesin — öne adım at.",
     "diagram": {
-      "surface": "clay",
+      "surface": "grass",
       "youX": 0.25,
       "youY": 0.9,
       "opponentX": 0.5,
@@ -731,7 +779,7 @@
     "explanationTr": "Toparlanma sabit bir nokta değildir — rakibin olası yanıt açılarının orta noktasıdır. Deuce taraftan çaprazdan sonra ortaya göre hafif ad tarafa kayar.",
     "takeawayTr": "Açı ikizkenarına toparlan — ortaya değil.",
     "diagram": {
-      "surface": "clay",
+      "surface": "hard",
       "youX": 0.25,
       "youY": 0.92,
       "opponentX": 0.78,
@@ -768,7 +816,7 @@
     "explanationTr": "Kondisyon avantajı uzun rally'lerde katlanır. Rakibin rahat olduğundan bir top fazla oynatmak maç boyunca çarpan etkisi yapar.",
     "takeawayTr": "Kondisyonu taktik yap — sadece hayatta kalmakla kalma, uzat.",
     "diagram": {
-      "surface": "clay",
+      "surface": "hard",
       "youX": 0.5,
       "youY": 0.95,
       "opponentX": 0.5,
@@ -834,7 +882,7 @@
     "explanationTr": "Kısa toplar winner değildir — geçiş fırsatlarıdır. İçeri gir, yüklen ve tek atışla winner zorlamak yerine sonraki topu planla.",
     "takeawayTr": "Kısa toplar kurulum; winner değildir.",
     "diagram": {
-      "surface": "clay",
+      "surface": "hard",
       "youX": 0.5,
       "youY": 0.78,
       "opponentX": 0.5,
@@ -895,6 +943,18 @@
     ],
     "explanationTr": "O bölgedeki düşük spinli top geçiş tetiğidir. Niyetli düzleştirme sonraki yanıtı zorlar ve seni +2 bitirme pozisyonuna taşır.",
     "takeawayTr": "Saldırı bölgeni bil — orta kort düşük spinli top orasıdır.",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.32,
+      "youY": 0.7,
+      "opponentX": 0.5,
+      "opponentY": 0.08,
+      "ballOriginX": 0.32,
+      "ballOriginY": 0.65,
+      "ballTargetX": 0.25,
+      "ballTargetY": 0.12,
+      "scoreChip": "SHORT BALL · STEP IN"
+    },
     "tacticalCategory": "patterns"
   },
   {
@@ -945,6 +1005,18 @@
     ],
     "explanationTr": "Yön değişikliği topu hassas yönlendirmek için temas noktasının biraz önde olmasını ister. Hassasiyetsiz hız topu çizgi dışına gönderir.",
     "takeawayTr": "Yön değişimi temas noktası meselesidir — hız değil.",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.25,
+      "youY": 0.92,
+      "opponentX": 0.28,
+      "opponentY": 0.1,
+      "ballOriginX": 0.25,
+      "ballOriginY": 0.85,
+      "ballTargetX": 0.2,
+      "ballTargetY": 0.12,
+      "scoreChip": "CHANGE TO DTL"
+    },
     "tacticalCategory": "approach"
   },
   {
@@ -971,7 +1043,7 @@
     "explanationTr": "Servis çizgisinin içinde split step, ders kitabı pozisyonudur — kapsamak için yeterince yakın, her pass veya lop'a tepki için yeterince dengeli.",
     "takeawayTr": "Servis çizgisinin içinde split step — her approach'ta.",
     "diagram": {
-      "surface": "clay",
+      "surface": "grass",
       "youX": 0.3,
       "youY": 0.45,
       "opponentX": 0.2,
@@ -1045,7 +1117,7 @@
     "explanationTr": "Ön kalçanın önünde alınan volley raket yüzü kontrolü, hızı emme ve ileri yön verir.",
     "takeawayTr": "Volley'i her zaman önde al.",
     "diagram": {
-      "surface": "clay",
+      "surface": "hard",
       "youX": 0.5,
       "youY": 0.42,
       "opponentX": 0.5,
@@ -1082,7 +1154,7 @@
     "explanationTr": "Düşük ilk volley bir sıfırlamadır — ortadan derine atmak ikinci volley için doğru pozisyona gelme zamanı kazandırır.",
     "takeawayTr": "Ayağındaki ilk volley kurulumdur — winner değil.",
     "diagram": {
-      "surface": "clay",
+      "surface": "hard",
       "youX": 0.5,
       "youY": 0.55,
       "opponentX": 0.5,
@@ -1156,7 +1228,7 @@
     "explanationTr": "Rakip geride olduğunda derin açılı volley avantajı sürdürür. Drop volley onları oyuna çeker — zaten pozisyon dışıysa risk.",
     "takeawayTr": "Rakip geridelerse geride tut — içeri davet etme.",
     "diagram": {
-      "surface": "clay",
+      "surface": "grass",
       "youX": 0.5,
       "youY": 0.55,
       "opponentX": 0.5,
@@ -1217,6 +1289,18 @@
     ],
     "explanationTr": "Yumuşak half-volley rakibin hızını kullanır, fileyi geçer ve zaman kazandırır. Sert olan çoğu zaman savrulur.",
     "takeawayTr": "Half-volley bir hayatta kalma vuruşudur — yumuşak, derin, orta.",
+    "diagram": {
+      "surface": "grass",
+      "youX": 0.5,
+      "youY": 0.6,
+      "opponentX": 0.5,
+      "opponentY": 0.08,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.6,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.16,
+      "scoreChip": "HALF-VOLLEY DEEP"
+    },
     "tacticalCategory": "net_game"
   },
   {
@@ -1267,6 +1351,18 @@
     ],
     "explanationTr": "Toparlanan rakip ortaya doğru hareket eder. Açık ad köşesine derin volley yön değiştirmeye zorlar ve dengesiz yakalar — ya da hiç yetişemez.",
     "takeawayTr": "File önünde toparlanma yönünün tersine vur — geldiği yere değil.",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.4,
+      "youY": 0.36,
+      "opponentX": 0.85,
+      "opponentY": 0.08,
+      "ballOriginX": 0.4,
+      "ballOriginY": 0.36,
+      "ballTargetX": 0.16,
+      "ballTargetY": 0.14,
+      "scoreChip": "VOLLEY TO OPEN COURT"
+    },
     "tacticalCategory": "net_game"
   },
   {
@@ -1293,7 +1389,7 @@
     "explanationTr": "Süreç hedefleri beynine yapılacak somut bir şey verir. Geçmişi oynatmak veya kusursuzluk peşinde koşmak kaygıyı artırır.",
     "takeawayTr": "Yeni setlere süreçle başla — geçmişi oynatmadan.",
     "diagram": {
-      "surface": "clay",
+      "surface": "grass",
       "youX": 0.5,
       "youY": 0.92,
       "scoreChip": "LOST 1ST SET 4–6"
@@ -1324,7 +1420,7 @@
     "explanationTr": "90 saniyelik sıfırlama — havlu, nefes, sonraki puana söz — profesyonellerin kullandığı rutindir. Sonraki puanda öfke hasarı ikiye katlar.",
     "takeawayTr": "Bir kötü karar seni iki puan kaybetmemeli.",
     "diagram": {
-      "surface": "clay",
+      "surface": "hard",
       "youX": 0.5,
       "youY": 0.92,
       "scoreChip": "DISPUTED CALL"
@@ -1355,7 +1451,7 @@
     "explanationTr": "Tiebreak ilk puandan itibaren agresyonu ödüllendirir. 'Görelim nasıl gidiyor' demek erken dalgayı rakibe verir.",
     "takeawayTr": "Tiebreak tam yoğunlukla başlar — ona doğru yükselmez.",
     "diagram": {
-      "surface": "clay",
+      "surface": "hard",
       "youX": 0.5,
       "youY": 0.92,
       "scoreChip": "TIEBREAK · 0–0"
@@ -1448,7 +1544,7 @@
     "explanationTr": "Momentum ritimden beslenir. Puan arasında yavaşlamak (havlu, uzun top sektirme) ritmini kırar — ki strateji komple değiştirmek maç ortasında nadiren işe yarar.",
     "takeawayTr": "Momentumu yavaşlayarak kır — her şeyi değiştirerek değil.",
     "diagram": {
-      "surface": "clay",
+      "surface": "hard",
       "youX": 0.5,
       "youY": 0.92,
       "scoreChip": "0–4 GAMES"
@@ -1903,7 +1999,7 @@
     "explanationTr": "Kısalan top senin işaretin. Derin toptan yön değiştirmek düşük ihtimallidir — bunun yerine kısa topu bekle, öne çık ve çaprazı inside-out backhand'ine çevir. Deseni çaresizlikten değil, güçten değiştirirsin.",
     "takeawayTr": "Yönü KISA toptan değiştir, derinden değil — açığı rallinin sana vermesine izin ver.",
     "diagram": {
-      "surface": "clay",
+      "surface": "grass",
       "youX": 0.2,
       "youY": 0.92,
       "opponentX": 0.2,
