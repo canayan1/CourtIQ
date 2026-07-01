@@ -12,26 +12,25 @@ struct TrainView: View {
 
     @State private var appeared = false
     @State private var showProgramsPaywall = false
-    @Namespace private var ns
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 titleBlock
 
-                swingFlagship
-                    .reveal(appeared: appeared, index: 0, reduceMotion: reduceMotion)
-
-                VStack(spacing: 12) {
+                // Co-equal headliners: Swing + Practice (the Tennis IQ hub).
+                HStack(spacing: 12) {
+                    swingCard
+                        .reveal(appeared: appeared, index: 0, reduceMotion: reduceMotion)
                     practiceCard
                         .reveal(appeared: appeared, index: 1, reduceMotion: reduceMotion)
+                }
 
-                    HStack(spacing: 12) {
-                        recoverCard
-                            .reveal(appeared: appeared, index: 2, reduceMotion: reduceMotion)
-                        programsCard
-                            .reveal(appeared: appeared, index: 3, reduceMotion: reduceMotion)
-                    }
+                HStack(spacing: 12) {
+                    recoverCard
+                        .reveal(appeared: appeared, index: 2, reduceMotion: reduceMotion)
+                    programsCard
+                        .reveal(appeared: appeared, index: 3, reduceMotion: reduceMotion)
                 }
             }
             .padding()
@@ -66,69 +65,19 @@ struct TrainView: View {
         }
     }
 
-    // MARK: - Swing flagship strip
+    // MARK: - Swing card (co-equal headliner, was the sole flagship strip)
 
-    @ViewBuilder
-    private var swingFlagship: some View {
-        if #available(iOS 18, *) {
-            NavigationLink {
-                SwingAnalysisView()
-                    .navigationTransition(.zoom(sourceID: "swingTrain", in: ns))
-            } label: {
-                swingFlagshipLabel
-            }
-            .buttonStyle(PressableCardStyle())
-            .matchedTransitionSource(id: "swingTrain", in: ns)
-            .accessibilityIdentifier("trainSwingAnalysisCard")
-        } else {
-            NavigationLink {
-                SwingAnalysisView()
-            } label: {
-                swingFlagshipLabel
-            }
-            .buttonStyle(PressableCardStyle())
-            .accessibilityIdentifier("trainSwingAnalysisCard")
+    private var swingCard: some View {
+        NavigationLink {
+            SwingAnalysisView()
+        } label: {
+            LockableTile(sfSymbol: "video.fill",
+                         title: lang.t("home.tile_swing"),
+                         minHeight: 112,
+                         photo: "PhotoForehand")
         }
-    }
-
-    private var swingFlagshipLabel: some View {
-        HStack(spacing: 14) {
-            Image(systemName: "video.fill")
-                .font(.title2.weight(.semibold))
-                .foregroundStyle(.white)
-                .frame(width: 40)
-
-            VStack(alignment: .leading, spacing: 2) {
-                Text(lang.t("train.flagship"))
-                    .font(.system(.caption2, design: .rounded).weight(.semibold))
-                    .textCase(.uppercase)
-                    .tracking(0.8)
-                    .foregroundStyle(.white.opacity(0.85))
-                Text(lang.t("train.flagship_swing"))
-                    .font(.system(.title3, design: .rounded).weight(.bold))
-                    .foregroundStyle(.white)
-            }
-
-            Spacer(minLength: 8)
-
-            Image(systemName: "chevron.right")
-                .font(.footnote.weight(.bold))
-                .foregroundStyle(.white.opacity(0.9))
-        }
-        .padding(.horizontal, 18)
-        .frame(maxWidth: .infinity, minHeight: 72, alignment: .leading)
-        // Fixed-height flagship strip: clamp so the icon + two-line title don't
-        // overflow the 72pt min-height at the largest accessibility sizes.
-        .dynamicTypeSize(...DynamicTypeSize.accessibility2)
-        // Layer the duotone photo OVER the existing brand gradient (ZStack:
-        // gradient then photo), exactly like Home's hero, then clip both.
-        .background(
-            ZStack {
-                AppPalette.swingHeroGradient
-                BrandedPhotoBackground(name: "PhotoForehand", scrim: .hero)
-            }
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .buttonStyle(PressableCardStyle())
+        .accessibilityIdentifier("trainSwingAnalysisCard")
     }
 
     // MARK: - Category cards
