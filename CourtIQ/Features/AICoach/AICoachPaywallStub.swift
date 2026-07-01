@@ -35,14 +35,14 @@ struct AICoachPaywallStub: View {
     private var hero: some View {
         VStack(spacing: 14) {
             Image(systemName: "sparkles")
-                .font(.system(size: 44, weight: .bold))
+                .appFont(44, weight: .bold, design: .default)
                 .foregroundStyle(AppPalette.clay)
                 .padding(20)
                 .background(AppPalette.clay.opacity(0.12))
                 .clipShape(Circle())
 
             Text(lang.t("ai.paywall_headline"))
-                .font(.system(size: 22, weight: .heavy, design: .rounded))
+                .appFont(22, weight: .heavy)
                 .multilineTextAlignment(.center)
                 .foregroundStyle(AppPalette.ink)
 

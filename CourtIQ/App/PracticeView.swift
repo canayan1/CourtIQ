@@ -100,7 +100,7 @@ struct PracticeView: View {
                     .foregroundStyle(AppPalette.inkSoft)
 
                 Text(lang.t("practice.choose_pattern"))
-                    .font(.system(size: 28, weight: .bold, design: .rounded))
+                    .appFont(28, weight: .bold)
                     .foregroundStyle(AppPalette.ink)
                     .fixedSize(horizontal: false, vertical: true)
 

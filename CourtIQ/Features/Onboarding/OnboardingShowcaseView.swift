@@ -42,7 +42,7 @@ struct OnboardingHookView: View {
                     .foregroundStyle(.white.opacity(0.85))
 
                 Text(copy.hookTitle)
-                    .font(.system(size: 40, weight: .heavy, design: .rounded))
+                    .appFont(40, weight: .heavy)
                     .foregroundStyle(.white)
                     .fixedSize(horizontal: false, vertical: true)
 
@@ -259,7 +259,7 @@ private struct SampleCardChrome<Content: View>: View {
 private func sampleBullet(_ text: String) -> some View {
     HStack(alignment: .top, spacing: 10) {
         Image(systemName: "checkmark.circle.fill")
-            .font(.system(size: 16, weight: .semibold))
+            .appFont(16, weight: .semibold, design: .default)
             .foregroundStyle(AppPalette.moss)
         Text(text)
             .font(.subheadline)
@@ -394,7 +394,7 @@ private struct QuizSampleCard: View {
                     .fixedSize(horizontal: false, vertical: true)
                 HStack(alignment: .top, spacing: 10) {
                     Image(systemName: "checkmark.seal.fill")
-                        .font(.system(size: 16, weight: .semibold))
+                        .appFont(16, weight: .semibold, design: .default)
                         .foregroundStyle(AppPalette.moss)
                     Text(copy.showcaseQuizAnswer)
                         .font(.subheadline)

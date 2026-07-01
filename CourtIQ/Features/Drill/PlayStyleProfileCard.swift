@@ -45,7 +45,7 @@ struct PlayStyleProfileCard: View {
             if let arc = profile.archetype {
                 VStack(alignment: .leading, spacing: 2) {
                     Text(lang.t(arc.localizationKey))
-                        .font(.system(size: 19, weight: .heavy, design: .rounded))
+                        .appFont(19, weight: .heavy)
                         .foregroundStyle(AppPalette.ink)
                     Text(lang.t(arc.summaryKey))
                         .font(.caption)
@@ -54,7 +54,7 @@ struct PlayStyleProfileCard: View {
                 }
             } else {
                 Text(lang.t("drill.style_pending"))
-                    .font(.system(size: 17, weight: .heavy, design: .rounded))
+                    .appFont(17, weight: .heavy)
                     .foregroundStyle(AppPalette.ink)
                 Text(String(format: lang.t("drill.style_pending_progress_format"),
                             profile.totalShots, 10))
@@ -81,7 +81,7 @@ struct PlayStyleProfileCard: View {
     private func shotTypeRow(shot: ShotType, pct: Double, count: Int) -> some View {
         HStack(spacing: 10) {
             Image(systemName: shot.iconName)
-                .font(.system(size: 16, weight: .bold))
+                .appFont(16, weight: .bold, design: .default)
                 .foregroundStyle(AppPalette.clay)
                 .frame(width: 22)
             Text(lang.t(shot.localizationKey))
@@ -101,7 +101,7 @@ struct PlayStyleProfileCard: View {
             }
             .frame(height: 8)
             Text("\(Int((pct * 100).rounded()))%")
-                .font(.system(size: 12, weight: .heavy, design: .monospaced))
+                .appFont(12, weight: .heavy, design: .monospaced)
                 .foregroundStyle(AppPalette.ink)
                 .monospacedDigit()
                 .frame(width: 38, alignment: .trailing)

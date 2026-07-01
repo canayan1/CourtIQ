@@ -66,18 +66,18 @@ struct DrillResultView: View {
 
                 VStack(spacing: 0) {
                     Text("\(session.score)")
-                        .font(.system(size: 50, weight: .heavy, design: .rounded))
+                        .appFont(50, weight: .heavy)
                         .foregroundStyle(.white)
                         .monospacedDigit()
                     Text("/ \(session.maxScore)")
-                        .font(.system(size: 14, weight: .bold, design: .rounded))
+                        .appFont(14, weight: .bold)
                         .foregroundStyle(.white.opacity(0.85))
                         .monospacedDigit()
                 }
             }
 
             Text(scoreLabel)
-                .font(.system(size: 18, weight: .heavy, design: .rounded))
+                .appFont(18, weight: .heavy)
                 .foregroundStyle(.white)
         }
         .padding(.vertical, 24)
@@ -93,7 +93,7 @@ struct DrillResultView: View {
         HStack(spacing: 10) {
             ForEach(Array(session.taps.enumerated()), id: \.offset) { _, tap in
                 Text(tap.zone.emoji)
-                    .font(.system(size: 32))
+                    .appFont(32, design: .default)
             }
         }
         .padding(.vertical, 14)
@@ -113,7 +113,7 @@ struct DrillResultView: View {
                     Image(systemName: "square.and.arrow.up")
                     Text(lang.t("drill.share"))
                 }
-                .font(.system(size: 16, weight: .bold, design: .rounded))
+                .appFont(16, weight: .bold)
                 .foregroundStyle(.white)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 14)
@@ -128,7 +128,7 @@ struct DrillResultView: View {
             dismiss()
         } label: {
             Text(lang.t("common.done"))
-                .font(.system(size: 16, weight: .bold, design: .rounded))
+                .appFont(16, weight: .bold)
                 .foregroundStyle(AppPalette.ink)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 14)

@@ -391,7 +391,7 @@ struct StreakRing: View {
                         .font(.system(size: s * 0.32, weight: .heavy, design: .rounded))
                         .foregroundStyle(.white)
                     Text("DAYS")
-                        .font(.system(size: 10, weight: .heavy, design: .rounded))
+                        .appFont(10, weight: .heavy)
                         .tracking(1.4)
                         .foregroundStyle(.white.opacity(0.7))
                 }
@@ -446,7 +446,7 @@ struct QuizCourtDiagramView: View {
             // Score chip lives in the parchment side margin (top-left).
             if let chip = diagram.scoreChip, !chip.isEmpty {
                 Text(chip)
-                    .font(.system(size: 10, weight: .heavy, design: .rounded))
+                    .appFont(10, weight: .heavy)
                     .tracking(1.2)
                     .foregroundStyle(.white)
                     .padding(.horizontal, 10)
@@ -528,7 +528,7 @@ struct QuizCourtDiagramView: View {
                 .overlay(Circle().stroke(.white.opacity(0.95), lineWidth: 1.6))
                 .shadow(color: .black.opacity(0.28), radius: 3, x: 0, y: 2)
             Text(label)
-                .font(.system(size: 9, weight: .heavy, design: .rounded))
+                .appFont(9, weight: .heavy)
                 .tracking(0.5)
                 .foregroundStyle(color)
         }

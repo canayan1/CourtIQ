@@ -56,7 +56,7 @@ struct MatchLogTutorialView: View {
     private var intro: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(lang.t("matches.tutorial.intro_title"))
-                .font(.system(size: 22, weight: .heavy, design: .rounded))
+                .appFont(22, weight: .heavy)
                 .foregroundStyle(AppPalette.ink)
                 .fixedSize(horizontal: false, vertical: true)
             Text(lang.t("matches.tutorial.intro_body"))
@@ -80,7 +80,7 @@ struct MatchLogTutorialView: View {
             }
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
-                    .font(.system(size: 16, weight: .bold, design: .rounded))
+                    .appFont(16, weight: .bold)
                     .foregroundStyle(AppPalette.ink)
                 Text(body)
                     .font(.subheadline)
@@ -105,7 +105,7 @@ struct MatchLogTutorialView: View {
                     .font(.title3.weight(.bold))
                     .foregroundStyle(AppPalette.clay)
                 Text(lang.t("matches.tutorial.payoff_title"))
-                    .font(.system(size: 16, weight: .bold, design: .rounded))
+                    .appFont(16, weight: .bold)
                     .foregroundStyle(AppPalette.ink)
             }
             Text(lang.t("matches.tutorial.payoff_body"))

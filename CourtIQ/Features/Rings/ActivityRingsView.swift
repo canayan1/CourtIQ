@@ -154,7 +154,7 @@ struct ThreeRingsCard: View {
                         .frame(width: 14, height: 14)
                 )
             Text(text)
-                .font(.system(size: 13, weight: .bold, design: .rounded))
+                .appFont(13, weight: .bold)
                 .foregroundStyle(done ? AppPalette.ink : AppPalette.inkSoft)
             Spacer(minLength: 0)
             if done {

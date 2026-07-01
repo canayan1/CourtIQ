@@ -249,7 +249,7 @@ struct PathCircleView: View {
                 // Direction arrow hint (small, for middle circles in reversed row)
                 if isRowReversed && (weekNumber == 5 || weekNumber == 6) {
                     Image(systemName: "chevron.left")
-                        .font(.system(size: 8, weight: .semibold))
+                        .appFont(8, weight: .semibold, design: .default)
                         .foregroundStyle(.white.opacity(0.5))
                         .offset(x: 16)
                 }
@@ -271,21 +271,21 @@ struct PathCircleView: View {
         switch state {
         case .completed:
             Image(systemName: "checkmark")
-                .font(.system(size: 18, weight: .bold))
+                .appFont(18, weight: .bold, design: .default)
         case .current:
             Text("\(weekNumber)")
-                .font(.system(size: 16, weight: .bold, design: .rounded))
+                .appFont(16, weight: .bold)
         case .unstarted:
             VStack(spacing: 1) {
                 Text("\(weekNumber)")
-                    .font(.system(size: 14, weight: .bold, design: .rounded))
+                    .appFont(14, weight: .bold)
                 Text(lang.t("common.start"))
-                    .font(.system(size: 9, weight: .semibold))
+                    .appFont(9, weight: .semibold, design: .default)
                     .opacity(0.8)
             }
         case .locked:
             Image(systemName: "lock.fill")
-                .font(.system(size: 14, weight: .medium))
+                .appFont(14, weight: .medium, design: .default)
         }
     }
 

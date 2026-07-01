@@ -45,7 +45,7 @@ struct AICoachConsentView: View {
             VStack(alignment: .leading, spacing: 18) {
                 ZStack {
                     Circle().fill(AppPalette.clay.opacity(0.14)).frame(width: 64, height: 64)
-                    Image(systemName: "sparkles").font(.system(size: 30, weight: .bold)).foregroundStyle(AppPalette.clay)
+                    Image(systemName: "sparkles").appFont(30, weight: .bold, design: .default).foregroundStyle(AppPalette.clay)
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.top, 8)
@@ -115,7 +115,7 @@ struct AICoachConsentView: View {
 
     private func bullet(_ text: String) -> some View {
         HStack(alignment: .top, spacing: 10) {
-            Image(systemName: "circle.fill").font(.system(size: 6)).foregroundStyle(AppPalette.clay).padding(.top, 6)
+            Image(systemName: "circle.fill").appFont(6, design: .default).foregroundStyle(AppPalette.clay).padding(.top, 6)
             Text(text).font(.subheadline).foregroundStyle(AppPalette.ink).fixedSize(horizontal: false, vertical: true)
             Spacer(minLength: 0)
         }

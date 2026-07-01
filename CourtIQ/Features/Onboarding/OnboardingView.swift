@@ -150,7 +150,7 @@ private struct OnboardingOptionCard: View {
                             .foregroundStyle(isSelected ? AppPalette.clay : AppPalette.inkSoft)
                     case .sf(let name):
                         Image(systemName: name)
-                            .font(.system(size: 20, weight: .medium))
+                            .appFont(20, weight: .medium, design: .default)
                             .foregroundStyle(isSelected ? AppPalette.clay : AppPalette.inkSoft)
                     }
                 }
@@ -258,7 +258,7 @@ private struct WelcomeStep: View {
                         .frame(width: 148, height: 148)
                         .shadow(color: .black.opacity(0.2), radius: 20, y: 8)
                     Image(systemName: "figure.tennis")
-                        .font(.system(size: 72, weight: .medium))
+                        .appFont(72, weight: .medium, design: .default)
                         .foregroundStyle(Color.white)
                 }
 
@@ -570,7 +570,7 @@ private struct PlanRevealStep: View {
                     HStack(spacing: 10) {
                         Image(systemName: "checkmark.circle.fill")
                             .foregroundStyle(AppPalette.moss)
-                            .font(.system(size: 20))
+                            .appFont(20, design: .default)
                         Text(lang.t("onb.plan.free_title"))
                             .font(.system(.subheadline, design: .rounded).weight(.bold))
                             .foregroundStyle(AppPalette.moss)
@@ -606,7 +606,7 @@ private struct PlanRevealRow: View {
                     .fill(color.opacity(0.13))
                     .frame(width: 44, height: 44)
                 Image(systemName: icon)
-                    .font(.system(size: 20, weight: .medium))
+                    .appFont(20, weight: .medium, design: .default)
                     .foregroundStyle(color)
             }
             VStack(alignment: .leading, spacing: 3) {
@@ -825,7 +825,7 @@ private struct AccountStep: View {
                         .fill(AppPalette.clay.opacity(0.12))
                         .frame(width: 108, height: 108)
                     Image(systemName: "person.crop.circle.fill")
-                        .font(.system(size: 52, weight: .light))
+                        .appFont(52, weight: .light, design: .default)
                         .foregroundStyle(AppPalette.clay)
                 }
 

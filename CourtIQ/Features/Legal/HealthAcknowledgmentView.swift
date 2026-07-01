@@ -44,16 +44,16 @@ struct HealthAcknowledgmentView: View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(spacing: 10) {
                 Image(systemName: "shield.lefthalf.filled")
-                    .font(.system(size: 22, weight: .bold))
+                    .appFont(22, weight: .bold, design: .default)
                     .foregroundStyle(AppPalette.clay)
                 Text(lang.t("health.eyebrow"))
-                    .font(.system(size: 12, weight: .heavy, design: .rounded))
+                    .appFont(12, weight: .heavy)
                     .tracking(1.4)
                     .foregroundStyle(AppPalette.clay)
             }
 
             Text(lang.t("health.title"))
-                .font(.system(size: 28, weight: .heavy, design: .rounded))
+                .appFont(28, weight: .heavy)
                 .foregroundStyle(AppPalette.ink)
 
             Text(lang.t("health.subtitle"))
@@ -68,7 +68,7 @@ struct HealthAcknowledgmentView: View {
             ForEach(items, id: \.self) { item in
                 HStack(alignment: .top, spacing: 10) {
                     Image(systemName: "checkmark.seal.fill")
-                        .font(.system(size: 16))
+                        .appFont(16, design: .default)
                         .foregroundStyle(AppPalette.clay)
                         .frame(width: 20)
                         .padding(.top, 2)
@@ -167,7 +167,7 @@ struct HealthAcknowledgmentView: View {
         VStack(spacing: 10) {
             Button(action: accept) {
                 Text(lang.t("health.accept"))
-                    .font(.system(size: 17, weight: .bold, design: .rounded))
+                    .appFont(17, weight: .bold)
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)

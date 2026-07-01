@@ -143,7 +143,7 @@ struct ProShotAnimationView: View {
     private var headerInfo: some View {
         VStack(alignment: .leading, spacing: 6) {
             Text(pattern.localizedTitle(for: lang.language))
-                .font(.system(size: 24, weight: .heavy, design: .rounded))
+                .appFont(24, weight: .heavy)
                 .foregroundStyle(.white)
             Text(pattern.localizedTagline(for: lang.language))
                 .font(.subheadline)
@@ -174,7 +174,7 @@ struct ProShotAnimationView: View {
 
                 if !labelOverlay.isEmpty {
                     Text(labelOverlay)
-                        .font(.system(size: 11, weight: .heavy, design: .rounded))
+                        .appFont(11, weight: .heavy)
                         .tracking(0.6)
                         .foregroundStyle(.white)
                         .padding(.horizontal, 12)
@@ -282,12 +282,12 @@ struct ProShotAnimationView: View {
                 .overlay(Circle().stroke(.white.opacity(0.95), lineWidth: 1.6))
                 .shadow(color: .black.opacity(0.28), radius: 3, y: 2)
             Text(label)
-                .font(.system(size: 9, weight: .heavy, design: .rounded))
+                .appFont(9, weight: .heavy)
                 .tracking(0.5)
                 .foregroundStyle(.white)
             if let caption = hitCaption {
                 Text(caption)
-                    .font(.system(size: 8, weight: .heavy, design: .rounded))
+                    .appFont(8, weight: .heavy)
                     .tracking(0.4)
                     .foregroundStyle(.white)
                     .padding(.horizontal, 6)
@@ -343,7 +343,7 @@ struct ProShotAnimationView: View {
                 Image(systemName: phase == .done ? "arrow.clockwise" : "play.fill")
                 Text(phase == .done ? lang.t("pro_shot.replay") : lang.t("pro_shot.play"))
             }
-            .font(.system(size: 16, weight: .bold, design: .rounded))
+            .appFont(16, weight: .bold)
             .foregroundStyle(.white)
             .frame(maxWidth: .infinity)
             .padding(.vertical, 14)
@@ -385,7 +385,7 @@ struct ProShotAnimationView: View {
                     .textCase(.uppercase)
                     .tracking(0.5)
                 Text(lang.t("pro_shot.intro_title"))
-                    .font(.system(size: 20, weight: .heavy, design: .rounded))
+                    .appFont(20, weight: .heavy)
                     .foregroundStyle(AppPalette.ink)
                 Text(lang.t("pro_shot.intro_body"))
                     .font(.subheadline)
@@ -393,7 +393,7 @@ struct ProShotAnimationView: View {
                     .fixedSize(horizontal: false, vertical: true)
                 Button(action: dismissIntro) {
                     Text(lang.t("pro_shot.intro_cta"))
-                        .font(.system(size: 15, weight: .bold, design: .rounded))
+                        .appFont(15, weight: .bold)
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)

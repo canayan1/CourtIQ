@@ -163,7 +163,7 @@ struct TennisProfileResultView: View {
         } label: {
             HStack(alignment: .top, spacing: 12) {
                 Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
-                    .font(.system(size: 22))
+                    .appFont(22, design: .default)
                     .foregroundStyle(isSelected ? AppPalette.clay : AppPalette.sand)
                     .padding(.top, 1)
                 VStack(alignment: .leading, spacing: 4) {

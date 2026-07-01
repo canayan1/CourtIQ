@@ -31,12 +31,12 @@ struct TrainingHubView: View {
         if !freq.isEmpty, let info = frequencyInfo(for: freq) {
             HStack(alignment: .top, spacing: 12) {
                 Image(systemName: "calendar.badge.checkmark")
-                    .font(.system(size: 20))
+                    .appFont(20, design: .default)
                     .foregroundStyle(AppPalette.moss)
                     .frame(width: 28)
                 VStack(alignment: .leading, spacing: 4) {
                     Text(String(format: lang.t("training.plan_matched"), info.days))
-                        .font(.system(size: 13, weight: .bold, design: .rounded))
+                        .appFont(13, weight: .bold)
                         .foregroundStyle(AppPalette.moss)
                     Text(info.note)
                         .font(.caption)
@@ -71,7 +71,7 @@ struct TrainingHubView: View {
                 .foregroundStyle(AppPalette.inkSoft)
 
             Text(lang.t("training.desc"))
-                .font(.system(size: 28, weight: .bold, design: .rounded))
+                .appFont(28, weight: .bold)
 
             Text(lang.t("training.long_desc"))
                 .foregroundStyle(AppPalette.inkSoft)
@@ -109,7 +109,7 @@ struct TrainingHubView: View {
 
                 VStack(alignment: .leading, spacing: 6) {
                     Text(lang.t("training.block_title"))
-                        .font(.system(size: 24, weight: .black, design: .rounded))
+                        .appFont(24, weight: .black)
                         .textCase(.uppercase)
                         .tracking(0.8)
                         .foregroundStyle(.white)

@@ -111,7 +111,7 @@ struct SwingHistoryView: View {
     private var emptyState: some View {
         VStack(spacing: 14) {
             Image(systemName: "clock.arrow.circlepath")
-                .font(.system(size: 40))
+                .appFont(40, design: .default)
                 .foregroundStyle(AppPalette.moss)
             Text(copy.historyEmpty)
                 .font(.subheadline)

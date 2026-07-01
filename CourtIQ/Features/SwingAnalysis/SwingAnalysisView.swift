@@ -403,7 +403,7 @@ struct SwingAnalysisView: View {
         Button(action: action) {
             HStack(alignment: .center, spacing: 12) {
                 Image(systemName: isSelected ? "largecircle.fill.circle" : "circle")
-                    .font(.system(size: 20))
+                    .appFont(20, design: .default)
                     .foregroundStyle(isSelected ? AppPalette.clay : AppPalette.sand)
                 Text(title)
                     .font(.subheadline)

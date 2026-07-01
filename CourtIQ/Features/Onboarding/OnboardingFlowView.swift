@@ -124,7 +124,7 @@ struct OnboardingFlowView: View {
             ZStack {
                 Circle().fill(AppPalette.clay.opacity(0.14)).frame(width: 72, height: 72)
                 Image(systemName: "person.crop.circle.badge.checkmark")
-                    .font(.system(size: 34, weight: .bold))
+                    .appFont(34, weight: .bold, design: .default)
                     .foregroundStyle(AppPalette.clay)
             }
 
@@ -139,7 +139,7 @@ struct OnboardingFlowView: View {
                 ForEach(copy.welcomeBullets, id: \.self) { line in
                     HStack(alignment: .top, spacing: 12) {
                         Image(systemName: "checkmark.circle.fill")
-                            .font(.system(size: 18))
+                            .appFont(18, design: .default)
                             .foregroundStyle(AppPalette.moss)
                             .padding(.top, 1)
                         Text(line)
@@ -272,7 +272,7 @@ struct OnboardingFlowView: View {
             }
             HStack(alignment: .top, spacing: 10) {
                 Image(systemName: "info.circle.fill")
-                    .font(.system(size: 14))
+                    .appFont(14, design: .default)
                     .foregroundStyle(AppPalette.clay)
                     .padding(.top, 1)
                 Text(tpCopy.provisionalNote)
@@ -481,7 +481,7 @@ struct OnboardingFlowView: View {
             ZStack {
                 Circle().fill(AppPalette.clay.opacity(0.14)).frame(width: 72, height: 72)
                 Image(systemName: "star.fill")
-                    .font(.system(size: 34, weight: .bold))
+                    .appFont(34, weight: .bold, design: .default)
                     .foregroundStyle(AppPalette.clay)
             }
 
@@ -550,7 +550,7 @@ struct OnboardingFlowView: View {
                         ZStack {
                             Circle().fill(AppPalette.clay.opacity(0.14)).frame(width: 72, height: 72)
                             Image(systemName: slide.symbol)
-                                .font(.system(size: 34, weight: .bold))
+                                .appFont(34, weight: .bold, design: .default)
                                 .foregroundStyle(AppPalette.clay)
                         }
                         Text(slide.headline)
@@ -608,7 +608,7 @@ struct OnboardingFlowView: View {
         Button(action: action) {
             HStack(alignment: .center, spacing: 12) {
                 Image(systemName: isSelected ? "largecircle.fill.circle" : "circle")
-                    .font(.system(size: 20))
+                    .appFont(20, design: .default)
                     .foregroundStyle(isSelected ? AppPalette.clay : AppPalette.sand)
                 Text(title)
                     .font(.subheadline)
@@ -631,7 +631,7 @@ struct OnboardingFlowView: View {
         Button(action: action) {
             HStack(alignment: .center, spacing: 12) {
                 Image(systemName: isSelected ? "checkmark.square.fill" : "square")
-                    .font(.system(size: 20))
+                    .appFont(20, design: .default)
                     .foregroundStyle(isSelected ? AppPalette.clay : AppPalette.sand)
                 Text(title)
                     .font(.subheadline)

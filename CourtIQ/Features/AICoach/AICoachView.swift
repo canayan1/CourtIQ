@@ -118,7 +118,7 @@ struct AICoachView: View {
     private var emptyState: some View {
         VStack(spacing: 14) {
             Image(systemName: "bubble.left.and.bubble.right.fill")
-                .font(.system(size: 44))
+                .appFont(44, design: .default)
                 .foregroundStyle(AppPalette.clay.opacity(0.4))
             Text(lang.t("ai.empty_title"))
                 .font(.headline)

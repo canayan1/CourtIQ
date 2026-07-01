@@ -136,7 +136,7 @@ struct PaywallView: View {
                     .fill(.white.opacity(0.16))
                     .frame(width: 60, height: 60)
                 Image(systemName: "trophy.fill")
-                    .font(.system(size: 28, weight: .bold))
+                    .appFont(28, weight: .bold, design: .default)
                     .foregroundStyle(.white)
             }
 
@@ -165,7 +165,7 @@ struct PaywallView: View {
             ForEach(manager.premiumBenefits, id: \.self) { benefit in
                 HStack(alignment: .top, spacing: 12) {
                     Image(systemName: "checkmark.circle.fill")
-                        .font(.system(size: 18, weight: .semibold))
+                        .appFont(18, weight: .semibold, design: .default)
                         .foregroundStyle(AppPalette.moss)
                     Text(benefit)
                         .foregroundStyle(AppPalette.ink)
@@ -189,7 +189,7 @@ struct PaywallView: View {
     private var credibilityLine: some View {
         HStack(alignment: .center, spacing: 10) {
             Image(systemName: "checkmark.seal.fill")
-                .font(.system(size: 16, weight: .semibold))
+                .appFont(16, weight: .semibold, design: .default)
                 .foregroundStyle(AppPalette.mossDeep)
             Text(t(
                 "Evidence-based — built on USTA & ITF coaching frameworks",
@@ -393,7 +393,7 @@ struct PaywallView: View {
 
     private func selectionIndicator(isSelected: Bool) -> some View {
         Image(systemName: isSelected ? "largecircle.fill.circle" : "circle")
-            .font(.system(size: 22, weight: .regular))
+            .appFont(22, weight: .regular, design: .default)
             .foregroundStyle(isSelected ? AppPalette.clay : AppPalette.sand)
     }
 

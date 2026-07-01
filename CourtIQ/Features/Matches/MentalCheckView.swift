@@ -72,7 +72,7 @@ struct MentalCheckView: View {
                 VStack(alignment: .leading, spacing: 8) {
                     Eyebrow(lang.t("mental.eyebrow"))
                     Text(lang.t("mental.headline"))
-                        .font(.system(size: 26, weight: .heavy, design: .rounded))
+                        .appFont(26, weight: .heavy)
                         .foregroundStyle(AppPalette.ink)
                         .fixedSize(horizontal: false, vertical: true)
                     Text(lang.t("mental.subhead"))
@@ -177,7 +177,7 @@ struct MentalCheckView: View {
                     .font(.subheadline.weight(.bold))
                     .frame(width: 22)
                 Text(label)
-                    .font(.system(size: 14, weight: .bold, design: .rounded))
+                    .appFont(14, weight: .bold)
                     .foregroundStyle(AppPalette.ink)
                     .fixedSize(horizontal: false, vertical: true)
             }

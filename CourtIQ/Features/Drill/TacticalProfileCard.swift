@@ -55,7 +55,7 @@ struct TacticalProfileCard: View {
                 .textCase(.uppercase)
                 .tracking(0.5)
             Text(lang.t("drill.profile_title"))
-                .font(.system(size: 17, weight: .heavy, design: .rounded))
+                .appFont(17, weight: .heavy)
                 .foregroundStyle(AppPalette.ink)
         }
     }
@@ -89,16 +89,16 @@ struct TacticalProfileCard: View {
             VStack(alignment: .trailing, spacing: 0) {
                 if let score = entry.score {
                     Text(String(format: "%.1f", score))
-                        .font(.system(size: 13, weight: .heavy, design: .monospaced))
+                        .appFont(13, weight: .heavy, design: .monospaced)
                         .foregroundStyle(AppPalette.ink)
                         .monospacedDigit()
                 } else {
                     Text("—")
-                        .font(.system(size: 13, weight: .heavy, design: .monospaced))
+                        .appFont(13, weight: .heavy, design: .monospaced)
                         .foregroundStyle(AppPalette.inkSoft.opacity(0.5))
                 }
                 Text(String(format: lang.t("drill.profile_reps_format"), entry.sampleCount))
-                    .font(.system(size: 9, weight: .semibold))
+                    .appFont(9, weight: .semibold, design: .default)
                     .foregroundStyle(AppPalette.inkSoft.opacity(0.7))
             }
             .frame(width: 50, alignment: .trailing)

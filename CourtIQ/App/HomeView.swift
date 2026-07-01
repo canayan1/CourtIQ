@@ -178,7 +178,7 @@ struct HomeView: View {
                 showProfile = true
             } label: {
                 Image(systemName: "figure.tennis")
-                    .font(.system(size: 19, weight: .semibold))
+                    .appFont(19, weight: .semibold, design: .default)
                     .foregroundStyle(AppPalette.clay)
                     .frame(width: 40, height: 40)
                     .background(AppPalette.parchment, in: Circle())

@@ -117,7 +117,7 @@ struct TennisProfileQuestionnaireView: View {
 
             HStack(alignment: .top, spacing: 10) {
                 Image(systemName: "info.circle.fill")
-                    .font(.system(size: 14))
+                    .appFont(14, design: .default)
                     .foregroundStyle(AppPalette.clay)
                     .padding(.top, 1)
                 Text(copy.provisionalNote)
@@ -239,7 +239,7 @@ struct TennisProfileQuestionnaireView: View {
         Button(action: action) {
             HStack(alignment: .center, spacing: 12) {
                 Image(systemName: isSelected ? "largecircle.fill.circle" : "circle")
-                    .font(.system(size: 20))
+                    .appFont(20, design: .default)
                     .foregroundStyle(isSelected ? AppPalette.clay : AppPalette.sand)
                 Text(title)
                     .font(.subheadline)

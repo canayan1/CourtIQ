@@ -77,7 +77,7 @@ struct AvatarLockerRoomView: View {
                 Image(systemName: icon)
                 Text(categoryLabel(cat))
             }
-            .font(.system(size: 13, weight: .bold, design: .rounded))
+            .appFont(13, weight: .bold)
             .foregroundStyle(isActive ? .white : AppPalette.ink)
             .padding(.horizontal, 14)
             .padding(.vertical, 8)

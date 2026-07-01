@@ -64,10 +64,10 @@ struct MatchEntryFlowView: View {
 
             VStack(spacing: 8) {
                 Image(systemName: "figure.tennis")
-                    .font(.system(size: 40, weight: .medium))
+                    .appFont(40, weight: .medium, design: .default)
                     .foregroundStyle(AppPalette.clay)
                 Text(lang.t("matches.flow_choose_title"))
-                    .font(.system(size: 22, weight: .heavy, design: .rounded))
+                    .appFont(22, weight: .heavy)
                     .foregroundStyle(AppPalette.ink)
                     .multilineTextAlignment(.center)
             }
@@ -108,12 +108,12 @@ struct MatchEntryFlowView: View {
                 ZStack {
                     Circle().fill(tint.opacity(0.14)).frame(width: 48, height: 48)
                     Image(systemName: icon)
-                        .font(.system(size: 20, weight: .bold))
+                        .appFont(20, weight: .bold, design: .default)
                         .foregroundStyle(tint)
                 }
                 VStack(alignment: .leading, spacing: 3) {
                     Text(title)
-                        .font(.system(size: 17, weight: .bold, design: .rounded))
+                        .appFont(17, weight: .bold)
                         .foregroundStyle(AppPalette.ink)
                     Text(subtitle)
                         .font(.caption)

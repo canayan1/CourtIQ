@@ -28,7 +28,7 @@ struct MatchAnalyzingView: View {
                     .progressViewStyle(.circular)
                     .tint(AppPalette.clay)
                 Text(title)
-                    .font(.system(size: 24, weight: .bold, design: .rounded))
+                    .appFont(24, weight: .bold)
                     .foregroundStyle(AppPalette.ink)
             }
 
@@ -67,7 +67,7 @@ struct MatchAnalyzingView: View {
             ZStack {
                 if isDone {
                     Image(systemName: "checkmark.circle.fill")
-                        .font(.system(size: 20))
+                        .appFont(20, design: .default)
                         .foregroundStyle(AppPalette.moss)
                 } else if isActive {
                     ProgressView()
@@ -76,7 +76,7 @@ struct MatchAnalyzingView: View {
                         .tint(AppPalette.clay)
                 } else {
                     Image(systemName: "circle")
-                        .font(.system(size: 20))
+                        .appFont(20, design: .default)
                         .foregroundStyle(AppPalette.sand)
                 }
             }

@@ -93,7 +93,7 @@ struct OnboardingResultView: View {
     private var planLine: some View {
         HStack(alignment: .top, spacing: 10) {
             Image(systemName: "checkmark.seal.fill")
-                .font(.system(size: 16))
+                .appFont(16, design: .default)
                 .foregroundStyle(AppPalette.moss)
                 .padding(.top, 1)
             Text(copy.resultPlanLine(goal: copy.resultGoalPhrase(goal),

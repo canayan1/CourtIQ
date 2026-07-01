@@ -51,7 +51,7 @@ struct AICoachTabRoot: View {
             VStack(alignment: .leading, spacing: 20) {
                 ZStack(alignment: .topTrailing) {
                     Image(systemName: "sparkles")
-                        .font(.system(size: 100, weight: .bold))
+                        .appFont(100, weight: .bold, design: .default)
                         .foregroundStyle(.white.opacity(0.14))
                         .accessibilityHidden(true)
                         .offset(x: 12, y: -6)

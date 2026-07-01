@@ -99,7 +99,7 @@ struct QuizView: View {
             QuizCourtDiagramView(diagram: question.resolvedDiagram)
                 .overlay(alignment: .topTrailing) {
                     Text(question.difficulty.title.uppercased())
-                        .font(.system(size: 10, weight: .heavy, design: .rounded))
+                        .appFont(10, weight: .heavy)
                         .tracking(1.2)
                         .foregroundStyle(.white)
                         .padding(.horizontal, 10)
@@ -231,7 +231,7 @@ struct QuizView: View {
         // header + 11-word review-hint dropped — the seal + score speak.
         VStack(spacing: 12) {
             Image(systemName: "checkmark.seal.fill")
-                .font(.system(size: 56))
+                .appFont(56, design: .default)
                 .foregroundStyle(AppPalette.moss)
             Text(viewModel.completionSummary)
                 .font(.title3.weight(.semibold))

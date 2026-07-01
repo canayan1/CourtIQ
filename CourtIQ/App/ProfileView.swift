@@ -142,7 +142,7 @@ struct ProfileView: View {
     /// Today landing alongside the activity rings.
     private var greetingHeader: some View {
         Text("\(greetingLine), \(session.displayName)")
-            .font(.system(size: 26, weight: .bold, design: .rounded))
+            .appFont(26, weight: .bold)
             .foregroundStyle(AppPalette.ink)
             .fixedSize(horizontal: false, vertical: true)
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -248,11 +248,11 @@ struct ProfileView: View {
 
                 VStack(spacing: 6) {
                     Text(t("IQ RATING", "IQ PUANI"))
-                        .font(.system(size: 11, weight: .heavy, design: .rounded))
+                        .appFont(11, weight: .heavy)
                         .tracking(1.6)
                         .foregroundStyle(AppPalette.inkSoft)
                     Text("\(iqRating)")
-                        .font(.system(size: 44, weight: .black, design: .rounded))
+                        .appFont(44, weight: .black)
                         .foregroundStyle(AppPalette.ink)
                         .monospacedDigit()
                 }
@@ -554,7 +554,7 @@ struct ProfileView: View {
                     } label: {
                         VStack(spacing: 4) {
                             Text(option.regionLabel)
-                                .font(.system(size: 13, weight: .bold, design: .rounded))
+                                .appFont(13, weight: .bold)
                             Text(option.displayName)
                                 .font(.caption)
                         }
@@ -644,7 +644,7 @@ struct ProfileView: View {
             ForEach(activityStats, id: \.label) { stat in
                 VStack(spacing: 4) {
                     Text("\(stat.value)")
-                        .font(.system(size: 26, weight: .heavy, design: .rounded))
+                        .appFont(26, weight: .heavy)
                         .foregroundStyle(AppPalette.clay)
                     Text(stat.label)
                         .font(.caption)
@@ -759,7 +759,7 @@ struct ProfileView: View {
                 .font(.title3)
                 .foregroundStyle(accent)
             Text(value)
-                .font(.system(size: 34, weight: .bold, design: .rounded))
+                .appFont(34, weight: .bold)
             Text(label)
                 .font(.caption)
                 .foregroundStyle(AppPalette.inkSoft)

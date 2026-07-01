@@ -67,7 +67,7 @@ enum MatchFormComponents {
                 result = value
             } label: {
                 Text(label)
-                    .font(.system(size: 16, weight: .heavy, design: .rounded))
+                    .appFont(16, weight: .heavy)
                     .foregroundStyle(result == value ? .white : AppPalette.inkSoft)
                     .frame(width: 40, height: 36)
                     .background(
@@ -168,7 +168,7 @@ enum MatchFormComponents {
                     TennisGlyph(kind: glyph, color: AppPalette.ink, size: 22)
                         .frame(width: 26)
                     Text(label)
-                        .font(.system(size: 13, weight: .bold, design: .rounded))
+                        .appFont(13, weight: .bold)
                         .foregroundStyle(AppPalette.ink)
                 }
                 .frame(width: 110, alignment: .leading)

@@ -134,7 +134,7 @@ struct CourtTapDrillView: View {
                     // Score chip (top-left of region, parchment margin)
                     if let chip = drill.scoreChip, !chip.isEmpty {
                         Text(chip)
-                            .font(.system(size: 10, weight: .heavy, design: .rounded))
+                            .appFont(10, weight: .heavy)
                             .tracking(1.2)
                             .foregroundStyle(.white)
                             .padding(.horizontal, 10)
@@ -217,10 +217,10 @@ struct CourtTapDrillView: View {
         } label: {
             VStack(spacing: 4) {
                 Image(systemName: shot.iconName)
-                    .font(.system(size: 22, weight: .bold))
+                    .appFont(22, weight: .bold, design: .default)
                     .foregroundStyle(AppPalette.clay)
                 Text(lang.t(shot.localizationKey))
-                    .font(.system(size: 10, weight: .heavy, design: .rounded))
+                    .appFont(10, weight: .heavy)
                     .foregroundStyle(AppPalette.ink)
                     .tracking(0.3)
             }
@@ -264,7 +264,7 @@ struct CourtTapDrillView: View {
            let height = drill.incomingHeight {
             VStack(alignment: .trailing, spacing: 3) {
                 Text(lang.t("drill.incoming_kicker"))
-                    .font(.system(size: 8, weight: .heavy, design: .rounded))
+                    .appFont(8, weight: .heavy)
                     .tracking(0.8)
                     .foregroundStyle(.white.opacity(0.75))
                 HStack(spacing: 6) {
@@ -286,9 +286,9 @@ struct CourtTapDrillView: View {
     private func ballAttrChip(icon: String, label: String) -> some View {
         HStack(spacing: 3) {
             Image(systemName: icon)
-                .font(.system(size: 9, weight: .bold))
+                .appFont(9, weight: .bold, design: .default)
             Text(label)
-                .font(.system(size: 9, weight: .heavy, design: .rounded))
+                .appFont(9, weight: .heavy)
                 .tracking(0.3)
         }
         .foregroundStyle(.white)
@@ -447,7 +447,7 @@ struct CourtTapDrillView: View {
                 .overlay(Circle().stroke(.white.opacity(0.95), lineWidth: 1.6))
                 .shadow(color: .black.opacity(0.28), radius: 3, x: 0, y: 2)
             Text(label)
-                .font(.system(size: 9, weight: .heavy, design: .rounded))
+                .appFont(9, weight: .heavy)
                 .tracking(0.5)
                 .foregroundStyle(.white)
         }
@@ -478,7 +478,7 @@ struct CourtTapDrillView: View {
                     }
                 }
                 Text(drill.localizedTitle(for: lang.language))
-                    .font(.system(size: 16, weight: .bold, design: .rounded))
+                    .appFont(16, weight: .bold)
                     .foregroundStyle(AppPalette.ink)
             }
 
@@ -517,7 +517,7 @@ struct CourtTapDrillView: View {
                 Text(currentIndex == drills.count - 1
                      ? lang.t("drill.see_result")
                      : lang.t("drill.next"))
-                    .font(.system(size: 16, weight: .bold, design: .rounded))
+                    .appFont(16, weight: .bold)
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 14)
@@ -673,13 +673,13 @@ struct DrillIntroSheet: View {
                         .fill(.white.opacity(0.18))
                         .frame(width: 64, height: 64)
                     Image(systemName: "hand.tap.fill")
-                        .font(.system(size: 28, weight: .bold))
+                        .appFont(28, weight: .bold, design: .default)
                         .foregroundStyle(.white)
                 }
 
                 VStack(spacing: 6) {
                     Text(lang.t("drill.intro_title"))
-                        .font(.system(size: 22, weight: .heavy, design: .rounded))
+                        .appFont(22, weight: .heavy)
                         .multilineTextAlignment(.center)
                         .foregroundStyle(.white)
                     Text(lang.t("drill.intro_subtitle"))
@@ -711,7 +711,7 @@ struct DrillIntroSheet: View {
 
             Button(action: onDismiss) {
                 Text(lang.t("drill.intro_cta"))
-                    .font(.system(size: 16, weight: .bold, design: .rounded))
+                    .appFont(16, weight: .bold)
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 14)
@@ -741,7 +741,7 @@ struct DrillIntroSheet: View {
                     .frame(width: 36, height: 36)
                 } else {
                     Image(systemName: symbol)
-                        .font(.system(size: 12, weight: .heavy))
+                        .appFont(12, weight: .heavy, design: .default)
                         .foregroundStyle(.white)
                         .padding(6)
                         .background(Circle().fill(tint))

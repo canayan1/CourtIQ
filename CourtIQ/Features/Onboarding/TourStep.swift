@@ -53,7 +53,7 @@ struct TourStep: View {
                         .fill(AppPalette.inkSoft.opacity(0.08))
                         .frame(width: 34, height: 34)
                     Image(systemName: "chevron.left")
-                        .font(.system(size: 14, weight: .semibold))
+                        .appFont(14, weight: .semibold, design: .default)
                         .foregroundStyle(AppPalette.ink)
                 }
             }
@@ -180,7 +180,7 @@ struct TourStep: View {
                     .fill(AppPalette.gold.opacity(0.18))
                     .frame(width: 60, height: 60)
                 Image(systemName: "trophy.fill")
-                    .font(.system(size: 26, weight: .bold))
+                    .appFont(26, weight: .bold, design: .default)
                     .foregroundStyle(AppPalette.gold)
             }
             .offset(x: 80, y: -85)
@@ -242,7 +242,7 @@ struct TourStep: View {
                 .foregroundStyle(AppPalette.ink)
             Spacer()
             Text(result)
-                .font(.system(size: 10, weight: .heavy, design: .rounded))
+                .appFont(10, weight: .heavy)
                 .foregroundStyle(.white)
                 .frame(width: 22, height: 22)
                 .background(Circle().fill(color))
@@ -301,11 +301,11 @@ struct TourStep: View {
 
             VStack(alignment: .leading, spacing: 14) {
                 Text("TRAINING")
-                    .font(.system(size: 32, weight: .black, design: .rounded))
+                    .appFont(32, weight: .black)
                     .tracking(1.2)
                     .foregroundStyle(.white)
                 Text("8 WEEKS")
-                    .font(.system(size: 11, weight: .heavy, design: .rounded))
+                    .appFont(11, weight: .heavy)
                     .tracking(1.4)
                     .foregroundStyle(.white.opacity(0.7))
                 HStack(spacing: 4) {
@@ -367,7 +367,7 @@ struct TourStep: View {
                 }
 
                 Text("IQ 1,420")
-                    .font(.system(size: 16, weight: .heavy, design: .rounded))
+                    .appFont(16, weight: .heavy)
                     .tracking(0.4)
                     .foregroundStyle(AppPalette.ink)
             }
@@ -383,7 +383,7 @@ struct TourStep: View {
                 .overlay(Circle().stroke(.white.opacity(0.85), lineWidth: 1.5))
                 .shadow(color: .black.opacity(0.25), radius: 4, y: 2)
             Text(label)
-                .font(.system(size: 10, weight: .heavy, design: .rounded))
+                .appFont(10, weight: .heavy)
                 .tracking(0.4)
                 .foregroundStyle(.white)
         }
@@ -410,7 +410,7 @@ struct TourStep: View {
             if page == pageCount - 1 {
                 Button(action: onNext) {
                     Text(lang.t("onb.cta.continue"))
-                        .font(.system(size: 17, weight: .bold, design: .rounded))
+                        .appFont(17, weight: .bold)
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 16)
@@ -456,7 +456,7 @@ private struct TourPage: View {
 
             VStack(alignment: .leading, spacing: 10) {
                 Text(title)
-                    .font(.system(size: 28, weight: .heavy, design: .rounded))
+                    .appFont(28, weight: .heavy)
                     .foregroundStyle(AppPalette.ink)
                     .fixedSize(horizontal: false, vertical: true)
 

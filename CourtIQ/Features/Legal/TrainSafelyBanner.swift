@@ -9,14 +9,14 @@ struct TrainSafelyBanner: View {
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
             Image(systemName: "exclamationmark.shield.fill")
-                .font(.system(size: 18, weight: .semibold))
+                .appFont(18, weight: .semibold, design: .default)
                 .foregroundStyle(AppPalette.clay)
                 .frame(width: 24, alignment: .center)
                 .padding(.top, 1)
 
             VStack(alignment: .leading, spacing: 3) {
                 Text(lang.t("health.banner_title"))
-                    .font(.system(size: 13, weight: .heavy, design: .rounded))
+                    .appFont(13, weight: .heavy)
                     .tracking(0.4)
                     .foregroundStyle(AppPalette.clay)
 

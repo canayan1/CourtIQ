@@ -306,7 +306,7 @@ struct ActivityCard: View {
     private func resultPill(_ result: MatchResult) -> some View {
         let isWin = result == .won
         return Text(isWin ? "W" : "L")
-            .font(.system(size: 15, weight: .heavy, design: .rounded))
+            .appFont(15, weight: .heavy)
             .foregroundStyle(.white)
             .frame(width: 34, height: 34)
             .background(Circle().fill(isWin ? AppPalette.moss : AppPalette.alert))

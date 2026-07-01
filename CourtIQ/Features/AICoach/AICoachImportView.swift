@@ -68,7 +68,7 @@ struct AICoachImportView: View {
                 .textCase(.uppercase)
                 .tracking(0.6)
             Text(lang.t("ai.import_headline"))
-                .font(.system(size: 22, weight: .heavy, design: .rounded))
+                .appFont(22, weight: .heavy)
                 .foregroundStyle(AppPalette.ink)
             Text(lang.t("ai.import_body"))
                 .font(.subheadline)

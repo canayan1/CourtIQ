@@ -58,7 +58,7 @@ struct ProShotCard: View {
                 }
 
                 Text(pattern.localizedTitle(for: lang.language))
-                    .font(.system(size: 17, weight: .heavy, design: .rounded))
+                    .appFont(17, weight: .heavy)
                     .foregroundStyle(AppPalette.ink)
                     .lineLimit(1)
 

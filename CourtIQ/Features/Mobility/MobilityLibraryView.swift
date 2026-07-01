@@ -74,7 +74,7 @@ struct MobilityLibraryView: View {
         VStack(alignment: .leading, spacing: 6) {
             Eyebrow(lang.t("mobility.title"))
             Text(lang.t("mobility.headline"))
-                .font(.system(size: 26, weight: .bold, design: .rounded))
+                .appFont(26, weight: .bold)
                 .foregroundStyle(AppPalette.ink)
                 .fixedSize(horizontal: false, vertical: true)
         }

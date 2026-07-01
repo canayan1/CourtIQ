@@ -26,7 +26,7 @@ struct MatchCalendarView: View {
             HStack(spacing: 0) {
                 ForEach(weekdayLetters, id: \.self) { letter in
                     Text(letter)
-                        .font(.system(size: 10, weight: .heavy, design: .rounded))
+                        .appFont(10, weight: .heavy)
                         .tracking(0.4)
                         .foregroundStyle(AppPalette.inkSoft)
                         .frame(maxWidth: .infinity)
@@ -89,7 +89,7 @@ struct MatchCalendarView: View {
 
             if logged {
                 Image(systemName: "checkmark")
-                    .font(.system(size: 9, weight: .heavy, design: .rounded))
+                    .appFont(9, weight: .heavy)
                     .foregroundStyle(.white)
             }
         }

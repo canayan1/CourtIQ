@@ -167,7 +167,7 @@ struct MatchJournalEntryView: View {
                 text: $opponentName
             )
             .focused($focusedField, equals: .opponent)
-            .font(.system(size: 18, weight: .semibold, design: .rounded))
+            .appFont(18, weight: .semibold)
             .padding(12)
             .background(AppPalette.parchment)
             .overlay(
@@ -181,7 +181,7 @@ struct MatchJournalEntryView: View {
                 text: $tournament
             )
             .focused($focusedField, equals: .tournament)
-            .font(.system(size: 18, weight: .semibold, design: .rounded))
+            .appFont(18, weight: .semibold)
             .padding(12)
             .background(AppPalette.parchment)
             .overlay(
@@ -254,7 +254,7 @@ struct MatchJournalEntryView: View {
             result = value
         } label: {
             Text(label)
-                .font(.system(size: 16, weight: .heavy, design: .rounded))
+                .appFont(16, weight: .heavy)
                 .foregroundStyle(result == value ? .white : AppPalette.inkSoft)
                 .frame(width: 40, height: 36)
                 .background(
@@ -361,7 +361,7 @@ struct MatchJournalEntryView: View {
                         photoLibrary: .shared()
                     ) {
                         Image(systemName: "plus.circle.fill")
-                            .font(.system(size: 22, weight: .semibold))
+                            .appFont(22, weight: .semibold, design: .default)
                             .foregroundStyle(AppPalette.clay)
                     }
                     .accessibilityLabel(lang.t("matches.add_photo"))
@@ -421,7 +421,7 @@ struct MatchJournalEntryView: View {
                 photoFileNames.removeAll { $0 == name }
             } label: {
                 Image(systemName: "xmark.circle.fill")
-                    .font(.system(size: 18, weight: .semibold))
+                    .appFont(18, weight: .semibold, design: .default)
                     .foregroundStyle(.white, AppPalette.alert)
                     .padding(4)
             }
@@ -447,7 +447,7 @@ struct MatchJournalEntryView: View {
                         fullscreenPhoto = nil
                     } label: {
                         Image(systemName: "xmark.circle.fill")
-                            .font(.system(size: 30, weight: .bold))
+                            .appFont(30, weight: .bold, design: .default)
                             .foregroundStyle(.white.opacity(0.85), .black.opacity(0.35))
                     }
                     .padding()
@@ -560,7 +560,7 @@ struct MatchJournalEntryView: View {
             recorder.language = recorder.language == .turkish ? .english : .turkish
         } label: {
             Text(recorder.language.shortLabel)
-                .font(.system(size: 11, weight: .heavy, design: .rounded))
+                .appFont(11, weight: .heavy)
                 .foregroundStyle(AppPalette.clay)
                 .frame(width: 26, height: 26)
                 .background(Circle().stroke(AppPalette.clay.opacity(0.35), lineWidth: 1.5))
@@ -609,7 +609,7 @@ struct MatchJournalEntryView: View {
                 }
             } label: {
                 Image(systemName: audioFile.wrappedValue == nil ? "mic.fill" : "mic.badge.plus")
-                    .font(.system(size: 14, weight: .bold))
+                    .appFont(14, weight: .bold, design: .default)
                     .foregroundStyle(AppPalette.clay)
                     .padding(8)
                     .background(Circle().fill(AppPalette.clay.opacity(0.12)))

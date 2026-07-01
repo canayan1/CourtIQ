@@ -22,6 +22,44 @@ enum Motion {
     static let stagger: Double = 0.07
 }
 
+// MARK: - Typography (Dynamic Type–aware)
+
+/// Applies `.system(size:weight:design:)` but scaled with the user's Dynamic
+/// Type setting via `@ScaledMetric`, instead of the fixed size that
+/// `.font(.system(size:))` bakes in (which ignores accessibility text sizes).
+///
+/// The app's display identity is `design: .rounded`, so that is the default —
+/// pass `design: .default` for body/system text and `.monospaced` for score
+/// read-outs. `relativeTo` controls which text style the size scales against;
+/// `.body` is a sensible default for everything.
+private struct ScaledFont: ViewModifier {
+    @ScaledMetric private var size: CGFloat
+    private let weight: Font.Weight
+    private let design: Font.Design
+
+    init(size: CGFloat, weight: Font.Weight, design: Font.Design, relativeTo: Font.TextStyle) {
+        _size = ScaledMetric(wrappedValue: size, relativeTo: relativeTo)
+        self.weight = weight
+        self.design = design
+    }
+
+    func body(content: Content) -> some View {
+        content.font(.system(size: size, weight: weight, design: design))
+    }
+}
+
+extension View {
+    /// Dynamic-Type-scaled replacement for `.font(.system(size:weight:design:))`.
+    /// Defaults to the app's rounded display face; the size still scales with
+    /// the user's accessibility text-size setting.
+    func appFont(_ size: CGFloat,
+                 weight: Font.Weight = .regular,
+                 design: Font.Design = .rounded,
+                 relativeTo: Font.TextStyle = .body) -> some View {
+        modifier(ScaledFont(size: size, weight: weight, design: design, relativeTo: relativeTo))
+    }
+}
+
 // MARK: - Branded photo background (single-tone / duotone)
 
 /// Turns any of the bundled tennis photos (`Image("Photo…")`) into a cohesive,

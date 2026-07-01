@@ -17,13 +17,13 @@ struct NotificationPreAskSheet: View {
                     .fill(AppPalette.clay.opacity(0.12))
                     .frame(width: 88, height: 88)
                 Image(systemName: "bell.badge.fill")
-                    .font(.system(size: 38, weight: .medium))
+                    .appFont(38, weight: .medium, design: .default)
                     .foregroundStyle(AppPalette.clay)
             }
             .padding(.bottom, 22)
 
             Text(lang.t("notif.permission.title"))
-                .font(.system(size: 22, weight: .heavy, design: .rounded))
+                .appFont(22, weight: .heavy)
                 .foregroundStyle(AppPalette.ink)
                 .multilineTextAlignment(.center)
                 .padding(.bottom, 10)
@@ -40,7 +40,7 @@ struct NotificationPreAskSheet: View {
             VStack(spacing: 10) {
                 Button(action: enableTapped) {
                     Text(lang.t("notif.permission.enable"))
-                        .font(.system(size: 17, weight: .bold, design: .rounded))
+                        .appFont(17, weight: .bold)
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 16)

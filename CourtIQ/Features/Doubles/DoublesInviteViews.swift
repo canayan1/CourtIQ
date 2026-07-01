@@ -484,7 +484,7 @@ struct DoublesPartnershipReportView: View {
         case .failed:
             VStack(spacing: 16) {
                 Image(systemName: "exclamationmark.triangle")
-                    .font(.system(size: 36))
+                    .appFont(36, design: .default)
                     .foregroundStyle(AppPalette.clay)
                 Text(errorMessage ?? copy.errorGeneric)
                     .font(.subheadline)
@@ -583,7 +583,7 @@ struct DoublesInviteShareSheet: View {
                             .foregroundStyle(AppPalette.inkSoft)
 
                         Text(partnership.code)
-                            .font(.system(size: 46, weight: .heavy, design: .rounded))
+                            .appFont(46, weight: .heavy)
                             .tracking(6)
                             .foregroundStyle(AppPalette.clay)
                             .padding(.vertical, 18)
@@ -759,7 +759,7 @@ struct DoublesAcceptSheet: View {
     private var enterCodeStep: some View {
         VStack(spacing: 18) {
             TextField(copy.codeFieldPlaceholder, text: $code)
-                .font(.system(size: 28, weight: .bold, design: .rounded))
+                .appFont(28, weight: .bold)
                 .multilineTextAlignment(.center)
                 .textInputAutocapitalization(.characters)
                 .autocorrectionDisabled()
@@ -794,7 +794,7 @@ struct DoublesAcceptSheet: View {
     private func confirmStep(inviterName: String) -> some View {
         VStack(spacing: 18) {
             Image(systemName: "person.2.wave.2.fill")
-                .font(.system(size: 40))
+                .appFont(40, design: .default)
                 .foregroundStyle(AppPalette.clay)
             Text(copy.invitedYou(inviterName))
                 .font(.title3.weight(.bold))
@@ -822,7 +822,7 @@ struct DoublesAcceptSheet: View {
     private func unavailableStep(title: String, message: String) -> some View {
         VStack(spacing: 18) {
             Image(systemName: "checkmark.seal.fill")
-                .font(.system(size: 40))
+                .appFont(40, design: .default)
                 .foregroundStyle(AppPalette.moss)
             Text(title)
                 .font(.title3.weight(.bold))

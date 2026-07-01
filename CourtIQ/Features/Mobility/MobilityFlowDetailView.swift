@@ -62,7 +62,7 @@ struct MobilityFlowDetailView: View {
                                         .stroke(AppPalette.clay, lineWidth: 1.5)
                                         .frame(width: 22, height: 22)
                                     Text("\(idx + 1)")
-                                        .font(.system(size: 11, weight: .heavy, design: .rounded))
+                                        .appFont(11, weight: .heavy)
                                         .foregroundStyle(AppPalette.clay)
                                 }
 
@@ -137,7 +137,7 @@ struct MobilityFlowDetailView: View {
         // removed — the crown + locked flow list above signal it.
         VStack(spacing: 14) {
             Image(systemName: "crown.fill")
-                .font(.system(size: 36))
+                .appFont(36, design: .default)
                 .foregroundStyle(AppPalette.gold)
             Text(lang.t("mobility.premium"))
                 .font(.headline)

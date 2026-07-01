@@ -75,7 +75,7 @@ struct OnboardingBuildingView: View {
             ZStack {
                 if isDone {
                     Image(systemName: "checkmark.circle.fill")
-                        .font(.system(size: 20))
+                        .appFont(20, design: .default)
                         .foregroundStyle(AppPalette.moss)
                 } else if isActive {
                     ProgressView()
@@ -84,7 +84,7 @@ struct OnboardingBuildingView: View {
                         .tint(AppPalette.clay)
                 } else {
                     Image(systemName: "circle")
-                        .font(.system(size: 20))
+                        .appFont(20, design: .default)
                         .foregroundStyle(AppPalette.sand)
                 }
             }

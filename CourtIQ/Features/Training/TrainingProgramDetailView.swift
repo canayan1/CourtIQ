@@ -97,7 +97,7 @@ struct TrainingProgramDetailView: View {
 
                     if let level = program.level {
                         Text(level.localizedTitle(for: lang.language).uppercased())
-                            .font(.system(size: 10, weight: .heavy, design: .rounded))
+                            .appFont(10, weight: .heavy)
                             .tracking(0.8)
                             .foregroundStyle(.white)
                             .padding(.horizontal, 8)
@@ -111,13 +111,13 @@ struct TrainingProgramDetailView: View {
 
                     // Current week / total — replaces the old plain "8 weeks"
                     Text("WK \(progress.selectedWeek) · \(program.durationWeeks)")
-                        .font(.system(size: 11, weight: .heavy, design: .rounded))
+                        .appFont(11, weight: .heavy)
                         .tracking(1.0)
                         .foregroundStyle(.white.opacity(0.85))
                 }
 
                 Text(program.localizedTitle(for: lang.language))
-                    .font(.system(size: 22, weight: .heavy, design: .rounded))
+                    .appFont(22, weight: .heavy)
                     .foregroundStyle(.white)
                     .fixedSize(horizontal: false, vertical: true)
 
@@ -154,7 +154,7 @@ struct TrainingProgramDetailView: View {
 
             HStack(spacing: 4) {
                 Text("\(completedCount)/\(program.days.count)")
-                    .font(.system(size: 15, weight: .heavy, design: .rounded))
+                    .appFont(15, weight: .heavy)
                     .foregroundStyle(AppPalette.clay)
                     .monospacedDigit()
             }
@@ -316,7 +316,7 @@ struct TrainingProgramDetailView: View {
                                     .fill(AppPalette.clay.opacity(0.12))
                                     .frame(width: 40, height: 40)
                                 Image(systemName: exerciseGlyph(for: exercise))
-                                    .font(.system(size: 18, weight: .bold))
+                                    .appFont(18, weight: .bold, design: .default)
                                     .foregroundStyle(AppPalette.clay)
                             }
 

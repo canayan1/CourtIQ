@@ -19,12 +19,12 @@ struct LogStreakBadge: View {
 
                 VStack(spacing: 0) {
                     Text("\(value)")
-                        .font(.system(size: 22, weight: .heavy, design: .rounded))
+                        .appFont(22, weight: .heavy)
                         .foregroundStyle(AppPalette.clay)
                         .monospacedDigit()
                     if graceActive {
                         Image(systemName: "snowflake")
-                            .font(.system(size: 8, weight: .bold))
+                            .appFont(8, weight: .bold, design: .default)
                             .foregroundStyle(AppPalette.clay)
                     }
                 }

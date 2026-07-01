@@ -87,7 +87,7 @@ struct TennisPlayerBadgeView: View {
         VStack(spacing: 5) {
             // Level title
             Text(level.localizedTitle(for: lang.language).uppercased())
-                .font(.system(size: 12, weight: .bold, design: .rounded))
+                .appFont(12, weight: .bold)
                 .tracking(1.4)
                 .foregroundStyle(level.accent)
 
@@ -96,7 +96,7 @@ struct TennisPlayerBadgeView: View {
                 HStack(spacing: 4) {
                     ForEach(0..<level.starCount, id: \.self) { _ in
                         Image(systemName: "star.fill")
-                            .font(.system(size: 9))
+                            .appFont(9, design: .default)
                             .foregroundStyle(level.accent)
                     }
                 }

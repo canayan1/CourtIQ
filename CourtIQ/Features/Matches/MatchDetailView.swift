@@ -103,7 +103,7 @@ struct MatchDetailView: View {
                         .foregroundStyle(.white.opacity(0.9))
                 }
                 Text(displayedOpponent)
-                    .font(.system(size: 22, weight: .heavy, design: .rounded))
+                    .appFont(22, weight: .heavy)
                     .foregroundStyle(.white)
                 if let tournament = entry.displayTournament {
                     Label(tournament, systemImage: "trophy.fill")

@@ -40,13 +40,13 @@ struct MatchTrendDashboardView: View {
                     .fill(AppPalette.clay.opacity(0.10))
                     .frame(width: 96, height: 96)
                 Image(systemName: "lock.fill")
-                    .font(.system(size: 38, weight: .medium))
+                    .appFont(38, weight: .medium, design: .default)
                     .foregroundStyle(AppPalette.clay)
             }
             .padding(.top, 30)
 
             Text(lang.t("matches.trend_locked_title"))
-                .font(.system(size: 22, weight: .heavy, design: .rounded))
+                .appFont(22, weight: .heavy)
                 .foregroundStyle(AppPalette.ink)
                 .multilineTextAlignment(.center)
 
@@ -54,7 +54,7 @@ struct MatchTrendDashboardView: View {
                 ProgressView(value: Double(count), total: 5)
                     .tint(AppPalette.clay)
                 Text("\(count) / 5")
-                    .font(.system(size: 13, weight: .heavy, design: .rounded))
+                    .appFont(13, weight: .heavy)
                     .foregroundStyle(AppPalette.inkSoft)
             }
             .frame(maxWidth: 220)
@@ -131,13 +131,13 @@ struct MatchTrendDashboardView: View {
                     .foregroundStyle(.white.opacity(0.85))
                 HStack(alignment: .firstTextBaseline, spacing: 8) {
                     Text("\(s.wins)")
-                        .font(.system(size: 32, weight: .heavy, design: .rounded))
+                        .appFont(32, weight: .heavy)
                         .foregroundStyle(.white)
                     Text("–")
-                        .font(.system(size: 22, weight: .heavy, design: .rounded))
+                        .appFont(22, weight: .heavy)
                         .foregroundStyle(.white.opacity(0.6))
                     Text("\(s.losses)")
-                        .font(.system(size: 32, weight: .heavy, design: .rounded))
+                        .appFont(32, weight: .heavy)
                         .foregroundStyle(.white.opacity(0.7))
                 }
                 Text("\(s.total) " + lang.t(s.total == 1 ? "matches.trend_total_one" : "matches.trend_total_many"))
@@ -148,7 +148,7 @@ struct MatchTrendDashboardView: View {
             if let pct {
                 VStack(alignment: .trailing, spacing: 4) {
                     Text("\(pct)%")
-                        .font(.system(size: 32, weight: .heavy, design: .rounded))
+                        .appFont(32, weight: .heavy)
                         .foregroundStyle(.white)
                         .monospacedDigit()
                     Text(lang.t("matches.trend_win_rate"))
@@ -206,7 +206,7 @@ struct MatchTrendDashboardView: View {
             Spacer()
             if let pct {
                 Text("\(pct)%")
-                    .font(.system(size: 17, weight: .heavy, design: .rounded))
+                    .appFont(17, weight: .heavy)
                     .foregroundStyle(AppPalette.ink)
                     .monospacedDigit()
             }
@@ -258,10 +258,10 @@ struct MatchTrendDashboardView: View {
                     .font(.subheadline.weight(.semibold))
                 Spacer()
                 Text(String(format: "%.1f → %.1f", m.prior, m.recent))
-                    .font(.system(size: 13, weight: .semibold, design: .monospaced))
+                    .appFont(13, weight: .semibold, design: .monospaced)
                     .foregroundStyle(AppPalette.inkSoft)
                 Text("\(deltaSign)\(String(format: "%.1f", m.delta))")
-                    .font(.system(size: 13, weight: .heavy, design: .monospaced))
+                    .appFont(13, weight: .heavy, design: .monospaced)
                     .foregroundStyle(deltaTint)
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
@@ -331,7 +331,7 @@ struct MatchTrendDashboardView: View {
         Group {
             if let v = value {
                 Text(String(format: "%.1f", v))
-                    .font(.system(size: 12, weight: .heavy, design: .rounded))
+                    .appFont(12, weight: .heavy)
                     .foregroundStyle(.white)
                     .padding(.horizontal, 6)
                     .padding(.vertical, 3)
@@ -339,7 +339,7 @@ struct MatchTrendDashboardView: View {
                     .clipShape(Capsule())
             } else {
                 Text("—")
-                    .font(.system(size: 12, weight: .bold, design: .rounded))
+                    .appFont(12, weight: .bold)
                     .foregroundStyle(AppPalette.inkSoft.opacity(0.5))
                     .frame(width: 22)
             }
@@ -402,7 +402,7 @@ struct MatchTrendDashboardView: View {
                 Spacer()
                 if let avg = matches.averageRating(keyPath) {
                     Text(String(format: "%.1f", avg))
-                        .font(.system(size: 22, weight: .heavy, design: .rounded))
+                        .appFont(22, weight: .heavy)
                         .foregroundStyle(AppPalette.ink)
                         .monospacedDigit()
                 }
@@ -507,7 +507,7 @@ struct MatchTrendDashboardView: View {
 
             if let target {
                 Text(String(format: "%+.1f", target.delta))
-                    .font(.system(size: 18, weight: .heavy, design: .rounded))
+                    .appFont(18, weight: .heavy)
                     .foregroundStyle(tint)
                     .monospacedDigit()
             }

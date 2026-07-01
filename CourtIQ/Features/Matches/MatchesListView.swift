@@ -147,7 +147,7 @@ struct MatchesListView: View {
 
             VStack(alignment: .leading, spacing: 4) {
                 Text("\(matches.totalEntries)")
-                    .font(.system(size: 28, weight: .heavy, design: .rounded))
+                    .appFont(28, weight: .heavy)
                     .foregroundStyle(AppPalette.ink)
                 Eyebrow(lang.t("matches.total_logged"))
             }
@@ -298,7 +298,7 @@ struct MatchesListView: View {
             VStack(alignment: .leading, spacing: 4) {
                 HStack(spacing: 8) {
                     Text(displayedOpponent(entry))
-                        .font(.system(size: 16, weight: .semibold, design: .rounded))
+                        .appFont(16, weight: .semibold)
                         .foregroundStyle(AppPalette.clayText)
                         .lineLimit(1)
 
@@ -317,7 +317,7 @@ struct MatchesListView: View {
 
                 if let tournament = entry.displayTournament {
                     Label(tournament, systemImage: "trophy.fill")
-                        .font(.system(size: 10, weight: .heavy, design: .rounded))
+                        .appFont(10, weight: .heavy)
                         .textCase(.uppercase)
                         .tracking(0.4)
                         .foregroundStyle(AppPalette.clayText.opacity(0.85))
@@ -357,7 +357,7 @@ struct MatchesListView: View {
     /// it for editing; the user can finish (Save) or delete it.
     private var draftBadge: some View {
         Text(lang.t("matches.draft_badge"))
-            .font(.system(size: 9, weight: .heavy, design: .rounded))
+            .appFont(9, weight: .heavy)
             .textCase(.uppercase)
             .tracking(0.5)
             .foregroundStyle(.white)
@@ -369,7 +369,7 @@ struct MatchesListView: View {
     /// Pill marking a planned, not-yet-played match.
     private var upcomingBadge: some View {
         Text(lang.t("matches.upcoming_badge"))
-            .font(.system(size: 9, weight: .heavy, design: .rounded))
+            .appFont(9, weight: .heavy)
             .textCase(.uppercase)
             .tracking(0.5)
             .foregroundStyle(.white)
@@ -382,7 +382,7 @@ struct MatchesListView: View {
         let label = result == .won ? "W" : "L"
         let color: Color = result == .won ? AppPalette.moss : AppPalette.alert
         return Text(label)
-            .font(.system(size: 10, weight: .heavy, design: .rounded))
+            .appFont(10, weight: .heavy)
             .foregroundStyle(.white)
             .frame(width: 18, height: 18)
             .background(Circle().fill(color))
@@ -412,13 +412,13 @@ struct MatchesListView: View {
                     .fill(.white.opacity(0.16))
                     .frame(width: 96, height: 96)
                 Image(systemName: "scribble.variable")
-                    .font(.system(size: 42, weight: .medium))
+                    .appFont(42, weight: .medium, design: .default)
                     .foregroundStyle(.white)
             }
             .padding(.top, 30)
 
             Text(lang.t("matches.empty_title"))
-                .font(.system(size: 22, weight: .heavy, design: .rounded))
+                .appFont(22, weight: .heavy)
                 .foregroundStyle(.white)
                 .multilineTextAlignment(.center)
 
@@ -434,7 +434,7 @@ struct MatchesListView: View {
                 openNewEntry = true
             } label: {
                 Label(lang.t("matches.first_log_cta"), systemImage: "plus")
-                    .font(.system(size: 16, weight: .bold, design: .rounded))
+                    .appFont(16, weight: .bold)
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 14)

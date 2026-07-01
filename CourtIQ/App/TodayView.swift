@@ -120,18 +120,18 @@ struct TodayView: View {
                     }
 
                     Text(lang.t("drill.card_title"))
-                        .font(.system(size: 22, weight: .heavy, design: .rounded))
+                        .appFont(22, weight: .heavy)
                         .foregroundStyle(AppPalette.ink)
 
                     if let todaysSession {
                         HStack(spacing: 8) {
                             ForEach(Array(todaysSession.taps.enumerated()), id: \.offset) { _, tap in
                                 Text(tap.zone.emoji)
-                                    .font(.system(size: 20))
+                                    .appFont(20, design: .default)
                             }
                             Spacer()
                             Text("\(Int(pct * 100))%")
-                                .font(.system(size: 16, weight: .heavy, design: .rounded))
+                                .appFont(16, weight: .heavy)
                                 .foregroundStyle(AppPalette.ink)
                                 .monospacedDigit()
                         }
@@ -144,7 +144,7 @@ struct TodayView: View {
                             Image(systemName: done ? "arrow.clockwise" : "play.fill")
                             Text(done ? lang.t("drill.replay") : lang.t("drill.start"))
                         }
-                        .font(.system(size: 15, weight: .bold, design: .rounded))
+                        .appFont(15, weight: .bold)
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)
@@ -191,7 +191,7 @@ struct TodayView: View {
             // lives on the Daily IQ card below.
             VStack(alignment: .leading, spacing: 16) {
                 Text(greetingLine)
-                    .font(.system(size: 26, weight: .bold, design: .rounded))
+                    .appFont(26, weight: .bold)
                     .foregroundStyle(.white)
                     .fixedSize(horizontal: false, vertical: true)
 
@@ -261,10 +261,10 @@ struct TodayView: View {
                           accessibilityLabel: String) -> some View {
         HStack(spacing: 8) {
             Image(systemName: systemImage)
-                .font(.system(size: 14, weight: .bold))
+                .appFont(14, weight: .bold, design: .default)
                 .foregroundStyle(.white.opacity(0.85))
             Text(value)
-                .font(.system(size: 22, weight: .bold, design: .rounded))
+                .appFont(22, weight: .bold)
                 .foregroundStyle(.white)
                 .monospacedDigit()
             if showGrace {
@@ -273,7 +273,7 @@ struct TodayView: View {
                 // (the parent stack's accessibilityLabel below covers value
                 // semantics; this hint adds the grace context).
                 Image(systemName: "snowflake")
-                    .font(.system(size: 11, weight: .bold))
+                    .appFont(11, weight: .bold, design: .default)
                     .foregroundStyle(.white.opacity(0.85))
                     .accessibilityHint(lang.t("today.streak_grace_hint"))
             }
@@ -333,7 +333,7 @@ struct TodayView: View {
                 }
             } label: {
                 Image(systemName: tipExpanded ? "chevron.up" : "chevron.down")
-                    .font(.system(size: 16, weight: .bold))
+                    .appFont(16, weight: .bold, design: .default)
                     .foregroundStyle(AppPalette.clay)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .padding(.top, 4)

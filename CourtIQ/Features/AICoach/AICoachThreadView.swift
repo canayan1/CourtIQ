@@ -309,7 +309,7 @@ struct AICoachThreadView: View {
                 Task { await tappedSend() }
             } label: {
                 Image(systemName: isSending ? "stop.circle.fill" : "arrow.up.circle.fill")
-                    .font(.system(size: 30, weight: .bold))
+                    .appFont(30, weight: .bold, design: .default)
                     .foregroundStyle(canSend ? AppPalette.clay : AppPalette.inkSoft.opacity(0.4))
             }
             .disabled(!canSend || isSending)
