@@ -34,6 +34,7 @@ struct DrillResultView: View {
                 Image(systemName: "xmark")
                     .font(.headline.weight(.semibold))
                     .foregroundStyle(AppPalette.ink)
+                    .accessibilityLabel(lang.t("common.close"))
             }
             Spacer()
             Text("Drill #\(session.dayNumber)")

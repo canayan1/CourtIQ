@@ -63,6 +63,7 @@ struct CourtTapDrillView: View {
                     Image(systemName: "xmark")
                         .font(.headline.weight(.semibold))
                         .foregroundStyle(AppPalette.ink)
+                        .accessibilityLabel(lang.t("common.close"))
                 }
             }
         }
