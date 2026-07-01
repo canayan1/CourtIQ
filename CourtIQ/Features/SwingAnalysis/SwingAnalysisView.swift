@@ -16,34 +16,24 @@ struct SwingAnalysisView: View {
     @EnvironmentObject private var drillManager: CourtTapDrillManager
 
     private var copy: SwingAnalysisCopy { SwingAnalysisCopy(lang: lang.language) }
-    private let service = SwingAnalysisService()
 
     // MARK: Flow state
 
-    private enum Phase {
-        case setup        // step 1: stroke + handedness
-        case capture      // step 2: record / library
-        case analyzing
-        case result(text: String, score: Int?)
-    }
-
-    @State private var phase: Phase
     @State private var stroke: SwingStroke = .forehand
     @State private var handedness: SwingHandedness = .right
+    @State private var vm = SwingAnalysisViewModel(phase: SwingAnalysisView.launchPhase)
 
-    init() {
+    /// Initial step for the view model. App Store screenshot harness (launch-arg
+    /// gated, DEBUG only): start in the result state showing a realistic sample
+    /// analysis so the capture shows a finished coaching readout — no video, no
+    /// network call. Release builds always start at `.setup`.
+    private static var launchPhase: SwingAnalysisViewModel.Phase {
 #if DEBUG
-        // App Store screenshot harness (launch-arg gated): start in the result
-        // state showing a realistic sample analysis so the capture shows a
-        // finished coaching readout — no video, no network call. Excluded from
-        // Release builds.
-        if ProcessInfo.processInfo.arguments.contains("-previewSwing") {
-            _phase = State(initialValue: .result(text: Self.previewSampleAnalysis, score: 82))
-        } else {
-            _phase = State(initialValue: .setup)
-        }
+        ProcessInfo.processInfo.arguments.contains("-previewSwing")
+            ? .result(text: previewSampleAnalysis, score: 82)
+            : .setup
 #else
-        _phase = State(initialValue: .setup)
+        .setup
 #endif
     }
 
@@ -122,15 +112,15 @@ struct SwingAnalysisView: View {
                 })
             }
         }
-        .alert(copy.errorTitle, isPresented: $showError) {
+        .alert(copy.errorTitle, isPresented: $vm.showError) {
             Button(copy.retryCTA) {
                 // Route through handlePicked so a retry re-checks consent
                 // (e.g. if the consent version was bumped mid-session).
                 if let url = pendingVideoURL { handlePicked(url) }
             }
-            Button(copy.cancelCTA, role: .cancel) { phase = .capture }
+            Button(copy.cancelCTA, role: .cancel) { vm.phase = .capture }
         } message: {
-            Text(errorMessage ?? copy.errorGeneric)
+            Text(vm.errorMessage ?? copy.errorGeneric)
         }
         // "Discuss with Coach": open a new AI Coach thread seeded with this
         // analysis so the user can dig into it / push back on the AI's read.
@@ -148,7 +138,7 @@ struct SwingAnalysisView: View {
         // Freemium gate: AI swing analysis is premium — it spends the PAID
         // Gemini video key. Non-premium users get the paywall instead of the
         // analysis (the AI Coach gates the same way in AICoachTabRoot).
-        .sheet(isPresented: $showPaywall) {
+        .sheet(isPresented: $vm.showPaywall) {
             NavigationStack {
                 PaywallView(source: "Swing")
                     .environmentObject(lang)
@@ -161,7 +151,7 @@ struct SwingAnalysisView: View {
 
     @ViewBuilder
     private var content: some View {
-        switch phase {
+        switch vm.phase {
         case .setup:        setupStep
         case .capture:      captureStep
         case .analyzing:    analyzingStep
@@ -194,7 +184,7 @@ struct SwingAnalysisView: View {
 
                 filmingTip
 
-                primaryButton(copy.continueCTA) { phase = .capture }
+                primaryButton(copy.continueCTA) { vm.phase = .capture }
                     .padding(.top, 4)
             }
             .padding(20)
@@ -253,7 +243,7 @@ struct SwingAnalysisView: View {
                 }
                 .padding(.top, 4)
 
-                Button(copy.backCTA) { phase = .setup }
+                Button(copy.backCTA) { vm.phase = .setup }
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(AppPalette.inkSoft)
                     .frame(maxWidth: .infinity)
@@ -313,7 +303,7 @@ struct SwingAnalysisView: View {
                     // the free taste, so gate the coach hand-off too (same gate
                     // as the Coach tab — PremiumGate).
                     guard PremiumGate.canUseAICoach(session) else {
-                        showPaywall = true
+                        vm.showPaywall = true
                         return
                     }
                     coachSeed = CoachSeed(text: coachSeedText(for: text))
@@ -322,7 +312,7 @@ struct SwingAnalysisView: View {
 
                 secondaryButton(copy.analyzeAnotherCTA, systemImage: "arrow.counterclockwise") {
                     pendingVideoURL = nil
-                    phase = .setup
+                    vm.phase = .setup
                 }
 
                 secondaryButton(copy.viewAllReportsCTA, systemImage: "clock.arrow.circlepath") {
@@ -383,61 +373,20 @@ struct SwingAnalysisView: View {
     }
 
     private func startAnalysis(videoURL: URL) {
-        // Freemium gate: AI swing analysis is premium (paid Gemini video key),
-        // EXCEPT the very first analysis is a free "taste". Single source of
-        // truth in PremiumGate. (DEBUG auto-grants premium for dogfooding.)
-        let isPremium = PremiumGate.isPremium(session)
-        guard PremiumGate.canUseSwingAnalysis(session) else {
-            showPaywall = true
-            return
-        }
-        phase = .analyzing
+        // The View owns the gate inputs + session bootstrap; the view model owns
+        // the flow (gate → loading → analyze → persist → free-taste → errors).
         Task {
-            do {
-                let supabaseSession = try await session.ensureSessionWithRetry()
-                // Personalize: feed the AI the player's profile + recent scores
-                // for this stroke so the coaching references their real game.
-                let playerContext = PlayerContext.forSwing(stroke: stroke)
-                let result = try await service.analyze(
-                    videoURL: videoURL,
-                    stroke: stroke,
-                    handedness: handedness,
-                    context: playerContext,
-                    session: supabaseSession
-                )
-                // Persist the analysis (video on device + report + score) so the
-                // user can browse it later from History.
-                await SwingAnalysisStore.shared.add(
-                    analysis: result.analysis,
-                    score: result.score,
-                    stroke: stroke,
-                    handedness: handedness,
-                    videoURL: videoURL
-                )
-                phase = .result(text: result.analysis, score: result.score)
-                // A non-premium player just spent their one free taste.
-                if !isPremium { FreeTaste.swingUsed = true }
-                // Celebrate the landing of the swing result — the flagship peak
-                // moment, mirroring the doubles score reveal.
-                Haptics.success()
-            } catch let err as SwingFrameExtractor.ExtractionError {
-                _ = err
-                presentError(copy.errorTooShort)
-            } catch RemoteDataError.missingConfiguration {
-                presentError(copy.errorConnect)
-            } catch {
-                // Surface a server-provided message when we have one, else a
-                // friendly generic.
-                let message = (error as? RemoteDataError)?.errorDescription ?? copy.errorGeneric
-                presentError(message)
-            }
+            await vm.start(
+                videoURL: videoURL,
+                stroke: stroke,
+                handedness: handedness,
+                isPremium: PremiumGate.isPremium(session),
+                canAnalyze: PremiumGate.canUseSwingAnalysis(session),
+                context: PlayerContext.forSwing(stroke: stroke),
+                copy: copy,
+                ensureSession: { try await session.ensureSessionWithRetry() }
+            )
         }
-    }
-
-    private func presentError(_ message: String) {
-        errorMessage = message
-        phase = .capture
-        showError = true
     }
 
     // MARK: - Reusable bits
@@ -505,4 +454,105 @@ struct SwingAnalysisView: View {
 
 extension UIImagePickerController.SourceType: Identifiable {
     public var id: Int { rawValue }
+}
+
+// MARK: - ViewModel
+
+/// Abstraction over the swing analysis network call so the view model can be
+/// unit-tested with a stub. `SwingAnalysisService` is the production impl.
+protocol SwingAnalyzing {
+    func analyze(
+        videoURL: URL,
+        stroke: SwingStroke,
+        handedness: SwingHandedness?,
+        context: String?,
+        session: SupabaseSession
+    ) async throws -> SwingAnalysisResult
+}
+
+extension SwingAnalysisService: SwingAnalyzing {}
+
+/// Owns the swing-analysis flow — premium gate, loading, session retry, service
+/// call, persistence, free-taste bookkeeping, and error mapping — so the View
+/// stays declarative. `phase` is the screen's step machine: the View drives the
+/// setup/capture navigation; this model drives analyzing/result. Inject a stub
+/// `SwingAnalyzing` to unit-test the gate + orchestration without the network.
+@MainActor @Observable
+final class SwingAnalysisViewModel {
+    enum Phase {
+        case setup        // step 1: stroke + handedness
+        case capture      // step 2: record / library
+        case analyzing
+        case result(text: String, score: Int?)
+    }
+
+    var phase: Phase
+    var errorMessage: String?
+    var showError = false
+    var showPaywall = false
+
+    private let service: SwingAnalyzing
+
+    init(service: SwingAnalyzing? = nil, phase: Phase = .setup) {
+        // Construct the default service inside the (main-actor) init body — its
+        // initializer is @MainActor-isolated and can't be a default arg.
+        self.service = service ?? SwingAnalysisService()
+        self.phase = phase
+    }
+
+    /// `canAnalyze` is the freemium gate (`PremiumGate.canUseSwingAnalysis`);
+    /// `isPremium` distinguishes a paid user from one spending the free taste.
+    /// Both — plus `ensureSession` and `context` — are supplied by the View so
+    /// the model has no hard dependency on `UserSessionManager` and stays testable.
+    func start(
+        videoURL: URL,
+        stroke: SwingStroke,
+        handedness: SwingHandedness,
+        isPremium: Bool,
+        canAnalyze: Bool,
+        context: String?,
+        copy: SwingAnalysisCopy,
+        ensureSession: () async throws -> SupabaseSession
+    ) async {
+        guard canAnalyze else { showPaywall = true; return }
+        phase = .analyzing
+        do {
+            let supabaseSession = try await ensureSession()
+            let result = try await service.analyze(
+                videoURL: videoURL,
+                stroke: stroke,
+                handedness: handedness,
+                context: context,
+                session: supabaseSession
+            )
+            // Persist the analysis (video on device + report + score) so the
+            // user can browse it later from History.
+            await SwingAnalysisStore.shared.add(
+                analysis: result.analysis,
+                score: result.score,
+                stroke: stroke,
+                handedness: handedness,
+                videoURL: videoURL
+            )
+            phase = .result(text: result.analysis, score: result.score)
+            // A non-premium player just spent their one free taste.
+            if !isPremium { FreeTaste.swingUsed = true }
+            // Celebrate the landing of the swing result — the flagship peak
+            // moment, mirroring the doubles score reveal.
+            Haptics.success()
+        } catch let err as SwingFrameExtractor.ExtractionError {
+            _ = err
+            present(copy.errorTooShort)
+        } catch RemoteDataError.missingConfiguration {
+            present(copy.errorConnect)
+        } catch {
+            present((error as? RemoteDataError)?.errorDescription ?? copy.errorGeneric)
+        }
+    }
+
+    private func present(_ message: String) {
+        errorMessage = message
+        phase = .capture
+        showError = true
+    }
 }
