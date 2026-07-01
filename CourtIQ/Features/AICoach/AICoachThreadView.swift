@@ -337,7 +337,7 @@ struct AICoachThreadView: View {
         // devices until they upgrade to Apple Sign-In later.
         let supabaseSession: SupabaseSession
         do {
-            supabaseSession = try await ensureSessionWithRetry()
+            supabaseSession = try await session.ensureSessionWithRetry()
         } catch {
             errorBanner = lang.t("ai.error_connect")
             input = toSend
@@ -356,25 +356,6 @@ struct AICoachThreadView: View {
             errorBanner = aiClient.lastError ?? lang.t("ai.error_send_generic")
             input = toSend
         }
-    }
-
-    /// Establishing the Supabase session can fail transiently (cold auth
-    /// endpoint, brief network hiccup, or a short-lived anonymous sign-in
-    /// rate limit). Retry a few times with backoff so a single blip doesn't
-    /// surface as "no response" — the #1 thing reviewers and users hit.
-    private func ensureSessionWithRetry(attempts: Int = 3) async throws -> SupabaseSession {
-        var lastError: Error?
-        for i in 0..<attempts {
-            do {
-                return try await session.ensureAnonymousSession()
-            } catch {
-                lastError = error
-                if i < attempts - 1 {
-                    try? await Task.sleep(nanoseconds: UInt64(700_000_000) * UInt64(i + 1))
-                }
-            }
-        }
-        throw lastError ?? RemoteDataError.message("Could not establish a session.")
     }
 
     // MARK: - Context snapshot

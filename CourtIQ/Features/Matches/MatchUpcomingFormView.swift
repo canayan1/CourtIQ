@@ -168,7 +168,7 @@ struct MatchUpcomingFormView: View {
             async let minHold: Void = Task.sleep(nanoseconds: 3_500_000_000) as Void
             let result: Result<String, Error>
             do {
-                let supabaseSession = try await ensureSessionWithRetry()
+                let supabaseSession = try await session.ensureSessionWithRetry()
                 let summary = MatchAnalysisService.buildSummary(
                     for: snapshot, mode: .pre, language: lang.language
                 )
@@ -227,20 +227,4 @@ struct MatchUpcomingFormView: View {
         )
     }
 
-    /// Mint or reuse a Supabase session with a few retries — mirrors
-    /// SwingAnalysisView.
-    private func ensureSessionWithRetry(attempts: Int = 3) async throws -> SupabaseSession {
-        var lastError: Error?
-        for i in 0..<attempts {
-            do {
-                return try await session.ensureAnonymousSession()
-            } catch {
-                lastError = error
-                if i < attempts - 1 {
-                    try? await Task.sleep(nanoseconds: UInt64(700_000_000) * UInt64(i + 1))
-                }
-            }
-        }
-        throw lastError ?? RemoteDataError.missingConfiguration
-    }
 }

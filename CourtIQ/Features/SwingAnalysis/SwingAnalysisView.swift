@@ -394,7 +394,7 @@ struct SwingAnalysisView: View {
         phase = .analyzing
         Task {
             do {
-                let supabaseSession = try await ensureSessionWithRetry()
+                let supabaseSession = try await session.ensureSessionWithRetry()
                 // Personalize: feed the AI the player's profile + recent scores
                 // for this stroke so the coaching references their real game.
                 let playerContext = PlayerContext.forSwing(stroke: stroke)
@@ -438,24 +438,6 @@ struct SwingAnalysisView: View {
         errorMessage = message
         phase = .capture
         showError = true
-    }
-
-    /// Mint or reuse a Supabase session, retrying a few times so a single
-    /// transient blip (cold auth endpoint / brief network hiccup) doesn't
-    /// surface as a failure — mirrors the AI Coach behaviour.
-    private func ensureSessionWithRetry(attempts: Int = 3) async throws -> SupabaseSession {
-        var lastError: Error?
-        for i in 0..<attempts {
-            do {
-                return try await session.ensureAnonymousSession()
-            } catch {
-                lastError = error
-                if i < attempts - 1 {
-                    try? await Task.sleep(nanoseconds: UInt64(700_000_000) * UInt64(i + 1))
-                }
-            }
-        }
-        throw lastError ?? RemoteDataError.missingConfiguration
     }
 
     // MARK: - Reusable bits

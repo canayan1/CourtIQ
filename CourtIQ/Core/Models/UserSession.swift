@@ -750,6 +750,24 @@ final class UserSessionManager: ObservableObject {
         try await authManager.ensureAnonymousSession()
     }
 
+    /// Mint or reuse a Supabase session, retrying a few times so a single
+    /// transient blip (cold auth endpoint / brief network hiccup) doesn't
+    /// surface as a failure. Shared by every remote-call site.
+    func ensureSessionWithRetry(attempts: Int = 3) async throws -> SupabaseSession {
+        var lastError: Error?
+        for i in 0..<attempts {
+            do {
+                return try await ensureAnonymousSession()
+            } catch {
+                lastError = error
+                if i < attempts - 1 {
+                    try? await Task.sleep(nanoseconds: UInt64(700_000_000) * UInt64(i + 1))
+                }
+            }
+        }
+        throw lastError ?? RemoteDataError.missingConfiguration
+    }
+
     var isSignedInWithApple: Bool {
         authManager.isSignedInWithApple
     }

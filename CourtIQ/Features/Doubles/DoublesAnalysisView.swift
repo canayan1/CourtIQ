@@ -122,7 +122,7 @@ struct DoublesAnalysisView: View {
             // Run the network call concurrently with a minimum-display timer so
             // the loading animation always plays for ~12s (labor illusion).
             async let minimum: Void = Task.sleep(nanoseconds: minimumDisplay)
-            let supabaseSession = try await ensureSessionWithRetry()
+            let supabaseSession = try await session.ensureSessionWithRetry()
             let result = try await service.analyze(
                 partner: partner,
                 language: lang.language,
@@ -150,20 +150,4 @@ struct DoublesAnalysisView: View {
         showError = true
     }
 
-    /// Mint or reuse a Supabase session, retrying a few times so a single
-    /// transient blip doesn't surface as a failure — mirrors the swing/match flow.
-    private func ensureSessionWithRetry(attempts: Int = 3) async throws -> SupabaseSession {
-        var lastError: Error?
-        for i in 0..<attempts {
-            do {
-                return try await session.ensureAnonymousSession()
-            } catch {
-                lastError = error
-                if i < attempts - 1 {
-                    try? await Task.sleep(nanoseconds: UInt64(700_000_000) * UInt64(i + 1))
-                }
-            }
-        }
-        throw lastError ?? RemoteDataError.missingConfiguration
-    }
 }
