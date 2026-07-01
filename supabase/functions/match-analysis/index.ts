@@ -95,6 +95,19 @@ function systemPrompt(mode: string): string {
   ].join("\n");
 }
 
+// Compact club-level match-coaching reference, injected as a second system
+// instruction so the analysis is grounded in real tennis (not vibes). Kept short
+// (single-shot call, no prompt caching) to bound token cost.
+const MATCH_REFERENCE = [
+  "Club-level match-coaching reference — ground your advice in this and keep it appropriate to a RECREATIONAL player, not a pro:",
+  "• Winning club patterns: a reliable second serve, high cross-court rally tolerance, hitting to the opponent's weaker wing, and taking the first strike after a short ball. Depth and margin beat flashy winners.",
+  "• Surface tilts: clay rewards patience, spin and movement; hard courts reward first-strike and taking time away; fast courts reward the serve and short points.",
+  "• Mental game: a between-points routine (breathe, reset, plan the next ball) and a fixed serve routine steady nerves; play the big points (30-30, break points, 4-4) more simply, not more spectacularly; reset fast after errors.",
+  "• Match-craft: commit to a plan, then adjust ONE variable at a time (target, spin, court position) if it isn't working; find what the opponent dislikes and go back to it.",
+  "• Reading the score: a tight/tiebreak loss is a small-margin problem (routines, second serve, one more ball), not a technical overhaul; a lopsided set is momentum/pattern, not a broken game.",
+  "Weigh any 'Signals' provided in the summary. Never invent shots, scores, or events the player did not report.",
+].join("\n");
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders, status: 204 });
   if (req.method !== "POST") return json({ error: "Method not allowed" }, 405);
@@ -134,7 +147,7 @@ Deno.serve(async (req) => {
   } catch (_e) { /* fail open */ }
 
   const geminiBody = {
-    systemInstruction: { parts: [{ text: systemPrompt(mode) }] },
+    systemInstruction: { parts: [{ text: systemPrompt(mode) }, { text: MATCH_REFERENCE }] },
     contents: [{ role: "user", parts: [{ text: summary }] }],
     // maxOutputTokens INCLUDES thinking tokens on gemini-2.5 models; 1024 can be
     // eaten by thinking and truncate the report mid-sentence. Give it room.

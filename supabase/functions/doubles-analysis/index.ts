@@ -67,6 +67,20 @@ const SYSTEM_PROMPT = [
   "Rules: Be specific to THESE two players — use their actual styles, strengths, and weaknesses, not generic doubles advice. Handedness matters (a lefty/righty pair can cover both alleys on serve and stack returns). Be honest but encouraging. ~220-300 words, plain text with the bold headers, no preamble, address the player as 'you'.",
 ].join("\n");
 
+// Compact club-level doubles reference, injected as a second system instruction
+// so pairing advice is grounded in real doubles tactics. Kept short (single-shot
+// call, no prompt caching) to bound token cost.
+const DOUBLES_REFERENCE = [
+  "Club-level doubles reference — ground your pairing advice in this:",
+  "• Formations: one-up-one-back is the club default; both-back defends lobs and big serves; both-up wins the net battle but is exposed to lobs. Pick based on the pair's comfort and the opponents.",
+  "• Roles: the stronger volleyer looks to close and poach; the server's partner starts at net and reads the return; on return, the steadier returner takes the tougher side.",
+  "• Sides: a left-hander on the ad side keeps both forehands in the middle and both serves swinging wide — a real asset.",
+  "• Middle + poaching: someone must own the middle ball (usually the net player); call 'mine/yours' early; in doubles the middle beats the alley, so take the middle away first.",
+  "• Complementary pairs: an aggressive net-rusher + a steady baseline anchor cover more court than two of a kind; two players who both avoid the net leave it open.",
+  "• Communication: a quick pre-point signal (who poaches, where the serve goes) plus a between-points reset is worth more than any single shot.",
+  "Be specific to THESE two players' actual styles, strengths, and weaknesses.",
+].join("\n");
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders, status: 204 });
   if (req.method !== "POST") return json({ error: "Method not allowed" }, 405);
@@ -104,7 +118,7 @@ Deno.serve(async (req) => {
   } catch (_e) { /* fail open */ }
 
   const geminiBody = {
-    systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+    systemInstruction: { parts: [{ text: SYSTEM_PROMPT }, { text: DOUBLES_REFERENCE }] },
     contents: [{ role: "user", parts: [{ text: summary }] }],
     // maxOutputTokens INCLUDES thinking tokens on gemini-2.5 models. 1024 was
     // being consumed by the model's thinking, truncating the ~250-word report
