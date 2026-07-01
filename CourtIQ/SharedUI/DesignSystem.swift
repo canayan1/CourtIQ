@@ -273,6 +273,10 @@ struct FeatureTile: View {
             .frame(maxWidth: .infinity, minHeight: minHeight, alignment: .leading)
             .padding(16)
             .modifier(TileBackground(photo: photo))
+            // The background photo/parchment is a `.background`, so on its own
+            // only the icon+title area is tappable. Make the whole tile the hit
+            // target so any point on the card triggers it.
+            .contentShape(Rectangle())
         }
         .buttonStyle(PressableCardStyle())
         // Fixed-height tile: clamp very large sizes so the icon + title don't

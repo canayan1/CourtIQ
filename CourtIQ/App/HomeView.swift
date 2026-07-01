@@ -24,6 +24,16 @@ struct HomeView: View {
     @State private var showDrill = false
     @State private var heroBounce = false
 
+    /// Grid push destinations. Driven by Button + navigationDestination(item:)
+    /// rather than NavigationLink INSIDE the LazyVGrid — a NavigationLink mixed
+    /// with Buttons in a lazy grid mis-routes taps between cells (IQ opening
+    /// Doubles, dead Matches/Doubles).
+    /// All grid tiles push their destination via this single route +
+    /// navigationDestination. (Switching tabs via tabRouter from a grid tile did
+    /// not work; pushing via route does.) The Coach hero still switches tabs.
+    private enum Route: Hashable { case swing, tennisIQ, matches, doubles }
+    @State private var route: Route?
+
     /// The unified Recent feed: the most recent activities across swing, match,
     /// doubles, drill, and quiz, merged newest-first and capped at 8.
     private var recentActivity: [RecentActivity] {
@@ -39,23 +49,40 @@ struct HomeView: View {
     /// Current daily streak — sourced the same way Profile reads it.
     private var streakDays: Int { dailyQuizManager.currentStreak }
 
-    private let columns = [GridItem(.flexible(), spacing: 10),
-                           GridItem(.flexible(), spacing: 10)]
-
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
                 coachHero
                     .reveal(appeared: appeared, index: 0, reduceMotion: reduceMotion)
 
-                VStack(alignment: .leading, spacing: 12) {
+                VStack(alignment: .leading, spacing: 10) {
                     Eyebrow(lang.t("home.your_game"))
                         .reveal(appeared: appeared, index: 1, reduceMotion: reduceMotion)
 
-                    grid
+                    // Co-equal highlight pair (2-up).
+                    HStack(spacing: 10) {
+                        FeatureTile(sfSymbol: "video.fill",
+                                    title: lang.t("home.tile_swing"),
+                                    minHeight: 112,
+                                    photo: "PhotoServe") { Haptics.tap(); route = .swing }
+                        FeatureTile(sfSymbol: "brain.head.profile",
+                                    title: lang.t("home.tile_iq"),
+                                    minHeight: 112,
+                                    photo: "PhotoForehand") { Haptics.tap(); route = .tennisIQ }
+                    }
+                    .reveal(appeared: appeared, index: 2, reduceMotion: reduceMotion)
 
-                    drillRow
-                        .reveal(appeared: appeared, index: 6, reduceMotion: reduceMotion)
+                    // Matches / Doubles / Drill as full-width rows — a deliberate
+                    // hierarchy choice (secondary to the Swing/IQ pair above). The
+                    // "dead tap" bug that made these seem broken was a content-only
+                    // hit area on the photo cards; fixed via `.contentShape` in
+                    // `linkRow` + `FeatureTile`, not by the row shape.
+                    linkRow(icon: "list.clipboard.fill", title: lang.t("home.tile_matches"), photo: "PhotoMatch") { route = .matches }
+                        .reveal(appeared: appeared, index: 3, reduceMotion: reduceMotion)
+                    linkRow(icon: "person.2.fill", title: lang.t("home.tile_doubles"), photo: "PhotoDoubles") { route = .doubles }
+                        .reveal(appeared: appeared, index: 4, reduceMotion: reduceMotion)
+                    linkRow(icon: "scope", title: lang.t("home.tile_drill"), photo: "PhotoFootwork") { showDrill = true }
+                        .reveal(appeared: appeared, index: 5, reduceMotion: reduceMotion)
                 }
 
                 VStack(alignment: .leading, spacing: 12) {
@@ -79,6 +106,23 @@ struct HomeView: View {
             .padding(20)
         }
         .background(AppPalette.cream)
+        .navigationDestination(item: $route) { dest in
+            switch dest {
+            case .swing:
+                SwingAnalysisView()
+            case .tennisIQ:
+                QuizView(quiz: Quiz.dailyQuiz()) { summary in
+                    // Same manager that powers Profile stats + the streak;
+                    // isDaily: true marks today's ritual complete.
+                    dailyQuizManager.recordCompletion(summary: summary, isDaily: true)
+                    session.updateTopMistakePatterns(summary.mistakeTypes)
+                }
+            case .matches:
+                MatchesListView()
+            case .doubles:
+                DoublesView()
+            }
+        }
         // Header pinned ABOVE the scroll content as its own layer so the hero's
         // tap region can never capture taps meant for the profile button.
         .safeAreaInset(edge: .top, spacing: 0) {
@@ -189,74 +233,19 @@ struct HomeView: View {
         .contentShape(Rectangle())
     }
 
-    // MARK: - Co-equal (Swing + IQ) + secondary (Matches + Doubles) grid
+    // MARK: - Full-width link row (Matches / Doubles / Drill)
 
-    private var grid: some View {
-        LazyVGrid(columns: columns, spacing: 10) {
-            // Top row: the two co-equal surfaces.
-            NavigationLink {
-                SwingAnalysisView()
-            } label: {
-                LockableTile(sfSymbol: "video.fill",
-                             title: lang.t("home.tile_swing"),
-                             photo: "PhotoServe")
-            }
-            .buttonStyle(PressableCardStyle())
-            .reveal(appeared: appeared, index: 2, reduceMotion: reduceMotion)
-
-            NavigationLink {
-                QuizView(quiz: Quiz.dailyQuiz()) { summary in
-                    // Same manager that powers Profile stats + the streak;
-                    // isDaily: true marks today's ritual complete.
-                    dailyQuizManager.recordCompletion(summary: summary, isDaily: true)
-                    session.updateTopMistakePatterns(summary.mistakeTypes)
-                }
-            } label: {
-                LockableTile(sfSymbol: "brain.head.profile",
-                             title: lang.t("home.tile_iq"),
-                             photo: "PhotoForehand")
-            }
-            .buttonStyle(PressableCardStyle())
-            .reveal(appeared: appeared, index: 3, reduceMotion: reduceMotion)
-
-            // Second row: secondary surfaces (tab switches).
-            Button {
-                Haptics.tap()
-                tabRouter.selection = .matches
-            } label: {
-                LockableTile(sfSymbol: "list.clipboard.fill",
-                             title: lang.t("home.tile_matches"),
-                             photo: "PhotoMatch")
-            }
-            .buttonStyle(PressableCardStyle())
-            .reveal(appeared: appeared, index: 4, reduceMotion: reduceMotion)
-
-            Button {
-                Haptics.tap()
-                tabRouter.selection = .doubles
-            } label: {
-                LockableTile(sfSymbol: "person.2.fill",
-                             title: lang.t("home.tile_doubles"),
-                             photo: "PhotoDoubles")
-            }
-            .buttonStyle(PressableCardStyle())
-            .reveal(appeared: appeared, index: 5, reduceMotion: reduceMotion)
-        }
-    }
-
-    // MARK: - Drill (full-width secondary row)
-
-    private var drillRow: some View {
+    private func linkRow(icon: String, title: String, photo: String, _ action: @escaping () -> Void) -> some View {
         Button {
             Haptics.tap()
-            showDrill = true
+            action()
         } label: {
             HStack(spacing: 14) {
-                Image(systemName: "scope")
+                Image(systemName: icon)
                     .font(.title2)
                     .foregroundStyle(.white)
                     .frame(width: 28)
-                Text(lang.t("home.tile_drill"))
+                Text(title)
                     .font(.headline)
                     .foregroundStyle(.white)
                 Spacer()
@@ -266,7 +255,11 @@ struct HomeView: View {
             }
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
-            .brandedPhoto("PhotoFootwork", scrim: .bottom, cornerRadius: 22)
+            .brandedPhoto(photo, scrim: .bottom, cornerRadius: 22)
+            // Make the whole row rect the hit target — the branded photo is a
+            // `.background` (doesn't extend the tap area on its own), so without
+            // this the tappable region is only the content, not the full card.
+            .contentShape(Rectangle())
         }
         .buttonStyle(PressableCardStyle())
     }
