@@ -55,7 +55,7 @@ final class DoublesService {
             throw RemoteDataError.missingConfiguration
         }
 
-        let summary = Self.buildSummary(partner: partner, language: language)
+        let (summary, computedScore) = Self.buildSummary(partner: partner, language: language)
 
         let url = baseURL.appendingPathComponent("functions/v1/\(functionName)")
         var request = URLRequest(url: url)
@@ -79,7 +79,7 @@ final class DoublesService {
         switch http.statusCode {
         case 200..<300:
             if let report = decoded?.report?.nonEmptyDB {
-                return (report, decoded?.score)
+                return (report, computedScore)
             }
             if let serverError = decoded?.error?.nonEmptyDB { throw RemoteDataError.message(serverError) }
             throw RemoteDataError.invalidResponse
@@ -101,7 +101,7 @@ final class DoublesService {
     /// English labels — the function answers in the user's language regardless).
     /// The "Partner (Player B)" side is the mini-profile the user just filled in.
     @MainActor
-    static func buildSummary(partner: DoublesPartner, language: AppLanguage) -> String {
+    static func buildSummary(partner: DoublesPartner, language: AppLanguage) -> (summary: String, score: Int) {
         var lines: [String] = []
         let copy = TennisProfileCopy(lang: .english)
 
@@ -148,7 +148,19 @@ final class DoublesService {
         if !weaknesses.isEmpty { partnerParts.append("weaknesses \(weaknesses)") }
         lines.append("Partner (Player B): " + partnerParts.joined(separator: ", ") + ".")
 
-        return lines.joined(separator: "\n")
+        // Deterministic compatibility score — the AI explains it, never invents it.
+        let result = TennisProfileStore.shared.profile?.result
+        let compat = DoublesCompatibility.evaluate(
+            userLevel: result?.level,
+            userArchetype: result?.archetype,
+            partner: partner
+        )
+        lines.append("Computed compatibility score: \(compat.score)/100.")
+        if !compat.factors.isEmpty {
+            lines.append("Scoring factors: \(compat.factors.joined(separator: ", ")).")
+        }
+
+        return (lines.joined(separator: "\n"), compat.score)
     }
 }
 

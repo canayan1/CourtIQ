@@ -79,3 +79,60 @@ struct DoublesReport: Codable, Identifiable, Equatable {
         self.reportText = reportText
     }
 }
+
+// MARK: - Deterministic compatibility score
+
+/// Rule-based doubles compatibility score (0–100). The AI writes the
+/// *explanation*; the number is computed here so it is consistent and never
+/// hallucinated. The heuristics are tennis-sound: level proximity (closer
+/// levels pair more cohesively), play-style complementarity (an attacker + a
+/// steadier, or net + baseline, beat two of a kind), and a small bonus for a
+/// left-handed partner (covers the ad court + gives different serve angles).
+enum DoublesCompatibility {
+    /// - Returns: the 0–100 score plus short English factor phrases for the
+    ///   coaching prompt to explain.
+    static func evaluate(
+        userLevel: TennisLevel?,
+        userArchetype: TennisArchetype?,
+        partner: DoublesPartner
+    ) -> (score: Int, factors: [String]) {
+        var score = 68
+        var factors: [String] = []
+
+        if let ul = userLevel, let pl = partner.level {
+            switch abs(ul.rawValue - pl.rawValue) {
+            case 0:  score += 10; factors.append("same level")
+            case 1:  score += 6;  factors.append("close levels")
+            case 2:  score += 0;  factors.append("a level gap to bridge")
+            case 3:  score -= 8;  factors.append("a wide level gap")
+            default: score -= 14; factors.append("a very wide level gap")
+            }
+        }
+
+        if let ua = userArchetype, let pa = partner.style {
+            let delta = archetypeFit(ua, pa)
+            score += delta
+            if delta >= 10 { factors.append("complementary play styles") }
+            else if delta >= 7 { factors.append("a flexible all-court fit") }
+            else if delta < 0 { factors.append("two similar play styles") }
+        }
+
+        if partner.handedness == .left {
+            score += 3
+            factors.append("a left-handed partner (covers the ad court)")
+        }
+
+        return (min(96, max(40, score)), factors)
+    }
+
+    /// Complementarity delta. Among the three committed styles (aggressive
+    /// baseliner, counterpuncher, serve-volleyer) any two *distinct* styles
+    /// complement; the same style twice is redundant; an all-court player glues
+    /// to anyone; a developing player is neutral (still building the basics).
+    private static func archetypeFit(_ a: TennisArchetype, _ b: TennisArchetype) -> Int {
+        if a == .developing || b == .developing { return 0 }
+        if a == .allCourt || b == .allCourt { return 7 }
+        if a == b { return -3 }
+        return 10
+    }
+}
