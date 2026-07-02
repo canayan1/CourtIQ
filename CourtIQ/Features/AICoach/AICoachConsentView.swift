@@ -33,10 +33,15 @@ struct AICoachGate: View {
 }
 
 /// One-time disclosure + explicit opt-in before the AI Coach sends any data to
-/// Anthropic. Plain-language: what is sent, who it goes to, and a clear choice.
+/// Anthropic. Three scannable icon rows carry the substance (who powers it,
+/// what is sent, how it's used) so the screen reads in seconds; the itemized
+/// data list stays one tap away in an expandable "exactly what's shared"
+/// section — still ON this screen, before consent (5.1.1(i) / 5.1.2(i)).
 struct AICoachConsentView: View {
     @EnvironmentObject private var lang: LanguageManager
     @EnvironmentObject private var tabRouter: TabRouter
+
+    @State private var showDetails = false
 
     private func t(_ en: String, _ tr: String) -> String { lang.language == .turkish ? tr : en }
 
@@ -53,29 +58,36 @@ struct AICoachConsentView: View {
                 Text(t("Before you start", "Başlamadan önce"))
                     .font(.title2.bold()).foregroundStyle(AppPalette.ink)
 
-                Text(t("The AI Coach is powered by Claude, an AI service from Anthropic, PBC — a third-party company.",
-                       "AI Koç, Anthropic, PBC'nin (üçüncü taraf bir şirket) yapay zeka servisi Claude tarafından çalışır."))
-                    .font(.subheadline).foregroundStyle(AppPalette.inkSoft)
-                    .fixedSize(horizontal: false, vertical: true)
-
-                VStack(alignment: .leading, spacing: 10) {
-                    Text(t("To answer you, DropVolley sends Anthropic:", "Sana yanıt vermek için DropVolley, Anthropic'e şunları gönderir:"))
-                        .font(.subheadline.weight(.semibold)).foregroundStyle(AppPalette.ink)
-                    bullet(t("The messages you type to the Coach", "Koç'a yazdığın mesajlar"))
-                    bullet(t("Your profile (skill level and focus)", "Profilin (seviye ve odak)"))
-                    bullet(t("Your Tennis Profile (level, style, and goals)", "Tenis Profilin (seviye, stil ve hedefler)"))
-                    bullet(t("Your recent matches, scores, and self-ratings", "Son maçların, skorların ve öz-değerlendirmelerin"))
-                    bullet(t("Your quiz mistake patterns", "Quiz hata desenlerin"))
+                VStack(alignment: .leading, spacing: 14) {
+                    infoRow(icon: "sparkles",
+                            text: t("The Coach is powered by Claude — an AI service from Anthropic, a third-party company.",
+                                    "Koç, üçüncü taraf bir şirket olan Anthropic'in yapay zeka servisi Claude ile çalışır."))
+                    infoRow(icon: "paperplane.fill",
+                            text: t("Your messages and tennis context (profile, recent matches, quiz patterns) are sent to Anthropic to write the replies.",
+                                    "Mesajların ve tenis bağlamın (profil, son maçlar, quiz desenleri) yanıtları üretmesi için Anthropic'e gönderilir."))
+                    infoRow(icon: "lock.fill",
+                            text: t("Used only for replies — stored privately, never for ads or tracking. Stop anytime.",
+                                    "Yalnızca yanıtlar için kullanılır — hesabına özel saklanır, asla reklam/takip için kullanılmaz. İstediğin an bırakabilirsin."))
                 }
-                .padding(14)
+                .padding(16)
                 .background(AppPalette.parchment)
                 .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous).stroke(AppPalette.sand, lineWidth: 1))
                 .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
 
-                Text(t("Anthropic processes this only to generate the Coach's replies. Your data is stored privately to your account and is never used for ads or third-party tracking. You can stop using the AI Coach at any time.",
-                       "Anthropic bunları yalnızca Koç'un yanıtlarını üretmek için işler. Verilerin hesabına özel saklanır; reklam ya da üçüncü taraf takibi için asla kullanılmaz. AI Koç'u istediğin zaman kullanmayı bırakabilirsin."))
-                    .font(.footnote).foregroundStyle(AppPalette.inkSoft)
-                    .fixedSize(horizontal: false, vertical: true)
+                DisclosureGroup(isExpanded: $showDetails) {
+                    VStack(alignment: .leading, spacing: 10) {
+                        bullet(t("The messages you type to the Coach", "Koç'a yazdığın mesajlar"))
+                        bullet(t("Your profile (skill level and focus)", "Profilin (seviye ve odak)"))
+                        bullet(t("Your Tennis Profile (level, style, and goals)", "Tenis Profilin (seviye, stil ve hedefler)"))
+                        bullet(t("Your recent matches, scores, and self-ratings", "Son maçların, skorların ve öz-değerlendirmelerin"))
+                        bullet(t("Your quiz mistake patterns", "Quiz hata desenlerin"))
+                    }
+                    .padding(.top, 8)
+                } label: {
+                    Text(t("See exactly what's shared", "Tam olarak ne paylaşılıyor?"))
+                        .font(.footnote.weight(.semibold)).foregroundStyle(AppPalette.clay)
+                }
+                .tint(AppPalette.clay)
 
                 if let url = AppConfiguration.shared.privacyPolicyURL {
                     Link(destination: url) {
@@ -117,6 +129,21 @@ struct AICoachConsentView: View {
         HStack(alignment: .top, spacing: 10) {
             Image(systemName: "circle.fill").appFont(6, design: .default).foregroundStyle(AppPalette.clay).padding(.top, 6)
             Text(text).font(.subheadline).foregroundStyle(AppPalette.ink).fixedSize(horizontal: false, vertical: true)
+            Spacer(minLength: 0)
+        }
+    }
+
+    private func infoRow(icon: String, text: String) -> some View {
+        HStack(alignment: .top, spacing: 12) {
+            Image(systemName: icon)
+                .appFont(16, weight: .semibold, design: .default)
+                .foregroundStyle(AppPalette.clay)
+                .frame(width: 24)
+                .padding(.top, 1)
+            Text(text)
+                .font(.subheadline)
+                .foregroundStyle(AppPalette.ink)
+                .fixedSize(horizontal: false, vertical: true)
             Spacer(minLength: 0)
         }
     }

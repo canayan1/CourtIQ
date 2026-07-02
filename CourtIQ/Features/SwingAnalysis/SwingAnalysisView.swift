@@ -162,6 +162,10 @@ struct SwingAnalysisView: View {
     // MARK: - Step 1: setup
 
     private var setupStep: some View {
+        // Compact, preselected setup: forehand + right-handed are already
+        // chosen, both groups render as chips, and the CTA sits above the
+        // fold — the default path to the camera is ONE tap. The filming tip
+        // lives on the capture step, where it's actually actionable.
         ScrollView {
             VStack(alignment: .leading, spacing: 22) {
                 kicker(copy.step1Kicker)
@@ -169,26 +173,54 @@ struct SwingAnalysisView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     Text(copy.pickStrokeTitle)
                         .font(.headline).foregroundStyle(AppPalette.ink)
-                    ForEach(SwingStroke.allCases) { s in
-                        optionRow(copy.stroke(s), isSelected: stroke == s) { stroke = s }
+                    LazyVGrid(columns: [GridItem(.flexible(), spacing: 8),
+                                        GridItem(.flexible(), spacing: 8)],
+                              spacing: 8) {
+                        ForEach(SwingStroke.allCases) { s in
+                            compactChip(copy.stroke(s), isSelected: stroke == s) { stroke = s }
+                        }
                     }
                 }
 
                 VStack(alignment: .leading, spacing: 12) {
                     Text(copy.pickHandednessTitle)
                         .font(.headline).foregroundStyle(AppPalette.ink)
-                    ForEach(SwingHandedness.allCases) { h in
-                        optionRow(copy.handedness(h), isSelected: handedness == h) { handedness = h }
+                    HStack(spacing: 8) {
+                        ForEach(SwingHandedness.allCases) { h in
+                            compactChip(copy.handedness(h), isSelected: handedness == h) { handedness = h }
+                        }
                     }
                 }
-
-                filmingTip
 
                 primaryButton(copy.continueCTA) { vm.phase = .capture }
                     .padding(.top, 4)
             }
             .padding(20)
         }
+    }
+
+    /// Small selectable chip — same selection language as `optionRow` (clay
+    /// stroke + fill when picked) at half the vertical cost.
+    private func compactChip(_ title: String, isSelected: Bool, _ action: @escaping () -> Void) -> some View {
+        Button {
+            Haptics.tap()
+            action()
+        } label: {
+            Text(title)
+                .font(.subheadline.weight(isSelected ? .bold : .regular))
+                .foregroundStyle(isSelected ? AppPalette.parchment : AppPalette.ink)
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
+                .frame(maxWidth: .infinity, minHeight: 44)
+                .background(isSelected ? AppPalette.clay : AppPalette.parchment)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                        .stroke(isSelected ? AppPalette.clay : AppPalette.sand, lineWidth: 1)
+                )
+                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+        }
+        .buttonStyle(PressableCardStyle())
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
     }
 
     private var filmingTip: some View {

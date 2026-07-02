@@ -12,7 +12,6 @@ struct HealthAcknowledgmentView: View {
     var onAccept: () -> Void
 
     @EnvironmentObject private var lang: LanguageManager
-    @State private var didConfirmReading = false
 
     private let configuration = AppConfiguration.shared
 
@@ -29,7 +28,6 @@ struct HealthAcknowledgmentView: View {
                         lang.t("health.bullet_self_directed")
                     ])
                     legalLinks
-                    confirmToggle
                 }
                 .padding(24)
             }
@@ -123,59 +121,21 @@ struct HealthAcknowledgmentView: View {
         }
     }
 
-    private var confirmToggle: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack(spacing: 6) {
-                Image(systemName: didConfirmReading ? "checkmark.circle.fill" : "arrow.down.circle.fill")
-                    .font(.caption.weight(.bold))
-                    .foregroundStyle(didConfirmReading ? AppPalette.moss : AppPalette.clay)
-                Text(didConfirmReading
-                     ? lang.t("health.confirm_done_hint")
-                     : lang.t("health.confirm_required_hint"))
-                    .font(.caption.weight(.heavy))
-                    .tracking(0.4)
-                    .foregroundStyle(didConfirmReading ? AppPalette.moss : AppPalette.clay)
-            }
-
-            Toggle(isOn: $didConfirmReading) {
-                Text(lang.t("health.confirm_toggle"))
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(AppPalette.ink)
-                    .fixedSize(horizontal: false, vertical: true)
-            }
-            .tint(AppPalette.clay)
-        }
-        .padding(18)
-        .background(
-            didConfirmReading
-            ? AppPalette.moss.opacity(0.08)
-            : AppPalette.clay.opacity(0.08)
-        )
-        .overlay(
-            RoundedRectangle(cornerRadius: 18, style: .continuous)
-                .stroke(
-                    didConfirmReading
-                    ? AppPalette.moss.opacity(0.4)
-                    : AppPalette.clay.opacity(0.45),
-                    lineWidth: 1.5
-                )
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
-    }
-
     private var bottomCTA: some View {
         VStack(spacing: 10) {
+            // Tapping the button IS the explicit acknowledgment (recorded with
+            // a timestamp + app version). The old read-confirmation toggle was
+            // an extra decision that added no legal substance.
             Button(action: accept) {
                 Text(lang.t("health.accept"))
                     .appFont(17, weight: .bold)
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
-                    .background(didConfirmReading ? AppPalette.clay : AppPalette.inkSoft.opacity(0.35))
+                    .background(AppPalette.clay)
                     .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
             }
             .buttonStyle(.plain)
-            .disabled(!didConfirmReading)
             .padding(.horizontal, 22)
 
             Text(lang.t("health.footer_note"))
