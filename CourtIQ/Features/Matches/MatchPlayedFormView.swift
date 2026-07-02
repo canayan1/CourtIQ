@@ -49,6 +49,12 @@ struct MatchPlayedFormView: View {
     @State private var postMatchNotes: String = ""
     @State private var takeaway: String = ""
 
+    /// "Or just speak" — records, transcribes ON DEVICE, appends the text to
+    /// the post-match notes, and discards the audio (transcript-only here;
+    /// audio attachments belong to the journal). Fastest way to log a match
+    /// while walking off court.
+    @StateObject private var dictation = VoiceNoteRecorder()
+
     @FocusState private var focusedField: Field?
     private enum Field { case opponent, score, plan, post, takeaway }
 
@@ -107,6 +113,8 @@ struct MatchPlayedFormView: View {
                     text: $postMatchNotes
                 )
                 .focused($focusedField, equals: .post)
+
+                dictationRow
 
                 takeawayBlock
 
@@ -223,6 +231,86 @@ struct MatchPlayedFormView: View {
                 monospaced: true
             )
         }
+    }
+
+    // MARK: - Dictation ("or just speak")
+
+    private var dictationRow: some View {
+        HStack(spacing: 10) {
+            switch dictation.state {
+            case .recording:
+                Circle()
+                    .fill(AppPalette.alert)
+                    .frame(width: 8 + CGFloat(dictation.recordingLevel * 8),
+                           height: 8 + CGFloat(dictation.recordingLevel * 8))
+                    .animation(.easeInOut(duration: 0.12), value: dictation.recordingLevel)
+                Text(lang.t("voice.recording_hint"))
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(AppPalette.alert)
+                Spacer()
+                Button {
+                    Task { await dictation.stop() }
+                } label: {
+                    Label("\(Int(dictation.elapsed))s", systemImage: "stop.circle.fill")
+                        .font(.caption.weight(.bold))
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 6)
+                        .background(Capsule().fill(AppPalette.alert))
+                }
+                .buttonStyle(.plain)
+            case .transcribing, .requestingPermission:
+                ProgressView().scaleEffect(0.7)
+                Text(lang.t("voice.transcribing"))
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(AppPalette.inkSoft)
+                Spacer()
+            case .failed(let message):
+                Image(systemName: "exclamationmark.triangle.fill")
+                    .font(.caption)
+                    .foregroundStyle(AppPalette.alert)
+                Text(message)
+                    .font(.caption)
+                    .foregroundStyle(AppPalette.inkSoft)
+                    .lineLimit(2)
+                Spacer()
+                dictationMicButton
+            default: // idle / finished — ready for (another) take
+                dictationMicButton
+                Text(lang.t("matches.dictate_hint"))
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(AppPalette.inkSoft)
+                Spacer()
+            }
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 10)
+        .background(AppPalette.clay.opacity(0.06))
+        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .onChange(of: dictation.state) { _, newState in
+            // Transcript-only: pour the words into the notes, drop the audio.
+            if case .finished(let transcript, let audioFile) = newState {
+                let text = transcript.trimmingCharacters(in: .whitespacesAndNewlines)
+                if !text.isEmpty {
+                    postMatchNotes = postMatchNotes.isEmpty ? text : postMatchNotes + "\n" + text
+                }
+                MatchMediaStore.removeAudio(named: [audioFile])
+            }
+        }
+    }
+
+    private var dictationMicButton: some View {
+        Button {
+            Task { await dictation.start(entryID: entryID, scope: .post) }
+        } label: {
+            Image(systemName: "mic.fill")
+                .appFont(14, weight: .bold, design: .default)
+                .foregroundStyle(AppPalette.clay)
+                .padding(8)
+                .background(Circle().fill(AppPalette.clay.opacity(0.12)))
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(lang.t("voice.record_start"))
     }
 
     // MARK: - Takeaway

@@ -583,6 +583,7 @@
 "matches.pre_match_label" = "Pre-match plan";
 "matches.pre_match_placeholder" = "What's your tactical plan against this opponent?";
 "matches.post_match_label" = "Post-match notes";
+"matches.dictate_hint" = "Or just speak — we'll write it down";
 "matches.post_match_placeholder" = "What worked, what didn't, what surprised you?";
 "matches.journal_title_new" = "New journal entry";
 "matches.journal_title_edit" = "Journal entry";

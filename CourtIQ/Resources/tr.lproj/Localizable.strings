@@ -583,6 +583,7 @@
 "matches.pre_match_label" = "Maç öncesi plan";
 "matches.pre_match_placeholder" = "Bu rakibe karşı taktik planın ne?";
 "matches.post_match_label" = "Maç sonrası notlar";
+"matches.dictate_hint" = "İstersen konuş — biz yazıya dökelim";
 "matches.post_match_placeholder" = "Ne işe yaradı, ne yaramadı, seni ne şaşırttı?";
 "matches.journal_title_new" = "Yeni günlük kaydı";
 "matches.journal_title_edit" = "Günlük kaydı";
