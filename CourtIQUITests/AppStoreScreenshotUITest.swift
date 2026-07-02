@@ -118,8 +118,9 @@ final class AppStoreScreenshotUITest: XCTestCase {
         // The Home swing hero is a NavigationLink labelled "Analyze your swing".
         // Tapping it opens SwingAnalysisView, which (under -previewSwing) is
         // already in the result state showing the sample analysis + score.
-        if tapIfExists(app.buttons["Analyze your swing"], 5)
-            || tapIfExists(app.staticTexts["Analyze your swing"], 3) {
+        if tapIfExists(app.buttons["Swing Analysis"], 5)
+            || tapIfExists(app.staticTexts["Swing Analysis"], 3)
+            || tapIfExists(app.buttons["Analyze your swing"], 3) {
             sleep(3)
             snap("swing")
         }
