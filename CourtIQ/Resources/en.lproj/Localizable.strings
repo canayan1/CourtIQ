@@ -47,6 +47,19 @@
 "home.streak_days" = "%d day streak";
 "home.first_swing" = "Record your first swing, get a score";
 
+/* ── First-run activation (2-step: IQ taste → Coach nudge) ── */
+"activation.iq_eyebrow" = "QUICK TENNIS IQ";
+"activation.iq_intro" = "One quick call. What's the smart play?";
+"activation.correct" = "Nice — that's the smart play.";
+"activation.incorrect" = "Close — here's the smarter play.";
+"activation.continue" = "Continue";
+"activation.coach_eyebrow" = "MEET YOUR AI COACH";
+"activation.coach_title" = "A tennis brain in your pocket";
+"activation.coach_body" = "Ask about a match, an opponent, or a weak spot — and get a coach's answer, tuned to your game.";
+"activation.coach_cta" = "Ask the Coach";
+"activation.later" = "Maybe later";
+"activation.skip" = "Skip";
+
 /* ── Train hub (Phase 1 IA redesign) ── */
 "train.subtitle" = "Improve";
 "train.headline" = "Sharpen every part of your game";

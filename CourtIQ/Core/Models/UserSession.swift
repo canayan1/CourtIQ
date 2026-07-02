@@ -703,11 +703,16 @@ final class UserSessionManager: ObservableObject {
     let configuration: AppConfiguration
 
     @Published private(set) var hasCompletedOnboarding: Bool
+    /// First-run activation (2-step IQ taste → Coach nudge), shown once right
+    /// after onboarding. Grandfathered to "seen" for anyone already onboarded
+    /// before this build so existing users never see it retroactively.
+    @Published private(set) var hasSeenActivation: Bool
     @Published var authErrorMessage: String?
     @Published private(set) var syncState: RemoteSyncState
 
     private let defaults = UserDefaults.standard
     private let onboardingKey = "CourtIQ.App.OnboardingCompleted"
+    private let activationKey = "CourtIQ.App.ActivationSeen"
     private var cancellables: Set<AnyCancellable> = []
 
     private init(
@@ -721,6 +726,10 @@ final class UserSessionManager: ObservableObject {
         self.subscriptionManager = subscriptionManager ?? SubscriptionManager(configuration: configuration)
         self.profileStore = profileStore ?? ProfileStore()
         self.hasCompletedOnboarding = defaults.bool(forKey: onboardingKey)
+        // Show activation only to genuinely new users: if onboarding was
+        // already completed before this key existed, treat it as seen.
+        self.hasSeenActivation = defaults.object(forKey: activationKey) as? Bool
+            ?? defaults.bool(forKey: onboardingKey)
         self.syncState = configuration.hasRemoteSyncConfiguration ? .syncing : .unavailable
 
         bindChildObjects()
@@ -1024,6 +1033,12 @@ final class UserSessionManager: ObservableObject {
     func completeOnboarding() {
         hasCompletedOnboarding = true
         defaults.set(true, forKey: onboardingKey)
+    }
+
+    /// Called when the first-run activation flow is dismissed (either path).
+    func markActivationSeen() {
+        hasSeenActivation = true
+        defaults.set(true, forKey: activationKey)
     }
 
     private func bindChildObjects() {

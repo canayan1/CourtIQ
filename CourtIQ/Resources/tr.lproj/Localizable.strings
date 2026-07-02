@@ -47,6 +47,19 @@
 "home.streak_days" = "%d günlük seri";
 "home.first_swing" = "İlk vuruşunu çek, puanını al";
 
+/* ── First-run activation (2-step: IQ taste → Coach nudge) ── */
+"activation.iq_eyebrow" = "HIZLI TENNIS IQ";
+"activation.iq_intro" = "Tek bir karar. Akıllı seçim hangisi?";
+"activation.correct" = "Güzel — akıllı seçim bu.";
+"activation.incorrect" = "Az kaldı — daha akıllısı şu.";
+"activation.continue" = "Devam";
+"activation.coach_eyebrow" = "AI KOÇUNLA TANIŞ";
+"activation.coach_title" = "Cebinde bir tenis beyni";
+"activation.coach_body" = "Bir maçı, rakibi ya da zayıf yönünü sor — oyununa göre, koç gibi cevap gelsin.";
+"activation.coach_cta" = "Koç'a sor";
+"activation.later" = "Belki sonra";
+"activation.skip" = "Atla";
+
 /* ── Train hub (Phase 1 IA redesign) ── */
 "train.subtitle" = "Geliştir";
 "train.headline" = "Oyununun her parçasını keskinleştir";
