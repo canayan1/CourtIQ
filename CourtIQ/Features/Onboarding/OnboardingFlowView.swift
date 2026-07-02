@@ -1,23 +1,23 @@
 import SwiftUI
 import StoreKit
 
-/// High-conversion, question-heavy onboarding for the hard-paywall model. The
-/// flow asks a lot of short questions to build the user's Tennis Profile, runs
-/// a labor-illusion "building your plan" beat, reveals a personalized result,
-/// makes the "why DropVolley is different" case, then hands off to the paywall via
-/// `onComplete`.
+/// Lightweight, single-tap onboarding for the freemium model. Four quick
+/// questions (goal, experience, level, pain points) build the Tennis Profile;
+/// a labor-illusion "building" beat and a personalized reveal follow, then the
+/// user is IN the app — no paywall handoff, no long interrogation.
 ///
-/// It REUSES the existing Tennis Profile engine — every answer accumulates into
-/// a `TennisProfileAnswers`, and at the end a `TennisProfile` is built and saved
-/// through `TennisProfileStore.shared`. Visual language mirrors
-/// `TennisProfileQuestionnaireView` / `AICoachConsentView`: cream background,
-/// parchment cards with a sand stroke, clay-accented selection, one question
-/// per screen, nothing pre-selected, Continue disabled until answered.
+/// Everything the old 16-step flow asked explicitly (stroke ratings, pressure
+/// response, wants, frequency…) is now INFERRED from these four answers with
+/// neutral defaults — the in-app Tennis Profile questionnaire remains the
+/// place to refine it later. Visual language mirrors
+/// `TennisProfileQuestionnaireView`: cream background, parchment cards with a
+/// sand stroke, clay-accented selection, one question per screen, nothing
+/// pre-selected, Continue disabled until answered.
 struct OnboardingFlowView: View {
     @EnvironmentObject private var lang: LanguageManager
 
-    /// Called once the profile is saved and the user taps "See my plan" on the
-    /// final evidence slide. The app presents the paywall here.
+    /// Called when onboarding finishes (after the review ask). The app roots
+    /// straight into the main tabs — freemium, no paywall gate.
     let onComplete: () -> Void
 
     init(onComplete: @escaping () -> Void) {
@@ -31,52 +31,29 @@ struct OnboardingFlowView: View {
 
     private enum Step: Int, CaseIterable {
         case hook           // 0  positioning hook (full-bleed PhotoHero)
-        case showcase       // 0b feature showcase carousel (real examples)
-        case welcome        // 1  bridge into the profile questionnaire
-        case goal           // 2  framing goal (flow-local)
-        case experience     // 3  TennisExperience
-        case frequency      // 4  PlayFrequency
-        case match          // 5  MatchExperience
-        case level          // 6  LevelSelfPlacement (+ provisional note)
-        case strokes        // 7  6 dimension 1–5 ratings
-        case weaknesses     // 8  pain points (flow-local, multi-select)
-        case sliders        // 9  behavioral sliders → PressureResponse
-        case want           // 10 TennisWant
-        case commitment     // 11 drills/day (flow-local Int)
-        case building       // 12 labor illusion
-        case result         // 13 personalized reveal
-        case review         // 14 leave-a-review ask (peak enthusiasm)
-        case evidence       // 15 "why DropVolley is different" carousel
+        case showcase       // 1  feature showcase (animated demos)
+        case goal           // 2  framing goal — single tap
+        case experience     // 3  TennisExperience — single tap
+        case level          // 4  LevelSelfPlacement — single tap
+        case weaknesses     // 5  pain points (fast multi-select)
+        case building       // 6  labor illusion
+        case result         // 7  personalized reveal
+        case review         // 8  leave-a-review ask (peak enthusiasm) → done
     }
 
-    /// Steps that show the top progress bar + Back/Continue chrome. Welcome and
-    /// the building/result/evidence screens own their own layout.
+    /// Steps that show the top progress bar + Back/Continue chrome.
     private var questionSteps: [Step] {
-        [.goal, .experience, .frequency, .match, .level, .strokes, .weaknesses, .sliders, .want, .commitment]
+        [.goal, .experience, .level, .weaknesses]
     }
 
     @State private var step: Step = .hook
 
     // MARK: Answer state — nothing pre-selected
 
-    // Flow-local
     @State private var goal: OnboardingGoal?
-    @State private var weaknesses: Set<OnboardingWeakness> = []
-    @State private var commitment: Int?
-
-    // Tennis Profile engine inputs
     @State private var experience: TennisExperience?
-    @State private var frequency: PlayFrequency?
-    @State private var matchExperience: MatchExperience?
     @State private var levelSelf: LevelSelfPlacement?
-    @State private var ratings: [TennisDimension: Int] = [:]
-    @State private var want: TennisWant?
-
-    // Behavioral sliders (0...1). Default 0.5 = neutral; user must move them.
-    @State private var patience: Double = 0.5    // 0 rush → 1 patient
-    @State private var tactics: Double = 0.5     // 0 react → 1 tactical
-    @State private var aggression: Double = 0.5  // 0 safe → 1 go for it
-    @State private var slidersTouched = false
+    @State private var weaknesses: Set<OnboardingWeakness> = []
 
     @State private var builtProfile: TennisProfile?
 
@@ -87,8 +64,6 @@ struct OnboardingFlowView: View {
                 OnboardingHookView { advance() }
             case .showcase:
                 OnboardingShowcaseView { advance() }
-            case .welcome:
-                welcomeScreen
             case .building:
                 OnboardingBuildingView(stepLabels: buildingStepLabels) {
                     advance()
@@ -105,69 +80,12 @@ struct OnboardingFlowView: View {
                 }
             case .review:
                 reviewScreen
-            case .evidence:
-                evidenceScreen
             default:
                 questionScaffold
             }
         }
         .background(AppPalette.cream)
         .animation(.easeInOut, value: step)
-    }
-
-    // MARK: 1 — Bridge into the profile questionnaire
-
-    private var welcomeScreen: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            Spacer()
-
-            ZStack {
-                Circle().fill(AppPalette.clay.opacity(0.14)).frame(width: 72, height: 72)
-                Image(systemName: "person.crop.circle.badge.checkmark")
-                    .appFont(34, weight: .bold, design: .default)
-                    .foregroundStyle(AppPalette.clay)
-            }
-
-            Eyebrow(copy.bridgeEyebrow)
-
-            Text(copy.bridgeTitle)
-                .font(.system(.title, design: .rounded).weight(.bold))
-                .foregroundStyle(AppPalette.ink)
-                .fixedSize(horizontal: false, vertical: true)
-
-            VStack(alignment: .leading, spacing: 14) {
-                ForEach(copy.welcomeBullets, id: \.self) { line in
-                    HStack(alignment: .top, spacing: 12) {
-                        Image(systemName: "checkmark.circle.fill")
-                            .appFont(18, design: .default)
-                            .foregroundStyle(AppPalette.moss)
-                            .padding(.top, 1)
-                        Text(line)
-                            .font(.body)
-                            .foregroundStyle(AppPalette.inkSoft)
-                            .fixedSize(horizontal: false, vertical: true)
-                        Spacer(minLength: 0)
-                    }
-                }
-            }
-
-            Spacer()
-
-            Button {
-                Haptics.tap()
-                advance()
-            } label: {
-                Text(copy.getStarted)
-                    .font(.headline)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 14)
-            }
-            .buttonStyle(.borderedProminent)
-            .tint(AppPalette.clay)
-        }
-        .padding(24)
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .background(AppPalette.cream)
     }
 
     // MARK: Question scaffold (progress bar + content + Back/Continue)
@@ -209,14 +127,8 @@ struct OnboardingFlowView: View {
         switch step {
         case .goal:        goalStep
         case .experience:  experienceStep
-        case .frequency:   frequencyStep
-        case .match:       matchStep
         case .level:       levelStep
-        case .strokes:     strokesStep
         case .weaknesses:  weaknessesStep
-        case .sliders:     slidersStep
-        case .want:        wantStep
-        case .commitment:  commitmentStep
         default:           EmptyView()
         }
     }
@@ -241,27 +153,7 @@ struct OnboardingFlowView: View {
         }
     }
 
-    // MARK: 4 — Frequency
-
-    private var frequencyStep: some View {
-        questionBlock(tpCopy.qFrequency) {
-            ForEach(PlayFrequency.allCases, id: \.self) { v in
-                optionRow(tpCopy.frequencyOption(v), isSelected: frequency == v) { frequency = v }
-            }
-        }
-    }
-
-    // MARK: 5 — Match play
-
-    private var matchStep: some View {
-        questionBlock(tpCopy.qMatch) {
-            ForEach(MatchExperience.allCases, id: \.self) { v in
-                optionRow(tpCopy.matchOption(v), isSelected: matchExperience == v) { matchExperience = v }
-            }
-        }
-    }
-
-    // MARK: 6 — Level self-placement (+ provisional note)
+    // MARK: 4 — Level self-placement (+ provisional note)
 
     private var levelStep: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -287,69 +179,7 @@ struct OnboardingFlowView: View {
         }
     }
 
-    // MARK: 7 — Strokes (1–5 ratings)
-
-    private var strokesStep: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            VStack(alignment: .leading, spacing: 6) {
-                Text(tpCopy.qStrokesHeader)
-                    .font(.title3.bold())
-                    .foregroundStyle(AppPalette.ink)
-                Text(tpCopy.qStrokesIntro)
-                    .font(.subheadline)
-                    .foregroundStyle(AppPalette.inkSoft)
-            }
-            VStack(spacing: 14) {
-                ForEach(TennisDimension.allCases) { d in
-                    ratingRow(d)
-                }
-            }
-            .padding(16)
-            .background(AppPalette.parchment)
-            .overlay(
-                RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .stroke(AppPalette.sand, lineWidth: 1)
-            )
-            .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
-        }
-    }
-
-    private func ratingRow(_ d: TennisDimension) -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text(tpCopy.dimension(d))
-                .font(.subheadline.weight(.semibold))
-                .foregroundStyle(AppPalette.ink)
-            HStack(spacing: 8) {
-                ForEach(1...5, id: \.self) { value in
-                    let isSelected = ratings[d] == value
-                    Button {
-                        ratings[d] = value
-                    } label: {
-                        Text("\(value)")
-                            .font(.headline)
-                            .frame(maxWidth: .infinity, minHeight: 44)
-                            .background(isSelected ? AppPalette.clay : AppPalette.cream)
-                            .foregroundStyle(isSelected ? AppPalette.parchment : AppPalette.ink)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 12, style: .continuous)
-                                    .stroke(isSelected ? AppPalette.clay : AppPalette.sand, lineWidth: 1)
-                            )
-                            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                    }
-                    .buttonStyle(.plain)
-                }
-            }
-            HStack {
-                Text(tpCopy.scaleWeak)
-                Spacer()
-                Text(tpCopy.scaleStrong)
-            }
-            .font(.caption)
-            .foregroundStyle(AppPalette.inkSoft)
-        }
-    }
-
-    // MARK: 8 — Weaknesses (multi-select pain points)
+    // MARK: 5 — Weaknesses (multi-select pain points)
 
     private var weaknessesStep: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -370,109 +200,7 @@ struct OnboardingFlowView: View {
         }
     }
 
-    // MARK: 9 — Behavioral sliders → PressureResponse
-
-    private var slidersStep: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            VStack(alignment: .leading, spacing: 6) {
-                Text(copy.slidersTitle)
-                    .font(.title3.bold())
-                    .foregroundStyle(AppPalette.ink)
-                    .fixedSize(horizontal: false, vertical: true)
-                Text(copy.slidersIntro)
-                    .font(.subheadline)
-                    .foregroundStyle(AppPalette.inkSoft)
-            }
-            VStack(spacing: 16) {
-                sliderRow(left: copy.sliderPatienceLeft, right: copy.sliderPatienceRight, value: $patience)
-                sliderRow(left: copy.sliderTacticsLeft, right: copy.sliderTacticsRight, value: $tactics)
-                sliderRow(left: copy.sliderAggressionLeft, right: copy.sliderAggressionRight, value: $aggression)
-            }
-            .padding(16)
-            .background(AppPalette.parchment)
-            .overlay(
-                RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .stroke(AppPalette.sand, lineWidth: 1)
-            )
-            .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
-        }
-    }
-
-    private func sliderRow(left: String, right: String, value: Binding<Double>) -> some View {
-        VStack(spacing: 8) {
-            Slider(value: value, in: 0...1) { editing in
-                if editing { slidersTouched = true }
-            }
-            .tint(AppPalette.clay)
-            HStack {
-                Text(left)
-                Spacer()
-                Text(right)
-            }
-            .font(.caption)
-            .foregroundStyle(AppPalette.inkSoft)
-        }
-    }
-
-    // MARK: 10 — What you want
-
-    private var wantStep: some View {
-        questionBlock(tpCopy.qWant) {
-            ForEach(TennisWant.allCases, id: \.self) { v in
-                optionRow(tpCopy.wantOption(v), isSelected: want == v) { want = v }
-            }
-        }
-    }
-
-    // MARK: 11 — Commitment
-
-    private var commitmentStep: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text(copy.commitmentQuestion)
-                .font(.title3.bold())
-                .foregroundStyle(AppPalette.ink)
-                .fixedSize(horizontal: false, vertical: true)
-
-            HStack(spacing: 10) {
-                ForEach([1, 2, 3], id: \.self) { n in
-                    let isSelected = commitment == n
-                    Button {
-                        commitment = n
-                    } label: {
-                        Text("\(n)")
-                            .font(.system(.title, design: .rounded).weight(.bold))
-                            .dynamicTypeSize(...DynamicTypeSize.accessibility2)
-                            .frame(maxWidth: .infinity, minHeight: 72)
-                            .background(isSelected ? AppPalette.clay : AppPalette.parchment)
-                            .foregroundStyle(isSelected ? AppPalette.parchment : AppPalette.ink)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                    .stroke(isSelected ? AppPalette.clay : AppPalette.sand, lineWidth: isSelected ? 2 : 1)
-                            )
-                            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                    }
-                    .buttonStyle(.plain)
-                }
-            }
-
-            if let n = commitment {
-                HStack(spacing: 8) {
-                    Image(systemName: "sparkles").foregroundStyle(AppPalette.clay)
-                    Text(copy.commitmentFeedback(n))
-                        .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(AppPalette.ink)
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(14)
-                .background(AppPalette.clay.opacity(0.08))
-                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
-                .transition(.opacity)
-            }
-        }
-    }
-
-    // MARK: 14 — Leave a review (peak enthusiasm, right after the reveal)
+    // MARK: 8 — Leave a review (peak enthusiasm, right after the reveal)
 
     private var reviewScreen: some View {
         VStack(alignment: .leading, spacing: 24) {
@@ -500,7 +228,8 @@ struct OnboardingFlowView: View {
             VStack(spacing: 10) {
                 Button {
                     requestReview()
-                    advance()
+                    Haptics.tap()
+                    onComplete()
                 } label: {
                     Text(copy.reviewRate)
                         .font(.headline)
@@ -511,7 +240,8 @@ struct OnboardingFlowView: View {
                 .tint(AppPalette.clay)
 
                 Button {
-                    advance()
+                    Haptics.tap()
+                    onComplete()
                 } label: {
                     Text(copy.reviewLater)
                         .font(.headline)
@@ -536,55 +266,6 @@ struct OnboardingFlowView: View {
         } else {
             SKStoreReviewController.requestReview(in: scene)
         }
-    }
-
-    // MARK: 15 — Evidence carousel
-
-    private var evidenceScreen: some View {
-        let slides = copy.evidenceSlides
-        return VStack(spacing: 0) {
-            TabView {
-                ForEach(Array(slides.enumerated()), id: \.offset) { _, slide in
-                    VStack(alignment: .leading, spacing: 18) {
-                        Spacer()
-                        ZStack {
-                            Circle().fill(AppPalette.clay.opacity(0.14)).frame(width: 72, height: 72)
-                            Image(systemName: slide.symbol)
-                                .appFont(34, weight: .bold, design: .default)
-                                .foregroundStyle(AppPalette.clay)
-                        }
-                        Text(slide.headline)
-                            .font(.system(.title, design: .rounded).weight(.bold))
-                            .foregroundStyle(AppPalette.ink)
-                            .fixedSize(horizontal: false, vertical: true)
-                        Text(slide.support)
-                            .font(.title3)
-                            .foregroundStyle(AppPalette.inkSoft)
-                            .fixedSize(horizontal: false, vertical: true)
-                        Spacer()
-                        Spacer()
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.horizontal, 28)
-                }
-            }
-            .tabViewStyle(.page(indexDisplayMode: .always))
-            .indexViewStyle(.page(backgroundDisplayMode: .always))
-
-            Button {
-                onComplete()
-            } label: {
-                Text(copy.seeMyPlan)
-                    .font(.headline)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 14)
-            }
-            .buttonStyle(.borderedProminent)
-            .tint(AppPalette.clay)
-            .padding(.horizontal, 20)
-            .padding(.bottom, 16)
-        }
-        .background(AppPalette.cream)
     }
 
     // MARK: Reusable pieces
@@ -684,18 +365,12 @@ struct OnboardingFlowView: View {
 
     private var currentStepComplete: Bool {
         switch step {
-        case .hook, .showcase, .welcome, .building, .result, .review, .evidence:
+        case .hook, .showcase, .building, .result, .review:
             return true
         case .goal:        return goal != nil
         case .experience:  return experience != nil
-        case .frequency:   return frequency != nil
-        case .match:       return matchExperience != nil
         case .level:       return levelSelf != nil
-        case .strokes:     return TennisDimension.allCases.allSatisfy { ratings[$0] != nil }
         case .weaknesses:  return !weaknesses.isEmpty
-        case .sliders:     return slidersTouched
-        case .want:        return want != nil
-        case .commitment:  return commitment != nil
         }
     }
 
@@ -705,8 +380,8 @@ struct OnboardingFlowView: View {
         guard let next = Step(rawValue: step.rawValue + 1) else { return }
         Haptics.tap()
         // Build + save the profile exactly when we leave the last question
-        // (commitment) and enter the building screen.
-        if step == .commitment {
+        // (weaknesses) and enter the building screen.
+        if step == .weaknesses {
             buildAndSaveProfile()
         }
         withAnimation { step = next }
@@ -717,42 +392,78 @@ struct OnboardingFlowView: View {
         withAnimation { step = prev }
     }
 
-    // MARK: Slider → PressureResponse mapping
+    // MARK: Inference (fewer questions, same engine)
 
-    /// Collapses the three behavioral sliders into the single `PressureResponse`
-    /// the Tennis Profile engine expects:
-    ///   • high patience + high tactical → `.patientPick`
-    ///   • high aggression (and not clearly patient/tactical) → `.goForIt`
-    ///   • low aggression (plays it safe) → `.playSafe`
-    ///   • otherwise (low patience / reactive) → `.rushErrors`
-    private var derivedPressure: PressureResponse {
-        let patient = patience >= 0.6
-        let tactical = tactics >= 0.6
-        let aggressive = aggression >= 0.6
-        let safe = aggression <= 0.4
-        let rushed = patience <= 0.4
+    /// The 4 quick answers stand in for the old 10-question interrogation.
+    /// Removed inputs are INFERRED with conservative defaults so the Tennis
+    /// Profile engine still gets a full answer set; the in-app questionnaire
+    /// remains the place to refine them later.
 
-        if patient && tactical { return .patientPick }
-        if aggressive { return .goForIt }
-        if safe { return .playSafe }
-        if rushed { return .rushErrors }
-        // Neutral-ish: lean on the tactical read, else treat as safe.
-        return tactical ? .patientPick : .playSafe
+    /// Stroke self-ratings: neutral 3 everywhere, 2 on dimensions the user
+    /// explicitly named as pain points — so the picked weaknesses genuinely
+    /// shape the level/archetype result without a 6×5 rating matrix.
+    private var inferredRatings: [TennisDimension: Int] {
+        var r: [TennisDimension: Int] = [:]
+        for d in TennisDimension.allCases { r[d] = 3 }
+        for w in weaknesses {
+            switch w {
+            case .backhand:  r[.backhand] = 2
+            case .serve:     r[.serve] = 2
+            case .netPlay:   r[.net] = 2
+            case .ret:       r[.ret] = 2
+            case .fitness:   r[.movement] = 2
+            case .shotSelection, .mentalGame: break // pressure signals, not strokes
+            }
+        }
+        return r
+    }
+
+    /// Mental/shot-selection pain → errors under pressure; otherwise the
+    /// modest club default (tentative rather than fearless).
+    private var inferredPressure: PressureResponse {
+        weaknesses.contains(.mentalGame) || weaknesses.contains(.shotSelection)
+            ? .rushErrors
+            : .playSafe
+    }
+
+    /// The framing goal doubles as "what do you want from tennis".
+    private var inferredWant: TennisWant {
+        switch goal ?? .winMatches {
+        case .winMatches:  return .compete
+        case .fixWeakness: return .technique
+        case .strategy:    return .compete
+        case .climbLevel:  return .consistency
+        }
+    }
+
+    /// Court-time defaults scaled off experience (the engine wants a value;
+    /// weekly-ish is the honest club median).
+    private var inferredFrequency: PlayFrequency {
+        switch experience ?? .oneToThreeYears {
+        case .justStarting, .underOneYear: return .weekly
+        case .oneToThreeYears:             return .weekly
+        case .threeToTenYears, .tenPlusYears: return .twiceThrice
+        }
+    }
+
+    /// Match exposure inferred from the self-placed level.
+    private var inferredMatchExperience: MatchExperience {
+        switch levelSelf ?? .consistentMedium {
+        case .learningBasics:      return .socialHits
+        case .keepRallyGoing:      return .socialHits
+        case .consistentMedium:    return .casualMatches
+        case .dependableDirected:  return .casualMatches
+        case .depthControlSpin:    return .leagueMatches
+        }
     }
 
     // MARK: Profile build + labor-illusion labels
 
     /// The user's most representative weakness label, used in the building
-    /// screen + result copy. Prefers an explicit pain point; falls back to the
-    /// lowest-rated stroke dimension; else a generic word.
+    /// screen + result copy.
     private var topWeaknessLabel: String {
         if let w = weaknesses.first {
             return copy.weaknessOption(w)
-        }
-        if let lowest = TennisDimension.allCases
-            .filter({ ratings[$0] != nil })
-            .min(by: { (ratings[$0] ?? 3) < (ratings[$1] ?? 3) }) {
-            return tpCopy.dimension(lowest)
         }
         return copy.buildGenericFocus
     }
@@ -764,27 +475,21 @@ struct OnboardingFlowView: View {
         return [
             copy.buildAnalyzingLevel(levelTitle),
             copy.buildMatchingDrills(topWeaknessLabel.lowercased()),
-            copy.buildCalibrating(commitment ?? 1),
             copy.buildFinalizing,
         ]
     }
 
     private func buildAndSaveProfile() {
-        guard let experience,
-              let frequency,
-              let matchExperience,
-              let levelSelf,
-              let want,
-              TennisDimension.allCases.allSatisfy({ ratings[$0] != nil }) else { return }
+        guard let experience, let levelSelf else { return }
 
         let answers = TennisProfileAnswers(
             experience: experience,
-            frequency: frequency,
-            matchExperience: matchExperience,
+            frequency: inferredFrequency,
+            matchExperience: inferredMatchExperience,
             levelSelf: levelSelf,
-            ratings: ratings,
-            pressure: derivedPressure,
-            want: want
+            ratings: inferredRatings,
+            pressure: inferredPressure,
+            want: inferredWant
         )
         // Adopt the engine's suggested goals so the AI Coach + goal tracking
         // have them immediately (the result reveal here is read-only).

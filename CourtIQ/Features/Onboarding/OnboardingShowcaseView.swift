@@ -80,6 +80,7 @@ struct OnboardingHookView: View {
 
 struct OnboardingShowcaseView: View {
     @EnvironmentObject private var lang: LanguageManager
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     /// Advance into the questionnaire bridge. Called by both the per-page
     /// Continue (on the last page) and the Skip button.
@@ -88,6 +89,11 @@ struct OnboardingShowcaseView: View {
     private var copy: OnboardingCopy { OnboardingCopy(lang: lang.language) }
 
     @State private var page = 0
+    /// Auto-play: the carousel advances by itself like a product demo reel
+    /// until the user swipes (taking control) or the last page is reached.
+    /// Disabled under Reduce Motion.
+    @State private var autoAdvance = true
+    private let autoTimer = Timer.publish(every: 4.2, on: .main, in: .common).autoconnect()
 
     private var slides: [ShowcaseSlide] { ShowcaseSlide.all(copy) }
 
@@ -112,13 +118,21 @@ struct OnboardingShowcaseView: View {
 
             TabView(selection: $page) {
                 ForEach(Array(slides.enumerated()), id: \.offset) { index, slide in
-                    ShowcaseSlideView(slide: slide)
+                    ShowcaseSlideView(slide: slide, active: page == index)
                         .tag(index)
                         .padding(.horizontal, 20)
                 }
             }
             .tabViewStyle(.page(indexDisplayMode: .always))
             .indexViewStyle(.page(backgroundDisplayMode: .always))
+            .onReceive(autoTimer) { _ in
+                guard autoAdvance, !reduceMotion, page < slides.count - 1 else { return }
+                withAnimation { page += 1 }
+            }
+            .simultaneousGesture(
+                // First manual swipe hands control to the user for good.
+                DragGesture().onChanged { _ in autoAdvance = false }
+            )
 
             Button {
                 Haptics.tap()
@@ -146,9 +160,11 @@ struct OnboardingShowcaseView: View {
 
 private struct ShowcaseSlideView: View {
     let slide: ShowcaseSlide
-
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @State private var revealed = false
+    /// True while this is the visible page. The sample is re-mounted on each
+    /// activation (`.id(active)`) so its demo — the ScoreRing filling, chat
+    /// bubbles appearing, the quiz answer revealing — REPLAYS as the user (or
+    /// the auto-play) arrives, like a short product video.
+    let active: Bool
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -167,18 +183,39 @@ private struct ShowcaseSlideView: View {
                 .padding(18)
                 .brandedPhoto(slide.photo, scrim: .hero, cornerRadius: 22)
 
-                // The one concrete, clearly-labeled SAMPLE for this feature.
+                // The one concrete, clearly-labeled SAMPLE for this feature,
+                // playing its staged demo every time the page becomes active.
                 slide.sample
-                    .opacity(revealed ? 1 : 0)
-                    .offset(y: revealed ? 0 : 12)
+                    .id(active)
             }
             .padding(.vertical, 8)
         }
-        .onAppear {
-            guard !reduceMotion else { revealed = true; return }
-            withAnimation(Motion.entrance.delay(Motion.stagger * 2)) { revealed = true }
-        }
     }
+}
+
+// MARK: - Demo reveal (staged element entrances inside a sample)
+
+/// Opacity+rise entrance with a per-element delay, so a sample card plays out
+/// like a tiny scene (question → answer, ring → bullets). Under Reduce Motion
+/// everything shows at rest immediately.
+private struct DemoReveal: ViewModifier {
+    let delay: Double
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var shown = false
+
+    func body(content: Content) -> some View {
+        content
+            .opacity(shown ? 1 : 0)
+            .offset(y: shown ? 0 : 10)
+            .onAppear {
+                guard !reduceMotion else { shown = true; return }
+                withAnimation(Motion.entrance.delay(delay)) { shown = true }
+            }
+    }
+}
+
+private extension View {
+    func demoReveal(_ delay: Double) -> some View { modifier(DemoReveal(delay: delay)) }
 }
 
 // MARK: - Slide model + sample cards
@@ -297,7 +334,9 @@ private struct SwingSampleCard: View {
 
                 VStack(alignment: .leading, spacing: 10) {
                     sampleBullet(copy.showcaseSwingBullet1)
+                        .demoReveal(0.5)
                     sampleBullet(copy.showcaseSwingBullet2)
+                        .demoReveal(0.85)
                 }
                 .padding(16)
             }
@@ -324,7 +363,9 @@ private struct MatchSampleCard: View {
                 }
                 VStack(alignment: .leading, spacing: 10) {
                     sampleBullet(copy.showcaseMatchLine1)
+                        .demoReveal(0.35)
                     sampleBullet(copy.showcaseMatchLine2)
+                        .demoReveal(0.7)
                 }
             }
             .padding(16)
@@ -366,6 +407,7 @@ private struct DoublesSampleCard: View {
                     .fixedSize(horizontal: false, vertical: true)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(16)
+                    .demoReveal(0.5)
             }
         }
         .accessibilityElement(children: .combine)
@@ -392,6 +434,8 @@ private struct QuizSampleCard: View {
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(AppPalette.ink)
                     .fixedSize(horizontal: false, vertical: true)
+                    .demoReveal(0.15)
+                // The best-answer reveal lands a beat later — the "aha".
                 HStack(alignment: .top, spacing: 10) {
                     Image(systemName: "checkmark.seal.fill")
                         .appFont(16, weight: .semibold, design: .default)
@@ -406,6 +450,7 @@ private struct QuizSampleCard: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .background(AppPalette.mossTint)
                 .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                .demoReveal(1.0)
             }
             .padding(16)
         }
@@ -429,7 +474,7 @@ private struct CoachSampleCard: View {
                     Spacer(minLength: 8)
                     SampleBadge(text: copy.sampleBadge)
                 }
-                // User question (clay bubble, trailing).
+                // User question (clay bubble, trailing) — arrives first…
                 Text(copy.showcaseCoachQuestion)
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(.white)
@@ -437,7 +482,8 @@ private struct CoachSampleCard: View {
                     .background(AppPalette.clay)
                     .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
                     .frame(maxWidth: .infinity, alignment: .trailing)
-                // Coach reply (parchment bubble, leading).
+                    .demoReveal(0.15)
+                // …then the coach reply, like a live exchange.
                 Text(copy.showcaseCoachReply)
                     .font(.subheadline)
                     .foregroundStyle(AppPalette.ink)
@@ -450,6 +496,7 @@ private struct CoachSampleCard: View {
                     )
                     .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    .demoReveal(1.0)
             }
             .padding(16)
         }
