@@ -1,0 +1,49 @@
+# DropVolley 1.0.2 (build 27) — Release paketi
+
+**Tema:** Freemium açılış + "zahmetsiz kullanım" UX diyeti + AI grounding.
+Branch: `fix/app-store-rejection-build14` (main'e FF-merge bekliyor, aşağıda).
+
+## Bu sürümde ne var
+
+| Alan | Değişiklik |
+|---|---|
+| Model | **Hard paywall → free tier.** İçerik bedava; para yakan AI (Coach + swing) premium, 1 bedava swing tadımı (`PremiumGate`). |
+| Onboarding | 16 ekran/~15 karar → **9 ekran/4 tek-dokunuş soru**; kaldırılan girdiler çıkarımla dolduruluyor; evidence/paywall ısındırması kaldırıldı. |
+| Showcase | Kendi kendini oynatan demo (4.2sn otomatik sayfa + kart içi sahneleme; Reduce Motion'a saygılı). |
+| Aktivasyon | İlk açılışta 2 adım: 1 IQ senaryosu + anında "neden" → Coach'a yönlendirme. Bir kez gösterilir; mevcut kullanıcılar muaf. |
+| Swing girişi | Forehand + sağ el ön-seçili çipler; CTA fold üstünde; film ipucu capture adımında. |
+| Coach onayı | ~200 kelime → 3 ikonlu satır + "tam liste" açılırı (5.1.1(i)/5.1.2(i) içeriği aynı ekranda). |
+| Sağlık onayı | Toggle kaldırıldı; tek dokunuş = açık onay (zaman damgalı kayıt aynı). |
+| Maç girişi | 🎤 "İstersen konuş" — cihaz-içi transkripsiyon notlara yazar, ses dosyası silinir. Yeni izin yok. |
+| Erişilebilirlik | Dynamic Type 191 sitede; ikon-buton etiketleri; VoiceOver düzeltmeleri. |
+| Home | Coach hero + eşit Swing/IQ + tam-genişlik satırlar; ölü dokunma alanı düzeltildi (`contentShape`). |
+| AI grounding | Doubles skoru istemcide deterministik; match sinyalleri kural-tabanlı; edge fonksiyonlarına tenis referansları + **global bütçe kesicisi** (deploy bekliyor, aşağıda). |
+
+## App Store Connect — kopyala-yapıştır
+
+**What's New (TR):**
+> DropVolley artık ücretsiz başlıyor! • Yepyeni, 1 dakikalık hızlı kurulum • Maçını sesle kaydet — konuş, biz yazalım • Daha akıcı Swing Analizi başlangıcı • Yazı boyutu artık her yerde erişilebilirlik ayarınla ölçekleniyor • Hata düzeltmeleri ve genel cilalar
+
+**What's New (EN):**
+> DropVolley now starts free! • All-new 1-minute setup • Log matches by voice — just talk, we'll write it down • Smoother Swing Analysis start • Text now scales with your accessibility settings • Bug fixes and polish
+
+**Promotional Text (EN, 170 kr.):**
+> Most tennis apps track your score. DropVolley makes you smarter on court — AI coach, swing scores, match insights. Free to start.
+
+**Promotional Text (TR):**
+> Skoru herkes tutar; DropVolley seni kortta daha zeki yapar — AI koç, vuruş puanı, maç analizi. Ücretsiz başla.
+
+**Açıklama ilk paragraf önerisi (freemium vurgusu):**
+> EN: "DropVolley is your Tennis IQ coach — and it's free to start. Sharpen your decisions with scenario quizzes, log matches (by voice!), get AI insights, and when you're ready, unlock the AI Coach and 0–100 swing analysis."
+> TR: "DropVolley senin Tennis IQ koçun — ve başlaması ücretsiz. Senaryo quizleriyle karar zekânı geliştir, maçlarını (sesle!) kaydet, AI içgörüleri al; hazır olduğunda AI Koç'u ve 0–100 vuruş analizini aç."
+
+## Gönderim kontrol listesi
+
+1. ☐ **Edge deploy (Claude, açık onayla):**
+   `yes | supabase db push` → `supabase functions deploy match-analysis doubles-analysis swing-analysis --use-api` → smoke.
+   *Neden şart:* istemci 1.0.2 doubles skorunu kendisi hesaplayıp gönderiyor; canlı fonksiyon deploy edilmezse metindeki skor ile ekrandaki skor çelişebilir. Kesici de bu pakette.
+2. ☐ **Main'e merge + push (Claude, açık onayla):** `git checkout main && git merge --ff-only fix/app-store-rejection-build14 && git push origin main` (FF garantili: 150 önde / 0 geride).
+3. ☑ Archive: `DropVolley-1.0.2-27.xcarchive` → Xcode Organizer'da.
+4. ☐ **Upload (insan):** Xcode → Organizer → Distribute App → App Store Connect (Apple ID/2FA gerektiği için Can).
+5. ☐ ASC: What's New yapıştır (yukarıda), fiyat/IAP değişmedi, gönder.
+6. ☐ Gönderim sonrası: `git tag v1.0.2 && git push origin v1.0.2`.
