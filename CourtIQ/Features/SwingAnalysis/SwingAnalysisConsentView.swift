@@ -34,24 +34,42 @@ enum SwingHandedness: String, CaseIterable, Identifiable {
 
 // MARK: - Third-party AI consent (App Store 5.1.1 / 5.1.2)
 
-/// Declarative description of one AI feature's data-sharing disclosure. Drives
-/// the reusable `AIConsentView` and the per-feature opt-in record.
+/// Declarative description of one AI feature's front door: SELLS the
+/// tennis-specific system first (honest claims only), with the third-party
+/// disclosure compressed to one visible line + an expandable itemized list on
+/// the same screen — the pattern the AI Coach uses (`AICoachConsentView`).
+/// Drives the reusable `AIConsentView` and the per-feature opt-in record.
 ///
 /// Every feature below sends data to **Google (Gemini)** via our edge
-/// functions. The AI Coach uses Anthropic instead and keeps its own consent
-/// screen (`AICoachConsentView`).
+/// functions; Gemini stays named in the visible privacy line and the
+/// US-processing note stays in the expandable list (5.1.1(i)/5.1.2(i)
+/// substance intact — the agree button is still the explicit opt-in that
+/// gates any data leaving the device).
 struct AIConsentSpec {
+    struct Benefit {
+        let icon: String
+        let en: String
+        let tr: String
+    }
+
     /// UserDefaults version key — stores the accepted version number.
     let key: String
     /// Bump when the disclosure materially changes (forces re-consent).
     let version: Int
     let icon: String
     let navTitleEN: String;  let navTitleTR: String
-    /// "<Feature> is powered by Google Gemini …" line.
-    let providerEN: String;  let providerTR: String
-    /// Plain-language list of exactly what leaves the device (parallel arrays).
+    /// Benefit-led headline — what this feature does for the player.
+    let titleEN: String;     let titleTR: String
+    /// 2–3 honest selling points (purpose-built framing, no training claims).
+    let benefits: [Benefit]
+    /// One visible line naming the AI provider and the sole purpose.
+    let privacyLineEN: String; let privacyLineTR: String
+    /// Itemized "what leaves the device" list, one tap away (parallel arrays).
     let bulletsEN: [String]; let bulletsTR: [String]
+    /// Optional short per-feature note ("" hides it).
     let footerEN: String;    let footerTR: String
+    /// Agree-button label ("Agree & …").
+    let ctaEN: String;       let ctaTR: String
 }
 
 /// Records and checks the user's explicit, per-feature consent to share data
@@ -75,27 +93,39 @@ extension AIConsentSpec {
     /// Swing Analysis — sends the swing VIDEO to Google (Gemini).
     /// Key unchanged from v1 but version bumped to 2: the v1 disclosure named
     /// the wrong provider ("Anthropic") and wrongly said only "still frames"
-    /// were sent, so prior acceptances must be re-collected.
+    /// were sent, so prior acceptances must be re-collected. (The v3 marketing
+    /// re-layout shares the same data + provider, so no further bump.)
     static let swing = AIConsentSpec(
         key: "DropVolley.swingAnalysis.consent.version", version: 2,
         icon: "video.badge.waveform",
         navTitleEN: "Swing Analysis", navTitleTR: "Vuruş Analizi",
-        providerEN: "Swing Analysis is powered by Google Gemini, an AI service from Google LLC — a third-party company based in the United States.",
-        providerTR: "Vuruş Analizi, Google LLC'nin (Amerika Birleşik Devletleri merkezli üçüncü taraf bir şirket) yapay zeka servisi Google Gemini tarafından çalışır.",
+        titleEN: "A coach's eye on your swing — frame by frame",
+        titleTR: "Vuruşunda bir koç gözü — kare kare",
+        benefits: [
+            .init(icon: "figure.tennis",
+                  en: "Purpose-built for tennis strokes: preparation, contact point, follow-through — checked against club-level coaching checkpoints.",
+                  tr: "Tenis vuruşlarına özel kurulum: hazırlık, temas noktası, tamamlama — kulüp seviyesi koçluk kontrol noktalarına göre incelenir."),
+            .init(icon: "gauge.with.needle",
+                  en: "You get a 0–100 score plus specific fixes, so you know exactly what to drill next.",
+                  tr: "0–100 puan + net düzeltmeler alırsın; sırada ne çalışacağını tam olarak bilirsin."),
+            .init(icon: "iphone",
+                  en: "Your video stays in your history on this device — DropVolley doesn't store it on our servers.",
+                  tr: "Videon bu cihazdaki geçmişinde kalır — DropVolley kendi sunucularında saklamaz.")
+        ],
+        privacyLineEN: "Private & secure: your clip is compressed on-device and processed by Google's Gemini AI solely to score your swing — never for ads or tracking.",
+        privacyLineTR: "Gizli ve güvenli: videon cihazda sıkıştırılır ve yalnızca vuruşunu puanlamak için Google'ın Gemini yapay zekasınca işlenir — asla reklam ya da takip için kullanılmaz.",
         bulletsEN: [
-            "Your swing video is compressed on this device and sent to Google (Gemini), in the US, to generate your analysis.",
-            "A short summary of your tennis profile and recent scores goes with it, so the coaching fits your game.",
-            "Your video is saved on this device for your history — DropVolley does not store it on our own servers.",
-            "Nothing is sent until you tap \u{201C}I understand and agree\u{201D}."
+            "Your swing video (compressed on this device)",
+            "A short summary of your tennis profile and recent scores, so the coaching fits your game"
         ],
         bulletsTR: [
-            "Vuruş videon bu cihazda sıkıştırılır ve analizini üretmek için ABD'deki Google'a (Gemini) gönderilir.",
-            "Yanında tenis profilinin ve son skorlarının kısa bir özeti gider; böylece koçluk senin oyununa göre olur.",
-            "Videon geçmişin için bu cihazda saklanır — DropVolley kendi sunucularında saklamaz.",
-            "\u{201C}Anladım ve onaylıyorum\u{201D}a dokunana kadar hiçbir şey gönderilmez."
+            "Vuruş videon (bu cihazda sıkıştırılır)",
+            "Tenis profilinin ve son skorlarının kısa bir özeti; koçluk senin oyununa göre olur"
         ],
-        footerEN: "Google processes your video only to generate your coaching notes and score. It is not used for ads or third-party tracking. You can stop using Swing Analysis at any time.",
-        footerTR: "Google videonu yalnızca koçluk notlarını ve puanını üretmek için işler. Reklam ya da üçüncü taraf takibi için kullanılmaz. Vuruş Analizi'ni istediğin zaman kullanmayı bırakabilirsin."
+        footerEN: "",
+        footerTR: "",
+        ctaEN: "Agree & analyze my swing",
+        ctaTR: "Onayla ve vuruşumu analiz et"
     )
 
     /// Match Coaching (pre + compound) — sends the match summary to Google.
@@ -103,22 +133,33 @@ extension AIConsentSpec {
         key: "DropVolley.matchAnalysis.consent.version", version: 1,
         icon: "list.clipboard.fill",
         navTitleEN: "Match Coaching", navTitleTR: "Maç Koçluğu",
-        providerEN: "Match Coaching is powered by Google Gemini, an AI service from Google LLC — a third-party company based in the United States.",
-        providerTR: "Maç Koçluğu, Google LLC'nin (Amerika Birleşik Devletleri merkezli üçüncü taraf bir şirket) yapay zeka servisi Google Gemini tarafından çalışır.",
+        titleEN: "Match coaching that knows your game",
+        titleTR: "Oyununu tanıyan maç koçluğu",
+        benefits: [
+            .init(icon: "figure.tennis",
+                  en: "Purpose-built for tennis matches: it reads the score shape, your self-ratings, and your notes like a coach reviewing your match.",
+                  tr: "Tenis maçlarına özel kurulum: skor akışını, öz-değerlendirmelerini ve notlarını maçını izlemiş bir koç gibi okur."),
+            .init(icon: "person.text.rectangle",
+                  en: "Coaches YOU, not a generic player — your Tennis Profile and recent form shape every insight.",
+                  tr: "Jenerik bir oyuncuyu değil SENİ çalıştırır — Tenis Profilin ve son formun her içgörüyü şekillendirir."),
+            .init(icon: "list.clipboard.fill",
+                  en: "You get what to keep, what to fix, and a plan for the rematch.",
+                  tr: "Neyi koruyacağını, neyi düzelteceğini ve rövanş planını alırsın.")
+        ],
+        privacyLineEN: "Private & secure: your match details are processed by Google's Gemini AI solely to write your coaching — never for ads or tracking.",
+        privacyLineTR: "Gizli ve güvenli: maç bilgilerin yalnızca koçluğunu yazmak için Google'ın Gemini yapay zekasınca işlenir — asla reklam ya da takip için kullanılmaz.",
         bulletsEN: [
-            "The match details you enter — opponent, surface, your plan, the result and score, your self-ratings, and your notes.",
-            "A short summary of your tennis profile and recent form, so the advice fits your game.",
-            "This is sent to Google (Gemini), in the US, to generate your coaching.",
-            "Nothing is sent until you tap \u{201C}I understand and agree\u{201D}."
+            "The match details you enter — opponent, surface, your plan, the result and score, your self-ratings, and your notes",
+            "A short summary of your tennis profile and recent form, so the advice fits your game"
         ],
         bulletsTR: [
-            "Girdiğin maç bilgileri — rakip, zemin, planın, sonuç ve skor, öz-değerlendirmelerin ve notların.",
-            "Tenis profilinin ve son formunun kısa bir özeti; böylece tavsiye senin oyununa göre olur.",
-            "Bunlar, koçluğunu üretmek için ABD'deki Google'a (Gemini) gönderilir.",
-            "\u{201C}Anladım ve onaylıyorum\u{201D}a dokunana kadar hiçbir şey gönderilmez."
+            "Girdiğin maç bilgileri — rakip, zemin, planın, sonuç ve skor, öz-değerlendirmelerin ve notların",
+            "Tenis profilinin ve son formunun kısa bir özeti; tavsiye senin oyununa göre olur"
         ],
-        footerEN: "Google processes this only to generate your coaching. It is not used for ads or third-party tracking. You can stop using Match Coaching at any time.",
-        footerTR: "Google bunları yalnızca koçluğunu üretmek için işler. Reklam ya da üçüncü taraf takibi için kullanılmaz. Maç Koçluğu'nu istediğin zaman kullanmayı bırakabilirsin."
+        footerEN: "",
+        footerTR: "",
+        ctaEN: "Agree & get my coaching",
+        ctaTR: "Onayla ve koçluğu al"
     )
 
     /// Pre-Match Mental Check — sends the three ratings + optional note.
@@ -126,20 +167,30 @@ extension AIConsentSpec {
         key: "DropVolley.mentalCheck.consent.version", version: 1,
         icon: "brain.head.profile",
         navTitleEN: "Pre-Match Mental Check", navTitleTR: "Maç Öncesi Zihin Kontrolü",
-        providerEN: "The Pre-Match Mental Check is powered by Google Gemini, an AI service from Google LLC — a third-party company based in the United States.",
-        providerTR: "Maç Öncesi Zihin Kontrolü, Google LLC'nin (Amerika Birleşik Devletleri merkezli üçüncü taraf bir şirket) yapay zeka servisi Google Gemini tarafından çalışır.",
+        titleEN: "Walk on court with a clear head",
+        titleTR: "Korta net bir kafayla çık",
+        benefits: [
+            .init(icon: "brain.head.profile",
+                  en: "A pre-match routine built from how you actually feel today — your energy, confidence, and nerves.",
+                  tr: "Bugün gerçekte nasıl hissettiğinden kurulan bir maç öncesi rutin — enerjin, güvenin ve gerginliğin."),
+            .init(icon: "figure.tennis",
+                  en: "Grounded in tennis mental-game practice: reset routines, breathing, first-games focus.",
+                  tr: "Tenisin mental oyun pratiğine dayalı: sıfırlama rutinleri, nefes, ilk oyunlara odak.")
+        ],
+        privacyLineEN: "Private & secure: your ratings and note are processed by Google's Gemini AI solely to build your routine — never for ads or tracking.",
+        privacyLineTR: "Gizli ve güvenli: değerlendirmelerin ve notun yalnızca rutinini kurmak için Google'ın Gemini yapay zekasınca işlenir — asla reklam ya da takip için kullanılmaz.",
         bulletsEN: [
-            "Your three quick ratings — energy, confidence, and nerves — and the optional note you add.",
-            "This is sent to Google (Gemini), in the US, to generate your pre-match routine.",
-            "Nothing is sent until you tap \u{201C}I understand and agree\u{201D}."
+            "Your three quick ratings — energy, confidence, and nerves",
+            "The optional note you add"
         ],
         bulletsTR: [
-            "Üç hızlı değerlendirmen — enerji, güven ve gerginlik — ve eklediğin isteğe bağlı not.",
-            "Bunlar, maç öncesi rutinini üretmek için ABD'deki Google'a (Gemini) gönderilir.",
-            "\u{201C}Anladım ve onaylıyorum\u{201D}a dokunana kadar hiçbir şey gönderilmez."
+            "Üç hızlı değerlendirmen — enerji, güven ve gerginlik",
+            "Eklediğin isteğe bağlı not"
         ],
-        footerEN: "Google processes this only to generate your routine. It is not used for ads or third-party tracking. You can stop using the Mental Check at any time.",
-        footerTR: "Google bunları yalnızca rutinini üretmek için işler. Reklam ya da üçüncü taraf takibi için kullanılmaz. Zihin Kontrolü'nü istediğin zaman kullanmayı bırakabilirsin."
+        footerEN: "",
+        footerTR: "",
+        ctaEN: "Agree & build my routine",
+        ctaTR: "Onayla ve rutinimi kur"
     )
 
     /// Doubles Compatibility — sends your profile + the partner mini-profile.
@@ -147,30 +198,42 @@ extension AIConsentSpec {
         key: "DropVolley.doublesAnalysis.consent.version", version: 1,
         icon: "person.2.fill",
         navTitleEN: "Doubles Compatibility", navTitleTR: "Çiftler Uyumu",
-        providerEN: "Doubles Compatibility is powered by Google Gemini, an AI service from Google LLC — a third-party company based in the United States.",
-        providerTR: "Çiftler Uyumu, Google LLC'nin (Amerika Birleşik Devletleri merkezli üçüncü taraf bir şirket) yapay zeka servisi Google Gemini tarafından çalışır.",
+        titleEN: "A doubles read built for tennis — and for you two",
+        titleTR: "Tenis için — ve ikiniz için — kurulmuş bir doubles analizi",
+        benefits: [
+            .init(icon: "figure.tennis",
+                  en: "Purpose-built for doubles tennis: court coverage, style complementarity, level fit — grounded in club-level doubles play.",
+                  tr: "Doubles tenisine özel kurulum: kort kapsama, stil uyumu, seviye dengesi — kulüp seviyesi doubles oyununa dayalı."),
+            .init(icon: "person.2.fill",
+                  en: "Reads BOTH games — your Tennis Profile and your partner's: strengths, gaps, and how they interlock.",
+                  tr: "İKİ oyunu birden okur — senin Tenis Profilin ve partnerininki: güçlü yönler, açıklar ve birbirini nasıl tamamladıkları."),
+            .init(icon: "list.clipboard.fill",
+                  en: "You get a 0–100 fit score plus a game plan: who covers what, and the patterns to run together.",
+                  tr: "0–100 uyum puanı + oyun planı alırsın: kim neresini kapatır, birlikte hangi desenler oynanır.")
+        ],
+        privacyLineEN: "Private & secure: both mini-profiles are processed by Google's Gemini AI solely to write your pairing report — never for ads or tracking.",
+        privacyLineTR: "Gizli ve güvenli: iki mini profil, yalnızca eşleşme raporunuzu yazmak için Google'ın Gemini yapay zekasınca işlenir — asla reklam ya da takip için kullanılmaz.",
         bulletsEN: [
-            "Your tennis profile — level, style, strengths, and what you're working on.",
-            "Your partner's details as entered here — their name, level, and play style.",
-            "This is sent to Google (Gemini), in the US, to generate your compatibility report and game plan.",
-            "Nothing is sent until you tap \u{201C}I understand and agree\u{201D}."
+            "Your tennis profile — level, style, strengths, and what you're working on",
+            "Your partner's details — their name, level, and play style"
         ],
         bulletsTR: [
-            "Tenis profilin — seviye, stil, güçlü yönler ve üzerinde çalıştıkların.",
-            "Burada girdiğin partner bilgileri — adı, seviyesi ve oyun stili.",
-            "Bunlar, uyum raporunu ve oyun planını üretmek için ABD'deki Google'a (Gemini) gönderilir.",
-            "\u{201C}Anladım ve onaylıyorum\u{201D}a dokunana kadar hiçbir şey gönderilmez."
+            "Tenis profilin — seviye, stil, güçlü yönler ve üzerinde çalıştıkların",
+            "Partner bilgileri — adı, seviyesi ve oyun stili"
         ],
-        footerEN: "Only add a partner's details with their okay. Google processes this only to generate your report — never for ads or third-party tracking. You can stop using Doubles Compatibility at any time.",
-        footerTR: "Partner bilgilerini yalnızca onayıyla ekle. Google bunları yalnızca raporunu üretmek için işler — reklam ya da üçüncü taraf takibi için asla. Çiftler Uyumu'nu istediğin zaman kullanmayı bırakabilirsin."
+        footerEN: "Only add a partner's details with their okay.",
+        footerTR: "Partner bilgilerini yalnızca onayıyla ekle.",
+        ctaEN: "Agree & see our fit",
+        ctaTR: "Onayla ve uyumu gör"
     )
 }
 
 // MARK: - Reusable consent gate view
 
-/// One-time disclosure + explicit opt-in before a feature sends any data to
-/// its third-party AI service. Plain-language: what is sent, who it goes to,
-/// and a clear choice. Nothing is sent until the user taps agree.
+/// Each AI feature's front door: sells the tennis-specific system first, with
+/// the third-party disclosure in one visible line + an expandable itemized
+/// list on the same screen (mirrors `AICoachConsentView`). The agree tap is
+/// still the explicit opt-in — nothing is sent before it.
 struct AIConsentView: View {
     let spec: AIConsentSpec
     /// Called after consent is recorded — lets a presenter continue the flow
@@ -179,6 +242,8 @@ struct AIConsentView: View {
 
     @EnvironmentObject private var lang: LanguageManager
     @Environment(\.dismiss) private var dismiss
+
+    @State private var showDetails = false
 
     private var isTR: Bool { lang.language == .turkish }
     private func t(_ en: String, _ tr: String) -> String { isTR ? tr : en }
@@ -194,28 +259,52 @@ struct AIConsentView: View {
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.top, 8)
 
-                Text(t("Before you start", "Başlamadan önce"))
+                Text(t(spec.titleEN, spec.titleTR))
                     .font(.title2.bold()).foregroundStyle(AppPalette.ink)
-
-                Text(t(spec.providerEN, spec.providerTR))
-                    .font(.subheadline).foregroundStyle(AppPalette.inkSoft)
                     .fixedSize(horizontal: false, vertical: true)
 
-                VStack(alignment: .leading, spacing: 10) {
-                    Text(t("Here's exactly what happens:", "Tam olarak şunlar olur:"))
-                        .font(.subheadline.weight(.semibold)).foregroundStyle(AppPalette.ink)
-                    ForEach(Array((isTR ? spec.bulletsTR : spec.bulletsEN).enumerated()), id: \.offset) { _, line in
-                        bullet(line)
+                VStack(alignment: .leading, spacing: 14) {
+                    ForEach(Array(spec.benefits.enumerated()), id: \.offset) { _, benefit in
+                        infoRow(icon: benefit.icon, text: t(benefit.en, benefit.tr))
                     }
                 }
-                .padding(14)
+                .padding(16)
                 .background(AppPalette.parchment)
                 .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous).stroke(AppPalette.sand, lineWidth: 1))
                 .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
 
-                Text(t(spec.footerEN, spec.footerTR))
-                    .font(.footnote).foregroundStyle(AppPalette.inkSoft)
-                    .fixedSize(horizontal: false, vertical: true)
+                // Compact disclosure — the compliance substance in one line,
+                // itemized list one tap away (still pre-consent, same screen).
+                HStack(alignment: .top, spacing: 8) {
+                    Image(systemName: "lock.fill")
+                        .font(.caption).foregroundStyle(AppPalette.inkSoft).padding(.top, 2)
+                    Text(t(spec.privacyLineEN, spec.privacyLineTR))
+                        .font(.footnote).foregroundStyle(AppPalette.inkSoft)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+
+                DisclosureGroup(isExpanded: $showDetails) {
+                    VStack(alignment: .leading, spacing: 10) {
+                        ForEach(Array((isTR ? spec.bulletsTR : spec.bulletsEN).enumerated()), id: \.offset) { _, line in
+                            bullet(line)
+                        }
+                        bullet(t("Processed on Google's servers in the US, only to generate this feature's results",
+                                 "Yalnızca bu özelliğin sonuçlarını üretmek için Google'ın ABD'deki sunucularında işlenir"))
+                        bullet(t("Nothing is sent until you tap Agree",
+                                 "Onayla'ya dokunana kadar hiçbir şey gönderilmez"))
+                    }
+                    .padding(.top, 8)
+                } label: {
+                    Text(t("See exactly what's shared", "Tam olarak ne paylaşılıyor?"))
+                        .font(.footnote.weight(.semibold)).foregroundStyle(AppPalette.clay)
+                }
+                .tint(AppPalette.clay)
+
+                if !spec.footerEN.isEmpty {
+                    Text(t(spec.footerEN, spec.footerTR))
+                        .font(.footnote).foregroundStyle(AppPalette.inkSoft)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
 
                 if let url = AppConfiguration.shared.privacyPolicyURL {
                     Link(destination: url) {
@@ -230,7 +319,7 @@ struct AIConsentView: View {
                         onAccepted?()
                         dismiss()
                     } label: {
-                        Text(t("I understand and agree", "Anladım ve onaylıyorum"))
+                        Text(t(spec.ctaEN, spec.ctaTR))
                             .font(.headline).frame(maxWidth: .infinity).padding(.vertical, 14)
                     }
                     .buttonStyle(.borderedProminent).tint(AppPalette.clay)
@@ -256,6 +345,21 @@ struct AIConsentView: View {
         HStack(alignment: .top, spacing: 10) {
             Image(systemName: "circle.fill").appFont(6, design: .default).foregroundStyle(AppPalette.clay).padding(.top, 6)
             Text(text).font(.subheadline).foregroundStyle(AppPalette.ink).fixedSize(horizontal: false, vertical: true)
+            Spacer(minLength: 0)
+        }
+    }
+
+    private func infoRow(icon: String, text: String) -> some View {
+        HStack(alignment: .top, spacing: 12) {
+            Image(systemName: icon)
+                .appFont(16, weight: .semibold, design: .default)
+                .foregroundStyle(AppPalette.clay)
+                .frame(width: 24)
+                .padding(.top, 1)
+            Text(text)
+                .font(.subheadline)
+                .foregroundStyle(AppPalette.ink)
+                .fixedSize(horizontal: false, vertical: true)
             Spacer(minLength: 0)
         }
     }
