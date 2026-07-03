@@ -376,6 +376,10 @@ struct LockableTile: View {
         .frame(maxWidth: .infinity, minHeight: minHeight, alignment: .leading)
         .padding(16)
         .modifier(TileBackground(photo: photo))
+        // The photo/parchment is a `.background`, so on its own only the
+        // icon+title area is hit-testable — make the whole card tappable for
+        // the wrapping Button/NavigationLink (same fix as FeatureTile).
+        .contentShape(Rectangle())
         // Fixed-height tile: clamp very large sizes so the icon + title don't
         // overflow the minHeight box. Scales up to accessibility2, then holds.
         .dynamicTypeSize(...DynamicTypeSize.accessibility2)

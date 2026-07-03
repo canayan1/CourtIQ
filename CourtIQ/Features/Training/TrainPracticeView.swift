@@ -13,6 +13,10 @@ struct TrainPracticeView: View {
     @State private var showPaywall = false
     @State private var showDrill = false
     @State private var showProShot = false
+    /// Quiz push driven by Button + navigationDestination(item:) — a
+    /// NavigationLink inside this LazyVGrid mis-routed taps between cells
+    /// (tapping Doubles opened the Drill), the same defect fixed on Home.
+    @State private var quizRoute: QuizCategory?
 
     private let columns = [GridItem(.flexible(), spacing: 12),
                            GridItem(.flexible(), spacing: 12)]
@@ -22,34 +26,20 @@ struct TrainPracticeView: View {
             VStack(alignment: .leading, spacing: 16) {
                 LazyVGrid(columns: columns, spacing: 12) {
                     ForEach(QuizCategory.allCases) { category in
-                        if session.isPremiumUnlocked {
-                            NavigationLink {
-                                QuizView(quiz: Quiz.practiceQuiz(category: category)) { summary in
-                                    // Record into the same manager that powers
-                                    // Profile stats (totalQuizzesCompleted /
-                                    // weekly history). isDaily: false keeps the
-                                    // "completed today" daily-ritual flag intact.
-                                    dailyQuizManager.recordCompletion(summary: summary, isDaily: false)
-                                    session.updateCurrentFocus(category.title)
-                                    session.updateTopMistakePatterns(summary.mistakeTypes)
-                                }
-                            } label: {
-                                LockableTile(sfSymbol: category.systemImage,
-                                             title: category.title,
-                                             photo: Self.photo(for: category))
-                            }
-                            .buttonStyle(PressableCardStyle())
-                        } else {
-                            Button {
+                        Button {
+                            if session.isPremiumUnlocked {
+                                Haptics.tap()
+                                quizRoute = category
+                            } else {
                                 showPaywall = true
-                            } label: {
-                                LockableTile(sfSymbol: category.systemImage,
-                                             title: category.title,
-                                             locked: true,
-                                             photo: Self.photo(for: category))
                             }
-                            .buttonStyle(PressableCardStyle())
+                        } label: {
+                            LockableTile(sfSymbol: category.systemImage,
+                                         title: category.title,
+                                         locked: !session.isPremiumUnlocked,
+                                         photo: Self.photo(for: category))
                         }
+                        .buttonStyle(PressableCardStyle())
                     }
                 }
 
@@ -77,6 +67,16 @@ struct TrainPracticeView: View {
         }
         .background(AppPalette.cream)
         .navigationTitle(lang.t("train.practice"))
+        .navigationDestination(item: $quizRoute) { category in
+            QuizView(quiz: Quiz.practiceQuiz(category: category)) { summary in
+                // Record into the same manager that powers Profile stats
+                // (totalQuizzesCompleted / weekly history). isDaily: false
+                // keeps the "completed today" daily-ritual flag intact.
+                dailyQuizManager.recordCompletion(summary: summary, isDaily: false)
+                session.updateCurrentFocus(category.title)
+                session.updateTopMistakePatterns(summary.mistakeTypes)
+            }
+        }
         .sheet(isPresented: $showPaywall) {
             NavigationStack {
                 PaywallView(source: "Practice")
@@ -138,6 +138,8 @@ struct TrainPracticeView: View {
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
         .modifier(IconRowBackground(photo: photo))
+        // Whole-row hit target — the photo background alone isn't tappable.
+        .contentShape(Rectangle())
     }
 }
 
