@@ -94,8 +94,8 @@ struct OnboardingCopy {
           "Ahmet'e neden sürekli kaybediyorum?")
     }
     var showcaseCoachReply: String {
-        t("You've logged 2 losses to Alex — same pattern both times: your serve rating drops in set 2 and you stop going wide. Start T-heavy, and run your 30–30 reset before he rushes you.",
-          "Ahmet'e karşı 2 kayıtlı mağlubiyetin var — ikisinde de aynı desen: 2. sette servis puanın düşüyor ve açığa gitmeyi bırakıyorsun. T-ağırlıklı başla ve o seni aceleye getirmeden 30–30 sıfırlama rutinini çalıştır.")
+        t("You've logged 2 losses to Alex — same pattern both times: your serve rating drops in set 2 and you stop going wide. Keep the wide serve in play, and slow things down between points — he wins when he rushes you.",
+          "Ahmet'e karşı 2 kayıtlı mağlubiyetin var — ikisinde de aynı desen: 2. sette servis puanın düşüyor ve dışa servisi bırakıyorsun. Dışa servisi oyunda tut, sayılar arasında tempoyu düşür — o, seni acele ettirdiğinde kazanıyor.")
     }
 
     // Finale slide — honest scale, told big: one floor number that only grows
