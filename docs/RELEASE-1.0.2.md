@@ -1,6 +1,6 @@
 # DropVolley 1.0.2 (build 27) — Release paketi
 
-**Tema:** Freemium açılış + "zahmetsiz kullanım" UX diyeti + AI grounding.
+**Tema:** Freemium açılış + "zahmetsiz kullanım" UX diyeti + AI grounding + doubles karşılıklı profil.
 Branch: `fix/app-store-rejection-build14` (main'e FF-merge bekliyor, aşağıda).
 
 ## Bu sürümde ne var
@@ -20,9 +20,12 @@ Branch: `fix/app-store-rejection-build14` (main'e FF-merge bekliyor, aşağıda)
 | AI grounding | Doubles skoru istemcide deterministik; match sinyalleri kural-tabanlı; edge fonksiyonlarına tenis referansları + **global bütçe kesicisi** (deploy bekliyor, aşağıda). |
 | İçerik derinliği | **Quiz bankası 66 → 156** (kategori başına 26, TR+EN, 77 diyagramlı) — günlük ritüel ~13 günden ~31 güne tekrarsız. |
 | Practice düzeltmesi | Practice grid'inde Home'dakiyle aynı mis-routing + ölü dokunma bug'ı bulunup düzeltildi (Doubles tile Drill açıyordu). |
+| Ölü dokunma kök nedeni | `BrandedPhotoBackground` scaledToFill görselleri `.clipped()` dışında hit-test alıyordu → komşu buton/satırların dokunuşlarını yutuyordu. `.allowsHitTesting(false)` ile kalıcı çözüm (Doubles davet butonları, Home, Practice). |
+| Doubles: karşılıklı profil | Bağlı eşleşmelerde rapor artık **"Eşleşme" bölümü** gösteriyor: Sen \| Partner yan yana mini profil kartları (seviye, stil, güçlü yönler, gelişim alanları). Paylaşım davet + kabul ekranlarında tek satırla açıkça bildiriliyor (EN/TR). İki simülatörle E2E doğrulandı; deterministik skor iki tarafta tutarlı. |
 
 ## Bilinen takipler (1.0.3 adayları)
-- **İspanyolca lokalizasyon (es.lproj):** ~824 string + quiz bankasına `*Es` alanları + `t(en,tr)` yardımcılarının 3-dil refaktörü + ASC ES metadata. (Sahip istedi, 3 Tem 2026.)
+- **[RAFTA] İspanyolca lokalizasyon (es.lproj):** sahip 3 Tem 2026'da rafa kaldırdı ("İspanyolca konuşan pazar app'e para ödeyen bir pazar değil"). İstenmeden önerme. Kapsam hazır: ~824 string + quiz bankasına `*Es` alanları + `t(en,tr)` yardımcılarının 3-dil refaktörü + ASC ES metadata.
+- **Doubles Bölüm B — yakın çevre eşleştirme:** kulüp havuzları → AI partner önerisi (mental + oyun stili uyumu). Soğuk başlangıç + güvenlik tasarımı gerektiriyor; spec dokümanı yayın sonrası (docs/DOUBLES-MATCHMAKING.md).
 - **Günlük ipucu yüzeyi:** `TodayView` IA yenilemesinden beri hiçbir yerden çağrılmıyor — 50 kaliteli ipucu görünmez durumda ve **TR alanları yok**. 1.0.3: ipucu kartını Home'a geri çıkar + `DailyTip`'e TR ekle (+10 yeni ipucu → 60).
 - **Ölü kod temizliği:** `CourtIQ/App/TodayView.swift` ve `CourtIQ/App/PracticeView.swift` orphan.
 - Tekrar-oynanabilirlik mekaniği: hata desenlerinden "review session" + haftalık IQ seviyesi.
@@ -30,10 +33,10 @@ Branch: `fix/app-store-rejection-build14` (main'e FF-merge bekliyor, aşağıda)
 ## App Store Connect — kopyala-yapıştır
 
 **What's New (TR):**
-> DropVolley artık ücretsiz başlıyor! • Yepyeni, 1 dakikalık hızlı kurulum • Maçını sesle kaydet — konuş, biz yazalım • Daha akıcı Swing Analizi başlangıcı • Yazı boyutu artık her yerde erişilebilirlik ayarınla ölçekleniyor • Hata düzeltmeleri ve genel cilalar
+> DropVolley artık ücretsiz başlıyor! • Yepyeni, 1 dakikalık hızlı kurulum • Maçını sesle kaydet — konuş, biz yazalım • Doubles: partnerinle eşleşince raporda artık iki oyuncunun profili yan yana • Daha akıcı Swing Analizi başlangıcı • Yazı boyutu artık her yerde erişilebilirlik ayarınla ölçekleniyor • Hata düzeltmeleri ve genel cilalar
 
 **What's New (EN):**
-> DropVolley now starts free! • All-new 1-minute setup • Log matches by voice — just talk, we'll write it down • Smoother Swing Analysis start • Text now scales with your accessibility settings • Bug fixes and polish
+> DropVolley now starts free! • All-new 1-minute setup • Log matches by voice — just talk, we'll write it down • Doubles: pair up and see both players' profiles side by side in your report • Smoother Swing Analysis start • Text now scales with your accessibility settings • Bug fixes and polish
 
 **Promotional Text (EN, 170 kr.):**
 > Most tennis apps track your score. DropVolley makes you smarter on court — AI coach, swing scores, match insights. Free to start.
@@ -51,7 +54,7 @@ Branch: `fix/app-store-rejection-build14` (main'e FF-merge bekliyor, aşağıda)
    `yes | supabase db push` → `supabase functions deploy match-analysis doubles-analysis swing-analysis --use-api` → smoke.
    *Neden şart:* istemci 1.0.2 doubles skorunu kendisi hesaplayıp gönderiyor; canlı fonksiyon deploy edilmezse metindeki skor ile ekrandaki skor çelişebilir. Kesici de bu pakette.
 2. ☐ **Main'e merge + push (Claude, açık onayla):** `git checkout main && git merge --ff-only fix/app-store-rejection-build14 && git push origin main` (FF garantili: 150 önde / 0 geride).
-3. ☑ Archive: `DropVolley-1.0.2-27.xcarchive` → Xcode Organizer'da.
+3. ☑ Archive: `DropVolley-1.0.2-27.xcarchive` (3 Tem 2026 — doubles karşılıklı profil + hit-testing kök neden düzeltmesi dahil; eski tarihli arşivleri KULLANMA) → Xcode Organizer'da.
 4. ☐ **Upload (insan):** Xcode → Organizer → Distribute App → App Store Connect (Apple ID/2FA gerektiği için Can).
 5. ☐ ASC: What's New yapıştır (yukarıda), fiyat/IAP değişmedi, gönder.
 6. ☐ Gönderim sonrası: `git tag v1.0.2 && git push origin v1.0.2`.
