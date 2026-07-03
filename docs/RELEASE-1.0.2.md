@@ -18,6 +18,13 @@ Branch: `fix/app-store-rejection-build14` (main'e FF-merge bekliyor, aşağıda)
 | Erişilebilirlik | Dynamic Type 191 sitede; ikon-buton etiketleri; VoiceOver düzeltmeleri. |
 | Home | Coach hero + eşit Swing/IQ + tam-genişlik satırlar; ölü dokunma alanı düzeltildi (`contentShape`). |
 | AI grounding | Doubles skoru istemcide deterministik; match sinyalleri kural-tabanlı; edge fonksiyonlarına tenis referansları + **global bütçe kesicisi** (deploy bekliyor, aşağıda). |
+| İçerik derinliği | **Quiz bankası 66 → 156** (kategori başına 26, TR+EN, 77 diyagramlı) — günlük ritüel ~13 günden ~31 güne tekrarsız. |
+| Practice düzeltmesi | Practice grid'inde Home'dakiyle aynı mis-routing + ölü dokunma bug'ı bulunup düzeltildi (Doubles tile Drill açıyordu). |
+
+## Bilinen takipler (1.0.3 adayları)
+- **Günlük ipucu yüzeyi:** `TodayView` IA yenilemesinden beri hiçbir yerden çağrılmıyor — 50 kaliteli ipucu görünmez durumda ve **TR alanları yok**. 1.0.3: ipucu kartını Home'a geri çıkar + `DailyTip`'e TR ekle (+10 yeni ipucu → 60).
+- **Ölü kod temizliği:** `CourtIQ/App/TodayView.swift` ve `CourtIQ/App/PracticeView.swift` orphan.
+- Tekrar-oynanabilirlik mekaniği: hata desenlerinden "review session" + haftalık IQ seviyesi.
 
 ## App Store Connect — kopyala-yapıştır
 
