@@ -91,11 +91,11 @@ struct OnboardingCopy {
     // from YOUR match journal. (ChatGPT would have to ask "who is Alex?")
     var showcaseCoachQuestion: String {
         t("Why do I keep losing to Alex?",
-          "Alex'e neden sürekli kaybediyorum?")
+          "Ahmet'e neden sürekli kaybediyorum?")
     }
     var showcaseCoachReply: String {
         t("You've logged 2 losses to Alex — same pattern both times: your serve rating drops in set 2 and you stop going wide. Start T-heavy, and run your 30–30 reset before he rushes you.",
-          "Alex'e 2 kayıtlı mağlubiyetin var — ikisinde de aynı desen: 2. sette servis puanın düşüyor ve açığa gitmeyi bırakıyorsun. T-ağırlıklı başla ve o seni aceleye getirmeden 30–30 sıfırlama rutinini çalıştır.")
+          "Ahmet'e karşı 2 kayıtlı mağlubiyetin var — ikisinde de aynı desen: 2. sette servis puanın düşüyor ve açığa gitmeyi bırakıyorsun. T-ağırlıklı başla ve o seni aceleye getirmeden 30–30 sıfırlama rutinini çalıştır.")
     }
 
     // Finale slide — honest scale, told big: one floor number that only grows

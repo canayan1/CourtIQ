@@ -22,6 +22,7 @@ Branch: `fix/app-store-rejection-build14` (main'e FF-merge bekliyor, aşağıda)
 | Practice düzeltmesi | Practice grid'inde Home'dakiyle aynı mis-routing + ölü dokunma bug'ı bulunup düzeltildi (Doubles tile Drill açıyordu). |
 
 ## Bilinen takipler (1.0.3 adayları)
+- **İspanyolca lokalizasyon (es.lproj):** ~824 string + quiz bankasına `*Es` alanları + `t(en,tr)` yardımcılarının 3-dil refaktörü + ASC ES metadata. (Sahip istedi, 3 Tem 2026.)
 - **Günlük ipucu yüzeyi:** `TodayView` IA yenilemesinden beri hiçbir yerden çağrılmıyor — 50 kaliteli ipucu görünmez durumda ve **TR alanları yok**. 1.0.3: ipucu kartını Home'a geri çıkar + `DailyTip`'e TR ekle (+10 yeni ipucu → 60).
 - **Ölü kod temizliği:** `CourtIQ/App/TodayView.swift` ve `CourtIQ/App/PracticeView.swift` orphan.
 - Tekrar-oynanabilirlik mekaniği: hata desenlerinden "review session" + haftalık IQ seviyesi.
