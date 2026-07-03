@@ -24,6 +24,10 @@ struct DoublesView: View {
                     // Secondary path: the existing solo "analyze a partner
                     // manually" flow, kept fully intact below the invite loop.
                     manualSection
+
+                    // Bridge to the doubles practice content: the same
+                    // scenarios the reports' game plans lean on.
+                    DoublesQuizBridgeCard()
                 }
                 .padding(20)
             }

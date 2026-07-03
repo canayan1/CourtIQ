@@ -79,6 +79,14 @@ struct DoublesCopy {
     }
     var reAnalyzeCTA: String { t("Analyze again", "Tekrar analiz et") }
 
+    // MARK: Doubles IQ bridge (report → practice quiz)
+    var quizBridgeEyebrow: String { t("Keep building", "Gelişmeye devam") }
+    var quizBridgeTitle: String { t("Sharpen your doubles IQ", "Doubles IQ'nu keskinleştir") }
+    var quizBridgeSubtitle: String {
+        t("Quick doubles scenarios — train the calls your report points at.",
+          "Hızlı doubles senaryoları — raporunun işaret ettiği kararları çalış.")
+    }
+
     // MARK: Delete
     var deletePartnerCTA: String { t("Delete partner", "Partneri sil") }
     var deletePartnerConfirm: String {

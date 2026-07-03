@@ -43,6 +43,39 @@ enum DoublesProfileBuilder {
     }
 }
 
+/// The name a doubles partner sees. Accounts without a chosen name fall back
+/// to generic placeholders ("Player", "Guest Player"…) — partners should never
+/// see those, so the invite/accept flows ask once and remember the answer here.
+enum DoublesDisplayName {
+    private static let key = "DropVolley.doubles.displayName"
+    /// Generic account-name fallbacks that mean "the user never picked a name".
+    private static let placeholders: Set<String> = ["Player", "Guest Player", "DropVolley Player"]
+
+    static var stored: String? {
+        let trimmed = UserDefaults.standard.string(forKey: key)?
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+        return (trimmed?.isEmpty == false) ? trimmed : nil
+    }
+
+    static func store(_ name: String) {
+        UserDefaults.standard.set(
+            name.trimmingCharacters(in: .whitespacesAndNewlines),
+            forKey: key
+        )
+    }
+
+    /// The name to put on a pairing: the stored doubles name, else the user's
+    /// real account name. Nil when only a generic placeholder exists — the
+    /// caller should ask for a name before creating/accepting an invite.
+    @MainActor
+    static func resolve(session: UserSessionManager) -> String? {
+        if let stored { return stored }
+        let name = session.displayName.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !name.isEmpty, !placeholders.contains(name) else { return nil }
+        return name
+    }
+}
+
 // MARK: - Invite copy (EN/TR)
 
 /// Self-contained bilingual copy for the invite loop, mirroring `DoublesCopy`.
@@ -92,6 +125,17 @@ struct DoublesInviteCopy {
         t("Accepting links you both and unlocks your compatibility report.",
           "Kabul etmek ikinizi bağlar ve uyum raporunuzu açar.")
     }
+    /// Peek fallback when the inviter left no name.
+    var somePlayer: String { t("A player", "Bir oyuncu") }
+
+    // Name step (shown once when the account has no real display name)
+    var nameTitle: String { t("What should your partner see?", "Partnerin seni hangi adla görsün?") }
+    var namePlaceholder: String { t("Your name", "Adın") }
+    var nameNote: String {
+        t("Shown on the pairing and in your report. You can use a nickname.",
+          "Eşleşmede ve raporunda görünür. Takma ad kullanabilirsin.")
+    }
+    var nameCTA: String { t("Save & continue", "Kaydet ve devam et") }
 
     // Lists
     var activeHeader: String { t("Your pairings", "Eşleşmelerin") }
@@ -152,6 +196,7 @@ struct DoublesInviteSection: View {
     @State private var createdPartnership: DoublesPartnership?
     @State private var showAcceptSheet = false
     @State private var showProfileGate = false
+    @State private var showNameSheet = false
     @State private var isWorking = false
     @State private var errorMessage: String?
     @State private var showError = false
@@ -172,6 +217,13 @@ struct DoublesInviteSection: View {
             if let partnership = createdPartnership {
                 DoublesInviteShareSheet(partnership: partnership)
             }
+        }
+        .sheet(isPresented: $showNameSheet, onDismiss: {
+            // Saved a name → continue the invite the user already asked for.
+            // (A plain cancel leaves nothing stored, so nothing re-fires.)
+            if DoublesDisplayName.stored != nil { startInvite() }
+        }) {
+            DoublesNameSheet()
         }
         .sheet(isPresented: $showAcceptSheet) {
             DoublesAcceptSheet(onAccepted: { Task { await refresh() } })
@@ -319,7 +371,13 @@ struct DoublesInviteSection: View {
             showProfileGate = true
             return
         }
-        guard let myProfile = DoublesProfileBuilder.current(name: session.displayName, language: lang.language) else {
+        // Partners should see a real name, not the "Player" account fallback —
+        // ask once, then continue the invite automatically.
+        guard let myName = DoublesDisplayName.resolve(session: session) else {
+            showNameSheet = true
+            return
+        }
+        guard let myProfile = DoublesProfileBuilder.current(name: myName, language: lang.language) else {
             showProfileGate = true
             return
         }
@@ -329,7 +387,7 @@ struct DoublesInviteSection: View {
             do {
                 let supabaseSession = try await ensureSession()
                 let partnership = try await service.createInvite(
-                    myName: session.displayName,
+                    myName: myName,
                     myProfile: myProfile,
                     session: supabaseSession
                 )
@@ -371,6 +429,75 @@ struct DoublesInviteSection: View {
             }
         }
         throw lastError ?? RemoteDataError.missingConfiguration
+    }
+}
+
+// MARK: - One-time doubles name sheet
+
+/// Asks (once) for the name a partner will see, stores it via
+/// `DoublesDisplayName`, and dismisses. The presenter continues the pending
+/// action from its `onDismiss` when a name was saved.
+struct DoublesNameSheet: View {
+    @EnvironmentObject private var lang: LanguageManager
+    @Environment(\.dismiss) private var dismiss
+
+    @State private var name = ""
+
+    private var copy: DoublesInviteCopy { DoublesInviteCopy(lang: lang.language) }
+    private var trimmed: String { name.trimmingCharacters(in: .whitespacesAndNewlines) }
+
+    var body: some View {
+        NavigationStack {
+            ZStack {
+                AppPalette.cream.ignoresSafeArea()
+                VStack(spacing: 18) {
+                    Image(systemName: "person.crop.circle.badge.checkmark")
+                        .appFont(40, design: .default)
+                        .foregroundStyle(AppPalette.clay)
+
+                    Text(copy.nameTitle)
+                        .font(.title3.weight(.bold))
+                        .foregroundStyle(AppPalette.ink)
+                        .multilineTextAlignment(.center)
+
+                    TextField(copy.namePlaceholder, text: $name)
+                        .font(.title3.weight(.semibold))
+                        .multilineTextAlignment(.center)
+                        .textInputAutocapitalization(.words)
+                        .autocorrectionDisabled()
+                        .padding(.vertical, 14)
+                        .frame(maxWidth: .infinity)
+                        .background(AppPalette.parchment)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                .stroke(AppPalette.sand, lineWidth: 1)
+                        )
+                        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+
+                    Text(copy.nameNote)
+                        .font(.footnote)
+                        .foregroundStyle(AppPalette.inkSoft)
+                        .multilineTextAlignment(.center)
+
+                    Button {
+                        DoublesDisplayName.store(trimmed)
+                        Haptics.success()
+                        dismiss()
+                    } label: {
+                        Text(copy.nameCTA)
+                            .font(.headline)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 13)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .tint(AppPalette.clay)
+                    .disabled(trimmed.isEmpty)
+                }
+                .padding(24)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+            }
+        }
+        .presentationDetents([.medium])
     }
 }
 
@@ -495,7 +622,11 @@ struct DoublesPartnershipReportView: View {
         case .analyzing:
             MatchAnalyzingView(title: copy.analyzingTitle, stepLabels: copy.analyzingSteps)
         case .ready(let report):
-            DoublesReportDetailView(report: report, pair: pairProfiles)
+            DoublesReportDetailView(
+                report: report,
+                pair: pairProfiles,
+                onReanalyze: { Task { await runAnalysis(force: true) } }
+            )
         case .failed:
             VStack(spacing: 16) {
                 Image(systemName: "exclamationmark.triangle")
@@ -723,6 +854,7 @@ struct DoublesAcceptSheet: View {
     }
     @State private var step: Step = .enterCode
     @State private var code = ""
+    @State private var partnerFacingName = ""
     @State private var isWorking = false
     @State private var errorMessage: String?
     @State private var showError = false
@@ -830,6 +962,30 @@ struct DoublesAcceptSheet: View {
                 .foregroundStyle(AppPalette.inkSoft)
                 .fixedSize(horizontal: false, vertical: true)
 
+            // Accounts without a real name pick one here (once) — the inviter
+            // should see who joined, not the "Player" fallback.
+            if DoublesDisplayName.resolve(session: session) == nil {
+                VStack(spacing: 8) {
+                    TextField(copy.namePlaceholder, text: $partnerFacingName)
+                        .font(.headline)
+                        .multilineTextAlignment(.center)
+                        .textInputAutocapitalization(.words)
+                        .autocorrectionDisabled()
+                        .padding(.vertical, 12)
+                        .frame(maxWidth: .infinity)
+                        .background(AppPalette.parchment)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                                .stroke(AppPalette.sand, lineWidth: 1)
+                        )
+                        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                    Text(copy.nameNote)
+                        .font(.caption)
+                        .foregroundStyle(AppPalette.inkSoft)
+                        .multilineTextAlignment(.center)
+                }
+            }
+
             Button {
                 accept()
             } label: {
@@ -840,8 +996,16 @@ struct DoublesAcceptSheet: View {
             }
             .buttonStyle(.borderedProminent)
             .tint(AppPalette.clay)
-            .disabled(isWorking)
+            .disabled(isWorking || resolvedAcceptName == nil)
         }
+    }
+
+    /// The name to accept with: an existing doubles/account name, else what
+    /// the user just typed. Nil disables Accept.
+    private var resolvedAcceptName: String? {
+        if let existing = DoublesDisplayName.resolve(session: session) { return existing }
+        let typed = partnerFacingName.trimmingCharacters(in: .whitespacesAndNewlines)
+        return typed.isEmpty ? nil : typed
     }
 
     private func unavailableStep(title: String, message: String) -> some View {
@@ -899,7 +1063,7 @@ struct DoublesAcceptSheet: View {
                 }
 
                 let name = result.inviterName?.trimmingCharacters(in: .whitespacesAndNewlines)
-                step = .confirm(inviterName: (name?.isEmpty == false ? name! : "A player"))
+                step = .confirm(inviterName: (name?.isEmpty == false ? name! : copy.somePlayer))
             } catch {
                 present(error)
             }
@@ -907,10 +1071,16 @@ struct DoublesAcceptSheet: View {
     }
 
     private func accept() {
+        guard let myName = resolvedAcceptName else { return }
         guard DoublesProfileBuilder.hasCompletedProfile,
-              let myProfile = DoublesProfileBuilder.current(name: session.displayName, language: lang.language) else {
+              let myProfile = DoublesProfileBuilder.current(name: myName, language: lang.language) else {
             showProfileGate = true
             return
+        }
+        // Remember a freshly typed name so every later flow (and the invite
+        // side) uses it without asking again.
+        if DoublesDisplayName.resolve(session: session) == nil {
+            DoublesDisplayName.store(myName)
         }
         isWorking = true
         Task {
@@ -919,7 +1089,7 @@ struct DoublesAcceptSheet: View {
                 let supabaseSession = try await ensureSession()
                 _ = try await service.acceptInvite(
                     code: trimmedCode,
-                    myName: session.displayName,
+                    myName: myName,
                     myProfile: myProfile,
                     session: supabaseSession
                 )
