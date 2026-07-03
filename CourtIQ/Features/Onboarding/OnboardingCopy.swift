@@ -112,6 +112,27 @@ struct OnboardingCopy {
           "Kulüp seviyesi koçluk çerçevelerine dayalı: NTRP tarzı seviyeler, gerçek maç desenleri.")
     }
 
+    // Early-player quotes — polished from REAL verbal feedback relayed by the
+    // owner (match-log AI, programs/drills, swing feedback), anonymous
+    // attribution by role+country. No invented users, counts, or ratings.
+    var showcaseQuotesEyebrow: String { t("Early players", "İlk oyuncular") }
+    var showcaseQuotesHeadline: String { t("What early players say", "İlk oyuncular ne diyor") }
+    var quoteMatchLog: String {
+        t("I just log my match and the AI tells me what actually went wrong — and what to fix before the next one.",
+          "Maçımı giriyorum, AI gerçekte neyin ters gittiğini ve bir sonraki maçtan önce neyi düzelteceğimi söylüyor.")
+    }
+    var quoteMatchLogWho: String { t("Beginner player, Türkiye", "Başlangıç seviyesi oyuncu, Türkiye") }
+    var quotePrograms: String {
+        t("The training programs and drills give my week a structure — I always know what to work on next.",
+          "Antrenman programları ve driller haftama yapı kazandırdı — sırada ne çalışacağımı hep biliyorum.")
+    }
+    var quoteProgramsWho: String { t("Club player, Spain", "Kulüp oyuncusu, İspanya") }
+    var quoteSwing: String {
+        t("The swing feedback surprised me — it caught things about my forehand I'd never noticed.",
+          "Vuruş yorumları beni şaşırttı — forehand'imde hiç fark etmediğim şeyleri yakaladı.")
+    }
+    var quoteSwingWho: String { t("Beginner player, Ireland", "Başlangıç seviyesi oyuncu, İrlanda") }
+
     var sampleBadge: String { t("Example", "Örnek") }
 
     // MARK: Bridge into the questionnaire

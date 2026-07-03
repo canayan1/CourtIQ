@@ -265,7 +265,59 @@ private struct ShowcaseSlide: Identifiable {
                 photo: "PhotoHero",
                 sample: AnyView(NumbersSampleCard(copy: copy))
             ),
+            ShowcaseSlide(
+                eyebrow: copy.showcaseQuotesEyebrow,
+                headline: copy.showcaseQuotesHeadline,
+                photo: "PhotoNet",
+                sample: AnyView(QuotesSampleCard(copy: copy))
+            ),
         ]
+    }
+}
+
+// Early players — three real (owner-relayed, role-attributed) quotes arriving
+// one by one. The human close of the reel, right before the questionnaire.
+private struct QuotesSampleCard: View {
+    let copy: OnboardingCopy
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            quoteCard(copy.quoteMatchLog, who: copy.quoteMatchLogWho)
+                .demoReveal(0.15)
+            quoteCard(copy.quotePrograms, who: copy.quoteProgramsWho)
+                .demoReveal(0.55)
+            quoteCard(copy.quoteSwing, who: copy.quoteSwingWho)
+                .demoReveal(0.95)
+        }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(copy.showcaseQuotesHeadline)
+    }
+
+    private func quoteCard(_ text: String, who: String) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(alignment: .top, spacing: 10) {
+                Image(systemName: "quote.opening")
+                    .appFont(14, weight: .bold, design: .default)
+                    .foregroundStyle(AppPalette.clay)
+                    .padding(.top, 2)
+                Text(text)
+                    .font(.subheadline)
+                    .foregroundStyle(AppPalette.ink)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            Text("— \(who)")
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(AppPalette.inkSoft)
+                .frame(maxWidth: .infinity, alignment: .trailing)
+        }
+        .padding(14)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppPalette.parchment)
+        .overlay(
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .stroke(AppPalette.sand, lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
     }
 }
 
