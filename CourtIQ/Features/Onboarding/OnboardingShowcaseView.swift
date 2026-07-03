@@ -1,4 +1,5 @@
 import SwiftUI
+import AVFoundation
 
 /// First-launch HOOK + FEATURE SHOWCASE that opens the app, BEFORE the Tennis
 /// Profile questionnaire. Two pieces, both presented by `OnboardingFlowView`:
@@ -187,9 +188,78 @@ private struct ShowcaseSlideView: View {
                 // playing its staged demo every time the page becomes active.
                 slide.sample
                     .id(active)
+
+                // A small, centered loop of the REAL app (screen-recorded from
+                // this build) fills the slide's lower whitespace — the honest
+                // "see it actually moving" moment. Only mounted while the page
+                // is active so a single player exists at a time.
+                if slide.showsTourVideo, active {
+                    TourLoopVideo()
+                        .frame(height: 210)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .padding(.top, 2)
+                }
             }
             .padding(.vertical, 8)
         }
+    }
+}
+
+// MARK: - Tour loop (bundled screen recording of the real app)
+
+/// Muted, looping, non-interactive mini phone screen — `onboarding_tour.mp4`
+/// (Home → Doubles → Train → Practice → quiz diagram, 12s). Under Reduce
+/// Motion the player stays paused on its first frame.
+private struct TourLoopVideo: View {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    var body: some View {
+        if let url = Bundle.main.url(forResource: "onboarding_tour", withExtension: "mp4") {
+            LoopingPlayerView(url: url, autoplay: !reduceMotion)
+                .aspectRatio(386.0 / 840.0, contentMode: .fit)
+                .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 18, style: .continuous)
+                        .stroke(AppPalette.sand, lineWidth: 1)
+                )
+                .accessibilityHidden(true)
+        }
+    }
+}
+
+private struct LoopingPlayerView: UIViewRepresentable {
+    let url: URL
+    let autoplay: Bool
+
+    func makeUIView(context: Context) -> PlayerLayerView {
+        let view = PlayerLayerView()
+        let item = AVPlayerItem(url: url)
+        let player = AVQueuePlayer(playerItem: item)
+        player.isMuted = true
+        player.preventsDisplaySleepDuringVideoPlayback = false
+        context.coordinator.looper = AVPlayerLooper(player: player, templateItem: item)
+        view.playerLayer.player = player
+        view.playerLayer.videoGravity = .resizeAspectFill
+        if autoplay { player.play() }
+        return view
+    }
+
+    func updateUIView(_ uiView: PlayerLayerView, context: Context) {}
+
+    static func dismantleUIView(_ uiView: PlayerLayerView, coordinator: Coordinator) {
+        uiView.playerLayer.player?.pause()
+        uiView.playerLayer.player = nil
+    }
+
+    func makeCoordinator() -> Coordinator { Coordinator() }
+
+    final class Coordinator {
+        var looper: AVPlayerLooper?
+    }
+
+    final class PlayerLayerView: UIView {
+        override static var layerClass: AnyClass { AVPlayerLayer.self }
+        var playerLayer: AVPlayerLayer { layer as! AVPlayerLayer }
     }
 }
 
@@ -226,6 +296,9 @@ private struct ShowcaseSlide: Identifiable {
     let headline: String
     let photo: String
     let sample: AnyView
+    /// Feature slides fill their lower whitespace with the real-app tour loop;
+    /// the numbers/quotes finale slides are already full.
+    var showsTourVideo: Bool = false
 
     static func all(_ copy: OnboardingCopy) -> [ShowcaseSlide] {
         [
@@ -233,31 +306,36 @@ private struct ShowcaseSlide: Identifiable {
                 eyebrow: copy.showcaseSwingEyebrow,
                 headline: copy.showcaseSwingHeadline,
                 photo: "PhotoForehand",
-                sample: AnyView(SwingSampleCard(copy: copy))
+                sample: AnyView(SwingSampleCard(copy: copy)),
+                showsTourVideo: true
             ),
             ShowcaseSlide(
                 eyebrow: copy.showcaseMatchEyebrow,
                 headline: copy.showcaseMatchHeadline,
                 photo: "PhotoMatch",
-                sample: AnyView(MatchSampleCard(copy: copy))
+                sample: AnyView(MatchSampleCard(copy: copy)),
+                showsTourVideo: true
             ),
             ShowcaseSlide(
                 eyebrow: copy.showcaseDoublesEyebrow,
                 headline: copy.showcaseDoublesHeadline,
                 photo: "PhotoDoubles",
-                sample: AnyView(DoublesSampleCard(copy: copy))
+                sample: AnyView(DoublesSampleCard(copy: copy)),
+                showsTourVideo: true
             ),
             ShowcaseSlide(
                 eyebrow: copy.showcaseQuizEyebrow,
                 headline: copy.showcaseQuizHeadline,
                 photo: "PhotoCourt",
-                sample: AnyView(QuizSampleCard(copy: copy))
+                sample: AnyView(QuizSampleCard(copy: copy)),
+                showsTourVideo: true
             ),
             ShowcaseSlide(
                 eyebrow: copy.showcaseCoachEyebrow,
                 headline: copy.showcaseCoachHeadline,
                 photo: "PhotoCoach",
-                sample: AnyView(CoachSampleCard(copy: copy))
+                sample: AnyView(CoachSampleCard(copy: copy)),
+                showsTourVideo: true
             ),
             ShowcaseSlide(
                 eyebrow: copy.showcaseNumbersEyebrow,

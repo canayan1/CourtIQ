@@ -71,6 +71,10 @@ struct CourtIQApp: App {
     @MainActor
     static func seedPreviewData() {
         UserSessionManager.shared.debugMarkOnboarded()
+        // Seeded = "returning user": suppress the first-run activation cover
+        // too, or every seeded launch (UI tests, screenshot runs) lands on the
+        // activation instead of Home.
+        UserSessionManager.shared.markActivationSeen()
         UserSessionManager.shared.subscriptionManager.debugGrantPremium()
         HealthAcknowledgment.recordAcceptance()
 

@@ -62,6 +62,7 @@
 		A000000000000000000054 /* CommunityViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000044 /* CommunityViews.swift */; };
 		A000000000000000000055 /* LegalDocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000045 /* LegalDocumentView.swift */; };
 		A000000000000000000057 /* quiz_questions.json in Resources */ = {isa = PBXBuildFile; fileRef = A000000000000000000047 /* quiz_questions.json */; };
+		A0000000000000000009F2 /* onboarding_tour.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A0000000000000000009F1 /* onboarding_tour.mp4 */; };
 		A000000000000000000058 /* training_programs.json in Resources */ = {isa = PBXBuildFile; fileRef = A000000000000000000048 /* training_programs.json */; };
 		A000000000000000000059 /* mobility_flows.json in Resources */ = {isa = PBXBuildFile; fileRef = A000000000000000000049 /* mobility_flows.json */; };
 		A00000000000000000005B /* DailyTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000005A /* DailyTip.swift */; };
@@ -219,6 +220,7 @@
 		A000000000000000000045 /* LegalDocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LegalDocumentView.swift; path = CourtIQ/Features/Legal/LegalDocumentView.swift; sourceTree = "<group>"; };
 		A000000000000000000046 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = CourtIQ/Assets.xcassets; sourceTree = "<group>"; };
 		A000000000000000000047 /* quiz_questions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = quiz_questions.json; path = CourtIQ/Resources/Content/quiz_questions.json; sourceTree = "<group>"; };
+		A0000000000000000009F1 /* onboarding_tour.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = onboarding_tour.mp4; path = CourtIQ/Resources/Content/onboarding_tour.mp4; sourceTree = "<group>"; };
 		A000000000000000000048 /* training_programs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = training_programs.json; path = CourtIQ/Resources/Content/training_programs.json; sourceTree = "<group>"; };
 		A000000000000000000049 /* mobility_flows.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = mobility_flows.json; path = CourtIQ/Resources/Content/mobility_flows.json; sourceTree = "<group>"; };
 		A00000000000000000005A /* DailyTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DailyTip.swift; path = CourtIQ/Core/Models/DailyTip.swift; sourceTree = "<group>"; };
@@ -456,6 +458,7 @@
 				A000000000000000000033 /* TrainingProgramDetailView.swift */,
 				A000000000000000000046 /* Assets.xcassets */,
 				A000000000000000000047 /* quiz_questions.json */,
+				A0000000000000000009F1 /* onboarding_tour.mp4 */,
 				A000000000000000000048 /* training_programs.json */,
 				A000000000000000000049 /* mobility_flows.json */,
 				A000000000000000000005 /* Products */,
@@ -622,6 +625,7 @@
 			files = (
 				A000000000000000000060 /* Assets.xcassets in Resources */,
 				A000000000000000000057 /* quiz_questions.json in Resources */,
+				A0000000000000000009F2 /* onboarding_tour.mp4 in Resources */,
 				A000000000000000000058 /* training_programs.json in Resources */,
 				A000000000000000000059 /* mobility_flows.json in Resources */,
 				A00000000000000000006A /* Localizable.strings in Resources */,
