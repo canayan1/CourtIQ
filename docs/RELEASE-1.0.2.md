@@ -22,12 +22,16 @@ Branch: `fix/app-store-rejection-build14` (main'e FF-merge bekliyor, aşağıda)
 | Practice düzeltmesi | Practice grid'inde Home'dakiyle aynı mis-routing + ölü dokunma bug'ı bulunup düzeltildi (Doubles tile Drill açıyordu). |
 | Ölü dokunma kök nedeni | `BrandedPhotoBackground` scaledToFill görselleri `.clipped()` dışında hit-test alıyordu → komşu buton/satırların dokunuşlarını yutuyordu. `.allowsHitTesting(false)` ile kalıcı çözüm (Doubles davet butonları, Home, Practice). |
 | Doubles: karşılıklı profil | Bağlı eşleşmelerde rapor artık **"Eşleşme" bölümü** gösteriyor: Sen \| Partner yan yana mini profil kartları (seviye, stil, güçlü yönler, gelişim alanları). Paylaşım davet + kabul ekranlarında tek satırla açıkça bildiriliyor (EN/TR). İki simülatörle E2E doğrulandı; deterministik skor iki tarafta tutarlı. |
+| AI onay ekranları (4 özellik) | Swing/Maç/Mental/Doubles onayları Coach kalıbına çekildi: fayda-önce başlık + 3 dürüst satır; "Google LLC, ABD merkezli üçüncü taraf…" paragrafı yerine tek kilit satırı (Gemini adıyla) + "Tam olarak ne paylaşılıyor?" açılırı (ABD işleme + Agree'siz gönderim yok maddeleri aynı ekranda). 5.1.1(i)/5.1.2(i) özü korunur; consent sürümleri değişmedi. |
+| Paywall dürüstlüğü (denetim) | Hard-paywall kalıntısı hero ("Every drill, quiz… in one membership") ve EN-only eski benefit listesi, artık ücretsiz olan içeriği premium gibi satıyordu. Yeni hero + 3 lokalize bullet yalnızca gerçek premium'u anlatıyor (AI Koç + vuruş analizi, "gerisi zaten ücretsiz" çerçevesi). |
+| Mikrofon izin metni (denetim) | `NSMicrophoneUsageDescription` yalnız swing videosunu anlatıyordu; sesli maç notu da mikrofonu kullanıyor. İki kullanımı da kapsayacak şekilde genişletildi. |
 
 ## Bilinen takipler (1.0.3 adayları)
 - **[RAFTA] İspanyolca lokalizasyon (es.lproj):** sahip 3 Tem 2026'da rafa kaldırdı ("İspanyolca konuşan pazar app'e para ödeyen bir pazar değil"). İstenmeden önerme. Kapsam hazır: ~824 string + quiz bankasına `*Es` alanları + `t(en,tr)` yardımcılarının 3-dil refaktörü + ASC ES metadata.
 - **Doubles Bölüm B — yakın çevre eşleştirme:** kulüp havuzları → AI partner önerisi (mental + oyun stili uyumu). Soğuk başlangıç + güvenlik tasarımı gerektiriyor; spec dokümanı yayın sonrası (docs/DOUBLES-MATCHMAKING.md).
 - **Günlük ipucu yüzeyi:** `TodayView` IA yenilemesinden beri hiçbir yerden çağrılmıyor — 50 kaliteli ipucu görünmez durumda ve **TR alanları yok**. 1.0.3: ipucu kartını Home'a geri çıkar + `DailyTip`'e TR ekle (+10 yeni ipucu → 60).
-- **Ölü kod temizliği:** `CourtIQ/App/TodayView.swift` ve `CourtIQ/App/PracticeView.swift` orphan.
+- **Ölü kod temizliği:** `CourtIQ/App/TodayView.swift` ve `CourtIQ/App/PracticeView.swift` orphan. Denetimde eklenenler: `Features/Community/CommunityViews.swift` (CommunityFeedView/TipCommentSectionView hiçbir yerden çağrılmıyor; içindeki "Sign in to join" butonu yanlışlıkla paywall açıyor — canlıya çıkmadan düzeltilmeli ya da silinmeli) + kullanılmayan `paywall.tip_*` string'leri (terk edilmiş tip-jar tasarımı).
+- **UI test bakımı:** `-previewPaywall` artık kök paywall render etmiyor (freemium) — `AppStoreScreenshotUITest` paywall karesi Coach sekmesi üzerinden alınmalı.
 - Tekrar-oynanabilirlik mekaniği: hata desenlerinden "review session" + haftalık IQ seviyesi.
 
 ## App Store Connect — kopyala-yapıştır
