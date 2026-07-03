@@ -87,13 +87,15 @@ struct OnboardingCopy {
           "İstediğini sor — oyununu zaten biliyor.")
     }
     var showcaseCoachSampleTitle: String { t("AI Coach · Sample", "AI Koç · Örnek") }
+    // The sample exchange must show what a GENERIC chatbot can't do: answer
+    // from YOUR match journal. (ChatGPT would have to ask "who is Alex?")
     var showcaseCoachQuestion: String {
-        t("How do I beat a pusher?",
-          "Top çeviren birini nasıl yenerim?")
+        t("Why do I keep losing to Alex?",
+          "Alex'e neden sürekli kaybediyorum?")
     }
     var showcaseCoachReply: String {
-        t("For your aggressive baseline game: take time away early, finish at net.",
-          "Senin agresif baseline oyunun için: erken zaman al, fileyi bitiriş için kullan.")
+        t("You've logged 2 losses to Alex — same pattern both times: your serve rating drops in set 2 and you stop going wide. Start T-heavy, and run your 30–30 reset before he rushes you.",
+          "Alex'e 2 kayıtlı mağlubiyetin var — ikisinde de aynı desen: 2. sette servis puanın düşüyor ve açığa gitmeyi bırakıyorsun. T-ağırlıklı başla ve o seni aceleye getirmeden 30–30 sıfırlama rutinini çalıştır.")
     }
 
     // Finale slide — honest scale, told big: one floor number that only grows
