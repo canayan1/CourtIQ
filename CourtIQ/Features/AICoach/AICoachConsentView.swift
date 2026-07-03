@@ -32,11 +32,12 @@ struct AICoachGate: View {
     }
 }
 
-/// One-time disclosure + explicit opt-in before the AI Coach sends any data to
-/// Anthropic. Three scannable icon rows carry the substance (who powers it,
-/// what is sent, how it's used) so the screen reads in seconds; the itemized
-/// data list stays one tap away in an expandable "exactly what's shared"
-/// section — still ON this screen, before consent (5.1.1(i) / 5.1.2(i)).
+/// The Coach's front door: SELLS the tennis-specific coach first (honest
+/// claims only — purpose-built system, real coaching frameworks, reads YOUR
+/// game), with the third-party disclosure compressed to one visible line +
+/// an expandable itemized list ON this screen, before the consent tap
+/// (5.1.1(i) / 5.1.2(i) substance intact — the "agree" button is still the
+/// explicit opt-in that gates any data leaving the device).
 struct AICoachConsentView: View {
     @EnvironmentObject private var lang: LanguageManager
     @EnvironmentObject private var tabRouter: TabRouter
@@ -55,24 +56,37 @@ struct AICoachConsentView: View {
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.top, 8)
 
-                Text(t("Before you start", "Başlamadan önce"))
+                Text(t("A coach built for tennis — and for your game",
+                       "Tenis için — ve senin oyunun için — kurulmuş bir koç"))
                     .font(.title2.bold()).foregroundStyle(AppPalette.ink)
+                    .fixedSize(horizontal: false, vertical: true)
 
                 VStack(alignment: .leading, spacing: 14) {
-                    infoRow(icon: "sparkles",
-                            text: t("The Coach is powered by Claude — an AI service from Anthropic, a third-party company.",
-                                    "Koç, üçüncü taraf bir şirket olan Anthropic'in yapay zeka servisi Claude ile çalışır."))
-                    infoRow(icon: "paperplane.fill",
-                            text: t("Your messages and tennis context (profile, recent matches, quiz patterns) are sent to Anthropic to write the replies.",
-                                    "Mesajların ve tenis bağlamın (profil, son maçlar, quiz desenleri) yanıtları üretmesi için Anthropic'e gönderilir."))
-                    infoRow(icon: "lock.fill",
-                            text: t("Used only for replies — stored privately, never for ads or tracking. Stop anytime.",
-                                    "Yalnızca yanıtlar için kullanılır — hesabına özel saklanır, asla reklam/takip için kullanılmaz. İstediğin an bırakabilirsin."))
+                    infoRow(icon: "figure.tennis",
+                            text: t("Purpose-built for tennis: grounded in club-level coaching frameworks — NTRP-style levels, real match patterns, percentage play.",
+                                    "Tenise özel kurulum: kulüp seviyesi koçluk çerçevelerine dayalı — NTRP tarzı seviyeler, gerçek maç desenleri, yüzde oyunu."))
+                    infoRow(icon: "person.text.rectangle",
+                            text: t("Coaches YOU, not a generic player — it reads your Tennis Profile, match journal, and quiz patterns before every reply.",
+                                    "Jenerik bir oyuncuyu değil SENİ çalıştırır — her yanıttan önce Tenis Profilini, maç günlüğünü ve quiz desenlerini okur."))
+                    infoRow(icon: "bubble.left.and.text.bubble.right.fill",
+                            text: t("On call anytime: match plans, opponent reads, weak-spot fixes, drills for your next session.",
+                                    "Her an hazır: maç planları, rakip okumaları, zayıf nokta çözümleri, sonraki antrenman için driller."))
                 }
                 .padding(16)
                 .background(AppPalette.parchment)
                 .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous).stroke(AppPalette.sand, lineWidth: 1))
                 .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+
+                // Compact disclosure — the compliance substance in one line,
+                // itemized list one tap away (still pre-consent, same screen).
+                HStack(alignment: .top, spacing: 8) {
+                    Image(systemName: "lock.fill")
+                        .font(.caption).foregroundStyle(AppPalette.inkSoft).padding(.top, 2)
+                    Text(t("Private & secure: your messages and tennis context are processed by Anthropic's Claude solely to write the Coach's replies — never for ads or tracking.",
+                           "Gizli ve güvenli: mesajların ve tenis bağlamın, yalnızca Koç'un yanıtlarını üretmek için Anthropic'in Claude servisince işlenir — asla reklam ya da takip için kullanılmaz."))
+                        .font(.footnote).foregroundStyle(AppPalette.inkSoft)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
 
                 DisclosureGroup(isExpanded: $showDetails) {
                     VStack(alignment: .leading, spacing: 10) {
@@ -100,7 +114,7 @@ struct AICoachConsentView: View {
                     Button {
                         AICoachConsent.recordAcceptance()   // gate re-renders → chat
                     } label: {
-                        Text(t("I understand and agree", "Anladım ve onaylıyorum"))
+                        Text(t("Agree & start coaching", "Onayla ve koçluğa başla"))
                             .font(.headline).frame(maxWidth: .infinity).padding(.vertical, 14)
                     }
                     .buttonStyle(.borderedProminent).tint(AppPalette.clay)
