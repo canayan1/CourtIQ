@@ -104,6 +104,12 @@ struct BrandedPhotoBackground: View {
             )
             .overlay(scrimOverlay)
             .clipped()
+            // .clipped() clips DRAWING only — the scaledToFill image still
+            // hit-tests in its full, unclipped extent, silently stealing taps
+            // from neighboring views (dead buttons/rows next to photo cards).
+            // The background is purely decorative, so opt it out of hit
+            // testing entirely.
+            .allowsHitTesting(false)
             .accessibilityHidden(true)
     }
 
