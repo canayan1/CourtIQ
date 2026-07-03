@@ -96,17 +96,25 @@ struct OnboardingCopy {
           "Senin agresif baseline oyunun için: erken zaman al, fileyi bitiriş için kullan.")
     }
 
-    // Finale slide — honest scale: real, verifiable inventory numbers only
-    // (App Review 2.3.1: no invented user counts or rankings).
+    // Finale slide — honest scale, told big: one floor number that only grows
+    // truer as content grows (156 scenarios + 75 drills today), plus outcome
+    // lines. No invented user counts or rankings (App Review 2.3.1).
     var showcaseNumbersEyebrow: String { t("Inside DropVolley", "DropVolley'in içinde") }
     var showcaseNumbersHeadline: String {
         t("Built like a coach, not a scoreboard.", "Skor tablosu gibi değil, koç gibi inşa edildi.")
     }
-    var numbersScenarios: String { t("game scenarios", "oyun senaryosu") }
-    var numbersDrills: String { t("tap drills", "dokunmatik drill") }
-    var numbersPrograms: String { t("training programs", "antrenman programı") }
-    var numbersPatterns: String { t("pro shot patterns", "pro vuruş deseni") }
-    var numbersCoach: String { t("AI Coach — on call for your game", "AI Koç — oyunun için her an hazır") }
+    var numbersHeroLabel: String {
+        t("coached scenarios & drills — every one with the why",
+          "koçlanmış senaryo ve drill — her biri 'neden'iyle")
+    }
+    var numbersSwing: String {
+        t("Film one swing → a 0–100 score and the exact fix",
+          "Tek vuruş çek → 0–100 puan ve tam düzeltme")
+    }
+    var numbersCoach: String {
+        t("Your AI Coach — on call for your game, day and night",
+          "AI Koçun — oyunun için gece gündüz hazır")
+    }
     var numbersMethod: String {
         t("Grounded in club-level coaching frameworks: NTRP-style levels, real match patterns.",
           "Kulüp seviyesi koçluk çerçevelerine dayalı: NTRP tarzı seviyeler, gerçek maç desenleri.")

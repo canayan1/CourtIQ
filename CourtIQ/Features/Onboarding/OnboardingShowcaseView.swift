@@ -595,23 +595,21 @@ private struct QuizSampleCard: View {
     }
 }
 
-// Honest-scale finale — REAL inventory numbers counting up (no invented user
-// counts or rankings; App Review 2.3.1). The scale of what's inside carries
-// the credibility.
+// Honest-scale finale, told BIG: one floor number that rolls up (156
+// scenarios + 75 drills = 231 today, shown as "200+" so it only grows truer),
+// plus two outcome lines. No invented user counts or rankings (2.3.1).
 private struct NumbersSampleCard: View {
     let copy: OnboardingCopy
 
     var body: some View {
         SampleCardChrome {
             VStack(alignment: .leading, spacing: 14) {
-                HStack(alignment: .top, spacing: 10) {
-                    CountUpStat(value: 156, label: copy.numbersScenarios, delay: 0.1)
-                    CountUpStat(value: 75, label: copy.numbersDrills, delay: 0.3)
-                }
-                HStack(alignment: .top, spacing: 10) {
-                    CountUpStat(value: 10, label: copy.numbersPrograms, delay: 0.5)
-                    CountUpStat(value: 16, label: copy.numbersPatterns, delay: 0.7)
-                }
+                CountUpStat(value: 200, suffix: "+", label: copy.numbersHeroLabel, delay: 0.1)
+
+                Label(copy.numbersSwing, systemImage: "video.fill")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(AppPalette.ink)
+                    .demoReveal(0.6)
 
                 Label(copy.numbersCoach, systemImage: "sparkles")
                     .font(.subheadline.weight(.semibold))
@@ -622,7 +620,7 @@ private struct NumbersSampleCard: View {
                     .font(.footnote)
                     .foregroundStyle(AppPalette.inkSoft)
                     .fixedSize(horizontal: false, vertical: true)
-                    .demoReveal(1.1)
+                    .demoReveal(1.15)
             }
             .padding(16)
         }
@@ -631,10 +629,11 @@ private struct NumbersSampleCard: View {
     }
 }
 
-/// A stat tile whose number rolls up from 0 (kinetic, like ScoreRing).
+/// A stat whose number rolls up from 0 (kinetic, like ScoreRing).
 /// Reduce Motion shows the final value immediately.
 private struct CountUpStat: View {
     let value: Int
+    var suffix: String = ""
     let label: String
     let delay: Double
 
@@ -643,13 +642,13 @@ private struct CountUpStat: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
-            Text("\(displayed)")
-                .font(.system(size: 30, weight: .heavy, design: .rounded))
+            Text("\(displayed)\(suffix)")
+                .font(.system(size: 44, weight: .heavy, design: .rounded))
                 .monospacedDigit()
                 .contentTransition(.numericText())
                 .foregroundStyle(AppPalette.clay)
             Text(label)
-                .font(.caption.weight(.semibold))
+                .font(.subheadline.weight(.semibold))
                 .foregroundStyle(AppPalette.inkSoft)
                 .fixedSize(horizontal: false, vertical: true)
         }
@@ -659,7 +658,7 @@ private struct CountUpStat: View {
             withAnimation(Motion.entrance.delay(delay)) { displayed = value }
         }
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel("\(value) \(label)")
+        .accessibilityLabel("\(value)\(suffix) \(label)")
     }
 }
 
