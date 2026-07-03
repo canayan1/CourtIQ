@@ -47,7 +47,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>DropVolley uses the camera so you can record a short swing video for AI technique analysis.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Recording a swing video captures audio with the video. DropVolley only analyzes the video frames, not the audio.</string>
+	<string>DropVolley uses the microphone to record swing videos (audio is never analyzed) and to capture match voice notes, which are transcribed on-device.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>DropVolley lets you choose an existing swing video from your library for AI technique analysis.</string>
 	<key>NSSpeechRecognitionUsageDescription</key>

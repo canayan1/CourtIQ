@@ -342,6 +342,9 @@
 "paywall.sign_in_required" = "Satın alma öncesinde Apple ile giriş yapılması gereklidir.";
 "paywall.sign_in_optional" = "İsteğe bağlı — premium aboneliğini cihazların arasında senkronlamak için Apple ile giriş yap.";
 "paywall.what_unlocks" = "Neler var";
+"paywall.benefit_coach" = "Sınırsız AI Koç — maçlarını, profilini ve desenlerini bilir";
+"paywall.benefit_swing" = "AI vuruş analizi — 0–100 puan + net düzeltmeler";
+"paywall.benefit_ask" = "İstediğini istediğin an sor: taktik, rakip, sonraki antrenman drilleri";
 
 /* ── Tip-jar mode (launch window) ── */
 "paywall.tip_title" = "DropVolley'yu Destekle";

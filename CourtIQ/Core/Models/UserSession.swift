@@ -281,16 +281,6 @@ final class SubscriptionManager: ObservableObject {
     @Published private(set) var offers: [SubscriptionOffer]
     @Published private(set) var integrationMode: BillingIntegrationMode
 
-    // Premium unlocks the whole app (hard-paywall model — no free tier).
-    let premiumBenefits = [
-        "Daily court-sense drills that train your tennis IQ",
-        "Unlimited scenario quizzes with detailed explanations",
-        "Your personal Tennis Profile + development goals",
-        "Match journal with progress insights and trends",
-        "Tennis-specific training plans + full mobility library",
-        "AI coach that remembers your matches and coaches to your goals"
-    ]
-
     private let configuration: AppConfiguration
     private let defaults = UserDefaults.standard
     private let entitlementKey = "CourtIQ.Subscription.EntitlementState"
@@ -442,10 +432,10 @@ final class SubscriptionManager: ObservableObject {
             saveEntitlement()
             return
         }
-        // On-device debug builds: skip the hard paywall so the app is usable for
-        // testing without a Sandbox purchase. Pass `-previewPaywall` to exercise
-        // the real paywall instead. (Release/App Store builds never hit this —
-        // this entire auto-grant block is compiled out of Release.)
+        // On-device debug builds: auto-grant premium so the AI features (Coach,
+        // swing) are usable for testing without a Sandbox purchase. Pass
+        // `-previewPaywall` to exercise the real paywall instead. (Release/App
+        // Store builds never hit this — the block is compiled out of Release.)
         if !previewArgs.contains("-previewPaywall") {
             entitlementState = .premiumAllAccess
             saveEntitlement()
@@ -510,9 +500,10 @@ final class SubscriptionManager: ObservableObject {
     }
 
 #if DEBUG
-    /// Preview / UI-test only: grant premium so the seeded preview can enter
-    /// the app past the hard paywall. Reached only via the `-seedPreviewData`
-    /// seeding path — never in normal use. Excluded from Release builds.
+    /// Preview / UI-test only: grant premium so the seeded preview can use the
+    /// AI features (Coach, swing) without a Sandbox purchase. Reached only via
+    /// the `-seedPreviewData` seeding path — never in normal use. Excluded
+    /// from Release builds.
     func debugGrantPremium() {
         entitlementState = .premiumAllAccess
         saveEntitlement()

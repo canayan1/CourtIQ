@@ -20,8 +20,8 @@ import SwiftUI
 /// a graceful loading state instead of broken/empty price cards.
 struct PaywallView: View {
     let source: String
-    /// When false (the hard-paywall gate), the dismiss/"Done" control is
-    /// hidden so the user cannot bypass the wall without subscribing.
+    /// When false, the dismiss/"Done" control is hidden. Unused since the
+    /// freemium pivot (no blocking gate remains); kept for flexibility.
     var allowsDismiss: Bool = true
     /// Optional escape hatch for the launch gate: shows a "Back" control that
     /// returns the user to onboarding without purchasing, so the "Go Premium"
@@ -140,14 +140,16 @@ struct PaywallView: View {
                     .foregroundStyle(.white)
             }
 
-            Text(t("Unlock your full tennis game", "Tüm tenis oyununu aç"))
+            Text(t("Unlock your AI coach", "AI koçunu aç"))
                 .font(.system(.title, design: .rounded).weight(.bold))
                 .foregroundStyle(.white)
                 .fixedSize(horizontal: false, vertical: true)
 
+            // Freemium framing: name the two real premium features and say the
+            // rest is free — never imply content sits behind the membership.
             Text(t(
-                "Every drill, quiz, training plan, and your AI coach — all in one membership.",
-                "Tüm drilller, sınavlar, antrenman planları ve AI koçun — tek üyelikte."
+                "The AI Coach and swing analysis — everything else in DropVolley is already free.",
+                "AI Koç ve vuruş analizi — DropVolley'deki geri kalan her şey zaten ücretsiz."
             ))
             .foregroundStyle(.white.opacity(0.9))
             .fixedSize(horizontal: false, vertical: true)
@@ -160,9 +162,18 @@ struct PaywallView: View {
 
     // MARK: - 2. Value recap
 
+    /// The TRUE premium set under the freemium model: the AI Coach and swing
+    /// analysis. Content (drills, quizzes, journal, programs) is free — never
+    /// list it here or the paywall sells what users already have.
+    private var premiumBenefits: [String] {
+        [lang.t("paywall.benefit_coach"),
+         lang.t("paywall.benefit_swing"),
+         lang.t("paywall.benefit_ask")]
+    }
+
     private var benefitsCard: some View {
         VStack(alignment: .leading, spacing: 12) {
-            ForEach(manager.premiumBenefits, id: \.self) { benefit in
+            ForEach(premiumBenefits, id: \.self) { benefit in
                 HStack(alignment: .top, spacing: 12) {
                     Image(systemName: "checkmark.circle.fill")
                         .appFont(18, weight: .semibold, design: .default)

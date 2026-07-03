@@ -342,6 +342,9 @@
 "paywall.sign_in_required" = "Sign in with Apple is required before purchase.";
 "paywall.sign_in_optional" = "Optional — sign in with Apple to sync premium across your devices.";
 "paywall.what_unlocks" = "What you get";
+"paywall.benefit_coach" = "Unlimited AI Coach — it knows your matches, profile, and patterns";
+"paywall.benefit_swing" = "AI swing analysis — 0–100 scores with exact fixes";
+"paywall.benefit_ask" = "Ask anything, anytime: tactics, opponents, next-session drills";
 
 /* ── Tip-jar mode (launch window, LaunchOffer.allFeaturesFree == true) ── */
 "paywall.tip_title" = "Support DropVolley";

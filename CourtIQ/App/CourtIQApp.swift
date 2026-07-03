@@ -28,14 +28,15 @@ struct CourtIQApp: App {
         }
 
         // Paywall capture only: onboarded + health-acknowledged but NOT
-        // premium, so the hard-paywall gate renders the paywall (with the
-        // .storekit prices) for the App Store / subscription review screenshot.
+        // premium (freemium: the paywall is reached from the AI gates, e.g.
+        // the Coach tab), so opening Coach renders the paywall with the
+        // .storekit prices for the App Store / subscription review screenshot.
         if ProcessInfo.processInfo.arguments.contains("-previewPaywall") {
             Task { @MainActor in
                 UserSessionManager.shared.debugMarkOnboarded()
                 HealthAcknowledgment.recordAcceptance()
                 // Clear any persisted premium (from a prior seeded run) so the
-                // hard-paywall gate actually renders the paywall.
+                // AI gates actually show the paywall.
                 UserSessionManager.shared.subscriptionManager.resetLocalEntitlements()
             }
         }
