@@ -54,9 +54,17 @@
 "activation.incorrect" = "Close — here's the smarter play.";
 "activation.continue" = "Continue";
 "activation.coach_eyebrow" = "MEET YOUR AI COACH";
-"activation.coach_title" = "A tennis brain in your pocket";
+"activation.coach_title" = "Your coach's first read";
 "activation.coach_body" = "Ask about a match, an opponent, or a weak spot — and get a coach's answer, tuned to your game.";
 "activation.coach_cta" = "Ask the Coach";
+"activation.coach_read" = "Here's my read on your game: %1$@ level, %2$@ style. %3$@ is your weapon right now — and %4$@ is where you're leaking points.";
+"activation.coach_plan_title" = "Your plan inside DropVolley:";
+"activation.plan_swing" = "Film your %@ — swing analysis scores it 0–100 and shows exactly what to fix";
+"activation.plan_drill" = "Do the daily court drill — footwork wins club matches";
+"activation.plan_mental" = "Run the mental scenarios and the pre-match check — pressure is costing you points";
+"activation.plan_iq" = "Solve your 5 daily scenarios — decision-making climbs fast";
+"activation.plan_matches" = "Log every match — the AI reads your patterns and tells you what to train";
+"activation.coach_hook" = "Want to go deeper? Ask me about a match, an opponent, a weak spot — that's what I'm here for.";
 "activation.later" = "Maybe later";
 "activation.skip" = "Skip";
 

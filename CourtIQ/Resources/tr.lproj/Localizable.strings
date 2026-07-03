@@ -54,9 +54,17 @@
 "activation.incorrect" = "Az kaldı — daha akıllısı şu.";
 "activation.continue" = "Devam";
 "activation.coach_eyebrow" = "AI KOÇUNLA TANIŞ";
-"activation.coach_title" = "Cebinde bir tenis beyni";
+"activation.coach_title" = "Koçunun ilk okuması";
 "activation.coach_body" = "Bir maçı, rakibi ya da zayıf yönünü sor — oyununa göre, koç gibi cevap gelsin.";
 "activation.coach_cta" = "Koç'a sor";
+"activation.coach_read" = "Oyununa dair okumam şu: %2$@ tarzında bir %1$@ oyuncusun. Şu an silahın %3$@ — sayı kaybettiğin yer ise %4$@.";
+"activation.coach_plan_title" = "DropVolley içindeki planın:";
+"activation.plan_swing" = "%@ vuruşunu çek — vuruş analizi 0–100 puanlar, tam olarak neyi düzelteceğini gösterir";
+"activation.plan_drill" = "Günlük kort drilini yap — kulüp maçlarını ayak işi kazanır";
+"activation.plan_mental" = "Mental senaryoları ve maç öncesi kontrolü kullan — baskı sana sayı kaybettiriyor";
+"activation.plan_iq" = "Günde 5 senaryonu çöz — karar zekân hızla tırmanır";
+"activation.plan_matches" = "Her maçını kaydet — AI desenlerini okur, neyi çalışacağını söyler";
+"activation.coach_hook" = "Daha derine inmek ister misin? Bana bir maçı, bir rakibi, bir zayıf noktayı sor — bunun için buradayım.";
 "activation.later" = "Belki sonra";
 "activation.skip" = "Atla";
 

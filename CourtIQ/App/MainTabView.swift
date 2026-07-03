@@ -240,21 +240,40 @@ private struct ActivationView: View {
 
     // MARK: Step 2 — Coach nudge
     private var coachNudge: some View {
-        VStack(alignment: .leading, spacing: 18) {
+        // The coach "speaks first": a personalized read composed RULE-BASED
+        // from the just-built Tennis Profile (zero AI spend — the paid coach
+        // stays behind premium, which the Coach tab enforces on the CTA).
+        VStack(alignment: .leading, spacing: 16) {
             Eyebrow(lang.t("activation.coach_eyebrow"))
-            Image(systemName: "bubble.left.and.text.bubble.right.fill")
-                .appFont(44, weight: .bold)
-                .foregroundStyle(AppPalette.clay)
-            Text(lang.t("activation.coach_title"))
-                .appFont(26, weight: .heavy)
-                .foregroundStyle(AppPalette.ink)
-                .fixedSize(horizontal: false, vertical: true)
-            Text(lang.t("activation.coach_body"))
-                .appFont(16)
-                .foregroundStyle(AppPalette.inkSoft)
-                .fixedSize(horizontal: false, vertical: true)
 
-            primaryButton(lang.t("activation.coach_cta"), icon: "sparkles") { onAskCoach() }
+            HStack(spacing: 10) {
+                ZStack {
+                    Circle().fill(AppPalette.clay.opacity(0.14)).frame(width: 44, height: 44)
+                    Image(systemName: "sparkles")
+                        .appFont(20, weight: .bold, design: .default)
+                        .foregroundStyle(AppPalette.clay)
+                }
+                Text(lang.t("activation.coach_title"))
+                    .appFont(22, weight: .heavy)
+                    .foregroundStyle(AppPalette.ink)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+
+            if let profile = TennisProfileStore.shared.profile {
+                let tp = TennisProfileCopy(lang: lang.language)
+                let result = profile.result
+
+                coachBubble(coachRead(result, tp: tp))
+
+                coachBubble(planText(result, tp: tp))
+
+                coachBubble(lang.t("activation.coach_hook"))
+            } else {
+                // No profile (preview/edge case) — generic pitch.
+                coachBubble(lang.t("activation.coach_body"))
+            }
+
+            primaryButton(lang.t("common.unlock_all"), icon: "sparkles") { onAskCoach() }
                 .padding(.top, 6)
 
             Button(lang.t("activation.later")) { onFinish() }
@@ -262,8 +281,54 @@ private struct ActivationView: View {
                 .foregroundStyle(AppPalette.inkSoft)
                 .frame(maxWidth: .infinity)
         }
-        .padding(.top, 24)
+        .padding(.top, 16)
         .padding(.bottom, 32)
+    }
+
+    /// Coach chat bubble (same language as the real thread: cream + sand stroke).
+    private func coachBubble(_ text: String) -> some View {
+        Text(text)
+            .appFont(15)
+            .foregroundStyle(AppPalette.ink)
+            .fixedSize(horizontal: false, vertical: true)
+            .padding(.horizontal, 14).padding(.vertical, 11)
+            .background(AppPalette.parchment)
+            .overlay(
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .stroke(AppPalette.sand, lineWidth: 1)
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+            .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    /// "My read on your game" — level + archetype + strength/growth, from the
+    /// same engine that built the profile.
+    private func coachRead(_ result: TennisProfileResult, tp: TennisProfileCopy) -> String {
+        let level = tp.levelTitle(result.level)
+        let archetype = tp.archetypeTitle(result.archetype)
+        let strength = result.strengths.first.map { tp.dimension($0) } ?? "—"
+        let growth = result.growthAreas.first.map { tp.dimension($0) } ?? "—"
+        return String(format: lang.t("activation.coach_read"), level, archetype, strength, growth)
+    }
+
+    /// Feature roadmap mapped from the profile: top growth area → swing/drill,
+    /// pressure trouble → mental tools, plus the daily IQ + match-log hooks.
+    private func planText(_ result: TennisProfileResult, tp: TennisProfileCopy) -> String {
+        var bullets: [String] = []
+        if let top = result.growthAreas.first {
+            if top == .movement {
+                bullets.append(lang.t("activation.plan_drill"))
+            } else {
+                bullets.append(String(format: lang.t("activation.plan_swing"), tp.dimension(top).lowercased()))
+            }
+        }
+        if TennisProfileStore.shared.profile?.answers.pressure == .rushErrors {
+            bullets.append(lang.t("activation.plan_mental"))
+        }
+        bullets.append(lang.t("activation.plan_iq"))
+        bullets.append(lang.t("activation.plan_matches"))
+        let list = bullets.prefix(4).map { "• \($0)" }.joined(separator: "\n")
+        return lang.t("activation.coach_plan_title") + "\n" + list
     }
 
     private func primaryButton(_ title: String, icon: String?, _ action: @escaping () -> Void) -> some View {
