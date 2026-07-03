@@ -259,6 +259,12 @@ private struct ShowcaseSlide: Identifiable {
                 photo: "PhotoCoach",
                 sample: AnyView(CoachSampleCard(copy: copy))
             ),
+            ShowcaseSlide(
+                eyebrow: copy.showcaseNumbersEyebrow,
+                headline: copy.showcaseNumbersHeadline,
+                photo: "PhotoHero",
+                sample: AnyView(NumbersSampleCard(copy: copy))
+            ),
         ]
     }
 }
@@ -456,6 +462,74 @@ private struct QuizSampleCard: View {
         }
         .accessibilityElement(children: .combine)
         .accessibilityLabel(copy.showcaseQuizSampleTitle)
+    }
+}
+
+// Honest-scale finale — REAL inventory numbers counting up (no invented user
+// counts or rankings; App Review 2.3.1). The scale of what's inside carries
+// the credibility.
+private struct NumbersSampleCard: View {
+    let copy: OnboardingCopy
+
+    var body: some View {
+        SampleCardChrome {
+            VStack(alignment: .leading, spacing: 14) {
+                HStack(alignment: .top, spacing: 10) {
+                    CountUpStat(value: 156, label: copy.numbersScenarios, delay: 0.1)
+                    CountUpStat(value: 75, label: copy.numbersDrills, delay: 0.3)
+                }
+                HStack(alignment: .top, spacing: 10) {
+                    CountUpStat(value: 10, label: copy.numbersPrograms, delay: 0.5)
+                    CountUpStat(value: 16, label: copy.numbersPatterns, delay: 0.7)
+                }
+
+                Label(copy.numbersCoach, systemImage: "sparkles")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(AppPalette.clay)
+                    .demoReveal(0.9)
+
+                Text(copy.numbersMethod)
+                    .font(.footnote)
+                    .foregroundStyle(AppPalette.inkSoft)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .demoReveal(1.1)
+            }
+            .padding(16)
+        }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(copy.showcaseNumbersHeadline)
+    }
+}
+
+/// A stat tile whose number rolls up from 0 (kinetic, like ScoreRing).
+/// Reduce Motion shows the final value immediately.
+private struct CountUpStat: View {
+    let value: Int
+    let label: String
+    let delay: Double
+
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var displayed = 0
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 2) {
+            Text("\(displayed)")
+                .font(.system(size: 30, weight: .heavy, design: .rounded))
+                .monospacedDigit()
+                .contentTransition(.numericText())
+                .foregroundStyle(AppPalette.clay)
+            Text(label)
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(AppPalette.inkSoft)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .onAppear {
+            guard !reduceMotion else { displayed = value; return }
+            withAnimation(Motion.entrance.delay(delay)) { displayed = value }
+        }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("\(value) \(label)")
     }
 }
 

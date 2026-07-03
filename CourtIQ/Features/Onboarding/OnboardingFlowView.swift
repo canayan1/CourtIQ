@@ -206,12 +206,9 @@ struct OnboardingFlowView: View {
         VStack(alignment: .leading, spacing: 24) {
             Spacer()
 
-            ZStack {
-                Circle().fill(AppPalette.clay.opacity(0.14)).frame(width: 72, height: 72)
-                Image(systemName: "star.fill")
-                    .appFont(34, weight: .bold, design: .default)
-                    .foregroundStyle(AppPalette.clay)
-            }
+            // Five stars filling one by one — priming OUR review ask (this is
+            // a rating request, not a claim about existing ratings).
+            AnimatedStarsRow()
 
             Text(copy.reviewTitle)
                 .font(.system(.title, design: .rounded).weight(.bold))
@@ -497,5 +494,36 @@ struct OnboardingFlowView: View {
         let profile = TennisProfile(answers: answers, adoptedGoals: result.suggestedGoals)
         TennisProfileStore.shared.save(profile)
         builtProfile = profile
+    }
+}
+
+/// Five clay stars that pop in one by one with a spring + tick haptic —
+/// the visual drumroll before the review ask. This is OUR rating request,
+/// not a claim about existing ratings (App Review 2.3.1 stays happy).
+/// Reduce Motion shows all five at rest instantly.
+private struct AnimatedStarsRow: View {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var shown = 0
+
+    var body: some View {
+        HStack(spacing: 10) {
+            ForEach(0..<5, id: \.self) { i in
+                Image(systemName: "star.fill")
+                    .appFont(30, weight: .bold, design: .default)
+                    .foregroundStyle(i < shown ? AppPalette.clay : AppPalette.sand)
+                    .scaleEffect(i < shown ? 1 : 0.6)
+                    .animation(Motion.entrance, value: shown)
+            }
+        }
+        .onAppear {
+            guard !reduceMotion else { shown = 5; return }
+            for i in 1...5 {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25 * Double(i)) {
+                    shown = i
+                    Haptics.tap()
+                }
+            }
+        }
+        .accessibilityHidden(true)
     }
 }
