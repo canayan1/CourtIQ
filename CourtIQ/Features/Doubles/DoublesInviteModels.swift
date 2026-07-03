@@ -57,6 +57,22 @@ struct DoublesProfile: Codable, Equatable {
             weaknesses: weaknesses
         )
     }
+
+    // MARK: Display helpers (pair profile cards)
+
+    /// Localized level title ("Solid club player"…) from the raw
+    /// `TennisLevel.rawValue` string, or nil when absent/unparseable.
+    func levelTitle(lang: AppLanguage) -> String? {
+        guard let raw = levelRaw, let value = Int(raw),
+              let level = TennisLevel(rawValue: value) else { return nil }
+        return TennisProfileCopy(lang: lang).levelTitle(level)
+    }
+
+    /// Localized style/archetype title ("Aggressive baseliner"…), or nil.
+    func styleTitle(lang: AppLanguage) -> String? {
+        guard let raw = styleRaw, let archetype = TennisArchetype(rawValue: raw) else { return nil }
+        return TennisProfileCopy(lang: lang).archetypeTitle(archetype)
+    }
 }
 
 /// Status of a partnership row.

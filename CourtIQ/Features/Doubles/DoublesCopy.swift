@@ -67,6 +67,8 @@ struct DoublesCopy {
 
     // MARK: Report
     var reportTitle: String { t("Your pairing report", "Eşleşme raporun") }
+    var pairSectionTitle: String { t("The pairing", "Eşleşme") }
+    var youLabel: String { t("You", "Sen") }
     var scoreLabel: String { t("Compatibility", "Uyum") }
     var scoreOutOf: String { t("/ 100", "/ 100") }
     func scoreBadge(_ score: Int) -> String { "\(score)/100" }

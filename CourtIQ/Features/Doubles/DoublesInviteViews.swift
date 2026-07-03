@@ -65,6 +65,11 @@ struct DoublesInviteCopy {
         t("When your partner joins, your compatibility unlocks here.",
           "Partnerin katıldığında uyumunuz burada açılır.")
     }
+    /// Transparency: pairing exchanges Tennis Profile snapshots both ways.
+    var shareNotice: String {
+        t("Pairing shares your Tennis Profile (level, style, strengths) with your partner — and theirs with you.",
+          "Eşleşme, Tenis Profilini (seviye, stil, güçlü yönler) partnerinle paylaşır — onunkini de seninle.")
+    }
     var copyCode: String { t("Copy code", "Kodu kopyala") }
     var copyLink: String { t("Copy link", "Bağlantıyı kopyala") }
     var copied: String { t("Copied", "Kopyalandı") }
@@ -455,6 +460,16 @@ struct DoublesPartnershipReportView: View {
         session.remoteSession.flatMap { DoublesInviteService.authUserId(from: $0) }
     }
 
+    /// Both sides for the mutual profile cards: the partner from the shared
+    /// partnership snapshot (named), "you" rebuilt from the local Tennis
+    /// Profile. Nil only when the partner side is missing.
+    private var pairProfiles: DoublesPairProfiles? {
+        guard var partner = partnership.partnerProfile(forCurrentUserId: currentUserId) else { return nil }
+        partner.name = partnership.partnerDisplayName(forCurrentUserId: currentUserId)
+        let you = DoublesProfileBuilder.current(name: copy.youLabel, language: lang.language)
+        return DoublesPairProfiles(you: you, partner: partner)
+    }
+
     var body: some View {
         ZStack {
             AppPalette.cream.ignoresSafeArea()
@@ -480,7 +495,7 @@ struct DoublesPartnershipReportView: View {
         case .analyzing:
             MatchAnalyzingView(title: copy.analyzingTitle, stepLabels: copy.analyzingSteps)
         case .ready(let report):
-            DoublesReportDetailView(report: report)
+            DoublesReportDetailView(report: report, pair: pairProfiles)
         case .failed:
             VStack(spacing: 16) {
                 Image(systemName: "exclamationmark.triangle")
@@ -598,6 +613,11 @@ struct DoublesInviteShareSheet: View {
                         Text(copy.inviteUnlockNote)
                             .font(.footnote)
                             .foregroundStyle(AppPalette.inkSoft)
+
+                        Label(copy.shareNotice, systemImage: "person.2.badge.key.fill")
+                            .font(.caption)
+                            .foregroundStyle(AppPalette.inkSoft)
+                            .fixedSize(horizontal: false, vertical: true)
                             .multilineTextAlignment(.center)
 
                         ShareLink(
@@ -804,6 +824,11 @@ struct DoublesAcceptSheet: View {
                 .font(.subheadline)
                 .foregroundStyle(AppPalette.inkSoft)
                 .multilineTextAlignment(.center)
+
+            Label(copy.shareNotice, systemImage: "person.2.badge.key.fill")
+                .font(.caption)
+                .foregroundStyle(AppPalette.inkSoft)
+                .fixedSize(horizontal: false, vertical: true)
 
             Button {
                 accept()
