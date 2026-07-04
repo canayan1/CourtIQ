@@ -13,6 +13,8 @@ struct ProfileView: View {
     @ObservedObject private var swingStore = SwingAnalysisStore.shared
     @ObservedObject private var doublesStore = DoublesStore.shared
     @State private var showLockerRoom = false
+    /// Local mirror of `PhysicalNotes.selection` so chip taps re-render.
+    @State private var physicalSelection = PhysicalNotes.selection
 
     @State private var showPaywall = false
     @State private var showDeleteConfirmation = false
@@ -49,6 +51,7 @@ struct ProfileView: View {
                     PlayStyleProfileCard()
                         .environmentObject(lang)
                         .environmentObject(drillManager)
+                    physicalNotesSection
                 }
 
                 // PROGRESS — rings, streak, quiz history.
@@ -286,6 +289,56 @@ struct ProfileView: View {
     }
 
     // MARK: - Streak & Progress
+
+    /// Optional self-reported physical constraints (knee, shoulder…). One-time
+    /// setup; every AI feature that reads `PlayerContext` adapts its cues and
+    /// drills to these (no deep-knee-bend prescriptions for flagged knees etc.).
+    private var physicalNotesSection: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text(t("Physical notes", "Fiziksel notlar"))
+                .font(.headline)
+                .foregroundStyle(AppPalette.ink)
+            Text(t("Optional. AI coaching adapts its cues and drills around anything you flag here.",
+                   "İsteğe bağlı. AI koçluk, işaretlediğin bölgelere göre önerilerini ve drilleri uyarlar."))
+                .font(.footnote)
+                .foregroundStyle(AppPalette.inkSoft)
+                .fixedSize(horizontal: false, vertical: true)
+
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 110), spacing: 8)], spacing: 8) {
+                ForEach(PhysicalConstraint.allCases) { constraint in
+                    let isOn = physicalSelection.contains(constraint)
+                    Button {
+                        PhysicalNotes.toggle(constraint)
+                        physicalSelection = PhysicalNotes.selection
+                        Haptics.tap()
+                    } label: {
+                        Text(constraint.title(lang: lang.language))
+                            .font(.subheadline.weight(.semibold))
+                            .foregroundStyle(isOn ? .white : AppPalette.ink)
+                            .padding(.vertical, 9)
+                            .frame(maxWidth: .infinity)
+                            .background(isOn ? AppPalette.clay : AppPalette.parchment)
+                            .overlay(
+                                Capsule().stroke(isOn ? AppPalette.clay : AppPalette.sand, lineWidth: 1)
+                            )
+                            .clipShape(Capsule())
+                            .contentShape(Capsule())
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel(constraint.title(lang: lang.language))
+                    .accessibilityAddTraits(isOn ? [.isSelected] : [])
+                }
+            }
+        }
+        .padding(16)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppPalette.parchment.opacity(0.6))
+        .overlay(
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .stroke(AppPalette.sand, lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+    }
 
     private var streakSection: some View {
         // "Progress" header dropped — the two big stat cards are

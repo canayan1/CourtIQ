@@ -30,6 +30,7 @@ enum PlayerContext {
         var lines: [String] = []
         if let profileLine = profileLine() { lines.append(profileLine) }
         if let scoresLine = recentSwingScoresLine(for: stroke) { lines.append(scoresLine) }
+        if let physical = PhysicalNotes.contextLine() { lines.append(physical) }
         return assemble(lines)
     }
 
@@ -43,6 +44,7 @@ enum PlayerContext {
         var lines: [String] = []
         if let profileLine = profileLine() { lines.append(profileLine) }
         if let trendLine = recentMatchTrendLine() { lines.append(trendLine) }
+        if let physical = PhysicalNotes.contextLine() { lines.append(physical) }
         return assemble(lines)
     }
 

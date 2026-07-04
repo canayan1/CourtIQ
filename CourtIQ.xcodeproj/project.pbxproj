@@ -154,6 +154,7 @@
 		E20D88189D622D55FEDD413E /* DoublesInviteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CF8D66C72388FA065116B1 /* DoublesInviteService.swift */; };
 		E64FC67205E8603D8EA31A06 /* AICoachTabRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A2F457CF051744945B3545 /* AICoachTabRoot.swift */; };
 		F2255DE63DE529FED78CA6D1 /* PlayerContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789F5FB71B3FD7288973D0C9 /* PlayerContext.swift */; };
+		A00000000000000000A0F2 /* PhysicalNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000A0F1 /* PhysicalNotes.swift */; };
 		F630E427B39E6175B97B2857 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 728F3484008DAA9A8D9F95FC /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -183,6 +184,7 @@
 		66A2F457CF051744945B3545 /* AICoachTabRoot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AICoachTabRoot.swift; path = CourtIQ/Features/AICoach/AICoachTabRoot.swift; sourceTree = "<group>"; };
 		728F3484008DAA9A8D9F95FC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		789F5FB71B3FD7288973D0C9 /* PlayerContext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PlayerContext.swift; path = CourtIQ/Core/Models/PlayerContext.swift; sourceTree = "<group>"; };
+		A00000000000000000A0F1 /* PhysicalNotes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhysicalNotes.swift; path = CourtIQ/Core/Models/PhysicalNotes.swift; sourceTree = "<group>"; };
 		82706820737C1C2313D111A2 /* SwingAnalysisConsentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwingAnalysisConsentView.swift; path = CourtIQ/Features/SwingAnalysis/SwingAnalysisConsentView.swift; sourceTree = "<group>"; };
 		82C98DCFD79E34F8766234FD /* CourtIQAppPreviewUITest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CourtIQAppPreviewUITest.swift; path = CourtIQUITests/CourtIQAppPreviewUITest.swift; sourceTree = "<group>"; };
 		8CC40F35CB6A1E4FC8E5641D /* DoublesAnalysisView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesAnalysisView.swift; path = CourtIQ/Features/Doubles/DoublesAnalysisView.swift; sourceTree = "<group>"; };
@@ -486,6 +488,7 @@
 				A000000000000000000202 /* SwingReportText.swift */,
 				A000000000000000000204 /* SwingHistoryView.swift */,
 				789F5FB71B3FD7288973D0C9 /* PlayerContext.swift */,
+				A00000000000000000A0F1 /* PhysicalNotes.swift */,
 				FF5A9D15805AB520576E3578 /* Doubles */,
 				2552A4998FE130E11DD2183F /* TrainView.swift */,
 				66A2F457CF051744945B3545 /* AICoachTabRoot.swift */,
@@ -770,6 +773,7 @@
 				A000000000000000000203 /* SwingReportText.swift in Sources */,
 				A000000000000000000205 /* SwingHistoryView.swift in Sources */,
 				F2255DE63DE529FED78CA6D1 /* PlayerContext.swift in Sources */,
+				A00000000000000000A0F2 /* PhysicalNotes.swift in Sources */,
 				D9DF80F409A57D89B6499E67 /* DoublesModels.swift in Sources */,
 				E10FD58C838696FCA153D259 /* DoublesStore.swift in Sources */,
 				7077F4E9DBD8C6119B70D01A /* DoublesService.swift in Sources */,
