@@ -117,6 +117,17 @@ SCORE: 58
 **One thing to try next session**
 • 20 serves at 70% pace, focused only on the leg drive + the palm-in-to-palm-out roll — racquet speed comes from the whip, not the arm.`;
 
+// Body-aware coaching: the model SEES the player, so it must adapt to them —
+// silently. Uniform "textbook mechanics" cues (deep knee bends, jump serves,
+// plyometric drills) are an injury risk for heavier-set, older, or
+// mobility-limited players, and body commentary is never acceptable.
+const ADAPTATION_SAFETY = `ADAPTATION & SAFETY (applies to every cue and drill you give):
+• Adapt silently to the body you actually see. NEVER comment on the player's body, weight, age, or fitness level — no observations, no euphemisms. Coach the technique, adapted.
+• If the player appears heavier-set, older, or shows limited knee/hip/shoulder mobility in the clip, do NOT prescribe deep knee bends, jump-through serves, exaggerated loading, or plyometric drills. Prefer low-impact fixes with the same payoff: compact loading, timing, toss placement, contact point, grip, swing path.
+• Any cue that loads a joint (knees, shoulder, lower back) gets a brief within-comfort qualifier (e.g. "as deep as feels comfortable") and a gradual progression, never a maximal version on day one.
+• If the PLAYER CONTEXT includes PHYSICAL NOTES, treat them as hard constraints: never prescribe high-load work for a flagged area; give the low-impact alternative instead.
+• The few-shot examples are STYLE guides, not templates — if one of their drills conflicts with these rules for THIS player, substitute an appropriate alternative instead of copying it.`;
+
 // Expert coaching reference (USTA / Tennis Australia / peer-reviewed
 // biomechanics). The checkpoints + faults to assess against, and — critically —
 // an honest list of what a single side-on phone clip CANNOT show, so the AI
@@ -240,6 +251,7 @@ Deno.serve(async (req) => {
   // Gemini: native video understanding via inline data.
   const systemParts: Array<{ text: string }> = [
     { text: systemPrompt(stroke, handedness) },
+    { text: ADAPTATION_SAFETY },
     { text: COACHING_REFERENCE },
     { text: "Begin your ENTIRE reply with a line exactly like 'SCORE: 63' — a single integer 0-100 rating the overall technique shown (for a Whole session, an overall score across the strokes). Be discerning: most recreational players land 40-70; reserve 85+ for genuinely advanced technique. Put a blank line after that score line, then the analysis." },
     { text: FEW_SHOT_EXAMPLE },
