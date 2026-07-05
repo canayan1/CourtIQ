@@ -1045,7 +1045,7 @@
     "diagram": {
       "surface": "grass",
       "youX": 0.3,
-      "youY": 0.45,
+      "youY": 0.6,
       "opponentX": 0.2,
       "opponentY": 0.1,
       "ballOriginX": 0.3,
@@ -1082,7 +1082,7 @@
     "diagram": {
       "surface": "clay",
       "youX": 0.45,
-      "youY": 0.45,
+      "youY": 0.6,
       "opponentX": 0.2,
       "opponentY": 0.08,
       "ballOriginX": 0.2,
@@ -1119,7 +1119,7 @@
     "diagram": {
       "surface": "hard",
       "youX": 0.5,
-      "youY": 0.42,
+      "youY": 0.6,
       "opponentX": 0.5,
       "opponentY": 0.1,
       "ballOriginX": 0.5,
@@ -1158,7 +1158,7 @@
       "youX": 0.5,
       "youY": 0.55,
       "opponentX": 0.5,
-      "opponentY": 0.92,
+      "opponentY": 0.12,
       "ballOriginX": 0.5,
       "ballOriginY": 0.82,
       "ballTargetX": 0.5,
@@ -1193,9 +1193,9 @@
     "diagram": {
       "surface": "clay",
       "youX": 0.5,
-      "youY": 0.42,
+      "youY": 0.58,
       "opponentX": 0.5,
-      "opponentY": 0.95,
+      "opponentY": 0.1,
       "ballOriginX": 0.5,
       "ballOriginY": 0.88,
       "ballTargetX": 0.5,
@@ -1354,7 +1354,7 @@
     "diagram": {
       "surface": "hard",
       "youX": 0.4,
-      "youY": 0.36,
+      "youY": 0.6,
       "opponentX": 0.85,
       "opponentY": 0.08,
       "ballOriginX": 0.4,
@@ -4424,7 +4424,7 @@
     "diagram": {
       "surface": "hard",
       "youX": 0.62,
-      "youY": 0.4,
+      "youY": 0.6,
       "opponentX": 0.3,
       "opponentY": 0.12,
       "ballOriginX": 0.3,
