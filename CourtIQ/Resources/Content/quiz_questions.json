@@ -910,6 +910,7 @@
     "explanation": "Net-clearance margin is the fastest way to reduce unforced errors without changing style. One metre higher keeps shots in — the pace can stay.",
     "takeaway": "When erroring, raise net clearance before changing pace.",
     "mistakeType": "low-margin baseline hitting",
+    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.9, "opponentX": 0.5, "opponentY": 0.1, "ballOriginX": 0.5, "ballOriginY": 0.2, "ballTargetX": 0.5, "ballTargetY": 0.84, "scoreChip": "NEUTRAL"},
     "scenarioTr": "Baseline'dan winner için oyun başına 3+ zorlanmamış hata yapıyorsun. İlk ayar ne olmalı?",
     "optionsTr": [
       "Fileyi 1 metre daha yüksek geç — hata düşer mi bak",
@@ -972,6 +973,7 @@
     "explanation": "Exhaling at contact stabilises the core and keeps breathing rhythmic. Holding breath during rallies raises tension and tires you faster.",
     "takeaway": "Exhale every contact — every ball.",
     "mistakeType": "holding breath during rallies",
+    "diagram": {"surface": "clay", "youX": 0.42, "youY": 0.9, "opponentX": 0.58, "opponentY": 0.1, "ballOriginX": 0.58, "ballOriginY": 0.2, "ballTargetX": 0.42, "ballTargetY": 0.84, "scoreChip": "LONG RALLY"},
     "scenarioTr": "Uzun rally'lerde ne zaman nefes vermelisin?",
     "optionsTr": [
       "Her topun temas anında",
@@ -3082,6 +3084,7 @@
     "explanation": "Depth pushes opponents behind the baseline where their shots lose sting and errors multiply. Pace without depth sits in their strike zone.",
     "takeaway": "Depth is the cheapest form of pressure.",
     "mistakeType": "trading depth for pace",
+    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.94, "opponentX": 0.5, "opponentY": 0.1, "ballOriginX": 0.5, "ballOriginY": 0.16, "ballTargetX": 0.5, "ballTargetY": 0.92, "scoreChip": "DEPTH"},
     "scenarioTr": "Sert-kısa ya da orta-derin vurabilirsin. Kulüp rallilerini hangisi daha çok kazanır?",
     "optionsTr": [
       "Orta ve derin — derin top hata ve kısa cevap zorlar",
@@ -3255,6 +3258,7 @@
     "explanation": "The net is 15cm lower at the center strap, the diagonal gives ~2m more court, and crosscourt leaves you closer to the next likely ball.",
     "takeaway": "Crosscourt isn't passive — it's geometry working for you.",
     "mistakeType": "underrating crosscourt geometry",
+    "diagram": {"surface": "clay", "youX": 0.3, "youY": 0.9, "opponentX": 0.7, "opponentY": 0.1, "ballOriginX": 0.7, "ballOriginY": 0.2, "ballTargetX": 0.3, "ballTargetY": 0.82, "scoreChip": "CROSSCOURT"},
     "scenarioTr": "Taktiksel olarak çapraz neden varsayılan ralli yönüdür?",
     "optionsTr": [
       "Ortada file alçak, diyagonal kort daha uzun, toparlanma mesafen daha kısa",
@@ -3280,6 +3284,7 @@
     "explanation": "Club rallies are lost, not won — the player who can stand one more neutral ball usually collects the error. Patience is a trained skill.",
     "takeaway": "Win the boredom contest; the short ball always comes.",
     "mistakeType": "impatience in neutral rallies",
+    "diagram": {"surface": "clay", "youX": 0.55, "youY": 0.9, "opponentX": 0.45, "opponentY": 0.1, "ballOriginX": 0.45, "ballOriginY": 0.2, "ballTargetX": 0.55, "ballTargetY": 0.84, "scoreChip": "NEUTRAL"},
     "scenarioTr": "6+ vuruşluk rallileri beşinci topta fazlasını isteyerek kaybediyorsun. Antrenman komutu ne?",
     "optionsTr": [
       "'Sıkıcılık eşiğini' yükselt: gerçekten kısa top gelmeden sayı denemesi yok",
@@ -3305,6 +3310,7 @@
     "explanation": "Pace-lovers feed on your energy. A slow high loop above shoulder height forces them to create power from nothing — where their timing and patience crack.",
     "takeaway": "Starve the counter-puncher: no pace to borrow.",
     "mistakeType": "feeding pace to a pace-lover",
+    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.93, "opponentX": 0.5, "opponentY": 0.08, "ballOriginX": 0.5, "ballOriginY": 0.14, "ballTargetX": 0.5, "ballTargetY": 0.88, "scoreChip": "VS PACE"},
     "scenarioTr": "Rakip hız ve ritim âşığı — sert vurduğun her şey daha sert dönüyor. Motorunu ne bozar?",
     "optionsTr": [
       "Kendi gücünü üretmeye zorlayan yüksek, ağır loop'lar",
@@ -3404,6 +3410,7 @@
     "explanation": "If your backhand loses that exchange over time, change WHAT the balls looks like (height/spin/depth) before changing WHERE it goes. Pattern breaks don't have to be risks.",
     "takeaway": "Change ball quality before ball direction.",
     "mistakeType": "line gamble to escape a losing exchange",
+    "diagram": {"surface": "clay", "youX": 0.7, "youY": 0.9, "opponentX": 0.3, "opponentY": 0.1, "ballOriginX": 0.3, "ballOriginY": 0.2, "ballTargetX": 0.7, "ballTargetY": 0.82, "scoreChip": "BH CROSSCOURT"},
     "scenarioTr": "Backhand-backhand çapraz alışverişi, ikiniz de sağlam. Deseni önce kim bozmalı?",
     "optionsTr": [
       "Backhand'i zayıf olan — ama paralel kumarla değil, yüksek loop ya da kesik değişimiyle",
@@ -3429,6 +3436,7 @@
     "explanation": "Headwind shortens everything: your normal drives land safer, and aggressive targets become high-percentage. The set to attack is the into-wind set.",
     "takeaway": "Into the wind: swing free. With the wind: add spin and margin.",
     "mistakeType": "identical targets in opposite winds",
+    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.9, "opponentX": 0.5, "opponentY": 0.1, "ballOriginX": 0.5, "ballOriginY": 0.2, "ballTargetX": 0.5, "ballTargetY": 0.84, "scoreChip": "INTO WIND"},
     "scenarioTr": "Bu set sert rüzgâra KARŞI oynuyorsun. İçinde saklı taktik hediye ne?",
     "optionsTr": [
       "Daha büyük sallanabilirsin — rüzgâr topunu içeride tutar, çizgilere daha yakın nişan al",
@@ -3491,6 +3499,7 @@
     "explanation": "Mid-court balls are transition balls: momentum should carry you forward through contact into net position. Stopping kills both power and positioning.",
     "takeaway": "On short balls, your feet finish the shot — not your arm.",
     "mistakeType": "flat-footed transition balls",
+    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.78, "opponentX": 0.5, "opponentY": 0.1, "ballOriginX": 0.5, "ballOriginY": 0.2, "ballTargetX": 0.5, "ballTargetY": 0.62, "scoreChip": "SHORT BALL"},
     "scenarioTr": "Orta kort topu geldi ama ayakların sabit vurdun, top süzülerek döndü. Asıl hata neydi?",
     "optionsTr": [
       "Ayaklar durdu — vuruşun İÇİNDEN fileye doğru hareket etmelisin",
