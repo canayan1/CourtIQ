@@ -8,6 +8,11 @@ import SwiftUI
 /// and `PaywallView`: cream background, parchment cards with a sand stroke,
 /// clay-accented selection.
 struct TennisProfileQuestionnaireView: View {
+    /// When set (a re-assessment launched from the result screen), completion
+    /// calls this instead of pushing another result screen. The caller closes
+    /// the cover and the store-backed live profile refreshes in place.
+    var onFinished: (() -> Void)? = nil
+
     @EnvironmentObject private var lang: LanguageManager
 
     private var copy: TennisProfileCopy { TennisProfileCopy(lang: lang.language) }
@@ -359,7 +364,11 @@ struct TennisProfileQuestionnaireView: View {
         )
         let profile = TennisProfile(answers: answers)
         TennisProfileStore.shared.save(profile)
-        builtProfile = profile
-        showResult = true
+        if let onFinished {
+            onFinished()
+        } else {
+            builtProfile = profile
+            showResult = true
+        }
     }
 }

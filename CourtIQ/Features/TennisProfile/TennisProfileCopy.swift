@@ -99,6 +99,25 @@ struct TennisProfileCopy {
     var aiTeaser: String { t("Your AI Coach now knows your profile and goals — and will coach you toward them.", "AI Koç'un artık profilini ve hedeflerini biliyor — ve seni onlara doğru yönlendirir.") }
     var myGoalsHeader: String { t("Your goals", "Hedeflerin") }
 
+    // MARK: Re-assess + smart nudge
+    /// Sub-label under the re-assess button on the result screen.
+    var reassessHint: String {
+        t("Your game changes — retake the 12 questions to refresh your level, style and goals.",
+          "Oyunun değişir — 12 soruyu tekrar yanıtlayıp seviyeni, stilini ve hedeflerini tazele.")
+    }
+    var reassessCancel: String { t("Cancel", "Vazgeç") }
+    var nudgeTitle: String { t("A quick check-in", "Küçük bir kontrol") }
+    /// Shown when recent match results run well ahead of the saved profile.
+    func nudgeUp(matches: Int, winPct: Int) -> String {
+        t("You've won \(winPct)% of your \(matches) logged matches — you may be playing above your profile. Re-assess?",
+          "Kayıtlı \(matches) maçının %\(winPct)'ini kazandın — profilinin üstünde oynuyor olabilirsin. Yeniden değerlendirelim mi?")
+    }
+    /// Shown when recent results run well behind the saved profile.
+    func nudgeDown(matches: Int, winPct: Int) -> String {
+        t("Your \(matches) logged matches have been tough (\(winPct)% wins). Let's recalibrate your profile and goals.",
+          "Kayıtlı \(matches) maçın zorlu geçti (%\(winPct) galibiyet). Profilini ve hedeflerini yeniden ayarlayalım.")
+    }
+
     // MARK: Goals (coaching-standard development priorities)
     func goalTitle(_ key: String) -> String {
         switch key {

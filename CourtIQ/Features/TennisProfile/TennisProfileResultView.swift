@@ -10,22 +10,30 @@ struct TennisProfileResultView: View {
 
     @EnvironmentObject private var lang: LanguageManager
     @Environment(\.dismiss) private var dismiss
+    /// Store-backed so a re-assessment (which overwrites the saved profile)
+    /// refreshes this screen in place instead of showing stale data.
+    @ObservedObject private var store = TennisProfileStore.shared
 
     private var copy: TennisProfileCopy { TennisProfileCopy(lang: lang.language) }
-    private var result: TennisProfileResult { profile.result }
+    /// Prefer the live saved profile; fall back to the one we were handed.
+    private var liveProfile: TennisProfile { store.profile ?? profile }
+    private var result: TennisProfileResult { liveProfile.result }
 
     /// Seeded from the suggestions' own `isSelected` flag.
     @State private var selectedGoalIDs: Set<String> = []
     @State private var didSave = false
+    @State private var showRetake = false
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 levelHero
+                if let nudge = matchNudge { nudgeCard(nudge) }
                 styleCard
                 strengthsCard
                 growthCard
                 goalsCard
+                reassessButton
             }
             .padding(20)
         }
@@ -33,8 +41,21 @@ struct TennisProfileResultView: View {
         .navigationTitle(copy.sectionTitle)
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
-            if selectedGoalIDs.isEmpty {
-                selectedGoalIDs = Set(result.suggestedGoals.filter { $0.isSelected }.map { $0.id })
+            if selectedGoalIDs.isEmpty { seedGoals() }
+        }
+        // After a re-assessment closes, the goals list changed — re-seed.
+        .onChange(of: showRetake) { _, isShowing in
+            if !isShowing { seedGoals() }
+        }
+        .fullScreenCover(isPresented: $showRetake) {
+            NavigationStack {
+                TennisProfileQuestionnaireView(onFinished: { showRetake = false })
+                    .environmentObject(lang)
+                    .toolbar {
+                        ToolbarItem(placement: .cancellationAction) {
+                            Button(copy.reassessCancel) { showRetake = false }
+                        }
+                    }
             }
         }
     }
@@ -211,6 +232,89 @@ struct TennisProfileResultView: View {
             }
         TennisProfileStore.shared.updateAdoptedGoals(selected)
         withAnimation { didSave = true }
+    }
+
+    private func seedGoals() {
+        selectedGoalIDs = Set(result.suggestedGoals.filter { $0.isSelected }.map { $0.id })
+        didSave = false
+    }
+
+    // MARK: Re-assess (A) + match-driven nudge (B)
+
+    /// Always-available manual re-assessment. Opens the 12-question flow, which
+    /// overwrites the saved profile; the store-backed `liveProfile` refreshes
+    /// this screen when the cover closes.
+    private var reassessButton: some View {
+        Button { showRetake = true } label: {
+            VStack(spacing: 4) {
+                HStack(spacing: 8) {
+                    Image(systemName: "arrow.triangle.2.circlepath")
+                    Text(copy.retakeCTA)
+                }
+                .font(.headline)
+                Text(copy.reassessHint)
+                    .font(.caption)
+                    .foregroundStyle(AppPalette.inkSoft)
+                    .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 14)
+        }
+        .buttonStyle(.bordered)
+        .tint(AppPalette.clay)
+    }
+
+    private struct MatchNudge { let body: String; let tone: Color }
+
+    /// Conservative, on-device suggestion: when the logged match record runs
+    /// well ahead of (or behind) the saved profile, nudge a re-assessment.
+    /// Never silent or automatic — tapping opens the re-assessment. Returns nil
+    /// unless the signal is strong (needs a real sample and a lopsided record).
+    private var matchNudge: MatchNudge? {
+        let record = MatchEntryManager.shared.winRateSummary
+        guard record.total >= 6, let ratio = record.ratio else { return nil }
+        let pct = Int((ratio * 100).rounded())
+        if ratio >= 0.70 {
+            return MatchNudge(body: copy.nudgeUp(matches: record.total, winPct: pct),
+                              tone: AppPalette.moss)
+        } else if ratio <= 0.30 {
+            return MatchNudge(body: copy.nudgeDown(matches: record.total, winPct: pct),
+                              tone: AppPalette.clay)
+        }
+        return nil
+    }
+
+    private func nudgeCard(_ nudge: MatchNudge) -> some View {
+        Button { showRetake = true } label: {
+            HStack(alignment: .top, spacing: 12) {
+                Image(systemName: "chart.line.uptrend.xyaxis")
+                    .appFont(20, design: .default)
+                    .foregroundStyle(nudge.tone)
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(copy.nudgeTitle)
+                        .font(.subheadline.weight(.bold))
+                        .foregroundStyle(AppPalette.ink)
+                    Text(nudge.body)
+                        .font(.footnote)
+                        .foregroundStyle(AppPalette.inkSoft)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                Spacer(minLength: 0)
+                Image(systemName: "chevron.right")
+                    .font(.footnote.weight(.semibold))
+                    .foregroundStyle(AppPalette.inkSoft)
+            }
+            .padding(16)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(nudge.tone.opacity(0.10))
+            .overlay(
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .stroke(nudge.tone.opacity(0.35), lineWidth: 1)
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        }
+        .buttonStyle(PressableCardStyle())
     }
 
     // MARK: Reusable pieces
