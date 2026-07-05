@@ -62,6 +62,60 @@ struct SwingReportText: View {
     }
 }
 
+// MARK: - Score tier (traffic-light read)
+
+/// A three-step, brand-native "traffic light" for the swing score so the bare
+/// 0–100 number is instantly legible. The colour carries the signal; the word
+/// stays growth-framed (we never label a swing "bad"). Pure/Foundation-safe
+/// (the colour accessors are the only UIKit-touching part) so `SwingAnalysisCopy`
+/// can key its labels off the same cases — one source of truth.
+///
+/// Thresholds are calibrated to the edge model's own scale (see the swing
+/// system prompt: "most recreational players land 40–70; reserve 85+ for
+/// genuinely advanced"). That keeps green *attainable* (70+, not gated at the
+/// rare 85) and the low tier honest but *rare* rather than a constant alarm on
+/// the core recreational audience.
+enum SwingScoreTier {
+    case building   // < 40  — below the typical recreational floor
+    case solid      // 40–69 — the healthy recreational band (most players)
+    case sharp      // 70+   — above typical recreational
+
+    static func from(score: Int) -> SwingScoreTier {
+        switch score {
+        case ..<40:  return .building
+        case 40..<70: return .solid
+        default:     return .sharp
+        }
+    }
+
+    /// Strong fill for the hero capsule (white text sits on top over the photo).
+    var solidColor: Color {
+        switch self {
+        case .building: return AppPalette.clay
+        case .solid:    return AppPalette.gold
+        case .sharp:    return AppPalette.moss
+        }
+    }
+
+    /// Soft background + readable foreground for the light-surface pill used in
+    /// history rows (over cream, not a photo).
+    var tint: Color {
+        switch self {
+        case .building: return AppPalette.clayTint
+        case .solid:    return AppPalette.goldTint
+        case .sharp:    return AppPalette.mossTint
+        }
+    }
+
+    var text: Color {
+        switch self {
+        case .building: return AppPalette.clayText
+        case .solid:    return AppPalette.goldText
+        case .sharp:    return AppPalette.mossText
+        }
+    }
+}
+
 // MARK: - Score callout
 
 /// The big, prominent "NN / 100" swing score with a label underneath. Shown
@@ -69,6 +123,8 @@ struct SwingReportText: View {
 struct SwingScoreView: View {
     let score: Int
     let copy: SwingAnalysisCopy
+
+    private var tier: SwingScoreTier { .from(score: score) }
 
     var body: some View {
         VStack(spacing: 10) {
@@ -83,6 +139,33 @@ struct SwingScoreView: View {
                 .foregroundStyle(.white)
                 .textCase(.uppercase)
                 .tracking(0.5)
+
+            // Traffic-light read: solid tier colour + white text reads clearly
+            // over the photo scrim. The gloss line keeps meaning off colour
+            // alone (accessibility) and the tone encouraging.
+            VStack(spacing: 6) {
+                HStack(spacing: 7) {
+                    Circle()
+                        .fill(.white)
+                        .frame(width: 7, height: 7)
+                    Text(copy.scoreTierLabel(tier))
+                        .font(.caption.weight(.heavy))
+                        .textCase(.uppercase)
+                        .tracking(0.5)
+                }
+                .foregroundStyle(.white)
+                .padding(.horizontal, 14)
+                .padding(.vertical, 7)
+                .background(tier.solidColor, in: Capsule())
+
+                Text(copy.scoreTierCaption(tier))
+                    .font(.caption2)
+                    .foregroundStyle(.white.opacity(0.9))
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 24)
+            }
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel("\(copy.scoreTierLabel(tier)). \(copy.scoreTierCaption(tier))")
         }
         .padding(.vertical, 18)
         .frame(maxWidth: .infinity)
@@ -92,18 +175,22 @@ struct SwingScoreView: View {
     }
 }
 
-/// Compact score badge ("NN/100") used in history rows.
+/// Compact score badge ("NN/100") used in history rows. Tinted by tier so the
+/// list is scannable at a glance (green/amber/clay) — same traffic-light read
+/// as the hero.
 struct SwingScoreBadge: View {
     let score: Int
     let copy: SwingAnalysisCopy
 
+    private var tier: SwingScoreTier { .from(score: score) }
+
     var body: some View {
         Text(copy.scoreBadge(score))
             .font(.caption.weight(.bold))
-            .foregroundStyle(AppPalette.clay)
+            .foregroundStyle(tier.text)
             .padding(.horizontal, 8)
             .padding(.vertical, 4)
-            .background(AppPalette.clay.opacity(0.12))
+            .background(tier.tint)
             .clipShape(Capsule())
     }
 }

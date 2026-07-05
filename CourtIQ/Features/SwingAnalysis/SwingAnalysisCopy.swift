@@ -82,6 +82,32 @@ struct SwingAnalysisCopy {
     /// Compact badge, e.g. "82/100", used in history rows + headers.
     func scoreBadge(_ score: Int) -> String { "\(score)/100" }
 
+    /// One-word tier read for the traffic-light band beside the score. Growth-
+    /// framed (the colour already carries the signal): we never call a swing
+    /// "bad". Thresholds are calibrated to the edge model's own scale — most
+    /// recreational players land 40–70, 85+ is genuinely advanced — so green is
+    /// attainable and the low tier stays rare and honest.
+    func scoreTierLabel(_ tier: SwingScoreTier) -> String {
+        switch tier {
+        case .building: return t("Building", "Gelişiyor")
+        case .solid:    return t("Solid", "Sağlam")
+        case .sharp:    return t("Sharp", "Keskin")
+        }
+    }
+
+    /// Short plain-language gloss under the tier word, so the colour isn't the
+    /// only carrier of meaning (accessibility) and the read is encouraging.
+    func scoreTierCaption(_ tier: SwingScoreTier) -> String {
+        switch tier {
+        case .building: return t("Foundations forming — clear things to work on.",
+                                 "Temel oturuyor — üzerine çalışılacak net noktalar var.")
+        case .solid:    return t("Right in the healthy recreational range.",
+                                 "Sağlıklı amatör aralığının tam ortasında.")
+        case .sharp:    return t("Above the typical recreational level — sharp technique.",
+                                 "Tipik amatör seviyenin üstünde — keskin teknik.")
+        }
+    }
+
     // MARK: History
     var historyTitle: String { t("My swings", "Vuruşlarım") }
     var historyNavTitle: String { t("My swings", "Vuruşlarım") }
