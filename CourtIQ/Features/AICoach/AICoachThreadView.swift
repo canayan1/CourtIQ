@@ -107,7 +107,10 @@ struct AICoachThreadView: View {
                     // and remain reminded of it when scrolling back to read
                     // earlier messages in long threads.
                     disclaimerBanner
-                    if messages.isEmpty { introHint }
+                    if messages.isEmpty {
+                        introHint
+                        starterChips
+                    }
                     ForEach(messages) { msg in
                         messageBubble(msg)
                             .id(msg.id)
@@ -174,6 +177,51 @@ struct AICoachThreadView: View {
         // "Hero + select cards": the chat empty-state intro gets a PhotoCoach
         // hero background; foreground flips to white. Message bubbles stay clean.
         .brandedPhoto("PhotoCoach", scrim: .hero, cornerRadius: 14)
+    }
+
+    /// Tap-to-send starter prompts for a fresh thread — no typing needed.
+    /// Hidden once the conversation begins.
+    private var starterPrompts: [String] {
+        [lang.t("ai.starter_1"), lang.t("ai.starter_2"),
+         lang.t("ai.starter_3"), lang.t("ai.starter_4")]
+    }
+
+    private var starterChips: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(lang.t("ai.starter_kicker"))
+                .font(.caption.weight(.heavy)).tracking(0.5)
+                .foregroundStyle(AppPalette.inkSoft).textCase(.uppercase)
+                .padding(.leading, 2)
+            ForEach(starterPrompts, id: \.self) { prompt in
+                Button {
+                    guard !quotaReached && !isSending else { return }
+                    Haptics.tap()
+                    input = prompt
+                    Task { await tappedSend() }
+                } label: {
+                    HStack(spacing: 10) {
+                        Image(systemName: "sparkle")
+                            .font(.footnote.weight(.bold))
+                            .foregroundStyle(AppPalette.clay)
+                        Text(prompt)
+                            .font(.subheadline.weight(.medium))
+                            .foregroundStyle(AppPalette.ink)
+                            .multilineTextAlignment(.leading)
+                        Spacer(minLength: 0)
+                        Image(systemName: "arrow.up.circle.fill")
+                            .foregroundStyle(AppPalette.clay.opacity(0.7))
+                    }
+                    .padding(.vertical, 12).padding(.horizontal, 14)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(AppPalette.parchment)
+                    .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous).stroke(AppPalette.sand, lineWidth: 1))
+                    .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                }
+                .buttonStyle(.plain)
+                .disabled(quotaReached || isSending)
+                .opacity(quotaReached ? 0.5 : 1)
+            }
+        }
     }
 
     @ViewBuilder

@@ -885,6 +885,11 @@
 "ai.no_messages_yet" = "(no messages yet)";
 "ai.composer_placeholder" = "Ask about a match, a drill, or a pattern…";
 "ai.send" = "Send";
+"ai.starter_kicker" = "Try asking";
+"ai.starter_1" = "Why do I keep losing to the same player?";
+"ai.starter_2" = "How do I make my second serve reliable?";
+"ai.starter_3" = "Where should I stand in doubles?";
+"ai.starter_4" = "What should I work on to win more?";
 "ai.thread_hint_kicker" = "Quick prompts";
 "ai.thread_hint_body" = "Try \"playing Begum tomorrow — what's my game plan?\" or \"my mental score has been 2/5 the last 5 matches, what do I do?\" — the coach has your match journal and quiz history.";
 "ai.quota_remaining_format" = "%d messages left today";

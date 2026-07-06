@@ -885,6 +885,11 @@
 "ai.no_messages_yet" = "(henüz mesaj yok)";
 "ai.composer_placeholder" = "Bir maç, bir drill veya bir patern sor…";
 "ai.send" = "Gönder";
+"ai.starter_kicker" = "Şunu sor";
+"ai.starter_1" = "Neden hep aynı kişiye kaybediyorum?";
+"ai.starter_2" = "İkinci servisimi nasıl güvenilir yaparım?";
+"ai.starter_3" = "Doubles'ta nerede durmalıyım?";
+"ai.starter_4" = "Daha çok kazanmak için neye çalışmalıyım?";
 "ai.thread_hint_kicker" = "Hızlı sorular";
 "ai.thread_hint_body" = "\"Yarın Begum'la oynayacağım, plan?\" veya \"son 5 maçta mental hep 2/5, ne yapayım?\" gibi sorular dene — koç maç günlüğüne ve quiz geçmişine erişiyor.";
 "ai.quota_remaining_format" = "Bugün %d mesaj hakkın kaldı";
