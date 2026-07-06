@@ -79,6 +79,13 @@ struct WallRallyCamView: View {
             }
             .padding()
 
+            // DEBUG readout (temporary): frames flowing + any trajectory seen +
+            // its confidence. traj climbing = Vision sees the ball.
+            Text("f:\(model.framesSeen)  traj:\(model.trajDetected)  conf:\(String(format: "%.2f", model.lastConfidence))")
+                .font(.system(size: 12, design: .monospaced)).foregroundStyle(.green)
+                .padding(.horizontal, 8).padding(.vertical, 4)
+                .background(.black.opacity(0.55)).clipShape(Capsule())
+
             Spacer()
 
             // Big live streak count.
@@ -154,6 +161,10 @@ final class RallyCamModel: ObservableObject {
     @Published var lastHit = false
     @Published var targetLocked = false
     @Published var permissionDenied = false
+    // First-light diagnostics (shown on-screen; remove once detection is tuned).
+    @Published var framesSeen = 0
+    @Published var trajDetected = 0
+    @Published var lastConfidence: Double = 0
     /// Target square in normalized [0,1] VIEW coords (top-left origin). It is
     /// AUTO-set to where the FIRST ball hits the wall (no manual framing).
     @Published var target = CGRect(x: 0.38, y: 0.32, width: 0.24, height: 0.24)
@@ -253,15 +264,16 @@ final class RallyCamController: UIViewController, AVCaptureVideoDataOutputSample
     /// De-dupe: one hit/miss per detected trajectory id.
     private var seenTrajectoryIDs: Set<UUID> = []
 
-    // TUNE ON DEVICE ↓
-    private let minConfidence: VNConfidence = 0.6
+    private var frameCounter = 0
+    // Loosened for first-light debugging — watch the on-screen f/traj/conf readout.
+    private let minConfidence: VNConfidence = 0.3
     private lazy var trajectoryRequest: VNDetectTrajectoriesRequest = {
-        let request = VNDetectTrajectoriesRequest(frameAnalysisSpacing: .zero, trajectoryLength: 6) { [weak self] req, _ in
+        let request = VNDetectTrajectoriesRequest(frameAnalysisSpacing: .zero, trajectoryLength: 3) { [weak self] req, _ in
             self?.handle(req.results as? [VNTrajectoryObservation] ?? [])
         }
-        // A tennis ball ~a small fraction of the frame; widen if it isn't caught.
-        request.objectMinimumNormalizedRadius = 0.006
-        request.objectMaximumNormalizedRadius = 0.20
+        // A tennis ball can be tiny in-frame; keep the range wide while debugging.
+        request.objectMinimumNormalizedRadius = 0.003
+        request.objectMaximumNormalizedRadius = 0.30
         return request
     }()
 
@@ -313,6 +325,11 @@ final class RallyCamController: UIViewController, AVCaptureVideoDataOutputSample
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer,
                        from connection: AVCaptureConnection) {
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
+        frameCounter += 1
+        if frameCounter % 10 == 0 {
+            let n = frameCounter
+            DispatchQueue.main.async { self.model?.framesSeen = n }
+        }
         // Back camera in portrait → `.right`. TUNE if trajectories look rotated.
         try? sequenceHandler.perform([trajectoryRequest], on: pixelBuffer, orientation: .right)
     }
@@ -322,6 +339,13 @@ final class RallyCamController: UIViewController, AVCaptureVideoDataOutputSample
     /// BOTTOM-left origin; the target rect is top-left, so flip Y.
     private func handle(_ observations: [VNTrajectoryObservation]) {
         guard let model else { return }
+        // Diagnostics: count ANY trajectory (even below the scoring threshold) so
+        // the on-screen readout shows whether Vision sees the ball at all.
+        if !observations.isEmpty {
+            let best = observations.map { Double($0.confidence) }.max() ?? 0
+            let count = observations.count
+            DispatchQueue.main.async { model.trajDetected += count; model.lastConfidence = best }
+        }
         for obs in observations where obs.confidence >= minConfidence {
             guard !seenTrajectoryIDs.contains(obs.uuid),
                   let end = obs.detectedPoints.last?.location else { continue }
