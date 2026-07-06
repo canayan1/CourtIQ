@@ -848,6 +848,8 @@
 "notif.permission.later" = "Belki sonra";
 "notif.daily.title" = "Bugünün DropVolley'i hazır";
 "notif.daily.body" = "5 hızlı senaryo, 3 dakika. Streak'i bozma.";
+"notif.streak_risk.title" = "Seri bozulmasın 🔥";
+"notif.streak_risk.body" = "%d günlük serin gece yarısı bitiyor. Tek bir hızlı drill onu yaşatır.";
 
 /* ── Match-log nudge + weekly digest (v1.1.C) ── */
 "notif.match_log.title" = "Bugün oynadın mı?";

@@ -848,6 +848,8 @@
 "notif.permission.later" = "Maybe later";
 "notif.daily.title" = "Today's DropVolley is ready";
 "notif.daily.body" = "5 quick scenarios, 3 minutes. Keep your streak alive.";
+"notif.streak_risk.title" = "Don't break the chain 🔥";
+"notif.streak_risk.body" = "Your %d-day streak ends at midnight. One quick drill keeps it alive.";
 
 /* ── Match-log nudge + weekly digest (v1.1.C) ── */
 "notif.match_log.title" = "Played today?";

@@ -14,6 +14,7 @@ final class NotificationManager: ObservableObject {
     private enum RequestID {
         static let dailyReminder = "courtiq.daily_reminder"
         static let matchLogNudge = "courtiq.match_log_nudge"     // v1.1.C
+        static let streakRisk = "courtiq.streak_risk"
         static let weeklyDigest = "courtiq.weekly_digest"        // v1.1.C
         /// Prefix for one-shot "add your result" reminders tied to a
         /// specific upcoming match. The full id appends the entry's id so
@@ -191,6 +192,56 @@ final class NotificationManager: ObservableObject {
         UNUserNotificationCenter.current()
             .removePendingNotificationRequests(withIdentifiers: [RequestID.matchLogNudge])
         UserDefaults.standard.set(false, forKey: DefaultsKey.matchLogEnabled)
+    }
+
+    // MARK: - Streak-at-risk nudge (highest-ROI retention hook)
+
+    /// State-aware: if the player has a real streak going but hasn't been active
+    /// YET today, queue a one-shot evening nudge; otherwise clear it. `streak` +
+    /// `activeToday` are passed in (computed on the main actor by the caller)
+    /// so this stays off the @MainActor ActivityManager. Call on app background.
+    func refreshStreakRiskReminder(streak: Int, activeToday: Bool) {
+        guard authorizationStatus == .authorized, dailyReminderEnabled else {
+            cancelStreakRiskReminder(); return
+        }
+        if streak >= 2 && !activeToday {
+            scheduleStreakRiskReminder(streak: streak)
+        } else {
+            cancelStreakRiskReminder()
+        }
+    }
+
+    private func scheduleStreakRiskReminder(streak: Int) {
+        let center = UNUserNotificationCenter.current()
+        center.removePendingNotificationRequests(withIdentifiers: [RequestID.streakRisk])
+
+        let cal = Calendar.current
+        let now = Date()
+        let fireDate: Date
+        if let eight = cal.date(bySettingHour: 20, minute: 0, second: 0, of: now), now < eight {
+            fireDate = eight
+        } else {
+            // Already evening — nudge soon, but never past 23:30 (respect sleep).
+            let soon = now.addingTimeInterval(45 * 60)
+            guard let cutoff = cal.date(bySettingHour: 23, minute: 30, second: 0, of: now),
+                  soon <= cutoff else { return }
+            fireDate = soon
+        }
+
+        let content = UNMutableNotificationContent()
+        content.title = LanguageManager.shared.t("notif.streak_risk.title")
+        content.body = String(format: LanguageManager.shared.t("notif.streak_risk.body"), streak)
+        content.sound = .default
+        content.threadIdentifier = "courtiq.streak"
+
+        let comps = cal.dateComponents([.year, .month, .day, .hour, .minute], from: fireDate)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: comps, repeats: false)
+        center.add(UNNotificationRequest(identifier: RequestID.streakRisk, content: content, trigger: trigger))
+    }
+
+    func cancelStreakRiskReminder() {
+        UNUserNotificationCenter.current()
+            .removePendingNotificationRequests(withIdentifiers: [RequestID.streakRisk])
     }
 
     // MARK: - Upcoming-match result reminder (v1.2)

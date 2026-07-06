@@ -18,6 +18,8 @@ struct CourtIQApp: App {
     @StateObject private var avatarManager = AvatarManager.shared
     @StateObject private var proShotManager = ProShotPatternsManager.shared
 
+    @Environment(\.scenePhase) private var scenePhase
+
     init() {
         // Google Analytics for Firebase. Guarded so the app builds + runs with
         // or without the FirebaseAnalytics package / GoogleService-Info.plist:
@@ -227,6 +229,16 @@ struct CourtIQApp: App {
                 .environmentObject(drillManager)
                 .environmentObject(avatarManager)
                 .environmentObject(proShotManager)
+                // When the app backgrounds, queue tonight's streak-at-risk nudge
+                // if a streak is going but today is still idle (cleared once the
+                // player does anything). Highest-ROI retention notification.
+                .onChange(of: scenePhase) { _, phase in
+                    guard phase == .background else { return }
+                    NotificationManager.shared.refreshStreakRiskReminder(
+                        streak: ActivityManager.shared.currentStreak,
+                        activeToday: ActivityManager.shared.isActiveToday
+                    )
+                }
         }
     }
 }
