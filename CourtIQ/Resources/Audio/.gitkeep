@@ -1,0 +1,2 @@
+# Tennis SFX samples go here. Naming + licensing: docs/AUDIO-LIBRARY.md
+# AudioManager loads Audio/<name>.<ext>; missing files fall back to synth.

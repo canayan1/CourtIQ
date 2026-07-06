@@ -463,6 +463,8 @@ struct ProShotAnimationView: View {
             phase = .shot(idx)
             AudioManager.shared.play(.ballHit)
             await animateArc(from: shot.from, to: shot.to, duration: shot.duration)
+            // The ball lands on the far side — a bounce to close the shot.
+            AudioManager.shared.play(.bounce)
 
             // 4. Hold the label briefly after the ball lands, then fade
             //    the attribution out before the next shot.
