@@ -79,12 +79,19 @@ struct WallRallyCamView: View {
             }
             .padding()
 
-            // DEBUG readout (temporary): frames flowing + any trajectory seen +
-            // its confidence. traj climbing = Vision sees the ball.
-            Text("f:\(model.framesSeen)  traj:\(model.trajDetected)  conf:\(String(format: "%.2f", model.lastConfidence))")
-                .font(.system(size: 12, design: .monospaced)).foregroundStyle(.green)
-                .padding(.horizontal, 8).padding(.vertical, 4)
-                .background(.black.opacity(0.55)).clipShape(Capsule())
+            // DEBUG readout (temporary) — the key signal, big + persistent so it
+            // can be read AFTER throwing (numbers only reset on Start).
+            VStack(spacing: 3) {
+                Text("Frames: \(model.framesSeen)")
+                Text("Ball detected: \(model.trajDetected)×")
+                Text("conf: \(String(format: "%.2f", model.lastConfidence))")
+                    .font(.system(size: 12, weight: .regular, design: .monospaced))
+            }
+            .font(.system(size: 18, weight: .heavy, design: .monospaced))
+            .foregroundStyle(model.trajDetected > 0 ? .green : .yellow)
+            .padding(12)
+            .background(.black.opacity(0.6))
+            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
 
             Spacer()
 
