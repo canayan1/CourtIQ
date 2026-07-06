@@ -160,7 +160,7 @@ struct SwingReportDetailView: View {
 
                     videoPlayer
 
-                    SwingReportText(text: record.analysisText)
+                    AIReportSectionsView(text: record.analysisText)
                         .padding(16)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .background(AppPalette.parchment)

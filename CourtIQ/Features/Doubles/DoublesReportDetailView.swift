@@ -42,7 +42,7 @@ struct DoublesReportDetailView: View {
                         .font(.caption)
                         .foregroundStyle(AppPalette.inkSoft)
 
-                    SwingReportText(text: report.reportText)
+                    AIReportSectionsView(text: report.reportText)
                         .padding(16)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .background(AppPalette.parchment)

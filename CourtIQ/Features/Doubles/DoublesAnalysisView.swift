@@ -68,7 +68,7 @@ struct DoublesAnalysisView: View {
                         .font(.title3.bold()).foregroundStyle(AppPalette.ink)
                 }
 
-                SwingReportText(text: text)
+                AIReportSectionsView(text: text)
                     .padding(16)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .background(AppPalette.parchment)

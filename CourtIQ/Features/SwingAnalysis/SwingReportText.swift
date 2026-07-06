@@ -62,6 +62,128 @@ struct SwingReportText: View {
     }
 }
 
+// MARK: - AI report as collapsible, colour-accented cards
+
+/// Turns an AI report (markdown-ish: **bold headers** + "•" bullets) into a
+/// stack of tappable, colour-accented, collapsible cards instead of one wall of
+/// text — you tap a section to open it. Each whole-line **bold header** starts a
+/// section; the body reuses `SwingReportText`. The accent is derived from the
+/// header's meaning (working/strengths → moss, fixes/gaps → clay, plan → gold),
+/// with EN + TR keywords. Shared by the swing, match and doubles reports.
+struct AIReportSectionsView: View {
+    let text: String
+    /// Sections after this index start collapsed (the first N stay open).
+    var openFirst: Int = 1
+
+    @State private var collapsed: Set<Int> = []
+    @State private var didInit = false
+
+    private struct ReportSection: Identifiable { let id: Int; let title: String; let body: String }
+
+    var body: some View {
+        VStack(spacing: 12) {
+            ForEach(sections) { section in
+                card(section)
+            }
+        }
+        .onAppear {
+            guard !didInit else { return }
+            didInit = true
+            collapsed = Set(sections.filter { $0.id >= openFirst && !$0.title.isEmpty }.map(\.id))
+        }
+    }
+
+    private func card(_ s: ReportSection) -> some View {
+        let accent = Self.accent(for: s.title)
+        let isCollapsed = collapsed.contains(s.id)
+        // Untitled leading text (e.g. the score line) renders plainly, no card.
+        return Group {
+            if s.title.isEmpty {
+                SwingReportText(text: s.body)
+            } else {
+                VStack(alignment: .leading, spacing: 0) {
+                    Button {
+                        Haptics.tap()
+                        withAnimation(.easeInOut(duration: 0.2)) {
+                            if isCollapsed { collapsed.remove(s.id) } else { collapsed.insert(s.id) }
+                        }
+                    } label: {
+                        HStack(spacing: 10) {
+                            RoundedRectangle(cornerRadius: 3).fill(accent).frame(width: 4, height: 20)
+                            Text(s.title)
+                                .font(.subheadline.weight(.bold))
+                                .foregroundStyle(AppPalette.ink)
+                                .multilineTextAlignment(.leading)
+                            Spacer(minLength: 8)
+                            Image(systemName: "chevron.down")
+                                .font(.footnote.weight(.bold))
+                                .foregroundStyle(AppPalette.inkSoft)
+                                .rotationEffect(.degrees(isCollapsed ? -90 : 0))
+                        }
+                        .padding(14)
+                        .contentShape(Rectangle())
+                    }
+                    .buttonStyle(.plain)
+                    if !isCollapsed {
+                        SwingReportText(text: s.body)
+                            .padding(.horizontal, 14)
+                            .padding(.bottom, 14)
+                    }
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(AppPalette.parchment)
+                .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).stroke(accent.opacity(0.28), lineWidth: 1))
+                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+            }
+        }
+    }
+
+    private var sections: [ReportSection] {
+        var result: [ReportSection] = []
+        var title: String? = nil
+        var body: [String] = []
+        func flush() {
+            let joined = body.joined(separator: "\n").trimmingCharacters(in: .whitespacesAndNewlines)
+            if let t = title {
+                result.append(ReportSection(id: result.count, title: t, body: joined))
+            } else if !joined.isEmpty {
+                result.append(ReportSection(id: result.count, title: "", body: joined))
+            }
+            body = []
+        }
+        for raw in text.replacingOccurrences(of: "\r\n", with: "\n").components(separatedBy: "\n") {
+            if let header = Self.headerTitle(raw.trimmingCharacters(in: .whitespaces)) {
+                flush()
+                title = header
+            } else {
+                body.append(raw)
+            }
+        }
+        flush()
+        return result
+    }
+
+    /// A whole-line bold header like "**What's working**" → "What's working";
+    /// nil for bullet lines or inline-bold body text.
+    private static func headerTitle(_ line: String) -> String? {
+        guard line.hasPrefix("**"), line.hasSuffix("**"), line.count > 4 else { return nil }
+        let inner = String(line.dropFirst(2).dropLast(2)).trimmingCharacters(in: .whitespaces)
+        guard !inner.isEmpty, !inner.contains("•"), !inner.contains("**"), inner.count <= 60 else { return nil }
+        return inner
+    }
+
+    static func accent(for title: String) -> Color {
+        let t = title.lowercased()
+        let moss = ["work", "strength", "carried", "strong", "good", "işe yara", "güçlü", "iyi giden", "taşıyan"]
+        let clay = ["fix", "sharpen", "improve", "gap", "watch", "mistake", "düzelt", "geliştir", "keskinleş", "eksik", "gap", "hata", "dikkat"]
+        let gold = ["plan", "next", "try", "game plan", "adjust", "plan", "sıradaki", "dene", "sonraki", "ayarla"]
+        if moss.contains(where: t.contains) { return AppPalette.moss }
+        if clay.contains(where: t.contains) { return AppPalette.clay }
+        if gold.contains(where: t.contains) { return AppPalette.gold }
+        return AppPalette.clay
+    }
+}
+
 // MARK: - Score tier (traffic-light read)
 
 /// A three-step, brand-native "traffic light" for the swing score so the bare

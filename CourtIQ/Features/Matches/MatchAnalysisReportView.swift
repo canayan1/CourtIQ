@@ -77,11 +77,11 @@ struct MatchAnalysisCard: View {
             // PhotoCourt background (white fg over the .full duotone scrim).
             // The report body below stays clean on parchment.
             headerBand
-            MatchAnalysisReportView(text: report)
-                .padding(16)
+            AIReportSectionsView(text: report)
+                .padding(12)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(AppPalette.parchment)
+        .background(AppPalette.cream)
         .overlay(
             RoundedRectangle(cornerRadius: 16, style: .continuous)
                 .stroke(AppPalette.sand, lineWidth: 1)
