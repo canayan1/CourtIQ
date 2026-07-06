@@ -195,19 +195,7 @@ struct MatchJournalEntryView: View {
                 resultSegment
             }
 
-            TextField(
-                lang.t("matches.score_placeholder"),
-                text: $score
-            )
-            .focused($focusedField, equals: .score)
-            .font(.system(.subheadline, design: .monospaced).weight(.semibold))
-            .padding(12)
-            .background(AppPalette.parchment)
-            .overlay(
-                RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .stroke(AppPalette.sand, lineWidth: 1)
-            )
-            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+            MatchFormComponents.ScoreBuilder(score: $score)
         }
     }
 

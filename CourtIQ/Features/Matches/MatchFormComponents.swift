@@ -201,4 +201,139 @@ enum MatchFormComponents {
             .accessibilityLabel("\(label): \(value.wrappedValue)")
         }
     }
+
+    // MARK: - Score builder (tap-based, no keyboard)
+
+    /// Builds a scoreline ("6-4, 3-6, 7-5") entirely by tapping — a game
+    /// stepper per side, per set, with the set winner tinted. Reads/writes the
+    /// same free-text string the model already stores, so nothing downstream
+    /// (display, AI summary) has to change.
+    struct ScoreBuilder: View {
+        @Binding var score: String
+        @EnvironmentObject private var lang: LanguageManager
+
+        struct SetScore: Identifiable, Equatable { let id = UUID(); var you = 0; var opp = 0 }
+
+        @State private var sets: [SetScore] = [SetScore()]
+        @State private var lastSerialized = ""
+
+        private func t(_ en: String, _ tr: String) -> String { lang.language == .turkish ? tr : en }
+
+        var body: some View {
+            VStack(spacing: 10) {
+                ForEach($sets) { $s in
+                    setCard($s)
+                }
+                if sets.count < 5 {
+                    Button {
+                        Haptics.tap()
+                        sets.append(SetScore())
+                    } label: {
+                        Label(t("Add set", "Set ekle"), systemImage: "plus.circle.fill")
+                            .font(.subheadline.weight(.bold))
+                            .foregroundStyle(AppPalette.clay)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 10)
+                            .background(AppPalette.clay.opacity(0.10), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+            .onChange(of: score, initial: true) { _, newValue in
+                if newValue != lastSerialized { parse(newValue) }
+            }
+            .onChange(of: sets) { _, _ in serialize() }
+        }
+
+        private func setCard(_ s: Binding<SetScore>) -> some View {
+            let you = s.wrappedValue.you, opp = s.wrappedValue.opp
+            let idx = sets.firstIndex(where: { $0.id == s.wrappedValue.id }) ?? 0
+            return VStack(spacing: 10) {
+                HStack {
+                    Text(t("Set \(idx + 1)", "\(idx + 1). set"))
+                        .font(.caption.weight(.heavy)).tracking(0.6)
+                        .foregroundStyle(AppPalette.inkSoft).textCase(.uppercase)
+                    Spacer()
+                    if sets.count > 1 {
+                        Button {
+                            Haptics.tap()
+                            sets.removeAll { $0.id == s.wrappedValue.id }
+                        } label: {
+                            Image(systemName: "xmark.circle.fill")
+                                .foregroundStyle(AppPalette.sand)
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+                HStack(spacing: 14) {
+                    sideStepper(t("You", "Sen"), value: s.you, win: you > opp)
+                    Text("–").font(.title3.weight(.bold)).foregroundStyle(AppPalette.sand)
+                    sideStepper(t("Opp", "Rakip"), value: s.opp, win: opp > you)
+                }
+            }
+            .padding(14)
+            .background(AppPalette.parchment)
+            .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous).stroke(AppPalette.sand, lineWidth: 1))
+            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        }
+
+        private func sideStepper(_ label: String, value: Binding<Int>, win: Bool) -> some View {
+            VStack(spacing: 6) {
+                Text(label)
+                    .font(.caption2.weight(.bold)).foregroundStyle(AppPalette.inkSoft).textCase(.uppercase)
+                HStack(spacing: 10) {
+                    stepButton("minus", enabled: value.wrappedValue > 0) {
+                        value.wrappedValue = max(0, value.wrappedValue - 1)
+                    }
+                    Text("\(value.wrappedValue)")
+                        .appFont(22, weight: .heavy)
+                        .foregroundStyle(win ? AppPalette.moss : AppPalette.ink)
+                        .frame(minWidth: 26)
+                    stepButton("plus", enabled: value.wrappedValue < 7) {
+                        value.wrappedValue = min(7, value.wrappedValue + 1)
+                    }
+                }
+            }
+            .frame(maxWidth: .infinity)
+        }
+
+        private func stepButton(_ symbol: String, enabled: Bool, _ action: @escaping () -> Void) -> some View {
+            Button {
+                Haptics.tap()
+                action()
+            } label: {
+                Image(systemName: symbol)
+                    .font(.subheadline.weight(.bold))
+                    .foregroundStyle(enabled ? .white : AppPalette.inkSoft.opacity(0.4))
+                    .frame(width: 32, height: 32)
+                    .background(Circle().fill(enabled ? AppPalette.clay : AppPalette.sand.opacity(0.5)))
+            }
+            .buttonStyle(.plain)
+            .disabled(!enabled)
+        }
+
+        // MARK: parse / serialize (free-text string is the source of truth)
+
+        private func parse(_ raw: String) {
+            let parsed: [SetScore] = raw
+                .split(separator: ",")
+                .compactMap { chunk in
+                    let parts = chunk.split(whereSeparator: { $0 == "-" || $0 == "–" })
+                    guard parts.count == 2,
+                          let a = Int(parts[0].trimmingCharacters(in: .whitespaces)),
+                          let b = Int(parts[1].trimmingCharacters(in: .whitespaces)) else { return nil }
+                    return SetScore(you: min(7, max(0, a)), opp: min(7, max(0, b)))
+                }
+            sets = parsed.isEmpty ? [SetScore()] : parsed
+        }
+
+        private func serialize() {
+            let built = sets
+                .filter { $0.you > 0 || $0.opp > 0 }
+                .map { "\($0.you)-\($0.opp)" }
+                .joined(separator: ", ")
+            lastSerialized = built
+            if score != built { score = built }
+        }
+    }
 }

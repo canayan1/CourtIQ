@@ -225,11 +225,10 @@ struct MatchPlayedFormView: View {
                 MatchFormComponents.ResultPicker(result: $result)
             }
 
-            MatchFormComponents.BoxedField(
-                placeholder: lang.t("matches.score_placeholder"),
-                text: $score,
-                monospaced: true
-            )
+            VStack(alignment: .leading, spacing: 8) {
+                Eyebrow(lang.t("matches.score_label"))
+                MatchFormComponents.ScoreBuilder(score: $score)
+            }
         }
     }
 

@@ -591,6 +591,7 @@
 "matches.legend_loss" = "Mağlubiyet";
 "matches.legend_upcoming" = "Yaklaşan";
 "matches.score_placeholder" = "Skor (örn 6-4, 3-6, 7-5)";
+"matches.score_label" = "Skor";
 "matches.pre_match_label" = "Maç öncesi plan";
 "matches.pre_match_placeholder" = "Bu rakibe karşı taktik planın ne?";
 "matches.post_match_label" = "Maç sonrası notlar";

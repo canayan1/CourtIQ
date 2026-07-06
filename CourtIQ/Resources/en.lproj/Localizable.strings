@@ -591,6 +591,7 @@
 "matches.legend_loss" = "Loss";
 "matches.legend_upcoming" = "Upcoming";
 "matches.score_placeholder" = "Score (e.g. 6-4, 3-6, 7-5)";
+"matches.score_label" = "Score";
 "matches.pre_match_label" = "Pre-match plan";
 "matches.pre_match_placeholder" = "What's your tactical plan against this opponent?";
 "matches.post_match_label" = "Post-match notes";
