@@ -46,8 +46,10 @@ struct HomeView: View {
         )
     }
 
-    /// Current daily streak — sourced the same way Profile reads it.
-    private var streakDays: Int { dailyQuizManager.currentStreak }
+    /// The UNIFIED daily-activity streak — ANY day with a quiz, a logged match,
+    /// a drill, or a wall session counts (not just quizzes), so the number is
+    /// honest for every kind of player.
+    private var streakDays: Int { ActivityManager.shared.currentStreak }
 
     var body: some View {
         ScrollView {

@@ -150,6 +150,9 @@ final class MatchEntryManager: ObservableObject {
     /// entry yet). Tolerates **one** missed day anywhere in the chain —
     /// the same grace-day pattern used for the daily-quiz streak. A
     /// second consecutive missed day breaks the streak.
+    /// Days with ≥1 logged match — for the unified activity streak.
+    var activeDayKeys: Set<String> { Set(committed.map { $0.date.todayKey }) }
+
     var currentStreak: Int {
         streakComputation.streak
     }

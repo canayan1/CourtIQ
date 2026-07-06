@@ -51,6 +51,9 @@ final class CourtTapDrillManager: ObservableObject {
         sessions.contains { Calendar.current.isDateInToday($0.date) }
     }
 
+    /// Days with ≥1 court-tap drill session — for the unified activity streak.
+    var activeDayKeys: Set<String> { Set(sessions.map { $0.date.todayKey }) }
+
     var todaysSession: DrillSession? {
         sessions.first { Calendar.current.isDateInToday($0.date) }
     }

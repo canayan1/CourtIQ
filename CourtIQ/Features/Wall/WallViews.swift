@@ -10,6 +10,7 @@ struct WallSessionConfig: Identifiable {
     let tempoBPM: Int
     let focus: WallFocus
     let isFreeRally: Bool
+    let drillID: String?
 }
 
 // MARK: - Hub
@@ -18,6 +19,7 @@ struct WallSessionConfig: Identifiable {
 /// entry, and the drill library. Each row opens a paced session.
 struct WallHubView: View {
     @EnvironmentObject private var lang: LanguageManager
+    @ObservedObject private var wallProgress = WallProgressManager.shared
     @State private var active: WallSessionConfig?
 
     var body: some View {
@@ -64,7 +66,7 @@ struct WallHubView: View {
                 title: lang.t("wall.free_title"),
                 instruction: lang.t("wall.free_instruction"),
                 target: .duration(seconds: 0),   // open — user finishes manually
-                tempoBPM: 50, focus: .consistency, isFreeRally: true
+                tempoBPM: 50, focus: .consistency, isFreeRally: true, drillID: nil
             )
         } label: {
             HStack(spacing: 14) {
@@ -103,7 +105,7 @@ struct WallHubView: View {
                 title: drill.localizedTitle(for: lang.language),
                 instruction: drill.localizedInstruction(for: lang.language),
                 target: drill.target, tempoBPM: drill.tempoBPM,
-                focus: drill.focus, isFreeRally: false
+                focus: drill.focus, isFreeRally: false, drillID: drill.id
             )
         } label: {
             HStack(spacing: 12) {
@@ -131,6 +133,11 @@ struct WallHubView: View {
                         Text("·").foregroundStyle(AppPalette.inkSoft.opacity(0.5))
                         Text(WallStyle.targetText(drill.target, lang: lang))
                             .font(.caption.weight(.semibold)).foregroundStyle(AppPalette.inkSoft)
+                        if wallProgress.personalBest(drillID: drill.id) > 0 {
+                            Text("·").foregroundStyle(AppPalette.inkSoft.opacity(0.5))
+                            Label("\(wallProgress.personalBest(drillID: drill.id))", systemImage: "trophy.fill")
+                                .font(.caption2.weight(.bold)).foregroundStyle(AppPalette.gold)
+                        }
                         Spacer(minLength: 0)
                         WallStyle.difficultyDots(drill.difficulty)
                     }
@@ -375,6 +382,10 @@ struct WallSessionView: View {
             "title": config.title, "hits": beat, "seconds": elapsed,
             "free_rally": config.isFreeRally
         ])
+        WallProgressManager.shared.record(
+            drillID: config.drillID, title: config.title,
+            hits: beat, seconds: elapsed, isFreeRally: config.isFreeRally
+        )
     }
 
     private func stopTimers() {

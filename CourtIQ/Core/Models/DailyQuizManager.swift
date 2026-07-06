@@ -83,6 +83,9 @@ final class DailyQuizManager: ObservableObject {
         completedDates.contains(Date.todayKey)
     }
 
+    /// Days the player completed a daily quiz — for the unified activity streak.
+    var activeDayKeys: Set<String> { Set(completedDates) }
+
     var currentStreak: Int {
         streakComputation.streak
     }
@@ -360,7 +363,10 @@ private struct RemoteQuizCompletionRecord: Codable {
     }
 }
 
-private extension Date {
+// `todayKey` is the app-wide canonical day key — the unified ActivityManager
+// streak + each feature's `activeDayKeys` all rely on the SAME format, so this
+// extension is module-internal (was fileprivate).
+extension Date {
     static var todayKey: String {
         dateFormatter.string(from: Calendar.current.startOfDay(for: Date()))
     }
