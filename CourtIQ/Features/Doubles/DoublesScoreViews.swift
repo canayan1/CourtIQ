@@ -89,6 +89,8 @@ struct DoublesScoreView: View {
         // "Hero + select cards": the doubles compatibility score hero gets a
         // PhotoDoubles background (white ScoreRing + label over the scrim).
         .brandedPhoto("PhotoDoubles", scrim: .hero, cornerRadius: 16)
+        // Peak-moment cue: a clean racket "pock" as the compatibility lands.
+        .onAppear { AudioManager.shared.play(.sweetSpot) }
     }
 }
 

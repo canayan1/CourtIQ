@@ -294,6 +294,8 @@ struct SwingScoreView: View {
         // Marquee peak moment: duotone photo hero behind the ScoreRing (ring +
         // label flipped to white over the `.hero` scrim).
         .brandedPhoto("PhotoServe", scrim: .hero, cornerRadius: 16)
+        // Peak-moment cue: a clean racket "pock" as the score ring lands.
+        .onAppear { AudioManager.shared.play(.sweetSpot) }
     }
 }
 

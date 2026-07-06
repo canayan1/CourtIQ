@@ -15,6 +15,7 @@ struct ProfileView: View {
     @State private var showLockerRoom = false
     /// Local mirror of `PhysicalNotes.selection` so chip taps re-render.
     @State private var physicalSelection = PhysicalNotes.selection
+    @State private var soundOn = AudioManager.shared.soundEffectsEnabled
 
     @State private var showPaywall = false
     @State private var showDeleteConfirmation = false
@@ -771,6 +772,30 @@ struct ProfileView: View {
         .buttonStyle(.plain)
     }
 
+    /// Master toggle for the app's sound-effect cues (score reveals, quiz
+    /// correct/wrong). Default ON; writes straight through to AudioManager.
+    private var soundSection: some View {
+        HStack {
+            Label(t("Sound effects", "Ses efektleri"), systemImage: "speaker.wave.2.fill")
+                .font(.subheadline)
+            Spacer()
+            Toggle("", isOn: $soundOn)
+                .labelsHidden()
+                .tint(AppPalette.clay)
+                .onChange(of: soundOn) { _, on in
+                    AudioManager.shared.soundEffectsEnabled = on
+                    if on { AudioManager.shared.play(.sweetSpot) }
+                }
+        }
+        .padding()
+        .background(AppPalette.parchment)
+        .overlay(
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .strokeBorder(AppPalette.sand, lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+    }
+
     private var legalSection: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text(lang.t("profile.section_policies"))
@@ -778,6 +803,7 @@ struct ProfileView: View {
                 .foregroundStyle(AppPalette.ink)
 
             notificationsSection
+            soundSection
 
             ForEach(LegalDocument.allCases) { document in
                 NavigationLink {

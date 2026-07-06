@@ -167,6 +167,7 @@ final class QuizViewModel: ObservableObject {
         persistProgress()
         Task { @MainActor in
             correct ? Haptics.success() : Haptics.error()
+            AudioManager.shared.play(correct ? .correct : .wrong)
         }
     }
 
