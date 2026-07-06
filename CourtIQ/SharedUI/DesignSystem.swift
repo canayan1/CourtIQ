@@ -180,6 +180,11 @@ struct PressableCardStyle: ButtonStyle {
         configuration.label
             .scaleEffect(configuration.isPressed ? 0.95 : 1)
             .animation(Motion.press, value: configuration.isPressed)
+            // One place to give EVERY tappable card/tile a light tactile tick on
+            // press-down — app-wide immediate feedback, not just a visual scale.
+            .onChange(of: configuration.isPressed) { _, pressed in
+                if pressed { Haptics.tap() }
+            }
     }
 }
 

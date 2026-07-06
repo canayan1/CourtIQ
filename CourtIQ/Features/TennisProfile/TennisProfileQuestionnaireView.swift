@@ -269,6 +269,7 @@ struct TennisProfileQuestionnaireView: View {
         VStack(spacing: 10) {
             if step == .tactical {
                 Button {
+                    Haptics.success()
                     buildAndSaveProfile()
                 } label: {
                     Text(copy.seeProfile)
@@ -281,6 +282,7 @@ struct TennisProfileQuestionnaireView: View {
                 .disabled(!allAnswersComplete)
             } else {
                 Button {
+                    Haptics.tap()
                     advance()
                 } label: {
                     Text(copy.next)
@@ -295,6 +297,7 @@ struct TennisProfileQuestionnaireView: View {
 
             if step != .background {
                 Button {
+                    Haptics.tap()
                     goBack()
                 } label: {
                     Text(copy.back)
