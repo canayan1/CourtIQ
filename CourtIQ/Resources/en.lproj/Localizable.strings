@@ -96,6 +96,19 @@
 "wall.remaining" = "left";
 "wall.complete_title" = "Nice work.";
 "wall.complete_sub" = "%d hits · %@";
+
+/* Wall Rally Cam (experimental — on-device Vision ball tracking) */
+"common.beta" = "BETA";
+"rallycam.title" = "Rally Cam";
+"rallycam.sub" = "Camera counts your consecutive hits into a wall target.";
+"rallycam.best" = "Best";
+"rallycam.in_a_row" = "in a row";
+"rallycam.hint_setup" = "Prop the phone behind you, facing the wall. Drag the square onto your wall target, then Start.";
+"rallycam.hint_running" = "Rally into the square — we're counting.";
+"rallycam.start" = "Start";
+"rallycam.stop" = "Stop";
+"rallycam.permission_title" = "Camera access needed";
+"rallycam.permission_body" = "Rally Cam uses the camera on-device to track the ball. Enable it in Settings.";
 "train.analyze_title" = "AI Swing Analysis";
 "train.analyze_desc" = "Record your swing — get instant AI coaching, frame by frame.";
 "train.flagship" = "Flagship";

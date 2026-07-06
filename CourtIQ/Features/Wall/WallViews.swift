@@ -21,12 +21,14 @@ struct WallHubView: View {
     @EnvironmentObject private var lang: LanguageManager
     @ObservedObject private var wallProgress = WallProgressManager.shared
     @State private var active: WallSessionConfig?
+    @State private var showRallyCam = false
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 intro
                 freeRallyCard
+                rallyCamCard
                 Text(lang.t("wall.drills_header"))
                     .font(.caption.weight(.heavy)).tracking(0.6).textCase(.uppercase)
                     .foregroundStyle(AppPalette.inkSoft)
@@ -43,6 +45,51 @@ struct WallHubView: View {
         .fullScreenCover(item: $active) { cfg in
             WallSessionView(config: cfg).environmentObject(lang)
         }
+        .fullScreenCover(isPresented: $showRallyCam) {
+            WallRallyCamView().environmentObject(lang)
+        }
+    }
+
+    /// Experimental: the on-device camera that counts consecutive ball-in-square
+    /// hits (Vision trajectory detection). Device-only; beta-badged.
+    private var rallyCamCard: some View {
+        Button {
+            Haptics.tap()
+            showRallyCam = true
+        } label: {
+            HStack(spacing: 14) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 14, style: .continuous)
+                        .fill(AppPalette.ink).frame(width: 52, height: 52)
+                    Image(systemName: "camera.viewfinder")
+                        .appFont(24, weight: .bold, design: .default)
+                        .foregroundStyle(.white)
+                }
+                VStack(alignment: .leading, spacing: 3) {
+                    HStack(spacing: 6) {
+                        Text(lang.t("rallycam.title"))
+                            .appFont(17, weight: .heavy).foregroundStyle(AppPalette.ink)
+                        Text(lang.t("common.beta"))
+                            .appFont(9, weight: .heavy).foregroundStyle(.white)
+                            .padding(.horizontal, 5).padding(.vertical, 2)
+                            .background(Capsule().fill(AppPalette.gold))
+                    }
+                    Text(lang.t("rallycam.sub"))
+                        .font(.footnote).foregroundStyle(AppPalette.inkSoft)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                Spacer(minLength: 4)
+                Image(systemName: "chevron.right")
+                    .font(.subheadline.weight(.bold)).foregroundStyle(AppPalette.inkSoft)
+            }
+            .padding(16)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(AppPalette.parchment)
+            .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .stroke(AppPalette.ink.opacity(0.2), lineWidth: 1))
+            .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+        }
+        .buttonStyle(PressableCardStyle())
     }
 
     private var intro: some View {
