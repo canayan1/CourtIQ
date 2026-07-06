@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 @main
 struct CourtIQApp: App {
@@ -231,6 +232,16 @@ private struct RootView: View {
     // user tapped accept — leaving them stuck on the disclaimer screen.
     @AppStorage("CourtIQ.healthAck.version") private var healthAckVersion: Int = 0
 
+    /// A doubles invite code arriving from a universal link or the clipboard.
+    @State private var pendingInvite: InviteCode?
+    @State private var checkedClipboard = false
+
+    /// Only route deep links once the user is past onboarding + the health gate,
+    /// so an invite never lands on top of those first-run screens.
+    private var readyForDeepLink: Bool {
+        session.hasCompletedOnboarding && healthAckVersion >= HealthAcknowledgment.currentVersion
+    }
+
     @ViewBuilder
     var body: some View {
         Group {
@@ -257,5 +268,50 @@ private struct RootView: View {
         } message: {
             Text(session.authErrorMessage ?? "")
         }
+        .onOpenURL { handleInviteURL($0) }
+        .onContinueUserActivity(NSUserActivityTypeBrowsingWeb) { activity in
+            if let url = activity.webpageURL { handleInviteURL(url) }
+        }
+        .task(id: readyForDeepLink) {
+            guard readyForDeepLink, !checkedClipboard else { return }
+            checkedClipboard = true
+            checkClipboardForInvite()
+        }
+        .sheet(item: $pendingInvite) { invite in
+            DoublesAcceptSheet(onAccepted: {}, initialCode: invite.code)
+        }
     }
+
+    // MARK: - Doubles invite deep links
+
+    private func handleInviteURL(_ url: URL) {
+        guard readyForDeepLink else { return }
+        let host = url.host ?? ""
+        guard host.contains("samosfi") || host.contains("canayan-ios-apps") else { return }
+        let comps = url.pathComponents.filter { $0 != "/" }
+        guard comps.first == "d", comps.count >= 2 else { return }
+        let code = normalizedInviteCode(comps[1])
+        if code.count == 6 { pendingInvite = InviteCode(code: code) }
+    }
+
+    /// Deferred deep link: a fresh install may carry the code on the clipboard
+    /// (the landing page copies it). Read once, and ONLY if it strictly matches
+    /// the 6-char invite alphabet — so we never grab unrelated clipboard text.
+    private func checkClipboardForInvite() {
+        guard UIPasteboard.general.hasStrings, let raw = UIPasteboard.general.string else { return }
+        let code = normalizedInviteCode(raw)
+        let alphabet = Set("ABCDEFGHJKMNPQRSTUVWXYZ23456789")
+        guard code.count == 6, code.allSatisfy(alphabet.contains) else { return }
+        pendingInvite = InviteCode(code: code)
+    }
+
+    private func normalizedInviteCode(_ s: String) -> String {
+        s.uppercased().filter { $0.isLetter || $0.isNumber }
+    }
+}
+
+/// Wraps a deep-linked invite code so `.sheet(item:)` can present the accept flow.
+private struct InviteCode: Identifiable {
+    let id = UUID()
+    let code: String
 }

@@ -26,10 +26,14 @@ final class DoublesInviteService {
 
     // MARK: - Universal link
 
-    /// `https://canayan-ios-apps.vercel.app/d/<CODE>` — the share target.
+    /// `https://dropvolley.samosfi.com/d/<CODE>` — the share target. With the
+    /// Associated Domains entitlement (`applinks:dropvolley.samosfi.com`) + the
+    /// AASA on that host, an installed app opens this directly; otherwise the
+    /// landing page bounces to the App Store (and copies the code for a fresh
+    /// install to pick up).
     static func universalLink(for code: String) -> URL {
-        URL(string: "https://canayan-ios-apps.vercel.app/d/\(code)")
-            ?? URL(string: "https://canayan-ios-apps.vercel.app")!
+        URL(string: "https://dropvolley.samosfi.com/d/\(code)")
+            ?? URL(string: "https://dropvolley.samosfi.com")!
     }
 
     // MARK: - Code generation

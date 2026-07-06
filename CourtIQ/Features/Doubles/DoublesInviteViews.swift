@@ -840,6 +840,9 @@ struct DoublesAcceptSheet: View {
     @Environment(\.dismiss) private var dismiss
 
     var onAccepted: () -> Void
+    /// Pre-filled when opened from a deep link (universal link / clipboard) so
+    /// the recipient doesn't retype the code.
+    var initialCode: String? = nil
 
     private var copy: DoublesInviteCopy { DoublesInviteCopy(lang: lang.language) }
     private let service = DoublesInviteService()
@@ -872,6 +875,9 @@ struct DoublesAcceptSheet: View {
             }
             .navigationTitle(copy.acceptTitle)
             .navigationBarTitleDisplayMode(.inline)
+            .onAppear {
+                if let initialCode, code.isEmpty { code = initialCode }
+            }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button(copy.doneCTA) { dismiss() }.tint(AppPalette.inkSoft)
