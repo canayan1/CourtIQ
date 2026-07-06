@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F4D689E4217B817DAA69B4A7 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 325B817E77DD62D36909AF94 /* RevenueCat */; };
+		A000000000000000000FB4 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A000000000000000000FB3 /* FirebaseAnalytics */; };
 		01E3B5805B3AC2D9B83BCC20 /* AICoachConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5431D73E4D73B3EE01C53B1 /* AICoachConsentView.swift */; };
 		04396426DB8C48523158DAE8 /* DoublesPartnerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE5A32EE22AD86ED0541B11 /* DoublesPartnerDetailView.swift */; };
 		04417858354D72CCE86F2F10 /* DoublesInviteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C76C9F72D768EDAA7C746CB /* DoublesInviteStore.swift */; };
@@ -78,6 +79,7 @@
 		A0000000000000000000B3 /* FeedbackComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000B2 /* FeedbackComposer.swift */; };
 		A0000000000000000000B5 /* CrashReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000B4 /* CrashReporter.swift */; };
 		A0000000000000000000C1 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000C0 /* PrivacyInfo.xcprivacy */; };
+		A000000000000000000FB1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A000000000000000000FB0 /* GoogleService-Info.plist */; };
 		A0000000000000000000D1 /* HealthAcknowledgmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000D0 /* HealthAcknowledgmentView.swift */; };
 		A0000000000000000000D3 /* TrainSafelyBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000D2 /* TrainSafelyBanner.swift */; };
 		A0000000000000000000E1 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000E0 /* NotificationManager.swift */; };
@@ -247,6 +249,7 @@
 		A0000000000000000000B2 /* FeedbackComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeedbackComposer.swift; path = CourtIQ/Core/Utilities/FeedbackComposer.swift; sourceTree = "<group>"; };
 		A0000000000000000000B4 /* CrashReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CrashReporter.swift; path = CourtIQ/Core/Utilities/CrashReporter.swift; sourceTree = "<group>"; };
 		A0000000000000000000C0 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = CourtIQ/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		A000000000000000000FB0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = GoogleService-Info.plist; path = CourtIQ/GoogleService-Info.plist; sourceTree = "<group>"; };
 		A0000000000000000000D0 /* HealthAcknowledgmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HealthAcknowledgmentView.swift; path = CourtIQ/Features/Legal/HealthAcknowledgmentView.swift; sourceTree = "<group>"; };
 		A0000000000000000000D2 /* TrainSafelyBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrainSafelyBanner.swift; path = CourtIQ/Features/Legal/TrainSafelyBanner.swift; sourceTree = "<group>"; };
 		A0000000000000000000E0 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotificationManager.swift; path = CourtIQ/Core/Utilities/NotificationManager.swift; sourceTree = "<group>"; };
@@ -351,6 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4D689E4217B817DAA69B4A7 /* RevenueCat in Frameworks */,
+				A000000000000000000FB4 /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +375,7 @@
 			children = (
 				A000000000000000000069 /* Localizable.strings */,
 				A0000000000000000000C0 /* PrivacyInfo.xcprivacy */,
+				A000000000000000000FB0 /* GoogleService-Info.plist */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -604,6 +609,7 @@
 			);
 			packageProductDependencies = (
 				325B817E77DD62D36909AF94 /* RevenueCat */,
+				A000000000000000000FB3 /* FirebaseAnalytics */,
 			);
 			name = CourtIQ;
 			productName = CourtIQ;
@@ -631,6 +637,7 @@
 			mainGroup = A000000000000000000004;
 			packageReferences = (
 				361601AB2FF3ED13001F8B8D /* XCRemoteSwiftPackageReference "purchases-ios" */,
+				A000000000000000000FB2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = A000000000000000000005 /* Products */;
 			projectDirPath = "";
@@ -655,6 +662,7 @@
 				A000000000000000000059 /* mobility_flows.json in Resources */,
 				A00000000000000000006A /* Localizable.strings in Resources */,
 				A0000000000000000000C1 /* PrivacyInfo.xcprivacy in Resources */,
+				A000000000000000000FB1 /* GoogleService-Info.plist in Resources */,
 				A00000000000000000013B /* court_tap_drills.json in Resources */,
 				A000000000000000000169 /* pro_shot_patterns.json in Resources */,
 			);
@@ -1002,6 +1010,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A000000000000000000FB2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.0.0;
+			};
+		};
 		361601AB2FF3ED13001F8B8D /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RevenueCat/purchases-ios";
@@ -1013,6 +1029,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A000000000000000000FB3 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A000000000000000000FB2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
 		325B817E77DD62D36909AF94 /* RevenueCat */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 361601AB2FF3ED13001F8B8D /* XCRemoteSwiftPackageReference "purchases-ios" */;
