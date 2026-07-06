@@ -19,15 +19,15 @@ struct WallSessionConfig: Identifiable {
 /// entry, and the drill library. Each row opens a paced session.
 struct WallHubView: View {
     @EnvironmentObject private var lang: LanguageManager
+    @EnvironmentObject private var session: UserSessionManager
     @ObservedObject private var wallProgress = WallProgressManager.shared
-    @State private var active: WallSessionConfig?
     @State private var showRallyCam = false
+    @State private var showPaywall = false
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 intro
-                freeRallyCard
                 rallyCamCard
                 Text(lang.t("wall.drills_header"))
                     .font(.caption.weight(.heavy)).tracking(0.6).textCase(.uppercase)
@@ -43,11 +43,14 @@ struct WallHubView: View {
         .background(AppPalette.cream)
         .navigationTitle(lang.t("wall.title"))
         .navigationBarTitleDisplayMode(.inline)
-        .fullScreenCover(item: $active) { cfg in
-            WallSessionView(config: cfg).environmentObject(lang)
-        }
         .fullScreenCover(isPresented: $showRallyCam) {
             WallRallyCamView().environmentObject(lang)
+        }
+        .sheet(isPresented: $showPaywall) {
+            NavigationStack {
+                PaywallView(source: "WallRallyCam")
+                    .environmentObject(session).environmentObject(lang)
+            }
         }
     }
 
@@ -56,7 +59,7 @@ struct WallHubView: View {
     private var rallyCamCard: some View {
         Button {
             Haptics.tap()
-            showRallyCam = true
+            if session.isPremiumUnlocked { showRallyCam = true } else { showPaywall = true }
         } label: {
             HStack(spacing: 14) {
                 ZStack {
@@ -80,8 +83,9 @@ struct WallHubView: View {
                         .fixedSize(horizontal: false, vertical: true)
                 }
                 Spacer(minLength: 4)
-                Image(systemName: "chevron.right")
-                    .font(.subheadline.weight(.bold)).foregroundStyle(AppPalette.inkSoft)
+                Image(systemName: session.isPremiumUnlocked ? "chevron.right" : "crown.fill")
+                    .font(.subheadline.weight(.bold))
+                    .foregroundStyle(session.isPremiumUnlocked ? AppPalette.inkSoft : AppPalette.gold)
             }
             .padding(16)
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -105,45 +109,6 @@ struct WallHubView: View {
                 .foregroundStyle(AppPalette.inkSoft)
                 .fixedSize(horizontal: false, vertical: true)
         }
-    }
-
-    private var freeRallyCard: some View {
-        Button {
-            Haptics.tap()
-            active = WallSessionConfig(
-                title: lang.t("wall.free_title"),
-                instruction: lang.t("wall.free_instruction"),
-                target: .duration(seconds: 0),   // open — user finishes manually
-                tempoBPM: 50, focus: .consistency, isFreeRally: true, drillID: nil
-            )
-        } label: {
-            HStack(spacing: 14) {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 14, style: .continuous)
-                        .fill(AppPalette.clay).frame(width: 52, height: 52)
-                    Image(systemName: "figure.tennis")
-                        .appFont(24, weight: .bold, design: .default)
-                        .foregroundStyle(.white)
-                }
-                VStack(alignment: .leading, spacing: 3) {
-                    Text(lang.t("wall.free_title"))
-                        .appFont(17, weight: .heavy).foregroundStyle(AppPalette.ink)
-                    Text(lang.t("wall.free_sub"))
-                        .font(.footnote).foregroundStyle(AppPalette.inkSoft)
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-                Spacer(minLength: 4)
-                Image(systemName: "chevron.right")
-                    .font(.subheadline.weight(.bold)).foregroundStyle(AppPalette.inkSoft)
-            }
-            .padding(16)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(AppPalette.parchment)
-            .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous)
-                .stroke(AppPalette.clay.opacity(0.30), lineWidth: 1))
-            .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
-        }
-        .buttonStyle(PressableCardStyle())
     }
 
     /// A LEVEL in the ladder → opens the detail (free animated demo + the
