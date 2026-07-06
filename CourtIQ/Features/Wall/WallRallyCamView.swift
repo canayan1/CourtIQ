@@ -24,7 +24,6 @@ struct WallRallyCamView: View {
                 permissionCard
             } else {
                 RallyCamPreview(model: model).ignoresSafeArea()
-                targetOverlay
                 hud
             }
         }
@@ -79,16 +78,18 @@ struct WallRallyCamView: View {
             }
             .padding()
 
-            // DEBUG readout (temporary) — the key signal, big + persistent so it
-            // can be read AFTER throwing (numbers only reset on Start).
+            // DEBUG readout (temporary): the SOUND-hit count is the key signal
+            // now; the live mic peak is for tuning the impact threshold.
             VStack(spacing: 3) {
-                Text("Frames: \(model.framesSeen)")
-                Text("Ball detected: \(model.trajDetected)×")
-                Text("conf: \(String(format: "%.2f", model.lastConfidence))")
-                    .font(.system(size: 12, weight: .regular, design: .monospaced))
+                Text("SOUND hits: \(model.audioHits)")
+                Text("mic peak: \(String(format: "%.2f", model.audioPeak))")
+                    .font(.system(size: 13, weight: .regular, design: .monospaced))
+                Text("cam: \(model.framesSeen)f  ball:\(model.trajDetected)")
+                    .font(.system(size: 11, weight: .regular, design: .monospaced))
+                    .foregroundStyle(.white.opacity(0.7))
             }
-            .font(.system(size: 18, weight: .heavy, design: .monospaced))
-            .foregroundStyle(model.trajDetected > 0 ? .green : .yellow)
+            .font(.system(size: 20, weight: .heavy, design: .monospaced))
+            .foregroundStyle(model.audioHits > 0 ? .green : .yellow)
             .padding(12)
             .background(.black.opacity(0.6))
             .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
@@ -138,8 +139,7 @@ struct WallRallyCamView: View {
     }
 
     private var hintText: String {
-        if !model.isRunning { return lang.t("rallycam.hint_setup") }
-        return model.targetLocked ? lang.t("rallycam.hint_running") : lang.t("rallycam.hint_first")
+        model.isRunning ? lang.t("rallycam.hint_running") : lang.t("rallycam.hint_setup")
     }
 
     private var permissionCard: some View {
@@ -172,6 +172,10 @@ final class RallyCamModel: ObservableObject {
     @Published var framesSeen = 0
     @Published var trajDetected = 0
     @Published var lastConfidence: Double = 0
+    // Audio path — the primary, placement-independent hit counter.
+    @Published var audioPeak: Float = 0
+    @Published var audioHits = 0
+    private var lastImpactTime: TimeInterval = 0
     /// Target square in normalized [0,1] VIEW coords (top-left origin). It is
     /// AUTO-set to where the FIRST ball hits the wall (no manual framing).
     @Published var target = CGRect(x: 0.38, y: 0.32, width: 0.24, height: 0.24)
@@ -187,7 +191,24 @@ final class RallyCamModel: ObservableObject {
         isRunning = true
         currentStreak = 0; maxStreak = 0
         attempts = 0; hitsInTarget = 0
+        audioHits = 0; lastImpactTime = 0
         targetLocked = false
+    }
+
+    /// A wall impact heard by the mic — the primary, placement-independent hit
+    /// counter (Vision trajectory detection proved too finicky for this setup).
+    /// A gap over 3s ends the rally; the longest rally is the best streak. No
+    /// sound cue here, so the mic doesn't hear our own feedback.
+    func registerAudioHit() {
+        guard isRunning else { return }
+        let now = ProcessInfo.processInfo.systemUptime
+        if now - lastImpactTime > 3.0 { currentStreak = 0 }
+        lastImpactTime = now
+        currentStreak += 1
+        maxStreak = max(maxStreak, currentStreak)
+        audioHits += 1
+        Haptics.success()
+        flash()
     }
 
     func finish(record: Bool) {
@@ -270,6 +291,9 @@ final class RallyCamController: UIViewController, AVCaptureVideoDataOutputSample
     private let sequenceHandler = VNSequenceRequestHandler()
     /// De-dupe: one hit/miss per detected trajectory id.
     private var seenTrajectoryIDs: Set<UUID> = []
+    /// Mic-based impact counter — the PRIMARY hit detector.
+    private let impactDetector = AudioImpactDetector()
+    private var lastPeakUpdate: TimeInterval = 0
 
     private var frameCounter = 0
     // Loosened for first-light debugging — watch the on-screen f/traj/conf readout.
@@ -321,11 +345,29 @@ final class RallyCamController: UIViewController, AVCaptureVideoDataOutputSample
         view.layer.addSublayer(preview)
         previewLayer = preview
 
+        startImpactAudio()
         videoQueue.async { [weak self] in self?.session.startRunning() }
+    }
+
+    /// Wire + start the mic impact counter (the primary hit detector). Peaks are
+    /// throttled to ~10 Hz for the on-screen tuning readout.
+    private func startImpactAudio() {
+        impactDetector.onImpact = { [weak self] in
+            DispatchQueue.main.async { self?.model?.registerAudioHit() }
+        }
+        impactDetector.onPeak = { [weak self] peak in
+            guard let self else { return }
+            let now = ProcessInfo.processInfo.systemUptime
+            guard now - self.lastPeakUpdate > 0.1 else { return }
+            self.lastPeakUpdate = now
+            DispatchQueue.main.async { self.model?.audioPeak = peak }
+        }
+        impactDetector.start()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        impactDetector.stop()
         videoQueue.async { [weak self] in self?.session.stopRunning() }
     }
 
@@ -341,28 +383,90 @@ final class RallyCamController: UIViewController, AVCaptureVideoDataOutputSample
         try? sequenceHandler.perform([trajectoryRequest], on: pixelBuffer, orientation: .right)
     }
 
-    /// Map each newly-completed trajectory to a hit (endpoint inside the target
-    /// square) or a miss (endpoint outside). Vision points are normalized with a
-    /// BOTTOM-left origin; the target rect is top-left, so flip Y.
+    /// Vision is now DIAGNOSTIC-ONLY (the mic drives the hit count). We still
+    /// count any detected trajectory into the on-screen readout so we can tell
+    /// whether Vision ever sees the ball in this setup — the visual target /
+    /// accuracy layer is a v2 that needs a reliable detector first.
     private func handle(_ observations: [VNTrajectoryObservation]) {
-        guard let model else { return }
-        // Diagnostics: count ANY trajectory (even below the scoring threshold) so
-        // the on-screen readout shows whether Vision sees the ball at all.
-        if !observations.isEmpty {
-            let best = observations.map { Double($0.confidence) }.max() ?? 0
-            let count = observations.count
-            DispatchQueue.main.async { model.trajDetected += count; model.lastConfidence = best }
+        guard let model, !observations.isEmpty else { return }
+        let best = observations.map { Double($0.confidence) }.max() ?? 0
+        let count = observations.count
+        DispatchQueue.main.async { model.trajDetected += count; model.lastConfidence = best }
+    }
+}
+
+// MARK: - Audio impact detector (primary hit counter)
+
+/// Placement-independent hit counter: taps the mic and flags a hit on a sharp
+/// amplitude transient (a ball striking the wall). Far more robust than
+/// parabolic Vision for simply COUNTING wall hits — works from any angle, in any
+/// light, phone anywhere it can HEAR the wall. TUNE `threshold` on device using
+/// the on-screen live "mic peak" readout.
+final class AudioImpactDetector {
+    private let engine = AVAudioEngine()
+    private var running = false
+    private var lastHit: TimeInterval = 0
+
+    var onImpact: (() -> Void)?
+    var onPeak: ((Float) -> Void)?
+
+    // TUNE ON DEVICE ↓  (watch the live peak; set threshold just under a real hit)
+    private let threshold: Float = 0.12
+    private let refractory: TimeInterval = 0.16   // min gap between hits (s)
+
+    func start() {
+        guard !running else { return }
+        AVAudioApplication.requestRecordPermission { [weak self] granted in
+            guard granted, let self else { return }
+            DispatchQueue.main.async { self.configure() }
         }
-        for obs in observations where obs.confidence >= minConfidence {
-            guard !seenTrajectoryIDs.contains(obs.uuid),
-                  let end = obs.detectedPoints.last?.location else { continue }
-            seenTrajectoryIDs.insert(obs.uuid)
-            let point = CGPoint(x: CGFloat(end.x), y: 1 - CGFloat(end.y))
-            DispatchQueue.main.async {
-                model.registerImpact(at: point)
+    }
+
+    private func configure() {
+        do {
+            let session = AVAudioSession.sharedInstance()
+            // .measurement disables AGC/noise-suppression → raw transients.
+            try session.setCategory(.playAndRecord, mode: .measurement,
+                                    options: [.defaultToSpeaker, .mixWithOthers])
+            try session.setActive(true, options: [])
+            let input = engine.inputNode
+            let format = input.outputFormat(forBus: 0)
+            input.installTap(onBus: 0, bufferSize: 2048, format: format) { [weak self] buffer, _ in
+                self?.process(buffer)
+            }
+            engine.prepare()
+            try engine.start()
+            running = true
+        } catch {
+            running = false
+        }
+    }
+
+    private func process(_ buffer: AVAudioPCMBuffer) {
+        guard let ch = buffer.floatChannelData?[0] else { return }
+        let n = Int(buffer.frameLength)
+        var peak: Float = 0
+        var i = 0
+        while i < n {
+            let a = abs(ch[i])
+            if a > peak { peak = a }
+            i += 1
+        }
+        onPeak?(peak)
+        if peak >= threshold {
+            let now = ProcessInfo.processInfo.systemUptime
+            if now - lastHit >= refractory {
+                lastHit = now
+                onImpact?()
             }
         }
-        // Keep the de-dupe set from growing unbounded.
-        if seenTrajectoryIDs.count > 200 { seenTrajectoryIDs.removeAll() }
+    }
+
+    func stop() {
+        guard running else { return }
+        engine.inputNode.removeTap(onBus: 0)
+        engine.stop()
+        running = false
+        try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
     }
 }
