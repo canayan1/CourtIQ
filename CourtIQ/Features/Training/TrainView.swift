@@ -121,7 +121,7 @@ struct TrainView: View {
             LockableTile(sfSymbol: "sportscourt.fill",
                          title: lang.t("train.wall"),
                          minHeight: 96,
-                         photo: "PhotoCourt")
+                         photo: "PhotoWall")
         }
         .buttonStyle(PressableCardStyle())
         .accessibilityIdentifier("trainWallCard")
