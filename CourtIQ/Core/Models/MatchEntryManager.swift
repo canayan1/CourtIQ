@@ -90,6 +90,20 @@ final class MatchEntryManager: ObservableObject {
     /// editing or deletion.
     private var committed: [MatchEntry] { entries.filter { !$0.isDraft } }
 
+    /// Distinct opponent names from logged matches, most-recent first — powers
+    /// the "tap a recent opponent" chips so you rarely retype a name.
+    var recentOpponents: [String] {
+        var seen = Set<String>()
+        var out: [String] = []
+        for entry in committed.sorted(by: { $0.date > $1.date }) {
+            let name = entry.opponentName.trimmingCharacters(in: .whitespaces)
+            guard !name.isEmpty, seen.insert(name.lowercased()).inserted else { continue }
+            out.append(name)
+            if out.count >= 6 { break }
+        }
+        return out
+    }
+
     /// Completed (played) non-draft matches that carry an actual result.
     /// This is the basis for every W/L / win-rate / streak / rating
     /// aggregate — upcoming (planned) matches are intentionally excluded so

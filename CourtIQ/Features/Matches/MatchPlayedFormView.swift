@@ -215,6 +215,29 @@ struct MatchPlayedFormView: View {
                 text: $opponentName
             )
 
+            // Tap a recent opponent instead of retyping the name.
+            if !matches.recentOpponents.isEmpty {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 8) {
+                        ForEach(matches.recentOpponents, id: \.self) { name in
+                            Button {
+                                Haptics.tap()
+                                opponentName = name
+                            } label: {
+                                Text(name)
+                                    .font(.footnote.weight(.semibold))
+                                    .foregroundStyle(opponentName == name ? .white : AppPalette.clayText)
+                                    .padding(.horizontal, 12).padding(.vertical, 7)
+                                    .background(opponentName == name ? AppPalette.clay : AppPalette.clayTint,
+                                               in: Capsule())
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
+                    .padding(.horizontal, 1)
+                }
+            }
+
             MatchFormComponents.BoxedField(
                 placeholder: lang.t("matches.tournament_placeholder"),
                 text: $tournament
