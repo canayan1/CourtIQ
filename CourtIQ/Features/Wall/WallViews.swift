@@ -371,6 +371,10 @@ struct WallSessionView: View {
         withAnimation(.easeOut(duration: 0.25)) { finished = true }
         Haptics.celebrate()
         AudioManager.shared.play(.correct)
+        AppAnalytics.shared.log(AnalyticsEvent.wallSessionCompleted, [
+            "title": config.title, "hits": beat, "seconds": elapsed,
+            "free_rally": config.isFreeRally
+        ])
     }
 
     private func stopTimers() {

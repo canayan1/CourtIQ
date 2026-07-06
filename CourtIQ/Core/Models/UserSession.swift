@@ -475,6 +475,7 @@ final class SubscriptionManager: ObservableObject {
             await transaction.finish()
             await refreshEntitlements()
             RevenueCatManager.syncPurchases()
+            AppAnalytics.shared.log(AnalyticsEvent.subscriptionStarted, ["product": offer.id])
         case .pending:
             throw SubscriptionError.purchasePending
         case .userCancelled:

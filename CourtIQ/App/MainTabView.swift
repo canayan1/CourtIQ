@@ -26,7 +26,7 @@ struct MainTabView: View {
     var body: some View {
         TabView(selection: $tabRouter.selection) {
             NavigationStack {
-                HomeView()
+                HomeView().trackScreen("Home")
             }
             .tabItem {
                 Label(lang.t("tab.home"), systemImage: "house.fill")
@@ -34,7 +34,7 @@ struct MainTabView: View {
             .tag(TabRouter.Tab.home)
 
             NavigationStack {
-                TrainView()
+                TrainView().trackScreen("Train")
             }
             .tabItem {
                 Label(lang.t("tab.train"), systemImage: "figure.strengthtraining.traditional")
@@ -42,7 +42,7 @@ struct MainTabView: View {
             .tag(TabRouter.Tab.train)
 
             NavigationStack {
-                MatchesListView()
+                MatchesListView().trackScreen("Matches")
             }
             .tabItem {
                 Label(lang.t("tab.matches"), systemImage: "pencil.and.list.clipboard")
@@ -50,7 +50,7 @@ struct MainTabView: View {
             .tag(TabRouter.Tab.matches)
 
             NavigationStack {
-                DoublesView()
+                DoublesView().trackScreen("Doubles")
             }
             .tabItem {
                 Label(lang.t("tab.doubles"), systemImage: "person.2.fill")
@@ -58,7 +58,7 @@ struct MainTabView: View {
             .tag(TabRouter.Tab.doubles)
 
             NavigationStack {
-                AICoachTabRoot()
+                AICoachTabRoot().trackScreen("Coach")
             }
             .tabItem {
                 Label(lang.t("tab.coach"), systemImage: "sparkles")

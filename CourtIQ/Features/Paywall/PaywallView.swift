@@ -116,6 +116,10 @@ struct PaywallView: View {
         } message: {
             Text(errorMessage ?? "")
         }
+        .trackScreen("Paywall")
+        .onAppear {
+            AppAnalytics.shared.log(AnalyticsEvent.paywallShown, ["source": source])
+        }
         .task {
             // Re-load StoreKit products every time the paywall opens so a
             // failed/cold initial load (or a just-accepted Paid Apps

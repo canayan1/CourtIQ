@@ -1,5 +1,8 @@
 import SwiftUI
 import UIKit
+#if canImport(FirebaseCore)
+import FirebaseCore
+#endif
 
 @main
 struct CourtIQApp: App {
@@ -16,6 +19,14 @@ struct CourtIQApp: App {
     @StateObject private var proShotManager = ProShotPatternsManager.shared
 
     init() {
+        // Google Analytics for Firebase. Guarded so the app builds + runs with
+        // or without the FirebaseAnalytics package / GoogleService-Info.plist:
+        // once both are added, analytics light up with no further code changes.
+#if canImport(FirebaseCore)
+        if Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist") != nil {
+            FirebaseApp.configure()
+        }
+#endif
         CrashReporter.shared.start()
         RevenueCatManager.configure()
         Task { @MainActor in Haptics.warmUp() }
