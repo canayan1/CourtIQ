@@ -82,11 +82,11 @@ struct WallRallyCamView: View {
             // now; the live mic peak is for tuning the impact threshold.
             VStack(spacing: 3) {
                 Text("SOUND hits: \(model.audioHits)")
-                Text("mic peak: \(String(format: "%.2f", model.audioPeak))")
+                Text("peak \(String(format: "%.2f", model.audioPeak))   hold \(String(format: "%.2f", model.audioPeakHold))")
                     .font(.system(size: 13, weight: .regular, design: .monospaced))
-                Text("cam: \(model.framesSeen)f  ball:\(model.trajDetected)")
-                    .font(.system(size: 11, weight: .regular, design: .monospaced))
-                    .foregroundStyle(.white.opacity(0.7))
+                Text("triggers @ \(String(format: "%.2f", model.audioThreshold))")
+                    .font(.system(size: 12, weight: .regular, design: .monospaced))
+                    .foregroundStyle(.white.opacity(0.75))
             }
             .font(.system(size: 20, weight: .heavy, design: .monospaced))
             .foregroundStyle(model.audioHits > 0 ? .green : .yellow)
@@ -173,7 +173,9 @@ final class RallyCamModel: ObservableObject {
     @Published var trajDetected = 0
     @Published var lastConfidence: Double = 0
     // Audio path — the primary, placement-independent hit counter.
-    @Published var audioPeak: Float = 0
+    @Published var audioPeak: Float = 0        // live mic peak
+    @Published var audioPeakHold: Float = 0    // loudest recent peak (read on a soft hit)
+    @Published var audioThreshold: Float = 0   // current adaptive trigger level
     @Published var audioHits = 0
     private var lastImpactTime: TimeInterval = 0
     /// Target square in normalized [0,1] VIEW coords (top-left origin). It is
@@ -192,6 +194,7 @@ final class RallyCamModel: ObservableObject {
         currentStreak = 0; maxStreak = 0
         attempts = 0; hitsInTarget = 0
         audioHits = 0; lastImpactTime = 0
+        audioPeakHold = 0
         targetLocked = false
     }
 
@@ -355,12 +358,17 @@ final class RallyCamController: UIViewController, AVCaptureVideoDataOutputSample
         impactDetector.onImpact = { [weak self] in
             DispatchQueue.main.async { self?.model?.registerAudioHit() }
         }
-        impactDetector.onPeak = { [weak self] peak in
+        impactDetector.onPeak = { [weak self] peak, threshold in
             guard let self else { return }
             let now = ProcessInfo.processInfo.systemUptime
-            guard now - self.lastPeakUpdate > 0.1 else { return }
+            guard now - self.lastPeakUpdate > 0.08 else { return }
             self.lastPeakUpdate = now
-            DispatchQueue.main.async { self.model?.audioPeak = peak }
+            DispatchQueue.main.async {
+                guard let m = self.model else { return }
+                m.audioPeak = peak
+                m.audioThreshold = threshold
+                m.audioPeakHold = max(m.audioPeakHold * 0.9, peak)
+            }
         }
         impactDetector.start()
     }
@@ -408,11 +416,14 @@ final class AudioImpactDetector {
     private var lastHit: TimeInterval = 0
 
     var onImpact: (() -> Void)?
-    var onPeak: ((Float) -> Void)?
+    var onPeak: ((Float, Float) -> Void)?   // (live peak, current trigger threshold)
 
-    // TUNE ON DEVICE ↓  (watch the live peak; set threshold just under a real hit)
-    private let threshold: Float = 0.12
-    private let refractory: TimeInterval = 0.16   // min gap between hits (s)
+    // TUNE ON DEVICE ↓  — ADAPTIVE: trigger when the peak spikes well above the
+    // tracked ambient floor, with an absolute floor so silence never fires.
+    private let absFloor: Float = 0.03            // never trigger below this
+    private let spikeRatio: Float = 2.8           // impact ≈ this × ambient
+    private let refractory: TimeInterval = 0.14   // min gap between hits (s)
+    private var ambient: Float = 0.02             // running noise-floor estimate
 
     func start() {
         guard !running else { return }
@@ -452,13 +463,16 @@ final class AudioImpactDetector {
             if a > peak { peak = a }
             i += 1
         }
-        onPeak?(peak)
-        if peak >= threshold {
-            let now = ProcessInfo.processInfo.systemUptime
-            if now - lastHit >= refractory {
-                lastHit = now
-                onImpact?()
-            }
+        let threshold = max(absFloor, ambient * spikeRatio)
+        onPeak?(peak, threshold)
+        let now = ProcessInfo.processInfo.systemUptime
+        if peak >= threshold && now - lastHit >= refractory {
+            lastHit = now
+            onImpact?()
+        } else {
+            // Track the ambient floor from NON-impact frames only, so a hit
+            // doesn't inflate the floor and suppress the next one.
+            ambient = ambient * 0.95 + peak * 0.05
         }
     }
 
