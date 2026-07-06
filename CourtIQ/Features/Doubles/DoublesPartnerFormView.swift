@@ -19,8 +19,20 @@ struct DoublesPartnerFormView: View {
     @State private var level: TennisLevel?
     @State private var handedness: SwingHandedness?
     @State private var style: TennisArchetype?
-    @State private var strengths: String
-    @State private var weaknesses: String
+    @State private var selectedStrengths: Set<String>
+    @State private var selectedWeaknesses: Set<String>
+
+    /// Common tennis attributes, tap-selected as strengths / weaknesses. The
+    /// English key is stored (stable across UI language + preferred by the AI
+    /// compat grounding); chips display the localized label.
+    static let attributeOptions: [(en: String, tr: String)] = [
+        ("Serve", "Servis"), ("Second serve", "İkinci servis"),
+        ("Forehand", "Forehand"), ("Backhand", "Backhand"),
+        ("Return", "Return"), ("Net play", "File oyunu"),
+        ("Movement", "Hareket"), ("Consistency", "İstikrar"),
+        ("Power", "Güç"), ("Composure", "Soğukkanlılık"),
+        ("Slice", "Slice"), ("Overhead", "Smaç")
+    ]
 
     init(existing: DoublesPartner? = nil) {
         self.existing = existing
@@ -28,8 +40,23 @@ struct DoublesPartnerFormView: View {
         _level = State(initialValue: existing?.level)
         _handedness = State(initialValue: existing?.handedness)
         _style = State(initialValue: existing?.style)
-        _strengths = State(initialValue: existing?.strengths ?? "")
-        _weaknesses = State(initialValue: existing?.weaknesses ?? "")
+        _selectedStrengths = State(initialValue: Self.seed(existing?.strengths))
+        _selectedWeaknesses = State(initialValue: Self.seed(existing?.weaknesses))
+    }
+
+    /// Match a stored comma-list (saved in any UI language) back to English keys.
+    private static func seed(_ raw: String?) -> Set<String> {
+        guard let raw, !raw.isEmpty else { return [] }
+        let tokens = Set(raw.split(separator: ",").map { $0.trimmingCharacters(in: .whitespaces).lowercased() })
+        var out = Set<String>()
+        for opt in attributeOptions where tokens.contains(opt.en.lowercased()) || tokens.contains(opt.tr.lowercased()) {
+            out.insert(opt.en)
+        }
+        return out
+    }
+
+    private static func serialize(_ set: Set<String>) -> String {
+        attributeOptions.filter { set.contains($0.en) }.map(\.en).joined(separator: ", ")
     }
 
     private var canSave: Bool {
@@ -78,13 +105,10 @@ struct DoublesPartnerFormView: View {
                 }
 
                 Section(copy.strengthsLabel) {
-                    TextField(copy.strengthsPlaceholder, text: $strengths, axis: .vertical)
-                        .lineLimit(2...4)
+                    attributeChips($selectedStrengths)
                 }
-
                 Section(copy.weaknessesLabel) {
-                    TextField(copy.weaknessesPlaceholder, text: $weaknesses, axis: .vertical)
-                        .lineLimit(2...4)
+                    attributeChips($selectedWeaknesses)
                 }
             }
             .scrollContentBackground(.hidden)
@@ -100,6 +124,33 @@ struct DoublesPartnerFormView: View {
         }
     }
 
+    /// Tap-to-toggle attribute chips (multi-select) — replaces free-text
+    /// strengths / weaknesses so the whole partner profile is keyboard-free.
+    private func attributeChips(_ selection: Binding<Set<String>>) -> some View {
+        LazyVGrid(columns: [GridItem(.adaptive(minimum: 100), spacing: 8)], spacing: 8) {
+            ForEach(Self.attributeOptions, id: \.en) { opt in
+                let label = lang.language == .turkish ? opt.tr : opt.en
+                let sel = selection.wrappedValue.contains(opt.en)
+                Button {
+                    Haptics.tap()
+                    if sel { selection.wrappedValue.remove(opt.en) }
+                    else { selection.wrappedValue.insert(opt.en) }
+                } label: {
+                    Text(label)
+                        .font(.footnote.weight(.semibold))
+                        .foregroundStyle(sel ? .white : AppPalette.ink)
+                        .padding(.horizontal, 12).padding(.vertical, 8)
+                        .frame(maxWidth: .infinity)
+                        .background(sel ? AppPalette.clay : AppPalette.parchment, in: Capsule())
+                        .overlay(Capsule().stroke(sel ? Color.clear : AppPalette.sand, lineWidth: 1))
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .padding(.vertical, 4)
+        .listRowBackground(Color.clear)
+    }
+
     private func save() {
         // `TennisLevel` is Int-backed; persist its rawValue as a String so the
         // model can round-trip it without leaking the enum's backing type.
@@ -109,8 +160,8 @@ struct DoublesPartnerFormView: View {
             levelRaw: level.map { String($0.rawValue) },
             handednessRaw: handedness?.rawValue,
             styleRaw: style?.rawValue,
-            strengths: strengths.trimmingCharacters(in: .whitespacesAndNewlines),
-            weaknesses: weaknesses.trimmingCharacters(in: .whitespacesAndNewlines)
+            strengths: Self.serialize(selectedStrengths),
+            weaknesses: Self.serialize(selectedWeaknesses)
         )
         store.save(partner)
         dismiss()
