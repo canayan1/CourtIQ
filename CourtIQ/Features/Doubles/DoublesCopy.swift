@@ -72,6 +72,27 @@ struct DoublesCopy {
     var scoreLabel: String { t("Compatibility", "Uyum") }
     var scoreOutOf: String { t("/ 100", "/ 100") }
     func scoreBadge(_ score: Int) -> String { "\(score)/100" }
+
+    /// One-word compatibility tier beside the score — colour carries the
+    /// signal, the word stays encouraging (a low fit is "complementary", never
+    /// "bad": two friends who paired up should never feel insulted).
+    func compatTierLabel(_ tier: DoublesCompatTier) -> String {
+        switch tier {
+        case .work:  return t("Complementary", "Tamamlayıcı")
+        case .solid: return t("Solid team", "Sağlam ikili")
+        case .great: return t("Great fit", "Harika uyum")
+        }
+    }
+    func compatTierCaption(_ tier: DoublesCompatTier) -> String {
+        switch tier {
+        case .work:  return t("You'll cover for each other — sort clear roles first.",
+                              "Birbirinizi tamamlarsınız — önce net roller belirleyin.")
+        case .solid: return t("A dependable pairing with real shared strengths.",
+                              "Ortak güçlü yanları olan güvenilir bir ikili.")
+        case .great: return t("Your games slot together — a genuinely strong team.",
+                              "Oyunlarınız birbirine oturuyor — gerçekten güçlü bir takım.")
+        }
+    }
     var pastReportsHeader: String { t("Past reports", "Geçmiş raporlar") }
     var noReportsYet: String {
         t("No reports yet — run an analysis to see your compatibility.",
