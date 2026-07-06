@@ -32,6 +32,9 @@ struct TrainView: View {
                     programsCard
                         .reveal(appeared: appeared, index: 3, reduceMotion: reduceMotion)
                 }
+
+                wallCard
+                    .reveal(appeared: appeared, index: 4, reduceMotion: reduceMotion)
             }
             .padding()
         }
@@ -106,6 +109,22 @@ struct TrainView: View {
                          photo: "PhotoMobility")
         }
         .buttonStyle(PressableCardStyle())
+    }
+
+    /// Wall practice — a dedicated solo section (paced drills + free "wall
+    /// tennis" rally). Full width below the grid: the user flagged it as a
+    /// priority and it will host the premium coached-drill loop later.
+    private var wallCard: some View {
+        NavigationLink {
+            WallHubView()
+        } label: {
+            LockableTile(sfSymbol: "sportscourt.fill",
+                         title: lang.t("train.wall"),
+                         minHeight: 96,
+                         photo: "PhotoCourt")
+        }
+        .buttonStyle(PressableCardStyle())
+        .accessibilityIdentifier("trainWallCard")
     }
 
     /// Premium-gated: free users get the paywall sheet (no cosmetic-lock

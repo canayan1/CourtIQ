@@ -93,6 +93,8 @@
 		A00000000000000000011F /* MatchTrendDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000011E /* MatchTrendDashboardView.swift */; };
 		A000000000000000000131 /* PolygonMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000130 /* PolygonMath.swift */; };
 		A000000000000000000133 /* CourtTapDrill.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000132 /* CourtTapDrill.swift */; };
+		A000000000000000000AE1 /* WallDrill.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000AE0 /* WallDrill.swift */; };
+		A000000000000000000AE3 /* WallViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000AE2 /* WallViews.swift */; };
 		A000000000000000000135 /* CourtTapDrillManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000134 /* CourtTapDrillManager.swift */; };
 		A000000000000000000137 /* CourtTapDrillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000136 /* CourtTapDrillView.swift */; };
 		A000000000000000000139 /* DrillResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000138 /* DrillResultView.swift */; };
@@ -256,6 +258,8 @@
 		A00000000000000000011E /* MatchTrendDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchTrendDashboardView.swift; path = CourtIQ/Features/Matches/MatchTrendDashboardView.swift; sourceTree = "<group>"; };
 		A000000000000000000130 /* PolygonMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PolygonMath.swift; path = CourtIQ/Core/Utilities/PolygonMath.swift; sourceTree = "<group>"; };
 		A000000000000000000132 /* CourtTapDrill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CourtTapDrill.swift; path = CourtIQ/Core/Models/CourtTapDrill.swift; sourceTree = "<group>"; };
+		A000000000000000000AE0 /* WallDrill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WallDrill.swift; path = CourtIQ/Core/Models/WallDrill.swift; sourceTree = "<group>"; };
+		A000000000000000000AE2 /* WallViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WallViews.swift; path = CourtIQ/Features/Wall/WallViews.swift; sourceTree = "<group>"; };
 		A000000000000000000134 /* CourtTapDrillManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CourtTapDrillManager.swift; path = CourtIQ/Core/Models/CourtTapDrillManager.swift; sourceTree = "<group>"; };
 		A000000000000000000136 /* CourtTapDrillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CourtTapDrillView.swift; path = CourtIQ/Features/Drill/CourtTapDrillView.swift; sourceTree = "<group>"; };
 		A000000000000000000138 /* DrillResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DrillResultView.swift; path = CourtIQ/Features/Drill/DrillResultView.swift; sourceTree = "<group>"; };
@@ -434,6 +438,8 @@
 				A00000000000000000011E /* MatchTrendDashboardView.swift */,
 				A000000000000000000130 /* PolygonMath.swift */,
 				A000000000000000000132 /* CourtTapDrill.swift */,
+				A000000000000000000AE0 /* WallDrill.swift */,
+				A000000000000000000AE2 /* WallViews.swift */,
 				A000000000000000000134 /* CourtTapDrillManager.swift */,
 				A000000000000000000136 /* CourtTapDrillView.swift */,
 				A000000000000000000138 /* DrillResultView.swift */,
@@ -747,6 +753,8 @@
 				A00000000000000000011F /* MatchTrendDashboardView.swift in Sources */,
 				A000000000000000000131 /* PolygonMath.swift in Sources */,
 				A000000000000000000133 /* CourtTapDrill.swift in Sources */,
+				A000000000000000000AE1 /* WallDrill.swift in Sources */,
+				A000000000000000000AE3 /* WallViews.swift in Sources */,
 				A000000000000000000135 /* CourtTapDrillManager.swift in Sources */,
 				A000000000000000000137 /* CourtTapDrillView.swift in Sources */,
 				A000000000000000000139 /* DrillResultView.swift in Sources */,

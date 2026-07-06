@@ -76,6 +76,26 @@
 "train.practice" = "Pratik";
 "train.recover" = "Toparlan";
 "train.programs" = "Programlar";
+"train.wall" = "Duvar";
+
+/* Duvar antrenman bölümü (solo tempolu driller + serbest "duvar tenisi") */
+"wall.title" = "Duvar";
+"wall.eyebrow" = "SOLO ANTRENMAN";
+"wall.headline" = "Duvar hiç kaçırmaz.";
+"wall.subhead" = "En çok tekrar yaptıran partner — vuruşları, ayak işini ve Tennis IQ'nu geliştiren kararları oturt.";
+"wall.free_title" = "Duvar Tenisi";
+"wall.free_sub" = "Serbest ral — kendi temponu belirle, dayanabildiğin kadar.";
+"wall.free_instruction" = "Duvarda serbest ral yap. Ritmi koru — biz sayarız.";
+"wall.drills_header" = "Driller";
+"wall.start" = "Başla";
+"wall.resume" = "Devam";
+"wall.finish" = "Bitir";
+"wall.done" = "Bitti";
+"wall.bpm" = "BPM";
+"wall.hits" = "vuruş";
+"wall.remaining" = "kaldı";
+"wall.complete_title" = "Güzel iş.";
+"wall.complete_sub" = "%d vuruş · %@";
 "train.analyze_title" = "AI Swing Analizi";
 "train.analyze_desc" = "Vuruşunu çek — kare kare anında AI koçluğu al.";
 "train.flagship" = "Öne çıkan";

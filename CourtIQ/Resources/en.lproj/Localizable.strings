@@ -76,6 +76,26 @@
 "train.practice" = "Practice";
 "train.recover" = "Recover";
 "train.programs" = "Programs";
+"train.wall" = "Wall";
+
+/* Wall practice section (solo paced drills + free "wall tennis" rally) */
+"wall.title" = "Wall";
+"wall.eyebrow" = "SOLO PRACTICE";
+"wall.headline" = "The wall never misses.";
+"wall.subhead" = "The highest-rep partner there is — groove strokes, footwork, and the decisions that build Tennis IQ.";
+"wall.free_title" = "Wall Tennis";
+"wall.free_sub" = "Open rally — set your own pace and go as long as you can.";
+"wall.free_instruction" = "Rally freely against the wall. Keep the rhythm — we'll count.";
+"wall.drills_header" = "Drills";
+"wall.start" = "Start";
+"wall.resume" = "Resume";
+"wall.finish" = "Finish";
+"wall.done" = "Done";
+"wall.bpm" = "BPM";
+"wall.hits" = "hits";
+"wall.remaining" = "left";
+"wall.complete_title" = "Nice work.";
+"wall.complete_sub" = "%d hits · %@";
 "train.analyze_title" = "AI Swing Analysis";
 "train.analyze_desc" = "Record your swing — get instant AI coaching, frame by frame.";
 "train.flagship" = "Flagship";
