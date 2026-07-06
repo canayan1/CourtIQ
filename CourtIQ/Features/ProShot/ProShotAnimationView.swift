@@ -458,8 +458,10 @@ struct ProShotAnimationView: View {
             withAnimation(.easeOut(duration: 0.15)) { attributionVisible = true }
             try? await Task.sleep(nanoseconds: 220_000_000)
 
-            // 3. Run the arc.
+            // 3. Run the arc. Pock the moment the ball leaves the racket so
+            //    the strike is audible (generic synth SFX — not player audio).
             phase = .shot(idx)
+            AudioManager.shared.play(.ballHit)
             await animateArc(from: shot.from, to: shot.to, duration: shot.duration)
 
             // 4. Hold the label briefly after the ball lands, then fade

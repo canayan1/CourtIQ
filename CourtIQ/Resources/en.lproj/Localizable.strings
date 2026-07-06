@@ -52,6 +52,7 @@
 "activation.iq_intro" = "One quick call. What's the smart play?";
 "activation.correct" = "Nice — that's the smart play.";
 "activation.incorrect" = "Close — here's the smarter play.";
+"activation.check" = "Check answer";
 "activation.continue" = "Continue";
 "activation.coach_eyebrow" = "MEET YOUR AI COACH";
 "activation.coach_title" = "Your coach's first read";
@@ -595,6 +596,7 @@
 "matches.pre_match_label" = "Pre-match plan";
 "matches.pre_match_placeholder" = "What's your tactical plan against this opponent?";
 "matches.post_match_label" = "Post-match notes";
+"matches.dictate_title" = "Log it by voice";
 "matches.dictate_hint" = "Or just speak — we'll write it down";
 "matches.post_match_placeholder" = "What worked, what didn't, what surprised you?";
 "matches.journal_title_new" = "New journal entry";
@@ -690,6 +692,22 @@
 "mental.retry" = "Retry";
 "mental.shortcut_title" = "Mental check";
 "mental.shortcut_subtitle" = "A quick pre-match routine, tuned to how you feel right now.";
+
+/* Breathing exercise (offline, picked from the mental-check inputs) */
+"breathing.cta" = "Breathing exercise";
+"breathing.inhale" = "Breathe in";
+"breathing.hold" = "Hold";
+"breathing.exhale" = "Breathe out";
+"breathing.done" = "Nice — you're set.";
+"breathing.again" = "Again";
+"breathing.finish" = "Done";
+"breathing.stop" = "Stop";
+"breathing.pattern_calm" = "Settle the nerves";
+"breathing.pattern_energize" = "Wake up";
+"breathing.pattern_focus" = "Box breathing";
+"breathing.why_calm" = "A longer exhale to settle high nerves before you walk on.";
+"breathing.why_energize" = "A brisk, even breath to lift low energy.";
+"breathing.why_focus" = "Even 4-4-4-4 for steady, calm focus.";
 
 /* ── Daily Court Tap Drill ── */
 "drill.card_kicker" = "Daily drill";

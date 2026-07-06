@@ -176,6 +176,18 @@ private struct ActivationView: View {
                 }
             }
 
+            // Select-then-confirm: the answer only opens on an explicit tap,
+            // with a tone that matches the result — consistent with the quiz.
+            if !revealed {
+                primaryButton(lang.t("activation.check"), icon: nil) {
+                    guard let picked = selected else { return }
+                    withAnimation(reduceMotion ? nil : Motion.reveal) { revealed = true }
+                    AudioManager.shared.play(picked == q.correctAnswerIndex ? .correct : .wrong)
+                }
+                .disabled(selected == nil)
+                .opacity(selected == nil ? 0.5 : 1)
+            }
+
             if revealed {
                 VStack(alignment: .leading, spacing: 10) {
                     Label(selected == q.correctAnswerIndex ? lang.t("activation.correct") : lang.t("activation.incorrect"),
@@ -204,19 +216,24 @@ private struct ActivationView: View {
     private func optionRow(idx: Int, option: String, correct: Int) -> some View {
         let isChosen = selected == idx
         let isCorrect = idx == correct
-        let bg: Color = !revealed ? AppPalette.parchment
+        // Pre-reveal: tint the CHOSEN option so the pick is visible before the
+        // user confirms with "Check answer". Post-reveal: green the correct
+        // one, red a wrong pick. (Tapping no longer reveals — mirrors the main
+        // quiz's select-then-submit flow so the taste never feels accidental.)
+        let bg: Color = !revealed
+            ? (isChosen ? AppPalette.clay.opacity(0.12) : AppPalette.parchment)
             : isCorrect ? AppPalette.clay.opacity(0.16)
             : isChosen ? Color.red.opacity(0.10)
             : AppPalette.parchment
-        let border: Color = !revealed ? .clear
+        let border: Color = !revealed
+            ? (isChosen ? AppPalette.clay : .clear)
             : isCorrect ? AppPalette.clay
             : isChosen ? Color.red.opacity(0.45)
             : .clear
         return Button {
             guard !revealed else { return }
             Haptics.tap()
-            selected = idx
-            withAnimation(reduceMotion ? nil : Motion.reveal) { revealed = true }
+            withAnimation(reduceMotion ? nil : Motion.reveal) { selected = idx }
         } label: {
             HStack(spacing: 12) {
                 Text(option)
@@ -226,6 +243,8 @@ private struct ActivationView: View {
                 Spacer(minLength: 8)
                 if revealed && isCorrect {
                     Image(systemName: "checkmark.circle.fill").foregroundStyle(AppPalette.clay)
+                } else if !revealed && isChosen {
+                    Image(systemName: "largecircle.fill.circle").foregroundStyle(AppPalette.clay)
                 }
             }
             .padding(14)

@@ -568,11 +568,12 @@ struct CourtTapDrillView: View {
             revealedZone = zone
         }
 
-        // Haptic per zone
+        // Haptic + audible pock per zone — the tap IS "you hitting the ball",
+        // so the strike lands with a tone that matches the green/yellow/red read.
         switch zone {
-        case .green:  Haptics.success()
-        case .yellow: Haptics.warning()
-        case .red:    Haptics.error()
+        case .green:  Haptics.success(); AudioManager.shared.play(.correct)
+        case .yellow: Haptics.warning(); AudioManager.shared.play(.sweetSpot)
+        case .red:    Haptics.error();   AudioManager.shared.play(.wrong)
         }
 
         // For v1-style drills without a shot-type axis, persist
@@ -595,13 +596,13 @@ struct CourtTapDrillView: View {
         let correct: Bool
         if shot == ideal {
             correct = true
-            Haptics.success()
+            Haptics.success(); AudioManager.shared.play(.correct)
         } else if accepted.contains(shot) {
             correct = true   // accepted-as-yellow still counts as "OK"
-            Haptics.warning()
+            Haptics.warning(); AudioManager.shared.play(.sweetSpot)
         } else {
             correct = false
-            Haptics.error()
+            Haptics.error(); AudioManager.shared.play(.wrong)
         }
         withAnimation(.easeOut(duration: 0.22)) {
             pickedShotType = shot

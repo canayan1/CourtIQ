@@ -14,7 +14,7 @@ import AVFoundation
 final class AudioManager {
     static let shared = AudioManager()
 
-    enum SFX { case sweetSpot, correct, wrong }
+    enum SFX { case sweetSpot, correct, wrong, ballHit }
 
     private let engine = AVAudioEngine()
     private let player = AVAudioPlayerNode()
@@ -57,6 +57,9 @@ final class AudioManager {
             buffers[.sweetSpot] = Self.pock(freq: 340, decay: 0.045, noise: 0.35, dur: 0.16, sr: sampleRate, format: format)
             buffers[.correct]   = Self.pock(freq: 520, decay: 0.040, noise: 0.28, dur: 0.14, sr: sampleRate, format: format)
             buffers[.wrong]     = Self.pock(freq: 150, decay: 0.075, noise: 0.08, dur: 0.20, sr: sampleRate, format: format)
+            // A crisp racket "thwock" — brighter fundamental + a heavier noise
+            // attack than the score cues, so a struck ball reads as a real hit.
+            buffers[.ballHit]   = Self.pock(freq: 430, decay: 0.050, noise: 0.50, dur: 0.15, sr: sampleRate, format: format)
 
             try engine.start()
             started = true

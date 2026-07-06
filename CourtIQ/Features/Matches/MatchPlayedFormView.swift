@@ -298,17 +298,47 @@ struct MatchPlayedFormView: View {
                 Spacer()
                 dictationMicButton
             default: // idle / finished — ready for (another) take
-                dictationMicButton
-                Text(lang.t("matches.dictate_hint"))
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(AppPalette.inkSoft)
-                Spacer()
+                // Whole row is one big tap target: a filled mic + a titled
+                // two-line label so the fastest way to log ("just speak it")
+                // reads as a real affordance, not a footnote.
+                Button {
+                    Task { await dictation.start(entryID: entryID, scope: .post) }
+                } label: {
+                    HStack(spacing: 12) {
+                        ZStack {
+                            Circle().fill(AppPalette.clay).frame(width: 40, height: 40)
+                            Image(systemName: "mic.fill")
+                                .appFont(16, weight: .bold, design: .default)
+                                .foregroundStyle(.white)
+                        }
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(lang.t("matches.dictate_title"))
+                                .font(.subheadline.weight(.bold))
+                                .foregroundStyle(AppPalette.clayText)
+                            Text(lang.t("matches.dictate_hint"))
+                                .font(.caption)
+                                .foregroundStyle(AppPalette.inkSoft)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
+                        Spacer(minLength: 4)
+                        Image(systemName: "chevron.right")
+                            .font(.caption.weight(.bold))
+                            .foregroundStyle(AppPalette.clay.opacity(0.6))
+                    }
+                    .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel(lang.t("voice.record_start"))
             }
         }
-        .padding(.horizontal, 12)
-        .padding(.vertical, 10)
-        .background(AppPalette.clay.opacity(0.06))
-        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .padding(.horizontal, 14)
+        .padding(.vertical, 12)
+        .background(AppPalette.clay.opacity(0.09))
+        .overlay(
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(AppPalette.clay.opacity(0.28), lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         .onChange(of: dictation.state) { _, newState in
             // Transcript-only: pour the words into the notes, drop the audio.
             if case .finished(let transcript, let audioFile) = newState {

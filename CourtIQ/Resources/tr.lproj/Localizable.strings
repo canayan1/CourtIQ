@@ -52,6 +52,7 @@
 "activation.iq_intro" = "Tek bir karar. Akıllı seçim hangisi?";
 "activation.correct" = "Güzel — akıllı seçim bu.";
 "activation.incorrect" = "Az kaldı — daha akıllısı şu.";
+"activation.check" = "Cevabı kontrol et";
 "activation.continue" = "Devam";
 "activation.coach_eyebrow" = "AI KOÇUNLA TANIŞ";
 "activation.coach_title" = "Koçunun ilk okuması";
@@ -595,6 +596,7 @@
 "matches.pre_match_label" = "Maç öncesi plan";
 "matches.pre_match_placeholder" = "Bu rakibe karşı taktik planın ne?";
 "matches.post_match_label" = "Maç sonrası notlar";
+"matches.dictate_title" = "Konuşarak ekle";
 "matches.dictate_hint" = "İstersen konuş — biz yazıya dökelim";
 "matches.post_match_placeholder" = "Ne işe yaradı, ne yaramadı, seni ne şaşırttı?";
 "matches.journal_title_new" = "Yeni günlük kaydı";
@@ -690,6 +692,22 @@
 "mental.retry" = "Tekrar dene";
 "mental.shortcut_title" = "Zihinsel kontrol";
 "mental.shortcut_subtitle" = "Şu anki hissine göre ayarlanmış hızlı bir maç öncesi rutin.";
+
+/* Nefes egzersizi (çevrimdışı, mental-check girdilerine göre seçilir) */
+"breathing.cta" = "Nefes egzersizi";
+"breathing.inhale" = "Nefes al";
+"breathing.hold" = "Tut";
+"breathing.exhale" = "Nefes ver";
+"breathing.done" = "Güzel — hazırsın.";
+"breathing.again" = "Tekrar";
+"breathing.finish" = "Bitir";
+"breathing.stop" = "Bırak";
+"breathing.pattern_calm" = "Gerginliği yatıştır";
+"breathing.pattern_energize" = "Enerjilen";
+"breathing.pattern_focus" = "Kutu nefesi";
+"breathing.why_calm" = "Korta çıkmadan yüksek gerginliği yatıştıran daha uzun bir nefes verme.";
+"breathing.why_energize" = "Düşük enerjiyi kaldıran hızlı, dengeli bir nefes.";
+"breathing.why_focus" = "Sağlam, sakin odak için dengeli 4-4-4-4.";
 
 /* ── Günlük Kort Tap Drill ── */
 "drill.card_kicker" = "Günlük drill";
