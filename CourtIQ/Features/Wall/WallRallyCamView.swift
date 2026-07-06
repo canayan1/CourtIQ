@@ -39,21 +39,23 @@ struct WallRallyCamView: View {
             let r = model.target
             let rect = CGRect(x: r.minX * geo.size.width, y: r.minY * geo.size.height,
                               width: r.width * geo.size.width, height: r.height * geo.size.height)
-            RoundedRectangle(cornerRadius: 10, style: .continuous)
-                .stroke(model.lastHit ? AppPalette.moss : .white.opacity(0.9),
-                        style: StrokeStyle(lineWidth: 3, dash: model.lastHit ? [] : [8, 6]))
-                .frame(width: rect.width, height: rect.height)
-                .position(x: rect.midX, y: rect.midY)
-                .shadow(color: .black.opacity(0.5), radius: 4)
-                .animation(.easeOut(duration: 0.15), value: model.lastHit)
-            // Drag to reposition the target over the wall square.
-                .gesture(
-                    DragGesture().onChanged { value in
-                        let nx = min(max(0, value.location.x / geo.size.width - r.width / 2), 1 - r.width)
-                        let ny = min(max(0, value.location.y / geo.size.height - r.height / 2), 1 - r.height)
-                        model.target.origin = CGPoint(x: nx, y: ny)
-                    }
-                )
+            ZStack {
+                if model.targetLocked {
+                    // Auto-placed on the first impact; flashes green on a hit.
+                    RoundedRectangle(cornerRadius: 10, style: .continuous)
+                        .stroke(model.lastHit ? AppPalette.moss : .white.opacity(0.95),
+                                style: StrokeStyle(lineWidth: 3, dash: model.lastHit ? [] : [8, 6]))
+                        .frame(width: rect.width, height: rect.height)
+                        .position(x: rect.midX, y: rect.midY)
+                        .shadow(color: .black.opacity(0.5), radius: 4)
+                        .animation(.easeOut(duration: 0.15), value: model.lastHit)
+                } else if model.isRunning {
+                    // Waiting for the first hit to auto-place the target.
+                    Image(systemName: "scope")
+                        .font(.system(size: 54, weight: .thin)).foregroundStyle(.white.opacity(0.65))
+                        .position(x: geo.size.width / 2, y: geo.size.height * 0.42)
+                }
+            }
         }
     }
 
@@ -68,14 +70,12 @@ struct WallRallyCamView: View {
                         .padding(12).background(Circle().fill(.black.opacity(0.4)))
                 }
                 Spacer()
-                VStack(alignment: .trailing, spacing: 2) {
-                    Text(lang.t("rallycam.best")).font(.caption.weight(.bold))
-                        .foregroundStyle(.white.opacity(0.7)).textCase(.uppercase).tracking(0.5)
-                    Text("\(model.maxStreak)").appFont(24, weight: .heavy).foregroundStyle(.white)
-                        .monospacedDigit()
+                HStack(spacing: 10) {
+                    statPill(label: lang.t("rallycam.best"), value: "\(model.maxStreak)")
+                    if model.targetLocked {
+                        statPill(label: lang.t("rallycam.accuracy"), value: "\(model.accuracy)%")
+                    }
                 }
-                .padding(.horizontal, 14).padding(.vertical, 8)
-                .background(RoundedRectangle(cornerRadius: 12).fill(.black.opacity(0.4)))
             }
             .padding()
 
@@ -94,7 +94,7 @@ struct WallRallyCamView: View {
 
             Spacer()
 
-            Text(model.isRunning ? lang.t("rallycam.hint_running") : lang.t("rallycam.hint_setup"))
+            Text(hintText)
                 .font(.footnote).foregroundStyle(.white.opacity(0.85))
                 .multilineTextAlignment(.center).padding(.horizontal, 32)
                 .padding(.bottom, 8)
@@ -111,6 +111,21 @@ struct WallRallyCamView: View {
             }
             .padding(.horizontal, 24).padding(.bottom, 28)
         }
+    }
+
+    private func statPill(label: String, value: String) -> some View {
+        VStack(alignment: .trailing, spacing: 2) {
+            Text(label).font(.caption.weight(.bold))
+                .foregroundStyle(.white.opacity(0.7)).textCase(.uppercase).tracking(0.5)
+            Text(value).appFont(22, weight: .heavy).foregroundStyle(.white).monospacedDigit()
+        }
+        .padding(.horizontal, 12).padding(.vertical, 7)
+        .background(RoundedRectangle(cornerRadius: 12).fill(.black.opacity(0.4)))
+    }
+
+    private var hintText: String {
+        if !model.isRunning { return lang.t("rallycam.hint_setup") }
+        return model.targetLocked ? lang.t("rallycam.hint_running") : lang.t("rallycam.hint_first")
     }
 
     private var permissionCard: some View {
@@ -133,16 +148,29 @@ struct WallRallyCamView: View {
 final class RallyCamModel: ObservableObject {
     @Published var currentStreak = 0
     @Published var maxStreak = 0
+    @Published var attempts = 0
+    @Published var hitsInTarget = 0
     @Published var isRunning = false
     @Published var lastHit = false
+    @Published var targetLocked = false
     @Published var permissionDenied = false
-    /// Target square in normalized [0,1] VIEW coords (top-left origin). Default
-    /// centered; the player drags it over the real wall square.
-    @Published var target = CGRect(x: 0.30, y: 0.24, width: 0.40, height: 0.34)
+    /// Target square in normalized [0,1] VIEW coords (top-left origin). It is
+    /// AUTO-set to where the FIRST ball hits the wall (no manual framing).
+    @Published var target = CGRect(x: 0.38, y: 0.32, width: 0.24, height: 0.24)
+
+    /// Share of shots that landed inside the target (0–100).
+    var accuracy: Int {
+        attempts == 0 ? 0 : Int((Double(hitsInTarget) / Double(attempts) * 100).rounded())
+    }
 
     private var flashWork: DispatchWorkItem?
 
-    func start() { isRunning = true; currentStreak = 0 }
+    func start() {
+        isRunning = true
+        currentStreak = 0; maxStreak = 0
+        attempts = 0; hitsInTarget = 0
+        targetLocked = false
+    }
 
     func finish(record: Bool) {
         isRunning = false
@@ -152,28 +180,43 @@ final class RallyCamModel: ObservableObject {
                 hits: maxStreak, seconds: 0, isFreeRally: true
             )
             AppAnalytics.shared.log(AnalyticsEvent.wallSessionCompleted,
-                                    ["title": "rally_cam", "hits": maxStreak])
+                                    ["title": "rally_cam", "hits": maxStreak, "accuracy": accuracy])
         }
     }
 
     func stop() { isRunning = false }
 
-    /// Called by the capture pipeline when a completed ball trajectory ended
-    /// INSIDE the target square.
-    func registerHit() {
+    /// A completed ball trajectory ended at `point` (normalized, top-left view
+    /// coords). The FIRST impact auto-locks the target around it; after that,
+    /// in-target = hit + streak, out-of-target = miss (breaks the streak).
+    func registerImpact(at point: CGPoint) {
         guard isRunning else { return }
-        currentStreak += 1
-        maxStreak = max(maxStreak, currentStreak)
-        Haptics.success()
-        AudioManager.shared.play(.ballHit)
-        flash()
+        if !targetLocked {
+            lockTarget(around: point)
+            targetLocked = true
+            attempts = 1; hitsInTarget = 1
+            currentStreak = 1; maxStreak = 1
+            Haptics.success(); AudioManager.shared.play(.ballHit); flash()
+            return
+        }
+        attempts += 1
+        if target.contains(point) {
+            hitsInTarget += 1
+            currentStreak += 1
+            maxStreak = max(maxStreak, currentStreak)
+            Haptics.success(); AudioManager.shared.play(.ballHit); flash()
+        } else {
+            currentStreak = 0
+            Haptics.warning()
+        }
     }
 
-    /// Called when a trajectory ended OUTSIDE the square (a miss) — breaks the run.
-    func registerMiss() {
-        guard isRunning, currentStreak > 0 else { return }
-        currentStreak = 0
-        Haptics.warning()
+    /// Center a fixed-size target square on the first impact point (clamped).
+    private func lockTarget(around point: CGPoint) {
+        let size: CGFloat = 0.24
+        let x = min(max(0, point.x - size / 2), 1 - size)
+        let y = min(max(0, point.y - size / 2), 1 - size)
+        target = CGRect(x: x, y: y, width: size, height: size)
     }
 
     private func flash() {
@@ -284,9 +327,8 @@ final class RallyCamController: UIViewController, AVCaptureVideoDataOutputSample
                   let end = obs.detectedPoints.last?.location else { continue }
             seenTrajectoryIDs.insert(obs.uuid)
             let point = CGPoint(x: CGFloat(end.x), y: 1 - CGFloat(end.y))
-            let target = model.target
             DispatchQueue.main.async {
-                target.contains(point) ? model.registerHit() : model.registerMiss()
+                model.registerImpact(at: point)
             }
         }
         // Keep the de-dupe set from growing unbounded.

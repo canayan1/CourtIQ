@@ -106,8 +106,10 @@
 "rallycam.sub" = "Kamera, duvardaki hedefe ardışık isabetlerini sayar.";
 "rallycam.best" = "Rekor";
 "rallycam.in_a_row" = "ardışık";
-"rallycam.hint_setup" = "Telefonu arkana, duvara bakacak şekilde koy. Kareyi duvardaki hedefe sürükle, sonra Başla.";
-"rallycam.hint_running" = "Kareye vur — sayıyoruz.";
+"rallycam.hint_setup" = "Telefonu arkana, duvara bakacak şekilde koy. Sonra Başla — ilk isabetin hedefi belirler.";
+"rallycam.hint_first" = "Duvara vur — ilk vuruşun hedefi kilitler.";
+"rallycam.hint_running" = "Kareye vur — puanlıyoruz.";
+"rallycam.accuracy" = "İsabet";
 "rallycam.start" = "Başla";
 "rallycam.stop" = "Bitir";
 "rallycam.permission_title" = "Kamera erişimi gerekli";

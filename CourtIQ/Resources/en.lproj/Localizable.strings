@@ -106,8 +106,10 @@
 "rallycam.sub" = "Camera counts your consecutive hits into a wall target.";
 "rallycam.best" = "Best";
 "rallycam.in_a_row" = "in a row";
-"rallycam.hint_setup" = "Prop the phone behind you, facing the wall. Drag the square onto your wall target, then Start.";
-"rallycam.hint_running" = "Rally into the square — we're counting.";
+"rallycam.hint_setup" = "Prop the phone behind you, facing the wall. Then Start — your first hit sets the target.";
+"rallycam.hint_first" = "Hit the wall — your first shot locks the target.";
+"rallycam.hint_running" = "Rally into the square — we're scoring.";
+"rallycam.accuracy" = "Accuracy";
 "rallycam.start" = "Start";
 "rallycam.stop" = "Stop";
 "rallycam.permission_title" = "Camera access needed";
