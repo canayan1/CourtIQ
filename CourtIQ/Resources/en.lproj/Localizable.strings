@@ -96,6 +96,9 @@
 "wall.remaining" = "left";
 "wall.complete_title" = "Nice work.";
 "wall.complete_sub" = "%d hits · %@";
+"wall.level_n" = "Level %d";
+"wall.how_to" = "How to";
+"wall.rallycam_cta" = "Score it with the camera — auto-target + accuracy";
 
 /* Wall Rally Cam (experimental — on-device Vision ball tracking) */
 "common.beta" = "BETA";

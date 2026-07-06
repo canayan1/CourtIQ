@@ -96,6 +96,9 @@
 "wall.remaining" = "kaldı";
 "wall.complete_title" = "Güzel iş.";
 "wall.complete_sub" = "%d vuruş · %@";
+"wall.level_n" = "Level %d";
+"wall.how_to" = "Nasıl yapılır";
+"wall.rallycam_cta" = "Kamerayla skorla — oto-hedef + isabet";
 
 /* Wall Rally Cam (deneysel — cihazda Vision top takibi) */
 "common.beta" = "BETA";

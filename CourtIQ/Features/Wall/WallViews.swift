@@ -33,8 +33,8 @@ struct WallHubView: View {
                     .font(.caption.weight(.heavy)).tracking(0.6).textCase(.uppercase)
                     .foregroundStyle(AppPalette.inkSoft)
                     .padding(.top, 6)
-                ForEach(WallDrill.all) { drill in
-                    drillCard(drill)
+                ForEach(Array(WallDrill.all.enumerated()), id: \.element.id) { idx, drill in
+                    drillCard(level: idx + 1, drill: drill)
                 }
             }
             .padding()
@@ -145,22 +145,18 @@ struct WallHubView: View {
         .buttonStyle(PressableCardStyle())
     }
 
-    private func drillCard(_ drill: WallDrill) -> some View {
-        Button {
-            Haptics.tap()
-            active = WallSessionConfig(
-                title: drill.localizedTitle(for: lang.language),
-                instruction: drill.localizedInstruction(for: lang.language),
-                target: drill.target, tempoBPM: drill.tempoBPM,
-                focus: drill.focus, isFreeRally: false, drillID: drill.id
-            )
+    /// A LEVEL in the ladder → opens the detail (free animated demo + the
+    /// premium Rally Cam). No metronome.
+    private func drillCard(level: Int, drill: WallDrill) -> some View {
+        NavigationLink {
+            WallLevelDetailView(level: level, drill: drill)
         } label: {
             HStack(spacing: 12) {
                 ZStack {
                     Circle().fill(WallStyle.tint(drill.focus).opacity(0.16))
                         .frame(width: 44, height: 44)
-                    Image(systemName: drill.focus.iconName)
-                        .appFont(18, weight: .bold, design: .default)
+                    Text("\(level)")
+                        .appFont(18, weight: .heavy)
                         .foregroundStyle(WallStyle.tint(drill.focus))
                 }
                 VStack(alignment: .leading, spacing: 4) {
@@ -176,9 +172,6 @@ struct WallHubView: View {
                     }
                     HStack(spacing: 8) {
                         Text(drill.focus.label(for: lang.language))
-                            .font(.caption.weight(.semibold)).foregroundStyle(AppPalette.inkSoft)
-                        Text("·").foregroundStyle(AppPalette.inkSoft.opacity(0.5))
-                        Text(WallStyle.targetText(drill.target, lang: lang))
                             .font(.caption.weight(.semibold)).foregroundStyle(AppPalette.inkSoft)
                         if wallProgress.personalBest(drillID: drill.id) > 0 {
                             Text("·").foregroundStyle(AppPalette.inkSoft.opacity(0.5))
@@ -473,6 +466,151 @@ enum WallStyle {
                     .fill(i <= level ? AppPalette.clay : AppPalette.sand)
                     .frame(width: 5, height: 5)
             }
+        }
+    }
+}
+
+// MARK: - Level detail (free animated demo + premium Rally Cam)
+
+/// One wall LEVEL: shows what the drill is + a free animated "how to" demo, and
+/// offers the premium **Rally Cam** (the on-device vision scorer) — gated behind
+/// the paywall for free accounts. Replaces the old metronome session.
+struct WallLevelDetailView: View {
+    @EnvironmentObject private var lang: LanguageManager
+    @EnvironmentObject private var session: UserSessionManager
+    @ObservedObject private var wallProgress = WallProgressManager.shared
+
+    let level: Int
+    let drill: WallDrill
+
+    @State private var showRallyCam = false
+    @State private var showPaywall = false
+
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 18) {
+                header
+                WallDemoAnimation(focus: drill.focus)
+                goalCard
+                rallyCamButton
+            }
+            .padding()
+        }
+        .background(AppPalette.cream)
+        .navigationTitle(String(format: lang.t("wall.level_n"), level))
+        .navigationBarTitleDisplayMode(.inline)
+        .fullScreenCover(isPresented: $showRallyCam) {
+            WallRallyCamView().environmentObject(lang)
+        }
+        .sheet(isPresented: $showPaywall) {
+            NavigationStack {
+                PaywallView(source: "WallRallyCam")
+                    .environmentObject(session).environmentObject(lang)
+            }
+        }
+    }
+
+    private var header: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(spacing: 8) {
+                Label(drill.focus.label(for: lang.language), systemImage: drill.focus.iconName)
+                    .font(.caption.weight(.heavy)).textCase(.uppercase).tracking(0.5)
+                    .foregroundStyle(WallStyle.tint(drill.focus))
+                if drill.isTennisIQ {
+                    Text("IQ").appFont(9, weight: .heavy).foregroundStyle(.white)
+                        .padding(.horizontal, 5).padding(.vertical, 2).background(Capsule().fill(AppPalette.clay))
+                }
+                Spacer()
+                if wallProgress.personalBest(drillID: drill.id) > 0 {
+                    Label("\(wallProgress.personalBest(drillID: drill.id))", systemImage: "trophy.fill")
+                        .font(.caption.weight(.bold)).foregroundStyle(AppPalette.gold)
+                }
+            }
+            Text(drill.localizedTitle(for: lang.language))
+                .appFont(26, weight: .heavy).foregroundStyle(AppPalette.ink)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+    }
+
+    private var goalCard: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(lang.t("wall.how_to"))
+                .font(.caption.weight(.heavy)).tracking(0.6).textCase(.uppercase)
+                .foregroundStyle(AppPalette.inkSoft)
+            Text(drill.localizedInstruction(for: lang.language))
+                .font(.subheadline).foregroundStyle(AppPalette.ink)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .padding(16).frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppPalette.parchment)
+        .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).stroke(AppPalette.sand, lineWidth: 1))
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+    }
+
+    private var rallyCamButton: some View {
+        Button {
+            Haptics.tap()
+            if session.isPremiumUnlocked { showRallyCam = true } else { showPaywall = true }
+        } label: {
+            HStack(spacing: 12) {
+                Image(systemName: "camera.viewfinder").appFont(20, weight: .bold, design: .default)
+                VStack(alignment: .leading, spacing: 2) {
+                    HStack(spacing: 6) {
+                        Text(lang.t("rallycam.title")).font(.headline)
+                        if !session.isPremiumUnlocked {
+                            Image(systemName: "crown.fill").font(.caption).foregroundStyle(AppPalette.gold)
+                        }
+                    }
+                    Text(lang.t("wall.rallycam_cta")).font(.caption).foregroundStyle(.white.opacity(0.9))
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                Spacer(minLength: 4)
+                Image(systemName: "chevron.right").font(.subheadline.weight(.bold))
+            }
+            .foregroundStyle(.white)
+            .padding(16).frame(maxWidth: .infinity, alignment: .leading)
+            .background(AppPalette.clay)
+            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        }
+        .buttonStyle(PressableCardStyle())
+    }
+}
+
+/// A tiny looping side-view demo — player on the left, wall + dashed target on
+/// the right, a ball shuttling to the wall and back — so FREE accounts see how
+/// the drill is done without the camera. (Per-drill choreography can come later;
+/// this is the shared v1.) Honors Reduce Motion.
+struct WallDemoAnimation: View {
+    let focus: WallFocus
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var atWall = false
+
+    var body: some View {
+        GeometryReader { geo in
+            let w = geo.size.width, h = geo.size.height
+            let leftX = w * 0.14, rightX = w * 0.78
+            let baseY = h * 0.62
+            ZStack {
+                Rectangle().fill(WallStyle.tint(focus).opacity(0.22))
+                    .frame(height: 2).position(x: w / 2, y: baseY + 24)
+                RoundedRectangle(cornerRadius: 3).fill(AppPalette.ink.opacity(0.85))
+                    .frame(width: 9, height: h * 0.7).position(x: w * 0.9, y: h * 0.42)
+                RoundedRectangle(cornerRadius: 4)
+                    .stroke(WallStyle.tint(focus), style: StrokeStyle(lineWidth: 2, dash: [4, 4]))
+                    .frame(width: 32, height: 32).position(x: w * 0.86, y: h * 0.40)
+                Circle().fill(AppPalette.clay).frame(width: 18, height: 18).position(x: leftX, y: baseY)
+                Circle().fill(Color.yellow).overlay(Circle().stroke(.white.opacity(0.6), lineWidth: 1))
+                    .frame(width: 13, height: 13)
+                    .position(x: atWall ? rightX : leftX, y: baseY - h * 0.16)
+            }
+        }
+        .frame(height: 150)
+        .background(AppPalette.parchment)
+        .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).stroke(AppPalette.sand, lineWidth: 1))
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .onAppear {
+            guard !reduceMotion else { return }
+            withAnimation(.easeInOut(duration: 0.65).repeatForever(autoreverses: true)) { atWall = true }
         }
     }
 }
