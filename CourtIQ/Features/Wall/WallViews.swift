@@ -34,7 +34,8 @@ struct WallHubView: View {
                     .foregroundStyle(AppPalette.inkSoft)
                     .padding(.top, 6)
                 ForEach(Array(WallDrill.all.enumerated()), id: \.element.id) { idx, drill in
-                    drillCard(level: idx + 1, drill: drill)
+                    drillCard(level: idx + 1, drill: drill,
+                              unlocked: idx == 0 || wallProgress.isCleared(WallDrill.all[idx - 1].id))
                 }
             }
             .padding()
@@ -147,7 +148,7 @@ struct WallHubView: View {
 
     /// A LEVEL in the ladder → opens the detail (free animated demo + the
     /// premium Rally Cam). No metronome.
-    private func drillCard(level: Int, drill: WallDrill) -> some View {
+    private func drillCard(level: Int, drill: WallDrill, unlocked: Bool) -> some View {
         NavigationLink {
             WallLevelDetailView(level: level, drill: drill)
         } label: {
@@ -182,8 +183,16 @@ struct WallHubView: View {
                         WallStyle.difficultyDots(drill.difficulty)
                     }
                 }
-                Image(systemName: "chevron.right")
-                    .font(.caption.weight(.bold)).foregroundStyle(AppPalette.inkSoft.opacity(0.6))
+                if !unlocked {
+                    Image(systemName: "lock.fill")
+                        .font(.caption.weight(.bold)).foregroundStyle(AppPalette.inkSoft.opacity(0.6))
+                } else if wallProgress.isCleared(drill.id) {
+                    Image(systemName: "checkmark.circle.fill")
+                        .font(.subheadline).foregroundStyle(AppPalette.moss)
+                } else {
+                    Image(systemName: "chevron.right")
+                        .font(.caption.weight(.bold)).foregroundStyle(AppPalette.inkSoft.opacity(0.6))
+                }
             }
             .padding(14)
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -193,6 +202,8 @@ struct WallHubView: View {
             .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
         }
         .buttonStyle(PressableCardStyle())
+        .disabled(!unlocked)
+        .opacity(unlocked ? 1 : 0.55)
     }
 }
 
@@ -493,6 +504,7 @@ struct WallLevelDetailView: View {
                 WallDemoAnimation(focus: drill.focus)
                 goalCard
                 rallyCamButton
+                clearSection
             }
             .padding()
         }
@@ -573,6 +585,26 @@ struct WallLevelDetailView: View {
             .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
         }
         .buttonStyle(PressableCardStyle())
+    }
+
+    /// Clears the level (unlocks the next). Free accounts self-attest after the
+    /// demo; premium earns it via a Rally Cam run. Once cleared, shows a seal.
+    @ViewBuilder
+    private var clearSection: some View {
+        if wallProgress.isCleared(drill.id) {
+            Label(lang.t("wall.level_cleared"), systemImage: "checkmark.seal.fill")
+                .font(.subheadline.weight(.bold)).foregroundStyle(AppPalette.moss)
+                .frame(maxWidth: .infinity).padding(.top, 4)
+        } else {
+            Button {
+                Haptics.success()
+                wallProgress.markCleared(drill.id)
+            } label: {
+                Text(lang.t("wall.mark_done")).font(.subheadline.weight(.semibold))
+                    .frame(maxWidth: .infinity).padding(.vertical, 12)
+            }
+            .buttonStyle(.bordered).tint(AppPalette.moss)
+        }
     }
 }
 

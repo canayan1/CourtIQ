@@ -99,6 +99,8 @@
 "wall.level_n" = "Level %d";
 "wall.how_to" = "Nasıl yapılır";
 "wall.rallycam_cta" = "Kamerayla skorla — oto-hedef + isabet";
+"wall.mark_done" = "Bunu yaptım — level'ı geç";
+"wall.level_cleared" = "Level geçildi";
 
 /* Wall Rally Cam (deneysel — cihazda Vision top takibi) */
 "common.beta" = "BETA";

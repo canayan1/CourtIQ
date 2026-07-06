@@ -99,6 +99,8 @@
 "wall.level_n" = "Level %d";
 "wall.how_to" = "How to";
 "wall.rallycam_cta" = "Score it with the camera — auto-target + accuracy";
+"wall.mark_done" = "I did this — clear the level";
+"wall.level_cleared" = "Level cleared";
 
 /* Wall Rally Cam (experimental — on-device Vision ball tracking) */
 "common.beta" = "BETA";

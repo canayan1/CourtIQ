@@ -21,7 +21,10 @@ final class WallProgressManager: ObservableObject {
     static let shared = WallProgressManager()
 
     private static let key = "DropVolley.wallSessions.v1"
+    private static let clearedKey = "DropVolley.wallCleared.v1"
     @Published private(set) var sessions: [WallSessionRecord] = []
+    /// Drill ids the player has cleared — drives the level-ladder unlock.
+    @Published private(set) var clearedDrills: Set<String> = []
 
     private init() { load() }
 
@@ -50,6 +53,18 @@ final class WallProgressManager: ObservableObject {
     /// Days with ≥1 wall session — feeds the unified activity streak.
     var activeDayKeys: Set<String> { Set(sessions.map { $0.date.todayKey }) }
 
+    // MARK: - Level ladder progression
+
+    func isCleared(_ drillID: String) -> Bool { clearedDrills.contains(drillID) }
+
+    /// Mark a level cleared (unlocks the next). Called when a free account taps
+    /// "I did this" on the demo, or a premium account finishes a Rally Cam run.
+    func markCleared(_ drillID: String) {
+        guard !clearedDrills.contains(drillID) else { return }
+        clearedDrills.insert(drillID)
+        UserDefaults.standard.set(Array(clearedDrills), forKey: Self.clearedKey)
+    }
+
     // MARK: - Persistence
 
     private func persist() {
@@ -59,6 +74,9 @@ final class WallProgressManager: ObservableObject {
     }
 
     private func load() {
+        if let saved = UserDefaults.standard.array(forKey: Self.clearedKey) as? [String] {
+            clearedDrills = Set(saved)
+        }
         guard let data = UserDefaults.standard.data(forKey: Self.key),
               let decoded = try? JSONDecoder().decode([WallSessionRecord].self, from: data) else { return }
         sessions = decoded.sorted { $0.date > $1.date }
