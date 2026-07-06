@@ -28,7 +28,14 @@ struct WallRallyCamView: View {
             }
         }
         .statusBarHidden(true)
-        .onDisappear { model.stop() }
+        // Keep the screen awake — you're across the room hitting a ball, not
+        // touching the phone. (A top competitor's #1 complaint: auto-lock kills
+        // the recording mid-session.)
+        .onAppear { UIApplication.shared.isIdleTimerDisabled = true }
+        .onDisappear {
+            UIApplication.shared.isIdleTimerDisabled = false
+            model.stop()
+        }
     }
 
     // MARK: - Target square the player frames on the wall
