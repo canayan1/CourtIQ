@@ -63,9 +63,10 @@ Premium: the full gamified Wall — Rally Cam scoring, level challenges, and riv
 leaderboards — plus unlimited AI coaching, the full quiz archive, and full
 history. (Coming: video recording with hit markers and target-accuracy scoring.)
 
-Questions or feedback? support@dropvolley.app        ← CONFIRM real address
-Privacy Policy: https://dropvolley.app/privacy       ← CONFIRM
-Terms of Use: https://dropvolley.app/terms           ← CONFIRM
+Support URL: https://canayan1.github.io/CourtIQ/SUPPORT
+Privacy Policy: https://canayan1.github.io/CourtIQ/PRIVACY_POLICY
+Terms of Use: https://canayan1.github.io/CourtIQ/TERMS_OF_USE
+(these are the live GitHub Pages URLs already used on 1.0.x — verified from docs)
 
 ---
 
