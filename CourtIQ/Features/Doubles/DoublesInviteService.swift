@@ -26,14 +26,14 @@ final class DoublesInviteService {
 
     // MARK: - Universal link
 
-    /// `https://dropvolley.samosfi.com/d/<CODE>` — the share target. With the
-    /// Associated Domains entitlement (`applinks:dropvolley.samosfi.com`) + the
-    /// AASA on that host, an installed app opens this directly; otherwise the
-    /// landing page bounces to the App Store (and copies the code for a fresh
-    /// install to pick up).
+    /// `https://samosfi.com/d/<CODE>` — the share target. With the Associated
+    /// Domains entitlement (`applinks:samosfi.com`) + the AASA live on that host
+    /// (verified: appID DC8ALPY949.com.canayan93.courtiq, paths /d/*), an
+    /// installed app opens this directly; otherwise the landing page bounces to
+    /// the App Store (and copies the code for a fresh install to pick up).
     static func universalLink(for code: String) -> URL {
-        URL(string: "https://dropvolley.samosfi.com/d/\(code)")
-            ?? URL(string: "https://dropvolley.samosfi.com")!
+        URL(string: "https://samosfi.com/d/\(code)")
+            ?? URL(string: "https://samosfi.com")!
     }
 
     // MARK: - Code generation
