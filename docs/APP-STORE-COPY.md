@@ -1,85 +1,120 @@
-# DropVolley — App Store copy (EN-first, honest)
+# DropVolley — App Store copy (EN-first, honest) · 1.0.3
 
-Structure modeled on CoachNow / SevenSix / SwingVision listings. **No fabricated
-ratings, awards, testimonials, or "world's first" claims (App Store 2.3.1).**
-Confident product claims (puffery) are fine; invented third-party proof is not.
-Testimonial lines get added only after real reviews exist (via SKStoreReviewController).
+Structure modeled on CoachNow / SevenSix / SwingVision + a marketing audit
+(Hybrid → DropVolley learnings). **No fabricated ratings, awards, testimonials,
+or "world's first" claims (App Store 2.3.1).** Confident product claims + honest
+comparative positioning are fine; invented third-party proof is not. Testimonial
+lines get added only after real reviews exist (RatingPrompt is wired).
 
 ---
 
 ## Subtitle (≤30 chars)
-`Your AI tennis IQ coach`   (23)
+`AI swing & match IQ coach`   (25)  ← recommended (names both pillars, concrete)
 
 Alternates:
-- `AI coach for smarter tennis` (27)
-- `Train your tennis brain` (23)
+- `Film your swing, coach your IQ` (30)
+- `AI swing analysis + IQ coach` (28)
+
+## Identity sentence (the "runners who lift" equivalent)
+**DropVolley is for club and weekend players who want to out-think the game —
+not just track the score.**
+(Use as the description opener + the vibe for screenshot captions.)
+
+## Comparative claim (honest positioning — put in text AND a screenshot title)
+**Most tennis apps track your score. DropVolley coaches your game.**
 
 ## Promotional text (≤170 chars)
-Train your tennis brain with a pocket AI coach. Count wall rallies by ear,
-sharpen your Tennis IQ with real-match scenarios, and play smarter — no court,
-no wearable, just your phone.
+Film your swing and get an instant AI score. Then sharpen your match IQ with a
+pocket coach and real-match scenarios. Most apps track your score — DropVolley
+coaches your game. 3-day free trial.
 
 ---
 
 ## Description
 
-Think the game — don't just hit it.
+Most tennis apps track your score. DropVolley coaches your game.
 
-DropVolley is your pocket coach for smarter tennis: an AI coach, real-match IQ
-training, and solo wall practice that actually counts your hits. Everything runs
-on your phone — instant, private, and it works anywhere.
+DropVolley is for club and weekend players who want to out-think the game — not
+just log results. Film your swing for instant AI feedback, ask an AI coach
+anything, and train the decisions that actually win points. Everything's in your
+pocket; the smart stuff runs on your phone.
 
-TRAIN SOLO — WALL RALLY CAM
-Grab a ball and any wall. On-device AI listens for every impact and counts your
-rally streak — how many hits in a row you can land. No court, no partner, no
-setup. Just you, a wall, and a streak to beat.
+FILM YOUR SWING — GET AN AI SCORE
+Record a swing and get instant, specific feedback: technique, timing, and a clear
+score with what to fix next. No coach, no court time booked — just your phone.
 
 YOUR AI TENNIS COACH
 Ask anything — tactics, match prep, the mental game, how to beat a pusher. Get
 instant, personal answers grounded in real tennis coaching, not generic tips.
 
-SHARPEN YOUR TENNIS IQ
+SHARPEN YOUR MATCH IQ
 Real-match scenarios train the decisions that win points: shot selection, court
 positioning, when to attack. Learn to read the game like a higher-level player.
 
 KNOW YOUR GAME
 Log matches in seconds — type or by voice — run a quick mental check before you
-play, and watch your streak and Tennis IQ climb over time.
+play, and watch your streak and match IQ climb over time.
 
-SMARTER DOUBLES
-Get a compatibility read on any partner: who covers whose weaknesses, and how to
-play as a team.
+PRACTICE ANYWHERE
+Solo wall-practice drills with animated how-tos, plus a smarter-doubles
+compatibility read on any partner.
 
 WHY DROPVOLLEY
+- Coaches your game — doesn't just track your score
 - On-device and instant — nothing to upload, nothing to wait for
-- Works offline, anywhere — no court required
-- Private by design — your practice stays on your phone
-- Built around Tennis IQ, not just strokes
+- Built around match IQ, not just strokes
+- Private by design
 
-FREE & PREMIUM   (decided 7 Jul 2026: Wall is the premium centerpiece — "Duolingo for wall tennis")
-Free: today's tip, a taste of Tennis IQ quizzes, quick match logging, and
-animated demos of the wall drills (see how each one is done).
-Premium: the full gamified Wall — Rally Cam scoring, level challenges, and rival
-leaderboards — plus unlimited AI coaching, the full quiz archive, and full
-history. (Coming: video recording with hit markers and target-accuracy scoring.)
+FREE & PREMIUM
+Free: today's tip, a taste of match-IQ quizzes, quick match logging, and animated
+wall-drill demos.
+Premium (**3-day free trial**, then weekly or $59.99/year): unlimited AI coaching,
+full swing analysis, the full quiz archive, and full history.
 
-Support URL: https://canayan1.github.io/CourtIQ/SUPPORT
+Support: https://canayan1.github.io/CourtIQ/SUPPORT
 Privacy Policy: https://canayan1.github.io/CourtIQ/PRIVACY_POLICY
 Terms of Use: https://canayan1.github.io/CourtIQ/TERMS_OF_USE
-(these are the live GitHub Pages URLs already used on 1.0.x — verified from docs)
+
+## What's New (1.0.3)
+- Interactive mental check + breathing before matches
+- Faster, keyboard-free match + doubles entry
+- Real tennis sound effects across drills
+- Clearer AI reports (swing, match, doubles) with a plain-language score
+- Sharper Tennis IQ quiz diagrams + a submit step so you can think before you answer
+- A solo wall-practice section with animated drill demos
+- Under the hood: reliability + polish
 
 ---
 
-## Screenshot storyboard (6, connected clay/cream panorama)
-1. Train your tennis brain — Your pocket AI coach. No court required.  [Home]
-2. Count your wall rally — by ear — On-device AI hears every hit.  [Rally Cam]  ← wedge, lead visual
-3. Ask your AI coach anything — Tactics, match prep, mental game.  [Coach chat]
-4. Sharpen your Tennis IQ — Real-match scenarios, smarter calls.  [Quiz]
-5. Know your game — Log matches, keep your streak.  [Progress]
-6. Smarter doubles, fast — Compatibility read on any partner.  [Doubles]
-7. (later) Testimonial panel — real user quote once reviews exist.
+## Screenshot storyboard (6, connected clay/cream panorama) — SWING-LED
+Audit: first screenshot = the main promise, with a cover caption; carry the
+comparative claim onto a title.
 
-Notes: real captured app screens (1290×2796) inside frames, not recreations.
-Continuous clay→cream horizon + dotted ball-trajectory thread + floating cards
-for the "interlocking" look. Brand palette: clay #C65C31, cream #E9DECB,
-ink #1E2938, moss #6C8366, gold #D99E19.
+1. **Film your swing. Get an AI score.** — Swing report (score + traffic-light tier).  ← HERO / cover caption
+2. **Most apps track your score. We coach your game.** — Coach or a report montage (the comparative claim)
+3. **Ask your AI coach anything.** — Coach chat
+4. **Sharpen your match IQ.** — Quiz scenario
+5. **Know your game.** — Progress / streak / matches
+6. **Practice against any wall.** — free Wall drills + animated demo
+7. (later) Testimonial panel — real user quote once reviews exist
+
+Notes: real captured app screens (1290×2796 / 6.9") inside frames, not
+recreations. Rally Cam is NOT in 1.0.3 → not shown. Brand palette: clay #C65C31,
+cream #E9DECB, ink #1E2938, moss #6C8366, gold #D99E19.
+
+---
+
+## ⚠️ Icon — must fix before ship (audit: #1 low-TTR suspect)
+Current `app-icon-marketing.png` **still says "COURTIQ"** (old brand — app is now
+DropVolley) and bakes in text (an ASO anti-pattern: illegible + cluttered at
+60px). It's also busy/low-contrast at small sizes. Action: redesign a clean,
+**text-free**, high-contrast, single-focal icon in brand clay — crisp at home-screen
+size. (Icon change ships with the 1.0.3 build.)
+
+## Priority actions (audit §7, high → low impact)
+1. **Collect the first 5–15 real ratings** — genuine reviews from people you know.
+   0 → a handful is the biggest jump in both tap-through and conversion.
+   (RatingPrompt already asks after a quiz/rally win; it just needs real users.)
+2. **New icon + first 2 screenshots** — the low-TTR fix.
+3. **3-day free trial** surfaced in description + visuals — done in text above.
+4. **Concrete subtitle** — done above.
