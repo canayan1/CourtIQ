@@ -412,6 +412,39 @@ final class RallyCamController: UIViewController, AVCaptureVideoDataOutputSample
 
 // MARK: - Audio impact detector (primary hit counter)
 
+/// A single biquad section (RBJ cookbook). Cascading a high-pass + low-pass gives
+/// a band-pass that isolates a tennis-ball impact's energy (~100 Hz–3 kHz) and
+/// rejects wind/handling rumble below and hiss/sibilance above — the biggest
+/// single false-positive reduction for impact detection.
+private struct Biquad {
+    var b0: Float = 1, b1: Float = 0, b2: Float = 0, a1: Float = 0, a2: Float = 0
+    var x1: Float = 0, x2: Float = 0, y1: Float = 0, y2: Float = 0
+
+    mutating func process(_ x: Float) -> Float {
+        let y = b0 * x + b1 * x1 + b2 * x2 - a1 * y1 - a2 * y2
+        x2 = x1; x1 = x; y2 = y1; y1 = y
+        return y
+    }
+
+    static func highPass(fs: Double, f0: Double, q: Double = 0.707) -> Biquad {
+        let w0 = 2 * Double.pi * f0 / fs, c = cos(w0), alpha = sin(w0) / (2 * q)
+        let a0 = 1 + alpha
+        var bq = Biquad()
+        bq.b0 = Float((1 + c) / 2 / a0); bq.b1 = Float(-(1 + c) / a0); bq.b2 = bq.b0
+        bq.a1 = Float(-2 * c / a0); bq.a2 = Float((1 - alpha) / a0)
+        return bq
+    }
+
+    static func lowPass(fs: Double, f0: Double, q: Double = 0.707) -> Biquad {
+        let w0 = 2 * Double.pi * f0 / fs, c = cos(w0), alpha = sin(w0) / (2 * q)
+        let a0 = 1 + alpha
+        var bq = Biquad()
+        bq.b0 = Float((1 - c) / 2 / a0); bq.b1 = Float((1 - c) / a0); bq.b2 = bq.b0
+        bq.a1 = Float(-2 * c / a0); bq.a2 = Float((1 - alpha) / a0)
+        return bq
+    }
+}
+
 /// Placement-independent hit counter: taps the mic and flags a hit on a sharp
 /// amplitude transient (a ball striking the wall). Far more robust than
 /// parabolic Vision for simply COUNTING wall hits — works from any angle, in any
@@ -425,12 +458,16 @@ final class AudioImpactDetector {
     var onImpact: (() -> Void)?
     var onPeak: ((Float, Float) -> Void)?   // (live peak, current trigger threshold)
 
-    // TUNE ON DEVICE ↓  — ADAPTIVE: trigger when the peak spikes well above the
-    // tracked ambient floor, with an absolute floor so silence never fires.
-    private let absFloor: Float = 0.03            // never trigger below this
+    // TUNE ON DEVICE ↓  — a band-pass isolates the impact band, then an ADAPTIVE
+    // threshold triggers when the FILTERED peak spikes above the tracked ambient
+    // floor (abs floor so silence never fires).
+    private let absFloor: Float = 0.02            // never trigger below this
     private let spikeRatio: Float = 2.8           // impact ≈ this × ambient
     private let refractory: TimeInterval = 0.14   // min gap between hits (s)
     private var ambient: Float = 0.02             // running noise-floor estimate
+    // Band-pass ≈ 100 Hz–3 kHz (coefficients set once the sample rate is known).
+    private var hp = Biquad(), lp = Biquad()
+    private var filtersReady = false
 
     func start() {
         guard !running else { return }
@@ -449,6 +486,10 @@ final class AudioImpactDetector {
             try session.setActive(true, options: [])
             let input = engine.inputNode
             let format = input.outputFormat(forBus: 0)
+            let fs = format.sampleRate > 0 ? format.sampleRate : 44100
+            hp = .highPass(fs: fs, f0: 100)
+            lp = .lowPass(fs: fs, f0: 3000)
+            filtersReady = true
             input.installTap(onBus: 0, bufferSize: 2048, format: format) { [weak self] buffer, _ in
                 self?.process(buffer)
             }
@@ -466,7 +507,9 @@ final class AudioImpactDetector {
         var peak: Float = 0
         var i = 0
         while i < n {
-            let a = abs(ch[i])
+            // Band-pass each sample, then track the peak of the FILTERED signal.
+            let f = filtersReady ? lp.process(hp.process(ch[i])) : ch[i]
+            let a = abs(f)
             if a > peak { peak = a }
             i += 1
         }
