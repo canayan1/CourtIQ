@@ -230,6 +230,7 @@ final class RallyCamModel: ObservableObject {
             )
             AppAnalytics.shared.log(AnalyticsEvent.wallSessionCompleted,
                                     ["title": "rally_cam", "hits": maxStreak, "accuracy": accuracy])
+            RatingPrompt.registerWin()   // a finished rally is a genuine win moment
         }
     }
 
