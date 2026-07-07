@@ -21,14 +21,11 @@ struct WallHubView: View {
     @EnvironmentObject private var lang: LanguageManager
     @EnvironmentObject private var session: UserSessionManager
     @ObservedObject private var wallProgress = WallProgressManager.shared
-    @State private var showRallyCam = false
-    @State private var showPaywall = false
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 intro
-                rallyCamCard
                 Text(lang.t("wall.drills_header"))
                     .font(.caption.weight(.heavy)).tracking(0.6).textCase(.uppercase)
                     .foregroundStyle(AppPalette.inkSoft)
@@ -43,58 +40,6 @@ struct WallHubView: View {
         .background(AppPalette.cream)
         .navigationTitle(lang.t("wall.title"))
         .navigationBarTitleDisplayMode(.inline)
-        .fullScreenCover(isPresented: $showRallyCam) {
-            WallRallyCamView().environmentObject(lang)
-        }
-        .sheet(isPresented: $showPaywall) {
-            NavigationStack {
-                PaywallView(source: "WallRallyCam")
-                    .environmentObject(session).environmentObject(lang)
-            }
-        }
-    }
-
-    /// Experimental: the on-device camera that counts consecutive ball-in-square
-    /// hits (Vision trajectory detection). Device-only; beta-badged.
-    private var rallyCamCard: some View {
-        Button {
-            Haptics.tap()
-            if session.isPremiumUnlocked { showRallyCam = true } else { showPaywall = true }
-        } label: {
-            HStack(spacing: 14) {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 14, style: .continuous)
-                        .fill(AppPalette.ink).frame(width: 52, height: 52)
-                    Image(systemName: "camera.viewfinder")
-                        .appFont(24, weight: .bold, design: .default)
-                        .foregroundStyle(.white)
-                }
-                VStack(alignment: .leading, spacing: 3) {
-                    HStack(spacing: 6) {
-                        Text(lang.t("rallycam.title"))
-                            .appFont(17, weight: .heavy).foregroundStyle(AppPalette.ink)
-                        Text(lang.t("common.beta"))
-                            .appFont(9, weight: .heavy).foregroundStyle(.white)
-                            .padding(.horizontal, 5).padding(.vertical, 2)
-                            .background(Capsule().fill(AppPalette.gold))
-                    }
-                    Text(lang.t("rallycam.sub"))
-                        .font(.footnote).foregroundStyle(AppPalette.inkSoft)
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-                Spacer(minLength: 4)
-                Image(systemName: session.isPremiumUnlocked ? "chevron.right" : "crown.fill")
-                    .font(.subheadline.weight(.bold))
-                    .foregroundStyle(session.isPremiumUnlocked ? AppPalette.inkSoft : AppPalette.gold)
-            }
-            .padding(16)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(AppPalette.parchment)
-            .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous)
-                .stroke(AppPalette.ink.opacity(0.2), lineWidth: 1))
-            .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
-        }
-        .buttonStyle(PressableCardStyle())
     }
 
     private var intro: some View {
@@ -459,16 +404,12 @@ struct WallLevelDetailView: View {
     let level: Int
     let drill: WallDrill
 
-    @State private var showRallyCam = false
-    @State private var showPaywall = false
-
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 18) {
                 header
                 WallDemoAnimation(focus: drill.focus)
                 goalCard
-                rallyCamButton
                 clearSection
             }
             .padding()
@@ -476,15 +417,6 @@ struct WallLevelDetailView: View {
         .background(AppPalette.cream)
         .navigationTitle(String(format: lang.t("wall.level_n"), level))
         .navigationBarTitleDisplayMode(.inline)
-        .fullScreenCover(isPresented: $showRallyCam) {
-            WallRallyCamView().environmentObject(lang)
-        }
-        .sheet(isPresented: $showPaywall) {
-            NavigationStack {
-                PaywallView(source: "WallRallyCam")
-                    .environmentObject(session).environmentObject(lang)
-            }
-        }
     }
 
     private var header: some View {
@@ -524,36 +456,8 @@ struct WallLevelDetailView: View {
         .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
     }
 
-    private var rallyCamButton: some View {
-        Button {
-            Haptics.tap()
-            if session.isPremiumUnlocked { showRallyCam = true } else { showPaywall = true }
-        } label: {
-            HStack(spacing: 12) {
-                Image(systemName: "camera.viewfinder").appFont(20, weight: .bold, design: .default)
-                VStack(alignment: .leading, spacing: 2) {
-                    HStack(spacing: 6) {
-                        Text(lang.t("rallycam.title")).font(.headline)
-                        if !session.isPremiumUnlocked {
-                            Image(systemName: "crown.fill").font(.caption).foregroundStyle(AppPalette.gold)
-                        }
-                    }
-                    Text(lang.t("wall.rallycam_cta")).font(.caption).foregroundStyle(.white.opacity(0.9))
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-                Spacer(minLength: 4)
-                Image(systemName: "chevron.right").font(.subheadline.weight(.bold))
-            }
-            .foregroundStyle(.white)
-            .padding(16).frame(maxWidth: .infinity, alignment: .leading)
-            .background(AppPalette.clay)
-            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-        }
-        .buttonStyle(PressableCardStyle())
-    }
-
-    /// Clears the level (unlocks the next). Free accounts self-attest after the
-    /// demo; premium earns it via a Rally Cam run. Once cleared, shows a seal.
+    /// Clears the level (unlocks the next) — the player self-attests after
+    /// watching the demo. Once cleared, shows a seal.
     @ViewBuilder
     private var clearSection: some View {
         if wallProgress.isCleared(drill.id) {
