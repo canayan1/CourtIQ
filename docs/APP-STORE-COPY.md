@@ -56,12 +56,12 @@ WHY DROPVOLLEY
 - Private by design — your practice stays on your phone
 - Built around Tennis IQ, not just strokes
 
-FREE & PREMIUM   (decided 7 Jul 2026: metered-free counter)
-Free: today's tip, a taste of Tennis IQ quizzes, the Wall Rally Cam counter
-(metered), and quick match logging.
-Premium: unlimited AI coaching, the full quiz archive, full progress history, and
-detailed explanations. (Coming to Premium: video recording with hit markers and
-target-accuracy scoring.)
+FREE & PREMIUM   (decided 7 Jul 2026: Wall is the premium centerpiece — "Duolingo for wall tennis")
+Free: today's tip, a taste of Tennis IQ quizzes, quick match logging, and
+animated demos of the wall drills (see how each one is done).
+Premium: the full gamified Wall — Rally Cam scoring, level challenges, and rival
+leaderboards — plus unlimited AI coaching, the full quiz archive, and full
+history. (Coming: video recording with hit markers and target-accuracy scoring.)
 
 Questions or feedback? support@dropvolley.app        ← CONFIRM real address
 Privacy Policy: https://dropvolley.app/privacy       ← CONFIRM
