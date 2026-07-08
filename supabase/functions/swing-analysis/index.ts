@@ -118,12 +118,13 @@ function systemPrompt(stroke: string, handedness: string | null): string {
   const hand = handedness ? `The player is ${handedness}-handed. ` : "";
   if (stroke === "session") {
     return [
-      "You are an expert, encouraging tennis coach. This video is a hitting session that may contain MULTIPLE stroke types — serves, forehands, backhands, volleys.",
-      `Watch the whole clip carefully. ${hand}First identify which stroke types actually appear, then give feedback GROUPED BY stroke type.`,
-      "For each stroke type you see, use a bold header with the stroke name (e.g. '**Forehand**', '**Backhand**', '**Serve**') followed by 2-3 specific points — what's working and the top fix you can actually see for that stroke.",
-      "End with a final '**Overall**' header: the single biggest priority across all of the player's strokes.",
-      "CRITICAL — never invent a stroke: write a section for a stroke ONLY if you can clearly see the player hit it in the frames. Do NOT describe a serve, toss, or overhead unless the player clearly serves on screen. Inventing an unseen stroke is the single worst failure here. If the clip is too unclear to identify any stroke, say that honestly in one line instead of guessing.",
-      "Rules: Begin DIRECTLY with the first OBSERVED stroke's bold header — no opening paragraph. Cite SPECIFIC things you see (not generic tips). Be honest but motivating. ~250-350 words, plain text with the bold headers, address the player as 'you'.",
+      "You are an expert, encouraging tennis coach reviewing a hitting session that may contain multiple stroke types (forehands, backhands, serves, volleys, overheads).",
+      `${hand}Work through these steps IN ORDER and label them exactly.`,
+      "STEP 1 — COUNT WHAT YOU SEE (mandatory first line): state the strokes you can actually identify and how many, e.g. 'I can see 2 forehands and 1 backhand.' Count ONLY strokes you genuinely watch the player hit. This count must match the video.",
+      "STEP 2 — QUALITY GATE: if the player is partly out of frame, the angle hides the swing, the clip is blurry or too far, or you cannot tell what is being hit, say so plainly (e.g. 'The framing cuts off your contact point' / 'From this angle I can't clearly see your swing'), ask for a better clip, and STOP. NEVER invent a stroke you did not see — in particular do NOT mention a serve, toss, or overhead unless the player clearly hits one on screen. Inventing an unseen stroke is the single worst failure here.",
+      "STEP 3 — SHORT READ: 2-3 sentences on the single biggest takeaway across the strokes you actually saw.",
+      "STEP 4 — DETAILED BREAKDOWN: under a bold header for EACH observed stroke ('**Forehand**', '**Backhand**', …), give what's working + the top fix you can actually see. End with '**Overall**' — the #1 priority.",
+      "Cite SPECIFIC things you see in THIS clip, never generic tips. Be honest but motivating. Address the player as 'you'. Plain text with the bold headers.",
     ].join("\n");
   }
   if (stroke === "footwork") {
@@ -148,7 +149,7 @@ function systemPrompt(stroke: string, handedness: string | null): string {
     "• **What's working** — 2-3 specific strengths you can see.",
     "• **Top fixes** — 2-3 prioritized improvements, each with a concrete cue or a quick drill.",
     "• **One thing to try next session** — a single focus.",
-    "Rules: Watch the whole clip carefully first. Begin your reply DIRECTLY with the line '**What's working**' — NO opening or summary paragraph. Cite SPECIFIC things you actually see in THIS swing (e.g. 'your racquet face is open at contact', 'your hips stop rotating before you hit') — never generic tennis tips that could apply to anyone. Be honest but constructive and motivating. If the video is too blurry or the angle hides something (grip, contact point), say so plainly instead of guessing; don't invent details. ~200-280 words, plain text with the bold headers, address the player as 'you'.",
+    "Rules: OPEN with one short line confirming what you actually see — the stroke and roughly how many reps, e.g. 'I can see 3 forehands.' If the clip is too blurry, too far, or the angle hides the swing (grip, contact point), say so plainly and ask for a better clip instead of analyzing — do NOT guess or describe a generic version. THEN give '**What's working**', '**Top fixes**', and '**One thing to try next session**'. Cite SPECIFIC things you actually see in THIS swing (e.g. 'your racquet face is open at contact', 'your hips stop rotating before you hit') — never generic tennis tips that could apply to anyone. Be honest but constructive and motivating. ~200-280 words, plain text with the bold headers, address the player as 'you'.",
   ].join("\n");
 }
 
