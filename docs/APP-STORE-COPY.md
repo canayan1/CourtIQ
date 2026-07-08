@@ -55,10 +55,19 @@ PRACTICE ANYWHERE.
 Solo wall-practice drills with animated how-tos, plus an instant compatibility read
 on any doubles partner.
 
-WHY DROPVOLLEY?
-Most tennis apps just log stats and leave you to figure it out. DropVolley coaches
-you — it tells you what to fix, what to train, and how to win. And everything smart
-runs on-device: instant, private, and it works anywhere.
+WHY DROPVOLLEY IS DIFFERENT.
+Every tennis app promises "AI." Most just film your swing and hand you generic
+tips. DropVolley is built differently:
+
+• EVIDENCE-BASED, NOT GENERIC. Our coaching is grounded in real tennis frameworks
+  and proven coaching methodology — not vague AI guesses. The advice a real coach
+  would actually give you.
+• WE COACH THE WHOLE GAME. Others fix your forehand. DropVolley trains the decisions
+  that win matches — tactics, shot selection, the mental game, your Tennis IQ.
+• DRILLS YOU CAN SEE. Real-match scenarios and wall drills come with clear court
+  diagrams and animated how-tos — so you know exactly what to practice, and why.
+• REAL VALUE, FREE. Daily tips, Tennis IQ quizzes, and wall drills are free to use.
+  Actually get better before you pay a cent.
 
 NO COACH. NO COURT TIME. NO EXPENSIVE SENSORS.
 Just you and your phone.
@@ -72,14 +81,29 @@ Support: https://canayan1.github.io/CourtIQ/SUPPORT
 Privacy Policy: https://canayan1.github.io/CourtIQ/PRIVACY_POLICY
 Terms of Use: https://canayan1.github.io/CourtIQ/TERMS_OF_USE
 
-## What's New (1.0.3)
-- Meet your sharper AI coach + clearer swing scores
-- Interactive mental check + breathing before matches
-- Faster, keyboard-free match + doubles entry
-- Real tennis sound effects across drills
-- Sharper Tennis IQ quizzes — now with a submit step so you can think first
-- A new solo wall-practice section with animated drill demos
-- Reliability + polish throughout
+## What's New (1.0.3)  — flashy / showy
+🎾 Our biggest update yet — your coach just leveled up.
+
+NEW: WALL PRACTICE. A whole solo-training section with animated drills that show you
+exactly how to train against any wall. No court, no partner, no excuses — just grab a
+ball and go.
+
+A SMARTER AI COACH. Sharper, faster, and grounded in real tennis coaching. Ask it
+anything — how to beat a pusher, what to fix, how to close out a set — and get answers
+built around YOUR game, not generic tips.
+
+TENNIS IQ, UPGRADED. Crisper real-match scenarios with clear court diagrams that show
+you the play — plus a new submit step, so you think like a competitor before you answer.
+
+MATCH DAY, DIALED IN. An interactive pre-match mental check and breathing routine to
+get your head right before the first serve — and lightning-fast, keyboard-free match
+and doubles logging (tap, done).
+
+FEEL EVERY BALL. Real tennis sound effects bring your drills to life.
+
+Plus: faster, smoother, and more polished everywhere you look.
+
+Film your swing. Train your brain. Win more. 🔥
 
 ---
 
