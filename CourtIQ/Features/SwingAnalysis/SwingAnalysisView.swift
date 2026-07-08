@@ -209,8 +209,10 @@ struct SwingAnalysisView: View {
             Text(title)
                 .font(.subheadline.weight(isSelected ? .bold : .regular))
                 .foregroundStyle(isSelected ? AppPalette.parchment : AppPalette.ink)
-                .lineLimit(1)
-                .minimumScaleFactor(0.8)
+                .lineLimit(2)
+                .multilineTextAlignment(.center)
+                .minimumScaleFactor(0.85)
+                .padding(.horizontal, 10).padding(.vertical, 8)
                 .frame(maxWidth: .infinity, minHeight: 44)
                 .background(isSelected ? AppPalette.clay : AppPalette.parchment)
                 .overlay(

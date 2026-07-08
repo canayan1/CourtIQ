@@ -80,42 +80,12 @@ const STROKES: Record<string, string> = {
   footwork: "footwork and on-court movement",
 };
 
-// A gold-standard sample analysis used as a few-shot quality bar — calibrates
-// the model's specificity, cue/drill quality, and output format. It is a
-// DIFFERENT player's forehand; the model must produce its own observations from
-// the actual video, adapted to whatever stroke it is given.
-const FEW_SHOT_EXAMPLE = `Here is an EXAMPLE of the depth, specificity, and cue quality expected. It is a sample for a different player's forehand — do NOT reuse its content; produce your own observations from THIS video, adapted to the stroke you are given:
-
-SCORE: 64
-
-**What's working**
-• Your unit turn starts early — your shoulders coil as the ball crosses the net, which is where racquet-head speed comes from.
-• Semi-western grip with a clean low-to-high path; you get real topspin and safe net clearance.
-
-**Top fixes**
-• Contact is a touch behind your front hip, so you brush up the back of the ball instead of driving through it. Cue: "catch it out in front of your front knee." Drill: 20 drop-feeds, exaggerating contact half a step earlier.
-• Your off-arm drops as you start the forward swing, so your shoulders open early and the ball sails long. Cue: "point your off-hand at the ball and hold it until contact."
-• You're still loading the front foot at contact — hitting off your back foot. Drill: shadow-swing stepping in, weight finishing on the front foot.
-
-**One thing to try next session**
-• Feed yourself 30 forehands focused only on contact out in front — spacing and rhythm first, pace second.`;
-
-// A second gold example (serve) so the format generalizes beyond groundstrokes.
-const FEW_SHOT_SERVE = `A second EXAMPLE — a serve (again a different player; produce your own from THIS video):
-
-SCORE: 58
-
-**What's working**
-• Relaxed Continental grip and an unhurried rhythm into the toss.
-• Good extension — you reach up to contact rather than hitting from a cramped, low position.
-
-**Top fixes**
-• Almost no leg drive — your knees barely bend, so the power is all arm. Cue: "bend, then push the ground away and jump up to the ball." Drill: serve from an exaggerated knee-bend, landing inside the baseline on your front foot.
-• Flat "frying-pan" finish with no pronation — the racquet face stays square instead of rolling through. Cue: "palm in → palm flat → palm out: throw the edge, then the face, at the ball." Drill: slow shadow serves rolling the forearm through contact.
-• The racquet doesn't fully drop behind your back before you swing up, which shortens the whip. Cue: "let the racquet head fall to scratch your back, then explode up."
-
-**One thing to try next session**
-• 20 serves at 70% pace, focused only on the leg drive + the palm-in-to-palm-out roll — racquet speed comes from the whip, not the arm.`;
+// FORMAT guidance ONLY. We deliberately DON'T ship worked examples any more:
+// the old forehand + serve few-shots were being parroted VERBATIM (Gemini Flash,
+// when it couldn't actually read the 1 fps video, reproduced the serve example —
+// toss, pronation, "palm in → palm flat → palm out", shadow serves — for clips
+// with no serve at all). This note carries the structure with NOTHING to copy.
+const FORMAT_NOTE = `FORMAT (structure only — contains no observations to copy): after the SCORE line, group feedback under bold headers for the stroke(s) you actually observed. Under each, a short "**What's working**" then "**Top fixes**". Write every fix as: the specific fault you SEE in THIS clip → "Cue:" a short feel the player can use → "Drill:" a way to groove it. End with "**One thing to try next**". Be concrete to what is on screen; never fall back on generic textbook phrasing.`;
 
 // Body-aware coaching: the model SEES the player, so it must adapt to them —
 // silently. Uniform "textbook mechanics" cues (deep knee bends, jump serves,
@@ -152,7 +122,8 @@ function systemPrompt(stroke: string, handedness: string | null): string {
       `Watch the whole clip carefully. ${hand}First identify which stroke types actually appear, then give feedback GROUPED BY stroke type.`,
       "For each stroke type you see, use a bold header with the stroke name (e.g. '**Forehand**', '**Backhand**', '**Serve**') followed by 2-3 specific points — what's working and the top fix you can actually see for that stroke.",
       "End with a final '**Overall**' header: the single biggest priority across all of the player's strokes.",
-      "Rules: Begin DIRECTLY with the first stroke's bold header — no opening paragraph. Only cover stroke types that actually appear; skip the rest. Cite SPECIFIC things you see (not generic tips). Be honest but motivating. Don't invent details. ~250-350 words, plain text with the bold headers, address the player as 'you'.",
+      "CRITICAL — never invent a stroke: write a section for a stroke ONLY if you can clearly see the player hit it in the frames. Do NOT describe a serve, toss, or overhead unless the player clearly serves on screen. Inventing an unseen stroke is the single worst failure here. If the clip is too unclear to identify any stroke, say that honestly in one line instead of guessing.",
+      "Rules: Begin DIRECTLY with the first OBSERVED stroke's bold header — no opening paragraph. Cite SPECIFIC things you see (not generic tips). Be honest but motivating. ~250-350 words, plain text with the bold headers, address the player as 'you'.",
     ].join("\n");
   }
   if (stroke === "footwork") {
@@ -170,7 +141,7 @@ function systemPrompt(stroke: string, handedness: string | null): string {
   return [
     "You are an expert, encouraging tennis coach giving a player feedback on their technique.",
     `You are shown a short video of the player hitting a ${STROKES[stroke] ?? stroke}. ${hand}`,
-    "Analyze ONLY what you can actually see — preparation and grip, unit turn and backswing, stance and balance, contact point and racquet position, follow-through, and footwork/recovery.",
+    "Analyze ONLY what you can actually see — preparation and grip, unit turn and backswing, stance and balance, contact point and racquet position, follow-through, and footwork/recovery. If the video doesn't clearly show the stroke (bad angle, too far, nothing hit), say so plainly and suggest re-filming — never describe a generic or textbook version you did not actually see.",
     "CALIBRATION (critical for trust): a spatial detail that is hard to judge from a single camera angle — ball-toss direction (front/back/left/right), exact contact location relative to the body, swing-path depth, racquet-face angle — should only be stated as fact when it is CLEARLY visible. If it is ambiguous from this angle, either hedge ('from this view your toss looks slightly...') or skip it. One confidently WRONG call makes the player distrust the whole report, so prefer fewer certain points over more shaky ones.",
     "If the clip shows MULTIPLE reps of the stroke, base your feedback on faults that REPEAT across them — a recurring pattern is reliable, a one-off may be noise. If only ONE rep is shown, note that your read is from a single swing and may not be fully representative, and suggest filming a few reps for a sharper read.",
     "Give feedback in this structure with short bold headers:",
@@ -254,8 +225,7 @@ Deno.serve(async (req) => {
     { text: ADAPTATION_SAFETY },
     { text: COACHING_REFERENCE },
     { text: "Begin your ENTIRE reply with a line exactly like 'SCORE: 63' — a single integer 0-100 rating the overall technique shown (for a Whole session, an overall score across the strokes). Be discerning: most recreational players land 40-70; reserve 85+ for genuinely advanced technique. Put a blank line after that score line, then the analysis." },
-    { text: FEW_SHOT_EXAMPLE },
-    { text: FEW_SHOT_SERVE },
+    { text: FORMAT_NOTE },
   ];
   // Personalization: when the client sends player context, give the coach a
   // second instruction part so it tailors the feedback to this player. Optional
@@ -270,8 +240,12 @@ Deno.serve(async (req) => {
     contents: [{
       role: "user",
       parts: [
-        { inline_data: { mime_type: mimeType, data: video } },
-        { text: `Coach my ${STROKES[stroke] ?? stroke} from this video.` },
+        // fps:5 — the DEFAULT is 1 fps, which misses a tennis swing entirely
+        // (contact lasts a fraction of a second). Sampling ~5 fps lets the model
+        // actually SEE prep→backswing→contact→follow-through. Costs more video
+        // tokens (still Flash-priced, well under Pro) but it's the real grounding fix.
+        { inline_data: { mime_type: mimeType, data: video }, video_metadata: { fps: 5 } },
+        { text: `Coach my ${STROKES[stroke] ?? stroke} from this video. Base everything on what you actually see in the frames; if you can't see it clearly, say so — do not describe a generic version.` },
       ],
     }],
     // maxOutputTokens INCLUDES thinking tokens on 2.5 models — keep it well
