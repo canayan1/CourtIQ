@@ -3,7 +3,10 @@
 Two research agents (ASO/competitor + copywriting) converged on one strategy:
 **the swing-analysis space is saturated (SwingVision ~4.7 / ~4.7K ratings + federation
 endorsements + Editors' Choice — un-catchable now). Win the UN-OWNED territory instead:
-whole-game / Tennis IQ / strategy / mental / drills-you-can-see / on-device-free.**
+whole-game / Tennis IQ / strategy / mental / drills-you-can-see / real-value-free /
+built-by-coaches-and-players.**
+NOTE: swing analysis + AI coach are CLOUD (edge AI) — do NOT claim on-device / no-upload /
+private / offline (inaccurate → 1-star + 2.3.1). The wedge is the coaching, not the plumbing.
 Every field + screenshot leans there — honestly.
 
 Honest line holds: bold product claims + puffery OK; **no fabricated ratings, awards,
@@ -51,15 +54,17 @@ Then we cover the rest of your game, too:
 - Progress and streaks across every part of your game.
 
 WHY DROPVOLLEY IS DIFFERENT
+- Built by tennis coaches and players. Evidence-based coaching grounded in real tennis frameworks — not vague AI guesswork.
 - We coach the WHOLE game. Others grade your forehand and never mention you're picking the wrong shot at deuce. DropVolley coaches IQ, tactics, technique, and the mental side.
-- Evidence-based, not generic. Grounded in real tennis frameworks, not vague AI guesswork.
-- Drills you can SEE. Court diagrams and animated how-tos show you what to practice, and why.
-- Runs on your iPhone. Instant, private, works anywhere — no upload, no waiting.
+- Serious AI under the hood. Our AI analyzes your actual swing on video, our coach draws on a deep tennis knowledge base, and our scenarios are modeled on real match play. This took real engineering — and it shows.
+- Drills you can SEE. Court diagrams and animated how-tos show you exactly what to practice, and why.
 
 NO PAYWALL WALL. NO EMPTY SUBSCRIPTION. NO GIMMICKS.
 Daily tips, Tennis IQ quizzes, wall drills, and match logging are free — get smarter on court before you spend a cent.
 
 Go Premium for unlimited AI coaching, full swing analysis, and your complete history. Start with a 3-day free trial, then weekly or $59.99/year.
+
+Built by tennis coaches and players who wanted a smarter way to train.
 
 Stop just hitting. Start thinking. This is tennis with a brain.
 
@@ -100,7 +105,7 @@ Real captured screens in device frames on cinematic clay-court AI backgrounds
 3. **A coach that knows your game.**  [AI coach chat]
 4. **Get better free. Then go Pro.**  [free content / streaks]
 5. **Find your perfect partner.**  [doubles compatibility]
-6. **Runs on your iPhone. Private.**  [on-device trust shot] — a claim SwingVision can't match
+6. **Never train alone.**  [wall drills + animated demo] — shows a "drill you can see"
 
 (Rally Cam NOT shown — pulled from 1.0.3.)
 
