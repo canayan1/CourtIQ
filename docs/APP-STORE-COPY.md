@@ -64,7 +64,7 @@ Daily tips, Tennis IQ quizzes, wall drills, and match logging are free — get s
 
 Go Premium for unlimited AI coaching, full swing analysis, and your complete history. Start with a 3-day free trial, then weekly or $59.99/year.
 
-Built by tennis coaches and players who wanted a smarter way to train.
+Built in Ireland by tennis coaches and players who wanted a smarter way to train.
 
 Stop just hitting. Start thinking. This is tennis with a brain.
 
