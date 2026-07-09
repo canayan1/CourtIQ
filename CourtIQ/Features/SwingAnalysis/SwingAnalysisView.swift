@@ -186,16 +186,6 @@ struct SwingAnalysisView: View {
                     }
                 }
 
-                VStack(alignment: .leading, spacing: 12) {
-                    Text(copy.pickHandednessTitle)
-                        .font(.headline).foregroundStyle(AppPalette.ink)
-                    HStack(spacing: 8) {
-                        ForEach(SwingHandedness.allCases) { h in
-                            compactChip(copy.handedness(h), isSelected: handedness == h) { handedness = h }
-                        }
-                    }
-                }
-
                 primaryButton(copy.continueCTA) { vm.phase = .capture }
                     .padding(.top, 4)
             }
