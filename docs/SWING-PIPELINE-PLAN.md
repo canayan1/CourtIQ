@@ -84,6 +84,17 @@ Sayma rezaletini bitiren faz.
 
 ## FAZ 3 — Kendi modelimiz: Create ML Action Classifier  *(2-4 hafta, veriye bağlı)*
 
+> **v0.1 SONUCU (9 Tem 2026, aynı gece):** Can'ın 4 duvar videosundan (FH/BH×2/smaç,
+> arka açı) ses-impact madenciliğiyle 143 klip kesildi; Vision'ın "kadrajda insan yok"
+> uyarısıyla 38 çöp klip elendi (video başı/sonu top toplama) → 105 klip, eğitim 137 sn,
+> **doğrulama %97.3** (karışıklık: BH 396/396, FH 126/132, smaç 120/132; hatalar hep
+> →backhand). Model: `~/TennisVideos/_training/v0/DropVolleyStroke_v0_1.mlmodel` (4.1 MB).
+> İlk koşu %50.6 idi — fark tamamen VERİ TEMİZLİĞİ (çöp klipler), model değil. Ders:
+> (a) miner'a otomatik insan-var-mı kapısı eklenecek, (b) oyuncu kadraj ortasında değilse
+> hiçbir şey çalışmıyor → çekim rehberi kritik. DÜRÜSTLÜK: tek denek + tek seans + aynı
+> kıyafet → bu "Can'ın vuruşlarını bu seansta ayırt etme" ölçümü; genel doğruluk iddiası
+> için farklı oyuncular şart (kapı korunuyor).
+
 1. **Madencilik aracı (`tools/stroke-miner/`, benim iş):** saatlik videoları ses-impact ile
    3-5 sn'lik aday kliplere böler (ffmpeg), `candidates/` klasörüne yazar.
 2. **Hızlı etiketleme aracı (benim iş):** lokal sayfa/script — klip oynar, Can tek tuşla
