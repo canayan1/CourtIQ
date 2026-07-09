@@ -89,7 +89,14 @@ Sayma rezaletini bitiren faz.
 > uyarısıyla 38 çöp klip elendi (video başı/sonu top toplama) → 105 klip, eğitim 137 sn,
 > **doğrulama %97.3** (karışıklık: BH 396/396, FH 126/132, smaç 120/132; hatalar hep
 > →backhand). Model: `~/TennisVideos/_training/v0/DropVolleyStroke_v0_1.mlmodel` (4.1 MB).
-> İlk koşu %50.6 idi — fark tamamen VERİ TEMİZLİĞİ (çöp klipler), model değil. Ders:
+> İlk koşu %50.6 idi — fark tamamen VERİ TEMİZLİĞİ (çöp klipler), model değil.
+> **v0.2 (Can'ın metodoloji eleştirisi sonrası, aynı gece):** Can haklı çıktı — %97.3
+> klasör-etiketine karşı ölçülmüştü (etiket gürültüsü + negatif sınıf yok = beta hatası
+> ölçülmüyor). Can labelcheck ile 19 klibi yeniden etiketledi (5 FH→BH düzeltmesi dahil),
+> 20 'other' (vuruş-yok) negatifi eklendi → **dürüst doğrulama %84.8**; other 132/132
+> (sıfır yanlış-vuruş); smaç hiç FH/BH'ye karışmıyor. Kalan zayıflık: FH↔BH karışması
+> (FH pencerelerinin ~%45'i BH'ye) — kök neden FH verisinin azlığı (17 klip) + kadraj-kenarı.
+> **v0.3 için gereken: ~2-3 dk ek FOREHAND duvar çekimi (oyuncu kadraj ORTASINDA).** Ders:
 > (a) miner'a otomatik insan-var-mı kapısı eklenecek, (b) oyuncu kadraj ortasında değilse
 > hiçbir şey çalışmıyor → çekim rehberi kritik. DÜRÜSTLÜK: tek denek + tek seans + aynı
 > kıyafet → bu "Can'ın vuruşlarını bu seansta ayırt etme" ölçümü; genel doğruluk iddiası
