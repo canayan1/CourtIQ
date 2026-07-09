@@ -22,7 +22,13 @@ Tips: keep faces/hands away from close-up (AI mangles rackets + fingers) — fav
 ## The 6 prompts (swing-led storyboard)
 
 **1 · SWING (hero / cover) — "Film your swing. Get an AI score."**
-> A tennis player captured from behind and slightly to the side, mid-forehand, the racket blurred in fast motion, a small puff of clay dust rising off the court, powerful and dynamic. [+ shared look]
+> ✅ **DONE — asset chosen (9 Jul).** Manus-generated `~/Downloads/tennis_ai_shoulder_fix.png`
+> (1664×2080, 4:5): clay-court forehand + gold AI pose-overlay, brand palette, clean left
+> negative space. Already shipped in-app as the `SwingAnalyzeHero` asset (analyzing screen).
+> For the 9:16 screenshot: re-generate/outpaint taller in Manus with the same prompt, or
+> crop-extend the clay ground; then composite device mockup + headline per the pipeline.
+> Fallback prompt if regenerating:
+> A tennis player captured from behind and slightly to the side, mid-forehand, the racket blurred in fast motion, a small puff of clay dust rising off the court, powerful and dynamic, an elegant translucent overlay of thin luminous gold lines connecting the joints with small glowing nodes and a sweeping arc tracing the racket path, artful not clinical, no numbers, no UI panels. [+ shared look]
 
 **2 · AI COACH — "Most apps track your score. We coach your game."**
 > A tennis player resting courtside on the clay, sitting on a low bench with a towel and water bottle, looking down thoughtfully in a quiet moment of studying the game, seen from the side. [+ shared look]
