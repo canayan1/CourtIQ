@@ -204,6 +204,42 @@ def score_slide(pager):
         f'</div>' + FOOTER.format(pager=pager) + "</div>")
 
 
+def figure(eyebrow, title, img, pager, sub=""):
+    """Full-width landscape/tall figure in a parchment card (train-* assets)."""
+    sub_html = (f'<div class="sub" style="margin-top:16px;font-size:33px;">'
+                f'{sub}</div>') if sub else ""
+    return page(
+        f'<div class="slide" style="padding-bottom:64px;">'
+        f'<div class="topbar"><div class="eyebrow">{eyebrow}</div>'
+        f'<div class="pager">{pager}</div></div>'
+        f'<h1 style="font-size:64px;">{title}</h1>{sub_html}'
+        f'<div class="card" style="flex:1;margin-top:40px;display:flex;'
+        f'align-items:center;justify-content:center;overflow:hidden;'
+        f'padding:22px;min-height:0;">'
+        f'<img src="{SHOTS}/{img}" style="max-width:100%;max-height:100%;'
+        f'border-radius:18px;display:block;"></div>'
+        "</div>")
+
+
+def stat_result(pager):
+    return page(
+        f'<div class="slide">{DOTS}'
+        f'<div class="eyebrow">The result · the honest number</div>'
+        f'<div style="flex:1;display:flex;flex-direction:column;'
+        f'justify-content:center;">'
+        f'<div style="font-size:54px;font-weight:700;color:{INK_SOFT};'
+        f'text-decoration:line-through;opacity:.6;">97.3%</div>'
+        f'<div class="bigscore" style="font-size:250px;">84.8%</div>'
+        f'<h1 style="font-size:56px;margin-top:26px;">Our score DROPPED — '
+        f'and we\'re thrilled.</h1>'
+        f'<div class="sub">The first number was measured against our own '
+        f'labels. Then a coach re-checked every single clip and we made the '
+        f'AI learn to say "that\'s not a stroke". The honest score: 84.8% — '
+        f'and zero non-strokes called a stroke. One player, one court so '
+        f'far. Honest beats flattering, every time.</div></div>'
+        + FOOTER.format(pager=pager) + "</div>")
+
+
 CAROUSELS = {
     "carousel-1-intro": [
         hook("DropVolley · Tennis IQ",
@@ -255,6 +291,52 @@ CAROUSELS = {
             "Setup truly takes a minute — your first scenario is waiting.",
             "7/7"),
     ],
+    "carousel-4-ai-training": [
+        hook("Build log · DropVolley AI",
+             'Generic AI can\'t really <span class="accent">see</span> a '
+             'tennis swing.',
+             "So we trained our own — on real court footage, in one night. "
+             "Here's exactly how →", "1/9"),
+        rows("The problem", 'Why big video models <span class="accent">'
+             'guess</span>',
+             [("🎞", "They sample frames",
+               "A swing lives in the motion BETWEEN frames — samplers miss "
+               "the moment of contact."),
+              ("🔀", "Same pixels, different stroke",
+               "A slice, a volley and a smash can look identical in "
+               "stills. The difference is movement."),
+              ("🎾", "Tennis needs a specialist",
+               "The fix isn't a bigger model — it's the right "
+               "architecture. So we built one.")],
+             "2/9"),
+        figure("Step 1 · The data", "Real footage. Real strokes.",
+               "train-dataset.jpg", "3/9",
+               "Four wall sessions, filmed from behind — forehands, "
+               "backhands, smashes."),
+        figure("Step 2 · Sound",
+               'The AI <span class="accent">listens</span> first.',
+               "train-waveform.png", "4/9",
+               "Every ball strike found from the audio track — "
+               "milliseconds-accurate, fully on-device."),
+        figure("Step 3 · Clips", "143 swings, cut automatically.",
+               "train-sheet.jpg", "5/9",
+               "Each strike becomes a 2-second training clip centred on "
+               "contact."),
+        figure("Step 4 · A coach's eye", "Every label, human-checked.",
+               "train-labelcheck.png", "6/9",
+               "Our one-tap review tool — because clean data beats clever "
+               "models. Built by coaches and players."),
+        figure("Step 5 · Training", "Minutes to train. 4.1 MB.",
+               "train-terminal.png", "7/9",
+               "A neural network small enough to live on your phone — no "
+               "cloud, no upload, no per-use cost. And the log tells the "
+               "whole honest story →"),
+        stat_result("8/9"),
+        cta('Built by players, <span class="accent">in public</span>.',
+            "DropVolley trains the whole game — Tennis IQ, strategy, "
+            "technique, mental. Made by tennis coaches and players in "
+            "Ireland. Follow the build.", "9/9"),
+    ],
     "carousel-3-doubles": [
         hook("New · Doubles",
              'Your doubles team has a <span class="accent">blind spot</span>.',
@@ -277,8 +359,12 @@ CAROUSELS = {
 
 
 def render() -> None:
+    import sys
+    only = set(sys.argv[1:])
     os.makedirs(OUT, exist_ok=True)
     for name, slides in CAROUSELS.items():
+        if only and name not in only:
+            continue
         cdir = os.path.join(OUT, name)
         os.makedirs(cdir, exist_ok=True)
         for i, html in enumerate(slides, 1):

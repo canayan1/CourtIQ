@@ -98,3 +98,60 @@ link bio'da.
 **Hashtags:**
 #doubles #tennisdoubles #doublesstrategy #tennispartner #tennisteam
 #tennis #tennisapp #tennisstrategy #clubtennis #leaguetennis
+
+---
+
+## Carousel 4 — AI training build-log (`out/carousel-4-ai-training/`, 9 slides)
+
+**Ne zaman:** ayrı bir "build in public" hattı — ürün carousel'lerinden bağımsız,
+haftanın sakin gününe (örn. Salı). Kurucu hesabından + DropVolley hesabından
+cross-post; kurucu yüzü/hikâyesi tutundurma artırır.
+
+**Caption (EN):**
+
+We asked the biggest AI models to watch a tennis swing. They guessed. Confidently. Wrongly. 🤖❌
+
+So we built our own — in one night, on real court footage:
+
+🎾 4 wall sessions (forehands, backhands, smashes)
+🔊 every ball strike found by SOUND, on-device
+✂️ 143 swings auto-cut into training clips
+👀 every label checked by a coach's eye
+🧠 137 seconds of training → a 4.1 MB neural network that runs on an iPhone
+
+Our first score: 97.3%. Then a coach re-checked every single label, we taught the AI to say "that's not a stroke" — and the honest score dropped to 84.8%, with ZERO non-strokes called a stroke. One player, one court so far. We'll take honest over flattering, every time.
+
+This is the engine behind where DropVolley's swing analysis is going: real measurement, not AI guesswork.
+
+Built by tennis coaches and players in Ireland. 🇮🇪
+Follow the build. Link in bio.
+
+#tennis #ai #buildinpublic #tennistech #machinelearning #tenniscoach #indiedev #computervision #tennistraining #sportstech
+
+**Caption (TR):**
+
+En büyük AI modellerine tenis vuruşu izlettik. Tahmin ettiler. Kendinden emin. Yanlış. 🤖❌
+
+Biz de kendimizinkini eğittik — bir gecede, gerçek kort görüntüleriyle:
+
+🎾 4 duvar seansı (forehand, backhand, smaç)
+🔊 her top teması SESTEN bulundu, cihaz üstünde
+✂️ 143 vuruş otomatik kesildi
+👀 her etiket antrenör gözüyle kontrol edildi
+🧠 137 saniyelik eğitim → iPhone'da çalışan 4.1 MB'lık sinir ağı
+
+İlk skor: %97.3. Sonra bir antrenör her etiketi tek tek kontrol etti, AI'a "bu vuruş değil" demeyi öğrettik — dürüst skor %84.8'e düştü ve tek bir vuruş-olmayana "vuruş" denmedi. Şimdilik tek oyuncu, tek kort. Dürüst olan, parlak olandan her zaman önce gelir.
+
+DropVolley swing analizinin gittiği yer bu: AI tahmini değil, gerçek ölçüm.
+
+İrlanda'da tenis antrenörleri ve oyuncuları tarafından yapılıyor. 🇮🇪
+
+**Dürüstlük çizgisi (bu carousel'e özgü):**
+- %84.8 = antrenör-onaylı etiketlere karşı GERÇEK sayı; %97.3→%84.8 düşüş arkı
+  bilinçli anlatı ("kendi etiketimize karşı ölçmüştük"); "sıfır yanlış-vuruş" =
+  other 132/132 (gerçek). Genel doğruluk iddiası YOK ("tek oyuncu tek kort" yazılı).
+- "Runs on an iPhone" = model artefaktı için doğru (Core ML / Neural Engine);
+  "uygulamada yayında" DEMİYORUZ — "where swing analysis is going" (yön) diyoruz.
+- Büyük modellerin tahmin etmesi = kendi test gözlemimiz + hakemli literatür
+  (TimeBlind/TemporalBench) — savunulabilir.
+- Ekran görüntüleri gerçek: gerçek antrenman logu, gerçek dalga formu, gerçek araç.
