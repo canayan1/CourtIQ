@@ -297,54 +297,40 @@ struct SwingAnalysisView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
-    /// Decorative "AI is analyzing your swing" loading animation — a stylized
-    /// player silhouette with a sweeping scan + pulsing focus points. Purely
-    /// illustrative; we do NOT render the player's real skeleton/pose.
+    /// "AI is analyzing your swing" loading visual — a cinematic clay-court
+    /// action photo with a stylized motion-analysis overlay baked in, plus a
+    /// soft gold scan-light that sweeps while we work. Purely atmospheric: the
+    /// real result is written coaching, not a live skeleton/measurement readout.
     private struct SwingAnalyzingVisual: View {
         @Environment(\.accessibilityReduceMotion) private var reduceMotion
         @State private var scan = false
-        @State private var pulse = false
-        private let dots: [CGPoint] = [
-            CGPoint(x: 0.50, y: 0.20), CGPoint(x: 0.63, y: 0.34),
-            CGPoint(x: 0.45, y: 0.42), CGPoint(x: 0.57, y: 0.60),
-            CGPoint(x: 0.47, y: 0.80),
-        ]
         var body: some View {
             ZStack {
-                RoundedRectangle(cornerRadius: 24, style: .continuous)
-                    .fill(AppPalette.parchment)
-                    .overlay(RoundedRectangle(cornerRadius: 24, style: .continuous)
-                        .stroke(AppPalette.sand, lineWidth: 1))
-                GeometryReader { geo in
-                    let w = geo.size.width, h = geo.size.height
-                    Image(systemName: "figure.tennis")
-                        .resizable().scaledToFit()
-                        .foregroundStyle(AppPalette.clay)
-                        .frame(width: w * 0.5)
-                        .position(x: w * 0.5, y: h * 0.5)
-                    ForEach(dots.indices, id: \.self) { i in
-                        Circle().fill(AppPalette.gold)
-                            .frame(width: 8, height: 8)
-                            .position(x: dots[i].x * w, y: dots[i].y * h)
-                            .scaleEffect(pulse ? 1.4 : 0.6)
-                            .opacity(pulse ? 1 : 0.4)
-                            .animation(reduceMotion ? nil :
-                                .easeInOut(duration: 0.9).repeatForever().delay(Double(i) * 0.18),
-                                value: pulse)
-                    }
-                    if !reduceMotion {
+                Image("SwingAnalyzeHero")
+                    .resizable()
+                    .scaledToFill()
+                if !reduceMotion {
+                    GeometryReader { geo in
                         Rectangle()
-                            .fill(LinearGradient(colors: [.clear, AppPalette.clayBright.opacity(0.55), .clear],
-                                                 startPoint: .top, endPoint: .bottom))
-                            .frame(height: 36)
-                            .position(x: w * 0.5, y: scan ? h * 0.85 : h * 0.15)
-                            .animation(.easeInOut(duration: 1.6).repeatForever(autoreverses: true), value: scan)
+                            .fill(LinearGradient(
+                                colors: [.clear, AppPalette.gold.opacity(0.5), .clear],
+                                startPoint: .top, endPoint: .bottom))
+                            .frame(height: 46)
+                            .blendMode(.plusLighter)
+                            .position(x: geo.size.width / 2,
+                                      y: scan ? geo.size.height * 0.9 : geo.size.height * 0.1)
+                            .animation(.easeInOut(duration: 1.8).repeatForever(autoreverses: true),
+                                       value: scan)
                     }
                 }
-                .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
             }
-            .frame(width: 200, height: 220)
-            .onAppear { scan = true; pulse = true }
+            .aspectRatio(0.8, contentMode: .fit)
+            .frame(maxWidth: 300)
+            .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+            .overlay(RoundedRectangle(cornerRadius: 24, style: .continuous)
+                .stroke(AppPalette.sand.opacity(0.6), lineWidth: 1))
+            .shadow(color: AppPalette.ink.opacity(0.18), radius: 18, y: 10)
+            .onAppear { scan = true }
             .accessibilityHidden(true)
         }
     }
