@@ -5,6 +5,18 @@ Karar: video→VLM tek başına güvenilmez → deterministik pipeline'a kademel
 **Can'ın video arşivi (Instagram klipleri + saatlik maç kayıtları) planın merkezinde:**
 hem değerlendirme seti (bench) hem model eğitim verisi oradan çıkacak.
 
+**KANONİK AÇI KARARI (9 Tem):** Can'ın arşivi neredeyse tamamen **ARKA açı** ve hep kendisi.
+→ Uygulamanın kanonik açısı da **arkadan** (baseline arkası, hafif yüksek) — SwingVision'ın
+zorunlu açısı ve TV yayın açısı; %83.7'lik MediaPipe çalışması da yayın-tipi görüntüyle.
+Tutarlılık > açı seçimi. Yan açı = ikincil/ileride. Sonuçları: (a) Faz 2 checkpoint seti
+arka-açıdan güvenilir ölçülenlerle sınırlanır — hizalanma, unit turn, taban genişliği,
+split step, bitiş yüksekliği, toparlanma, toss yana kayması, bacak itişi, FH/BH ayrımı;
+**derinlik metrikleri (temas-önde) verilmez ya da düşük-güven işaretlenir** (kamera ekseni).
+(b) Faz 3 modeli arka-açı verisiyle eğitilir → app rehberi de arkadan çekim ister → eğitim
+ile üretim dağılımı birebir örtüşür. (c) Tek-denek riski (hep Can): prototip Can verisiyle;
+yatay-flip augmentasyonu (bedava çeşit + solak); genel doğruluk iddiasından ÖNCE farklı
+oyunculardan ek çekim — Faz 3 go/no-go kapısında değerlendirilir.
+
 ---
 
 ## Veri stratejisi — arşiv iki işe ayrılır
@@ -50,8 +62,8 @@ Sayma rezaletini bitiren faz.
 2. **Impact-merkezli kareler:** `AVAssetImageGenerator` her impact'in t−0.5s…t+0.3s aralığından
    8-12 kare çeker → edge'e video YERİNE zaman damgalı kareler gider (temas anı artık kesin
    görülüyor; bugün 5fps örnekleme temas anını kaçırıyor). Maliyet: ~3k token ≈ $0.001-0.01.
-3. **Çekim rehberi (app içi):** vuruş tipine göre kadraj kartı — groundstroke=YAN açı (dik,
-   3-5 m, tüm vücut+raket), servis=arkadan/yüksek; tek vuruş tipi; 10-30 sn; 60 fps önerisi.
+3. **Çekim rehberi (app içi):** kanonik açı = **ARKADAN** (baseline arkası, hafif yüksek,
+   tüm vücut + kort kadrajda — SwingVision düzeni); tek vuruş tipi; 10-30 sn; 60 fps önerisi.
    Uygunsuz video (çok uzun / çok kısa) analizden önce uyarı alır.
 4. **Edge mikro-yaması:** tek-vuruş prompt'undan "kaç tekrar" isteği çıkar (deploy onayıyla).
 5. **Doğrulama:** bench yeniden koşulur → sayım doğruluğu hedef ~%100 (ses net ise).
@@ -60,9 +72,12 @@ Sayma rezaletini bitiren faz.
 
 1. Impact pencerelerinde `VNDetectHumanBodyPose3DRequest` (iOS 17+, cihazda, $0) →
    iskelet dizileri.
-2. **Checkpoint metrikleri** (deterministik hesap): unit turn açısı, temas-önde (bilek vs kalça),
-   low-to-high yörünge, bitiş yüksekliği, diz fleksiyonu, taban genişliği; serviste trophy
-   (~65° ön diz), impact (~111° omuz, ~30° dirsek) referans bantları (Frontiers 2024).
+2. **Checkpoint metrikleri — ARKA-AÇI seti** (deterministik hesap): unit turn (omuz hattı
+   dönüşü), taban genişliği, split-step zamanlaması, bitiş yüksekliği (bilek vs omuz),
+   toparlanma adımı, hizalanma; serviste toss yana kayması, bacak itişi, trophy diz
+   fleksiyonu (3D pose'dan, ~65° referans), impact uzanması (~111° omuz — Frontiers 2024).
+   **Derinlik gerektiren metrikler (temas-önde) arka açıdan verilmez / düşük-güven** —
+   uydurma yerine susma ilkesi.
 3. Edge'e SAYILAR gider → LLM yalnızca ölçümden koçluk yazar → uydurma fiziken imkânsız.
    Skor = deterministik rubrik (LLM skoru "yorumlar", üretmez).
 4. Bench: Can pose ölçümlerinin isabetini eleştirir (açı yorumları gerçekle uyuşuyor mu).
