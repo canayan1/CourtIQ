@@ -176,7 +176,11 @@ struct SwingAnalysisView: View {
                     LazyVGrid(columns: [GridItem(.flexible(), spacing: 8),
                                         GridItem(.flexible(), spacing: 8)],
                               spacing: 8) {
-                        ForEach(SwingStroke.allCases) { s in
+                        // 'session' (mixed strokes) removed from the picker: auto
+                        // stroke-classification from video is unreliable (even Pro
+                        // mislabels a smash as a serve). Single-stroke modes let the
+                        // player DECLARE the stroke, so the AI never invents one.
+                        ForEach(SwingStroke.allCases.filter { $0 != .session }) { s in
                             compactChip(copy.stroke(s), isSelected: stroke == s) { stroke = s }
                         }
                     }
