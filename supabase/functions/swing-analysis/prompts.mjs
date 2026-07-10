@@ -63,9 +63,14 @@ SCORE CALIBRATION (field-tested: flattering scores destroy trust faster than har
  */
 export function systemPrompt(stroke, handedness, measuredCount = null) {
   const hand = handedness ? `The player is ${handedness}-handed. ` : "";
+  // NO example sentences here — a literal template containing the declared
+  // stroke gets PARROTED (field-tested twice: FEW_SHOT_SERVE, then a count
+  // example that became "I can see your 4 serves" for a serve-less clip).
+  // Verification is a forced structural verdict instead.
+  const verifyContract = `VERIFICATION VERDICT (mandatory): the first line of your reply after the score line — or the very first line when you don't score — must be exactly 'VERIFIED: yes' or 'VERIFIED: no — ' followed by one short clause saying what the swings actually resemble. Write 'yes' ONLY if the strikes clearly look like the declared ${STROKES[stroke] ?? stroke}. The player picked the stroke from a menu and may have picked wrong — your job is to check, not to agree. After 'VERIFIED: no': add ONE short honest paragraph telling the player what the clip seems to show and to re-check the stroke they picked, then STOP — no score, no coaching, no stroke sections.`;
   const countRule = measuredCount != null
-    ? `The app MEASURED ${measuredCount} ball strike${measuredCount === 1 ? "" : "s"} in this clip from its audio. That number is trustworthy — but it says NOTHING about the stroke type: the player picked the stroke from a menu and may have picked wrong. FIRST verify from the frames that the strikes actually look like the declared stroke; only THEN open with one short line pairing the stroke with the measured count (e.g. 'I can see your ${measuredCount} ${STROKES[stroke] ?? stroke}s.'). If the swings do NOT clearly match the declared stroke, do not confirm, do not score, do not coach — say plainly what the swings resemble instead and ask the player to re-check the stroke they picked, then STOP. Never state a different number and never count frames yourself.`
-    : "Open with one short line confirming the stroke type you see. Do NOT state how many reps there are — no reliable count was measured for this clip, and counting from sampled frames is unreliable.";
+    ? `${verifyContract} The app MEASURED ${measuredCount} ball strike${measuredCount === 1 ? "" : "s"} from the clip's audio — after a 'VERIFIED: yes', weave that number into your opening in your own words; never state a different number and never count frames yourself.`
+    : `${verifyContract} Do NOT state how many reps there are — no reliable count was measured for this clip, and counting from sampled frames is unreliable.`;
   const serveGate = stroke === "serve"
     ? " SERVE CHECK (hard rule): a real serve shows a ball toss and contact ABOVE the head. If you do not clearly see both, you are NOT looking at serves — never describe serve mechanics (toss, trophy position, racquet drop, pronation) for swings you cannot verify as serves; fabricated serve coaching is the worst mistake this product can make."
     : "";
@@ -149,9 +154,12 @@ export function userPrompt(stroke) {
 export const GENERATION_CONFIG = { maxOutputTokens: 4096, temperature: 0.5 };
 
 /**
- * Pull the leading "SCORE: NN" line out into a structured field.
+ * Pull the leading "SCORE: NN" line out into a structured field, then the
+ * "VERIFIED: yes|no" verdict line (single-stroke verification contract).
+ * A "VERIFIED: no" nulls the score — a score for an unverified stroke is
+ * exactly the fabrication we're killing.
  * @param {string} text
- * @returns {{ analysis: string, score: number | null }}
+ * @returns {{ analysis: string, score: number | null, mismatch: boolean }}
  */
 export function parseScoredAnalysis(text) {
   let score = null;
@@ -163,5 +171,17 @@ export function parseScoredAnalysis(text) {
     if (n >= 0 && n <= 100) score = n;
     analysis = analysis.split("\n").slice(1).join("\n").trim();
   }
-  return { analysis, score };
+  let mismatch = false;
+  const verdictLine = analysis.split("\n")[0] ?? "";
+  const v = verdictLine.match(/^\s*VERIFIED:\s*(yes|no)\b/i);
+  if (v) {
+    mismatch = v[1].toLowerCase() === "no";
+    // Keep the "what it resembles" clause for the player, drop the scaffold.
+    const rest = verdictLine.replace(/^\s*VERIFIED:\s*(yes|no)\s*(—|-)?\s*/i, "").trim();
+    const lines = analysis.split("\n").slice(1);
+    if (rest && mismatch) lines.unshift(rest);
+    analysis = lines.join("\n").trim();
+  }
+  if (mismatch) score = null;
+  return { analysis, score, mismatch };
 }

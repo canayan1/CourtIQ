@@ -200,13 +200,13 @@ Deno.serve(async (req) => {
     return json({ error: "Empty analysis." }, 502);
   }
 
-  // Pull the leading "SCORE: NN" line out into a structured field.
-  const { analysis, score } = parseScoredAnalysis(text);
+  // Pull the leading "SCORE: NN" + "VERIFIED:" scaffold lines into fields.
+  const { analysis, score, mismatch } = parseScoredAnalysis(text);
 
   // Record successful usage against the cap (best-effort; RLS enforces own-row).
   await supabase.from("swing_analyses").insert({ user_id: user.id });
 
-  return json({ analysis, score, stroke, model: GEMINI_MODEL }, 200);
+  return json({ analysis, score, stroke, model: GEMINI_MODEL, mismatch }, 200);
 });
 
 function json(obj: unknown, status: number): Response {

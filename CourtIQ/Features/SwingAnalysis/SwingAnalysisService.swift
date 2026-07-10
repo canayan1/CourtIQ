@@ -65,16 +65,16 @@ final class SwingAnalysisService {
         /// refuse BEFORE upload. Coaching a stroke the model can't actually
         /// see is our field-tested fabrication case (it invents toss/racquet
         /// drop for a "serve" that never happens), so honesty wins over trying.
-        case notAServe(strikes: Int)
+        case notAServe(strikes: Int, overhead: Int)
         case looksOverhead
         var errorDescription: String? {
             switch self {
             case .couldNotPrepare: return "The video could not be read."
             case .tooLarge:        return "That clip is too large — try a shorter one."
-            case .notAServe(let strikes):
-                return "This clip doesn't look like serves — a serve meets the ball above your head, and none of the \(strikes) detected strikes do. Check the stroke you picked and try again."
+            case .notAServe(let strikes, let overhead):
+                return "This clip doesn't look like a serve session — a serve meets the ball above your head, and only \(overhead) of the \(strikes) detected strikes do. Check the stroke you picked (this looks more like rally strokes) and try again."
             case .looksOverhead:
-                return "These strikes all happen above your head — that's a serve or smash, not the stroke you picked. Check the stroke type and try again."
+                return "Most of these strikes happen above your head — that's a serve or smash, not the stroke you picked. Check the stroke type and try again."
             }
         }
     }
@@ -99,13 +99,17 @@ final class SwingAnalysisService {
         // Declared-stroke sanity gate: the measured count says NOTHING about
         // the stroke type, so cross-check the one signal pose gives us for
         // free — overhead vs. not — and refuse contradictions before any
-        // upload (no cost, no fabricated report).
+        // upload (no cost, no fabricated report). MAJORITY rules, not
+        // any/all: a real serve clip is almost ALL overhead strikes, so one
+        // stray smash in a groundstroke rally must not open the serve door
+        // (field-tested: FH+BH+smash marked "serve" slipped a zero-overhead
+        // check because the smash counted).
         if let scan, scan.impacts.count >= 2 {
-            if stroke == .serve && scan.overheadImpacts == 0 {
-                throw PrepError.notAServe(strikes: scan.impacts.count)
+            let overhead = scan.overheadImpacts, total = scan.impacts.count
+            if stroke == .serve && overhead * 2 < total {
+                throw PrepError.notAServe(strikes: total, overhead: overhead)
             }
-            if (stroke == .forehand || stroke == .backhand)
-                && scan.overheadImpacts == scan.impacts.count {
+            if (stroke == .forehand || stroke == .backhand) && overhead * 2 > total {
                 throw PrepError.looksOverhead
             }
         }
