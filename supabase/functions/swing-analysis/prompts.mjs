@@ -52,15 +52,23 @@ export const SCORE_INSTRUCTION = "Begin your ENTIRE reply with a line exactly li
 /**
  * @param {string} stroke
  * @param {string | null} handedness
+ * @param {number | null} measuredCount  rep count MEASURED on device (audio
+ *   impacts + Vision person gate). Counting was the model's #1 fabrication —
+ *   it either gets the measured number verbatim or must not state one at all.
  * @returns {string}
  */
-export function systemPrompt(stroke, handedness) {
+export function systemPrompt(stroke, handedness, measuredCount = null) {
   const hand = handedness ? `The player is ${handedness}-handed. ` : "";
+  const countRule = measuredCount != null
+    ? `The app MEASURED the rep count from the clip's audio: exactly ${measuredCount} swing${measuredCount === 1 ? "" : "s"}. Open with one short line confirming the stroke type you see together with that measured count (e.g. 'I can see your ${measuredCount} forehands.'). NEVER state a different number and never count frames yourself.`
+    : "Open with one short line confirming the stroke type you see. Do NOT state how many reps there are — no reliable count was measured for this clip, and counting from sampled frames is unreliable.";
   if (stroke === "session") {
     return [
       "You are an expert, encouraging tennis coach reviewing a hitting session that may contain multiple stroke types (forehands, backhands, serves, volleys, overheads).",
       `${hand}`,
-      "Open with ONE plain sentence naming the strokes you actually see and how many — e.g. 'I can see 2 forehands and 1 backhand.' Count only strokes you genuinely watch the player hit; it must match the video. If the player is out of frame, the angle hides the swing, or the clip is too blurry/far to tell, say that plainly in this opening line, ask for a clearer clip, and STOP. NEVER analyze or mention a stroke you don't clearly see — in particular do NOT describe a serve, toss, or overhead unless the player clearly hits one on screen (this is the worst possible mistake).",
+      measuredCount != null
+        ? `The app MEASURED ${measuredCount} ball strike${measuredCount === 1 ? "" : "s"} in this clip from its audio. Open with ONE plain sentence naming the stroke TYPES you actually see (do not give your own total — the measured total is ${measuredCount}). If the player is out of frame, the angle hides the swing, or the clip is too blurry/far to tell, say that plainly in this opening line, ask for a clearer clip, and STOP. NEVER analyze or mention a stroke you don't clearly see — in particular do NOT describe a serve, toss, or overhead unless the player clearly hits one on screen (this is the worst possible mistake).`
+        : "Open with ONE plain sentence naming the stroke TYPES you actually see. Do NOT state counts — no reliable count was measured for this clip, and counting from sampled frames is unreliable. If the player is out of frame, the angle hides the swing, or the clip is too blurry/far to tell, say that plainly in this opening line, ask for a clearer clip, and STOP. NEVER analyze or mention a stroke you don't clearly see — in particular do NOT describe a serve, toss, or overhead unless the player clearly hits one on screen (this is the worst possible mistake).",
       "Then, for EACH stroke you actually saw, write a section: a bold header of JUST the stroke name on its own line ('**Forehand**', '**Backhand**', '**Serve**'), then 2-3 plain sentences/bullets — what's working and the top fix you can see, each with a short cue or drill. Do NOT use bold sub-headings such as 'What's working' or 'Top fixes' — keep those as plain text so they stay inside the stroke's section.",
       "Finish with a bold '**Overall**' header on its own line and the single biggest priority across the strokes.",
       "Cite SPECIFIC things you see in THIS clip, never generic tips. Be honest but motivating. Address the player as 'you'. IMPORTANT: do NOT print step numbers or scaffolding labels (no 'STEP 1', 'COUNT WHAT YOU SEE', 'QUALITY GATE', etc.) — output only the coaching itself.",
@@ -88,7 +96,7 @@ export function systemPrompt(stroke, handedness) {
     "• **What's working** — 2-3 specific strengths you can see.",
     "• **Top fixes** — 2-3 prioritized improvements, each with a concrete cue or a quick drill.",
     "• **One thing to try next session** — a single focus.",
-    "Rules: OPEN with one short line confirming what you actually see — the stroke and roughly how many reps, e.g. 'I can see 3 forehands.' If the clip is too blurry, too far, or the angle hides the swing (grip, contact point), say so plainly and ask for a better clip instead of analyzing — do NOT guess or describe a generic version. THEN give '**What's working**', '**Top fixes**', and '**One thing to try next session**'. Cite SPECIFIC things you actually see in THIS swing (e.g. 'your racquet face is open at contact', 'your hips stop rotating before you hit') — never generic tennis tips that could apply to anyone. Be honest but constructive and motivating. ~200-280 words, plain text with the bold headers, address the player as 'you'.",
+    `Rules: ${countRule} If the clip is too blurry, too far, or the angle hides the swing (grip, contact point), say so plainly and ask for a better clip instead of analyzing — do NOT guess or describe a generic version. THEN give '**What's working**', '**Top fixes**', and '**One thing to try next session**'. Cite SPECIFIC things you actually see in THIS swing (e.g. 'your racquet face is open at contact', 'your hips stop rotating before you hit') — never generic tennis tips that could apply to anyone. Be honest but constructive and motivating. ~200-280 words, plain text with the bold headers, address the player as 'you'.`,
   ].join("\n");
 }
 
@@ -97,11 +105,12 @@ export function systemPrompt(stroke, handedness) {
  * @param {string} stroke
  * @param {string | null} handedness
  * @param {string} context  compact player context ("" for none)
+ * @param {number | null} measuredCount  on-device measured rep count
  * @returns {Array<{ text: string }>}
  */
-export function buildSystemParts(stroke, handedness, context) {
+export function buildSystemParts(stroke, handedness, context, measuredCount = null) {
   const systemParts = [
-    { text: systemPrompt(stroke, handedness) },
+    { text: systemPrompt(stroke, handedness, measuredCount) },
     { text: ADAPTATION_SAFETY },
     { text: COACHING_REFERENCE },
     { text: SCORE_INSTRUCTION },

@@ -43,6 +43,11 @@ final class SwingAnalysisService {
         /// Optional, compact, privacy-safe player context (profile + recent
         /// scores) so the AI personalizes its coaching. Omitted when nil.
         let context: String?
+        /// Rep count MEASURED on device (audio impacts + Vision person gate).
+        /// The AI must never count for itself — video-LLM counting was our #1
+        /// fabrication source. Omitted when the scan found nothing (muted
+        /// clip, no clear strikes); the edge then forbids stating any count.
+        let measuredCount: Int?
     }
 
     private struct Response: Decodable {
@@ -76,6 +81,11 @@ final class SwingAnalysisService {
         context: String? = nil,
         session: SupabaseSession
     ) async throws -> SwingAnalysisResult {
+        // Deterministic rep count (audio impacts + person gate) BEFORE upload —
+        // fully on-device, a few seconds. nil when nothing confident was found.
+        let scan = await SwingImpactAnalyzer.scan(videoURL: videoURL)
+        let measuredCount = (scan?.impacts.isEmpty == false) ? scan?.impacts.count : nil
+
         let videoData = try await Self.compressedVideoData(from: videoURL)
         let base64 = videoData.base64EncodedString()
         guard base64.count <= Self.maxBase64Bytes else { throw PrepError.tooLarge }
@@ -98,7 +108,8 @@ final class SwingAnalysisService {
             handedness: handedness?.rawValue,
             video: base64,
             mimeType: "video/mp4",
-            context: context?.nonEmpty
+            context: context?.nonEmpty,
+            measuredCount: measuredCount
         )
         request.httpBody = try JSONEncoder().encode(payload)
 

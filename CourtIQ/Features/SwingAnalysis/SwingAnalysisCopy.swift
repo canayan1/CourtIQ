@@ -43,8 +43,13 @@ struct SwingAnalysisCopy {
             return t("Film your whole hit — serves, forehands, backhands together. Side view, full body in frame, good even light. The AI identifies each stroke and breaks it down separately.",
                      "Tüm antrenmanını çek — servis, forehand, backhand bir arada. Yandan, tüm vücut karede, iyi ışık. AI her vuruşu tanıyıp ayrı ayrı çözümler.")
         }
-        return t("Film from the side with your full body in frame, in good even light — and hit 2–3 reps, not just one. Repeated swings let the AI spot the faults that recur, which is far more reliable than reading a single swing. A steady phone (lean it or use a tripod) reads best.",
-                 "Yandan, tüm vücudun karede ve iyi eşit ışıkta çek — tek vuruş değil, 2–3 tekrar yap. Tekrarlı vuruşlar AI'ın tekrar eden hataları yakalamasını sağlar; bu tek vuruşu okumaktan çok daha güvenilir. Sabit telefon (yasla ya da tripod) en iyisidir.")
+        // Canonical capture angle = FROM BEHIND (SwingVision-style: behind the
+        // player, slightly high, whole body centred). Matches the calibration
+        // of our on-device counting + pose pipeline; consistency beats any
+        // single "ideal" angle. Framing warning is load-bearing: pose-empty
+        // clips were 1/3 of our first training set.
+        return t("Film from BEHIND with the phone slightly high (lean it on the fence), your whole body centred in frame. Hit several reps of the same stroke — 10–30 seconds is ideal. Repeated swings let the AI spot the faults that recur; if you drift out of frame, those swings can't be read.",
+                 "ARKADAN çek, telefon hafif yüksekte (çite yasla), tüm vücudun kadrajın ORTASINDA. Aynı vuruştan birkaç tekrar yap — ideali 10–30 saniye. Tekrarlar AI'ın tekrar eden hataları yakalamasını sağlar; kadraj dışına taşarsan o vuruşlar okunamaz.")
     }
     var continueCTA: String { t("Continue", "Devam") }
 

@@ -100,7 +100,7 @@ Deno.serve(async (req) => {
   // Server-side entitlement gate (no-op until REQUIRE_ENTITLEMENT is flipped on).
   if (!(await isEntitled(user.id))) return json({ error: "entitlement_required", needsUpgrade: true }, 402);
 
-  let body: { stroke?: string; handedness?: string; video?: string; mimeType?: string; context?: string };
+  let body: { stroke?: string; handedness?: string; video?: string; mimeType?: string; context?: string; measuredCount?: number };
   try {
     body = await req.json();
   } catch {
@@ -118,6 +118,14 @@ Deno.serve(async (req) => {
   const context = typeof body.context === "string"
     ? body.context.trim().slice(0, 800)
     : "";
+  // On-device measured rep count (audio impacts + Vision person gate). The
+  // model either repeats this number verbatim or (absent) states no count at
+  // all — it never counts for itself (video-LLM counting fabricates).
+  const measuredCount = typeof body.measuredCount === "number" &&
+      Number.isFinite(body.measuredCount) &&
+      body.measuredCount >= 1 && body.measuredCount <= 500
+    ? Math.round(body.measuredCount)
+    : null;
   if (!video) return json({ error: "No video provided." }, 400);
   if (video.length > MAX_VIDEO_B64) {
     return json({ error: "That clip is too large. Use a shorter clip." }, 413);
@@ -151,7 +159,7 @@ Deno.serve(async (req) => {
 
   // Gemini: native video understanding via inline data.
   const geminiBody = {
-    systemInstruction: { parts: buildSystemParts(stroke, handedness, context) },
+    systemInstruction: { parts: buildSystemParts(stroke, handedness, context, measuredCount) },
     contents: [{
       role: "user",
       parts: [
