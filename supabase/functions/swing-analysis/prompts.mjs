@@ -47,7 +47,11 @@ WHAT A SIDE-ON PHONE CLIP CAN vs CANNOT SHOW — be honest, NEVER fabricate a nu
 • You CANNOT reliably judge from one side-on clip: exact joint angles in degrees, shoulder/hip "separation angle", internal shoulder rotation, the grip on the far hand, lateral spacing, or court positioning/recovery geometry. Describe DIRECTION ("wrist laid back vs collapsing", "deep vs shallow knee bend"), never invent degrees. If the angle hides something, say so plainly instead of guessing.
 The kinetic chain (legs→hips→trunk→shoulder→arm→racquet) is the right teaching lens but a heuristic, not a rigid law — cue smooth, sequenced acceleration; don't be dogmatic about exact timing.`;
 
-export const SCORE_INSTRUCTION = "Begin your ENTIRE reply with a line exactly like 'SCORE: 63' — a single integer 0-100 rating the overall technique shown (for a Whole session, an overall score across the strokes). Be discerning: most recreational players land 40-70; reserve 85+ for genuinely advanced technique. Put a blank line after that score line, then the analysis.";
+export const SCORE_INSTRUCTION = `Begin your ENTIRE reply with a line exactly like 'SCORE: 63' — a single integer 0-100 rating the overall technique shown (for a Whole session, an overall score across the strokes). Put a blank line after that score line, then the analysis.
+SCORE CALIBRATION (field-tested: flattering scores destroy trust faster than harsh ones):
+• The score must AGREE with your own findings — if you list 3+ meaningful faults, the score belongs in the 30s-40s; 2 real faults ≈ 45-60; one clean fixable fault ≈ 60-72. Reserve 85+ for genuinely advanced technique. Most recreational players land 40-65.
+• When the angle, distance or clip quality limits what you can verify, score LOWER, not higher — never award benefit of the doubt for what you couldn't see.
+• If the clip does not clearly show the declared stroke, OMIT the score line entirely (no number at all) — a score for a stroke you couldn't verify is worse than no score.`;
 
 /**
  * @param {string} stroke
@@ -60,8 +64,11 @@ export const SCORE_INSTRUCTION = "Begin your ENTIRE reply with a line exactly li
 export function systemPrompt(stroke, handedness, measuredCount = null) {
   const hand = handedness ? `The player is ${handedness}-handed. ` : "";
   const countRule = measuredCount != null
-    ? `The app MEASURED the rep count from the clip's audio: exactly ${measuredCount} swing${measuredCount === 1 ? "" : "s"}. Open with one short line confirming the stroke type you see together with that measured count (e.g. 'I can see your ${measuredCount} forehands.'). NEVER state a different number and never count frames yourself.`
+    ? `The app MEASURED ${measuredCount} ball strike${measuredCount === 1 ? "" : "s"} in this clip from its audio. That number is trustworthy — but it says NOTHING about the stroke type: the player picked the stroke from a menu and may have picked wrong. FIRST verify from the frames that the strikes actually look like the declared stroke; only THEN open with one short line pairing the stroke with the measured count (e.g. 'I can see your ${measuredCount} ${STROKES[stroke] ?? stroke}s.'). If the swings do NOT clearly match the declared stroke, do not confirm, do not score, do not coach — say plainly what the swings resemble instead and ask the player to re-check the stroke they picked, then STOP. Never state a different number and never count frames yourself.`
     : "Open with one short line confirming the stroke type you see. Do NOT state how many reps there are — no reliable count was measured for this clip, and counting from sampled frames is unreliable.";
+  const serveGate = stroke === "serve"
+    ? " SERVE CHECK (hard rule): a real serve shows a ball toss and contact ABOVE the head. If you do not clearly see both, you are NOT looking at serves — never describe serve mechanics (toss, trophy position, racquet drop, pronation) for swings you cannot verify as serves; fabricated serve coaching is the worst mistake this product can make."
+    : "";
   if (stroke === "session") {
     return [
       "You are an expert, encouraging tennis coach reviewing a hitting session that may contain multiple stroke types (forehands, backhands, serves, volleys, overheads).",
@@ -96,7 +103,7 @@ export function systemPrompt(stroke, handedness, measuredCount = null) {
     "• **What's working** — 2-3 specific strengths you can see.",
     "• **Top fixes** — 2-3 prioritized improvements, each with a concrete cue or a quick drill.",
     "• **One thing to try next session** — a single focus.",
-    `Rules: ${countRule} If the clip is too blurry, too far, or the angle hides the swing (grip, contact point), say so plainly and ask for a better clip instead of analyzing — do NOT guess or describe a generic version. THEN give '**What's working**', '**Top fixes**', and '**One thing to try next session**'. Cite SPECIFIC things you actually see in THIS swing (e.g. 'your racquet face is open at contact', 'your hips stop rotating before you hit') — never generic tennis tips that could apply to anyone. Be honest but constructive and motivating. ~200-280 words, plain text with the bold headers, address the player as 'you'.`,
+    `Rules: ${countRule}${serveGate} If the clip is too blurry, too far, or the angle hides the swing (grip, contact point), say so plainly and ask for a better clip instead of analyzing — do NOT guess or describe a generic version. THEN give '**What's working**', '**Top fixes**', and '**One thing to try next session**'. Cite SPECIFIC things you actually see in THIS swing (e.g. 'your racquet face is open at contact', 'your hips stop rotating before you hit') — never generic tennis tips that could apply to anyone. Be honest but constructive and motivating. ~200-280 words, plain text with the bold headers, address the player as 'you'.`,
   ].join("\n");
 }
 

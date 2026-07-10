@@ -61,10 +61,20 @@ final class SwingAnalysisService {
     enum PrepError: LocalizedError {
         case couldNotPrepare
         case tooLarge
+        /// Declared stroke contradicts what the on-device scan measured —
+        /// refuse BEFORE upload. Coaching a stroke the model can't actually
+        /// see is our field-tested fabrication case (it invents toss/racquet
+        /// drop for a "serve" that never happens), so honesty wins over trying.
+        case notAServe(strikes: Int)
+        case looksOverhead
         var errorDescription: String? {
             switch self {
             case .couldNotPrepare: return "The video could not be read."
             case .tooLarge:        return "That clip is too large — try a shorter one."
+            case .notAServe(let strikes):
+                return "This clip doesn't look like serves — a serve meets the ball above your head, and none of the \(strikes) detected strikes do. Check the stroke you picked and try again."
+            case .looksOverhead:
+                return "These strikes all happen above your head — that's a serve or smash, not the stroke you picked. Check the stroke type and try again."
             }
         }
     }
@@ -85,6 +95,20 @@ final class SwingAnalysisService {
         // fully on-device, a few seconds. nil when nothing confident was found.
         let scan = await SwingImpactAnalyzer.scan(videoURL: videoURL)
         let measuredCount = (scan?.impacts.isEmpty == false) ? scan?.impacts.count : nil
+
+        // Declared-stroke sanity gate: the measured count says NOTHING about
+        // the stroke type, so cross-check the one signal pose gives us for
+        // free — overhead vs. not — and refuse contradictions before any
+        // upload (no cost, no fabricated report).
+        if let scan, scan.impacts.count >= 2 {
+            if stroke == .serve && scan.overheadImpacts == 0 {
+                throw PrepError.notAServe(strikes: scan.impacts.count)
+            }
+            if (stroke == .forehand || stroke == .backhand)
+                && scan.overheadImpacts == scan.impacts.count {
+                throw PrepError.looksOverhead
+            }
+        }
 
         let videoData = try await Self.compressedVideoData(from: videoURL)
         let base64 = videoData.base64EncodedString()
