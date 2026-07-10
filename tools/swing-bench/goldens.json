@@ -1,0 +1,43 @@
+{
+  "_": "Golden regression suite (docs/SWING-SYSTEM-DESIGN.md §5). L1 = Mac, ücretsiz: dedektör kararlılığı + prompt lint + parser sözleşmesi. L2 = Gemini (anahtar ister): VERIFIED / yasak-sözlük / sayı-metin / skor bandı. Yeni saha hatası = önce buraya vaka.",
+  "detectorBaselines": {
+    "_": "mine.py ham impact sayıları — kalibre edilmiş taban (GT değil; poz kapısı cihazda). Sapma = dedektör regresyonu.",
+    "forehand_wall_9929.mov": 31,
+    "backhand_wall_9931.mov": 42,
+    "backhand_wall_9932.mov": 41,
+    "smash_wall_9933.mov": 29
+  },
+  "promptLint": {
+    "_": "INV-6: şablon cümle yasağı + kritik kuralların varlığı (F3).",
+    "forbiddenLiterals": ["I can see your", "I can see 3 forehands", "e.g. 'I can see"],
+    "requiredFragments": {
+      "serve": ["SERVE CHECK", "VERIFIED: yes' or 'VERIFIED: no"],
+      "forehand": ["VERIFIED: yes' or 'VERIFIED: no", "never count frames yourself"]
+    }
+  },
+  "llmCases": [
+    { "id": "fh-dogru-beyan", "clip": "~/TennisVideos/instagram/forehand_wall_9929.mov",
+      "declared": "forehand", "measuredCount": 19,
+      "expect": { "verified": "yes", "countInText": 19, "scoreMax": 65,
+                  "forbidden": ["toss", "pronation", "trophy position", "racquet drop"] } },
+    { "id": "bh-dogru-beyan", "clip": "~/TennisVideos/instagram/backhand_wall_9932.mov",
+      "declared": "backhand", "measuredCount": 28,
+      "expect": { "verified": "yes", "countInText": 28, "scoreMax": 70,
+                  "forbidden": ["toss", "pronation", "trophy position"] } },
+    { "id": "serve-trap-duvar-fh", "clip": "~/TennisVideos/instagram/forehand_wall_9929.mov",
+      "declared": "serve", "measuredCount": 19,
+      "expect": { "verified": "no", "scoreOmitted": true,
+                  "forbidden": ["toss", "pronation", "trophy position", "racquet drop", "leg drive"] } },
+    { "id": "serve-trap-smash", "clip": "~/TennisVideos/instagram/smash_wall_9933.mov",
+      "declared": "serve", "measuredCount": 20,
+      "expect": { "verifiedAny": ["no", "yes"], "note": "smaç başüstü — serve'e en yakın tuzak; 'no' ideal, 'yes' ise yasak-sözlük yine de temiz olmalı",
+                  "forbidden": ["ball toss", "trophy position"] } },
+    { "id": "bh-yanlis-beyan-fh", "clip": "~/TennisVideos/instagram/backhand_wall_9931.mov",
+      "declared": "forehand", "measuredCount": 32,
+      "expect": { "verified": "no", "scoreOmitted": true, "resemblesMention": "backhand" } },
+    { "id": "sayisiz-yol", "clip": "~/TennisVideos/instagram/forehand_wall_9929.mov",
+      "declared": "forehand", "measuredCount": null,
+      "expect": { "noDigitsInOpening": true,
+                  "forbidden": ["I can see 3", "I can see 4", "I can see 5"] } }
+  ]
+}

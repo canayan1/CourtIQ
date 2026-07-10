@@ -52,3 +52,14 @@ Video oynamazsa (tarayıcı file:// kısıtı): `cd <run-dizini> && python3 -m h
 - Bütçe tavanı varsayılan **$1** — Pro'da ~15-25 kısa klip demek. Kaba fiyat: ~10 sn'lik
   klip Pro'da ~$0.03, Flash'ta ~$0.008.
 - Prod'a hiç dokunmaz: Supabase/edge/kullanım sayaçları bypass — doğrudan Gemini.
+
+## Golden suite — deploy kapısı (SWING-SYSTEM-DESIGN.md §5)
+
+```bash
+node golden.mjs          # L1: dedektör kararlılığı + prompt lint + parser (ücretsiz, saniyeler)
+node golden.mjs --l2     # + L2: gerçek Gemini assert'leri (anahtar ister, ~$0.3-0.5/koşu)
+```
+
+KURAL: edge deploy'dan önce `--l2` yeşil olmalı (çıkış kodu 0). Yeni saha hatası =
+önce `goldens.json`'a vaka, sonra düzeltme. Vakalar: doğru beyanlar + tuzaklar
+(serve-trap, yanlış-beyan, sayısız yol) + yasak-sözlük taramaları.
