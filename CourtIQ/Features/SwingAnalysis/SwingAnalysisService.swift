@@ -6,10 +6,19 @@ import AVFoundation
 /// function sends to Gemini for native video understanding), and returns the AI
 /// coaching text (or throws on an `{error}` / HTTP failure).
 /// The decoded result of a swing analysis: the coaching text plus an optional
-/// 0–100 score (the edge function may return `null` for the score).
+/// 0–100 score, and the MEASURED facts the report was grounded in — rendered
+/// by the UI as chips, separate from prose (design INV-1: measurements are UI
+/// elements, never trusted out of the model's text).
 struct SwingAnalysisResult {
     let analysis: String
     let score: Int?
+    /// On-device measured strike count (nil = couldn't measure).
+    let measuredCount: Int?
+    /// Share of strikes with overhead contact (0…1; nil = no impacts).
+    let overheadRatio: Double?
+    /// Server-verified stroke mismatch: the model looked and said "these are
+    /// not the declared stroke" — report is a redirect, score suppressed.
+    let mismatch: Bool
 }
 
 @MainActor
@@ -48,6 +57,20 @@ final class SwingAnalysisService {
         /// fabrication source. Omitted when the scan found nothing (muted
         /// clip, no clear strikes); the edge then forbids stating any count.
         let measuredCount: Int?
+        /// Share of strikes with overhead contact (0…1) — echoed back by the
+        /// edge for the UI facts row; feeds the R2 rubric later.
+        let measuredOverheadRatio: Double?
+        /// Impact-centred still frames (payload v2, design §5). The new edge
+        /// prefers these over the video (temporal grounding + ~20× cheaper
+        /// input); the old edge safely ignores them. `video` stays alongside
+        /// during the transition so no edge/app version skew can break.
+        let frames: [Frame]?
+        let v: Int
+
+        struct Frame: Encodable {
+            let t: Double
+            let jpeg: String   // base64 JPEG, no data: prefix
+        }
     }
 
     private struct Response: Decodable {
@@ -56,6 +79,7 @@ final class SwingAnalysisService {
         let stroke: String?
         let model: String?
         let error: String?
+        let mismatch: Bool?
     }
 
     enum PrepError: LocalizedError {
@@ -114,6 +138,21 @@ final class SwingAnalysisService {
             }
         }
 
+        // Impact-centred stills (payload v2): the frames the model actually
+        // needs — prep→contact→finish around every measured strike. Extraction
+        // failure falls back to video-only silently (a worse-grounded report
+        // beats no report).
+        var frames: [Request.Frame]? = nil
+        if let scan, !scan.impacts.isEmpty {
+            frames = (try? await SwingFrameExtractor.impactFrames(
+                from: videoURL, impacts: scan.impacts
+            ))?.map { Request.Frame(t: $0.t, jpeg: $0.jpeg) }
+        }
+        let overheadRatio: Double? = {
+            guard let scan, !scan.impacts.isEmpty else { return nil }
+            return Double(scan.overheadImpacts) / Double(scan.impacts.count)
+        }()
+
         let videoData = try await Self.compressedVideoData(from: videoURL)
         let base64 = videoData.base64EncodedString()
         guard base64.count <= Self.maxBase64Bytes else { throw PrepError.tooLarge }
@@ -137,7 +176,10 @@ final class SwingAnalysisService {
             video: base64,
             mimeType: "video/mp4",
             context: context?.nonEmpty,
-            measuredCount: measuredCount
+            measuredCount: measuredCount,
+            measuredOverheadRatio: overheadRatio,
+            frames: frames,
+            v: 2
         )
         request.httpBody = try JSONEncoder().encode(payload)
 
@@ -151,7 +193,13 @@ final class SwingAnalysisService {
         switch http.statusCode {
         case 200..<300:
             if let analysis = decoded?.analysis?.nonEmpty {
-                return SwingAnalysisResult(analysis: analysis, score: decoded?.score)
+                return SwingAnalysisResult(
+                    analysis: analysis,
+                    score: decoded?.score,
+                    measuredCount: measuredCount,
+                    overheadRatio: overheadRatio,
+                    mismatch: decoded?.mismatch ?? false
+                )
             }
             if let serverError = decoded?.error?.nonEmpty { throw RemoteDataError.message(serverError) }
             throw RemoteDataError.invalidResponse

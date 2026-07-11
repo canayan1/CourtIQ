@@ -35,6 +35,54 @@ enum SwingFrameExtractor {
     /// JPEG compression quality.
     private static let jpegQuality: CGFloat = 0.7
 
+    struct TimedFrame {
+        let t: Double
+        let jpeg: String   // base64, no data: prefix
+    }
+
+    /// Impact-centred extraction (payload v2): samples prep→contact→finish
+    /// around every measured strike instead of blind even spacing — the 5 fps
+    /// video sampler's blind spot (contact) becomes guaranteed coverage.
+    /// Budget-capped at `maxTotal` frames: offsets shrink before impacts drop.
+    static func impactFrames(
+        from videoURL: URL, impacts: [Double], maxTotal: Int = 16
+    ) async throws -> [TimedFrame] {
+        guard !impacts.isEmpty else { return [] }
+        let wide: [Double] = [-0.40, -0.15, 0, 0.15, 0.35]
+        let tight: [Double] = [-0.30, 0, 0.25]
+        var offsets = impacts.count * wide.count <= maxTotal ? wide : tight
+        var picked = impacts
+        if picked.count * offsets.count > maxTotal {
+            // Too many strikes even at 3 frames each — keep an even spread.
+            let keep = max(2, maxTotal / offsets.count)
+            let stride = Double(picked.count - 1) / Double(keep - 1)
+            picked = (0..<keep).map { picked[Int((Double($0) * stride).rounded())] }
+            offsets = tight
+        }
+
+        let asset = AVURLAsset(url: videoURL)
+        let duration = try await loadDurationSeconds(for: asset)
+        let generator = AVAssetImageGenerator(asset: asset)
+        generator.appliesPreferredTrackTransform = true
+        generator.requestedTimeToleranceBefore = CMTime(seconds: 0.05, preferredTimescale: 600)
+        generator.requestedTimeToleranceAfter = CMTime(seconds: 0.05, preferredTimescale: 600)
+        generator.maximumSize = CGSize(width: maxDimension, height: maxDimension)
+
+        var frames: [TimedFrame] = []
+        for impact in picked {
+            for offset in offsets {
+                let t = impact + offset
+                guard t > 0.05, t < duration - 0.05 else { continue }
+                let time = CMTime(seconds: t, preferredTimescale: 600)
+                guard let cgImage = try? await copyImage(generator: generator, at: time),
+                      let encoded = encode(cgImage) else { continue }
+                frames.append(TimedFrame(t: t, jpeg: encoded))
+            }
+        }
+        guard frames.count >= 2 else { throw ExtractionError.notEnoughFrames }
+        return frames
+    }
+
     /// Extracts ~`targetFrameCount` frames evenly spaced across the clip.
     /// Returns at least 2 base64 JPEG strings, or throws.
     static func extractFrames(from videoURL: URL) async throws -> [String] {

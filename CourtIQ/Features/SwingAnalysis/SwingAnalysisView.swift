@@ -30,7 +30,8 @@ struct SwingAnalysisView: View {
     private static var launchPhase: SwingAnalysisViewModel.Phase {
 #if DEBUG
         ProcessInfo.processInfo.arguments.contains("-previewSwing")
-            ? .result(text: previewSampleAnalysis, score: 82)
+            ? .result(SwingAnalysisResult(analysis: previewSampleAnalysis, score: 82,
+                                          measuredCount: 12, overheadRatio: 0.08, mismatch: false))
             : .setup
 #else
         .setup
@@ -155,7 +156,7 @@ struct SwingAnalysisView: View {
         case .setup:        setupStep
         case .capture:      captureStep
         case .analyzing:    analyzingStep
-        case .result(let text, let score): resultStep(text: text, score: score)
+        case .result(let result):          resultStep(result: result)
         }
     }
 
@@ -337,12 +338,56 @@ struct SwingAnalysisView: View {
 
     // MARK: - Step 3: result
 
-    private func resultStep(text: String, score: Int?) -> some View {
-        ScrollView {
+    private func resultStep(result: SwingAnalysisResult) -> some View {
+        let text = result.analysis
+        return ScrollView {
             VStack(alignment: .leading, spacing: 18) {
-                if let score {
-                    SwingScoreView(score: score, copy: copy)
-                        .frame(maxWidth: .infinity)
+                if let score = result.score {
+                    VStack(spacing: 4) {
+                        SwingScoreView(score: score, copy: copy)
+                        // K2: transitional honesty badge — the score is still
+                        // the model's estimate until the R2 measured rubric.
+                        Text(copy.scoreBasisBadge)
+                            .font(.caption2.weight(.semibold))
+                            .foregroundStyle(AppPalette.inkSoft.opacity(0.8))
+                    }
+                    .frame(maxWidth: .infinity)
+                }
+
+                if result.mismatch {
+                    // Server-verified stroke mismatch: the report below is a
+                    // redirect, not coaching — frame it before the prose.
+                    HStack(alignment: .top, spacing: 10) {
+                        Image(systemName: "exclamationmark.triangle.fill")
+                            .font(.footnote.weight(.bold))
+                            .foregroundStyle(AppPalette.gold)
+                            .padding(.top, 1)
+                        Text(copy.mismatchNotice)
+                            .font(.footnote.weight(.medium))
+                            .foregroundStyle(AppPalette.ink)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    .padding(12)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(AppPalette.gold.opacity(0.12))
+                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                }
+
+                if let facts = measuredFactsLine(result) {
+                    // INV-1's UI face: measured facts render as UI, never
+                    // trusted out of the model's prose.
+                    HStack(spacing: 8) {
+                        Image(systemName: "waveform.badge.magnifyingglass")
+                            .font(.caption.weight(.bold))
+                            .foregroundStyle(AppPalette.moss)
+                        Text(facts)
+                            .font(.caption.weight(.semibold))
+                            .foregroundStyle(AppPalette.inkSoft)
+                    }
+                    .padding(.horizontal, 12).padding(.vertical, 8)
+                    .background(AppPalette.moss.opacity(0.10))
+                    .clipShape(Capsule())
+                    .frame(maxWidth: .infinity, alignment: .center)
                 }
 
                 HStack(spacing: 8) {
@@ -385,6 +430,18 @@ struct SwingAnalysisView: View {
             }
             .padding(20)
         }
+    }
+
+    /// One-line "measured facts" caption: strike count + overhead share.
+    /// Returns nil when nothing was measured (muted clip) — the UI then shows
+    /// nothing rather than a hollow chip.
+    private func measuredFactsLine(_ result: SwingAnalysisResult) -> String? {
+        guard let count = result.measuredCount else { return nil }
+        var parts = [copy.measuredCountChip(count)]
+        if let ratio = result.overheadRatio, ratio > 0 {
+            parts.append(copy.measuredOverheadChip(Int((ratio * 100).rounded())))
+        }
+        return parts.joined(separator: " · ")
     }
 
     private var discussCoachCTA: String {
@@ -547,7 +604,7 @@ final class SwingAnalysisViewModel {
         case setup        // step 1: stroke + handedness
         case capture      // step 2: record / library
         case analyzing
-        case result(text: String, score: Int?)
+        case result(SwingAnalysisResult)
     }
 
     var phase: Phase
@@ -598,7 +655,7 @@ final class SwingAnalysisViewModel {
                 handedness: handedness,
                 videoURL: videoURL
             )
-            phase = .result(text: result.analysis, score: result.score)
+            phase = .result(result)
             // A non-premium player just spent their one free taste.
             if !isPremium { FreeTaste.swingUsed = true }
             // Celebrate the landing of the swing result — the flagship peak

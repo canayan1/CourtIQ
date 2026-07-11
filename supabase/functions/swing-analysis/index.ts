@@ -100,7 +100,11 @@ Deno.serve(async (req) => {
   // Server-side entitlement gate (no-op until REQUIRE_ENTITLEMENT is flipped on).
   if (!(await isEntitled(user.id))) return json({ error: "entitlement_required", needsUpgrade: true }, 402);
 
-  let body: { stroke?: string; handedness?: string; video?: string; mimeType?: string; context?: string; measuredCount?: number };
+  let body: {
+    stroke?: string; handedness?: string; video?: string; mimeType?: string;
+    context?: string; measuredCount?: number; measuredOverheadRatio?: number;
+    frames?: Array<{ t?: number; jpeg?: string }>; v?: number;
+  };
   try {
     body = await req.json();
   } catch {
@@ -126,7 +130,25 @@ Deno.serve(async (req) => {
       body.measuredCount >= 1 && body.measuredCount <= 500
     ? Math.round(body.measuredCount)
     : null;
-  if (!video) return json({ error: "No video provided." }, 400);
+  const overheadRatio = typeof body.measuredOverheadRatio === "number" &&
+      body.measuredOverheadRatio >= 0 && body.measuredOverheadRatio <= 1
+    ? body.measuredOverheadRatio
+    : null;
+  // Payload v2: impact-centred stills — preferred over video (temporal
+  // grounding around each measured strike + ~20× cheaper input). Bounded
+  // hard: 2..16 frames, ≤400KB base64 each, so a malformed client can't
+  // bloat the Gemini request.
+  const frames = Array.isArray(body.frames)
+    ? body.frames
+        .filter((f) =>
+          f && typeof f.t === "number" && Number.isFinite(f.t) &&
+          typeof f.jpeg === "string" && f.jpeg.length > 0 && f.jpeg.length <= 400_000)
+        .slice(0, 16)
+    : [];
+  const useFrames = frames.length >= 2;
+  // v2 clients may send frames INSTEAD of (or alongside) the video; video
+  // stays required only when there are no usable frames.
+  if (!video && !useFrames) return json({ error: "No video provided." }, 400);
   if (video.length > MAX_VIDEO_B64) {
     return json({ error: "That clip is too large. Use a shorter clip." }, 413);
   }
@@ -157,18 +179,23 @@ Deno.serve(async (req) => {
     }
   } catch (_e) { /* fail open */ }
 
-  // Gemini: native video understanding via inline data.
+  // Media parts: prefer impact-centred stills (v2) — guaranteed coverage of
+  // prep→contact→finish around every measured strike, ~20× cheaper input.
+  // Video path stays as the v1 fallback: fps:5 because the 1 fps default
+  // misses a tennis swing entirely (contact lasts a fraction of a second).
+  const mediaParts = useFrames
+    ? frames.flatMap((f) => [
+        { text: `frame at t=${f.t!.toFixed(2)}s:` },
+        { inline_data: { mime_type: "image/jpeg", data: f.jpeg! } },
+      ])
+    : [{ inline_data: { mime_type: mimeType, data: video }, video_metadata: { fps: 5 } }];
   const geminiBody = {
     systemInstruction: { parts: buildSystemParts(stroke, handedness, context, measuredCount) },
     contents: [{
       role: "user",
       parts: [
-        // fps:5 — the DEFAULT is 1 fps, which misses a tennis swing entirely
-        // (contact lasts a fraction of a second). Sampling ~5 fps lets the model
-        // actually SEE prep→backswing→contact→follow-through. Costs more video
-        // tokens (still Flash-priced, well under Pro) but it's the real grounding fix.
-        { inline_data: { mime_type: mimeType, data: video }, video_metadata: { fps: 5 } },
-        { text: userPrompt(stroke) },
+        ...mediaParts,
+        { text: userPrompt(stroke, useFrames ? frames.length : 0) },
       ],
     }],
     generationConfig: GENERATION_CONFIG,
@@ -206,7 +233,12 @@ Deno.serve(async (req) => {
   // Record successful usage against the cap (best-effort; RLS enforces own-row).
   await supabase.from("swing_analyses").insert({ user_id: user.id });
 
-  return json({ analysis, score, stroke, model: GEMINI_MODEL, mismatch }, 200);
+  return json({
+    analysis, score, stroke, model: GEMINI_MODEL, mismatch,
+    // Echo of the device measurements the report was grounded in — the app
+    // renders these as UI chips, never trusting them out of the prose (INV-1).
+    factsEcho: { count: measuredCount, overheadRatio, framesUsed: useFrames ? frames.length : 0 },
+  }, 200);
 });
 
 function json(obj: unknown, status: number): Response {

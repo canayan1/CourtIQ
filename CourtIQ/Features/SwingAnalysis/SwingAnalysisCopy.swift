@@ -78,6 +78,20 @@ struct SwingAnalysisCopy {
 
     // MARK: Result
     var resultTitle: String { t("Your coaching notes", "Koçluk notların") }
+    /// K2 transitional honesty: score is the model's estimate until the R2
+    /// measured rubric lands.
+    var scoreBasisBadge: String { t("AI estimate", "AI tahmini") }
+    var mismatchNotice: String {
+        t("The strokes in this clip don't look like the type you picked, so there's no coaching below — just what the AI actually saw. Re-check the stroke and try again.",
+          "Bu klipteki vuruşlar seçtiğin tiple uyuşmuyor — aşağıda koçluk değil, AI'ın gerçekte ne gördüğü yazıyor. Vuruş tipini kontrol edip tekrar dene.")
+    }
+    func measuredCountChip(_ n: Int) -> String {
+        t("\(n) strike\(n == 1 ? "" : "s") measured on device",
+          "cihazda \(n) vuruş ölçüldü")
+    }
+    func measuredOverheadChip(_ pct: Int) -> String {
+        t("\(pct)% overhead", "%\(pct) başüstü")
+    }
     var analyzeAnotherCTA: String { t("Analyze another", "Bir tane daha analiz et") }
 
     // MARK: Score

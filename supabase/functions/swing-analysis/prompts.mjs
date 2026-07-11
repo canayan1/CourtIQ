@@ -140,11 +140,16 @@ export function buildSystemParts(stroke, handedness, context, measuredCount = nu
 }
 
 /**
- * The user-turn text that accompanies the video part.
+ * The user-turn text that accompanies the media (video, or impact-centred
+ * still frames on the v2 payload path).
  * @param {string} stroke
+ * @param {number} frameCount  0 = video path; >0 = that many labeled stills
  * @returns {string}
  */
-export function userPrompt(stroke) {
+export function userPrompt(stroke, frameCount = 0) {
+  if (frameCount > 0) {
+    return `You are given ${frameCount} still frames sampled around each MEASURED ball strike (prep → contact → follow-through; each frame is labeled with its timestamp). Coach my ${STROKES[stroke] ?? stroke} from these frames. Base everything on what you actually see in them; if something isn't visible in the stills, say so — do not describe a generic version.`;
+  }
   return `Coach my ${STROKES[stroke] ?? stroke} from this video. Base everything on what you actually see in the frames; if you can't see it clearly, say so — do not describe a generic version.`;
 }
 

@@ -51,6 +51,13 @@ for (const [stroke, frags] of Object.entries(G.promptLint.requiredFragments)) {
   const p = systemPrompt("forehand", "right", null);
   ok("sayısız varyant sayıyı yasaklıyor", p.includes("Do NOT state how many reps"));
 }
+{ // R1 kare-yolu: userPrompt kare varyantı doğru kurulmuş
+  const withFrames = userPrompt("forehand", 12);
+  const videoPath = userPrompt("forehand");
+  ok("kare varyantı kare sayısını + zaman etiketini anlatıyor",
+     withFrames.includes("12 still frames") && withFrames.includes("labeled with its timestamp"));
+  ok("video varyantı değişmedi", videoPath.startsWith("Coach my forehand groundstroke from this video"));
+}
 
 // ---------- L1.c parser sözleşmesi ----------
 console.log("L1.c — parser sözleşmesi");
