@@ -80,6 +80,8 @@ This one's a big step up. DropVolley just got a lot smarter — and a lot more f
 
 🎾 A sharper AI coach. Clearer answers, better tennis, more useful advice. Ask it anything and feel the difference.
 
+🎯 Swing analysis, re-engineered for honesty. Your phone now COUNTS your swings on-device from the sound of contact and cross-checks the video before the AI says a word — so your report is grounded in measurements, not guesswork.
+
 🧱 NEW: Wall Practice. Train solo like never before — a whole new section of wall drills with animated how-tos, so you always know exactly what to hit, and why, even on your own.
 
 🧠 Smarter Tennis IQ quizzes. Now with real court diagrams so you can see the play, plus a new submit step that makes every decision count. Read the point like a coach does.
