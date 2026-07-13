@@ -3,17 +3,25 @@ import SwiftUI
 /// Brand-native three-step read of a 0–100 compatibility score — the colour
 /// carries the signal, the word (via `DoublesCopy`) stays encouraging. Mirrors
 /// `SwingScoreTier` and reuses the same palette tiers.
-enum DoublesCompatTier {
-    case work    // < 55 — complementary, roles to sort
-    case solid   // 55–74 — dependable pairing
-    case great   // 75+ — games slot together
+enum DoublesCompatTier: String {
+    case work    // complementary, roles to sort
+    case solid   // dependable pairing
+    case great   // games slot together
 
+    /// Legacy mapping for old saved reports that only stored a number.
     static func from(score: Int) -> DoublesCompatTier {
         switch score {
         case ..<55:   return .work
         case 55..<75: return .solid
         default:      return .great
         }
+    }
+
+    /// Reconstruct from a stored `tierRaw`, falling back to the legacy score.
+    static func restore(tierRaw: String?, score: Int?) -> DoublesCompatTier? {
+        if let tierRaw, let t = DoublesCompatTier(rawValue: tierRaw) { return t }
+        if let score { return .from(score: score) }
+        return nil
     }
 
     var solidColor: Color {
@@ -91,6 +99,110 @@ struct DoublesScoreView: View {
         .brandedPhoto("PhotoDoubles", scrim: .hero, cornerRadius: 16)
         // Peak-moment cue: a clean racket "pock" as the compatibility lands.
         .onAppear { AudioManager.shared.play(.sweetSpot) }
+    }
+}
+
+/// Honest fit reveal — tier + the specific strengths and watch-outs behind it,
+/// with NO 0–100 number (that number was misleading; see DoublesFit). Replaces
+/// the old `DoublesScoreView` ring on the result screen.
+struct DoublesFitView: View {
+    let fit: DoublesFit
+    let copy: DoublesCopy
+
+    private var tier: DoublesCompatTier { fit.tier }
+
+    var body: some View {
+        VStack(spacing: 14) {
+            DoublesTierBadge(tier: tier, copy: copy)
+
+            // The specifics: what's working + what to sort out.
+            VStack(alignment: .leading, spacing: 12) {
+                if !fit.strengths.isEmpty {
+                    factorBlock(copy.strengthsHeader, fit.strengths,
+                                icon: "checkmark.circle.fill", color: AppPalette.moss)
+                }
+                if !fit.cautions.isEmpty {
+                    factorBlock(copy.watchHeader, fit.cautions,
+                                icon: "exclamationmark.triangle.fill", color: AppPalette.gold)
+                }
+                if !fit.hasUserProfile {
+                    Text(copy.fitNeedsProfile)
+                        .font(.caption).foregroundStyle(AppPalette.inkSoft)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .padding(.top, 2)
+                }
+            }
+            .padding(16).frame(maxWidth: .infinity, alignment: .leading)
+            .background(AppPalette.parchment)
+            .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .stroke(AppPalette.sand, lineWidth: 1))
+            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        }
+        .onAppear { AudioManager.shared.play(.sweetSpot) }
+    }
+
+    private func factorBlock(_ header: String, _ items: [String],
+                             icon: String, color: Color) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text(header)
+                .font(.caption.weight(.heavy)).textCase(.uppercase).tracking(0.4)
+                .foregroundStyle(AppPalette.inkSoft)
+            ForEach(items, id: \.self) { item in
+                HStack(alignment: .top, spacing: 8) {
+                    Image(systemName: icon).font(.caption).foregroundStyle(color).padding(.top, 1)
+                    Text(copy.factorPhrase(item))
+                        .font(.subheadline).foregroundStyle(AppPalette.ink)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+            }
+        }
+    }
+}
+
+/// The hero fit-tier badge over the PhotoDoubles scrim (word + caption, no
+/// number). Reused by the fresh reveal (`DoublesFitView`) and historical
+/// surfaces (report detail) so the read is consistent everywhere.
+struct DoublesTierBadge: View {
+    let tier: DoublesCompatTier
+    let copy: DoublesCopy
+
+    var body: some View {
+        VStack(spacing: 8) {
+            Text(copy.fitLabel)
+                .font(.caption.weight(.heavy)).textCase(.uppercase).tracking(0.5)
+                .foregroundStyle(.white.opacity(0.9))
+            HStack(spacing: 7) {
+                Circle().fill(.white).frame(width: 7, height: 7)
+                Text(copy.compatTierLabel(tier))
+                    .font(.title3.weight(.heavy)).textCase(.uppercase).tracking(0.5)
+            }
+            .foregroundStyle(.white)
+            .padding(.horizontal, 16).padding(.vertical, 8)
+            .background(tier.solidColor, in: Capsule())
+            Text(copy.compatTierCaption(tier))
+                .font(.caption).foregroundStyle(.white.opacity(0.92))
+                .multilineTextAlignment(.center).padding(.horizontal, 24)
+        }
+        .padding(.vertical, 22).frame(maxWidth: .infinity)
+        .brandedPhoto("PhotoDoubles", scrim: .hero, cornerRadius: 16)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(copy.compatTierLabel(tier)). \(copy.compatTierCaption(tier))")
+    }
+}
+
+/// Compact fit-tier chip (word, coloured) for partner/partnership list rows —
+/// replaces the old numeric `DoublesScoreBadge`.
+struct DoublesTierChip: View {
+    let tier: DoublesCompatTier
+    let copy: DoublesCopy
+
+    var body: some View {
+        Text(copy.compatTierLabel(tier))
+            .font(.caption2.weight(.bold))
+            .foregroundStyle(tier.text)
+            .padding(.horizontal, 9).padding(.vertical, 4)
+            .background(tier.tint)
+            .clipShape(Capsule())
     }
 }
 

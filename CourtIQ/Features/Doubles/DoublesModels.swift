@@ -62,20 +62,28 @@ struct DoublesReport: Codable, Identifiable, Equatable {
     let id: UUID
     let partnerId: UUID
     let date: Date
+    /// Legacy 0–100 score. Kept optional so old saved reports still decode; new
+    /// reports leave it nil and carry `tierRaw` instead (we no longer surface a
+    /// number — see DoublesFit).
     let score: Int?
+    /// The honest fit tier (`DoublesCompatTier.rawValue`). Optional so pre-tier
+    /// reports decode; when present it drives the UI instead of `score`.
+    let tierRaw: String?
     let reportText: String
 
     init(
         id: UUID = UUID(),
         partnerId: UUID,
         date: Date = Date(),
-        score: Int?,
+        score: Int? = nil,
+        tierRaw: String? = nil,
         reportText: String
     ) {
         self.id = id
         self.partnerId = partnerId
         self.date = date
         self.score = score
+        self.tierRaw = tierRaw
         self.reportText = reportText
     }
 }
@@ -88,41 +96,76 @@ struct DoublesReport: Codable, Identifiable, Equatable {
 /// levels pair more cohesively), play-style complementarity (an attacker + a
 /// steadier, or net + baseline, beat two of a kind), and a small bonus for a
 /// left-handed partner (covers the ad court + gives different serve angles).
+/// A qualitative doubles fit read. We deliberately DON'T surface a 0–100 number:
+/// the underlying heuristic only ever spans ~51–91 and collapses to a constant
+/// when the user has no Tennis Profile, so a precise-looking score is misleading
+/// (measured: docs/PRODUCT-COHERENCE.md). Instead we show an honest tier + the
+/// specific strengths and watch-outs behind it — measure, don't over-claim.
+struct DoublesFit {
+    let tier: DoublesCompatTier
+    let strengths: [String]      // English factor phrases (the positives)
+    let cautions: [String]       // English factor phrases (the watch-outs)
+    /// The user has a completed Tennis Profile, so the read uses BOTH players.
+    /// Without it we only know the partner — the UI says so instead of faking a
+    /// confident fit.
+    let hasUserProfile: Bool
+}
+
 enum DoublesCompatibility {
-    /// - Returns: the 0–100 score plus short English factor phrases for the
-    ///   coaching prompt to explain.
+    /// Honest, signal-derived fit. The tier reflects the ACTUAL pairing signal
+    /// (level proximity + style complementarity), not an inflated base number,
+    /// and separates strengths from watch-outs for the card + the AI to explain.
     static func evaluate(
         userLevel: TennisLevel?,
         userArchetype: TennisArchetype?,
         partner: DoublesPartner
-    ) -> (score: Int, factors: [String]) {
-        var score = 68
-        var factors: [String] = []
+    ) -> DoublesFit {
+        var strengths: [String] = []
+        var cautions: [String] = []
+        let hasUserProfile = userLevel != nil && userArchetype != nil
 
+        // Level proximity signal.
+        var levelGap: Int? = nil
         if let ul = userLevel, let pl = partner.level {
-            switch abs(ul.rawValue - pl.rawValue) {
-            case 0:  score += 10; factors.append("same level")
-            case 1:  score += 6;  factors.append("close levels")
-            case 2:  score += 0;  factors.append("a level gap to bridge")
-            case 3:  score -= 8;  factors.append("a wide level gap")
-            default: score -= 14; factors.append("a very wide level gap")
+            let gap = abs(ul.rawValue - pl.rawValue)
+            levelGap = gap
+            switch gap {
+            case 0:  strengths.append("you're at the same level")
+            case 1:  strengths.append("close levels")
+            case 2:  cautions.append("a level gap to bridge")
+            default: cautions.append("a wide level gap — lean on the stronger side")
             }
         }
 
+        // Play-style complementarity signal.
+        var styleFit: Int? = nil
         if let ua = userArchetype, let pa = partner.style {
             let delta = archetypeFit(ua, pa)
-            score += delta
-            if delta >= 10 { factors.append("complementary play styles") }
-            else if delta >= 7 { factors.append("a flexible all-court fit") }
-            else if delta < 0 { factors.append("two similar play styles") }
+            styleFit = delta
+            if delta >= 10 { strengths.append("complementary play styles") }
+            else if delta >= 7 { strengths.append("an all-court partner who adapts to you") }
+            else if delta < 0 { cautions.append("two similar styles — split your roles clearly") }
         }
 
         if partner.handedness == .left {
-            score += 3
-            factors.append("a left-handed partner (covers the ad court)")
+            strengths.append("a left-handed partner (covers the ad court)")
         }
 
-        return (min(96, max(40, score)), factors)
+        // Tier from the real signal, not a compressed number:
+        //  • great — close level AND a genuinely complementary/all-court style
+        //  • work  — a wide level gap, or redundant styles across a gap
+        //  • solid — everything in between (and the default when signal is thin)
+        let tier: DoublesCompatTier
+        if let g = levelGap, g <= 1, let s = styleFit, s >= 7 {
+            tier = .great
+        } else if (levelGap ?? 0) >= 3 || ((styleFit ?? 0) < 0 && (levelGap ?? 0) >= 2) {
+            tier = .work
+        } else {
+            tier = .solid
+        }
+
+        return DoublesFit(tier: tier, strengths: strengths, cautions: cautions,
+                          hasUserProfile: hasUserProfile)
     }
 
     /// Complementarity delta. Among the three committed styles (aggressive

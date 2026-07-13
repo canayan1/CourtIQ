@@ -50,12 +50,12 @@ final class DoublesService {
         partner: DoublesPartner,
         language: AppLanguage,
         session: SupabaseSession
-    ) async throws -> (report: String, score: Int?) {
+    ) async throws -> (report: String, fit: DoublesFit) {
         guard let baseURL = configuration.supabaseURL else {
             throw RemoteDataError.missingConfiguration
         }
 
-        let (summary, computedScore) = Self.buildSummary(partner: partner, language: language)
+        let (summary, computedFit) = Self.buildSummary(partner: partner, language: language)
 
         let url = baseURL.appendingPathComponent("functions/v1/\(functionName)")
         var request = URLRequest(url: url)
@@ -79,7 +79,7 @@ final class DoublesService {
         switch http.statusCode {
         case 200..<300:
             if let report = decoded?.report?.nonEmptyDB {
-                return (report, computedScore)
+                return (report, computedFit)
             }
             if let serverError = decoded?.error?.nonEmptyDB { throw RemoteDataError.message(serverError) }
             throw RemoteDataError.invalidResponse
@@ -101,7 +101,7 @@ final class DoublesService {
     /// English labels — the function answers in the user's language regardless).
     /// The "Partner (Player B)" side is the mini-profile the user just filled in.
     @MainActor
-    static func buildSummary(partner: DoublesPartner, language: AppLanguage) -> (summary: String, score: Int) {
+    static func buildSummary(partner: DoublesPartner, language: AppLanguage) -> (summary: String, fit: DoublesFit) {
         var lines: [String] = []
         let copy = TennisProfileCopy(lang: .english)
 
@@ -148,19 +148,28 @@ final class DoublesService {
         if !weaknesses.isEmpty { partnerParts.append("weaknesses \(weaknesses)") }
         lines.append("Partner (Player B): " + partnerParts.joined(separator: ", ") + ".")
 
-        // Deterministic compatibility score — the AI explains it, never invents it.
+        // Deterministic, qualitative fit — the AI explains it, never invents a
+        // number (we no longer surface a 0–100 score; see DoublesFit).
         let result = TennisProfileStore.shared.profile?.result
-        let compat = DoublesCompatibility.evaluate(
+        let fit = DoublesCompatibility.evaluate(
             userLevel: result?.level,
             userArchetype: result?.archetype,
             partner: partner
         )
-        lines.append("Computed compatibility score: \(compat.score)/100.")
-        if !compat.factors.isEmpty {
-            lines.append("Scoring factors: \(compat.factors.joined(separator: ", ")).")
+        let tierWord = ["work": "Complementary (roles to sort)",
+                        "solid": "Solid team", "great": "Great fit"][fit.tier.rawValue] ?? "Solid team"
+        lines.append("Computed fit tier: \(tierWord).")
+        if !fit.strengths.isEmpty {
+            lines.append("Strengths: \(fit.strengths.joined(separator: ", ")).")
+        }
+        if !fit.cautions.isEmpty {
+            lines.append("Watch-outs: \(fit.cautions.joined(separator: ", ")).")
+        }
+        if !fit.hasUserProfile {
+            lines.append("Note: the user has no Tennis Profile on file, so base the read on the partner's details and general doubles principles; do not overstate certainty.")
         }
 
-        return (lines.joined(separator: "\n"), compat.score)
+        return (lines.joined(separator: "\n"), fit)
     }
 }
 

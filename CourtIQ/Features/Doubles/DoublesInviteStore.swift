@@ -64,6 +64,17 @@ final class DoublesInviteStore: ObservableObject {
         reportsByPartnership[id]?.score
     }
 
+    /// The saved fit tier for a partnership, if a report exists (new reports
+    /// store `tierRaw`; old ones fall back to their legacy number).
+    func tier(forPartnership id: UUID) -> DoublesCompatTier? {
+        guard let report = reportsByPartnership[id] else { return nil }
+        return DoublesCompatTier.restore(tierRaw: report.tierRaw, score: report.score)
+    }
+
+    func hasReport(forPartnership id: UUID) -> Bool {
+        reportsByPartnership[id] != nil
+    }
+
     func setReport(_ report: DoublesReport, forPartnership id: UUID) {
         reportsByPartnership[id] = report
         persistReports()

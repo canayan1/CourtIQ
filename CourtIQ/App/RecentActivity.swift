@@ -37,6 +37,8 @@ enum ActivityMetric {
     case result(MatchResult)
     /// e.g. 8/10 → short bold text (quiz).
     case fraction(Int, Int)
+    /// Doubles fit tier → a small colored word chip (no number — see DoublesFit).
+    case tier(DoublesCompatTier)
 }
 
 // MARK: - Route
@@ -107,18 +109,26 @@ enum RecentActivityFeed {
             ))
         }
 
-        // Doubles — compatibility score → ring.
+        // Doubles — fit tier → a colored word chip (new reports) or a legacy
+        // ring (old reports that only stored a number).
         let doublesReports = doublesStore.reports
             .sorted { $0.date > $1.date }
             .prefix(4)
         for report in doublesReports {
-            guard let score = report.score else { continue }
+            let metric: ActivityMetric
+            if let tier = DoublesCompatTier.restore(tierRaw: report.tierRaw, score: report.score) {
+                metric = .tier(tier)
+            } else if let score = report.score {
+                metric = .score(score)
+            } else {
+                continue
+            }
             items.append(RecentActivity(
                 id: "doubles-\(report.id.uuidString)",
                 date: report.date,
                 kind: .doubles,
                 label: "Doubles",
-                metric: .score(score),
+                metric: metric,
                 route: .doubles(report)
             ))
         }
@@ -300,6 +310,21 @@ struct ActivityCard: View {
                 .foregroundStyle(text)
                 .monospacedDigit()
                 .frame(height: 34)
+        case .tier(let tier):
+            // Colour carries the fit signal (no number — see DoublesFit).
+            Image(systemName: tierSymbol(tier))
+                .font(.system(size: 15, weight: .heavy))
+                .foregroundStyle(.white)
+                .frame(width: 34, height: 34)
+                .background(Circle().fill(tier.solidColor))
+        }
+    }
+
+    private func tierSymbol(_ tier: DoublesCompatTier) -> String {
+        switch tier {
+        case .great: return "star.fill"
+        case .solid: return "checkmark"
+        case .work:  return "puzzlepiece.fill"
         }
     }
 

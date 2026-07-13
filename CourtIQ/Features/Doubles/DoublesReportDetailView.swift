@@ -29,8 +29,8 @@ struct DoublesReportDetailView: View {
             AppPalette.cream.ignoresSafeArea()
             ScrollView {
                 VStack(alignment: .leading, spacing: 18) {
-                    if let score = report.score {
-                        DoublesScoreView(score: score, copy: copy)
+                    if let tier = DoublesCompatTier.restore(tierRaw: report.tierRaw, score: report.score) {
+                        DoublesTierBadge(tier: tier, copy: copy)
                             .frame(maxWidth: .infinity)
                     }
 

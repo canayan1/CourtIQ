@@ -93,6 +93,30 @@ struct DoublesCopy {
                               "Oyunlarınız birbirine oturuyor — gerçekten güçlü bir takım.")
         }
     }
+    // Honest fit reveal (tier + card; no 0–100 number — see DoublesFit).
+    var fitLabel: String { t("Your fit", "Uyumunuz") }
+    var strengthsHeader: String { t("What's working", "İşe yarayanlar") }
+    var watchHeader: String { t("Watch-outs", "Dikkat noktaları") }
+    var fitNeedsProfile: String {
+        t("This read is from your partner's details only. Complete your Tennis Profile for a sharper two-way fit.",
+          "Bu okuma yalnızca partnerinin bilgilerinden. Daha net iki-yönlü uyum için Tenis Profilini tamamla.")
+    }
+    /// Localize an English factor phrase produced by `DoublesCompatibility`.
+    func factorPhrase(_ en: String) -> String {
+        guard lang == .turkish else { return en }
+        switch en {
+        case "you're at the same level": return "aynı seviyedesiniz"
+        case "close levels": return "yakın seviyeler"
+        case "complementary play styles": return "birbirini tamamlayan oyun stilleri"
+        case "an all-court partner who adapts to you": return "sana uyum sağlayan all-court bir partner"
+        case "a left-handed partner (covers the ad court)": return "solak partner (ad kortunu kapatır)"
+        case "a level gap to bridge": return "kapatılacak bir seviye farkı"
+        case "a wide level gap — lean on the stronger side": return "geniş seviye farkı — güçlü tarafa yaslanın"
+        case "two similar styles — split your roles clearly": return "iki benzer stil — rolleri net paylaşın"
+        default: return en
+        }
+    }
+
     var pastReportsHeader: String { t("Past reports", "Geçmiş raporlar") }
     var noReportsYet: String {
         t("No reports yet — run an analysis to see your compatibility.",

@@ -536,13 +536,13 @@ struct DoublesPartnershipRow: View {
                     Text(partnership.partnerDisplayName(forCurrentUserId: currentUserId))
                         .font(.subheadline.weight(.semibold))
                         .foregroundStyle(.white)
-                    Text(store.score(forPartnership: partnership.id) == nil ? copy.runReportCTA : copy.viewReportCTA)
+                    Text(store.hasReport(forPartnership: partnership.id) ? copy.viewReportCTA : copy.runReportCTA)
                         .font(.caption)
                         .foregroundStyle(.white.opacity(0.85))
                 }
                 Spacer(minLength: 0)
-                if let score = store.score(forPartnership: partnership.id) {
-                    DoublesScoreBadge(score: score, copy: doublesCopy)
+                if let tier = store.tier(forPartnership: partnership.id) {
+                    DoublesTierChip(tier: tier, copy: doublesCopy)
                 }
                 Image(systemName: "chevron.right")
                     .font(.footnote.weight(.semibold))
@@ -673,7 +673,7 @@ struct DoublesPartnershipReportView: View {
 
             let report = DoublesReport(
                 partnerId: partnership.id,
-                score: result.score,
+                tierRaw: result.fit.tier.rawValue,
                 reportText: result.report
             )
             store.setReport(report, forPartnership: partnership.id)

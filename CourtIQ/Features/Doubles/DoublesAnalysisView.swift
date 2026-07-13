@@ -48,18 +48,16 @@ struct DoublesAnalysisView: View {
         switch vm.phase {
         case .analyzing:
             MatchAnalyzingView(title: copy.analyzingTitle, stepLabels: copy.analyzingSteps)
-        case .result(let text, let score):
-            resultStep(text: text, score: score)
+        case .result(let text, let fit):
+            resultStep(text: text, fit: fit)
         }
     }
 
-    private func resultStep(text: String, score: Int?) -> some View {
+    private func resultStep(text: String, fit: DoublesFit) -> some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 18) {
-                if let score {
-                    DoublesScoreView(score: score, copy: copy)
-                        .frame(maxWidth: .infinity)
-                }
+                DoublesFitView(fit: fit, copy: copy)
+                    .frame(maxWidth: .infinity)
 
                 HStack(spacing: 8) {
                     Image(systemName: "sparkles")
@@ -117,7 +115,7 @@ protocol DoublesAnalyzing {
         partner: DoublesPartner,
         language: AppLanguage,
         session: SupabaseSession
-    ) async throws -> (report: String, score: Int?)
+    ) async throws -> (report: String, fit: DoublesFit)
 }
 
 extension DoublesService: DoublesAnalyzing {}
@@ -130,7 +128,7 @@ extension DoublesService: DoublesAnalyzing {}
 final class DoublesAnalysisViewModel {
     enum Phase {
         case analyzing
-        case result(text: String, score: Int?)
+        case result(text: String, fit: DoublesFit)
     }
 
     private(set) var phase: Phase = .analyzing
@@ -180,12 +178,14 @@ final class DoublesAnalysisViewModel {
             )
             try? await minimum
 
-            // Persist the report so it shows up in the partner's history.
+            // Persist the report so it shows up in the partner's history. New
+            // reports store the tier (no number); `score` stays nil.
             store.addReport(
-                DoublesReport(partnerId: partner.id, score: result.score, reportText: result.report)
+                DoublesReport(partnerId: partner.id, tierRaw: result.fit.tier.rawValue,
+                              reportText: result.report)
             )
-            phase = .result(text: result.report, score: result.score)
-            // Peak moment: the compatibility score just landed.
+            phase = .result(text: result.report, fit: result.fit)
+            // Peak moment: the compatibility read just landed.
             Haptics.success()
         } catch RemoteDataError.missingConfiguration {
             present(copy.errorConnect)
