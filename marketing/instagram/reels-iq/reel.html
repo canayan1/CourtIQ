@@ -1,0 +1,174 @@
+<meta charset="utf-8">
+<title>KORT IQ — reel</title>
+<style>
+  /* Single deliberate dark-green/gold identity (matches the reference mock).
+     9:16 stage scaled to fit; screen-record or frame-capture for the Reel. */
+  :root{
+    --bg0:#0B1B12; --bg1:#12291B; --surface:#173322; --line:rgba(238,244,235,.92);
+    --net:#D9A441; --ball:#D9E86A; --opp:#E0524B; --you:#E7B84E;
+    --head-dim:#B9C6B7; --head-gold:#E7B84E; --cream:#EDE6D6; --cream-dim:#A9B4A6;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{background:#000;height:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+  /* 1080x1920 stage, scaled to viewport */
+  #stage{position:relative;width:1080px;height:1920px;transform-origin:center;
+    background:radial-gradient(120% 80% at 50% 18%, var(--bg1) 0%, var(--bg0) 70%);
+    font-family:-apple-system,"SF Pro Display","Helvetica Neue",Arial,sans-serif;overflow:hidden;}
+  /* subtle court-texture vignette */
+  #stage::after{content:"";position:absolute;inset:0;background:
+    radial-gradient(140% 90% at 50% 40%, transparent 55%, rgba(0,0,0,.35) 100%);pointer-events:none;}
+
+  .wrap{position:absolute;inset:0;display:flex;flex-direction:column;padding:96px 72px 80px;}
+  .eyebrow{display:flex;align-items:center;gap:14px;font-size:26px;font-weight:800;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--head-gold);opacity:0;animation:fade .6s .1s forwards;}
+  .eyebrow .cat{color:var(--cream-dim);}
+  .dotmark{width:12px;height:12px;border-radius:50%;background:var(--head-gold);}
+
+  h1{margin-top:26px;font-size:82px;line-height:1.02;font-weight:900;letter-spacing:-.02em;
+    text-transform:uppercase;}
+  h1 .l1{display:block;color:var(--head-dim);opacity:0;animation:rise .7s .25s forwards;}
+  h1 .l2{display:block;color:var(--head-gold);opacity:0;animation:rise .7s .5s forwards;}
+  .sub{margin-top:30px;font-size:40px;line-height:1.28;color:var(--cream);font-weight:500;max-width:20ch;
+    opacity:0;animation:rise .7s .8s forwards;}
+
+  .court-area{flex:1;display:flex;align-items:center;justify-content:center;min-height:0;}
+  svg.court{width:560px;height:auto;filter:drop-shadow(0 30px 60px rgba(0,0,0,.5));}
+  .court .surface{fill:var(--surface);}
+  .court .ln{stroke:var(--line);stroke-width:4;fill:none;opacity:0;animation:fade .5s 1.1s forwards;}
+  .court .net{stroke:var(--net);stroke-width:7;opacity:0;animation:netSweep .6s 1.5s forwards;}
+  .court .traj{stroke:var(--cream);stroke-width:3;stroke-dasharray:10 12;opacity:0;
+    animation:fade .5s 2.2s forwards;}
+  .pip{opacity:0;}
+  .pip.opp{animation:pop .45s 1.9s cubic-bezier(.2,1.3,.5,1) forwards;}
+  .pip.you{animation:pop .45s 2.15s cubic-bezier(.2,1.3,.5,1) forwards;}
+  .pip circle{stroke:#0B1B12;stroke-width:5;}
+  .pip text{font-size:34px;font-weight:900;fill:#0B1B12;text-anchor:middle;dominant-baseline:central;}
+  .ball{opacity:0;animation:ballIn .3s 2.4s forwards;}
+  .ball circle{fill:var(--ball);stroke:#0B1B12;stroke-width:3;}
+  .trail{stroke:var(--you);stroke-width:6;fill:none;stroke-linecap:round;
+    stroke-dasharray:var(--len);stroke-dashoffset:var(--len);
+    animation:draw 1s 2.5s cubic-bezier(.4,0,.2,1) forwards;}
+
+  .cta{margin-top:24px;border:3px solid var(--net);border-radius:26px;padding:26px 30px;text-align:center;
+    background:rgba(217,164,65,.08);opacity:0;animation:rise .6s 3.4s forwards;}
+  .cta .big{font-size:38px;font-weight:900;letter-spacing:.02em;color:var(--head-gold);text-transform:uppercase;}
+  .cta .small{margin-top:8px;font-size:28px;color:var(--cream-dim);}
+  .foot{margin-top:26px;display:flex;align-items:center;gap:18px;opacity:0;animation:fade .6s 3.7s forwards;}
+  .logo{width:64px;height:64px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#1c3a26,#0e2116);
+    border:2px solid var(--net);display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:.9;}
+  .logo b{font-size:16px;font-weight:900;color:var(--head-gold);}
+  .logo b.k{font-size:11px;letter-spacing:.1em;color:var(--cream-dim);}
+  .handle{font-size:34px;font-weight:800;color:var(--cream);}
+  .handle .v{color:var(--net);font-size:26px;}
+
+  @keyframes fade{to{opacity:1;}}
+  @keyframes rise{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes pop{from{opacity:0;transform:scale(.4);}to{opacity:1;transform:scale(1);}}
+  @keyframes ballIn{to{opacity:1;}}
+  @keyframes draw{to{stroke-dashoffset:0;}}
+  @keyframes netSweep{from{opacity:0;stroke-dashoffset:600;}to{opacity:1;stroke-dashoffset:0;}}
+  @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-delay:0ms!important;}}
+</style>
+
+<div id="stage">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dotmark"></span><span id="eyebrow">TENNIS IQ</span> · <span class="cat" id="cat">RALLY</span></div>
+    <h1><span class="l1" id="h1"></span><span class="l2" id="h2"></span></h1>
+    <div class="sub" id="sub"></div>
+
+    <div class="court-area">
+      <svg class="court" id="court" viewBox="0 0 300 470" xmlns="http://www.w3.org/2000/svg"></svg>
+    </div>
+
+    <div class="cta">
+      <div class="big" id="ctaBig">CEVAP AÇIKLAMADA</div>
+      <div class="small" id="ctaSmall">Kaydet, o maçtan önce aç</div>
+    </div>
+    <div class="foot">
+      <div class="logo"><b class="k">KORT</b><b>IQ</b></div>
+      <div class="handle">@kortiq.tennis <span class="v">✔</span></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ── Scenario data (build_reels.py injects each quiz_questions.json record here) ──
+  const S = window.__REEL__ || {
+    eyebrow:"TENNIS IQ", cat:"RALLY",
+    headline1:"SANA SÜREKLİ YÜKSEK TOP", headline2:"ATANI NASIL SUSTURURSUN?",
+    sub:"Backhand'ine o loop... hep geri geri gidiyorsun, değil mi?",
+    ctaBig:"CEVAP AÇIKLAMADA", ctaSmall:"Kaydet, o maçtan önce aç",
+    diagram:{surface:"grass", youX:0.5, youY:0.96, opponentX:0.5, opponentY:0.06,
+             ballOriginX:0.5, ballOriginY:0.14, ballTargetX:0.5, ballTargetY:0.62, scoreChip:"HIGH BALL · BH"}
+  };
+  document.getElementById("eyebrow").textContent = S.eyebrow;
+  document.getElementById("cat").textContent = S.cat;
+  document.getElementById("h1").textContent = S.headline1;
+  document.getElementById("h2").textContent = S.headline2;
+  document.getElementById("sub").textContent = S.sub;
+  document.getElementById("ctaBig").textContent = S.ctaBig;
+  document.getElementById("ctaSmall").textContent = S.ctaSmall;
+
+  // ── Court geometry (vertical singles court inside the viewBox) ──
+  const d = S.diagram, C = document.getElementById("court");
+  const X0=20, Y0=20, W=260, H=430;                 // court rect
+  const px = nx => X0 + nx*W, py = ny => Y0 + ny*H;  // normalized→court coords
+  const NS="http://www.w3.org/2000/svg";
+  const mk=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;};
+
+  // surface
+  C.appendChild(mk("rect",{x:X0,y:Y0,width:W,height:H,rx:4,class:"surface"}));
+  // outer + key lines
+  const midY = Y0+H/2, svcTop = Y0+H*0.30, svcBot = Y0+H*0.70, cx = X0+W/2;
+  const lines = [
+    [X0,Y0,X0,Y0+H],[X0+W,Y0,X0+W,Y0+H],[X0,Y0,X0+W,Y0],[X0,Y0+H,X0+W,Y0+H], // frame
+    [X0,svcTop,X0+W,svcTop],[X0,svcBot,X0+W,svcBot],                           // service lines
+    [cx,svcTop,cx,svcBot],                                                     // centre service
+    [X0+W*0.14,Y0,X0+W*0.14,Y0+H],[X0+W*0.86,Y0,X0+W*0.86,Y0+H],              // singles/alley
+  ];
+  lines.forEach(([x1,y1,x2,y2])=>C.appendChild(mk("line",{x1,y1,x2,y2,class:"ln"})));
+  // gold net
+  C.appendChild(mk("line",{x1:X0-6,y1:midY,x2:X0+W+6,y2:midY,class:"net"}));
+
+  // faint full trajectory (origin→target, dashed)
+  C.appendChild(mk("line",{x1:px(d.ballOriginX),y1:py(d.ballOriginY),
+    x2:px(d.ballTargetX),y2:py(d.ballTargetY),class:"traj"}));
+
+  // drawn shot trail (animated)
+  const ox=px(d.ballOriginX),oy=py(d.ballOriginY),tx=px(d.ballTargetX),ty=py(d.ballTargetY);
+  const len=Math.hypot(tx-ox,ty-oy);
+  const trail=mk("line",{x1:ox,y1:oy,x2:tx,y2:ty,class:"trail"});
+  trail.style.setProperty("--len",len.toFixed(1));
+  C.appendChild(trail);
+
+  // pips
+  function pip(nx,ny,label,fill,cls){
+    const g=mk("g",{class:"pip "+cls,style:`transform-box:fill-box;transform-origin:center;`});
+    g.appendChild(mk("circle",{cx:px(nx),cy:py(ny),r:18,fill}));
+    const t=mk("text",{x:px(nx),y:py(ny)}); t.textContent=label; g.appendChild(t);
+    C.appendChild(g);
+  }
+  pip(d.opponentX,d.opponentY,"R","var(--opp)","opp");
+  pip(d.youX,d.youY,"S","var(--you)","you");
+  // ball at target
+  const ball=mk("g",{class:"ball"}); ball.appendChild(mk("circle",{cx:tx,cy:ty,r:9})); C.appendChild(ball);
+
+  // scoreChip
+  if(d.scoreChip){
+    const chip=document.createElement("div");
+    chip.textContent=d.scoreChip;
+    chip.style.cssText="position:absolute;top:0;right:0;font-size:22px;font-weight:800;letter-spacing:.08em;"+
+      "color:var(--cream-dim);background:rgba(0,0,0,.35);padding:8px 14px;border-radius:10px;opacity:0;animation:fade .5s 1.7s forwards;";
+    document.querySelector(".court-area").style.position="relative";
+    document.querySelector(".court-area").appendChild(chip);
+  }
+
+  // fit stage to viewport
+  function fit(){const s=Math.min(innerWidth/1080,innerHeight/1920);
+    document.getElementById("stage").style.transform=`scale(${s})`;}
+  fit(); addEventListener("resize",fit);
+  // loop the animation for preview/recording
+  function loop(){const st=document.getElementById("stage");
+    st.querySelectorAll("*").forEach(el=>{el.style.animation="none";void el.offsetWidth;el.style.animation="";});}
+  setInterval(loop, 7000);
+</script>
