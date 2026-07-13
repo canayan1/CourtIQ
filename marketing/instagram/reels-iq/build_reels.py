@@ -15,31 +15,25 @@ SRC = os.path.join(HERE, "../../..", "CourtIQ/Resources/Content/quiz_questions.j
 TEMPLATE = os.path.join(HERE, "reel.html")
 OUT = os.path.join(HERE, "out")
 
-CAT_TR = {"serve":"SERVİS","returnPlay":"KARŞILAMA","rally":"RALLY",
-          "net":"FİLE","mental":"ZİHİN","doubles":"ÇİFTLER"}
+# English-first DropVolley "Court IQ" marketing (app is EN-first). Every reel → app.
 CAT_EN = {"serve":"SERVE","returnPlay":"RETURN","rally":"RALLY",
           "net":"NET","mental":"MENTAL","doubles":"DOUBLES"}
 CAT_TAGS = {
-    "serve":"#servis #serve","returnPlay":"#karsilama #return","rally":"#rally #baseline",
-    "net":"#voleybol #netgame","mental":"#tenniszihni #mentalgame","doubles":"#ciftler #doubles",
+    "serve":"#tennisserve #serve","returnPlay":"#tennisreturn #returngame","rally":"#baseline #rally",
+    "net":"#netgame #volley","mental":"#tennismental #matchtoughness","doubles":"#doubles #doublestennis",
 }
-BASE_TAGS_TR = "#tenis #tennisiq #tenisdersi #kortiq #tenistaktik #tennistips"
-BASE_TAGS_EN = "#tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #kortiq"
+BASE_TAGS = "#tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter"
 
-def split_hook(scenario_tr):
-    """Setup cümlesi = subhead; son (soru) cümlesi = başlık."""
-    parts = [p.strip() for p in re.split(r"(?<=[.!?])\s+", scenario_tr.strip()) if p.strip()]
+def split_hook(scenario_en):
+    """Setup sentence(s) = subhead; final (question) sentence = headline."""
+    parts = [p.strip() for p in re.split(r"(?<=[.!?])\s+", scenario_en.strip()) if p.strip()]
     if len(parts) >= 2:
         return " ".join(parts[:-1]), parts[-1]     # (subhead, headline)
-    return "", scenario_tr.strip()
-
-def tr_upper(text):
-    """Türkçe-duyarlı büyük harf: i→İ, ı→I (Python .upper() bunu yanlış yapar)."""
-    return text.replace("ı", "I").replace("i", "İ").upper()
+    return "", scenario_en.strip()
 
 def two_lines(text):
-    """Başlığı ~ortadan iki satıra böl (Türkçe büyük harf)."""
-    words = tr_upper(text).split()
+    """Split the headline into ~two even lines (uppercase)."""
+    words = text.upper().split()
     if len(words) <= 1: return text.upper(), ""
     target = len(text) / 2; acc = 0; cut = 1
     for i, w in enumerate(words):
@@ -48,18 +42,19 @@ def two_lines(text):
     return " ".join(words[:cut]), " ".join(words[cut:])
 
 def default_diagram(q):
-    """~29 senaryonun (çoğu ZİHİN) diagram alanı yok → nötr bir kort görseli."""
-    return {"surface":"hard","youX":0.5,"youY":0.94,"opponentX":0.5,"opponentY":0.06,
+    """~29 scenarios (mostly MENTAL) have no diagram → a neutral court visual."""
+    return {"surface":"clay","youX":0.5,"youY":0.94,"opponentX":0.5,"opponentY":0.06,
             "ballOriginX":0.5,"ballOriginY":0.2,"ballTargetX":0.5,"ballTargetY":0.5,
-            "scoreChip":CAT_TR.get(q["category"], q["category"].upper())}
+            "scoreChip":CAT_EN.get(q["category"], q["category"].upper())}
 
 def build_reel_obj(q):
-    sub, head = split_hook(q["scenarioTr"])
+    sub, head = split_hook(q["scenario"])
     h1, h2 = two_lines(head)
     return {
-        "eyebrow":"TENNIS IQ", "cat":CAT_TR.get(q["category"], q["category"].upper()),
+        "eyebrow":"DROPVOLLEY", "cat":"COURT IQ · " + CAT_EN.get(q["category"], q["category"].upper()),
         "headline1":h1, "headline2":h2, "sub":sub,
-        "ctaBig":"CEVAP AÇIKLAMADA", "ctaSmall":"Kaydet, o maçtan önce aç",
+        "ctaBig":"ANSWER IN THE CAPTION",
+        "ctaSmall":"Save it — then train your Tennis IQ free in DropVolley",
         "diagram":q.get("diagram") or default_diagram(q),
     }
 
@@ -70,34 +65,22 @@ def render_html(template, obj):
                             '<meta charset="utf-8">\n' + inject, 1)
 
 def caption_block(q):
-    cat_tr, cat_en = CAT_TR[q["category"]], CAT_EN[q["category"]]
-    ans_tr = q["optionsTr"][q["correctAnswerIndex"]]
+    cat_en = CAT_EN[q["category"]]
     ans_en = q["options"][q["correctAnswerIndex"]]
-    tags = f"{BASE_TAGS_TR} {CAT_TAGS.get(q['category'],'')}"
-    tags_en = f"{BASE_TAGS_EN} {CAT_TAGS.get(q['category'],'')}"
-    return f"""### `{q['id']}` · {cat_tr} · {q['focusTag']}
+    tags = f"{BASE_TAGS} {CAT_TAGS.get(q['category'],'')}"
+    return f"""### `{q['id']}` · {cat_en} · {q['focusTag']}
 
-**Reel hook (video):** {q['scenarioTr']}
+**Reel hook (on-screen):** {q['scenario']}
 
-**Caption — TR**
-> {q['scenarioTr']} 🎾
->
-> Cevap: **{ans_tr}**.
-> Neden: {q['explanationTr']}
-> 👉 {q.get('takeawayTr','')}
->
-> Kaydet + @kortiq.tennis takip et — her gün bir kort kararı.
-> {tags}
-
-**Caption — EN**
+**Caption (EN)**
 > {q['scenario']} 🎾
 >
 > The play: **{ans_en}**.
 > Why: {q['explanation']}
 > 👉 {q.get('takeaway','')}
 >
-> Save it + follow @kortiq.tennis — one court decision a day.
-> {tags_en}
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> {tags}
 """
 
 def main():
@@ -114,18 +97,19 @@ def main():
         by_cat.setdefault(q["category"], []).append(q)
 
     # captions doc, grouped by category
-    lines = ["# KORT IQ — Tennis IQ Reels: caption & description bankası",
+    lines = ["# DropVolley — Court IQ Reels: caption & description bank (EN)",
              "",
-             f"Kaynak: `quiz_questions.json` ({len(data)} senaryo). Her senaryonun animasyonlu "
-             "reel'i `out/<id>.html` (9:16, ekran-kaydı al). Reel HOOK'lar; **cevap + neden caption'da** "
-             "(referans mock'taki 'cevap açıklamada' mantığı → kaydet/takip'i tetikler).",
+             f"Source: `quiz_questions.json` ({len(data)} scenarios). Each scenario's animated "
+             "reel is `out/<id>.html` (9:16, screen-record it). The reel HOOKS; **the answer + why "
+             "live in the caption** (borrowed from the reference mechanic), and every post drives to "
+             "the DropVolley app (link in bio).",
              "",
-             "Dürüstlük: videoya sahte beğeni/yorum sayısı BASMA (o IG'nin kendi arayüzü). "
-             "Handle mock'tan: **@kortiq.tennis** — app adı DropVolley; içerik-brand handle'ını teyit et.",
+             "Honesty: never bake fake like/comment counts into the video (that's IG's own UI). "
+             "Brand: DropVolley / Court IQ, @dropvolley.",
              ""]
     order = ["serve","returnPlay","rally","net","mental","doubles"]
     for cat in [c for c in order if c in by_cat]:
-        lines.append(f"\n## {CAT_TR[cat]} ({len(by_cat[cat])})\n")
+        lines.append(f"\n## {CAT_EN[cat]} ({len(by_cat[cat])})\n")
         for q in by_cat[cat]:
             lines.append(caption_block(q))
     with open(os.path.join(HERE, "captions-iq.md"), "w") as f:
@@ -133,7 +117,7 @@ def main():
 
     print(f"{len(data)} reel → out/  ·  captions-iq.md ({sum(len(v) for v in by_cat.values())} blok)")
     for cat in order:
-        if cat in by_cat: print(f"  {CAT_TR[cat]}: {len(by_cat[cat])}")
+        if cat in by_cat: print(f"  {CAT_EN[cat]}: {len(by_cat[cat])}")
 
 if __name__ == "__main__":
     main()
