@@ -118,3 +118,38 @@ Real captured screens in device frames on cinematic clay-court AI backgrounds
 - No fake ratings/awards/testimonials/user-base; no federation/pro-endorsement implication (only SwingVision has those).
 - Keywords exclude line-calling, UTR, USTA, pickleball, Apple Watch — features we don't ship.
 - Real trust lever: earn genuine ratings (RatingPrompt already asks after a quiz/rally win).
+
+---
+
+## 1.0.4 — IQ-led listing (conversion fix: impressions ohne taps)
+
+Store story pivots to the reliable wedge: **Train your Tennis IQ.**
+All claims honest/measurable (156 scenarios, real screens). Swing is "Beta".
+
+**Title (30):** `DropVolley: Tennis IQ Coach` (unchanged — keyword equity)
+**Subtitle (30):** `Daily 2-min tactics training`
+**Promotional text (170):**
+`New: Daily IQ. A 2-minute session a day — real match scenarios, your weakest category first. Watch your Tennis IQ climb from your first placement test.`
+
+**Keywords (100):**
+`tennis,iq,tactics,strategy,quiz,drills,doubles,serve,coach,training,mental,daily,scenarios`
+
+**Screenshot captions (IQ-first order, real captures in marketing/appstore/1.0.4-iq/):**
+1. Home hero — "Your Tennis IQ, trained daily"
+2. Daily IQ — "5 scenarios a day. 2 minutes."
+3. Placement — "8 questions find your blind spot"
+4. Session complete — "Watch your IQ climb"
+5+ existing: Coach, Doubles fit, Matches (reuse 1.0.3 captures)
+
+**What's New (1.0.4):**
+`Meet Daily IQ - a 2-minute daily session built from 156 real match scenarios.
+- Placement test: 8 questions set your baseline Tennis IQ and find your blind spot
+- Daily session: your weakest category first, plus one review
+- Skill path: climb every category from foundation to advanced tactics
+- Your IQ score grows only from scenarios you actually master - every point explainable
+- Swing analysis is now labeled Beta while we harden the new measurement pipeline`
+
+**App Preview (pending):** 25s real-app capture — Home hero → placement →
+answer flow → IQ delta. Needs recorded footage (user screen-record OR
+accessibility-enabled session). NO HeyGen/avatar content in App Preview
+(2.3.x — must be actual app footage). HeyGen OK for Instagram ads/intros.
