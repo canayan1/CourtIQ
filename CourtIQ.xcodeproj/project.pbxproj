@@ -43,6 +43,7 @@
 		A000000000000000000023 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000013 /* ProfileView.swift */; };
 		A000000000000000000024 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000014 /* TodayView.swift */; };
 		A000000000000000000025 /* DailyQuizManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000015 /* DailyQuizManager.swift */; };
+		B7E11QM0000000000001 /* TennisIQManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E11QF0000000000001 /* TennisIQManager.swift */; };
 		A000000000000000000026 /* DiscussionThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000016 /* DiscussionThread.swift */; };
 		A000000000000000000027 /* MobilityFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000017 /* MobilityFlow.swift */; };
 		A000000000000000000028 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000018 /* Quiz.swift */; };
@@ -50,6 +51,7 @@
 		A00000000000000000002A /* MobilityFlowDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000001A /* MobilityFlowDetailView.swift */; };
 		A00000000000000000002B /* MobilityLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000001B /* MobilityLibraryView.swift */; };
 		A00000000000000000002C /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000001C /* QuizView.swift */; };
+		B7E11QM0000000000002 /* DailyIQView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E11QF0000000000002 /* DailyIQView.swift */; };
 		A00000000000000000002D /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000001D /* QuizViewModel.swift */; };
 		A000000000000000000034 /* TrainingProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000030 /* TrainingProgram.swift */; };
 		A000000000000000000035 /* TrainingProgressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000031 /* TrainingProgressManager.swift */; };
@@ -214,6 +216,7 @@
 		A000000000000000000013 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileView.swift; path = CourtIQ/App/ProfileView.swift; sourceTree = "<group>"; };
 		A000000000000000000014 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TodayView.swift; path = CourtIQ/App/TodayView.swift; sourceTree = "<group>"; };
 		A000000000000000000015 /* DailyQuizManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DailyQuizManager.swift; path = CourtIQ/Core/Models/DailyQuizManager.swift; sourceTree = "<group>"; };
+		B7E11QF0000000000001 /* TennisIQManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TennisIQManager.swift; path = CourtIQ/Core/Models/TennisIQManager.swift; sourceTree = "<group>"; };
 		A000000000000000000016 /* DiscussionThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DiscussionThread.swift; path = CourtIQ/Core/Models/DiscussionThread.swift; sourceTree = "<group>"; };
 		A000000000000000000017 /* MobilityFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MobilityFlow.swift; path = CourtIQ/Core/Models/MobilityFlow.swift; sourceTree = "<group>"; };
 		A000000000000000000018 /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Quiz.swift; path = CourtIQ/Core/Models/Quiz.swift; sourceTree = "<group>"; };
@@ -221,6 +224,7 @@
 		A00000000000000000001A /* MobilityFlowDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MobilityFlowDetailView.swift; path = CourtIQ/Features/Mobility/MobilityFlowDetailView.swift; sourceTree = "<group>"; };
 		A00000000000000000001B /* MobilityLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MobilityLibraryView.swift; path = CourtIQ/Features/Mobility/MobilityLibraryView.swift; sourceTree = "<group>"; };
 		A00000000000000000001C /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuizView.swift; path = CourtIQ/Features/Quiz/QuizView.swift; sourceTree = "<group>"; };
+		B7E11QF0000000000002 /* DailyIQView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DailyIQView.swift; path = CourtIQ/Features/Quiz/DailyIQView.swift; sourceTree = "<group>"; };
 		A00000000000000000001D /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuizViewModel.swift; path = CourtIQ/Features/Quiz/QuizViewModel.swift; sourceTree = "<group>"; };
 		A000000000000000000030 /* TrainingProgram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrainingProgram.swift; path = CourtIQ/Core/Models/TrainingProgram.swift; sourceTree = "<group>"; };
 		A000000000000000000031 /* TrainingProgressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrainingProgressManager.swift; path = CourtIQ/Core/Models/TrainingProgressManager.swift; sourceTree = "<group>"; };
@@ -394,6 +398,7 @@
 				A000000000000000000013 /* ProfileView.swift */,
 				A000000000000000000014 /* TodayView.swift */,
 				A000000000000000000015 /* DailyQuizManager.swift */,
+				B7E11QF0000000000001 /* TennisIQManager.swift */,
 				A000000000000000000016 /* DiscussionThread.swift */,
 				A000000000000000000017 /* MobilityFlow.swift */,
 				A000000000000000000018 /* Quiz.swift */,
@@ -479,6 +484,7 @@
 				A00000000000000000001A /* MobilityFlowDetailView.swift */,
 				A00000000000000000001B /* MobilityLibraryView.swift */,
 				A00000000000000000001C /* QuizView.swift */,
+				B7E11QF0000000000002 /* DailyIQView.swift */,
 				A00000000000000000001D /* QuizViewModel.swift */,
 				A000000000000000000042 /* OnboardingView.swift */,
 				A000000000000000000043 /* PaywallView.swift */,
@@ -703,6 +709,7 @@
 				A000000000000000000023 /* ProfileView.swift in Sources */,
 				A000000000000000000024 /* TodayView.swift in Sources */,
 				A000000000000000000025 /* DailyQuizManager.swift in Sources */,
+				B7E11QM0000000000001 /* TennisIQManager.swift in Sources */,
 				A000000000000000000026 /* DiscussionThread.swift in Sources */,
 				A000000000000000000027 /* MobilityFlow.swift in Sources */,
 				A000000000000000000028 /* Quiz.swift in Sources */,
@@ -710,6 +717,7 @@
 				A00000000000000000002A /* MobilityFlowDetailView.swift in Sources */,
 				A00000000000000000002B /* MobilityLibraryView.swift in Sources */,
 				A00000000000000000002C /* QuizView.swift in Sources */,
+				B7E11QM0000000000002 /* DailyIQView.swift in Sources */,
 				A00000000000000000002D /* QuizViewModel.swift in Sources */,
 				A000000000000000000039 /* AppPalette.swift in Sources */,
 				A000000000000000000050 /* AppConfiguration.swift in Sources */,

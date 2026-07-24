@@ -219,7 +219,8 @@ final class QuizViewModel: ObservableObject {
             score: score,
             totalQuestions: quiz.questions.count,
             mistakeTypes: quiz.primaryMistakeTypes,
-            tacticalBuckets: buildTacticalBuckets()
+            tacticalBuckets: buildTacticalBuckets(),
+            perQuestionResults: perQuestionCorrect
         ))
     }
 

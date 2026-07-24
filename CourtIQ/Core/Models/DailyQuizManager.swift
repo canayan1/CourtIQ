@@ -39,6 +39,9 @@ struct QuizCompletionSummary {
     let totalQuestions: Int
     let mistakeTypes: [String]
     var tacticalBuckets: [QuizTacticalBucket]? = nil
+    /// Per-question correctness keyed by question id. Optional so existing
+    /// call sites are untouched; the Tennis IQ mastery engine reads this.
+    var perQuestionResults: [String: Bool]? = nil
 }
 
 @MainActor

@@ -78,6 +78,16 @@ struct TrainView: View {
                          title: lang.t("home.tile_swing"),
                          minHeight: 112,
                          photo: "PhotoForehand")
+                .overlay(alignment: .topTrailing) {
+                    Text(lang.t("common.beta"))
+                        .font(.caption2.weight(.heavy))
+                        .kerning(0.8)
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, 8).padding(.vertical, 4)
+                        .background(AppPalette.ink.opacity(0.85), in: Capsule())
+                        .padding(8)
+                        .allowsHitTesting(false)
+                }
         }
         .buttonStyle(PressableCardStyle())
         .accessibilityIdentifier("trainSwingAnalysisCard")

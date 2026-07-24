@@ -281,6 +281,10 @@ extension Quiz {
         return fallbackQuestions
     }
 
+    /// Full bundled bank, read-only — the Tennis IQ mastery engine builds
+    /// sessions, placement and category mastery from this.
+    static var fullBank: [QuizQuestion] { questionBank }
+
     private static func dateKey(from date: Date) -> String {
         let startOfDay = Calendar.current.startOfDay(for: date)
         return dateFormatter.string(from: startOfDay)

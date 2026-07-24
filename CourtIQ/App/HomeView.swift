@@ -16,6 +16,7 @@ struct HomeView: View {
 
     @ObservedObject private var swingStore = SwingAnalysisStore.shared
     @ObservedObject private var doublesStore = DoublesStore.shared
+    @ObservedObject private var iqManager = TennisIQManager.shared
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
@@ -54,23 +55,38 @@ struct HomeView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
-                coachHero
+                iqHero
                     .reveal(appeared: appeared, index: 0, reduceMotion: reduceMotion)
+
+                coachHero
+                    .reveal(appeared: appeared, index: 1, reduceMotion: reduceMotion)
 
                 VStack(alignment: .leading, spacing: 10) {
                     Eyebrow(lang.t("home.your_game"))
                         .reveal(appeared: appeared, index: 1, reduceMotion: reduceMotion)
 
-                    // Co-equal highlight pair (2-up).
+                    // Highlight pair — IQ leads (the reliable core loop);
+                    // swing follows with an honest Beta badge while the
+                    // deterministic pipeline matures.
                     HStack(spacing: 10) {
-                        FeatureTile(sfSymbol: "video.fill",
-                                    title: lang.t("home.tile_swing"),
-                                    minHeight: 112,
-                                    photo: "PhotoServe") { Haptics.tap(); route = .swing }
                         FeatureTile(sfSymbol: "brain.head.profile",
                                     title: lang.t("home.tile_iq"),
                                     minHeight: 112,
                                     photo: "PhotoForehand") { Haptics.tap(); route = .tennisIQ }
+                        FeatureTile(sfSymbol: "video.fill",
+                                    title: lang.t("home.tile_swing"),
+                                    minHeight: 112,
+                                    photo: "PhotoServe") { Haptics.tap(); route = .swing }
+                            .overlay(alignment: .topTrailing) {
+                                Text(lang.t("common.beta"))
+                                    .font(.caption2.weight(.heavy))
+                                    .kerning(0.8)
+                                    .foregroundStyle(.white)
+                                    .padding(.horizontal, 8).padding(.vertical, 4)
+                                    .background(AppPalette.ink.opacity(0.85), in: Capsule())
+                                    .padding(8)
+                                    .allowsHitTesting(false)
+                            }
                     }
                     .reveal(appeared: appeared, index: 2, reduceMotion: reduceMotion)
 
@@ -108,17 +124,21 @@ struct HomeView: View {
             .padding(20)
         }
         .background(AppPalette.cream)
+        #if DEBUG
+        // Headless QC: SIMCTL_CHILD_QC_OPEN=iq auto-pushes the Daily IQ flow.
+        .onAppear {
+            if ProcessInfo.processInfo.environment["QC_OPEN"] == "iq" { route = .tennisIQ }
+        }
+        #endif
         .navigationDestination(item: $route) { dest in
             switch dest {
             case .swing:
                 SwingAnalysisView()
             case .tennisIQ:
-                QuizView(quiz: Quiz.dailyQuiz()) { summary in
-                    // Same manager that powers Profile stats + the streak;
-                    // isDaily: true marks today's ritual complete.
-                    dailyQuizManager.recordCompletion(summary: summary, isDaily: true)
-                    session.updateTopMistakePatterns(summary.mistakeTypes)
-                }
+                // The Daily IQ loop (placement → session → IQ summary). It
+                // records through DailyQuizManager itself, so Profile stats and
+                // the unified streak keep working unchanged.
+                DailyIQView()
             case .matches:
                 MatchesListView()
             case .doubles:
@@ -190,7 +210,67 @@ struct HomeView: View {
         }
     }
 
-    // MARK: - Flagship hero: AI Coach
+    // MARK: - Flagship hero: Daily Tennis IQ
+
+    /// The daily core loop, above everything: your Tennis IQ number, streak,
+    /// and today's 2-minute session (or the one-time baseline placement).
+    /// Solid clay so it reads as THE brand moment among the photo cards.
+    private var iqHero: some View {
+        Button {
+            Haptics.tap()
+            route = .tennisIQ
+        } label: {
+            HStack(spacing: 16) {
+                VStack(alignment: .leading, spacing: 6) {
+                    Text(lang.t("home.iq_hero_eyebrow"))
+                        .font(.caption.weight(.heavy))
+                        .kerning(1.2)
+                        .foregroundStyle(.white.opacity(0.85))
+                    HStack(alignment: .firstTextBaseline, spacing: 10) {
+                        Text("\(iqManager.iq)")
+                            .font(.system(size: 44, weight: .black, design: .rounded))
+                            .foregroundStyle(.white)
+                            .contentTransition(.numericText())
+                        Text(lang.t("iq.eyebrow"))
+                            .font(.subheadline.weight(.bold))
+                            .foregroundStyle(.white.opacity(0.85))
+                        if streakDays > 0 {
+                            Label("\(streakDays)", systemImage: "flame.fill")
+                                .font(.system(.subheadline, design: .rounded).weight(.bold))
+                                .foregroundStyle(AppPalette.gold)
+                        }
+                    }
+                    Text(iqHeroSubtitle)
+                        .font(.subheadline)
+                        .foregroundStyle(.white.opacity(0.9))
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                Spacer(minLength: 8)
+                Image(systemName: iqManager.completedSessionToday ? "checkmark.circle.fill" : "chevron.right")
+                    .font(.title3.weight(.semibold))
+                    .foregroundStyle(.white.opacity(0.9))
+            }
+            .padding(22)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .dynamicTypeSize(...DynamicTypeSize.accessibility2)
+            .background(
+                LinearGradient(colors: [AppPalette.clay, AppPalette.clayText],
+                               startPoint: .topLeading, endPoint: .bottomTrailing),
+                in: RoundedRectangle(cornerRadius: 24)
+            )
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(PressableCardStyle())
+        .accessibilityLabel("\(lang.t("iq.eyebrow")) \(iqManager.iq). \(iqHeroSubtitle)")
+    }
+
+    private var iqHeroSubtitle: String {
+        if !iqManager.hasBaseline { return lang.t("home.iq_hero_baseline") }
+        if iqManager.completedSessionToday { return lang.t("home.iq_hero_done") }
+        return lang.t("home.iq_hero_ready")
+    }
+
+    // MARK: - AI Coach hero
 
     private var coachHero: some View {
         // Coach is a tab, so the hero switches tabs (Button) rather than pushing.
