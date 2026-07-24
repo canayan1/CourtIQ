@@ -2,12 +2,14 @@
 <title>DropVolley — Court IQ reel</title>
 <style>
   /* App-native identity: clay court + cream/parchment (AppPalette), English,
-     DropVolley / Court IQ. 9:16 stage scaled to fit; screen-record for the Reel.
-     Every reel drives to the app. */
+     DropVolley / Court IQ. 9:16 stage scaled to fit; capture.py/narrate.py
+     drive the Web-Animations timeline for MP4. Every reel drives to the app.
+     The court ANIMATES the narrated tactical story: setup rally builds, then
+     the recommended "answer" shot fires (gold) on the voiceover's cue. */
   :root{
     --bg0:#F4ECDD; --bg1:#FBF4E7; --court:#C65C31; --court-hi:#D97A4A;
     --court2:#B85228; --line:rgba(255,255,255,.94); --net:#E4A426;
-    --ball:#E8E24A; --opp:#1E2938; --you:#E7B23C;
+    --ball:#F2EC5A; --opp:#1E2938; --you:#E7B23C; --answer:#F0A72E;
     --ink:#20262F; --ink-dim:#6B6157; --clay:#C15A2F; --clay-deep:#8F3F1F;
     --cream:#FCF7EE; --gold:#C99418;
   }
@@ -25,30 +27,40 @@
   .eyebrow .cat{color:var(--ink-dim);}
   .dotmark{width:13px;height:13px;border-radius:50%;background:var(--clay);}
 
-  h1{margin-top:26px;font-size:84px;line-height:1.0;font-weight:900;letter-spacing:-.025em;text-transform:uppercase;}
+  h1{margin-top:24px;font-size:74px;line-height:1.02;font-weight:900;letter-spacing:-.025em;
+    text-transform:uppercase;text-wrap:balance;}
   h1 .l1{display:block;color:var(--ink);opacity:0;animation:rise .7s .25s forwards;}
   h1 .l2{display:block;color:var(--clay);opacity:0;animation:rise .7s .5s forwards;}
-  .sub{margin-top:30px;font-size:39px;line-height:1.28;color:var(--ink-dim);font-weight:500;max-width:21ch;
+  .sub{margin-top:26px;font-size:36px;line-height:1.26;color:var(--ink-dim);font-weight:500;max-width:22ch;
     opacity:0;animation:rise .7s .8s forwards;}
 
-  .court-area{flex:1;display:flex;align-items:center;justify-content:center;min-height:0;position:relative;}
-  svg.court{width:548px;height:auto;filter:drop-shadow(0 26px 54px rgba(120,60,30,.28));}
+  /* Court scales to the space LEFT between the copy and the CTA, so long
+     headlines/subheads never collide with or clip the diagram. */
+  .court-area{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    min-height:0;position:relative;gap:16px;padding:10px 0;}
+  svg.court{height:100%;width:auto;max-width:520px;max-height:100%;flex:0 1 auto;min-height:0;
+    filter:drop-shadow(0 26px 54px rgba(120,60,30,.28));}
+  .legend{display:flex;gap:26px;align-items:center;flex:none;opacity:0;}
+  .legend span{display:flex;align-items:center;gap:9px;font-size:24px;font-weight:800;
+    letter-spacing:.06em;text-transform:uppercase;color:var(--ink-dim);}
+  .legend i{width:16px;height:16px;border-radius:50%;display:inline-block;}
+
   .court .surface{fill:var(--court);}
   .court .shade{fill:rgba(0,0,0,.06);}
-  .court .ln{stroke:var(--line);stroke-width:4;fill:none;opacity:0;animation:fade .5s 1.1s forwards;}
-  .court .net{stroke:var(--net);stroke-width:8;opacity:0;animation:netSweep .6s 1.5s forwards;}
-  .court .traj{stroke:#fff;stroke-width:3;stroke-dasharray:9 12;opacity:0;animation:fade .5s 2.2s forwards;}
-  .pip{opacity:0;}
-  .pip.opp{animation:pop .45s 1.9s cubic-bezier(.2,1.3,.5,1) forwards;}
-  .pip.you{animation:pop .45s 2.15s cubic-bezier(.2,1.3,.5,1) forwards;}
+  .court .ln{stroke:var(--line);stroke-width:4;fill:none;}
+  .court .net{stroke:var(--net);stroke-width:8;}
+  /* trajectory lines: setup = white dashed; answer = gold, solid, glowing */
+  .tline{fill:none;stroke-linecap:round;}
+  .tline.setup{stroke:rgba(255,255,255,.9);stroke-width:3.4;stroke-dasharray:7 9;}
+  .tline.answer{stroke:var(--answer);stroke-width:6;filter:drop-shadow(0 0 6px rgba(240,167,46,.7));}
+  .sball circle{fill:#fff;stroke:#7a5a3a;stroke-width:2;}
+  .sball.answer circle{fill:var(--ball);stroke:#4a4416;stroke-width:3;}
+  .ring{fill:none;stroke:var(--answer);stroke-width:4;}
+  .pip{filter:drop-shadow(0 3px 5px rgba(0,0,0,.35));}
   .pip circle{stroke:#fff;stroke-width:4;}
-  .pip text{font-size:32px;font-weight:900;text-anchor:middle;dominant-baseline:central;}
-  .ball{opacity:0;animation:ballIn .3s 2.4s forwards;}
-  .ball circle{fill:var(--ball);stroke:#3a3a1a;stroke-width:3;}
-  .trail{stroke:#fff;stroke-width:6;fill:none;stroke-linecap:round;
-    stroke-dasharray:var(--len);stroke-dashoffset:var(--len);animation:draw 1s 2.5s cubic-bezier(.4,0,.2,1) forwards;}
+  .pip text{font-size:27px;font-weight:900;text-anchor:middle;dominant-baseline:central;letter-spacing:-.01em;}
   .chip{position:absolute;top:8px;right:8px;font-size:22px;font-weight:800;letter-spacing:.06em;
-    color:#fff;background:var(--ink);padding:8px 15px;border-radius:10px;opacity:0;animation:fade .5s 1.7s forwards;}
+    color:#fff;background:var(--ink);padding:8px 15px;border-radius:10px;opacity:0;animation:fade .5s 1.6s forwards;}
 
   .cta{margin-top:22px;border-radius:26px;padding:28px 30px;text-align:center;
     background:var(--clay);opacity:0;animation:rise .6s 3.4s forwards;box-shadow:0 16px 34px rgba(150,60,25,.28);}
@@ -62,11 +74,6 @@
 
   @keyframes fade{to{opacity:1;}}
   @keyframes rise{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
-  @keyframes pop{from{opacity:0;transform:scale(.4);}to{opacity:1;transform:scale(1);}}
-  @keyframes ballIn{to{opacity:1;}}
-  @keyframes draw{to{stroke-dashoffset:0;}}
-  @keyframes netSweep{from{opacity:0;stroke-dashoffset:600;}to{opacity:1;stroke-dashoffset:0;}}
-  @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-delay:0ms!important;}}
 </style>
 
 <div id="stage">
@@ -77,6 +84,7 @@
 
     <div class="court-area">
       <svg class="court" id="court" viewBox="0 0 300 470" xmlns="http://www.w3.org/2000/svg"></svg>
+      <div class="legend" id="legend"></div>
     </div>
 
     <div class="cta">
@@ -92,51 +100,131 @@
 
 <script>
   const S = window.__REEL__ || {
-    eyebrow:"DROPVOLLEY", cat:"COURT IQ",
-    headline1:"THE PUSHER KEEPS", headline2:"WINNING. NOW WHAT?",
-    sub:"No weapons, but every ball comes back — and you keep losing.",
+    eyebrow:"DROPVOLLEY", cat:"COURT IQ · DOUBLES",
+    headline1:"WHO TAKES", headline2:"THE MIDDLE?",
+    sub:"A ball splits you and your partner down the middle.",
     ctaBig:"ANSWER IN THE CAPTION", ctaSmall:"Save it — then train your Tennis IQ free in DropVolley",
-    diagram:{surface:"clay", youX:0.5, youY:0.96, opponentX:0.5, opponentY:0.06,
-             ballOriginX:0.5, ballOriginY:0.14, ballTargetX:0.5, ballTargetY:0.62, scoreChip:"HIGH BALL · BH"}
+    answerAtMs:8000,
+    play:{ chip:"MIDDLE BALL",
+      players:[
+        {team:"you",     x:0.34, y:0.60},
+        {team:"partner", x:0.66, y:0.60},
+        {team:"opp",     x:0.30, y:0.10},
+        {team:"opp",     x:0.70, y:0.10},
+      ],
+      shots:[
+        {from:[0.30,0.10], to:[0.50,0.44]},
+        {from:[0.50,0.44], to:[0.50,0.60], answer:true},
+      ] }
   };
   for(const [id,val] of Object.entries({eyebrow:S.eyebrow,cat:S.cat,h1:S.headline1,h2:S.headline2,sub:S.sub,ctaBig:S.ctaBig,ctaSmall:S.ctaSmall}))
     document.getElementById(id).textContent = val;
 
-  const d = S.diagram, C = document.getElementById("court");
+  const P = S.play, C = document.getElementById("court");
   const X0=20, Y0=20, W=260, H=430;
   const px = nx => X0 + nx*W, py = ny => Y0 + ny*H;
   const NS="http://www.w3.org/2000/svg";
   const mk=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;};
+  const EASE_MOVE="cubic-bezier(.4,0,.2,1)", EASE_POP="cubic-bezier(.2,1.3,.5,1)";
 
+  // ---- static court ----
   C.appendChild(mk("rect",{x:X0,y:Y0,width:W,height:H,rx:4,class:"surface"}));
-  C.appendChild(mk("rect",{x:X0,y:Y0,width:W,height:H/2,rx:4,class:"shade"})); // far half slightly darker
+  C.appendChild(mk("rect",{x:X0,y:Y0,width:W,height:H/2,rx:4,class:"shade"}));
   const midY=Y0+H/2, svcTop=Y0+H*0.30, svcBot=Y0+H*0.70, cx=X0+W/2;
   const lines=[
     [X0,Y0,X0,Y0+H],[X0+W,Y0,X0+W,Y0+H],[X0,Y0,X0+W,Y0],[X0,Y0+H,X0+W,Y0+H],
     [X0,svcTop,X0+W,svcTop],[X0,svcBot,X0+W,svcBot],[cx,svcTop,cx,svcBot],
     [X0+W*0.14,Y0,X0+W*0.14,Y0+H],[X0+W*0.86,Y0,X0+W*0.86,Y0+H],
+    [cx,Y0,cx,Y0+8],[cx,Y0+H-8,cx,Y0+H],
   ];
-  lines.forEach(([x1,y1,x2,y2])=>C.appendChild(mk("line",{x1,y1,x2,y2,class:"ln"})));
-  C.appendChild(mk("line",{x1:X0-6,y1:midY,x2:X0+W+6,y2:midY,class:"net"}));
+  const netLine=mk("line",{x1:X0-6,y1:midY,x2:X0+W+6,y2:midY,class:"net"});
 
-  C.appendChild(mk("line",{x1:px(d.ballOriginX),y1:py(d.ballOriginY),x2:px(d.ballTargetX),y2:py(d.ballTargetY),class:"traj"}));
-  const ox=px(d.ballOriginX),oy=py(d.ballOriginY),tx=px(d.ballTargetX),ty=py(d.ballTargetY);
-  const len=Math.hypot(tx-ox,ty-oy);
-  const trail=mk("line",{x1:ox,y1:oy,x2:tx,y2:ty,class:"trail"}); trail.style.setProperty("--len",len.toFixed(1)); C.appendChild(trail);
+  // ---- animation timeline (ms). answerAtMs synced to the voice's "smart play". ----
+  const ANS = Math.max(3200, S.answerAtMs||8000);
+  const T = { net:820, pip0:1150, pipStep:170, legend:1950,
+              setupStart:2250, setupEnd:Math.max(3000,ANS-320),
+              answer:ANS, answerDur:1500, ring:ANS+1200, move:ANS+120, moveDur:1200 };
+  const anims=[];   // keep refs so preview can replay
+  const A=(el,frames,opts)=>{const a=el.animate(frames,{fill:"both",...opts});anims.push(a);return a;};
 
-  function pip(nx,ny,label,fill,txt,cls){
-    const g=mk("g",{class:"pip "+cls,style:"transform-box:fill-box;transform-origin:center;"});
-    g.appendChild(mk("circle",{cx:px(nx),cy:py(ny),r:18,fill}));
-    const t=mk("text",{x:px(nx),y:py(ny),fill:txt}); t.textContent=label; g.appendChild(t); C.appendChild(g);
+  // court lines wipe in (staggered), net sweeps
+  lines.forEach((seg,i)=>{ const ln=mk("line",{x1:seg[0],y1:seg[1],x2:seg[2],y2:seg[3],class:"ln"});
+    C.appendChild(ln); A(ln,[{opacity:0},{opacity:1}],{delay:300+i*45,duration:360}); });
+  C.appendChild(netLine);
+  { const L=W+12; netLine.setAttribute("stroke-dasharray",L);
+    A(netLine,[{strokeDashoffset:L,opacity:.2},{strokeDashoffset:0,opacity:1}],{delay:T.net,duration:560,easing:EASE_MOVE}); }
+
+  // ---- shots: setup rally builds, then the gold answer fires ----
+  function drawShot(s,delay,dur,isAns){
+    const a=[px(s.from[0]),py(s.from[1])], b=[px(s.to[0]),py(s.to[1])];
+    const len=Math.hypot(b[0]-a[0],b[1]-a[1])||1;
+    const line=mk("line",{x1:a[0],y1:a[1],x2:b[0],y2:b[1],class:"tline "+(isAns?"answer":"setup")});
+    line.setAttribute("stroke-dasharray",isAns?len:"7 9");
+    C.appendChild(line);
+    if(isAns) A(line,[{strokeDashoffset:len},{strokeDashoffset:0}],{delay,duration:dur,easing:EASE_MOVE});
+    else      A(line,[{opacity:0},{opacity:1}],{delay,duration:Math.min(320,dur)});
+    const ball=mk("g",{class:"sball"+(isAns?" answer":"")});
+    ball.appendChild(mk("circle",{cx:0,cy:0,r:isAns?9:6.5}));
+    C.appendChild(ball);
+    A(ball,[
+      {transform:`translate(${a[0]}px,${a[1]}px)`,opacity:0,offset:0},
+      {transform:`translate(${a[0]}px,${a[1]}px)`,opacity:1,offset:0.04},
+      {transform:`translate(${b[0]}px,${b[1]}px)`,opacity:1,offset:0.96},
+      {transform:`translate(${b[0]}px,${b[1]}px)`,opacity:isAns?1:0,offset:1},
+    ],{delay,duration:dur,easing:isAns?"cubic-bezier(.3,0,.15,1)":"cubic-bezier(.45,0,.5,1)"});
+    if(isAns){ const ring=mk("circle",{cx:b[0],cy:b[1],r:6,class:"ring"}); C.appendChild(ring);
+      A(ring,[{r:6,opacity:0,offset:0},{r:7,opacity:.95,offset:.2},{r:24,opacity:0,offset:1}],
+        {delay:T.ring,duration:900,easing:"ease-out"}); }
   }
-  pip(d.opponentX,d.opponentY,"OP","var(--opp)","#fff","opp");
-  pip(d.youX,d.youY,"YOU","var(--you)","#20262F","you");
-  const ball=mk("g",{class:"ball"}); ball.appendChild(mk("circle",{cx:tx,cy:ty,r:9})); C.appendChild(ball);
+  const setup=(P.shots||[]).filter(s=>!s.answer), answer=(P.shots||[]).find(s=>s.answer);
+  const span=Math.max(600,T.setupEnd-T.setupStart), each=setup.length?span/setup.length:0;
+  setup.forEach((s,i)=>drawShot(s,T.setupStart+i*each,Math.min(1150,Math.max(480,each*0.9)),false));
+  if(answer) drawShot(answer,T.answer,T.answerDur,true);
 
-  if(d.scoreChip){const chip=document.createElement("div");chip.className="chip";chip.textContent=d.scoreChip;
+  // ---- players (2 singles / 4 doubles). you+partner = gold Y/P, opp = ink O ----
+  const TEAM={ you:{fill:"var(--you)",txt:"#20262F",label:"Y"},
+               partner:{fill:"var(--you)",txt:"#20262F",label:"P"},
+               opp:{fill:"var(--opp)",txt:"#fff",label:"O"} };
+  (P.players||[]).forEach((p,i)=>{
+    const t=TEAM[p.team]||TEAM.opp, bx=px(p.x), by=py(p.y);
+    const outer=mk("g",{}); const inner=mk("g",{class:"pip",style:"transform-box:fill-box;transform-origin:center;"});
+    inner.appendChild(mk("circle",{cx:bx,cy:by,r:16,fill:t.fill}));
+    const tx=mk("text",{x:bx,y:by,fill:t.txt}); tx.textContent=p.label||t.label; inner.appendChild(tx);
+    outer.appendChild(inner); C.appendChild(outer);
+    A(inner,[{opacity:0,transform:"scale(.35)"},{opacity:1,transform:"scale(1)"}],
+      {delay:T.pip0+i*T.pipStep,duration:440,easing:EASE_POP});
+    if(p.move){ const dx=px(p.move[0])-bx, dy=py(p.move[1])-by;
+      A(outer,[{transform:"translate(0px,0px)"},{transform:`translate(${dx}px,${dy}px)`}],
+        {delay:T.move,duration:T.moveDur,easing:EASE_MOVE}); }
+  });
+
+  // ---- mental: calm "reset / breathe" beat (no rally; keeps breathing on the hold) ----
+  if(P.mode==="mental" && (P.players||[]).length){
+    const p=P.players[0], bx=px(p.x), by=py(p.y);
+    const focus=mk("circle",{cx:bx,cy:by,r:30,class:"ring"});
+    focus.style.stroke="var(--gold)"; C.appendChild(focus);
+    A(focus,[{opacity:0},{opacity:.30}],{delay:1500,duration:800});           // steady focus halo
+    for(let k=0;k<3;k++){ const ring=mk("circle",{cx:bx,cy:by,r:20,class:"ring"});
+      ring.style.stroke="var(--gold)"; C.appendChild(ring);                    // slow looping breath
+      A(ring,[{r:20,opacity:0,offset:0},{r:26,opacity:.5,offset:.16},{r:64,opacity:0,offset:1}],
+        {delay:1900+k*1500,duration:4500,iterations:Infinity,easing:"ease-out"}); }
+  }
+
+  // ---- legend (reflects the players actually on court) + chip ----
+  const hasPartner=(P.players||[]).some(p=>p.team==="partner");
+  const oppN=(P.players||[]).filter(p=>p.team==="opp").length;
+  let lg="";
+  if((P.players||[]).some(p=>p.team==="you")) lg+=`<span><i style="background:var(--you)"></i>${hasPartner?"You + Partner":"You"}</span>`;
+  if(oppN) lg+=`<span><i style="background:var(--opp)"></i>${oppN>1?"Opponents":"Opponent"}</span>`;
+  document.getElementById("legend").innerHTML=lg;
+  A(document.getElementById("legend"),[{opacity:0},{opacity:1}],{delay:T.legend,duration:480});
+  if(P.chip){const chip=document.createElement("div");chip.className="chip";chip.textContent=P.chip;
     document.querySelector(".court-area").appendChild(chip);}
 
+  // ---- fit + preview replay ----
   function fit(){const s=Math.min(innerWidth/1080,innerHeight/1920);document.getElementById("stage").style.transform=`scale(${s})`;}
   fit(); addEventListener("resize",fit);
-  setInterval(()=>document.getElementById("stage").querySelectorAll("*").forEach(el=>{el.style.animation="none";void el.offsetWidth;el.style.animation="";}),7000);
+  // capture.py/narrate.py drive currentTime themselves (?capture); live preview loops.
+  if(!location.search.includes("capture"))
+    setInterval(()=>document.getAnimations().forEach(a=>{try{a.currentTime=0;a.play();}catch(e){}}), ANS+3600);
 </script>

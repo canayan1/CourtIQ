@@ -9,6 +9,7 @@ Kayıt→MP4: out/<id>.html'i telefonda/QuickTime ile ekran-kaydı al (9:16), ya
 headless Chrome frame-capture + ffmpeg (README).
 """
 import json, os, re, sys
+from choreo import build_play
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(HERE, "../../..", "CourtIQ/Resources/Content/quiz_questions.json")
@@ -55,7 +56,8 @@ def build_reel_obj(q):
         "headline1":h1, "headline2":h2, "sub":sub,
         "ctaBig":"ANSWER IN THE CAPTION",
         "ctaSmall":"Save it — then train your Tennis IQ free in DropVolley",
-        "diagram":q.get("diagram") or default_diagram(q),
+        "answerAtMs":8000,                 # silent build default; narrate.py syncs to the voice
+        "play":build_play(q),
     }
 
 def render_html(template, obj):

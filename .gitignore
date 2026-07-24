@@ -16,3 +16,7 @@ supabase/.temp/
 # Build artifacts / archives
 *.zip
 ExportOptions.plist
+marketing/instagram/reels-iq/.chrome-cap/
+marketing/instagram/reels-iq/mp4/
+marketing/instagram/reels-iq/out-narrated/
+marketing/instagram/reels-iq/qc/
