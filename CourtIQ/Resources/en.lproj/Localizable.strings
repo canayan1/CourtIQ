@@ -1065,7 +1065,7 @@
 "coachreview.privacy" = "Only your reviewing coach can watch — streaming only, never downloaded, never shared. Any marketing use needs your separate OK.";
 "coachreview.cta" = "Notify me at launch";
 "coachreview.done" = "Done";
-"coachreview.coach_line" = "One coach, your video, full attention — every review is prepared personally, never automated.";
+"coachreview.coach_line" = "Your coach: 15 years on court, played national-level tennis, has coached every level. Personal — never automated.";
 "coachreview.path_title" = "Choose your path";
 "coachreview.ai_eyebrow" = "AI ANALYSIS";
 "coachreview.ai_title" = "Analyze now";
@@ -1074,7 +1074,7 @@
 "coachreview.tier_player" = "Advanced Player Review";
 "coachreview.tier_player_sub" = "Honest take from a high-level player · budget option";
 "coachreview.tier_level2" = "Level 2 Certified Coach";
-"coachreview.tier_level2_sub" = "Level 2 certified coach based in Türkiye · deeper technical review";
+"coachreview.tier_level2_sub" = "Level 2 certified · 20 years · 100+ juniors trained · reviews in Turkish";
 "coachreview.tier_level3" = "Level 3 Certified Coach";
 "coachreview.tier_level3_sub" = "Level 3 certified coach based in Ireland · full game plan, custom scope";
 "coachreview.join_waitlist" = "Join waitlist";

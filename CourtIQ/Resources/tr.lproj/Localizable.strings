@@ -1065,7 +1065,7 @@
 "coachreview.privacy" = "Videonu yalnızca inceleyen antrenör izleyebilir — sadece izleme; indirme ve paylaşma yok. Pazarlama kullanımı ayrıca senin onayına bağlı.";
 "coachreview.cta" = "Açılınca haber ver";
 "coachreview.done" = "Tamam";
-"coachreview.coach_line" = "Tek antrenör, senin videon, tam odak — her inceleme elle, kişiye özel hazırlanır; otomasyon yok.";
+"coachreview.coach_line" = "Antrenörün: 15 yıl kortta, ulusal düzeyde oynadı, her seviyeyle çalıştı. Kişisel — otomasyon yok.";
 "coachreview.path_title" = "Yolunu seç";
 "coachreview.ai_eyebrow" = "AI ANALİZ";
 "coachreview.ai_title" = "Şimdi analiz et";
@@ -1074,7 +1074,7 @@
 "coachreview.tier_player" = "İleri Seviye Oyuncu İncelemesi";
 "coachreview.tier_player_sub" = "Üst düzey bir oyuncudan dürüst bakış · ekonomik seçenek";
 "coachreview.tier_level2" = "Level 2 Sertifikalı Antrenör";
-"coachreview.tier_level2_sub" = "Türkiye merkezli Level 2 sertifikalı antrenör · daha derin teknik inceleme";
+"coachreview.tier_level2_sub" = "Level 2 sertifikalı · 20 yıl · 100+ junior yetiştirdi · inceleme Türkçe";
 "coachreview.tier_level3" = "Level 3 Sertifikalı Antrenör";
 "coachreview.tier_level3_sub" = "İrlanda merkezli Level 3 sertifikalı antrenör · komple oyun planı, kapsama göre";
 "coachreview.join_waitlist" = "Listeye gir";
