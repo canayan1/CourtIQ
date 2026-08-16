@@ -1023,15 +1023,15 @@
 "iq.mastered_fmt" = "%d/%d senaryo çözüldü";
 "iq.estimated_chip" = "Tahmini — kalibre etmek için yerleştirmeyi çöz";
 "iq.baseline_title" = "Başlangıç seviyeni ölç";
-"iq.baseline_body" = "8 senaryo, yaklaşık 3 dakika. Başlangıç Tennis IQ'nu kalibre eder ve kör noktanı bulur.";
+"iq.baseline_body" = "8 senaryo · 3 dk";
 "iq.baseline_start" = "Yerleştirmeyi başlat";
-"iq.baseline_skip" = "Atla — bugünkü seansa geç";
+"iq.baseline_skip" = "Şimdilik atla";
 "iq.baseline_set" = "Başlangıç belirlendi";
 "iq.daily_ready_title" = "Bugünkü seans";
-"iq.daily_ready_body" = "Senin için seçilmiş 5 senaryo: en zayıf kategorin + bir tekrar.";
-"iq.daily_start" = "Başla · 2 dk";
+"iq.daily_ready_body" = "5 senaryo · 2 dk";
+"iq.daily_start" = "Başla";
 "iq.done_title" = "Bugünlük tamam";
-"iq.done_body" = "Serin güvende. Yarın gel — ya da antrenmana devam et.";
+"iq.done_body" = "Serin güvende.";
 "iq.train_more" = "Devam et";
 "iq.blind_spot" = "Kör nokta";
 "iq.focus_chip" = "ODAK";
@@ -1042,8 +1042,8 @@
 "iq.streak_fmt" = "%d günlük seri";
 "iq.done_button" = "Bitti";
 "home.iq_hero_eyebrow" = "GÜNLÜK IQ";
-"home.iq_hero_baseline" = "Seviyeni ölç · 8 soru";
-"home.iq_hero_ready" = "Bugünkü seans · 5 senaryo · 2 dk";
+"home.iq_hero_baseline" = "Seviyeni ölç · 3 dk";
+"home.iq_hero_ready" = "Bugünkü seans · 2 dk";
 "home.iq_hero_done" = "Bugünlük tamam";
 "iq.path" = "Beceri yolu";
 "iq.chart_title" = "IQ gelişimin";
@@ -1053,8 +1053,8 @@
 
 /* Coach Review G0 ilgi kartı */
 "coachreview.card_eyebrow" = "GERÇEK ANTRENÖR · YAKINDA";
-"coachreview.card_title" = "Gerçek bir tenis antrenöründen inceleme al";
-"coachreview.card_sub" = "72 saatte sesli inceleme + karne · $19.99";
+"coachreview.card_title" = "Gerçek antrenör incelemesi al";
+"coachreview.card_sub" = "Sesli inceleme · 72s · $19.99";
 "coachreview.card_joined" = "Listedesin — açılışta haber vereceğiz";
 "coachreview.sheet_title" = "Videonu gerçek bir antrenör inceliyor";
 "coachreview.point1" = "Vuruşlarına özel 2–3 dk sesli inceleme";
@@ -1067,9 +1067,9 @@
 "coachreview.done" = "Tamam";
 "coachreview.coach_line" = "Tek antrenör, senin videon, tam odak — her inceleme elle, kişiye özel hazırlanır; otomasyon yok.";
 "coachreview.path_title" = "Yolunu seç";
-"coachreview.ai_eyebrow" = "AI ANALİZ · ANINDA";
-"coachreview.ai_title" = "Şimdi AI ile analiz et";
-"coachreview.ai_sub" = "Dahil · yaklaşık 1 dakikada sonuç";
+"coachreview.ai_eyebrow" = "AI ANALİZ";
+"coachreview.ai_title" = "Şimdi analiz et";
+"coachreview.ai_sub" = "Anında · dahil";
 "coachreview.roster_title" = "Ağımızdaki antrenörler — taleple açılır";
 "coachreview.tier_player" = "İleri Seviye Oyuncu İncelemesi";
 "coachreview.tier_player_sub" = "Üst düzey bir oyuncudan dürüst bakış · ekonomik seçenek";

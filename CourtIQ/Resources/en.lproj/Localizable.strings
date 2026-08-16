@@ -1023,15 +1023,15 @@
 "iq.mastered_fmt" = "%d of %d scenarios mastered";
 "iq.estimated_chip" = "Estimated — take the placement to calibrate";
 "iq.baseline_title" = "Set your baseline";
-"iq.baseline_body" = "8 scenarios, about 3 minutes. It calibrates your starting Tennis IQ and finds your blind spot.";
+"iq.baseline_body" = "8 scenarios · 3 min";
 "iq.baseline_start" = "Start placement";
-"iq.baseline_skip" = "Skip — straight to today's session";
+"iq.baseline_skip" = "Skip for now";
 "iq.baseline_set" = "Baseline set";
 "iq.daily_ready_title" = "Today's session";
-"iq.daily_ready_body" = "5 scenarios, picked for you: your weakest category plus one review.";
-"iq.daily_start" = "Start · 2 min";
+"iq.daily_ready_body" = "5 scenarios · 2 min";
+"iq.daily_start" = "Start";
 "iq.done_title" = "Done for today";
-"iq.done_body" = "Streak safe. Come back tomorrow — or keep training.";
+"iq.done_body" = "Streak safe.";
 "iq.train_more" = "Train more";
 "iq.blind_spot" = "Blind spot";
 "iq.focus_chip" = "FOCUS";
@@ -1042,8 +1042,8 @@
 "iq.streak_fmt" = "%d-day streak";
 "iq.done_button" = "Done";
 "home.iq_hero_eyebrow" = "DAILY IQ";
-"home.iq_hero_baseline" = "Set your baseline · 8 questions";
-"home.iq_hero_ready" = "Today's session · 5 scenarios · 2 min";
+"home.iq_hero_baseline" = "Set your baseline · 3 min";
+"home.iq_hero_ready" = "Today's session · 2 min";
 "home.iq_hero_done" = "Done for today";
 "iq.path" = "Skill path";
 "iq.chart_title" = "Your IQ over time";
@@ -1053,8 +1053,8 @@
 
 /* Coach Review G0 interest card */
 "coachreview.card_eyebrow" = "REAL COACH · COMING SOON";
-"coachreview.card_title" = "Get a review from a real tennis coach";
-"coachreview.card_sub" = "Voice review + scorecard in 72h · $19.99";
+"coachreview.card_title" = "Get a real coach review";
+"coachreview.card_sub" = "Voice review · 72h · $19.99";
 "coachreview.card_joined" = "You're on the list — we'll notify you at launch";
 "coachreview.sheet_title" = "A real coach reviews your video";
 "coachreview.point1" = "2–3 min voice review of your actual strokes";
@@ -1067,9 +1067,9 @@
 "coachreview.done" = "Done";
 "coachreview.coach_line" = "One coach, your video, full attention — every review is prepared personally, never automated.";
 "coachreview.path_title" = "Choose your path";
-"coachreview.ai_eyebrow" = "AI ANALYSIS · INSTANT";
-"coachreview.ai_title" = "Analyze with AI now";
-"coachreview.ai_sub" = "Included · results in about a minute";
+"coachreview.ai_eyebrow" = "AI ANALYSIS";
+"coachreview.ai_title" = "Analyze now";
+"coachreview.ai_sub" = "Instant · included";
 "coachreview.roster_title" = "Coaches in our network — unlocked by demand";
 "coachreview.tier_player" = "Advanced Player Review";
 "coachreview.tier_player_sub" = "Honest take from a high-level player · budget option";

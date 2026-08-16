@@ -423,6 +423,14 @@ struct QuizCourtDiagramView: View {
     private let topPadding: CGFloat = 14
     private let bottomPadding: CGFloat = 14
 
+    // Animated story: markers pop in, then the ball flies its arc SLOWLY
+    // (real bounce time, not a UI flick), lands, and the landing point
+    // keeps a gentle pulse. Replays when the question changes.
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var markersIn = false
+    @State private var flight: CGFloat = 0
+    @State private var settled = false
+
     private var surface: AppPalette.CourtSurface {
         switch diagram.surface {
         case "grass": return .grass
@@ -486,22 +494,39 @@ struct QuizCourtDiagramView: View {
     @ViewBuilder
     private var markerOverlay: some View {
         ZStack {
-            // Dashed incoming-ball trajectory — drawn only when all four
-            // origin/target coords are non-nil (mental category default
-            // has nil here and we render nothing).
+            // Ball flight — drawn only when all four origin/target coords are
+            // non-nil (mental category default has nil here and we render
+            // nothing). The dashed arc reveals with the ball, slowly, so the
+            // eye can actually follow the shot the scenario describes.
             if let ox = diagram.ballOriginX, let oy = diagram.ballOriginY,
                let tx = diagram.ballTargetX, let ty = diagram.ballTargetY {
-                Path { p in
-                    p.move(to: CGPoint(x: ox * courtWidth, y: oy * courtHeight))
-                    p.addQuadCurve(
-                        to: CGPoint(x: tx * courtWidth, y: ty * courtHeight),
-                        control: CGPoint(x: ((ox + tx) / 2) * courtWidth,
-                                         y: (min(oy, ty) - 0.20) * courtHeight)
-                    )
+                let origin = CGPoint(x: ox * courtWidth, y: oy * courtHeight)
+                let target = CGPoint(x: tx * courtWidth, y: ty * courtHeight)
+                let control = CGPoint(x: ((ox + tx) / 2) * courtWidth,
+                                      y: (min(oy, ty) - 0.20) * courtHeight)
+
+                QuadTrailShape(progress: flight, origin: origin, control: control, target: target)
+                    .stroke(Color.white.opacity(0.88),
+                            style: StrokeStyle(lineWidth: 2.0, lineCap: .round, dash: [3, 7]))
+                    .shadow(color: .black.opacity(0.25), radius: 1.5)
+
+                // Landing pulse — a calm, slow ring once the ball has settled.
+                if settled {
+                    Circle()
+                        .stroke(AppPalette.gold.opacity(0.85), lineWidth: 2)
+                        .frame(width: 12, height: 12)
+                        .modifier(LandingPulse())
+                        .position(target)
                 }
-                .stroke(Color.white.opacity(0.88),
-                        style: StrokeStyle(lineWidth: 2.0, lineCap: .round, dash: [3, 7]))
-                .shadow(color: .black.opacity(0.25), radius: 1.5)
+
+                // The ball itself, following the arc.
+                Circle()
+                    .fill(Color(red: 0.93, green: 0.91, blue: 0.36))
+                    .overlay(Circle().stroke(.black.opacity(0.35), lineWidth: 1))
+                    .frame(width: 8, height: 8)
+                    .shadow(color: .black.opacity(0.3), radius: 2, y: 1)
+                    .opacity(flight > 0.01 ? 1 : 0)
+                    .modifier(QuadFollow(t: flight, origin: origin, control: control, target: target))
             }
 
             // Opponent marker — only when authored (mental questions skip it)
@@ -509,6 +534,8 @@ struct QuizCourtDiagramView: View {
                 courtMarker(label: "OP",
                             color: .white,
                             fill: AppPalette.ink.opacity(0.88))
+                    .scaleEffect(markersIn ? 1 : 0.35)
+                    .opacity(markersIn ? 1 : 0)
                     .position(x: ox * courtWidth, y: oy * courtHeight)
             }
 
@@ -516,7 +543,36 @@ struct QuizCourtDiagramView: View {
             courtMarker(label: "YOU",
                         color: .white,
                         fill: AppPalette.clay)
+                .scaleEffect(markersIn ? 1 : 0.35)
+                .opacity(markersIn ? 1 : 0)
                 .position(x: diagram.youX * courtWidth, y: diagram.youY * courtHeight)
+        }
+        .onAppear { playSequence() }
+        .onChange(of: diagram) { playSequence() }
+    }
+
+    /// One calm play-through: markers pop, the ball flies its arc in ~2s,
+    /// then the landing point pulses. Reduce Motion renders the settled
+    /// state immediately (exactly the old static diagram).
+    private func playSequence() {
+        markersIn = false
+        flight = 0
+        settled = false
+        guard !reduceMotion else {
+            markersIn = true
+            flight = 1
+            settled = true
+            return
+        }
+        withAnimation(.spring(response: 0.55, dampingFraction: 0.75).delay(0.25)) {
+            markersIn = true
+        }
+        withAnimation(.easeInOut(duration: 2.0).delay(0.9)) {
+            flight = 1
+        }
+        Task { @MainActor in
+            try? await Task.sleep(nanoseconds: 3_000_000_000)
+            settled = true
         }
     }
 
@@ -532,6 +588,67 @@ struct QuizCourtDiagramView: View {
                 .tracking(0.5)
                 .foregroundStyle(color)
         }
+    }
+}
+
+// MARK: - Court diagram animation helpers
+
+/// Quad-curve trail that reveals from origin toward target as `progress`
+/// goes 0→1 — the visible path the animated ball has covered so far.
+struct QuadTrailShape: Shape {
+    var progress: CGFloat
+    let origin: CGPoint
+    let control: CGPoint
+    let target: CGPoint
+
+    var animatableData: CGFloat {
+        get { progress }
+        set { progress = newValue }
+    }
+
+    func path(in rect: CGRect) -> Path {
+        var p = Path()
+        p.move(to: origin)
+        p.addQuadCurve(to: target, control: control)
+        return p.trimmedPath(from: 0, to: max(0, min(1, progress)))
+    }
+}
+
+/// Positions content along the same quadratic bezier at parameter `t` —
+/// keeps the ball glued to the visible trail tip.
+struct QuadFollow: ViewModifier, Animatable {
+    var t: CGFloat
+    let origin: CGPoint
+    let control: CGPoint
+    let target: CGPoint
+
+    var animatableData: CGFloat {
+        get { t }
+        set { t = newValue }
+    }
+
+    func body(content: Content) -> some View {
+        let clamped = max(0, min(1, t))
+        let mt = 1 - clamped
+        let x = mt * mt * origin.x + 2 * mt * clamped * control.x + clamped * clamped * target.x
+        let y = mt * mt * origin.y + 2 * mt * clamped * control.y + clamped * clamped * target.y
+        content.position(x: x, y: y)
+    }
+}
+
+/// Slow, repeating landing-spot pulse (scale up + fade out).
+struct LandingPulse: ViewModifier {
+    @State private var expanded = false
+
+    func body(content: Content) -> some View {
+        content
+            .scaleEffect(expanded ? 2.4 : 0.7)
+            .opacity(expanded ? 0 : 0.9)
+            .onAppear {
+                withAnimation(.easeOut(duration: 2.2).repeatForever(autoreverses: false)) {
+                    expanded = true
+                }
+            }
     }
 }
 

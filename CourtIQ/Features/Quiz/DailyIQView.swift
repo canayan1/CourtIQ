@@ -57,6 +57,8 @@ struct DailyIQView: View {
                 phase = .summary
             case "placementResult":
                 phase = .placementResult
+            case "session":
+                phase = .session
             default:
                 break
             }
