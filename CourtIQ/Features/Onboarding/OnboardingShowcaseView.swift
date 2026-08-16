@@ -94,7 +94,7 @@ struct OnboardingShowcaseView: View {
     /// until the user swipes (taking control) or the last page is reached.
     /// Disabled under Reduce Motion.
     @State private var autoAdvance = true
-    private let autoTimer = Timer.publish(every: 4.2, on: .main, in: .common).autoconnect()
+    private let autoTimer = Timer.publish(every: 5.2, on: .main, in: .common).autoconnect()
 
     private var slides: [ShowcaseSlide] { ShowcaseSlide.all(copy) }
 

@@ -361,7 +361,7 @@ struct SwingAnalysisView: View {
                             .blendMode(.plusLighter)
                             .position(x: geo.size.width / 2,
                                       y: scan ? geo.size.height * 0.9 : geo.size.height * 0.1)
-                            .animation(.easeInOut(duration: 1.8).repeatForever(autoreverses: true),
+                            .animation(.easeInOut(duration: 2.6).repeatForever(autoreverses: true),
                                        value: scan)
                     }
                 }

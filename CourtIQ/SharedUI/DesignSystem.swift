@@ -12,14 +12,15 @@ import SwiftUI
 // MARK: - Motion tokens
 
 enum Motion {
-    /// Bouncy entrance with a touch of overshoot (tactile).
-    static let entrance = Animation.spring(response: 0.55, dampingFraction: 0.62)
-    /// Quick press scale (tactile feedback on tap).
+    /// Calm, settled entrance — slower glide, minimal overshoot. The app's
+    /// pace is deliberate (court-story tempo), not snappy-dashboard tempo.
+    static let entrance = Animation.spring(response: 0.8, dampingFraction: 0.8)
+    /// Quick press scale (tactile feedback on tap) — feedback stays fast.
     static let press = Animation.spring(response: 0.3, dampingFraction: 0.6)
-    /// Snappy reveal for in-place state changes.
-    static let reveal = Animation.snappy(duration: 0.4)
-    /// Per-item delay step for a staggered entrance.
-    static let stagger: Double = 0.07
+    /// Smooth reveal for in-place state changes.
+    static let reveal = Animation.smooth(duration: 0.55)
+    /// Per-item delay step — each card visibly follows the previous one.
+    static let stagger: Double = 0.12
 }
 
 // MARK: - Typography (Dynamic Type–aware)
