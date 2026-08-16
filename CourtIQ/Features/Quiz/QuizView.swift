@@ -96,7 +96,8 @@ struct QuizView: View {
         VStack(alignment: .leading, spacing: 0) {
             // Court diagram — editorial-style single court on parchment.
             // QuizCourtDiagramView manages its own height (288pt).
-            QuizCourtDiagramView(diagram: question.resolvedDiagram)
+            QuizCourtDiagramView(diagram: question.resolvedDiagram,
+                                 play: QuizPlayLibrary.play(for: question.id))
                 .overlay(alignment: .topTrailing) {
                     Text(question.difficulty.title.uppercased())
                         .appFont(10, weight: .heavy)

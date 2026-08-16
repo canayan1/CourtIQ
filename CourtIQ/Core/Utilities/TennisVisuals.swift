@@ -415,6 +415,11 @@ struct StreakRing: View {
 // side margin (top-left) so it never overlaps the court.
 struct QuizCourtDiagramView: View {
     var diagram: QuizCourtDiagram
+    /// Optional choreographed story (multi-player, multi-shot) from
+    /// `quiz_plays.json` — doubles gets all FOUR players and the rally builds
+    /// shot by shot into the gold answer. Falls back to the single-shot
+    /// diagram when nil (or for mental scenarios).
+    var play: QuizPlay? = nil
 
     // Dimensional constants — the court is the focal element, parchment
     // simply gives it room to breathe.
@@ -430,6 +435,12 @@ struct QuizCourtDiagramView: View {
     @State private var markersIn = false
     @State private var flight: CGFloat = 0
     @State private var settled = false
+    // Multi-shot play state: how many shots have fully landed, which one is
+    // in the air (with its own progress), and whether movers have moved.
+    @State private var completedShots = 0
+    @State private var activeShot = -1
+    @State private var activeProgress: CGFloat = 0
+    @State private var playersMoved = false
 
     private var surface: AppPalette.CourtSurface {
         switch diagram.surface {
@@ -493,6 +504,151 @@ struct QuizCourtDiagramView: View {
 
     @ViewBuilder
     private var markerOverlay: some View {
+        if let play, !play.shots.isEmpty, play.mode != "mental" {
+            playOverlay(play)
+                // .task(id:) auto-cancels + restarts when the question changes.
+                .task(id: diagram) { await runPlay(play) }
+        } else {
+            legacyOverlay   // carries its own onAppear/onChange sequencing
+        }
+    }
+
+    // MARK: Choreographed story (multi-player, multi-shot)
+
+    private func point(_ xy: [Double]) -> CGPoint {
+        CGPoint(x: (xy.first ?? 0.5) * courtWidth,
+                y: (xy.count > 1 ? xy[1] : 0.5) * courtHeight)
+    }
+
+    /// Top-down courts curve shots SIDEWAYS, not "up": a gentle banana bow
+    /// perpendicular to the shot line (like a tactics board), clamped inside
+    /// the court — never a candy-cane hook at the landing point.
+    private func arcControl(_ a: CGPoint, _ b: CGPoint) -> CGPoint {
+        let mid = CGPoint(x: (a.x + b.x) / 2, y: (a.y + b.y) / 2)
+        let dx = b.x - a.x, dy = b.y - a.y
+        let length = max(1, hypot(dx, dy))
+        let bow = min(16, 0.12 * length)
+        return CGPoint(x: min(max(mid.x - dy / length * bow, 4), courtWidth - 4),
+                       y: min(max(mid.y + dx / length * bow, 4), courtHeight - 4))
+    }
+
+    @ViewBuilder
+    private func playOverlay(_ play: QuizPlay) -> some View {
+        ZStack {
+            // Landed shots stay on court as the story accumulates.
+            ForEach(Array(play.shots.enumerated()), id: \.offset) { index, shot in
+                let from = point(shot.from), to = point(shot.to)
+                let isAnswer = shot.answer == true
+                if index < completedShots {
+                    shotTrail(from: from, to: to, progress: 1, isAnswer: isAnswer)
+                    if isAnswer && settled {
+                        Circle()
+                            .stroke(AppPalette.gold.opacity(0.85), lineWidth: 2)
+                            .frame(width: 12, height: 12)
+                            .modifier(LandingPulse())
+                            .position(to)
+                    }
+                } else if index == activeShot {
+                    shotTrail(from: from, to: to, progress: activeProgress, isAnswer: isAnswer)
+                    Circle()
+                        .fill(Color(red: 0.93, green: 0.91, blue: 0.36))
+                        .overlay(Circle().stroke(.black.opacity(0.35), lineWidth: 1))
+                        .frame(width: 8, height: 8)
+                        .shadow(color: .black.opacity(0.3), radius: 2, y: 1)
+                        .opacity(activeProgress > 0.01 ? 1 : 0)
+                        .modifier(QuadFollow(t: activeProgress, origin: from,
+                                             control: arcControl(from, to), target: to))
+                }
+            }
+
+            // Players — all of them (4 in doubles). Movers glide to their
+            // destination on the answer shot (poach / approach / switch).
+            ForEach(Array(play.players.enumerated()), id: \.offset) { _, player in
+                let base = CGPoint(x: player.x * courtWidth, y: player.y * courtHeight)
+                let dest = player.move.map(point)
+                let shown = (playersMoved ? (dest ?? base) : base)
+                courtMarker(label: playLabel(player.team),
+                            color: .white,
+                            fill: player.team == "opp"
+                                ? AppPalette.ink.opacity(0.88)
+                                : AppPalette.clay)
+                    .scaleEffect(markersIn ? 1 : 0.35)
+                    .opacity(markersIn ? 1 : 0)
+                    .position(shown)
+            }
+        }
+    }
+
+    private func playLabel(_ team: String) -> String {
+        switch team {
+        case "you": return "YOU"
+        case "partner": return "P"
+        default: return "OP"
+        }
+    }
+
+    @ViewBuilder
+    private func shotTrail(from: CGPoint, to: CGPoint, progress: CGFloat, isAnswer: Bool) -> some View {
+        let shape = QuadTrailShape(progress: progress, origin: from,
+                                   control: arcControl(from, to), target: to)
+        if isAnswer {
+            shape
+                .stroke(AppPalette.gold,
+                        style: StrokeStyle(lineWidth: 2.6, lineCap: .round))
+                .shadow(color: AppPalette.gold.opacity(0.6), radius: 3)
+        } else {
+            shape
+                .stroke(Color.white.opacity(0.8),
+                        style: StrokeStyle(lineWidth: 1.8, lineCap: .round, dash: [3, 6]))
+                .shadow(color: .black.opacity(0.2), radius: 1)
+        }
+    }
+
+    /// The story, in real time: markers pop, each setup shot flies (~1.2s),
+    /// then the ANSWER shot lands in gold (~1.8s) while movers reposition.
+    @MainActor
+    private func runPlay(_ play: QuizPlay) async {
+        completedShots = 0
+        activeShot = -1
+        activeProgress = 0
+        playersMoved = false
+        settled = false
+        markersIn = false
+        guard !reduceMotion else {
+            markersIn = true
+            completedShots = play.shots.count
+            playersMoved = true
+            settled = true
+            return
+        }
+        withAnimation(.spring(response: 0.55, dampingFraction: 0.75).delay(0.2)) {
+            markersIn = true
+        }
+        try? await Task.sleep(nanoseconds: 850_000_000)
+        for (index, shot) in play.shots.enumerated() {
+            if Task.isCancelled { return }
+            let isAnswer = shot.answer == true
+            activeShot = index
+            activeProgress = 0
+            let duration = isAnswer ? 1.8 : 1.2
+            withAnimation(.easeInOut(duration: duration)) {
+                activeProgress = 1
+            }
+            if isAnswer {
+                withAnimation(.easeInOut(duration: 1.2).delay(0.3)) {
+                    playersMoved = true
+                }
+            }
+            try? await Task.sleep(nanoseconds: UInt64((duration + 0.25) * 1_000_000_000))
+            completedShots = index + 1
+        }
+        settled = true
+    }
+
+    // MARK: Legacy single-shot diagram (no play authored / mental)
+
+    @ViewBuilder
+    private var legacyOverlay: some View {
         ZStack {
             // Ball flight — drawn only when all four origin/target coords are
             // non-nil (mental category default has nil here and we render
@@ -502,8 +658,7 @@ struct QuizCourtDiagramView: View {
                let tx = diagram.ballTargetX, let ty = diagram.ballTargetY {
                 let origin = CGPoint(x: ox * courtWidth, y: oy * courtHeight)
                 let target = CGPoint(x: tx * courtWidth, y: ty * courtHeight)
-                let control = CGPoint(x: ((ox + tx) / 2) * courtWidth,
-                                      y: (min(oy, ty) - 0.20) * courtHeight)
+                let control = arcControl(origin, target)
 
                 QuadTrailShape(progress: flight, origin: origin, control: control, target: target)
                     .stroke(Color.white.opacity(0.88),

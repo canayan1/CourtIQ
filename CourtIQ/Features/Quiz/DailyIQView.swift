@@ -18,6 +18,17 @@ struct DailyIQView: View {
     @State private var xpBefore = 0
     @State private var lastScore = 0
     @State private var lastTotal = 0
+    #if DEBUG
+    /// QC-only session override (see the QC_IQ_PHASE hook below).
+    @State private var qcQuiz: Quiz?
+    #endif
+
+    private var sessionQuiz: Quiz {
+        #if DEBUG
+        if let qcQuiz { return qcQuiz }
+        #endif
+        return iq.todaySession()
+    }
 
     var body: some View {
         Group {
@@ -32,7 +43,7 @@ struct DailyIQView: View {
             case .placementResult:
                 placementResult
             case .session:
-                QuizView(quiz: iq.todaySession(), title: lang.t("iq.daily_title")) { summary in
+                QuizView(quiz: sessionQuiz, title: lang.t("iq.daily_title")) { summary in
                     lastScore = summary.score
                     lastTotal = summary.totalQuestions
                     iq.recordSession(results: summary.perQuestionResults ?? [:])
@@ -58,6 +69,13 @@ struct DailyIQView: View {
             case "placementResult":
                 phase = .placementResult
             case "session":
+                // Optional QC_IQ_CAT=doubles etc. pins the session to a
+                // category's first unit (deterministic screenshots).
+                if let raw = ProcessInfo.processInfo.environment["QC_IQ_CAT"],
+                   let category = QuizCategory(rawValue: raw),
+                   let unit = iq.units(for: category).first {
+                    qcQuiz = iq.practiceQuiz(for: unit)
+                }
                 phase = .session
             default:
                 break

@@ -375,3 +375,39 @@ extension Quiz {
         )
     ]
 }
+
+// MARK: - Quiz play choreography (animated court stories)
+
+/// One animated "play" for a scenario: the players on court (4 in doubles)
+/// and the shot sequence ending in the recommended (answer) shot. Generated
+/// from the same choreography engine as the marketing reels and bundled as
+/// `quiz_plays.json`, so the app's court tells the exact same story.
+struct QuizPlayPlayer: Codable, Hashable {
+    let team: String            // "you" | "partner" | "opp"
+    let x: Double
+    let y: Double
+    /// Optional [x, y] destination the player moves to on the answer shot
+    /// (poach, approach, switch…).
+    let move: [Double]?
+}
+
+struct QuizPlayShot: Codable, Hashable {
+    let from: [Double]          // [x, y] normalized court coords
+    let to: [Double]
+    let answer: Bool?
+}
+
+struct QuizPlay: Codable, Hashable {
+    let mode: String?           // "mental" → no rally; calm static beat
+    let players: [QuizPlayPlayer]
+    let shots: [QuizPlayShot]
+}
+
+enum QuizPlayLibrary {
+    private static let plays: [String: QuizPlay] =
+        BundleContentLoader.load([String: QuizPlay].self, named: "quiz_plays") ?? [:]
+
+    static func play(for questionID: String) -> QuizPlay? {
+        plays[questionID]
+    }
+}
