@@ -139,10 +139,12 @@ All claims honest/measurable (156 scenarios, real screens). Swing is "Beta".
 2. Daily IQ — "5 scenarios a day. 2 minutes."
 3. Placement — "8 questions find your blind spot"
 4. Session complete — "Watch your IQ climb"
-5+ existing: Coach, Doubles fit, Matches (reuse 1.0.3 captures)
+5. Choose your path — "Instant AI — or a real coach's eyes" (05_choose_your_path.png)
+6+ existing: Coach, Doubles fit, Matches (reuse 1.0.3 captures)
 
 **What's New (1.0.4):**
 `Meet Daily IQ - a 2-minute daily session built from 156 real match scenarios.
+- NEW: Choose your path on swing feedback - instant AI analysis, or join the waitlist for reviews by a real tennis coach
 - Placement test: 8 questions set your baseline Tennis IQ and find your blind spot
 - Daily session: your weakest category first, plus one review
 - Skill path: climb every category from foundation to advanced tactics
