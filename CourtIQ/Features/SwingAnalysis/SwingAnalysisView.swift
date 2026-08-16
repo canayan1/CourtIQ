@@ -189,6 +189,8 @@ struct SwingAnalysisView: View {
 
                 primaryButton(copy.continueCTA) { vm.phase = .capture }
                     .padding(.top, 4)
+
+                CoachReviewInterestCard(source: "setup")
             }
             .padding(20)
         }
@@ -418,6 +420,8 @@ struct SwingAnalysisView: View {
                     coachSeed = CoachSeed(text: coachSeedText(for: text))
                 }
                 .padding(.top, 4)
+
+                CoachReviewInterestCard(source: "result")
 
                 secondaryButton(copy.analyzeAnotherCTA, systemImage: "arrow.counterclockwise") {
                     pendingVideoURL = nil
@@ -675,5 +679,148 @@ final class SwingAnalysisViewModel {
         errorMessage = message
         phase = .capture
         showError = true
+    }
+}
+
+// MARK: - Coach Review G0 interest card
+
+/// Demand gate for the human Coach Review marketplace (docs/COACH-REVIEW-PLAN.md).
+/// No purchase, no upload sharing, no backend — an honest "notify me" that
+/// measures whether anyone wants a real coach's review before we build it.
+private struct CoachReviewInterestCard: View {
+    let source: String
+    @EnvironmentObject private var lang: LanguageManager
+    @AppStorage("CourtIQ.CoachReview.Interested") private var interested = false
+    @State private var showDetails = false
+
+    var body: some View {
+        Button {
+            Haptics.tap()
+            showDetails = true
+        } label: {
+            HStack(alignment: .top, spacing: 12) {
+                Image(systemName: interested ? "checkmark.seal.fill" : "person.wave.2.fill")
+                    .font(.title3)
+                    .foregroundStyle(AppPalette.goldText)
+                    .frame(width: 30)
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(lang.t("coachreview.card_eyebrow"))
+                        .font(.caption2.weight(.heavy)).kerning(0.8)
+                        .foregroundStyle(AppPalette.goldText)
+                    Text(interested ? lang.t("coachreview.card_joined")
+                                    : lang.t("coachreview.card_title"))
+                        .font(.subheadline.weight(.bold))
+                        .foregroundStyle(AppPalette.ink)
+                        .fixedSize(horizontal: false, vertical: true)
+                    if !interested {
+                        Text(lang.t("coachreview.card_sub"))
+                            .font(.footnote)
+                            .foregroundStyle(AppPalette.inkSoft)
+                    }
+                }
+                Spacer(minLength: 6)
+                Image(systemName: "chevron.right")
+                    .font(.footnote.weight(.semibold))
+                    .foregroundStyle(AppPalette.goldText.opacity(0.7))
+                    .padding(.top, 4)
+            }
+            .padding(14)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(AppPalette.goldTint.opacity(0.55))
+            .overlay(
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .stroke(AppPalette.gold.opacity(0.4), lineWidth: 1)
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(PressableCardStyle())
+        .sheet(isPresented: $showDetails) { detailsSheet }
+    }
+
+    private var detailsSheet: some View {
+        NavigationStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 18) {
+                    Text(lang.t("coachreview.sheet_title"))
+                        .font(.title2.bold())
+                        .foregroundStyle(AppPalette.ink)
+
+                    VStack(alignment: .leading, spacing: 12) {
+                        bullet("waveform", lang.t("coachreview.point1"))
+                        bullet("list.bullet.rectangle", lang.t("coachreview.point2"))
+                        bullet("target", lang.t("coachreview.point3"))
+                        bullet("clock.badge.checkmark", lang.t("coachreview.point4"))
+                    }
+
+                    // Anonymous by design: the founding coach reviews every
+                    // video personally, but the persona stays "a real tennis
+                    // coach" — no name, no identity (owner's call).
+                    Text(lang.t("coachreview.coach_line"))
+                        .font(.footnote.weight(.medium))
+                        .foregroundStyle(AppPalette.inkSoft)
+                        .fixedSize(horizontal: false, vertical: true)
+
+                    Text(lang.t("coachreview.price"))
+                        .font(.subheadline.weight(.bold))
+                        .foregroundStyle(AppPalette.clayText)
+
+                    // The privacy promise, stated BEFORE launch — the policy in
+                    // docs/COACH-REVIEW-POLICY.md is the binding source.
+                    HStack(alignment: .top, spacing: 10) {
+                        Image(systemName: "lock.shield.fill")
+                            .foregroundStyle(AppPalette.moss)
+                        Text(lang.t("coachreview.privacy"))
+                            .font(.footnote)
+                            .foregroundStyle(AppPalette.inkSoft)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    .padding(12)
+                    .background(AppPalette.mossTint.opacity(0.5),
+                                in: RoundedRectangle(cornerRadius: 12))
+
+                    Button {
+                        Haptics.success()
+                        if !interested {
+                            interested = true
+                            AppAnalytics.shared.log(AnalyticsEvent.coachReviewInterest,
+                                                    ["source": source])
+                        }
+                        showDetails = false
+                    } label: {
+                        Text(interested ? lang.t("coachreview.done")
+                                        : lang.t("coachreview.cta"))
+                            .font(.headline)
+                            .foregroundStyle(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 16)
+                            .background(AppPalette.clay,
+                                        in: RoundedRectangle(cornerRadius: 16))
+                    }
+                    .buttonStyle(PressableCardStyle())
+                }
+                .padding(20)
+            }
+            .background(AppPalette.cream)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(lang.t("coachreview.done")) { showDetails = false }
+                }
+            }
+        }
+        .presentationDetents([.medium, .large])
+    }
+
+    private func bullet(_ symbol: String, _ text: String) -> some View {
+        HStack(alignment: .top, spacing: 10) {
+            Image(systemName: symbol)
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(AppPalette.clay)
+                .frame(width: 24)
+            Text(text)
+                .font(.subheadline)
+                .foregroundStyle(AppPalette.ink)
+                .fixedSize(horizontal: false, vertical: true)
+        }
     }
 }

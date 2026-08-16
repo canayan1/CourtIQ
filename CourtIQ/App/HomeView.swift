@@ -125,9 +125,13 @@ struct HomeView: View {
         }
         .background(AppPalette.cream)
         #if DEBUG
-        // Headless QC: SIMCTL_CHILD_QC_OPEN=iq auto-pushes the Daily IQ flow.
+        // Headless QC: SIMCTL_CHILD_QC_OPEN=iq|swing auto-pushes that flow.
         .onAppear {
-            if ProcessInfo.processInfo.environment["QC_OPEN"] == "iq" { route = .tennisIQ }
+            switch ProcessInfo.processInfo.environment["QC_OPEN"] {
+            case "iq":    route = .tennisIQ
+            case "swing": route = .swing
+            default:      break
+            }
         }
         #endif
         .navigationDestination(item: $route) { dest in

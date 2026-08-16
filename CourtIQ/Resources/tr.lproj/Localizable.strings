@@ -1050,3 +1050,19 @@
 "iq.unit_fmt" = "Ünite %d";
 "iq.locked" = "Kilitli";
 "common.beta" = "BETA";
+
+/* Coach Review G0 ilgi kartı */
+"coachreview.card_eyebrow" = "GERÇEK ANTRENÖR · YAKINDA";
+"coachreview.card_title" = "Gerçek bir tenis antrenöründen inceleme al";
+"coachreview.card_sub" = "72 saatte sesli inceleme + karne · $19.99";
+"coachreview.card_joined" = "Listedesin — açılışta haber vereceğiz";
+"coachreview.sheet_title" = "Videonu gerçek bir antrenör inceliyor";
+"coachreview.point1" = "Vuruşlarına özel 2–3 dk sesli inceleme";
+"coachreview.point2" = "5 maddelik karne + zaman damgalı notlar";
+"coachreview.point3" = "En önemli TEK düzeltme — ve onu çalıştıran drill";
+"coachreview.point4" = "72 saat içinde teslim";
+"coachreview.price" = "Açılış fiyatı $19.99 · bugün ücret yok";
+"coachreview.privacy" = "Videonu yalnızca inceleyen antrenör izleyebilir — sadece izleme; indirme ve paylaşma yok. Pazarlama kullanımı ayrıca senin onayına bağlı.";
+"coachreview.cta" = "Açılınca haber ver";
+"coachreview.done" = "Tamam";
+"coachreview.coach_line" = "Tek antrenör, senin videon, tam odak — her inceleme elle, kişiye özel hazırlanır; otomasyon yok.";

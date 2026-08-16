@@ -1050,3 +1050,19 @@
 "iq.unit_fmt" = "Unit %d";
 "iq.locked" = "Locked";
 "common.beta" = "BETA";
+
+/* Coach Review G0 interest card */
+"coachreview.card_eyebrow" = "REAL COACH · COMING SOON";
+"coachreview.card_title" = "Get a review from a real tennis coach";
+"coachreview.card_sub" = "Voice review + scorecard in 72h · $19.99";
+"coachreview.card_joined" = "You're on the list — we'll notify you at launch";
+"coachreview.sheet_title" = "A real coach reviews your video";
+"coachreview.point1" = "2–3 min voice review of your actual strokes";
+"coachreview.point2" = "5-point scorecard + timestamped notes";
+"coachreview.point3" = "The #1 fix that matters most — and the drill for it";
+"coachreview.point4" = "Delivered within 72 hours";
+"coachreview.price" = "Launch price $19.99 · no charge today";
+"coachreview.privacy" = "Only your reviewing coach can watch — streaming only, never downloaded, never shared. Any marketing use needs your separate OK.";
+"coachreview.cta" = "Notify me at launch";
+"coachreview.done" = "Done";
+"coachreview.coach_line" = "One coach, your video, full attention — every review is prepared personally, never automated.";
