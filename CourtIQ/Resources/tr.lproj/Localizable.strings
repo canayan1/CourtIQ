@@ -1066,3 +1066,7 @@
 "coachreview.cta" = "Açılınca haber ver";
 "coachreview.done" = "Tamam";
 "coachreview.coach_line" = "Tek antrenör, senin videon, tam odak — her inceleme elle, kişiye özel hazırlanır; otomasyon yok.";
+"coachreview.path_title" = "Yolunu seç";
+"coachreview.ai_eyebrow" = "AI ANALİZ · ANINDA";
+"coachreview.ai_title" = "Şimdi AI ile analiz et";
+"coachreview.ai_sub" = "Dahil · yaklaşık 1 dakikada sonuç";

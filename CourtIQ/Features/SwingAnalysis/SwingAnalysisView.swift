@@ -187,10 +187,49 @@ struct SwingAnalysisView: View {
                     }
                 }
 
-                primaryButton(copy.continueCTA) { vm.phase = .capture }
-                    .padding(.top, 4)
+                // The storefront moment: two feedback paths, equal billing —
+                // instant AI (included) or a real coach ($, 72h). The AI stops
+                // being "the promise" and becomes the fast lane.
+                VStack(alignment: .leading, spacing: 10) {
+                    Text(lang.t("coachreview.path_title"))
+                        .font(.headline).foregroundStyle(AppPalette.ink)
+                        .padding(.top, 4)
 
-                CoachReviewInterestCard(source: "setup")
+                    Button {
+                        Haptics.tap()
+                        vm.phase = .capture
+                    } label: {
+                        HStack(alignment: .top, spacing: 12) {
+                            Image(systemName: "sparkles")
+                                .font(.title3)
+                                .foregroundStyle(.white)
+                                .frame(width: 30)
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(lang.t("coachreview.ai_eyebrow"))
+                                    .font(.caption2.weight(.heavy)).kerning(0.8)
+                                    .foregroundStyle(.white.opacity(0.85))
+                                Text(lang.t("coachreview.ai_title"))
+                                    .font(.subheadline.weight(.bold))
+                                    .foregroundStyle(.white)
+                                Text(lang.t("coachreview.ai_sub"))
+                                    .font(.footnote)
+                                    .foregroundStyle(.white.opacity(0.9))
+                            }
+                            Spacer(minLength: 6)
+                            Image(systemName: "chevron.right")
+                                .font(.footnote.weight(.semibold))
+                                .foregroundStyle(.white.opacity(0.8))
+                                .padding(.top, 4)
+                        }
+                        .padding(14)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(AppPalette.clay, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+                        .contentShape(Rectangle())
+                    }
+                    .buttonStyle(PressableCardStyle())
+
+                    CoachReviewInterestCard(source: "setup")
+                }
             }
             .padding(20)
         }

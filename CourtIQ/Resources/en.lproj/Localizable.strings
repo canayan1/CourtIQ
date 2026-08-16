@@ -1066,3 +1066,7 @@
 "coachreview.cta" = "Notify me at launch";
 "coachreview.done" = "Done";
 "coachreview.coach_line" = "One coach, your video, full attention — every review is prepared personally, never automated.";
+"coachreview.path_title" = "Choose your path";
+"coachreview.ai_eyebrow" = "AI ANALYSIS · INSTANT";
+"coachreview.ai_title" = "Analyze with AI now";
+"coachreview.ai_sub" = "Included · results in about a minute";
