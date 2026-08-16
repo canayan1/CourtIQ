@@ -859,7 +859,7 @@ private struct CoachReviewInterestCard: View {
                         tierRow(id: "level2", icon: "2.circle.fill",
                                 title: lang.t("coachreview.tier_level2"),
                                 sub: lang.t("coachreview.tier_level2_sub"),
-                                cta: lang.t("coachreview.join_waitlist"))
+                                cta: lang.t("coachreview.get_quote"))
                         tierRow(id: "level3", icon: "3.circle.fill",
                                 title: lang.t("coachreview.tier_level3"),
                                 sub: lang.t("coachreview.tier_level3_sub"),

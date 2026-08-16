@@ -1070,13 +1070,13 @@
 "coachreview.ai_eyebrow" = "AI ANALYSIS · INSTANT";
 "coachreview.ai_title" = "Analyze with AI now";
 "coachreview.ai_sub" = "Included · results in about a minute";
-"coachreview.roster_title" = "More reviewers — unlocked by demand";
+"coachreview.roster_title" = "Coaches in our network — unlocked by demand";
 "coachreview.tier_player" = "Advanced Player Review";
 "coachreview.tier_player_sub" = "Honest take from a high-level player · budget option";
 "coachreview.tier_level2" = "Level 2 Certified Coach";
-"coachreview.tier_level2_sub" = "Deeper technical review";
+"coachreview.tier_level2_sub" = "Level 2 certified coach based in Türkiye · deeper technical review";
 "coachreview.tier_level3" = "Level 3 Certified Coach";
-"coachreview.tier_level3_sub" = "Full game plan · custom scope";
+"coachreview.tier_level3_sub" = "Level 3 certified coach based in Ireland · full game plan, custom scope";
 "coachreview.join_waitlist" = "Join waitlist";
 "coachreview.get_quote" = "Get a quote";
 "coachreview.on_list" = "On the list";
