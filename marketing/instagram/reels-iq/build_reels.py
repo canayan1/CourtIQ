@@ -81,7 +81,7 @@ def caption_block(q):
 > Why: {q['explanation']}
 > 👉 {q.get('takeaway','')}
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > {tags}
 """
 

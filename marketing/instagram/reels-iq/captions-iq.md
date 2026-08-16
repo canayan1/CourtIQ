@@ -18,7 +18,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Once the returner shifts, the T line opens. A T serve punishes the anticipation without requiring extra pace.
 > 👉 Patterns work until they're read — then switch direction, not pace.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisserve #serve
 
 ### `serve_022` · SERVE · serve +1 pattern
@@ -32,7 +32,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: The wide serve has opened the court. The forehand into the open deuce corner is a high-percentage finishing ball.
 > 👉 The serve opens the court; the +1 uses that space.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisserve #serve
 
 ### `serve_023` · SERVE · first serve percentage under fatigue
@@ -46,7 +46,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Fatigue shortens your kinetic chain. Taking pace off and adding spin keeps the serve effective without straining.
 > 👉 When tired, trade pace for placement — don't chase aces.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisserve #serve
 
 ### `serve_024` · SERVE · second serve targeting
@@ -60,7 +60,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: A deep returner is vulnerable to high-bouncing balls that force upward contact from shoulder height or above.
 > 👉 When they stand deep, bounce the ball up — don't dink it in.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisserve #serve
 
 ### `serve_025` · SERVE · break point serve
@@ -74,7 +74,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: On break point, the most valuable outcome is making a first serve. A first serve at 80% still wins points — a missed one hands the initiative to an aggressive returner.
 > 👉 Break points aren't about aces — they're about first-serve percentage.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisserve #serve
 
 ### `serve_026` · SERVE · ad-court T serve
@@ -88,7 +88,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Shifting toward the alley opens the T completely, forcing a jammed backhand return.
 > 👉 Read returner positioning before every serve — adjust to their stance, not yours.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisserve #serve
 
 ### `serve_027` · SERVE · set-closing serve game
@@ -102,7 +102,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Changing your approach under pressure is what causes choking. Stick to what got you the lead.
 > 👉 To close a set, keep serving how you won it.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisserve #serve
 
 ### `serve_028` · SERVE · body serve vs tall player
@@ -116,7 +116,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Tall players with reach cover wide serves well. A body serve removes their reach advantage and forces a cramped swing.
 > 👉 Against long-armed players, crowd them — don't stretch them.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisserve #serve
 
 ### `serve_029` · SERVE · after a double fault
@@ -130,7 +130,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Easing up after a double fault produces a short, attackable ball and feeds the anxiety cycle. Trust your mechanics.
 > 👉 A double fault is one point — not a signal to change your serve.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisserve #serve
 
 ### `serve_030` · SERVE · wind management
@@ -144,7 +144,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: A lower toss spends less time in the air and is less affected by wind drift. Pace doesn't fix toss drift.
 > 👉 In wind, shorten the toss — don't chase pace.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisserve #serve
 
 ### `serve_hard_1` · SERVE · reading a return tendency
@@ -158,7 +158,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: You've read a reliable tendency. The body serve jams the backhand and forces the short floater — so trigger it on purpose, anticipate the reply, move in, and attack it on the rise. You're hunting the +1, not the ace.
 > 👉 When you've read a return tendency, serve to trigger it — then pounce on the predictable reply.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisserve #serve
 
 ### `serve_100` · SERVE · serve +1 setup
@@ -172,7 +172,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: The T serve shrinks the returner's angles, so the return usually comes back central — exactly where you can run around and load your forehand +1.
 > 👉 Pick the serve that buys your best shot the second ball.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisserve #serve
 
 ### `serve_101` · SERVE · second serve margin
@@ -186,7 +186,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Body spin jams the returner — no angle to attack — and the spin gives you net clearance when your arm is tight.
 > 👉 Under pressure: spin for margin, body for safety.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisserve #serve
 
 ### `serve_102` · SERVE · serving to returner position
@@ -200,7 +200,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Deep returners cover pace but not width. A wide slice pulls them farther with every step and opens the whole court for your +1.
 > 👉 Deep return position = attack with angle, not speed.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisserve #serve
 
 ### `serve_103` · SERVE · lefty ad-court pattern
@@ -214,7 +214,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: The lefty slice swings away from a right-hander's backhand in the ad court — the highest-percentage break-point escape in tennis.
 > 👉 Lefty in trouble = slice wide in the ad court.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisserve #serve
 
 ### `serve_104` · SERVE · first-serve percentage on big points
@@ -228,7 +228,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: First-serve points win at a far higher rate than second-serve points at every level. On set point, a 75% serve in beats a 100% serve out.
 > 👉 Big point = make the first serve, even at three-quarter pace.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisserve #serve
 
 ### `serve_105` · SERVE · kick serve usage
@@ -242,7 +242,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: A kick serve climbs above comfortable contact height — one-handers struggle most above the shoulder on the backhand side.
 > 👉 High kick to a one-hander's backhand is a free pressure tool.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisserve #serve
 
 ### `serve_106` · SERVE · pattern discipline after aces
@@ -256,7 +256,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Serving is a probability game: repeat winners until the returner shows an adjustment, then punish the adjustment. React to them, not to superstition.
 > 👉 Change your pattern off their adjustment, not your anxiety.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisserve #serve
 
 ### `serve_107` · SERVE · serve rhythm reset
@@ -270,7 +270,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Double faults usually come from a rushed, shortened motion. Slowing the ritual restores rhythm; a spin target restores margin.
 > 👉 After doubles: slower ritual, spinnier target.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisserve #serve
 
 ### `serve_108` · SERVE · deuce-court T logic
@@ -284,7 +284,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: In the deuce court a T serve arrives at a righty's backhand and gives the returner almost no angle to work with.
 > 👉 Deuce T = backhand + no angles for a right-hander.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisserve #serve
 
 ### `serve_109` · SERVE · serving with the wind
@@ -298,7 +298,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Tailwind adds length to everything. Spin brings the ball down earlier; aiming shorter keeps your margin inside the service line.
 > 👉 Wind behind you: add spin, shorten targets.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisserve #serve
 
 ### `serve_110` · SERVE · serve +1 court position
@@ -312,7 +312,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: The wide serve dragged them off court; the floating return gives you time. The open court is the percentage finish — behind them only once they anticipate.
 > 👉 Serve wide → +1 to the open court. Earn the fancy option later.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisserve #serve
 
 ### `serve_111` · SERVE · toss discipline
@@ -326,7 +326,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: You're allowed to catch a toss. Swinging at a drifting toss bakes the error in; catching it costs nothing and resets your rhythm.
 > 👉 Never swing at a toss you don't trust.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisserve #serve
 
 ### `serve_112` · SERVE · targeting the chip returner
@@ -340,7 +340,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: A chipped return is an invitation: it's slow and short. Following the serve with forward movement turns their neutral reply into your approach shot.
 > 👉 Against chippers, your serve's job is to buy the mid-court ball — go get it.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisserve #serve
 
 ### `serve_113` · SERVE · I-formation trigger
@@ -354,7 +354,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: A returner stepping in has shortened their own reaction time. A kicking body serve gives them no room to swing and punishes the aggressive position.
 > 👉 When they step in, serve INTO them, not away from them.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisserve #serve
 
 ### `serve_114` · SERVE · sun-side adjustment
@@ -368,7 +368,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Moving your stance a step or angling the toss out of the glare costs a little pace but saves the point-start. Conditions are tactical inputs, not excuses.
 > 👉 Adjust the ritual to the conditions before the score forces you.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisserve #serve
 
 
@@ -385,7 +385,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Deep middle neutralises angles and gives you time to recover. On a defensive block, centralising the ball is safer than any angle.
 > 👉 Defensive returns go deep and central — not wide.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisreturn #returngame
 
 ### `return_022` · RETURN · return position adjustment
@@ -399,7 +399,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Against slower serves, stepping inside the baseline takes time away from the server's next shot and pressures them immediately.
 > 👉 Return position is a weapon — match it to the server's pace.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisreturn #returngame
 
 ### `return_023` · RETURN · return intent before the toss
@@ -413,7 +413,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Decisions made before contact are calmer and cleaner. Reactive decisions at contact lead to tentative swings.
 > 👉 Decide the return direction before the ball leaves the server's hand.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisreturn #returngame
 
 ### `return_024` · RETURN · ad-court backhand return
@@ -427,7 +427,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: A high-bouncing wide kick serve is a poor ball to attack. Neutralising crosscourt gives you time to recover the middle.
 > 👉 Against kick serves pulling you off court, reset — don't counterpunch.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisreturn #returngame
 
 ### `return_025` · RETURN · split step timing
@@ -441,7 +441,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Landing just before contact means your feet are about to touch the ground as the serve is struck — giving you an explosive push toward the ball.
 > 👉 Land into the split just before the hit — not after.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisreturn #returngame
 
 ### `return_026` · RETURN · second serve attack
@@ -455,7 +455,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Moving up denies the kick its bounce height. Driving it crosscourt is the higher-percentage aggressive return — more court length and a lower net give you margin to set up a +1. Down the line is tempting but lower-percentage off a deep kicking ball.
 > 👉 Attack a second serve by moving forward — and go crosscourt for margin.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisreturn #returngame
 
 ### `return_027` · RETURN · return recovery step
@@ -469,7 +469,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Deep crosscourt returns give the server narrow angles. Covering the middle-third of the court positions you for most replies.
 > 👉 The return isn't the end of the point — recover immediately.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisreturn #returngame
 
 ### `return_028` · RETURN · chip-and-charge return
@@ -483,7 +483,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Chip-and-charge on a predictable second serve at 30-0 puts the slow-baseline opponent in a passing-shot situation they're uncomfortable in — without risking a critical score.
 > 👉 Chip-and-charge works in low-stakes moments against predictable serves.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisreturn #returngame
 
 ### `return_029` · RETURN · return breathing routine
@@ -497,7 +497,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: A single deep exhale anchors your focus and resets tension. It's the cleanest pre-return habit you can build.
 > 👉 One breath before the return — every time.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisreturn #returngame
 
 ### `return_030` · RETURN · return on break point
@@ -511,7 +511,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Data says another second serve is likely. Attacking position pressures the server, and even a neutral attacking return flips the point's geometry.
 > 👉 Break points reward informed aggression — not caution.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisreturn #returngame
 
 ### `return_hard_1` · RETURN · returning a big serve
@@ -525,7 +525,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Against a bomb on a fast court the realistic goal is a neutral return, not a winner. Shade toward the 70% target, shorten to a block, and aim deep down the middle — it cuts the server's next angle and buys time to recover.
 > 👉 Vs a big server: shade to the pattern, block deep middle, accept neutral — survive before you attack.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisreturn #returngame
 
 ### `return_100` · RETURN · default return target
@@ -539,7 +539,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Deep middle takes away the server's angles for the +1, clears the lowest part of the net, and buys you time to set your court position.
 > 👉 Deep middle is the return that never donates.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisreturn #returngame
 
 ### `return_101` · RETURN · second-serve attack position
@@ -553,7 +553,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: A weak second serve is a free attack — but only if you meet it early. Taking it on the rise steals the server's recovery time.
 > 👉 Move your feet UP before the second serve, not your swing speed.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisreturn #returngame
 
 ### `return_102` · RETURN · block return vs pace
@@ -567,7 +567,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Against big serves you don't need to add energy — you need to redirect it. A compact block keeps contact in front and the ball in play.
 > 👉 Their pace is a gift: block it back deep.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisreturn #returngame
 
 ### `return_103` · RETURN · break-point return intent
@@ -581,7 +581,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: On predictable big-point serves, the returner who has pre-committed wins the exchange. A planned forehand return converts far more break points than neutral reactions.
 > 👉 On break points, return with a decision, not a reaction.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisreturn #returngame
 
 ### `return_104` · RETURN · returning kick serves
@@ -595,7 +595,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: The kick's weapon is its bounce. Meeting the ball before the apex turns a shoulder-high problem into a waist-high rally ball.
 > 👉 Beat the kick with your feet (earlier), not your shoulder (higher).
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisreturn #returngame
 
 ### `return_105` · RETURN · return vs serve-and-volley
@@ -609,7 +609,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: A volleyer's nightmare is contact below net height mid-run. Low at the feet forces a defensive half-volley you can attack.
 > 👉 Against the rusher: make their first volley come from their shoelaces.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisreturn #returngame
 
 ### `return_106` · RETURN · return games mindset
@@ -623,7 +623,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: You don't need to win every return game — one break usually decides club sets. Concentrating energy on second serves and score pressure points is efficient aggression.
 > 👉 Return games are about ONE well-timed surge, not constant heroics.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisreturn #returngame
 
 ### `return_107` · RETURN · return ready position
@@ -637,7 +637,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: The split step at the server's contact loads both legs so your first move is explosive in either direction. Without it, you're reacting a beat late.
 > 👉 No split step, no return. Time it to their hit.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisreturn #returngame
 
 ### `return_108` · RETURN · reading the toss
@@ -651,7 +651,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Toss position is the most honest tell in tennis. A half-step head start converts an unreturnable slice into a makeable stretch — without overcommitting if you're wrong.
 > 👉 Watch the toss, steal a half-step, keep the other half honest.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisreturn #returngame
 
 ### `return_109` · RETURN · return +1 recovery
@@ -665,7 +665,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: The return is shot one of a rally, not the end of it. Recovering to the middle of their likely angles must be automatic before their next contact.
 > 👉 Return, recover, split — before you evaluate the shot.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisreturn #returngame
 
 ### `return_110` · RETURN · down-the-line return risk
@@ -679,7 +679,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Down the line crosses the highest net and gives the shortest court. It needs a short ball, early contact and balance — otherwise it's a donation dressed as bravery.
 > 👉 Line returns are earned by the serve's weakness, not your mood.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisreturn #returngame
 
 ### `return_111` · RETURN · body-serve escape
@@ -693,7 +693,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Against body serves, space is everything. A fast lateral shuffle plus compact backhand block is the highest-percentage escape at every level.
 > 👉 Move yourself, not just the racquet, on body serves.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisreturn #returngame
 
 ### `return_112` · RETURN · ad-court return target vs righty
@@ -707,7 +707,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Stretched wide, your priorities are height for safety and depth for time. Deep crosscourt travels the longest distance while you recover.
 > 👉 Stretched = high, deep, crosscourt. Save the line for balance.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisreturn #returngame
 
 ### `return_113` · RETURN · varying return position
@@ -721,7 +721,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Servers calibrate to a stationary target. Showing different depths — sometimes in, sometimes deep — forces recalibration every point and buys free misses.
 > 👉 Your return position is a message: keep changing what it says.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisreturn #returngame
 
 ### `return_114` · RETURN · first-serve return expectations
@@ -735,7 +735,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Even pros win few points against good first serves. Your job is to keep the makeable ones in play and feast on second serves — that's where sets are decided.
 > 👉 Judge your returning on second serves, not aces against you.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennisreturn #returngame
 
 
@@ -752,7 +752,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Crosscourt is the safest trajectory — lowest net, deepest landing zone. Direction change is a choice for short balls, not neutral exchanges.
 > 👉 Crosscourt until the ball says otherwise.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #baseline #rally
 
 ### `rally_022` · RALLY · moonball counter
@@ -766,7 +766,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Moonballs rely on time. Taking it on the rise inside the baseline removes that time and turns their defensive shot into your attacking one.
 > 👉 Don't let a moonball push you back — step forward instead.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #baseline #rally
 
 ### `rally_023` · RALLY · recovery position
@@ -780,7 +780,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Recovery isn't a fixed spot — it's the midpoint of your opponent's available reply angles. After a crosscourt from deuce, that's slightly ad side of centre.
 > 👉 Recover to the angle bisector — not the centre.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #baseline #rally
 
 ### `rally_024` · RALLY · rally length management
@@ -794,7 +794,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Fitness advantage compounds over long rallies. Making your opponent play one more ball than they're comfortable with multiplies over a match.
 > 👉 Use fitness as a tactic — don't just survive, extend.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #baseline #rally
 
 ### `rally_025` · RALLY · contact point consistency
@@ -808,7 +808,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Under fatigue, footwork slows and you reach for the ball instead of setting up. A contact point behind the hip costs power and control.
 > 👉 When tired, set your feet early — don't reach.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #baseline #rally
 
 ### `rally_026` · RALLY · transition ball
@@ -822,7 +822,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Short balls aren't winners — they're transition opportunities. Move in, load, and plan the next ball rather than forcing a single-shot winner.
 > 👉 Short balls are setups, not winners.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #baseline #rally
 
 ### `rally_027` · RALLY · margin over pace
@@ -836,7 +836,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Net-clearance margin is the fastest way to reduce unforced errors without changing style. One metre higher keeps shots in — the pace can stay.
 > 👉 When erroring, raise net clearance before changing pace.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #baseline #rally
 
 ### `rally_028` · RALLY · neutral-to-offensive transition
@@ -850,7 +850,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: A ball in that zone with low spin is a transition trigger. Flattening with intent pressures the next reply and moves you into position for a +2 finish.
 > 👉 Know your attack zone — mid-court with low spin is it.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #baseline #rally
 
 ### `rally_029` · RALLY · rally breathing rhythm
@@ -864,7 +864,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Exhaling at contact stabilises the core and keeps breathing rhythmic. Holding breath during rallies raises tension and tires you faster.
 > 👉 Exhale every contact — every ball.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #baseline #rally
 
 ### `rally_030` · RALLY · direction change quality
@@ -878,7 +878,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Direction change requires a slightly earlier contact point to redirect the ball precisely. Pace without precision just sends the ball wide of the line.
 > 👉 Direction change is a contact-point problem — not a pace problem.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #baseline #rally
 
 ### `rally_hard_1` · RALLY · changing the diagonal
@@ -892,7 +892,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: The shortening ball is your cue. Changing direction off a deep ball is low-percentage — instead, wait for the short one, step in, and flip the diagonal inside-out to their backhand. You change the pattern from strength, not desperation.
 > 👉 Change direction off the SHORT ball, not the deep one — let the rally hand you the opening.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #baseline #rally
 
 ### `rally_100` · RALLY · direction-change rule
@@ -906,7 +906,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Changing direction off a deep ball means hitting over the high net into the short court while off balance. The short/slow ball is the green light.
 > 👉 Change direction on YOUR terms — off the short ball.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #baseline #rally
 
 ### `rally_101` · RALLY · depth beats pace
@@ -920,7 +920,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Depth pushes opponents behind the baseline where their shots lose sting and errors multiply. Pace without depth sits in their strike zone.
 > 👉 Depth is the cheapest form of pressure.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #baseline #rally
 
 ### `rally_102` · RALLY · hitting behind the runner
@@ -934,7 +934,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Once a fast opponent commits to covering the open court, their momentum can't reverse. Hitting behind them wrong-foots the recovery.
 > 👉 Against fast runners: open the court, then hit behind.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #baseline #rally
 
 ### `rally_103` · RALLY · height as defense
@@ -948,7 +948,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Height equals time. A high deep middle ball travels slowly, lands far from both winners' corners, and lets you rebuild your court position.
 > 👉 In trouble, buy time with height — not risk with pace.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #baseline #rally
 
 ### `rally_104` · RALLY · short-ball recognition
@@ -962,7 +962,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Short + high = the rally's reward. Hitting deep off it while moving forward converts your earned advantage into court position and pressure.
 > 👉 Recognize the short ball early; the winner is two shots later.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #baseline #rally
 
 ### `rally_105` · RALLY · inside-out forehand setup
@@ -976,7 +976,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Pressure their backhand deep and the typical reply is a slower crosscourt into your backhand corner — exactly where you can run around and dictate inside-out.
 > 👉 Your forehand hunt starts two shots earlier, on their backhand.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #baseline #rally
 
 ### `rally_106` · RALLY · crosscourt margin logic
@@ -990,7 +990,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: The net is 15cm lower at the center strap, the diagonal gives ~2m more court, and crosscourt leaves you closer to the next likely ball.
 > 👉 Crosscourt isn't passive — it's geometry working for you.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #baseline #rally
 
 ### `rally_107` · RALLY · rally tolerance
@@ -1004,7 +1004,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Club rallies are lost, not won — the player who can stand one more neutral ball usually collects the error. Patience is a trained skill.
 > 👉 Win the boredom contest; the short ball always comes.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #baseline #rally
 
 ### `rally_108` · RALLY · loopy ball as disruption
@@ -1018,7 +1018,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Pace-lovers feed on your energy. A slow high loop above shoulder height forces them to create power from nothing — where their timing and patience crack.
 > 👉 Starve the counter-puncher: no pace to borrow.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #baseline #rally
 
 ### `rally_109` · RALLY · angle creates angle
@@ -1032,7 +1032,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Angles are two-way doors: pulling them wide inside the court opens counters past you. The shot's a winner only if you follow it in or recover aggressively.
 > 👉 Every angle you create, you must also insure.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #baseline #rally
 
 ### `rally_110` · RALLY · recovery position
@@ -1046,7 +1046,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Recovery isn't to the court's center but to the bisector of the opponent's angles. From your forehand corner, that's left of the hash.
 > 👉 Recover to the middle of THEIR options, not the middle of the court.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #baseline #rally
 
 ### `rally_111` · RALLY · backhand exchange patience
@@ -1060,7 +1060,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: If your backhand loses that exchange over time, change WHAT the balls looks like (height/spin/depth) before changing WHERE it goes. Pattern breaks don't have to be risks.
 > 👉 Change ball quality before ball direction.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #baseline #rally
 
 ### `rally_112` · RALLY · wind-against tactics
@@ -1074,7 +1074,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Headwind shortens everything: your normal drives land safer, and aggressive targets become high-percentage. The set to attack is the into-wind set.
 > 👉 Into the wind: swing free. With the wind: add spin and margin.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #baseline #rally
 
 ### `rally_113` · RALLY · moonballer counter
@@ -1088,7 +1088,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Pushers beat you in their arena — long floaty rallies. Taking time away (swing volley, on-the-rise) and finishing at net moves the contest to an arena they hate.
 > 👉 Don't out-wait a waiter. Change the arena: come in.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #baseline #rally
 
 ### `rally_114` · RALLY · mid-court ball footwork
@@ -1102,7 +1102,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Mid-court balls are transition balls: momentum should carry you forward through contact into net position. Stopping kills both power and positioning.
 > 👉 On short balls, your feet finish the shot — not your arm.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #baseline #rally
 
 
@@ -1119,7 +1119,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Inside the service line with a split step is the textbook position — close enough to cover, balanced enough to react to any pass or lob.
 > 👉 Inside the service line, split step — every approach.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #netgame #volley
 
 ### `net_022` · NET · volley positioning vs passing shot
@@ -1133,7 +1133,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Tilting toward the crosscourt side closes the primary passing lane without abandoning the down-the-line. You're defending the likely shot first.
 > 👉 Bias your volley position toward the obvious passing lane.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #netgame #volley
 
 ### `net_023` · NET · volley contact point
@@ -1147,7 +1147,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: A volley contacted in front of the lead hip gives you racket face control, pace absorption, and forward direction.
 > 👉 Volley in front — always.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #netgame #volley
 
 ### `net_024` · NET · first volley after serve
@@ -1161,7 +1161,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: A low first volley is a reset — deep middle buys time to reach the proper volley position for the second volley.
 > 👉 First volleys at your feet are setups — not winners.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #netgame #volley
 
 ### `net_025` · NET · overhead on a lob
@@ -1175,7 +1175,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Racket-up early and small lateral backpedal steps keep your balance and head position for a clean overhead contact.
 > 👉 On a lob: racket up first, feet second.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #netgame #volley
 
 ### `net_026` · NET · drop volley decision
@@ -1189,7 +1189,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: When the opponent is deep, a deep angled volley maintains the advantage. A drop volley brings them into play — risky when they're already out of position.
 > 👉 When opponents are deep, keep them deep — don't invite them in.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #netgame #volley
 
 ### `net_027` · NET · net swing length
@@ -1203,7 +1203,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: At the net, pace absorption comes from a short, firm swing — not a big backswing. The opponent supplies the power; you supply direction.
 > 👉 At the net, short swing, firm grip — always.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #netgame #volley
 
 ### `net_028` · NET · half-volley management
@@ -1217,7 +1217,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: A soft half-volley uses the opponent's pace, clears the net, and buys time. A hard one usually sprays. Letting it bounce means you're on the baseline without having gained anything.
 > 👉 Half-volleys are survival shots — soft, deep, and middle.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #netgame #volley
 
 ### `net_029` · NET · doubles net movement
@@ -1231,7 +1231,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Closer to the T gives you poaching range without completely abandoning the alley. That's where doubles net players live.
 > 👉 Doubles net: T-biased, poach-ready.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #netgame #volley
 
 ### `net_030` · NET · volley target selection
@@ -1245,7 +1245,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Opponent recovering means they're moving toward the centre. Deep into the open ad court makes them reverse direction and arrive off-balance — or not at all.
 > 👉 At the net, hit away from their recovery — not back to where they came from.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #netgame #volley
 
 ### `net_hard_1` · NET · volleying from the service line
@@ -1259,7 +1259,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: From the service line you can't angle a volley safely. Your DTL approach already closed the line, so split-step, cover the higher-percentage crosscourt pass, and punch the volley DEEP behind the moving opponent — depth over a risky angle from too far back.
 > 👉 Caught at the service line: split, cover the crosscourt, volley deep behind them — not a fancy angle.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #netgame #volley
 
 ### `net_100` · NET · approach direction rule
@@ -1273,7 +1273,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: A line approach lets you shift with the ball and cover the straight pass; the crosscourt pass then has to travel the longest, highest road past you.
 > 👉 Approach down the line, shade the line, make them pass crosscourt.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #netgame #volley
 
 ### `net_101` · NET · first volley depth
@@ -1287,7 +1287,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: A deep first volley keeps them pinned and buys you a step closer for the real finishing volley. Drop volleys from the service line are donations.
 > 👉 First volley = deep and boring. Second volley = the kill.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #netgame #volley
 
 ### `net_102` · NET · split-step at net
@@ -1301,7 +1301,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: If you're mid-sprint at their contact, you can't change direction. The split at their swing start converts your momentum into readiness both ways.
 > 👉 Sprint between their shots; split AT their shot.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #netgame #volley
 
 ### `net_103` · NET · volley target choice
@@ -1315,7 +1315,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: The open court is right ONLY if they haven't committed. Against a full sprint, the ball behind them is untouchable because reversing costs two steps.
 > 👉 Volley to where they CAN'T go, which isn't always where they AREN'T.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #netgame #volley
 
 ### `net_104` · NET · overhead footwork
@@ -1329,7 +1329,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Backpedaling is slow and ends in falling smashes. Turning sideways converts the retreat into athletic strides while the early racquet prep keeps the smash compact.
 > 👉 Turn, cross-step, racquet up — never backpedal to a lob.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #netgame #volley
 
 ### `net_105` · NET · when to let the lob bounce
@@ -1343,7 +1343,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: On high wind-blown lobs, the bounce resets the chaos: predictable ball drop, set feet, controlled smash. Air smashes there are coin flips.
 > 👉 Wind + towering lob = bounce smash.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #netgame #volley
 
 ### `net_106` · NET · drop volley criteria
@@ -1357,7 +1357,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: The drop volley's math works when the opponent is deep or retreating and you're inside the service box with a stable contact. Their position, not your boredom, is the trigger.
 > 👉 Drop volleys punish THEIR position, not your patience.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #netgame #volley
 
 ### `net_107` · NET · net position depth
@@ -1371,7 +1371,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Too tight and every lob beats you; too deep and volleys come off your shoelaces. The 2–3 m band covers both dips and lobs.
 > 👉 Own the box middle: close enough to kill, deep enough to cover.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #netgame #volley
 
 ### `net_108` · NET · low volley priority
@@ -1385,7 +1385,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Below net height you're defending at the net. Lifting deep resets the exchange for a better next volley; forcing winners from there feeds the net tape.
 > 👉 Low volley = survive deep now, kill the NEXT one.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #netgame #volley
 
 ### `net_109` · NET · when NOT to approach
@@ -1399,7 +1399,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: If your approach shot leaves your racquet weak and rising, the passer gets a free look. Approach behind balls that stress THEM, not ones that stressed YOU.
 > 👉 Approach behind your strength, not just behind any short ball.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #netgame #volley
 
 ### `net_110` · NET · half-volley handling
@@ -1413,7 +1413,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: The half-volley is a timing shot: knees low, compact face-controlled block, target deep middle. Any extra swing multiplies the error.
 > 👉 Half-volley: low body, quiet hands, boring target.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #netgame #volley
 
 ### `net_111` · NET · high backhand volley
@@ -1427,7 +1427,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: The high backhand volley has no natural power, so players get cute — and dump it. Commit to a firm, simple punch deep; touch comes from position, not from this shot.
 > 👉 High backhand volley: punch it, don't paint it.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #netgame #volley
 
 ### `net_112` · NET · swinging volley criteria
@@ -1441,7 +1441,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Letting a floater bounce gives a retreating opponent free seconds. The swinging volley, taken while closing, compresses their recovery and finishes points early.
 > 👉 Floaters inside the baseline are yours — take them out of the air.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #netgame #volley
 
 ### `net_113` · NET · defending the net pass
@@ -1455,7 +1455,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Covering the line takes away the shortest pass; a crosscourt pass must thread a longer window you can still cut off. Early guessing gifts clean winners.
 > 👉 At net: take the line away, live with the harder crosscourt.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #netgame #volley
 
 ### `net_114` · NET · closing after the volley
@@ -1469,7 +1469,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Each good volley earns you ground. Closing after the first volley shrinks their passing angles and turns the second volley into a putaway.
 > 👉 Volley, then MOVE — the net rewards the greedy.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #netgame #volley
 
 
@@ -1486,7 +1486,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Process goals give your brain something concrete to do. Replaying the past or chasing perfection raises anxiety and reduces present-moment focus.
 > 👉 Start new sets with process — not replay.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennismental #matchtoughness
 
 ### `mental_022` · MENTAL · anger management after call
@@ -1500,7 +1500,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: A 90-second reset — towel, breath, next-point commitment — is the routine pros use. Anger in the next point doubles the damage: you lose the disputed point and the next one.
 > 👉 One bad call shouldn't cost you two points.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennismental #matchtoughness
 
 ### `mental_023` · MENTAL · tiebreak mindset
@@ -1514,7 +1514,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Tiebreaks reward aggression from point one. Waiting to 'see how it goes' concedes the early swing to your opponent.
 > 👉 Tiebreaks start at full intensity — not build to it.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennismental #matchtoughness
 
 ### `mental_024` · MENTAL · internal vs external focus
@@ -1528,7 +1528,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: External focus (target) beats internal focus (technique) under pressure. 'Don't miss' is both internal and negative — the worst combination.
 > 👉 Under pressure, focus on the target — not on technique.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennismental #matchtoughness
 
 ### `mental_025` · MENTAL · between-point routine
@@ -1542,7 +1542,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Using the full allowed time gives you breathing, reset, and visualisation space. Rushing loses the benefit; variability causes inconsistency.
 > 👉 Use the full 20 seconds — every point.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennismental #matchtoughness
 
 ### `mental_026` · MENTAL · opponent's momentum
@@ -1556,7 +1556,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Momentum feeds on rhythm. Slowing between points (towel, longer bounces) breaks that rhythm without overhauling your strategy, which rarely works mid-match.
 > 👉 Break momentum by slowing down — not by changing everything.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennismental #matchtoughness
 
 ### `mental_027` · MENTAL · after serving for the match
@@ -1570,7 +1570,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Being broken while serving for the match is common; it's not fatal. One deep breath resets you — the opponent is serving under pressure now too.
 > 👉 One break doesn't end the set — reset and respond.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennismental #matchtoughness
 
 ### `mental_028` · MENTAL · confidence from small wins
@@ -1584,7 +1584,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Confidence rebuilds from small wins. Your highest-percentage pattern gives the best chance of a point won, which compounds into belief.
 > 👉 Rebuild confidence with safe patterns — not heroics.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennismental #matchtoughness
 
 ### `mental_029` · MENTAL · post-match reflection
@@ -1598,7 +1598,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: A structured 2+1 reflection captures lessons without spiralling. Avoidance misses learning; watching while angry distorts the lesson.
 > 👉 Reflect short, reflect soon — but reflect calmly.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennismental #matchtoughness
 
 ### `mental_030` · MENTAL · competitive identity
@@ -1612,7 +1612,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Visualising an aggressive pattern primes your brain and body for the competitive state before the first point. Casual warm-up primes casual play.
 > 👉 Warm up the way you want to compete.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennismental #matchtoughness
 
 ### `mental_hard_1` · MENTAL · resetting after a choke
@@ -1626,7 +1626,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: After a choke-break the fix is process, not panic. Slow your tempo between points, breathe, and reset to a bigger target (margin over the lines). Don't chase the break back recklessly or ruminate on the misses — play the next point on its own merits.
 > 👉 After a choke: slow the tempo, widen your margins, play the next point — don't chase or ruminate.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennismental #matchtoughness
 
 ### `mental_100` · MENTAL · between-point routine
@@ -1640,7 +1640,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: A repeatable routine is the only part of a match you fully control. It clears the last point and loads exactly one intention for the next.
 > 👉 Same 20 seconds, every point — routines beat moods.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennismental #matchtoughness
 
 ### `mental_101` · MENTAL · 40-0 focus
@@ -1654,7 +1654,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: 40–0 invites autopilot: looser serves, cute shots, three casual points later it's deuce and momentum flipped. Closing games clean is a skill.
 > 👉 At 40–0 play ONE more serious point — end it before it breathes.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennismental #matchtoughness
 
 ### `mental_102` · MENTAL · serving for the set
@@ -1668,7 +1668,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Pressure inflates the future. The counter is radical smallness: the bounce, the toss, the first pattern. The set takes care of itself.
 > 👉 When the moment gets big, make your focus small.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennismental #matchtoughness
 
 ### `mental_103` · MENTAL · choking vs panicking
@@ -1682,7 +1682,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Choking = over-control (short, guided strokes). The fix is swinging freely at LARGER targets. Panicking = rushing; that fix is slowing down. Diagnose first.
 > 👉 Guided pushing? Swing full at a bigger target.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennismental #matchtoughness
 
 ### `mental_104` · MENTAL · error spiral breaker
@@ -1696,7 +1696,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Error spirals feed on complexity. Two deliberately simple shots restore contact quality and confidence before you resume tactics.
 > 👉 Break error streaks with simplicity, not brilliance.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennismental #matchtoughness
 
 ### `mental_105` · MENTAL · momentum response
@@ -1710,7 +1710,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Momentum loves tempo. Legally slowing the match starves their roll, and your routine time rebuilds your own baseline arousal level.
 > 👉 When their wave is rolling, turn off the wind: slow everything.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennismental #matchtoughness
 
 ### `mental_106` · MENTAL · tiebreak mindset
@@ -1724,7 +1724,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Tiebreaks are decided by free points given, not brilliant ones taken. High first-serve percentage and no cheap errors early puts scoreboard pressure on them.
 > 👉 Tiebreaks: be the player who gives nothing away first.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennismental #matchtoughness
 
 ### `mental_107` · MENTAL · body language effect
@@ -1738,7 +1738,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Opponents read posture constantly. Visible collapse is free fuel for them; neutral, upright body language keeps doubt alive in their mind.
 > 👉 Your shoulders talk to your opponent — script what they say.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennismental #matchtoughness
 
 ### `mental_108` · MENTAL · opponent hot streak
@@ -1752,7 +1752,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Hot streaks are statistically loud but short. Chasing their level with forced winners is how a streak becomes a set. Your patterns are the safe harbor.
 > 👉 Respect the streak, don't chase it — math is on your side.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennismental #matchtoughness
 
 ### `mental_109` · MENTAL · single-intention pre-match plan
@@ -1766,7 +1766,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Plans survive pressure only if they're behavioral and singular. Vague positivity gives no action; five plans give none either when adrenaline hits.
 > 👉 One sentence, one behavior — that's a match plan.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennismental #matchtoughness
 
 ### `mental_110` · MENTAL · breathing as reset
@@ -1780,7 +1780,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Extended exhales activate the parasympathetic brake — heart rate drops within seconds. It's the cheapest legal performance enhancer in tennis.
 > 👉 Exhale longer than you inhale; calm follows mechanically.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennismental #matchtoughness
 
 ### `mental_111` · MENTAL · energy budgeting
@@ -1794,7 +1794,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Fatigue demands triage. Guarding your serve's point-starts and surging on their second serves buys maximum scoreboard per unit of energy.
 > 👉 Tired? Spend energy where breaks live, coast where they don't.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennismental #matchtoughness
 
 ### `mental_112` · MENTAL · target focus vs outcome
@@ -1808,7 +1808,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Attention is single-channel: filled with a concrete external target, it has no bandwidth for catastrophe. Outcome thoughts are the choke's fuel.
 > 👉 Aim at things, not at meanings.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennismental #matchtoughness
 
 ### `mental_113` · MENTAL · playing a much weaker opponent
@@ -1822,7 +1822,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Against weaker players the danger is internal: low arousal, casual patterns, trick shots. The fix is treating execution itself as the opponent.
 > 👉 Against weaker players, compete against your own standards.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennismental #matchtoughness
 
 ### `mental_114` · MENTAL · first games nerves
@@ -1836,7 +1836,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Early tightness is usually an unwarmed body wearing a mental costume. Arriving match-ready — heart rate raised, serves rehearsed — deletes most 'nerves.'
 > 👉 Warm up until you sweat; most first-game nerves are just cold muscles.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #tennismental #matchtoughness
 
 
@@ -1853,7 +1853,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: A short ball is your cue to get BOTH players to the net. The both-up formation wins the majority of club points, so your partner approaches and joins you.
 > 👉 Short ball = both up. The team that reaches the net first usually wins the point.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #doubles #doublestennis
 
 ### `doubles_002` · DOUBLES · net player positioning
@@ -1867,7 +1867,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Start central and look to poach the middle — most balls travel through the middle, and guarding the alley gives away the bigger target. Cover the alley only on an obviously wide ball.
 > 👉 The net player's #1 job is the middle, not the alley.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #doubles #doublestennis
 
 ### `doubles_003` · DOUBLES · first volley by height
@@ -1881,7 +1881,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: On a low/defensive ball, don't reflexively aim at the net player — a low volley there is an easy put-away for them. Go deep to the baseliner or low through the middle and keep climbing to the net.
 > 👉 First-volley target depends on height: a low ball goes deep/middle, not at the net player.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #doubles #doublestennis
 
 ### `doubles_004` · DOUBLES · doubles return
@@ -1895,7 +1895,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: A low cross-court return at the incoming volleyer's feet is the hardest ball to attack. A floaty/high return is poach bait. Your goal is to get your team forward, not to win it outright.
 > 👉 Doubles return = low at the volleyer's feet. Floaters get poached.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #doubles #doublestennis
 
 ### `doubles_005` · DOUBLES · poach timing
@@ -1909,7 +1909,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Commit just after the serve bounces, as the returner starts their forward swing — early enough to cross and cut off the middle, late enough that they can't redirect the ball behind you.
 > 👉 Poach as the returner starts the swing — not too early, not too late.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #doubles #doublestennis
 
 ### `doubles_006` · DOUBLES · lob switch
@@ -1923,7 +1923,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: On a lob over one player, the UN-lobbed partner calls 'switch' and crosses to cover the open side, while the lobbed player rotates across to the other side. Rotating as a unit beats both scrambling backward.
 > 👉 Lobbed over your partner? You call 'switch' and cross. Move as a unit.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #doubles #doublestennis
 
 ### `doubles_007` · DOUBLES · serve to set up poach
@@ -1937,7 +1937,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: A serve to the body or the T pulls the return toward the middle — exactly where your net partner can poach. A wide serve opens angles AWAY from your poacher. Keep your first-serve percentage high too.
 > 👉 Serve body/T to feed your partner's poach; protect first-serve %.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #doubles #doublestennis
 
 ### `doubles_008` · DOUBLES · middle coverage
@@ -1951,7 +1951,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: 'Down the middle solves the riddle.' Pre-decide who takes the middle (default: the forehand player) so two racquets don't collide or both leave it. Decide before the point, not during it.
 > 👉 Pre-assign the middle to the forehand player. Don't decide mid-point.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #doubles #doublestennis
 
 ### `doubles_009` · DOUBLES · both-back defense
@@ -1965,7 +1965,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Both-back is a defensive reset against a big serve or a heavy lobbing team — it buys time and protects the exposed net player. It's temporary: absorb, reset, then work your way back to the net.
 > 👉 Both-back is a temporary shield vs a big serve — not a permanent plan.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #doubles #doublestennis
 
 ### `doubles_010` · DOUBLES · beat an aggressive poacher
@@ -1979,7 +1979,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: A lob over the crowding net player resets the point and pushes them off the net, making them respect the lob and poach less. Hitting harder into the poach is exactly what they want.
 > 👉 Punish an over-eager poacher with a lob — it buys back the middle.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #doubles #doublestennis
 
 ### `doubles_hard_1` · DOUBLES · disrupting a hot returner
@@ -1993,7 +1993,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: The returner has a comfortable, grooved target — crosscourt at the net player's feet. Take it away by hiding where the net player will be: I-formation or a fake poach forces the returner to decide late and abandon a pattern that's been working.
 > 👉 When a returner grooves a target, hide your net player — I-formation or a fake resets their decision.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #doubles #doublestennis
 
 ### `doubles_100` · DOUBLES · middle coverage
@@ -2007,7 +2007,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: The middle forehand takes the center ball by default — stronger shot, better reach across. Agree on it BEFORE the match so nobody freezes.
 > 👉 Default rules end hesitation: middle = forehand's ball.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #doubles #doublestennis
 
 ### `doubles_101` · DOUBLES · server's partner job
@@ -2021,7 +2021,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: A static net player is furniture. Movement — real and faked — shrinks the returner's targets and turns weak returns into your putaways.
 > 👉 At net on serve: move every point, even when you don't touch the ball.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #doubles #doublestennis
 
 ### `doubles_102` · DOUBLES · return target vs net player
@@ -2035,7 +2035,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Low crosscourt is the percentage return; an EARLY lob (not a desperate one) plants doubt that freezes their poaching for the rest of the set.
 > 👉 Beat poachers with low balls + one early lob message.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #doubles #doublestennis
 
 ### `doubles_103` · DOUBLES · poach timing
@@ -2049,7 +2049,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Poaching succeeds off predictable weak returns. A body/T serve compresses the returner, making the reply float toward the middle — your interception lane.
 > 👉 Poach off the serve you KNOW creates a weak middle return.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #doubles #doublestennis
 
 ### `doubles_104` · DOUBLES · who covers the lob
@@ -2063,7 +2063,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: The baseliner has the angle and momentum; the net player backpedaling is slow and dangerous. Call, cross, switch — one rehearsed pattern.
 > 👉 Lob over net player = baseliner's ball + automatic switch.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #doubles #doublestennis
 
 ### `doubles_105` · DOUBLES · one-up-one-back trap
@@ -2077,7 +2077,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: One-up-one-back concedes the middle diagonal. Winning doubles converges: both up when attacking (or both back defending) closes the seam.
 > 👉 Doubles is won side-by-side, not corner-to-corner.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #doubles #doublestennis
 
 ### `doubles_106` · DOUBLES · first volley in doubles
@@ -2091,7 +2091,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: The middle volley creates 'yours/mine' confusion, passes over the lowest net, and can't be angled away against you like an alley attempt.
 > 👉 In doubles, the middle is a third opponent — recruit it.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #doubles #doublestennis
 
 ### `doubles_107` · DOUBLES · I-formation purpose
@@ -2105,7 +2105,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: With the net player crouched on the center line, the returner can't aim away from them — every return direction is a gamble against a coin-flip movement.
 > 👉 I-formation weaponizes uncertainty, not position.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #doubles #doublestennis
 
 ### `doubles_108` · DOUBLES · communication calls
@@ -2119,7 +2119,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Collisions are communication failures, not coordination failures. Calling every ball — even obvious ones — builds the habit that saves the ambiguous ones.
 > 👉 Call the obvious balls so the tough ones call themselves.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #doubles #doublestennis
 
 ### `doubles_109` · DOUBLES · return at server's feet
@@ -2133,7 +2133,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Their momentum forward makes ankle-height balls brutal: the first volley pops UP, and your partner at net feasts on it.
 > 👉 Against rushing servers: return to shoelaces, partner cleans up.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #doubles #doublestennis
 
 ### `doubles_110` · DOUBLES · both-back defense
@@ -2147,7 +2147,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Both-back concedes the net but removes the sitting-duck target. Now every point needs THEIR clean volley winner against your lobs and dipping passes — a worse trade for them.
 > 👉 Losing at net? Both back turns slaughter into a puzzle.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #doubles #doublestennis
 
 ### `doubles_111` · DOUBLES · serve placement for the team
@@ -2161,7 +2161,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: A wide serve opens the sharp crosscourt past your partner. The T serve funnels returns through the middle — straight into your net player's kill zone.
 > 👉 In doubles, serve placement is a gift to your partner, not to you.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #doubles #doublestennis
 
 ### `doubles_112` · DOUBLES · ad-court returner priorities
@@ -2175,7 +2175,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Net players leave the alley open ON PURPOSE on big points. The crosscourt return is longer, lower and away from the poacher — the boring choice converts.
 > 👉 On break points, refuse the open-alley invitation.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #doubles #doublestennis
 
 ### `doubles_113` · DOUBLES · moving as a unit
@@ -2189,7 +2189,7 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Doubles pairs are roped together: when one slides wide, the middle opens unless the partner slides with them. The seam is always the first target.
 > 👉 Move WITH your partner — the rope between you must never slack.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #doubles #doublestennis
 
 ### `doubles_114` · DOUBLES · closing together
@@ -2203,5 +2203,5 @@ Honesty: never bake fake like/comment counts into the video (that's IG's own UI)
 > Why: Against a scrambling defense, the reply is weak and floaty far more often than a perfect lob. Two players tight at net make the court disappear.
 > 👉 When they scramble, you swarm — close together, finish together.
 >
-> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. 🎾 Link in bio → train your Tennis IQ.
+> This is Court IQ — the part no one teaches. Get 150+ scenarios like this, free, in DropVolley. And when you want eyes on your actual swing: **instant AI analysis or a real coach's review — your call.** 🎾 Link in bio.
 > #tennis #tennisiq #tennistips #tennisstrategy #tenniscoach #dropvolley #tennislesson #playsmarter #doubles #doublestennis

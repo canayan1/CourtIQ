@@ -151,3 +151,31 @@ consent). Standard price + 70/30 → ~$5.8/review platform margin.
 2. Founding-coach pitch DM list (10 names from Can's network).
 3. Lawyer: coach agreement + privacy-policy delta (parallel, one-time).
 4. P0 schema + 2 edge functions + dashboard skeleton (2-3 days of build).
+
+---
+
+## 11. Update (24 Jul) — locked tier roster + one big update + Google Ads
+
+**Decision (owner):** ship ONE big update (1.0.4) carrying: Daily IQ loop,
+"Choose your path" storefront (instant AI vs real coach), anonymous Founding
+Coach at $19.99, and a **locked reviewer roster** with per-tier waitlists:
+
+| Tier | State | CTA | Onboard trigger |
+|---|---|---|---|
+| Real Tennis Coach (Founding, anonymous) | notify-me | Notify at launch | — (Can) |
+| Advanced Player Review (budget) | locked | Join waitlist | waitlist demand |
+| Level 2 Certified Coach | locked | Join waitlist | waitlist demand |
+| Level 3 Certified Coach | locked | Get a quote | quote requests |
+
+Per-tier demand lands in `coach_review_interest` events (`tier` param) →
+owner onboards friends/coaches to match REAL demand, tier by tier.
+
+**HONESTY RULE (binding):** locked tiers show labels only — no invented
+names, faces, ratings, or credentials. A tier goes live only when a real
+reviewer actually holding that qualification (e.g. ITF/PTR Level 2/3) signs
+the coach agreement. "Advanced Player" tier = strong player, explicitly NOT
+marketed as a coach.
+
+**After 1.0.4 is live:** Google Ads (App campaign) on the choose-your-path
+angle; per-tier waitlist + ad conversion data decides which tier to staff
+first. Marketing captions bank already carries the two-path CTA.

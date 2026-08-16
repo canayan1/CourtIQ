@@ -731,6 +731,10 @@ private struct CoachReviewInterestCard: View {
     @EnvironmentObject private var lang: LanguageManager
     @AppStorage("CourtIQ.CoachReview.Interested") private var interested = false
     @State private var showDetails = false
+    /// Tier waitlists (locked roster): which future reviewer tiers this user
+    /// queued for. Per-tier demand → the owner onboards real coaches to match.
+    @State private var joinedTiers: Set<String> =
+        Set(UserDefaults.standard.stringArray(forKey: "CourtIQ.CoachReview.Tiers") ?? [])
 
     var body: some View {
         Button {
@@ -837,6 +841,30 @@ private struct CoachReviewInterestCard: View {
                                         in: RoundedRectangle(cornerRadius: 16))
                     }
                     .buttonStyle(PressableCardStyle())
+
+                    Divider().padding(.vertical, 4)
+
+                    // Locked roster: future reviewer tiers, unlocked by real
+                    // demand. HONESTY RULE: tier labels only — no invented
+                    // names, faces, or credentials. A tier goes live only when
+                    // a real reviewer holding that qualification is onboarded.
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text(lang.t("coachreview.roster_title"))
+                            .font(.headline)
+                            .foregroundStyle(AppPalette.ink)
+                        tierRow(id: "player", icon: "figure.tennis",
+                                title: lang.t("coachreview.tier_player"),
+                                sub: lang.t("coachreview.tier_player_sub"),
+                                cta: lang.t("coachreview.join_waitlist"))
+                        tierRow(id: "level2", icon: "2.circle.fill",
+                                title: lang.t("coachreview.tier_level2"),
+                                sub: lang.t("coachreview.tier_level2_sub"),
+                                cta: lang.t("coachreview.join_waitlist"))
+                        tierRow(id: "level3", icon: "3.circle.fill",
+                                title: lang.t("coachreview.tier_level3"),
+                                sub: lang.t("coachreview.tier_level3_sub"),
+                                cta: lang.t("coachreview.get_quote"))
+                    }
                 }
                 .padding(20)
             }
@@ -848,6 +876,53 @@ private struct CoachReviewInterestCard: View {
             }
         }
         .presentationDetents([.medium, .large])
+    }
+
+    private func tierRow(id: String, icon: String, title: String, sub: String, cta: String) -> some View {
+        let joined = joinedTiers.contains(id)
+        return HStack(spacing: 12) {
+            Image(systemName: icon)
+                .font(.title3)
+                .foregroundStyle(AppPalette.inkSoft)
+                .frame(width: 28)
+            VStack(alignment: .leading, spacing: 2) {
+                HStack(spacing: 5) {
+                    Text(title)
+                        .font(.subheadline.weight(.bold))
+                        .foregroundStyle(AppPalette.ink)
+                    Image(systemName: "lock.fill")
+                        .font(.caption2)
+                        .foregroundStyle(AppPalette.inkSoft.opacity(0.6))
+                }
+                Text(sub)
+                    .font(.caption)
+                    .foregroundStyle(AppPalette.inkSoft)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            Spacer(minLength: 6)
+            Button {
+                joinTier(id)
+            } label: {
+                Text(joined ? lang.t("coachreview.on_list") : cta)
+                    .font(.caption.weight(.bold))
+                    .foregroundStyle(joined ? AppPalette.mossText : .white)
+                    .padding(.horizontal, 12).padding(.vertical, 8)
+                    .background(joined ? AppPalette.mossTint : AppPalette.ink,
+                                in: Capsule())
+            }
+            .disabled(joined)
+        }
+        .padding(12)
+        .background(.white.opacity(0.55), in: RoundedRectangle(cornerRadius: 14))
+    }
+
+    private func joinTier(_ id: String) {
+        guard !joinedTiers.contains(id) else { return }
+        Haptics.success()
+        joinedTiers.insert(id)
+        UserDefaults.standard.set(Array(joinedTiers), forKey: "CourtIQ.CoachReview.Tiers")
+        AppAnalytics.shared.log(AnalyticsEvent.coachReviewInterest,
+                                ["source": source, "tier": id])
     }
 
     private func bullet(_ symbol: String, _ text: String) -> some View {

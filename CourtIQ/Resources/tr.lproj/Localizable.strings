@@ -1070,3 +1070,13 @@
 "coachreview.ai_eyebrow" = "AI ANALİZ · ANINDA";
 "coachreview.ai_title" = "Şimdi AI ile analiz et";
 "coachreview.ai_sub" = "Dahil · yaklaşık 1 dakikada sonuç";
+"coachreview.roster_title" = "Daha fazla inceleyici — taleple açılır";
+"coachreview.tier_player" = "İleri Seviye Oyuncu İncelemesi";
+"coachreview.tier_player_sub" = "Üst düzey bir oyuncudan dürüst bakış · ekonomik seçenek";
+"coachreview.tier_level2" = "Level 2 Sertifikalı Antrenör";
+"coachreview.tier_level2_sub" = "Daha derin teknik inceleme";
+"coachreview.tier_level3" = "Level 3 Sertifikalı Antrenör";
+"coachreview.tier_level3_sub" = "Komple oyun planı · kapsama göre fiyat";
+"coachreview.join_waitlist" = "Listeye gir";
+"coachreview.get_quote" = "Teklif al";
+"coachreview.on_list" = "Listedesin";
