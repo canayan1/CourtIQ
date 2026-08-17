@@ -206,8 +206,9 @@ struct DoublesTierChip: View {
     }
 }
 
-/// Compact compatibility badge ("NN/100") used in partner list rows + report
-/// list rows. Mirrors `SwingScoreBadge`.
+/// Compact compatibility badge used in partner list rows + report list rows.
+/// Legacy records still carry a numeric score — we map it to the honest TIER
+/// and never render the number (same policy as the report screen).
 struct DoublesScoreBadge: View {
     let score: Int
     let copy: DoublesCopy
@@ -215,7 +216,7 @@ struct DoublesScoreBadge: View {
     private var tier: DoublesCompatTier { .from(score: score) }
 
     var body: some View {
-        Text(copy.scoreBadge(score))
+        Text(copy.compatTierLabel(tier))
             .font(.caption.weight(.bold))
             .foregroundStyle(tier.text)
             .padding(.horizontal, 8)

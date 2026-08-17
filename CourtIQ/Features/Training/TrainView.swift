@@ -16,9 +16,10 @@ struct TrainView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                titleBlock
+                // HIG audit A4: the navigation title IS the title — no
+                // in-content eyebrow/headline/slogan stack.
 
-                // Co-equal headliners: Swing + Practice (the Tennis IQ hub).
+                // Co-equal headliners: Swing + Tennis IQ.
                 HStack(spacing: 12) {
                     swingCard
                         .reveal(appeared: appeared, index: 0, reduceMotion: reduceMotion)
@@ -53,18 +54,6 @@ struct TrainView: View {
             } else if !appeared {
                 withAnimation(Motion.entrance) { appeared = true }
             }
-        }
-    }
-
-    // MARK: - Title
-
-    private var titleBlock: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Eyebrow(lang.t("train.subtitle"))
-            Text(lang.t("train.headline"))
-                .font(.system(.title, design: .rounded).weight(.bold))
-                .foregroundStyle(AppPalette.ink)
-                .fixedSize(horizontal: false, vertical: true)
         }
     }
 

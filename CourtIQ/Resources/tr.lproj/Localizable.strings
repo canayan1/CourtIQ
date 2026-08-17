@@ -36,7 +36,7 @@
 "home.analyze_title" = "Vuruşunu analiz et";
 "home.coach_hero_title" = "AI Koçuna sor";
 "home.coach_hero_subtitle" = "Taktik, maçlar, tüm oyunun";
-"home.tile_swing" = "Vuruş Analizi";
+"home.tile_swing" = "Swing";
 "home.tile_iq" = "Tenis IQ";
 "home.your_game" = "Oyunun";
 "home.tile_matches" = "Maçlar";
@@ -71,9 +71,9 @@
 
 /* ── Train hub (Phase 1 IA redesign) ── */
 "train.subtitle" = "Geliştir";
-"train.headline" = "Oyununun her parçasını keskinleştir";
+"train.headline" = "Antrenman";
 "train.analyze" = "Analiz";
-"train.practice" = "Pratik";
+"train.practice" = "Tennis IQ";
 "train.recover" = "Toparlan";
 "train.programs" = "Programlar";
 "train.wall" = "Duvar";
@@ -934,7 +934,7 @@
 /* ── AI Coach (v1.x) ── */
 "ai.title" = "AI Koç";
 "ai.kicker" = "Tenise özel koç";
-"ai.headline" = "Bir maç hakkında konuş. Ekranı kapatmadan bir drill al.";
+"ai.headline" = "Oyununu konuşarak geliştir";
 "ai.card_subtitle" = "Maç üzerine düşün, bir sonrakini planla, verilerine göre özel drill önerileri al.";
 "ai.premium_badge" = "Premium";
 "ai.new_chat" = "Yeni sohbet";
@@ -953,7 +953,7 @@
 "ai.thread_hint_kicker" = "Hızlı sorular";
 "ai.thread_hint_body" = "\"Yarın Begum'la oynayacağım, plan?\" veya \"son 5 maçta mental hep 2/5, ne yapayım?\" gibi sorular dene — koç maç günlüğüne ve quiz geçmişine erişiyor.";
 "ai.quota_remaining_format" = "Bugün %d mesaj hakkın kaldı";
-"ai.quota_unknown" = "Günlük kontenjan gece yarısı yenilenir";
+"ai.quota_unknown" = "Günlük kontenjan · 00:00'da yenilenir";
 "ai.quota_resets" = "Yerel saatle gece yarısı sıfırlanır";
 "ai.quota_reached" = "Günlük sınıra ulaşıldı — gece yarısı sıfırlanır.";
 "ai.error_sign_in_required" = "AI Koç'u kullanmak için Apple ile giriş yap.";
@@ -1018,7 +1018,7 @@
 
 /* Günlük Tennis IQ döngüsü */
 "iq.eyebrow" = "Tennis IQ";
-"iq.daily_title" = "Günlük IQ";
+"iq.daily_title" = "Tennis IQ";
 "iq.placement_title" = "Yerleştirme";
 "iq.mastered_fmt" = "%d/%d senaryo çözüldü";
 "iq.estimated_chip" = "Tahmini — kalibre etmek için yerleştirmeyi çöz";
@@ -1041,7 +1041,7 @@
 "iq.xp_fmt" = "+%d XP";
 "iq.streak_fmt" = "%d günlük seri";
 "iq.done_button" = "Bitti";
-"home.iq_hero_eyebrow" = "GÜNLÜK IQ";
+"home.iq_hero_eyebrow" = "TENNIS IQ";
 "home.iq_hero_baseline" = "Seviyeni ölç · 3 dk";
 "home.iq_hero_ready" = "Bugünkü seans · 2 dk";
 "home.iq_hero_done" = "Bugünlük tamam";

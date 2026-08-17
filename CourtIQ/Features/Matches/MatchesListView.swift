@@ -101,13 +101,9 @@ struct MatchesListView: View {
         }
         .onAppear {
             withAnimation(Motion.entrance) { appeared = true }
-            if !tutorialSeen {
-                tutorialSeen = true
-                // Defer so it doesn't fight the tab transition animation.
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                    showTutorial = true
-                }
-            }
+            // HIG audit B1: no auto-presented explainer — a modal wall of text
+            // before the screen itself violates "read less, orient instantly".
+            // The tutorial stays one tap away behind the toolbar ⓘ.
         }
         .sheet(isPresented: $showTutorial) {
             MatchLogTutorialView()

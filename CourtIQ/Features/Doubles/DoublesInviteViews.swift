@@ -85,8 +85,7 @@ struct DoublesInviteCopy {
 
     var sectionTitle: String { t("Pair up with your partner", "Partnerinle eşleş") }
     var sectionSubtitle: String {
-        t("Link with your doubles partner to unlock your compatibility report.",
-          "Uyum raporunuzu açmak için doubles partnerinle bağlan.")
+        t("See how you two fit.", "İkinizin uyumunu gör.")
     }
     var invitePartnerCTA: String { t("Invite a partner", "Partner davet et") }
     var haveCodeCTA: String { t("I have a code", "Kodum var") }
@@ -149,8 +148,7 @@ struct DoublesInviteCopy {
     var runReportCTA: String { t("See compatibility", "Uyumu gör") }
 
     var manualHeader: String {
-        t("Just want a quick read? Add a partner manually",
-          "Hızlı bir okuma mı istiyorsun? Manuel partner ekle")
+        t("Add manually", "Manuel ekle")
     }
 
     // Profile gate

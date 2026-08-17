@@ -8,7 +8,7 @@ struct SwingAnalysisCopy {
 
     // MARK: Feature title / nav
     var title: String { t("Swing Analysis", "Vuruş Analizi") }
-    var navTitle: String { t("AI Swing Analysis", "AI Vuruş Analizi") }
+    var navTitle: String { t("Swing", "Swing") }
 
     // MARK: Step 1 — stroke + handedness
     var step1Kicker: String { t("Step 1 of 2", "Adım 1 / 2") }

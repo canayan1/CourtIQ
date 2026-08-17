@@ -124,8 +124,6 @@ struct DailyIQView: View {
                 if iq.iqHistory.count >= 2 {
                     iqChart
                 }
-
-                pathSection
             }
             .padding(20)
         }
@@ -152,42 +150,6 @@ struct DailyIQView: View {
         }
         .padding(16)
         .background(.white.opacity(0.6), in: RoundedRectangle(cornerRadius: 18))
-    }
-
-    /// The skill path: each category climbs easy→hard in ~4 units.
-    private var pathSection: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Eyebrow(lang.t("iq.path"))
-            ForEach(QuizCategory.allCases, id: \.self) { category in
-                NavigationLink {
-                    IQCategoryUnitsView(category: category)
-                } label: {
-                    let units = iq.units(for: category)
-                    let mastered = units.reduce(0) { $0 + iq.masteredCount(in: $1) }
-                    let total = units.reduce(0) { $0 + $1.questionIDs.count }
-                    HStack(spacing: 12) {
-                        Image(systemName: category.systemImage)
-                            .font(.body)
-                            .foregroundStyle(AppPalette.clay)
-                            .frame(width: 26)
-                        Text(category.title)
-                            .font(.subheadline.weight(.semibold))
-                            .foregroundStyle(AppPalette.ink)
-                        Spacer()
-                        Text("\(mastered)/\(total)")
-                            .font(.footnote.weight(.bold))
-                            .foregroundStyle(.secondary)
-                        Image(systemName: "chevron.right")
-                            .font(.caption.weight(.semibold))
-                            .foregroundStyle(.secondary)
-                    }
-                    .padding(.vertical, 12).padding(.horizontal, 14)
-                    .background(.white.opacity(0.6), in: RoundedRectangle(cornerRadius: 14))
-                    .contentShape(Rectangle())
-                }
-                .buttonStyle(.plain)
-            }
-        }
     }
 
     private var scoreHeader: some View {
@@ -217,37 +179,55 @@ struct DailyIQView: View {
         }
     }
 
-    /// Per-category mastery — the strength/weakness map, honest and measured.
+    /// HIG audit B5: ONE list carries the whole map — mastery bar + count +
+    /// navigation into the category's units. (Was two lists of the same six
+    /// categories: "court map" bars + "skill path" links.)
     private var categoryBars: some View {
         VStack(alignment: .leading, spacing: 10) {
             Eyebrow(lang.t("iq.categories"))
             ForEach(QuizCategory.allCases, id: \.self) { category in
                 let value = iq.categoryMastery[category] ?? 0
-                HStack(spacing: 10) {
-                    Image(systemName: category.systemImage)
-                        .font(.footnote)
-                        .frame(width: 22)
-                        .foregroundStyle(AppPalette.clay)
-                    Text(category.title)
-                        .font(.footnote.weight(.semibold))
-                        .frame(width: 92, alignment: .leading)
-                        .lineLimit(1)
-                    GeometryReader { geo in
-                        ZStack(alignment: .leading) {
-                            Capsule().fill(AppPalette.sand.opacity(0.6))
-                            Capsule().fill(AppPalette.clay)
-                                .frame(width: max(6, geo.size.width * value))
+                let units = iq.units(for: category)
+                let mastered = units.reduce(0) { $0 + iq.masteredCount(in: $1) }
+                let total = units.reduce(0) { $0 + $1.questionIDs.count }
+                NavigationLink {
+                    IQCategoryUnitsView(category: category)
+                } label: {
+                    HStack(spacing: 10) {
+                        Image(systemName: category.systemImage)
+                            .font(.footnote)
+                            .frame(width: 22)
+                            .foregroundStyle(AppPalette.clay)
+                        Text(category.title)
+                            .font(.footnote.weight(.semibold))
+                            .foregroundStyle(AppPalette.ink)
+                            .frame(width: 82, alignment: .leading)
+                            .lineLimit(1)
+                        GeometryReader { geo in
+                            ZStack(alignment: .leading) {
+                                Capsule().fill(AppPalette.sand.opacity(0.6))
+                                Capsule().fill(AppPalette.clay)
+                                    .frame(width: max(6, geo.size.width * value))
+                            }
                         }
-                    }
-                    .frame(height: 8)
-                    if category == iq.weakestCategory {
-                        Text(lang.t("iq.focus_chip"))
+                        .frame(height: 8)
+                        if category == iq.weakestCategory {
+                            Text(lang.t("iq.focus_chip"))
+                                .font(.caption2.weight(.bold))
+                                .foregroundStyle(AppPalette.gold)
+                        }
+                        Text("\(mastered)/\(total)")
                             .font(.caption2.weight(.bold))
-                            .foregroundStyle(AppPalette.gold)
+                            .foregroundStyle(.secondary)
+                        Image(systemName: "chevron.right")
+                            .font(.caption2.weight(.semibold))
+                            .foregroundStyle(.secondary)
                     }
+                    .contentShape(Rectangle())
                 }
+                .buttonStyle(.plain)
                 .accessibilityElement(children: .combine)
-                .accessibilityLabel("\(category.title): \(Int(value * 100))%")
+                .accessibilityLabel("\(category.title): \(mastered)/\(total)")
             }
         }
         .padding(16)

@@ -89,14 +89,11 @@ struct AICoachView: View {
         HStack(spacing: 10) {
             Image(systemName: "bolt.fill")
                 .foregroundStyle(AppPalette.gold)
-            VStack(alignment: .leading, spacing: 2) {
-                Text(quotaTitle)
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(AppPalette.ink)
-                Text(lang.t("ai.quota_resets"))
-                    .font(.caption)
-                    .foregroundStyle(AppPalette.inkSoft)
-            }
+            // HIG audit B4: one line — the reset info lives in the title now,
+            // never stated twice.
+            Text(quotaTitle)
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(AppPalette.ink)
             Spacer()
         }
         .padding(14)

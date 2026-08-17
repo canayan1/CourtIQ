@@ -36,7 +36,7 @@
 "home.analyze_title" = "Analyze your swing";
 "home.coach_hero_title" = "Ask your AI Coach";
 "home.coach_hero_subtitle" = "Tactics, matches, your whole game";
-"home.tile_swing" = "Swing Analysis";
+"home.tile_swing" = "Swing";
 "home.tile_iq" = "Tennis IQ";
 "home.your_game" = "Your game";
 "home.tile_matches" = "Matches";
@@ -71,9 +71,9 @@
 
 /* ── Train hub (Phase 1 IA redesign) ── */
 "train.subtitle" = "Improve";
-"train.headline" = "Sharpen every part of your game";
+"train.headline" = "Train";
 "train.analyze" = "Analyze";
-"train.practice" = "Practice";
+"train.practice" = "Tennis IQ";
 "train.recover" = "Recover";
 "train.programs" = "Programs";
 "train.wall" = "Wall";
@@ -934,7 +934,7 @@
 /* ── AI Coach (v1.x) ── */
 "ai.title" = "AI Coach";
 "ai.kicker" = "Tennis-specific coach";
-"ai.headline" = "Talk through a match. Get a drill before you leave the screen.";
+"ai.headline" = "Your game, talked through";
 "ai.card_subtitle" = "Reflect on a match, plan the next one, get drill suggestions matched to your data.";
 "ai.premium_badge" = "Premium";
 "ai.new_chat" = "New chat";
@@ -953,7 +953,7 @@
 "ai.thread_hint_kicker" = "Quick prompts";
 "ai.thread_hint_body" = "Try \"playing Begum tomorrow — what's my game plan?\" or \"my mental score has been 2/5 the last 5 matches, what do I do?\" — the coach has your match journal and quiz history.";
 "ai.quota_remaining_format" = "%d messages left today";
-"ai.quota_unknown" = "Daily quota refreshes at midnight";
+"ai.quota_unknown" = "Daily quota · resets 00:00";
 "ai.quota_resets" = "Resets at midnight local time";
 "ai.quota_reached" = "Daily limit reached — resets at midnight.";
 "ai.error_sign_in_required" = "Sign in with Apple to use AI Coach.";
@@ -1018,7 +1018,7 @@
 
 /* Daily Tennis IQ loop */
 "iq.eyebrow" = "Tennis IQ";
-"iq.daily_title" = "Daily IQ";
+"iq.daily_title" = "Tennis IQ";
 "iq.placement_title" = "Placement";
 "iq.mastered_fmt" = "%d of %d scenarios mastered";
 "iq.estimated_chip" = "Estimated — take the placement to calibrate";
@@ -1041,7 +1041,7 @@
 "iq.xp_fmt" = "+%d XP";
 "iq.streak_fmt" = "%d-day streak";
 "iq.done_button" = "Done";
-"home.iq_hero_eyebrow" = "DAILY IQ";
+"home.iq_hero_eyebrow" = "TENNIS IQ";
 "home.iq_hero_baseline" = "Set your baseline · 3 min";
 "home.iq_hero_ready" = "Today's session · 2 min";
 "home.iq_hero_done" = "Done for today";

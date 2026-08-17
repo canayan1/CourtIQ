@@ -68,6 +68,19 @@ struct MainTabView: View {
         .tint(AppPalette.clay)
         .environmentObject(tabRouter)
         .id(lang.language)
+        #if DEBUG
+        // Headless QC: SIMCTL_CHILD_QC_TAB=train|matches|doubles|coach fronts
+        // a tab for screenshot audits without taps.
+        .onAppear {
+            switch ProcessInfo.processInfo.environment["QC_TAB"] {
+            case "train":   tabRouter.selection = .train
+            case "matches": tabRouter.selection = .matches
+            case "doubles": tabRouter.selection = .doubles
+            case "coach":   tabRouter.selection = .coach
+            default: break
+            }
+        }
+        #endif
         .fullScreenCover(isPresented: $showActivation) {
             ActivationView(
                 onAskCoach: {

@@ -61,48 +61,9 @@ struct HomeView: View {
                 coachHero
                     .reveal(appeared: appeared, index: 1, reduceMotion: reduceMotion)
 
-                VStack(alignment: .leading, spacing: 10) {
-                    Eyebrow(lang.t("home.your_game"))
-                        .reveal(appeared: appeared, index: 1, reduceMotion: reduceMotion)
-
-                    // Highlight pair — IQ leads (the reliable core loop);
-                    // swing follows with an honest Beta badge while the
-                    // deterministic pipeline matures.
-                    HStack(spacing: 10) {
-                        FeatureTile(sfSymbol: "brain.head.profile",
-                                    title: lang.t("home.tile_iq"),
-                                    minHeight: 112,
-                                    photo: "PhotoForehand") { Haptics.tap(); route = .tennisIQ }
-                        FeatureTile(sfSymbol: "video.fill",
-                                    title: lang.t("home.tile_swing"),
-                                    minHeight: 112,
-                                    photo: "PhotoServe") { Haptics.tap(); route = .swing }
-                            .overlay(alignment: .topTrailing) {
-                                Text(lang.t("common.beta"))
-                                    .font(.caption2.weight(.heavy))
-                                    .kerning(0.8)
-                                    .foregroundStyle(.white)
-                                    .padding(.horizontal, 8).padding(.vertical, 4)
-                                    .background(AppPalette.ink.opacity(0.85), in: Capsule())
-                                    .padding(8)
-                                    .allowsHitTesting(false)
-                            }
-                    }
-                    .reveal(appeared: appeared, index: 2, reduceMotion: reduceMotion)
-
-                    // Matches / Doubles / Drill as full-width rows — a deliberate
-                    // hierarchy choice (secondary to the Swing/IQ pair above). The
-                    // "dead tap" bug that made these seem broken was a content-only
-                    // hit area on the photo cards; fixed via `.contentShape` in
-                    // `linkRow` + `FeatureTile`, not by the row shape.
-                    linkRow(icon: "list.clipboard.fill", title: lang.t("home.tile_matches"), photo: "PhotoMatch") { route = .matches }
-                        .reveal(appeared: appeared, index: 3, reduceMotion: reduceMotion)
-                    linkRow(icon: "person.2.fill", title: lang.t("home.tile_doubles"), photo: "PhotoDoubles") { route = .doubles }
-                        .reveal(appeared: appeared, index: 4, reduceMotion: reduceMotion)
-                    linkRow(icon: "scope", title: lang.t("home.tile_drill"), photo: "PhotoFootwork") { showDrill = true }
-                        .reveal(appeared: appeared, index: 5, reduceMotion: reduceMotion)
-                }
-
+                // HIG audit A1/A3: Home is TODAY, not a second launcher. The
+                // tab bar is the app's map — Matches/Doubles/Swing live there
+                // (and only there), so one path per feature gets memorized.
                 VStack(alignment: .leading, spacing: 12) {
                     HStack(spacing: 6) {
                         Eyebrow(lang.t("home.recent"))
@@ -115,10 +76,10 @@ struct HomeView: View {
                                 .accessibilityLabel(String(format: lang.t("home.streak_days"), streakDays))
                         }
                     }
-                    .reveal(appeared: appeared, index: 7, reduceMotion: reduceMotion)
+                    .reveal(appeared: appeared, index: 2, reduceMotion: reduceMotion)
 
                     RecentActivityStrip(activities: recentActivity, lang: lang)
-                        .reveal(appeared: appeared, index: 8, reduceMotion: reduceMotion)
+                        .reveal(appeared: appeared, index: 3, reduceMotion: reduceMotion)
                 }
             }
             .padding(20)
@@ -235,9 +196,6 @@ struct HomeView: View {
                             .font(.system(size: 44, weight: .black, design: .rounded))
                             .foregroundStyle(.white)
                             .contentTransition(.numericText())
-                        Text(lang.t("iq.eyebrow"))
-                            .font(.subheadline.weight(.bold))
-                            .foregroundStyle(.white.opacity(0.85))
                         if streakDays > 0 {
                             Label("\(streakDays)", systemImage: "flame.fill")
                                 .font(.system(.subheadline, design: .rounded).weight(.bold))

@@ -169,8 +169,6 @@ struct SwingAnalysisView: View {
         // lives on the capture step, where it's actually actionable.
         ScrollView {
             VStack(alignment: .leading, spacing: 22) {
-                kicker(copy.step1Kicker)
-
                 VStack(alignment: .leading, spacing: 12) {
                     Text(copy.pickStrokeTitle)
                         .font(.headline).foregroundStyle(AppPalette.ink)
