@@ -86,6 +86,15 @@ struct OnboardingFlowView: View {
         }
         .background(AppPalette.cream)
         .animation(.easeInOut, value: step)
+        #if DEBUG
+        // Headless QC: SIMCTL_CHILD_QC_OB=showcase jumps straight to the
+        // showcase carousel for screenshot audits.
+        .onAppear {
+            if ProcessInfo.processInfo.environment["QC_OB"] == "showcase" {
+                step = .showcase
+            }
+        }
+        #endif
     }
 
     // MARK: Question scaffold (progress bar + content + Back/Continue)

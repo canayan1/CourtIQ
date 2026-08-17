@@ -25,10 +25,9 @@ struct OnboardingCopy {
     }
 
     // MARK: Feature showcase (real-world examples)
-    var showcaseSwingEyebrow: String { t("AI SWING ANALYSIS", "AI VURUŞ ANALİZİ") }
+    var showcaseSwingEyebrow: String { t("SWING", "SWING") }
     var showcaseSwingHeadline: String {
-        t("Record a swing, get a 0–100 score + frame-by-frame AI coaching.",
-          "Bir vuruş çek; 0–100 puan ve kare kare AI koçluğu al.")
+        t("Your swing, two ways", "Vuruşun, iki yol")
     }
     var showcaseSwingSampleTitle: String { t("Forehand · Sample", "Forehand · Örnek") }
     var showcaseSwingBullet1: String {
@@ -66,11 +65,13 @@ struct OnboardingCopy {
           "Senin baseline sabrın, onların file agresifliğini tamamlıyor.")
     }
 
-    var showcaseQuizEyebrow: String { t("TENNIS IQ QUIZZES", "TENİS IQ SINAVLARI") }
+    var showcaseQuizEyebrow: String { t("TENNIS IQ", "TENNIS IQ") }
     var showcaseQuizHeadline: String {
-        t("Sharpen real match decisions, daily.",
-          "Gerçek maç kararlarını her gün keskinleştir.")
+        t("Make the smarter call — daily", "Her gün daha akıllı karar")
     }
+    var showcaseScenarioCount: String { t("156 real scenarios", "156 gerçek senaryo") }
+    var showcasePathAI: String { t("AI · instant · included", "AI · anında · dahil") }
+    var showcasePathCoach: String { t("Real coach · 72h", "Gerçek antrenör · 72s") }
     var showcaseQuizSampleTitle: String { t("Today's drill · Sample", "Günün çalışması · Örnek") }
     var showcaseQuizPrompt: String {
         t("Down 30–40 on serve. Where do you go?",
@@ -83,8 +84,7 @@ struct OnboardingCopy {
 
     var showcaseCoachEyebrow: String { t("AI COACH", "AI KOÇ") }
     var showcaseCoachHeadline: String {
-        t("Ask anything — it already knows your game.",
-          "İstediğini sor — oyununu zaten biliyor.")
+        t("It knows your game", "Oyununu bilen koç")
     }
     var showcaseCoachSampleTitle: String { t("AI Coach · Sample", "AI Koç · Örnek") }
     // The sample exchange must show what a GENERIC chatbot can't do: answer

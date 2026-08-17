@@ -173,7 +173,12 @@ private struct ShowcaseSlideView: View {
                 // Photo hero band with the feature eyebrow + headline.
                 VStack(alignment: .leading, spacing: 8) {
                     Spacer(minLength: 0)
-                    Eyebrow(slide.eyebrow)
+                    // Eyebrow hardcodes inkSoft (invisible on a photo scrim) —
+                    // render the label directly in white here.
+                    Text(slide.eyebrow)
+                        .font(.system(.caption2, design: .rounded).weight(.semibold))
+                        .textCase(.uppercase)
+                        .tracking(0.8)
                         .foregroundStyle(.white.opacity(0.85))
                     Text(slide.headline)
                         .font(.system(.title2, design: .rounded).weight(.bold))
@@ -300,56 +305,96 @@ private struct ShowcaseSlide: Identifiable {
     /// the numbers/quotes finale slides are already full.
     var showsTourVideo: Bool = false
 
+    /// Onboarding v2: THREE promises, each proven by a LIVE demo — the real
+    /// animated court story, the two-path swing choice, the coach that knows
+    /// your game. ≤5-word headlines; ~16s total; the stale tour video is gone
+    /// (it showed the pre-redesign Home).
     static func all(_ copy: OnboardingCopy) -> [ShowcaseSlide] {
         [
-            ShowcaseSlide(
-                eyebrow: copy.showcaseSwingEyebrow,
-                headline: copy.showcaseSwingHeadline,
-                photo: "PhotoForehand",
-                sample: AnyView(SwingSampleCard(copy: copy)),
-                showsTourVideo: true
-            ),
-            ShowcaseSlide(
-                eyebrow: copy.showcaseMatchEyebrow,
-                headline: copy.showcaseMatchHeadline,
-                photo: "PhotoMatch",
-                sample: AnyView(MatchSampleCard(copy: copy)),
-                showsTourVideo: true
-            ),
-            ShowcaseSlide(
-                eyebrow: copy.showcaseDoublesEyebrow,
-                headline: copy.showcaseDoublesHeadline,
-                photo: "PhotoDoubles",
-                sample: AnyView(DoublesSampleCard(copy: copy)),
-                showsTourVideo: true
-            ),
             ShowcaseSlide(
                 eyebrow: copy.showcaseQuizEyebrow,
                 headline: copy.showcaseQuizHeadline,
                 photo: "PhotoCourt",
-                sample: AnyView(QuizSampleCard(copy: copy)),
-                showsTourVideo: true
+                sample: AnyView(IQLiveCourtCard(copy: copy))
+            ),
+            ShowcaseSlide(
+                eyebrow: copy.showcaseSwingEyebrow,
+                headline: copy.showcaseSwingHeadline,
+                photo: "PhotoForehand",
+                sample: AnyView(PathSampleCard(copy: copy))
             ),
             ShowcaseSlide(
                 eyebrow: copy.showcaseCoachEyebrow,
                 headline: copy.showcaseCoachHeadline,
                 photo: "PhotoCoach",
-                sample: AnyView(CoachSampleCard(copy: copy)),
-                showsTourVideo: true
-            ),
-            ShowcaseSlide(
-                eyebrow: copy.showcaseNumbersEyebrow,
-                headline: copy.showcaseNumbersHeadline,
-                photo: "PhotoHero",
-                sample: AnyView(NumbersSampleCard(copy: copy))
-            ),
-            ShowcaseSlide(
-                eyebrow: copy.showcaseQuotesEyebrow,
-                headline: copy.showcaseQuotesHeadline,
-                photo: "PhotoNet",
-                sample: AnyView(QuotesSampleCard(copy: copy))
+                sample: AnyView(CoachSampleCard(copy: copy))
             ),
         ]
+    }
+}
+
+// The strongest "what this app is" proof: the REAL QuizCourtDiagramView
+// playing a real 4-player doubles story — no words, just the play.
+private struct IQLiveCourtCard: View {
+    let copy: OnboardingCopy
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            QuizCourtDiagramView(
+                diagram: QuizCourtDiagram(
+                    surface: "clay",
+                    youX: 0.30, youY: 0.58,
+                    opponentX: 0.34, opponentY: 0.38,
+                    ballOriginX: 0.70, ballOriginY: 0.08,
+                    ballTargetX: 0.66, ballTargetY: 0.62,
+                    scoreChip: "DOUBLES · BOTH UP"
+                ),
+                play: QuizPlayLibrary.play(for: "doubles_001")
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .overlay(
+                RoundedRectangle(cornerRadius: 18, style: .continuous)
+                    .stroke(AppPalette.sand, lineWidth: 1)
+            )
+
+            Text(copy.showcaseScenarioCount)
+                .font(.footnote.weight(.bold))
+                .foregroundStyle(AppPalette.inkSoft)
+                .frame(maxWidth: .infinity, alignment: .center)
+                .demoReveal(1.2)
+        }
+    }
+}
+
+// The two-path swing promise as two mini cards, arriving in order — mirrors
+// the in-app "Choose your path" storefront exactly.
+private struct PathSampleCard: View {
+    let copy: OnboardingCopy
+
+    var body: some View {
+        VStack(spacing: 10) {
+            pathRow(icon: "sparkles", text: copy.showcasePathAI,
+                    fg: .white, bg: AppPalette.clay)
+                .demoReveal(0.2)
+            pathRow(icon: "person.wave.2.fill", text: copy.showcasePathCoach,
+                    fg: AppPalette.ink, bg: AppPalette.goldTint)
+                .demoReveal(0.8)
+        }
+    }
+
+    private func pathRow(icon: String, text: String, fg: Color, bg: Color) -> some View {
+        HStack(spacing: 12) {
+            Image(systemName: icon)
+                .font(.title3)
+                .foregroundStyle(fg)
+                .frame(width: 28)
+            Text(text)
+                .font(.headline)
+                .foregroundStyle(fg)
+            Spacer()
+        }
+        .padding(16)
+        .background(bg, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
     }
 }
 
