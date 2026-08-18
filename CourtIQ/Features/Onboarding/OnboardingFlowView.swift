@@ -37,8 +37,10 @@ struct OnboardingFlowView: View {
         case level          // 4  LevelSelfPlacement — single tap
         case weaknesses     // 5  pain points (fast multi-select)
         case building       // 6  labor illusion
-        case result         // 7  personalized reveal
-        case review         // 8  leave-a-review ask (peak enthusiasm) → done
+        case result         // 7  personalized reveal → done
+        // NOTE: the old `review` step asked for a 5-star rating BEFORE the
+        // user had used the app once. Removed — RatingPrompt.registerWin()
+        // already fires the ask after a genuine win (quiz ≥60%, wall rally).
     }
 
     /// Steps that show the top progress bar + Back/Continue chrome.
@@ -75,11 +77,9 @@ struct OnboardingFlowView: View {
                         goal: goal ?? .winMatches,
                         topWeaknessLabel: topWeaknessLabel
                     ) {
-                        advance()
+                        onComplete()
                     }
                 }
-            case .review:
-                reviewScreen
             default:
                 questionScaffold
             }
@@ -209,71 +209,6 @@ struct OnboardingFlowView: View {
         }
     }
 
-    // MARK: 8 — Leave a review (peak enthusiasm, right after the reveal)
-
-    private var reviewScreen: some View {
-        VStack(alignment: .leading, spacing: 24) {
-            Spacer()
-
-            // Five stars filling one by one — priming OUR review ask (this is
-            // a rating request, not a claim about existing ratings).
-            AnimatedStarsRow()
-
-            Text(copy.reviewTitle)
-                .font(.system(.title, design: .rounded).weight(.bold))
-                .foregroundStyle(AppPalette.ink)
-                .fixedSize(horizontal: false, vertical: true)
-
-            Text(copy.reviewBody)
-                .font(.body)
-                .foregroundStyle(AppPalette.inkSoft)
-                .fixedSize(horizontal: false, vertical: true)
-
-            Spacer()
-
-            VStack(spacing: 10) {
-                Button {
-                    requestReview()
-                    Haptics.tap()
-                    onComplete()
-                } label: {
-                    Text(copy.reviewRate)
-                        .font(.headline)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 14)
-                }
-                .buttonStyle(.borderedProminent)
-                .tint(AppPalette.clay)
-
-                Button {
-                    Haptics.tap()
-                    onComplete()
-                } label: {
-                    Text(copy.reviewLater)
-                        .font(.headline)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 12)
-                }
-                .buttonStyle(.bordered)
-                .tint(AppPalette.inkSoft)
-            }
-        }
-        .padding(24)
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .background(AppPalette.cream)
-    }
-
-    /// Triggers the native App Store review prompt in the active window scene.
-    private func requestReview() {
-        guard let scene = UIApplication.shared.connectedScenes
-            .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene else { return }
-        if #available(iOS 18.0, *) {
-            AppStore.requestReview(in: scene)
-        } else {
-            SKStoreReviewController.requestReview(in: scene)
-        }
-    }
-
     // MARK: Reusable pieces
 
     private func questionBlock<Content: View>(
@@ -371,7 +306,7 @@ struct OnboardingFlowView: View {
 
     private var currentStepComplete: Bool {
         switch step {
-        case .hook, .showcase, .building, .result, .review:
+        case .hook, .showcase, .building, .result:
             return true
         case .goal:        return goal != nil
         case .experience:  return experience != nil

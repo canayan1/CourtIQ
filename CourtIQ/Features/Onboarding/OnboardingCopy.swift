@@ -216,7 +216,7 @@ struct OnboardingCopy {
     }
 
     // MARK: 12 — Labor illusion (building plan)
-    var buildingTitle: String { t("Building your plan", "Planın hazırlanıyor") }
+    var buildingTitle: String { t("Reading your answers", "Cevapların okunuyor") }
     func buildAnalyzingLevel(_ levelTitle: String) -> String {
         t("Analyzing your level: \(levelTitle)…", "Seviyeni inceliyoruz: \(levelTitle)…")
     }
@@ -224,16 +224,16 @@ struct OnboardingCopy {
         t("Matching scenario drills to your \(weakness)…", "Senaryo çalışmalarını \(weakness) ile eşliyoruz…")
     }
     func buildCalibrating(_ perDay: Int) -> String {
-        t("Setting up your \(perDay)/day plan…", "Günde \(perDay)'lik planını ayarlıyoruz…")
+        t("Picking your first scenarios…", "İlk senaryoların seçiliyor…")
     }
     var buildFinalizing: String { t("Finalizing your Tennis Profile…", "Tenis Profilini tamamlıyoruz…") }
     var buildGenericFocus: String { t("game", "oyunun") }
 
     // MARK: 13 — Result reveal
-    var resultReadyKicker: String { t("YOUR PLAN IS READY", "PLANIN HAZIR") }
+    var resultReadyKicker: String { t("YOUR TENNIS PROFILE", "TENİS PROFİLİN") }
     func resultPlanLine(goal: String, weakness: String) -> String {
-        t("Your plan to fix your \(weakness) and \(goal) is ready.",
-          "\(weakness) sorununu çözüp \(goal) için planın hazır.")
+        t("Built from your answers. Next: set your baseline.",
+          "Cevaplarından çıkarıldı. Sırada: başlangıç seviyeni ölç.")
     }
     func resultGoalPhrase(_ g: OnboardingGoal) -> String {
         switch g {
@@ -248,10 +248,10 @@ struct OnboardingCopy {
     func iqTarget(_ timeframe: String) -> String { t("In \(timeframe)", "\(timeframe) içinde") }
     var iqTimeframe: String { t("8 weeks", "8 hafta") }
     var iqProjectionNote: String {
-        t("Stick with your daily scenarios and your decision-making climbs fast.",
-          "Günlük senaryolarına devam et — karar verme hızla yükselir.")
+        t("A projection, not a promise — it moves as you train.",
+          "Bir tahmin, vaat değil — antrenman ettikçe değişir.")
     }
-    var resultContinue: String { t("Continue", "Devam") }
+    var resultContinue: String { t("Start training", "Antrenmana başla") }
 
     // MARK: Result section headers (reused alongside TennisProfileCopy)
     var levelHeader: String { t("Your level", "Seviyen") }
