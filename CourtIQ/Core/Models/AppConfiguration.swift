@@ -13,6 +13,8 @@ struct AppConfiguration {
     let revenueCatAPIKey: String?
     let weeklyProductID: String
     let annualProductID: String
+    /// Consumable: one human coach review (docs/COACH-REVIEW-PLAN.md P0).
+    let coachReviewProductID: String
     let premiumEntitlementID: String
     let deleteAccountFunctionName: String
     let aiChatFunctionName: String
@@ -28,6 +30,7 @@ struct AppConfiguration {
         revenueCatAPIKey = Self.stringValue(for: "COURTIQ_REVENUECAT_API_KEY", bundle: bundle)?.nilIfBlank
         weeklyProductID = Self.stringValue(for: "COURTIQ_WEEKLY_PRODUCT_ID", bundle: bundle) ?? "com.courtiq.premium.weekly"
         annualProductID = Self.stringValue(for: "COURTIQ_ANNUAL_PRODUCT_ID", bundle: bundle) ?? "com.courtiq.premium.annual"
+        coachReviewProductID = Self.stringValue(for: "COURTIQ_COACH_REVIEW_PRODUCT_ID", bundle: bundle) ?? "com.canayan93.courtiq.coachreview1"
         premiumEntitlementID = Self.stringValue(for: "COURTIQ_PREMIUM_ENTITLEMENT_ID", bundle: bundle) ?? "premium_all_access"
         deleteAccountFunctionName = Self.stringValue(for: "COURTIQ_DELETE_ACCOUNT_FUNCTION", bundle: bundle) ?? "delete-account"
         aiChatFunctionName = Self.stringValue(for: "COURTIQ_AI_CHAT_FUNCTION", bundle: bundle) ?? "ai-chat"

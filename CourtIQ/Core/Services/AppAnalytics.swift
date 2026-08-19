@@ -105,6 +105,8 @@ enum AnalyticsEvent {
     /// G0 demand gate for the human Coach Review marketplace
     /// (docs/COACH-REVIEW-PLAN.md) — fired once per user per source.
     static let coachReviewInterest  = "coach_review_interest"
+    /// A paid human review was purchased + submitted.
+    static let coachReviewOrdered   = "coach_review_ordered"
 }
 
 extension View {

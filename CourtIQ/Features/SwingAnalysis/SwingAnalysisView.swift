@@ -458,7 +458,11 @@ struct SwingAnalysisView: View {
                 }
                 .padding(.top, 4)
 
-                CoachReviewInterestCard(source: "result")
+                CoachReviewInterestCard(
+                    source: "result",
+                    orderVideoURL: pendingVideoURL,
+                    ensureSession: { try await session.ensureSessionWithRetry() }
+                )
 
                 secondaryButton(copy.analyzeAnotherCTA, systemImage: "arrow.counterclockwise") {
                     pendingVideoURL = nil
@@ -726,6 +730,13 @@ final class SwingAnalysisViewModel {
 /// measures whether anyone wants a real coach's review before we build it.
 private struct CoachReviewInterestCard: View {
     let source: String
+    /// When a clip is in hand (the result screen), the card sells the REAL
+    /// paid review instead of a waitlist signup.
+    var orderVideoURL: URL? = nil
+    var ensureSession: (() async throws -> SupabaseSession)? = nil
+    var stroke: SwingStroke = .forehand
+    var handedness: SwingHandedness? = nil
+    @State private var showOrder = false
     @EnvironmentObject private var lang: LanguageManager
     @AppStorage("CourtIQ.CoachReview.Interested") private var interested = false
     @State private var showDetails = false
@@ -777,7 +788,19 @@ private struct CoachReviewInterestCard: View {
         }
         .buttonStyle(PressableCardStyle())
         .sheet(isPresented: $showDetails) { detailsSheet }
+        .navigationDestination(isPresented: $showOrder) {
+            if let orderVideoURL, let ensureSession {
+                CoachReviewOrderView(videoURL: orderVideoURL,
+                                     stroke: stroke,
+                                     handedness: handedness,
+                                     ensureSession: ensureSession)
+            }
+        }
     }
+
+    /// True once we have both a clip and a way to authenticate — i.e. the
+    /// result screen, where a real order can actually be placed.
+    private var canOrder: Bool { orderVideoURL != nil && ensureSession != nil }
 
     private var detailsSheet: some View {
         NavigationStack {
@@ -822,6 +845,11 @@ private struct CoachReviewInterestCard: View {
 
                     Button {
                         Haptics.success()
+                        if canOrder {
+                            showDetails = false
+                            showOrder = true
+                            return
+                        }
                         if !interested {
                             interested = true
                             AppAnalytics.shared.log(AnalyticsEvent.coachReviewInterest,
@@ -829,8 +857,9 @@ private struct CoachReviewInterestCard: View {
                         }
                         showDetails = false
                     } label: {
-                        Text(interested ? lang.t("coachreview.done")
-                                        : lang.t("coachreview.cta"))
+                        Text(canOrder ? lang.t("coachreview.order_cta")
+                                      : (interested ? lang.t("coachreview.done")
+                                                    : lang.t("coachreview.cta")))
                             .font(.headline)
                             .foregroundStyle(.white)
                             .frame(maxWidth: .infinity)
