@@ -32,7 +32,13 @@ struct HomeView: View {
     /// All grid tiles push their destination via this single route +
     /// navigationDestination. (Switching tabs via tabRouter from a grid tile did
     /// not work; pushing via route does.) The Coach hero still switches tabs.
-    private enum Route: Hashable { case swing, tennisIQ, matches, doubles }
+    private enum Route: Hashable { case swing, tennisIQ, matches, doubles
+        #if DEBUG
+        /// QC only: the paid coach-review order screen (App Store review
+        /// screenshot for the consumable IAP).
+        case coachOrder
+        #endif
+    }
     @State private var route: Route?
 
     /// The unified Recent feed: the most recent activities across swing, match,
@@ -91,6 +97,7 @@ struct HomeView: View {
             switch ProcessInfo.processInfo.environment["QC_OPEN"] {
             case "iq":    route = .tennisIQ
             case "swing": route = .swing
+            case "coachorder": route = .coachOrder
             default:      break
             }
         }
@@ -108,6 +115,15 @@ struct HomeView: View {
                 MatchesListView()
             case .doubles:
                 DoublesView()
+            #if DEBUG
+            case .coachOrder:
+                CoachReviewOrderView(
+                    videoURL: URL(fileURLWithPath: "/dev/null"),
+                    stroke: .forehand,
+                    handedness: .right,
+                    ensureSession: { try await session.ensureSessionWithRetry() }
+                )
+            #endif
             }
         }
         // Header pinned ABOVE the scroll content as its own layer so the hero's

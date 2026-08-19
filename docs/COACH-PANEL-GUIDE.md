@@ -68,13 +68,20 @@ example in §4.
 | Deliver fails | function logs for `coach-review-queue`; the voice note may be over the ~9 MB cap |
 | Video won't play | the signed URL expired (2h) — press **Refresh** in the queue |
 
+## The IAP (done via the ASC API, 19 Aug)
+
+`com.canayan93.courtiq.coachreview1` — Consumable, "One coach review",
+$19.99 USD base, all 175 territories, en-US localization, review screenshot
+of the real order screen, review note explaining the human service.
+**State: READY_TO_SUBMIT.** It goes to Apple review attached to the next
+app version — no separate submission needed.
+https://appstoreconnect.apple.com → DropVolley → In-App Purchases
+
 ## Still to do before this can earn money
 
-1. **You:** create the consumable IAP in App Store Connect —
-   Product ID `com.canayan93.courtiq.coachreview1`, $19.99, "One coach review".
-   https://appstoreconnect.apple.com → DropVolley → In-App Purchases.
-   (Tax/banking info must be complete or purchases fail.)
+1. **You:** confirm Tax & Banking is complete in ASC — Apple will not process
+   purchases without it (Business → Agreements, Tax, and Banking).
 2. **You:** App Privacy labels — user video is now shared with a service
    provider (the coach). Web UI only.
-3. Ship a build containing the order flow (currently only in the working tree,
-   not yet in a submitted build).
+3. **Me, on your word:** ship a build containing the order flow + submit
+   1.0.4 for review (the IAP rides along with it).

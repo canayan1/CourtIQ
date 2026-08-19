@@ -52,7 +52,7 @@ struct CoachReviewOrderView: View {
 
     private var header: some View {
         VStack(alignment: .leading, spacing: 6) {
-            Eyebrow(lang.t("coachreview.card_eyebrow"))
+            Eyebrow(lang.t("coachreview.order_eyebrow"))
             Text(lang.t("coachreview.order_headline"))
                 .font(.system(.title2, design: .rounded).weight(.bold))
                 .foregroundStyle(AppPalette.ink)
