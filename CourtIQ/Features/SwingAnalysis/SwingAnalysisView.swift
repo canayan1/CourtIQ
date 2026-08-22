@@ -737,6 +737,7 @@ private struct CoachReviewInterestCard: View {
     var stroke: SwingStroke = .forehand
     var handedness: SwingHandedness? = nil
     @State private var showOrder = false
+    @ObservedObject private var reviewManager = CoachReviewManager.shared
     @EnvironmentObject private var lang: LanguageManager
     @AppStorage("CourtIQ.CoachReview.Interested") private var interested = false
     @State private var showDetails = false
@@ -788,6 +789,10 @@ private struct CoachReviewInterestCard: View {
         }
         .buttonStyle(PressableCardStyle())
         .sheet(isPresented: $showDetails) { detailsSheet }
+        .task {
+            await reviewManager.refreshProductAvailability(
+                productID: AppConfiguration.shared.coachReviewProductID)
+        }
         .navigationDestination(isPresented: $showOrder) {
             if let orderVideoURL, let ensureSession {
                 CoachReviewOrderView(videoURL: orderVideoURL,
@@ -798,9 +803,12 @@ private struct CoachReviewInterestCard: View {
         }
     }
 
-    /// True once we have both a clip and a way to authenticate — i.e. the
-    /// result screen, where a real order can actually be placed.
-    private var canOrder: Bool { orderVideoURL != nil && ensureSession != nil }
+    /// True only when we have a clip, a way to authenticate, AND StoreKit
+    /// confirms the consumable is live. Until Apple approves the IAP the card
+    /// stays an honest waitlist instead of a Buy button that cannot complete.
+    private var canOrder: Bool {
+        orderVideoURL != nil && ensureSession != nil && reviewManager.productAvailable
+    }
 
     private var detailsSheet: some View {
         NavigationStack {

@@ -13,6 +13,12 @@ final class CoachReviewManager: ObservableObject {
     @Published private(set) var orders: [CoachReviewOrder] = []
     @Published private(set) var deliverables: [String: CoachReviewDeliverable] = [:]
     @Published private(set) var isSubmitting = false
+    /// True once StoreKit confirms the consumable exists in the current
+    /// storefront. Until then the app must NOT offer a purchase — Apple's
+    /// first-consumable rule means the product can be approved later than the
+    /// build that ships this screen, and a dead Buy button is both bad UX and
+    /// a 2.1 rejection risk.
+    @Published private(set) var productAvailable = false
 
     private let service = CoachReviewService()
     private let defaults = UserDefaults.standard
@@ -22,6 +28,13 @@ final class CoachReviewManager: ObservableObject {
     private init() {
         orders = Self.decode([CoachReviewOrder].self, from: defaults, key: ordersKey) ?? []
         deliverables = Self.decode([String: CoachReviewDeliverable].self, from: defaults, key: deliverablesKey) ?? [:]
+    }
+
+    /// Asks StoreKit whether the review credit is purchasable right now.
+    /// Cheap, cached by StoreKit, safe to call on every appearance.
+    func refreshProductAvailability(productID: String) async {
+        let products = try? await Product.products(for: [productID])
+        productAvailable = !(products ?? []).isEmpty
     }
 
     // MARK: Derived
