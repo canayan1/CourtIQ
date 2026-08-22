@@ -68,20 +68,36 @@ example in §4.
 | Deliver fails | function logs for `coach-review-queue`; the voice note may be over the ~9 MB cap |
 | Video won't play | the signed URL expired (2h) — press **Refresh** in the queue |
 
-## The IAP (done via the ASC API, 19 Aug)
+## The IAP — status + the one manual step
 
 `com.canayan93.courtiq.coachreview1` — Consumable, "One coach review",
-$19.99 USD base, all 175 territories, en-US localization, review screenshot
-of the real order screen, review note explaining the human service.
-**State: READY_TO_SUBMIT.** It goes to Apple review attached to the next
-app version — no separate submission needed.
-https://appstoreconnect.apple.com → DropVolley → In-App Purchases
+$19.99, all territories, localization, price, review screenshot: all created
+via the ASC API. State: **READY_TO_SUBMIT**.
 
-## Still to do before this can earn money
+**Apple's rule:** *"Your first consumable in-app purchase must be submitted
+with a new app version."* Subscriptions don't count — this is the app's first
+consumable. The ASC API has no endpoint for that attachment, so it needs one
+click in the web UI:
 
-1. **You:** confirm Tax & Banking is complete in ASC — Apple will not process
-   purchases without it (Business → Agreements, Tax, and Banking).
-2. **You:** App Privacy labels — user video is now shared with a service
-   provider (the coach). Web UI only.
-3. **Me, on your word:** ship a build containing the order flow + submit
-   1.0.4 for review (the IAP rides along with it).
+1. https://appstoreconnect.apple.com → DropVolley → Distribution →
+   In-App Purchases → **One coach review**
+2. Press **Add for Review** (top right). It attaches the IAP to the pending
+   version.
+3. Tell me — I submit 1.0.5 and the IAP goes to review with it.
+
+Until the IAP is approved the app does NOT show a Buy button: the card asks
+StoreKit first and falls back to the waitlist (shipped in 1.0.5). So a live
+user never hits a dead purchase.
+
+## Release state (23 Aug)
+
+| | |
+|---|---|
+| **1.0.4** | LIVE (READY_FOR_SALE) — Daily IQ, animated courts, HIG pass, new onboarding |
+| **1.0.5** | PREPARE_FOR_SUBMISSION — build 34 bound, what's new + 5 screenshots set, waiting on the IAP click |
+
+## Still on you
+
+1. Confirm Tax & Banking is complete (Business → Agreements, Tax, and Banking).
+2. App Privacy labels — user video is shared with a service provider (the coach).
+3. The **Add for Review** click above.
