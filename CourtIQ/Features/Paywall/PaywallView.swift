@@ -386,12 +386,6 @@ struct PaywallView: View {
                         .foregroundStyle(AppPalette.clay)
                 }
 
-                if offer.isFeatured, let trial = offer.trialText {
-                    Text(trial)
-                        .font(.footnote)
-                        .foregroundStyle(AppPalette.inkSoft)
-                        .fixedSize(horizontal: false, vertical: true)
-                }
             }
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)

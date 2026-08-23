@@ -63,7 +63,11 @@ struct TrainView: View {
         // without a tap, mirroring QC_TAB / QC_OPEN elsewhere.
         .navigationDestination(isPresented: $qcDrills) { TrainPracticeView() }
         .onAppear {
-            if ProcessInfo.processInfo.environment["QC_TRAIN"] == "drills" { qcDrills = true }
+            switch ProcessInfo.processInfo.environment["QC_TRAIN"] {
+            case "drills":  qcDrills = true
+            case "paywall": showProgramsPaywall = true
+            default: break
+            }
         }
         #endif
         .onAppear {

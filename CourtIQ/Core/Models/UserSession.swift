@@ -299,14 +299,14 @@ final class SubscriptionManager: ObservableObject {
             SubscriptionOffer(
                 id: configuration.annualProductID,
                 title: "Annual",
-                detail: "3 days free, then billed yearly. Cancel anytime.",
+                detail: "Billed yearly",
                 priceDisplay: "—",
                 isFeatured: true
             ),
             SubscriptionOffer(
                 id: configuration.weeklyProductID,
                 title: "Weekly",
-                detail: "Billed weekly. Cancel anytime.",
+                detail: "Billed weekly",
                 priceDisplay: "—",
                 isFeatured: false
             )
@@ -395,12 +395,12 @@ final class SubscriptionManager: ObservableObject {
     private func seedPreviewPaywallOffers() {
         offers = [
             SubscriptionOffer(id: configuration.annualProductID, title: "Annual",
-                              detail: "3 days free, then billed yearly. Cancel anytime.",
+                              detail: "Billed yearly",
                               priceDisplay: "$59.99 / year", isFeatured: true,
                               perWeekText: "Just $1.15/week", saveBadge: "Save 88%",
                               trialText: "Free for 3 days, then $59.99/year"),
             SubscriptionOffer(id: configuration.weeklyProductID, title: "Weekly",
-                              detail: "Billed weekly. Cancel anytime.",
+                              detail: "Billed weekly",
                               priceDisplay: "$9.99 / week", isFeatured: false)
         ]
         integrationMode = .storeKitDirect
