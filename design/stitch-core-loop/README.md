@@ -19,6 +19,7 @@ only, honesty rules: no invented ratings/precision, unmeasurable = "—").
 | 05 | Choose your path — AI vs real coach | 15483249102910597479 | review in Stitch UI |
 | 06 | Coach review order — consent + price | 8418416009148772597 | ✓ `06_coach_order.png` |
 | 07 | Coach review report — the One Thing | 15283106124373811040 | ✓ `07_coach_report.png` |
+| 08 | Coach tab — one-line quota, big CTA | 16049933221628331055 | ✓ `08_coach_tab.png` |
 
 ## Two API quirks worth knowing
 
@@ -31,7 +32,15 @@ only, honesty rules: no invented ratings/precision, unmeasurable = "—").
    theme. The fix that works: in every new project call `create_design_system`
    then `update_design_system`, then pass THAT project's asset id. Projects
    06 and 07 were built this way and kept the palette and fonts exactly.
-3. **A project degrades after ~3 generations** — the main project started
+3. **A project can lock itself to DESKTOP.** Project `764185169801179342`
+   returned `deviceType: DESKTOP` despite MOBILE being passed, and produced a
+   landscape poster of a professional player at a branded tournament instead
+   of an app screen — unusable, and a licensing risk if it had been kept. It
+   stayed stuck on a retry. Fix: start a fresh project and state "portrait
+   iPhone app screen, never a poster" in BOTH the design MD and the prompt.
+   The design MD now also forbids identifiable professionals and branded
+   venues in imagery.
+4. **A project degrades after ~3 generations** — the main project started
    answering "invalid argument" to every call. One project per screen avoids
    it and has the bonus that `get_project`'s thumbnail is that screen, so
    each design can actually be pulled down and reviewed.
