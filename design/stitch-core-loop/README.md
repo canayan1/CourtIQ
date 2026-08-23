@@ -16,6 +16,9 @@ only, honesty rules: no invented ratings/precision, unmeasurable = "—").
 | 02 | Tennis IQ session — question + court diagram | 15483249102910597479 | review in Stitch UI |
 | 03 | Session summary — IQ delta, XP, streak | 15483249102910597479 | review in Stitch UI |
 | 04 | Skill path — one merged court map | 17407665673871936467 | ✓ `04_skill_path.png` |
+| 05 | Choose your path — AI vs real coach | 15483249102910597479 | review in Stitch UI |
+| 06 | Coach review order — consent + price | 8418416009148772597 | ✓ `06_coach_order.png` |
+| 07 | Coach review report — the One Thing | 15283106124373811040 | ✓ `07_coach_report.png` |
 
 ## Two API quirks worth knowing
 
@@ -23,9 +26,12 @@ only, honesty rules: no invented ratings/precision, unmeasurable = "—").
    argument" for the same project. `get_project` only ever returns the FIRST
    screen's thumbnail, so screens 2 and 3 can't be pulled down; they're
    visible in the Stitch web app.
-2. **A new project ignores the `designSystem` argument** — project 04 was
-   given `assets/9912387750154062633` but Stitch generated its own
-   "Courtside Heritage" theme instead (Rubik + Hanken Grotesk, primary
-   #1a1a1a, accent #d97241). It landed close to our identity by luck, not by
-   instruction. Before the SwiftUI pass, re-apply the real system with
-   `update_design_system` on any project used.
+2. **A design system does not travel between projects.** Passing project 01's
+   asset id to project 04 was silently ignored and Stitch invented its own
+   theme. The fix that works: in every new project call `create_design_system`
+   then `update_design_system`, then pass THAT project's asset id. Projects
+   06 and 07 were built this way and kept the palette and fonts exactly.
+3. **A project degrades after ~3 generations** — the main project started
+   answering "invalid argument" to every call. One project per screen avoids
+   it and has the bonus that `get_project`'s thumbnail is that screen, so
+   each design can actually be pulled down and reviewed.
