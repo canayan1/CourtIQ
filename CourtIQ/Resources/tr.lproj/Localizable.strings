@@ -731,7 +731,7 @@
 "mental.failed_body" = "Yapay zekâya şu an ulaşılamadı — tekrar denemek için dokun.";
 "mental.retry" = "Tekrar dene";
 "mental.shortcut_title" = "Zihinsel kontrol";
-"mental.shortcut_subtitle" = "Şu anki hissine göre ayarlanmış hızlı bir maç öncesi rutin.";
+"mental.shortcut_subtitle" = "Korta çıkmadan önce";
 
 /* Nefes egzersizi (çevrimdışı, mental-check girdilerine göre seçilir) */
 "breathing.cta" = "Nefes egzersizi";

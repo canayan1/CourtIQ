@@ -17,10 +17,6 @@ struct DoublesCopy {
 
     // MARK: Partner list
     var addPartnerCTA: String { t("Add partner", "Partner ekle") }
-    var listEmpty: String {
-        t("Add a doubles partner to see how your games fit.",
-          "Oyunlarınızın nasıl uyuştuğunu görmek için bir doubles partneri ekle.")
-    }
     var partnersHeader: String { t("Your partners", "Partnerlerin") }
 
     // MARK: Partner form
@@ -128,8 +124,7 @@ struct DoublesCopy {
     var quizBridgeEyebrow: String { t("Keep building", "Gelişmeye devam") }
     var quizBridgeTitle: String { t("Sharpen your doubles IQ", "Doubles IQ'nu keskinleştir") }
     var quizBridgeSubtitle: String {
-        t("Quick doubles scenarios — train the calls your report points at.",
-          "Hızlı doubles senaryoları — raporunun işaret ettiği kararları çalış.")
+        t("Train the calls", "Kararları çalış")
     }
 
     // MARK: Delete

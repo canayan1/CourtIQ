@@ -32,8 +32,7 @@ struct DoublesView: View {
                 .padding(20)
             }
         }
-        .navigationTitle(copy.navTitle)
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle(lang.t("tab.doubles"))
         // The invite loop is the hero; the manual "Add partner" affordance lives
         // inside the secondary manual section below. A duplicate toolbar "+"
         // (also opening DoublesPartnerFormView) was redundant and removed.
@@ -66,9 +65,7 @@ struct DoublesView: View {
                 .tint(AppPalette.clay)
             }
 
-            if store.partners.isEmpty {
-                emptyState
-            } else {
+            if !store.partners.isEmpty {
                 VStack(alignment: .leading, spacing: 10) {
                     ForEach(store.partners) { partner in
                         NavigationLink {
@@ -119,12 +116,4 @@ struct DoublesView: View {
         .brandedPhoto("PhotoDoubles", scrim: .bottom, cornerRadius: 18)
     }
 
-    private var emptyState: some View {
-        Text(copy.listEmpty)
-            .font(.subheadline)
-            .foregroundStyle(AppPalette.inkSoft)
-            .multilineTextAlignment(.leading)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.vertical, 8)
-    }
 }

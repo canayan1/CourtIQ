@@ -731,7 +731,7 @@
 "mental.failed_body" = "The AI was unreachable just now — tap retry to try again.";
 "mental.retry" = "Retry";
 "mental.shortcut_title" = "Mental check";
-"mental.shortcut_subtitle" = "A quick pre-match routine, tuned to how you feel right now.";
+"mental.shortcut_subtitle" = "Before you walk on";
 
 /* Breathing exercise (offline, picked from the mental-check inputs) */
 "breathing.cta" = "Breathing exercise";

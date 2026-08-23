@@ -41,16 +41,22 @@ struct MatchesListView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                streakHeader
-                    .reveal(appeared: appeared, index: 0, reduceMotion: reduceMotion)
-                colorLegend
-                    .reveal(appeared: appeared, index: 0, reduceMotion: reduceMotion)
-                mentalCheckShortcut
-                    .reveal(appeared: appeared, index: 1, reduceMotion: reduceMotion)
+                // Design round: with nothing logged, "0 streak / 0 logged" and
+                // a legend for colours that appear nowhere are pure noise. An
+                // empty tab shows the invitation and the mental check, nothing
+                // else; the chrome arrives with the first entry.
                 if matches.entries.isEmpty {
                     emptyState
+                        .reveal(appeared: appeared, index: 0, reduceMotion: reduceMotion)
+                    mentalCheckShortcut
                         .reveal(appeared: appeared, index: 1, reduceMotion: reduceMotion)
                 } else {
+                    streakHeader
+                        .reveal(appeared: appeared, index: 0, reduceMotion: reduceMotion)
+                    colorLegend
+                        .reveal(appeared: appeared, index: 0, reduceMotion: reduceMotion)
+                    mentalCheckShortcut
+                        .reveal(appeared: appeared, index: 1, reduceMotion: reduceMotion)
                     insightShortcuts
                         .reveal(appeared: appeared, index: 1, reduceMotion: reduceMotion)
                     MatchCalendarView(onSelectDay: handleDayTap)
@@ -76,27 +82,18 @@ struct MatchesListView: View {
                 }
                 .accessibilityLabel(lang.t("matches.tutorial.nav_title"))
             }
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    Haptics.tap()
-                    showMentalCheck = true
-                } label: {
-                    Image(systemName: "brain.head.profile")
-                        .font(.title3)
-                        .foregroundStyle(AppPalette.clay)
+            if !matches.entries.isEmpty {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        Haptics.tap()
+                        openNewEntry = true
+                    } label: {
+                        Image(systemName: "plus.circle.fill")
+                            .font(.title2)
+                            .foregroundStyle(AppPalette.clay)
+                    }
+                    .accessibilityLabel(lang.t("matches.new_entry"))
                 }
-                .accessibilityLabel(lang.t("mental.nav_title"))
-            }
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    Haptics.tap()
-                    openNewEntry = true
-                } label: {
-                    Image(systemName: "plus.circle.fill")
-                        .font(.title2)
-                        .foregroundStyle(AppPalette.clay)
-                }
-                .accessibilityLabel(lang.t("matches.new_entry"))
             }
         }
         .onAppear {
@@ -403,27 +400,11 @@ struct MatchesListView: View {
 
     private var emptyState: some View {
         VStack(spacing: 18) {
-            ZStack {
-                Circle()
-                    .fill(.white.opacity(0.16))
-                    .frame(width: 96, height: 96)
-                Image(systemName: "scribble.variable")
-                    .appFont(42, weight: .medium, design: .default)
-                    .foregroundStyle(.white)
-            }
-            .padding(.top, 30)
-
             Text(lang.t("matches.empty_title"))
                 .appFont(22, weight: .heavy)
                 .foregroundStyle(.white)
                 .multilineTextAlignment(.center)
-
-            Text(lang.t("matches.empty_body"))
-                .font(.subheadline)
-                .foregroundStyle(.white.opacity(0.9))
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, 24)
-                .fixedSize(horizontal: false, vertical: true)
+                .padding(.top, 90)
 
             Button {
                 Haptics.tap()
