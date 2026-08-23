@@ -1,64 +1,43 @@
 import SwiftUI
 
-/// Practice level of the Train tree: the 5 quiz categories as a 2-column grid
-/// plus a Drill row and (when available) a Pro shot row. Premium gating and the
-/// quiz-record closure are preserved verbatim from the old TrainView hub.
+/// The Drills screen in the Train tab: the court-tap Drill and (when one is
+/// available) the day's Pro shot pattern.
+///
+/// The six premium-locked category quizzes that used to head this screen are
+/// gone. Tennis IQ now owns every scenario through the free skill path, so
+/// keeping a paywalled copy here meant one name pointing at two screens — and
+/// the worse of the two was the paid one.
 struct TrainPracticeView: View {
-    @EnvironmentObject private var session: UserSessionManager
     @EnvironmentObject private var lang: LanguageManager
-    @EnvironmentObject private var dailyQuizManager: DailyQuizManager
     @EnvironmentObject private var drillManager: CourtTapDrillManager
     @EnvironmentObject private var proShotManager: ProShotPatternsManager
 
-    @State private var showPaywall = false
     @State private var showDrill = false
     @State private var showProShot = false
-    /// Quiz push driven by Button + navigationDestination(item:) — a
-    /// NavigationLink inside this LazyVGrid mis-routed taps between cells
-    /// (tapping Doubles opened the Drill), the same defect fixed on Home.
-    @State private var quizRoute: QuizCategory?
-
-    private let columns = [GridItem(.flexible(), spacing: 12),
-                           GridItem(.flexible(), spacing: 12)]
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                LazyVGrid(columns: columns, spacing: 12) {
-                    ForEach(QuizCategory.allCases) { category in
-                        Button {
-                            if session.isPremiumUnlocked {
-                                Haptics.tap()
-                                quizRoute = category
-                            } else {
-                                showPaywall = true
-                            }
-                        } label: {
-                            LockableTile(sfSymbol: category.systemImage,
-                                         title: category.title,
-                                         locked: !session.isPremiumUnlocked,
-                                         photo: Self.photo(for: category))
-                        }
-                        .buttonStyle(PressableCardStyle())
-                    }
-                }
-
                 Button {
+                    Haptics.tap()
                     showDrill = true
                 } label: {
-                    iconRow(systemImage: "scope",
-                            title: lang.t("train.drill_label"),
-                            photo: "PhotoFootwork")
+                    LockableTile(sfSymbol: "scope",
+                                 title: lang.t("train.drill_label"),
+                                 minHeight: 132,
+                                 photo: "PhotoFootwork")
                 }
                 .buttonStyle(PressableCardStyle())
 
                 if proShotManager.todaysPattern != nil {
                     Button {
+                        Haptics.tap()
                         showProShot = true
                     } label: {
-                        iconRow(systemImage: "trophy.fill",
-                                title: lang.t("train.pro_shot_label"),
-                                photo: "PhotoGear")
+                        LockableTile(sfSymbol: "trophy.fill",
+                                     title: lang.t("train.pro_shot_label"),
+                                     minHeight: 132,
+                                     photo: "PhotoGear")
                     }
                     .buttonStyle(PressableCardStyle())
                 }
@@ -66,24 +45,7 @@ struct TrainPracticeView: View {
             .padding()
         }
         .background(AppPalette.cream)
-        .navigationTitle(lang.t("train.practice"))
-        .navigationDestination(item: $quizRoute) { category in
-            QuizView(quiz: Quiz.practiceQuiz(category: category)) { summary in
-                // Record into the same manager that powers Profile stats
-                // (totalQuizzesCompleted / weekly history). isDaily: false
-                // keeps the "completed today" daily-ritual flag intact.
-                dailyQuizManager.recordCompletion(summary: summary, isDaily: false)
-                session.updateCurrentFocus(category.title)
-                session.updateTopMistakePatterns(summary.mistakeTypes)
-            }
-        }
-        .sheet(isPresented: $showPaywall) {
-            NavigationStack {
-                PaywallView(source: "Practice")
-                    .environmentObject(session)
-                    .environmentObject(lang)
-            }
-        }
+        .navigationTitle(lang.t("train.drills"))
         .fullScreenCover(isPresented: $showDrill) {
             NavigationStack {
                 CourtTapDrillView()
@@ -96,71 +58,6 @@ struct TrainPracticeView: View {
                 ProShotAnimationView(pattern: pattern)
                     .environmentObject(lang)
             }
-        }
-    }
-
-    // MARK: - Tiles
-
-    /// Per-category photo for the 5 quiz tiles (see prompt mapping).
-    private static func photo(for category: QuizCategory) -> String {
-        switch category {
-        case .serve:      return "PhotoServe"
-        case .returnPlay: return "PhotoNet"
-        case .rally:      return "PhotoForehand"
-        case .net:        return "PhotoNet"
-        case .mental:     return "PhotoMatch"
-        case .doubles:    return "PhotoDoubles"
-        }
-    }
-
-    /// Feature row. When `photo` is set, it becomes a duotone photo card with a
-    /// LIGHT (white) foreground over a `.bottom` scrim; otherwise it keeps the
-    /// original parchment + sand-stroke look.
-    private func iconRow(systemImage: String, title: String, photo: String? = nil) -> some View {
-        let fg: Color = photo == nil ? AppPalette.ink : .white
-        let iconTint: Color = photo == nil ? AppPalette.clay : .white
-        return HStack(spacing: 14) {
-            Image(systemName: systemImage)
-                .font(.title2)
-                .foregroundStyle(iconTint)
-                .frame(width: 28)
-
-            Text(title)
-                .font(.headline)
-                .foregroundStyle(fg)
-
-            Spacer()
-
-            Image(systemName: "chevron.right")
-                .font(.footnote.weight(.semibold))
-                .foregroundStyle(photo == nil ? Color.secondary.opacity(0.6) : .white.opacity(0.9))
-        }
-        .padding()
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .modifier(IconRowBackground(photo: photo))
-        // Whole-row hit target — the photo background alone isn't tappable.
-        .contentShape(Rectangle())
-    }
-}
-
-/// Background recipe for `iconRow`: duotone photo (`.bottom` scrim) when a photo
-/// is set, else the original parchment fill + sand stroke. Mirrors the
-/// `TileBackground` pattern at 22pt radius.
-private struct IconRowBackground: ViewModifier {
-    let photo: String?
-
-    func body(content: Content) -> some View {
-        if let photo {
-            content
-                .brandedPhoto(photo, scrim: .bottom, cornerRadius: 22)
-        } else {
-            content
-                .background(AppPalette.parchment)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 22, style: .continuous)
-                        .stroke(AppPalette.sand, lineWidth: 1)
-                )
-                .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
         }
     }
 }

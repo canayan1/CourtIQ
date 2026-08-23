@@ -12,6 +12,7 @@ struct TrainView: View {
 
     @State private var appeared = false
     @State private var showProgramsPaywall = false
+    @State private var qcDrills = false
 
     var body: some View {
         ScrollView {
@@ -57,6 +58,14 @@ struct TrainView: View {
                     .environmentObject(lang)
             }
         }
+        #if DEBUG
+        // Headless QC: SIMCTL_CHILD_QC_TRAIN=drills pushes the Drills screen
+        // without a tap, mirroring QC_TAB / QC_OPEN elsewhere.
+        .navigationDestination(isPresented: $qcDrills) { TrainPracticeView() }
+        .onAppear {
+            if ProcessInfo.processInfo.environment["QC_TRAIN"] == "drills" { qcDrills = true }
+        }
+        #endif
         .onAppear {
             if reduceMotion {
                 appeared = true
@@ -97,10 +106,10 @@ struct TrainView: View {
         NavigationLink {
             TrainPracticeView()
         } label: {
-            LockableTile(sfSymbol: "rectangle.stack",
-                         title: lang.t("train.practice"),
+            LockableTile(sfSymbol: "scope",
+                         title: lang.t("train.drills"),
                          minHeight: 112,
-                         photo: "PhotoCourt")
+                         photo: "PhotoFootwork")
         }
         .buttonStyle(PressableCardStyle())
     }

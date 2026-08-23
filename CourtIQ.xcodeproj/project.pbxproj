@@ -39,7 +39,6 @@
 		9F058BB47733B75F46ED587A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32EFA2E45204668CCB9AA07 /* HomeView.swift */; };
 		A000000000000000000020 /* CourtIQApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000010 /* CourtIQApp.swift */; };
 		A000000000000000000021 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000011 /* MainTabView.swift */; };
-		A000000000000000000022 /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000012 /* PracticeView.swift */; };
 		A000000000000000000023 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000013 /* ProfileView.swift */; };
 		A000000000000000000024 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000014 /* TodayView.swift */; };
 		A000000000000000000025 /* DailyQuizManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000015 /* DailyQuizManager.swift */; };
@@ -52,6 +51,11 @@
 		A00000000000000000002B /* MobilityLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000001B /* MobilityLibraryView.swift */; };
 		A00000000000000000002C /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000001C /* QuizView.swift */; };
 		B7E11QM0000000000002 /* DailyIQView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E11QF0000000000002 /* DailyIQView.swift */; };
+		B7E11CR0000000000005 /* CoachReviewDeliverableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E11CF0000000000005 /* CoachReviewDeliverableView.swift */; };
+		B7E11CR0000000000004 /* CoachReviewOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E11CF0000000000004 /* CoachReviewOrderView.swift */; };
+		B7E11CR0000000000003 /* CoachReviewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E11CF0000000000003 /* CoachReviewManager.swift */; };
+		B7E11CR0000000000002 /* CoachReviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E11CF0000000000002 /* CoachReviewService.swift */; };
+		B7E11CR0000000000001 /* CoachReviewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E11CF0000000000001 /* CoachReviewModels.swift */; };
 		A00000000000000000002D /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000001D /* QuizViewModel.swift */; };
 		A000000000000000000034 /* TrainingProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000030 /* TrainingProgram.swift */; };
 		A000000000000000000035 /* TrainingProgressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000031 /* TrainingProgressManager.swift */; };
@@ -213,7 +217,6 @@
 		A00000000000000000000F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = CourtIQ/Info.plist; sourceTree = "<group>"; };
 		A000000000000000000010 /* CourtIQApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CourtIQApp.swift; path = CourtIQ/App/CourtIQApp.swift; sourceTree = "<group>"; };
 		A000000000000000000011 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainTabView.swift; path = CourtIQ/App/MainTabView.swift; sourceTree = "<group>"; };
-		A000000000000000000012 /* PracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PracticeView.swift; path = CourtIQ/App/PracticeView.swift; sourceTree = "<group>"; };
 		A000000000000000000013 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileView.swift; path = CourtIQ/App/ProfileView.swift; sourceTree = "<group>"; };
 		A000000000000000000014 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TodayView.swift; path = CourtIQ/App/TodayView.swift; sourceTree = "<group>"; };
 		A000000000000000000015 /* DailyQuizManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DailyQuizManager.swift; path = CourtIQ/Core/Models/DailyQuizManager.swift; sourceTree = "<group>"; };
@@ -226,6 +229,11 @@
 		A00000000000000000001B /* MobilityLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MobilityLibraryView.swift; path = CourtIQ/Features/Mobility/MobilityLibraryView.swift; sourceTree = "<group>"; };
 		A00000000000000000001C /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuizView.swift; path = CourtIQ/Features/Quiz/QuizView.swift; sourceTree = "<group>"; };
 		B7E11QF0000000000002 /* DailyIQView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DailyIQView.swift; path = CourtIQ/Features/Quiz/DailyIQView.swift; sourceTree = "<group>"; };
+		B7E11CF0000000000005 /* CoachReviewDeliverableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoachReviewDeliverableView.swift; path = CourtIQ/Features/CoachReview/CoachReviewDeliverableView.swift; sourceTree = "<group>"; };
+		B7E11CF0000000000004 /* CoachReviewOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoachReviewOrderView.swift; path = CourtIQ/Features/CoachReview/CoachReviewOrderView.swift; sourceTree = "<group>"; };
+		B7E11CF0000000000003 /* CoachReviewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoachReviewManager.swift; path = CourtIQ/Features/CoachReview/CoachReviewManager.swift; sourceTree = "<group>"; };
+		B7E11CF0000000000002 /* CoachReviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoachReviewService.swift; path = CourtIQ/Features/CoachReview/CoachReviewService.swift; sourceTree = "<group>"; };
+		B7E11CF0000000000001 /* CoachReviewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoachReviewModels.swift; path = CourtIQ/Features/CoachReview/CoachReviewModels.swift; sourceTree = "<group>"; };
 		A00000000000000000001D /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuizViewModel.swift; path = CourtIQ/Features/Quiz/QuizViewModel.swift; sourceTree = "<group>"; };
 		A000000000000000000030 /* TrainingProgram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrainingProgram.swift; path = CourtIQ/Core/Models/TrainingProgram.swift; sourceTree = "<group>"; };
 		A000000000000000000031 /* TrainingProgressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrainingProgressManager.swift; path = CourtIQ/Core/Models/TrainingProgressManager.swift; sourceTree = "<group>"; };
@@ -396,7 +404,6 @@
 				A00000000000000000000F /* Info.plist */,
 				A000000000000000000010 /* CourtIQApp.swift */,
 				A000000000000000000011 /* MainTabView.swift */,
-				A000000000000000000012 /* PracticeView.swift */,
 				A000000000000000000013 /* ProfileView.swift */,
 				A000000000000000000014 /* TodayView.swift */,
 				A000000000000000000015 /* DailyQuizManager.swift */,
@@ -487,6 +494,11 @@
 				A00000000000000000001B /* MobilityLibraryView.swift */,
 				A00000000000000000001C /* QuizView.swift */,
 				B7E11QF0000000000002 /* DailyIQView.swift */,
+				B7E11CF0000000000005 /* CoachReviewDeliverableView.swift */,
+				B7E11CF0000000000004 /* CoachReviewOrderView.swift */,
+				B7E11CF0000000000003 /* CoachReviewManager.swift */,
+				B7E11CF0000000000002 /* CoachReviewService.swift */,
+				B7E11CF0000000000001 /* CoachReviewModels.swift */,
 				A00000000000000000001D /* QuizViewModel.swift */,
 				A000000000000000000042 /* OnboardingView.swift */,
 				A000000000000000000043 /* PaywallView.swift */,
@@ -709,7 +721,6 @@
 			files = (
 				A000000000000000000020 /* CourtIQApp.swift in Sources */,
 				A000000000000000000021 /* MainTabView.swift in Sources */,
-				A000000000000000000022 /* PracticeView.swift in Sources */,
 				A000000000000000000023 /* ProfileView.swift in Sources */,
 				A000000000000000000024 /* TodayView.swift in Sources */,
 				A000000000000000000025 /* DailyQuizManager.swift in Sources */,
@@ -722,6 +733,11 @@
 				A00000000000000000002B /* MobilityLibraryView.swift in Sources */,
 				A00000000000000000002C /* QuizView.swift in Sources */,
 				B7E11QM0000000000002 /* DailyIQView.swift in Sources */,
+				B7E11CR0000000000005 /* CoachReviewDeliverableView.swift in Sources */,
+				B7E11CR0000000000004 /* CoachReviewOrderView.swift in Sources */,
+				B7E11CR0000000000003 /* CoachReviewManager.swift in Sources */,
+				B7E11CR0000000000002 /* CoachReviewService.swift in Sources */,
+				B7E11CR0000000000001 /* CoachReviewModels.swift in Sources */,
 				A00000000000000000002D /* QuizViewModel.swift in Sources */,
 				A000000000000000000039 /* AppPalette.swift in Sources */,
 				A000000000000000000050 /* AppConfiguration.swift in Sources */,
