@@ -21,6 +21,10 @@ struct AICoachView: View {
                     emptyState
                 } else {
                     threadList
+                    // Design round: starting a chat must never depend on
+                    // spotting the toolbar "+". The primary action stays
+                    // full-width and visible whether or not history exists.
+                    askCoachButton
                 }
             }
             .padding(20)
@@ -110,6 +114,23 @@ struct AICoachView: View {
             return String(format: lang.t("ai.quota_remaining_format"), remaining)
         }
         return lang.t("ai.quota_unknown")
+    }
+
+    /// The one obvious action on this tab, always on screen.
+    private var askCoachButton: some View {
+        Button {
+            Haptics.tap()
+            openNewChat = true
+        } label: {
+            Text(lang.t("ai.ask_coach"))
+                .font(.headline)
+                .foregroundStyle(.white)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 16)
+                .background(AppPalette.clay, in: RoundedRectangle(cornerRadius: 16))
+        }
+        .buttonStyle(PressableCardStyle())
+        .padding(.top, 4)
     }
 
     private var emptyState: some View {

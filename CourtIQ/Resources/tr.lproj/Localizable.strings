@@ -1116,3 +1116,6 @@
 "coachreview.cp_footwork" = "Ayak işi";
 "coachreview.open_review" = "İncelemeyi aç";
 "coachreview.order_eyebrow" = "GERÇEK ANTRENÖR İNCELEMESİ";
+"ai.ask_coach" = "Antrenörüne sor";
+"train.group_court" = "KORTTA";
+"train.group_body" = "BEDEN";

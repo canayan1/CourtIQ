@@ -22,7 +22,6 @@ struct HomeView: View {
 
     @State private var appeared = false
     @State private var showProfile = false
-    @State private var showDrill = false
     @State private var heroBounce = false
 
     /// Grid push destinations. Driven by Button + navigationDestination(item:)
@@ -143,13 +142,6 @@ struct HomeView: View {
             } else if !appeared {
                 withAnimation(Motion.entrance) { appeared = true }
                 heroBounce = true
-            }
-        }
-        .fullScreenCover(isPresented: $showDrill) {
-            NavigationStack {
-                CourtTapDrillView()
-                    .environmentObject(lang)
-                    .environmentObject(drillManager)
             }
         }
         .sheet(isPresented: $showProfile) {

@@ -1116,3 +1116,6 @@
 "coachreview.cp_footwork" = "Footwork";
 "coachreview.open_review" = "Open review";
 "coachreview.order_eyebrow" = "REAL COACH REVIEW";
+"ai.ask_coach" = "Ask your coach";
+"train.group_court" = "ON COURT";
+"train.group_body" = "BODY";

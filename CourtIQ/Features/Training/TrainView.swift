@@ -19,23 +19,32 @@ struct TrainView: View {
                 // HIG audit A4: the navigation title IS the title — no
                 // in-content eyebrow/headline/slogan stack.
 
-                // Co-equal headliners: Swing + Tennis IQ.
-                HStack(spacing: 12) {
-                    swingCard
+                // Design round: the five destinations were an unordered grid.
+                // Two eyebrows give the tab a spine — what you do WITH a
+                // racquet, and what you do for the body that swings it.
+                VStack(alignment: .leading, spacing: 12) {
+                    Eyebrow(lang.t("train.group_court"))
                         .reveal(appeared: appeared, index: 0, reduceMotion: reduceMotion)
-                    practiceCard
-                        .reveal(appeared: appeared, index: 1, reduceMotion: reduceMotion)
-                }
-
-                HStack(spacing: 12) {
-                    recoverCard
-                        .reveal(appeared: appeared, index: 2, reduceMotion: reduceMotion)
-                    programsCard
+                    HStack(spacing: 12) {
+                        practiceCard
+                            .reveal(appeared: appeared, index: 1, reduceMotion: reduceMotion)
+                        swingCard
+                            .reveal(appeared: appeared, index: 2, reduceMotion: reduceMotion)
+                    }
+                    wallCard
                         .reveal(appeared: appeared, index: 3, reduceMotion: reduceMotion)
                 }
 
-                wallCard
-                    .reveal(appeared: appeared, index: 4, reduceMotion: reduceMotion)
+                VStack(alignment: .leading, spacing: 12) {
+                    Eyebrow(lang.t("train.group_body"))
+                        .reveal(appeared: appeared, index: 4, reduceMotion: reduceMotion)
+                    HStack(spacing: 12) {
+                        recoverCard
+                            .reveal(appeared: appeared, index: 5, reduceMotion: reduceMotion)
+                        programsCard
+                            .reveal(appeared: appeared, index: 6, reduceMotion: reduceMotion)
+                    }
+                }
             }
             .padding()
         }
@@ -91,7 +100,7 @@ struct TrainView: View {
             LockableTile(sfSymbol: "rectangle.stack",
                          title: lang.t("train.practice"),
                          minHeight: 112,
-                         photo: "PhotoTraining")
+                         photo: "PhotoCourt")
         }
         .buttonStyle(PressableCardStyle())
     }
@@ -137,7 +146,7 @@ struct TrainView: View {
                 LockableTile(sfSymbol: "figure.strengthtraining.traditional",
                              title: lang.t("train.programs"),
                              minHeight: 112,
-                             photo: "PhotoCourt")
+                             photo: "PhotoTraining")
             }
             .buttonStyle(PressableCardStyle())
         } else {
@@ -148,7 +157,7 @@ struct TrainView: View {
                              title: lang.t("train.programs"),
                              locked: true,
                              minHeight: 112,
-                             photo: "PhotoCourt")
+                             photo: "PhotoTraining")
             }
             .buttonStyle(PressableCardStyle())
         }
