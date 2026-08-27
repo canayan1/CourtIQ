@@ -1,16 +1,16 @@
 import SwiftUI
 import AVFoundation
-import Vision
 
 /// "Wall Rally Cam" (MVP / experimental). Prop the phone BEHIND you facing the
-/// wall, frame the target square on the wall, and the app counts how many times
-/// in a row you land a ball inside that square — using Vision's on-device
-/// ball-trajectory detection (`VNDetectTrajectoriesRequest`). Fully on-device:
+/// wall and the app counts how many wall hits you string together, hearing each
+/// impact through the microphone. Placement scoring (a net band, a too-high
+/// zone) is planned but NOT here yet — see docs/WALL-PRACTICE-PLAN.md. Fully
+/// on-device:
 /// no server, no AI spend.
 ///
-/// ⚠️ Camera + Vision only run on a REAL DEVICE — the Simulator renders the UI
-/// but detects nothing. The detection thresholds below are a FIRST PASS and
-/// WILL need tuning on-device (lighting, ball/wall contrast, camera angle).
+/// ⚠️ The mic only runs on a REAL DEVICE — the Simulator renders the UI but
+/// hears nothing. The impact thresholds below are a FIRST PASS and will need
+/// tuning on-device (wall material, room reverb, distance, ambient noise).
 struct WallRallyCamView: View {
     @EnvironmentObject private var lang: LanguageManager
     @Environment(\.dismiss) private var dismiss
@@ -38,33 +38,6 @@ struct WallRallyCamView: View {
         }
     }
 
-    // MARK: - Target square the player frames on the wall
-
-    private var targetOverlay: some View {
-        GeometryReader { geo in
-            let r = model.target
-            let rect = CGRect(x: r.minX * geo.size.width, y: r.minY * geo.size.height,
-                              width: r.width * geo.size.width, height: r.height * geo.size.height)
-            ZStack {
-                if model.targetLocked {
-                    // Auto-placed on the first impact; flashes green on a hit.
-                    RoundedRectangle(cornerRadius: 10, style: .continuous)
-                        .stroke(model.lastHit ? AppPalette.moss : .white.opacity(0.95),
-                                style: StrokeStyle(lineWidth: 3, dash: model.lastHit ? [] : [8, 6]))
-                        .frame(width: rect.width, height: rect.height)
-                        .position(x: rect.midX, y: rect.midY)
-                        .shadow(color: .black.opacity(0.5), radius: 4)
-                        .animation(.easeOut(duration: 0.15), value: model.lastHit)
-                } else if model.isRunning {
-                    // Waiting for the first hit to auto-place the target.
-                    Image(systemName: "scope")
-                        .font(.system(size: 54, weight: .thin)).foregroundStyle(.white.opacity(0.65))
-                        .position(x: geo.size.width / 2, y: geo.size.height * 0.42)
-                }
-            }
-        }
-    }
-
     // MARK: - Heads-up display
 
     private var hud: some View {
@@ -76,30 +49,9 @@ struct WallRallyCamView: View {
                         .padding(12).background(Circle().fill(.black.opacity(0.4)))
                 }
                 Spacer()
-                HStack(spacing: 10) {
-                    statPill(label: lang.t("rallycam.best"), value: "\(model.maxStreak)")
-                    if model.targetLocked {
-                        statPill(label: lang.t("rallycam.accuracy"), value: "\(model.accuracy)%")
-                    }
-                }
+                statPill(label: lang.t("rallycam.best"), value: "\(model.maxStreak)")
             }
             .padding()
-
-            // DEBUG readout (temporary): the SOUND-hit count is the key signal
-            // now; the live mic peak is for tuning the impact threshold.
-            VStack(spacing: 3) {
-                Text("SOUND hits: \(model.audioHits)")
-                Text("peak \(String(format: "%.2f", model.audioPeak))   hold \(String(format: "%.2f", model.audioPeakHold))")
-                    .font(.system(size: 13, weight: .regular, design: .monospaced))
-                Text("triggers @ \(String(format: "%.2f", model.audioThreshold))")
-                    .font(.system(size: 12, weight: .regular, design: .monospaced))
-                    .foregroundStyle(.white.opacity(0.75))
-            }
-            .font(.system(size: 20, weight: .heavy, design: .monospaced))
-            .foregroundStyle(model.audioHits > 0 ? .green : .yellow)
-            .padding(12)
-            .background(.black.opacity(0.6))
-            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
 
             Spacer()
 
@@ -169,46 +121,28 @@ struct WallRallyCamView: View {
 final class RallyCamModel: ObservableObject {
     @Published var currentStreak = 0
     @Published var maxStreak = 0
-    @Published var attempts = 0
-    @Published var hitsInTarget = 0
     @Published var isRunning = false
     @Published var lastHit = false
-    @Published var targetLocked = false
     @Published var permissionDenied = false
-    // First-light diagnostics (shown on-screen; remove once detection is tuned).
-    @Published var framesSeen = 0
-    @Published var trajDetected = 0
-    @Published var lastConfidence: Double = 0
-    // Audio path — the primary, placement-independent hit counter.
-    @Published var audioPeak: Float = 0        // live mic peak
-    @Published var audioPeakHold: Float = 0    // loudest recent peak (read on a soft hit)
-    @Published var audioThreshold: Float = 0   // current adaptive trigger level
-    @Published var audioHits = 0
+    /// The mic is the whole detector. Vision trajectory fitting was tried here
+    /// and abandoned — `VNDetectTrajectoriesRequest` fits PARABOLIC paths, and a
+    /// ball rebounding off a wall toward the camera isn't one. The placement
+    /// layer (net band / too high) is planned on a different mechanism entirely:
+    /// frame-differencing at the audio impact's timestamp. See
+    /// docs/WALL-PRACTICE-PLAN.md.
     private var lastImpactTime: TimeInterval = 0
-    /// Target square in normalized [0,1] VIEW coords (top-left origin). It is
-    /// AUTO-set to where the FIRST ball hits the wall (no manual framing).
-    @Published var target = CGRect(x: 0.38, y: 0.32, width: 0.24, height: 0.24)
-
-    /// Share of shots that landed inside the target (0–100).
-    var accuracy: Int {
-        attempts == 0 ? 0 : Int((Double(hitsInTarget) / Double(attempts) * 100).rounded())
-    }
 
     private var flashWork: DispatchWorkItem?
 
     func start() {
         isRunning = true
         currentStreak = 0; maxStreak = 0
-        attempts = 0; hitsInTarget = 0
-        audioHits = 0; lastImpactTime = 0
-        audioPeakHold = 0
-        targetLocked = false
+        lastImpactTime = 0
     }
 
-    /// A wall impact heard by the mic — the primary, placement-independent hit
-    /// counter (Vision trajectory detection proved too finicky for this setup).
-    /// A gap over 3s ends the rally; the longest rally is the best streak. No
-    /// sound cue here, so the mic doesn't hear our own feedback.
+    /// A wall impact heard by the mic. A gap over 3s ends the rally; the longest
+    /// rally is the best streak. No sound cue here, so the mic doesn't hear our
+    /// own feedback.
     func registerAudioHit() {
         guard isRunning else { return }
         let now = ProcessInfo.processInfo.systemUptime
@@ -216,7 +150,6 @@ final class RallyCamModel: ObservableObject {
         lastImpactTime = now
         currentStreak += 1
         maxStreak = max(maxStreak, currentStreak)
-        audioHits += 1
         Haptics.success()
         flash()
     }
@@ -229,45 +162,12 @@ final class RallyCamModel: ObservableObject {
                 hits: maxStreak, seconds: 0, isFreeRally: true
             )
             AppAnalytics.shared.log(AnalyticsEvent.wallSessionCompleted,
-                                    ["title": "rally_cam", "hits": maxStreak, "accuracy": accuracy])
+                                    ["title": "rally_cam", "hits": maxStreak])
             RatingPrompt.registerWin()   // a finished rally is a genuine win moment
         }
     }
 
     func stop() { isRunning = false }
-
-    /// A completed ball trajectory ended at `point` (normalized, top-left view
-    /// coords). The FIRST impact auto-locks the target around it; after that,
-    /// in-target = hit + streak, out-of-target = miss (breaks the streak).
-    func registerImpact(at point: CGPoint) {
-        guard isRunning else { return }
-        if !targetLocked {
-            lockTarget(around: point)
-            targetLocked = true
-            attempts = 1; hitsInTarget = 1
-            currentStreak = 1; maxStreak = 1
-            Haptics.success(); AudioManager.shared.play(.ballHit); flash()
-            return
-        }
-        attempts += 1
-        if target.contains(point) {
-            hitsInTarget += 1
-            currentStreak += 1
-            maxStreak = max(maxStreak, currentStreak)
-            Haptics.success(); AudioManager.shared.play(.ballHit); flash()
-        } else {
-            currentStreak = 0
-            Haptics.warning()
-        }
-    }
-
-    /// Center a fixed-size target square on the first impact point (clamped).
-    private func lockTarget(around point: CGPoint) {
-        let size: CGFloat = 0.24
-        let x = min(max(0, point.x - size / 2), 1 - size)
-        let y = min(max(0, point.y - size / 2), 1 - size)
-        target = CGRect(x: x, y: y, width: size, height: size)
-    }
 
     private func flash() {
         lastHit = true
@@ -278,7 +178,7 @@ final class RallyCamModel: ObservableObject {
     }
 }
 
-// MARK: - Camera + Vision pipeline (UIKit-backed)
+// MARK: - Camera preview + mic pipeline (UIKit-backed)
 
 struct RallyCamPreview: UIViewControllerRepresentable {
     let model: RallyCamModel
@@ -291,33 +191,16 @@ struct RallyCamPreview: UIViewControllerRepresentable {
     func updateUIViewController(_ controller: RallyCamController, context: Context) {}
 }
 
-/// Owns the `AVCaptureSession` + the `VNDetectTrajectoriesRequest` sequence, and
-/// converts completed trajectories into hit/miss events on the model.
+/// Owns the `AVCaptureSession` (preview only, for now) and the mic-based
+/// `AudioImpactDetector` that drives the hit count.
 final class RallyCamController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     weak var model: RallyCamModel?
 
     private let session = AVCaptureSession()
     private var previewLayer: AVCaptureVideoPreviewLayer?
     private let videoQueue = DispatchQueue(label: "dropvolley.rallycam.video")
-    private let sequenceHandler = VNSequenceRequestHandler()
-    /// De-dupe: one hit/miss per detected trajectory id.
-    private var seenTrajectoryIDs: Set<UUID> = []
-    /// Mic-based impact counter — the PRIMARY hit detector.
+    /// The hit detector.
     private let impactDetector = AudioImpactDetector()
-    private var lastPeakUpdate: TimeInterval = 0
-
-    private var frameCounter = 0
-    // Loosened for first-light debugging — watch the on-screen f/traj/conf readout.
-    private let minConfidence: VNConfidence = 0.3
-    private lazy var trajectoryRequest: VNDetectTrajectoriesRequest = {
-        let request = VNDetectTrajectoriesRequest(frameAnalysisSpacing: .zero, trajectoryLength: 3) { [weak self] req, _ in
-            self?.handle(req.results as? [VNTrajectoryObservation] ?? [])
-        }
-        // A tennis ball can be tiny in-frame; keep the range wide while debugging.
-        request.objectMinimumNormalizedRadius = 0.003
-        request.objectMaximumNormalizedRadius = 0.30
-        return request
-    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -366,18 +249,6 @@ final class RallyCamController: UIViewController, AVCaptureVideoDataOutputSample
         impactDetector.onImpact = { [weak self] in
             DispatchQueue.main.async { self?.model?.registerAudioHit() }
         }
-        impactDetector.onPeak = { [weak self] peak, threshold in
-            guard let self else { return }
-            let now = ProcessInfo.processInfo.systemUptime
-            guard now - self.lastPeakUpdate > 0.08 else { return }
-            self.lastPeakUpdate = now
-            DispatchQueue.main.async {
-                guard let m = self.model else { return }
-                m.audioPeak = peak
-                m.audioThreshold = threshold
-                m.audioPeakHold = max(m.audioPeakHold * 0.9, peak)
-            }
-        }
         impactDetector.start()
     }
 
@@ -387,28 +258,12 @@ final class RallyCamController: UIViewController, AVCaptureVideoDataOutputSample
         videoQueue.async { [weak self] in self?.session.stopRunning() }
     }
 
+    /// Frames arrive but nothing consumes them yet. The output stays wired
+    /// because the placement layer (docs/WALL-PRACTICE-PLAN.md, P2) needs the
+    /// two or three frames around each audio impact — but running a Vision pass
+    /// on every frame to feed a readout nobody sees was pure battery cost.
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer,
-                       from connection: AVCaptureConnection) {
-        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
-        frameCounter += 1
-        if frameCounter % 10 == 0 {
-            let n = frameCounter
-            DispatchQueue.main.async { self.model?.framesSeen = n }
-        }
-        // Back camera in portrait → `.right`. TUNE if trajectories look rotated.
-        try? sequenceHandler.perform([trajectoryRequest], on: pixelBuffer, orientation: .right)
-    }
-
-    /// Vision is now DIAGNOSTIC-ONLY (the mic drives the hit count). We still
-    /// count any detected trajectory into the on-screen readout so we can tell
-    /// whether Vision ever sees the ball in this setup — the visual target /
-    /// accuracy layer is a v2 that needs a reliable detector first.
-    private func handle(_ observations: [VNTrajectoryObservation]) {
-        guard let model, !observations.isEmpty else { return }
-        let best = observations.map { Double($0.confidence) }.max() ?? 0
-        let count = observations.count
-        DispatchQueue.main.async { model.trajDetected += count; model.lastConfidence = best }
-    }
+                       from connection: AVCaptureConnection) {}
 }
 
 // MARK: - Audio impact detector (primary hit counter)
@@ -457,7 +312,6 @@ final class AudioImpactDetector {
     private var lastHit: TimeInterval = 0
 
     var onImpact: (() -> Void)?
-    var onPeak: ((Float, Float) -> Void)?   // (live peak, current trigger threshold)
 
     // TUNE ON DEVICE ↓  — a band-pass isolates the impact band, then an ADAPTIVE
     // threshold triggers when the FILTERED peak spikes above the tracked ambient
@@ -515,7 +369,6 @@ final class AudioImpactDetector {
             i += 1
         }
         let threshold = max(absFloor, ambient * spikeRatio)
-        onPeak?(peak, threshold)
         let now = ProcessInfo.processInfo.systemUptime
         if peak >= threshold && now - lastHit >= refractory {
             lastHit = now

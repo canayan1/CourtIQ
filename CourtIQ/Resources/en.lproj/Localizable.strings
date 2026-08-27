@@ -105,17 +105,15 @@
 /* Wall Rally Cam (experimental — on-device Vision ball tracking) */
 "common.beta" = "BETA";
 "rallycam.title" = "Rally Cam";
-"rallycam.sub" = "Camera counts your consecutive hits into a wall target.";
+"rallycam.sub" = "The mic hears every wall hit and counts your rally.";
 "rallycam.best" = "Best";
 "rallycam.in_a_row" = "in a row";
-"rallycam.hint_setup" = "Prop the phone behind you, facing the wall. Then Start — your first hit sets the target.";
-"rallycam.hint_first" = "Hit the wall — your first shot locks the target.";
-"rallycam.hint_running" = "Rally into the square — we're scoring.";
-"rallycam.accuracy" = "Accuracy";
+"rallycam.hint_setup" = "Prop the phone facing the wall, then Start. Sound does the counting — framing doesn't matter.";
+"rallycam.hint_running" = "Keep it going — every wall hit counts.";
 "rallycam.start" = "Start";
 "rallycam.stop" = "Stop";
 "rallycam.permission_title" = "Camera access needed";
-"rallycam.permission_body" = "Rally Cam uses the camera on-device to track the ball. Enable it in Settings.";
+"rallycam.permission_body" = "Rally Cam shows the camera so you can see yourself hit. Counting is done on-device from the sound of each wall hit.";
 "train.analyze_title" = "AI Swing Analysis";
 "train.analyze_desc" = "Record your swing — get instant AI coaching, frame by frame.";
 "train.flagship" = "Flagship";
