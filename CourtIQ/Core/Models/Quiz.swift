@@ -87,9 +87,9 @@ struct QuizQuestion: Identifiable, Codable, Hashable {
     let focusTag: String
     let scenario: String
     var scenarioTr: String? = nil
-    let options: [String]
+    var options: [String]
     var optionsTr: [String]? = nil
-    let correctAnswerIndex: Int
+    var correctAnswerIndex: Int
     let explanation: String
     var explanationTr: String? = nil
     let takeaway: String
@@ -102,6 +102,27 @@ struct QuizQuestion: Identifiable, Codable, Hashable {
     /// Optional in the wire format for backward compatibility; falls
     /// through to `.patterns` when missing.
     var tacticalCategory: String? = nil
+
+    /// A copy with the options permuted and `correctAnswerIndex` carried
+    /// along. The Turkish list is permuted by the SAME map so the two
+    /// languages never drift apart.
+    ///
+    /// The bundled bank authors every question with the correct answer first
+    /// — convenient to write and review, fatal to present. Shipping it
+    /// verbatim meant all 156 questions answered "A", so anyone who noticed
+    /// could score 100% without reading a word.
+    func shufflingOptions() -> QuizQuestion {
+        guard options.count > 1 else { return self }
+        let order = Array(options.indices).shuffled()
+        guard let movedCorrect = order.firstIndex(of: correctAnswerIndex) else { return self }
+        var copy = self
+        copy.options = order.map { options[$0] }
+        if let tr = optionsTr, tr.count == options.count {
+            copy.optionsTr = order.map { tr[$0] }
+        }
+        copy.correctAnswerIndex = movedCorrect
+        return copy
+    }
 
     func localizedScenario(for lang: AppLanguage) -> String {
         lang == .turkish ? (scenarioTr ?? scenario) : scenario
@@ -272,14 +293,17 @@ extension Quiz {
         )
     }
 
-    private static var questionBank: [QuizQuestion] {
+    /// Decoded once per launch, with every question's options permuted.
+    ///
+    /// `let`, not a computed property, for a correctness reason and not a
+    /// performance one: a question must present the same option order when
+    /// it is drawn and when the answer is graded. Re-shuffling on each access
+    /// would break that.
+    private static let questionBank: [QuizQuestion] = {
         let loaded = BundleContentLoader.loadArray([QuizQuestion].self, named: "quiz_questions")
-        if !loaded.isEmpty {
-            return loaded
-        }
-
-        return fallbackQuestions
-    }
+        let bank = loaded.isEmpty ? fallbackQuestions : loaded
+        return bank.map { $0.shufflingOptions() }
+    }()
 
     /// Full bundled bank, read-only — the Tennis IQ mastery engine builds
     /// sessions, placement and category mastery from this.
