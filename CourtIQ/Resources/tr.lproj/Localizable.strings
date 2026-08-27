@@ -86,6 +86,7 @@
 "wall.free_title" = "Duvar Tenisi";
 "wall.free_sub" = "Serbest ral — kendi temponu belirle, dayanabildiğin kadar.";
 "wall.free_instruction" = "Duvarda serbest ral yap. Ritmi koru — biz sayarız.";
+"wall.count_it" = "Tekrarlarımı say";
 "wall.drills_header" = "Driller";
 "wall.start" = "Başla";
 "wall.resume" = "Devam";
@@ -108,8 +109,11 @@
 "rallycam.sub" = "Mikrofon her duvar vuruşunu duyar ve ralini sayar.";
 "rallycam.best" = "Rekor";
 "rallycam.in_a_row" = "ardışık";
-"rallycam.hint_setup" = "Telefonu duvara dönük dayayıp Başlat'a bas. Sayımı ses yapıyor — kadraj önemli değil.";
+"rallycam.hint_setup" = "Çizgileri duvarına sürükle, sonra Başlat. Sayımı ses yapıyor.";
 "rallycam.hint_running" = "Devam et — her duvar vuruşu sayılıyor.";
+"rallycam.zone_net" = "FILE";
+"rallycam.zone_long" = "AUT";
+"rallycam.goal" = "Hedef";
 "rallycam.start" = "Başla";
 "rallycam.stop" = "Bitir";
 "rallycam.permission_title" = "Kamera erişimi gerekli";

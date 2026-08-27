@@ -13,6 +13,7 @@ struct TrainView: View {
     @State private var appeared = false
     @State private var showProgramsPaywall = false
     @State private var qcDrills = false
+    @State private var qcWall = false
 
     var body: some View {
         ScrollView {
@@ -62,10 +63,12 @@ struct TrainView: View {
         // Headless QC: SIMCTL_CHILD_QC_TRAIN=drills pushes the Drills screen
         // without a tap, mirroring QC_TAB / QC_OPEN elsewhere.
         .navigationDestination(isPresented: $qcDrills) { TrainPracticeView() }
+        .navigationDestination(isPresented: $qcWall) { WallHubView() }
         .onAppear {
             switch ProcessInfo.processInfo.environment["QC_TRAIN"] {
             case "drills":  qcDrills = true
             case "paywall": showProgramsPaywall = true
+            case "wall":    qcWall = true
             default: break
             }
         }

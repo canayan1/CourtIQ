@@ -21,6 +21,7 @@ struct WallHubView: View {
     @EnvironmentObject private var lang: LanguageManager
     @EnvironmentObject private var session: UserSessionManager
     @ObservedObject private var wallProgress = WallProgressManager.shared
+    @State private var qcLevel = false
 
     var body: some View {
         ScrollView {
@@ -40,6 +41,14 @@ struct WallHubView: View {
         .background(AppPalette.cream)
         .navigationTitle(lang.t("wall.title"))
         .navigationBarTitleDisplayMode(.inline)
+        #if DEBUG
+        .navigationDestination(isPresented: $qcLevel) {
+            WallLevelDetailView(level: 1, drill: WallDrill.all[0])
+        }
+        .onAppear {
+            if ProcessInfo.processInfo.environment["QC_WALL"] == "rallycam" { qcLevel = true }
+        }
+        #endif
     }
 
     private var intro: some View {
@@ -404,12 +413,15 @@ struct WallLevelDetailView: View {
     let level: Int
     let drill: WallDrill
 
+    @State private var showRallyCam = false
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 18) {
                 header
                 WallDemoAnimation(focus: drill.focus)
                 goalCard
+                rallyCamButton
                 clearSection
             }
             .padding()
@@ -417,6 +429,40 @@ struct WallLevelDetailView: View {
         .background(AppPalette.cream)
         .navigationTitle(String(format: lang.t("wall.level_n"), level))
         .navigationBarTitleDisplayMode(.inline)
+        #if DEBUG
+        // Headless QC: SIMCTL_CHILD_QC_WALL=rallycam opens the counter without taps.
+        .onAppear {
+            if ProcessInfo.processInfo.environment["QC_WALL"] == "rallycam" { showRallyCam = true }
+        }
+        #endif
+        .fullScreenCover(isPresented: $showRallyCam) {
+            WallRallyCamView(drill: drill)
+                .environmentObject(lang)
+        }
+    }
+
+    /// The screen that actually counts the reps. It existed but nothing opened
+    /// it — this is its entry point.
+    private var rallyCamButton: some View {
+        Button {
+            Haptics.tap()
+            showRallyCam = true
+        } label: {
+            HStack(spacing: 10) {
+                Image(systemName: "waveform.badge.mic")
+                    .font(.headline)
+                Text(lang.t("wall.count_it"))
+                    .font(.headline)
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .font(.footnote.weight(.semibold))
+            }
+            .foregroundStyle(.white)
+            .padding(16)
+            .frame(maxWidth: .infinity)
+            .background(AppPalette.clay, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+        }
+        .buttonStyle(PressableCardStyle())
     }
 
     private var header: some View {
@@ -456,8 +502,8 @@ struct WallLevelDetailView: View {
         .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
     }
 
-    /// Clears the level (unlocks the next) — the player self-attests after
-    /// watching the demo. Once cleared, shows a seal.
+    /// Fallback clear. Rally Cam clears the rung automatically when the rep
+    /// goal is met; this stays for players practising away from their phone.
     @ViewBuilder
     private var clearSection: some View {
         if wallProgress.isCleared(drill.id) {

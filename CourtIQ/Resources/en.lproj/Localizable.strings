@@ -86,6 +86,7 @@
 "wall.free_title" = "Wall Tennis";
 "wall.free_sub" = "Open rally — set your own pace and go as long as you can.";
 "wall.free_instruction" = "Rally freely against the wall. Keep the rhythm — we'll count.";
+"wall.count_it" = "Count my reps";
 "wall.drills_header" = "Drills";
 "wall.start" = "Start";
 "wall.resume" = "Resume";
@@ -108,8 +109,11 @@
 "rallycam.sub" = "The mic hears every wall hit and counts your rally.";
 "rallycam.best" = "Best";
 "rallycam.in_a_row" = "in a row";
-"rallycam.hint_setup" = "Prop the phone facing the wall, then Start. Sound does the counting — framing doesn't matter.";
+"rallycam.hint_setup" = "Drag the lines onto your wall, then Start. Sound does the counting.";
 "rallycam.hint_running" = "Keep it going — every wall hit counts.";
+"rallycam.zone_net" = "NET";
+"rallycam.zone_long" = "LONG";
+"rallycam.goal" = "Goal";
 "rallycam.start" = "Start";
 "rallycam.stop" = "Stop";
 "rallycam.permission_title" = "Camera access needed";

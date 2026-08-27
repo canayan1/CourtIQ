@@ -77,7 +77,7 @@ extension WallDrill {
         WallDrill(
             id: "wall-steady",
             title: "Steady Rally", titleTr: "Sabit Ritim",
-            focus: .consistency, target: .reps(30), tempoBPM: 55, difficulty: 1,
+            focus: .consistency, target: .reps(10), tempoBPM: 55, difficulty: 1,
             instruction: "Smooth, controlled shots to the SAME spot at the same height — grooving the rally ball.",
             instructionTr: "Aynı noktaya, aynı yükseklikte pürüzsüz ve kontrollü vuruşlar — ral topunu oturt.",
             isTennisIQ: false
@@ -85,7 +85,7 @@ extension WallDrill {
         WallDrill(
             id: "wall-fh-bh",
             title: "Forehand ↔ Backhand", titleTr: "Forehand ↔ Backhand",
-            focus: .movement, target: .reps(24), tempoBPM: 50, difficulty: 2,
+            focus: .movement, target: .reps(20), tempoBPM: 50, difficulty: 2,
             instruction: "Alternate a forehand then a backhand every shot; recover to the middle between each.",
             instructionTr: "Her vuruşta forehand-backhand değiştir; aralarda ortaya toparlan.",
             isTennisIQ: false

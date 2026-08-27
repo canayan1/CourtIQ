@@ -12,9 +12,16 @@ import AVFoundation
 /// hears nothing. The impact thresholds below are a FIRST PASS and will need
 /// tuning on-device (wall material, room reverb, distance, ambient noise).
 struct WallRallyCamView: View {
+    /// The ladder rung this was opened from. Sets the rep goal, records the
+    /// session against that drill's personal best, and clears the level when
+    /// the goal is met. Nil = a free rally with no goal.
+    let drill: WallDrill?
+
     @EnvironmentObject private var lang: LanguageManager
     @Environment(\.dismiss) private var dismiss
     @StateObject private var model = RallyCamModel()
+
+    init(drill: WallDrill? = nil) { self.drill = drill }
 
     var body: some View {
         ZStack {
@@ -24,6 +31,7 @@ struct WallRallyCamView: View {
                 permissionCard
             } else {
                 RallyCamPreview(model: model).ignoresSafeArea()
+                bandOverlay.ignoresSafeArea()
                 hud
             }
         }
@@ -31,12 +39,97 @@ struct WallRallyCamView: View {
         // Keep the screen awake — you're across the room hitting a ball, not
         // touching the phone. (A top competitor's #1 complaint: auto-lock kills
         // the recording mid-session.)
-        .onAppear { UIApplication.shared.isIdleTimerDisabled = true }
+        .onAppear {
+            UIApplication.shared.isIdleTimerDisabled = true
+            model.configure(for: drill)
+        }
         .onDisappear {
             UIApplication.shared.isIdleTimerDisabled = false
             model.stop()
         }
     }
+
+    // MARK: - Target band
+
+    /// Two lines the player drags onto their wall: below the lower one the ball
+    /// hit the net, above the upper one it would have sailed long. Between them
+    /// is a driving ball.
+    ///
+    /// Nothing scores this yet — the mic can hear THAT a ball hit, not WHERE.
+    /// The band earns its place anyway: a visible target is where the external
+    /// focus of attention comes from, and that effect is the best-evidenced
+    /// thing in the wall-practice literature. See docs/WALL-PRACTICE-PLAN.md.
+    private var bandOverlay: some View {
+        GeometryReader { geo in
+            let h = geo.size.height
+            let topY = model.bandTop * h
+            let bottomY = model.bandBottom * h
+
+            ZStack(alignment: .topLeading) {
+                // The good band.
+                Rectangle()
+                    .fill(AppPalette.moss.opacity(0.16))
+                    .frame(height: max(0, bottomY - topY))
+                    .offset(y: topY)
+
+                zoneLabel(lang.t("rallycam.zone_long"), color: AppPalette.alert)
+                    .offset(y: max(6, topY - 26))
+                zoneLabel(lang.t("rallycam.zone_net"), color: AppPalette.alert)
+                    .offset(y: min(h - 26, bottomY + 8))
+
+                bandLine(at: topY, size: geo.size, isTop: true)
+                bandLine(at: bottomY, size: geo.size, isTop: false)
+            }
+            .frame(width: geo.size.width, height: h, alignment: .topLeading)
+            .coordinateSpace(name: Self.bandSpace)
+        }
+        .allowsHitTesting(!model.isRunning)
+    }
+
+    private func zoneLabel(_ text: String, color: Color) -> some View {
+        Text(text)
+            .font(.caption2.weight(.heavy)).tracking(0.8)
+            .foregroundStyle(.white)
+            .padding(.horizontal, 7).padding(.vertical, 3)
+            .background(color.opacity(0.85), in: Capsule())
+            .padding(.leading, 14)
+    }
+
+    /// One draggable line. The grab area is 44pt tall (a finger, not a hairline)
+    /// while the drawn line stays thin. Handles disappear once the rally starts
+    /// so a stray touch can't move the band mid-session.
+    private func bandLine(at y: CGFloat, size: CGSize, isTop: Bool) -> some View {
+        ZStack {
+            Rectangle()
+                .fill(.white)
+                .frame(height: 2)
+                .shadow(color: .black.opacity(0.6), radius: 3)
+            if !model.isRunning {
+                HStack {
+                    Spacer()
+                    Image(systemName: "line.3.horizontal")
+                        .font(.footnote.weight(.bold))
+                        .foregroundStyle(AppPalette.ink)
+                        .padding(6)
+                        .background(Circle().fill(.white))
+                        .padding(.trailing, 14)
+                }
+            }
+        }
+        .frame(width: size.width, height: 44)
+        .contentShape(Rectangle())
+        .position(x: size.width / 2, y: y)
+        .gesture(
+            DragGesture(coordinateSpace: .named(Self.bandSpace))
+                .onChanged { value in
+                    guard !model.isRunning else { return }
+                    model.moveLine(isTop: isTop, toNormalized: value.location.y / max(1, size.height))
+                }
+                .onEnded { _ in Haptics.tap() }
+        )
+    }
+
+    private static let bandSpace = "rallycam.band"
 
     // MARK: - Heads-up display
 
@@ -49,7 +142,11 @@ struct WallRallyCamView: View {
                         .padding(12).background(Circle().fill(.black.opacity(0.4)))
                 }
                 Spacer()
-                statPill(label: lang.t("rallycam.best"), value: "\(model.maxStreak)")
+                if let goal = model.goal {
+                    statPill(label: lang.t("rallycam.goal"), value: "\(model.maxStreak)/\(goal)")
+                } else {
+                    statPill(label: lang.t("rallycam.best"), value: "\(model.maxStreak)")
+                }
             }
             .padding()
 
@@ -58,7 +155,8 @@ struct WallRallyCamView: View {
             // Big live streak count.
             VStack(spacing: 4) {
                 Text("\(model.currentStreak)")
-                    .appFont(80, weight: .heavy).foregroundStyle(.white)
+                    .appFont(80, weight: .heavy)
+                    .foregroundStyle(model.goalMet ? AppPalette.moss : .white)
                     .monospacedDigit().shadow(color: .black.opacity(0.6), radius: 8)
                     .contentTransition(.numericText())
                     .animation(.snappy, value: model.currentStreak)
@@ -132,6 +230,67 @@ final class RallyCamModel: ObservableObject {
     /// docs/WALL-PRACTICE-PLAN.md.
     private var lastImpactTime: TimeInterval = 0
 
+    /// The target band, as normalized y in VIEW coords (0 = top of the frame).
+    /// `bandTop` is the higher line on screen, so it holds the SMALLER number.
+    ///
+    /// The player drags these; nothing detects them. A wall's net height depends
+    /// on how far back they stand, which no detector could know — and coaches
+    /// solve this with tape or paint, so we do the same thing in software.
+    @Published var bandTop: CGFloat = RallyCamModel.loadBand().top {
+        didSet { persistBand() }
+    }
+    @Published var bandBottom: CGFloat = RallyCamModel.loadBand().bottom {
+        didSet { persistBand() }
+    }
+
+    /// Keeps the band from collapsing to nothing while being dragged.
+    static let minBandHeight: CGFloat = 0.06
+
+    /// Rep goal for this rung, from the drill's `.reps` target. Duration-based
+    /// drills have no goal here — the mic counts hits, not seconds.
+    @Published private(set) var goal: Int?
+    private var drillID: String?
+    private var drillTitle: String = "Rally Cam"
+
+    var goalMet: Bool {
+        guard let goal else { return false }
+        return maxStreak >= goal
+    }
+
+    func configure(for drill: WallDrill?) {
+        guard let drill else { goal = nil; drillID = nil; return }
+        drillID = drill.id
+        drillTitle = drill.title
+        if case .reps(let n) = drill.target { goal = n } else { goal = nil }
+    }
+
+    private static let bandKey = "DropVolley.rallycam.band.v1"
+
+    private static func loadBand() -> (top: CGFloat, bottom: CGFloat) {
+        let d = UserDefaults.standard
+        guard let stored = d.array(forKey: bandKey) as? [Double], stored.count == 2 else {
+            // A first guess for a phone propped behind the player: the band sits
+            // a little above centre, where a driving ball hits a wall.
+            return (0.34, 0.56)
+        }
+        return (CGFloat(stored[0]), CGFloat(stored[1]))
+    }
+
+    private func persistBand() {
+        UserDefaults.standard.set([Double(bandTop), Double(bandBottom)], forKey: Self.bandKey)
+    }
+
+    /// Drag one line, clamped so the band keeps a usable height and neither
+    /// line can pass the other or leave the frame.
+    func moveLine(isTop: Bool, toNormalized y: CGFloat) {
+        let gap = Self.minBandHeight
+        if isTop {
+            bandTop = min(max(0.02, y), bandBottom - gap)
+        } else {
+            bandBottom = max(min(0.98, y), bandTop + gap)
+        }
+    }
+
     private var flashWork: DispatchWorkItem?
 
     func start() {
@@ -158,9 +317,11 @@ final class RallyCamModel: ObservableObject {
         isRunning = false
         if record && maxStreak > 0 {
             WallProgressManager.shared.record(
-                drillID: "wall-rally-cam", title: "Rally Cam",
-                hits: maxStreak, seconds: 0, isFreeRally: true
+                drillID: drillID ?? "wall-rally-cam", title: drillTitle,
+                hits: maxStreak, seconds: 0, isFreeRally: drillID == nil
             )
+            // The rung is cleared by DOING it, not by tapping "I did this".
+            if goalMet, let drillID { WallProgressManager.shared.markCleared(drillID) }
             AppAnalytics.shared.log(AnalyticsEvent.wallSessionCompleted,
                                     ["title": "rally_cam", "hits": maxStreak])
             RatingPrompt.registerWin()   // a finished rally is a genuine win moment
