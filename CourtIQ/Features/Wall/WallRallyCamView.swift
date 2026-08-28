@@ -69,7 +69,7 @@ struct WallRallyCamView: View {
             ZStack(alignment: .topLeading) {
                 // The good band.
                 Rectangle()
-                    .fill(AppPalette.moss.opacity(0.16))
+                    .fill(bandTint)
                     .frame(height: max(0, bottomY - topY))
                     .offset(y: topY)
 
@@ -85,6 +85,17 @@ struct WallRallyCamView: View {
             .coordinateSpace(name: Self.bandSpace)
         }
         .allowsHitTesting(!model.isRunning)
+    }
+
+    /// The band lights up on a ball that landed in it. Anything we couldn't
+    /// read leaves it alone — silence, not a red mark.
+    private var bandTint: Color {
+        guard model.isRunning else { return AppPalette.moss.opacity(0.16) }
+        switch model.lastZone {
+        case .band:    return AppPalette.moss.opacity(model.lastHit ? 0.40 : 0.16)
+        case .unknown: return AppPalette.moss.opacity(0.16)
+        case .net, .long: return AppPalette.moss.opacity(0.16)
+        }
     }
 
     private func zoneLabel(_ text: String, color: Color) -> some View {
@@ -169,6 +180,18 @@ struct WallRallyCamView: View {
                     .animation(.snappy, value: model.currentStreak)
                 Text(lang.t("rallycam.in_a_row"))
                     .font(.subheadline.weight(.semibold)).foregroundStyle(.white.opacity(0.85))
+
+                if model.readCount > 0 {
+                    HStack(spacing: 12) {
+                        splitChip(count: model.zoneCounts[.band] ?? 0,
+                                  label: lang.t("rallycam.zone_band"), color: AppPalette.moss)
+                        splitChip(count: model.zoneCounts[.net] ?? 0,
+                                  label: lang.t("rallycam.zone_net"), color: AppPalette.alert)
+                        splitChip(count: model.zoneCounts[.long] ?? 0,
+                                  label: lang.t("rallycam.zone_long"), color: AppPalette.alert)
+                    }
+                    .padding(.top, 10)
+                }
             }
 
             Spacer()
@@ -190,6 +213,20 @@ struct WallRallyCamView: View {
             }
             .padding(.horizontal, 24).padding(.bottom, 28)
         }
+    }
+
+    /// Placement is REPORTED, never enforced: these numbers sit beside the
+    /// streak and can't reduce it. Balls we couldn't read are simply absent
+    /// rather than shown as a failure.
+    private func splitChip(count: Int, label: String, color: Color) -> some View {
+        VStack(spacing: 2) {
+            Text("\(count)").appFont(20, weight: .heavy).foregroundStyle(color).monospacedDigit()
+            Text(label).font(.caption2.weight(.bold)).tracking(0.5)
+                .foregroundStyle(.white.opacity(0.7))
+        }
+        .frame(minWidth: 52)
+        .padding(.vertical, 6)
+        .background(RoundedRectangle(cornerRadius: 10).fill(.black.opacity(0.35)))
     }
 
     private func statPill(label: String, value: String) -> some View {
@@ -239,8 +276,23 @@ final class RallyCamModel: ObservableObject {
         didSet { persistBand() }
     }
 
+    /// Classify a reading against the lines the player set.
+    func zone(forNormalizedY y: CGFloat) -> WallZone {
+        if y < bandTop { return .long }
+        if y > bandBottom { return .net }
+        return .band
+    }
+
     /// Keeps the band from collapsing to nothing while being dragged.
     static let minBandHeight: CGFloat = 0.06
+
+    /// Where the last few balls landed. The streak is NOT affected by any of
+    /// this: the mic counts reps and the camera only reports. An unproven
+    /// detector must never be able to take a rep away from someone.
+    @Published private(set) var zoneCounts: [WallZone: Int] = [:]
+    @Published private(set) var lastZone: WallZone = .unknown
+
+    var readCount: Int { zoneCounts.values.reduce(0, +) - (zoneCounts[.unknown] ?? 0) }
 
     /// Rep goal for this rung, from the drill's `.reps` target. Duration-based
     /// drills have no goal here — the mic counts hits, not seconds.
@@ -293,11 +345,21 @@ final class RallyCamModel: ObservableObject {
         isRunning = true
         currentStreak = 0; maxStreak = 0
         lastImpactTime = 0
+        zoneCounts = [:]; lastZone = .unknown
     }
 
     /// A wall impact heard by the mic. A gap over 3s ends the rally; the longest
     /// rally is the best streak. No sound cue here, so the mic doesn't hear our
     /// own feedback.
+    /// The placement of the rep the mic just counted, once the locator has
+    /// looked. Arrives a beat after `registerAudioHit` and never changes the
+    /// count — only the tally.
+    func registerZone(_ zone: WallZone) {
+        guard isRunning else { return }
+        lastZone = zone
+        zoneCounts[zone, default: 0] += 1
+    }
+
     func registerAudioHit() {
         guard isRunning else { return }
         let now = ProcessInfo.processInfo.systemUptime
@@ -318,8 +380,16 @@ final class RallyCamModel: ObservableObject {
             )
             // The rung is cleared by DOING it, not by tapping "I did this".
             if goalMet, let drillID { WallProgressManager.shared.markCleared(drillID) }
+            // Log what the detector managed to read as well as the count. If
+            // `unknown` dominates in the field, the locator's thresholds are
+            // wrong and this is how we'll find out.
             AppAnalytics.shared.log(AnalyticsEvent.wallSessionCompleted,
-                                    ["title": "rally_cam", "hits": maxStreak])
+                                    ["title": "rally_cam",
+                                     "hits": maxStreak,
+                                     "in_band": zoneCounts[.band] ?? 0,
+                                     "net": zoneCounts[.net] ?? 0,
+                                     "long": zoneCounts[.long] ?? 0,
+                                     "unread": zoneCounts[.unknown] ?? 0])
             RatingPrompt.registerWin()   // a finished rally is a genuine win moment
         }
     }
@@ -358,6 +428,8 @@ final class RallyCamController: UIViewController, AVCaptureVideoDataOutputSample
     private let videoQueue = DispatchQueue(label: "dropvolley.rallycam.video")
     /// The hit detector.
     private let impactDetector = AudioImpactDetector()
+    /// Answers WHERE, at the instant the detector says WHEN.
+    private let locator = WallBallLocator()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -386,8 +458,28 @@ final class RallyCamController: UIViewController, AVCaptureVideoDataOutputSample
         }
         let output = AVCaptureVideoDataOutput()
         output.alwaysDiscardsLateVideoFrames = true
+        // Bi-planar YUV so the locator can read plane 0 as a ready-made
+        // greyscale image. With BGRA it would have to convert every frame.
+        output.videoSettings = [
+            kCVPixelBufferPixelFormatTypeKey as String:
+                kCVPixelFormatType_420YpCbCr8BiPlanarFullRange
+        ]
         output.setSampleBufferDelegate(self, queue: videoQueue)
         if session.canAddOutput(output) { session.addOutput(output) }
+
+        // Deliver frames already upright, so a y in the buffer means the same
+        // thing as a y in the band overlay. Without this the buffer is
+        // landscape and every reading would be rotated 90°.
+        //
+        // The preview is aspectFill, which crops — but only horizontally. Any
+        // camera buffer (16:9 = 0.5625, 4:3 = 0.75 w/h) is proportionally wider
+        // than a modern iPhone screen (~0.46), so filling the view matches the
+        // HEIGHT exactly and spills over the sides. Vertical maps 1:1, which is
+        // the only axis the band cares about.
+        if let connection = output.connection(with: .video),
+           connection.isVideoRotationAngleSupported(90) {
+            connection.videoRotationAngle = 90
+        }
         session.commitConfiguration()
 
         let preview = AVCaptureVideoPreviewLayer(session: session)
@@ -403,8 +495,22 @@ final class RallyCamController: UIViewController, AVCaptureVideoDataOutputSample
     /// Wire + start the mic impact counter (the primary hit detector). Peaks are
     /// throttled to ~10 Hz for the on-screen tuning readout.
     private func startImpactAudio() {
-        impactDetector.onImpact = { [weak self] in
-            DispatchQueue.main.async { self?.model?.registerAudioHit() }
+        impactDetector.onImpact = { [weak self] impactTime in
+            guard let self else { return }
+            // Count first, always. The rep is the mic's to give.
+            DispatchQueue.main.async { self.model?.registerAudioHit() }
+            // Then look, off the audio thread, and report what we saw.
+            self.videoQueue.async {
+                let reading = self.locator.locate(impactTime: impactTime)
+                DispatchQueue.main.async {
+                    guard let model = self.model else { return }
+                    // A weak blob is an honest "couldn't see it", not a guess.
+                    guard let reading, reading.confidence >= 0.25 else {
+                        model.registerZone(.unknown); return
+                    }
+                    model.registerZone(model.zone(forNormalizedY: reading.normalizedY))
+                }
+            }
         }
         impactDetector.start()
     }
@@ -415,12 +521,13 @@ final class RallyCamController: UIViewController, AVCaptureVideoDataOutputSample
         videoQueue.async { [weak self] in self?.session.stopRunning() }
     }
 
-    /// Frames arrive but nothing consumes them yet. The output stays wired
-    /// because the placement layer (docs/WALL-PRACTICE-PLAN.md, P2) needs the
-    /// two or three frames around each audio impact — but running a Vision pass
-    /// on every frame to feed a readout nobody sees was pure battery cost.
+    /// Keep a second of downscaled frames so the locator has something to look
+    /// back at when the mic fires. Stamped on the same clock the impact uses.
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer,
-                       from connection: AVCaptureConnection) {}
+                       from connection: AVCaptureConnection) {
+        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
+        locator.store(pixelBuffer, at: ProcessInfo.processInfo.systemUptime)
+    }
 }
 
 // MARK: - Audio impact detector (primary hit counter)
@@ -468,7 +575,9 @@ final class AudioImpactDetector {
     private var running = false
     private var lastHit: TimeInterval = 0
 
-    var onImpact: (() -> Void)?
+    /// Carries the moment of the impact, on `ProcessInfo.systemUptime`, so the
+    /// locator can look at the right frames rather than the newest ones.
+    var onImpact: ((TimeInterval) -> Void)?
 
     // TUNE ON DEVICE ↓  — a band-pass isolates the impact band, then an ADAPTIVE
     // threshold triggers when the FILTERED peak spikes above the tracked ambient
@@ -529,7 +638,7 @@ final class AudioImpactDetector {
         let now = ProcessInfo.processInfo.systemUptime
         if peak >= threshold && now - lastHit >= refractory {
             lastHit = now
-            onImpact?()
+            onImpact?(now)
         } else {
             // Track the ambient floor from NON-impact frames only, so a hit
             // doesn't inflate the floor and suppress the next one.

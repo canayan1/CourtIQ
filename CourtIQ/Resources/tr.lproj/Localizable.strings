@@ -115,6 +115,7 @@
 "rallycam.zone_long" = "AUT";
 "rallycam.goal" = "Hedef";
 "rallycam.no_camera" = "Kamera yok — sayım yine çalışıyor ama bandı ayarlayamazsın.";
+"rallycam.zone_band" = "İÇİ";
 "rallycam.start" = "Başla";
 "rallycam.stop" = "Bitir";
 "train.analyze_title" = "AI Swing Analizi";

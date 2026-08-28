@@ -115,6 +115,7 @@
 "rallycam.zone_long" = "LONG";
 "rallycam.goal" = "Goal";
 "rallycam.no_camera" = "No camera — counting still works, but you can't set the band.";
+"rallycam.zone_band" = "IN";
 "rallycam.start" = "Start";
 "rallycam.stop" = "Stop";
 "train.analyze_title" = "AI Swing Analysis";
