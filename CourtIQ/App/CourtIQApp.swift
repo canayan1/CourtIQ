@@ -257,7 +257,6 @@ private struct RootView: View {
 
     /// A doubles invite code arriving from a universal link or the clipboard.
     @State private var pendingInvite: InviteCode?
-    @State private var checkedClipboard = false
 
     /// Only route deep links once the user is past onboarding + the health gate,
     /// so an invite never lands on top of those first-run screens.
@@ -295,11 +294,6 @@ private struct RootView: View {
         .onContinueUserActivity(NSUserActivityTypeBrowsingWeb) { activity in
             if let url = activity.webpageURL { handleInviteURL(url) }
         }
-        .task(id: readyForDeepLink) {
-            guard readyForDeepLink, !checkedClipboard else { return }
-            checkedClipboard = true
-            checkClipboardForInvite()
-        }
         .sheet(item: $pendingInvite) { invite in
             DoublesAcceptSheet(onAccepted: {}, initialCode: invite.code)
         }
@@ -317,16 +311,13 @@ private struct RootView: View {
         if code.count == 6 { pendingInvite = InviteCode(code: code) }
     }
 
-    /// Deferred deep link: a fresh install may carry the code on the clipboard
-    /// (the landing page copies it). Read once, and ONLY if it strictly matches
-    /// the 6-char invite alphabet — so we never grab unrelated clipboard text.
-    private func checkClipboardForInvite() {
-        guard UIPasteboard.general.hasStrings, let raw = UIPasteboard.general.string else { return }
-        let code = normalizedInviteCode(raw)
-        let alphabet = Set("ABCDEFGHJKMNPQRSTUVWXYZ23456789")
-        guard code.count == 6, code.allSatisfy(alphabet.contains) else { return }
-        pendingInvite = InviteCode(code: code)
-    }
+    // The launch-time clipboard read that used to live here was a mistake:
+    // `checkedClipboard` was @State, so EVERY cold launch touched the general
+    // pasteboard and iOS answered with the system "would like to paste" dialog
+    // — an app asking to read your clipboard before showing you anything.
+    // The same strict-matched read now happens inside DoublesAcceptSheet,
+    // where the player has just said "I have a code" and the question makes
+    // sense. Universal links remain the primary road.
 
     private func normalizedInviteCode(_ s: String) -> String {
         s.uppercased().filter { $0.isLetter || $0.isNumber }

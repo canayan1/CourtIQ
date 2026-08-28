@@ -875,6 +875,19 @@ struct DoublesAcceptSheet: View {
             .navigationBarTitleDisplayMode(.inline)
             .onAppear {
                 if let initialCode, code.isEmpty { code = initialCode }
+                // The player just opened the "I have a code" flow — if the
+                // clipboard holds something that STRICTLY matches the 6-char
+                // invite alphabet, prefill it. The paste permission dialog iOS
+                // may show here is contextual: they came to enter a code.
+                if code.isEmpty,
+                   UIPasteboard.general.hasStrings,
+                   let raw = UIPasteboard.general.string {
+                    let candidate = raw.uppercased().filter { $0.isLetter || $0.isNumber }
+                    let alphabet = Set("ABCDEFGHJKMNPQRSTUVWXYZ23456789")
+                    if candidate.count == 6, candidate.allSatisfy(alphabet.contains) {
+                        code = candidate
+                    }
+                }
             }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
