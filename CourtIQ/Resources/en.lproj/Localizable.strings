@@ -114,10 +114,9 @@
 "rallycam.zone_net" = "NET";
 "rallycam.zone_long" = "LONG";
 "rallycam.goal" = "Goal";
+"rallycam.no_camera" = "No camera — counting still works, but you can't set the band.";
 "rallycam.start" = "Start";
 "rallycam.stop" = "Stop";
-"rallycam.permission_title" = "Camera access needed";
-"rallycam.permission_body" = "Rally Cam shows the camera so you can see yourself hit. Counting is done on-device from the sound of each wall hit.";
 "train.analyze_title" = "AI Swing Analysis";
 "train.analyze_desc" = "Record your swing — get instant AI coaching, frame by frame.";
 "train.flagship" = "Flagship";

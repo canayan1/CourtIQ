@@ -114,10 +114,9 @@
 "rallycam.zone_net" = "FILE";
 "rallycam.zone_long" = "AUT";
 "rallycam.goal" = "Hedef";
+"rallycam.no_camera" = "Kamera yok — sayım yine çalışıyor ama bandı ayarlayamazsın.";
 "rallycam.start" = "Başla";
 "rallycam.stop" = "Bitir";
-"rallycam.permission_title" = "Kamera erişimi gerekli";
-"rallycam.permission_body" = "Rally Cam kendini görebilesin diye kamerayı gösterir. Sayım, her duvar vuruşunun sesinden cihaz üzerinde yapılır.";
 "train.analyze_title" = "AI Swing Analizi";
 "train.analyze_desc" = "Vuruşunu çek — kare kare anında AI koçluğu al.";
 "train.flagship" = "Öne çıkan";

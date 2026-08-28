@@ -27,13 +27,14 @@ struct WallRallyCamView: View {
         ZStack {
             Color.black.ignoresSafeArea()
 
-            if model.permissionDenied {
-                permissionCard
-            } else {
+            // The mic does the counting, so a denied camera costs the preview
+            // and the band — not the session. Taking the whole screen away for
+            // a permission the counter never needed was the wrong trade.
+            if !model.permissionDenied {
                 RallyCamPreview(model: model).ignoresSafeArea()
                 bandOverlay.ignoresSafeArea()
-                hud
             }
+            hud
         }
         .statusBarHidden(true)
         // Keep the screen awake — you're across the room hitting a ball, not
@@ -142,6 +143,12 @@ struct WallRallyCamView: View {
                         .padding(12).background(Circle().fill(.black.opacity(0.4)))
                 }
                 Spacer()
+                Text(lang.t("common.beta"))
+                    .font(.caption2.weight(.heavy)).kerning(0.8)
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 8).padding(.vertical, 4)
+                    .background(AppPalette.ink.opacity(0.85), in: Capsule())
+                    .padding(.trailing, 8)
                 if let goal = model.goal {
                     statPill(label: lang.t("rallycam.goal"), value: "\(model.maxStreak)/\(goal)")
                 } else {
@@ -196,21 +203,10 @@ struct WallRallyCamView: View {
     }
 
     private var hintText: String {
-        model.isRunning ? lang.t("rallycam.hint_running") : lang.t("rallycam.hint_setup")
+        if model.permissionDenied { return lang.t("rallycam.no_camera") }
+        return model.isRunning ? lang.t("rallycam.hint_running") : lang.t("rallycam.hint_setup")
     }
 
-    private var permissionCard: some View {
-        VStack(spacing: 14) {
-            Image(systemName: "camera.fill").appFont(40, design: .default).foregroundStyle(.white)
-            Text(lang.t("rallycam.permission_title")).appFont(18, weight: .heavy).foregroundStyle(.white)
-                .multilineTextAlignment(.center)
-            Text(lang.t("rallycam.permission_body")).font(.subheadline).foregroundStyle(.white.opacity(0.8))
-                .multilineTextAlignment(.center)
-            Button(lang.t("common.close")) { dismiss() }
-                .buttonStyle(.borderedProminent).tint(AppPalette.clay).padding(.top, 6)
-        }
-        .padding(32)
-    }
 }
 
 // MARK: - Model
