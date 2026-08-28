@@ -131,6 +131,9 @@
 "wall.level_cleared_yellow" = "Geçildi — yeşil mühür için geri gel";
 "wall.verified_line" = "Doğrulanan: üst üste %d duvar vuruşu, yerleşim kamerayla";
 "wall.honour_line" = "Hangi vuruşu yaptığın senin namusuna — telefon henüz ayırt edemiyor";
+"rallycam.save_clip" = "Klibi kaydet";
+"rallycam.ai_review" = "AI incelemesi";
+"rallycam.clip_note" = "Bu telefonda kaydedildi. Kaydetmezsen çıkınca silinir.";
 "rallycam.start" = "Başla";
 "rallycam.stop" = "Bitir";
 "train.analyze_title" = "AI Swing Analizi";

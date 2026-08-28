@@ -420,6 +420,7 @@ struct WallLevelDetailView: View {
     let drill: WallDrill
 
     @State private var showRallyCam = false
+    @State private var showWallPaywall = false
 
     var body: some View {
         ScrollView {
@@ -445,17 +446,31 @@ struct WallLevelDetailView: View {
             WallRallyCamView(drill: drill)
                 .environmentObject(lang)
         }
+        .sheet(isPresented: $showWallPaywall) {
+            NavigationStack {
+                PaywallView(source: "Wall")
+                    .environmentObject(session)
+                    .environmentObject(lang)
+            }
+        }
     }
 
-    /// The screen that actually counts the reps. It existed but nothing opened
-    /// it — this is its entry point.
+    /// The screen that actually counts the reps — and the premium seam of the
+    /// wall (owner's rule: the free tier gets the demos and the honour-clear;
+    /// the referee is what you pay for). Free accounts get the paywall, not a
+    /// crippled counter.
     private var rallyCamButton: some View {
         Button {
             Haptics.tap()
-            showRallyCam = true
+            if PremiumGate.isPremium(session) {
+                showRallyCam = true
+            } else {
+                showWallPaywall = true
+            }
         } label: {
             HStack(spacing: 10) {
-                Image(systemName: "waveform.badge.mic")
+                Image(systemName: PremiumGate.isPremium(session)
+                      ? "waveform.badge.mic" : "lock.fill")
                     .font(.headline)
                 Text(lang.t("wall.count_it"))
                     .font(.headline)

@@ -131,6 +131,9 @@
 "wall.level_cleared_yellow" = "Cleared — come back for the green seal";
 "wall.verified_line" = "Verified: %d wall hits in a row, placement by camera";
 "wall.honour_line" = "Which stroke you hit is on your honour — the phone can't tell yet";
+"rallycam.save_clip" = "Save clip";
+"rallycam.ai_review" = "AI review";
+"rallycam.clip_note" = "Recorded on this phone. Deleted when you leave unless you save it.";
 "rallycam.start" = "Start";
 "rallycam.stop" = "Stop";
 "train.analyze_title" = "AI Swing Analysis";

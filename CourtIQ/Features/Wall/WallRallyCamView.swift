@@ -1,5 +1,6 @@
 import SwiftUI
 import AVFoundation
+import Combine
 
 /// "Wall Rally Cam" (MVP / experimental). Prop the phone BEHIND you facing the
 /// wall and the app counts how many wall hits you string together, hearing each
@@ -20,6 +21,7 @@ struct WallRallyCamView: View {
     @EnvironmentObject private var lang: LanguageManager
     @Environment(\.dismiss) private var dismiss
     @StateObject private var model = RallyCamModel()
+    @State private var aiReviewClip: AIReviewClip?
 
     init(drill: WallDrill? = nil) { self.drill = drill }
 
@@ -61,6 +63,18 @@ struct WallRallyCamView: View {
         .onDisappear {
             UIApplication.shared.isIdleTimerDisabled = false
             model.stop()
+            model.discardClip()
+        }
+        .fullScreenCover(item: $aiReviewClip) { clip in
+            NavigationStack {
+                SwingAnalysisView(preloadedClip: clip.url)
+                    .toolbar {
+                        ToolbarItem(placement: .topBarLeading) {
+                            Button(lang.t("common.close")) { aiReviewClip = nil }
+                                .tint(AppPalette.inkSoft)
+                        }
+                    }
+            }
         }
     }
 
@@ -342,6 +356,34 @@ struct WallRallyCamView: View {
             }
             Spacer()
 
+            // The session's clip: keep it, or hand it straight to the AI swing
+            // flow (which applies its own consent + premium gates — this is a
+            // doorway, not a bypass). Unsaved clips die with the screen.
+            if let clip = model.recordedClipURL {
+                HStack(spacing: 12) {
+                    ShareLink(item: clip) {
+                        Label(lang.t("rallycam.save_clip"), systemImage: "square.and.arrow.down")
+                            .font(.subheadline.weight(.bold))
+                            .foregroundStyle(.white)
+                            .frame(maxWidth: .infinity).padding(.vertical, 13)
+                            .background(Capsule().fill(.white.opacity(0.16)))
+                    }
+                    Button {
+                        Haptics.tap()
+                        aiReviewClip = AIReviewClip(url: clip)
+                    } label: {
+                        Label(lang.t("rallycam.ai_review"), systemImage: "sparkles")
+                            .font(.subheadline.weight(.bold))
+                            .foregroundStyle(.white)
+                            .frame(maxWidth: .infinity).padding(.vertical, 13)
+                            .background(Capsule().fill(.white.opacity(0.16)))
+                    }
+                }
+                .padding(.horizontal, 24)
+                Text(lang.t("rallycam.clip_note"))
+                    .font(.caption2).foregroundStyle(.white.opacity(0.6))
+            }
+
             if verdict == .red {
                 Button {
                     Haptics.tap()
@@ -505,6 +547,11 @@ final class RallyCamModel: ObservableObject {
         return maxStreak >= goal
     }
 
+    /// The session's silent video, recorded on-device while the rally ran.
+    /// Lives in tmp and dies when the screen closes — saving is the player's
+    /// explicit act on the gate screen, never automatic.
+    @Published var recordedClipURL: URL?
+
     /// Shown as the end-of-session gate; nil for free rallies and duration
     /// drills, which have no rep target to grade against.
     @Published var sessionVerdict: WallVerdict?
@@ -593,6 +640,15 @@ final class RallyCamModel: ObservableObject {
         lastImpactTime = 0
         zoneCounts = [:]; lastZone = .unknown
         sessionVerdict = nil
+        discardClip()
+    }
+
+    /// Delete the tmp recording (new session starting, or screen closing).
+    func discardClip() {
+        if let url = recordedClipURL {
+            try? FileManager.default.removeItem(at: url)
+        }
+        recordedClipURL = nil
     }
 
     /// A wall impact heard by the mic. A gap over 3s ends the rally; the longest
@@ -674,7 +730,17 @@ struct RallyCamPreview: UIViewControllerRepresentable {
 
 /// Owns the `AVCaptureSession` (preview only, for now) and the mic-based
 /// `AudioImpactDetector` that drives the hit count.
-final class RallyCamController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+final class RallyCamController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate,
+                                AVCaptureFileOutputRecordingDelegate {
+
+    func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL,
+                    from connections: [AVCaptureConnection], error: Error?) {
+        // A failed recording yields no clip — the gate simply won't offer one.
+        DispatchQueue.main.async { [weak self] in
+            self?.model?.recordedClipURL = error == nil ? outputFileURL : nil
+        }
+    }
+
     weak var model: RallyCamModel?
 
     private let session = AVCaptureSession()
@@ -684,6 +750,10 @@ final class RallyCamController: UIViewController, AVCaptureVideoDataOutputSample
     private let impactDetector = AudioImpactDetector()
     /// Answers WHERE, at the instant the detector says WHEN.
     private let locator = WallBallLocator()
+    /// Silent session recording (video only — the mic belongs to the counter,
+    /// and two owners of one microphone is a fight nobody wins).
+    private let movieOutput = AVCaptureMovieFileOutput()
+    private var runningSink: AnyCancellable?
     /// Set when the countdown ends; the next frame is used for the measurement.
     private var measureRequested = false
     private var measureObserver: NSObjectProtocol?
@@ -724,6 +794,8 @@ final class RallyCamController: UIViewController, AVCaptureVideoDataOutputSample
         output.setSampleBufferDelegate(self, queue: videoQueue)
         if session.canAddOutput(output) { session.addOutput(output) }
 
+        if session.canAddOutput(movieOutput) { session.addOutput(movieOutput) }
+
         // Deliver frames already upright, so a y in the buffer means the same
         // thing as a y in the band overlay. Without this the buffer is
         // landscape and every reading would be rotated 90°.
@@ -737,7 +809,27 @@ final class RallyCamController: UIViewController, AVCaptureVideoDataOutputSample
            connection.isVideoRotationAngleSupported(90) {
             connection.videoRotationAngle = 90
         }
+        if let movieConnection = movieOutput.connection(with: .video),
+           movieConnection.isVideoRotationAngleSupported(90) {
+            movieConnection.videoRotationAngle = 90
+        }
         session.commitConfiguration()
+
+        // Record exactly while the rally runs. The clip stays in tmp; the
+        // model owns its lifetime.
+        runningSink = model?.$isRunning
+            .removeDuplicates()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] running in
+                guard let self, self.session.outputs.contains(self.movieOutput) else { return }
+                if running {
+                    let url = FileManager.default.temporaryDirectory
+                        .appendingPathComponent("rallycam-\(UUID().uuidString).mov")
+                    self.movieOutput.startRecording(to: url, recordingDelegate: self)
+                } else if self.movieOutput.isRecording {
+                    self.movieOutput.stopRecording()
+                }
+            }
 
         let preview = AVCaptureVideoPreviewLayer(session: session)
         preview.videoGravity = .resizeAspectFill
@@ -940,4 +1032,12 @@ extension Notification.Name {
     /// Fired when the setup countdown reaches zero: grab the next camera frame
     /// and measure the net line from whoever is standing at the wall.
     static let rallyCamMeasureNow = Notification.Name("dropvolley.rallycam.measureNow")
+}
+
+
+/// Wraps the recorded clip so `.fullScreenCover(item:)` can present the AI
+/// review — without hanging an Identifiable conformance on URL globally.
+private struct AIReviewClip: Identifiable {
+    let url: URL
+    var id: String { url.absoluteString }
 }

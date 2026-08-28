@@ -6,6 +6,11 @@ import UIKit
 ///  2. Record a swing or choose a clip from the library.
 ///  3. (Consent gate on first run) → loading → coaching notes.
 struct SwingAnalysisView: View {
+    /// A clip handed in from elsewhere (Rally Cam records one). Routed through
+    /// `handlePicked` on appear, so it passes the SAME consent + premium gates
+    /// as a clip picked from the library — no side door into the paid flow.
+    var preloadedClip: URL? = nil
+
     @EnvironmentObject private var lang: LanguageManager
     @EnvironmentObject private var session: UserSessionManager
     // Forwarded into the "Discuss with Coach" sheet so AICoachThreadView has the
@@ -76,6 +81,7 @@ struct SwingAnalysisView: View {
         }
         .navigationTitle(copy.navTitle)
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear { consumePreloadedClip() }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
@@ -524,6 +530,13 @@ struct SwingAnalysisView: View {
 
     /// A clip was picked/recorded. Gate on consent before any frame leaves
     /// the device; otherwise go straight to analysis.
+    /// Fires once for a clip handed in at init (Rally Cam → AI review).
+    private func consumePreloadedClip() {
+        guard let preloadedClip, pendingVideoURL == nil,
+              case .setup = vm.phase else { return }
+        handlePicked(preloadedClip)
+    }
+
     private func handlePicked(_ url: URL) {
         pendingVideoURL = url
         routeAfterPick(url)
