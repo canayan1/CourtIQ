@@ -106,8 +106,14 @@ struct WallHubView: View {
                     Image(systemName: "lock.fill")
                         .font(.caption.weight(.bold)).foregroundStyle(AppPalette.inkSoft.opacity(0.6))
                 } else if wallProgress.isCleared(drill.id) {
+                    // The seal wears the color the rung earned: green when
+                    // placement confirmed the band, gold for a counted pass
+                    // the camera couldn't fully vouch for. A gold seal is an
+                    // invitation back, not a demerit.
                     Image(systemName: "checkmark.circle.fill")
-                        .font(.subheadline).foregroundStyle(AppPalette.moss)
+                        .font(.subheadline)
+                        .foregroundStyle(wallProgress.bestVerdict(drillID: drill.id) == .yellow
+                                         ? AppPalette.gold : AppPalette.moss)
                 } else {
                     Image(systemName: "chevron.right")
                         .font(.caption.weight(.bold)).foregroundStyle(AppPalette.inkSoft.opacity(0.6))
@@ -500,6 +506,18 @@ struct WallLevelDetailView: View {
             Text(drill.localizedInstruction(for: lang.language))
                 .font(.subheadline).foregroundStyle(AppPalette.ink)
                 .fixedSize(horizontal: false, vertical: true)
+
+            // What the gate actually checks, stated before the player earns a
+            // seal — so a green never claims more than the sensors saw.
+            if case .reps(let n) = drill.target {
+                Label(String(format: lang.t("wall.verified_line"), n),
+                      systemImage: "checkmark.shield")
+                    .font(.caption).foregroundStyle(AppPalette.inkSoft)
+                if drill.patternOnHonour {
+                    Label(lang.t("wall.honour_line"), systemImage: "hand.raised")
+                        .font(.caption).foregroundStyle(AppPalette.inkSoft)
+                }
+            }
         }
         .padding(16).frame(maxWidth: .infinity, alignment: .leading)
         .background(AppPalette.parchment)
@@ -512,8 +530,11 @@ struct WallLevelDetailView: View {
     @ViewBuilder
     private var clearSection: some View {
         if wallProgress.isCleared(drill.id) {
-            Label(lang.t("wall.level_cleared"), systemImage: "checkmark.seal.fill")
-                .font(.subheadline.weight(.bold)).foregroundStyle(AppPalette.moss)
+            let gold = wallProgress.bestVerdict(drillID: drill.id) == .yellow
+            Label(lang.t(gold ? "wall.level_cleared_yellow" : "wall.level_cleared"),
+                  systemImage: "checkmark.seal.fill")
+                .font(.subheadline.weight(.bold))
+                .foregroundStyle(gold ? AppPalette.goldText : AppPalette.moss)
                 .frame(maxWidth: .infinity).padding(.top, 4)
         } else {
             Button {

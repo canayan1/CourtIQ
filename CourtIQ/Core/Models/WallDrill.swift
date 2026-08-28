@@ -23,6 +23,12 @@ struct WallDrill: Identifiable, Hashable {
     /// IQ-oriented drills train the DECISION (placement / shot choice), not
     /// just the stroke — flagged so the hub can badge them for the IQ story.
     let isTennisIQ: Bool
+    /// True when the drill's pattern (which stroke, which alternation) is
+    /// something the phone cannot check — mic hears reps, camera reads height,
+    /// neither knows a forehand from a backhand. The UI says so instead of
+    /// letting a green seal overclaim. The Apple Watch (wrist IMU classifies
+    /// strokes at ~98%) is the planned verifier.
+    var patternOnHonour: Bool = false
 
     func localizedTitle(for lang: AppLanguage) -> String {
         lang == .turkish ? titleTr : title
@@ -88,7 +94,8 @@ extension WallDrill {
             focus: .movement, target: .reps(20), tempoBPM: 50, difficulty: 2,
             instruction: "Alternate a forehand then a backhand every shot; recover to the middle between each.",
             instructionTr: "Her vuruşta forehand-backhand değiştir; aralarda ortaya toparlan.",
-            isTennisIQ: false
+            isTennisIQ: false,
+            patternOnHonour: true
         ),
         WallDrill(
             id: "wall-volley",
@@ -104,7 +111,8 @@ extension WallDrill {
             focus: .iq, target: .reps(20), tempoBPM: 48, difficulty: 2,
             instruction: "Alternate a deep, high ball then a low skidding one — you choose the height on every shot.",
             instructionTr: "Derin-yüksek bir top, sonra alçak-kayan bir top — yüksekliği her vuruşta sen seç.",
-            isTennisIQ: true
+            isTennisIQ: true,
+            patternOnHonour: true
         ),
         WallDrill(
             id: "wall-reset",
@@ -120,7 +128,8 @@ extension WallDrill {
             focus: .iq, target: .reps(15), tempoBPM: 44, difficulty: 3,
             instruction: "Feed hard, then play one aggressive first ball to the open side — pick the target BEFORE you hit.",
             instructionTr: "Sert besle, sonra boş tarafa tek agresif ilk top — hedefi vurmadan ÖNCE seç.",
-            isTennisIQ: true
+            isTennisIQ: true,
+            patternOnHonour: true
         ),
         WallDrill(
             id: "wall-approach",
@@ -136,7 +145,8 @@ extension WallDrill {
             focus: .technique, target: .reps(24), tempoBPM: 52, difficulty: 3,
             instruction: "Alternate inside-out then inside-in targets on the wall — tight, quiet racquet control.",
             instructionTr: "Duvarda sırayla inside-out ve inside-in hedefler — sıkı, sessiz raket kontrolü.",
-            isTennisIQ: false
+            isTennisIQ: false,
+            patternOnHonour: true
         )
     ]
 }

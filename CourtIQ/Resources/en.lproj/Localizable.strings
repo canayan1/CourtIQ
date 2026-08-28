@@ -120,6 +120,17 @@
 "rallycam.stand_at_wall" = "Stand against the wall";
 "rallycam.measured" = "Net line set from your height. Drag to fine-tune.";
 "rallycam.measure_failed" = "Couldn't see you — stand against the wall, head to feet in frame.";
+"rallycam.verdict_green" = "Level cleared";
+"rallycam.verdict_yellow" = "Level cleared";
+"rallycam.verdict_red" = "Not yet";
+"rallycam.verdict_green_reason" = "{hits} in a row, and the ball lived between the lines.";
+"rallycam.verdict_yellow_unread" = "{hits} in a row — but I couldn't see enough balls to vouch for placement. Green is still out there.";
+"rallycam.verdict_yellow_offband" = "{hits} in a row, but too many landed outside the band. Cleared on the count — come back for the green.";
+"rallycam.verdict_red_reason" = "{hits} of {goal}. The wall is patient.";
+"rallycam.try_again" = "Try again";
+"wall.level_cleared_yellow" = "Cleared — come back for the green seal";
+"wall.verified_line" = "Verified: %d wall hits in a row, placement by camera";
+"wall.honour_line" = "Which stroke you hit is on your honour — the phone can't tell yet";
 "rallycam.start" = "Start";
 "rallycam.stop" = "Stop";
 "train.analyze_title" = "AI Swing Analysis";

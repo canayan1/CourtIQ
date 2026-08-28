@@ -34,7 +34,13 @@ struct WallRallyCamView: View {
                 RallyCamPreview(model: model).ignoresSafeArea()
                 bandOverlay.ignoresSafeArea()
             }
-            hud
+            // The gate replaces the HUD outright — a translucent scrim over
+            // live numbers read as two screens fighting.
+            if let verdict = model.sessionVerdict {
+                verdictOverlay(verdict)
+            } else {
+                hud
+            }
         }
         .statusBarHidden(true)
         // Keep the screen awake — you're across the room hitting a ball, not
@@ -43,6 +49,14 @@ struct WallRallyCamView: View {
         .onAppear {
             UIApplication.shared.isIdleTimerDisabled = true
             model.configure(for: drill)
+            #if DEBUG
+            // Headless QC: SIMCTL_CHILD_QC_VERDICT=green|yellow|red renders the
+            // gate with seeded numbers — the mic can't fire in the Simulator.
+            if let raw = ProcessInfo.processInfo.environment["QC_VERDICT"],
+               let v = WallVerdict(rawValue: raw) {
+                model.qcSeedVerdict(v)
+            }
+            #endif
         }
         .onDisappear {
             UIApplication.shared.isIdleTimerDisabled = false
@@ -204,8 +218,13 @@ struct WallRallyCamView: View {
                 .padding(.bottom, 8)
 
             Button {
-                model.isRunning ? model.finish(record: true) : model.start()
-                if !model.isRunning { dismiss() }
+                if model.isRunning {
+                    model.finish(record: true)
+                    // No target → nothing to grade; leave as before.
+                    if model.sessionVerdict == nil { dismiss() }
+                } else {
+                    model.start()
+                }
             } label: {
                 Text(model.isRunning ? lang.t("rallycam.stop") : lang.t("rallycam.start"))
                     .font(.headline).frame(maxWidth: .infinity).padding(.vertical, 15)
@@ -283,6 +302,85 @@ struct WallRallyCamView: View {
     private func adjustHeight(_ delta: Int) {
         Haptics.tap()
         model.playerHeightCM = min(220, max(120, model.playerHeightCM + delta))
+    }
+
+    // MARK: - Verdict gate
+
+    /// The end-of-session gate: one color, one honest sentence about why, and
+    /// what it means for the ladder. Red offers the retry; the wall isn't
+    /// going anywhere.
+    private func verdictOverlay(_ verdict: WallVerdict) -> some View {
+        let (color, titleKey): (Color, String) = switch verdict {
+        case .green:  (AppPalette.moss,  "rallycam.verdict_green")
+        case .yellow: (AppPalette.gold,  "rallycam.verdict_yellow")
+        case .red:    (AppPalette.alert, "rallycam.verdict_red")
+        }
+        return VStack(spacing: 16) {
+            Spacer()
+            Image(systemName: verdict == .red ? "arrow.counterclockwise.circle.fill"
+                                              : "checkmark.seal.fill")
+                .appFont(64, design: .default)
+                .foregroundStyle(color)
+            Text(lang.t(titleKey))
+                .appFont(26, weight: .heavy).foregroundStyle(.white)
+                .multilineTextAlignment(.center)
+            Text(verdictReason)
+                .font(.subheadline).foregroundStyle(.white.opacity(0.9))
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 36)
+                .fixedSize(horizontal: false, vertical: true)
+
+            if model.readCount > 0 {
+                HStack(spacing: 12) {
+                    splitChip(count: model.zoneCounts[.band] ?? 0,
+                              label: lang.t("rallycam.zone_band"), color: AppPalette.moss)
+                    splitChip(count: model.zoneCounts[.net] ?? 0,
+                              label: lang.t("rallycam.zone_net"), color: AppPalette.alert)
+                    splitChip(count: model.zoneCounts[.long] ?? 0,
+                              label: lang.t("rallycam.zone_long"), color: AppPalette.alert)
+                }
+            }
+            Spacer()
+
+            if verdict == .red {
+                Button {
+                    Haptics.tap()
+                    model.sessionVerdict = nil
+                    model.start()
+                } label: {
+                    Text(lang.t("rallycam.try_again"))
+                        .font(.headline).foregroundStyle(.white)
+                        .frame(maxWidth: .infinity).padding(.vertical, 15)
+                        .background(AppPalette.clay,
+                                    in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+                }
+                .padding(.horizontal, 24)
+            }
+            Button {
+                Haptics.tap()
+                dismiss()
+            } label: {
+                Text(lang.t("common.done"))
+                    .font(.headline)
+                    .foregroundStyle(verdict == .red ? .white.opacity(0.85) : .white)
+                    .frame(maxWidth: .infinity).padding(.vertical, 15)
+                    .background(verdict == .red ? Color.white.opacity(0.14) : color,
+                                in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+            }
+            .padding(.horizontal, 24).padding(.bottom, 28)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(.black.opacity(0.94))
+        .transition(.opacity)
+    }
+
+    private var verdictReason: String {
+        var text = lang.t(model.verdictReasonKey)
+        if let goal = model.goal {
+            text = text.replacingOccurrences(of: "{hits}", with: "\(model.maxStreak)")
+                       .replacingOccurrences(of: "{goal}", with: "\(goal)")
+        }
+        return text
     }
 
     private func statPill(label: String, value: String) -> some View {
@@ -407,6 +505,37 @@ final class RallyCamModel: ObservableObject {
         return maxStreak >= goal
     }
 
+    /// Shown as the end-of-session gate; nil for free rallies and duration
+    /// drills, which have no rep target to grade against.
+    @Published var sessionVerdict: WallVerdict?
+    /// Why the verdict is the color it is — one honest sentence.
+    @Published var verdictReasonKey: String = ""
+
+    /// The gate. The mic (trusted) decides pass/fail; the camera (beta)
+    /// decides how good a pass looks. Placement can upgrade a session to
+    /// green or hold it at yellow — it can never turn a counted pass red.
+    private func computeVerdict() -> WallVerdict? {
+        guard goal != nil else { return nil }
+        guard goalMet else {
+            verdictReasonKey = "rallycam.verdict_red_reason"
+            return .red
+        }
+        let inBand = zoneCounts[.band] ?? 0
+        let read = inBand + (zoneCounts[.net] ?? 0) + (zoneCounts[.long] ?? 0)
+        let total = read + (zoneCounts[.unknown] ?? 0)
+        // Fewer than half the balls read → we can't honestly claim placement.
+        guard total > 0, read * 2 >= total else {
+            verdictReasonKey = "rallycam.verdict_yellow_unread"
+            return .yellow
+        }
+        if Double(inBand) / Double(read) >= 0.7 {
+            verdictReasonKey = "rallycam.verdict_green_reason"
+            return .green
+        }
+        verdictReasonKey = "rallycam.verdict_yellow_offband"
+        return .yellow
+    }
+
     func configure(for drill: WallDrill?) {
         guard let drill else { goal = nil; drillID = nil; return }
         drillID = drill.id
@@ -443,11 +572,27 @@ final class RallyCamModel: ObservableObject {
 
     private var flashWork: DispatchWorkItem?
 
+    #if DEBUG
+    /// Simulator-only: fake a finished session so the verdict gate can be seen
+    /// without a microphone. Never compiled into Release.
+    func qcSeedVerdict(_ v: WallVerdict) {
+        maxStreak = v == .red ? 6 : 11
+        zoneCounts = [.band: 7, .net: 2, .long: 1, .unknown: 1]
+        verdictReasonKey = switch v {
+        case .green:  "rallycam.verdict_green_reason"
+        case .yellow: "rallycam.verdict_yellow_offband"
+        case .red:    "rallycam.verdict_red_reason"
+        }
+        sessionVerdict = v
+    }
+    #endif
+
     func start() {
         isRunning = true
         currentStreak = 0; maxStreak = 0
         lastImpactTime = 0
         zoneCounts = [:]; lastZone = .unknown
+        sessionVerdict = nil
     }
 
     /// A wall impact heard by the mic. A gap over 3s ends the rally; the longest
@@ -475,13 +620,20 @@ final class RallyCamModel: ObservableObject {
 
     func finish(record: Bool) {
         isRunning = false
+        let verdict = computeVerdict()
+        sessionVerdict = verdict
         if record && maxStreak > 0 {
             WallProgressManager.shared.record(
                 drillID: drillID ?? "wall-rally-cam", title: drillTitle,
-                hits: maxStreak, seconds: 0, isFreeRally: drillID == nil
+                hits: maxStreak, seconds: 0, isFreeRally: drillID == nil,
+                verdict: verdict
             )
-            // The rung is cleared by DOING it, not by tapping "I did this".
-            if goalMet, let drillID { WallProgressManager.shared.markCleared(drillID) }
+            // The rung is cleared by DOING it. Yellow clears too — a beta
+            // detector must never hold a counted pass hostage; green is the
+            // seal worth coming back for.
+            if let verdict, let drillID {
+                WallProgressManager.shared.registerVerdict(verdict, drillID: drillID)
+            }
             // Log what the detector managed to read as well as the count. If
             // `unknown` dominates in the field, the locator's thresholds are
             // wrong and this is how we'll find out.
