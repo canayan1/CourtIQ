@@ -248,3 +248,87 @@ enum WallZone: String {
     /// The rep happened; we could not see where. Never counted against anyone.
     case unknown
 }
+
+// MARK: - Ground-referenced net line
+
+import Vision
+
+/// Estimates where a tennis net's height falls on the wall, using the player
+/// as the ruler.
+///
+/// There is no way to recover metric scale from one photo of a wall. But a
+/// person standing against that wall is a known length in the same plane: their
+/// feet mark the ground, their head marks their height, and the pixels between
+/// convert metres to screen units at the wall — which is the only place we need
+/// the conversion to hold.
+///
+/// Only the NET line is derived from physics (0.914 m, a singles net at the
+/// centre). The upper line has no physical definition — how high a good ball
+/// strikes the wall depends on how far back you stand — so it is offset by a
+/// default metre and openly presented as a starting point to drag.
+enum WallNetEstimator {
+
+    /// Regulation net height at the centre strap, in metres.
+    static let netHeightM: CGFloat = 0.914
+    /// Default gap from the net line to the "too high" line. A guess, not a rule.
+    static let defaultBandM: CGFloat = 1.0
+
+    struct Estimate {
+        /// Normalized view coords (0 = top of frame), same space as the band.
+        let netY: CGFloat
+        let topY: CGFloat
+        /// Where the player's feet were — the ground line we measured from.
+        let groundY: CGFloat
+    }
+
+    /// Measure from one frame. `playerHeightM` is what the whole thing is
+    /// calibrated against; a wrong height scales the answer proportionally,
+    /// which is why the player can still drag afterwards.
+    ///
+    /// Returns nil unless a person is found standing upright and whole — a
+    /// half-visible or crouching player would silently produce a wrong ruler,
+    /// and a wrong line is worse than no line.
+    static func estimate(from pixelBuffer: CVPixelBuffer,
+                         playerHeightM: CGFloat) -> Estimate? {
+        let request = VNDetectHumanBodyPoseRequest()
+        // Frames are delivered pre-rotated upright, so no orientation fixup.
+        let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: .up)
+        try? handler.perform([request])
+        guard let observation = request.results?.first,
+              let points = try? observation.recognizedPoints(.all) else { return nil }
+
+        func y(of joints: [VNHumanBodyPoseObservation.JointName],
+               pick: ([CGFloat]) -> CGFloat?) -> CGFloat? {
+            let found = joints.compactMap { name -> CGFloat? in
+                guard let p = points[name], p.confidence > 0.3 else { return nil }
+                // Vision's origin is bottom-left with y up; the band overlay's
+                // is top-left with y down.
+                return 1 - p.location.y
+            }
+            return pick(found)
+        }
+
+        // Feet are the LOWEST point on screen, so the largest view y.
+        guard let feetY = y(of: [.leftAnkle, .rightAnkle], pick: { $0.max() }),
+              let headY = y(of: [.nose, .leftEye, .rightEye, .leftEar, .rightEar],
+                            pick: { $0.min() })
+        else { return nil }
+
+        let span = feetY - headY
+        // A person filling less than a sixth of the frame is too far away, or
+        // it isn't a whole person. Either way the ruler can't be trusted.
+        guard span > 0.16 else { return nil }
+
+        let unitsPerMetre = span / playerHeightM
+        let netY = feetY - netHeightM * unitsPerMetre
+        let topY = netY - defaultBandM * unitsPerMetre
+
+        // A net line off the top of the frame means the camera is framed too
+        // low to be useful — report nothing rather than clamp to a lie.
+        guard netY > 0.05, netY < 0.98 else { return nil }
+
+        return Estimate(netY: netY,
+                        topY: max(0.02, topY),
+                        groundY: feetY)
+    }
+}

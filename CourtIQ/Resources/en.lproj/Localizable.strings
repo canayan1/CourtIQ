@@ -116,6 +116,10 @@
 "rallycam.goal" = "Goal";
 "rallycam.no_camera" = "No camera — counting still works, but you can't set the band.";
 "rallycam.zone_band" = "IN";
+"rallycam.measure" = "Set net line";
+"rallycam.stand_at_wall" = "Stand against the wall";
+"rallycam.measured" = "Net line set from your height. Drag to fine-tune.";
+"rallycam.measure_failed" = "Couldn't see you — stand against the wall, head to feet in frame.";
 "rallycam.start" = "Start";
 "rallycam.stop" = "Stop";
 "train.analyze_title" = "AI Swing Analysis";

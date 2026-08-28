@@ -116,6 +116,10 @@
 "rallycam.goal" = "Hedef";
 "rallycam.no_camera" = "Kamera yok — sayım yine çalışıyor ama bandı ayarlayamazsın.";
 "rallycam.zone_band" = "İÇİ";
+"rallycam.measure" = "File çizgisini ayarla";
+"rallycam.stand_at_wall" = "Duvara yaslan";
+"rallycam.measured" = "File çizgisi boyuna göre ayarlandı. Sürükleyerek ince ayar yap.";
+"rallycam.measure_failed" = "Seni göremedim — duvara yaslan, baştan ayağa kadar kadraja gir.";
 "rallycam.start" = "Başla";
 "rallycam.stop" = "Bitir";
 "train.analyze_title" = "AI Swing Analizi";

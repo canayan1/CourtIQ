@@ -196,6 +196,8 @@ struct WallRallyCamView: View {
 
             Spacer()
 
+            if !model.isRunning { measureRow }
+
             Text(hintText)
                 .font(.footnote).foregroundStyle(.white.opacity(0.85))
                 .multilineTextAlignment(.center).padding(.horizontal, 32)
@@ -229,6 +231,60 @@ struct WallRallyCamView: View {
         .background(RoundedRectangle(cornerRadius: 10).fill(.black.opacity(0.35)))
     }
 
+    /// Auto-placing the net line. The player stands against the wall and their
+    /// own body supplies the scale — feet mark the ground, head marks a known
+    /// height, and the pixels between convert metres to screen units in the
+    /// wall's plane. Dragging still works afterwards; this only ever suggests.
+    @ViewBuilder
+    private var measureRow: some View {
+        if let n = model.countdown {
+            VStack(spacing: 4) {
+                Text("\(n)")
+                    .appFont(44, weight: .heavy).foregroundStyle(.white).monospacedDigit()
+                    .contentTransition(.numericText())
+                Text(lang.t("rallycam.stand_at_wall"))
+                    .font(.footnote.weight(.semibold)).foregroundStyle(.white.opacity(0.9))
+            }
+            .padding(.bottom, 6)
+        } else {
+            HStack(spacing: 10) {
+                Button {
+                    Haptics.tap()
+                    startMeasure()
+                } label: {
+                    Label(lang.t("rallycam.measure"), systemImage: "figure.stand")
+                        .font(.subheadline.weight(.bold))
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, 14).padding(.vertical, 10)
+                        .background(Capsule().fill(.white.opacity(0.18)))
+                }
+                heightStepper
+            }
+            .padding(.bottom, 6)
+        }
+    }
+
+    private var heightStepper: some View {
+        HStack(spacing: 8) {
+            Button { adjustHeight(-1) } label: {
+                Image(systemName: "minus").font(.footnote.weight(.bold))
+            }
+            Text("\(model.playerHeightCM) cm")
+                .font(.subheadline.weight(.semibold)).monospacedDigit()
+            Button { adjustHeight(1) } label: {
+                Image(systemName: "plus").font(.footnote.weight(.bold))
+            }
+        }
+        .foregroundStyle(.white)
+        .padding(.horizontal, 12).padding(.vertical, 10)
+        .background(Capsule().fill(.white.opacity(0.12)))
+    }
+
+    private func adjustHeight(_ delta: Int) {
+        Haptics.tap()
+        model.playerHeightCM = min(220, max(120, model.playerHeightCM + delta))
+    }
+
     private func statPill(label: String, value: String) -> some View {
         VStack(alignment: .trailing, spacing: 2) {
             Text(label).font(.caption.weight(.bold))
@@ -239,8 +295,33 @@ struct WallRallyCamView: View {
         .background(RoundedRectangle(cornerRadius: 12).fill(.black.opacity(0.4)))
     }
 
+    /// Five seconds is a walk to the wall, not a pose — long enough to get
+    /// there, short enough not to feel like a wait.
+    private func startMeasure() {
+        model.measureFailed = false
+        model.countdown = 5
+        tick()
+    }
+
+    private func tick() {
+        guard let n = model.countdown else { return }
+        if n <= 1 {
+            model.countdown = nil
+            NotificationCenter.default.post(name: .rallyCamMeasureNow, object: nil)
+            return
+        }
+        Haptics.tap()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            guard model.countdown != nil else { return }
+            model.countdown = n - 1
+            tick()
+        }
+    }
+
     private var hintText: String {
         if model.permissionDenied { return lang.t("rallycam.no_camera") }
+        if model.measureFailed { return lang.t("rallycam.measure_failed") }
+        if model.measured && !model.isRunning { return lang.t("rallycam.measured") }
         return model.isRunning ? lang.t("rallycam.hint_running") : lang.t("rallycam.hint_setup")
     }
 
@@ -281,6 +362,27 @@ final class RallyCamModel: ObservableObject {
         if y < bandTop { return .long }
         if y > bandBottom { return .net }
         return .band
+    }
+
+    // MARK: Auto net line
+
+    /// Seconds left before the measurement frame is grabbed; nil when idle.
+    @Published var countdown: Int?
+    /// What the player is calibrated against. Wrong by 10% → the net line is
+    /// wrong by 10%, so it is adjustable and remembered.
+    @Published var playerHeightCM: Int = UserDefaults.standard.object(forKey: "DropVolley.rallycam.heightCM") as? Int ?? 175 {
+        didSet { UserDefaults.standard.set(playerHeightCM, forKey: "DropVolley.rallycam.heightCM") }
+    }
+    /// Set after a successful measurement so the copy can say it worked.
+    @Published var measured = false
+    @Published var measureFailed = false
+
+    /// Apply a measurement, keeping the player's freedom to drag afterwards.
+    func applyNetEstimate(netY: CGFloat, topY: CGFloat) {
+        bandBottom = min(0.98, max(Self.minBandHeight + 0.02, netY))
+        bandTop = max(0.02, min(topY, bandBottom - Self.minBandHeight))
+        measured = true
+        measureFailed = false
     }
 
     /// Keeps the band from collapsing to nothing while being dragged.
@@ -430,6 +532,9 @@ final class RallyCamController: UIViewController, AVCaptureVideoDataOutputSample
     private let impactDetector = AudioImpactDetector()
     /// Answers WHERE, at the instant the detector says WHEN.
     private let locator = WallBallLocator()
+    /// Set when the countdown ends; the next frame is used for the measurement.
+    private var measureRequested = false
+    private var measureObserver: NSObjectProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -513,10 +618,17 @@ final class RallyCamController: UIViewController, AVCaptureVideoDataOutputSample
             }
         }
         impactDetector.start()
+
+        measureObserver = NotificationCenter.default.addObserver(
+            forName: .rallyCamMeasureNow, object: nil, queue: nil
+        ) { [weak self] _ in
+            self?.videoQueue.async { self?.measureRequested = true }
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        if let measureObserver { NotificationCenter.default.removeObserver(measureObserver) }
         impactDetector.stop()
         videoQueue.async { [weak self] in self?.session.stopRunning() }
     }
@@ -527,6 +639,22 @@ final class RallyCamController: UIViewController, AVCaptureVideoDataOutputSample
                        from connection: AVCaptureConnection) {
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         locator.store(pixelBuffer, at: ProcessInfo.processInfo.systemUptime)
+
+        if measureRequested {
+            measureRequested = false
+            let heightM = CGFloat(model?.playerHeightCM ?? 175) / 100
+            let estimate = WallNetEstimator.estimate(from: pixelBuffer, playerHeightM: heightM)
+            DispatchQueue.main.async { [weak self] in
+                guard let model = self?.model else { return }
+                if let estimate {
+                    model.applyNetEstimate(netY: estimate.netY, topY: estimate.topY)
+                } else {
+                    // No usable person in frame. Say so and leave the lines
+                    // exactly where the player last put them.
+                    model.measureFailed = true
+                }
+            }
+        }
     }
 }
 
@@ -653,4 +781,11 @@ final class AudioImpactDetector {
         running = false
         try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
     }
+}
+
+
+extension Notification.Name {
+    /// Fired when the setup countdown reaches zero: grab the next camera frame
+    /// and measure the net line from whoever is standing at the wall.
+    static let rallyCamMeasureNow = Notification.Name("dropvolley.rallycam.measureNow")
 }
