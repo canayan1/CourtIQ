@@ -524,8 +524,9 @@ struct WallLevelDetailView: View {
 
             // What the gate actually checks, stated before the player earns a
             // seal — so a green never claims more than the sensors saw.
-            if case .reps(let n) = drill.target {
-                Label(String(format: lang.t("wall.verified_line"), n),
+            if let n = drill.scaledReps {
+                Label(String(format: lang.t(drill.goalIsStreak ? "wall.verified_line"
+                                                               : "wall.verified_line_total"), n),
                       systemImage: "checkmark.shield")
                     .font(.caption).foregroundStyle(AppPalette.inkSoft)
                 if drill.patternOnHonour {

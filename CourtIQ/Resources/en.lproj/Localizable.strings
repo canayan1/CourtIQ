@@ -109,7 +109,7 @@
 "rallycam.sub" = "The mic hears every wall hit and counts your rally.";
 "rallycam.best" = "Best";
 "rallycam.in_a_row" = "in a row";
-"rallycam.hint_setup" = "Drag the lines onto your wall, then Start. Sound does the counting.";
+"rallycam.hint_setup" = "Prop the phone facing the wall — a step to the side, so it sees past you. Sound does the counting.";
 "rallycam.hint_running" = "Keep it going — every wall hit counts.";
 "rallycam.zone_net" = "NET";
 "rallycam.zone_long" = "LONG";
@@ -123,9 +123,9 @@
 "rallycam.verdict_green" = "Level cleared";
 "rallycam.verdict_yellow" = "Level cleared";
 "rallycam.verdict_red" = "Not yet";
-"rallycam.verdict_green_reason" = "{hits} in a row, and the ball lived between the lines.";
-"rallycam.verdict_yellow_unread" = "{hits} in a row — but I couldn't see enough balls to vouch for placement. Green is still out there.";
-"rallycam.verdict_yellow_offband" = "{hits} in a row, but too many landed outside the band. Cleared on the count — come back for the green.";
+"rallycam.verdict_green_reason" = "Target met — and the ball lived between the lines.";
+"rallycam.verdict_yellow_unread" = "Target met — but I couldn't see enough balls to vouch for placement. Green is still out there.";
+"rallycam.verdict_yellow_offband" = "Target met, but too many landed outside the band. Cleared on the count — come back for the green.";
 "rallycam.verdict_red_reason" = "{hits} of {goal}. The wall is patient.";
 "rallycam.try_again" = "Try again";
 "wall.level_cleared_yellow" = "Cleared — come back for the green seal";
@@ -134,6 +134,8 @@
 "rallycam.save_clip" = "Save clip";
 "rallycam.ai_review" = "AI review";
 "rallycam.clip_note" = "Recorded on this phone. Deleted when you leave unless you save it.";
+"rallycam.total_hits" = "hits";
+"wall.verified_line_total" = "Verified: %d wall hits this session, placement by camera";
 "rallycam.start" = "Start";
 "rallycam.stop" = "Stop";
 "train.analyze_title" = "AI Swing Analysis";

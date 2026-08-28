@@ -189,7 +189,8 @@ struct WallRallyCamView: View {
                     .background(AppPalette.ink.opacity(0.85), in: Capsule())
                     .padding(.trailing, 8)
                 if let goal = model.goal {
-                    statPill(label: lang.t("rallycam.goal"), value: "\(model.maxStreak)/\(goal)")
+                    statPill(label: lang.t("rallycam.goal"),
+                             value: "\(model.goalProgress)/\(goal)")
                 } else {
                     statPill(label: lang.t("rallycam.best"), value: "\(model.maxStreak)")
                 }
@@ -200,13 +201,13 @@ struct WallRallyCamView: View {
 
             // Big live streak count.
             VStack(spacing: 4) {
-                Text("\(model.currentStreak)")
+                Text("\(model.goalIsStreak ? model.currentStreak : model.totalHits)")
                     .appFont(80, weight: .heavy)
                     .foregroundStyle(model.goalMet ? AppPalette.moss : .white)
                     .monospacedDigit().shadow(color: .black.opacity(0.6), radius: 8)
                     .contentTransition(.numericText())
-                    .animation(.snappy, value: model.currentStreak)
-                Text(lang.t("rallycam.in_a_row"))
+                    .animation(.snappy, value: model.goalIsStreak ? model.currentStreak : model.totalHits)
+                Text(lang.t(model.goalIsStreak ? "rallycam.in_a_row" : "rallycam.total_hits"))
                     .font(.subheadline.weight(.semibold)).foregroundStyle(.white.opacity(0.85))
 
                 if model.readCount > 0 {
@@ -419,7 +420,7 @@ struct WallRallyCamView: View {
     private var verdictReason: String {
         var text = lang.t(model.verdictReasonKey)
         if let goal = model.goal {
-            text = text.replacingOccurrences(of: "{hits}", with: "\(model.maxStreak)")
+            text = text.replacingOccurrences(of: "{hits}", with: "\(model.goalProgress)")
                        .replacingOccurrences(of: "{goal}", with: "\(goal)")
         }
         return text
@@ -473,6 +474,9 @@ struct WallRallyCamView: View {
 final class RallyCamModel: ObservableObject {
     @Published var currentStreak = 0
     @Published var maxStreak = 0
+    /// Every counted impact this session, gaps and all — the metric for
+    /// sequence drills whose fetch-and-refeed breaks any streak by design.
+    @Published var totalHits = 0
     @Published var isRunning = false
     @Published var lastHit = false
     @Published var permissionDenied = false
@@ -539,12 +543,17 @@ final class RallyCamModel: ObservableObject {
     /// Rep goal for this rung, from the drill's `.reps` target. Duration-based
     /// drills have no goal here — the mic counts hits, not seconds.
     @Published private(set) var goal: Int?
+    /// Streak drills demand the goal in a row; sequence drills in total.
+    private(set) var goalIsStreak = true
     private var drillID: String?
     private var drillTitle: String = "Rally Cam"
 
+    /// What counts toward the goal, per the drill's own grading.
+    var goalProgress: Int { goalIsStreak ? maxStreak : totalHits }
+
     var goalMet: Bool {
         guard let goal else { return false }
-        return maxStreak >= goal
+        return goalProgress >= goal
     }
 
     /// The session's silent video, recorded on-device while the rally ran.
@@ -587,7 +596,9 @@ final class RallyCamModel: ObservableObject {
         guard let drill else { goal = nil; drillID = nil; return }
         drillID = drill.id
         drillTitle = drill.title
-        if case .reps(let n) = drill.target { goal = n } else { goal = nil }
+        goalIsStreak = drill.goalIsStreak
+        // The scaled target — the number the player self-rated into.
+        goal = drill.scaledReps
     }
 
     private static let bandKey = "DropVolley.rallycam.band.v1"
@@ -636,7 +647,7 @@ final class RallyCamModel: ObservableObject {
 
     func start() {
         isRunning = true
-        currentStreak = 0; maxStreak = 0
+        currentStreak = 0; maxStreak = 0; totalHits = 0
         lastImpactTime = 0
         zoneCounts = [:]; lastZone = .unknown
         sessionVerdict = nil
@@ -670,6 +681,7 @@ final class RallyCamModel: ObservableObject {
         lastImpactTime = now
         currentStreak += 1
         maxStreak = max(maxStreak, currentStreak)
+        totalHits += 1
         Haptics.success()
         flash()
     }
@@ -696,6 +708,7 @@ final class RallyCamModel: ObservableObject {
             AppAnalytics.shared.log(AnalyticsEvent.wallSessionCompleted,
                                     ["title": "rally_cam",
                                      "hits": maxStreak,
+                                     "total": totalHits,
                                      "in_band": zoneCounts[.band] ?? 0,
                                      "net": zoneCounts[.net] ?? 0,
                                      "long": zoneCounts[.long] ?? 0,
@@ -956,7 +969,14 @@ final class AudioImpactDetector {
     // floor (abs floor so silence never fires).
     private let absFloor: Float = 0.02            // never trigger below this
     private let spikeRatio: Float = 2.8           // impact ≈ this × ambient
-    private let refractory: TimeInterval = 0.14   // min gap between hits (s)
+    /// One rep produces up to THREE impulsive sounds — racquet contact, wall
+    /// thud, floor bounce — typically 0.1–0.3s apart. At 0.14s the detector
+    /// counted several of them as separate reps, silently inflating every
+    /// goal. 0.45s merges racquet+wall into one count while staying under the
+    /// fastest realistic wall cadence (~0.6s close-range volleys). The floor
+    /// bounce can still land outside this window; whether it crosses the
+    /// threshold in practice is THE thing to verify on a real wall.
+    private let refractory: TimeInterval = 0.45
     private var ambient: Float = 0.02             // running noise-floor estimate
     // Band-pass ≈ 100 Hz–3 kHz (coefficients set once the sample rate is known).
     private var hp = Biquad(), lp = Biquad()

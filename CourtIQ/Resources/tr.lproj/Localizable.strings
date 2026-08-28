@@ -109,7 +109,7 @@
 "rallycam.sub" = "Mikrofon her duvar vuruşunu duyar ve ralini sayar.";
 "rallycam.best" = "Rekor";
 "rallycam.in_a_row" = "ardışık";
-"rallycam.hint_setup" = "Çizgileri duvarına sürükle, sonra Başlat. Sayımı ses yapıyor.";
+"rallycam.hint_setup" = "Telefonu duvara dönük daya — bir adım yana, seni aşıp duvarı görsün. Sayımı ses yapıyor.";
 "rallycam.hint_running" = "Devam et — her duvar vuruşu sayılıyor.";
 "rallycam.zone_net" = "FILE";
 "rallycam.zone_long" = "AUT";
@@ -123,9 +123,9 @@
 "rallycam.verdict_green" = "Seviye geçildi";
 "rallycam.verdict_yellow" = "Seviye geçildi";
 "rallycam.verdict_red" = "Henüz değil";
-"rallycam.verdict_green_reason" = "Üst üste {hits} — ve top çizgilerin arasında yaşadı.";
-"rallycam.verdict_yellow_unread" = "Üst üste {hits} — ama yerleşime kefil olacak kadar top göremedim. Yeşil hâlâ seni bekliyor.";
-"rallycam.verdict_yellow_offband" = "Üst üste {hits}, ama çok top bandın dışına düştü. Sayıyla geçtin — yeşil için geri gel.";
+"rallycam.verdict_green_reason" = "Hedef tamam — ve top çizgilerin arasında yaşadı.";
+"rallycam.verdict_yellow_unread" = "Hedef tamam — ama yerleşime kefil olacak kadar top göremedim. Yeşil hâlâ seni bekliyor.";
+"rallycam.verdict_yellow_offband" = "Hedef tamam, ama çok top bandın dışına düştü. Sayıyla geçtin — yeşil için geri gel.";
 "rallycam.verdict_red_reason" = "{goal} hedefte {hits}. Duvar sabırlı.";
 "rallycam.try_again" = "Tekrar dene";
 "wall.level_cleared_yellow" = "Geçildi — yeşil mühür için geri gel";
@@ -134,6 +134,8 @@
 "rallycam.save_clip" = "Klibi kaydet";
 "rallycam.ai_review" = "AI incelemesi";
 "rallycam.clip_note" = "Bu telefonda kaydedildi. Kaydetmezsen çıkınca silinir.";
+"rallycam.total_hits" = "vuruş";
+"wall.verified_line_total" = "Doğrulanan: bu seansta %d duvar vuruşu, yerleşim kamerayla";
 "rallycam.start" = "Başla";
 "rallycam.stop" = "Bitir";
 "train.analyze_title" = "AI Swing Analizi";

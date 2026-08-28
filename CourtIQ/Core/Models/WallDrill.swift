@@ -29,6 +29,12 @@ struct WallDrill: Identifiable, Hashable {
     /// letting a green seal overclaim. The Apple Watch (wrist IMU classifies
     /// strokes at ~98%) is the planned verifier.
     var patternOnHonour: Bool = false
+    /// How the rep goal is graded. Continuous-rally drills demand the reps IN
+    /// A ROW — the streak is the exercise. Sequence drills (feed, hit, fetch
+    /// the ball, feed again) CANNOT hold a streak: the fetch is longer than
+    /// the 3-second rally-gap rule, so a streak goal would be mathematically
+    /// impossible and the rung forever red. Those grade TOTAL hits instead.
+    var goalIsStreak: Bool = true
 
     func localizedTitle(for lang: AppLanguage) -> String {
         lang == .turkish ? titleTr : title
@@ -76,7 +82,37 @@ enum WallTarget: Hashable {
     case duration(seconds: Int)
 }
 
+/// The player's self-rated level from onboarding, used to scale rep targets.
+/// This is the player's OWN claim about their tennis, which is the honest
+/// source — the in-app TennisPlayerLevel is derived from quiz activity and
+/// says nothing about what their forehand can do.
+enum WallPlayerBand {
+    case beginner, club, advanced
+
+    static var current: WallPlayerBand {
+        switch UserDefaults.standard.string(forKey: "CourtIQ.onboardingLevel") {
+        case "beginner":          return .beginner
+        case "advanced", "coach": return .advanced
+        default:                  return .club
+        }
+    }
+}
+
 extension WallDrill {
+    /// The rep target this player actually faces. The authored numbers are
+    /// club-level; a beginner gets ~70% and an advanced player ~130%, floored
+    /// so no goal collapses below something worth doing. Seals already earned
+    /// survive a level change — targets scale, history doesn't.
+    var scaledReps: Int? {
+        guard case .reps(let n) = target else { return nil }
+        let factor: Double = switch WallPlayerBand.current {
+        case .beginner: 0.7
+        case .club:     1.0
+        case .advanced: 1.3
+        }
+        return max(5, Int((Double(n) * factor).rounded()))
+    }
+
     /// The curated starter library (v1). Ordered easy → hard-ish, mixing pure
     /// technique/consistency with the IQ-flagged decision drills.
     static let all: [WallDrill] = [
@@ -91,7 +127,7 @@ extension WallDrill {
         WallDrill(
             id: "wall-fh-bh",
             title: "Forehand ↔ Backhand", titleTr: "Forehand ↔ Backhand",
-            focus: .movement, target: .reps(20), tempoBPM: 50, difficulty: 2,
+            focus: .movement, target: .reps(14), tempoBPM: 50, difficulty: 2,
             instruction: "Alternate a forehand then a backhand every shot; recover to the middle between each.",
             instructionTr: "Her vuruşta forehand-backhand değiştir; aralarda ortaya toparlan.",
             isTennisIQ: false,
@@ -100,7 +136,7 @@ extension WallDrill {
         WallDrill(
             id: "wall-volley",
             title: "Quick-Hands Volley", titleTr: "Hızlı El Vole",
-            focus: .volley, target: .duration(seconds: 45), tempoBPM: 96, difficulty: 2,
+            focus: .volley, target: .reps(20), tempoBPM: 96, difficulty: 2,
             instruction: "Stand close. Short, firm volleys — no backswing, punch and reset the racquet.",
             instructionTr: "Yakın dur. Kısa, sağlam voleler — geri sallama yok, vur ve raketi hazırla.",
             isTennisIQ: false
@@ -116,11 +152,13 @@ extension WallDrill {
         ),
         WallDrill(
             id: "wall-reset",
+            // (goalIsStreak set below — slow arcs can't hold the 3s streak rule)
             title: "Reset Ball", titleTr: "Reset Topu",
-            focus: .iq, target: .duration(seconds: 60), tempoBPM: 40, difficulty: 2,
+            focus: .iq, target: .reps(12), tempoBPM: 40, difficulty: 2,
             instruction: "Under pressure, buy time: high, deep, slow 'reset' balls arced well above the net band.",
             instructionTr: "Baskı altında zaman kazan: file bandının çok üstünden, yüksek-derin-yavaş 'reset' topları.",
-            isTennisIQ: true
+            isTennisIQ: true,
+            goalIsStreak: false
         ),
         WallDrill(
             id: "wall-first-strike",
@@ -129,7 +167,8 @@ extension WallDrill {
             instruction: "Feed hard, then play one aggressive first ball to the open side — pick the target BEFORE you hit.",
             instructionTr: "Sert besle, sonra boş tarafa tek agresif ilk top — hedefi vurmadan ÖNCE seç.",
             isTennisIQ: true,
-            patternOnHonour: true
+            patternOnHonour: true,
+            goalIsStreak: false
         ),
         WallDrill(
             id: "wall-approach",
