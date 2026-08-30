@@ -31,7 +31,7 @@ struct HomeView: View {
     /// All grid tiles push their destination via this single route +
     /// navigationDestination. (Switching tabs via tabRouter from a grid tile did
     /// not work; pushing via route does.) The Coach hero still switches tabs.
-    private enum Route: Hashable { case swing, tennisIQ, matches, doubles
+    private enum Route: Hashable { case swing, tennisIQ, matches, doubles, wall, drills
         #if DEBUG
         /// QC only: the paid coach-review order screen (App Store review
         /// screenshot for the consumable IAP).
@@ -66,9 +66,17 @@ struct HomeView: View {
                 coachHero
                     .reveal(appeared: appeared, index: 1, reduceMotion: reduceMotion)
 
-                // HIG audit A1/A3: Home is TODAY, not a second launcher. The
-                // tab bar is the app's map — Matches/Doubles/Swing live there
-                // (and only there), so one path per feature gets memorized.
+                // The tab bar stays the app's map; these are shortcuts to the
+                // same places, not a second map. Home carried only two heroes
+                // and a thin Recent strip, which left most of the screen empty
+                // on a 6.9" phone — the photos give the day somewhere to go.
+                VStack(alignment: .leading, spacing: 12) {
+                    Eyebrow(lang.t("home.jump_back_in"))
+                        .reveal(appeared: appeared, index: 2, reduceMotion: reduceMotion)
+                    shortcutGrid
+                        .reveal(appeared: appeared, index: 3, reduceMotion: reduceMotion)
+                }
+
                 VStack(alignment: .leading, spacing: 12) {
                     HStack(spacing: 6) {
                         Eyebrow(lang.t("home.recent"))
@@ -81,10 +89,10 @@ struct HomeView: View {
                                 .accessibilityLabel(String(format: lang.t("home.streak_days"), streakDays))
                         }
                     }
-                    .reveal(appeared: appeared, index: 2, reduceMotion: reduceMotion)
+                    .reveal(appeared: appeared, index: 4, reduceMotion: reduceMotion)
 
                     RecentActivityStrip(activities: recentActivity, lang: lang)
-                        .reveal(appeared: appeared, index: 3, reduceMotion: reduceMotion)
+                        .reveal(appeared: appeared, index: 5, reduceMotion: reduceMotion)
                 }
             }
             .padding(20)
@@ -114,6 +122,10 @@ struct HomeView: View {
                 MatchesListView()
             case .doubles:
                 DoublesView()
+            case .wall:
+                WallHubView()
+            case .drills:
+                TrainPracticeView()
             #if DEBUG
             case .coachOrder:
                 CoachReviewOrderView(
@@ -159,6 +171,33 @@ struct HomeView: View {
     }
 
     // MARK: - Header
+
+    /// Photo shortcuts to the four places a session actually goes. Buttons +
+    /// `route`, never NavigationLink inside the grid — a NavigationLink mixed
+    /// with Buttons in a lazy grid mis-routes taps between cells, which is the
+    /// bug that emptied this screen in the first place.
+    private var shortcutGrid: some View {
+        VStack(spacing: 12) {
+            HStack(spacing: 12) {
+                shortcut(.drills,  title: lang.t("train.drills"),      photo: "PhotoFootwork", icon: "scope")
+                shortcut(.wall,    title: lang.t("train.wall"),        photo: "PhotoWall",     icon: "sportscourt.fill")
+            }
+            HStack(spacing: 12) {
+                shortcut(.matches, title: lang.t("home.tile_matches"), photo: "PhotoMatch",    icon: "square.and.pencil")
+                shortcut(.doubles, title: lang.t("home.tile_doubles"), photo: "PhotoDoubles",  icon: "person.2.fill")
+            }
+        }
+    }
+
+    private func shortcut(_ dest: Route, title: String, photo: String, icon: String) -> some View {
+        Button {
+            Haptics.tap()
+            route = dest
+        } label: {
+            LockableTile(sfSymbol: icon, title: title, minHeight: 112, photo: photo)
+        }
+        .buttonStyle(PressableCardStyle())
+    }
 
     private var header: some View {
         HStack {

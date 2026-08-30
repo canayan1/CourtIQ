@@ -43,6 +43,7 @@
 "home.tile_coach" = "Coach";
 "home.tile_doubles" = "Doubles";
 "home.tile_drill" = "Drill";
+"home.jump_back_in" = "JUMP BACK IN";
 "home.recent" = "Recent";
 "home.streak_days" = "%d day streak";
 "home.first_swing" = "Record your first swing, get a score";

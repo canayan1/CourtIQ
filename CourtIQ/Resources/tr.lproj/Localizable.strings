@@ -43,6 +43,7 @@
 "home.tile_coach" = "Koç";
 "home.tile_doubles" = "Çiftler";
 "home.tile_drill" = "Antren";
+"home.jump_back_in" = "KALDIĞIN YERDEN";
 "home.recent" = "Son";
 "home.streak_days" = "%d günlük seri";
 "home.first_swing" = "İlk vuruşunu çek, puanını al";
