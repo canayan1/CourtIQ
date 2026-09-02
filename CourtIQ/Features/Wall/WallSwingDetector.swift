@@ -6,163 +6,158 @@ import Vision
 /// Which stroke a wall rep was, as read from the player's body — not the ball.
 enum WallStroke: String {
     case forehand, backhand
-    /// The wrist was too close to the body's midline to call, or the pose
-    /// was too weak to trust. Reported, never guessed.
+    /// The racquet arm was unreadable around the swing. Reported, never guessed.
     case unknown
 }
 
-/// Counts wall reps by watching the player swing, and tells forehand from
-/// backhand by which side of the body the racquet hand is on at the swing.
+/// Counts wall reps by watching the player's shoulders turn and square up,
+/// and tells forehand from backhand by which side the racquet arm is on
+/// as the shoulders come square.
 ///
-/// This replaced counting by microphone. The field test settled that: a rep
-/// makes three impulsive sounds — racquet, wall, floor — and no threshold
-/// tells them apart, so every goal came out inflated. A swing is a different
-/// kind of signal: one large, fast arc of the racquet wrist that nothing else
-/// in a wall session resembles. The player is also the largest thing in the
-/// frame, which is the easy case for on-device pose.
+/// Why shoulders and not the wrist: the first pose detector watched racquet-
+/// wrist speed. On real footage (phone behind the player, the setup the app
+/// asks for) it counted 2 of 13 swings — the wrist is hidden behind the torso
+/// through most of a groundstroke from that angle, and from behind a swing
+/// moves mostly *toward* the wall, which is depth the camera can't see.
 ///
-/// Stroke side is geometry, not judgement. Vision labels joints by the
-/// player's own left/right, so with the phone behind the player (the setup
-/// the app asks for) a right-hander's wrist to the right of the shoulder
-/// midline at the swing is a forehand; across it is a backhand. Anything
-/// near the midline is `unknown`.
+/// What the camera sees perfectly from behind is rotation. Square to the wall
+/// the shoulders span ~0.14 of the frame width; at the unit turn they go to
+/// profile and past it (the signed width crosses zero); at contact they snap
+/// back square. One turned→square transition is one swing. It's a posture
+/// signal, not a speed one, so a slow rep counts and a dropped frame doesn't
+/// matter.
 ///
-/// ⚠️ Thresholds are first-pass values. They want tuning against a real
-/// session — see the offline harness in docs/WALL-PRACTICE-PLAN.md.
+/// Stroke side: at the moment the shoulders come square, the racquet arm is
+/// extended on the side it hit from. Elbow first (tracked far more reliably
+/// than the wrist), wrist as fallback, measured against the hip midline.
+/// Handedness picks which arm is the racquet arm and which side is forehand.
+///
+/// Validated on a 36s coach session (10 counted / ~13 real, every stroke
+/// side right). Backhand side is geometry and not yet seen in the field —
+/// `tools/wall-swing-eval.swift` mirrors this file for checking a clip.
 final class WallSwingDetector {
 
     struct Swing {
         let time: TimeInterval
         let stroke: WallStroke
-        /// 0–1: how far the wrist sat from the midline, scaled by pose trust.
+        /// 0–1: how far the racquet arm sat from the hip midline, scaled by
+        /// joint trust. Zero when the stroke is `.unknown`.
         let confidence: Float
     }
 
-    /// Set from the player's stored preference. Flipping it flips which side
-    /// of the midline reads as forehand.
+    /// Set from the player's stored preference. Read every frame by the
+    /// controller, so a flip mid-session takes effect at once.
     var handedness: SwingHandedness = .right
 
     // MARK: Tuning
 
-    /// Wrist speed, in frame-widths per second, that reads as a swing. A
-    /// groundstroke crosses ~half the frame in ~0.2s (≈2.5 w/s); walking or
-    /// a shuffle step stays under ~1 w/s.
-    private static let swingSpeed: CGFloat = 2.2
-    /// Speed must fall back under this share of `swingSpeed` before the next
-    /// swing can fire — one arc, one rep, even if the peak is bumpy.
-    private static let rearmShare: CGFloat = 0.40
+    /// Shoulder width, as a share of the player's square-on width, below
+    /// which the shoulders have turned. Zero is exact profile; a proper unit
+    /// turn goes past it into negative.
+    private static let turnShare: CGFloat = 0.25
+    /// Shoulder width, as a share of square-on width, above which the
+    /// shoulders are back square — the swing fires here.
+    private static let squareShare: CGFloat = 0.60
+    /// A turn shorter than this is a glance, not a backswing.
+    private static let minTurn: TimeInterval = 0.15
     /// Two real swings at a wall are never closer than this.
-    private static let refractory: TimeInterval = 0.55
-    /// Wrist offset from the midline (frame widths) below which the side is
-    /// too ambiguous to call.
-    private static let sideMargin: CGFloat = 0.035
+    private static let refractory: TimeInterval = 0.50
+    /// How fast the remembered square-on width decays, per frame, so it
+    /// follows the player as they move nearer or farther from the phone.
+    private static let neutralDecay: CGFloat = 0.995
+    /// Racquet-arm offset from the hip midline (frame widths) below which
+    /// the side is too ambiguous to call.
+    private static let sideMargin: CGFloat = 0.03
+    /// After the swing fires, keep looking this long for a readable racquet
+    /// arm before giving up on the side.
+    private static let sideWindow: TimeInterval = 0.20
     /// Joint confidence floor. Vision reports 0–1 per joint.
     private static let jointFloor: Float = 0.3
 
     // MARK: State
 
-    private struct Sample {
-        let t: TimeInterval
-        /// Racquet-hand wrist, normalized, top-left origin.
-        let wrist: CGPoint
-        /// Shoulder (or hip) midline x, normalized.
-        let midX: CGFloat
-        let trust: Float
-    }
-
-    private var last: Sample?
-    private var speedSmoothed: CGFloat = 0
-    private var armed = true
+    private enum Phase { case square, turned(since: TimeInterval) }
+    private var phase: Phase = .square
+    /// Remembered square-on shoulder width, in frame widths.
+    private var neutralWidth: CGFloat = 0
     private var lastSwingAt: TimeInterval = -10
+    /// A swing that fired but whose side wasn't readable on that frame.
+    private var pending: (firedAt: TimeInterval, deadline: TimeInterval)?
 
-    private let request: VNDetectHumanBodyPoseRequest = {
-        let r = VNDetectHumanBodyPoseRequest()
-        return r
-    }()
+    private let request = VNDetectHumanBodyPoseRequest()
 
     func reset() {
-        last = nil
-        speedSmoothed = 0
-        armed = true
+        phase = .square
+        neutralWidth = 0
         lastSwingAt = -10
+        pending = nil
     }
 
     // MARK: Per-frame
 
-    /// Feed every frame. Returns a swing on the frame where one fires.
-    /// Frames are expected upright (the capture connection is rotated), so no
-    /// orientation fixup here.
+    /// Feed every frame. Returns a swing on the frame where one resolves.
+    /// Frames are expected upright (the capture connection is rotated).
     func process(_ pixelBuffer: CVPixelBuffer, at t: TimeInterval) -> Swing? {
         let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: .up)
         try? handler.perform([request])
-        guard let obs = request.results?.first,
-              let pts = try? obs.recognizedPoints(.all) else {
-            // Lost the player: forget the last sample so a re-acquired pose
-            // doesn't produce a phantom "jump" velocity.
-            last = nil
-            return nil
-        }
+        let pts = (request.results?.first).flatMap { try? $0.recognizedPoints(.all) }
 
-        let wristName: VNHumanBodyPoseObservation.JointName =
-            handedness == .right ? .rightWrist : .leftWrist
-        guard let w = pts[wristName], w.confidence >= Self.jointFloor else {
-            last = nil
-            return nil
-        }
-
-        // Midline from the shoulders; hips as a fallback; neck alone if it
-        // comes to that. Without any of them the stroke side is unreadable,
-        // but the swing itself can still count.
-        let midX: CGFloat? = {
-            if let l = pts[.leftShoulder], let r = pts[.rightShoulder],
-               l.confidence >= Self.jointFloor, r.confidence >= Self.jointFloor {
-                return (l.location.x + r.location.x) / 2
+        // A pending swing resolves as soon as the arm reads, or expires.
+        if let p = pending {
+            if let pts, let (stroke, conf) = strokeSide(pts) {
+                pending = nil
+                return Swing(time: p.firedAt, stroke: stroke, confidence: conf)
             }
-            if let l = pts[.leftHip], let r = pts[.rightHip],
-               l.confidence >= Self.jointFloor, r.confidence >= Self.jointFloor {
-                return (l.location.x + r.location.x) / 2
-            }
-            if let n = pts[.neck], n.confidence >= Self.jointFloor { return n.location.x }
-            return nil
-        }()
-
-        // Vision: origin bottom-left, y up. Band space: origin top-left, y down.
-        let wrist = CGPoint(x: w.location.x, y: 1 - w.location.y)
-        let sample = Sample(t: t, wrist: wrist, midX: midX ?? -1, trust: w.confidence)
-        defer { last = sample }
-
-        guard let prev = last else { return nil }
-        let dt = t - prev.t
-        guard dt > 0.005, dt < 0.25 else { return nil }   // a dropped stretch, not motion
-
-        let dx = wrist.x - prev.wrist.x
-        let dy = wrist.y - prev.wrist.y
-        let speed = (dx * dx + dy * dy).squareRoot() / CGFloat(dt)
-        // Light smoothing: one noisy frame shouldn't fire a rep.
-        speedSmoothed = speedSmoothed * 0.45 + speed * 0.55
-
-        if !armed {
-            if speedSmoothed < Self.swingSpeed * Self.rearmShare { armed = true }
-            return nil
-        }
-        guard speedSmoothed >= Self.swingSpeed,
-              t - lastSwingAt >= Self.refractory else { return nil }
-
-        armed = false
-        lastSwingAt = t
-
-        // Stroke side at the swing. With the phone behind the player, the
-        // player's right is the image's right: no mirroring.
-        var stroke: WallStroke = .unknown
-        var conf: Float = 0
-        if let mid = midX {
-            let offset = wrist.x - mid            // + = player's right side
-            let onForehandSide = handedness == .right ? offset > 0 : offset < 0
-            if abs(offset) >= Self.sideMargin {
-                stroke = onForehandSide ? .forehand : .backhand
-                conf = min(1, Float(abs(offset) / (Self.sideMargin * 3))) * w.confidence
+            if t >= p.deadline {
+                pending = nil
+                return Swing(time: p.firedAt, stroke: .unknown, confidence: 0)
             }
         }
-        return Swing(time: t, stroke: stroke, confidence: conf)
+
+        guard let pts,
+              let ls = pts[.leftShoulder], let rs = pts[.rightShoulder],
+              ls.confidence >= Self.jointFloor, rs.confidence >= Self.jointFloor
+        else { return nil }   // shoulders unreadable: hold state, don't guess
+
+        // Signed shoulder width. From behind, the player's right is the
+        // image's right, so square-on is positive for either handedness.
+        let width = rs.location.x - ls.location.x
+        neutralWidth = max(neutralWidth * Self.neutralDecay, abs(width))
+        guard neutralWidth >= 0.05 else { return nil }   // too small/far to read
+
+        switch phase {
+        case .square:
+            if width < neutralWidth * Self.turnShare { phase = .turned(since: t) }
+            return nil
+        case .turned(let since):
+            guard width > neutralWidth * Self.squareShare else { return nil }
+            phase = .square
+            guard t - since >= Self.minTurn, t - lastSwingAt >= Self.refractory else { return nil }
+            lastSwingAt = t
+            if let (stroke, conf) = strokeSide(pts) {
+                return Swing(time: t, stroke: stroke, confidence: conf)
+            }
+            pending = (firedAt: t, deadline: t + Self.sideWindow)
+            return nil
+        }
+    }
+
+    /// Racquet-arm side against the hip midline. Nil when neither the elbow
+    /// nor the wrist reads — not `.unknown`, so the caller can keep looking.
+    private func strokeSide(_ pts: [VNHumanBodyPoseObservation.JointName: VNRecognizedPoint]) -> (WallStroke, Float)? {
+        guard let lh = pts[.leftHip], let rh = pts[.rightHip],
+              lh.confidence >= Self.jointFloor, rh.confidence >= Self.jointFloor
+        else { return nil }
+        let hipMid = (lh.location.x + rh.location.x) / 2
+        let right = handedness == .right
+        let elbow = pts[right ? .rightElbow : .leftElbow]
+        let wrist = pts[right ? .rightWrist : .leftWrist]
+        guard let arm = [elbow, wrist].compactMap({ $0 }).first(where: { $0.confidence >= Self.jointFloor })
+        else { return nil }
+        let offset = arm.location.x - hipMid        // + = player's right
+        guard abs(offset) >= Self.sideMargin else { return (.unknown, 0) }
+        let onForehandSide = right ? offset > 0 : offset < 0
+        let conf = min(1, Float(abs(offset) / (Self.sideMargin * 4))) * arm.confidence
+        return (onForehandSide ? .forehand : .backhand, conf)
     }
 }

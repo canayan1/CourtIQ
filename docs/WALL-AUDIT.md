@@ -220,3 +220,28 @@ source. Still beta; still degrades to `unknown`.
 
 The phone-only rebuild serves everyone regardless of wrist; the Watch is an
 accuracy upgrade, not a requirement.
+
+### §6.1 — Field clip, second pass (2 Sep 2026)
+
+Ran the pose detector offline over the 36 s session the app itself recorded
+(`Downloads/rallycam-….MOV`, phone behind, whole body in frame — the setup is
+right). Wrist-speed detector: **2 of ~13** swings. Cause: from behind, the
+racquet wrist is hidden by the torso for most of the stroke (right wrist
+readable in 453/1094 frames) and the swing moves toward the wall, which is
+depth the camera can't see; peak wrist speed never reached the 2.2 w/s gate.
+
+Replaced with a **shoulder-turn state machine**: signed shoulder width goes
++0.14 square → −0.08 at the unit turn → +0.14 at contact, one clean cycle per
+swing. Turned when width < 25% of the tracked square-on width, fires when it
+comes back above 60%, ≥0.15 s turn, 0.5 s refractory. Result on the same
+clip: **10 of ~13**, insensitive to thresholds (10–11 across a wide band);
+misses are the three swings at the frame edge where a shoulder is out of
+frame. Stroke side = racquet-arm elbow (wrist fallback) vs hip midline **as
+the shoulders come square** — 10/10 forehands read forehand. Reading the arm
+at the deepest turn was wrong (player turns past 90°, whole arm crosses the
+image midline). Depth cues (far-shoulder confidence, shoulder y-delta) carry
+nothing; dropped.
+
+Open: no backhand in the clip — the side rule is geometry and needs a BH
+session to confirm. `tools/wall-swing-eval.swift` mirrors the detector for
+that check.

@@ -4,11 +4,11 @@
 // forehand/backhand call, so thresholds can be tuned against a real session
 // BEFORE a build goes near a user.
 //
-//   swift tools/wall-swing-eval.swift ~/Desktop/wall.mov [right|left]
+//   swift tools/wall-swing-eval.swift ~/Downloads/wall.mov [right|left]
 //
 // Read it against what actually happened on the wall: total swings, and the
-// FH/BH sequence. If the count is off, the numbers to move are at the top of
-// CourtIQ/Features/Wall/WallSwingDetector.swift — this script mirrors them.
+// FH/BH sequence. The numbers at the top mirror
+// CourtIQ/Features/Wall/WallSwingDetector.swift — keep them in step.
 //
 // Runs on macOS 14+. Shoot the clip the way the app asks: phone behind the
 // player, a step to the side, whole body in frame.
@@ -18,10 +18,13 @@ import Vision
 import CoreGraphics
 
 // ── mirror of WallSwingDetector's tuning ─────────────────────────────────
-let swingSpeed: CGFloat = 2.2
-let rearmShare: CGFloat = 0.40
-let refractory: Double = 0.55
-let sideMargin: CGFloat = 0.035
+let turnShare: CGFloat = 0.25
+let squareShare: CGFloat = 0.60
+let minTurn: Double = 0.15
+let refractory: Double = 0.50
+let neutralDecay: CGFloat = 0.995
+let sideMargin: CGFloat = 0.03
+let sideWindow: Double = 0.20
 let jointFloor: Float = 0.3
 
 let args = CommandLine.arguments
@@ -43,62 +46,62 @@ reader.add(output)
 reader.startReading()
 
 // Phone footage carries its rotation as a transform; ask Vision to undo it.
-let t = track.preferredTransform
+let tf = track.preferredTransform
 let orientation: CGImagePropertyOrientation = {
-    if t.a == 0 && t.b == 1.0 && t.c == -1.0 && t.d == 0 { return .right }
-    if t.a == 0 && t.b == -1.0 && t.c == 1.0 && t.d == 0 { return .left }
-    if t.a == -1.0 && t.d == -1.0 { return .down }
+    if tf.a == 0 && tf.b == 1.0 && tf.c == -1.0 && tf.d == 0 { return .right }
+    if tf.a == 0 && tf.b == -1.0 && tf.c == 1.0 && tf.d == 0 { return .left }
+    if tf.a == -1.0 && tf.d == -1.0 { return .down }
     return .up
 }()
 
 let request = VNDetectHumanBodyPoseRequest()
-var lastT = -1.0, lastWrist = CGPoint.zero, haveLast = false
-var speedSmoothed: CGFloat = 0, armed = true, lastSwingAt = -10.0
+var turnedSince: Double? = nil
+var neutral: CGFloat = 0
+var lastSwingAt = -10.0
+var pending: (Double, Double)? = nil
 var swings: [(Double, String, Float)] = []
-var frames = 0, posed = 0
+var frames = 0, posed = 0, shouldered = 0
+
+func side(_ p: [VNHumanBodyPoseObservation.JointName: VNRecognizedPoint]) -> (String, Float)? {
+    guard let lh = p[.leftHip], let rh = p[.rightHip], lh.confidence >= jointFloor, rh.confidence >= jointFloor else { return nil }
+    let mid = (lh.location.x + rh.location.x) / 2
+    let elbow = p[rightHanded ? .rightElbow : .leftElbow], wrist = p[rightHanded ? .rightWrist : .leftWrist]
+    guard let arm = [elbow, wrist].compactMap({ $0 }).first(where: { $0.confidence >= jointFloor }) else { return nil }
+    let off = arm.location.x - mid
+    guard abs(off) >= sideMargin else { return ("?", 0) }
+    let fh = rightHanded ? off > 0 : off < 0
+    return (fh ? "FH" : "BH", min(1, Float(abs(off) / (sideMargin * 4))) * arm.confidence)
+}
 
 while let sb = output.copyNextSampleBuffer() {
     frames += 1
     guard let pb = CMSampleBufferGetImageBuffer(sb) else { continue }
-    let time = CMSampleBufferGetPresentationTimeStamp(sb).seconds
+    let t = CMSampleBufferGetPresentationTimeStamp(sb).seconds
     let handler = VNImageRequestHandler(cvPixelBuffer: pb, orientation: orientation)
     try? handler.perform([request])
-    guard let obs = request.results?.first,
-          let pts = try? obs.recognizedPoints(.all) else { haveLast = false; continue }
-    posed += 1
-    let wristName: VNHumanBodyPoseObservation.JointName = rightHanded ? .rightWrist : .leftWrist
-    guard let w = pts[wristName], w.confidence >= jointFloor else { haveLast = false; continue }
-    let midX: CGFloat? = {
-        if let l = pts[.leftShoulder], let r = pts[.rightShoulder],
-           l.confidence >= jointFloor, r.confidence >= jointFloor { return (l.location.x + r.location.x) / 2 }
-        if let l = pts[.leftHip], let r = pts[.rightHip],
-           l.confidence >= jointFloor, r.confidence >= jointFloor { return (l.location.x + r.location.x) / 2 }
-        if let n = pts[.neck], n.confidence >= jointFloor { return n.location.x }
-        return nil
-    }()
-    let wrist = CGPoint(x: w.location.x, y: 1 - w.location.y)
-    defer { lastT = time; lastWrist = wrist; haveLast = true }
-    guard haveLast else { continue }
-    let dt = time - lastT
-    guard dt > 0.005, dt < 0.25 else { continue }
-    let speed = hypot(wrist.x - lastWrist.x, wrist.y - lastWrist.y) / CGFloat(dt)
-    speedSmoothed = speedSmoothed * 0.45 + speed * 0.55
-    if !armed { if speedSmoothed < swingSpeed * rearmShare { armed = true }; continue }
-    guard speedSmoothed >= swingSpeed, time - lastSwingAt >= refractory else { continue }
-    armed = false; lastSwingAt = time
-    var stroke = "?"; var conf: Float = 0
-    if let mid = midX {
-        let off = wrist.x - mid
-        let fhSide = rightHanded ? off > 0 : off < 0
-        if abs(off) >= sideMargin {
-            stroke = fhSide ? "FH" : "BH"
-            conf = min(1, Float(abs(off) / (sideMargin * 3))) * w.confidence
-        }
+    let pts = (request.results?.first).flatMap { try? $0.recognizedPoints(.all) }
+    if pts != nil { posed += 1 }
+    if let p = pending {
+        if let pts, let (s, c) = side(pts) { swings.append((p.0, s, c)); pending = nil }
+        else if t >= p.1 { swings.append((p.0, "?", 0)); pending = nil }
     }
-    swings.append((time, stroke, conf))
+    guard let pts, let ls = pts[.leftShoulder], let rs = pts[.rightShoulder],
+          ls.confidence >= jointFloor, rs.confidence >= jointFloor else { continue }
+    shouldered += 1
+    let width = rs.location.x - ls.location.x
+    neutral = max(neutral * neutralDecay, abs(width))
+    guard neutral >= 0.05 else { continue }
+    if let since = turnedSince {
+        guard width > neutral * squareShare else { continue }
+        turnedSince = nil
+        guard t - since >= minTurn, t - lastSwingAt >= refractory else { continue }
+        lastSwingAt = t
+        if let (s, c) = side(pts) { swings.append((t, s, c)) } else { pending = (t, t + sideWindow) }
+    } else if width < neutral * turnShare {
+        turnedSince = t
+    }
 }
 
-print("frames \(frames) · pose found in \(posed) · swings \(swings.count)")
+print("frames \(frames) · pose \(posed) · both shoulders \(shouldered) · swings \(swings.count)")
 for (t, s, c) in swings { print(String(format: "  %6.2fs  %-2@  conf %.2f", t, s as NSString, c)) }
-let seq = swings.map { $0.1 }.joined(separator: " ")
-print("sequence: \(seq)")
+print("sequence: \(swings.map { $0.1 }.joined(separator: " "))")
