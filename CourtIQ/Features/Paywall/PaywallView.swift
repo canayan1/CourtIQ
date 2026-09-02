@@ -1,8 +1,9 @@
 import SwiftUI
 
 /// PaywallView is DropVolley's subscription upsell, shown contextually when a
-/// free user hits a premium gate (AI Coach, swing analysis beyond the free
-/// taste, the full tip/quiz archive). Premium unlocks the whole app. It
+/// free user hits a premium gate in one of the three pillars (Coach: AI
+/// reads + chat; Wall: camera counting and verdicts; Tactics: every
+/// chapter). One membership, three reasons. It
 /// presents the value of the subscription, two auto-renewing plan cards
 /// (Annual featured + pre-selected, Weekly), a single primary CTA that
 /// purchases the selected plan, the required auto-renew disclosure, and the
@@ -144,16 +145,17 @@ struct PaywallView: View {
                     .foregroundStyle(.white)
             }
 
-            Text(t("Unlock your AI coach", "AI koçunu aç"))
+            Text(t("DropVolley Premium", "DropVolley Premium"))
                 .font(.system(.title, design: .rounded).weight(.bold))
                 .foregroundStyle(.white)
                 .fixedSize(horizontal: false, vertical: true)
 
-            // Freemium framing: name the two real premium features and say the
-            // rest is free — never imply content sits behind the membership.
+            // One membership, three reasons — the three things the app sells.
+            // Never list free content here: the paywall must not sell what
+            // the player already has.
             Text(t(
-                "The AI Coach and swing analysis — everything else in DropVolley is already free.",
-                "AI Koç ve vuruş analizi — DropVolley'deki geri kalan her şey zaten ücretsiz."
+                "Every swing read, every wall rung counted, every tactics lesson open.",
+                "Her vuruş okuması, her duvar basamağı sayılır, her taktik dersi açık."
             ))
             .foregroundStyle(.white.opacity(0.9))
             .fixedSize(horizontal: false, vertical: true)
@@ -166,13 +168,12 @@ struct PaywallView: View {
 
     // MARK: - 2. Value recap
 
-    /// The TRUE premium set under the freemium model: the AI Coach and swing
-    /// analysis. Content (drills, quizzes, journal, programs) is free — never
-    /// list it here or the paywall sells what users already have.
+    /// One row per pillar. Content that is free (scenarios, Tactics chapter
+    /// 1, the wall drill ladder, match log, doubles) is never listed here.
     private var premiumBenefits: [String] {
         [lang.t("paywall.benefit_coach"),
-         lang.t("paywall.benefit_swing"),
-         lang.t("paywall.benefit_ask")]
+         lang.t("paywall.benefit_wall"),
+         lang.t("paywall.benefit_tactics")]
     }
 
     private var benefitsCard: some View {

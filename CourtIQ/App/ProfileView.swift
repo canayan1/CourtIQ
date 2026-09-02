@@ -12,6 +12,10 @@ struct ProfileView: View {
     @ObservedObject private var tennisProfileStore = TennisProfileStore.shared
     @ObservedObject private var swingStore = SwingAnalysisStore.shared
     @ObservedObject private var doublesStore = DoublesStore.shared
+    @ObservedObject private var wallProgress = WallProgressManager.shared
+    /// Tactics progress is its own store (ported); read-only here.
+    @State private var tacticsProgress = PlayerProgress()
+    @State private var tacticsContent = ContentStore()
     @State private var showLockerRoom = false
     /// Local mirror of `PhysicalNotes.selection` so chip taps re-render.
     @State private var physicalSelection = PhysicalNotes.selection
@@ -43,26 +47,20 @@ struct ProfileView: View {
                     tennisProfileRow
                 }
 
-                // YOUR GAME — your tactical fingerprint + path.
+                // YOUR LEVEL — the path, and the body that plays it.
                 band(lang.t("profile.band_game")) {
                     LevelProgressionPathView()
-                    TacticalProfileCard()
-                        .environmentObject(lang)
-                        .environmentObject(drillManager)
-                    PlayStyleProfileCard()
-                        .environmentObject(lang)
-                        .environmentObject(drillManager)
                     physicalNotesSection
                 }
 
-                // PROGRESS — rings, streak, quiz history.
+                // PROGRESS — the three pillars first, then rings and streak.
                 band(lang.t("profile.band_progress")) {
+                    pillarProgressSection
                     ThreeRingsCard()
                         .environmentObject(drillManager)
                         .environmentObject(matchManager)
                         .environmentObject(lang)
                     streakSection
-                    historySection
                 }
 
                 // ACTIVITY — what you've used + your doubles partners.
@@ -382,7 +380,48 @@ struct ProfileView: View {
         }
     }
 
-    // MARK: - Quiz History (Premium)
+    // MARK: - Three pillars
+
+    /// What the app sells, as what you have done with it: reads, rungs,
+    /// lessons. Plain counts; the streak below is the habit.
+    private var pillarProgressSection: some View {
+        VStack(spacing: 0) {
+            pillarRow(icon: "video.fill", title: lang.t("profile.pillar_reads"),
+                      value: "\(swingStore.records.count)")
+            Divider().padding(.leading, 52)
+            pillarRow(icon: "sportscourt.fill", title: lang.t("profile.pillar_rungs"),
+                      value: "\(wallProgress.clearedDrills.count) / \(WallDrill.all.count)")
+            Divider().padding(.leading, 52)
+            pillarRow(icon: "brain.head.profile", title: lang.t("profile.pillar_lessons"),
+                      value: "\(tacticsProgress.completedCount) / \(tacticsContent.totalLessonCount)")
+        }
+        .background(AppPalette.parchment)
+        .overlay(
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .strokeBorder(AppPalette.sand, lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+    }
+
+    private func pillarRow(icon: String, title: String, value: String) -> some View {
+        HStack(spacing: 14) {
+            Image(systemName: icon)
+                .font(.subheadline.weight(.bold))
+                .foregroundStyle(AppPalette.clay)
+                .frame(width: 24)
+            Text(title)
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(AppPalette.ink)
+            Spacer()
+            Text(value)
+                .font(.headline.monospacedDigit())
+                .foregroundStyle(AppPalette.clay)
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 12)
+    }
+
+    // MARK: - Quiz History (Premium) — no longer shown; kept for the archive
 
     private var historySection: some View {
         VStack(alignment: .leading, spacing: 14) {

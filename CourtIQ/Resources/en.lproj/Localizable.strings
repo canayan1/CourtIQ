@@ -38,6 +38,18 @@
 /* ── Home (action-first redesign) ── */
 "home.analyze_title" = "Analyze your swing";
 "home.coach_hero_title" = "Get your swing reviewed";
+"home.also" = "Also";
+"home.state_all_lessons" = "Every lesson done";
+"home.state_next_lesson" = "Next: %@ · %d of %d done";
+"home.state_all_rungs" = "Every rung cleared";
+"home.state_next_rung" = "Next rung: %@";
+"home.state_last_read_unscored" = "Last read: %@";
+"home.state_last_read" = "Last read: %@ · %d/100";
+"home.pillar_tactics_title" = "Learn tactics like a language";
+"home.pillar_wall_title" = "The wall never misses";
+"home.pillar_tactics" = "TACTICS";
+"home.pillar_wall" = "WALL";
+"home.pillar_coach" = "COACH";
 "home.coach_hero_subtitle" = "Film it. AI reads it now, a real coach soon.";
 "home.tile_swing" = "Swing";
 "home.tile_iq" = "Tennis IQ";
@@ -186,7 +198,7 @@
 "common.copy" = "Copy";
 "common.copied" = "Copied";
 "profile.band_identity" = "Identity";
-"profile.band_game" = "Your game";
+"profile.band_game" = "Your level";
 "profile.band_progress" = "Progress";
 "profile.band_account" = "Account";
 "training.a11y_sessions_done" = "Sessions completed this week";
@@ -342,6 +354,9 @@
 
 /* ── Profile ── */
 "profile.title" = "Profile";
+"profile.pillar_lessons" = "Tactics lessons done";
+"profile.pillar_rungs" = "Wall rungs cleared";
+"profile.pillar_reads" = "Swing reads";
 "profile.delete_title" = "Delete account?";
 "profile.delete_msg" = "This permanently deletes your account, synced progress, and community content from DropVolley.";
 "profile.delete_account" = "Delete Account";
@@ -362,7 +377,7 @@
 "profile.sign_out" = "Sign Out";
 "profile.manage_sub" = "Manage Subscription";
 "profile.restore" = "Restore Purchases";
-"profile.view_plans" = "Unlock AI Coach";
+"profile.view_plans" = "DropVolley Premium";
 "profile.guest" = "Guest";
 "profile.apple_id" = "Apple ID";
 "profile.guest_desc" = "Guest mode saves progress on this device only. Sign in with Apple to protect your streak and purchase history.";
@@ -414,7 +429,9 @@
 "paywall.sign_in_required" = "Sign in with Apple is required before purchase.";
 "paywall.sign_in_optional" = "Optional — sign in with Apple to sync premium across your devices.";
 "paywall.what_unlocks" = "What you get";
-"paywall.benefit_coach" = "Unlimited AI Coach";
+"paywall.benefit_coach" = "Coach — unlimited swing reads, and a chat about each one";
+"paywall.benefit_tactics" = "Tactics — every chapter, every day";
+"paywall.benefit_wall" = "Wall — camera counting and a verdict on every rung";
 "paywall.benefit_swing" = "AI swing analysis, 0–100";
 "paywall.benefit_ask" = "Tactics, opponents, drills";
 

@@ -38,6 +38,18 @@
 /* ── Home (action-first redesign) ── */
 "home.analyze_title" = "Vuruşunu analiz et";
 "home.coach_hero_title" = "Vuruşunu incelet";
+"home.also" = "Ayrıca";
+"home.state_all_lessons" = "Tüm dersler bitti";
+"home.state_next_lesson" = "Sıradaki: %@ · %d / %d bitti";
+"home.state_all_rungs" = "Tüm basamaklar geçildi";
+"home.state_next_rung" = "Sıradaki basamak: %@";
+"home.state_last_read_unscored" = "Son okuma: %@";
+"home.state_last_read" = "Son okuma: %@ · %d/100";
+"home.pillar_tactics_title" = "Taktiği bir dil gibi öğren";
+"home.pillar_wall_title" = "Duvar asla kaçırmaz";
+"home.pillar_tactics" = "TAKTİK";
+"home.pillar_wall" = "DUVAR";
+"home.pillar_coach" = "KOÇ";
 "home.coach_hero_subtitle" = "Çek. Şimdi AI okuyor, yakında gerçek koç.";
 "home.tile_swing" = "Swing";
 "home.tile_iq" = "Tenis IQ";
@@ -186,7 +198,7 @@
 "common.copy" = "Kopyala";
 "common.copied" = "Kopyalandı";
 "profile.band_identity" = "Kimlik";
-"profile.band_game" = "Oyununuz";
+"profile.band_game" = "Seviyen";
 "profile.band_progress" = "İlerleme";
 "profile.band_account" = "Hesap";
 "training.a11y_sessions_done" = "Bu hafta tamamlanan seanslar";
@@ -342,6 +354,9 @@
 
 /* ── Profile ── */
 "profile.title" = "Profil";
+"profile.pillar_lessons" = "Biten taktik dersi";
+"profile.pillar_rungs" = "Geçilen duvar basamağı";
+"profile.pillar_reads" = "Vuruş okumaları";
 "profile.delete_title" = "Hesap silinsin mi?";
 "profile.delete_msg" = "Bu, hesabını, senkronize ilerlemenini ve DropVolley'daki topluluk içeriğini kalıcı olarak siler.";
 "profile.delete_account" = "Hesabı Sil";
@@ -362,7 +377,7 @@
 "profile.sign_out" = "Çıkış Yap";
 "profile.manage_sub" = "Aboneliği Yönet";
 "profile.restore" = "Satın Almaları Geri Yükle";
-"profile.view_plans" = "AI Koç'u Aç";
+"profile.view_plans" = "DropVolley Premium";
 "profile.guest" = "Misafir";
 "profile.apple_id" = "Apple ID";
 "profile.guest_desc" = "Misafir modu, ilerlemeyi yalnızca bu cihazda kaydeder. Serinizi ve satın alma geçmişinizi korumak için Apple ile giriş yapın.";
@@ -414,7 +429,9 @@
 "paywall.sign_in_required" = "Satın alma öncesinde Apple ile giriş yapılması gereklidir.";
 "paywall.sign_in_optional" = "İsteğe bağlı — premium aboneliğini cihazların arasında senkronlamak için Apple ile giriş yap.";
 "paywall.what_unlocks" = "Neler var";
-"paywall.benefit_coach" = "Sınırsız AI Koç";
+"paywall.benefit_coach" = "Koç — sınırsız vuruş okuması ve her biri için sohbet";
+"paywall.benefit_tactics" = "Taktik — her bölüm, her gün";
+"paywall.benefit_wall" = "Duvar — kamerayla sayım ve her basamağa karar";
 "paywall.benefit_swing" = "AI vuruş analizi, 0–100";
 "paywall.benefit_ask" = "Taktik, rakip, drill";
 
