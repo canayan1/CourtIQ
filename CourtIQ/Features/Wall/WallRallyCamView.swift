@@ -915,7 +915,6 @@ final class RallyCamController: UIViewController, AVCaptureVideoDataOutputSample
 
         // Record exactly while the rally runs. The clip stays in tmp; the
         // model owns its lifetime.
-        swingDetector.handedness = model?.handedness ?? .right
         runningSink = model?.$isRunning
             .removeDuplicates()
             .receive(on: DispatchQueue.main)
@@ -966,6 +965,10 @@ final class RallyCamController: UIViewController, AVCaptureVideoDataOutputSample
         let now = ProcessInfo.processInfo.systemUptime
         locator.store(pixelBuffer, at: now)
 
+        // Read handedness fresh each frame: the setup-row toggle can flip it
+        // after the session was configured, and a stale copy would silently
+        // swap every forehand for a backhand.
+        swingDetector.handedness = model?.handedness ?? .right
         if let running = model?.isRunning, running,
            let swing = swingDetector.process(pixelBuffer, at: now) {
             DispatchQueue.main.async { [weak self] in
