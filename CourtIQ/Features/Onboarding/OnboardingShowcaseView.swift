@@ -396,9 +396,11 @@ private struct TacticsSampleCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             if let scene = Self.scene {
-                // Natural height: the diagram carries its own caption, and a
-                // fixed frame clipped it.
+                // Width-bound, not height-bound: the diagram carries its own
+                // caption, and a fixed height clipped it.
                 CourtDiagram(scene: scene)
+                    .frame(maxWidth: 150)
+                    .frame(maxWidth: .infinity)
             }
             HStack(alignment: .top, spacing: 10) {
                 RaccoonView(mood: .happy, size: 44)

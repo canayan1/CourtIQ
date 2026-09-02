@@ -98,7 +98,7 @@
 "wall.title" = "Duvar";
 "wall.eyebrow" = "SOLO ANTRENMAN";
 "wall.headline" = "Duvar hiç kaçırmaz.";
-"wall.subhead" = "En çok tekrar yaptıran partner — vuruşları, ayak işini ve Tennis IQ'nu geliştiren kararları oturt.";
+"wall.subhead" = "Sekiz basamak. Kamera her birini sayar ve notlar.";
 "wall.free_title" = "Duvar Tenisi";
 "wall.free_sub" = "Serbest ral — kendi temponu belirle, dayanabildiğin kadar.";
 "wall.free_instruction" = "Duvarda serbest ral yap. Ritmi koru — biz sayarız.";
@@ -115,7 +115,7 @@
 "wall.complete_sub" = "%d vuruş · %@";
 "wall.level_n" = "Level %d";
 "wall.how_to" = "Nasıl yapılır";
-"wall.rallycam_cta" = "Kamerayla skorla — oto-hedef + isabet";
+"wall.rallycam_cta" = "Tekrarlarımı say";
 "wall.mark_done" = "Bunu yaptım — level'ı geç";
 "wall.level_cleared" = "Level geçildi";
 
@@ -148,7 +148,7 @@
 "wall.verified_line" = "Kamerayla doğrulanan: üst üste %d vuruş, forehand/backhand ayrımı ve topun duvara nerede çarptığı";
 "wall.honour_line" = "Vuruş okuması beta — kamera, vuruş anında raket elinin nerede olduğuna bakarak forehand ya da backhand diyor.";
 "rallycam.save_clip" = "Klibi kaydet";
-"rallycam.ai_review" = "AI incelemesi";
+"rallycam.ai_review" = "Koça gönder";
 "rallycam.clip_note" = "Bu telefonda kaydedildi. Kaydetmezsen çıkınca silinir.";
 "rallycam.total_hits" = "vuruş";
 "wall.verified_line_total" = "Kamerayla doğrulanan: bu seansta %d vuruş, forehand/backhand ayrımı ve topun duvara nerede çarptığı";

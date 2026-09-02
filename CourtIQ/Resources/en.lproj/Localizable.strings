@@ -98,7 +98,7 @@
 "wall.title" = "Wall";
 "wall.eyebrow" = "SOLO PRACTICE";
 "wall.headline" = "The wall never misses.";
-"wall.subhead" = "The highest-rep partner there is — groove strokes, footwork, and the decisions that build Tennis IQ.";
+"wall.subhead" = "Eight rungs. The camera counts and grades every one.";
 "wall.free_title" = "Wall Tennis";
 "wall.free_sub" = "Open rally — set your own pace and go as long as you can.";
 "wall.free_instruction" = "Rally freely against the wall. Keep the rhythm — we'll count.";
@@ -115,7 +115,7 @@
 "wall.complete_sub" = "%d hits · %@";
 "wall.level_n" = "Level %d";
 "wall.how_to" = "How to";
-"wall.rallycam_cta" = "Score it with the camera — auto-target + accuracy";
+"wall.rallycam_cta" = "Count my reps";
 "wall.mark_done" = "I did this — clear the level";
 "wall.level_cleared" = "Level cleared";
 
@@ -148,7 +148,7 @@
 "wall.verified_line" = "Verified by camera: %d swings in a row, forehand vs backhand, and where the ball met the wall";
 "wall.honour_line" = "Stroke reading is beta — the camera calls forehand or backhand from where your racquet hand is at the swing.";
 "rallycam.save_clip" = "Save clip";
-"rallycam.ai_review" = "AI review";
+"rallycam.ai_review" = "Send to Coach";
 "rallycam.clip_note" = "Recorded on this phone. Deleted when you leave unless you save it.";
 "rallycam.total_hits" = "hits";
 "wall.verified_line_total" = "Verified by camera: %d swings this session, forehand vs backhand, and where the ball met the wall";

@@ -170,7 +170,6 @@
 		D9DF80F409A57D89B6499E67 /* DoublesModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AC30870C3CE0B44AD67AB3 /* DoublesModels.swift */; };
 		E10FD58C838696FCA153D259 /* DoublesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7ED880F0D31CAEA68D596A /* DoublesStore.swift */; };
 		E20D88189D622D55FEDD413E /* DoublesInviteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CF8D66C72388FA065116B1 /* DoublesInviteService.swift */; };
-		E64FC67205E8603D8EA31A06 /* AICoachTabRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A2F457CF051744945B3545 /* AICoachTabRoot.swift */; };
 		F2255DE63DE529FED78CA6D1 /* PlayerContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789F5FB71B3FD7288973D0C9 /* PlayerContext.swift */; };
 		A00000000000000000A0F2 /* PhysicalNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000A0F1 /* PhysicalNotes.swift */; };
 		A00000000000000000A0F4 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000A0F3 /* AudioManager.swift */; };
@@ -231,7 +230,6 @@
 		53AA3AEFE28E84B4C9E60F40 /* DesignSystem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignSystem.swift; path = CourtIQ/SharedUI/DesignSystem.swift; sourceTree = "<group>"; };
 		59EC46A67E526C59A182B12D /* TennisProfileScoring.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TennisProfileScoring.swift; path = CourtIQ/Features/TennisProfile/TennisProfileScoring.swift; sourceTree = "<group>"; };
 		5C76C9F72D768EDAA7C746CB /* DoublesInviteStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesInviteStore.swift; path = CourtIQ/Features/Doubles/DoublesInviteStore.swift; sourceTree = "<group>"; };
-		66A2F457CF051744945B3545 /* AICoachTabRoot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AICoachTabRoot.swift; path = CourtIQ/Features/AICoach/AICoachTabRoot.swift; sourceTree = "<group>"; };
 		728F3484008DAA9A8D9F95FC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		789F5FB71B3FD7288973D0C9 /* PlayerContext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PlayerContext.swift; path = CourtIQ/Core/Models/PlayerContext.swift; sourceTree = "<group>"; };
 		A00000000000000000A0F1 /* PhysicalNotes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhysicalNotes.swift; path = CourtIQ/Core/Models/PhysicalNotes.swift; sourceTree = "<group>"; };
@@ -634,7 +632,6 @@
 				A00000000000000000A0F1 /* PhysicalNotes.swift */,
 				FF5A9D15805AB520576E3578 /* Doubles */,
 				2552A4998FE130E11DD2183F /* TrainView.swift */,
-				66A2F457CF051744945B3545 /* AICoachTabRoot.swift */,
 				C32EFA2E45204668CCB9AA07 /* HomeView.swift */,
 				53AA3AEFE28E84B4C9E60F40 /* DesignSystem.swift */,
 				E59972A086F7FB607351D71D /* TrainPracticeView.swift */,
@@ -981,7 +978,6 @@
 				04417858354D72CCE86F2F10 /* DoublesInviteStore.swift in Sources */,
 				0B41552D544B03FFBB348B54 /* DoublesInviteViews.swift in Sources */,
 				77E5C7A03F1A2BF3C94AE188 /* TrainView.swift in Sources */,
-				E64FC67205E8603D8EA31A06 /* AICoachTabRoot.swift in Sources */,
 				9F058BB47733B75F46ED587A /* HomeView.swift in Sources */,
 				C42C3CFF6843C67C68E8FB6F /* DesignSystem.swift in Sources */,
 				1A5CB2C747712855620C22EF /* TrainPracticeView.swift in Sources */,

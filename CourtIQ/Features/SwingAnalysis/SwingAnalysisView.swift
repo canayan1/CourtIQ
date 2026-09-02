@@ -148,7 +148,7 @@ struct SwingAnalysisView: View {
         }
         // Freemium gate: AI swing analysis is premium — it spends the PAID
         // Gemini video key. Non-premium users get the paywall instead of the
-        // analysis (the AI Coach gates the same way in AICoachTabRoot).
+        // analysis (the AI Coach thread gates the same way).
         .sheet(isPresented: $vm.showPaywall) {
             NavigationStack {
                 PaywallView(source: "Swing")
@@ -500,7 +500,7 @@ struct SwingAnalysisView: View {
     }
 
     private var discussCoachCTA: String {
-        lang.language == .turkish ? "Koç'la tartış" : "Discuss with Coach"
+        lang.language == .turkish ? "Bu okuma hakkında sor" : "Ask about this read"
     }
 
     /// Seed text for "Discuss with Coach": frames the report + invites the
