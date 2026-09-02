@@ -154,6 +154,15 @@ struct OnboardingShowcaseView: View {
             .padding(.bottom, 16)
         }
         .background(AppPalette.cream)
+        #if DEBUG
+        // Headless QC: SIMCTL_CHILD_QC_OB_PAGE=n opens the carousel on page n.
+        .onAppear {
+            if let raw = ProcessInfo.processInfo.environment["QC_OB_PAGE"], let n = Int(raw) {
+                autoAdvance = false
+                page = min(max(0, n), slides.count - 1)
+            }
+        }
+        #endif
     }
 }
 
@@ -305,31 +314,113 @@ private struct ShowcaseSlide: Identifiable {
     /// the numbers/quotes finale slides are already full.
     var showsTourVideo: Bool = false
 
-    /// Onboarding v2: THREE promises, each proven by a LIVE demo — the real
-    /// animated court story, the two-path swing choice, the coach that knows
-    /// your game. ≤5-word headlines; ~16s total; the stale tour video is gone
-    /// (it showed the pre-redesign Home).
+    /// One slide per pillar — the three things the app sells — each proven
+    /// by a live sample: the two-path swing choice, a wall rung being
+    /// counted, a tactics lesson's court diagram with Rocco. ≤5-word
+    /// headlines; ~16s total.
     static func all(_ copy: OnboardingCopy) -> [ShowcaseSlide] {
         [
             ShowcaseSlide(
-                eyebrow: copy.showcaseQuizEyebrow,
-                headline: copy.showcaseQuizHeadline,
-                photo: "PhotoCourt",
-                sample: AnyView(IQLiveCourtCard(copy: copy))
-            ),
-            ShowcaseSlide(
-                eyebrow: copy.showcaseSwingEyebrow,
-                headline: copy.showcaseSwingHeadline,
+                eyebrow: copy.showcaseCoachPillarEyebrow,
+                headline: copy.showcaseCoachPillarHeadline,
                 photo: "PhotoForehand",
                 sample: AnyView(PathSampleCard(copy: copy))
             ),
             ShowcaseSlide(
-                eyebrow: copy.showcaseCoachEyebrow,
-                headline: copy.showcaseCoachHeadline,
-                photo: "PhotoCoach",
-                sample: AnyView(CoachSampleCard(copy: copy))
+                eyebrow: copy.showcaseWallEyebrow,
+                headline: copy.showcaseWallHeadline,
+                photo: "PhotoWall",
+                sample: AnyView(WallSampleCard(copy: copy))
+            ),
+            ShowcaseSlide(
+                eyebrow: copy.showcaseTacticsEyebrow,
+                headline: copy.showcaseTacticsHeadline,
+                photo: "PhotoCourt",
+                sample: AnyView(TacticsSampleCard(copy: copy))
             ),
         ]
+    }
+}
+
+// A wall rung being counted: the reps tick in one by one, then the verdict
+// chip lands — the whole promise of the Wall tab in four seconds.
+private struct WallSampleCard: View {
+    let copy: OnboardingCopy
+    private let target = 10
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack(alignment: .firstTextBaseline, spacing: 8) {
+                ForEach(0..<target, id: \.self) { i in
+                    Circle()
+                        .fill(AppPalette.clay)
+                        .frame(width: 14, height: 14)
+                        .demoReveal(0.25 + Double(i) * 0.22)
+                }
+                Spacer(minLength: 0)
+                Text("\(target) \(copy.showcaseWallReps)")
+                    .font(.system(.headline, design: .rounded).weight(.heavy))
+                    .monospacedDigit()
+                    .foregroundStyle(AppPalette.ink)
+                    .demoReveal(0.25 + Double(target) * 0.22)
+            }
+            HStack(spacing: 8) {
+                Image(systemName: "checkmark.seal.fill")
+                Text(copy.showcaseWallVerdict)
+                    .font(.subheadline.weight(.bold))
+            }
+            .foregroundStyle(AppPalette.mossText)
+            .padding(.horizontal, 12).padding(.vertical, 8)
+            .background(AppPalette.mossTint, in: Capsule())
+            .demoReveal(0.6 + Double(target) * 0.22)
+
+            Text(copy.showcaseWallCaption)
+                .font(.footnote)
+                .foregroundStyle(AppPalette.inkSoft)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .padding(16)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppPalette.parchment)
+        .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous).stroke(AppPalette.sand, lineWidth: 1))
+        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+    }
+}
+
+// The first lesson's real court diagram with Rocco's first line — the
+// Tactics tab, verbatim, before the player has tapped anything.
+private struct TacticsSampleCard: View {
+    let copy: OnboardingCopy
+    private static let scene: CourtScene? = ContentStore().chapters.first?.lessons.first?.diagram
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            if let scene = Self.scene {
+                // Natural height: the diagram carries its own caption, and a
+                // fixed frame clipped it.
+                CourtDiagram(scene: scene)
+            }
+            HStack(alignment: .top, spacing: 10) {
+                RaccoonView(mood: .happy, size: 44)
+                Text(copy.showcaseTacticsBubble)
+                    .font(.subheadline)
+                    .foregroundStyle(AppPalette.ink)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(12)
+                    .background(AppPalette.cream, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+            }
+            .demoReveal(0.5)
+            Text(copy.showcaseTacticsCaption)
+                .font(.footnote.weight(.bold))
+                .foregroundStyle(AppPalette.inkSoft)
+                .frame(maxWidth: .infinity, alignment: .center)
+                .demoReveal(1.0)
+        }
+        .padding(14)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppPalette.parchment)
+        .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous).stroke(AppPalette.sand, lineWidth: 1))
+        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
     }
 }
 

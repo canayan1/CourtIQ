@@ -18,13 +18,31 @@ struct OnboardingCopy {
 
     // MARK: 0 — Hook / positioning (opens the app)
     var hookEyebrow: String { t("DROPVOLLEY", "DROPVOLLEY") }
-    var hookTitle: String { t("Train your Tennis IQ.", "Tenis IQ'nu eğit.") }
+    var hookTitle: String { t("Three ways to get better at tennis.", "Teniste gelişmenin üç yolu.") }
     var hookSubtitle: String {
-        t("AI coaching for the part of tennis no one else teaches — your swing, your decisions, your match craft.",
-          "Kimsenin öğretmediği tarafa AI koçluğu — vuruşun, kararların, maç ustalığın.")
+        t("Film a swing and get it read. Hit the wall and get it counted. Learn the tactics that win points.",
+          "Vuruşunu çek, okunsun. Duvara vur, sayılsın. Puan kazandıran taktikleri öğren.")
     }
 
-    // MARK: Feature showcase (real-world examples)
+    // MARK: Feature showcase — one slide per pillar, each a live sample
+    var showcaseCoachPillarEyebrow: String { t("COACH", "KOÇ") }
+    var showcaseCoachPillarHeadline: String { t("Your swing, reviewed", "Vuruşun, incelenmiş") }
+    var showcaseWallEyebrow: String { t("WALL", "DUVAR") }
+    var showcaseWallHeadline: String { t("The wall counts now", "Duvar artık sayıyor") }
+    var showcaseWallReps: String { t("reps", "tekrar") }
+    var showcaseWallVerdict: String { t("Level cleared", "Seviye geçildi") }
+    var showcaseWallCaption: String {
+        t("Prop the phone behind you. It watches you swing and grades the rung.",
+          "Telefonu arkana koy. Vuruşunu izler, basamağı notlar.")
+    }
+    var showcaseTacticsEyebrow: String { t("TACTICS", "TAKTİK") }
+    var showcaseTacticsHeadline: String { t("Learn tactics like a language", "Taktiği bir dil gibi öğren") }
+    var showcaseTacticsBubble: String {
+        t("Cross-court is the safer ball. Here's why — and when to break the rule.",
+          "Çapraz top daha güvenli. İşte nedeni — ve kuralı ne zaman bozacağın.")
+    }
+    var showcaseTacticsCaption: String { t("30 lessons · 156 scenarios · chapter 1 free", "30 ders · 156 senaryo · 1. bölüm ücretsiz") }
+
     var showcaseSwingEyebrow: String { t("SWING", "SWING") }
     var showcaseSwingHeadline: String {
         t("Your swing, two ways", "Vuruşun, iki yol")
@@ -71,7 +89,7 @@ struct OnboardingCopy {
     }
     var showcaseScenarioCount: String { t("156 real scenarios", "156 gerçek senaryo") }
     var showcasePathAI: String { t("AI · instant · included", "AI · anında · dahil") }
-    var showcasePathCoach: String { t("Real coach · 72h", "Gerçek antrenör · 72s") }
+    var showcasePathCoach: String { t("Real coach · waitlist", "Gerçek antrenör · bekleme listesi") }
     var showcaseQuizSampleTitle: String { t("Today's drill · Sample", "Günün çalışması · Örnek") }
     var showcaseQuizPrompt: String {
         t("Down 30–40 on serve. Where do you go?",
@@ -232,9 +250,13 @@ struct OnboardingCopy {
     // MARK: 13 — Result reveal
     var resultReadyKicker: String { t("YOUR TENNIS PROFILE", "TENİS PROFİLİN") }
     func resultPlanLine(goal: String, weakness: String) -> String {
-        t("Built from your answers. Next: set your baseline.",
-          "Cevaplarından çıkarıldı. Sırada: başlangıç seviyeni ölç.")
+        t("Built from your answers. Here's your first week.",
+          "Cevaplarından çıkarıldı. İşte ilk haftan.")
     }
+    var firstWeekHeader: String { t("Your first week", "İlk haftan") }
+    var firstWeekCoach: String { t("Film one swing and read what the coach sees", "Bir vuruş çek, koçun gördüğünü oku") }
+    var firstWeekWall: String { t("Clear the first wall rung: Steady Rally", "İlk duvar basamağını geç: Sabit Rally") }
+    var firstWeekTactics: String { t("Lesson 1: Cross-Court Is The Safer Ball", "Ders 1: Çapraz Top Daha Güvenli") }
     func resultGoalPhrase(_ g: OnboardingGoal) -> String {
         switch g {
         case .winMatches:  return t("win more matches", "daha çok maç kazanman")
@@ -251,7 +273,7 @@ struct OnboardingCopy {
         t("A projection, not a promise — it moves as you train.",
           "Bir tahmin, vaat değil — antrenman ettikçe değişir.")
     }
-    var resultContinue: String { t("Start training", "Antrenmana başla") }
+    var resultContinue: String { t("Let's go", "Hadi başlayalım") }
 
     // MARK: Result section headers (reused alongside TennisProfileCopy)
     var levelHeader: String { t("Your level", "Seviyen") }

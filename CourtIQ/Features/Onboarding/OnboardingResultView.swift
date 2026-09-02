@@ -28,6 +28,7 @@ struct OnboardingResultView: View {
                 kicker
                 levelHero
                 planLine
+                firstWeekCard
                 tennisIQCard
                 styleCard
                 strengthsCard
@@ -107,6 +108,31 @@ struct OnboardingResultView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(AppPalette.moss.opacity(0.12))
         .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+    }
+
+    // MARK: First week — one move per pillar
+
+    private var firstWeekCard: some View {
+        sectionCard {
+            sectionHeader(copy.firstWeekHeader)
+            firstWeekRow(icon: "video.fill", text: copy.firstWeekCoach)
+            firstWeekRow(icon: "sportscourt.fill", text: copy.firstWeekWall)
+            firstWeekRow(icon: "brain.head.profile", text: copy.firstWeekTactics)
+        }
+    }
+
+    private func firstWeekRow(icon: String, text: String) -> some View {
+        HStack(alignment: .top, spacing: 12) {
+            Image(systemName: icon)
+                .font(.subheadline.weight(.bold))
+                .foregroundStyle(AppPalette.clay)
+                .frame(width: 24)
+            Text(text)
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(AppPalette.ink)
+                .fixedSize(horizontal: false, vertical: true)
+            Spacer(minLength: 0)
+        }
     }
 
     // MARK: Tennis IQ projection

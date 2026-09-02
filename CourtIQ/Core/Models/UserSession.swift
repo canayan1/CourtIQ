@@ -13,14 +13,14 @@ enum EntitlementState: String, Codable {
     var title: String {
         switch self {
         case .freePreview: return "Free"
-        case .premiumAllAccess: return "AI Coach"
+        case .premiumAllAccess: return "Premium"
         }
     }
 
     var description: String {
         switch self {
         case .freePreview:
-            return "Every DropVolley feature is free. The AI Coach is the one optional upgrade."
+            return "Scenarios, the wall ladder, Tactics chapter 1, matches and doubles are free. Premium adds coach reads, camera counting and every lesson."
         case .premiumAllAccess:
             return "AI Coach is unlocked — a tennis chat that knows your matches, ratings, and quiz patterns."
         }
