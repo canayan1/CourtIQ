@@ -530,7 +530,9 @@ struct WallLevelDetailView: View {
                       systemImage: "checkmark.shield")
                     .font(.caption).foregroundStyle(AppPalette.inkSoft)
                 if drill.patternOnHonour {
-                    Label(lang.t("wall.honour_line"), systemImage: "hand.raised")
+                    // The stroke pattern is read by camera now, not taken on
+                    // trust — but it is beta, and the label says so.
+                    Label(lang.t("wall.honour_line"), systemImage: "eye")
                         .font(.caption).foregroundStyle(AppPalette.inkSoft)
                 }
             }

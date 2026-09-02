@@ -29,10 +29,11 @@ struct WallRallyCamView: View {
         ZStack {
             Color.black.ignoresSafeArea()
 
-            // The mic does the counting, so a denied camera costs the preview
-            // and the band — not the session. Taking the whole screen away for
-            // a permission the counter never needed was the wrong trade.
-            if !model.permissionDenied {
+            // The camera IS the counter now. Without it there is no session,
+            // so a denied camera gets an honest card rather than a dead screen.
+            if model.permissionDenied {
+                permissionCard
+            } else {
                 RallyCamPreview(model: model).ignoresSafeArea()
                 bandOverlay.ignoresSafeArea()
             }
@@ -210,6 +211,15 @@ struct WallRallyCamView: View {
                 Text(lang.t(model.goalIsStreak ? "rallycam.in_a_row" : "rallycam.total_hits"))
                     .font(.subheadline.weight(.semibold)).foregroundStyle(.white.opacity(0.85))
 
+                if model.strokesRead > 0 {
+                    HStack(spacing: 12) {
+                        splitChip(count: model.strokeCounts[.forehand] ?? 0,
+                                  label: lang.t("rallycam.stroke_fh"), color: .white)
+                        splitChip(count: model.strokeCounts[.backhand] ?? 0,
+                                  label: lang.t("rallycam.stroke_bh"), color: .white)
+                    }
+                    .padding(.top, 10)
+                }
                 if model.readCount > 0 {
                     HStack(spacing: 12) {
                         splitChip(count: model.zoneCounts[.band] ?? 0,
@@ -219,7 +229,7 @@ struct WallRallyCamView: View {
                         splitChip(count: model.zoneCounts[.long] ?? 0,
                                   label: lang.t("rallycam.zone_long"), color: AppPalette.alert)
                     }
-                    .padding(.top, 10)
+                    .padding(.top, 8)
                 }
             }
 
@@ -293,9 +303,36 @@ struct WallRallyCamView: View {
                         .background(Capsule().fill(.white.opacity(0.18)))
                 }
                 heightStepper
+                handednessToggle
             }
             .padding(.bottom, 6)
         }
+    }
+
+    /// Which hand holds the racquet — the one setting the stroke reader
+    /// cannot infer. One tap toggles it; it is remembered.
+    private var handednessToggle: some View {
+        Button {
+            Haptics.tap()
+            model.handedness = model.handedness == .right ? .left : .right
+        } label: {
+            Label(lang.t(model.handedness == .right ? "rallycam.handed_right" : "rallycam.handed_left"),
+                  systemImage: "hand.raised")
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(.white)
+                .padding(.horizontal, 12).padding(.vertical, 10)
+                .background(Capsule().fill(.white.opacity(0.12)))
+        }
+    }
+
+    private var permissionCard: some View {
+        VStack(spacing: 14) {
+            Image(systemName: "camera.fill").appFont(40, design: .default).foregroundStyle(.white)
+            Text(lang.t("rallycam.no_camera"))
+                .font(.subheadline).foregroundStyle(.white.opacity(0.85))
+                .multilineTextAlignment(.center)
+        }
+        .padding(32)
     }
 
     private var heightStepper: some View {
@@ -538,6 +575,25 @@ final class RallyCamModel: ObservableObject {
     @Published private(set) var zoneCounts: [WallZone: Int] = [:]
     @Published private(set) var lastZone: WallZone = .unknown
 
+    /// Forehand / backhand tally, as the camera read it.
+    @Published private(set) var strokeCounts: [WallStroke: Int] = [:]
+    @Published private(set) var lastStroke: WallStroke = .unknown
+    private var lastKnownStroke: WallStroke?
+    /// For pattern drills: of the rep pairs where both strokes were readable,
+    /// how many alternated.
+    private var alternationChecks = 0
+    private var alternationHits = 0
+    private var patternDrill = false
+
+    var strokesRead: Int { (strokeCounts[.forehand] ?? 0) + (strokeCounts[.backhand] ?? 0) }
+
+    /// Which hand holds the racquet. Flips which side of the body reads as a
+    /// forehand. Remembered; defaults to right.
+    @Published var handedness: SwingHandedness = SwingHandedness(
+        rawValue: UserDefaults.standard.string(forKey: "DropVolley.rallycam.handedness") ?? "right") ?? .right {
+        didSet { UserDefaults.standard.set(handedness.rawValue, forKey: "DropVolley.rallycam.handedness") }
+    }
+
     var readCount: Int { zoneCounts.values.reduce(0, +) - (zoneCounts[.unknown] ?? 0) }
 
     /// Rep goal for this rung, from the drill's `.reps` target. Duration-based
@@ -584,12 +640,20 @@ final class RallyCamModel: ObservableObject {
             verdictReasonKey = "rallycam.verdict_yellow_unread"
             return .yellow
         }
-        if Double(inBand) / Double(read) >= 0.7 {
-            verdictReasonKey = "rallycam.verdict_green_reason"
-            return .green
+        guard Double(inBand) / Double(read) >= 0.7 else {
+            verdictReasonKey = "rallycam.verdict_yellow_offband"
+            return .yellow
         }
-        verdictReasonKey = "rallycam.verdict_yellow_offband"
-        return .yellow
+        // A pattern drill (FH↔BH, high↔low…) asks for a sequence, and the
+        // camera can now read it. Only judge it when it read enough strokes;
+        // a beta reader must not be able to take the green on thin evidence.
+        if patternDrill, alternationChecks >= 4,
+           Double(alternationHits) / Double(alternationChecks) < 0.8 {
+            verdictReasonKey = "rallycam.verdict_yellow_pattern"
+            return .yellow
+        }
+        verdictReasonKey = "rallycam.verdict_green_reason"
+        return .green
     }
 
     func configure(for drill: WallDrill?) {
@@ -597,6 +661,7 @@ final class RallyCamModel: ObservableObject {
         drillID = drill.id
         drillTitle = drill.title
         goalIsStreak = drill.goalIsStreak
+        patternDrill = drill.patternOnHonour
         // The scaled target — the number the player self-rated into.
         goal = drill.scaledReps
     }
@@ -650,6 +715,8 @@ final class RallyCamModel: ObservableObject {
         currentStreak = 0; maxStreak = 0; totalHits = 0
         lastImpactTime = 0
         zoneCounts = [:]; lastZone = .unknown
+        strokeCounts = [:]; lastStroke = .unknown; lastKnownStroke = nil
+        alternationChecks = 0; alternationHits = 0
         sessionVerdict = nil
         discardClip()
     }
@@ -666,7 +733,7 @@ final class RallyCamModel: ObservableObject {
     /// rally is the best streak. No sound cue here, so the mic doesn't hear our
     /// own feedback.
     /// The placement of the rep the mic just counted, once the locator has
-    /// looked. Arrives a beat after `registerAudioHit` and never changes the
+    /// looked. Arrives a beat after `registerSwing` and never changes the
     /// count — only the tally.
     func registerZone(_ zone: WallZone) {
         guard isRunning else { return }
@@ -674,7 +741,10 @@ final class RallyCamModel: ObservableObject {
         zoneCounts[zone, default: 0] += 1
     }
 
-    func registerAudioHit() {
+    /// A swing the camera saw. A gap over 3s ends the rally; the longest
+    /// rally is the best streak. The stroke rides along for the tally and
+    /// for pattern drills' alternation check — it never affects the count.
+    func registerSwing(_ stroke: WallStroke) {
         guard isRunning else { return }
         let now = ProcessInfo.processInfo.systemUptime
         if now - lastImpactTime > 3.0 { currentStreak = 0 }
@@ -682,6 +752,15 @@ final class RallyCamModel: ObservableObject {
         currentStreak += 1
         maxStreak = max(maxStreak, currentStreak)
         totalHits += 1
+        strokeCounts[stroke, default: 0] += 1
+        if stroke != .unknown {
+            if let prev = lastKnownStroke {
+                alternationChecks += 1
+                if prev != stroke { alternationHits += 1 }
+            }
+            lastKnownStroke = stroke
+        }
+        lastStroke = stroke
         Haptics.success()
         flash()
     }
@@ -712,7 +791,10 @@ final class RallyCamModel: ObservableObject {
                                      "in_band": zoneCounts[.band] ?? 0,
                                      "net": zoneCounts[.net] ?? 0,
                                      "long": zoneCounts[.long] ?? 0,
-                                     "unread": zoneCounts[.unknown] ?? 0])
+                                     "unread": zoneCounts[.unknown] ?? 0,
+                                     "fh": strokeCounts[.forehand] ?? 0,
+                                     "bh": strokeCounts[.backhand] ?? 0,
+                                     "stroke_unread": strokeCounts[.unknown] ?? 0])
             RatingPrompt.registerWin()   // a finished rally is a genuine win moment
         }
     }
@@ -742,7 +824,7 @@ struct RallyCamPreview: UIViewControllerRepresentable {
 }
 
 /// Owns the `AVCaptureSession` (preview only, for now) and the mic-based
-/// `AudioImpactDetector` that drives the hit count.
+/// `WallSwingDetector` that drives the hit count.
 final class RallyCamController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate,
                                 AVCaptureFileOutputRecordingDelegate {
 
@@ -760,7 +842,10 @@ final class RallyCamController: UIViewController, AVCaptureVideoDataOutputSample
     private var previewLayer: AVCaptureVideoPreviewLayer?
     private let videoQueue = DispatchQueue(label: "dropvolley.rallycam.video")
     /// The hit detector.
-    private let impactDetector = AudioImpactDetector()
+    /// Counts reps by watching the player swing, and reads forehand vs
+    /// backhand from where the racquet hand is at the swing. Replaced the
+    /// microphone: a rep is three sounds, and no threshold tells them apart.
+    private let swingDetector = WallSwingDetector()
     /// Answers WHERE, at the instant the detector says WHEN.
     private let locator = WallBallLocator()
     /// Silent session recording (video only — the mic belongs to the counter,
@@ -830,6 +915,7 @@ final class RallyCamController: UIViewController, AVCaptureVideoDataOutputSample
 
         // Record exactly while the rally runs. The clip stays in tmp; the
         // model owns its lifetime.
+        swingDetector.handedness = model?.handedness ?? .right
         runningSink = model?.$isRunning
             .removeDuplicates()
             .receive(on: DispatchQueue.main)
@@ -857,25 +943,6 @@ final class RallyCamController: UIViewController, AVCaptureVideoDataOutputSample
     /// Wire + start the mic impact counter (the primary hit detector). Peaks are
     /// throttled to ~10 Hz for the on-screen tuning readout.
     private func startImpactAudio() {
-        impactDetector.onImpact = { [weak self] impactTime in
-            guard let self else { return }
-            // Count first, always. The rep is the mic's to give.
-            DispatchQueue.main.async { self.model?.registerAudioHit() }
-            // Then look, off the audio thread, and report what we saw.
-            self.videoQueue.async {
-                let reading = self.locator.locate(impactTime: impactTime)
-                DispatchQueue.main.async {
-                    guard let model = self.model else { return }
-                    // A weak blob is an honest "couldn't see it", not a guess.
-                    guard let reading, reading.confidence >= 0.25 else {
-                        model.registerZone(.unknown); return
-                    }
-                    model.registerZone(model.zone(forNormalizedY: reading.normalizedY))
-                }
-            }
-        }
-        impactDetector.start()
-
         measureObserver = NotificationCenter.default.addObserver(
             forName: .rallyCamMeasureNow, object: nil, queue: nil
         ) { [weak self] _ in
@@ -886,16 +953,35 @@ final class RallyCamController: UIViewController, AVCaptureVideoDataOutputSample
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if let measureObserver { NotificationCenter.default.removeObserver(measureObserver) }
-        impactDetector.stop()
         videoQueue.async { [weak self] in self?.session.stopRunning() }
     }
 
-    /// Keep a second of downscaled frames so the locator has something to look
-    /// back at when the mic fires. Stamped on the same clock the impact uses.
+    /// Every frame does two jobs: it joins the locator's one-second ring, and
+    /// it goes through the pose detector. When the detector sees a swing, the
+    /// rep is counted at once and the locator is asked, off this thread's
+    /// critical path, where the ball met the wall in the half second after.
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer,
                        from connection: AVCaptureConnection) {
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
-        locator.store(pixelBuffer, at: ProcessInfo.processInfo.systemUptime)
+        let now = ProcessInfo.processInfo.systemUptime
+        locator.store(pixelBuffer, at: now)
+
+        if let running = model?.isRunning, running,
+           let swing = swingDetector.process(pixelBuffer, at: now) {
+            DispatchQueue.main.async { [weak self] in
+                self?.model?.registerSwing(swing.stroke)
+            }
+            // The ball needs ~0.1–0.5s to reach the wall. Look once it has.
+            videoQueue.asyncAfter(deadline: .now() + 0.55) { [weak self] in
+                guard let self else { return }
+                let reading = self.locator.locateWallImpact(afterSwingAt: swing.time)
+                DispatchQueue.main.async {
+                    guard let model = self.model else { return }
+                    guard let reading else { model.registerZone(.unknown); return }
+                    model.registerZone(model.zone(forNormalizedY: reading.normalizedY))
+                }
+            }
+        }
 
         if measureRequested {
             measureRequested = false
@@ -914,139 +1000,6 @@ final class RallyCamController: UIViewController, AVCaptureVideoDataOutputSample
         }
     }
 }
-
-// MARK: - Audio impact detector (primary hit counter)
-
-/// A single biquad section (RBJ cookbook). Cascading a high-pass + low-pass gives
-/// a band-pass that isolates a tennis-ball impact's energy (~100 Hz–3 kHz) and
-/// rejects wind/handling rumble below and hiss/sibilance above — the biggest
-/// single false-positive reduction for impact detection.
-private struct Biquad {
-    var b0: Float = 1, b1: Float = 0, b2: Float = 0, a1: Float = 0, a2: Float = 0
-    var x1: Float = 0, x2: Float = 0, y1: Float = 0, y2: Float = 0
-
-    mutating func process(_ x: Float) -> Float {
-        let y = b0 * x + b1 * x1 + b2 * x2 - a1 * y1 - a2 * y2
-        x2 = x1; x1 = x; y2 = y1; y1 = y
-        return y
-    }
-
-    static func highPass(fs: Double, f0: Double, q: Double = 0.707) -> Biquad {
-        let w0 = 2 * Double.pi * f0 / fs, c = cos(w0), alpha = sin(w0) / (2 * q)
-        let a0 = 1 + alpha
-        var bq = Biquad()
-        bq.b0 = Float((1 + c) / 2 / a0); bq.b1 = Float(-(1 + c) / a0); bq.b2 = bq.b0
-        bq.a1 = Float(-2 * c / a0); bq.a2 = Float((1 - alpha) / a0)
-        return bq
-    }
-
-    static func lowPass(fs: Double, f0: Double, q: Double = 0.707) -> Biquad {
-        let w0 = 2 * Double.pi * f0 / fs, c = cos(w0), alpha = sin(w0) / (2 * q)
-        let a0 = 1 + alpha
-        var bq = Biquad()
-        bq.b0 = Float((1 - c) / 2 / a0); bq.b1 = Float((1 - c) / a0); bq.b2 = bq.b0
-        bq.a1 = Float(-2 * c / a0); bq.a2 = Float((1 - alpha) / a0)
-        return bq
-    }
-}
-
-/// Placement-independent hit counter: taps the mic and flags a hit on a sharp
-/// amplitude transient (a ball striking the wall). Far more robust than
-/// parabolic Vision for simply COUNTING wall hits — works from any angle, in any
-/// light, phone anywhere it can HEAR the wall. TUNE `threshold` on device using
-/// the on-screen live "mic peak" readout.
-final class AudioImpactDetector {
-    private let engine = AVAudioEngine()
-    private var running = false
-    private var lastHit: TimeInterval = 0
-
-    /// Carries the moment of the impact, on `ProcessInfo.systemUptime`, so the
-    /// locator can look at the right frames rather than the newest ones.
-    var onImpact: ((TimeInterval) -> Void)?
-
-    // TUNE ON DEVICE ↓  — a band-pass isolates the impact band, then an ADAPTIVE
-    // threshold triggers when the FILTERED peak spikes above the tracked ambient
-    // floor (abs floor so silence never fires).
-    private let absFloor: Float = 0.02            // never trigger below this
-    private let spikeRatio: Float = 2.8           // impact ≈ this × ambient
-    /// One rep produces up to THREE impulsive sounds — racquet contact, wall
-    /// thud, floor bounce — typically 0.1–0.3s apart. At 0.14s the detector
-    /// counted several of them as separate reps, silently inflating every
-    /// goal. 0.45s merges racquet+wall into one count while staying under the
-    /// fastest realistic wall cadence (~0.6s close-range volleys). The floor
-    /// bounce can still land outside this window; whether it crosses the
-    /// threshold in practice is THE thing to verify on a real wall.
-    private let refractory: TimeInterval = 0.45
-    private var ambient: Float = 0.02             // running noise-floor estimate
-    // Band-pass ≈ 100 Hz–3 kHz (coefficients set once the sample rate is known).
-    private var hp = Biquad(), lp = Biquad()
-    private var filtersReady = false
-
-    func start() {
-        guard !running else { return }
-        AVAudioApplication.requestRecordPermission { [weak self] granted in
-            guard granted, let self else { return }
-            DispatchQueue.main.async { self.configure() }
-        }
-    }
-
-    private func configure() {
-        do {
-            let session = AVAudioSession.sharedInstance()
-            // .measurement disables AGC/noise-suppression → raw transients.
-            try session.setCategory(.playAndRecord, mode: .measurement,
-                                    options: [.defaultToSpeaker, .mixWithOthers])
-            try session.setActive(true, options: [])
-            let input = engine.inputNode
-            let format = input.outputFormat(forBus: 0)
-            let fs = format.sampleRate > 0 ? format.sampleRate : 44100
-            hp = .highPass(fs: fs, f0: 100)
-            lp = .lowPass(fs: fs, f0: 3000)
-            filtersReady = true
-            input.installTap(onBus: 0, bufferSize: 2048, format: format) { [weak self] buffer, _ in
-                self?.process(buffer)
-            }
-            engine.prepare()
-            try engine.start()
-            running = true
-        } catch {
-            running = false
-        }
-    }
-
-    private func process(_ buffer: AVAudioPCMBuffer) {
-        guard let ch = buffer.floatChannelData?[0] else { return }
-        let n = Int(buffer.frameLength)
-        var peak: Float = 0
-        var i = 0
-        while i < n {
-            // Band-pass each sample, then track the peak of the FILTERED signal.
-            let f = filtersReady ? lp.process(hp.process(ch[i])) : ch[i]
-            let a = abs(f)
-            if a > peak { peak = a }
-            i += 1
-        }
-        let threshold = max(absFloor, ambient * spikeRatio)
-        let now = ProcessInfo.processInfo.systemUptime
-        if peak >= threshold && now - lastHit >= refractory {
-            lastHit = now
-            onImpact?(now)
-        } else {
-            // Track the ambient floor from NON-impact frames only, so a hit
-            // doesn't inflate the floor and suppress the next one.
-            ambient = ambient * 0.95 + peak * 0.05
-        }
-    }
-
-    func stop() {
-        guard running else { return }
-        engine.inputNode.removeTap(onBus: 0)
-        engine.stop()
-        running = false
-        try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
-    }
-}
-
 
 extension Notification.Name {
     /// Fired when the setup countdown reaches zero: grab the next camera frame

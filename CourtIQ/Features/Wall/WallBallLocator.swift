@@ -116,6 +116,42 @@ final class WallBallLocator {
         return best
     }
 
+    // MARK: Locate — anchored to a swing
+
+    /// Where did the ball meet the wall, given the player swung at `t0`?
+    ///
+    /// This is the anchor the microphone version got wrong. Reading at "the
+    /// loudest sound" meant reading at racquet contact — with the ball still
+    /// in the player's hand, low in frame — and everything came out NET. A
+    /// swing time is unambiguous: the ball leaves the racquet at `t0`, reaches
+    /// the wall 0.1–0.5s later, and in a camera behind the player it climbs
+    /// the frame on the way there and falls on the way back. Its highest
+    /// point in that window IS the wall contact. No sound involved.
+    func locateWallImpact(afterSwingAt t0: TimeInterval) -> Reading? {
+        lock.lock()
+        let frames = ring
+        lock.unlock()
+        guard frames.count >= 6 else { return nil }
+
+        let window = frames.filter { $0.t >= t0 + 0.10 && $0.t <= t0 + 0.50 }
+        guard window.count >= 2 else { return nil }
+
+        // Background from just before the swing — the racquet is still back
+        // and the ball hasn't left, so the wall region is quiet.
+        let older = frames.filter { $0.t <= t0 - 0.15 && $0.t >= t0 - 0.45 }
+        guard older.count >= 3 else { return nil }
+        let background = Self.medianOfThree(older.suffix(3).map(\.luma))
+
+        // The apex: the confident reading highest in frame.
+        var best: Reading?
+        for frame in window {
+            guard let r = Self.findBall(frame: frame.luma, background: background),
+                  r.confidence >= 0.25 else { continue }
+            if best == nil || r.normalizedY < best!.normalizedY { best = r }
+        }
+        return best
+    }
+
     // MARK: - Pixels
 
     /// Nearest-neighbour sample of the luma plane down to `w`×`h`.

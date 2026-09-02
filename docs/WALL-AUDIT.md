@@ -1,4 +1,11 @@
-# Wall mechanism — audit (28 Aug 2026)
+# Wall mechanism — audit (28 Aug 2026) · field result (2 Sep 2026)
+
+> **Field result.** The owner tested the audio counter on a real wall. All
+> three predicted failures happened, and none is a tuning problem:
+> reps inflated (every threshold-crossing sound counted), placement read
+> NET on every ball regardless of the lines, and forehand/backhand was
+> unreadable. Root causes and the rebuild are in §6 below. The mechanism
+> that shipped in 1.0.6 is being replaced.
 
 *The question asked: does the mechanism cohere, can the tech actually detect
 wall drills, is the ladder educational and achievable, does it adjust to the
@@ -150,3 +157,66 @@ data first) and per-drill band presets (wait for `unread` rates).
 
 Session analytics carry `hits`, `total`, `in_band/net/long/unread` — the
 tuning loop is wired.
+
+
+---
+
+## 6. Field result and the rebuild (2 Sep 2026)
+
+### What the wall said
+
+| Symptom | Root cause |
+|---|---|
+| Reps ~2–3× too high | A rep is three impulsive sounds — racquet, wall, floor — 0.1–0.6s apart. Amplitude thresholds cannot separate them. Not tunable. |
+| Every ball reads NET | The locator looked at "the loudest sound", i.e. racquet contact, when the ball is in the player's hand, low in frame → NET. Floor bounce → NET. The one sound that gives a correct reading (the wall) is the quietest. Structural bias, not calibration. |
+| FH/BH unreadable | No sensor in the design could see it. Said so in §2. |
+
+### The rebuild — one sensor, the right one
+
+**Counting: on-device body pose, not sound.** `WallSwingDetector` runs
+`VNDetectHumanBodyPoseRequest` on every frame, tracks the racquet-hand wrist,
+and fires a rep on a wrist-speed peak (≥2.2 frame-widths/s, hysteresis re-arm
+at 40%, 0.55s refractory). A swing is one large fast arc that nothing else in
+a wall session resembles, and the player is the largest thing in frame — the
+easy case for pose. The microphone is out of the wall feature entirely; the
+purpose string no longer claims it.
+
+**Forehand vs backhand: geometry.** Vision labels joints by the player's own
+left/right. With the phone behind the player, a right-hander's wrist right of
+the shoulder midline at the swing is a forehand; across it, a backhand; within
+3.5% of frame width, `unknown`. Handedness is a one-tap remembered toggle on
+the setup row. Pattern drills (FH↔BH …) now get their alternation checked —
+only when ≥4 readable pairs exist, and it can hold a pass at gold, never turn
+a counted pass red.
+
+**Placement: anchored to the swing, not a sound.** `locateWallImpact(afterSwingAt:)`
+searches the 0.10–0.50s after the swing and takes the confident blob
+*highest in frame* — from behind the player the ball climbs to the wall and
+falls back, so its apex is the contact. This removes the NET bias at its
+source. Still beta; still degrades to `unknown`.
+
+### What the rebuild does NOT claim
+
+- Volleys at the wall: the swing arc is short and the refractory may merge
+  two — the Volley rung may undercount. Watch it.
+- A phone in front of the player mirrors left/right. Setup copy insists on
+  behind + a step to the side.
+- Thresholds are first-pass. `tools/wall-swing-eval.swift` runs the exact
+  detector over a phone video offline so they can be tuned against a real
+  session before anyone else sees it.
+
+### Wearables, for the record
+
+- **Apple Watch** — Core Motion gives raw accel+gyro at 100Hz with real-time
+  streaming to the phone. Swing count and FH/BH from the wrist at ~98% in the
+  literature. The clean upgrade path; camera then does placement only.
+- **Garmin** — Connect IQ apps run on the watch (Monkey C) and can read the
+  accelerometer on many models; phone link goes through Garmin's own app.
+  Feasible, a second codebase, real device fragmentation.
+- **Xiaomi Mi Band / Smart Band** — no third-party SDK for raw or real-time
+  sensor data; only synced aggregates via Mi Fitness/Zepp. Not viable, short
+  of unsupported reverse-engineered BLE.
+- **Wear OS** — pairs with Android; irrelevant to an iOS app.
+
+The phone-only rebuild serves everyone regardless of wrist; the Watch is an
+accuracy upgrade, not a requirement.

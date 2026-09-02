@@ -162,7 +162,7 @@ target consequential, and `maxStreak` is already tracked and recorded.
    detection at all, a visible target changes where the player looks — which
    is the whole external-focus benefit, and it costs nothing.
 
-**P2 — placement at the audio timestamp. DONE (1.0.6).**
+**P2 — placement. DONE (1.0.6), REBUILT (2 Sep) — see WALL-AUDIT.md §6.**
 `WallBallLocator` keeps a second of 120×160 luma frames, builds a background
 from a per-pixel median of frames from before the ball arrived, thresholds the
 difference and flood-fills what survives. Blobs over 5% of frame are the

@@ -45,9 +45,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>DropVolley uses the camera so you can record a short swing video for AI technique analysis, and to show you the wall in front of you during Wall practice.</string>
+	<string>DropVolley uses the camera so you can record a short swing video for AI technique analysis, and during Wall practice to watch you swing so it can count your reps on-device.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>DropVolley uses the microphone to record swing videos, whose audio is analyzed on-device to find the moment of ball contact; to capture match voice notes, which are transcribed on-device; and during Wall practice to hear each ball impact so it can count your rally. Wall practice audio is processed live and never recorded or uploaded.</string>
+	<string>DropVolley uses the microphone to record swing videos, whose audio is analyzed on-device to find the moment of ball contact, and to capture match voice notes, which are transcribed on-device.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>DropVolley saves a Wall practice clip to your photo library only when you tap Save.</string>
 	<key>NSPhotoLibraryUsageDescription</key>

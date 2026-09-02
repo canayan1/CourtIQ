@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B100000000000000000002 /* WallBallLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000000000000000001 /* WallBallLocator.swift */; };
+		B400000000000000000002 /* WallSwingDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B400000000000000000001 /* WallSwingDetector.swift */; };
 		F4D689E4217B817DAA69B4A7 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 325B817E77DD62D36909AF94 /* RevenueCat */; };
 		A000000000000000000FB4 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A000000000000000000FB3 /* FirebaseAnalytics */; };
 		01E3B5805B3AC2D9B83BCC20 /* AICoachConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5431D73E4D73B3EE01C53B1 /* AICoachConsentView.swift */; };
@@ -189,6 +190,7 @@
 
 /* Begin PBXFileReference section */
 		B100000000000000000001 /* WallBallLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WallBallLocator.swift; path = CourtIQ/Features/Wall/WallBallLocator.swift; sourceTree = "<group>"; };
+		B400000000000000000001 /* WallSwingDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WallSwingDetector.swift; path = CourtIQ/Features/Wall/WallSwingDetector.swift; sourceTree = "<group>"; };
 		04D5B2D2F6843DCDF39EC336 /* TennisProfileQuestionnaireView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TennisProfileQuestionnaireView.swift; path = CourtIQ/Features/TennisProfile/TennisProfileQuestionnaireView.swift; sourceTree = "<group>"; };
 		0557CE18D7A694CEF536677C /* TennisProfileResultView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TennisProfileResultView.swift; path = CourtIQ/Features/TennisProfile/TennisProfileResultView.swift; sourceTree = "<group>"; };
 		0A7ED880F0D31CAEA68D596A /* DoublesStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesStore.swift; path = CourtIQ/Features/Doubles/DoublesStore.swift; sourceTree = "<group>"; };
@@ -472,6 +474,7 @@
 				A000000000000000000132 /* CourtTapDrill.swift */,
 				A000000000000000000FC0 /* WallRallyCamView.swift */,
 				B100000000000000000001 /* WallBallLocator.swift */,
+				B400000000000000000001 /* WallSwingDetector.swift */,
 				A000000000000000000AF2 /* ActivityManager.swift */,
 				A000000000000000000AF4 /* WallProgressManager.swift */,
 				A000000000000000000AE0 /* WallDrill.swift */,
@@ -809,6 +812,7 @@
 				A000000000000000000133 /* CourtTapDrill.swift in Sources */,
 				A000000000000000000FC1 /* WallRallyCamView.swift in Sources */,
 				B100000000000000000002 /* WallBallLocator.swift in Sources */,
+				B400000000000000000002 /* WallSwingDetector.swift in Sources */,
 				A000000000000000000AF3 /* ActivityManager.swift in Sources */,
 				A000000000000000000AF5 /* WallProgressManager.swift in Sources */,
 				A000000000000000000AE1 /* WallDrill.swift in Sources */,
