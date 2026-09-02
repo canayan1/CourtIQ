@@ -22,6 +22,7 @@ struct HomeView: View {
 
     @State private var appeared = false
     @State private var showProfile = false
+    @State private var showProgramsPaywall = false
     @State private var heroBounce = false
 
     /// Grid push destinations. Driven by Button + navigationDestination(item:)
@@ -31,7 +32,7 @@ struct HomeView: View {
     /// All grid tiles push their destination via this single route +
     /// navigationDestination. (Switching tabs via tabRouter from a grid tile did
     /// not work; pushing via route does.) The Coach hero still switches tabs.
-    private enum Route: Hashable { case swing, tennisIQ, matches, doubles, wall, drills
+    private enum Route: Hashable { case swing, tennisIQ, matches, doubles, drills, recover, programs
         #if DEBUG
         /// QC only: the paid coach-review order screen (App Store review
         /// screenshot for the consumable IAP).
@@ -122,10 +123,12 @@ struct HomeView: View {
                 MatchesListView()
             case .doubles:
                 DoublesView()
-            case .wall:
-                WallHubView()
             case .drills:
                 TrainPracticeView()
+            case .recover:
+                MobilityLibraryView()
+            case .programs:
+                TrainProgramsView()
             #if DEBUG
             case .coachOrder:
                 CoachReviewOrderView(
@@ -156,6 +159,13 @@ struct HomeView: View {
                 heroBounce = true
             }
         }
+        .sheet(isPresented: $showProgramsPaywall) {
+            NavigationStack {
+                PaywallView(source: "Programs")
+                    .environmentObject(session)
+                    .environmentObject(lang)
+            }
+        }
         .sheet(isPresented: $showProfile) {
             NavigationStack {
                 ProfileView()
@@ -180,13 +190,30 @@ struct HomeView: View {
         VStack(spacing: 12) {
             HStack(spacing: 12) {
                 shortcut(.drills,  title: lang.t("train.drills"),      photo: "PhotoFootwork", icon: "scope")
-                shortcut(.wall,    title: lang.t("train.wall"),        photo: "PhotoWall",     icon: "sportscourt.fill")
+                shortcut(.matches, title: lang.t("home.tile_matches"), photo: "PhotoMatch",    icon: "square.and.pencil")
             }
             HStack(spacing: 12) {
-                shortcut(.matches, title: lang.t("home.tile_matches"), photo: "PhotoMatch",    icon: "square.and.pencil")
                 shortcut(.doubles, title: lang.t("home.tile_doubles"), photo: "PhotoDoubles",  icon: "person.2.fill")
+                shortcut(.recover, title: lang.t("train.recover"),     photo: "PhotoMobility", icon: "figure.walk")
             }
+            programsShortcut
         }
+    }
+
+    /// Programs is premium: free users get the paywall sheet, not a cosmetic
+    /// lock that pushes into an empty screen (mirrors the old Train hub).
+    private var programsShortcut: some View {
+        Button {
+            Haptics.tap()
+            if session.isPremiumUnlocked { route = .programs } else { showProgramsPaywall = true }
+        } label: {
+            LockableTile(sfSymbol: "figure.strengthtraining.traditional",
+                         title: lang.t("train.programs"),
+                         locked: !session.isPremiumUnlocked,
+                         minHeight: 96,
+                         photo: "PhotoTraining")
+        }
+        .buttonStyle(PressableCardStyle())
     }
 
     private func shortcut(_ dest: Route, title: String, photo: String, icon: String) -> some View {
@@ -294,7 +321,7 @@ struct HomeView: View {
 
     private var coachHeroLabel: some View {
         HStack(spacing: 16) {
-            Image(systemName: "bubble.left.and.text.bubble.right.fill")
+            Image(systemName: "video.fill")
                 .font(.largeTitle.weight(.semibold))
                 .foregroundStyle(.white)
                 .symbolEffect(.bounce, value: heroBounce)

@@ -30,12 +30,15 @@
 "tab.train" = "Çalış";
 "tab.doubles" = "Çiftler";
 "tab.coach" = "Koç";
+"tab.wall" = "Duvar";
+"tab.tactics" = "Taktik";
+"coach.ask_ai" = "AI Koça sor";
 "tab.home" = "Ana sayfa";
 
 /* ── Home (action-first redesign) ── */
 "home.analyze_title" = "Vuruşunu analiz et";
-"home.coach_hero_title" = "AI Koçuna sor";
-"home.coach_hero_subtitle" = "Taktik, maçlar, tüm oyunun";
+"home.coach_hero_title" = "Vuruşunu incelet";
+"home.coach_hero_subtitle" = "Çek. Şimdi AI okuyor, yakında gerçek koç.";
 "home.tile_swing" = "Swing";
 "home.tile_iq" = "Tenis IQ";
 "home.your_game" = "Oyunun";

@@ -30,12 +30,15 @@
 "tab.train" = "Train";
 "tab.doubles" = "Doubles";
 "tab.coach" = "Coach";
+"tab.wall" = "Wall";
+"tab.tactics" = "Tactics";
+"coach.ask_ai" = "Ask AI Coach";
 "tab.home" = "Home";
 
 /* ── Home (action-first redesign) ── */
 "home.analyze_title" = "Analyze your swing";
-"home.coach_hero_title" = "Ask your AI Coach";
-"home.coach_hero_subtitle" = "Tactics, matches, your whole game";
+"home.coach_hero_title" = "Get your swing reviewed";
+"home.coach_hero_subtitle" = "Film it. AI reads it now, a real coach soon.";
 "home.tile_swing" = "Swing";
 "home.tile_iq" = "Tennis IQ";
 "home.your_game" = "Your game";

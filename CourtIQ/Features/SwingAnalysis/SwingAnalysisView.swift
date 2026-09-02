@@ -10,6 +10,10 @@ struct SwingAnalysisView: View {
     /// `handlePicked` on appear, so it passes the SAME consent + premium gates
     /// as a clip picked from the library — no side door into the paid flow.
     var preloadedClip: URL? = nil
+    /// The Coach tab hosts this flow as its root and titles it "Coach";
+    /// pushed from elsewhere it keeps its own title. Inner titles win in
+    /// SwiftUI, so the override has to come in here.
+    var titleOverride: String? = nil
 
     @EnvironmentObject private var lang: LanguageManager
     @EnvironmentObject private var session: UserSessionManager
@@ -79,7 +83,7 @@ struct SwingAnalysisView: View {
             AppPalette.cream.ignoresSafeArea()
             content
         }
-        .navigationTitle(copy.navTitle)
+        .navigationTitle(titleOverride ?? copy.navTitle)
         .navigationBarTitleDisplayMode(.inline)
         .onAppear { consumePreloadedClip() }
         .toolbar {

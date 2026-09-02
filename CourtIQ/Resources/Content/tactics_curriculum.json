@@ -1,0 +1,3067 @@
+{
+  "version": 1,
+  "chapters": [
+    {
+      "id": "geometry",
+      "number": 1,
+      "title": "Court Geometry",
+      "subtitle": "Where to stand and where to aim — everything else sits on this.",
+      "symbol": "rectangle.split.3x3",
+      "isFree": true,
+      "lessons": [
+        {
+          "id": "geo-2",
+          "title": "Cross-Court Is The Safer Ball",
+          "diagram": {
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.8,
+                  "y": 0.94
+                },
+                "to": {
+                  "x": 0.22,
+                  "y": 0.06
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "cross · safer"
+              },
+              {
+                "from": {
+                  "x": 0.8,
+                  "y": 0.94
+                },
+                "to": {
+                  "x": 0.82,
+                  "y": 0.06
+                },
+                "kind": "shot",
+                "tone": "bad",
+                "label": "line · tighter"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.8,
+                "y": 0.93,
+                "role": "you"
+              }
+            ],
+            "caption": "Same swing, two targets. The cross-court has more court to land in and a lower net to clear."
+          },
+          "quiz": {
+            "scenario": "You are in a neutral baseline rally. Nothing special is happening — you are balanced, the ball is at a comfortable height, and your opponent is in the middle of their baseline.",
+            "question": "Which ball do you hit?",
+            "options": [
+              "Down the line, to move them",
+              "Cross-court, deep",
+              "Short and low, to bring them in"
+            ],
+            "correctIndex": 1,
+            "explanation": "In a neutral rally, keep the ball deep with margin and wait for a better one. The cross-court gives you the longest court, the lowest net, and the easiest recovery. Over a whole match it costs you the fewest misses."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "Cross-court is a default, not a duty. As you improve, down-the-line and the ball hit behind a moving opponent become real weapons. You just pick them on purpose, when you have time and balance."
+          },
+          "situation": "You are in a neutral baseline rally. You are balanced, the ball is comfortable, and your opponent is in the middle of their baseline. Nothing has happened yet that earns a risk.",
+          "principle": "The cross-court is longer and crosses a lower part of the net, so it is the higher-margin ball — hit it as your default.",
+          "defaultAction": "Hit cross-court and deep. The diagonal is longer, so the swing that goes long down the line still lands in. The ball crosses the lowest part of the net, and afterward you are already near your recovery spot.",
+          "adjustments": [
+            {
+              "when": "opponent is pulled off court, line open",
+              "then": "take the down-the-line on purpose; that is the exception you pick."
+            },
+            {
+              "when": "opponent gives you a short, high ball",
+              "then": "step in and attack; you no longer need maximum margin."
+            },
+            {
+              "when": "your cross-courts keep landing short",
+              "then": "add height over the net to push the ball deeper."
+            }
+          ],
+          "commonMistake": "Switching to the down-the-line on a neutral ball for no reason. It crosses a higher net into a shorter court, and it leaves you sprinting to recover."
+        },
+        {
+          "id": "geo-3",
+          "title": "Depth Beats Power",
+          "diagram": {
+            "zones": [
+              {
+                "x": 0.13,
+                "y": 0.042,
+                "w": 0.74,
+                "h": 0.084,
+                "tone": "good",
+                "label": "AIM HERE"
+              },
+              {
+                "x": 0.13,
+                "y": 0.19,
+                "w": 0.74,
+                "h": 0.27,
+                "tone": "bad",
+                "label": "TOO SHORT"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.5,
+                "y": 0.93,
+                "role": "you"
+              },
+              {
+                "x": 0.5,
+                "y": 0.04,
+                "role": "opponent",
+                "label": "Them"
+              }
+            ],
+            "caption": "The green band is deep with margin. The red band lets them step in and attack."
+          },
+          "quiz": {
+            "scenario": "Your opponent hits a floating ball right to you at the baseline. You have time and you are balanced. You could swing hard at it, or you could hit at three-quarter pace but land it a meter inside their baseline.",
+            "question": "Which is the better choice for winning the point?",
+            "options": [
+              "Swing hard — pace is what hurts them",
+              "Three-quarter pace, deep",
+              "Drop shot — they are behind the baseline"
+            ],
+            "correctIndex": 1,
+            "explanation": "A balanced opponent can borrow the pace you add, and hitting harder shrinks your own margin. Depth is what really takes their options away. From behind their own baseline they cannot make an angle. So the next ball comes back slower and more central."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "Depth wins because most opponents can't punish a deep ball yet. Better players take it early, on the rise, and hand the depth right back to you. So higher up you add pace and heavy topspin to the depth. You don't pick pace instead of depth — you stack it on top."
+          },
+          "situation": "A floating ball comes right to you at the baseline. You have time and balance, and your opponent is set and ready. The urge is to swing as hard as you can.",
+          "principle": "A deep ball is worth more than a hard one: it pushes your opponent back and buys you time.",
+          "defaultAction": "Hit at three-quarter pace and aim for a zone about a step inside their baseline. Depth pins them behind their court, where they have almost no angle. Their reply comes back slower and more central.",
+          "adjustments": [
+            {
+              "when": "opponent is stretched or rushed",
+              "then": "now add pace; a scrambling player cannot borrow it."
+            },
+            {
+              "when": "opponent camps far behind the baseline",
+              "then": "a short, low ball can drag them forward instead."
+            },
+            {
+              "when": "your deep balls keep sailing long",
+              "then": "keep three-quarter pace but add spin and net clearance."
+            }
+          ],
+          "commonMistake": "Swinging hard at a balanced opponent. They borrow the pace you add, and the extra speed shrinks your own margin. A short ball afterward is the real gift."
+        },
+        {
+          "id": "geo-4",
+          "title": "Aim Inside The Lines",
+          "diagram": {
+            "zones": [
+              {
+                "x": 0.216,
+                "y": 0.042,
+                "w": 0.1,
+                "h": 0.088,
+                "tone": "good",
+                "label": "TARGET"
+              },
+              {
+                "x": 0.0,
+                "y": 0.0,
+                "w": 0.13,
+                "h": 0.5,
+                "tone": "bad",
+                "label": "OUT"
+              }
+            ],
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.7,
+                  "y": 0.94
+                },
+                "to": {
+                  "x": 0.235,
+                  "y": 0.075
+                },
+                "kind": "shot",
+                "tone": "good"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.7,
+                "y": 0.93,
+                "role": "you"
+              }
+            ],
+            "caption": "The target sits inside the sideline and inside the baseline — wide enough to hurt, safe enough to repeat."
+          },
+          "quiz": {
+            "scenario": "Deuce, and you get a comfortable forehand in the middle of the court. Your opponent is in position and ready.",
+            "question": "What is your target?",
+            "options": [
+              "The corner, right on the intersection of the lines",
+              "A meter inside the sideline and a meter inside the baseline",
+              "Right at their feet so they cannot swing"
+            ],
+            "correctIndex": 1,
+            "explanation": "On a big point you want the shot you can repeat, not the one that looks best. A meter of margin on each line removes almost all of your miss-risk while still pushing them into the corner — they cannot tell the difference, and the scoreboard can."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "A meter is a stand-in for your own shot spread, not a fixed number. As your control tightens, that spread shrinks, so your safe target creeps closer to the line. Strong players still leave margin — they just need less of it. They also open the court with angle and depth, so the line is rarely the only answer."
+          },
+          "situation": "It is a big point and you get a comfortable ball in the middle of the court. Your opponent is in position. The corner is calling you.",
+          "principle": "Pick a target a meter inside every line. Lines are for spectators; margin is for players.",
+          "defaultAction": "Pick a target a meter inside the sideline and a meter inside the baseline, and hit through it. Keep a good yard of air over the net. To your opponent the ball is still just as wide.",
+          "adjustments": [
+            {
+              "when": "opponent is stranded and the point is nearly over",
+              "then": "you may aim closer to a line to finish."
+            },
+            {
+              "when": "big point in the score",
+              "then": "add margin, not risk; hit the shot you can repeat."
+            },
+            {
+              "when": "windy or gusty conditions",
+              "then": "double your distance from every line."
+            }
+          ],
+          "commonMistake": "Aiming at a line on a neutral ball. Half your normal spread lands out, so you turn the point into a coin flip you never had to take."
+        },
+        {
+          "id": "geo-1",
+          "title": "The Recovery Spot",
+          "diagram": {
+            "players": [
+              {
+                "x": 0.62,
+                "y": 0.9,
+                "role": "you",
+                "label": "Recover here"
+              },
+              {
+                "x": 0.14,
+                "y": 0.3,
+                "role": "opponent",
+                "label": "They step in"
+              }
+            ],
+            "balls": [
+              {
+                "x": 0.18,
+                "y": 0.27
+              }
+            ],
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.14,
+                  "y": 0.3
+                },
+                "to": {
+                  "x": 0.15,
+                  "y": 0.95
+                },
+                "kind": "shot",
+                "tone": "bad",
+                "label": "down the line"
+              },
+              {
+                "from": {
+                  "x": 0.14,
+                  "y": 0.3
+                },
+                "to": {
+                  "x": 0.86,
+                  "y": 0.7
+                },
+                "kind": "shot",
+                "tone": "bad",
+                "label": "sharp cross"
+              },
+              {
+                "from": {
+                  "x": 0.42,
+                  "y": 0.93
+                },
+                "to": {
+                  "x": 0.62,
+                  "y": 0.9
+                },
+                "kind": "move",
+                "tone": "focus"
+              }
+            ],
+            "caption": "You hit short and they step in wide on the left. Their sharp cross-court is the shot that stretches you. So you recover a step right of center — the same short run to either reply."
+          },
+          "quiz": {
+            "scenario": "You hit a short ball. Your opponent steps in to it, wide on the left, calm and balanced. They have not had to run.",
+            "question": "Where do you stand before they hit?",
+            "options": [
+              "Stay where you are — you covered that side already",
+              "On the center mark",
+              "A step past the center mark, toward the side their cross-court would land"
+            ],
+            "correctIndex": 2,
+            "explanation": "They are calm and hitting from the side, so their sharp cross-court is on. That cross-court is the one shot that can pull you past your sideline. Lean a step that way and you cover it, without giving up the down-the-line."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "Splitting the angle is where you start. Higher up, you also lean toward the shot they are most likely to hit. And toward your own weaker side. So the ball you cover best is the one you expect most."
+          },
+          "situation": "You have just hit your shot and the ball is traveling to your opponent. You do not know where their reply will go. You only know the two widest shots they could hit from where they stand.",
+          "principle": "After each shot, move to the middle of the angles your opponent can hit. That is not the center of the court.",
+          "defaultAction": "Move the moment your ball leaves the strings. Stand halfway between their two widest possible shots, so either one is the same short run. Shade about a step past the center mark, toward where their cross-court reply would land, not toward the ball.",
+          "adjustments": [
+            {
+              "when": "opponent is stretched or scrambling defensively",
+              "then": "the center mark is fine; they cannot make a sharp angle."
+            },
+            {
+              "when": "you are at the net",
+              "then": "the lean flips: shade toward the ball's side to cover the shorter angle."
+            },
+            {
+              "when": "opponent loves the down-the-line",
+              "then": "shade a step toward the line side instead."
+            }
+          ],
+          "commonMistake": "Treating recovery as a rest and drifting back to the center mark. Moving late is what makes their next ball feel out of reach."
+        },
+        {
+          "id": "geo-5",
+          "title": "Get Out Of No-Man's Land",
+          "diagram": {
+            "zones": [
+              {
+                "x": 0.0,
+                "y": 0.955,
+                "w": 1.0,
+                "h": 0.045,
+                "tone": "good",
+                "label": "ON OR BEHIND THE BASELINE"
+              },
+              {
+                "x": 0.13,
+                "y": 0.56,
+                "w": 0.74,
+                "h": 0.16,
+                "tone": "good",
+                "label": "NET — OK"
+              },
+              {
+                "x": 0.0,
+                "y": 0.7692,
+                "w": 1.0,
+                "h": 0.185,
+                "tone": "bad",
+                "label": "NO-MAN'S LAND"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.5,
+                "y": 0.8,
+                "role": "you",
+                "label": "Not here"
+              }
+            ],
+            "caption": "Two good places to stand, and the strip between them where the ball always lands at your feet."
+          },
+          "quiz": {
+            "scenario": "You hit a decent approach and moved forward. Your opponent got to it and lofted a reply that will land deep. You are standing right on the service line.",
+            "question": "What do you do?",
+            "options": [
+              "Hold your ground and half-volley it",
+              "Move back behind the baseline and play it normally",
+              "Take one small step forward and hope for a short reply"
+            ],
+            "correctIndex": 1,
+            "explanation": "A deep ball arriving while you stand on the service line is the exact situation no-man's land creates. Retreating behind the baseline turns an awkward half-volley into an ordinary groundstroke, and you can approach again on a better ball."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "The strip is bad as a parking spot, not as a shot. Advanced players learn to hit there — the transition half-volley is a real, trained skill on the way forward. Serve-and-volley and chip-and-charge both live in that zone by choice. What never changes is the reason: you move through it with purpose, you don't stop and wait."
+          },
+          "situation": "You hit your shot and now you are standing between the baseline and the service line. You do not know yet whether the reply will land deep or short. Deep balls land at your feet in that strip.",
+          "principle": "Live behind your baseline or inside the service line. The strip between them is where balls land at your feet.",
+          "defaultAction": "End every shot with a decision: recover behind the baseline, or keep moving to inside the service line. Run through the middle strip when you must, but never stop and wait in it.",
+          "adjustments": [
+            {
+              "when": "opponent is stretched by your approach",
+              "then": "commit forward; get inside the service line before they swing."
+            },
+            {
+              "when": "opponent lofts a reply that will land deep",
+              "then": "retreat behind the baseline and play an ordinary groundstroke."
+            },
+            {
+              "when": "opponent loves the lob",
+              "then": "stop your forward push slightly earlier so the lob stays reachable."
+            }
+          ],
+          "commonMistake": "Parking on the service line and waiting. From there a deep ball arrives before you can set up, and a low one forces an awkward half-volley."
+        },
+        {
+          "id": "geo-6",
+          "title": "When In Trouble, Go Middle",
+          "diagram": {
+            "zones": [
+              {
+                "x": 0.34,
+                "y": 0.042,
+                "w": 0.32,
+                "h": 0.088,
+                "tone": "good",
+                "label": "RESET HERE"
+              }
+            ],
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.06,
+                  "y": 0.9
+                },
+                "to": {
+                  "x": 0.5,
+                  "y": 0.12
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "high, deep"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.05,
+                "y": 0.9,
+                "role": "you",
+                "label": "Stretched"
+              },
+              {
+                "x": 0.55,
+                "y": 0.05,
+                "role": "opponent",
+                "label": "Them"
+              }
+            ],
+            "caption": "Pulled off court and out of position — the deep middle gets you back to neutral."
+          },
+          "quiz": {
+            "scenario": "You have been pulled wide off the court and you are reaching for a ball with your weight going sideways. Your opponent is waiting in the middle of their baseline.",
+            "question": "What is the right ball here?",
+            "options": [
+              "A sharp cross-court angle to get them moving",
+              "A high, deep ball down the middle",
+              "A drop shot, since you cannot do much else"
+            ],
+            "correctIndex": 1,
+            "explanation": "Off balance, you cannot hit an angle reliably. Miss it and you lose the point outright. The high, deep, middle ball buys you the seconds you need to recover. And it gives them no angle to punish you with."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "Against a strong opponent, a deep middle ball can sit up as a free forehand. Higher up, the safer reset is a high, heavy cross-court, or a deep ball into a corner. The middle only removes the angle from players who cannot punish it yet."
+          },
+          "situation": "You have been pulled wide and you are reaching, weight going sideways. Your opponent waits in the middle of their baseline. You cannot hit anything ambitious with any reliability.",
+          "principle": "Under pressure, hit deep down the middle. Lowest net, room on both sidelines, and no angle for them to hit back.",
+          "defaultAction": "Hit a high, deep ball down the middle. It crosses the lowest part of the net with a half-court of room on each side. From the middle they have no angle, so their reply comes back near you while you recover.",
+          "adjustments": [
+            {
+              "when": "opponent is at the net",
+              "then": "lob high and deep instead; a waist-high middle ball feeds their volley."
+            },
+            {
+              "when": "big point and you are in trouble",
+              "then": "same ball; never rescue a big point with a hero shot."
+            },
+            {
+              "when": "windy conditions",
+              "then": "add extra height and spin; the middle target absorbs the drift."
+            }
+          ],
+          "commonMistake": "Going for a winner while off balance. A sharp angle or drop shot from a stretch usually misses, and the miss loses the point outright. Reset, do not rescue."
+        }
+      ]
+    },
+    {
+      "id": "rally",
+      "number": 2,
+      "title": "The Rally Blueprint",
+      "subtitle": "Read every ball, then pick the shot the situation allows.",
+      "symbol": "arrow.left.arrow.right",
+      "isFree": false,
+      "lessons": [
+        {
+          "id": "rally-1",
+          "title": "Attack, Neutral, Defend",
+          "diagram": {
+            "zones": [
+              {
+                "x": 0.13,
+                "y": 0.5,
+                "w": 0.74,
+                "h": 0.269,
+                "tone": "good",
+                "label": "ATTACK"
+              },
+              {
+                "x": 0.13,
+                "y": 0.769,
+                "w": 0.74,
+                "h": 0.151,
+                "tone": "focus",
+                "label": "NEUTRAL"
+              },
+              {
+                "x": 0.13,
+                "y": 0.92,
+                "w": 0.74,
+                "h": 0.08,
+                "tone": "bad",
+                "label": "DEFEND"
+              }
+            ],
+            "caption": "Roughly, where their ball lands decides which of the three shots you owe."
+          },
+          "quiz": {
+            "scenario": "Your opponent's ball lands short, around your service line, sitting up high without much pace. You are moving in and will meet it above the net.",
+            "question": "Which label is this, and what do you hit?",
+            "options": [
+              "Defend — high and deep down the middle",
+              "Neutral — deep cross-court and wait",
+              "Attack — hit to a target and follow it forward"
+            ],
+            "correctIndex": 2,
+            "explanation": "Short, high, slow, and you are moving in with the ball above the net. Those are all the attacking signs at once. Playing it safe wastes the best chance of the point."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "The three labels are real, but the line between them moves with your level. A ball that's neutral for you now is an attacking ball for a player who takes it early. Higher up you make attacks from neutral balls, with court position and early contact, instead of only waiting for a short one. The read stays first; you just have more answers to it."
+          },
+          "situation": "The ball is on its way to you and you must pick a shot before it arrives. You do not yet know whether it deserves aggression, patience, or a scramble.",
+          "principle": "Before you swing, label the ball: attacking, neutral or defending. The label decides the shot.",
+          "defaultAction": "As the ball leaves their racket, label it: attacking, neutral, or defending. On a normal ball, balanced behind the baseline, the label is neutral: hit deep cross-court and wait. The label decides the shot before you commit to a swing.",
+          "adjustments": [
+            {
+              "when": "Their ball is short, high, or slow and you are moving in",
+              "then": "Label it attacking: go for a target and follow the ball forward."
+            },
+            {
+              "when": "Their ball has you late or stretched",
+              "then": "Label it defending: hit high, deep, and down the middle."
+            },
+            {
+              "when": "In a practice drill",
+              "then": "Call the label out loud at their contact until the read comes on its own."
+            }
+          ],
+          "commonMistake": "Attacking a defending ball. The shot is not wrong by itself; it is wrong for that ball, and mislabels cause most misses."
+        },
+        {
+          "id": "rally-2",
+          "title": "Don't Change Direction On A Hard Ball",
+          "diagram": {
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.78,
+                  "y": 0.06
+                },
+                "to": {
+                  "x": 0.18,
+                  "y": 0.9
+                },
+                "kind": "shot",
+                "tone": "neutral",
+                "label": "their hard ball"
+              },
+              {
+                "from": {
+                  "x": 0.18,
+                  "y": 0.9
+                },
+                "to": {
+                  "x": 0.75,
+                  "y": 0.08
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "send it back"
+              },
+              {
+                "from": {
+                  "x": 0.18,
+                  "y": 0.9
+                },
+                "to": {
+                  "x": 0.16,
+                  "y": 0.08
+                },
+                "kind": "shot",
+                "tone": "bad",
+                "label": "risky redirect"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.14,
+                "y": 0.93,
+                "role": "you"
+              }
+            ],
+            "caption": "A hard cross-court arrives. Returning it along the same diagonal is the low-risk reply."
+          },
+          "quiz": {
+            "scenario": "Your opponent drives a heavy ball cross-court to your backhand. You arrive just in time, reaching a little, with your weight still moving sideways.",
+            "question": "Where do you hit it?",
+            "options": [
+              "Back cross-court, the same way it came",
+              "Down the line, to change the direction of the rally",
+              "Short and low, to stop their momentum"
+            ],
+            "correctIndex": 0,
+            "explanation": "Fast ball plus a reaching, sideways body is exactly when redirection fails — the racket face has to do too much and the miss goes wide or lands short. Returning it along the same diagonal keeps you in the rally, and you can change direction on the next slower ball."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "Redirecting pace is a timing skill, not a banned shot. Stronger players change direction on fast balls all the time, because their footwork gets them balanced first. It stays the lower-percentage play, so even they save it for a ball they have set up. Earn the balance, and the down-the-line off pace becomes a weapon."
+          },
+          "situation": "Your opponent drives a heavy ball cross-court to your backhand. You get there just in time, reaching, with your weight still moving sideways.",
+          "principle": "If the ball is fast or you are stretched, send it back the way it came. Change direction only when you have time.",
+          "defaultAction": "Hit it back the way it came, along the same cross-court diagonal. Redirecting a fast ball means reversing its sideways speed in a tiny timing window. Sending it back the same way asks almost nothing of your timing.",
+          "adjustments": [
+            {
+              "when": "The ball comes slow and you have time",
+              "then": "Now you may change direction, and it will actually hurt them."
+            },
+            {
+              "when": "On a big point",
+              "then": "Take zero redirect risk: go back cross-court with extra height."
+            },
+            {
+              "when": "Fast court or windy conditions",
+              "then": "Give the same-way ball more height and margin than usual."
+            }
+          ],
+          "commonMistake": "Taking a hard cross-court ball down the line. You miss into the tramline or leave it short in the middle, and both come from that one choice."
+        },
+        {
+          "id": "rally-3",
+          "title": "Height Is Free Margin",
+          "diagram": {
+            "zones": [
+              {
+                "x": 0.13,
+                "y": 0.0,
+                "w": 0.74,
+                "h": 0.155,
+                "tone": "good",
+                "label": "LANDS DEEP"
+              }
+            ],
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.5,
+                  "y": 0.95
+                },
+                "to": {
+                  "x": 0.42,
+                  "y": 0.1
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "arcing"
+              },
+              {
+                "from": {
+                  "x": 0.5,
+                  "y": 0.95
+                },
+                "to": {
+                  "x": 0.55,
+                  "y": 0.52
+                },
+                "kind": "shot",
+                "tone": "bad",
+                "label": "flat → net"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.5,
+                "y": 0.93,
+                "role": "you"
+              }
+            ],
+            "caption": "The same stroke with more net clearance travels deeper and never finds the tape."
+          },
+          "quiz": {
+            "scenario": "You have missed four rally balls into the net in the last two games. Your swing feels fine and you are getting to the ball in time.",
+            "question": "What is the first thing to change?",
+            "options": [
+              "Swing harder so the ball gets there faster",
+              "Aim to pass a meter or more above the net",
+              "Aim closer to the sidelines to shorten the rallies"
+            ],
+            "correctIndex": 1,
+            "explanation": "Net errors are a flight-path problem, not a power problem — and swinging harder on a low trajectory produces more of them. Lifting the ball's path over the net removes the whole error category and lands the ball deeper as a bonus."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "Height and topspin are your margin, not a ban on flat balls. As your timing sharpens, a flat, driving ball becomes a weapon of its own. You add it. You do not trade the heavy ball away for it."
+          },
+          "situation": "You are trading rally balls from the baseline. Your misses keep finding the net, not the back fence, and swinging feels fine.",
+          "principle": "Your rally ball should cross well above the net — a meter or more. Flat balls are for finishing, not for rallying.",
+          "defaultAction": "Aim your rally ball a meter or more above the net, with topspin so the extra height drops in. The higher arc lands deeper for the same swing, and a heavy looping ball pushes them back.",
+          "adjustments": [
+            {
+              "when": "You get a short ball to finish",
+              "then": "Flatten it out: flat balls are for finishing, not rallying."
+            },
+            {
+              "when": "Opponent struggles with balls above shoulder height",
+              "then": "Loop it even heavier and deeper; many club players have no answer."
+            },
+            {
+              "when": "Strong wind at your back",
+              "then": "Take a little height off so the ball still drops inside the baseline."
+            }
+          ],
+          "commonMistake": "Answering net errors with a harder swing on the same low path. Net misses are a flight-path problem, not a power problem, and more pace makes more of them."
+        },
+        {
+          "id": "rally-4",
+          "title": "One More Ball",
+          "diagram": {
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.5,
+                  "y": 0.94
+                },
+                "to": {
+                  "x": 0.3,
+                  "y": 0.08
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "1"
+              },
+              {
+                "from": {
+                  "x": 0.3,
+                  "y": 0.08
+                },
+                "to": {
+                  "x": 0.7,
+                  "y": 0.9
+                },
+                "kind": "shot",
+                "tone": "neutral",
+                "label": "2"
+              },
+              {
+                "from": {
+                  "x": 0.7,
+                  "y": 0.9
+                },
+                "to": {
+                  "x": 0.5,
+                  "y": 0.06
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "3"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.5,
+                "y": 0.93,
+                "role": "you"
+              }
+            ],
+            "caption": "Three honest balls. A lot of opponents run out of patience before you run out of shots."
+          },
+          "quiz": {
+            "scenario": "You are 3-5 down and you have lost the last two games by trying to end rallies early — a few winners, and a lot more errors.",
+            "question": "What is the change most likely to win you the next game?",
+            "options": [
+              "Go for even bigger shots, since the small ones are not working",
+              "Commit to hitting one more deep ball than feels natural before attacking",
+              "Slow every ball right down and just push it back"
+            ],
+            "correctIndex": 1,
+            "explanation": "The errors are what is losing the games, so the fix is to stop supplying them — not to raise the stakes and not to stop competing. Extending each rally by one deep, purposeful ball keeps the pressure on while letting their errors decide the game."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "Waiting for errors wins until you meet someone who doesn't miss. Higher up, a plain safe ball gets attacked, so 'one more' has to be deep, heavy and well-placed to survive. At that point patience isn't enough on its own — you also have to build the point and finish it. You outlast weaker players; you have to out-play the strong ones."
+          },
+          "situation": "You are in a club match where most points end in an error, not a winner. Count for yourself: about three out of four points end in a miss.",
+          "principle": "At beginner and club level most points end in an error, not a winner. Be the player who hits one more ball.",
+          "defaultAction": "Hit one more deep, high, placed ball than feels natural before you attack. Give yourself a target of a few honest balls in a row before anyone goes for a winner.",
+          "adjustments": [
+            {
+              "when": "Opponent cannot keep a few balls in play",
+              "then": "Just extend the rally; their errors hand you the point at no risk."
+            },
+            {
+              "when": "You are behind in the score",
+              "then": "Resist bigger shots; add one more deep ball, not more pace."
+            },
+            {
+              "when": "A genuinely attackable ball finally arrives",
+              "then": "Take it. One more ball is patience, not a vow of passivity."
+            }
+          ],
+          "commonMistake": "Trying to end rallies early and donating the errors that decide most points. The opposite trap counts too: one more ball means deep, high, and placed, not just pushing."
+        },
+        {
+          "id": "rally-5",
+          "title": "The Short Ball Is A Cue",
+          "diagram": {
+            "zones": [
+              {
+                "x": 0.13,
+                "y": 0.62,
+                "w": 0.74,
+                "h": 0.21,
+                "tone": "focus",
+                "label": "SHORT BALL LANDS"
+              }
+            ],
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.5,
+                  "y": 0.94
+                },
+                "to": {
+                  "x": 0.42,
+                  "y": 0.72
+                },
+                "kind": "move",
+                "tone": "focus",
+                "label": "step in"
+              },
+              {
+                "from": {
+                  "x": 0.42,
+                  "y": 0.72
+                },
+                "to": {
+                  "x": 0.2,
+                  "y": 0.1
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "approach"
+              },
+              {
+                "from": {
+                  "x": 0.42,
+                  "y": 0.72
+                },
+                "to": {
+                  "x": 0.34,
+                  "y": 0.62
+                },
+                "kind": "move",
+                "tone": "focus",
+                "label": "and keep coming"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.5,
+                "y": 0.93,
+                "role": "you"
+              }
+            ],
+            "caption": "Move to the short ball, hit it going forward, and keep coming."
+          },
+          "quiz": {
+            "scenario": "Your opponent's ball is dying and will land around their service line. You read it early and you have time to get there.",
+            "question": "What is the best play?",
+            "options": [
+              "Wait behind the baseline and let it come to you",
+              "Move in, take it early and follow it toward the net",
+              "Move in, hit it, then recover to the baseline"
+            ],
+            "correctIndex": 1,
+            "explanation": "Letting it drop means hitting up from below the net; retreating afterwards hands back the court you just took. Taking it early and continuing forward keeps you above the ball and puts you in position to finish the next one."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "The cue holds, but not every short ball is an invitation. A low, heavy short ball, or a good drop shot, can be a trap that gets you passed. Stronger players grade it first: attack the one sitting up, and just reset the low awkward one. You also pick which side to approach behind, so your split step meets the pass, not the open court."
+          },
+          "situation": "The ball leaves their strings with little pace and a low, dying arc. You read at their contact that it will land near your service line, and you have time.",
+          "principle": "A ball landing near your service line is your cue to move in and take it early. Do not wait for it to come to you.",
+          "defaultAction": "Move in and take the ball early, before it drops below net height, so you can hit down on it. Then keep going forward: inside the service line, split step, ready to volley.",
+          "adjustments": [
+            {
+              "when": "Opponent camps deep behind the baseline",
+              "then": "Approach deep to a corner and take the net behind it."
+            },
+            {
+              "when": "Opponent has a dangerous passing shot",
+              "then": "Approach to their weaker side and cover the line first."
+            },
+            {
+              "when": "The ball dies very low on a slick court",
+              "then": "Stay low and steer the approach deep instead of hitting down."
+            }
+          ],
+          "commonMistake": "Waiting for the short ball and hitting up from below the net, on the run, with no margin. Retreating to the baseline after the approach gives away everything you just earned."
+        },
+        {
+          "id": "rally-6",
+          "title": "Play To The Weaker Wing",
+          "diagram": {
+            "zones": [
+              {
+                "x": 0.57,
+                "y": 0.03,
+                "w": 0.3,
+                "h": 0.18,
+                "tone": "good",
+                "label": "THEIR BACKHAND"
+              }
+            ],
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.4,
+                  "y": 0.94
+                },
+                "to": {
+                  "x": 0.72,
+                  "y": 0.12
+                },
+                "kind": "shot",
+                "tone": "good"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.4,
+                "y": 0.93,
+                "role": "you"
+              },
+              {
+                "x": 0.4,
+                "y": 0.05,
+                "role": "opponent",
+                "label": "Right-hander"
+              }
+            ],
+            "caption": "Against a right-hander, that corner is the backhand — the default target until they prove it is not a weakness."
+          },
+          "quiz": {
+            "scenario": "You have hit four straight balls to your opponent's backhand and each reply has been shorter and weaker than the last. The rally is still going.",
+            "question": "What do you do with the next ball?",
+            "options": [
+              "Switch to their forehand so they cannot settle in",
+              "Hit it to the backhand again",
+              "Go for a winner down the line to end it"
+            ],
+            "correctIndex": 1,
+            "explanation": "The pattern is working and getting better with each repetition — switching sides releases the pressure you spent four balls building. Keep going there until it produces a genuinely attackable ball, then take that one."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "Backhand-by-default is a starting guess, not a fact. Plenty of players own a better two-handed backhand than forehand. The real skill is in Chapter 4: test both wings, then attack whichever one actually leaks."
+          },
+          "situation": "The rally is on and you need a target, but you do not yet know your opponent's weaker side. You have no evidence, only a starting assumption.",
+          "principle": "Until you learn otherwise, direct rally balls to your opponent's backhand — and keep going there when it works.",
+          "defaultAction": "Direct rally balls to their backhand until you learn otherwise. For most developing players it is the newer, less grooved side. Repetition is the pressure: one ball proves nothing, six in a row produces a short ball.",
+          "adjustments": [
+            {
+              "when": "First games of the match",
+              "then": "Hit a few balls to each side and watch what comes back."
+            },
+            {
+              "when": "One wing leaks short or floating replies",
+              "then": "Stop being fair and keep going to that wing."
+            },
+            {
+              "when": "Their backhand turns out to be the stronger side",
+              "then": "Flip the pattern and work the forehand instead."
+            },
+            {
+              "when": "The pattern finally produces an attackable ball",
+              "then": "Take that one; the repetition was building toward it."
+            }
+          ],
+          "commonMistake": "Abandoning a working pattern out of boredom, right before it pays. Four weakening replies from one wing is a reason to hit a fifth ball there, not to switch."
+        }
+      ]
+    },
+    {
+      "id": "serve",
+      "number": 3,
+      "title": "Serve & Return",
+      "subtitle": "The two shots you control completely — and most points start with.",
+      "symbol": "figure.tennis",
+      "isFree": false,
+      "lessons": [
+        {
+          "id": "serve-1",
+          "title": "Placement Beats Power",
+          "diagram": {
+            "zones": [
+              {
+                "x": 0.38,
+                "y": 0.2308,
+                "w": 0.12,
+                "h": 0.2,
+                "tone": "good",
+                "label": "T"
+              },
+              {
+                "x": 0.26,
+                "y": 0.2308,
+                "w": 0.12,
+                "h": 0.2,
+                "tone": "focus",
+                "label": "BODY"
+              },
+              {
+                "x": 0.13,
+                "y": 0.2308,
+                "w": 0.12,
+                "h": 0.2,
+                "tone": "good",
+                "label": "WIDE"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.62,
+                "y": 0.9,
+                "role": "you",
+                "label": "Serving"
+              }
+            ],
+            "caption": "Three targets in the deuce-court service box. Choose one before you toss."
+          },
+          "quiz": {
+            "scenario": "Hitting flat out, you land about one first serve in three. At three-quarter pace, you land about four in five. But the serve is slower.",
+            "question": "Which should you use in a match?",
+            "options": [
+              "The flat-out serve. A big serve wins free points",
+              "The three-quarter serve to a target you pick",
+              "Switch between them so they cannot read you"
+            ],
+            "correctIndex": 1,
+            "explanation": "Landing one in three means you play a second serve on two points out of three. That is where matches are lost. Four in five to a real target keeps you ahead. It removes almost all of that risk."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "This holds while your serve is a rally starter. As it becomes a weapon, the first serve is meant to be hit big and placed. The trade you keep forever is on the second serve: spin and a target you can repeat."
+          },
+          "situation": "You are about to serve, and a big flat serve is tempting. But hitting flat out, you do not know if this one lands. When it misses, you play a second serve, and that is where points are lost.",
+          "principle": "Serve at about three-quarter effort to a target you pick. An easy serve you can hit twice in a row beats a big one you cannot.",
+          "defaultAction": "Pick T, body, or wide before you toss. Then swing at about three-quarter effort to that target. Backing off widens your timing window, so you lose a little speed and gain a lot of control.",
+          "adjustments": [
+            {
+              "when": "Even three-quarter serves keep missing",
+              "then": "Slow down further and keep the target. Accuracy comes back before pace does."
+            },
+            {
+              "when": "The returner camps on your usual target",
+              "then": "Change the target, not the effort. Body serves are hard to camp on."
+            },
+            {
+              "when": "You are up 40-0 or 40-15",
+              "then": "Test one bigger serve. A miss costs little here."
+            },
+            {
+              "when": "Wind or sun makes the toss unsteady",
+              "then": "Aim at the body. It forgives a small miss on either side."
+            }
+          ],
+          "commonMistake": "Swinging flat out for aces and landing one serve in three. A serve with no target lands in the middle of the box, and the middle pressures nobody."
+        },
+        {
+          "id": "serve-2",
+          "title": "The Second Serve Has One Job",
+          "diagram": {
+            "zones": [
+              {
+                "x": 0.31,
+                "y": 0.2308,
+                "w": 0.185,
+                "h": 0.09,
+                "tone": "good",
+                "label": "DEEP THIRD"
+              },
+              {
+                "x": 0.14,
+                "y": 0.4103,
+                "w": 0.35,
+                "h": 0.0897,
+                "tone": "bad",
+                "label": "TOO SHORT"
+              }
+            ],
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.62,
+                  "y": 0.9
+                },
+                "to": {
+                  "x": 0.43,
+                  "y": 0.27
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "spin, deep"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.62,
+                "y": 0.93,
+                "role": "you"
+              }
+            ],
+            "caption": "A serve into the back of the box keeps the returner honest. The front of the box invites an attack."
+          },
+          "quiz": {
+            "scenario": "You just missed a first serve at 30-30. Your usual second serve is a slow, safe ball into the middle. Your opponent has stepped in and attacked it all match.",
+            "question": "What should the second serve be instead?",
+            "options": [
+              "Even slower and safer, to make sure it goes in",
+              "A spin serve with net clearance, aimed deep to the backhand",
+              "A second flat serve. If it lands, they cannot attack it"
+            ],
+            "correctIndex": 1,
+            "explanation": "Going slower gives them the exact ball they have been punishing. A second flat serve risks a double fault on a big point. Spin plus net clearance keeps the serve safe. Depth to the weaker side stops them stepping in."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "Deep, spun, and to the backhand stays right. As your spin grows, the second serve becomes a weapon, not just a safe ball. A real kick jumps above shoulder height and is hard to attack. Stronger servers also vary placement, wide or body, so no returner grooves one target."
+          },
+          "situation": "You just missed a first serve on a tight point. The returner has stepped in, ready to attack. You do not get another miss, and your arm knows it.",
+          "principle": "Get it in, get it deep, and get it to the backhand. Never tap a second serve softly into the middle of the box.",
+          "defaultAction": "Hit a spin serve with clear height over the net, aimed at the back third of the box, to the backhand. Safety comes from spin and net clearance, not from slowing down. Depth keeps the returner behind their baseline.",
+          "adjustments": [
+            {
+              "when": "Their backhand is the stronger side",
+              "then": "Keep the spin and depth, but aim to the forehand instead."
+            },
+            {
+              "when": "The returner is left-handed",
+              "then": "Their backhand sits on the other side. Move your target with it."
+            },
+            {
+              "when": "The returner stands far behind the baseline",
+              "then": "A short, wide spin serve drags them off court instead."
+            },
+            {
+              "when": "Big point and your arm feels tight",
+              "then": "Add more spin and more height. Never less speed with a flat face."
+            }
+          ],
+          "commonMistake": "Tapping a slow, safe ball near the service line, the easiest ball in tennis to attack. The fix is rehearsal: practice this serve until it feels boring, so a tight arm cannot turn into a double fault."
+        },
+        {
+          "id": "serve-3",
+          "title": "Serve Plus One",
+          "diagram": {
+            "zones": [
+              {
+                "x": 0.13,
+                "y": 0.23,
+                "w": 0.14,
+                "h": 0.2,
+                "tone": "good",
+                "label": "1. WIDE"
+              },
+              {
+                "x": 0.6,
+                "y": 0.02,
+                "w": 0.27,
+                "h": 0.18,
+                "tone": "focus",
+                "label": "3. OPEN COURT"
+              }
+            ],
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.62,
+                  "y": 0.9
+                },
+                "to": {
+                  "x": 0.2,
+                  "y": 0.32
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "serve"
+              },
+              {
+                "from": {
+                  "x": 0.06,
+                  "y": 0.05
+                },
+                "to": {
+                  "x": 0.5,
+                  "y": 0.85
+                },
+                "kind": "shot",
+                "tone": "neutral",
+                "label": "2. their reply"
+              },
+              {
+                "from": {
+                  "x": 0.5,
+                  "y": 0.85
+                },
+                "to": {
+                  "x": 0.73,
+                  "y": 0.1
+                },
+                "kind": "shot",
+                "tone": "focus",
+                "label": "+1"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.62,
+                "y": 0.93,
+                "role": "you"
+              },
+              {
+                "x": 0.06,
+                "y": 0.05,
+                "role": "opponent",
+                "label": "Them"
+              }
+            ],
+            "caption": "A wide serve pulls them off court. Their reply comes back middle or crosscourt. Your plus-one goes into the space they left."
+          },
+          "quiz": {
+            "scenario": "You serve wide in the deuce court. Your right-handed opponent is dragged well outside their forehand sideline to reach it.",
+            "question": "Where should you expect to hit your next ball?",
+            "options": [
+              "Straight back to where they are, before they recover",
+              "Into the open court on the other side",
+              "Short, to bring them forward"
+            ],
+            "correctIndex": 1,
+            "explanation": "A returner stretched outside the sideline has left most of the court empty. They are still moving away from it. Hitting into that space is the whole reason you served wide. It is a target you could plan before the toss."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "Two patterns will carry you for a long time. As opponents start reading you, add disguise and a third look. Better players also aim the plus-one behind a recovering returner, not only into open space. And often they build with a heavy ball instead of forcing a winner."
+          },
+          "situation": "You are about to serve, and you do not know where the return will go. But you can shape it. A wide serve pulls the returner off court, and their reply usually comes back through the middle or crosscourt.",
+          "principle": "Decide your second shot before you toss. The serve is not the play. The serve plus the next ball is the play.",
+          "defaultAction": "Decide your serve target and your next shot before you toss. For example: serve wide, then step in and hit your forehand into the open court. The serve is not the play. The serve plus the next ball is the play.",
+          "adjustments": [
+            {
+              "when": "You serve down the T instead",
+              "then": "Expect a reply through the middle. Hit your next ball to the open side."
+            },
+            {
+              "when": "The returner sprints back to the middle fast",
+              "then": "Hit behind them, into the corner they just left."
+            },
+            {
+              "when": "Your wide serve is not landing today",
+              "then": "Run the T pattern instead. Two practiced patterns carry a whole match."
+            }
+          ],
+          "commonMistake": "Serving and just seeing what happens. Then you are reacting to a ball you could have expected, from a spot you could have reached early."
+        },
+        {
+          "id": "serve-4",
+          "title": "Return Deep And Middle",
+          "diagram": {
+            "zones": [
+              {
+                "x": 0.3,
+                "y": 0.02,
+                "w": 0.4,
+                "h": 0.12,
+                "tone": "good",
+                "label": "DEEP MIDDLE"
+              }
+            ],
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.38,
+                  "y": 0.06
+                },
+                "to": {
+                  "x": 0.78,
+                  "y": 0.72
+                },
+                "kind": "shot",
+                "tone": "neutral",
+                "label": "their serve"
+              },
+              {
+                "from": {
+                  "x": 0.8,
+                  "y": 0.9
+                },
+                "to": {
+                  "x": 0.5,
+                  "y": 0.1
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "return"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.8,
+                "y": 0.9,
+                "role": "you",
+                "label": "Returning"
+              },
+              {
+                "x": 0.38,
+                "y": 0.04,
+                "role": "opponent",
+                "label": "Server"
+              }
+            ],
+            "caption": "Deep and central. This return neutralizes a serve instead of gambling on it."
+          },
+          "quiz": {
+            "scenario": "Your opponent's first serve is fast but lands in the middle of the box. You reach it comfortably. But you have little time to swing.",
+            "question": "What is the best return?",
+            "options": [
+              "A short compact block, deep down the middle",
+              "A full swing cross-court to take charge",
+              "A soft high ball to give yourself time"
+            ],
+            "correctIndex": 0,
+            "explanation": "With a fast serve, you redirect their pace, not make your own. So a compact block is the reliable stroke. Deep and central kills the server's plus-one and starts the rally even. A full swing would mostly miss. A soft floater would invite an attack."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "Deep and central neutralizes a serve you cannot attack. Against a big server who steps in, better returners vary it. They block it low and short, or drive at a corner, so the server never grooves the same next ball."
+          },
+          "situation": "A fast first serve is coming at you. You will know where it goes only at the last moment, and you will have little time to swing. Missing the return gives away the point for free.",
+          "principle": "Your first job on the return is simple. Get it in play, deep, near the middle. Winners off the return are a bonus, not a plan.",
+          "defaultAction": "Shorten your swing to a compact block and send the ball deep, near the middle. You are borrowing the serve's pace, not making your own. Deep and central takes away the server's plus-one shot and their crosscourt angle, so the rally starts even.",
+          "adjustments": [
+            {
+              "when": "A slow second serve comes instead",
+              "then": "Step in and take a fuller swing. The block is for pace you lack time against."
+            },
+            {
+              "when": "The server follows the serve to the net",
+              "then": "Keep it middle but aim low, at their feet."
+            },
+            {
+              "when": "The serve stretches you out wide",
+              "then": "Just block it back deep anywhere, then recover toward the middle."
+            },
+            {
+              "when": "Your blocks keep floating long",
+              "then": "Firm up the wrist and take the ball earlier, with less lift."
+            }
+          ],
+          "commonMistake": "Taking a full swing at a fast serve to hit a winner. Winners off the return are a bonus, not a plan, and the full swing mostly hands the server a free point."
+        },
+        {
+          "id": "serve-5",
+          "title": "Move Your Return Position",
+          "diagram": {
+            "zones": [
+              {
+                "x": 0.6,
+                "y": 0.985,
+                "w": 0.275,
+                "h": 0.015,
+                "tone": "focus",
+                "label": "1st SERVE"
+              },
+              {
+                "x": 0.6,
+                "y": 0.925,
+                "w": 0.275,
+                "h": 0.04,
+                "tone": "good",
+                "label": "2nd SERVE"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.4,
+                "y": 0.05,
+                "role": "opponent",
+                "label": "Server"
+              }
+            ],
+            "caption": "Two return positions. Moving between them is one of the cheapest ways to apply pressure."
+          },
+          "quiz": {
+            "scenario": "Your opponent just double-faulted once and missed several first serves. Their second serve is slow and lands short in the box.",
+            "question": "Where do you stand for the next second serve?",
+            "options": [
+              "Where you always stand. Moving might make you mistime it",
+              "Two steps back, to be safe on a slow ball",
+              "Step in, about a step inside the baseline"
+            ],
+            "correctIndex": 2,
+            "explanation": "A slow, short second serve is exactly the ball to take early. Stepping in about a step or two cuts the server's angle. It also lets you hit it before it drops. And it puts a nervous server under more pressure, at no cost to you."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "Back for the first, in for the second is a sound default. Stronger returners push both further. Against a big server they stand well back to buy time. On a weak second serve they step inside the baseline and take it on the rise."
+          },
+          "situation": "You are waiting to return, and you do not know how fast this serve will be. But the situation tells you plenty. First serves come fast; after a miss, a slower, shorter second serve is coming.",
+          "principle": "Stand back on first serves. Step in on second serves. Where you stand is a decision, not a habit.",
+          "defaultAction": "Stand a step or two behind your baseline for first serves. That buys reaction time and lets the ball drop to a comfortable height. The moment a first serve misses, step in about a step inside the baseline, where the server can see you.",
+          "adjustments": [
+            {
+              "when": "Their second serve is still fast and deep",
+              "then": "Step in less, maybe half a step. Still move, so they still see it."
+            },
+            {
+              "when": "The second serve kicks up high",
+              "then": "Step in earlier and take the ball before it climbs above your shoulder."
+            },
+            {
+              "when": "You mistime returns from inside the court",
+              "then": "Start at the baseline and move in one step at a time."
+            },
+            {
+              "when": "The server just double-faulted",
+              "then": "Step in where they can see. The extra pressure costs you nothing."
+            }
+          ],
+          "commonMistake": "Standing in the same spot for every serve out of habit. Where you stand is a decision, and giving up that decision hands back free time and free pressure."
+        },
+        {
+          "id": "serve-6",
+          "title": "Serve To The Score",
+          "diagram": {
+            "zones": [
+              {
+                "x": 0.33,
+                "y": 0.2308,
+                "w": 0.13,
+                "h": 0.2,
+                "tone": "good",
+                "label": "TRUSTED"
+              },
+              {
+                "x": 0.13,
+                "y": 0.2308,
+                "w": 0.14,
+                "h": 0.2,
+                "tone": "bad",
+                "label": "UNTESTED"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.62,
+                "y": 0.9,
+                "role": "you",
+                "label": "Break point"
+              }
+            ],
+            "caption": "On a big point, aim where you have already proved you can land it."
+          },
+          "quiz": {
+            "scenario": "It is 30-40 on your serve. Your body serve to the backhand has landed all match. Your wide serve has mostly missed.",
+            "question": "Which serve do you hit?",
+            "options": [
+              "The wide serve. It is bolder and they are not expecting it",
+              "The body serve to the backhand",
+              "A very safe slow serve into the middle of the box"
+            ],
+            "correctIndex": 1,
+            "explanation": "A break point is decided by whether the ball goes in. The wide serve has been missing all match. The body serve is the one you have proof for. The slow middle serve solves nothing. It hands them an easy attack."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "On big points, your most reliable serve is still the right choice. But a sharp returner sits on the serve they know you trust. So stronger servers widen what trusted means, grooving two or three patterns in practice. Then they stay reliable and hard to read at once."
+          },
+          "situation": "It is a big point on your serve, maybe 30-40. You feel the pull to try something bold that might end the point at once. You do not know how your nerves will hold, but you do know which serve has landed all match.",
+          "principle": "On big points, serve the pattern you trust most. Do not serve the one you wish you had.",
+          "defaultAction": "Serve the pattern you have proof for, the one you counted in practice and that has landed today. Accept that a rally may follow. A rally beats a double fault by a mile.",
+          "adjustments": [
+            {
+              "when": "You are up 40-0 in a game",
+              "then": "Try the surprise target now, while a miss costs little."
+            },
+            {
+              "when": "Your trusted serve starts missing",
+              "then": "Add spin and margin to that same serve. Do not switch to a wilder one."
+            },
+            {
+              "when": "The returner starts camping on your trusted target",
+              "then": "Use the surprise you saved, once, then go back to the pattern."
+            },
+            {
+              "when": "You have not counted your serves yet",
+              "then": "Count in your next practice. Know your best serve before you need it at 30-40."
+            }
+          ],
+          "commonMistake": "Hitting the bold, low-percentage serve on a break point because it might win outright. Big points are decided by whether the ball goes in, and they are the worst time to try something new."
+        }
+      ]
+    },
+    {
+      "id": "reading",
+      "number": 4,
+      "title": "Reading Your Opponent",
+      "subtitle": "Find what they cannot do, then make them do it.",
+      "symbol": "eye",
+      "isFree": false,
+      "lessons": [
+        {
+          "id": "read-1",
+          "title": "Find The Weakness In Two Games",
+          "diagram": {
+            "zones": [
+              {
+                "x": 0.13,
+                "y": 0.03,
+                "w": 0.3,
+                "h": 0.16,
+                "tone": "focus",
+                "label": "TEST 1"
+              },
+              {
+                "x": 0.57,
+                "y": 0.03,
+                "w": 0.3,
+                "h": 0.16,
+                "tone": "focus",
+                "label": "TEST 2"
+              },
+              {
+                "x": 0.15,
+                "y": 0.3,
+                "w": 0.28,
+                "h": 0.15,
+                "tone": "focus",
+                "label": "TEST 3 · SHORT"
+              },
+              {
+                "x": 0.57,
+                "y": 0.3,
+                "w": 0.28,
+                "h": 0.15,
+                "tone": "focus",
+                "label": "TEST 4 · SHORT"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.5,
+                "y": 0.93,
+                "role": "you"
+              },
+              {
+                "x": 0.5,
+                "y": 0.05,
+                "role": "opponent",
+                "label": "Them"
+              }
+            ],
+            "caption": "Four deliberate probes in the first two games. What comes back tells you the plan for the rest."
+          },
+          "quiz": {
+            "scenario": "It is the second game. Their backhand looks technically messy but keeps landing deep. Their forehand looks textbook, but twice now it has come back short and floating when you hit it high.",
+            "question": "What is your plan for the match?",
+            "options": [
+              "Attack the backhand — the technique is clearly weaker",
+              "Hit high balls to the forehand and attack the short replies",
+              "Keep everything down the middle and wait for errors"
+            ],
+            "correctIndex": 1,
+            "explanation": "The weakness is defined by what comes back, not by how the swing looks — and the high ball to the forehand is producing the short floaters you want. The messy backhand is returning deep balls, so it is not the side to attack."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "Two games is enough against most opponents. Stronger players warm a weak wing into shape, or disguise it as a trap. Against them, keep re-testing through the match; a weakness can hide early and surface only under fatigue or pressure."
+          },
+          "situation": "A match is starting against someone you have not played. You do not yet know which side, height, or depth hurts them. The first two games are where you find out.",
+          "principle": "Spend the first two games testing both wings, high and low, deep and short. Then play the answer for the rest of the match.",
+          "defaultAction": "In the first two games, send one ball to each spot: both wings, high, low, deep, and short. You are still trying to win those points; the targets just also teach you something. Judge each reply, not their swing.",
+          "adjustments": [
+            {
+              "when": "A clean-looking stroke keeps floating back short",
+              "then": "That is the weakness. Attack it, no matter how good the swing looks."
+            },
+            {
+              "when": "An ugly stroke keeps landing deep",
+              "then": "Leave it alone. A messy swing that returns deep balls is not weak."
+            },
+            {
+              "when": "Two games in, you know the answer",
+              "then": "Play the weakness for the rest of the match. That is not rude; it is the game."
+            }
+          ],
+          "commonMistake": "Attacking the side that looks technically ugly, or spreading your shots fairly once you know. A weakness is what comes back, not how the swing looks."
+        },
+        {
+          "id": "read-2",
+          "title": "Watch Their Recovery",
+          "diagram": {
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.25,
+                  "y": 0.12
+                },
+                "to": {
+                  "x": 0.55,
+                  "y": 0.08
+                },
+                "kind": "move",
+                "tone": "neutral",
+                "label": "recovering"
+              },
+              {
+                "from": {
+                  "x": 0.7,
+                  "y": 0.92
+                },
+                "to": {
+                  "x": 0.22,
+                  "y": 0.1
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "behind them"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.7,
+                "y": 0.93,
+                "role": "you"
+              },
+              {
+                "x": 0.4,
+                "y": 0.1,
+                "role": "opponent",
+                "label": "Moving right"
+              }
+            ],
+            "caption": "They are still moving back to the middle. The ball behind them makes them stop, turn and start again."
+          },
+          "quiz": {
+            "scenario": "You have pulled your opponent wide to their backhand corner. As you prepare to hit, you see them sprinting hard back toward the middle of their baseline.",
+            "question": "Where do you hit?",
+            "options": [
+              "Into the open court on the far side, since it looks empty",
+              "Back behind them, into the same corner",
+              "Down the middle to keep the rally going"
+            ],
+            "correctIndex": 1,
+            "explanation": "They are already running back to the middle. A ball to the far open court arrives right where they are heading. Hitting behind them makes them stop, turn, and start again against their own momentum. That costs far more than distance."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "This works best when recovery is slow. A fast, well-trained opponent recovers early and closes the window you aimed at. Against them, hit sooner and heavier, and read court position rather than lazy feet. Some even leave a side open to bait your next ball."
+          },
+          "situation": "Mid-rally, you have just moved your opponent and the ball is coming back. You do not yet know where your next shot should land. Their feet will tell you.",
+          "principle": "Between shots, look at where your opponent goes. Slow or lazy recovery tells you exactly where the next ball should land.",
+          "defaultAction": "In the moment after the ball leaves their racket, glance at their feet. If they drift, admire the shot, or recover to the wrong side, aim your next ball at the gap they leave.",
+          "adjustments": [
+            {
+              "when": "They sprint hard back toward the middle",
+              "then": "Hit behind them, into the corner they just left. Changing direction costs more than distance."
+            },
+            {
+              "when": "They recover slowly or lazily",
+              "then": "Hit the same target twice in a row. They will be leaning the wrong way."
+            },
+            {
+              "when": "They recover early and arrive balanced",
+              "then": "No free gap yet. Play your normal pattern and keep watching their feet."
+            }
+          ],
+          "commonMistake": "Hitting into the open court by reflex while they sprint toward it. The ball arrives exactly where they are heading; the ball behind them makes them stop and restart."
+        },
+        {
+          "id": "read-3",
+          "title": "Make Them Come Forward",
+          "diagram": {
+            "zones": [
+              {
+                "x": 0.2,
+                "y": 0.3,
+                "w": 0.3,
+                "h": 0.15,
+                "tone": "good",
+                "label": "SHORT & LOW"
+              }
+            ],
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.6,
+                  "y": 0.9
+                },
+                "to": {
+                  "x": 0.32,
+                  "y": 0.38
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "low"
+              },
+              {
+                "from": {
+                  "x": 0.6,
+                  "y": 0.9
+                },
+                "to": {
+                  "x": 0.4,
+                  "y": 0.62
+                },
+                "kind": "move",
+                "tone": "focus",
+                "label": "follow in"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.6,
+                "y": 0.93,
+                "role": "you"
+              },
+              {
+                "x": 0.5,
+                "y": 0.04,
+                "role": "opponent",
+                "label": "Deep"
+              }
+            ],
+            "caption": "Low and short pulls a baseline player into the direction they never practice."
+          },
+          "quiz": {
+            "scenario": "Your opponent hits heavy deep balls and stands well behind their baseline. Trading hard groundstrokes with them is not going well for you.",
+            "question": "What tactic is most likely to change the match?",
+            "options": [
+              "Hit even harder and deeper to push them further back",
+              "Use short low balls to drag them forward, and follow them in",
+              "Slow everything down and rally from the baseline"
+            ],
+            "correctIndex": 1,
+            "explanation": "Deep, hard hitting is the exact game they are set up for. A low, short ball makes them move the way they never practice. Following it in lets you finish the weak reply."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "True for developing players. But a well-coached opponent moves forward well and volleys, so a short low ball becomes an invitation. Against them, use it only when you can follow in and cover the pass. Depth, angle, and disguise matter more than the short ball alone."
+          },
+          "situation": "Your opponent camps behind the baseline and trades heavy, deep groundstrokes well. Side-to-side rallies are the game they have drilled for years, and you are losing them. Almost no club player has practiced sprinting forward to a low ball.",
+          "principle": "Most developing players are far worse moving forward than sideways. A short low ball is often a better weapon than a hard deep one.",
+          "defaultAction": "Hit a short ball that stays low, so they must sprint in, bend, and lift it. Then move forward to the net yourself, ready to finish the floating reply that lifting produces.",
+          "adjustments": [
+            {
+              "when": "Your short ball comes out high",
+              "then": "That is a gift, not a weapon. Expect their attack and recover fast."
+            },
+            {
+              "when": "They already stand inside the baseline",
+              "then": "Short balls will not stretch them. Push them deep first, then pull them in."
+            },
+            {
+              "when": "They handle low short balls comfortably",
+              "then": "Drop the tactic for now and test a different target."
+            }
+          ],
+          "commonMistake": "Hitting the drop shot and staying back. That gives them the whole court to recover into; the short ball only pays off if you follow it in."
+        },
+        {
+          "id": "read-4",
+          "title": "Play The Conditions",
+          "diagram": {
+            "zones": [
+              {
+                "x": 0.13,
+                "y": 0.02,
+                "w": 0.74,
+                "h": 0.08,
+                "tone": "good",
+                "label": "INTO WIND · GO DEEP"
+              },
+              {
+                "x": 0.13,
+                "y": 0.1,
+                "w": 0.74,
+                "h": 0.1,
+                "tone": "focus",
+                "label": "DOWNWIND · SHORTEN TARGET"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.5,
+                "y": 0.93,
+                "role": "you"
+              }
+            ],
+            "caption": "The same swing lands in two different places depending on which way the wind is going."
+          },
+          "quiz": {
+            "scenario": "You are playing with a strong wind at your back. You have hit four balls long in this game with what felt like a normal swing.",
+            "question": "What do you adjust?",
+            "options": [
+              "Swing harder so the ball drops faster",
+              "Add topspin, keep it lower over the net, and aim a bit shorter",
+              "Keep the same target and accept the errors as bad luck"
+            ],
+            "correctIndex": 1,
+            "explanation": "With the wind behind you the ball carries, so a normal swing flies long. Swinging harder only makes it worse. Topspin brings the ball down, a lower path fights the lift, and a shorter target soaks up the carry."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "Reading conditions before you start is right at every level. Stronger players go further and use them on purpose: heavier spin with the wind, a deliberate lob into the sun. They also re-read as the sun moves and the wind swirls, not just once."
+          },
+          "situation": "You are about to play outdoors. Sun, wind, and the surface will change what a normal swing does today, and you do not yet know how. The time to find out is before the first point, not after a lost set.",
+          "principle": "Sun, wind and surface change the right tactics. Read them before the first point, not after you lose the first set.",
+          "defaultAction": "Before play, check three things: the wind direction, which end puts sun in the server's eyes, and how fast the court plays. On slow courts like clay, favor patience and depth; on fast courts, favor your serve and first strike.",
+          "adjustments": [
+            {
+              "when": "Hitting into the wind",
+              "then": "Hit bigger and deeper. The air holds the ball in."
+            },
+            {
+              "when": "Wind at your back",
+              "then": "Add topspin, keep the ball lower over the net, and aim a bit shorter."
+            },
+            {
+              "when": "They serve from the end with sun in their eyes",
+              "then": "Expect more serve misses and be ready for them."
+            },
+            {
+              "when": "Their overheads mean looking into the sun",
+              "then": "Send up high balls. Their smashes get awkward on that end."
+            }
+          ],
+          "commonMistake": "Keeping your normal swing and targets after conditions change, then blaming bad luck. Four balls long with the wind behind you is a reading problem, not a form problem."
+        },
+        {
+          "id": "read-5",
+          "title": "The Big Points Are Simple",
+          "diagram": {
+            "zones": [
+              {
+                "x": 0.57,
+                "y": 0.03,
+                "w": 0.3,
+                "h": 0.17,
+                "tone": "good",
+                "label": "A-PATTERN"
+              }
+            ],
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.32,
+                  "y": 0.93
+                },
+                "to": {
+                  "x": 0.72,
+                  "y": 0.11
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "deep cross"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.32,
+                "y": 0.9,
+                "role": "you",
+                "label": "Break point"
+              }
+            ],
+            "caption": "On the points that decide games, run the pattern you already know works."
+          },
+          "quiz": {
+            "scenario": "Break point, returning serve. All match your reliable pattern has been a deep cross-court to their backhand. You have also been thinking about a drop shot you have not landed today.",
+            "question": "What do you play?",
+            "options": [
+              "The drop shot — a surprise is worth more on a big point",
+              "The deep cross-court to the backhand",
+              "Whatever feels right when the ball arrives"
+            ],
+            "correctIndex": 1,
+            "explanation": "Break point is one of the points that decides the game, so it belongs to your most reliable pattern. A shot you have not landed all day is an experiment. Experiments belong on 40-0."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "One A-pattern wins big points for a long time. But strong opponents scout it, so on serve the real edge is your serve-plus-one and what they avoid under pressure. Keep two patterns you trust, so a good returner cannot sit on one. Read their tendencies, not just yours."
+          },
+          "situation": "The score has reached 30-30, deuce, or break point — one of the points that decides the game. You are tempted to pull out something special, maybe a shot you have not landed today.",
+          "principle": "At 30-30, deuce and break point, play your most reliable pattern. Complexity loses big points.",
+          "defaultAction": "Run the one pattern you trust most — for example, deep cross-court to their backhand until they miss. Be boring on purpose. Complexity loses big points; reliability wins them.",
+          "adjustments": [
+            {
+              "when": "Serving at 40-0, 40-15, or 30-0",
+              "then": "This is a cheap point. Try the drop shot or the new serve here."
+            },
+            {
+              "when": "Serving at 0-40",
+              "then": "That is triple break point, not a cheap point. Run your most reliable pattern."
+            },
+            {
+              "when": "They have solved your A-pattern",
+              "then": "Switch to your next most trusted pattern. Still nothing new or untested."
+            }
+          ],
+          "commonMistake": "Saving the surprise shot for the big point. A shot you have not landed all day is an experiment, and experiments belong on 40-0, not break point."
+        },
+        {
+          "id": "read-6",
+          "title": "Change A Losing Game",
+          "diagram": {
+            "zones": [
+              {
+                "x": 0.13,
+                "y": 0.03,
+                "w": 0.3,
+                "h": 0.17,
+                "tone": "bad",
+                "label": "NOT WORKING"
+              },
+              {
+                "x": 0.57,
+                "y": 0.03,
+                "w": 0.3,
+                "h": 0.17,
+                "tone": "good",
+                "label": "TRY THIS INSTEAD"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.5,
+                "y": 0.93,
+                "role": "you"
+              }
+            ],
+            "caption": "A change you can name and check: a different target, not just more effort."
+          },
+          "quiz": {
+            "scenario": "You are down 1-4. You have been trading deep baseline balls all set and losing most of the rallies, and you have not tried anything different.",
+            "question": "What is the right response?",
+            "options": [
+              "Focus harder and commit to the same baseline game",
+              "Pick one concrete change — say, high balls to their forehand — and run it for a full game",
+              "Just swing harder and hope the misses stop"
+            ],
+            "correctIndex": 1,
+            "explanation": "The pattern is losing, so repeating it with more effort just loses faster. Swinging harder and hoping is not a change you can name or check. One named change, held for a full game, tells you whether the replies got weaker."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "Change when losing, hold when winning still holds true. But good opponents solve a winning pattern fast. Stronger players read the moment it starts working less and change first, and they disguise a good pattern rather than abandon it."
+          },
+          "situation": "You are behind, the same rallies keep ending the same way, and you have changed nothing. You do not yet know what would work — only that what you are doing does not.",
+          "principle": "If you are losing, change something concrete. If you are winning, change nothing at all.",
+          "defaultAction": "Pick one concrete change you can name and check: a target, a height, a return position, where you stand to serve. Run it for a full game before you judge it. Then ask one question: did the balls coming back get weaker?",
+          "adjustments": [
+            {
+              "when": "You are winning",
+              "then": "Change nothing at all. Keep running the working pattern until your opponent solves it."
+            },
+            {
+              "when": "After a full game, replies got weaker",
+              "then": "Keep the change. It is your pattern now."
+            },
+            {
+              "when": "After a full game, nothing got weaker",
+              "then": "Name a different concrete change and give it the same one-game test."
+            }
+          ],
+          "commonMistake": "Calling \"try harder\" a change, or judging a change after one point. Effort is not a tactic you can name and check, and one point proves nothing."
+        }
+      ]
+    },
+    {
+      "id": "patterns",
+      "number": 5,
+      "title": "Point Patterns",
+      "subtitle": "Ready-made two- and three-shot plays you can run on court tomorrow.",
+      "symbol": "square.stack.3d.up",
+      "isFree": false,
+      "lessons": [
+        {
+          "id": "pat-1",
+          "title": "Wide, Then Behind",
+          "diagram": {
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.65,
+                  "y": 0.92
+                },
+                "to": {
+                  "x": 0.18,
+                  "y": 0.14
+                },
+                "kind": "shot",
+                "tone": "focus",
+                "label": "1. wide"
+              },
+              {
+                "from": {
+                  "x": 0.22,
+                  "y": 0.12
+                },
+                "to": {
+                  "x": 0.55,
+                  "y": 0.07
+                },
+                "kind": "move",
+                "tone": "neutral",
+                "label": "2. they recover"
+              },
+              {
+                "from": {
+                  "x": 0.48,
+                  "y": 0.9
+                },
+                "to": {
+                  "x": 0.2,
+                  "y": 0.09
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "3. behind"
+              },
+              {
+                "from": {
+                  "x": 0.62,
+                  "y": 0.93
+                },
+                "to": {
+                  "x": 0.5,
+                  "y": 0.92
+                },
+                "kind": "move",
+                "tone": "neutral",
+                "label": "recover"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.62,
+                "y": 0.93,
+                "role": "you"
+              },
+              {
+                "x": 0.42,
+                "y": 0.09,
+                "role": "opponent",
+                "label": "Moving"
+              }
+            ],
+            "caption": "Two balls to the same corner. The second one arrives while they are running the other way."
+          },
+          "quiz": {
+            "scenario": "You have just hit a deep ball wide to their forehand corner. They reached it late and are now sprinting back toward the middle. Your next ball is comfortable.",
+            "question": "What do you hit?",
+            "options": [
+              "Deep into the same forehand corner",
+              "Cross-court into the open backhand side",
+              "A drop shot to catch them out"
+            ],
+            "correctIndex": 0,
+            "explanation": "They are running toward the middle, so the open court is where they will arrive — the cross-court would land in front of them. Repeating the target forces them to stop and reverse against their own momentum, which is the expensive part."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "Against a quick, balanced defender, the window to hit behind them closes fast. If they read it and are already turning back, that deep ball becomes a comfortable change-of-direction pass. Stronger players hit behind only when the recovery is truly committed, and take the open court the rest of the time."
+          },
+          "situation": "You pulled your opponent wide with a deep ball, and they reached it late. Now they are sprinting back toward the middle. You have a comfortable ball, but you cannot yet be sure where they will stop.",
+          "principle": "Pull them wide with one ball, then hit the next one straight back where they came from.",
+          "defaultAction": "Hit your next ball deep into the corner they just left. Look up as you prepare to check they are still moving. Aim for depth, not pace — a deep ball stops them turning and hitting comfortably.",
+          "adjustments": [
+            {
+              "when": "They are already stopped and balanced in the middle",
+              "then": "Hit into the open court instead of behind them."
+            },
+            {
+              "when": "You cannot control depth from this ball",
+              "then": "Play a safe deep ball through the middle and wait for a better chance."
+            },
+            {
+              "when": "On clay, where they slide into the wide ball",
+              "then": "The ball behind them works even better; the slide delays their change of direction."
+            }
+          ],
+          "commonMistake": "Hitting to the open court by reflex. They are already running there, so your ball lands right in front of them."
+        },
+        {
+          "id": "pat-2",
+          "title": "The Inside-Out Forehand",
+          "diagram": {
+            "zones": [
+              {
+                "x": 0.59,
+                "y": 0.03,
+                "w": 0.28,
+                "h": 0.17,
+                "tone": "good",
+                "label": "THEIR BACKHAND"
+              }
+            ],
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.5,
+                  "y": 0.86
+                },
+                "to": {
+                  "x": 0.38,
+                  "y": 0.9
+                },
+                "kind": "move",
+                "tone": "focus",
+                "label": "step around"
+              },
+              {
+                "from": {
+                  "x": 0.38,
+                  "y": 0.9
+                },
+                "to": {
+                  "x": 0.74,
+                  "y": 0.12
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "inside-out FH"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.38,
+                "y": 0.93,
+                "role": "you"
+              },
+              {
+                "x": 0.45,
+                "y": 0.05,
+                "role": "opponent",
+                "label": "Right-hander"
+              }
+            ],
+            "balls": [
+              {
+                "x": 0.5,
+                "y": 0.84
+              }
+            ],
+            "caption": "Move around the middle ball so your forehand — not your backhand — plays it."
+          },
+          "quiz": {
+            "scenario": "A slow, neutral ball is coming down the middle of your court. You are a right-hander with a much stronger forehand than backhand, and your right-handed opponent is in the middle of their baseline.",
+            "question": "What is the best play?",
+            "options": [
+              "Take it with the backhand, since it is on that side",
+              "Step around it and hit an inside-out forehand to their backhand",
+              "Step around it and hit a forehand down the line"
+            ],
+            "correctIndex": 1,
+            "explanation": "A middle ball is the one where you get to choose your wing, so choose your forehand. Inside-out sends it to their backhand on the safer diagonal. Down the line is a tighter target with a longer run home."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "Stepping around the backhand hands over your own forehand corner, and good players will expose it. Against an opponent who moves and redirects well, one inside-out ball can leave you scrambling. Stronger players pick their moment: they run around only when the ball and court position offer a real advantage, not by default."
+          },
+          "situation": "A slow, neutral ball is coming down the middle of your court. Nothing forces your choice of wing, and your opponent is waiting in the middle, ready to go either way. This is the ball where you get to pick your best shot.",
+          "principle": "When a ball comes to the middle, step around it and hit a forehand to their backhand — your best shot into their worst.",
+          "defaultAction": "Step around to the backhand side of the ball and swing across it with your forehand. That sends it to a right-hander's backhand on the safer cross-court diagonal. Then recover wider than feels normal, because stepping around leaves your forehand corner open.",
+          "adjustments": [
+            {
+              "when": "Your opponent is left-handed",
+              "then": "Inside-out now finds their forehand; go down the middle or inside-in instead."
+            },
+            {
+              "when": "The ball sits up short and easy",
+              "then": "Take it early and hit inside-in down the line to finish."
+            },
+            {
+              "when": "The ball is deep and coming fast",
+              "then": "Do not step around; take the backhand and stay in the rally."
+            }
+          ],
+          "commonMistake": "Stepping around and then recovering to your usual spot. The reply into your open forehand corner beats you before the pattern pays off."
+        },
+        {
+          "id": "pat-3",
+          "title": "Short Cross, Deep Line",
+          "diagram": {
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.7,
+                  "y": 0.9
+                },
+                "to": {
+                  "x": 0.2,
+                  "y": 0.34
+                },
+                "kind": "shot",
+                "tone": "focus",
+                "label": "1. short cross"
+              },
+              {
+                "from": {
+                  "x": 0.7,
+                  "y": 0.9
+                },
+                "to": {
+                  "x": 0.8,
+                  "y": 0.06
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "2. deep line"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.7,
+                "y": 0.93,
+                "role": "you"
+              },
+              {
+                "x": 0.25,
+                "y": 0.3,
+                "role": "opponent",
+                "label": "Pulled in"
+              }
+            ],
+            "caption": "The short angle drags them forward and across. The deep line finishes into the space behind them."
+          },
+          "quiz": {
+            "scenario": "Your short angle worked. Your opponent had to sprint forward and across. Now they are stranded near their service line on one side, having just scraped the ball back. You have a comfortable ball.",
+            "question": "How do you finish?",
+            "options": [
+              "Another short angle, to the same side",
+              "Deep down the open line, behind them",
+              "Hard straight at them so they cannot swing"
+            ],
+            "correctIndex": 1,
+            "explanation": "They are stuck forward and to one side, so the whole diagonal behind them is empty and unreachable. A deep ball down the open line only has to land in, while another short angle brings them back into the point."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "Against a fast defender, the down-the-line finish has to be nearly perfect. Reach it late or leave it short, and a quick player changes direction and passes you cross-court. Stronger players still open with the short angle, but only commit to the line when the opponent is truly stranded."
+          },
+          "situation": "You are in a baseline rally and get a ball you can fully control. Your opponent covers side-to-side well, but running forward and sideways at once is far more expensive. You do not yet know how they handle being dragged toward the net.",
+          "principle": "Pull them forward and across with a short angled ball, then hit the next one deep down the open line.",
+          "defaultAction": "Hit a short angled ball that pulls them forward and across together. When they scrape it back from near the net, hit the next ball deep down the open line. The finish needs depth, not power — just past them and inside the lines.",
+          "adjustments": [
+            {
+              "when": "You are stretched or defending",
+              "then": "Skip the short angle; from defense it lands mid-court and hands over the attack."
+            },
+            {
+              "when": "They read it and sprint to cover the line early",
+              "then": "Go behind them with another ball to the short-angle side."
+            },
+            {
+              "when": "On fast courts with a low bounce",
+              "then": "Use slice for the short angle so the ball stays low and dies sooner."
+            }
+          ],
+          "commonMistake": "Forcing the short angle off the wrong ball. Played from a defensive position, it sits up mid-court and hands your opponent the attack."
+        },
+        {
+          "id": "pat-4",
+          "title": "Approach And Volley",
+          "diagram": {
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.3,
+                  "y": 0.85
+                },
+                "to": {
+                  "x": 0.2,
+                  "y": 0.07
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "1. deep approach"
+              },
+              {
+                "from": {
+                  "x": 0.3,
+                  "y": 0.85
+                },
+                "to": {
+                  "x": 0.37,
+                  "y": 0.6
+                },
+                "kind": "move",
+                "tone": "focus",
+                "label": "2. split step"
+              },
+              {
+                "from": {
+                  "x": 0.37,
+                  "y": 0.6
+                },
+                "to": {
+                  "x": 0.75,
+                  "y": 0.28
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "3. volley"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.3,
+                "y": 0.85,
+                "role": "you"
+              },
+              {
+                "x": 0.2,
+                "y": 0.06,
+                "role": "opponent",
+                "label": "Them"
+              }
+            ],
+            "caption": "Deep approach, split step inside the service line, then volley into the space."
+          },
+          "quiz": {
+            "scenario": "You hit a deep approach shot and moved forward. Your opponent is about to start their swing, and you are still running toward the net.",
+            "question": "What must you do right now?",
+            "options": [
+              "Keep sprinting to get as close to the net as possible",
+              "Split step and land balanced before they make contact",
+              "Stop and back up to the baseline"
+            ],
+            "correctIndex": 1,
+            "explanation": "A player still running when the ball is struck cannot change direction. That is why volleys end up at their feet or behind them. The split step turns that run into balance, so you can move either way."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "Deep alone is not enough once opponents pass well. A deep approach hit straight to a strong wing still comes back as a clean pass. Stronger players place the approach, usually down the line or into the weaker side, so the volley they get is an easy one."
+          },
+          "situation": "Their ball lands near your service line at an easy height. That is your invitation to come forward. You will not know which side they aim the pass until they swing.",
+          "principle": "Come in on a short ball, hit your approach deep, split step before they swing, and volley into the open court.",
+          "defaultAction": "Hit your approach deep and move in behind it. As they start their swing, split step — a small hop, landing balanced. Then punch a firm, controlled volley into the open court instead of swinging for power.",
+          "adjustments": [
+            {
+              "when": "Your approach lands short",
+              "then": "Stop earlier, split step, and expect a passing shot or a ball at your feet."
+            },
+            {
+              "when": "They answer every approach with a lob",
+              "then": "Hold your split step a step farther from the net."
+            },
+            {
+              "when": "The volley dips below net height",
+              "then": "Volley deep and safe, then close in for the next ball."
+            }
+          ],
+          "commonMistake": "Still running when they hit the ball. A moving player cannot change direction, which is why volleys end up at your feet or behind you."
+        },
+        {
+          "id": "pat-5",
+          "title": "The Reset Ball",
+          "diagram": {
+            "zones": [
+              {
+                "x": 0.34,
+                "y": 0.02,
+                "w": 0.32,
+                "h": 0.18,
+                "tone": "good",
+                "label": "HIGH & DEEP"
+              }
+            ],
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.9,
+                  "y": 0.86
+                },
+                "to": {
+                  "x": 0.5,
+                  "y": 0.1
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "reset"
+              },
+              {
+                "from": {
+                  "x": 0.9,
+                  "y": 0.86
+                },
+                "to": {
+                  "x": 0.55,
+                  "y": 0.94
+                },
+                "kind": "move",
+                "tone": "focus",
+                "label": "recover"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.94,
+                "y": 0.88,
+                "role": "you",
+                "label": "Off court"
+              },
+              {
+                "x": 0.4,
+                "y": 0.18,
+                "role": "opponent",
+                "label": "Attacking"
+              }
+            ],
+            "caption": "One high central ball ends their attack and gives you the time to get home."
+          },
+          "quiz": {
+            "scenario": "Your opponent has attacked and is pressing forward inside their own baseline. You are scrambling wide off the court and can only just reach the ball.",
+            "question": "What is the best shot?",
+            "options": [
+              "A flat drive down the line to try to pass them",
+              "A high deep ball down the middle, then recover",
+              "A short angle to make them stretch"
+            ],
+            "correctIndex": 1,
+            "explanation": "Scrambling and stretched, neither the flat pass nor the fine angle is reliable. The high central ball hangs long enough for you to recover. And it gives an attacking opponent nothing to hit."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "A high, central reset is easy for a strong opponent to attack. Left too short or too soft, it becomes a sitter they step in and crush. Stronger players still reset, but add depth or aim it into a corner, so the ball stays safe to hit yet hard to punish."
+          },
+          "situation": "Your opponent has attacked and is pressing forward. You are scrambling wide, off the court, and can only just reach the ball. Anything ambitious from here is a guess.",
+          "principle": "When you are out of position, hit one high, deep, central ball to buy time — then rejoin the rally as an equal.",
+          "defaultAction": "Hit one ball high, deep, and down the middle, aiming well above the net on purpose. While it hangs in the air, recover to your spot. Height buys you time, and a deep central ball gives them nothing to attack.",
+          "adjustments": [
+            {
+              "when": "They move in to take it out of the air",
+              "then": "Add height and depth; a smash from behind the baseline is a poor bargain."
+            },
+            {
+              "when": "You reach the ball in decent balance",
+              "then": "Skip the reset and hit a normal deep cross-court ball with intent."
+            },
+            {
+              "when": "It is windy",
+              "then": "Take some height off; a very high ball is hard to control in wind."
+            }
+          ],
+          "commonMistake": "Treating the reset as a habit. One reset is an escape; two in a row means you never rejoined the point."
+        },
+        {
+          "id": "pat-6",
+          "title": "Doubles: Move As A Unit",
+          "diagram": {
+            "zones": [
+              {
+                "x": 0.36,
+                "y": 0.51,
+                "w": 0.28,
+                "h": 0.31,
+                "tone": "focus",
+                "label": "COVER THE MIDDLE"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.34,
+                "y": 0.64,
+                "role": "you"
+              },
+              {
+                "x": 0.66,
+                "y": 0.64,
+                "role": "partner"
+              },
+              {
+                "x": 0.3,
+                "y": 0.06,
+                "role": "opponent",
+                "label": "Them"
+              },
+              {
+                "x": 0.68,
+                "y": 0.06,
+                "role": "opponent",
+                "label": "Them"
+              }
+            ],
+            "caption": "One line, both at the net, middle covered — and the pair slides sideways together."
+          },
+          "quiz": {
+            "scenario": "A neutral rally ball has just gone across. You are at the net, and your partner is still back on the baseline.",
+            "question": "What is the problem with your formation?",
+            "options": [
+              "Nothing — one up and one back covers the net and the baseline",
+              "You are split, so in a neutral rally you should both be up or both be back",
+              "Your partner should move to the net while you go back"
+            ],
+            "correctIndex": 1,
+            "explanation": "One up and one back is normal while serving or returning. But once the rally is neutral, that split leaves an open diagonal. Get both up at the first chance. If you cannot get in, both go back."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "Both up only works when the return is something you can actually volley. Against big hitters who return low and hard, closing in gets you passed or handcuffed. Stronger teams read the returner: they stay both back against heavy returns and move up when the return sits up."
+          },
+          "situation": "You are in a doubles rally and a ball is coming toward the middle, between you and your partner. There is no time to talk, and you do not know which side the opponents will target next.",
+          "principle": "In doubles you and your partner move as one line. Cover the middle first: lowest net, no angle for the hitter, and the ball you both hesitate over.",
+          "defaultAction": "The middle ball belongs to whoever can take it with a forehand at net height. Usually that is you — step across and hit it, unless your partner is clearly better placed. When the ball goes left, slide left with it and keep guarding the middle.",
+          "adjustments": [
+            {
+              "when": "Before the point, with time to talk",
+              "then": "Agree whose ball the middle is, so nobody hesitates live."
+            },
+            {
+              "when": "You are serving or returning",
+              "then": "One up, one back is fine; move up together once the rally turns neutral."
+            },
+            {
+              "when": "Your partner is dragged back and defending",
+              "then": "Retreat from the net and form one line at the baseline."
+            },
+            {
+              "when": "Opponents keep threading balls between you",
+              "then": "Tighten toward the center and concede the narrow, low-odds tramline shot."
+            }
+          ],
+          "commonMistake": "Staying one up, one back after the rally turns neutral. That split leaves a diagonal gap through the middle that any opponent can find."
+        }
+      ]
+    }
+  ],
+  "sideSets": [
+    {
+      "id": "set-net-anticipation",
+      "title": "Reading Your Partner's Serve",
+      "subtitle": "Know the serve target before the point, lean the right way, and poach the ball the returner is forced to hit.",
+      "symbol": "person.2.wave.2",
+      "hook": "You're at the net and your partner is about to serve — do you actually know where it's going, or are you about to find out at the same moment as the returner?",
+      "lessons": [
+        {
+          "id": "net-1",
+          "title": "Read the Serve in Flight",
+          "diagram": {
+            "zones": [
+              {
+                "x": 0.125,
+                "y": 0.235,
+                "w": 0.375,
+                "h": 0.255,
+                "tone": "focus",
+                "label": "COULD GO ANYWHERE"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.28,
+                "y": 0.66,
+                "role": "you",
+                "label": "You — at the net"
+              },
+              {
+                "x": 0.63,
+                "y": 0.9,
+                "role": "partner",
+                "label": "About to serve"
+              },
+              {
+                "x": 0.24,
+                "y": 0.07,
+                "role": "opponent",
+                "label": "Returner"
+              },
+              {
+                "x": 0.72,
+                "y": 0.34,
+                "role": "opponent",
+                "label": "Their net player"
+              }
+            ],
+            "caption": "The serve could land anywhere in this box. Your station does not care — it covers the likely reply."
+          },
+          "quiz": {
+            "scenario": "Your partner is serving and you are at the net. Their serves have gone everywhere today. You cannot tell where this one will land.",
+            "question": "Where do you stand, and what do you watch?",
+            "options": [
+              "Pick a side early and commit, so you are already moving at the hit",
+              "Middle third of your box, split-step as the returner swings, eyes on their racket face",
+              "Hug your alley so nothing can pass you down the line"
+            ],
+            "correctIndex": 1,
+            "explanation": "You cannot act on information you do not have. The neutral station keeps every return reachable. The returner's contact shows where the ball goes sooner than the serve does. Guessing wins the odd point and loses the game."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "Signals help — strong teams agree targets and poach plans before the point. Even they position for the return, not the serve. A signal sharpens a read; it never replaces one."
+          },
+          "principle": "Position for the most likely return, not for knowledge you do not have. When the serve is unknown, cover the middle and read the returner.",
+          "situation": "Your partner is about to serve and you are at the net. You have no idea where this serve will go. With an inconsistent server, nobody does.",
+          "defaultAction": "Hold the middle third of your box. Settle as the serve is struck, and split-step as the returner swings. Their contact point and racket face show where the return goes before it leaves the strings.",
+          "adjustments": [
+            {
+              "when": "Your partner's serves are landing short or soft",
+              "then": "Start a step deeper and shelve the poach — a weak serve invites a return at your feet."
+            },
+            {
+              "when": "Your partner is erratic today",
+              "then": "Treat every serve as unknown. Hold the neutral station and volley only what comes to you."
+            },
+            {
+              "when": "A strong first serve keeps jamming the returner",
+              "then": "Look to cut off the middle — a jammed return floats over the lowest part of the net."
+            },
+            {
+              "when": "Big point for the returning team",
+              "then": "Hold your half and make them beat you. Save gambles for cheap points."
+            }
+          ],
+          "commonMistake": "Planting yourself for the serve you hoped for. If your plan needs to know where the serve goes, you have no plan for the serve you get."
+        },
+        {
+          "id": "net-2",
+          "title": "The Wide Serve Opens The Middle",
+          "diagram": {
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.63,
+                  "y": 0.9
+                },
+                "to": {
+                  "x": 0.17,
+                  "y": 0.3
+                },
+                "kind": "shot",
+                "tone": "neutral",
+                "label": "wide serve"
+              },
+              {
+                "from": {
+                  "x": 0.09,
+                  "y": 0.2
+                },
+                "to": {
+                  "x": 0.66,
+                  "y": 0.84
+                },
+                "kind": "shot",
+                "tone": "focus",
+                "label": "usual reply: cross"
+              },
+              {
+                "from": {
+                  "x": 0.28,
+                  "y": 0.66
+                },
+                "to": {
+                  "x": 0.44,
+                  "y": 0.6
+                },
+                "kind": "move",
+                "tone": "good",
+                "label": "lean middle"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.28,
+                "y": 0.66,
+                "role": "you"
+              },
+              {
+                "x": 0.63,
+                "y": 0.9,
+                "role": "partner",
+                "label": "Serving wide"
+              },
+              {
+                "x": 0.07,
+                "y": 0.13,
+                "role": "opponent",
+                "label": "Dragged wide"
+              },
+              {
+                "x": 0.72,
+                "y": 0.34,
+                "role": "opponent"
+              }
+            ],
+            "caption": "The wide serve pulls the returner into the alley, and their safest ball is the diagonal through the middle — so you step in, not out."
+          },
+          "quiz": {
+            "scenario": "Deuce court. You watch your partner's serve swing wide, and the right-handed returner is dragged outside the singles sideline.",
+            "question": "What do you do as the serve is struck?",
+            "options": [
+              "Slide out toward your tramline — a returner stretching wide often flicks it down the line",
+              "Take a half step toward the middle and look to volley the cross-court return",
+              "Drop back toward the service line so a firm return cannot beat you"
+            ],
+            "correctIndex": 1,
+            "explanation": "Pulled off the court, the returner needs the safest target. That is the diagonal: longer court, lower net, straight through the middle where you can reach it. Guarding the alley protects the one shot they can barely make. Backing up is worse — it trades your volley for a half-volley."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "Leaning to the middle assumes the returner takes the safe diagonal. Against one who has already passed you down the line, respect it. Cover your alley honestly for a point or two until they prove they cannot repeat it, then lean in again."
+          },
+          "principle": "A wide serve drags the returner off the court, and their safest reply is the diagonal through the middle — so lean in, not out.",
+          "situation": "You are at the net. The serve leaves your partner's racket and swings wide, dragging the returner toward the alley.",
+          "defaultAction": "The moment you see the serve go wide, take a step across and a step in, racket up. Their safest reply is the diagonal through the middle — stand where it has to travel.",
+          "adjustments": [
+            {
+              "when": "They have passed you down the line twice",
+              "then": "Cover the line honestly for a game, then drift back."
+            },
+            {
+              "when": "The returner is stretched and reaching",
+              "then": "Crowd the middle harder — the floating reply is coming to you."
+            },
+            {
+              "when": "It is a second serve, not a first",
+              "then": "Make the lean smaller. A slower ball gives them time to redirect."
+            }
+          ],
+          "commonMistake": "Sliding out to guard your alley. That defends their hardest shot — tightest strip, highest net — and leaves their easiest one open."
+        },
+        {
+          "id": "net-3",
+          "title": "T Serve, Blocked Return",
+          "diagram": {
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.63,
+                  "y": 0.9
+                },
+                "to": {
+                  "x": 0.46,
+                  "y": 0.29
+                },
+                "kind": "shot",
+                "tone": "neutral",
+                "label": "t serve"
+              },
+              {
+                "from": {
+                  "x": 0.42,
+                  "y": 0.23
+                },
+                "to": {
+                  "x": 0.52,
+                  "y": 0.78
+                },
+                "kind": "shot",
+                "tone": "focus",
+                "label": "blocked, middle"
+              },
+              {
+                "from": {
+                  "x": 0.28,
+                  "y": 0.66
+                },
+                "to": {
+                  "x": 0.44,
+                  "y": 0.58
+                },
+                "kind": "move",
+                "tone": "good",
+                "label": "poach it"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.28,
+                "y": 0.66,
+                "role": "you"
+              },
+              {
+                "x": 0.63,
+                "y": 0.9,
+                "role": "partner",
+                "label": "Serving T"
+              },
+              {
+                "x": 0.32,
+                "y": 0.09,
+                "role": "opponent",
+                "label": "Jammed"
+              },
+              {
+                "x": 0.72,
+                "y": 0.34,
+                "role": "opponent"
+              }
+            ],
+            "caption": "No room to swing means no angle to create: the reply usually comes straight back over the lowest part of the net. That is your volley."
+          },
+          "quiz": {
+            "scenario": "The serve goes up the T. The right-handed returner in the deuce court is squeezed toward the middle, the ball on their backhand.",
+            "question": "What is your job as they swing?",
+            "options": [
+              "Step toward the middle as they swing and look to volley the block that comes back down the center",
+              "Hold your ground — a T serve can be returned anywhere, so stay neutral",
+              "Turn and watch the serve so you know whether it landed in"
+            ],
+            "correctIndex": 0,
+            "explanation": "A jammed returner shortens the swing. A shortened swing sends the ball back where it came from: slow, high, over the middle. Stay neutral and that gift drops before you reach it. Turning to watch the serve costs you the returner's racket — the only thing worth seeing."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "Taking the blocked T return is right against most returners. Stronger ones can chip a lob over the poacher instead of blocking flat. Once you commit to the middle, your partner must read the lob early and switch behind you, or the point is lost."
+          },
+          "principle": "A serve into the T takes the returner's swing away, and the ball most often comes straight back down the middle — that one is yours.",
+          "situation": "From the net you see the serve go up the T. The returner is squeezed toward the middle, the ball on their backhand, no room to swing.",
+          "defaultAction": "Start moving as the returner begins their swing. Look for the block coming back down the middle. Meet it above net height and put it between the two of them.",
+          "adjustments": [
+            {
+              "when": "The returner steps back and takes a full swing",
+              "then": "Hold your ground — a driven return is not yours to chase."
+            },
+            {
+              "when": "The reply floats high and slow",
+              "then": "Take it early and hit down. Late means shoelaces."
+            },
+            {
+              "when": "Their net player crowds the middle",
+              "then": "Volley at the closer player's feet instead of the gap."
+            }
+          ],
+          "commonMistake": "Waiting to see the block before you move. The gift drops to your ankles while you watch it."
+        },
+        {
+          "id": "net-4",
+          "title": "Stop Guarding The Tramline",
+          "diagram": {
+            "zones": [
+              {
+                "x": 0.0,
+                "y": 0.54,
+                "w": 0.125,
+                "h": 0.24,
+                "tone": "bad",
+                "label": "TRAMLINE — RARE"
+              },
+              {
+                "x": 0.3,
+                "y": 0.54,
+                "w": 0.28,
+                "h": 0.24,
+                "tone": "good",
+                "label": "MIDDLE — COMMON"
+              }
+            ],
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.21,
+                  "y": 0.67
+                },
+                "to": {
+                  "x": 0.42,
+                  "y": 0.63
+                },
+                "kind": "move",
+                "tone": "good",
+                "label": "step across"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.19,
+                "y": 0.67,
+                "role": "you",
+                "label": "Too wide"
+              },
+              {
+                "x": 0.63,
+                "y": 0.93,
+                "role": "partner"
+              },
+              {
+                "x": 0.24,
+                "y": 0.08,
+                "role": "opponent",
+                "label": "Returner"
+              },
+              {
+                "x": 0.72,
+                "y": 0.34,
+                "role": "opponent"
+              }
+            ],
+            "caption": "The strip you are guarding is the returner's tightest, highest-net target. The lane you are leaving open is their easiest one."
+          },
+          "quiz": {
+            "scenario": "You have stood a step from your tramline for a whole service game, guarding the alley. Three returns have gone past your hip through the middle, and nobody has hit down your alley once.",
+            "question": "What do you change?",
+            "options": [
+              "Stand even wider so the alley is closed for good",
+              "Move to the middle third of your box, split-step as they hit, and give up the alley on purpose",
+              "Ask your partner to serve only to the T so nothing comes back wide"
+            ],
+            "correctIndex": 1,
+            "explanation": "The evidence is in. They keep choosing the middle because it is the easiest ball. Nobody tries the alley because it is the hardest. Standing wider defends a shot that is not coming. Restrict your partner to the T, and the returner learns the target too — and does exactly what this set teaches you."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "Giving up the alley is correct until someone proves they own it. A returner who has beaten you down the line twice has earned your respect. Shade a step toward the line then, and make them hit that hard pass again before you cheat to the middle."
+          },
+          "principle": "Hugging your tramline to guard the alley defends the returner's worst ball and leaves their best one — the middle — wide open.",
+          "situation": "You have stood a step from your tramline all game, guarding the alley. Returns keep passing you through the middle. Nobody has tried your alley once.",
+          "defaultAction": "Live in the middle third of your box and split-step as the returner strikes. Give the alley up on purpose. You are standing where returns actually go.",
+          "adjustments": [
+            {
+              "when": "They have truly beaten your alley twice",
+              "then": "Shade a half-step wider for a game, visibly, then come back."
+            },
+            {
+              "when": "The returner is stretched wide and late",
+              "then": "Crowd the middle — the floater is yours."
+            },
+            {
+              "when": "Your partner's serve sits up soft",
+              "then": "Start deeper. A hard return arrives faster than net reflexes."
+            }
+          ],
+          "commonMistake": "Defending the shot that is not coming. The alley is their hardest ball and the middle is their easiest — guard the percentage, not the fear."
+        },
+        {
+          "id": "net-5",
+          "title": "Second Serve: Hold, Don't Gamble",
+          "diagram": {
+            "zones": [
+              {
+                "x": 0.14,
+                "y": 0.54,
+                "w": 0.34,
+                "h": 0.24,
+                "tone": "focus",
+                "label": "HOLD YOUR HALF"
+              }
+            ],
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.63,
+                  "y": 0.9
+                },
+                "to": {
+                  "x": 0.36,
+                  "y": 0.31
+                },
+                "kind": "shot",
+                "tone": "neutral",
+                "label": "second serve"
+              },
+              {
+                "from": {
+                  "x": 0.28,
+                  "y": 0.08
+                },
+                "to": {
+                  "x": 0.62,
+                  "y": 0.8
+                },
+                "kind": "shot",
+                "tone": "bad",
+                "label": "firmer, low, at your partner"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.28,
+                "y": 0.68,
+                "role": "you"
+              },
+              {
+                "x": 0.63,
+                "y": 0.9,
+                "role": "partner",
+                "label": "Second serve"
+              },
+              {
+                "x": 0.26,
+                "y": 0.05,
+                "role": "opponent",
+                "label": "Stepped in"
+              },
+              {
+                "x": 0.72,
+                "y": 0.34,
+                "role": "opponent"
+              }
+            ],
+            "caption": "They have stepped in and the reply comes back firmer and lower. Stay in your half, split-step, and volley anything you can reach."
+          },
+          "quiz": {
+            "scenario": "Your partner has missed the first serve. You poached twice earlier this game and won both points. The second serve is a spin serve, and the returner has stepped inside their baseline.",
+            "question": "What do you do?",
+            "options": [
+              "Poach again — it is working, and they will not expect it a third time",
+              "Move right up on the net so the firmer return has less time to dip",
+              "Hold your half, split-step as they hit, and volley anything that comes within reach"
+            ],
+            "correctIndex": 2,
+            "explanation": "Inside the baseline on a slower ball, the returner has time to watch you leave. They hit into the space behind you. So the move that beat them on a first serve becomes a gift here. Crowding the net does not fix it: the pace arrives before you react, and the lob gets easier. Holding keeps your half covered and your feet under you."
+          },
+          "advanced": {
+            "heading": "Going further",
+            "body": "A floated second serve still invites the poach. Decide before the point and commit fully. Strong teams plan it together, but even alone, early commitment beats a mid-point gamble."
+          },
+          "principle": "On a second serve the returner steps in and hits firmer. Hold your half by default, split-step, and volley what comes instead of gambling on a poach.",
+          "situation": "The first serve missed. The second is slower, and the returner steps inside the baseline to attack it. You are at the net, tempted to gamble.",
+          "defaultAction": "Hold your half, racket up. A second serve is slow enough to read in flight, so watch its depth and the returner's shoulders. Split-step as they swing and volley what you can reach.",
+          "adjustments": [
+            {
+              "when": "They keep blocking the return cross-court",
+              "then": "The poach is on. Decide before the point and go without hesitating."
+            },
+            {
+              "when": "They have lobbed over you before",
+              "then": "Start half a step deeper and take the lob's angle away."
+            },
+            {
+              "when": "The return goes up over your head",
+              "then": "Cross to the other half now — the lob over you is your partner's ball. A shout helps; your feet go first."
+            }
+          ],
+          "commonMistake": "Poaching on a slow ball. From inside the baseline the returner watches you leave and puts the ball where you were."
+        }
+      ],
+      "isSideSet": true,
+      "number": 0,
+      "isFree": false
+    }
+  ]
+}

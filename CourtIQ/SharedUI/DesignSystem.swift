@@ -194,15 +194,20 @@ struct PressableCardStyle: ButtonStyle {
 /// Tiny uppercase section label (e.g. "YOUR GAME").
 struct Eyebrow: View {
     let text: String
+    /// Defaults to the quiet ink; the Tactics lessons set it on colored cards.
+    var tint: Color = AppPalette.inkSoft
 
-    init(_ text: String) { self.text = text }
+    init(_ text: String, tint: Color = AppPalette.inkSoft) {
+        self.text = text
+        self.tint = tint
+    }
 
     var body: some View {
         Text(text)
             .font(.system(.caption2, design: .rounded).weight(.semibold))
             .textCase(.uppercase)
             .tracking(0.8)
-            .foregroundStyle(AppPalette.inkSoft)
+            .foregroundStyle(tint)
     }
 }
 

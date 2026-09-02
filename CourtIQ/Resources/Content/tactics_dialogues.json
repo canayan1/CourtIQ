@@ -1,0 +1,4846 @@
+{
+  "version": 1,
+  "scripts": [
+    {
+      "id": "dlg-geo-1",
+      "lessonId": "geo-1",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "You just hit a ball. Now the part nobody practices: where you stand while it travels.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "You hit short and they step in, wide on the left. Where do you go before they swing?",
+          "options": [
+            {
+              "label": "Back to the center mark",
+              "correct": false,
+              "reply": "That leaves their sharp cross-court wide open. From the side, their angles are not even.",
+              "next": "n2"
+            },
+            {
+              "label": "Stay put, you covered that side already",
+              "correct": false,
+              "reply": "Then you are guessing. One of their two replies turns into a long run.",
+              "next": "n2"
+            },
+            {
+              "label": "A step past center, toward the cross-court side",
+              "correct": true,
+              "reply": "Yes. You cover their sharpest angle and still reach the line. Same short run either way.",
+              "next": "n3"
+            }
+          ]
+        },
+        {
+          "id": "n3",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Your opponent can only hit between their two widest shots. Stand halfway between those, not halfway across the court.",
+          "next": "n4"
+        },
+        {
+          "id": "n4",
+          "kind": "show",
+          "mood": "idle",
+          "text": "Both of their widest shots are drawn here. See how you stand a step right of center.",
+          "scene": {
+            "players": [
+              {
+                "x": 0.62,
+                "y": 0.9,
+                "role": "you",
+                "label": "Recover here"
+              },
+              {
+                "x": 0.14,
+                "y": 0.3,
+                "role": "opponent",
+                "label": "They step in"
+              }
+            ],
+            "balls": [
+              {
+                "x": 0.18,
+                "y": 0.27
+              }
+            ],
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.14,
+                  "y": 0.3
+                },
+                "to": {
+                  "x": 0.15,
+                  "y": 0.95
+                },
+                "kind": "shot",
+                "tone": "bad",
+                "label": "down the line"
+              },
+              {
+                "from": {
+                  "x": 0.14,
+                  "y": 0.3
+                },
+                "to": {
+                  "x": 0.86,
+                  "y": 0.7
+                },
+                "kind": "shot",
+                "tone": "bad",
+                "label": "sharp cross"
+              },
+              {
+                "from": {
+                  "x": 0.42,
+                  "y": 0.93
+                },
+                "to": {
+                  "x": 0.62,
+                  "y": 0.9
+                },
+                "kind": "move",
+                "tone": "focus"
+              }
+            ],
+            "caption": "You hit short and they step in wide on the left. Their sharp cross-court is the shot that stretches you. So you recover a step right of center — the same short run to either reply."
+          },
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "How do you find that spot in a real rally?",
+          "options": [
+            {
+              "label": "From the ball they are hitting, cover their sharp cross-court",
+              "correct": true,
+              "reply": "That's it. Their most dangerous angle tells you which way to lean.",
+              "next": "n6"
+            },
+            {
+              "label": "Watch their feet and copy the direction",
+              "correct": false,
+              "reply": "Their feet move late. By the time you read them, you are already sprinting.",
+              "next": "n5"
+            }
+          ]
+        },
+        {
+          "id": "n6",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Move the instant you finish your shot. Arriving late and still moving is what makes a ball feel out of reach.",
+          "next": "n7"
+        },
+        {
+          "id": "n7",
+          "kind": "offer",
+          "mood": "happy",
+          "text": "You're thinking about position now. In doubles at the net, could you read the return before it's hit?",
+          "setId": "set-net-anticipation",
+          "next": "n8"
+        },
+        {
+          "id": "n8",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "Every shot has two parts: the hit, and the walk to the middle of their angles."
+        }
+      ]
+    },
+    {
+      "id": "dlg-geo-2",
+      "lessonId": "geo-2",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "Neutral rally. Nothing special is happening. Most people pick a direction here by accident.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "You're balanced, the ball is comfortable, they're in the middle. Which ball do you hit?",
+          "options": [
+            {
+              "label": "Down the line, to move them",
+              "correct": false,
+              "reply": "You just aimed at the shortest court and the highest part of the net. Then you sprint diagonally to recover.",
+              "next": "n2"
+            },
+            {
+              "label": "Short and low, to bring them in",
+              "correct": false,
+              "reply": "On a neutral ball that's an invitation. They step in and you spend the rest of the point defending.",
+              "next": "n2"
+            },
+            {
+              "label": "Cross-court, deep",
+              "correct": true,
+              "reply": "Yes. Longest court, lowest net, and you finish the shot near your recovery spot.",
+              "next": "n3"
+            }
+          ]
+        },
+        {
+          "id": "n3",
+          "kind": "say",
+          "mood": "idle",
+          "text": "The diagonal is about a meter and a half longer than the sideline. That is free margin on every swing.",
+          "next": "n4"
+        },
+        {
+          "id": "n4",
+          "kind": "say",
+          "mood": "idle",
+          "text": "The net is lower in the middle than at the posts. Cross-court crosses the low part.",
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "show",
+          "mood": "idle",
+          "text": "Same swing, two targets. Look at how much more court the cross-court has to land in.",
+          "scene": {
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.8,
+                  "y": 0.94
+                },
+                "to": {
+                  "x": 0.22,
+                  "y": 0.06
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "cross · safer"
+              },
+              {
+                "from": {
+                  "x": 0.8,
+                  "y": 0.94
+                },
+                "to": {
+                  "x": 0.82,
+                  "y": 0.06
+                },
+                "kind": "shot",
+                "tone": "bad",
+                "label": "line · tighter"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.8,
+                "y": 0.93,
+                "role": "you"
+              }
+            ],
+            "caption": "Same swing, two targets. The cross-court has more court to land in and a lower net to clear."
+          },
+          "next": "n6"
+        },
+        {
+          "id": "n6",
+          "kind": "say",
+          "mood": "happy",
+          "text": "Down the line isn't banned. It's a shot you choose on purpose, not a place your racket ends up.",
+          "next": "n7"
+        },
+        {
+          "id": "n7",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "Default is cross-court and deep. Change it when you have a reason."
+        }
+      ]
+    },
+    {
+      "id": "dlg-geo-3",
+      "lessonId": "geo-3",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "A floating ball comes to you at the baseline. You have time and you're balanced. This is where matches leak.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "Swing hard at it, or three-quarter pace a meter inside their baseline?",
+          "options": [
+            {
+              "label": "Swing hard, pace is what hurts them",
+              "correct": false,
+              "reply": "A set opponent just borrows the pace you add. And the harder you swing, the smaller your margin gets.",
+              "next": "n2"
+            },
+            {
+              "label": "Three-quarter pace, deep",
+              "correct": true,
+              "reply": "Right. Depth is what takes their options away, not speed.",
+              "next": "n3"
+            },
+            {
+              "label": "Drop shot, they're standing back",
+              "correct": false,
+              "reply": "They're back but balanced, with time to read it. You'd be handing them a short ball to run onto.",
+              "next": "n2"
+            }
+          ]
+        },
+        {
+          "id": "n3",
+          "kind": "say",
+          "mood": "idle",
+          "text": "From behind their own baseline they can barely make an angle. There is almost nothing there to hit.",
+          "next": "n4"
+        },
+        {
+          "id": "n4",
+          "kind": "show",
+          "mood": "idle",
+          "text": "The green band is deep with margin. The red band is where you invite an attack.",
+          "scene": {
+            "zones": [
+              {
+                "x": 0.13,
+                "y": 0.042,
+                "w": 0.74,
+                "h": 0.084,
+                "tone": "good",
+                "label": "AIM HERE"
+              },
+              {
+                "x": 0.13,
+                "y": 0.19,
+                "w": 0.74,
+                "h": 0.27,
+                "tone": "bad",
+                "label": "TOO SHORT"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.5,
+                "y": 0.93,
+                "role": "you"
+              },
+              {
+                "x": 0.5,
+                "y": 0.04,
+                "role": "opponent",
+                "label": "Them"
+              }
+            ],
+            "caption": "The green band is deep with margin. The red band lets them step in and attack."
+          },
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "So what do you aim at — the baseline itself?",
+          "options": [
+            {
+              "label": "Yes, the line, for maximum depth",
+              "correct": false,
+              "reply": "At the line you have no margin left. Half your normal spread of shots lands out.",
+              "next": "n5"
+            },
+            {
+              "label": "About a meter inside it",
+              "correct": true,
+              "reply": "That's the band. Deep enough to push them back, safe enough to hit all afternoon.",
+              "next": "n6"
+            }
+          ]
+        },
+        {
+          "id": "n6",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Most beginner points aren't lost to a spectacular winner. They're lost to one short ball that invited one.",
+          "next": "n7"
+        },
+        {
+          "id": "n7",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "Deep beats hard. Aim past the service line, never at the baseline."
+        }
+      ]
+    },
+    {
+      "id": "dlg-geo-4",
+      "lessonId": "geo-4",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "Deuce. You get a comfortable forehand in the middle of the court. They're in position and ready.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "What's your target?",
+          "options": [
+            {
+              "label": "The corner, right where the lines meet",
+              "correct": false,
+              "reply": "Aim at a line and half your normal spread lands out. On a big point, that's a coin flip you didn't need.",
+              "next": "n2"
+            },
+            {
+              "label": "A meter inside the sideline and inside the baseline",
+              "correct": true,
+              "reply": "Yes. They can't tell the difference. The scoreboard can.",
+              "next": "n3"
+            },
+            {
+              "label": "At their feet, so they can't swing",
+              "correct": false,
+              "reply": "That's a short ball with a good excuse attached. They step in and take the court from you.",
+              "next": "n2"
+            }
+          ]
+        },
+        {
+          "id": "n3",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Lines are for spectators. Margin is for players.",
+          "next": "n4"
+        },
+        {
+          "id": "n4",
+          "kind": "show",
+          "mood": "idle",
+          "text": "The target sits inside the sideline and inside the baseline. Still wide enough to hurt them.",
+          "scene": {
+            "zones": [
+              {
+                "x": 0.216,
+                "y": 0.042,
+                "w": 0.1,
+                "h": 0.088,
+                "tone": "good",
+                "label": "TARGET"
+              },
+              {
+                "x": 0.0,
+                "y": 0.0,
+                "w": 0.13,
+                "h": 0.5,
+                "tone": "bad",
+                "label": "OUT"
+              }
+            ],
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.7,
+                  "y": 0.94
+                },
+                "to": {
+                  "x": 0.235,
+                  "y": 0.075
+                },
+                "kind": "shot",
+                "tone": "good"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.7,
+                "y": 0.93,
+                "role": "you"
+              }
+            ],
+            "caption": "The target sits inside the sideline and inside the baseline — wide enough to hurt, safe enough to repeat."
+          },
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Margin is vertical as well. A rally ball passing a meter above the net still lands deep, and never finds the tape.",
+          "next": "n6"
+        },
+        {
+          "id": "n6",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "So when do you actually paint a line?",
+          "options": [
+            {
+              "label": "When they're out of position and the point is nearly over",
+              "correct": true,
+              "reply": "That's the one. Lines are for finishing, not for building.",
+              "next": "n7"
+            },
+            {
+              "label": "On big points, when you need something special",
+              "correct": false,
+              "reply": "Big points are exactly when you want the shot you can repeat. Special is how people donate them.",
+              "next": "n6"
+            }
+          ]
+        },
+        {
+          "id": "n7",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "One meter inside every line, on every ball you aren't finishing."
+        }
+      ]
+    },
+    {
+      "id": "dlg-geo-5",
+      "lessonId": "geo-5",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "You came forward, they lofted one back deep, and you're standing right on the service line.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "What do you do?",
+          "options": [
+            {
+              "label": "Hold your ground and half-volley it",
+              "correct": false,
+              "reply": "You're too far back to volley and too far forward to let the ball come to you. Worst of both.",
+              "next": "n2"
+            },
+            {
+              "label": "Move back behind the baseline and play it normally",
+              "correct": true,
+              "reply": "Yes. An awkward half-volley turns into an ordinary groundstroke.",
+              "next": "n3"
+            },
+            {
+              "label": "One small step forward, hope for a short reply",
+              "correct": false,
+              "reply": "Hope isn't a court position. The ball is landing deep, and it lands at your feet.",
+              "next": "n2"
+            }
+          ]
+        },
+        {
+          "id": "n3",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Live behind your baseline, or inside the service line. The strip between them is where balls land at your feet.",
+          "next": "n4"
+        },
+        {
+          "id": "n4",
+          "kind": "show",
+          "mood": "idle",
+          "text": "Two good places to stand, and the strip in between that has no answer to anything.",
+          "scene": {
+            "zones": [
+              {
+                "x": 0.0,
+                "y": 0.955,
+                "w": 1.0,
+                "h": 0.045,
+                "tone": "good",
+                "label": "ON OR BEHIND THE BASELINE"
+              },
+              {
+                "x": 0.13,
+                "y": 0.56,
+                "w": 0.74,
+                "h": 0.16,
+                "tone": "good",
+                "label": "NET — OK"
+              },
+              {
+                "x": 0.0,
+                "y": 0.7692,
+                "w": 1.0,
+                "h": 0.185,
+                "tone": "bad",
+                "label": "NO-MAN'S LAND"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.5,
+                "y": 0.8,
+                "role": "you",
+                "label": "Not here"
+              }
+            ],
+            "caption": "Two good places to stand, and the strip between them where the ball always lands at your feet."
+          },
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "say",
+          "mood": "happy",
+          "text": "I raid bins for a living, and even I commit to a direction before I arrive.",
+          "next": "n6"
+        },
+        {
+          "id": "n6",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "So you stay out of that strip completely?",
+          "options": [
+            {
+              "label": "Yes, never set foot in it",
+              "correct": false,
+              "reply": "Then approach shots and drop shots are off the menu, and you never move forward all match.",
+              "next": "n6"
+            },
+            {
+              "label": "Run through it, just never stop there",
+              "correct": true,
+              "reply": "Exactly. That strip is movement, not a position.",
+              "next": "n7"
+            }
+          ]
+        },
+        {
+          "id": "n7",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "Behind the baseline or inside the service line. Never parked in between."
+        }
+      ]
+    },
+    {
+      "id": "dlg-geo-6",
+      "lessonId": "geo-6",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "You've been dragged wide off the court. Your weight is going sideways and you're barely reaching the ball.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "They're waiting in the middle of their baseline. What do you hit?",
+          "options": [
+            {
+              "label": "A sharp cross-court angle to get them moving",
+              "correct": false,
+              "reply": "Off balance you can't hit that reliably. Miss it and you've lost the point outright.",
+              "next": "n2"
+            },
+            {
+              "label": "A high, deep ball down the middle",
+              "correct": true,
+              "reply": "Yes. It buys you the seconds you need and gives them nothing to work with.",
+              "next": "n3"
+            },
+            {
+              "label": "A drop shot, you can't do much else",
+              "correct": false,
+              "reply": "Stretched and off court, that drop shot sits up short. They run onto it and you're still out of position.",
+              "next": "n2"
+            }
+          ]
+        },
+        {
+          "id": "n3",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Down the middle you clear the lowest part of the net. And you keep room on both sidelines.",
+          "next": "n4"
+        },
+        {
+          "id": "n4",
+          "kind": "say",
+          "mood": "idle",
+          "text": "You also keep a half-court of room on each side. There is no safer combination.",
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "show",
+          "mood": "idle",
+          "text": "Pulled off court and out of position. The deep middle is the road back to neutral.",
+          "scene": {
+            "zones": [
+              {
+                "x": 0.34,
+                "y": 0.042,
+                "w": 0.32,
+                "h": 0.088,
+                "tone": "good",
+                "label": "RESET HERE"
+              }
+            ],
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.06,
+                  "y": 0.9
+                },
+                "to": {
+                  "x": 0.5,
+                  "y": 0.12
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "high, deep"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.05,
+                "y": 0.9,
+                "role": "you",
+                "label": "Stretched"
+              },
+              {
+                "x": 0.55,
+                "y": 0.05,
+                "role": "opponent",
+                "label": "Them"
+              }
+            ],
+            "caption": "Pulled off court and out of position — the deep middle gets you back to neutral."
+          },
+          "next": "n6"
+        },
+        {
+          "id": "n6",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "Why does the middle protect you as well?",
+          "options": [
+            {
+              "label": "It takes their angles away, no diagonal from there",
+              "correct": true,
+              "reply": "Right. Whatever comes back arrives in front of you, so you get your position back.",
+              "next": "n7"
+            },
+            {
+              "label": "It surprises them, nobody covers the middle",
+              "correct": false,
+              "reply": "You're not tricking anyone from off balance. Surprise isn't what you need here.",
+              "next": "n6"
+            }
+          ]
+        },
+        {
+          "id": "n7",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Reset, don't rescue. Off balance is not the moment to go for a winner.",
+          "next": "n8"
+        },
+        {
+          "id": "n8",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "In trouble: high, deep, middle. Neutral is where you start building again."
+        }
+      ]
+    },
+    {
+      "id": "dlg-rally-1",
+      "lessonId": "rally-1",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "Every ball that comes at you is one of three things. Most people work out which one halfway through the swing.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "Their ball lands short and high with no pace. You're moving forward and you'll meet it above the net.",
+          "options": [
+            {
+              "label": "Neutral — deep cross-court, then wait",
+              "correct": false,
+              "reply": "Safe, and you just spent the best ball of the point on nothing. It won't come round again.",
+              "next": "n2"
+            },
+            {
+              "label": "Attack — pick a target and follow it forward",
+              "correct": true,
+              "reply": "Yes. Short, high, slow, and you're already moving in. That's every attacking marker at once.",
+              "next": "n3"
+            },
+            {
+              "label": "Defend — high and deep down the middle",
+              "correct": false,
+              "reply": "You're defending against nothing. That hands them a free reset from a ball they mishit.",
+              "next": "n2"
+            }
+          ]
+        },
+        {
+          "id": "n3",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Label the ball before you swing: attacking, neutral, defending. The label picks the shot for you.",
+          "next": "n4"
+        },
+        {
+          "id": "n4",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Almost nobody loses a point to a bad shot. They lose it to a good shot on the wrong ball.",
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "show",
+          "mood": "idle",
+          "text": "Roughly, where their ball lands decides which of the three shots you owe.",
+          "scene": {
+            "zones": [
+              {
+                "x": 0.13,
+                "y": 0.5,
+                "w": 0.74,
+                "h": 0.269,
+                "tone": "good",
+                "label": "ATTACK"
+              },
+              {
+                "x": 0.13,
+                "y": 0.769,
+                "w": 0.74,
+                "h": 0.151,
+                "tone": "focus",
+                "label": "NEUTRAL"
+              },
+              {
+                "x": 0.13,
+                "y": 0.92,
+                "w": 0.74,
+                "h": 0.08,
+                "tone": "bad",
+                "label": "DEFEND"
+              }
+            ],
+            "caption": "Roughly, where their ball lands decides which of the three shots you owe."
+          },
+          "next": "n6"
+        },
+        {
+          "id": "n6",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "How do you get quicker at reading it?",
+          "options": [
+            {
+              "label": "Call the label out loud as it leaves their racket",
+              "correct": true,
+              "reply": "That's the drill. A few sessions and the read starts happening without you.",
+              "next": "n7"
+            },
+            {
+              "label": "Decide once you've seen the bounce",
+              "correct": false,
+              "reply": "By the bounce you're already swinging. The decision arrives after the shot does.",
+              "next": "n6"
+            }
+          ]
+        },
+        {
+          "id": "n7",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "Label first, swing second. That read is most of what people mean by tennis IQ."
+        }
+      ]
+    },
+    {
+      "id": "dlg-rally-2",
+      "lessonId": "rally-2",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "A heavy ball comes cross-court to your backhand. You get there, just, weight still moving sideways.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "Where do you hit it?",
+          "options": [
+            {
+              "label": "Down the line, to change the rally's direction",
+              "correct": false,
+              "reply": "You're reversing all that sideways speed with a stretched arm. It goes wide, or short into the middle.",
+              "next": "n2"
+            },
+            {
+              "label": "Short and low, to kill their pace",
+              "correct": false,
+              "reply": "Off balance, that one sits up nearer the net than you meant. They're already running onto it.",
+              "next": "n2"
+            },
+            {
+              "label": "Back cross-court, the way it came",
+              "correct": true,
+              "reply": "Yes. The ball keeps its own direction and your racket barely has to argue with it.",
+              "next": "n3"
+            }
+          ]
+        },
+        {
+          "id": "n3",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Redirecting a fast ball means reversing its sideways momentum with your racket face. That timing window is tiny.",
+          "next": "n4"
+        },
+        {
+          "id": "n4",
+          "kind": "show",
+          "mood": "idle",
+          "text": "Their diagonal, and your two replies. Only one of them asks nothing of your timing.",
+          "scene": {
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.78,
+                  "y": 0.06
+                },
+                "to": {
+                  "x": 0.18,
+                  "y": 0.9
+                },
+                "kind": "shot",
+                "tone": "neutral",
+                "label": "their hard ball"
+              },
+              {
+                "from": {
+                  "x": 0.18,
+                  "y": 0.9
+                },
+                "to": {
+                  "x": 0.75,
+                  "y": 0.08
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "send it back"
+              },
+              {
+                "from": {
+                  "x": 0.18,
+                  "y": 0.9
+                },
+                "to": {
+                  "x": 0.16,
+                  "y": 0.08
+                },
+                "kind": "shot",
+                "tone": "bad",
+                "label": "risky redirect"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.14,
+                "y": 0.93,
+                "role": "you"
+              }
+            ],
+            "caption": "A hard cross-court arrives. Returning it along the same diagonal is the low-risk reply."
+          },
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "say",
+          "mood": "happy",
+          "text": "Sending it straight back feels unambitious. It's also the reason you're still in the point.",
+          "next": "n6"
+        },
+        {
+          "id": "n6",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "So when do you change direction?",
+          "options": [
+            {
+              "label": "On a slower ball, with time and both feet under you",
+              "correct": true,
+              "reply": "Right. Then the change of direction hurts them instead of hurting you.",
+              "next": "n7"
+            },
+            {
+              "label": "When they least expect it",
+              "correct": false,
+              "reply": "Surprise doesn't buy you timing. The speed of the ball decides this one, not their guess.",
+              "next": "n6"
+            }
+          ]
+        },
+        {
+          "id": "n7",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "Hard or late: send it back the same way. Change direction on a ball that lets you."
+        }
+      ]
+    },
+    {
+      "id": "dlg-rally-3",
+      "lessonId": "rally-3",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "You've netted four rally balls in two games. Your swing feels fine and you're getting there in time.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "What's the first thing you change?",
+          "options": [
+            {
+              "label": "Swing harder so the ball gets there faster",
+              "correct": false,
+              "reply": "A flat ball hit harder is still a flat ball. You'll just find the tape sooner.",
+              "next": "n2"
+            },
+            {
+              "label": "Pass a meter or more above the net",
+              "correct": true,
+              "reply": "Yes. Net misses are a flight-path problem, and this fix costs you nothing.",
+              "next": "n3"
+            },
+            {
+              "label": "Aim nearer the sidelines to shorten the rallies",
+              "correct": false,
+              "reply": "Now you can miss wide as well as into the net. Two ways to lose instead of one.",
+              "next": "n2"
+            }
+          ]
+        },
+        {
+          "id": "n3",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Count the misses in any club match. More of them go into the net than past the baseline.",
+          "next": "n4"
+        },
+        {
+          "id": "n4",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Height buys depth as well. Same swing, higher path, and the ball lands further back.",
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "show",
+          "mood": "idle",
+          "text": "Two versions of the same stroke. Watch which one runs out of court before the net.",
+          "scene": {
+            "zones": [
+              {
+                "x": 0.13,
+                "y": 0.0,
+                "w": 0.74,
+                "h": 0.155,
+                "tone": "good",
+                "label": "LANDS DEEP"
+              }
+            ],
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.5,
+                  "y": 0.95
+                },
+                "to": {
+                  "x": 0.42,
+                  "y": 0.1
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "arcing"
+              },
+              {
+                "from": {
+                  "x": 0.5,
+                  "y": 0.95
+                },
+                "to": {
+                  "x": 0.55,
+                  "y": 0.52
+                },
+                "kind": "shot",
+                "tone": "bad",
+                "label": "flat → net"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.5,
+                "y": 0.93,
+                "role": "you"
+              }
+            ],
+            "caption": "The same stroke with more net clearance travels deeper and never finds the tape."
+          },
+          "next": "n6"
+        },
+        {
+          "id": "n6",
+          "kind": "say",
+          "mood": "happy",
+          "text": "I clear every fence with a meter to spare. Not elegance. Margin.",
+          "next": "n7"
+        },
+        {
+          "id": "n7",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "Why does an arcing ball also bother them?",
+          "options": [
+            {
+              "label": "It drops from above shoulder height, with no easy contact point",
+              "correct": true,
+              "reply": "Right. Plenty of club players have no attacking answer to a ball falling on them.",
+              "next": "n8"
+            },
+            {
+              "label": "It's slower, so they get impatient and rush",
+              "correct": false,
+              "reply": "You can't build a tactic on someone's mood. Whatever troubles them has to be physical.",
+              "next": "n7"
+            }
+          ]
+        },
+        {
+          "id": "n8",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "A meter of air over the net on every rally ball. Flat is for finishing."
+        }
+      ]
+    },
+    {
+      "id": "dlg-rally-4",
+      "lessonId": "rally-4",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "You're 3-5 down. The last two games went on a couple of winners and a lot more errors.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "What change is most likely to win you the next game?",
+          "options": [
+            {
+              "label": "Go bigger, since the small shots aren't working",
+              "correct": false,
+              "reply": "Your errors are what's losing the games. Raising the stakes just produces them faster.",
+              "next": "n2"
+            },
+            {
+              "label": "Hit one more deep ball than feels natural before attacking",
+              "correct": true,
+              "reply": "Yes. You keep the pressure on and let their mistakes decide the game.",
+              "next": "n3"
+            },
+            {
+              "label": "Slow every ball down and just push it back",
+              "correct": false,
+              "reply": "Now you've stopped competing. They step in, take the court, and end it whenever they like.",
+              "next": "n2"
+            }
+          ]
+        },
+        {
+          "id": "n3",
+          "kind": "say",
+          "mood": "idle",
+          "text": "At club level most points end in a mistake, not a winner. So the cheapest points come from making fewer.",
+          "next": "n4"
+        },
+        {
+          "id": "n4",
+          "kind": "show",
+          "mood": "idle",
+          "text": "Three honest balls, deep and unremarkable. Nothing in here is heroic.",
+          "scene": {
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.5,
+                  "y": 0.94
+                },
+                "to": {
+                  "x": 0.3,
+                  "y": 0.08
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "1"
+              },
+              {
+                "from": {
+                  "x": 0.3,
+                  "y": 0.08
+                },
+                "to": {
+                  "x": 0.7,
+                  "y": 0.9
+                },
+                "kind": "shot",
+                "tone": "neutral",
+                "label": "2"
+              },
+              {
+                "from": {
+                  "x": 0.7,
+                  "y": 0.9
+                },
+                "to": {
+                  "x": 0.5,
+                  "y": 0.06
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "3"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.5,
+                "y": 0.93,
+                "role": "you"
+              }
+            ],
+            "caption": "Three honest balls. A lot of opponents run out of patience before you run out of shots."
+          },
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "say",
+          "mood": "happy",
+          "text": "Give yourself a number in practice. A few deep balls in a row before anyone is allowed to go for it.",
+          "next": "n6"
+        },
+        {
+          "id": "n6",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "Isn't that just pushing?",
+          "options": [
+            {
+              "label": "Yes, but it only works on weaker opponents",
+              "correct": false,
+              "reply": "Then you'd drop it against anyone good, which is exactly when errors decide the match.",
+              "next": "n6"
+            },
+            {
+              "label": "No — the extra ball is still deep and high",
+              "correct": true,
+              "reply": "Right. You're refusing to donate the point while you wait for one you can attack.",
+              "next": "n7"
+            }
+          ]
+        },
+        {
+          "id": "n7",
+          "kind": "say",
+          "mood": "happy",
+          "text": "Patience is the only athletic quality I have. It has never once let me down.",
+          "next": "n8"
+        },
+        {
+          "id": "n8",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "Be the player who hits one more. Most opponents run out of patience first."
+        }
+      ]
+    },
+    {
+      "id": "dlg-rally-5",
+      "lessonId": "rally-5",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "Their ball is dying in the air. It is going to land around your service line.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "You read it early and you can get there. What's the play?",
+          "options": [
+            {
+              "label": "Wait behind the baseline and let it come to you",
+              "correct": false,
+              "reply": "Then you're hitting up from below the net, on the run. A free ball turned into a hard one.",
+              "next": "n2"
+            },
+            {
+              "label": "Move in, take it early, keep coming forward",
+              "correct": true,
+              "reply": "Yes. You stay above the ball, and you're already there for the next one.",
+              "next": "n3"
+            },
+            {
+              "label": "Move in, hit it, then recover to the baseline",
+              "correct": false,
+              "reply": "You earned that court and handed it straight back. Now the whole point starts again.",
+              "next": "n2"
+            }
+          ]
+        },
+        {
+          "id": "n3",
+          "kind": "say",
+          "mood": "idle",
+          "text": "A short ball isn't something to survive. It's the signal you've been waiting for all point.",
+          "next": "n4"
+        },
+        {
+          "id": "n4",
+          "kind": "show",
+          "mood": "idle",
+          "text": "Step in, hit it going forward, keep going. Look at where the shot starts.",
+          "scene": {
+            "zones": [
+              {
+                "x": 0.13,
+                "y": 0.62,
+                "w": 0.74,
+                "h": 0.21,
+                "tone": "focus",
+                "label": "SHORT BALL LANDS"
+              }
+            ],
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.5,
+                  "y": 0.94
+                },
+                "to": {
+                  "x": 0.42,
+                  "y": 0.72
+                },
+                "kind": "move",
+                "tone": "focus",
+                "label": "step in"
+              },
+              {
+                "from": {
+                  "x": 0.42,
+                  "y": 0.72
+                },
+                "to": {
+                  "x": 0.2,
+                  "y": 0.1
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "approach"
+              },
+              {
+                "from": {
+                  "x": 0.42,
+                  "y": 0.72
+                },
+                "to": {
+                  "x": 0.34,
+                  "y": 0.62
+                },
+                "kind": "move",
+                "tone": "focus",
+                "label": "and keep coming"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.5,
+                "y": 0.93,
+                "role": "you"
+              }
+            ],
+            "caption": "Move to the short ball, hit it going forward, and keep coming."
+          },
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "say",
+          "mood": "idle",
+          "text": "The read starts at their strings, not at the bounce. Little pace and a low, dying arc means short.",
+          "next": "n6"
+        },
+        {
+          "id": "n6",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "You've stepped in and hit the approach. Where do you stand now?",
+          "options": [
+            {
+              "label": "Inside the service line, split step, ready to volley",
+              "correct": true,
+              "reply": "Yes. Finish forward. That's the whole reason you came in.",
+              "next": "n7"
+            },
+            {
+              "label": "Back on the baseline, in case they get it back",
+              "correct": false,
+              "reply": "Walking backwards after an approach parks you where balls land at your feet.",
+              "next": "n6"
+            }
+          ]
+        },
+        {
+          "id": "n7",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "Short ball means forward. Take it early and follow it in."
+        }
+      ]
+    },
+    {
+      "id": "dlg-rally-6",
+      "lessonId": "rally-6",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "You've hit four straight balls to their backhand. Each reply came back shorter and weaker than the last.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "The rally is still going. What do you do with the next ball?",
+          "options": [
+            {
+              "label": "Switch to the forehand so they can't settle",
+              "correct": false,
+              "reply": "You'd release four balls of pressure and hand them a comfortable one. That's a rest, not a tactic.",
+              "next": "n2"
+            },
+            {
+              "label": "The backhand again",
+              "correct": true,
+              "reply": "Yes. It's getting worse every time you go there. Don't rescue them.",
+              "next": "n3"
+            },
+            {
+              "label": "Go for a winner down the line and end it",
+              "correct": false,
+              "reply": "Nothing in this rally has offered you a ball worth finishing yet. You'd be finishing it for them.",
+              "next": "n2"
+            }
+          ]
+        },
+        {
+          "id": "n3",
+          "kind": "say",
+          "mood": "idle",
+          "text": "For most developing players the backhand is the newer side. So it's your default target until they prove otherwise.",
+          "next": "n4"
+        },
+        {
+          "id": "n4",
+          "kind": "show",
+          "mood": "idle",
+          "text": "Against a right-hander, that's the corner you keep visiting.",
+          "scene": {
+            "zones": [
+              {
+                "x": 0.57,
+                "y": 0.03,
+                "w": 0.3,
+                "h": 0.18,
+                "tone": "good",
+                "label": "THEIR BACKHAND"
+              }
+            ],
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.4,
+                  "y": 0.94
+                },
+                "to": {
+                  "x": 0.72,
+                  "y": 0.12
+                },
+                "kind": "shot",
+                "tone": "good"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.4,
+                "y": 0.93,
+                "role": "you"
+              },
+              {
+                "x": 0.4,
+                "y": 0.05,
+                "role": "opponent",
+                "label": "Right-hander"
+              }
+            ],
+            "caption": "Against a right-hander, that corner is the backhand — the default target until they prove it is not a weakness."
+          },
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Hit a few to each wing in the first games. Then stop being fair.",
+          "next": "n6"
+        },
+        {
+          "id": "n6",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "What actually tells you a wing is the weaker one?",
+          "options": [
+            {
+              "label": "Short or floating replies, arriving again and again",
+              "correct": true,
+              "reply": "That's evidence. One ball proves nothing; six in a row produces something you can attack.",
+              "next": "n7"
+            },
+            {
+              "label": "They look uncomfortable getting into position",
+              "correct": false,
+              "reply": "Plenty of players look awkward and still hit it clean. Their posture isn't evidence.",
+              "next": "n6"
+            }
+          ]
+        },
+        {
+          "id": "n7",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Beginners drop a working pattern out of boredom, usually one ball before it pays.",
+          "next": "n8"
+        },
+        {
+          "id": "n8",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "Backhand by default. When a pattern is working, get boring."
+        }
+      ]
+    },
+    {
+      "id": "dlg-serve-1",
+      "lessonId": "serve-1",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "The serve is the one ball nobody can touch before you hit it. So of course everyone tries to crush it.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "Count them for a week. Flat out, one first serve in three lands. Three-quarter pace, four in five. Which do you serve?",
+          "options": [
+            {
+              "label": "Flat out, a big serve wins free points",
+              "correct": false,
+              "reply": "Then two points out of three start with a second serve. That is where service games leak.",
+              "next": "n2"
+            },
+            {
+              "label": "Switch, so they cannot read you",
+              "correct": false,
+              "reply": "Half your serves are still missing. Unreadable does not help when the ball lands long.",
+              "next": "n2"
+            },
+            {
+              "label": "Three-quarter pace, to a target you picked",
+              "correct": true,
+              "reply": "Yes. Two first serves in a row is worth more than the speed you gave up for it.",
+              "next": "n3"
+            }
+          ]
+        },
+        {
+          "id": "n3",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Effort costs you accuracy before it buys you speed. Back off a notch and your timing window gets much wider.",
+          "next": "n4"
+        },
+        {
+          "id": "n4",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Then name a target before you toss. T, body, or wide. Pick one.",
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "show",
+          "mood": "idle",
+          "text": "Three targets in one service box. Choose before the toss, not during it.",
+          "scene": {
+            "zones": [
+              {
+                "x": 0.38,
+                "y": 0.2308,
+                "w": 0.12,
+                "h": 0.2,
+                "tone": "good",
+                "label": "T"
+              },
+              {
+                "x": 0.26,
+                "y": 0.2308,
+                "w": 0.12,
+                "h": 0.2,
+                "tone": "focus",
+                "label": "BODY"
+              },
+              {
+                "x": 0.13,
+                "y": 0.2308,
+                "w": 0.12,
+                "h": 0.2,
+                "tone": "good",
+                "label": "WIDE"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.62,
+                "y": 0.9,
+                "role": "you",
+                "label": "Serving"
+              }
+            ],
+            "caption": "Three targets in the deuce-court service box. Choose one before you toss."
+          },
+          "next": "n6"
+        },
+        {
+          "id": "n6",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "And a serve you hit with no target in mind. Where does that one usually go?",
+          "options": [
+            {
+              "label": "Into the middle of the box",
+              "correct": true,
+              "reply": "Usually, yes. The one part of the box that pressures nobody.",
+              "next": "n7"
+            },
+            {
+              "label": "Anywhere, which at least keeps them guessing",
+              "correct": false,
+              "reply": "You are guessing too. There is no plus-one shot after a serve you did not aim.",
+              "next": "n6"
+            }
+          ]
+        },
+        {
+          "id": "n7",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "Three-quarter effort, one named target. A serve you can repeat beats a serve you can barely land."
+        }
+      ]
+    },
+    {
+      "id": "dlg-serve-2",
+      "lessonId": "serve-2",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "Second serve. The first one missed, and now the safest-feeling thing in the world is to pat one in.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "It is 30-30. They have stepped in on your slow middle serve all match. What do you hit?",
+          "options": [
+            {
+              "label": "Slower and safer, just guarantee it lands",
+              "correct": false,
+              "reply": "That is the ball they have been eating all match, only easier. They step in and the point is theirs.",
+              "next": "n2"
+            },
+            {
+              "label": "Spin with net clearance, deep to the backhand",
+              "correct": true,
+              "reply": "Yes. Safe because of the spin, not because it is slow.",
+              "next": "n3"
+            },
+            {
+              "label": "A second flat serve. If it lands, they cannot touch it",
+              "correct": false,
+              "reply": "If. At 30-30 that is a double fault waiting, and you hand the point over without a rally.",
+              "next": "n2"
+            }
+          ]
+        },
+        {
+          "id": "n3",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Safety on a second serve comes from spin and height over the net. Not from taking the pace off.",
+          "next": "n4"
+        },
+        {
+          "id": "n4",
+          "kind": "say",
+          "mood": "idle",
+          "text": "A soft ball landing near the service line is the easiest thing in tennis to attack.",
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "show",
+          "mood": "idle",
+          "text": "Aim at the back third of the box. The front of the box is an invitation.",
+          "scene": {
+            "zones": [
+              {
+                "x": 0.31,
+                "y": 0.2308,
+                "w": 0.185,
+                "h": 0.09,
+                "tone": "good",
+                "label": "DEEP THIRD"
+              },
+              {
+                "x": 0.14,
+                "y": 0.4103,
+                "w": 0.35,
+                "h": 0.0897,
+                "tone": "bad",
+                "label": "TOO SHORT"
+              }
+            ],
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.62,
+                  "y": 0.9
+                },
+                "to": {
+                  "x": 0.43,
+                  "y": 0.27
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "spin, deep"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.62,
+                "y": 0.93,
+                "role": "you"
+              }
+            ],
+            "caption": "A serve into the back of the box keeps the returner honest. The front of the box invites an attack."
+          },
+          "next": "n6"
+        },
+        {
+          "id": "n6",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "Deep to the backhand, or wide and a bit short?",
+          "options": [
+            {
+              "label": "Wide, the angle drags them off court",
+              "correct": false,
+              "reply": "A wide second serve that lands short gives them a short ball and an angle to hit back. You would be helping.",
+              "next": "n6"
+            },
+            {
+              "label": "Deep, even if it is less wide",
+              "correct": true,
+              "reply": "Right. Depth is what keeps them behind their baseline and off your first rally ball.",
+              "next": "n7"
+            }
+          ]
+        },
+        {
+          "id": "n7",
+          "kind": "say",
+          "mood": "happy",
+          "text": "I raid the same bin every night. Boring, repeatable, no surprises. Your second serve should feel like that.",
+          "next": "n8"
+        },
+        {
+          "id": "n8",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "In, deep, to the backhand. Never nudge one gently into the middle of the box."
+        }
+      ]
+    },
+    {
+      "id": "dlg-serve-3",
+      "lessonId": "serve-3",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "Most people serve and then wait to see what comes back. That is not a play, that is a hope.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "You serve wide in the deuce court. They are stretched outside their sideline. Where is your next ball going?",
+          "options": [
+            {
+              "label": "Straight back at them, before they recover",
+              "correct": false,
+              "reply": "You are hitting to the one spot they are already standing in. The empty half of the court stays empty.",
+              "next": "n2"
+            },
+            {
+              "label": "Into the open court on the other side",
+              "correct": true,
+              "reply": "Yes. That space is the whole reason you served wide.",
+              "next": "n3"
+            },
+            {
+              "label": "Short, to bring them forward",
+              "correct": false,
+              "reply": "A short ball invites them into the court you were about to hit into. You gave the space back.",
+              "next": "n2"
+            }
+          ]
+        },
+        {
+          "id": "n3",
+          "kind": "say",
+          "mood": "idle",
+          "text": "A stretched returner usually sends it back through the middle, or crosscourt. Either way it is predictable, and you can already be moving.",
+          "next": "n4"
+        },
+        {
+          "id": "n4",
+          "kind": "show",
+          "mood": "idle",
+          "text": "Serve, their reply, your plus-one. Three balls you decided on before the toss.",
+          "scene": {
+            "zones": [
+              {
+                "x": 0.13,
+                "y": 0.23,
+                "w": 0.14,
+                "h": 0.2,
+                "tone": "good",
+                "label": "1. WIDE"
+              },
+              {
+                "x": 0.6,
+                "y": 0.02,
+                "w": 0.27,
+                "h": 0.18,
+                "tone": "focus",
+                "label": "3. OPEN COURT"
+              }
+            ],
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.62,
+                  "y": 0.9
+                },
+                "to": {
+                  "x": 0.2,
+                  "y": 0.32
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "serve"
+              },
+              {
+                "from": {
+                  "x": 0.06,
+                  "y": 0.05
+                },
+                "to": {
+                  "x": 0.5,
+                  "y": 0.85
+                },
+                "kind": "shot",
+                "tone": "neutral",
+                "label": "2. their reply"
+              },
+              {
+                "from": {
+                  "x": 0.5,
+                  "y": 0.85
+                },
+                "to": {
+                  "x": 0.73,
+                  "y": 0.1
+                },
+                "kind": "shot",
+                "tone": "focus",
+                "label": "+1"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.62,
+                "y": 0.93,
+                "role": "you"
+              },
+              {
+                "x": 0.06,
+                "y": 0.05,
+                "role": "opponent",
+                "label": "Them"
+              }
+            ],
+            "caption": "A wide serve pulls them off court. Their reply comes back middle or crosscourt. Your plus-one goes into the space they left."
+          },
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "How many of these patterns do you need?",
+          "options": [
+            {
+              "label": "Two. Wide then open court, T then open side",
+              "correct": true,
+              "reply": "Two practiced patterns will carry a whole match. Two you trust, not six you half know.",
+              "next": "n6"
+            },
+            {
+              "label": "One for every serve you own",
+              "correct": false,
+              "reply": "Then you are choosing between six plans while the ball is in the air. You will pick none of them.",
+              "next": "n5"
+            }
+          ]
+        },
+        {
+          "id": "n6",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Decide before you toss. Deciding after the return arrives is just reacting, with extra steps.",
+          "next": "n7"
+        },
+        {
+          "id": "n7",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "The serve is not the play. The serve plus the next ball is the play."
+        }
+      ]
+    },
+    {
+      "id": "dlg-serve-4",
+      "lessonId": "serve-4",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "The return is the shot people most want to be a winner. It almost never is.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "Their first serve is fast but lands mid-box. You reach it fine, with no time to swing. What do you hit?",
+          "options": [
+            {
+              "label": "A full swing cross-court, to take charge",
+              "correct": false,
+              "reply": "Off a fast serve a full swing is mostly a miss. A missed return is a point you gave away for free.",
+              "next": "n2"
+            },
+            {
+              "label": "A soft high ball, to buy yourself time",
+              "correct": false,
+              "reply": "That floats. They step in and hit it before you have finished recovering.",
+              "next": "n2"
+            },
+            {
+              "label": "A short compact block, deep down the middle",
+              "correct": true,
+              "reply": "Yes. You are borrowing their pace, not making your own.",
+              "next": "n3"
+            }
+          ]
+        },
+        {
+          "id": "n3",
+          "kind": "say",
+          "mood": "idle",
+          "text": "A return that lands deep takes away the server's plus-one shot. That alone makes it a good return.",
+          "next": "n4"
+        },
+        {
+          "id": "n4",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Through the middle they have no cross-court angle to use. The rally starts even, instead of with you defending.",
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "show",
+          "mood": "idle",
+          "text": "Deep and central. Not clever, just the return that keeps you in the point.",
+          "scene": {
+            "zones": [
+              {
+                "x": 0.3,
+                "y": 0.02,
+                "w": 0.4,
+                "h": 0.12,
+                "tone": "good",
+                "label": "DEEP MIDDLE"
+              }
+            ],
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.38,
+                  "y": 0.06
+                },
+                "to": {
+                  "x": 0.78,
+                  "y": 0.72
+                },
+                "kind": "shot",
+                "tone": "neutral",
+                "label": "their serve"
+              },
+              {
+                "from": {
+                  "x": 0.8,
+                  "y": 0.9
+                },
+                "to": {
+                  "x": 0.5,
+                  "y": 0.1
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "return"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.8,
+                "y": 0.9,
+                "role": "you",
+                "label": "Returning"
+              },
+              {
+                "x": 0.38,
+                "y": 0.04,
+                "role": "opponent",
+                "label": "Server"
+              }
+            ],
+            "caption": "Deep and central. This return neutralizes a serve instead of gambling on it."
+          },
+          "next": "n6"
+        },
+        {
+          "id": "n6",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "So winners off the return, never?",
+          "options": [
+            {
+              "label": "A bonus when the serve is weak, never the plan",
+              "correct": true,
+              "reply": "That is it. Take the free one when it shows up. Do not go hunting for it.",
+              "next": "n7"
+            },
+            {
+              "label": "Go for them, the return is your best chance to attack",
+              "correct": false,
+              "reply": "You would be gambling on the ball you have least time for. Missed returns are the cheapest points you can hand over.",
+              "next": "n6"
+            }
+          ]
+        },
+        {
+          "id": "n7",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "In play, deep, near the middle. That return has already done its whole job."
+        }
+      ]
+    },
+    {
+      "id": "dlg-serve-5",
+      "lessonId": "serve-5",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "Watch a club match and the returner stands in one spot all afternoon. First serve, second serve, same place.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "They just missed a first serve. Their second is slow and lands short. Where do you stand for it?",
+          "options": [
+            {
+              "label": "Where you always stand, moving risks mistiming it",
+              "correct": false,
+              "reply": "Then a slow short ball gets to bounce and drop, and you play it from behind your own baseline anyway.",
+              "next": "n2"
+            },
+            {
+              "label": "Two steps back, to be safe on a slow ball",
+              "correct": false,
+              "reply": "Safe from a serve that was never dangerous. You gave up the one ball you could have taken early.",
+              "next": "n2"
+            },
+            {
+              "label": "Step in, about a step inside the baseline",
+              "correct": true,
+              "reply": "Yes. Step in about a step and take it early. They get to watch you do it.",
+              "next": "n3"
+            }
+          ]
+        },
+        {
+          "id": "n3",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Back for the first serve. That step or two is reaction time, and time is what you are short of.",
+          "next": "n4"
+        },
+        {
+          "id": "n4",
+          "kind": "say",
+          "mood": "idle",
+          "text": "In for the second. Earlier contact, less angle for them, and it all happens in front of their eyes.",
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "show",
+          "mood": "idle",
+          "text": "Two positions, one per serve. The walk between them is the free part.",
+          "scene": {
+            "zones": [
+              {
+                "x": 0.6,
+                "y": 0.985,
+                "w": 0.275,
+                "h": 0.015,
+                "tone": "focus",
+                "label": "1st SERVE"
+              },
+              {
+                "x": 0.6,
+                "y": 0.925,
+                "w": 0.275,
+                "h": 0.04,
+                "tone": "good",
+                "label": "2nd SERVE"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.4,
+                "y": 0.05,
+                "role": "opponent",
+                "label": "Server"
+              }
+            ],
+            "caption": "Two return positions. Moving between them is one of the cheapest ways to apply pressure."
+          },
+          "next": "n6"
+        },
+        {
+          "id": "n6",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "What does the server see when you step in?",
+          "options": [
+            {
+              "label": "Nothing, they are busy with their own toss",
+              "correct": false,
+              "reply": "They are standing still, holding a ball, looking straight at your half of the court. They see it.",
+              "next": "n6"
+            },
+            {
+              "label": "A returner who has decided something already",
+              "correct": true,
+              "reply": "That is the pressure. It costs you nothing and it arrives before the ball does.",
+              "next": "n7"
+            }
+          ]
+        },
+        {
+          "id": "n7",
+          "kind": "say",
+          "mood": "happy",
+          "text": "I have never served in my life. I have watched a great many people stand perfectly still, though.",
+          "next": "n8"
+        },
+        {
+          "id": "n8",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "Back on firsts, in on seconds. Where you stand is a decision, not a habit."
+        }
+      ]
+    },
+    {
+      "id": "dlg-serve-6",
+      "lessonId": "serve-6",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "Big point. This is the moment people reach for the serve they have been missing all afternoon.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "It is 30-40 on your serve. Your body serve has landed all match, your wide one has mostly missed. Which?",
+          "options": [
+            {
+              "label": "The wide serve, aggressive and unexpected",
+              "correct": false,
+              "reply": "It has been missing all match. Unexpected does not help when the ball lands long.",
+              "next": "n2"
+            },
+            {
+              "label": "The body serve to the backhand",
+              "correct": true,
+              "reply": "Yes. The one you actually have evidence for.",
+              "next": "n3"
+            },
+            {
+              "label": "A very safe slow serve into the middle",
+              "correct": false,
+              "reply": "It lands, and then they attack it. You swapped a double fault for an easy ball against you.",
+              "next": "n2"
+            }
+          ]
+        },
+        {
+          "id": "n3",
+          "kind": "say",
+          "mood": "idle",
+          "text": "A break point is decided by whether the ball goes in. Nothing else about it is special.",
+          "next": "n4"
+        },
+        {
+          "id": "n4",
+          "kind": "say",
+          "mood": "idle",
+          "text": "So know your best serve before you need it. Count them in practice. The target that lands most is yours.",
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "show",
+          "mood": "idle",
+          "text": "One target you have proved, one you have not. On a break point, only one of them exists.",
+          "scene": {
+            "zones": [
+              {
+                "x": 0.33,
+                "y": 0.2308,
+                "w": 0.13,
+                "h": 0.2,
+                "tone": "good",
+                "label": "TRUSTED"
+              },
+              {
+                "x": 0.13,
+                "y": 0.2308,
+                "w": 0.14,
+                "h": 0.2,
+                "tone": "bad",
+                "label": "UNTESTED"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.62,
+                "y": 0.9,
+                "role": "you",
+                "label": "Break point"
+              }
+            ],
+            "caption": "On a big point, aim where you have already proved you can land it."
+          },
+          "next": "n6"
+        },
+        {
+          "id": "n6",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "So when do you try the untested one?",
+          "options": [
+            {
+              "label": "Early in a game, when a miss costs little",
+              "correct": true,
+              "reply": "Right. That is also what keeps your trusted serve unreadable later on.",
+              "next": "n7"
+            },
+            {
+              "label": "Never, just stick with what works",
+              "correct": false,
+              "reply": "Then they read you by the third game and stand there waiting. The same serve every time is a pattern, not a weapon.",
+              "next": "n6"
+            }
+          ]
+        },
+        {
+          "id": "n7",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Serve your trusted target and accept a rally. A rally is a much better outcome than a double fault.",
+          "next": "n8"
+        },
+        {
+          "id": "n8",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "Big point, trusted target. Save the new one for when a miss is cheap."
+        }
+      ]
+    },
+    {
+      "id": "dlg-read-1",
+      "lessonId": "read-1",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "The first two games aren't for winning. They're for collecting. Both wings, high and low, deep and short.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Second game. Their backhand looks messy, but every ball comes back deep.",
+          "next": "n3"
+        },
+        {
+          "id": "n3",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "Their textbook forehand floats short when you hit it high. Which side do you attack?",
+          "options": [
+            {
+              "label": "The backhand, the technique is clearly worse",
+              "correct": false,
+              "reply": "You'd be attacking the side that keeps returning deep balls. The swing looked bad; the result didn't.",
+              "next": "n3"
+            },
+            {
+              "label": "High to the forehand, then attack the floater",
+              "correct": true,
+              "reply": "Yes. The short reply is the weakness, wherever it comes from.",
+              "next": "n4"
+            },
+            {
+              "label": "Down the middle, wait for errors",
+              "correct": false,
+              "reply": "That's a hope, not a plan. You already found something and you're choosing to ignore it.",
+              "next": "n3"
+            }
+          ]
+        },
+        {
+          "id": "n4",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Judge the reply, not the stroke. Ugly and deep is fine. Pretty and short is a target.",
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "say",
+          "mood": "happy",
+          "text": "I raid bins. Nothing in there is pretty, and some of it is excellent.",
+          "next": "n6"
+        },
+        {
+          "id": "n6",
+          "kind": "show",
+          "mood": "idle",
+          "text": "Four deliberate probes in the first two games. Watch what comes back off each one.",
+          "scene": {
+            "zones": [
+              {
+                "x": 0.13,
+                "y": 0.03,
+                "w": 0.3,
+                "h": 0.16,
+                "tone": "focus",
+                "label": "TEST 1"
+              },
+              {
+                "x": 0.57,
+                "y": 0.03,
+                "w": 0.3,
+                "h": 0.16,
+                "tone": "focus",
+                "label": "TEST 2"
+              },
+              {
+                "x": 0.15,
+                "y": 0.3,
+                "w": 0.28,
+                "h": 0.15,
+                "tone": "focus",
+                "label": "TEST 3 · SHORT"
+              },
+              {
+                "x": 0.57,
+                "y": 0.3,
+                "w": 0.28,
+                "h": 0.15,
+                "tone": "focus",
+                "label": "TEST 4 · SHORT"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.5,
+                "y": 0.93,
+                "role": "you"
+              },
+              {
+                "x": 0.5,
+                "y": 0.05,
+                "role": "opponent",
+                "label": "Them"
+              }
+            ],
+            "caption": "Four deliberate probes in the first two games. What comes back tells you the plan for the rest."
+          },
+          "next": "n7"
+        },
+        {
+          "id": "n7",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "You've found the weak side. How often do you go there?",
+          "options": [
+            {
+              "label": "Until they solve it",
+              "correct": true,
+              "reply": "Right. Go there until they fix it. Nothing says you have to be fair.",
+              "next": "n8"
+            },
+            {
+              "label": "Mix it around so they don't get grooved",
+              "correct": false,
+              "reply": "Go there until they solve it. One ball the other way now and then, only to stop them camping on it.",
+              "next": "n7"
+            }
+          ]
+        },
+        {
+          "id": "n8",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "Two games of testing buys you an hour of knowing."
+        }
+      ]
+    },
+    {
+      "id": "dlg-read-2",
+      "lessonId": "read-2",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "Between your shots there's a free second. Most players spend it watching their own ball travel.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "You've dragged them wide to the backhand corner. They're sprinting back to the middle. Where do you hit?",
+          "options": [
+            {
+              "label": "The open court on the far side",
+              "correct": false,
+              "reply": "They are already sprinting that way. You would be hitting the ball right to them.",
+              "next": "n2"
+            },
+            {
+              "label": "Back behind them, into the same corner",
+              "correct": true,
+              "reply": "Yes. Stop, turn, start again. That costs far more than a few extra steps.",
+              "next": "n3"
+            },
+            {
+              "label": "Down the middle, keep the rally going",
+              "correct": false,
+              "reply": "You had them off balance and handed it straight back. Nothing you noticed got used.",
+              "next": "n2"
+            }
+          ]
+        },
+        {
+          "id": "n3",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Changing direction costs more than distance. A sprinting player has already committed their weight.",
+          "next": "n4"
+        },
+        {
+          "id": "n4",
+          "kind": "show",
+          "mood": "idle",
+          "text": "They're still moving back to the middle. The ball behind them makes them start over.",
+          "scene": {
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.25,
+                  "y": 0.12
+                },
+                "to": {
+                  "x": 0.55,
+                  "y": 0.08
+                },
+                "kind": "move",
+                "tone": "neutral",
+                "label": "recovering"
+              },
+              {
+                "from": {
+                  "x": 0.7,
+                  "y": 0.92
+                },
+                "to": {
+                  "x": 0.22,
+                  "y": 0.1
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "behind them"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.7,
+                "y": 0.93,
+                "role": "you"
+              },
+              {
+                "x": 0.4,
+                "y": 0.1,
+                "role": "opponent",
+                "label": "Moving right"
+              }
+            ],
+            "caption": "They are still moving back to the middle. The ball behind them makes them stop, turn and start again."
+          },
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Against a slow recoverer, the same target twice is often enough. They're leaning away, waiting for the change.",
+          "next": "n6"
+        },
+        {
+          "id": "n6",
+          "kind": "say",
+          "mood": "happy",
+          "text": "I'm not an athlete. Even I can spot someone admiring their own shot.",
+          "next": "n7"
+        },
+        {
+          "id": "n7",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "So when do you make this read?",
+          "options": [
+            {
+              "label": "In the moment after the ball leaves their racket",
+              "correct": true,
+              "reply": "That's the window. Any later and you're picking a target by feel.",
+              "next": "n8"
+            },
+            {
+              "label": "While they're still swinging, for more time",
+              "correct": false,
+              "reply": "Their feet haven't told you anything yet. You'd be guessing early instead of knowing late.",
+              "next": "n7"
+            }
+          ]
+        },
+        {
+          "id": "n8",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "Look at their feet, then hit where they are not going."
+        }
+      ]
+    },
+    {
+      "id": "dlg-read-3",
+      "lessonId": "read-3",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "They stand well behind the baseline and hit heavy. You've been trading with them and losing.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "What actually changes this match?",
+          "options": [
+            {
+              "label": "Hit harder and deeper, push them further back",
+              "correct": false,
+              "reply": "That's the game they're built for. You'd be playing their rally, only worse.",
+              "next": "n2"
+            },
+            {
+              "label": "Short and low, drag them forward, follow it in",
+              "correct": true,
+              "reply": "Yes. Forward is the direction nobody practices.",
+              "next": "n3"
+            },
+            {
+              "label": "Slow it all down and rally patiently",
+              "correct": false,
+              "reply": "Against a heavy hitter, patience alone is a long wait for your own error.",
+              "next": "n2"
+            }
+          ]
+        },
+        {
+          "id": "n3",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Club players drill side to side for years. Almost nobody practices sprinting in to a low ball.",
+          "next": "n4"
+        },
+        {
+          "id": "n4",
+          "kind": "say",
+          "mood": "happy",
+          "text": "Nobody warms up by running forwards. Not them, not you, certainly not me.",
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Low matters as much as short. A short high ball is a gift; a low one makes them bend and lift.",
+          "next": "n6"
+        },
+        {
+          "id": "n6",
+          "kind": "show",
+          "mood": "idle",
+          "text": "Short and low, and you move in behind it. The weak reply lands near the net.",
+          "scene": {
+            "zones": [
+              {
+                "x": 0.2,
+                "y": 0.3,
+                "w": 0.3,
+                "h": 0.15,
+                "tone": "good",
+                "label": "SHORT & LOW"
+              }
+            ],
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.6,
+                  "y": 0.9
+                },
+                "to": {
+                  "x": 0.32,
+                  "y": 0.38
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "low"
+              },
+              {
+                "from": {
+                  "x": 0.6,
+                  "y": 0.9
+                },
+                "to": {
+                  "x": 0.4,
+                  "y": 0.62
+                },
+                "kind": "move",
+                "tone": "focus",
+                "label": "follow in"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.6,
+                "y": 0.93,
+                "role": "you"
+              },
+              {
+                "x": 0.5,
+                "y": 0.04,
+                "role": "opponent",
+                "label": "Deep"
+              }
+            ],
+            "caption": "Low and short pulls a baseline player into the direction they never practice."
+          },
+          "next": "n7"
+        },
+        {
+          "id": "n7",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "You've hit the short ball. Where are you standing?",
+          "options": [
+            {
+              "label": "Moving in behind it",
+              "correct": true,
+              "reply": "Right. The reply will be short and weak, and you need to be there for it.",
+              "next": "n8"
+            },
+            {
+              "label": "Back at the baseline, ready for anything",
+              "correct": false,
+              "reply": "You brought them in and then gave the court back. The point resets, in their favour.",
+              "next": "n7"
+            }
+          ]
+        },
+        {
+          "id": "n8",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "Forward is the hardest direction. Send them there, then follow."
+        }
+      ]
+    },
+    {
+      "id": "dlg-read-4",
+      "lessonId": "read-4",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "Four balls long this game, and your swing felt completely normal. The wind is at your back.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "What do you adjust?",
+          "options": [
+            {
+              "label": "Swing harder so the ball drops faster",
+              "correct": false,
+              "reply": "Harder sends it further, not sooner. The wind is helping the ball, not you.",
+              "next": "n2"
+            },
+            {
+              "label": "Add topspin, keep it lower, aim shorter",
+              "correct": true,
+              "reply": "Yes. Topspin brings it down, and a shorter target soaks up the carry.",
+              "next": "n3"
+            },
+            {
+              "label": "Same target, accept the errors",
+              "correct": false,
+              "reply": "Four in one game is not bad luck. That is the wind telling you something, twice.",
+              "next": "n2"
+            }
+          ]
+        },
+        {
+          "id": "n3",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Into the wind, do the opposite. Hit bigger and deeper, because the air holds the ball in.",
+          "next": "n4"
+        },
+        {
+          "id": "n4",
+          "kind": "say",
+          "mood": "happy",
+          "text": "I check which way the wind is going before I open a bin. Same idea.",
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "show",
+          "mood": "idle",
+          "text": "The same swing, two wind directions, two different landing spots.",
+          "scene": {
+            "zones": [
+              {
+                "x": 0.13,
+                "y": 0.02,
+                "w": 0.74,
+                "h": 0.08,
+                "tone": "good",
+                "label": "INTO WIND · GO DEEP"
+              },
+              {
+                "x": 0.13,
+                "y": 0.1,
+                "w": 0.74,
+                "h": 0.1,
+                "tone": "focus",
+                "label": "DOWNWIND · SHORTEN TARGET"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.5,
+                "y": 0.93,
+                "role": "you"
+              }
+            ],
+            "caption": "The same swing lands in two different places depending on which way the wind is going."
+          },
+          "next": "n6"
+        },
+        {
+          "id": "n6",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Sun is a read too. Note the end where it sits in the server's eyes.",
+          "next": "n7"
+        },
+        {
+          "id": "n7",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Surface as well. Clay sits up and pays for patience. A fast court pays for the first strike.",
+          "next": "n8"
+        },
+        {
+          "id": "n8",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "When do you work all this out?",
+          "options": [
+            {
+              "label": "In the warm-up, before the first point",
+              "correct": true,
+              "reply": "That's it. Two minutes of noticing saves you a set of guessing.",
+              "next": "n9"
+            },
+            {
+              "label": "After a few games, once you see a pattern",
+              "correct": false,
+              "reply": "By then the pattern is on the scoreboard. You paid for information that was free earlier.",
+              "next": "n8"
+            }
+          ]
+        },
+        {
+          "id": "n9",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "Read the wind, the sun and the surface before the first point."
+        }
+      ]
+    },
+    {
+      "id": "dlg-read-5",
+      "lessonId": "read-5",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "Break point, returning. All match, your deep cross-court to their backhand has worked.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "say",
+          "mood": "idle",
+          "text": "You've also been thinking about that drop shot. You haven't landed one today.",
+          "next": "n3"
+        },
+        {
+          "id": "n3",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "What do you play?",
+          "options": [
+            {
+              "label": "The drop shot, surprise wins big points",
+              "correct": false,
+              "reply": "A shot you haven't landed all day is an experiment. Deuce is an expensive place to run one.",
+              "next": "n3"
+            },
+            {
+              "label": "The deep cross-court to the backhand",
+              "correct": true,
+              "reply": "Yes. Boring and repeatable is exactly what a big point is for.",
+              "next": "n4"
+            },
+            {
+              "label": "Whatever feels right when the ball arrives",
+              "correct": false,
+              "reply": "Feel is what you use when you have no plan. You have a plan.",
+              "next": "n3"
+            }
+          ]
+        },
+        {
+          "id": "n4",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Not all points weigh the same. 30-30, deuce, and break point decide games far more than 40-0 does.",
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "say",
+          "mood": "happy",
+          "text": "I have one move. Tip the bin, run. Deeply dull, never once failed.",
+          "next": "n6"
+        },
+        {
+          "id": "n6",
+          "kind": "show",
+          "mood": "idle",
+          "text": "One pattern you trust, run on the point that actually decides the game.",
+          "scene": {
+            "zones": [
+              {
+                "x": 0.57,
+                "y": 0.03,
+                "w": 0.3,
+                "h": 0.17,
+                "tone": "good",
+                "label": "A-PATTERN"
+              }
+            ],
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.32,
+                  "y": 0.93
+                },
+                "to": {
+                  "x": 0.72,
+                  "y": 0.11
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "deep cross"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.32,
+                "y": 0.9,
+                "role": "you",
+                "label": "Break point"
+              }
+            ],
+            "caption": "On the points that decide games, run the pattern you already know works."
+          },
+          "next": "n7"
+        },
+        {
+          "id": "n7",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "So where does the drop shot belong?",
+          "options": [
+            {
+              "label": "On the cheap points, like 40-0 or 40-15",
+              "correct": true,
+              "reply": "Exactly. Learn it there, when a lost point costs little, so it is ready when it is tight.",
+              "next": "n8"
+            },
+            {
+              "label": "Saved for when nothing else is working",
+              "correct": false,
+              "reply": "Then it is a rescue shot you have never rehearsed. That is not a plan, it is panic.",
+              "next": "n7"
+            }
+          ]
+        },
+        {
+          "id": "n8",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "Big point, boring pattern. Keep the interesting ideas for cheap points."
+        }
+      ]
+    },
+    {
+      "id": "dlg-read-6",
+      "lessonId": "read-6",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "Down 1-4. You've traded deep baseline balls all set and lost most of the rallies.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "What now?",
+          "options": [
+            {
+              "label": "Focus harder, commit to the same game",
+              "correct": false,
+              "reply": "Trying harder is not a change. You would lose the same rally with more effort in it.",
+              "next": "n2"
+            },
+            {
+              "label": "One concrete change, run for a full game",
+              "correct": true,
+              "reply": "Yes. Something you can name, and then check.",
+              "next": "n3"
+            },
+            {
+              "label": "Just swing harder and hope the misses stop",
+              "correct": false,
+              "reply": "That is effort, not a plan. You cannot name it or check it, so you learn nothing.",
+              "next": "n2"
+            }
+          ]
+        },
+        {
+          "id": "n3",
+          "kind": "say",
+          "mood": "idle",
+          "text": "A change has to be nameable. A target, a height, a return position, where you stand to serve.",
+          "next": "n4"
+        },
+        {
+          "id": "n4",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Then give it a full game. One point can't tell you whether it worked.",
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "show",
+          "mood": "idle",
+          "text": "One thing you stop doing, one thing you start. Judge it a game later.",
+          "scene": {
+            "zones": [
+              {
+                "x": 0.13,
+                "y": 0.03,
+                "w": 0.3,
+                "h": 0.17,
+                "tone": "bad",
+                "label": "NOT WORKING"
+              },
+              {
+                "x": 0.57,
+                "y": 0.03,
+                "w": 0.3,
+                "h": 0.17,
+                "tone": "good",
+                "label": "TRY THIS INSTEAD"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.5,
+                "y": 0.93,
+                "role": "you"
+              }
+            ],
+            "caption": "A change you can name and check: a different target, not just more effort."
+          },
+          "next": "n6"
+        },
+        {
+          "id": "n6",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Judge it by the balls coming back, not the score. Weaker replies mean it's working.",
+          "next": "n7"
+        },
+        {
+          "id": "n7",
+          "kind": "say",
+          "mood": "happy",
+          "text": "I once swapped a perfectly good bin for a new one. The new one was empty.",
+          "next": "n8"
+        },
+        {
+          "id": "n8",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "Next set you're up 4-1 with the same pattern. What do you change?",
+          "options": [
+            {
+              "label": "Nothing at all",
+              "correct": true,
+              "reply": "Right. Run it until they solve it. Boredom is not a tactical reason.",
+              "next": "n9"
+            },
+            {
+              "label": "Add variety so they can't read you",
+              "correct": false,
+              "reply": "That's guilt, not tactics. You'd be fixing a problem they haven't managed to cause.",
+              "next": "n8"
+            }
+          ]
+        },
+        {
+          "id": "n9",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "Losing, change one named thing. Winning, change nothing."
+        }
+      ]
+    },
+    {
+      "id": "dlg-pat-1",
+      "lessonId": "pat-1",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "Time for patterns. Two balls, one plan, and the second ball is where the point is actually won.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "You dragged them wide to their forehand corner. They are sprinting back to the middle. Where does your next ball go?",
+          "options": [
+            {
+              "label": "Cross-court into the open backhand side",
+              "correct": false,
+              "reply": "That is the space they are running into. The ball arrives in front of them at an easy height.",
+              "next": "n2"
+            },
+            {
+              "label": "A drop shot to catch them out",
+              "correct": false,
+              "reply": "They are already sprinting forward toward the middle. Forward is the one way a drop shot does not hurt them.",
+              "next": "n2"
+            },
+            {
+              "label": "Straight back into the same corner",
+              "correct": true,
+              "reply": "Yes. They have to stop, reverse, and start again. That is the expensive part.",
+              "next": "n3"
+            }
+          ]
+        },
+        {
+          "id": "n3",
+          "kind": "say",
+          "mood": "idle",
+          "text": "The open court is only open until they get there. Hitting behind them turns their own momentum into the problem.",
+          "next": "n4"
+        },
+        {
+          "id": "n4",
+          "kind": "say",
+          "mood": "happy",
+          "text": "Changing direction at a sprint is costly. I have tried it on a fence, and the fence won.",
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "show",
+          "mood": "idle",
+          "text": "Two balls to the same corner. Watch the second one arrive while they are still running away.",
+          "scene": {
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.65,
+                  "y": 0.92
+                },
+                "to": {
+                  "x": 0.18,
+                  "y": 0.14
+                },
+                "kind": "shot",
+                "tone": "focus",
+                "label": "1. wide"
+              },
+              {
+                "from": {
+                  "x": 0.22,
+                  "y": 0.12
+                },
+                "to": {
+                  "x": 0.55,
+                  "y": 0.07
+                },
+                "kind": "move",
+                "tone": "neutral",
+                "label": "2. they recover"
+              },
+              {
+                "from": {
+                  "x": 0.48,
+                  "y": 0.9
+                },
+                "to": {
+                  "x": 0.2,
+                  "y": 0.09
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "3. behind"
+              },
+              {
+                "from": {
+                  "x": 0.62,
+                  "y": 0.93
+                },
+                "to": {
+                  "x": 0.5,
+                  "y": 0.92
+                },
+                "kind": "move",
+                "tone": "neutral",
+                "label": "recover"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.62,
+                "y": 0.93,
+                "role": "you"
+              },
+              {
+                "x": 0.42,
+                "y": 0.09,
+                "role": "opponent",
+                "label": "Moving"
+              }
+            ],
+            "caption": "Two balls to the same corner. The second one arrives while they are running the other way."
+          },
+          "next": "n6"
+        },
+        {
+          "id": "n6",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "When does this pattern stop working?",
+          "options": [
+            {
+              "label": "Once they have stopped and are balanced in the middle",
+              "correct": true,
+              "reply": "Right. Then they are waiting for it, and the open court is the better ball.",
+              "next": "n7"
+            },
+            {
+              "label": "Once they expect it, so vary it every time",
+              "correct": false,
+              "reply": "Expecting it does not help them much. Vary it too early and you hand back a free point.",
+              "next": "n6"
+            }
+          ]
+        },
+        {
+          "id": "n7",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Depth does the work here, not pace. A deep ball stops them getting round it and swinging freely.",
+          "next": "n8"
+        },
+        {
+          "id": "n8",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "Wide, then behind. The second ball goes where they just were."
+        }
+      ]
+    },
+    {
+      "id": "dlg-pat-2",
+      "lessonId": "pat-2",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "A slow ball drifts down the middle. This is the one ball where you get to choose your own weapon.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "You are a right-hander, so are they. Your forehand is much better than your backhand. What do you do?",
+          "options": [
+            {
+              "label": "Take the backhand, the ball is on that side",
+              "correct": false,
+              "reply": "The ball is in the middle. Playing it with your weaker wing there is a choice, not an obligation.",
+              "next": "n2"
+            },
+            {
+              "label": "Step around it and hit a forehand down the line",
+              "correct": false,
+              "reply": "Forehand, good. But down the line is the tighter target and the longer run home.",
+              "next": "n2"
+            },
+            {
+              "label": "Step around it, forehand to their backhand",
+              "correct": true,
+              "reply": "Yes. Your best shot into their worst, on the safer diagonal.",
+              "next": "n3"
+            }
+          ]
+        },
+        {
+          "id": "n3",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Stand to the backhand side of the ball and swing across it. That sends a forehand into their backhand.",
+          "next": "n4"
+        },
+        {
+          "id": "n4",
+          "kind": "show",
+          "mood": "idle",
+          "text": "Watch the footwork first. The shot is ordinary; the step around the ball is the skill.",
+          "scene": {
+            "zones": [
+              {
+                "x": 0.59,
+                "y": 0.03,
+                "w": 0.28,
+                "h": 0.17,
+                "tone": "good",
+                "label": "THEIR BACKHAND"
+              }
+            ],
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.5,
+                  "y": 0.86
+                },
+                "to": {
+                  "x": 0.38,
+                  "y": 0.9
+                },
+                "kind": "move",
+                "tone": "focus",
+                "label": "step around"
+              },
+              {
+                "from": {
+                  "x": 0.38,
+                  "y": 0.9
+                },
+                "to": {
+                  "x": 0.74,
+                  "y": 0.12
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "inside-out FH"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.38,
+                "y": 0.93,
+                "role": "you"
+              },
+              {
+                "x": 0.45,
+                "y": 0.05,
+                "role": "opponent",
+                "label": "Right-hander"
+              }
+            ],
+            "balls": [
+              {
+                "x": 0.5,
+                "y": 0.84
+              }
+            ],
+            "caption": "Move around the middle ball so your forehand — not your backhand — plays it."
+          },
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "say",
+          "mood": "happy",
+          "text": "I approach a bin from the side my paws can actually reach into. Same instinct, fewer trophies.",
+          "next": "n6"
+        },
+        {
+          "id": "n6",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "What does stepping around the ball cost you?",
+          "options": [
+            {
+              "label": "Your forehand corner is now wide open",
+              "correct": true,
+              "reply": "Exactly. Recover wider than feels natural, or their reply ends it.",
+              "next": "n7"
+            },
+            {
+              "label": "Nothing, you are hitting from the middle anyway",
+              "correct": false,
+              "reply": "You started in the middle and finished several steps away. Something got left behind.",
+              "next": "n6"
+            }
+          ]
+        },
+        {
+          "id": "n7",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "Middle ball, forehand, into their backhand. Then recover further than you want to."
+        }
+      ]
+    },
+    {
+      "id": "dlg-pat-3",
+      "lessonId": "pat-3",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "This pattern makes them run two directions at once. Forward and sideways, in the same sprint.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "say",
+          "mood": "idle",
+          "text": "It starts with a short angled cross-court off a comfortable ball. That drags them in and across.",
+          "next": "n3"
+        },
+        {
+          "id": "n3",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "It works. They are stranded near their service line on one side, scrambling the ball back. How do you finish?",
+          "options": [
+            {
+              "label": "Another short angle, same side",
+              "correct": false,
+              "reply": "That brings them back into the point. They are already standing next to it.",
+              "next": "n3"
+            },
+            {
+              "label": "Deep down the open line, behind them",
+              "correct": true,
+              "reply": "Yes. The whole diagonal behind them is empty, and the ball only has to land in.",
+              "next": "n4"
+            },
+            {
+              "label": "Hard straight at them so they cannot swing",
+              "correct": false,
+              "reply": "You would be feeding a volley to somebody already standing near the net.",
+              "next": "n3"
+            }
+          ]
+        },
+        {
+          "id": "n4",
+          "kind": "show",
+          "mood": "idle",
+          "text": "Shot one pulls them in. Shot two goes to the space they left behind.",
+          "scene": {
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.7,
+                  "y": 0.9
+                },
+                "to": {
+                  "x": 0.2,
+                  "y": 0.34
+                },
+                "kind": "shot",
+                "tone": "focus",
+                "label": "1. short cross"
+              },
+              {
+                "from": {
+                  "x": 0.7,
+                  "y": 0.9
+                },
+                "to": {
+                  "x": 0.8,
+                  "y": 0.06
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "2. deep line"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.7,
+                "y": 0.93,
+                "role": "you"
+              },
+              {
+                "x": 0.25,
+                "y": 0.3,
+                "role": "opponent",
+                "label": "Pulled in"
+              }
+            ],
+            "caption": "The short angle drags them forward and across. The deep line finishes into the space behind them."
+          },
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "When should you not try the short angle?",
+          "options": [
+            {
+              "label": "When you are defending or off balance",
+              "correct": true,
+              "reply": "Right. From there it lands short and central, and they take the attack off you.",
+              "next": "n6"
+            },
+            {
+              "label": "When they are a quick mover",
+              "correct": false,
+              "reply": "Quick still has to cover forward and sideways at once. Speed is not what breaks this pattern.",
+              "next": "n5"
+            }
+          ]
+        },
+        {
+          "id": "n6",
+          "kind": "say",
+          "mood": "idle",
+          "text": "The finish is not hit hard. Deep and inside the lines is unreachable from the service line.",
+          "next": "n7"
+        },
+        {
+          "id": "n7",
+          "kind": "say",
+          "mood": "happy",
+          "text": "Two directions at once is what breaks people. I can barely manage one.",
+          "next": "n8"
+        },
+        {
+          "id": "n8",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "Short cross to bring them in. Deep line to end it."
+        }
+      ]
+    },
+    {
+      "id": "dlg-pat-4",
+      "lessonId": "pat-4",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "Coming forward is a pattern, not a mood. It has three parts, and everyone skips the middle one.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "You hit a deep approach and you are running in. They start their swing. What do you do right now?",
+          "options": [
+            {
+              "label": "Keep sprinting, get as close to the net as possible",
+              "correct": false,
+              "reply": "A player still moving when the ball is struck cannot change direction. The ball finds your feet.",
+              "next": "n2"
+            },
+            {
+              "label": "Split step and land balanced before contact",
+              "correct": true,
+              "reply": "Yes. Momentum becomes balance, and now you can go either way.",
+              "next": "n3"
+            },
+            {
+              "label": "Stop and back up behind the baseline",
+              "correct": false,
+              "reply": "Then the approach shot was wasted, and you are defending from a worse spot than before.",
+              "next": "n2"
+            }
+          ]
+        },
+        {
+          "id": "n3",
+          "kind": "say",
+          "mood": "idle",
+          "text": "A small hop as they swing, landing on both feet. That is the entire skill.",
+          "next": "n4"
+        },
+        {
+          "id": "n4",
+          "kind": "show",
+          "mood": "idle",
+          "text": "Deep ball, split step, volley. The stop in the middle is the part nobody practices.",
+          "scene": {
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.3,
+                  "y": 0.85
+                },
+                "to": {
+                  "x": 0.2,
+                  "y": 0.07
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "1. deep approach"
+              },
+              {
+                "from": {
+                  "x": 0.3,
+                  "y": 0.85
+                },
+                "to": {
+                  "x": 0.37,
+                  "y": 0.6
+                },
+                "kind": "move",
+                "tone": "focus",
+                "label": "2. split step"
+              },
+              {
+                "from": {
+                  "x": 0.37,
+                  "y": 0.6
+                },
+                "to": {
+                  "x": 0.75,
+                  "y": 0.28
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "3. volley"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.3,
+                "y": 0.85,
+                "role": "you"
+              },
+              {
+                "x": 0.2,
+                "y": 0.06,
+                "role": "opponent",
+                "label": "Them"
+              }
+            ],
+            "caption": "Deep approach, split step inside the service line, then volley into the space."
+          },
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "Which of their balls invites you in?",
+          "options": [
+            {
+              "label": "A short one, near your service line",
+              "correct": true,
+              "reply": "Right. A short ball is the invitation. Your approach off it still has to land deep.",
+              "next": "n6"
+            },
+            {
+              "label": "A deep one",
+              "correct": false,
+              "reply": "A deep ball keeps you honest at the baseline. It is not the one you attack off.",
+              "next": "n5"
+            }
+          ]
+        },
+        {
+          "id": "n6",
+          "kind": "say",
+          "mood": "idle",
+          "text": "From inside the service line the open court is huge. Volley firmly into the space instead of swinging hard.",
+          "next": "n7"
+        },
+        {
+          "id": "n7",
+          "kind": "say",
+          "mood": "happy",
+          "text": "I once tried to smash a bin lid open. It is still shut, and I am still embarrassed.",
+          "next": "n8"
+        },
+        {
+          "id": "n8",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "Deep approach, split step, volley into the open court."
+        }
+      ]
+    },
+    {
+      "id": "dlg-pat-5",
+      "lessonId": "pat-5",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "Every player needs one shot that says: not this ball, not yet. This is that shot.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "They attacked and are pressing forward inside their baseline. You are scrambling wide off court, barely reaching it. What do you hit?",
+          "options": [
+            {
+              "label": "A flat drive down the line to pass them",
+              "correct": false,
+              "reply": "Stretched and scrambling, that is the least repeatable shot you own. Miss it and the point is simply over.",
+              "next": "n2"
+            },
+            {
+              "label": "A high deep ball down the middle",
+              "correct": true,
+              "reply": "Yes. It ends their attack and buys you the time to get home.",
+              "next": "n3"
+            },
+            {
+              "label": "A short angle to make them stretch",
+              "correct": false,
+              "reply": "From off court that angle lands short and central, and they are already moving forward.",
+              "next": "n2"
+            }
+          ]
+        },
+        {
+          "id": "n3",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Height is time. The higher the ball, the longer it hangs, and the further back toward home you get.",
+          "next": "n4"
+        },
+        {
+          "id": "n4",
+          "kind": "show",
+          "mood": "idle",
+          "text": "One ball doing two jobs: it takes their attack away and it walks you home.",
+          "scene": {
+            "zones": [
+              {
+                "x": 0.34,
+                "y": 0.02,
+                "w": 0.32,
+                "h": 0.18,
+                "tone": "good",
+                "label": "HIGH & DEEP"
+              }
+            ],
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.9,
+                  "y": 0.86
+                },
+                "to": {
+                  "x": 0.5,
+                  "y": 0.1
+                },
+                "kind": "shot",
+                "tone": "good",
+                "label": "reset"
+              },
+              {
+                "from": {
+                  "x": 0.9,
+                  "y": 0.86
+                },
+                "to": {
+                  "x": 0.55,
+                  "y": 0.94
+                },
+                "kind": "move",
+                "tone": "focus",
+                "label": "recover"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.94,
+                "y": 0.88,
+                "role": "you",
+                "label": "Off court"
+              },
+              {
+                "x": 0.4,
+                "y": 0.18,
+                "role": "opponent",
+                "label": "Attacking"
+              }
+            ],
+            "caption": "One high central ball ends their attack and gives you the time to get home."
+          },
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "You reset, you recover, the next ball comes. Now what?",
+          "options": [
+            {
+              "label": "Go back to hitting deep cross-court with intent",
+              "correct": true,
+              "reply": "That is it. One reset, then you compete again.",
+              "next": "n6"
+            },
+            {
+              "label": "Reset again and stay safe until they miss",
+              "correct": false,
+              "reply": "Two in a row and you have gone from buying time to giving it away. Safe turns passive.",
+              "next": "n5"
+            }
+          ]
+        },
+        {
+          "id": "n6",
+          "kind": "say",
+          "mood": "happy",
+          "text": "A reset is not surrender. It is me backing away from a dog and returning later.",
+          "next": "n7"
+        },
+        {
+          "id": "n7",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "One high, deep, central ball. Then rejoin the rally as an equal."
+        }
+      ]
+    },
+    {
+      "id": "dlg-pat-6",
+      "lessonId": "pat-6",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "Doubles now. Two of you, one line, and that line is most of the tactics.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "A neutral rally ball has gone across. You are at the net, your partner is still on the baseline. Any problem?",
+          "options": [
+            {
+              "label": "Nothing, one up and one back covers everything",
+              "correct": false,
+              "reply": "While serving that is fine. But in a neutral rally it is a diagonal gap they can hit into all day.",
+              "next": "n2"
+            },
+            {
+              "label": "You are split, so both should be up or both back",
+              "correct": true,
+              "reply": "Yes. One line, two players. Get both up when you can, or both go back.",
+              "next": "n3"
+            },
+            {
+              "label": "Swap over: partner comes up, you go back",
+              "correct": false,
+              "reply": "Same shape, mirrored. The gap just moves to the other diagonal.",
+              "next": "n2"
+            }
+          ]
+        },
+        {
+          "id": "n3",
+          "kind": "say",
+          "mood": "idle",
+          "text": "When the ball goes left, you both go left. Same distance apart, sliding together, nobody chasing alone.",
+          "next": "n4"
+        },
+        {
+          "id": "n4",
+          "kind": "show",
+          "mood": "idle",
+          "text": "Both at the net, one line, middle covered. Notice the pair moves as one shape.",
+          "scene": {
+            "zones": [
+              {
+                "x": 0.36,
+                "y": 0.51,
+                "w": 0.28,
+                "h": 0.31,
+                "tone": "focus",
+                "label": "COVER THE MIDDLE"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.34,
+                "y": 0.64,
+                "role": "you"
+              },
+              {
+                "x": 0.66,
+                "y": 0.64,
+                "role": "partner"
+              },
+              {
+                "x": 0.3,
+                "y": 0.06,
+                "role": "opponent",
+                "label": "Them"
+              },
+              {
+                "x": 0.68,
+                "y": 0.06,
+                "role": "opponent",
+                "label": "Them"
+              }
+            ],
+            "caption": "One line, both at the net, middle covered — and the pair slides sideways together."
+          },
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "Where do most doubles points get lost?",
+          "options": [
+            {
+              "label": "Down the middle",
+              "correct": true,
+              "reply": "Right. Lowest net, and two players hesitating over whose ball it is.",
+              "next": "n6"
+            },
+            {
+              "label": "Down the tramlines",
+              "correct": false,
+              "reply": "The tramlines look frightening, but they are a narrow, low-percentage target. Guarding them pulls you both wide.",
+              "next": "n5"
+            }
+          ]
+        },
+        {
+          "id": "n6",
+          "kind": "say",
+          "mood": "idle",
+          "text": "The middle ball belongs to whoever can take it with a forehand at net height. Claim it — hesitation loses points nobody touched.",
+          "next": "n7"
+        },
+        {
+          "id": "n7",
+          "kind": "offer",
+          "mood": "thinking",
+          "text": "You're moving as a pair now. At the net while your partner serves, can you read where the return is going?",
+          "setId": "set-net-anticipation",
+          "next": "n8"
+        },
+        {
+          "id": "n8",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "One line. Both up or both back, and the middle covered first."
+        }
+      ]
+    },
+    {
+      "id": "dlg-net-1",
+      "lessonId": "net-1",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "You took me up on it. Good. Net play in doubles starts with an uncomfortable truth.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "say",
+          "mood": "idle",
+          "text": "You're at the net. Your partner serves. You have no idea where this serve is going — and today, neither do they.",
+          "next": "n3"
+        },
+        {
+          "id": "n3",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "So what do you do about a serve you can't predict?",
+          "options": [
+            {
+              "label": "Guess a side and commit before the serve lands",
+              "correct": false,
+              "reply": "A guess moves you early and wrong half the time. The returner sees you leave and aims behind you.",
+              "next": "n3"
+            },
+            {
+              "label": "Hold the middle third and read the returner instead",
+              "correct": true,
+              "reply": "Yes. The serve is a mystery; the returner isn't. Their racket tells you everything, a beat earlier.",
+              "next": "n4"
+            },
+            {
+              "label": "Hug the alley so at least the line is safe",
+              "correct": false,
+              "reply": "That guards their hardest shot all day. The middle stays open, and that's where returns live.",
+              "next": "n3"
+            }
+          ]
+        },
+        {
+          "id": "n4",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Settle as the serve is struck. Split-step as the returner swings. Two beats, every point.",
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "say",
+          "mood": "happy",
+          "text": "I can't read bin lids in flight either. So I watch the paws that open them.",
+          "next": "n6"
+        },
+        {
+          "id": "n6",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Watch the returner's contact point and racket face. The ball goes where the face points — you'll know before it leaves.",
+          "next": "n7"
+        },
+        {
+          "id": "n7",
+          "kind": "show",
+          "mood": "idle",
+          "text": "The serve could land anywhere in the box. Your station doesn't care — it covers the likely reply.",
+          "next": "n8",
+          "scene": {
+            "zones": [
+              {
+                "x": 0.125,
+                "y": 0.235,
+                "w": 0.375,
+                "h": 0.255,
+                "tone": "focus",
+                "label": "COULD GO ANYWHERE"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.28,
+                "y": 0.66,
+                "role": "you",
+                "label": "You — at the net"
+              },
+              {
+                "x": 0.63,
+                "y": 0.9,
+                "role": "partner",
+                "label": "About to serve"
+              },
+              {
+                "x": 0.24,
+                "y": 0.07,
+                "role": "opponent",
+                "label": "Returner"
+              },
+              {
+                "x": 0.72,
+                "y": 0.34,
+                "role": "opponent",
+                "label": "Their net player"
+              }
+            ],
+            "caption": "The serve could land anywhere in this box. Your station does not care — it covers the likely reply."
+          }
+        },
+        {
+          "id": "n8",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "Your partner's serves are landing short and soft today. What changes?",
+          "options": [
+            {
+              "label": "Start a step deeper and shelve the poach",
+              "correct": true,
+              "reply": "Right. A weak serve means a stronger return. Position for the ball you're about to get.",
+              "next": "n9"
+            },
+            {
+              "label": "Poach more — someone has to save these points",
+              "correct": false,
+              "reply": "A gamble on a bad serve is two mistakes in one point. Hold, and take what you can reach.",
+              "next": "n8"
+            }
+          ]
+        },
+        {
+          "id": "n9",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "Position for the return, not for the serve. Read rackets, not hopes."
+        }
+      ]
+    },
+    {
+      "id": "dlg-net-2",
+      "lessonId": "net-2",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "The serve leaves your partner's racket and swings wide. The returner is dragged off court. Most net players slide out with them.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "The wide serve is struck. Which way do you move?",
+          "options": [
+            {
+              "label": "Out toward your tramline",
+              "correct": false,
+              "reply": "You just covered their hardest shot: tightest strip, highest net, hit while running the other way.",
+              "next": "n2"
+            },
+            {
+              "label": "Step in toward the middle",
+              "correct": true,
+              "reply": "Yes. You are standing where their best ball has to travel.",
+              "next": "n3"
+            },
+            {
+              "label": "Back toward the service line",
+              "correct": false,
+              "reply": "Now you are digging half-volleys off your shoelaces. You came forward for a reason.",
+              "next": "n2"
+            }
+          ]
+        },
+        {
+          "id": "n3",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Wide drags them off the court. From out there they need the target with the most margin.",
+          "next": "n4"
+        },
+        {
+          "id": "n4",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Same geometry as a baseline rally. The diagonal is longer court and lower net, straight through the middle.",
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "show",
+          "mood": "idle",
+          "text": "The serve goes wide. Their safest reply cuts back through the middle, where you're already leaning.",
+          "scene": {
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.63,
+                  "y": 0.9
+                },
+                "to": {
+                  "x": 0.17,
+                  "y": 0.3
+                },
+                "kind": "shot",
+                "tone": "neutral",
+                "label": "wide serve"
+              },
+              {
+                "from": {
+                  "x": 0.09,
+                  "y": 0.2
+                },
+                "to": {
+                  "x": 0.66,
+                  "y": 0.84
+                },
+                "kind": "shot",
+                "tone": "focus",
+                "label": "usual reply: cross"
+              },
+              {
+                "from": {
+                  "x": 0.28,
+                  "y": 0.66
+                },
+                "to": {
+                  "x": 0.44,
+                  "y": 0.6
+                },
+                "kind": "move",
+                "tone": "good",
+                "label": "lean middle"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.28,
+                "y": 0.66,
+                "role": "you"
+              },
+              {
+                "x": 0.63,
+                "y": 0.9,
+                "role": "partner",
+                "label": "Serving wide"
+              },
+              {
+                "x": 0.07,
+                "y": 0.13,
+                "role": "opponent",
+                "label": "Dragged wide"
+              },
+              {
+                "x": 0.72,
+                "y": 0.34,
+                "role": "opponent"
+              }
+            ],
+            "caption": "The wide serve pulls the returner into the alley, and their safest ball is the diagonal through the middle — so you step in, not out."
+          },
+          "next": "n6"
+        },
+        {
+          "id": "n6",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "And the return down your alley?",
+          "options": [
+            {
+              "label": "It beats you sometimes, and that's fine",
+              "correct": true,
+              "reply": "Right. You lose the odd point to their best shot and take their easy one all afternoon.",
+              "next": "n7"
+            },
+            {
+              "label": "Split the difference, cover a bit of both",
+              "correct": false,
+              "reply": "Halfway between two jobs does neither. You arrive late in the middle and still get passed.",
+              "next": "n6"
+            }
+          ]
+        },
+        {
+          "id": "n7",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "Wide serve, lean in. The middle is where their safe ball has to go."
+        }
+      ]
+    },
+    {
+      "id": "dlg-net-3",
+      "lessonId": "net-3",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "You watch the serve go up the T. It pulls the returner toward the middle, onto the backhand, crowded for room.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "No room to swing, no angle to open. What comes back?",
+          "options": [
+            {
+              "label": "A slow, high ball down the middle",
+              "correct": true,
+              "reply": "Usually, yes. A shortened swing sends the ball back roughly where it came from.",
+              "next": "n3"
+            },
+            {
+              "label": "A sharp angle into the open court",
+              "correct": false,
+              "reply": "From the middle of the court there is no angle to find. They'd have to invent one.",
+              "next": "n2"
+            },
+            {
+              "label": "A drive at your partner's feet",
+              "correct": false,
+              "reply": "That needs a full swing, and the serve just took their swing away. Waiting for it costs you the volley.",
+              "next": "n2"
+            }
+          ]
+        },
+        {
+          "id": "n3",
+          "kind": "say",
+          "mood": "idle",
+          "text": "With less time they steer the ball instead of hitting it. Blocked returns float, over the lowest part of the net.",
+          "next": "n4"
+        },
+        {
+          "id": "n4",
+          "kind": "show",
+          "mood": "idle",
+          "text": "No swing means no angle. The reply comes back over the middle, and that one is yours.",
+          "scene": {
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.63,
+                  "y": 0.9
+                },
+                "to": {
+                  "x": 0.46,
+                  "y": 0.29
+                },
+                "kind": "shot",
+                "tone": "neutral",
+                "label": "t serve"
+              },
+              {
+                "from": {
+                  "x": 0.42,
+                  "y": 0.23
+                },
+                "to": {
+                  "x": 0.52,
+                  "y": 0.78
+                },
+                "kind": "shot",
+                "tone": "focus",
+                "label": "blocked, middle"
+              },
+              {
+                "from": {
+                  "x": 0.28,
+                  "y": 0.66
+                },
+                "to": {
+                  "x": 0.44,
+                  "y": 0.58
+                },
+                "kind": "move",
+                "tone": "good",
+                "label": "poach it"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.28,
+                "y": 0.66,
+                "role": "you"
+              },
+              {
+                "x": 0.63,
+                "y": 0.9,
+                "role": "partner",
+                "label": "Serving T"
+              },
+              {
+                "x": 0.32,
+                "y": 0.09,
+                "role": "opponent",
+                "label": "Jammed"
+              },
+              {
+                "x": 0.72,
+                "y": 0.34,
+                "role": "opponent"
+              }
+            ],
+            "caption": "No room to swing means no angle to create: the reply usually comes straight back over the lowest part of the net. That is your volley."
+          },
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Start moving as their swing starts. Meet the ball above net height, in front of the center.",
+          "next": "n6"
+        },
+        {
+          "id": "n6",
+          "kind": "say",
+          "mood": "happy",
+          "text": "Take it late and that gift is at your ankles. I'm knee-high, so I take everything early.",
+          "next": "n7"
+        },
+        {
+          "id": "n7",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "You've got the volley. Where do you put it?",
+          "options": [
+            {
+              "label": "Down the middle, between the two of them",
+              "correct": true,
+              "reply": "Yes. Or at the feet of whichever one is closer. Simple beats clever here.",
+              "next": "n8"
+            },
+            {
+              "label": "Angled into the open alley",
+              "correct": false,
+              "reply": "Smallest target, hit on the move. That's how a free point becomes your error.",
+              "next": "n7"
+            }
+          ]
+        },
+        {
+          "id": "n8",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "T serve, expect the block. Move early and volley it back through the middle."
+        }
+      ]
+    },
+    {
+      "id": "dlg-net-4",
+      "lessonId": "net-4",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "A whole service game. Three returns went past your hip through the middle. Nobody touched your alley once.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "You are hugging your tramline, guarding the alley. What is wrong with that?",
+          "options": [
+            {
+              "label": "Nothing, the alley has to be covered",
+              "correct": false,
+              "reply": "Covered against what? The narrowest strip on court, over the highest net, hit on the run.",
+              "next": "n2"
+            },
+            {
+              "label": "You defend their worst ball, leave their best one open",
+              "correct": true,
+              "reply": "That's it. The alley is their hardest shot. The middle is their easiest.",
+              "next": "n3"
+            },
+            {
+              "label": "You should stand even wider",
+              "correct": false,
+              "reply": "Wider defends the shot that isn't coming, and the middle gets cheaper for them every point.",
+              "next": "n2"
+            }
+          ]
+        },
+        {
+          "id": "n3",
+          "kind": "say",
+          "mood": "idle",
+          "text": "The middle is the lowest net, the longest space, and the seam where two players hesitate over whose ball it is.",
+          "next": "n4"
+        },
+        {
+          "id": "n4",
+          "kind": "show",
+          "mood": "idle",
+          "text": "The strip you're guarding is their tightest target. The lane you're leaving open is their easiest.",
+          "scene": {
+            "zones": [
+              {
+                "x": 0.0,
+                "y": 0.54,
+                "w": 0.125,
+                "h": 0.24,
+                "tone": "bad",
+                "label": "TRAMLINE — RARE"
+              },
+              {
+                "x": 0.3,
+                "y": 0.54,
+                "w": 0.28,
+                "h": 0.24,
+                "tone": "good",
+                "label": "MIDDLE — COMMON"
+              }
+            ],
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.21,
+                  "y": 0.67
+                },
+                "to": {
+                  "x": 0.42,
+                  "y": 0.63
+                },
+                "kind": "move",
+                "tone": "good",
+                "label": "step across"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.19,
+                "y": 0.67,
+                "role": "you",
+                "label": "Too wide"
+              },
+              {
+                "x": 0.63,
+                "y": 0.93,
+                "role": "partner"
+              },
+              {
+                "x": 0.24,
+                "y": 0.08,
+                "role": "opponent",
+                "label": "Returner"
+              },
+              {
+                "x": 0.72,
+                "y": 0.34,
+                "role": "opponent"
+              }
+            ],
+            "caption": "The strip you are guarding is the returner's tightest, highest-net target. The lane you are leaving open is their easiest one."
+          },
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "say",
+          "mood": "idle",
+          "text": "Position is only half the job. Split-step as the returner strikes and you can push off either way.",
+          "next": "n6"
+        },
+        {
+          "id": "n6",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "Perfect position, still feet. How much does that cover?",
+          "options": [
+            {
+              "label": "Only whatever happens to fly at you",
+              "correct": true,
+              "reply": "Right. Still feet are late feet, wherever they happen to be standing.",
+              "next": "n7"
+            },
+            {
+              "label": "Most of it, if the position is right",
+              "correct": false,
+              "reply": "That's a statue with a good address. The ball goes past it anyway.",
+              "next": "n6"
+            }
+          ]
+        },
+        {
+          "id": "n7",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "Give the alley up on purpose. Live in the middle third and split-step."
+        }
+      ]
+    },
+    {
+      "id": "dlg-net-5",
+      "lessonId": "net-5",
+      "nodes": [
+        {
+          "id": "n1",
+          "kind": "say",
+          "mood": "happy",
+          "text": "First serve missed. You poached twice this game and won both points. Tempting.",
+          "next": "n2"
+        },
+        {
+          "id": "n2",
+          "kind": "say",
+          "mood": "idle",
+          "text": "But the returner has stepped inside their baseline. Slower ball, and more time for them.",
+          "next": "n3"
+        },
+        {
+          "id": "n3",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "Do you go again?",
+          "options": [
+            {
+              "label": "Poach again, it's been working",
+              "correct": false,
+              "reply": "From in there they watch you leave and hit where you were. The slow ball gives them that time.",
+              "next": "n3"
+            },
+            {
+              "label": "Hold your half, split-step, volley what comes",
+              "correct": true,
+              "reply": "Yes. Hold, and their firmer return still has to get past you.",
+              "next": "n4"
+            },
+            {
+              "label": "Move right up on the net",
+              "correct": false,
+              "reply": "The extra pace arrives before you can react, and the lob over your head gets easier.",
+              "next": "n3"
+            }
+          ]
+        },
+        {
+          "id": "n4",
+          "kind": "say",
+          "mood": "idle",
+          "text": "On a fast first serve a poach forces a decision they can't make in time. On a second serve, they can.",
+          "next": "n5"
+        },
+        {
+          "id": "n5",
+          "kind": "show",
+          "mood": "idle",
+          "text": "They've stepped in. The reply comes back firmer and lower, often at your partner's feet.",
+          "scene": {
+            "zones": [
+              {
+                "x": 0.14,
+                "y": 0.54,
+                "w": 0.34,
+                "h": 0.24,
+                "tone": "focus",
+                "label": "HOLD YOUR HALF"
+              }
+            ],
+            "arrows": [
+              {
+                "from": {
+                  "x": 0.63,
+                  "y": 0.9
+                },
+                "to": {
+                  "x": 0.36,
+                  "y": 0.31
+                },
+                "kind": "shot",
+                "tone": "neutral",
+                "label": "second serve"
+              },
+              {
+                "from": {
+                  "x": 0.28,
+                  "y": 0.08
+                },
+                "to": {
+                  "x": 0.62,
+                  "y": 0.8
+                },
+                "kind": "shot",
+                "tone": "bad",
+                "label": "firmer, low, at your partner"
+              }
+            ],
+            "players": [
+              {
+                "x": 0.28,
+                "y": 0.68,
+                "role": "you"
+              },
+              {
+                "x": 0.63,
+                "y": 0.9,
+                "role": "partner",
+                "label": "Second serve"
+              },
+              {
+                "x": 0.26,
+                "y": 0.05,
+                "role": "opponent",
+                "label": "Stepped in"
+              },
+              {
+                "x": 0.72,
+                "y": 0.34,
+                "role": "opponent"
+              }
+            ],
+            "caption": "They have stepped in and the reply comes back firmer and lower. Stay in your half, split-step, and volley anything you can reach."
+          },
+          "next": "n6"
+        },
+        {
+          "id": "n6",
+          "kind": "say",
+          "mood": "idle",
+          "text": "A second serve is slow enough to read in flight. Lean off what you see — half a step, not a lunge.",
+          "next": "n7"
+        },
+        {
+          "id": "n7",
+          "kind": "say",
+          "mood": "happy",
+          "text": "And look up. Anyone my height gets lobbed constantly. It's the one shot I see coming.",
+          "next": "n8"
+        },
+        {
+          "id": "n8",
+          "kind": "ask",
+          "mood": "thinking",
+          "text": "The return goes up over your head. What now?",
+          "options": [
+            {
+              "label": "Cross to the other half — that lob is your partner's ball",
+              "correct": true,
+              "reply": "Yes. Switch immediately and cover their side. A shout helps your partner launch, but your feet go first.",
+              "next": "n9"
+            },
+            {
+              "label": "Back-pedal and swing at it over your shoulder",
+              "correct": false,
+              "reply": "That ball rarely lands, and you finish it off balance facing the wrong way.",
+              "next": "n8"
+            }
+          ]
+        },
+        {
+          "id": "n9",
+          "kind": "finish",
+          "mood": "cheer",
+          "text": "Second serve: hold your half, read it in flight, and when the lob goes up — switch."
+        }
+      ]
+    }
+  ]
+}

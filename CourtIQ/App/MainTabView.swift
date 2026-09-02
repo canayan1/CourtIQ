@@ -1,10 +1,9 @@
 import SwiftUI
 
-/// Routes tab selection so the Home tiles can SWITCH tabs (Matches / Coach /
-/// Doubles) rather than push a duplicate of those screens inside the Home
-/// NavigationStack.
+/// Routes tab selection so Home heroes can SWITCH tabs rather than push a
+/// duplicate of those screens inside the Home NavigationStack.
 final class TabRouter: ObservableObject {
-    enum Tab: Hashable { case home, train, matches, doubles, coach }
+    enum Tab: Hashable { case home, coach, wall, tactics }
     @Published var selection: Tab = .home
 }
 
@@ -14,15 +13,14 @@ struct MainTabView: View {
     @StateObject private var tabRouter = TabRouter()
     @State private var showActivation = false
 
-    // 5 tabs only — iOS pushes a 6th into a "More" overflow that buries it.
-    // Phase 1 IA redesign + action-first Home:
-    //   1. Home    — action-first landing (flagship swing hero + 2×2 grid).
-    //                Profile ("Me") lives behind the avatar button in the
-    //                Home header, NOT a tab.
-    //   2. Train   — the improve hub.
-    //   3. Matches — the post-pivot centerpiece.
-    //   4. Doubles — the doubles compatibility surface.
-    //   5. Coach   — the AI Coach.
+    // The tab bar is the app's map, and the map is what the app sells:
+    //   1. Home    — today: the three pillars + shortcuts + recent. Profile
+    //                lives behind the avatar button, NOT a tab.
+    //   2. Coach   — your video, analysed (AI now, real coach on the waitlist).
+    //   3. Wall    — camera-judged wall drills, level by level.
+    //   4. Tactics — tactics taught a lesson at a time (Tennis IQ today).
+    // Matches, Doubles, Drills, Recover and Programs are Home shortcuts: they
+    // stay, they just stop pretending to be headline features.
     var body: some View {
         TabView(selection: $tabRouter.selection) {
             NavigationStack {
@@ -34,49 +32,40 @@ struct MainTabView: View {
             .tag(TabRouter.Tab.home)
 
             NavigationStack {
-                TrainView().trackScreen("Train")
+                CoachTabRoot().trackScreen("Coach")
             }
             .tabItem {
-                Label(lang.t("tab.train"), systemImage: "figure.strengthtraining.traditional")
-            }
-            .tag(TabRouter.Tab.train)
-
-            NavigationStack {
-                MatchesListView().trackScreen("Matches")
-            }
-            .tabItem {
-                Label(lang.t("tab.matches"), systemImage: "pencil.and.list.clipboard")
-            }
-            .tag(TabRouter.Tab.matches)
-
-            NavigationStack {
-                DoublesView().trackScreen("Doubles")
-            }
-            .tabItem {
-                Label(lang.t("tab.doubles"), systemImage: "person.2.fill")
-            }
-            .tag(TabRouter.Tab.doubles)
-
-            NavigationStack {
-                AICoachTabRoot().trackScreen("Coach")
-            }
-            .tabItem {
-                Label(lang.t("tab.coach"), systemImage: "sparkles")
+                Label(lang.t("tab.coach"), systemImage: "video.fill")
             }
             .tag(TabRouter.Tab.coach)
+
+            NavigationStack {
+                WallHubView().trackScreen("Wall")
+            }
+            .tabItem {
+                Label(lang.t("tab.wall"), systemImage: "sportscourt.fill")
+            }
+            .tag(TabRouter.Tab.wall)
+
+            // No NavigationStack here: the lesson rail owns its own, and its
+            // environment must be injected outside it (see TacticsTabRoot).
+            TacticsTabRoot().trackScreen("Tactics")
+            .tabItem {
+                Label(lang.t("tab.tactics"), systemImage: "brain.head.profile")
+            }
+            .tag(TabRouter.Tab.tactics)
         }
         .tint(AppPalette.clay)
         .environmentObject(tabRouter)
         .id(lang.language)
         #if DEBUG
-        // Headless QC: SIMCTL_CHILD_QC_TAB=train|matches|doubles|coach fronts
-        // a tab for screenshot audits without taps.
+        // Headless QC: SIMCTL_CHILD_QC_TAB=coach|wall|tactics fronts a tab
+        // for screenshot audits without taps.
         .onAppear {
             switch ProcessInfo.processInfo.environment["QC_TAB"] {
-            case "train":   tabRouter.selection = .train
-            case "matches": tabRouter.selection = .matches
-            case "doubles": tabRouter.selection = .doubles
             case "coach":   tabRouter.selection = .coach
+            case "wall":    tabRouter.selection = .wall
+            case "tactics": tabRouter.selection = .tactics
             default: break
             }
         }
