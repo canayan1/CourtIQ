@@ -142,22 +142,29 @@ final class WallSwingDetector {
         }
     }
 
-    /// Racquet-arm side against the hip midline. Nil when neither the elbow
-    /// nor the wrist reads — not `.unknown`, so the caller can keep looking.
+    /// Which side the arms are on as the shoulders come square — the hitting
+    /// side — and whether that is the player's dominant side.
+    ///
+    /// Both arms, not the racquet arm: on a two-handed backhand both hands
+    /// are on the racquet, on the *non-dominant* side, and the racquet
+    /// wrist alone reads as the wrong side. The mean offset of every arm
+    /// joint the pose is sure of is what a field clip (left-hander, mostly
+    /// two-handed backhands) actually separated: 8 right, 2 left, matching
+    /// the player's own count. Handedness then only decides the name:
+    /// dominant side = forehand, the other = backhand.
     private func strokeSide(_ pts: [VNHumanBodyPoseObservation.JointName: VNRecognizedPoint]) -> (WallStroke, Float)? {
         guard let lh = pts[.leftHip], let rh = pts[.rightHip],
               lh.confidence >= Self.jointFloor, rh.confidence >= Self.jointFloor
         else { return nil }
         let hipMid = (lh.location.x + rh.location.x) / 2
-        let right = handedness == .right
-        let elbow = pts[right ? .rightElbow : .leftElbow]
-        let wrist = pts[right ? .rightWrist : .leftWrist]
-        guard let arm = [elbow, wrist].compactMap({ $0 }).first(where: { $0.confidence >= Self.jointFloor })
-        else { return nil }
-        let offset = arm.location.x - hipMid        // + = player's right
+        let arms: [VNHumanBodyPoseObservation.JointName] = [.rightElbow, .leftElbow, .rightWrist, .leftWrist]
+        let seen = arms.compactMap { pts[$0] }.filter { $0.confidence >= Self.jointFloor }
+        guard !seen.isEmpty else { return nil }
+        let offset = seen.map { $0.location.x - hipMid }.reduce(0, +) / CGFloat(seen.count)  // + = player's right
+        let trust = seen.map(\.confidence).reduce(0, +) / Float(seen.count)
         guard abs(offset) >= Self.sideMargin else { return (.unknown, 0) }
-        let onForehandSide = right ? offset > 0 : offset < 0
-        let conf = min(1, Float(abs(offset) / (Self.sideMargin * 4))) * arm.confidence
-        return (onForehandSide ? .forehand : .backhand, conf)
+        let onDominantSide = handedness == .right ? offset > 0 : offset < 0
+        let conf = min(1, Float(abs(offset) / (Self.sideMargin * 4))) * trust
+        return (onDominantSide ? .forehand : .backhand, conf)
     }
 }

@@ -65,12 +65,14 @@ var frames = 0, posed = 0, shouldered = 0
 func side(_ p: [VNHumanBodyPoseObservation.JointName: VNRecognizedPoint]) -> (String, Float)? {
     guard let lh = p[.leftHip], let rh = p[.rightHip], lh.confidence >= jointFloor, rh.confidence >= jointFloor else { return nil }
     let mid = (lh.location.x + rh.location.x) / 2
-    let elbow = p[rightHanded ? .rightElbow : .leftElbow], wrist = p[rightHanded ? .rightWrist : .leftWrist]
-    guard let arm = [elbow, wrist].compactMap({ $0 }).first(where: { $0.confidence >= jointFloor }) else { return nil }
-    let off = arm.location.x - mid
+    let arms: [VNHumanBodyPoseObservation.JointName] = [.rightElbow, .leftElbow, .rightWrist, .leftWrist]
+    let seen = arms.compactMap { p[$0] }.filter { $0.confidence >= jointFloor }
+    guard !seen.isEmpty else { return nil }
+    let off = seen.map { $0.location.x - mid }.reduce(0, +) / CGFloat(seen.count)
+    let trust = seen.map(\.confidence).reduce(0, +) / Float(seen.count)
     guard abs(off) >= sideMargin else { return ("?", 0) }
-    let fh = rightHanded ? off > 0 : off < 0
-    return (fh ? "FH" : "BH", min(1, Float(abs(off) / (sideMargin * 4))) * arm.confidence)
+    let dominant = rightHanded ? off > 0 : off < 0
+    return (dominant ? "FH" : "BH", min(1, Float(abs(off) / (sideMargin * 4))) * trust)
 }
 
 while let sb = output.copyNextSampleBuffer() {

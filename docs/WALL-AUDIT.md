@@ -245,3 +245,16 @@ nothing; dropped.
 Open: no backhand in the clip — the side rule is geometry and needs a BH
 session to confirm. `tools/wall-swing-eval.swift` mirrors the detector for
 that check.
+
+### §6.2 — Stroke side, second pass (3 Sep 2026)
+
+Can's own count for the field clip: mostly backhands, one or two forehands.
+The clip's swings are almost all on the image-right side — so the player is
+a left-hander hitting (two-handed) backhands on the right. Reading the
+racquet arm alone breaks on a two-hander (both hands on the non-dominant
+side). New rule: hitting side = mean offset of every confident arm joint
+(both elbows, both wrists) from the hip midline as the shoulders come
+square; handedness only names it (dominant side = forehand). Same clip,
+`left`: **8 BH · 2 FH** (the two forehands at 15.2 s and 18.0 s are the two
+swings whose arms sat left of the hips). The app's handedness toggle must
+be set to left for this player — it defaults to right.
