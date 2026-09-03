@@ -248,13 +248,30 @@ that check.
 
 ### §6.2 — Stroke side, second pass (3 Sep 2026)
 
-Can's own count for the field clip: mostly backhands, one or two forehands.
-The clip's swings are almost all on the image-right side — so the player is
-a left-hander hitting (two-handed) backhands on the right. Reading the
-racquet arm alone breaks on a two-hander (both hands on the non-dominant
-side). New rule: hitting side = mean offset of every confident arm joint
-(both elbows, both wrists) from the hip midline as the shoulders come
-square; handedness only names it (dominant side = forehand). Same clip,
-`left`: **8 BH · 2 FH** (the two forehands at 15.2 s and 18.0 s are the two
-swings whose arms sat left of the hips). The app's handedness toggle must
-be set to left for this player — it defaults to right.
+**First reading was wrong, and the doc said so before the evidence did.** On
+Can's note that the field clip was "mostly backhands, one or two forehands",
+this section briefly claimed the player was a left-hander hitting two-handed
+backhands. Rendering Vision's own labels onto the display-correct frames
+settles it the other way:
+
+- t=6.67 s — player seen from behind (L-shoulder left of R-shoulder in the
+  image, so the camera is behind, as the app asks). The **right** wrist
+  (conf 0.89) is ~0.17 frame-widths to the right of the right shoulder,
+  racquet and ball with it. Right-hander, ball on his right: **forehand**.
+- t=18.03 s — the racquet sits left of both hips; the right arm is occluded
+  and only a left-labelled wrist reads. Ball on his left: **backhand**.
+
+So the clip is mostly forehands (detector: 7 FH · 2 BH · 1 unreadable), and
+the swings Can described are in a different clip that never reached this
+Mac — Downloads' newest video is still this Sep-1 recording.
+
+**The rule change survives the correction, for a different reason.** Reading
+only the racquet arm (right elbow, right wrist) returns *nothing* at 18.03 s:
+both are below the confidence floor while the arm crosses the body. The mean
+offset of every confident arm joint reads −0.10 there and calls the backhand.
+Occlusion and side-mislabelling during a crossing swing — not two-handers —
+are what the both-arms mean buys. Handedness still only names the side
+(dominant = forehand).
+
+Still open: a genuinely backhand-heavy clip, to see whether the margin holds
+when most swings are on the non-dominant side.

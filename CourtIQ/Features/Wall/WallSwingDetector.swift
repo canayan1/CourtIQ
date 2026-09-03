@@ -145,13 +145,13 @@ final class WallSwingDetector {
     /// Which side the arms are on as the shoulders come square — the hitting
     /// side — and whether that is the player's dominant side.
     ///
-    /// Both arms, not the racquet arm: on a two-handed backhand both hands
-    /// are on the racquet, on the *non-dominant* side, and the racquet
-    /// wrist alone reads as the wrong side. The mean offset of every arm
-    /// joint the pose is sure of is what a field clip (left-hander, mostly
-    /// two-handed backhands) actually separated: 8 right, 2 left, matching
-    /// the player's own count. Handedness then only decides the name:
-    /// dominant side = forehand, the other = backhand.
+    /// Both arms, not the racquet arm: while the racquet arm crosses the
+    /// body, Vision often drops it below the confidence floor or labels it
+    /// as the other side, and a racquet-arm-only rule then reads nothing at
+    /// all (verified on the field clip at 18.03 s, a backhand). The mean
+    /// offset of every arm joint the pose is sure of still lands on the
+    /// hitting side. Handedness only decides the name: dominant side =
+    /// forehand, the other = backhand.
     private func strokeSide(_ pts: [VNHumanBodyPoseObservation.JointName: VNRecognizedPoint]) -> (WallStroke, Float)? {
         guard let lh = pts[.leftHip], let rh = pts[.rightHip],
               lh.confidence >= Self.jointFloor, rh.confidence >= Self.jointFloor
