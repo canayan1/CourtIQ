@@ -22,6 +22,8 @@ enum ExtraRoute: Hashable {
 /// question ("what do I do now?") is answered without reading anything.
 struct LearnPathView: View {
     @Environment(ContentStore.self) private var content
+    @EnvironmentObject private var lang: LanguageManager
+    private var copy: TacticsCopy { TacticsCopy(lang: lang.language) }
     @Environment(PlayerProgress.self) private var progress
     @Environment(TacticsAccess.self) private var subscriptions
 
@@ -62,7 +64,7 @@ struct LearnPathView: View {
                 .padding(.bottom, 32)
             }
             .background(AppPalette.cream)
-            .navigationTitle("Tactics")
+            .navigationTitle(lang.t("tab.tactics"))
             .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(for: LessonRoute.self) { route in
                 DialogueView(chapter: route.chapter, lesson: route.lesson)
@@ -149,12 +151,12 @@ struct LearnPathView: View {
     @ViewBuilder
     private var levelTarget: some View {
         if let togo = progress.xpToNextLevel, let nextLevel = progress.level.next {
-            Text("\(togo) XP → \(nextLevel.title)")
+            Text(copy.xpToNext(togo, nextLevel.title))
                 .font(.caption)
                 .foregroundStyle(AppPalette.inkSoft)
                 .fixedSize(horizontal: false, vertical: true)
         } else {
-            Text("Top level")
+            Text(copy.topLevel)
                 .font(.caption)
                 .foregroundStyle(AppPalette.inkSoft)
         }
@@ -176,7 +178,7 @@ struct LearnPathView: View {
                         .appFont(24, weight: .heavy, relativeTo: .title2)
                         .foregroundStyle(.white)
                         .multilineTextAlignment(.leading)
-                    Text("Chapter \(next.chapter.number) · \(next.chapter.title)")
+                    Text(copy.chapterLine(next.chapter.number, next.chapter.title))
                         .font(.system(.footnote, design: .rounded))
                         .foregroundStyle(.white.opacity(0.9))
 
@@ -204,10 +206,10 @@ struct LearnPathView: View {
                 Image(systemName: "crown.fill")
                     .font(.title)
                     .foregroundStyle(AppPalette.gold)
-                Text("Course complete")
+                Text(copy.courseComplete)
                     .appFont(24, weight: .heavy, relativeTo: .title2)
                     .foregroundStyle(AppPalette.ink)
-                Text("You've finished every lesson. Revisit any of them any time — replays are always free.")
+                Text(copy.courseCompleteBody)
                     .font(.footnote)
                     .foregroundStyle(AppPalette.inkSoft)
                     .multilineTextAlignment(.center)
@@ -231,9 +233,9 @@ struct LearnPathView: View {
 
                 VStack(alignment: .leading, spacing: 3) {
                     HStack(spacing: 8) {
-                        Eyebrow("Chapter \(chapter.number)")
+                        Eyebrow(copy.chapter(chapter.number))
                         if chapter.isFree {
-                            Text("FREE")
+                            Text(copy.free)
                                 .font(.system(size: 9, weight: .heavy, design: .rounded))
                                 .foregroundStyle(AppPalette.mossText)
                                 .padding(.horizontal, 6)
@@ -292,8 +294,8 @@ struct LearnPathView: View {
                         .symbolRenderingMode(.hierarchical)
                         .foregroundStyle(AppPalette.clay)
                     VStack(alignment: .leading, spacing: 1) {
-                        Eyebrow("Scenarios")
-                        Text("Tennis IQ")
+                        Eyebrow(copy.scenariosEyebrow)
+                        Text(copy.tennisIQ)
                             .font(.system(.subheadline, design: .rounded).weight(.bold))
                             .foregroundStyle(AppPalette.ink)
                     }
@@ -303,7 +305,7 @@ struct LearnPathView: View {
                         .foregroundStyle(AppPalette.inkSoft)
                 }
 
-                Text("Real match situations, one decision at a time. Your IQ number lives here.")
+                Text(copy.tennisIQBody)
                     .font(.footnote)
                     .foregroundStyle(AppPalette.inkSoft)
                     .multilineTextAlignment(.leading)
@@ -327,8 +329,8 @@ struct LearnPathView: View {
             HStack(spacing: 10) {
                 RaccoonView(mood: .thinking, size: 44)
                 VStack(alignment: .leading, spacing: 1) {
-                    Eyebrow("Rocco's side quests")
-                    Text("Short sets on one specific gap")
+                    Eyebrow(copy.sideQuestsEyebrow)
+                    Text(copy.sideQuestsBody)
                         .font(.system(.subheadline, design: .rounded).weight(.semibold))
                         .foregroundStyle(AppPalette.ink)
                 }
@@ -393,10 +395,10 @@ struct LearnPathView: View {
                     .font(.title3.weight(.semibold))
                     .foregroundStyle(.white)
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("Unlock the full course")
+                    Text(copy.unlockTitle)
                         .font(.system(.subheadline, design: .rounded).weight(.bold))
                         .foregroundStyle(.white)
-                    Text("\(content.totalLessonCount) lessons, every chapter, forever offline")
+                    Text(copy.unlockBody(content.totalLessonCount))
                         .font(.caption)
                         .foregroundStyle(.white.opacity(0.9))
                 }
@@ -451,6 +453,8 @@ private struct LessonNodeRow: View {
     let onTap: (LessonAccess) -> Void
 
     @Environment(PlayerProgress.self) private var progress
+    @EnvironmentObject private var lang: LanguageManager
+    private var copy: TacticsCopy { TacticsCopy(lang: lang.language) }
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var pulse = false
 
@@ -569,10 +573,10 @@ private struct LessonNodeRow: View {
 
     private var subtitleText: String {
         switch access {
-        case .needsPrevious(let title): return "Finish “\(title)” first"
-        case .needsSubscription:        return "Unlock the full course to open this"
-        case .freeDaily:                return "Today's free lesson"
-        case .open:                     return isDone ? "Done · tap to review" : lesson.principle
+        case .needsPrevious(let title): return copy.finishFirst(title)
+        case .needsSubscription:        return copy.unlockToOpen
+        case .freeDaily:                return copy.freeToday
+        case .open:                     return isDone ? copy.doneReview : lesson.principle
         }
     }
 

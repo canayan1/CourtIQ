@@ -32,7 +32,6 @@
 		6C288EA33A513977B60D0F93 /* CourtIQ/App/RecentActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17264A46BEA1F34B6E375CCD /* CourtIQ/App/RecentActivity.swift */; };
 		7077F4E9DBD8C6119B70D01A /* DoublesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C76AC798603AB4C9DC3688 /* DoublesService.swift */; };
 		754033EA2869BE6DBB623611 /* DoublesPartnerFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA2D95FBB8002248B38F6C /* DoublesPartnerFormView.swift */; };
-		77E5C7A03F1A2BF3C94AE188 /* TrainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2552A4998FE130E11DD2183F /* TrainView.swift */; };
 		862D526A29888767C02706F3 /* OnboardingCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99C6606DBC58D08EB834A69 /* OnboardingCopy.swift */; };
 		8CD188FE56C7D92CF1FF809F /* OnboardingFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDDBDA9A7035EE3626F5589 /* OnboardingFlowView.swift */; };
 		8D8D4A834044265ECD0D4722 /* TrainProgramsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0556A0C64DB8336DFA363B3 /* TrainProgramsView.swift */; };
@@ -42,7 +41,6 @@
 		A000000000000000000020 /* CourtIQApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000010 /* CourtIQApp.swift */; };
 		A000000000000000000021 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000011 /* MainTabView.swift */; };
 		A000000000000000000023 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000013 /* ProfileView.swift */; };
-		A000000000000000000024 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000014 /* TodayView.swift */; };
 		A000000000000000000025 /* DailyQuizManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000015 /* DailyQuizManager.swift */; };
 		B7E11QM0000000000001 /* TennisIQManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E11QF0000000000001 /* TennisIQManager.swift */; };
 		A000000000000000000026 /* DiscussionThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000016 /* DiscussionThread.swift */; };
@@ -61,14 +59,11 @@
 		A00000000000000000002D /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000001D /* QuizViewModel.swift */; };
 		A000000000000000000034 /* TrainingProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000030 /* TrainingProgram.swift */; };
 		A000000000000000000035 /* TrainingProgressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000031 /* TrainingProgressManager.swift */; };
-		A000000000000000000036 /* TrainingHubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000032 /* TrainingHubView.swift */; };
 		A000000000000000000037 /* TrainingProgramDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000033 /* TrainingProgramDetailView.swift */; };
 		A000000000000000000039 /* AppPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000038 /* AppPalette.swift */; };
 		A000000000000000000050 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000040 /* AppConfiguration.swift */; };
 		A000000000000000000051 /* BundleContentLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000041 /* BundleContentLoader.swift */; };
-		A000000000000000000052 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000042 /* OnboardingView.swift */; };
 		A000000000000000000053 /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000043 /* PaywallView.swift */; };
-		A000000000000000000054 /* CommunityViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000044 /* CommunityViews.swift */; };
 		A000000000000000000055 /* LegalDocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000045 /* LegalDocumentView.swift */; };
 		A000000000000000000057 /* quiz_questions.json in Resources */ = {isa = PBXBuildFile; fileRef = A000000000000000000047 /* quiz_questions.json */; };
 		B7E11QM0000000000003 /* quiz_plays.json in Resources */ = {isa = PBXBuildFile; fileRef = B7E11QF0000000000003 /* quiz_plays.json */; };
@@ -94,7 +89,6 @@
 		A0000000000000000000E1 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000E0 /* NotificationManager.swift */; };
 		A0000000000000000000E3 /* NotificationPreAskSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000E2 /* NotificationPreAskSheet.swift */; };
 		A0000000000000000000F1 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000F0 /* Haptics.swift */; };
-		A000000000000000000101 /* TourStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000100 /* TourStep.swift */; };
 		A000000000000000000111 /* MatchEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000110 /* MatchEntry.swift */; };
 		A000000000000000000113 /* MatchEntryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000112 /* MatchEntryManager.swift */; };
 		A000000000000000000115 /* MatchesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000114 /* MatchesListView.swift */; };
@@ -121,7 +115,6 @@
 		A000000000000000000161 /* ProShotPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000160 /* ProShotPattern.swift */; };
 		A000000000000000000163 /* ProShotPatternsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000162 /* ProShotPatternsManager.swift */; };
 		A000000000000000000165 /* ProShotAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000164 /* ProShotAnimationView.swift */; };
-		A000000000000000000167 /* ProShotCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000166 /* ProShotCard.swift */; };
 		A000000000000000000169 /* pro_shot_patterns.json in Resources */ = {isa = PBXBuildFile; fileRef = A000000000000000000168 /* pro_shot_patterns.json */; };
 		A00000000000000000016B /* LaunchOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000016A /* LaunchOffer.swift */; };
 		A00000000000000000016D /* MatchMediaStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000016C /* MatchMediaStore.swift */; };
@@ -141,7 +134,6 @@
 		A000000000000000000191 /* PlayStyleProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000190 /* PlayStyleProfile.swift */; };
 		A000000000000000000193 /* PlayStyleProfileCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000192 /* PlayStyleProfileCard.swift */; };
 		A000000000000000000195 /* SelfAssessment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000194 /* SelfAssessment.swift */; };
-		A000000000000000000197 /* SelfAssessmentStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000196 /* SelfAssessmentStep.swift */; };
 		A000000000000000000199 /* MatchMemoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000198 /* MatchMemoryStore.swift */; };
 		A00000000000000000019B /* MatchLogTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000019A /* MatchLogTutorialView.swift */; };
 		A0000000000000000001B0 /* MatchAnalysisService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000001A0 /* MatchAnalysisService.swift */; };
@@ -191,7 +183,6 @@
 		D978C470BB4441558CFA6BEC /* PlayerProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A71F7401E074E108CF3CEA8 /* PlayerProgress.swift */; };
 		955A7FC7227E41E5B9D96608 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF05C98ACB14775AE37329E /* Sound.swift */; };
 		9DC668D6EE434CA28E15A53A /* TacticsAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCD67A30C154505BE09296D /* TacticsAccess.swift */; };
-		0423DEF8701047149FE1BAAB /* TacticsDesignKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04E8F41632D44B1AF9FE5FB /* TacticsDesignKit.swift */; };
 		FE97134261DA4081A3DFACBC /* tactics_curriculum.json in Resources */ = {isa = PBXBuildFile; fileRef = 598C63760C5D4F3FA3D3E048 /* tactics_curriculum.json */; };
 		485B126FDB254432B4550E44 /* tactics_dialogues.json in Resources */ = {isa = PBXBuildFile; fileRef = 97B436BA01AF49E780B31B8D /* tactics_dialogues.json */; };
 		0BBD0D37F2CF4BD8B9BF2CE5 /* tactics_celebrate.wav in Resources */ = {isa = PBXBuildFile; fileRef = 41F97795BB3141CE8CEBD182 /* tactics_celebrate.wav */; };
@@ -203,6 +194,7 @@
 		325FD6D0C6B04A2DB4F79D23 /* tactics_swing.wav in Resources */ = {isa = PBXBuildFile; fileRef = F57D94C81A6B4CA2B43F2DE5 /* tactics_swing.wav */; };
 		617B4F4BF5C24B659D8B0594 /* tactics_tap.wav in Resources */ = {isa = PBXBuildFile; fileRef = 86A0803CFE914D76846601EE /* tactics_tap.wav */; };
 		8833ED409FE04E80950CEC88 /* tactics_wrong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3B82DA28C42B4893990110AC /* tactics_wrong.wav */; };
+		C6FACBEAF61D4096BFBD94B1 /* TacticsCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB43A14D9D46278C44F454 /* TacticsCopy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -223,7 +215,6 @@
 		0A7ED880F0D31CAEA68D596A /* DoublesStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesStore.swift; path = CourtIQ/Features/Doubles/DoublesStore.swift; sourceTree = "<group>"; };
 		161E8A1AEB1F9F5949EB117B /* VideoPicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VideoPicker.swift; path = CourtIQ/Features/SwingAnalysis/VideoPicker.swift; sourceTree = "<group>"; };
 		17264A46BEA1F34B6E375CCD /* CourtIQ/App/RecentActivity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CourtIQ/App/RecentActivity.swift; sourceTree = "<group>"; };
-		2552A4998FE130E11DD2183F /* TrainView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TrainView.swift; path = CourtIQ/Features/Training/TrainView.swift; sourceTree = "<group>"; };
 		37C76AC798603AB4C9DC3688 /* DoublesService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesService.swift; path = CourtIQ/Features/Doubles/DoublesService.swift; sourceTree = "<group>"; };
 		3F14568EE361FE4FD8E1B19F /* OnboardingBuildingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OnboardingBuildingView.swift; path = CourtIQ/Features/Onboarding/OnboardingBuildingView.swift; sourceTree = "<group>"; };
 		4B7C2AA916BE624A71B6017F /* TennisProfileCopy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TennisProfileCopy.swift; path = CourtIQ/Features/TennisProfile/TennisProfileCopy.swift; sourceTree = "<group>"; };
@@ -248,7 +239,6 @@
 		A000000000000000000010 /* CourtIQApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CourtIQApp.swift; path = CourtIQ/App/CourtIQApp.swift; sourceTree = "<group>"; };
 		A000000000000000000011 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainTabView.swift; path = CourtIQ/App/MainTabView.swift; sourceTree = "<group>"; };
 		A000000000000000000013 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileView.swift; path = CourtIQ/App/ProfileView.swift; sourceTree = "<group>"; };
-		A000000000000000000014 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TodayView.swift; path = CourtIQ/App/TodayView.swift; sourceTree = "<group>"; };
 		A000000000000000000015 /* DailyQuizManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DailyQuizManager.swift; path = CourtIQ/Core/Models/DailyQuizManager.swift; sourceTree = "<group>"; };
 		B7E11QF0000000000001 /* TennisIQManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TennisIQManager.swift; path = CourtIQ/Core/Models/TennisIQManager.swift; sourceTree = "<group>"; };
 		A000000000000000000016 /* DiscussionThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DiscussionThread.swift; path = CourtIQ/Core/Models/DiscussionThread.swift; sourceTree = "<group>"; };
@@ -267,14 +257,11 @@
 		A00000000000000000001D /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuizViewModel.swift; path = CourtIQ/Features/Quiz/QuizViewModel.swift; sourceTree = "<group>"; };
 		A000000000000000000030 /* TrainingProgram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrainingProgram.swift; path = CourtIQ/Core/Models/TrainingProgram.swift; sourceTree = "<group>"; };
 		A000000000000000000031 /* TrainingProgressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrainingProgressManager.swift; path = CourtIQ/Core/Models/TrainingProgressManager.swift; sourceTree = "<group>"; };
-		A000000000000000000032 /* TrainingHubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrainingHubView.swift; path = CourtIQ/Features/Training/TrainingHubView.swift; sourceTree = "<group>"; };
 		A000000000000000000033 /* TrainingProgramDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrainingProgramDetailView.swift; path = CourtIQ/Features/Training/TrainingProgramDetailView.swift; sourceTree = "<group>"; };
 		A000000000000000000038 /* AppPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppPalette.swift; path = CourtIQ/Core/Models/AppPalette.swift; sourceTree = "<group>"; };
 		A000000000000000000040 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppConfiguration.swift; path = CourtIQ/Core/Models/AppConfiguration.swift; sourceTree = "<group>"; };
 		A000000000000000000041 /* BundleContentLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BundleContentLoader.swift; path = CourtIQ/Core/Models/BundleContentLoader.swift; sourceTree = "<group>"; };
-		A000000000000000000042 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OnboardingView.swift; path = CourtIQ/Features/Onboarding/OnboardingView.swift; sourceTree = "<group>"; };
 		A000000000000000000043 /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PaywallView.swift; path = CourtIQ/Features/Paywall/PaywallView.swift; sourceTree = "<group>"; };
-		A000000000000000000044 /* CommunityViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CommunityViews.swift; path = CourtIQ/Features/Community/CommunityViews.swift; sourceTree = "<group>"; };
 		A000000000000000000045 /* LegalDocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LegalDocumentView.swift; path = CourtIQ/Features/Legal/LegalDocumentView.swift; sourceTree = "<group>"; };
 		A000000000000000000046 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = CourtIQ/Assets.xcassets; sourceTree = "<group>"; };
 		A000000000000000000AD0 /* Audio */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Audio; path = CourtIQ/Resources/Audio; sourceTree = "<group>"; };
@@ -301,7 +288,6 @@
 		A0000000000000000000E0 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotificationManager.swift; path = CourtIQ/Core/Utilities/NotificationManager.swift; sourceTree = "<group>"; };
 		A0000000000000000000E2 /* NotificationPreAskSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotificationPreAskSheet.swift; path = CourtIQ/Features/Onboarding/NotificationPreAskSheet.swift; sourceTree = "<group>"; };
 		A0000000000000000000F0 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Haptics.swift; path = CourtIQ/Core/Utilities/Haptics.swift; sourceTree = "<group>"; };
-		A000000000000000000100 /* TourStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TourStep.swift; path = CourtIQ/Features/Onboarding/TourStep.swift; sourceTree = "<group>"; };
 		A000000000000000000110 /* MatchEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchEntry.swift; path = CourtIQ/Core/Models/MatchEntry.swift; sourceTree = "<group>"; };
 		A000000000000000000112 /* MatchEntryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchEntryManager.swift; path = CourtIQ/Core/Models/MatchEntryManager.swift; sourceTree = "<group>"; };
 		A000000000000000000114 /* MatchesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchesListView.swift; path = CourtIQ/Features/Matches/MatchesListView.swift; sourceTree = "<group>"; };
@@ -328,7 +314,6 @@
 		A000000000000000000160 /* ProShotPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProShotPattern.swift; path = CourtIQ/Core/Models/ProShotPattern.swift; sourceTree = "<group>"; };
 		A000000000000000000162 /* ProShotPatternsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProShotPatternsManager.swift; path = CourtIQ/Core/Models/ProShotPatternsManager.swift; sourceTree = "<group>"; };
 		A000000000000000000164 /* ProShotAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProShotAnimationView.swift; path = CourtIQ/Features/ProShot/ProShotAnimationView.swift; sourceTree = "<group>"; };
-		A000000000000000000166 /* ProShotCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProShotCard.swift; path = CourtIQ/Features/ProShot/ProShotCard.swift; sourceTree = "<group>"; };
 		A000000000000000000168 /* pro_shot_patterns.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = pro_shot_patterns.json; path = CourtIQ/Resources/Content/pro_shot_patterns.json; sourceTree = "<group>"; };
 		A00000000000000000016A /* LaunchOffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LaunchOffer.swift; path = CourtIQ/Core/Utilities/LaunchOffer.swift; sourceTree = "<group>"; };
 		A00000000000000000016C /* MatchMediaStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchMediaStore.swift; path = CourtIQ/Core/Utilities/MatchMediaStore.swift; sourceTree = "<group>"; };
@@ -348,7 +333,6 @@
 		A000000000000000000190 /* PlayStyleProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlayStyleProfile.swift; path = CourtIQ/Core/Models/PlayStyleProfile.swift; sourceTree = "<group>"; };
 		A000000000000000000192 /* PlayStyleProfileCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlayStyleProfileCard.swift; path = CourtIQ/Features/Drill/PlayStyleProfileCard.swift; sourceTree = "<group>"; };
 		A000000000000000000194 /* SelfAssessment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelfAssessment.swift; path = CourtIQ/Core/Models/SelfAssessment.swift; sourceTree = "<group>"; };
-		A000000000000000000196 /* SelfAssessmentStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelfAssessmentStep.swift; path = CourtIQ/Features/Onboarding/SelfAssessmentStep.swift; sourceTree = "<group>"; };
 		A000000000000000000198 /* MatchMemoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchMemoryStore.swift; path = CourtIQ/Core/Services/MatchMemoryStore.swift; sourceTree = "<group>"; };
 		A00000000000000000019A /* MatchLogTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchLogTutorialView.swift; path = CourtIQ/Features/Matches/MatchLogTutorialView.swift; sourceTree = "<group>"; };
 		A0000000000000000001A0 /* MatchAnalysisService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchAnalysisService.swift; path = CourtIQ/Features/Matches/MatchAnalysisService.swift; sourceTree = "<group>"; };
@@ -402,7 +386,6 @@
 		3A71F7401E074E108CF3CEA8 /* PlayerProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlayerProgress.swift; path = CourtIQ/Features/Tactics/PlayerProgress.swift; sourceTree = "<group>"; };
 		BCF05C98ACB14775AE37329E /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Sound.swift; path = CourtIQ/Features/Tactics/Sound.swift; sourceTree = "<group>"; };
 		3DCD67A30C154505BE09296D /* TacticsAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TacticsAccess.swift; path = CourtIQ/Features/Tactics/TacticsAccess.swift; sourceTree = "<group>"; };
-		B04E8F41632D44B1AF9FE5FB /* TacticsDesignKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TacticsDesignKit.swift; path = CourtIQ/Features/Tactics/TacticsDesignKit.swift; sourceTree = "<group>"; };
 		598C63760C5D4F3FA3D3E048 /* tactics_curriculum.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = tactics_curriculum.json; path = CourtIQ/Resources/Content/tactics_curriculum.json; sourceTree = "<group>"; };
 		97B436BA01AF49E780B31B8D /* tactics_dialogues.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = tactics_dialogues.json; path = CourtIQ/Resources/Content/tactics_dialogues.json; sourceTree = "<group>"; };
 		41F97795BB3141CE8CEBD182 /* tactics_celebrate.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = tactics_celebrate.wav; path = CourtIQ/Resources/Audio/tactics_celebrate.wav; sourceTree = "<group>"; };
@@ -414,6 +397,7 @@
 		F57D94C81A6B4CA2B43F2DE5 /* tactics_swing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = tactics_swing.wav; path = CourtIQ/Resources/Audio/tactics_swing.wav; sourceTree = "<group>"; };
 		86A0803CFE914D76846601EE /* tactics_tap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = tactics_tap.wav; path = CourtIQ/Resources/Audio/tactics_tap.wav; sourceTree = "<group>"; };
 		3B82DA28C42B4893990110AC /* tactics_wrong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = tactics_wrong.wav; path = CourtIQ/Resources/Audio/tactics_wrong.wav; sourceTree = "<group>"; };
+		7DBB43A14D9D46278C44F454 /* TacticsCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TacticsCopy.swift; path = CourtIQ/Features/Tactics/TacticsCopy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -463,7 +447,6 @@
 				A000000000000000000010 /* CourtIQApp.swift */,
 				A000000000000000000011 /* MainTabView.swift */,
 				A000000000000000000013 /* ProfileView.swift */,
-				A000000000000000000014 /* TodayView.swift */,
 				A000000000000000000015 /* DailyQuizManager.swift */,
 				B7E11QF0000000000001 /* TennisIQManager.swift */,
 				A000000000000000000016 /* DiscussionThread.swift */,
@@ -505,8 +488,6 @@
 				A000000000000000000190 /* PlayStyleProfile.swift */,
 				A000000000000000000192 /* PlayStyleProfileCard.swift */,
 				A000000000000000000194 /* SelfAssessment.swift */,
-				A000000000000000000196 /* SelfAssessmentStep.swift */,
-				A000000000000000000100 /* TourStep.swift */,
 				A000000000000000000110 /* MatchEntry.swift */,
 				A000000000000000000112 /* MatchEntryManager.swift */,
 				A000000000000000000114 /* MatchesListView.swift */,
@@ -529,6 +510,7 @@
 				A000000000000000000FC0 /* WallRallyCamView.swift */,
 				B100000000000000000001 /* WallBallLocator.swift */,
 				B400000000000000000001 /* WallSwingDetector.swift */,
+				7DBB43A14D9D46278C44F454 /* TacticsCopy.swift */,
 				3B82DA28C42B4893990110AC /* tactics_wrong.wav */,
 				86A0803CFE914D76846601EE /* tactics_tap.wav */,
 				F57D94C81A6B4CA2B43F2DE5 /* tactics_swing.wav */,
@@ -540,7 +522,6 @@
 				41F97795BB3141CE8CEBD182 /* tactics_celebrate.wav */,
 				97B436BA01AF49E780B31B8D /* tactics_dialogues.json */,
 				598C63760C5D4F3FA3D3E048 /* tactics_curriculum.json */,
-				B04E8F41632D44B1AF9FE5FB /* TacticsDesignKit.swift */,
 				3DCD67A30C154505BE09296D /* TacticsAccess.swift */,
 				BCF05C98ACB14775AE37329E /* Sound.swift */,
 				3A71F7401E074E108CF3CEA8 /* PlayerProgress.swift */,
@@ -572,7 +553,6 @@
 				A000000000000000000160 /* ProShotPattern.swift */,
 				A000000000000000000162 /* ProShotPatternsManager.swift */,
 				A000000000000000000164 /* ProShotAnimationView.swift */,
-				A000000000000000000166 /* ProShotCard.swift */,
 				A000000000000000000168 /* pro_shot_patterns.json */,
 				A00000000000000000013A /* court_tap_drills.json */,
 				A000000000000000000038 /* AppPalette.swift */,
@@ -588,13 +568,10 @@
 				B7E11CF0000000000002 /* CoachReviewService.swift */,
 				B7E11CF0000000000001 /* CoachReviewModels.swift */,
 				A00000000000000000001D /* QuizViewModel.swift */,
-				A000000000000000000042 /* OnboardingView.swift */,
 				A000000000000000000043 /* PaywallView.swift */,
-				A000000000000000000044 /* CommunityViews.swift */,
 				A000000000000000000045 /* LegalDocumentView.swift */,
 				A000000000000000000030 /* TrainingProgram.swift */,
 				A000000000000000000031 /* TrainingProgressManager.swift */,
-				A000000000000000000032 /* TrainingHubView.swift */,
 				A000000000000000000033 /* TrainingProgramDetailView.swift */,
 				A000000000000000000046 /* Assets.xcassets */,
 				A000000000000000000AD0 /* Audio */,
@@ -631,7 +608,6 @@
 				789F5FB71B3FD7288973D0C9 /* PlayerContext.swift */,
 				A00000000000000000A0F1 /* PhysicalNotes.swift */,
 				FF5A9D15805AB520576E3578 /* Doubles */,
-				2552A4998FE130E11DD2183F /* TrainView.swift */,
 				C32EFA2E45204668CCB9AA07 /* HomeView.swift */,
 				53AA3AEFE28E84B4C9E60F40 /* DesignSystem.swift */,
 				E59972A086F7FB607351D71D /* TrainPracticeView.swift */,
@@ -820,7 +796,6 @@
 				A000000000000000000020 /* CourtIQApp.swift in Sources */,
 				A000000000000000000021 /* MainTabView.swift in Sources */,
 				A000000000000000000023 /* ProfileView.swift in Sources */,
-				A000000000000000000024 /* TodayView.swift in Sources */,
 				A000000000000000000025 /* DailyQuizManager.swift in Sources */,
 				B7E11QM0000000000001 /* TennisIQManager.swift in Sources */,
 				A000000000000000000026 /* DiscussionThread.swift in Sources */,
@@ -840,13 +815,10 @@
 				A000000000000000000039 /* AppPalette.swift in Sources */,
 				A000000000000000000050 /* AppConfiguration.swift in Sources */,
 				A000000000000000000051 /* BundleContentLoader.swift in Sources */,
-				A000000000000000000052 /* OnboardingView.swift in Sources */,
 				A000000000000000000053 /* PaywallView.swift in Sources */,
-				A000000000000000000054 /* CommunityViews.swift in Sources */,
 				A000000000000000000055 /* LegalDocumentView.swift in Sources */,
 				A000000000000000000034 /* TrainingProgram.swift in Sources */,
 				A000000000000000000035 /* TrainingProgressManager.swift in Sources */,
-				A000000000000000000036 /* TrainingHubView.swift in Sources */,
 				A000000000000000000037 /* TrainingProgramDetailView.swift in Sources */,
 				A00000000000000000005B /* DailyTip.swift in Sources */,
 				A00000000000000000005D /* TennisPlayerLevel.swift in Sources */,
@@ -881,8 +853,6 @@
 				A000000000000000000191 /* PlayStyleProfile.swift in Sources */,
 				A000000000000000000193 /* PlayStyleProfileCard.swift in Sources */,
 				A000000000000000000195 /* SelfAssessment.swift in Sources */,
-				A000000000000000000197 /* SelfAssessmentStep.swift in Sources */,
-				A000000000000000000101 /* TourStep.swift in Sources */,
 				A000000000000000000111 /* MatchEntry.swift in Sources */,
 				A000000000000000000113 /* MatchEntryManager.swift in Sources */,
 				A000000000000000000115 /* MatchesListView.swift in Sources */,
@@ -905,7 +875,7 @@
 				A000000000000000000FC1 /* WallRallyCamView.swift in Sources */,
 				B100000000000000000002 /* WallBallLocator.swift in Sources */,
 				B400000000000000000002 /* WallSwingDetector.swift in Sources */,
-				0423DEF8701047149FE1BAAB /* TacticsDesignKit.swift in Sources */,
+				C6FACBEAF61D4096BFBD94B1 /* TacticsCopy.swift in Sources */,
 				9DC668D6EE434CA28E15A53A /* TacticsAccess.swift in Sources */,
 				955A7FC7227E41E5B9D96608 /* Sound.swift in Sources */,
 				D978C470BB4441558CFA6BEC /* PlayerProgress.swift in Sources */,
@@ -937,7 +907,6 @@
 				A000000000000000000161 /* ProShotPattern.swift in Sources */,
 				A000000000000000000163 /* ProShotPatternsManager.swift in Sources */,
 				A000000000000000000165 /* ProShotAnimationView.swift in Sources */,
-				A000000000000000000167 /* ProShotCard.swift in Sources */,
 				01E3B5805B3AC2D9B83BCC20 /* AICoachConsentView.swift in Sources */,
 				37CFB2A76B818800CC50DB26 /* TennisProfile.swift in Sources */,
 				A9B92CCD5D6A1DDCE15C8C3B /* TennisProfileScoring.swift in Sources */,
@@ -977,7 +946,6 @@
 				E20D88189D622D55FEDD413E /* DoublesInviteService.swift in Sources */,
 				04417858354D72CCE86F2F10 /* DoublesInviteStore.swift in Sources */,
 				0B41552D544B03FFBB348B54 /* DoublesInviteViews.swift in Sources */,
-				77E5C7A03F1A2BF3C94AE188 /* TrainView.swift in Sources */,
 				9F058BB47733B75F46ED587A /* HomeView.swift in Sources */,
 				C42C3CFF6843C67C68E8FB6F /* DesignSystem.swift in Sources */,
 				1A5CB2C747712855620C22EF /* TrainPracticeView.swift in Sources */,

@@ -35,6 +35,8 @@ struct DialogueView: View {
     let lesson: Lesson
 
     @Environment(ContentStore.self) private var content
+    @EnvironmentObject private var lang: LanguageManager
+    private var copy: TacticsCopy { TacticsCopy(lang: lang.language) }
     @Environment(PlayerProgress.self) private var progress
     @Environment(TacticsAccess.self) private var subscriptions
     @Environment(LessonRouter.self) private var router
@@ -81,9 +83,9 @@ struct DialogueView: View {
                     Haptics.tap()
                     showNotes = true
                 } label: {
-                    Label("Notes", systemImage: "text.alignleft")
+                    Label(copy.notes, systemImage: "text.alignleft")
                 }
-                .accessibilityLabel("Read the full notes")
+                .accessibilityLabel(copy.readNotes)
             }
         }
         .onAppear(perform: start)

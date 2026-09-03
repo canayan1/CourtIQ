@@ -1,6 +1,6 @@
 # Front-end restructure — the whole app tells the three-pillar story
 
-Status: plan, 2 Sep 2026. Decision it serves: DropVolley sells exactly three
+Status: plan 2 Sep 2026; steps 1–7 landed on `restructure/1.1` on 3 Sep 2026 (see §11). Decision it serves: DropVolley sells exactly three
 things — **Coach** (your video, reviewed), **Wall** (camera-judged drills),
 **Tactics** (lessons, Duolingo-style). 1.0.7 (build 36, in review) changed
 the *tab bar* to say that. Nothing underneath does yet. This document is the
@@ -181,3 +181,20 @@ Rough size: ~1.5–2 days of focused work; steps 1–3 are the visible half.
   split-social-app idea).
 - No TR translation of the 290 KB Tactics content.
 - Doesn't touch the wall detector or the swing pipeline.
+
+---
+
+## 11. Status (3 Sep 2026, branch `restructure/1.1`)
+
+| Step | Commit | Notes |
+|---|---|---|
+| 1 Paywall + Profile | `c6c1902` | three-pillar benefits; quiz archive + tactical cards out; pillar progress rows in; chip says Premium |
+| 2 Home | `c6c1902` | three state cards, IQ strip, "Also" chips |
+| 3 Onboarding | `054837e` | hook, 3 pillar slides (wall + tactics samples new), first-week card; Activation deleted |
+| 4 Coach | `1fe1dd1` | chat demoted to "Ask about this read"; AICoachTabRoot deleted |
+| 5 Tactics | (this commit) | `TacticsCopy` EN/TR for all chrome; design kit merged into `DesignSystem.swift`; **tests target not created** (no unit-test target exists; hand-editing pbxproj for a new native target judged too risky — do it in Xcode) |
+| 6 Wall | `1fe1dd1` | hub sub-line, "Count my reps", verdict "Send to Coach" |
+| 7 Delete list | (this commit) | 8 dead files removed from disk + pbxproj; 195 dead keys dropped (`onb.`, `onboarding.`, `activation.`, `community.`, old tabs, tip jar, quiz archive) |
+| 8 Screenshots + submit | pending | after Can's review |
+
+Found on the way: `LanguageManager` is **locked to English** in `init` ("localization not yet shipped"), so the TR strings — including the new `tactics.*` copy — are maintained but never shown. Unlocking it is a one-line change plus a TR review pass of every screen; not done here.

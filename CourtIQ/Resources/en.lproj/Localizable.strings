@@ -22,12 +22,6 @@
 "common.days" = "days";
 
 /* ── Tabs ── */
-"tab.today" = "Today";
-"tab.practice" = "Practice";
-"tab.community" = "Community";
-"tab.training" = "Training";
-"tab.profile" = "Profile";
-"tab.train" = "Train";
 "tab.doubles" = "Doubles";
 "tab.coach" = "Coach";
 "tab.wall" = "Wall";
@@ -64,26 +58,6 @@
 "home.first_swing" = "Record your first swing, get a score";
 
 /* ── First-run activation (2-step: IQ taste → Coach nudge) ── */
-"activation.iq_eyebrow" = "QUICK TENNIS IQ";
-"activation.iq_intro" = "One quick call. What's the smart play?";
-"activation.correct" = "Nice — that's the smart play.";
-"activation.incorrect" = "Close — here's the smarter play.";
-"activation.check" = "Check answer";
-"activation.continue" = "Continue";
-"activation.coach_eyebrow" = "MEET YOUR AI COACH";
-"activation.coach_title" = "Your coach's first read";
-"activation.coach_body" = "Ask about a match, an opponent, or a weak spot — and get a coach's answer, tuned to your game.";
-"activation.coach_cta" = "Ask the Coach";
-"activation.coach_read" = "Here's my read on your game: %1$@ level, %2$@ style. %3$@ is your weapon right now — and %4$@ is where you're leaking points.";
-"activation.coach_plan_title" = "Your plan inside DropVolley:";
-"activation.plan_swing" = "Film your %@ — swing analysis scores it 0–100 and shows exactly what to fix";
-"activation.plan_drill" = "Do the daily court drill — footwork wins club matches";
-"activation.plan_mental" = "Run the mental scenarios and the pre-match check — pressure is costing you points";
-"activation.plan_iq" = "Solve your 5 daily scenarios — decision-making climbs fast";
-"activation.plan_matches" = "Log every match — the AI reads your patterns and tells you what to train";
-"activation.coach_hook" = "Want to go deeper? Ask me about a match, an opponent, a weak spot — that's what I'm here for.";
-"activation.later" = "Maybe later";
-"activation.skip" = "Skip";
 
 /* ── Train hub (Phase 1 IA redesign) ── */
 "train.subtitle" = "Improve";
@@ -183,10 +157,6 @@
 "today.profile_a11y" = "Open profile";
 
 /* ── Coach tab landing (Phase 1 IA redesign) ── */
-"coach.landing_kicker" = "AI Coach";
-"coach.landing_title" = "Your personal AI tennis coach";
-"coach.landing_body" = "Get advice on tactics, technique, and match prep — based on your Tennis Profile, recent matches, and quiz history.";
-"coach.unlock" = "Unlock AI Coach";
 
 /* ── Today ── */
 "today.day_streak" = "day streak";
@@ -204,9 +174,6 @@
 "training.a11y_sessions_done" = "Sessions completed this week";
 
 /* ── Empty states ── */
-"profile.empty_history_title" = "Your quiz history will live here";
-"profile.empty_history_body" = "Complete a quiz to start tracking.";
-"community.empty_title" = "Be the first to write";
 "training.checkin_empty_title" = "No check-ins yet";
 "common.back" = "Back";
 "today.start_quiz" = "Start today's quiz";
@@ -338,19 +305,6 @@
 "mobility.unlock" = "Open Mobility Library";
 
 /* ── Community ── */
-"community.title" = "Discussion";
-"community.report_title" = "Report this comment?";
-"community.report_action" = "Report as inappropriate";
-"community.report_guideline" = "We'll review this comment and take action if it violates community guidelines.";
-"community.report_thanks" = "Thanks for the report. We'll review this comment shortly.";
-"community.placeholder" = "What does this tip change in your game?";
-"community.unlock" = "Sign in to join";
-"community.add_take" = "Add your take";
-"community.edit_comment" = "Edit comment";
-"community.empty" = "Be the first to share your take on today's tip.";
-"community.comments" = "comments";
-"community.coach" = "Coach";
-"community.unlock_desc" = "Sign in with Apple to join the conversation.";
 
 /* ── Profile ── */
 "profile.title" = "Profile";
@@ -363,11 +317,9 @@
 "profile.reset_title" = "Reset local data?";
 "profile.reset_msg" = "This clears cached progress on this device. Synced account data will re-download on next launch.";
 "profile.quiz_empty" = "Complete your first daily quiz to start your archive.";
-"profile.unlock_history" = "Your full quiz archive — free.";
 "profile.sign_in_hint" = "Sync progress across devices.";
 "profile.leave_guest" = "Leave Guest Preview";
 "profile.section_progress" = "Progress";
-"profile.section_quiz" = "Quiz History";
 "profile.section_account" = "Account";
 "profile.section_policies" = "Policies";
 "profile.section_language" = "Language";
@@ -383,45 +335,6 @@
 "profile.guest_desc" = "Guest mode saves progress on this device only. Sign in with Apple to protect your streak and purchase history.";
 
 /* ── Onboarding ── */
-"onboarding.tagline" = "Raise your Tennis IQ";
-"onboarding.subtitle" = "Daily decisions. Smart habits. A sharper game.";
-"onboarding.get_started" = "Get Started";
-"onboarding.everything" = "Everything in one place";
-"onboarding.everything_desc" = "DropVolley covers every part of your tennis week — on and off the court.";
-"onboarding.daily_iq" = "Daily IQ Quiz";
-"onboarding.daily_iq_desc" = "A new scenario every day. Real match situations, multiple choices, instant coaching feedback. Decisions become instinct.";
-"onboarding.tip" = "Tip of the Day";
-"onboarding.tip_desc" = "One sharp tactic or technique insight each morning — tactics, technique, fitness, or mental game.";
-"onboarding.training" = "Training Programs";
-"onboarding.training_desc" = "8-week plans for footwork, shot power, flexibility, and match conditioning — all built for tennis.";
-"onboarding.mobility" = "Mobility & Recovery";
-"onboarding.mobility_desc" = "Pre-match, post-match, and weekly reset flows targeting the areas court sport wrecks most.";
-"onboarding.go_all_access" = "Get Started";
-"onboarding.free_week" = "Your first week is completely free. Then choose the plan that fits.";
-"onboarding.free_trial" = "7 days free — cancel any time";
-"onboarding.annual" = "Annual";
-"onboarding.per_month" = "/ month";
-"onboarding.per_year" = "/ year";
-"onboarding.annual_equiv" = "That's $2.42 / month";
-"onboarding.best_value" = "Best value  ·  Save 52%";
-"onboarding.monthly" = "Monthly";
-"onboarding.billed_monthly" = "Billed monthly after free trial";
-"onboarding.whats_included" = "What's included";
-"onboarding.feature_quizzes" = "Unlimited daily quizzes";
-"onboarding.feature_archive" = "Full tip archive — every insight ever published";
-"onboarding.feature_training" = "All 8-week training programs";
-"onboarding.feature_mobility" = "All mobility & recovery flows";
-"onboarding.feature_updates" = "Ongoing fitness program updates as they ship";
-"onboarding.feature_early" = "Early access to every new feature";
-"onboarding.feature_history" = "Full quiz history & performance tracking";
-"onboarding.first_in_line" = "Always first in line";
-"onboarding.first_in_line_desc" = "Premium members test new features — new quiz formats, analytics, and court tools — before they go public.";
-"onboarding.start_trial" = "Start Free Trial";
-"onboarding.continue_free" = "Continue for free";
-"onboarding.one_last_step" = "One last step";
-"onboarding.sign_in_desc" = "Sign in to unlock cloud sync, cross-device progress, and the ability to restore your premium access.";
-"onboarding.guest" = "Continue as Guest";
-"onboarding.guest_desc" = "Guest mode saves progress on this device only. Sign in with Apple to protect your streak and purchase history.";
 
 /* ── Paywall ── */
 "paywall.title" = "AI Coach";
@@ -432,22 +345,8 @@
 "paywall.benefit_coach" = "Coach — unlimited swing reads, and a chat about each one";
 "paywall.benefit_tactics" = "Tactics — every chapter, every day";
 "paywall.benefit_wall" = "Wall — camera counting and a verdict on every rung";
-"paywall.benefit_swing" = "AI swing analysis, 0–100";
-"paywall.benefit_ask" = "Tactics, opponents, drills";
 
 /* ── Tip-jar mode (launch window, LaunchOffer.allFeaturesFree == true) ── */
-"paywall.tip_title" = "Support DropVolley";
-"paywall.tip_headline" = "DropVolley is free. AI Coach is the one premium feature.";
-"paywall.tip_body" = "Drills, quizzes, training programs, mobility flows, and the full match journal are all free. Only the AI Coach is premium. If DropVolley has been useful, an optional tip keeps it growing.";
-"paywall.tip_why" = "Why support?";
-"paywall.tip_reason_1" = "Keeps the app independent — no ads, no tracking, no investors.";
-"paywall.tip_reason_2" = "Funds the next features (voice notes, partner mode, watch app).";
-"paywall.tip_reason_3" = "Covers the Apple Developer fee that keeps DropVolley on the store.";
-"paywall.tip_action" = "Leave a tip";
-"paywall.tip_offer_title" = "Annual supporter";
-"paywall.tip_offer_detail" = "One yearly tip. Cancel anytime in Settings.";
-"paywall.tip_button" = "Support DropVolley";
-"paywall.tip_legal_note" = "Tips are processed by Apple as an annual auto-renewing subscription so they qualify for App Store payment handling. You can cancel anytime from Settings → Subscriptions; no features are locked if you do.";
 
 /* ── Voice notes (Match Journal v1.1.A) ── */
 "voice.record_start" = "Record a voice note";
@@ -544,109 +443,16 @@
 "health.banner_body" = "Warm up first. Use safe technique and weight. Stop if anything feels wrong.";
 
 /* ── Onboarding ── */
-"onb.welcome.tagline" = "Tennis IQ for all levels.";
-"onb.welcome.body" = "Daily scenarios, structured training, and mobility — in one coach-shaped routine.";
-"onb.welcome.cta" = "Get started";
-"onb.welcome.footer" = "30 SECONDS TO SET UP · FREE FOREVER TIER";
 
-"onb.cta.continue" = "Continue";
-"onb.cta.build_plan" = "Build my plan";
-"onb.cta.see_included" = "See what's included";
-"onb.cta.skip" = "Skip";
 
-"onb.level.step" = "1 / 3";
-"onb.level.title" = "Where are you\non court?";
-"onb.level.subtitle" = "We'll set quiz difficulty and practice blocks.";
-"onb.level.beginner.title" = "Beginner";
-"onb.level.beginner.desc" = "Learning rallies, still finding consistency";
-"onb.level.club.title" = "Club player";
-"onb.level.club.desc" = "Steady rallies, regular match play";
-"onb.level.advanced.title" = "Advanced";
-"onb.level.advanced.desc" = "Tournaments, ranked play, tight margins";
-"onb.level.coach.title" = "Coach / pro";
-"onb.level.coach.desc" = "Teaching others, also sharpening yourself";
 
-"onb.focus.step" = "2 / 3";
-"onb.focus.title" = "What do you most\nwant to sharpen?";
-"onb.focus.subtitle" = "Pick one. You can change this anytime in your profile.";
-"onb.focus.decision.title" = "Decision-making";
-"onb.focus.decision.desc" = "Shot choice, court awareness, reading opponents";
-"onb.focus.strokes.title" = "Stroke mechanics";
-"onb.focus.strokes.desc" = "Forehand, backhand, serve, volley patterns";
-"onb.focus.mobility.title" = "Mobility & recovery";
-"onb.focus.mobility.desc" = "Stay injury-free, move better between points";
-"onb.focus.mental.title" = "Mental game";
-"onb.focus.mental.desc" = "Nerves in tight moments, focus between points";
 
-"onb.freq.step" = "3 / 3";
-"onb.freq.title" = "How often do\nyou train?";
-"onb.freq.subtitle" = "We'll suggest a training plan that fits your week.";
-"onb.freq.1_2.title" = "1–2 days";
-"onb.freq.1_2.desc" = "Casual — weekend hitter";
-"onb.freq.3_4.title" = "3–4 days";
-"onb.freq.3_4.desc" = "Committed — clinic + match play";
-"onb.freq.5plus.title" = "5+ days";
-"onb.freq.5plus.desc" = "Serious — near-daily training";
 
-"onb.plan.tag" = "YOUR PLAN";
-"onb.plan.title" = "Here's your\ncoach-shaped week.";
-"onb.plan.subtitle" = "Built around your level, focus, and schedule.";
-"onb.plan.row.iq" = "Daily IQ scenario";
-"onb.plan.row.training" = "Foundation plan";
-"onb.plan.row.mobility" = "Quick reset flow";
-"onb.plan.row.tip" = "Tip of the day";
-"onb.plan.iq.decision" = "Decision-heavy questions first";
-"onb.plan.iq.default" = "5 questions a day, graded feedback";
-"onb.plan.training.5plus" = "5-day micro-cycle";
-"onb.plan.training.1_2" = "Weekend 2-day loop";
-"onb.plan.training.default" = "Hybrid 4-day block";
-"onb.plan.mobility.priority" = "Prioritized in your Today hub";
-"onb.plan.mobility.preview" = "Full mobility library included";
-"onb.plan.tip.desc" = "One bite-sized coaching note every morning";
-"onb.plan.free_title" = "Free forever — no card required";
-"onb.plan.free_body" = "Daily quizzes, all training plans, and the full mobility library — free. No card needed.";
 
-"onb.paywall.tag" = "AI COACH";
-"onb.paywall.title" = "Meet your AI Coach.";
-"onb.paywall.subtitle" = "Everything else in DropVolley is free. You can unlock the AI Coach from your Profile anytime.";
-"onb.paywall.included" = "What's included";
-"onb.paywall.b1" = "Knows your last 5 matches, ratings & quiz patterns";
-"onb.paywall.b2" = "Suggests your drills, mobility flows & training plans by name";
-"onb.paywall.b3" = "Import your ChatGPT tennis chats so context carries over";
-"onb.paywall.b4" = "Private — no third-party tracking";
-"onb.paywall.b5" = "Everything else in DropVolley stays free";
 
-"onb.account.title" = "Save your progress.";
-"onb.account.subtitle" = "Sync progress across devices.";
-"onb.account.guest" = "Continue as guest";
-"onb.account.guest_note" = "Guest progress stays on this device.";
 
-"onb.tour.skip" = "Skip tour";
-"onb.tour.swipe_hint" = "Swipe to see more →";
-"onb.tour.1.title" = "Daily IQ scenarios";
-"onb.tour.1.body" = "5 court-diagram questions a day. Read the scenario visually, pick the smartest shot, see exactly why.";
-"onb.tour.2.title" = "Built-for-tennis training";
-"onb.tour.2.body" = "8-week strength, plyo, and conditioning programs designed around how tennis players actually move. Finish one, graduate to the next phase.";
-"onb.tour.3.title" = "Mobility on demand";
-"onb.tour.3.body" = "Quick reset flows, pre-match warm-ups, and recovery sessions — keep your body tennis-ready between hits.";
-"onb.tour.4.title" = "Track your streak and IQ";
-"onb.tour.4.body" = "Your IQ rating, your streak, and your progression badge — all in one Profile tab. Watch yourself climb.";
 
 /* ── Onboarding tour (new feature pages) ── */
-"onb.tour.drill.title" = "Daily Court Drill";
-"onb.tour.drill.body" = "5 fast scenarios. Tap where you'd hit the smartest shot. 30 seconds, every day.";
-"onb.tour.proshot.title" = "Today's pro shot";
-"onb.tour.proshot.body" = "Watch how the best players construct points — one new pattern every day.";
-"onb.tour.rings.title" = "Close your rings";
-"onb.tour.rings.body" = "Drill · Match · Mobility. Close all three for a Triple Ring Day.";
-"onb.tour.matches.title" = "Log your matches";
-"onb.tour.matches.body" = "Pre-match plan, post-match notes, your honest ratings — see your trend over time.";
-"onb.tour.training.title" = "8-week training";
-"onb.tour.training.body" = "Tennis-specific strength, plyo, conditioning. Finish one, graduate to the next.";
-"onb.tour.mobility.title" = "Move better";
-"onb.tour.mobility.body" = "Quick resets, warm-ups, recovery flows — kept short, kept tennis-ready.";
-"onb.tour.avatar.title" = "Your player";
-"onb.tour.avatar.body" = "Build your court look. Streaks, drills, and matches unlock new gear.";
 
 /* ── Matches ── */
 "tab.matches" = "Matches";
@@ -1040,7 +846,6 @@
 
 /* Common */
 "common.dismiss" = "Dismiss";
-"onboarding.skip" = "Skip";
 
 /* Onboarding — tactical self-assessment */
 "self_assess.kicker" = "Tactical baseline";

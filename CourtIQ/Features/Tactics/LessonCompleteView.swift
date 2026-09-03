@@ -14,6 +14,8 @@ struct LessonCompleteView: View {
     let onDone: () -> Void
 
     @Environment(PlayerProgress.self) private var progress
+    @EnvironmentObject private var lang: LanguageManager
+    private var copy: TacticsCopy { TacticsCopy(lang: lang.language) }
     @Environment(ContentStore.self) private var content
     @Environment(TacticsAccess.self) private var subscriptions
 
@@ -138,7 +140,7 @@ struct LessonCompleteView: View {
 
     private func levelUpCard(_ level: PlayerLevel) -> some View {
         VStack(spacing: 8) {
-            Eyebrow("New level", tint: .white.opacity(0.85))
+            Eyebrow(copy.newLevel, tint: .white.opacity(0.85))
             HStack(spacing: 10) {
                 Image(systemName: level.symbol)
                     .font(.title2.weight(.bold))
@@ -163,7 +165,7 @@ struct LessonCompleteView: View {
                 .font(.title2.weight(.semibold))
                 .foregroundStyle(AppPalette.mossText)
             VStack(alignment: .leading, spacing: 2) {
-                Text("Chapter \(done.number) badge earned")
+                Text(copy.badgeEarned(done.number))
                     .font(.system(.subheadline, design: .rounded).weight(.bold))
                     .foregroundStyle(AppPalette.ink)
                 Text(done.title)
@@ -185,10 +187,10 @@ struct LessonCompleteView: View {
                 .font(.title2.weight(.semibold))
                 .foregroundStyle(AppPalette.clayText)
             VStack(alignment: .leading, spacing: 2) {
-                Text("\(days) days in a row")
+                Text(copy.daysInARow(days))
                     .font(.system(.subheadline, design: .rounded).weight(.bold))
                     .foregroundStyle(AppPalette.ink)
-                Text("That is the habit doing the work now.")
+                Text(copy.habitLine)
                     .font(.caption)
                     .foregroundStyle(AppPalette.inkSoft)
             }
@@ -207,7 +209,7 @@ struct LessonCompleteView: View {
                     .foregroundStyle(AppPalette.ink)
                 Spacer()
                 if let togo = progress.xpToNextLevel, let next = progress.level.next {
-                    Text("\(togo) XP to \(next.title)")
+                    Text(copy.xpTo(togo, next.title))
                         .font(.caption)
                         .foregroundStyle(AppPalette.inkSoft)
                 }
@@ -235,11 +237,11 @@ struct LessonCompleteView: View {
                      : "That was today's free lesson.")
                     .font(.system(.subheadline, design: .rounded).weight(.bold))
                     .foregroundStyle(AppPalette.ink)
-                Text("Unlock all \(content.totalLessonCount) lessons and keep going now.")
+                Text(copy.unlockAll(content.totalLessonCount))
                     .font(.footnote)
                     .foregroundStyle(AppPalette.inkSoft)
                 HStack(spacing: 6) {
-                    Text("See the options")
+                    Text(copy.seeOptions)
                     Image(systemName: "chevron.right")
                 }
                 .font(.system(.footnote, design: .rounded).weight(.bold))

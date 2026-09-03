@@ -15,6 +15,8 @@ struct LessonView: View {
     var showsQuiz: Bool = true
 
     @Environment(PlayerProgress.self) private var progress
+    @EnvironmentObject private var lang: LanguageManager
+    private var copy: TacticsCopy { TacticsCopy(lang: lang.language) }
     @Environment(TacticsAccess.self) private var subscriptions
     @Environment(\.dismiss) private var dismiss
 
@@ -109,7 +111,7 @@ struct LessonView: View {
 
             if !lesson.adjustments.isEmpty {
                 VStack(alignment: .leading, spacing: 12) {
-                    Eyebrow("Adjust when", tint: AppPalette.clayText)
+                    Eyebrow(copy.adjustWhen, tint: AppPalette.clayText)
                     ForEach(Array(lesson.adjustments.enumerated()), id: \.offset) { _, adjustment in
                         VStack(alignment: .leading, spacing: 3) {
                             Text(adjustment.when)
@@ -197,7 +199,7 @@ struct LessonView: View {
                 .foregroundStyle(AppPalette.clayText)
             VStack(alignment: .leading, spacing: 3) {
                 Eyebrow(heading, tint: AppPalette.clayText)
-                Text("The exception to this rule, and what stronger players do instead.")
+                Text(copy.advancedBody)
                     .font(.system(.subheadline, design: .rounded))
                     .foregroundStyle(AppPalette.ink.opacity(0.8))
                     .fixedSize(horizontal: false, vertical: true)
@@ -217,7 +219,7 @@ struct LessonView: View {
     private var decidePhase: some View {
         VStack(alignment: .leading, spacing: 20) {
             VStack(alignment: .leading, spacing: 10) {
-                Eyebrow("The situation", tint: AppPalette.clayText)
+                Eyebrow(copy.situation, tint: AppPalette.clayText)
                 Text(lesson.quiz.scenario)
                     .font(.system(.body, design: .rounded))
                     .foregroundStyle(AppPalette.ink)
@@ -336,7 +338,7 @@ struct LessonView: View {
                     finish()
                 }
             } else {
-                Text("Have another look at the rule, then pick again.")
+                Text(copy.lookAgain)
                     .font(.system(.body, design: .rounded))
                     .foregroundStyle(AppPalette.ink)
 
@@ -345,7 +347,7 @@ struct LessonView: View {
                         Haptics.tap()
                         picked = nil
                     } label: {
-                        Text("Try again")
+                        Text(copy.tryAgain)
                             .font(.system(.subheadline, design: .rounded).weight(.bold))
                             .foregroundStyle(.white)
                             .padding(.horizontal, 20)
@@ -360,7 +362,7 @@ struct LessonView: View {
                         picked = nil
                         phase = .teach
                     } label: {
-                        Text("Re-read the rule")
+                        Text(copy.rereadRule)
                             .font(.system(.subheadline, design: .rounded).weight(.semibold))
                             .foregroundStyle(AppPalette.clayText)
                     }

@@ -57,7 +57,7 @@ struct MobilityAnimationPreview: View {
                             .stroke(AppPalette.sand, lineWidth: 1)
                     )
 
-                // Soft court accent — matches the existing TodayView hero
+                // Soft court accent — matches the Home hero cards
                 // pattern (CourtTopDown + opacity damper).
                 CourtTopDown(surface: .clay, lineOpacity: 0.22)
                     .opacity(0.30)

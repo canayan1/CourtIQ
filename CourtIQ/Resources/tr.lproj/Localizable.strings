@@ -22,12 +22,6 @@
 "common.days" = "gün";
 
 /* ── Tabs ── */
-"tab.today" = "Bugün";
-"tab.practice" = "Pratik";
-"tab.community" = "Topluluk";
-"tab.training" = "Antrenman";
-"tab.profile" = "Profil";
-"tab.train" = "Çalış";
 "tab.doubles" = "Çiftler";
 "tab.coach" = "Koç";
 "tab.wall" = "Duvar";
@@ -64,26 +58,6 @@
 "home.first_swing" = "İlk vuruşunu çek, puanını al";
 
 /* ── First-run activation (2-step: IQ taste → Coach nudge) ── */
-"activation.iq_eyebrow" = "HIZLI TENNIS IQ";
-"activation.iq_intro" = "Tek bir karar. Akıllı seçim hangisi?";
-"activation.correct" = "Güzel — akıllı seçim bu.";
-"activation.incorrect" = "Az kaldı — daha akıllısı şu.";
-"activation.check" = "Cevabı kontrol et";
-"activation.continue" = "Devam";
-"activation.coach_eyebrow" = "AI KOÇUNLA TANIŞ";
-"activation.coach_title" = "Koçunun ilk okuması";
-"activation.coach_body" = "Bir maçı, rakibi ya da zayıf yönünü sor — oyununa göre, koç gibi cevap gelsin.";
-"activation.coach_cta" = "Koç'a sor";
-"activation.coach_read" = "Oyununa dair okumam şu: %2$@ tarzında bir %1$@ oyuncusun. Şu an silahın %3$@ — sayı kaybettiğin yer ise %4$@.";
-"activation.coach_plan_title" = "DropVolley içindeki planın:";
-"activation.plan_swing" = "%@ vuruşunu çek — vuruş analizi 0–100 puanlar, tam olarak neyi düzelteceğini gösterir";
-"activation.plan_drill" = "Günlük kort drilini yap — kulüp maçlarını ayak işi kazanır";
-"activation.plan_mental" = "Mental senaryoları ve maç öncesi kontrolü kullan — baskı sana sayı kaybettiriyor";
-"activation.plan_iq" = "Günde 5 senaryonu çöz — karar zekân hızla tırmanır";
-"activation.plan_matches" = "Her maçını kaydet — AI desenlerini okur, neyi çalışacağını söyler";
-"activation.coach_hook" = "Daha derine inmek ister misin? Bana bir maçı, bir rakibi, bir zayıf noktayı sor — bunun için buradayım.";
-"activation.later" = "Belki sonra";
-"activation.skip" = "Atla";
 
 /* ── Train hub (Phase 1 IA redesign) ── */
 "train.subtitle" = "Geliştir";
@@ -183,10 +157,6 @@
 "today.profile_a11y" = "Profili aç";
 
 /* ── Coach tab landing (Phase 1 IA redesign) ── */
-"coach.landing_kicker" = "AI Koç";
-"coach.landing_title" = "Kişisel AI tenis koçun";
-"coach.landing_body" = "Tenis Profilin, son maçların ve quiz geçmişine göre taktik, teknik ve maç hazırlığı için sana özel tavsiyeler al.";
-"coach.unlock" = "AI Koç'u Aç";
 
 /* ── Today ── */
 "today.day_streak" = "günlük seri";
@@ -204,9 +174,6 @@
 "training.a11y_sessions_done" = "Bu hafta tamamlanan seanslar";
 
 /* ── Boş durumlar ── */
-"profile.empty_history_title" = "Quiz geçmişin burada görünecek";
-"profile.empty_history_body" = "Bir quiz tamamla, takip başlasın.";
-"community.empty_title" = "Yazan ilk sen ol";
 "training.checkin_empty_title" = "Henüz check-in yok";
 "common.back" = "Geri";
 "today.start_quiz" = "Bugünün sınavını başlat";
@@ -338,19 +305,6 @@
 "mobility.unlock" = "Hareket Kütüphanesini Aç";
 
 /* ── Community ── */
-"community.title" = "Tartışma";
-"community.report_title" = "Bu yorum bildirilsin mi?";
-"community.report_action" = "Uygunsuz olarak bildir";
-"community.report_guideline" = "Bu yorumu inceleyeceğiz ve topluluk kurallarını ihlal ediyorsa işlem yapacağız.";
-"community.report_thanks" = "Bildirim için teşekkürler. Bu yorumu kısa süre içinde inceleyeceğiz.";
-"community.placeholder" = "Bu ipucu oyununda ne değiştiriyor?";
-"community.unlock" = "Katılmak için giriş yap";
-"community.add_take" = "Görüşünü ekle";
-"community.edit_comment" = "Yorumu düzenle";
-"community.empty" = "Bugünün ipucu hakkında görüşünü ilk paylaşan sen ol.";
-"community.comments" = "yorum";
-"community.coach" = "Antrenör";
-"community.unlock_desc" = "Sohbete katılmak için Apple ile giriş yap.";
 
 /* ── Profile ── */
 "profile.title" = "Profil";
@@ -363,11 +317,9 @@
 "profile.reset_title" = "Yerel veriler sıfırlansın mı?";
 "profile.reset_msg" = "Bu, bu cihazdaki önbelleğe alınmış ilerlemeyi temizler. Senkronize hesap verileri bir sonraki başlatmada yeniden indirilecektir.";
 "profile.quiz_empty" = "Arşivini başlatmak için ilk günlük sınavını tamamla.";
-"profile.unlock_history" = "Tam arşivini gör.";
 "profile.sign_in_hint" = "İlerlemeni cihazlar arasında senkronize et.";
 "profile.leave_guest" = "Misafir Önizlemesinden Çık";
 "profile.section_progress" = "İlerleme";
-"profile.section_quiz" = "Sınav Geçmişi";
 "profile.section_account" = "Hesap";
 "profile.section_policies" = "Politikalar";
 "profile.section_language" = "Dil";
@@ -383,45 +335,6 @@
 "profile.guest_desc" = "Misafir modu, ilerlemeyi yalnızca bu cihazda kaydeder. Serinizi ve satın alma geçmişinizi korumak için Apple ile giriş yapın.";
 
 /* ── Onboarding ── */
-"onboarding.tagline" = "Tenis IQ'nı Yükselt";
-"onboarding.subtitle" = "Günlük kararlar. Akıllı alışkanlıklar. Daha keskin bir oyun.";
-"onboarding.get_started" = "Başla";
-"onboarding.everything" = "Her şey tek yerde";
-"onboarding.everything_desc" = "DropVolley, tenis haftanın her bölümünü kapsıyor — sahada ve dışında.";
-"onboarding.daily_iq" = "Günlük IQ Sınavı";
-"onboarding.daily_iq_desc" = "Her gün yeni bir senaryo. Gerçek maç durumları, çoktan seçmeli, anında antrenör geri bildirimi. Kararlar içgüdüye dönüşür.";
-"onboarding.tip" = "Günün İpucu";
-"onboarding.tip_desc" = "Her sabah bir keskin taktik veya teknik içgörü — taktikler, teknik, fitness veya zihinsel oyun.";
-"onboarding.training" = "Antrenman Programları";
-"onboarding.training_desc" = "Ayak işleri, vuruş gücü, esneklik ve maç kondisyonu için 8 haftalık planlar — hepsi tenis için oluşturuldu.";
-"onboarding.mobility" = "Hareket & Toparlanma";
-"onboarding.mobility_desc" = "Kortun en çok yıprattığı alanları hedef alan maç öncesi, sonrası ve haftalık sıfırlama akışları.";
-"onboarding.go_all_access" = "Başla";
-"onboarding.free_week" = "İlk haftanız tamamen ücretsiz. Sonra size uyan planı seçin.";
-"onboarding.free_trial" = "7 gün ücretsiz — istediğiniz zaman iptal edin";
-"onboarding.annual" = "Yıllık";
-"onboarding.per_month" = "/ ay";
-"onboarding.per_year" = "/ yıl";
-"onboarding.annual_equiv" = "Bu, ayda 2,42 $ demek";
-"onboarding.best_value" = "En iyi değer  ·  %52 tasarruf";
-"onboarding.monthly" = "Aylık";
-"onboarding.billed_monthly" = "Ücretsiz deneme sonrası aylık faturalandırılır";
-"onboarding.whats_included" = "Neler dahil";
-"onboarding.feature_quizzes" = "Sınırsız günlük sınavlar";
-"onboarding.feature_archive" = "Tam ipucu arşivi — yayınlanan her içgörü";
-"onboarding.feature_training" = "Tüm 8 haftalık antrenman programları";
-"onboarding.feature_mobility" = "Tüm hareket & toparlanma akışları";
-"onboarding.feature_updates" = "Yayınlandıkça devam eden fitness program güncellemeleri";
-"onboarding.feature_early" = "Her yeni özelliğe erken erişim";
-"onboarding.feature_history" = "Tam sınav geçmişi & performans takibi";
-"onboarding.first_in_line" = "Her zaman ilk sırada";
-"onboarding.first_in_line_desc" = "Premium üyeler yeni özellikleri — yeni sınav formatları, analizler ve kort araçları — halka açılmadan önce test eder.";
-"onboarding.start_trial" = "Ücretsiz Denemeyi Başlat";
-"onboarding.continue_free" = "Ücretsiz devam et";
-"onboarding.one_last_step" = "Son bir adım";
-"onboarding.sign_in_desc" = "Bulut senkronizasyonunu, cihazlar arası ilerlemeyi ve premium erişiminizi geri yükleme özelliğini açmak için giriş yapın.";
-"onboarding.guest" = "Misafir Olarak Devam Et";
-"onboarding.guest_desc" = "Misafir modu, ilerlemeyi yalnızca bu cihazda kaydeder. Serinizi ve satın alma geçmişinizi korumak için Apple ile giriş yapın.";
 
 /* ── Paywall ── */
 "paywall.title" = "AI Koç";
@@ -432,22 +345,8 @@
 "paywall.benefit_coach" = "Koç — sınırsız vuruş okuması ve her biri için sohbet";
 "paywall.benefit_tactics" = "Taktik — her bölüm, her gün";
 "paywall.benefit_wall" = "Duvar — kamerayla sayım ve her basamağa karar";
-"paywall.benefit_swing" = "AI vuruş analizi, 0–100";
-"paywall.benefit_ask" = "Taktik, rakip, drill";
 
 /* ── Tip-jar mode (launch window) ── */
-"paywall.tip_title" = "DropVolley'yu Destekle";
-"paywall.tip_headline" = "DropVolley ücretsiz. AI Koç tek premium özellik.";
-"paywall.tip_body" = "Drill'ler, quizler, antrenman programları, mobility akışları ve tam maç günlüğü tamamen ücretsiz. Sadece AI Koç premium. DropVolley işine yaradıysa isteğe bağlı bir destek geliştirmenin devamını sağlar.";
-"paywall.tip_why" = "Neden destekleyesin?";
-"paywall.tip_reason_1" = "Uygulamayı bağımsız tutar — reklam yok, takip yok, yatırımcı yok.";
-"paywall.tip_reason_2" = "Sonraki özellikleri finanse eder (sesli notlar, partner modu, Apple Watch).";
-"paywall.tip_reason_3" = "DropVolley'yu App Store'da tutan Apple Developer ücretini karşılar.";
-"paywall.tip_action" = "Bir destek bırak";
-"paywall.tip_offer_title" = "Yıllık destekçi";
-"paywall.tip_offer_detail" = "Yılda bir kez. Ayarlardan istediğin zaman iptal.";
-"paywall.tip_button" = "DropVolley'yu Destekle";
-"paywall.tip_legal_note" = "Destekler Apple tarafından yıllık otomatik yenilenen abonelik olarak işlenir — bu sayede App Store ödeme kurallarına uygun. İstediğin zaman Ayarlar → Abonelikler'den iptal edebilirsin; iptal etsen bile hiçbir özellik kilitlenmez.";
 
 /* ── Voice notes (Match Journal v1.1.A) ── */
 "voice.record_start" = "Sesli not kaydet";
@@ -544,109 +443,16 @@
 "health.banner_body" = "Önce ısın. Güvenli teknik ve uygun yük kullan. Bir şey ters hissedersen dur.";
 
 /* ── Onboarding ── */
-"onb.welcome.tagline" = "Her seviyeden oyuncu için Tenis IQ.";
-"onb.welcome.body" = "Günlük senaryolar, yapılandırılmış antrenman ve mobilite — tek bir koç düzeninde.";
-"onb.welcome.cta" = "Başla";
-"onb.welcome.footer" = "30 SANİYEDE KURULUM · SONSUZA KADAR ÜCRETSİZ KATMAN";
 
-"onb.cta.continue" = "Devam et";
-"onb.cta.build_plan" = "Planımı oluştur";
-"onb.cta.see_included" = "Nelerin dahil olduğunu gör";
-"onb.cta.skip" = "Atla";
 
-"onb.level.step" = "1 / 3";
-"onb.level.title" = "Kortta nerede\nduruyorsun?";
-"onb.level.subtitle" = "Quiz zorluğunu ve antrenman bloklarını sana göre ayarlayalım.";
-"onb.level.beginner.title" = "Başlangıç";
-"onb.level.beginner.desc" = "Ralliyi öğreniyor, tutarlılık arıyor";
-"onb.level.club.title" = "Kulüp oyuncusu";
-"onb.level.club.desc" = "İstikrarlı ralli, düzenli maç oynuyor";
-"onb.level.advanced.title" = "İleri seviye";
-"onb.level.advanced.desc" = "Turnuva, ranking, dar marjlar";
-"onb.level.coach.title" = "Antrenör / pro";
-"onb.level.coach.desc" = "Başkalarına da öğretiyor, kendini de geliştiriyor";
 
-"onb.focus.step" = "2 / 3";
-"onb.focus.title" = "En çok neyi\ngeliştirmek istiyorsun?";
-"onb.focus.subtitle" = "Bir tane seç. Profilinden istediğin zaman değiştirebilirsin.";
-"onb.focus.decision.title" = "Karar verme";
-"onb.focus.decision.desc" = "Vuruş seçimi, kort farkındalığı, rakibi okuma";
-"onb.focus.strokes.title" = "Vuruş mekaniği";
-"onb.focus.strokes.desc" = "Forehand, backhand, servis, vole pattern'leri";
-"onb.focus.mobility.title" = "Mobilite ve toparlanma";
-"onb.focus.mobility.desc" = "Sakatlanmadan, puanlar arası daha iyi hareket et";
-"onb.focus.mental.title" = "Zihinsel oyun";
-"onb.focus.mental.desc" = "Kritik anlarda sakinlik, puanlar arası odak";
 
-"onb.freq.step" = "3 / 3";
-"onb.freq.title" = "Haftada\nkaç gün antrenman?";
-"onb.freq.subtitle" = "Haftana uyacak bir antrenman planı öneririz.";
-"onb.freq.1_2.title" = "1–2 gün";
-"onb.freq.1_2.desc" = "Hafta sonu oyuncusu — rahat tempo";
-"onb.freq.3_4.title" = "3–4 gün";
-"onb.freq.3_4.desc" = "İstekli — klinik + maç oyunu";
-"onb.freq.5plus.title" = "5+ gün";
-"onb.freq.5plus.desc" = "Ciddi — neredeyse her gün antrenman";
 
-"onb.plan.tag" = "PLANIN";
-"onb.plan.title" = "İşte sana özel\nkoç düzeninde haftan.";
-"onb.plan.subtitle" = "Seviyene, odağına ve programına göre hazırlandı.";
-"onb.plan.row.iq" = "Günlük IQ senaryosu";
-"onb.plan.row.training" = "Temel plan";
-"onb.plan.row.mobility" = "Hızlı sıfırlama akışı";
-"onb.plan.row.tip" = "Günün ipucu";
-"onb.plan.iq.decision" = "Karar odaklı sorular önce";
-"onb.plan.iq.default" = "Günde 5 soru, puanlı geri bildirim";
-"onb.plan.training.5plus" = "5 günlük mikro döngü";
-"onb.plan.training.1_2" = "Hafta sonu 2 günlük döngü";
-"onb.plan.training.default" = "Hibrit 4 günlük blok";
-"onb.plan.mobility.priority" = "Today sekmende öncelikli";
-"onb.plan.mobility.preview" = "Tüm mobilite kütüphanesi dahil";
-"onb.plan.tip.desc" = "Her sabah küçük bir koçluk notu";
-"onb.plan.free_title" = "Sonsuza kadar ücretsiz — kart gerekmez";
-"onb.plan.free_body" = "Günlük quizler, tüm antrenman planları ve tam mobilite kütüphanesi — ücretsiz. Kart gerekmez.";
 
-"onb.paywall.tag" = "AI KOÇ";
-"onb.paywall.title" = "AI Koç ile tanış.";
-"onb.paywall.subtitle" = "DropVolley'daki diğer her şey ücretsiz. AI Koç'u Profil'den istediğin zaman açabilirsin.";
-"onb.paywall.included" = "Neler dahil";
-"onb.paywall.b1" = "Son 5 maçını, ratinglerini ve quiz hatalarını bilir";
-"onb.paywall.b2" = "Drill'lerini, mobility akışlarını ve planlarını adıyla önerir";
-"onb.paywall.b3" = "ChatGPT tenis sohbetlerini içe aktar, bağlam korunur";
-"onb.paywall.b4" = "Gizli — üçüncü taraf takip yok";
-"onb.paywall.b5" = "DropVolley'daki diğer her şey ücretsiz kalır";
 
-"onb.account.title" = "İlerlemeni kaydet.";
-"onb.account.subtitle" = "İlerlemeni cihazlar arasında senkronize et.";
-"onb.account.guest" = "Misafir olarak devam et";
-"onb.account.guest_note" = "Misafir ilerlemesi bu cihazda kalır.";
 
-"onb.tour.skip" = "Tour'u atla";
-"onb.tour.swipe_hint" = "Görmek için kaydır →";
-"onb.tour.1.title" = "Günlük IQ senaryoları";
-"onb.tour.1.body" = "Günde 5 kort diyagramlı soru. Senaryoyu görsel olarak oku, en akıllı vuruşu seç, neden olduğunu öğren.";
-"onb.tour.2.title" = "Tenis için özel antrenman";
-"onb.tour.2.body" = "Tenis oyuncusunun hareket biçimine göre tasarlanmış 8 haftalık kuvvet, plyo ve kondisyon programları. Birini bitir, bir sonraki faza geç.";
-"onb.tour.3.title" = "Anında mobilite";
-"onb.tour.3.body" = "Hızlı sıfırlama akışları, maç öncesi ısınmalar, toparlanma seansları — vücudunu kortlar arasında tenise hazır tut.";
-"onb.tour.4.title" = "Streak'ini ve IQ'nu takip et";
-"onb.tour.4.body" = "IQ puanın, streak'in ve progression rozetin — hepsi tek bir Profil sekmesinde. Kendini yükselirken izle.";
 
 /* ── Onboarding tour (yeni feature sayfaları) ── */
-"onb.tour.drill.title" = "Günlük Kort Drill";
-"onb.tour.drill.body" = "5 hızlı senaryo. En akıllı vuruşun yerine dokun. Her gün 30 saniye.";
-"onb.tour.proshot.title" = "Günün pro vuruşu";
-"onb.tour.proshot.body" = "En iyi oyuncuların puanı nasıl kurduğunu izle — her gün yeni bir pattern.";
-"onb.tour.rings.title" = "Halkalarını kapat";
-"onb.tour.rings.body" = "Drill · Maç · Mobilite. Üçünü de kapat — Üçlü Halka Günü.";
-"onb.tour.matches.title" = "Maçlarını logla";
-"onb.tour.matches.body" = "Öncesi planın, sonrası notların, dürüst puanların — trendini zamanla gör.";
-"onb.tour.training.title" = "8 haftalık antrenman";
-"onb.tour.training.body" = "Tenise özel kuvvet, plyo, kondisyon. Birini bitir, sıradakine geç.";
-"onb.tour.mobility.title" = "Daha iyi hareket";
-"onb.tour.mobility.body" = "Hızlı sıfırlama, ısınma, toparlanma akışları — kısa ve tenise hazır.";
-"onb.tour.avatar.title" = "Oyuncun";
-"onb.tour.avatar.body" = "Kort görünümünü yarat. Streak'ler, drill'ler ve maçlar yeni gear açar.";
 
 /* ── Maçlar ── */
 "tab.matches" = "Maçlar";
@@ -1040,7 +846,6 @@
 
 /* Common */
 "common.dismiss" = "Kapat";
-"onboarding.skip" = "Geç";
 
 /* Onboarding — taktik öz-değerlendirme */
 "self_assess.kicker" = "Taktik baseline";

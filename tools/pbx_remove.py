@@ -12,6 +12,6 @@ s = open(P).read()
 for name in sys.argv[1:]:
     n = re.escape(name)
     before = s.count(name)
-    s = re.sub(r'^\t+[0-9A-F]{24} /\* %s(?: in [A-Za-z]+)? \*/(?:,| = \{[^\n]*\};)\n' % n, "", s, flags=re.M)
+    s = re.sub(r'^\t+[0-9A-F]{22,24} /\* %s(?: in [A-Za-z]+)? \*/(?:,| = \{[^\n]*\};)\n' % n, "", s, flags=re.M)
     print(f"{name}: {before} → {s.count(name)} mentions")
 open(P, "w").write(s)

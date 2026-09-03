@@ -982,7 +982,7 @@ final class UserSessionManager: ObservableObject {
                 // identity (the Apple Sign-in token) used to silently mark
                 // onboarding complete and skip the entire flow on reinstalls.
                 // Onboarding completion is now driven solely by explicit user
-                // action in OnboardingView (applyAndSignInApple / applyAndSignInGuest).
+                // action in the onboarding flow (applyAndSignInApple / applyAndSignInGuest).
             } catch {
                 authErrorMessage = error.localizedDescription
                 syncState = .failed(error.localizedDescription)
