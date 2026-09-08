@@ -89,98 +89,90 @@ struct DoublesInviteCopy {
         }
     }
 
-    var sectionTitle: String { t("Pair up with your partner", "Partnerinle eşleş") }
+    var sectionTitle: String { t("Pair up with your partner", "Partnerinle eşleş", "Fais équipe avec ton partenaire") }
     var sectionSubtitle: String {
-        t("See how you two fit.", "İkinizin uyumunu gör.")
+        t("See how you two fit.", "İkinizin uyumunu gör.", "Voyez comment vous vous complétez.")
     }
-    var invitePartnerCTA: String { t("Invite a partner", "Partner davet et") }
-    var haveCodeCTA: String { t("I have a code", "Kodum var") }
+    var invitePartnerCTA: String { t("Invite a partner", "Partner davet et", "Inviter un partenaire") }
+    var haveCodeCTA: String { t("I have a code", "Kodum var", "J'ai un code") }
 
     // Invite sheet
-    var inviteTitle: String { t("Invite your partner", "Partnerini davet et") }
-    var inviteCodeLabel: String { t("Your invite code", "Davet kodun") }
+    var inviteTitle: String { t("Invite your partner", "Partnerini davet et", "Invite ton partenaire") }
+    var inviteCodeLabel: String { t("Your invite code", "Davet kodun", "Ton code d'invitation") }
     var inviteUnlockNote: String {
-        t("When your partner joins, your compatibility unlocks here.",
-          "Partnerin katıldığında uyumunuz burada açılır.")
+        t("When your partner joins, your compatibility unlocks here.", "Partnerin katıldığında uyumunuz burada açılır.", "Quand ton partenaire rejoint, votre compatibilité s'affiche ici.")
     }
     /// Transparency: pairing exchanges Tennis Profile snapshots both ways.
     var shareNotice: String {
-        t("Pairing shares your Tennis Profile (level, style, strengths) with your partner — and theirs with you.",
-          "Eşleşme, Tenis Profilini (seviye, stil, güçlü yönler) partnerinle paylaşır — onunkini de seninle.")
+        t("Pairing shares your Tennis Profile (level, style, strengths) with your partner — and theirs with you.", "Eşleşme, Tenis Profilini (seviye, stil, güçlü yönler) partnerinle paylaşır — onunkini de seninle.", "La mise en binôme partage ton profil tennis (niveau, style, points forts) avec ton partenaire — et le sien avec toi.")
     }
-    var copyCode: String { t("Copy code", "Kodu kopyala") }
-    var copyLink: String { t("Copy link", "Bağlantıyı kopyala") }
-    var copied: String { t("Copied", "Kopyalandı") }
+    var copyCode: String { t("Copy code", "Kodu kopyala", "Copier le code") }
+    var copyLink: String { t("Copy link", "Bağlantıyı kopyala", "Copier le lien") }
+    var copied: String { t("Copied", "Kopyalandı", "Copié") }
     func shareMessage(code: String, link: URL) -> String {
-        t("Let's see how we'd play as a doubles team on DropVolley 🎾 Get the app and enter code \(code): \(link.absoluteString)",
-          "DropVolley'de bir doubles takımı olarak nasıl oynardık görelim 🎾 Uygulamayı indir ve \(code) kodunu gir: \(link.absoluteString)")
+        t("Let's see how we'd play as a doubles team on DropVolley 🎾 Get the app and enter code \(code): \(link.absoluteString)", "DropVolley'de bir doubles takımı olarak nasıl oynardık görelim 🎾 Uygulamayı indir ve \(code) kodunu gir: \(link.absoluteString)", "Voyons ce que donnerait notre paire de double sur DropVolley 🎾 Télécharge l'app et entre le code \(code) : \(link.absoluteString)")
     }
-    var shareCTA: String { t("Share invite", "Daveti paylaş") }
-    var doneCTA: String { t("Done", "Bitti") }
+    var shareCTA: String { t("Share invite", "Daveti paylaş", "Partager l'invitation") }
+    var doneCTA: String { t("Done", "Bitti", "Terminé") }
 
     // Accept sheet
-    var acceptTitle: String { t("Enter invite code", "Davet kodunu gir") }
-    var codeFieldPlaceholder: String { t("6-character code", "6 karakterli kod") }
-    var continueCTA: String { t("Continue", "Devam") }
-    var acceptCTA: String { t("Accept", "Kabul et") }
+    var acceptTitle: String { t("Enter invite code", "Davet kodunu gir", "Saisir le code d'invitation") }
+    var codeFieldPlaceholder: String { t("6-character code", "6 karakterli kod", "Code à 6 caractères") }
+    var continueCTA: String { t("Continue", "Devam", "Continuer") }
+    var acceptCTA: String { t("Accept", "Kabul et", "Accepter") }
     func invitedYou(_ name: String) -> String {
-        t("\(name) invited you to pair up", "\(name) seni eşleşmeye davet etti")
+        t("\(name) invited you to pair up", "\(name) seni eşleşmeye davet etti", "\(name) t'invite à faire équipe")
     }
     var acceptingNote: String {
-        t("Accepting links you both and unlocks your compatibility report.",
-          "Kabul etmek ikinizi bağlar ve uyum raporunuzu açar.")
+        t("Accepting links you both and unlocks your compatibility report.", "Kabul etmek ikinizi bağlar ve uyum raporunuzu açar.", "Accepter vous relie tous les deux et débloque votre rapport de compatibilité.")
     }
     /// Peek fallback when the inviter left no name.
-    var somePlayer: String { t("A player", "Bir oyuncu") }
+    var somePlayer: String { t("A player", "Bir oyuncu", "Un joueur") }
 
     // Name step (shown once when the account has no real display name)
-    var nameTitle: String { t("What should your partner see?", "Partnerin seni hangi adla görsün?") }
-    var namePlaceholder: String { t("Your name", "Adın") }
+    var nameTitle: String { t("What should your partner see?", "Partnerin seni hangi adla görsün?", "Que doit voir ton partenaire ?") }
+    var namePlaceholder: String { t("Your name", "Adın", "Ton nom") }
     var nameNote: String {
-        t("Shown on the pairing and in your report. You can use a nickname.",
-          "Eşleşmede ve raporunda görünür. Takma ad kullanabilirsin.")
+        t("Shown on the pairing and in your report. You can use a nickname.", "Eşleşmede ve raporunda görünür. Takma ad kullanabilirsin.", "Affiché sur la paire et dans votre rapport. Tu peux utiliser un surnom.")
     }
-    var nameCTA: String { t("Save & continue", "Kaydet ve devam et") }
+    var nameCTA: String { t("Save & continue", "Kaydet ve devam et", "Enregistrer et continuer") }
 
     // Lists
-    var activeHeader: String { t("Your pairings", "Eşleşmelerin") }
-    var pendingHeader: String { t("Pending invites", "Bekleyen davetler") }
+    var activeHeader: String { t("Your pairings", "Eşleşmelerin", "Tes paires") }
+    var pendingHeader: String { t("Pending invites", "Bekleyen davetler", "Invitations en attente") }
     func waitingFor(_ code: String) -> String {
-        t("Waiting for \(code) to join", "\(code) kodunun katılması bekleniyor")
+        t("Waiting for \(code) to join", "\(code) kodunun katılması bekleniyor", "En attente de \(code)")
     }
-    var refreshCTA: String { t("Refresh", "Yenile") }
-    var reshareCTA: String { t("Re-share", "Tekrar paylaş") }
-    var viewReportCTA: String { t("View report", "Raporu gör") }
-    var runReportCTA: String { t("See compatibility", "Uyumu gör") }
+    var refreshCTA: String { t("Refresh", "Yenile", "Actualiser") }
+    var reshareCTA: String { t("Re-share", "Tekrar paylaş", "Repartager") }
+    var viewReportCTA: String { t("View report", "Raporu gör", "Voir le rapport") }
+    var runReportCTA: String { t("See compatibility", "Uyumu gör", "Voir la compatibilité") }
 
     var manualHeader: String {
-        t("Add manually", "Manuel ekle")
+        t("Add manually", "Manuel ekle", "Ajouter manuellement")
     }
 
     // Profile gate
-    var profileNeededTitle: String { t("Complete your Tennis Profile first", "Önce Tenis Profilini tamamla") }
+    var profileNeededTitle: String { t("Complete your Tennis Profile first", "Önce Tenis Profilini tamamla", "Complète d'abord ton profil tennis") }
     var profileNeededMessage: String {
-        t("Take the short Tennis Profile so we can build your side of the pairing.",
-          "Eşleşmenin senin tarafını oluşturabilmemiz için kısa Tenis Profilini doldur.")
+        t("Take the short Tennis Profile so we can build your side of the pairing.", "Eşleşmenin senin tarafını oluşturabilmemiz için kısa Tenis Profilini doldur.", "Fais le court profil tennis pour qu'on puisse construire ta partie de la paire.")
     }
-    var okCTA: String { t("OK", "Tamam") }
+    var okCTA: String { t("OK", "Tamam", "OK") }
 
     // Errors
-    var errorTitle: String { t("Something went wrong", "Bir şeyler ters gitti") }
+    var errorTitle: String { t("Something went wrong", "Bir şeyler ters gitti", "Un problème est survenu") }
     var genericError: String {
-        t("Please try again.", "Lütfen tekrar dene.")
+        t("Please try again.", "Lütfen tekrar dene.", "Réessaie.")
     }
 
     // Invite no longer acceptable (peek branch)
-    var alreadyPairedTitle: String { t("You're already paired", "Zaten eşleştiniz") }
+    var alreadyPairedTitle: String { t("You're already paired", "Zaten eşleştiniz", "Vous êtes déjà en binôme") }
     var alreadyPairedMessage: String {
-        t("You and this partner are already linked — check your pairings to see your compatibility report.",
-          "Sen ve bu partner zaten bağlısınız — uyum raporunu görmek için eşleşmelerine bak.")
+        t("You and this partner are already linked — check your pairings to see your compatibility report.", "Sen ve bu partner zaten bağlısınız — uyum raporunu görmek için eşleşmelerine bak.", "Ce partenaire et toi êtes déjà reliés — va dans tes paires pour voir votre rapport de compatibilité.")
     }
-    var inviteUsedTitle: String { t("Invite no longer available", "Davet artık geçerli değil") }
+    var inviteUsedTitle: String { t("Invite no longer available", "Davet artık geçerli değil", "Invitation expirée") }
     var inviteUsedMessage: String {
-        t("This invite was already used or has expired. Ask your partner for a fresh code.",
-          "Bu davet kullanılmış ya da süresi dolmuş. Partnerinden yeni bir kod iste.")
+        t("This invite was already used or has expired. Ask your partner for a fresh code.", "Bu davet kullanılmış ya da süresi dolmuş. Partnerinden yeni bir kod iste.", "Cette invitation a déjà été utilisée ou a expiré. Demande un nouveau code à ton partenaire.")
     }
 }
 

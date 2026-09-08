@@ -70,7 +70,7 @@ struct ProfileView: View {
                 }
 
                 // ACTIVITY — what you've used + your doubles partners.
-                band(t("Activity", "Aktivite")) {
+                band(t("Activity", "Aktivite", "Activité")) {
                     activitySummarySection
                     partnersSection
                 }
@@ -255,7 +255,7 @@ struct ProfileView: View {
                 )
 
                 VStack(spacing: 6) {
-                    Text(t("IQ RATING", "IQ PUANI"))
+                    Text(t("IQ RATING", "IQ PUANI", "NOTE DE QI"))
                         .appFont(11, weight: .heavy)
                         .tracking(1.6)
                         .foregroundStyle(AppPalette.inkSoft)
@@ -300,11 +300,10 @@ struct ProfileView: View {
     /// drills to these (no deep-knee-bend prescriptions for flagged knees etc.).
     private var physicalNotesSection: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text(t("Physical notes", "Fiziksel notlar"))
+            Text(t("Physical notes", "Fiziksel notlar", "Notes physiques"))
                 .font(.headline)
                 .foregroundStyle(AppPalette.ink)
-            Text(t("Optional. AI coaching adapts its cues and drills around anything you flag here.",
-                   "İsteğe bağlı. AI koçluk, işaretlediğin bölgelere göre önerilerini ve drilleri uyarlar."))
+            Text(t("Optional. AI coaching adapts its cues and drills around anything you flag here.", "İsteğe bağlı. AI koçluk, işaretlediğin bölgelere göre önerilerini ve drilleri uyarlar.", "Facultatif. Le coaching IA adapte ses consignes et ses exercices à ce que tu signales ici."))
                 .font(.footnote)
                 .foregroundStyle(AppPalette.inkSoft)
                 .fixedSize(horizontal: false, vertical: true)
@@ -731,10 +730,10 @@ struct ProfileView: View {
     /// "What you've used" — counts across the app's core surfaces.
     private var activityStats: [(label: String, value: Int)] {
         [
-            (t("Swings", "Vuruşlar"), swingStore.records.count),
-            (t("Matches", "Maçlar"), matchManager.entries.count),
-            (t("Drills", "Drill'ler"), drillManager.sessions.count),
-            (t("Quizzes", "Quizler"), dailyQuizManager.totalQuizzesCompleted),
+            (t("Swings", "Vuruşlar", "Gestes"), swingStore.records.count),
+            (t("Matches", "Maçlar", "Matchs"), matchManager.entries.count),
+            (t("Drills", "Drill'ler", "Exercices"), drillManager.sessions.count),
+            (t("Quizzes", "Quizler", "Quiz"), dailyQuizManager.totalQuizzesCompleted),
         ]
     }
 
@@ -760,11 +759,11 @@ struct ProfileView: View {
 
     private var partnersSection: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text(t("Doubles partners", "Çift partnerlerin"))
+            Text(t("Doubles partners", "Çift partnerlerin", "Partenaires de double"))
                 .font(.subheadline.weight(.semibold))
                 .foregroundStyle(AppPalette.ink)
             if doublesStore.partners.isEmpty {
-                Text(t("No partners yet — invite one from the Doubles tab.", "Henüz partner yok — Doubles sekmesinden davet et."))
+                Text(t("No partners yet — invite one from the Doubles tab.", "Henüz partner yok — Doubles sekmesinden davet et.", "Pas encore de partenaire — invite-en un depuis l'onglet Double."))
                     .font(.footnote)
                     .foregroundStyle(AppPalette.inkSoft)
                     .fixedSize(horizontal: false, vertical: true)
@@ -821,7 +820,7 @@ struct ProfileView: View {
     /// correct/wrong). Default ON; writes straight through to AudioManager.
     private var soundSection: some View {
         HStack {
-            Label(t("Sound effects", "Ses efektleri"), systemImage: "speaker.wave.2.fill")
+            Label(t("Sound effects", "Ses efektleri", "Effets sonores"), systemImage: "speaker.wave.2.fill")
                 .font(.subheadline)
             Spacer()
             Toggle("", isOn: $soundOn)

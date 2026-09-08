@@ -62,21 +62,17 @@ struct AICoachConsentView: View {
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.top, 8)
 
-                Text(t("A coach built for tennis — and for your game",
-                       "Tenis için — ve senin oyunun için — kurulmuş bir koç"))
+                Text(t("A coach built for tennis — and for your game", "Tenis için — ve senin oyunun için — kurulmuş bir koç", "Un coach fait pour le tennis — et pour ton jeu"))
                     .font(.title2.bold()).foregroundStyle(AppPalette.ink)
                     .fixedSize(horizontal: false, vertical: true)
 
                 VStack(alignment: .leading, spacing: 14) {
                     infoRow(icon: "figure.tennis",
-                            text: t("Purpose-built for tennis: grounded in club-level coaching frameworks — NTRP-style levels, real match patterns, percentage play.",
-                                    "Tenise özel kurulum: kulüp seviyesi koçluk çerçevelerine dayalı — NTRP tarzı seviyeler, gerçek maç desenleri, yüzde oyunu."))
+                            text: t("Purpose-built for tennis: grounded in club-level coaching frameworks — NTRP-style levels, real match patterns, percentage play.", "Tenise özel kurulum: kulüp seviyesi koçluk çerçevelerine dayalı — NTRP tarzı seviyeler, gerçek maç desenleri, yüzde oyunu.", "Pensé pour le tennis : fondé sur des référentiels d'entraînement de niveau club — niveaux de type NTRP, schémas de match réels, jeu à haut pourcentage."))
                     infoRow(icon: "person.text.rectangle",
-                            text: t("Coaches YOU, not a generic player — it reads your Tennis Profile, match journal, and quiz patterns before every reply.",
-                                    "Jenerik bir oyuncuyu değil SENİ çalıştırır — her yanıttan önce Tenis Profilini, maç günlüğünü ve quiz desenlerini okur."))
+                            text: t("Coaches YOU, not a generic player — it reads your Tennis Profile, match journal, and quiz patterns before every reply.", "Jenerik bir oyuncuyu değil SENİ çalıştırır — her yanıttan önce Tenis Profilini, maç günlüğünü ve quiz desenlerini okur.", "Il coache TOI, pas un joueur générique — il lit ton profil tennis, ton journal de match et tes réponses aux quiz avant chaque réponse."))
                     infoRow(icon: "bubble.left.and.text.bubble.right.fill",
-                            text: t("On call anytime: match plans, opponent reads, weak-spot fixes, drills for your next session.",
-                                    "Her an hazır: maç planları, rakip okumaları, zayıf nokta çözümleri, sonraki antrenman için driller."))
+                            text: t("On call anytime: match plans, opponent reads, weak-spot fixes, drills for your next session.", "Her an hazır: maç planları, rakip okumaları, zayıf nokta çözümleri, sonraki antrenman için driller.", "Disponible à tout moment : plans de match, lecture de l'adversaire, correction des points faibles, exercices pour ta prochaine séance."))
                 }
                 .padding(16)
                 .background(AppPalette.parchment)
@@ -88,30 +84,29 @@ struct AICoachConsentView: View {
                 HStack(alignment: .top, spacing: 8) {
                     Image(systemName: "lock.fill")
                         .font(.caption).foregroundStyle(AppPalette.inkSoft).padding(.top, 2)
-                    Text(t("Private & secure: your messages and tennis context are processed by Anthropic's Claude solely to write the Coach's replies — never for ads or tracking.",
-                           "Gizli ve güvenli: mesajların ve tenis bağlamın, yalnızca Koç'un yanıtlarını üretmek için Anthropic'in Claude servisince işlenir — asla reklam ya da takip için kullanılmaz."))
+                    Text(t("Private & secure: your messages and tennis context are processed by Anthropic's Claude solely to write the Coach's replies — never for ads or tracking.", "Gizli ve güvenli: mesajların ve tenis bağlamın, yalnızca Koç'un yanıtlarını üretmek için Anthropic'in Claude servisince işlenir — asla reklam ya da takip için kullanılmaz.", "Privé et sécurisé : tes messages et ton contexte tennis sont traités par Claude d'Anthropic uniquement pour rédiger les réponses du coach — jamais pour de la publicité ni du pistage."))
                         .font(.footnote).foregroundStyle(AppPalette.inkSoft)
                         .fixedSize(horizontal: false, vertical: true)
                 }
 
                 DisclosureGroup(isExpanded: $showDetails) {
                     VStack(alignment: .leading, spacing: 10) {
-                        bullet(t("The messages you type to the Coach", "Koç'a yazdığın mesajlar"))
-                        bullet(t("Your profile (skill level and focus)", "Profilin (seviye ve odak)"))
-                        bullet(t("Your Tennis Profile (level, style, and goals)", "Tenis Profilin (seviye, stil ve hedefler)"))
-                        bullet(t("Your recent matches, scores, and self-ratings", "Son maçların, skorların ve öz-değerlendirmelerin"))
-                        bullet(t("Your quiz mistake patterns", "Quiz hata desenlerin"))
+                        bullet(t("The messages you type to the Coach", "Koç'a yazdığın mesajlar", "Les messages que tu écris au coach"))
+                        bullet(t("Your profile (skill level and focus)", "Profilin (seviye ve odak)", "Ton profil (niveau et axe de travail)"))
+                        bullet(t("Your Tennis Profile (level, style, and goals)", "Tenis Profilin (seviye, stil ve hedefler)", "Ton profil tennis (niveau, style et objectifs)"))
+                        bullet(t("Your recent matches, scores, and self-ratings", "Son maçların, skorların ve öz-değerlendirmelerin", "Tes derniers matchs, scores et auto-évaluations"))
+                        bullet(t("Your quiz mistake patterns", "Quiz hata desenlerin", "Les erreurs récurrentes de tes quiz"))
                     }
                     .padding(.top, 8)
                 } label: {
-                    Text(t("See exactly what's shared", "Tam olarak ne paylaşılıyor?"))
+                    Text(t("See exactly what's shared", "Tam olarak ne paylaşılıyor?", "Voir exactement ce qui est partagé"))
                         .font(.footnote.weight(.semibold)).foregroundStyle(AppPalette.clay)
                 }
                 .tint(AppPalette.clay)
 
                 if let url = AppConfiguration.shared.privacyPolicyURL {
                     Link(destination: url) {
-                        Text(t("Read the Privacy Policy", "Gizlilik Politikasını oku"))
+                        Text(t("Read the Privacy Policy", "Gizlilik Politikasını oku", "Lire la politique de confidentialité"))
                             .font(.footnote.weight(.semibold)).foregroundStyle(AppPalette.clay)
                     }
                 }
@@ -120,7 +115,7 @@ struct AICoachConsentView: View {
                     Button {
                         AICoachConsent.recordAcceptance()   // gate re-renders → chat
                     } label: {
-                        Text(t("Agree & start coaching", "Onayla ve koçluğa başla"))
+                        Text(t("Agree & start coaching", "Onayla ve koçluğa başla", "Accepter et commencer"))
                             .font(.headline).frame(maxWidth: .infinity).padding(.vertical, 14)
                     }
                     .buttonStyle(.borderedProminent).tint(AppPalette.clay)
@@ -131,7 +126,7 @@ struct AICoachConsentView: View {
                         // user back to Home instead of a dead button.
                         tabRouter.selection = .home
                     } label: {
-                        Text(t("Not now", "Şimdi değil"))
+                        Text(t("Not now", "Şimdi değil", "Pas maintenant"))
                             .font(.headline).frame(maxWidth: .infinity).padding(.vertical, 12)
                     }
                     .buttonStyle(.bordered).tint(AppPalette.inkSoft)
@@ -141,7 +136,7 @@ struct AICoachConsentView: View {
             .padding(20)
         }
         .background(AppPalette.cream)
-        .navigationTitle(t("AI Coach", "AI Koç"))
+        .navigationTitle(t("AI Coach", "AI Koç", "Coach IA"))
         .navigationBarTitleDisplayMode(.inline)
     }
 

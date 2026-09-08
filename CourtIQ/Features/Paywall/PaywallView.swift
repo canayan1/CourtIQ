@@ -80,7 +80,7 @@ struct PaywallView: View {
 
                 footerRow
 #if DEBUG
-                Button(t("Dev: enter app (debug only)", "Dev: uygulamaya gir (sadece debug)")) {
+                Button(t("Dev: enter app (debug only)", "Dev: uygulamaya gir (sadece debug)", "Dev : entrer dans l'app (debug)")) {
                     manager.debugGrantPremium()
                 }
                 .font(.caption2)
@@ -92,7 +92,7 @@ struct PaywallView: View {
             .padding()
         }
         .background(AppPalette.cream)
-        .navigationTitle(t("Go Premium", "Premium’a Geç"))
+        .navigationTitle(t("Go Premium", "Premium’a Geç", "Passer à Premium"))
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             if let onExit {
@@ -100,7 +100,7 @@ struct PaywallView: View {
                     Button {
                         onExit()
                     } label: {
-                        Label(t("Back", "Geri"), systemImage: "chevron.left")
+                        Label(t("Back", "Geri", "Retour"), systemImage: "chevron.left")
                             .labelStyle(.titleAndIcon)
                     }
                     .tint(AppPalette.inkSoft)
@@ -108,16 +108,16 @@ struct PaywallView: View {
             }
             if allowsDismiss {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button(t("Done", "Bitti")) { dismiss() }
+                    Button(t("Done", "Bitti", "Terminé")) { dismiss() }
                 }
             }
         }
-        .alert(t("Account issue", "Hesap sorunu"), isPresented: Binding(get: {
+        .alert(t("Account issue", "Hesap sorunu", "Problème de compte"), isPresented: Binding(get: {
             errorMessage != nil
         }, set: { newValue in
             if !newValue { errorMessage = nil }
         })) {
-            Button(t("OK", "Tamam"), role: .cancel) {}
+            Button(t("OK", "Tamam", "OK"), role: .cancel) {}
         } message: {
             Text(errorMessage ?? "")
         }
@@ -149,7 +149,7 @@ struct PaywallView: View {
                     .foregroundStyle(.white)
             }
 
-            Text(t("DropVolley Premium", "DropVolley Premium"))
+            Text(t("DropVolley Premium", "DropVolley Premium", "DropVolley Premium"))
                 .font(.system(.title, design: .rounded).weight(.bold))
                 .foregroundStyle(.white)
                 .fixedSize(horizontal: false, vertical: true)
@@ -157,10 +157,7 @@ struct PaywallView: View {
             // One membership, three reasons — the three things the app sells.
             // Never list free content here: the paywall must not sell what
             // the player already has.
-            Text(t(
-                "Every swing read, every wall rung counted, every tactics lesson open.",
-                "Her vuruş okuması, her duvar basamağı sayılır, her taktik dersi açık."
-            ))
+            Text(t("Every swing read, every wall rung counted, every tactics lesson open.", "Her vuruş okuması, her duvar basamağı sayılır, her taktik dersi açık.", "Chaque geste analysé, chaque palier du mur compté, chaque leçon de tactique ouverte."))
             .foregroundStyle(.white.opacity(0.9))
             .fixedSize(horizontal: false, vertical: true)
         }
@@ -211,10 +208,7 @@ struct PaywallView: View {
             Image(systemName: "checkmark.seal.fill")
                 .appFont(16, weight: .semibold, design: .default)
                 .foregroundStyle(AppPalette.mossDeep)
-            Text(t(
-                "Evidence-based — built on USTA & ITF coaching frameworks",
-                "Kanıta dayalı — USTA & ITF antrenörlük çerçeveleriyle"
-            ))
+            Text(t("Evidence-based — built on USTA & ITF coaching frameworks", "Kanıta dayalı — USTA & ITF antrenörlük çerçeveleriyle", "Fondé sur des preuves — bâti sur les référentiels d'entraînement USTA et ITF"))
             .font(.subheadline.weight(.medium))
             .foregroundStyle(AppPalette.inkSoft)
             .fixedSize(horizontal: false, vertical: true)
@@ -238,8 +232,8 @@ struct PaywallView: View {
                     Image(systemName: "eye")
                         .font(.subheadline.weight(.bold))
                     Text(showExample
-                         ? t("Hide example", "Örneği gizle")
-                         : t("See an example", "Bir örnek gör"))
+                         ? t("Hide example", "Örneği gizle", "Masquer l'exemple")
+                         : t("See an example", "Bir örnek gör", "Voir un exemple"))
                         .font(.subheadline.weight(.bold))
                     Spacer(minLength: 0)
                     Image(systemName: showExample ? "chevron.up" : "chevron.down")
@@ -275,17 +269,17 @@ struct PaywallView: View {
                 ScoreRing(size: 64, score: 82, accent: .white,
                           track: .white.opacity(0.28))
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(t("Forehand · Sample", "Forehand · Örnek"))
+                    Text(t("Forehand · Sample", "Forehand · Örnek", "Coup droit · Exemple"))
                         .font(.caption.weight(.heavy))
                         .tracking(0.6)
                         .foregroundStyle(.white.opacity(0.9))
                         .textCase(.uppercase)
-                    Text(t("Swing score 82 / 100", "Vuruş skoru 82 / 100"))
+                    Text(t("Swing score 82 / 100", "Vuruş skoru 82 / 100", "Note du geste : 82 / 100"))
                         .font(.headline)
                         .foregroundStyle(.white)
                 }
                 Spacer(minLength: 8)
-                Text(t("Example", "Örnek"))
+                Text(t("Example", "Örnek", "Exemple"))
                     .font(.caption2.weight(.heavy))
                     .textCase(.uppercase)
                     .tracking(0.5)
@@ -309,7 +303,7 @@ struct PaywallView: View {
         )
         .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
         .accessibilityElement(children: .combine)
-        .accessibilityLabel(t("Example AI swing report", "Örnek AI vuruş raporu"))
+        .accessibilityLabel(t("Example AI swing report", "Örnek AI vuruş raporu", "Exemple de rapport IA sur un geste"))
     }
 
     private var sampleReportText: String {
@@ -373,7 +367,7 @@ struct PaywallView: View {
 
                 if offer.isFeatured {
                     HStack(spacing: 8) {
-                        chip(t("Best Value", "En İyi Değer"), filled: true)
+                        chip(t("Best Value", "En İyi Değer", "Meilleure offre"), filled: true)
                         if let save = offer.saveBadge {
                             chip(save, filled: false)
                         }
@@ -447,9 +441,9 @@ struct PaywallView: View {
 
     private var ctaLabel: String {
         if selectedOffer?.trialText != nil {
-            return t("Start my 3 free days", "3 günümü ücretsiz başlat")
+            return t("Start my 3 free days", "3 günümü ücretsiz başlat", "Démarrer mes 3 jours gratuits")
         }
-        return t("Continue", "Devam et")
+        return t("Continue", "Devam et", "Continuer")
     }
 
     // MARK: - 6. Disclosure line (auto-renew + cancel)
@@ -462,10 +456,7 @@ struct PaywallView: View {
                     .foregroundStyle(AppPalette.inkSoft)
                     .fixedSize(horizontal: false, vertical: true)
             }
-            Text(t(
-                "Auto-renews unless cancelled at least 24 hours before the period ends. Manage or cancel anytime in Settings.",
-                "Dönem bitmeden en az 24 saat önce iptal edilmezse otomatik yenilenir. Ayarlar’dan istediğin zaman yönet veya iptal et."
-            ))
+            Text(t("Auto-renews unless cancelled at least 24 hours before the period ends. Manage or cancel anytime in Settings.", "Dönem bitmeden en az 24 saat önce iptal edilmezse otomatik yenilenir. Ayarlar’dan istediğin zaman yönet veya iptal et.", "Renouvellement automatique sauf résiliation au moins 24 heures avant la fin de la période. Gère ou résilie à tout moment dans les Réglages."))
             .font(.footnote)
             .foregroundStyle(AppPalette.inkSoft)
             .fixedSize(horizontal: false, vertical: true)
@@ -479,14 +470,11 @@ struct PaywallView: View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(spacing: 10) {
                 ProgressView().progressViewStyle(.circular)
-                Text(t("Loading subscription options…", "Abonelik seçenekleri yükleniyor…"))
+                Text(t("Loading subscription options…", "Abonelik seçenekleri yükleniyor…", "Chargement des formules…"))
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(AppPalette.ink)
             }
-            Text(t(
-                "Hang tight — fetching current pricing from the App Store. If this persists, check your connection and tap Try again.",
-                "Bir saniye — App Store’dan güncel fiyatlar alınıyor. Sürerse bağlantını kontrol edip Tekrar Dene’ye dokun."
-            ))
+            Text(t("Hang tight — fetching current pricing from the App Store. If this persists, check your connection and tap Try again.", "Bir saniye — App Store’dan güncel fiyatlar alınıyor. Sürerse bağlantını kontrol edip Tekrar Dene’ye dokun.", "Un instant — récupération des tarifs depuis l'App Store. Si ça dure, vérifie ta connexion et touche Réessayer."))
             .font(.footnote)
             .foregroundStyle(AppPalette.inkSoft)
             .fixedSize(horizontal: false, vertical: true)
@@ -497,7 +485,7 @@ struct PaywallView: View {
             Button {
                 Task { await manager.loadOfferings() }
             } label: {
-                Label(t("Try again", "Tekrar Dene"), systemImage: "arrow.clockwise")
+                Label(t("Try again", "Tekrar Dene", "Réessayer"), systemImage: "arrow.clockwise")
                     .font(.subheadline.weight(.bold))
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 12)
@@ -521,15 +509,15 @@ struct PaywallView: View {
     private var footerRow: some View {
         VStack(spacing: 12) {
             HStack(spacing: 0) {
-                footerButton(t("Restore Purchases", "Satın Almaları Geri Yükle")) {
+                footerButton(t("Restore Purchases", "Satın Almaları Geri Yükle", "Restaurer les achats")) {
                     Task { await restore() }
                 }
                 footerDivider
-                footerButton(t("Terms of Use", "Kullanım Şartları")) {
+                footerButton(t("Terms of Use", "Kullanım Şartları", "Conditions d'utilisation")) {
                     openLink(configuration.termsOfUseURL, fallback: .terms)
                 }
                 footerDivider
-                footerButton(t("Privacy Policy", "Gizlilik Politikası")) {
+                footerButton(t("Privacy Policy", "Gizlilik Politikası", "Politique de confidentialité")) {
                     openLink(configuration.privacyPolicyURL, fallback: .privacy)
                 }
             }
@@ -541,7 +529,7 @@ struct PaywallView: View {
             .font(.footnote.weight(.semibold))
 
             if manager.entitlementState.isPremium {
-                Button(t("Manage Subscription", "Aboneliği Yönet")) {
+                Button(t("Manage Subscription", "Aboneliği Yönet", "Gérer l'abonnement")) {
                     session.openManageSubscriptions()
                 }
                 .font(.footnote.weight(.semibold))

@@ -13,62 +13,58 @@ struct SwingAnalysisCopy {
     }
 
     // MARK: Feature title / nav
-    var title: String { t("Swing Analysis", "Vuruş Analizi") }
-    var navTitle: String { t("Swing", "Swing") }
+    var title: String { t("Swing Analysis", "Vuruş Analizi", "Analyse du geste") }
+    var navTitle: String { t("Swing", "Swing", "Geste") }
 
     // MARK: Step 1 — stroke + handedness
-    var step1Kicker: String { t("Step 1 of 2", "Adım 1 / 2") }
-    var pickStrokeTitle: String { t("What do you want analyzed?", "Neyi analiz edelim?") }
-    var pickHandednessTitle: String { t("Which hand do you play with?", "Hangi elinle oynuyorsun?") }
+    var step1Kicker: String { t("Step 1 of 2", "Adım 1 / 2", "Étape 1 sur 2") }
+    var pickStrokeTitle: String { t("What do you want analyzed?", "Neyi analiz edelim?", "Que veux-tu faire analyser ?") }
+    var pickHandednessTitle: String { t("Which hand do you play with?", "Hangi elinle oynuyorsun?", "Tu joues de quelle main ?") }
 
     func stroke(_ s: SwingStroke) -> String {
         switch s {
-        case .forehand: return t("Forehand", "Forehand")
-        case .backhand: return t("Backhand", "Backhand")
-        case .serve:    return t("Serve", "Servis")
-        case .volley:   return t("Volley", "Vole")
-        case .session:  return t("Whole session (mixed strokes)", "Tüm seans (karışık vuruşlar)")
-        case .footwork: return t("Footwork & movement", "Footwork & hareket")
+        case .forehand: return t("Forehand", "Forehand", "Coup droit")
+        case .backhand: return t("Backhand", "Backhand", "Revers")
+        case .serve:    return t("Serve", "Servis", "Service")
+        case .volley:   return t("Volley", "Vole", "Volée")
+        case .session:  return t("Whole session (mixed strokes)", "Tüm seans (karışık vuruşlar)", "Séance entière (coups mélangés)")
+        case .footwork: return t("Footwork & movement", "Footwork & hareket", "Jeu de jambes et déplacements")
         }
     }
 
     func handedness(_ h: SwingHandedness) -> String {
         switch h {
-        case .right: return t("Right-handed", "Sağ elli")
-        case .left:  return t("Left-handed", "Sol elli")
+        case .right: return t("Right-handed", "Sağ elli", "Droitier")
+        case .left:  return t("Left-handed", "Sol elli", "Gaucher")
         }
     }
 
-    var filmingTipTitle: String { t("How to film", "Nasıl çekilir") }
+    var filmingTipTitle: String { t("How to film", "Nasıl çekilir", "Comment filmer") }
     func filmingTipBody(_ s: SwingStroke) -> String {
         if s.isFootwork {
-            return t("Film from behind or wide from the side, full body and the court around you in frame. Move and hit a few balls so your footwork is visible — good even light, steady phone.",
-                     "Arkadan ya da yandan geniş çek — tüm vücudun ve etrafındaki kort karede. Birkaç top oyna ki ayak işin görünsün. İyi ışık, sabit telefon.")
+            return t("Film from behind or wide from the side, full body and the court around you in frame. Move and hit a few balls so your footwork is visible — good even light, steady phone.", "Arkadan ya da yandan geniş çek — tüm vücudun ve etrafındaki kort karede. Birkaç top oyna ki ayak işin görünsün. İyi ışık, sabit telefon.", "Filme de derrière ou de côté en plan large, tout ton corps et le court autour de toi dans le cadre. Déplace-toi et frappe quelques balles pour qu'on voie ton jeu de jambes — bonne lumière régulière, téléphone stable.")
         }
         if s.isSession {
-            return t("Film your whole hit — serves, forehands, backhands together. Side view, full body in frame, good even light. The AI identifies each stroke and breaks it down separately.",
-                     "Tüm antrenmanını çek — servis, forehand, backhand bir arada. Yandan, tüm vücut karede, iyi ışık. AI her vuruşu tanıyıp ayrı ayrı çözümler.")
+            return t("Film your whole hit — serves, forehands, backhands together. Side view, full body in frame, good even light. The AI identifies each stroke and breaks it down separately.", "Tüm antrenmanını çek — servis, forehand, backhand bir arada. Yandan, tüm vücut karede, iyi ışık. AI her vuruşu tanıyıp ayrı ayrı çözümler.", "Filme toute ta séance — services, coups droits et revers ensemble. Vue de côté, corps entier dans le cadre, bonne lumière régulière. L'IA reconnaît chaque coup et l'analyse séparément.")
         }
         // Canonical capture angle = FROM BEHIND (SwingVision-style: behind the
         // player, slightly high, whole body centred). Matches the calibration
         // of our on-device counting + pose pipeline; consistency beats any
         // single "ideal" angle. Framing warning is load-bearing: pose-empty
         // clips were 1/3 of our first training set.
-        return t("Film from BEHIND with the phone slightly high (lean it on the fence), your whole body centred in frame. Hit several reps of the same stroke — 10–30 seconds is ideal. Repeated swings let the AI spot the faults that recur; if you drift out of frame, those swings can't be read.",
-                 "ARKADAN çek, telefon hafif yüksekte (çite yasla), tüm vücudun kadrajın ORTASINDA. Aynı vuruştan birkaç tekrar yap — ideali 10–30 saniye. Tekrarlar AI'ın tekrar eden hataları yakalamasını sağlar; kadraj dışına taşarsan o vuruşlar okunamaz.")
+        return t("Film from BEHIND with the phone slightly high (lean it on the fence), your whole body centred in frame. Hit several reps of the same stroke — 10–30 seconds is ideal. Repeated swings let the AI spot the faults that recur; if you drift out of frame, those swings can't be read.", "ARKADAN çek, telefon hafif yüksekte (çite yasla), tüm vücudun kadrajın ORTASINDA. Aynı vuruştan birkaç tekrar yap — ideali 10–30 saniye. Tekrarlar AI'ın tekrar eden hataları yakalamasını sağlar; kadraj dışına taşarsan o vuruşlar okunamaz.", "Filme DE DERRIÈRE, téléphone un peu en hauteur (appuie-le sur le grillage), tout ton corps centré dans le cadre. Enchaîne plusieurs fois le même coup — 10 à 30 secondes, c'est l'idéal. Les répétitions permettent à l'IA de repérer les défauts récurrents ; si tu sors du cadre, ces gestes ne peuvent pas être lus.")
     }
-    var continueCTA: String { t("Continue", "Devam") }
+    var continueCTA: String { t("Continue", "Devam", "Continuer") }
 
     // MARK: Step 2 — capture
-    var step2Kicker: String { t("Step 2 of 2", "Adım 2 / 2") }
-    var captureTitle: String { t("Add your swing video", "Vuruş videonu ekle") }
+    var step2Kicker: String { t("Step 2 of 2", "Adım 2 / 2", "Étape 2 sur 2") }
+    var captureTitle: String { t("Add your swing video", "Vuruş videonu ekle", "Ajoute ta vidéo") }
     var captureSubtitle: String {
-        t("Record a new clip or choose one from your library.",
-          "Yeni bir klip çek ya da galerinden seç.")
+        t("Record a new clip or choose one from your library.", "Yeni bir klip çek ya da galerinden seç.", "Filme un nouveau clip ou choisis-en un dans ta photothèque.")
     }
-    var recordCTA: String { t("Record a swing", "Vuruş çek") }
-    var libraryCTA: String { t("Choose from library", "Galeriden seç") }
-    var backCTA: String { t("Back", "Geri") }
+    var recordCTA: String { t("Record a swing", "Vuruş çek", "Filmer un geste") }
+    var libraryCTA: String { t("Choose from library", "Galeriden seç", "Choisir dans la photothèque") }
+    var backCTA: String { t("Back", "Geri", "Retour") }
 
     // MARK: Loading
     func analyzingStroke(_ s: SwingStroke) -> String {
@@ -78,32 +74,30 @@ struct SwingAnalysisCopy {
         }
     }
     var analyzingSubtitle: String {
-        t("Reading the frames and writing your coaching notes.",
-          "Kareler okunuyor ve koçluk notların yazılıyor.")
+        t("Reading the frames and writing your coaching notes.", "Kareler okunuyor ve koçluk notların yazılıyor.", "Lecture des images et rédaction de tes notes de coaching.")
     }
 
     // MARK: Result
-    var resultTitle: String { t("Your coaching notes", "Koçluk notların") }
+    var resultTitle: String { t("Your coaching notes", "Koçluk notların", "Tes notes de coaching") }
     /// K2 transitional honesty: score is the model's estimate until the R2
     /// measured rubric lands.
-    var scoreBasisBadge: String { t("AI estimate", "AI tahmini") }
+    var scoreBasisBadge: String { t("AI estimate", "AI tahmini", "Estimation IA") }
     var mismatchNotice: String {
-        t("The strokes in this clip don't look like the type you picked, so there's no coaching below — just what the AI actually saw. Re-check the stroke and try again.",
-          "Bu klipteki vuruşlar seçtiğin tiple uyuşmuyor — aşağıda koçluk değil, AI'ın gerçekte ne gördüğü yazıyor. Vuruş tipini kontrol edip tekrar dene.")
+        t("The strokes in this clip don't look like the type you picked, so there's no coaching below — just what the AI actually saw. Re-check the stroke and try again.", "Bu klipteki vuruşlar seçtiğin tiple uyuşmuyor — aşağıda koçluk değil, AI'ın gerçekte ne gördüğü yazıyor. Vuruş tipini kontrol edip tekrar dene.", "Les coups de ce clip ne correspondent pas au type que tu as choisi : pas de coaching ci-dessous, seulement ce que l'IA a réellement vu. Vérifie le coup sélectionné et réessaie.")
     }
     func measuredCountChip(_ n: Int) -> String {
         t("\(n) strike\(n == 1 ? "" : "s") measured on device",
           "cihazda \(n) vuruş ölçüldü")
     }
     func measuredOverheadChip(_ pct: Int) -> String {
-        t("\(pct)% overhead", "%\(pct) başüstü")
+        t("\(pct)% overhead", "%\(pct) başüstü", "\(pct) % au-dessus de la tête")
     }
-    var analyzeAnotherCTA: String { t("Analyze another", "Bir tane daha analiz et") }
+    var analyzeAnotherCTA: String { t("Analyze another", "Bir tane daha analiz et", "Analyser un autre") }
 
     // MARK: Score
     /// Label shown under the big "NN / 100" score on the result + detail screens.
-    var scoreLabel: String { t("Swing score", "Vuruş skoru") }
-    var scoreOutOf: String { t("/ 100", "/ 100") }
+    var scoreLabel: String { t("Swing score", "Vuruş skoru", "Note du geste") }
+    var scoreOutOf: String { t("/ 100", "/ 100", "/ 100") }
     /// Compact badge, e.g. "82/100", used in history rows + headers.
     func scoreBadge(_ score: Int) -> String { "\(score)/100" }
 
@@ -114,9 +108,9 @@ struct SwingAnalysisCopy {
     /// attainable and the low tier stays rare and honest.
     func scoreTierLabel(_ tier: SwingScoreTier) -> String {
         switch tier {
-        case .building: return t("Building", "Gelişiyor")
-        case .solid:    return t("Solid", "Sağlam")
-        case .sharp:    return t("Sharp", "Keskin")
+        case .building: return t("Building", "Gelişiyor", "En construction")
+        case .solid:    return t("Solid", "Sağlam", "Solide")
+        case .sharp:    return t("Sharp", "Keskin", "Affûté")
         }
     }
 
@@ -124,27 +118,23 @@ struct SwingAnalysisCopy {
     /// only carrier of meaning (accessibility) and the read is encouraging.
     func scoreTierCaption(_ tier: SwingScoreTier) -> String {
         switch tier {
-        case .building: return t("Foundations forming — clear things to work on.",
-                                 "Temel oturuyor — üzerine çalışılacak net noktalar var.")
-        case .solid:    return t("Right in the healthy recreational range.",
-                                 "Sağlıklı amatör aralığının tam ortasında.")
-        case .sharp:    return t("Above the typical recreational level — sharp technique.",
-                                 "Tipik amatör seviyenin üstünde — keskin teknik.")
+        case .building: return t("Foundations forming — clear things to work on.", "Temel oturuyor — üzerine çalışılacak net noktalar var.", "Les bases se mettent en place — des points clairs à travailler.")
+        case .solid:    return t("Right in the healthy recreational range.", "Sağlıklı amatör aralığının tam ortasında.", "Pile dans la bonne fourchette d'un joueur loisir.")
+        case .sharp:    return t("Above the typical recreational level — sharp technique.", "Tipik amatör seviyenin üstünde — keskin teknik.", "Au-dessus du niveau loisir habituel — technique affûtée.")
         }
     }
 
     // MARK: History
-    var historyTitle: String { t("My swings", "Vuruşlarım") }
-    var historyNavTitle: String { t("My swings", "Vuruşlarım") }
+    var historyTitle: String { t("My swings", "Vuruşlarım", "Mes gestes") }
+    var historyNavTitle: String { t("My swings", "Vuruşlarım", "Mes gestes") }
     /// Toolbar / row entry point to the history list.
-    var historyEntryCTA: String { t("History", "Geçmiş") }
+    var historyEntryCTA: String { t("History", "Geçmiş", "Historique") }
     var historyEmpty: String {
-        t("Your saved swing reports will appear here.",
-          "Kaydettiğin swing raporları burada görünecek.")
+        t("Your saved swing reports will appear here.", "Kaydettiğin swing raporları burada görünecek.", "Tes rapports enregistrés apparaîtront ici.")
     }
-    var viewAllReportsCTA: String { t("View all my reports", "Tüm raporlarımı gör") }
-    var deleteCTA: String { t("Delete", "Sil") }
-    var savedVideoTitle: String { t("Your swing", "Vuruşun") }
+    var viewAllReportsCTA: String { t("View all my reports", "Tüm raporlarımı gör", "Voir tous mes rapports") }
+    var deleteCTA: String { t("Delete", "Sil", "Supprimer") }
+    var savedVideoTitle: String { t("Your swing", "Vuruşun", "Ton geste") }
 
     /// A relative, localized phrase for `date` ("2 days ago" / "2 gün önce").
     func relativeDate(_ date: Date) -> String {
@@ -155,19 +145,16 @@ struct SwingAnalysisCopy {
     }
 
     // MARK: Errors
-    var errorTitle: String { t("Something went wrong", "Bir şeyler ters gitti") }
+    var errorTitle: String { t("Something went wrong", "Bir şeyler ters gitti", "Un problème est survenu") }
     var errorGeneric: String {
-        t("We couldn't analyze that clip. Please try again.",
-          "Bu klibi analiz edemedik. Lütfen tekrar dene.")
+        t("We couldn't analyze that clip. Please try again.", "Bu klibi analiz edemedik. Lütfen tekrar dene.", "Impossible d'analyser ce clip. Réessaie.")
     }
     var errorTooShort: String {
-        t("That clip was too short or unreadable. Try a 6–10 second video.",
-          "Bu klip çok kısa ya da okunamadı. 6–10 saniyelik bir video dene.")
+        t("That clip was too short or unreadable. Try a 6–10 second video.", "Bu klip çok kısa ya da okunamadı. 6–10 saniyelik bir video dene.", "Ce clip est trop court ou illisible. Essaie une vidéo de 6 à 10 secondes.")
     }
     var errorConnect: String {
-        t("We couldn't reach the analysis service. Check your connection and try again.",
-          "Analiz servisine ulaşamadık. Bağlantını kontrol edip tekrar dene.")
+        t("We couldn't reach the analysis service. Check your connection and try again.", "Analiz servisine ulaşamadık. Bağlantını kontrol edip tekrar dene.", "Impossible de joindre le service d'analyse. Vérifie ta connexion et réessaie.")
     }
-    var retryCTA: String { t("Retry", "Tekrar dene") }
-    var cancelCTA: String { t("Cancel", "Vazgeç") }
+    var retryCTA: String { t("Retry", "Tekrar dene", "Réessayer") }
+    var cancelCTA: String { t("Cancel", "Vazgeç", "Annuler") }
 }

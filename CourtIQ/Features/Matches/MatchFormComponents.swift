@@ -235,7 +235,7 @@ enum MatchFormComponents {
                         Haptics.tap()
                         sets.append(SetScore())
                     } label: {
-                        Label(t("Add set", "Set ekle"), systemImage: "plus.circle.fill")
+                        Label(t("Add set", "Set ekle", "Ajouter un set"), systemImage: "plus.circle.fill")
                             .font(.subheadline.weight(.bold))
                             .foregroundStyle(AppPalette.clay)
                             .frame(maxWidth: .infinity)
@@ -256,7 +256,7 @@ enum MatchFormComponents {
             let idx = sets.firstIndex(where: { $0.id == s.wrappedValue.id }) ?? 0
             return VStack(spacing: 10) {
                 HStack {
-                    Text(t("Set \(idx + 1)", "\(idx + 1). set"))
+                    Text(t("Set \(idx + 1)", "\(idx + 1). set", "Set \(idx + 1)"))
                         .font(.caption.weight(.heavy)).tracking(0.6)
                         .foregroundStyle(AppPalette.inkSoft).textCase(.uppercase)
                     Spacer()
@@ -272,9 +272,9 @@ enum MatchFormComponents {
                     }
                 }
                 HStack(spacing: 14) {
-                    sideStepper(t("You", "Sen"), value: s.you, win: you > opp)
+                    sideStepper(t("You", "Sen", "Toi"), value: s.you, win: you > opp)
                     Text("–").font(.title3.weight(.bold)).foregroundStyle(AppPalette.sand)
-                    sideStepper(t("Opp", "Rakip"), value: s.opp, win: opp > you)
+                    sideStepper(t("Opp", "Rakip", "Adv"), value: s.opp, win: opp > you)
                 }
             }
             .padding(14)

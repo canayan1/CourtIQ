@@ -294,14 +294,12 @@ struct AIConsentView: View {
                         ForEach(Array((isTR ? spec.bulletsTR : spec.bulletsEN).enumerated()), id: \.offset) { _, line in
                             bullet(line)
                         }
-                        bullet(t("Processed on Google's servers in the US, only to generate this feature's results",
-                                 "Yalnızca bu özelliğin sonuçlarını üretmek için Google'ın ABD'deki sunucularında işlenir"))
-                        bullet(t("Nothing is sent until you tap Agree",
-                                 "Onayla'ya dokunana kadar hiçbir şey gönderilmez"))
+                        bullet(t("Processed on Google's servers in the US, only to generate this feature's results", "Yalnızca bu özelliğin sonuçlarını üretmek için Google'ın ABD'deki sunucularında işlenir", "Traité sur les serveurs de Google aux États-Unis, uniquement pour produire le résultat de cette fonctionnalité"))
+                        bullet(t("Nothing is sent until you tap Agree", "Onayla'ya dokunana kadar hiçbir şey gönderilmez", "Rien n'est envoyé avant que tu touches Accepter"))
                     }
                     .padding(.top, 8)
                 } label: {
-                    Text(t("See exactly what's shared", "Tam olarak ne paylaşılıyor?"))
+                    Text(t("See exactly what's shared", "Tam olarak ne paylaşılıyor?", "Voir exactement ce qui est partagé"))
                         .font(.footnote.weight(.semibold)).foregroundStyle(AppPalette.clay)
                 }
                 .tint(AppPalette.clay)
@@ -314,7 +312,7 @@ struct AIConsentView: View {
 
                 if let url = AppConfiguration.shared.privacyPolicyURL {
                     Link(destination: url) {
-                        Text(t("Read the Privacy Policy", "Gizlilik Politikasını oku"))
+                        Text(t("Read the Privacy Policy", "Gizlilik Politikasını oku", "Lire la politique de confidentialité"))
                             .font(.footnote.weight(.semibold)).foregroundStyle(AppPalette.clay)
                     }
                 }
@@ -333,7 +331,7 @@ struct AIConsentView: View {
                     Button {
                         dismiss()
                     } label: {
-                        Text(t("Not now", "Şimdi değil"))
+                        Text(t("Not now", "Şimdi değil", "Pas maintenant"))
                             .font(.headline).frame(maxWidth: .infinity).padding(.vertical, 12)
                     }
                     .buttonStyle(.bordered).tint(AppPalette.inkSoft)
