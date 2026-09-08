@@ -24,6 +24,8 @@ struct LearnPathView: View {
     @Environment(ContentStore.self) private var content
     @EnvironmentObject private var lang: LanguageManager
     private var copy: TacticsCopy { TacticsCopy(lang: lang.language) }
+    /// The Tennis IQ number belongs to Tactics now; it sits with the pills.
+    @ObservedObject private var iqManager = TennisIQManager.shared
     @Environment(PlayerProgress.self) private var progress
     @Environment(TacticsAccess.self) private var subscriptions
 
@@ -130,6 +132,8 @@ struct LearnPathView: View {
                  tint: AppPalette.clayText, background: AppPalette.clayTint)
         StatPill(icon: "bolt.fill", value: "\(progress.xp)", label: "XP",
                  tint: AppPalette.goldText, background: AppPalette.goldTint)
+        StatPill(icon: "brain.head.profile", value: "\(iqManager.iq)", label: copy.tennisIQ,
+                 tint: AppPalette.clayText, background: AppPalette.clayTint)
         StatPill(icon: "checkmark.seal.fill",
                  value: "\(progress.completedCount)/\(content.totalLessonCount)",
                  label: "Lessons done",
