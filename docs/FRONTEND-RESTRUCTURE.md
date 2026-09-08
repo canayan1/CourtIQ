@@ -195,6 +195,8 @@ Rough size: ~1.5–2 days of focused work; steps 1–3 are the visible half.
 | 5 Tactics | (this commit) | `TacticsCopy` EN/TR for all chrome; design kit merged into `DesignSystem.swift`; **tests target not created** (no unit-test target exists; hand-editing pbxproj for a new native target judged too risky — do it in Xcode) |
 | 6 Wall | `1fe1dd1` | hub sub-line, "Count my reps", verdict "Send to Coach" |
 | 7 Delete list | (this commit) | 8 dead files removed from disk + pbxproj; 195 dead keys dropped (`onb.`, `onboarding.`, `activation.`, `community.`, old tabs, tip jar, quiz archive) |
-| 8 Screenshots + submit | pending | after Can's review |
+| 8 Screenshots + submit | `e52c77d` + ASC | 1.0.7 went READY_FOR_SALE on 3 Sep; 1.1 (build 37) created in ASC (What's New EN/TR, 6 new frames both locales, review notes), build uploaded from `main` |
+
+Not done from the plan, on purpose: the *experience* question stays (the profile builder needs it; level alone does not feed it), and "AI analysis" keeps its name — calling an AI read a "Coach's read" would blur exactly the line the waitlist card draws.
 
 Found on the way: `LanguageManager` is **locked to English** in `init` ("localization not yet shipped"), so the TR strings — including the new `tactics.*` copy — are maintained but never shown. Unlocking it is a one-line change plus a TR review pass of every screen; not done here.
