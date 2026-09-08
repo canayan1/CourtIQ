@@ -5,7 +5,13 @@ import Foundation
 /// (English for now); this covers only the app's own labels around it.
 struct TacticsCopy {
     let lang: AppLanguage
-    private func t(_ en: String, _ tr: String) -> String { lang == .turkish ? tr : en }
+    private func t(_ en: String, _ tr: String, _ fr: String? = nil) -> String {
+        switch lang {
+        case .turkish: return tr
+        case .french:  return fr ?? en
+        default:       return en
+        }
+    }
 
     // Rail
     func xpToNext(_ togo: Int, _ level: String) -> String { t("\(togo) XP → \(level)", "\(togo) XP → \(level)") }

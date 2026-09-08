@@ -217,7 +217,13 @@ enum MatchFormComponents {
         @State private var sets: [SetScore] = [SetScore()]
         @State private var lastSerialized = ""
 
-        private func t(_ en: String, _ tr: String) -> String { lang.language == .turkish ? tr : en }
+        private func t(_ en: String, _ tr: String, _ fr: String? = nil) -> String {
+            switch lang.language {
+            case .turkish: return tr
+            case .french:  return fr ?? en
+            default:       return en
+            }
+        }
 
         var body: some View {
             VStack(spacing: 10) {

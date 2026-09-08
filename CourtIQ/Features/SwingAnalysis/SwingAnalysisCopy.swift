@@ -4,7 +4,13 @@ import Foundation
 /// mirrors the TennisProfileCopy pattern. Spanish falls back to English.
 struct SwingAnalysisCopy {
     let lang: AppLanguage
-    private func t(_ en: String, _ tr: String) -> String { lang == .turkish ? tr : en }
+    private func t(_ en: String, _ tr: String, _ fr: String? = nil) -> String {
+        switch lang {
+        case .turkish: return tr
+        case .french:  return fr ?? en
+        default:       return en
+        }
+    }
 
     // MARK: Feature title / nav
     var title: String { t("Swing Analysis", "Vuruş Analizi") }

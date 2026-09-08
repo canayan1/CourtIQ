@@ -195,6 +195,7 @@
 		617B4F4BF5C24B659D8B0594 /* tactics_tap.wav in Resources */ = {isa = PBXBuildFile; fileRef = 86A0803CFE914D76846601EE /* tactics_tap.wav */; };
 		8833ED409FE04E80950CEC88 /* tactics_wrong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3B82DA28C42B4893990110AC /* tactics_wrong.wav */; };
 		C6FACBEAF61D4096BFBD94B1 /* TacticsCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB43A14D9D46278C44F454 /* TacticsCopy.swift */; };
+		57BDD6501F87474BBD2A0162 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 29114A4DB26D434FA843A2C4 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -398,6 +399,7 @@
 		86A0803CFE914D76846601EE /* tactics_tap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = tactics_tap.wav; path = CourtIQ/Resources/Audio/tactics_tap.wav; sourceTree = "<group>"; };
 		3B82DA28C42B4893990110AC /* tactics_wrong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = tactics_wrong.wav; path = CourtIQ/Resources/Audio/tactics_wrong.wav; sourceTree = "<group>"; };
 		7DBB43A14D9D46278C44F454 /* TacticsCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TacticsCopy.swift; path = CourtIQ/Features/Tactics/TacticsCopy.swift; sourceTree = "<group>"; };
+		29114A4DB26D434FA843A2C4 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = file; name = Localizable.strings; path = CourtIQ/Resources/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -510,6 +512,7 @@
 				A000000000000000000FC0 /* WallRallyCamView.swift */,
 				B100000000000000000001 /* WallBallLocator.swift */,
 				B400000000000000000001 /* WallSwingDetector.swift */,
+				29114A4DB26D434FA843A2C4 /* Localizable.strings */,
 				7DBB43A14D9D46278C44F454 /* TacticsCopy.swift */,
 				3B82DA28C42B4893990110AC /* tactics_wrong.wav */,
 				86A0803CFE914D76846601EE /* tactics_tap.wav */,
@@ -744,6 +747,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57BDD6501F87474BBD2A0162 /* Localizable.strings in Resources */,
 				8833ED409FE04E80950CEC88 /* tactics_wrong.wav in Resources */,
 				617B4F4BF5C24B659D8B0594 /* tactics_tap.wav in Resources */,
 				325FD6D0C6B04A2DB4F79D23 /* tactics_swing.wav in Resources */,

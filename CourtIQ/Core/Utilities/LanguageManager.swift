@@ -6,14 +6,30 @@ enum AppLanguage: String, CaseIterable, Identifiable {
     case english = "en"
     case turkish = "tr"
     case spanish = "es"
+    case french = "fr"
 
     var id: String { rawValue }
+
+    /// Languages with a complete `.lproj` in the bundle. Spanish exists as a
+    /// case (a few old strings carry Spanish) but never shipped a strings
+    /// file, so it is not offered and never auto-selected.
+    static let shipped: [AppLanguage] = [.english, .turkish, .french]
+
+    /// The shipped language that best matches the device, English otherwise.
+    static func matchingDevice(_ preferred: [String] = Locale.preferredLanguages) -> AppLanguage {
+        for code in preferred {
+            let base = String(code.prefix(2)).lowercased()
+            if let match = shipped.first(where: { $0.rawValue == base }) { return match }
+        }
+        return .english
+    }
 
     var displayName: String {
         switch self {
         case .english: return "English"
         case .turkish: return "Türkçe"
         case .spanish: return "Español"
+        case .french: return "Français"
         }
     }
 
@@ -22,6 +38,7 @@ enum AppLanguage: String, CaseIterable, Identifiable {
         case .english: return "EN"
         case .turkish: return "TR"
         case .spanish: return "ES"
+        case .french: return "FR"
         }
     }
 }
@@ -39,8 +56,15 @@ final class LanguageManager: ObservableObject {
     private let storageKey = "CourtIQ.Language"
 
     private init() {
-        // Localization is not yet shipped — locked to English until a future update.
-        language = .english
+        // Follow the device until the player picks a language of their own;
+        // assigning here does not fire `didSet`, so nothing is persisted and
+        // a phone switched to French later still switches with it.
+        if let saved = UserDefaults.standard.string(forKey: storageKey),
+           let picked = AppLanguage(rawValue: saved), AppLanguage.shipped.contains(picked) {
+            language = picked
+        } else {
+            language = AppLanguage.matchingDevice()
+        }
     }
 
     func t(_ key: String) -> String {
@@ -53,11 +77,14 @@ final class LanguageManager: ObservableObject {
         return bundle.localizedString(forKey: key, value: key, table: nil)
     }
 
-    private func r(_ en: String, _ tr: String, _ es: String) -> String {
+    /// French is optional so the file compiles while translation lands
+    /// screen by screen; an untranslated line shows English, never a key.
+    private func r(_ en: String, _ tr: String, _ es: String, _ fr: String? = nil) -> String {
         switch language {
         case .english: return en
         case .turkish: return tr
         case .spanish: return es
+        case .french:  return fr ?? en
         }
     }
 

@@ -1,0 +1,975 @@
+/* ── Common ── */
+"common.ok" = "OK";
+"common.cancel" = "Annuler";
+"common.done" = "Terminé";
+"common.save" = "Enregistrer";
+"common.delete" = "Supprimer";
+"common.close" = "Fermer";
+"common.edit" = "Modifier";
+"common.details" = "Détails";
+"common.report" = "Signaler";
+"common.post" = "Publier";
+"common.saving" = "Enregistrement…";
+"common.deleting" = "Suppression…";
+"common.resetting" = "Réinitialisation…";
+"common.unlock_all" = "Débloquer Premium";
+"common.premium" = "Premium";
+"common.free" = "Gratuit";
+"common.start" = "Commencer";
+"common.next" = "Suivant";
+"common.of" = "sur";
+"common.weeks" = "semaines";
+"common.days" = "jours";
+
+/* ── Tabs ── */
+"tab.doubles" = "Double";
+"tab.coach" = "Coach";
+"tab.wall" = "Mur";
+"tab.tactics" = "Tactique";
+"coach.ask_ai" = "Demander au coach IA";
+"tab.home" = "Accueil";
+
+/* ── Home (action-first redesign) ── */
+"home.analyze_title" = "Analyse ton geste";
+"home.coach_hero_title" = "Fais analyser ton geste";
+"home.also" = "Aussi";
+"home.state_all_lessons" = "Toutes les leçons sont faites";
+"home.state_next_lesson" = "Suivante : %@ · %d sur %d faites";
+"home.state_all_rungs" = "Tous les paliers sont validés";
+"home.state_next_rung" = "Palier suivant : %@";
+"home.state_last_read_unscored" = "Dernière analyse : %@";
+"home.state_last_read" = "Dernière analyse : %@ · %d/100";
+"home.pillar_tactics_title" = "Apprends la tactique comme une langue";
+"home.pillar_wall_title" = "Le mur ne rate jamais";
+"home.pillar_tactics" = "TACTIQUE";
+"home.pillar_wall" = "MUR";
+"home.pillar_coach" = "COACH";
+"home.coach_hero_subtitle" = "Filme-toi. L'IA lit ton geste, un vrai coach bientôt.";
+"home.tile_swing" = "Geste";
+"home.tile_iq" = "QI Tennis";
+"home.your_game" = "Ton jeu";
+"home.tile_matches" = "Matchs";
+"home.tile_coach" = "Coach";
+"home.tile_doubles" = "Double";
+"home.tile_drill" = "Exercice";
+"home.jump_back_in" = "REPRENDRE";
+"home.recent" = "Récent";
+"home.streak_days" = "série de %d jours";
+"home.first_swing" = "Filme ton premier geste, reçois une note";
+
+/* ── First-run activation (2-step: IQ taste → Coach nudge) ── */
+
+/* ── Train hub (Phase 1 IA redesign) ── */
+"train.subtitle" = "Progresser";
+"train.headline" = "S'entraîner";
+"train.analyze" = "Analyser";
+"train.practice" = "QI Tennis";
+"train.recover" = "Récupération";
+"train.programs" = "Programmes";
+"train.wall" = "Mur";
+
+/* Wall practice section (solo paced drills + free "wall tennis" rally) */
+"wall.title" = "Mur";
+"wall.eyebrow" = "ENTRAÎNEMENT SOLO";
+"wall.headline" = "Le mur ne rate jamais.";
+"wall.subhead" = "Huit paliers. La caméra compte et note chacun d'eux.";
+"wall.free_title" = "Tennis au mur";
+"wall.free_sub" = "Échange libre — ton rythme, aussi longtemps que tu tiens.";
+"wall.free_instruction" = "Échange librement contre le mur. Garde le rythme — on compte pour toi.";
+"wall.count_it" = "Compte mes répétitions";
+"wall.drills_header" = "Exercices";
+"wall.start" = "Commencer";
+"wall.resume" = "Reprendre";
+"wall.finish" = "Terminer";
+"wall.done" = "Terminé";
+"wall.bpm" = "BPM";
+"wall.hits" = "frappes";
+"wall.remaining" = "restantes";
+"wall.complete_title" = "Beau travail.";
+"wall.complete_sub" = "%d frappes · %@";
+"wall.level_n" = "Niveau %d";
+"wall.how_to" = "Comment faire";
+"wall.rallycam_cta" = "Compte mes répétitions";
+"wall.mark_done" = "Je l'ai fait — valider le niveau";
+"wall.level_cleared" = "Niveau validé";
+
+/* Wall Rally Cam (experimental — on-device Vision ball tracking) */
+"common.beta" = "BÊTA";
+"rallycam.title" = "Rally Cam";
+"rallycam.sub" = "La caméra te regarde frapper et compte chaque répétition.";
+"rallycam.best" = "Record";
+"rallycam.in_a_row" = "d'affilée";
+"rallycam.hint_setup" = "Pose ton téléphone derrière toi, face au mur, un pas sur le côté pour qu'il te voie en entier. Fais glisser les lignes sur ton mur, puis lance.";
+"rallycam.hint_running" = "Continue — chaque frappe compte.";
+"rallycam.zone_net" = "FILET";
+"rallycam.zone_long" = "TROP LONG";
+"rallycam.goal" = "Objectif";
+"rallycam.no_camera" = "Rally Cam a besoin de la caméra pour te voir frapper. Autorise-la dans Réglages.";
+"rallycam.zone_band" = "DEDANS";
+"rallycam.measure" = "Régler la ligne du filet";
+"rallycam.stand_at_wall" = "Place-toi contre le mur";
+"rallycam.measured" = "Ligne du filet réglée d'après ta taille. Fais glisser pour ajuster.";
+"rallycam.measure_failed" = "Je ne t'ai pas vu — place-toi contre le mur, de la tête aux pieds dans le cadre.";
+"rallycam.verdict_green" = "Niveau validé";
+"rallycam.verdict_yellow" = "Niveau validé";
+"rallycam.verdict_red" = "Pas encore";
+"rallycam.verdict_green_reason" = "Objectif atteint — et la balle est restée entre les lignes.";
+"rallycam.verdict_yellow_unread" = "Objectif atteint — mais je n'ai pas vu assez de balles pour juger le placement. Le vert reste à prendre.";
+"rallycam.verdict_yellow_offband" = "Objectif atteint, mais trop de balles hors de la bande. Validé au compteur — reviens chercher le vert.";
+"rallycam.verdict_red_reason" = "{hits} sur {goal}. Le mur est patient.";
+"rallycam.try_again" = "Réessayer";
+"wall.level_cleared_yellow" = "Validé — reviens chercher le sceau vert";
+"wall.verified_line" = "Vérifié par la caméra : %d frappes d'affilée, coup droit ou revers, et l'endroit où la balle a touché le mur";
+"wall.honour_line" = "La lecture du coup est en bêta — la caméra dit coup droit ou revers d'après la position de ta main de raquette au moment de la frappe.";
+"rallycam.save_clip" = "Enregistrer le clip";
+"rallycam.ai_review" = "Envoyer au coach";
+"rallycam.clip_note" = "Enregistré sur ce téléphone. Supprimé quand tu quittes, sauf si tu l'enregistres.";
+"rallycam.total_hits" = "frappes";
+"wall.verified_line_total" = "Vérifié par la caméra : %d frappes sur la séance, coup droit ou revers, et l'endroit où la balle a touché le mur";
+"rallycam.handed_right" = "Droitier";
+"rallycam.handed_left" = "Gaucher";
+"rallycam.stroke_fh" = "CD";
+"rallycam.stroke_bh" = "RV";
+"rallycam.verdict_yellow_pattern" = "Objectif atteint — mais les coups n'ont pas alterné comme l'exercice le demande. Validé au compteur ; alterne pour décrocher le vert.";
+"rallycam.start" = "Lancer";
+"rallycam.stop" = "Arrêter";
+"train.analyze_title" = "Analyse de geste par IA";
+"train.analyze_desc" = "Filme ton geste — reçois un coaching IA immédiat, image par image.";
+"train.flagship" = "Phare";
+"train.analyze_cta" = "Filmer un geste";
+"train.analyze_section_desc" = "Vois ta technique avec les yeux d'un coach IA.";
+"train.practice_section_desc" = "Répétitions ciblées — quiz, exercices et coups signature.";
+"train.recover_section_desc" = "Récupère et bouge bien entre les séances.";
+"train.programs_section_desc" = "Des plans sur plusieurs semaines qui se construisent dans la durée.";
+"train.daily_drill_title" = "Exercice du jour";
+"train.daily_drill_desc" = "Le travail de cible du jour sur le court.";
+"train.pro_shot_title" = "Coup de pro";
+"train.pro_shot_desc" = "Le schéma signature du jour, animé.";
+"train.flagship_swing" = "Geste";
+"train.drill_label" = "Exercice";
+"train.pro_shot_label" = "Coup de pro";
+"train.mobility_label" = "Mobilité";
+
+/* ── Today hub (Phase 1 IA redesign) ── */
+"today.focus" = "Le focus du jour";
+"today.up_next" = "Ensuite";
+"today.tip_of_day" = "Le conseil du jour";
+"today.profile_a11y" = "Ouvrir le profil";
+
+/* ── Coach tab landing (Phase 1 IA redesign) ── */
+
+/* ── Today ── */
+"today.day_streak" = "jours de série";
+"today.this_week" = "cette semaine";
+"today.streak_grace_hint" = "Tu as manqué hier — ta série est gelée pour aujourd'hui. Fais le quiz du jour pour la garder en vie.";
+"today.a11y_day_streak" = "Série de jours";
+"today.a11y_this_week" = "Cette semaine";
+"common.share" = "Partager";
+"common.copy" = "Copier";
+"common.copied" = "Copié";
+"profile.band_identity" = "Identité";
+"profile.band_game" = "Ton niveau";
+"profile.band_progress" = "Progression";
+"profile.band_account" = "Compte";
+"training.a11y_sessions_done" = "Séances terminées cette semaine";
+
+/* ── Empty states ── */
+"training.checkin_empty_title" = "Aucun bilan pour l'instant";
+"common.back" = "Retour";
+"today.start_quiz" = "Commencer le quiz du jour";
+"today.review_quiz" = "Revoir le quiz du jour";
+"today.greeting_morning" = "Bonjour";
+"today.greeting_afternoon" = "Bon après-midi";
+"today.greeting_evening" = "Bonsoir";
+"today.focus_label" = "Focus :";
+"today.train_next" = "Entraîne le point suivant.";
+"today.tip_of_day" = "Le conseil du jour";
+"today.daily_iq" = "QI du jour";
+"today.completed" = "Terminé";
+"today.ready" = "Prêt";
+"today.questions" = "questions";
+"today.match_awareness" = "Lecture du match";
+"today.review" = "Revoir";
+"today.start_quiz_btn" = "Commencer le quiz";
+"today.quick_reset" = "Remise en route rapide";
+"today.open_flow" = "Ouvrir la séance";
+"today.preview_flow" = "Aperçu de la séance";
+"today.show_less" = "Voir moins";
+"today.read_more" = "Lire la suite";
+
+/* ── Practice ── */
+"practice.skill_blocks" = "Blocs technique";
+"practice.support_work" = "Travail complémentaire";
+"practice.mobility_library" = "Bibliothèque mobilité et récupération";
+"practice.mobility_desc" = "Remises en route rapides, mobilité quotidienne et séances de récupération pensées pour le tennis.";
+"practice.deliberate_reps" = "Répétitions ciblées";
+"practice.choose_pattern" = "Choisis le schéma que tu veux affûter, puis lance un bloc ciblé.";
+"practice.free_desc" = "Toute la bibliothèque de blocs technique est gratuite. Connecte-toi pour synchroniser ta progression sur tous tes appareils.";
+
+/* ── Training Hub ── */
+"training.title" = "Entraînement";
+"training.subtitle" = "Moteur de performance";
+"training.desc" = "Construis le corps qui tient tes décisions sur le court.";
+"training.long_desc" = "Commence par le plan hybride gratuit de 8 semaines, puis ouvre les blocs dédiés au jeu de jambes, à la puissance, à la souplesse et à la condition de match.";
+"training.8week_cycle" = "Cycle de 8 semaines";
+"training.persistence_checks" = "Points d'étape";
+"training.free_foundation" = "Base gratuite";
+"training.start_here" = "Commence ici";
+"training.open_plan" = "Ouvrir le plan de 8 semaines";
+"training.premium_tracks" = "Blocs d'entraînement";
+"training.unlocked" = "Débloqué";
+"training.locked" = "Verrouillé";
+
+/* ── Training Detail ── */
+"training.cycle_week" = "Semaine du cycle";
+"training.week" = "Semaine";
+"training.progress_label" = "Progression";
+"training.sessions_completed" = "séances terminées";
+"training.calendar_hint" = "Choisis un jour dans le calendrier, ouvre la séance et coche la semaine au fur et à mesure.";
+"training.weekly_calendar" = "Calendrier de la semaine";
+"training.progression_phase" = "Phase de progression actuelle";
+"training.reset" = "Réinitialiser";
+"training.check" = "Cocher";
+"training.checked" = "Coché";
+"training.mark_done" = "Marquer comme fait";
+"training.marked_msg" = "Beau travail. Ce jour est coché et restera enregistré sur ton compte.";
+"training.open_session" = "Ouvrir la séance";
+"training.complete_hint" = "Fais le travail ci-dessous, puis touche Marquer comme fait pour garder ce jour coché.";
+"training.objective" = "Objectif";
+"training.warmup" = "Échauffement";
+"training.main_work" = "Travail principal";
+"training.finisher" = "Bloc final";
+"training.recovery" = "Récupération";
+"training.recovery_reset" = "Journée de récupération";
+"training.recovery_hint" = "Utilise cette journée pour tout remettre à zéro, pour que le bloc suivant reste puissant.";
+"training.recommended_flow" = "Séance conseillée";
+"training.recommended_desc" = "20 à 30 min de marche ou de vélo tranquille, mobilité des hanches et du dos, mollets, adducteurs et travail des tissus.";
+"training.recovery_goal" = "Reviens plus frais, pas éteint. Garde la circulation active et le stress bas.";
+"training.optional_note" = "Note facultative";
+"training.heavy_week_hint" = "Si la semaine a été lourde, profite de ce jour pour lever le pied avant le point d'étape.";
+"training.persistence_check" = "Point d'étape";
+"training.persistence_desc" = "Termine la semaine par un court bilan pour garder ta progression visible sur les 8 semaines.";
+"training.coach_note" = "Note du coach";
+"training.week_reflection" = "Qu'est-ce qui a progressé ou pesé cette semaine ?";
+"training.readiness" = "Fraîcheur";
+"training.explosiveness" = "Explosivité";
+"training.conditioning" = "Condition physique";
+"training.premium_access" = "Blocs d'entraînement";
+"training.premium_desc" = "Des plans de 8 semaines par thème — jeu de jambes, puissance de frappe, souplesse et condition de match. Tout est gratuit.";
+"training.checkin_history" = "Historique des bilans";
+"training.checkin_empty" = "Enregistre ton premier point d'étape pour commencer l'historique de ce plan.";
+"training.discussion" = "Discussion";
+"training.discussion_hint" = "Passe par l'onglet Communauté pour parler du conseil du jour avec d'autres joueurs.";
+"training.how_to" = "Comment l'exécuter";
+"training.tennis_why" = "Ce que ça apporte à ton tennis";
+"training.watch_out" = "À surveiller";
+"training.exercise" = "Exercice";
+
+/* ── Quiz ── */
+"quiz.question_of" = "Question %d sur %d";
+"quiz.restart" = "Recommencer le quiz";
+"quiz.finish" = "Terminer le quiz";
+"quiz.next" = "Question suivante";
+"quiz.submit" = "Valider ma réponse";
+"quiz.choose" = "Choisis le coup en lequel tu as le plus confiance.";
+"quiz.good_read" = "Bonne lecture";
+"quiz.better_option" = "Il y avait mieux";
+"quiz.no_questions" = "Ce quiz n'a pas encore de questions.";
+"quiz.score" = "Tu as obtenu %d sur %d.";
+"quiz.best_choice" = "Le meilleur choix en pourcentage";
+"quiz.harder" = "Ça rendrait le point plus difficile.";
+"quiz.challenge_partner" = "Défie ton partenaire de double";
+"quiz.challenge_desc" = "Partage cette situation et vois si ton partenaire la lit comme toi.";
+"quiz.send_partner" = "Envoyer au partenaire";
+"quiz.session_complete" = "Séance terminée";
+"quiz.review_hint" = "Relis les explications, puis recommence ou reviens au plan du jour.";
+"quiz.share_result" = "Partage ton résultat";
+"quiz.share_desc" = "Fais connaître ton score à ton partenaire de double — ou mets-le au défi de faire mieux.";
+"quiz.share_btn" = "Partager le résultat";
+"quiz.no_quiz" = "Aucun quiz disponible";
+"quiz.no_quiz_desc" = "Ajoute des questions à cette catégorie pour lancer un bloc d'entraînement.";
+
+/* ── Mobility ── */
+"mobility.library" = "Bibliothèque mobilité";
+"mobility.title" = "Mobilité et récupération";
+"mobility.headline" = "Bouge bien entre les séances";
+"mobility.preview_desc" = "Toute la bibliothèque de mobilité et de récupération pensée pour le tennis est gratuite.";
+"mobility.goal" = "Objectif";
+"mobility.focus_areas" = "Zones ciblées";
+"mobility.why" = "Pourquoi c'est important au tennis";
+"mobility.instructions" = "Instructions";
+"mobility.cues" = "Points clés";
+"mobility.sequence" = "Enchaînement";
+"mobility.premium" = "Séance de mobilité";
+"mobility.locked_desc" = "Toute la bibliothèque de mobilité et de récupération est gratuite. Connecte-toi avec Apple pour participer aux discussions et synchroniser tes appareils.";
+"mobility.unlock" = "Ouvrir la bibliothèque mobilité";
+
+/* ── Community ── */
+
+/* ── Profile ── */
+"profile.title" = "Profil";
+"profile.pillar_lessons" = "Leçons de tactique faites";
+"profile.pillar_rungs" = "Paliers du mur validés";
+"profile.pillar_reads" = "Analyses de geste";
+"profile.delete_title" = "Supprimer le compte ?";
+"profile.delete_msg" = "Cela supprime définitivement ton compte, ta progression synchronisée et tes contenus communautaires de DropVolley.";
+"profile.delete_account" = "Supprimer le compte";
+"profile.reset_title" = "Réinitialiser les données locales ?";
+"profile.reset_msg" = "Cela efface la progression en cache sur cet appareil. Les données synchronisées seront retéléchargées au prochain lancement.";
+"profile.quiz_empty" = "Termine ton premier quiz quotidien pour commencer ton archive.";
+"profile.sign_in_hint" = "Synchronise ta progression sur tous tes appareils.";
+"profile.leave_guest" = "Quitter le mode invité";
+"profile.section_progress" = "Progression";
+"profile.section_account" = "Compte";
+"profile.section_policies" = "Mentions légales";
+"profile.section_language" = "Langue";
+"profile.stat_streak" = "Série de jours";
+"profile.stat_quizzes" = "Quiz terminés";
+"profile.stat_week" = "Cette semaine";
+"profile.sign_out" = "Se déconnecter";
+"profile.manage_sub" = "Gérer l'abonnement";
+"profile.restore" = "Restaurer les achats";
+"profile.view_plans" = "DropVolley Premium";
+"profile.guest" = "Invité";
+"profile.apple_id" = "Apple ID";
+"profile.guest_desc" = "Le mode invité enregistre la progression sur cet appareil uniquement. Connecte-toi avec Apple pour protéger ta série et ton historique d'achats.";
+
+/* ── Onboarding ── */
+
+/* ── Paywall ── */
+"paywall.title" = "Coach IA";
+"paywall.subtitle" = "Ton coach de tennis IA, dans ta poche";
+"paywall.sign_in_required" = "La connexion avec Apple est nécessaire avant l'achat.";
+"paywall.sign_in_optional" = "Facultatif — connecte-toi avec Apple pour retrouver Premium sur tous tes appareils.";
+"paywall.what_unlocks" = "Ce que tu obtiens";
+"paywall.benefit_coach" = "Coach — analyses de geste illimitées, et une discussion sur chacune";
+"paywall.benefit_tactics" = "Tactique — tous les chapitres, tous les jours";
+"paywall.benefit_wall" = "Mur — le comptage par caméra et une note sur chaque palier";
+
+/* ── Tip-jar mode (launch window, LaunchOffer.allFeaturesFree == true) ── */
+
+/* ── Voice notes (Match Journal v1.1.A) ── */
+"voice.record_start" = "Enregistrer une note vocale";
+"voice.record_replace" = "Enregistrer une nouvelle note vocale";
+"voice.recording_hint" = "Enregistrement — touche stop quand tu as fini";
+"voice.transcribing" = "Transcription…";
+"voice.play" = "Écouter la note vocale";
+"voice.discard" = "Supprimer la note vocale";
+"voice.language_toggle" = "Langue parlée pour la transcription";
+"voice.error_title" = "Enregistrement impossible";
+"voice.permission_denied" = "L'accès au micro est nécessaire pour les notes vocales. Active-le dans Réglages → DropVolley.";
+"voice.audio_session_error" = "Le système audio n'est pas disponible pour le moment. Réessaie dans un instant.";
+"voice.record_start_error" = "Impossible de démarrer l'enregistrement. Réessaie.";
+"voice.storage_error" = "Impossible d'enregistrer sur l'appareil. Libère de l'espace et réessaie.";
+
+/* ── Match photos (v1.1.B) ── */
+"matches.photos_label" = "Photos";
+"matches.photos_empty" = "Ajoute jusqu'à 4 photos — feuille de match, court, matériel.";
+"matches.add_photo" = "Ajouter une photo";
+"matches.remove_photo" = "Retirer cette photo";
+
+/* ── Coach Mode (v1.2) ── */
+"matches.coach_mode" = "Mode coach (en binôme)";
+"coach.title" = "Mode coach";
+"coach.headline" = "Fais équipe avec ton partenaire.";
+"coach.subhead" = "Enregistrez le même match chacun de votre côté, puis comparez vos lectures.";
+"coach.host_cta" = "Je crée la session";
+"coach.scan_cta" = "Scanner le code du partenaire";
+"coach.host_show_qr" = "Montre ce code à ton partenaire pour vous connecter.";
+"coach.waiting_for_partner" = "En attente du partenaire…";
+"coach.connecting" = "Connexion…";
+"coach.partner_connected" = "Partenaire connecté";
+"coach.partner" = "Partenaire";
+"coach.rate_them_headline" = "Note son match.";
+"coach.rate_serve_of_partner" = "Son service";
+"coach.rate_return_of_partner" = "Son retour";
+"coach.rate_movement_of_partner" = "Son déplacement";
+"coach.rate_mental_of_partner" = "Son mental";
+"coach.takeaway_placeholder" = "Une phrase — ce qui t'a marqué dans son jeu";
+"coach.submit" = "Envoyer mes notes";
+"coach.waiting_for_partner_submit" = "En attente de l'envoi de ton partenaire…";
+"coach.reveal_title" = "Comment vous vous êtes lus";
+"coach.reveal_kicker" = "Côte à côte";
+"coach.reveal_subhead" = "Ce que tu as vu face à ce que ton partenaire a vu.";
+"coach.dim_serve" = "Service";
+"coach.dim_return" = "Retour";
+"coach.dim_movement" = "Déplacement";
+"coach.dim_mental" = "Mental";
+"coach.you" = "Toi";
+"coach.takeaways" = "À retenir";
+"coach.save_to_journal" = "Enregistrer ce match dans mon journal";
+"coach.saved_confirmation" = "Enregistré dans ton journal de match";
+"coach.partner_saw_header" = "Le regard de ton partenaire sur ton jeu :";
+"coach.partner_ratings_format" = "Service %d · Retour %d · Déplacement %d · Mental %d";
+"coach.error_send_failed" = "Envoi au partenaire impossible. Rapprochez-vous et réessayez.";
+"coach.error_advertise_failed" = "La mise en relation n'a pas démarré. Vérifie l'accès au réseau local dans Réglages.";
+"coach.error_browse_failed" = "La recherche n'a pas démarré. Vérifie l'accès au réseau local dans Réglages.";
+"paywall.choose_plan" = "Choisis ta formule";
+"paywall.best_value" = "Meilleure offre";
+"paywall.continue" = "Continuer";
+"paywall.restore" = "Restaurer les achats";
+"paywall.manage" = "Gérer l'abonnement";
+"paywall.privacy" = "Politique de confidentialité";
+"paywall.terms" = "Conditions d'utilisation";
+"paywall.support" = "Assistance";
+"paywall.subscription_note" = "Les abonnements se renouvellent automatiquement sauf résiliation dans les réglages de l'App Store au moins 24 heures avant la fin de la période en cours. Ton accès Premium est restauré depuis l'App Store au lancement et après une restauration.";
+"paywall.unlocked" = "Débloqué";
+"paywall.intro_body" = "Premium débloque le Coach IA — une discussion tennis qui connaît tes matchs, tes notes et tes réponses aux quiz. Tout le reste de DropVolley est gratuit.";
+"paywall.products_loading" = "Chargement des formules d'abonnement…";
+
+/* ── Beta feedback ── */
+"beta.section_title" = "Retour bêta";
+"beta.prompt_title" = "Un bug ou une idée ?";
+"beta.prompt_body" = "En un tap, avec les infos de l'appareil déjà remplies.";
+"beta.send" = "Envoyer un retour";
+
+/* ── Health & Safety ── */
+"health.eyebrow" = "AVANT DE COMMENCER";
+"health.title" = "Entraîne-toi en sécurité.";
+"health.subtitle" = "DropVolley est fait par des joueurs de tennis, pas par des médecins. Lis et accepte quelques points avant d'utiliser l'entraînement, la mobilité ou tout contenu physique de cette app.";
+"health.bullet_not_medical" = "DropVolley ne constitue ni un avis médical, ni un diagnostic, ni un traitement. L'app ne remplace pas un médecin, un kinésithérapeute, un préparateur physique diplômé ou un entraîneur.";
+"health.bullet_consult_doctor" = "Consulte un professionnel de santé qualifié avant de commencer une nouvelle activité physique — en particulier en cas de problème cardiaque, articulaire ou musculo-squelettique, de grossesse, de retour de blessure, ou si tu n'as pas pratiqué régulièrement ces 6 derniers mois.";
+"health.bullet_stop_if_pain" = "En cas de douleur, de vertige, d'essoufflement, de gêne à la poitrine ou de tout symptôme inhabituel pendant ou après l'utilisation de DropVolley, arrête immédiatement et consulte un médecin.";
+"health.bullet_assume_risk" = "Le tennis, la musculation, la pliométrie, la mobilité et la préparation physique comportent un risque de blessure — y compris de blessure grave ou pire. En utilisant DropVolley, tu acceptes ce risque en connaissance de cause et volontairement.";
+"health.bullet_self_directed" = "DropVolley s'utilise en autonomie. Aucun entraîneur ne te supervise via l'app. Tu restes responsable de ta technique, de ton matériel, de ton échauffement, de ta récupération et de tes limites.";
+"health.read_more" = "LIRE LE DOCUMENT COMPLET";
+"health.full_disclaimer_link" = "Avertissement santé et sécurité complet";
+"health.confirm_toggle" = "J'ai lu les points ci-dessus et je comprends les risques liés à l'activité physique.";
+"health.confirm_required_hint" = "ACTIVE CE BOUTON POUR CONTINUER";
+"health.confirm_done_hint" = "PRÊT À CONTINUER";
+"health.accept" = "Je comprends et j'accepte";
+"health.footer_note" = "En touchant le bouton ci-dessus, tu confirmes avoir lu, compris et accepté l'avertissement santé et sécurité ainsi que les conditions d'utilisation. Tu acceptes d'utiliser DropVolley à tes propres risques.";
+"health.banner_title" = "Entraîne-toi en sécurité";
+"health.banner_body" = "Échauffe-toi d'abord. Technique et charges sûres. Arrête si quelque chose ne va pas.";
+
+/* ── Onboarding ── */
+
+
+
+
+
+
+
+
+
+/* ── Onboarding tour (new feature pages) ── */
+
+/* ── Matches ── */
+"tab.matches" = "Matchs";
+"matches.new_entry" = "Nouveau match";
+"matches.choose_type" = "Comment veux-tu enregistrer ce match ?";
+"matches.quick_log" = "Enregistrement rapide (30 s)";
+"matches.full_journal" = "Journal complet";
+"matches.total_logged" = "Enregistrés";
+"matches.streak_label" = "Série";
+"matches.unknown_opponent" = "Match d'entraînement";
+"matches.draft_badge" = "Brouillon";
+"matches.tutorial.nav_title" = "Comment fonctionne le journal de match";
+"matches.tutorial.intro_title" = "Enregistre-le une fois. Apprends-en toujours.";
+"matches.tutorial.intro_body" = "Chaque match enregistré construit ton histoire — tes tendances, tes schémas et la mémoire dans laquelle ton coach IA puise.";
+"matches.tutorial.quick_title" = "Enregistrement rapide — 30 secondes";
+"matches.tutorial.quick_body" = "Note ton service, ton retour, ton déplacement et ton mental sur 5, plus une chose à retenir. Parfait juste en sortant du court.";
+"matches.tutorial.journal_title" = "Journal complet — va plus loin";
+"matches.tutorial.journal_body" = "Ajoute ton plan d'avant-match et tes notes d'après-match — écrites ou dictées en note vocale. C'est le meilleur carburant pour ton coach.";
+"matches.tutorial.coach_title" = "Mode coach — enregistrez à deux";
+"matches.tutorial.coach_body" = "Connecte ton téléphone à celui de ton partenaire ou de ton coach pour capter un match des deux côtés. Sans compte, sans cloud — juste les deux téléphones.";
+"matches.tutorial.payoff_title" = "Ce que ça te rapporte";
+"matches.tutorial.payoff_body" = "Tes entrées alimentent les graphiques de tendance et une mémoire longue que ton coach IA relit — il repère des schémas comme « ton mental baisse sur terre battue » et te conseille sur ton histoire réelle, pas sur des généralités.";
+"matches.empty_title" = "Ton journal de match commence ici";
+"matches.empty_body" = "Enregistre les matchs que tu joues. Suis ton service, ton retour, tes déplacements et ta concentration — et regarde la tendance.";
+"matches.first_log_cta" = "Enregistrer un match";
+"matches.takeaway_label" = "Une chose à retenir";
+"matches.takeaway_placeholder" = "Une chose que tu changeras la prochaine fois…";
+"matches.opponent_placeholder" = "Nom de l'adversaire";
+"matches.tournament_placeholder" = "Tournoi (facultatif) — ex. championnats du club";
+"matches.legend_win" = "Victoire";
+"matches.legend_loss" = "Défaite";
+"matches.legend_upcoming" = "À venir";
+"matches.score_placeholder" = "Score (ex. 6-4, 3-6, 7-5)";
+"matches.score_label" = "Score";
+"matches.pre_match_label" = "Plan d'avant-match";
+"matches.pre_match_placeholder" = "Quel est ton plan tactique contre cet adversaire ?";
+"matches.post_match_label" = "Notes d'après-match";
+"matches.dictate_title" = "Enregistre-le à la voix";
+"matches.dictate_hint" = "Ou parle simplement — on l'écrit pour toi";
+"matches.post_match_placeholder" = "Ce qui a marché, ce qui n'a pas marché, ce qui t'a surpris ?";
+"matches.journal_title_new" = "Nouvelle entrée";
+"matches.journal_title_edit" = "Entrée du journal";
+"matches.delete_title" = "Supprimer cette entrée ?";
+"matches.calendar_logged" = "enregistré";
+"matches.calendar_not_logged" = "aucune entrée";
+"matches.trend_title" = "Analyse de tes matchs";
+"matches.trend_locked_title" = "Enregistre 5 matchs pour débloquer tes tendances";
+
+/* Trend dashboard v2 — richer insights */
+"matches.trend_record" = "Bilan";
+"matches.trend_win_rate" = "Taux de victoires";
+"matches.trend_total_one" = "match";
+"matches.trend_total_many" = "matchs";
+"matches.trend_by_surface" = "Par surface";
+"matches.trend_momentum" = "Dynamique récente";
+"matches.trend_momentum_subtitle" = "3 dernières entrées notées face aux 3 précédentes";
+"matches.trend_per_surface_ratings" = "Notes par surface";
+"matches.trend_themes" = "Thèmes récurrents";
+"matches.trend_themes_subtitle" = "Mots présents dans 2 conclusions ou plus";
+"matches.surface_clay" = "Terre battue";
+"matches.surface_grass" = "Gazon";
+"matches.surface_hard" = "Dur";
+"matches.trend_up" = "Plus grande progression";
+"matches.trend_down" = "Plus forte baisse";
+"matches.trend_volume" = "Matchs par mois";
+"matches.dim_serve" = "Service";
+"matches.dim_return" = "Retour";
+"matches.dim_movement" = "Déplacement";
+"matches.dim_mental" = "Mental";
+"matches.view_insights" = "Voir l'analyse";
+"matches.view_calendar" = "Calendrier des matchs";
+"matches.dim_no_data" = "Pas encore de notes";
+
+/* ── Match log: pre/post flow (v1.2) ── */
+"matches.flow_choose_title" = "Ce match est déjà joué, ou à venir ?";
+"matches.flow_played" = "Déjà joué";
+"matches.flow_played_sub" = "Enregistre le résultat, tes notes, et reçois une analyse IA.";
+"matches.flow_upcoming" = "À venir";
+"matches.flow_upcoming_sub" = "Prépare-le. Tu ajouteras le résultat après avoir joué.";
+"matches.had_plan_question" = "Avais-tu un plan avant le match ?";
+"matches.had_plan_label" = "Plan de match";
+"matches.section_details" = "Détails du match";
+"matches.section_ratings" = "Note ton jeu";
+"matches.upcoming_title" = "Match à venir";
+"matches.upcoming_badge" = "À venir";
+"matches.add_result_cta" = "Ajouter le résultat";
+"matches.add_result_title" = "Ajoute ton résultat";
+"common.yes" = "Oui";
+"common.no" = "Non";
+"matches.tutorial.played_title" = "Match joué — enregistre-le";
+"matches.tutorial.played_body" = "Ajoute le résultat, tes auto-évaluations et quelques notes. Tu recevras une analyse IA de ton match et des points à travailler.";
+"matches.tutorial.upcoming_title" = "Match à venir — prépare-le";
+"matches.tutorial.upcoming_body" = "Note un plan tactique avant de jouer. L'IA peut réagir si tu veux. On te rappellera d'ajouter le résultat ensuite.";
+
+/* AI match analysis */
+"matches.ai_comment_plan_cta" = "Faire commenter mon plan par l'IA";
+"matches.ai_pre_title" = "L'IA sur ton plan";
+"matches.ai_pre_analyzing_title" = "Lecture de ton plan";
+"matches.ai_report_title" = "Analyse IA du match";
+"matches.ai_report_analyzing_title" = "Analyse de ton match";
+"matches.ai_failed" = "Impossible de joindre l'IA pour l'instant. Tu peux enregistrer et réessayer plus tard.";
+"matches.ai_failed_title" = "Le rapport n'a pas pu être généré";
+"matches.ai_failed_body" = "Ton match est enregistré. L'IA était injoignable — touche réessayer pour générer l'analyse.";
+"matches.ai_retry" = "Relancer l'analyse";
+"matches.ai_step_reading_plan" = "Lecture de ton plan tactique";
+"matches.ai_step_opponent" = "Évaluation du duel";
+"matches.ai_step_tactics" = "Test des options tactiques";
+"matches.ai_step_reading_match" = "Lecture de tes notes de match";
+"matches.ai_step_ratings" = "Vérification de tes auto-évaluations";
+"matches.ai_step_patterns" = "Repérage des schémas dans ton historique";
+"matches.ai_step_writing" = "Rédaction de tes notes de coaching";
+
+/* Pre-match mental check */
+"mental.nav_title" = "Point mental";
+"mental.eyebrow" = "Avant le match";
+"mental.headline" = "Comment tu te sens ?";
+"mental.subhead" = "Quelques taps et je te donne une courte routine mentale pour le match du jour.";
+"mental.energy" = "Énergie";
+"mental.confidence" = "Confiance";
+"mental.nerves" = "Stress";
+"mental.context_label" = "Contexte (facultatif)";
+"mental.context_placeholder" = "ex. adversaire plus fort, sur terre battue";
+"mental.get_plan_cta" = "Obtenir mon plan mental";
+"mental.plan_title" = "Ton plan d'avant-match";
+"mental.analyzing_title" = "Construction de ta routine";
+"mental.step_reading" = "Lecture de ton bilan";
+"mental.step_settling" = "Ajustement de la routine à toi";
+"mental.step_writing" = "Rédaction de ton plan mental";
+"mental.failed_title" = "Ton plan n'a pas pu être créé";
+"mental.failed_body" = "L'IA était injoignable à l'instant — touche réessayer.";
+"mental.retry" = "Réessayer";
+"mental.shortcut_title" = "Point mental";
+"mental.shortcut_subtitle" = "Avant d'entrer sur le court";
+
+/* Breathing exercise (offline, picked from the mental-check inputs) */
+"breathing.cta" = "Exercice de respiration";
+"breathing.inhale" = "Inspire";
+"breathing.hold" = "Retiens";
+"breathing.exhale" = "Expire";
+"breathing.done" = "Bien — tu es prêt.";
+"breathing.again" = "Encore";
+"breathing.finish" = "Terminé";
+"breathing.stop" = "Arrêter";
+"breathing.pattern_calm" = "Faire baisser la pression";
+"breathing.pattern_energize" = "Se réveiller";
+"breathing.pattern_focus" = "Respiration carrée";
+"breathing.why_calm" = "Une expiration plus longue pour faire retomber la pression avant d'entrer.";
+"breathing.why_energize" = "Un souffle vif et régulier pour relancer l'énergie.";
+"breathing.why_focus" = "Un 4-4-4-4 régulier, pour une concentration calme et stable.";
+
+/* ── Daily Court Tap Drill ── */
+"drill.card_kicker" = "Exercice du jour";
+"drill.card_title" = "Lis le court. Touche le coup le plus intelligent.";
+"drill.start" = "Commencer";
+"drill.replay" = "Revoir";
+"drill.next" = "Suivant";
+"drill.see_result" = "Voir le résultat";
+
+/* Drill — first-run intro + pre-tap prompt */
+"drill.pretap_prompt" = "Touche l'endroit du court où tu jouerais le coup suivant.";
+"drill.intro_title" = "Exercice du jour";
+"drill.intro_subtitle" = "Cinq décisions rapides. Tu vois la situation — touche l'endroit où TU jouerais. Après chaque tap, la zone verte / jaune / rouge apparaît.";
+"drill.intro_legend_you" = "Repère terre = TOI sur le court.";
+"drill.intro_legend_op" = "Repère sombre = la position de ton adversaire.";
+"drill.intro_legend_ball" = "Ligne pointillée = d'où la balle arrive sur toi.";
+"drill.intro_cta" = "Compris — c'est parti";
+
+/* Tactical profile card */
+"drill.profile_kicker" = "Profil tactique";
+"drill.profile_title" = "Où en est ton QI tennis";
+"drill.profile_reps_format" = "%d répétitions";
+"drill.profile_footnote" = "Moyenne de tes scores verts / jaunes / rouges dans chaque catégorie. Les catégories estompées manquent de répétitions pour être fiables (il en faut au moins 3).";
+
+/* Category names */
+"drill.cat.open_court" = "Ouverture";
+"drill.cat.defense" = "Défense";
+"drill.cat.approach" = "Approche";
+"drill.cat.patterns" = "Schémas";
+"drill.cat.net_game" = "Jeu au filet";
+"drill.cat.return" = "Retour";
+"drill.cat.open_court.summary" = "Repérer et exploiter l'espace libre";
+"drill.cat.defense.summary" = "Le bon coup pour se replacer quand tu es étiré";
+"drill.cat.approach.summary" = "Transition et coups pour conclure au filet";
+"drill.cat.patterns.summary" = "Schémas classiques (décroisé, à contre-pied, service +1)";
+"drill.cat.net_game.summary" = "Placement de volée, défense sur lob";
+"drill.cat.return.summary" = "Cible de retour et gestion du risque";
+
+/* Drill v2 — shot type picker + incoming ball */
+"drill.shot_picker_prompt" = "Quel coup joues-tu ?";
+"drill.shot_correct_format" = "%@ — le bon choix.";
+"drill.shot_incorrect_format" = "%@ — mieux valait %@.";
+"drill.shot.topspin" = "Lift";
+"drill.shot.flat" = "À plat";
+"drill.shot.slice" = "Slice";
+"drill.shot.drop" = "Amortie";
+"drill.shot.lob" = "Lob";
+"drill.incoming_kicker" = "BALLE REÇUE";
+"drill.spin.topspin" = "Lift";
+"drill.spin.flat" = "À plat";
+"drill.spin.slice" = "Slice";
+"drill.spin.kick" = "Kické";
+"drill.speed.slow" = "Lente";
+"drill.speed.medium" = "Moy.";
+"drill.speed.fast" = "Rapide";
+"drill.height.low" = "Basse";
+"drill.height.mid" = "Moy.";
+"drill.height.high" = "Haute";
+
+/* Play style profile card */
+"drill.style_kicker" = "Style de jeu";
+"drill.style_pending" = "Ton style de jeu se dessine";
+"drill.style_pending_progress_format" = "%d / %d choix de coup avant que ton archétype se fixe";
+"drill.style_accuracy_format" = "Justesse du choix de coup : %d %%";
+"drill.style_footnote_format" = "Construit à partir de %d choix de coup sur l'ensemble des exercices. S'affine à mesure que tu joues.";
+
+/* Play style archetypes */
+"drill.archetype.topspinBaseliner" = "Lifteur de fond de court";
+"drill.archetype.topspinBaseliner.summary" = "Tu joues lourd, long, à haut pourcentage. Le lift est ta base.";
+"drill.archetype.flatAggressor" = "Frappeur à plat";
+"drill.archetype.flatAggressor.summary" = "Tu traverses la balle et veux des échanges courts. La vitesse avant l'effet.";
+"drill.archetype.sliceArtist" = "Spécialiste du slice";
+"drill.archetype.sliceArtist.summary" = "Tu déranges l'adversaire avec des balles basses qui glissent. La défense est ton arme.";
+"drill.archetype.allCourt" = "Joueur complet";
+"drill.archetype.allCourt.summary" = "Tu varies selon la situation, pas selon une habitude.";
+"drill.archetype.netRusher" = "Attaquant au filet";
+"drill.archetype.netRusher.summary" = "Amorties et lobs dans ton jeu — tu aimes la transition et le filet.";
+"drill.archetype.defensiveCounter" = "Contreur défensif";
+"drill.archetype.defensiveCounter.summary" = "Lift plus slice : tu absorbes la vitesse et tu la retournes.";
+"drill.share" = "Partager le résultat";
+"drill.label_excellent" = "Lecture de pro.";
+"drill.label_strong" = "Belle lecture.";
+"drill.label_decent" = "Correct — affûte encore.";
+"drill.label_keep_going" = "Continue à t'entraîner.";
+
+/* ── Activity Rings ── */
+"rings.quiz" = "Exercice";
+"rings.match" = "Match";
+"rings.mobility" = "Mobilité";
+"rings.triple_ring" = "Triple anneau !";
+
+/* ── Avatar / Locker Room ── */
+"avatar.your_player" = "Ton joueur";
+"avatar.tap_to_customize" = "Personnalise ton look";
+"avatar.locker_title" = "Vestiaire";
+"avatar.cat_outfit" = "Tenue";
+"avatar.cat_racket" = "Raquette";
+"avatar.cat_court" = "Court";
+"avatar.cat_accent" = "Couleur";
+"avatar.cat_stance" = "Posture";
+
+/* ── Pro Shot of the Day ── */
+"pro_shot.card_kicker" = "Le coup de pro du jour";
+"pro_shot.play" = "Lancer";
+"pro_shot.replay" = "Revoir";
+"pro_shot.you_hit" = "TOI, tu frappes";
+"pro_shot.op_hit" = "L'adversaire frappe";
+"pro_shot.educational" = "Référence pédagogique. Sans affiliation ni approbation d'un joueur, de l'ATP, de la WTA ou de l'ITF.";
+"pro_shot.intro_kicker" = "Comment lire ça";
+"pro_shot.intro_title" = "Regarde un vrai schéma se dérouler.";
+"pro_shot.intro_body" = "La balle jaune trace la trajectoire de chaque coup. TOI, tu restes en bas, l'adversaire (OP) en haut. Le repère du frappeur pulse et la légende nomme le coup. Touche Lancer pour démarrer.";
+"pro_shot.intro_cta" = "Compris";
+
+/* ── Notifications ── */
+"notif.permission.title" = "Garde ta série";
+"notif.permission.body" = "Un petit rappel chaque matin pour ne pas laisser filer le quiz du jour.";
+"notif.permission.enable" = "Activer les rappels";
+"notif.permission.later" = "Plus tard";
+"notif.daily.title" = "Ton DropVolley du jour est prêt";
+"notif.daily.body" = "5 situations rapides, 3 minutes. Garde ta série en vie.";
+"notif.streak_risk.title" = "Ne casse pas la chaîne 🔥";
+"notif.streak_risk.body" = "Ta série de %d jours s'arrête à minuit. Un exercice rapide la garde en vie.";
+
+/* ── Match-log nudge + weekly digest (v1.1.C) ── */
+"notif.match_log.title" = "Tu as joué aujourd'hui ?";
+"notif.match_log.body" = "30 secondes pour noter ton match tant qu'il est frais.";
+"notif.match_result.title" = "Comment s'est passé ton match ?";
+"notif.match_result.body" = "Comment s'est passé ton match contre %@ ? Ajoute le résultat.";
+"notif.weekly.title" = "Ta semaine de tennis";
+"notif.weekly.body" = "Tes tendances viennent d'être mises à jour — ouvre DropVolley pour voir ce qui a bougé.";
+
+/* ── Notification settings screen (v1.1.C) ── */
+"notif.settings.title" = "Notifications";
+"notif.settings.daily_reminder" = "Rappel du quiz quotidien";
+"notif.settings.daily_reminder_desc" = "Un rappel le matin pour garder ta série de quiz en vie.";
+"notif.settings.match_log" = "Rappel du journal de match";
+"notif.settings.match_log_desc" = "Rappel du soir pour noter le match du jour tant qu'il est frais.";
+"notif.settings.weekly" = "Résumé hebdomadaire des tendances";
+"notif.settings.weekly_desc" = "Récap du lundi matin : tes notes, tes matchs et les plus gros écarts.";
+"notif.settings.system_disabled" = "Les notifications sont désactivées dans les Réglages iOS — active-les pour DropVolley afin d'utiliser ces options.";
+"notif.settings.open_settings" = "Ouvrir les Réglages iOS";
+
+/* ── Legal ── */
+"legal.privacy" = "Politique de confidentialité";
+"legal.terms" = "Conditions d'utilisation";
+"legal.support" = "Assistance";
+"legal.moderation" = "Politique de modération";
+"legal.privacy_body" = "DropVolley conserve la progression des invités localement sur ton appareil. Quand tu te connectes avec Apple, ton profil, ton historique de quiz, tes séances, tes bilans hebdomadaires et ton activité communautaire peuvent être synchronisés avec ton compte DropVolley via nos services. Nous ne vendons aucune donnée personnelle et n'utilisons que les données nécessaires aux achats, à la synchronisation, à l'assistance et à la modération.";
+"legal.terms_body" = "DropVolley Premium est un abonnement à renouvellement automatique qui débloque le Coach IA. Toutes les autres fonctionnalités de DropVolley sont gratuites. La facturation est gérée par Apple via ton compte App Store et se renouvelle automatiquement sauf résiliation au moins 24 heures avant la fin de la période en cours.";
+"legal.support_body" = "L'assistance est joignable via le lien publié pour les questions de facturation, de compte, de synchronisation et les demandes de modération. Si tu signales un contenu abusif ou nuisible, l'équipe de modération l'examine via le circuit d'assistance et d'administration relié à DropVolley.";
+"legal.moderation_body" = "Les discussions restent rattachées au contenu DropVolley. Les joueurs peuvent signaler un commentaire pour un examen manuel. Tout contenu offensant, abusif, indésirable ou dangereux peut être supprimé, et des manquements répétés peuvent entraîner des restrictions ou l'exclusion de la communauté.";
+"legal.open_doc" = "Ouvrir le document publié";
+
+/* ── Progression ── */
+"progression.title" = "Comment marche la progression";
+"progression.this_week" = "Cette semaine";
+"progression.training_sessions" = "Séances d'entraînement";
+"progression.mobility_flows" = "Séances de mobilité";
+"progression.quiz_correct" = "Bonnes réponses aux quiz";
+"progression.tap_to_start" = "Touche le cercle 1 pour lancer ta première semaine.";
+"progression.level_complete" = "Niveau terminé !";
+"progression.premium_required" = "Premium requis";
+"progression.how_it_works" = "Comment ça marche";
+"progression.how_1" = "Réussis 9 semaines pour passer au niveau de joueur suivant.";
+"progression.how_2" = "Une semaine démarre quand tu touches le cercle 1 — ou automatiquement après la semaine précédente.";
+"progression.how_3" = "Remplis les 3 conditions dans la semaine et le cercle passe au vert tout seul.";
+"progression.how_4" = "Seules les activités faites après le début de la semaine comptent.";
+"progression.weekly_req" = "Conditions de la semaine";
+"progression.training_hint" = "Coche au moins un jour dans un programme d'entraînement.";
+"progression.mobility_hint" = "Ouvre une séance de mobilité pendant la semaine en cours.";
+"progression.quiz_hint" = "Bonnes réponses de n'importe quel quiz quotidien ou d'entraînement cette semaine.";
+"progression.player_levels" = "Niveaux de joueur";
+"progression.tip_1" = "Tu n'as pas besoin de remplir les 3 conditions le même jour.";
+"progression.tip_2" = "L'entraînement et la mobilité ne comptent qu'à partir du début de la semaine en cours.";
+"progression.tip_3" = "Rater une semaine, c'est simplement repartir sur une nouvelle tentative — ta progression ne se remet pas à zéro.";
+"progression.tip_4" = "Associe ça au quiz quotidien : c'est la route la plus rapide vers les niveaux supérieurs.";
+"progression.max" = "Max";
+"progression.level_reached_desc" = "Tu as atteint %@. Un nouveau parcours va s'ouvrir.";
+"progression.premium_gate_desc" = "Tu as atteint %@. Débloque Premium pour continuer à travers tous les niveaux de joueur.";
+
+/* ── App ── */
+"app.account_issue" = "Problème de compte";
+
+/* ── AI Coach (v1.x) ── */
+"ai.title" = "Coach IA";
+"ai.kicker" = "Un coach spécialisé tennis";
+"ai.headline" = "Ton jeu, mis en mots";
+"ai.card_subtitle" = "Reviens sur un match, prépare le suivant, reçois des exercices adaptés à tes données.";
+"ai.premium_badge" = "Premium";
+"ai.new_chat" = "Nouvelle discussion";
+"ai.start_first" = "Lance ta première discussion";
+"ai.empty_title" = "Aucune conversation pour l'instant";
+"ai.empty_body" = "Interroge le coach sur un match, une note faible ou ton prochain adversaire. Il connaît déjà ton journal.";
+"ai.recent_chats" = "Discussions récentes";
+"ai.no_messages_yet" = "(aucun message)";
+"ai.composer_placeholder" = "Pose une question sur un match, un exercice ou un schéma…";
+"ai.send" = "Envoyer";
+"ai.starter_kicker" = "Essaie de demander";
+"ai.starter_1" = "Pourquoi je perds toujours contre le même joueur ?";
+"ai.starter_2" = "Comment rendre ma deuxième balle fiable ?";
+"ai.starter_3" = "Où dois-je me placer en double ?";
+"ai.starter_4" = "Sur quoi travailler pour gagner plus ?";
+"ai.thread_hint_kicker" = "Idées rapides";
+"ai.thread_hint_body" = "Essaie « je joue contre Begum demain — quel est mon plan de jeu ? » ou « mon score mental est à 2/5 sur les 5 derniers matchs, je fais quoi ? » — le coach a ton journal de match et ton historique de quiz.";
+"ai.quota_remaining_format" = "%d messages restants aujourd'hui";
+"ai.quota_unknown" = "Quota quotidien · remis à zéro à 00:00";
+"ai.quota_resets" = "Remis à zéro à minuit, heure locale";
+"ai.quota_reached" = "Limite quotidienne atteinte — remise à zéro à minuit.";
+"ai.error_sign_in_required" = "Connecte-toi avec Apple pour utiliser le Coach IA.";
+"ai.error_send_generic" = "Envoi impossible. Vérifie ta connexion et réessaie.";
+"ai.error_connect" = "Impossible de joindre le Coach IA. Vérifie ta connexion et réessaie.";
+
+/* AI Coach safety disclaimer — shown above the first message in every thread */
+"ai.disclaimer_title" = "Le Coach IA est un outil de réflexion, pas un médecin ni ton vrai entraîneur.";
+"ai.disclaimer_body" = "Ces réponses sont écrites par Claude (Anthropic). Il peut inventer des exercices, mal lire tes données ou se tromper de tactique. Vérifie avant d'agir, et ne l'utilise jamais comme avis médical ou en cas de blessure.";
+"ai.disclaimer_dismiss" = "Compris";
+
+/* AI Coach paywall stub */
+"ai.paywall_headline" = "Le Coach IA est la seule fonctionnalité premium.";
+"ai.paywall_subhead" = "Tout le reste de DropVolley est gratuit. Le Coach IA est premium parce que chaque message a un coût réel.";
+"ai.paywall_bullet_context" = "Il connaît tes 5 derniers matchs, tes notes et tes erreurs de quiz — plus besoin de réexpliquer ton jeu à chaque fois.";
+"ai.paywall_bullet_library" = "Il te propose des exercices, des séances de mobilité et des programmes déjà présents dans DropVolley — nommément.";
+"ai.paywall_bullet_import" = "Importe tes discussions tennis ChatGPT pour ne rien perdre. Colle une fois, le coach s'en souvient.";
+"ai.paywall_bullet_privacy" = "Aucune pub, aucun pistage tiers. Les discussions sont envoyées à Claude d'Anthropic pour générer les réponses et restent privées sur ton compte.";
+"ai.paywall_cta" = "Débloquer le Coach IA";
+"ai.paywall_price_hint" = "Mensuel ou annuel. Résiliable à tout moment dans les Réglages.";
+"ai.paywall_legal" = "Le Coach IA fonctionne avec Claude d'Anthropic. Jusqu'à 30 messages par jour.";
+
+/* AI Coach — paste import */
+"ai.import_menu" = "Importer depuis ChatGPT";
+"ai.import_title" = "Importer du contexte";
+"ai.import_kicker" = "Depuis tes discussions ChatGPT";
+"ai.import_headline" = "Amène ton histoire tennis dans DropVolley.";
+"ai.import_body" = "Colle le passage le plus utile de ta conversation tennis ChatGPT — le coach s'en souviendra désormais, tu n'auras plus à réexpliquer ton jeu.";
+"ai.import_placeholder" = "Colle ici ton extrait ChatGPT…";
+"ai.import_char_count_format" = "%d / %d caractères";
+"ai.import_save_cta" = "Enregistrer dans le contexte de mon coach";
+"ai.import_saved_title" = "Enregistré";
+"ai.import_saved_body" = "Ton coach utilisera ce contexte dans toutes tes prochaines discussions.";
+"ai.import_privacy_kicker" = "Ce que nous conservons";
+"ai.import_privacy_body" = "Uniquement le texte que tu colles ici, rattaché à ton compte. Stocké sur le backend Supabase de DropVolley et utilisé seulement pour construire ton contexte de coaching. Tu peux le remplacer ou le supprimer à tout moment.";
+
+/* Common */
+"common.dismiss" = "Fermer";
+
+/* Onboarding — tactical self-assessment */
+"self_assess.kicker" = "Point de départ tactique";
+"self_assess.title" = "Où en est ton jeu aujourd'hui ?";
+"self_assess.body" = "Note-toi de 1 (faible) à 5 (fort) dans chaque domaine. Ce sera ton profil de départ, affiné au fil de tes exercices et quiz. Tu hésites ? Laisse à 3 — tes vraies répétitions prendront le dessus.";
+"self_assess.submit" = "Enregistrer mon point de départ";
+
+/* Training hub */
+"training.plan_matched" = "Plan adapté à %@";
+"training.freq_12_days" = "1–2 jours/semaine";
+"training.freq_12_note" = "Le plan de base tient en deux séances — exactement ton rythme.";
+"training.freq_34_days" = "3–4 jours/semaine";
+"training.freq_34_note" = "La boucle de 4 jours du plan de base est faite pour ton rythme.";
+"training.freq_5_days" = "5 jours/semaine ou plus";
+"training.freq_5_note" = "Les joueurs très assidus tirent le meilleur du bloc Condition de match une fois Premium débloqué.";
+"training.block_title" = "Bloc d'entraînement de 8 semaines";
+"training.block_focus" = "Pliométrie, hypertrophie, explosivité, condition physique";
+"training.block_repeat" = "Répète la structure hebdomadaire pendant 8 semaines, enregistre chaque séance et compare tes points d'étape dans le temps.";
+"training.whats_next" = "La suite";
+"training.after_week8" = "Après la semaine 8";
+"training.weeks_8" = "8 semaines";
+"training.progression_71" = "Progression 7+1 : nouveau stimulus d'adaptation pendant 3 semaines, semaine test issue de ce plan en semaine 4, puis consolidation jusqu'à la semaine 8.";
+
+/* Daily Tennis IQ loop */
+"iq.eyebrow" = "QI Tennis";
+"iq.daily_title" = "QI Tennis";
+"iq.placement_title" = "Test de niveau";
+"iq.mastered_fmt" = "%d situations maîtrisées sur %d";
+"iq.estimated_chip" = "Estimation — fais le test de niveau pour calibrer";
+"iq.baseline_title" = "Fais ton point de départ";
+"iq.baseline_body" = "8 situations · 3 min";
+"iq.baseline_start" = "Commencer le test";
+"iq.baseline_skip" = "Passer pour l'instant";
+"iq.baseline_set" = "Point de départ enregistré";
+"iq.daily_ready_title" = "Séance du jour";
+"iq.daily_ready_body" = "5 situations · 2 min";
+"iq.daily_start" = "Commencer";
+"iq.done_title" = "Terminé pour aujourd'hui";
+"iq.done_body" = "Série préservée.";
+"iq.train_more" = "S'entraîner encore";
+"iq.blind_spot" = "Angle mort";
+"iq.focus_chip" = "À TRAVAILLER";
+"iq.categories" = "Ta carte du court";
+"iq.summary_title" = "Séance terminée";
+"iq.summary_correct_fmt" = "%d/%d correctes";
+"iq.xp_fmt" = "+%d XP";
+"iq.streak_fmt" = "série de %d jours";
+"iq.done_button" = "Terminé";
+"home.iq_hero_eyebrow" = "QI TENNIS";
+"home.iq_hero_baseline" = "Fais ton point de départ · 3 min";
+"home.iq_hero_ready" = "Séance du jour · 2 min";
+"home.iq_hero_done" = "Terminé pour aujourd'hui";
+"iq.path" = "Parcours technique";
+"iq.chart_title" = "Ton QI dans le temps";
+"iq.unit_fmt" = "Unité %d";
+"iq.locked" = "Verrouillé";
+"common.beta" = "BÊTA";
+
+/* Coach Review G0 interest card */
+"coachreview.card_eyebrow" = "VRAI COACH · BIENTÔT";
+"coachreview.card_title" = "Fais analyser ton geste par un vrai coach";
+"coachreview.card_sub" = "Analyse vocale · 72 h · 19,99 $";
+"coachreview.card_joined" = "Tu es sur la liste — on te préviendra au lancement";
+"coachreview.sheet_title" = "Un vrai coach analyse ta vidéo";
+"coachreview.point1" = "2 à 3 min d'analyse vocale sur tes propres coups";
+"coachreview.point2" = "Une grille en 5 points et des notes horodatées";
+"coachreview.point3" = "LA correction qui compte le plus — et l'exercice qui va avec";
+"coachreview.point4" = "Livré sous 72 heures";
+"coachreview.price" = "Prix de lancement 19,99 $ · rien à payer aujourd'hui";
+"coachreview.privacy" = "Seul le coach qui t'analyse peut la regarder — en streaming uniquement, jamais téléchargée, jamais partagée. Tout usage marketing demande ton accord séparé.";
+"coachreview.cta" = "Préviens-moi au lancement";
+"coachreview.done" = "Terminé";
+"coachreview.coach_line" = "Ton coach : 15 ans sur le court, un passé de joueur de niveau national, a entraîné tous les niveaux. Personnel — jamais automatisé.";
+"coachreview.path_title" = "Choisis ta voie";
+"coachreview.ai_eyebrow" = "ANALYSE IA";
+"coachreview.ai_title" = "Analyser maintenant";
+"coachreview.ai_sub" = "Immédiat · inclus";
+"coachreview.roster_title" = "Les coachs de notre réseau — ouverts selon la demande";
+"coachreview.tier_player" = "Analyse par un joueur confirmé";
+"coachreview.tier_player_sub" = "Un avis franc d'un joueur de bon niveau · option économique";
+"coachreview.tier_level2" = "Coach certifié niveau 2";
+"coachreview.tier_level2_sub" = "Certifié niveau 2 · 20 ans · plus de 100 jeunes formés · analyses en turc";
+"coachreview.tier_level3" = "Coach certifié niveau 3";
+"coachreview.tier_level3_sub" = "Coach certifié niveau 3 basé en Irlande · plan de jeu complet, périmètre sur mesure";
+"coachreview.join_waitlist" = "Rejoindre la liste d'attente";
+"coachreview.get_quote" = "Demander un devis";
+"coachreview.on_list" = "Sur la liste";
+
+/* Coach Review P0 — paid order + deliverable */
+"coachreview.order_title" = "Analyse par un coach";
+"coachreview.order_headline" = "Envoie ce clip à un coach";
+"coachreview.note_label" = "Quelque chose à regarder ?";
+"coachreview.note_placeholder" = "Facultatif — ex. ma deuxième balle";
+"coachreview.consent_human" = "Un vrai coach pourra regarder cette vidéo";
+"coachreview.consent_adult" = "J'ai 18 ans ou plus";
+"coachreview.order_cta" = "Acheter l'analyse · 19,99 $";
+"coachreview.sending" = "Envoi…";
+"coachreview.error_title" = "Envoi impossible";
+"coachreview.sent_title" = "C'est parti";
+"coachreview.sent_body" = "Ton coach a 72 heures. On te prévient dès que c'est prêt.";
+"coachreview.status_submitted" = "Chez ton coach";
+"coachreview.status_in_review" = "En cours d'analyse";
+"coachreview.status_delivered" = "Analyse prête";
+"coachreview.status_refunded" = "Remboursé";
+"coachreview.status_cancelled" = "Annulé";
+"coachreview.hours_left_fmt" = "%d h restantes";
+"coachreview.report_title" = "Ton analyse";
+"coachreview.from_coach" = "DE TON COACH";
+"coachreview.scorecard" = "Grille de notes";
+"coachreview.one_thing" = "LA CHOSE À CHANGER";
+"coachreview.moments" = "Moments clés";
+"coachreview.your_drill" = "Ton exercice";
+"coachreview.voice_title" = "Analyse vocale";
+"coachreview.voice_hint" = "2 à 3 min de ton coach";
+"coachreview.voice_playing" = "Lecture";
+"coachreview.not_judged" = "non jugé sous cet angle";
+"coachreview.cp_preparation" = "Préparation";
+"coachreview.cp_contact" = "Impact";
+"coachreview.cp_chain" = "Chaîne";
+"coachreview.cp_finish" = "Finition";
+"coachreview.cp_footwork" = "Jeu de jambes";
+"coachreview.open_review" = "Ouvrir l'analyse";
+"coachreview.order_eyebrow" = "ANALYSE PAR UN VRAI COACH";
+"ai.ask_coach" = "Demande à ton coach";
+"train.group_court" = "SUR LE COURT";
+"train.group_body" = "LE CORPS";
+"train.drills" = "Exercices";
