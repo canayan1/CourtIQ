@@ -34,7 +34,15 @@
       "ballTargetY": 0.3,
       "scoreChip": "DEUCE COURT"
     },
-    "tacticalCategory": "patterns"
+    "tacticalCategory": "patterns",
+    "scenarioFr": "Tu as servi extérieur trois fois de suite côté égalité et ton adversaire anticipe déjà de ce côté. Quel est le bon service suivant ?",
+    "optionsFr": [
+      "Servir au T pour punir l'anticipation",
+      "Servir encore extérieur — ça marche",
+      "Servir à plat au milieu pour surprendre"
+    ],
+    "explanationFr": "Dès que le relanceur se décale, la ligne du T s'ouvre. Un service au T punit l'anticipation sans exiger de vitesse supplémentaire.",
+    "takeawayFr": "Un schéma marche jusqu'à ce qu'il soit lu — change alors de direction, pas de vitesse."
   },
   {
     "id": "serve_022",
@@ -71,7 +79,15 @@
       "ballTargetY": 0.55,
       "scoreChip": "AD COURT · +1 SHOT"
     },
-    "tacticalCategory": "open_court"
+    "tacticalCategory": "open_court",
+    "scenarioFr": "Tu sers un extérieur lourd côté avantage et le retour flotte en croisé au milieu du court. Où joues-tu ton +1 ?",
+    "optionsFr": [
+      "Dans le côté égalité ouvert, en coup droit",
+      "Derrière l'adversaire, vers le coin avantage",
+      "Une amortie pour surprendre"
+    ],
+    "explanationFr": "Le service extérieur a ouvert le court. Le coup droit dans le coin égalité libre est une balle de conclusion à haut pourcentage.",
+    "takeawayFr": "Le service ouvre le court ; le +1 utilise cet espace."
   },
   {
     "id": "serve_023",
@@ -108,7 +124,15 @@
       "ballTargetY": 0.32,
       "scoreChip": "3RD SET · 35% 1ST"
     },
-    "tacticalCategory": "patterns"
+    "tacticalCategory": "patterns",
+    "scenarioFr": "Tu es au fond du troisième set et ton pourcentage de premières balles est tombé à 35 %. Quel est le premier ajustement ?",
+    "optionsFr": [
+      "Baisser la vitesse de 10 à 15 % et privilégier l'effet",
+      "Tenter plus d'aces pour finir les points vite",
+      "Changer de prise pour essayer autre chose"
+    ],
+    "explanationFr": "La fatigue raccourcit ta chaîne cinétique. Enlever de la vitesse et ajouter de l'effet garde un service efficace sans forcer.",
+    "takeawayFr": "Fatigué, échange la vitesse contre le placement — ne cours pas après les aces."
   },
   {
     "id": "serve_024",
@@ -145,7 +169,15 @@
       "ballTargetY": 0.32,
       "scoreChip": "2ND SERVE"
     },
-    "tacticalCategory": "patterns"
+    "tacticalCategory": "patterns",
+    "scenarioFr": "Ton adversaire se place très loin derrière pour retourner les deuxièmes balles. Quel est le meilleur choix ?",
+    "optionsFr": [
+      "Un service kické qui rebondit au-dessus de l'épaule",
+      "Un slice lent à l'extérieur",
+      "Un service à plat au T"
+    ],
+    "explanationFr": "Un relanceur très reculé est vulnérable aux balles à rebond haut qui l'obligent à frapper au-dessus de l'épaule.",
+    "takeawayFr": "Quand il recule, fais rebondir haut — ne pousse pas la balle."
   },
   {
     "id": "serve_025",
@@ -182,7 +214,15 @@
       "ballTargetY": 0.32,
       "scoreChip": "30–40 BREAK PT"
     },
-    "tacticalCategory": "patterns"
+    "tacticalCategory": "patterns",
+    "scenarioFr": "30-40, la première balle de break du set contre toi. Ton adversaire attaque les deuxièmes balles. Quelle est la priorité ?",
+    "optionsFr": [
+      "Mettre la première balle — même à 80 % de vitesse",
+      "Frapper fort et risquer la faute",
+      "Servir-volée pour raccourcir le point"
+    ],
+    "explanationFr": "Sur balle de break, le résultat le plus précieux est une première balle en jeu. Une première à 80 % gagne encore des points ; une faute offre l'initiative à un relanceur agressif.",
+    "takeawayFr": "Une balle de break, ce n'est pas une histoire d'aces — c'est une histoire de premières balles."
   },
   {
     "id": "serve_026",
@@ -219,7 +259,15 @@
       "ballTargetY": 0.3,
       "scoreChip": "AD COURT"
     },
-    "tacticalCategory": "patterns"
+    "tacticalCategory": "patterns",
+    "scenarioFr": "Un adversaire droitier se place un peu plus près du couloir côté avantage. Quel service exploite ça ?",
+    "optionsFr": [
+      "Service au T dans son revers",
+      "Slice extérieur sur son coup droit",
+      "Service sur le corps, dans les pieds"
+    ],
+    "explanationFr": "En se décalant vers le couloir, il ouvre complètement le T et se retrouve coincé sur un retour de revers.",
+    "takeawayFr": "Lis le placement du relanceur avant chaque service — adapte-toi à sa position, pas à la tienne."
   },
   {
     "id": "serve_027",
@@ -244,7 +292,15 @@
     ],
     "explanationTr": "Baskı altında yaklaşımı değiştirmek boğulmanın başlıca nedenidir. Liderliği getiren şeye sadık kal.",
     "takeawayTr": "Seti kapatmak için seni lider yapan şekilde servis atmaya devam et.",
-    "tacticalCategory": "patterns"
+    "tacticalCategory": "patterns",
+    "scenarioFr": "Tu sers à 5-3 pour conclure le set. Quelle est la bonne approche mentale ?",
+    "optionsFr": [
+      "Jouer tes schémas habituels — pas de mode protection",
+      "Jouer plus prudemment que d'habitude",
+      "Frapper plus fort que d'habitude pour finir"
+    ],
+    "explanationFr": "Changer d'approche sous pression, c'est exactement ce qui fait craquer. Reste sur ce qui t'a donné l'avance.",
+    "takeawayFr": "Pour conclure un set, continue de servir comme tu l'as gagné."
   },
   {
     "id": "serve_028",
@@ -281,7 +337,15 @@
       "ballTargetY": 0.32,
       "scoreChip": "BODY SERVE"
     },
-    "tacticalCategory": "patterns"
+    "tacticalCategory": "patterns",
+    "scenarioFr": "Tu joues contre un adversaire grand, aux bras longs, qui retourne facilement les services extérieurs. Quel ajustement ?",
+    "optionsFr": [
+      "Servir sur le corps pour bloquer son geste",
+      "Servir encore plus extérieur pour l'étirer",
+      "Servir plus court pour un rebond bas"
+    ],
+    "explanationFr": "Les grands joueurs couvrent bien l'extérieur grâce à leur allonge. Un service sur le corps annule cet avantage et coince leur geste.",
+    "takeawayFr": "Contre des bras longs, colle-le — ne l'étire pas."
   },
   {
     "id": "serve_029",
@@ -306,7 +370,15 @@
     ],
     "explanationTr": "Çifte hatadan sonra yumuşatmak kısa ve saldırılabilir bir top üretir ve kaygı döngüsünü besler.",
     "takeawayTr": "Çifte hata tek puandır — servis değiştirme sinyali değil.",
-    "tacticalCategory": "patterns"
+    "tacticalCategory": "patterns",
+    "scenarioFr": "Tu viens de faire une double faute. Au point suivant, quelle première balle ?",
+    "optionsFr": [
+      "Ta première balle habituelle — ne lève pas le pied",
+      "Une première prudente à 70 %",
+      "Frapper fort pour évacuer la faute"
+    ],
+    "explanationFr": "Lever le pied après une double faute produit une balle courte et attaquable, et nourrit l'anxiété. Fais confiance à ta mécanique.",
+    "takeawayFr": "Une double faute, c'est un point — pas un signal pour changer ton service."
   },
   {
     "id": "serve_030",
@@ -331,7 +403,15 @@
     ],
     "explanationTr": "Alçak atılan top havada daha az kalır ve rüzgardan daha az etkilenir. Hız atış kaymasını düzeltmez.",
     "takeawayTr": "Rüzgarda atışı kısalt — hızın peşinde koşma.",
-    "tacticalCategory": "patterns"
+    "tacticalCategory": "patterns",
+    "scenarioFr": "Un vent fort souffle vers ton côté quand tu sers côté égalité. Quel ajustement aide le plus ?",
+    "optionsFr": [
+      "Un lancer plus bas pour réduire l'effet du vent",
+      "Un lancer plus haut pour avoir plus de temps",
+      "Le même lancer, plus de vitesse"
+    ],
+    "explanationFr": "Un lancer plus bas reste moins longtemps en l'air et dérive moins. La vitesse ne corrige pas une dérive de lancer.",
+    "takeawayFr": "Dans le vent, raccourcis le lancer — ne cherche pas la vitesse."
   },
   {
     "id": "return_021",
@@ -368,7 +448,15 @@
       "ballTargetY": 0.88,
       "scoreChip": "DEFENSIVE BLOCK"
     },
-    "tacticalCategory": "return"
+    "tacticalCategory": "return",
+    "scenarioFr": "Sur une grosse première balle, tu es obligé de bloquer en défense. Quelle est la cible principale ?",
+    "optionsFr": [
+      "Profond, par le milieu du court",
+      "Croisé et angulé pour la longueur",
+      "Court pour le faire monter"
+    ],
+    "explanationFr": "Le milieu profond neutralise les angles et te laisse le temps de te replacer. En bloc défensif, recentrer la balle est plus sûr que n'importe quel angle.",
+    "takeawayFr": "Un retour défensif part profond et au centre — pas à l'extérieur."
   },
   {
     "id": "return_022",
@@ -405,7 +493,15 @@
       "ballTargetY": 0.7,
       "scoreChip": "STEP IN"
     },
-    "tacticalCategory": "return"
+    "tacticalCategory": "return",
+    "scenarioFr": "La première balle de ton adversaire tourne sous les 160 km/h. Où te places-tu pour retourner ?",
+    "optionsFr": [
+      "À l'intérieur de la ligne de fond pour lui voler du temps",
+      "Deux pas derrière la ligne pour te donner du temps",
+      "Au même endroit que face à un gros serveur"
+    ],
+    "explanationFr": "Face à un service plus lent, avancer dans le court enlève du temps au serveur pour son coup suivant et le met immédiatement sous pression.",
+    "takeawayFr": "La position de retour est une arme — règle-la sur la vitesse du serveur."
   },
   {
     "id": "return_023",
@@ -436,7 +532,15 @@
       "youY": 0.92,
       "scoreChip": "BEFORE THE SERVE"
     },
-    "tacticalCategory": "return"
+    "tacticalCategory": "return",
+    "scenarioFr": "Avant le service, sur quoi dois-tu être mentalement engagé ?",
+    "optionsFr": [
+      "Une zone cible précise pour ton retour",
+      "Le coup qui te semblera juste à l'impact",
+      "Juste remettre la balle en jeu"
+    ],
+    "explanationFr": "Une décision prise avant l'impact est plus calme et plus nette. Décider au moment de la frappe mène à des gestes hésitants.",
+    "takeawayFr": "Choisis la direction du retour avant que la balle quitte la main du serveur."
   },
   {
     "id": "return_024",
@@ -473,7 +577,15 @@
       "ballTargetY": 0.82,
       "scoreChip": "AD COURT · KICK"
     },
-    "tacticalCategory": "return"
+    "tacticalCategory": "return",
+    "scenarioFr": "Côté avantage, le serveur sort un service kické extérieur qui saute sur ton revers. Meilleure cible ?",
+    "optionsFr": [
+      "Un retour bloqué haut, croisé et profond",
+      "Un long de ligne tenté en gagnant",
+      "Une amortie"
+    ],
+    "explanationFr": "Un kické extérieur à rebond haut est une mauvaise balle à attaquer. Neutraliser en croisé te laisse le temps de revenir au centre.",
+    "takeawayFr": "Sur un kické qui te sort du court, remets-toi en jeu — ne contre pas."
   },
   {
     "id": "return_025",
@@ -506,7 +618,15 @@
       "opponentY": 0.05,
       "scoreChip": "SPLIT STEP"
     },
-    "tacticalCategory": "return"
+    "tacticalCategory": "return",
+    "scenarioFr": "Quand ton split-step doit-il retomber par rapport à l'impact du serveur ?",
+    "optionsFr": [
+      "Juste avant que le serveur frappe la balle",
+      "Exactement au moment de la frappe",
+      "Après avoir vu la direction de la balle"
+    ],
+    "explanationFr": "Retomber juste avant l'impact met tes pieds au contact du sol au moment où le service part — et te donne une poussée explosive vers la balle.",
+    "takeawayFr": "Retombe du split juste avant la frappe — pas après."
   },
   {
     "id": "return_026",
@@ -543,7 +663,15 @@
       "ballTargetY": 0.7,
       "scoreChip": "2ND SERVE · KICK"
     },
-    "tacticalCategory": "return"
+    "tacticalCategory": "return",
+    "scenarioFr": "La deuxième balle adverse tourne à 140 km/h avec beaucoup de kick. Quel est le meilleur schéma de retour agressif ?",
+    "optionsFr": [
+      "Avancer et la prendre à la montée, en croisé",
+      "Avancer mais tenter le long de ligne gagnant",
+      "Rester derrière et bloquer prudemment"
+    ],
+    "explanationFr": "Avancer prive le kick de sa hauteur de rebond. La frapper en croisé est le retour agressif le plus rentable — plus de longueur de court et un filet plus bas te donnent la marge pour enchaîner le +1. Le long de ligne est tentant, mais moins rentable sur une balle kickée profonde.",
+    "takeawayFr": "Attaque une deuxième balle en avançant — et joue croisé pour la marge."
   },
   {
     "id": "return_027",
@@ -580,7 +708,15 @@
       "ballTargetY": 0.16,
       "scoreChip": "RECOVER MIDDLE"
     },
-    "tacticalCategory": "return"
+    "tacticalCategory": "return",
+    "scenarioFr": "Après un retour croisé profond, quel est ton premier déplacement de replacement ?",
+    "optionsFr": [
+      "Sprinter pour couvrir le tiers central du court",
+      "Admirer ton retour et te préparer au point suivant",
+      "Reculer au plus profond de la ligne de fond"
+    ],
+    "explanationFr": "Un retour croisé profond laisse au serveur des angles étroits. Couvrir le tiers central te place pour la majorité des réponses.",
+    "takeawayFr": "Le retour n'est pas la fin du point — replace-toi tout de suite."
   },
   {
     "id": "return_028",
@@ -617,7 +753,15 @@
       "ballTargetY": 0.16,
       "scoreChip": "CHIP & CHARGE · 30-0"
     },
-    "tacticalCategory": "return"
+    "tacticalCategory": "return",
+    "scenarioFr": "Face à un serveur lent en fond de court, quand le retour coupé-montée est-il intelligent ?",
+    "optionsFr": [
+      "Sur une deuxième balle prévisible à 30-0",
+      "Sur chaque première balle",
+      "Uniquement sur les balles de break"
+    ],
+    "explanationFr": "Le retour coupé-montée sur une deuxième balle prévisible à 30-0 met un adversaire lent en fond de court dans une situation de passing qu'il n'aime pas — sans risquer un score critique.",
+    "takeawayFr": "Le coupé-montée marche dans les moments à faible enjeu, contre un service prévisible."
   },
   {
     "id": "return_029",
@@ -634,7 +778,18 @@
     "explanation": "A single deep exhale anchors your focus and resets tension. It's the cleanest pre-return habit you can build.",
     "takeaway": "One breath before the return — every time.",
     "mistakeType": "no pre-return ritual",
-    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.92, "opponentX": 0.5, "opponentY": 0.06, "ballOriginX": 0.5, "ballOriginY": 0.1, "ballTargetX": 0.5, "ballTargetY": 0.85, "scoreChip": "RETURN"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.92,
+      "opponentX": 0.5,
+      "opponentY": 0.06,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.1,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.85,
+      "scoreChip": "RETURN"
+    },
     "scenarioTr": "Servisçinin top zıplatmasıyla atış arasında ne yapmalısın?",
     "optionsTr": [
       "Bir derin nefes ver — sabitlen",
@@ -643,7 +798,15 @@
     ],
     "explanationTr": "Tek bir derin nefes odağını sabitler ve gerilimi sıfırlar. Kurulabilecek en temiz dönüş öncesi alışkanlıktır.",
     "takeawayTr": "Her dönüş öncesi tek nefes — istisnasız.",
-    "tacticalCategory": "return"
+    "tacticalCategory": "return",
+    "scenarioFr": "Entre le moment où le serveur fait rebondir la balle et son lancer, que fais-tu ?",
+    "optionsFr": [
+      "Une expiration profonde pour te poser",
+      "Regarder le tableau d'affichage",
+      "Ajuster tes cordes"
+    ],
+    "explanationFr": "Une seule expiration profonde ancre ta concentration et relâche la tension. C'est la meilleure habitude d'avant-retour à installer.",
+    "takeawayFr": "Une respiration avant le retour — à chaque fois."
   },
   {
     "id": "return_030",
@@ -680,7 +843,15 @@
       "ballTargetY": 0.2,
       "scoreChip": "15-40 · ATTACK 2ND"
     },
-    "tacticalCategory": "return"
+    "tacticalCategory": "return",
+    "scenarioFr": "Balle de break à 15-40. Ton adversaire a manqué deux premières balles de suite dans ce jeu. Quel état d'esprit au retour ?",
+    "optionsFr": [
+      "Entrer dans le court et attaquer la deuxième balle probable",
+      "Retourner profond et lancer l'échange",
+      "Bloquer prudemment en espérant sa faute"
+    ],
+    "explanationFr": "Les statistiques disent qu'une nouvelle deuxième balle est probable. Une position offensive met le serveur sous pression, et même un retour agressif neutre renverse la géométrie du point.",
+    "takeawayFr": "Les balles de break récompensent l'agressivité informée — pas la prudence."
   },
   {
     "id": "rally_021",
@@ -717,7 +888,15 @@
       "ballTargetY": 0.82,
       "scoreChip": "NEUTRAL"
     },
-    "tacticalCategory": "patterns"
+    "tacticalCategory": "patterns",
+    "scenarioFr": "Tu es dans un échange croisé neutre, positions équilibrées. Quel est le plan par défaut ?",
+    "optionsFr": [
+      "Continuer en croisé avec de la profondeur et attendre la balle courte",
+      "Changer de direction pour casser le schéma",
+      "Frapper plus fort pour provoquer la faute"
+    ],
+    "explanationFr": "Le croisé est la trajectoire la plus sûre : filet le plus bas, zone d'atterrissage la plus longue. Le changement de direction se décide sur une balle courte, pas dans un échange neutre.",
+    "takeawayFr": "Croisé, jusqu'à ce que la balle dise le contraire."
   },
   {
     "id": "rally_022",
@@ -754,7 +933,15 @@
       "ballTargetY": 0.78,
       "scoreChip": "HIGH BALL · BH"
     },
-    "tacticalCategory": "open_court"
+    "tacticalCategory": "open_court",
+    "scenarioFr": "Ton adversaire t'envoie sans arrêt des balles hautes et liftées sur le revers. Quelle est la meilleure réponse ?",
+    "optionsFr": [
+      "Avancer dans le court et la prendre à la montée",
+      "Reculer jusqu'au grillage et la relober",
+      "La slicer bas et court"
+    ],
+    "explanationFr": "Les balles hautes fonctionnent grâce au temps qu'elles donnent. La prendre à la montée dans le court supprime ce temps et transforme sa balle défensive en ton attaque.",
+    "takeawayFr": "Ne laisse pas une balle haute te repousser — avance."
   },
   {
     "id": "rally_023",
@@ -791,7 +978,15 @@
       "ballTargetY": 0.2,
       "scoreChip": "DEUCE · CC FH"
     },
-    "tacticalCategory": "defense"
+    "tacticalCategory": "defense",
+    "scenarioFr": "Tu frappes un coup droit croisé lourd depuis le côté égalité. Où te replaces-tu ?",
+    "optionsFr": [
+      "Un pas à droite de la marque centrale — sur la bissectrice de ses angles",
+      "Exactement sur la marque centrale",
+      "Du côté d'où tu as frappé"
+    ],
+    "explanationFr": "Le replacement n'est pas un point fixe : c'est le milieu des angles de réponse dont dispose ton adversaire. Après un croisé depuis le côté égalité, il est légèrement du côté avantage.",
+    "takeawayFr": "Replace-toi sur la bissectrice des angles — pas au centre."
   },
   {
     "id": "rally_024",
@@ -824,7 +1019,15 @@
       "opponentY": 0.1,
       "scoreChip": "LONG RALLY"
     },
-    "tacticalCategory": "patterns"
+    "tacticalCategory": "patterns",
+    "scenarioFr": "Tu es plus en forme physiquement que ton adversaire. Quelle stratégie de longueur d'échange ?",
+    "optionsFr": [
+      "Allonger les échanges avec de la marge et de la profondeur",
+      "Raccourcir les échanges en attaquant d'entrée",
+      "Servir-volée sur chaque point"
+    ],
+    "explanationFr": "L'avantage physique se cumule sur les échanges longs. Faire jouer une balle de plus que ce qui est confortable se multiplie sur la durée d'un match.",
+    "takeawayFr": "Sers-toi de ta condition comme d'une tactique — ne te contente pas de survivre, allonge."
   },
   {
     "id": "rally_025",
@@ -857,7 +1060,15 @@
       "opponentY": 0.1,
       "scoreChip": "10+ SHOT RALLY"
     },
-    "tacticalCategory": "approach"
+    "tacticalCategory": "approach",
+    "scenarioFr": "Tu accroches tes coups droits en fin d'échange long. Quelle en est généralement la cause ?",
+    "optionsFr": [
+      "Le point d'impact recule derrière ta hanche avant",
+      "Ta prise de raquette s'est relâchée",
+      "La balle tourne différemment"
+    ],
+    "explanationFr": "Sous la fatigue, les appuis ralentissent et tu vas chercher la balle au lieu de te placer. Un impact derrière la hanche coûte de la puissance et du contrôle.",
+    "takeawayFr": "Fatigué, place tes appuis tôt — n'allonge pas le bras."
   },
   {
     "id": "rally_026",
@@ -894,7 +1105,15 @@
       "ballTargetY": 0.62,
       "scoreChip": "SHORT REPLY"
     },
-    "tacticalCategory": "patterns"
+    "tacticalCategory": "patterns",
+    "scenarioFr": "Tu frappes une balle profonde et ton adversaire répond court au milieu du court. Première décision ?",
+    "optionsFr": [
+      "Avancer, charger ton coup et préparer le +1",
+      "Frapper fort pour tenter le gagnant",
+      "Jouer prudemment au milieu"
+    ],
+    "explanationFr": "Une balle courte n'est pas un coup gagnant : c'est une occasion de transition. Avance, charge, et prépare la balle suivante plutôt que de forcer un gagnant en un coup.",
+    "takeawayFr": "Les balles courtes sont des préparations, pas des gagnants."
   },
   {
     "id": "rally_027",
@@ -911,7 +1130,18 @@
     "explanation": "Net-clearance margin is the fastest way to reduce unforced errors without changing style. One metre higher keeps shots in — the pace can stay.",
     "takeaway": "When erroring, raise net clearance before changing pace.",
     "mistakeType": "low-margin baseline hitting",
-    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.9, "opponentX": 0.5, "opponentY": 0.1, "ballOriginX": 0.5, "ballOriginY": 0.2, "ballTargetX": 0.5, "ballTargetY": 0.84, "scoreChip": "NEUTRAL"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.9,
+      "opponentX": 0.5,
+      "opponentY": 0.1,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.2,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.84,
+      "scoreChip": "NEUTRAL"
+    },
     "scenarioTr": "Baseline'dan winner için oyun başına 3+ zorlanmamış hata yapıyorsun. İlk ayar ne olmalı?",
     "optionsTr": [
       "Fileyi 1 metre daha yüksek geç — hata düşer mi bak",
@@ -920,7 +1150,15 @@
     ],
     "explanationTr": "Fileye olan mesafe marjı, hataları stil değiştirmeden azaltmanın en hızlı yoludur. 1 metre yukarı hataları kapatır — hız aynı kalabilir.",
     "takeawayTr": "Hata yapıyorsan hızı değil, file üstü marjı artır.",
-    "tacticalCategory": "defense"
+    "tacticalCategory": "defense",
+    "scenarioFr": "Tu fais 3 fautes directes ou plus par jeu en tentant des gagnants depuis le fond du court. Premier ajustement ?",
+    "optionsFr": [
+      "Ajouter un mètre de hauteur au-dessus du filet et voir si les fautes baissent",
+      "Frapper plus fort pour provoquer la faute avant la tienne",
+      "Changer de prise"
+    ],
+    "explanationFr": "La marge au-dessus du filet est le moyen le plus rapide de réduire les fautes directes sans changer de style. Un mètre plus haut garde les balles dedans — la vitesse peut rester.",
+    "takeawayFr": "Quand tu fais des fautes, monte la trajectoire avant de changer de vitesse."
   },
   {
     "id": "rally_028",
@@ -957,7 +1195,15 @@
       "ballTargetY": 0.12,
       "scoreChip": "SHORT BALL · STEP IN"
     },
-    "tacticalCategory": "patterns"
+    "tacticalCategory": "patterns",
+    "scenarioFr": "Dans un échange neutre, sa réponse tombe entre la ligne de service et la ligne de fond, avec peu d'effet. Quel est le déclencheur ?",
+    "optionsFr": [
+      "Avancer et frapper à plat, profond, long de ligne ou décroisé",
+      "Continuer le schéma neutre — ce n'est pas assez court",
+      "Amortir pour raccourcir le point"
+    ],
+    "explanationFr": "Une balle dans cette zone avec peu d'effet est un déclencheur de transition. Frapper à plat avec intention met la réponse suivante sous pression et te place pour conclure au +2.",
+    "takeawayFr": "Connais ta zone d'attaque : le milieu de court avec peu d'effet, c'est elle."
   },
   {
     "id": "rally_029",
@@ -974,7 +1220,18 @@
     "explanation": "Exhaling at contact stabilises the core and keeps breathing rhythmic. Holding breath during rallies raises tension and tires you faster.",
     "takeaway": "Exhale every contact — every ball.",
     "mistakeType": "holding breath during rallies",
-    "diagram": {"surface": "clay", "youX": 0.42, "youY": 0.9, "opponentX": 0.58, "opponentY": 0.1, "ballOriginX": 0.58, "ballOriginY": 0.2, "ballTargetX": 0.42, "ballTargetY": 0.84, "scoreChip": "LONG RALLY"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.42,
+      "youY": 0.9,
+      "opponentX": 0.58,
+      "opponentY": 0.1,
+      "ballOriginX": 0.58,
+      "ballOriginY": 0.2,
+      "ballTargetX": 0.42,
+      "ballTargetY": 0.84,
+      "scoreChip": "LONG RALLY"
+    },
     "scenarioTr": "Uzun rally'lerde ne zaman nefes vermelisin?",
     "optionsTr": [
       "Her topun temas anında",
@@ -983,7 +1240,15 @@
     ],
     "explanationTr": "Temas anında nefes vermek karını sabitler ve soluğu ritmik tutar. Rally sırasında nefes tutmak gerilimi artırır ve daha hızlı yorar.",
     "takeawayTr": "Her temasta nefes ver — her topta.",
-    "tacticalCategory": "defense"
+    "tacticalCategory": "defense",
+    "scenarioFr": "Dans les échanges longs, quand dois-tu expirer ?",
+    "optionsFr": [
+      "Au moment de l'impact — à chaque balle",
+      "Entre les points seulement",
+      "Quand tu es fatigué"
+    ],
+    "explanationFr": "Expirer à l'impact stabilise le gainage et garde une respiration rythmée. Bloquer sa respiration pendant l'échange augmente la tension et fatigue plus vite.",
+    "takeawayFr": "Expire à chaque impact — à chaque balle."
   },
   {
     "id": "rally_030",
@@ -1020,7 +1285,15 @@
       "ballTargetY": 0.12,
       "scoreChip": "CHANGE TO DTL"
     },
-    "tacticalCategory": "approach"
+    "tacticalCategory": "approach",
+    "scenarioFr": "Tu décides de changer de direction, du croisé vers le long de ligne. Quelle est la priorité d'exécution ?",
+    "optionsFr": [
+      "Un point d'impact un peu plus devant que d'habitude pour rediriger proprement",
+      "Plus de vitesse pour devancer son replacement",
+      "Plus de hauteur au-dessus du filet"
+    ],
+    "explanationFr": "Un changement de direction demande un point d'impact légèrement plus tôt pour rediriger la balle précisément. La vitesse sans précision envoie simplement la balle à côté de la ligne.",
+    "takeawayFr": "Changer de direction est un problème de point d'impact — pas de vitesse."
   },
   {
     "id": "net_021",
@@ -1057,7 +1330,15 @@
       "ballTargetY": 0.18,
       "scoreChip": "DTL APPROACH"
     },
-    "tacticalCategory": "net_game"
+    "tacticalCategory": "net_game",
+    "scenarioFr": "Tu montes derrière un slice d'approche profond long de ligne. Où dois-tu être au moment où ton adversaire frappe ?",
+    "optionsFr": [
+      "À l'intérieur de la ligne de service, en split-step",
+      "Déjà collé à la bande du filet",
+      "Encore derrière la ligne de fond"
+    ],
+    "explanationFr": "À l'intérieur de la ligne de service avec un split-step, c'est la position de référence — assez près pour couvrir, assez équilibré pour réagir à un passing ou à un lob.",
+    "takeawayFr": "À l'intérieur de la ligne de service, split-step — sur chaque montée."
   },
   {
     "id": "net_022",
@@ -1094,7 +1375,15 @@
       "ballTargetY": 0.4,
       "scoreChip": "CC PASS COMING"
     },
-    "tacticalCategory": "net_game"
+    "tacticalCategory": "net_game",
+    "scenarioFr": "L'adversaire se prépare à jouer un passing croisé. D'où joues-tu ta volée ?",
+    "optionsFr": [
+      "Légèrement décalé vers le couloir croisé — sur la bissectrice du passing",
+      "Exactement sur la ligne médiane",
+      "Tout près de la bande du filet"
+    ],
+    "explanationFr": "Se décaler du côté croisé ferme le couloir de passing principal sans abandonner le long de ligne. Tu défends d'abord le coup le plus probable.",
+    "takeawayFr": "Décale ta position de volée vers le passing le plus évident."
   },
   {
     "id": "net_023",
@@ -1131,7 +1420,15 @@
       "ballTargetY": 0.4,
       "scoreChip": "VOLLEY CONTACT"
     },
-    "tacticalCategory": "net_game"
+    "tacticalCategory": "net_game",
+    "scenarioFr": "Où doit se situer le point d'impact de ta volée ?",
+    "optionsFr": [
+      "Devant ta hanche avant",
+      "Au niveau de ta hanche arrière",
+      "Derrière ton corps"
+    ],
+    "explanationFr": "Une volée frappée devant la hanche avant te donne le contrôle du tamis, l'absorption de la vitesse et une direction vers l'avant.",
+    "takeawayFr": "Volée devant — toujours."
   },
   {
     "id": "net_024",
@@ -1168,7 +1465,15 @@
       "ballTargetY": 0.58,
       "scoreChip": "S&V · LOW BALL"
     },
-    "tacticalCategory": "net_game"
+    "tacticalCategory": "net_game",
+    "scenarioFr": "Tu sers-volées et tu récupères une balle basse dans les pieds. Quelle est la priorité ?",
+    "optionsFr": [
+      "La relever profond au milieu pour gagner du temps",
+      "Tenter une volée d'angle gagnante",
+      "La laisser rebondir et jouer un coup de fond"
+    ],
+    "explanationFr": "Une première volée basse est une remise en jeu — profond au milieu te donne le temps d'atteindre la bonne position pour la deuxième volée.",
+    "takeawayFr": "Les premières volées dans les pieds sont des préparations — pas des gagnants."
   },
   {
     "id": "net_025",
@@ -1205,7 +1510,15 @@
       "ballTargetY": 0.9,
       "scoreChip": "LOB OVER YOU"
     },
-    "tacticalCategory": "net_game"
+    "tacticalCategory": "net_game",
+    "scenarioFr": "L'adversaire te lobe. Ton premier mouvement ?",
+    "optionsFr": [
+      "Raquette en haut et petits pas latéraux en reculant",
+      "Sprinter en arrière tête baissée",
+      "Regarder la trajectoire avant de bouger"
+    ],
+    "explanationFr": "Raquette levée tôt et petits pas latéraux en recul gardent ton équilibre et la position de ta tête pour une smash propre.",
+    "takeawayFr": "Sur un lob : la raquette d'abord, les pieds ensuite."
   },
   {
     "id": "net_026",
@@ -1242,7 +1555,15 @@
       "ballTargetY": 0.5,
       "scoreChip": "HIGH FLOATER"
     },
-    "tacticalCategory": "net_game"
+    "tacticalCategory": "net_game",
+    "scenarioFr": "Une balle haute et flottante arrive sur toi à la ligne de service, ton adversaire est loin derrière sa ligne de fond. Ton choix ?",
+    "optionsFr": [
+      "Une volée profonde et angulée pour le garder au fond",
+      "Une volée amortie courte croisée",
+      "Une volée pleine vitesse au milieu"
+    ],
+    "explanationFr": "Quand l'adversaire est loin, une volée profonde et angulée conserve l'avantage. Une volée amortie le fait entrer dans le court — risqué alors qu'il est déjà mal placé.",
+    "takeawayFr": "Quand ils sont loin, garde-les loin — ne les invite pas."
   },
   {
     "id": "net_027",
@@ -1259,7 +1580,18 @@
     "explanation": "At the net, pace absorption comes from a short, firm swing — not a big backswing. The opponent supplies the power; you supply direction.",
     "takeaway": "At the net, short swing, firm grip — always.",
     "mistakeType": "long volley swing",
-    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.6, "opponentX": 0.5, "opponentY": 0.1, "ballOriginX": 0.5, "ballOriginY": 0.14, "ballTargetX": 0.5, "ballTargetY": 0.55, "scoreChip": "REFLEX"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.6,
+      "opponentX": 0.5,
+      "opponentY": 0.1,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.14,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.55,
+      "scoreChip": "REFLEX"
+    },
     "scenarioTr": "File önündesin ve sert bir top üstüne geliyor. Nasıl vurursun?",
     "optionsTr": [
       "Neredeyse hiç arka salınım yok — sert, kısa blok",
@@ -1268,7 +1600,15 @@
     ],
     "explanationTr": "File önünde hız emme kısa ve sert bir salınımla gelir — büyük arka salınımla değil. Gücü rakip sağlar; sen yönü verirsin.",
     "takeawayTr": "File önünde kısa salınım, sıkı tutuş — her zaman.",
-    "tacticalCategory": "net_game"
+    "tacticalCategory": "net_game",
+    "scenarioFr": "Tu es au filet et une balle arrive fort sur toi. Quel geste ?",
+    "optionsFr": [
+      "Quasiment aucune préparation — un bloc court et ferme",
+      "Un geste complet de coup de fond",
+      "Un slice doux avec effet rétro"
+    ],
+    "explanationFr": "Au filet, l'absorption de la vitesse vient d'un geste court et ferme — pas d'une grande préparation. L'adversaire fournit la puissance ; toi, la direction.",
+    "takeawayFr": "Au filet : geste court, poignet ferme — toujours."
   },
   {
     "id": "net_028",
@@ -1305,7 +1645,15 @@
       "ballTargetY": 0.16,
       "scoreChip": "HALF-VOLLEY DEEP"
     },
-    "tacticalCategory": "net_game"
+    "tacticalCategory": "net_game",
+    "scenarioFr": "Une balle rapide plonge dans tes pieds dans la zone de transition. Quel est le bon coup ?",
+    "optionsFr": [
+      "Une demi-volée douce, profonde au milieu",
+      "Une demi-volée frappée fort pour tenter le gagnant",
+      "La laisser rebondir et courir"
+    ],
+    "explanationFr": "Une demi-volée douce utilise la vitesse adverse, passe le filet et gagne du temps. Frappée fort, elle part généralement dehors. La laisser rebondir te ramène à la ligne de fond sans rien avoir gagné.",
+    "takeawayFr": "Les demi-volées sont des coups de survie — douces, profondes, au milieu."
   },
   {
     "id": "net_029",
@@ -1322,7 +1670,18 @@
     "explanation": "Closer to the T gives you poaching range without completely abandoning the alley. That's where doubles net players live.",
     "takeaway": "Doubles net: T-biased, poach-ready.",
     "mistakeType": "alley-glued doubles positioning",
-    "diagram": {"surface": "clay", "youX": 0.32, "youY": 0.58, "opponentX": 0.7, "opponentY": 0.1, "ballOriginX": 0.7, "ballOriginY": 0.14, "ballTargetX": 0.45, "ballTargetY": 0.5, "scoreChip": "DOUBLES NET"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.32,
+      "youY": 0.58,
+      "opponentX": 0.7,
+      "opponentY": 0.1,
+      "ballOriginX": 0.7,
+      "ballOriginY": 0.14,
+      "ballTargetX": 0.45,
+      "ballTargetY": 0.5,
+      "scoreChip": "DOUBLES NET"
+    },
     "scenarioTr": "Çiftlerde partnerin servis atıyor. File önünde servis öncesi pozisyonun ne?",
     "optionsTr": [
       "Kenardan çok T'ye daha yakın — poach için hazır",
@@ -1331,7 +1690,15 @@
     ],
     "explanationTr": "T'ye yakın olmak kenarı tam terk etmeden poach menzili sağlar. Çiftler file oyuncularının yeri orasıdır.",
     "takeawayTr": "Çiftler file önü: T'ye kayık, poach'a hazır.",
-    "tacticalCategory": "net_game"
+    "tacticalCategory": "net_game",
+    "scenarioFr": "En double, ton partenaire sert. Quelle est ta position au filet avant le service ?",
+    "optionsFr": [
+      "Un peu plus près du T que du couloir, prêt à intercepter",
+      "Collé au couloir pour protéger ta ligne",
+      "Derrière la ligne de service pour être mobile"
+    ],
+    "explanationFr": "Plus près du T, tu gardes une zone d'interception sans abandonner complètement le couloir. C'est là que vit le joueur de filet en double.",
+    "takeawayFr": "Filet en double : décalé vers le T, prêt à intercepter."
   },
   {
     "id": "net_030",
@@ -1368,7 +1735,15 @@
       "ballTargetY": 0.14,
       "scoreChip": "VOLLEY TO OPEN COURT"
     },
-    "tacticalCategory": "net_game"
+    "tacticalCategory": "net_game",
+    "scenarioFr": "Tu es au filet et ton adversaire revient d'une position très excentrée côté égalité. Meilleure cible de volée ?",
+    "optionsFr": [
+      "Le côté avantage libre — profond dans le coin",
+      "Derrière lui, de nouveau dans le coin égalité",
+      "Une volée amortie courte"
+    ],
+    "explanationFr": "S'il se replace, il se déplace vers le centre. Profond dans le côté avantage libre l'oblige à repartir en sens inverse et à arriver en déséquilibre — ou à ne pas arriver du tout.",
+    "takeawayFr": "Au filet, joue à l'opposé de son replacement — pas là d'où il vient."
   },
   {
     "id": "mental_021",
@@ -1399,7 +1774,15 @@
       "youY": 0.92,
       "scoreChip": "LOST 1ST SET 4–6"
     },
-    "tacticalCategory": "patterns"
+    "tacticalCategory": "patterns",
+    "scenarioFr": "Tu viens de perdre un set 6-4 et le deuxième commence. Sur quoi ancrer ton esprit pour le premier jeu ?",
+    "optionsFr": [
+      "Un objectif de processus simple (ex. split-step à chaque balle)",
+      "Repasser le set perdu dans ta tête",
+      "Te promettre de jouer « parfaitement »"
+    ],
+    "explanationFr": "Un objectif de processus donne à ton cerveau quelque chose de concret à faire. Ressasser le passé ou courir après la perfection augmente l'anxiété et réduit la présence.",
+    "takeawayFr": "Commence un nouveau set par le processus — pas par le replay."
   },
   {
     "id": "mental_022",
@@ -1430,7 +1813,15 @@
       "youY": 0.92,
       "scoreChip": "DISPUTED CALL"
     },
-    "tacticalCategory": "defense"
+    "tacticalCategory": "defense",
+    "scenarioFr": "Une balle est annoncée contre toi et tu es sûr que c'est une erreur. Quelle réponse en 90 secondes ?",
+    "optionsFr": [
+      "Serviette, respiration, et engagement sur le point suivant",
+      "Discuter avec l'arbitre de ligne",
+      "Jouer le point suivant en colère pour te venger"
+    ],
+    "explanationFr": "Une remise à zéro en 90 secondes — serviette, respiration, engagement sur le point suivant — est la routine des pros. La colère sur le point suivant double les dégâts : tu perds le point contesté et le suivant.",
+    "takeawayFr": "Une mauvaise annonce ne doit pas te coûter deux points."
   },
   {
     "id": "mental_023",
@@ -1461,7 +1852,15 @@
       "youY": 0.92,
       "scoreChip": "TIEBREAK · 0–0"
     },
-    "tacticalCategory": "patterns"
+    "tacticalCategory": "patterns",
+    "scenarioFr": "Tu vas jouer un tie-break à 6-6. Quel est le bon état d'esprit ?",
+    "optionsFr": [
+      "Jouer le premier point comme s'il décidait du match",
+      "Jouer prudemment pour éviter les fautes précoces",
+      "Espérer les fautes de l'adversaire"
+    ],
+    "explanationFr": "Les tie-breaks récompensent l'agressivité dès le premier point. Attendre de « voir venir » offre l'élan initial à l'adversaire.",
+    "takeawayFr": "Un tie-break commence à pleine intensité — il ne monte pas en régime."
   },
   {
     "id": "mental_024",
@@ -1492,7 +1891,15 @@
       "youY": 0.92,
       "scoreChip": "BREAK POINT"
     },
-    "tacticalCategory": "defense"
+    "tacticalCategory": "defense",
+    "scenarioFr": "Tu te surprends à penser « ne rate pas » avant un coup important. Quel recadrage ?",
+    "optionsFr": [
+      "Penser plutôt à l'endroit où la balle doit atterrir",
+      "Penser à mieux exécuter ton geste",
+      "Penser au score"
+    ],
+    "explanationFr": "Sous pression, l'attention externe (la cible) bat l'attention interne (la technique). « Ne rate pas » est à la fois interne et négatif — la pire combinaison.",
+    "takeawayFr": "Sous pression, concentre-toi sur la cible — pas sur la technique."
   },
   {
     "id": "mental_025",
@@ -1523,7 +1930,15 @@
       "youY": 0.92,
       "scoreChip": "BETWEEN POINTS"
     },
-    "tacticalCategory": "patterns"
+    "tacticalCategory": "patterns",
+    "scenarioFr": "Quelle est la durée d'une routine efficace entre les points ?",
+    "optionsFr": [
+      "Les 20 à 25 secondes complètes — lente, délibérée, constante",
+      "Moins de 10 secondes pour garder le rythme",
+      "Variable selon ce que tu ressens"
+    ],
+    "explanationFr": "Utiliser tout le temps autorisé te laisse la place pour respirer, te réinitialiser et visualiser. Se précipiter perd ce bénéfice ; la variabilité crée de l'irrégularité.",
+    "takeawayFr": "Utilise les 20 secondes complètes — à chaque point."
   },
   {
     "id": "mental_026",
@@ -1554,7 +1969,15 @@
       "youY": 0.92,
       "scoreChip": "0–4 GAMES"
     },
-    "tacticalCategory": "return"
+    "tacticalCategory": "return",
+    "scenarioFr": "Ton adversaire vient d'enchaîner 4 jeux. Quelle est la meilleure réponse tactique ?",
+    "optionsFr": [
+      "Ralentir volontairement entre les points — casser son rythme",
+      "Accélérer pour le submerger",
+      "Changer complètement de stratégie"
+    ],
+    "explanationFr": "L'élan se nourrit du rythme. Ralentir entre les points (serviette, rebonds plus longs) casse ce rythme sans bouleverser ta stratégie, ce qui marche rarement en plein match.",
+    "takeawayFr": "Casse l'élan en ralentissant — pas en changeant tout."
   },
   {
     "id": "mental_027",
@@ -1579,7 +2002,15 @@
     ],
     "explanationTr": "Maç için servis atarken kırılmak sık karşılaşılan bir durumdur — öldürücü değildir. Tek derin nefes seni sıfırlar — şimdi rakip baskı altında servis atıyor.",
     "takeawayTr": "Bir kırılma seti bitirmez — sıfırla ve yanıtla.",
-    "tacticalCategory": "patterns"
+    "tacticalCategory": "patterns",
+    "scenarioFr": "Tu viens de te faire breaker alors que tu servais pour le match. Quel geste mental ?",
+    "optionsFr": [
+      "Une respiration profonde — le match reste à ta portée à 5-4",
+      "Accepter que la défaite arrive",
+      "Exiger de jouer plus vite pour en finir"
+    ],
+    "explanationFr": "Se faire breaker en servant pour le match est fréquent ; ce n'est pas fatal. Une respiration profonde te remet en place — l'adversaire sert aussi sous pression maintenant.",
+    "takeawayFr": "Un break ne termine pas le set — remets-toi en place et réponds."
   },
   {
     "id": "mental_028",
@@ -1604,7 +2035,15 @@
     ],
     "explanationTr": "Özgüven küçük zaferlerden yeniden inşa olur. En yüksek ihtimalli desenin puan kazanma şansını artırır ve bu inanca dönüşür.",
     "takeawayTr": "Özgüveni güvenli desenlerle inşa et — kahramanlıkla değil.",
-    "tacticalCategory": "defense"
+    "tacticalCategory": "defense",
+    "scenarioFr": "Tu es en difficulté mentale en plein match. Quel est le moyen le plus rapide de retrouver de la confiance ?",
+    "optionsFr": [
+      "Gagner le point suivant avec ton schéma le plus rentable",
+      "Tenter un gagnant spectaculaire",
+      "Analyser ce qui ne va pas"
+    ],
+    "explanationFr": "La confiance se reconstruit à partir de petites victoires. Ton schéma le plus rentable maximise les chances de gagner un point, et ça se transforme en croyance.",
+    "takeawayFr": "Reconstruis la confiance avec des schémas sûrs — pas avec des exploits."
   },
   {
     "id": "mental_029",
@@ -1629,7 +2068,15 @@
     ],
     "explanationTr": "Yapılandırılmış 2+1 yansıma takıntıya dönmeden dersleri yakalar. Kaçınma öğrenmeyi kaçırır; sinirli izlemek dersi bozar.",
     "takeawayTr": "Kısa yansıt, yakında yansıt — ama sakin yansıt.",
-    "tacticalCategory": "net_game"
+    "tacticalCategory": "net_game",
+    "scenarioFr": "Tu as perdu 6-4, 6-4 contre un joueur que tu pensais battre. Quelle est la suite saine ?",
+    "optionsFr": [
+      "Noter 2 choses qui ont marché et 1 chose à ajuster",
+      "Éviter complètement d'y penser",
+      "Revoir tout le match immédiatement, en colère"
+    ],
+    "explanationFr": "Une réflexion structurée en 2+1 capture les leçons sans partir en boucle. L'évitement rate l'apprentissage ; revoir le match en colère déforme la leçon.",
+    "takeawayFr": "Réfléchis court, réfléchis vite — mais réfléchis calmement."
   },
   {
     "id": "mental_030",
@@ -1654,7 +2101,15 @@
     ],
     "explanationTr": "Agresif bir deseni görselleştirmek beyni ve bedeni yarışma durumuna hazırlar. Rahat ısınma rahat oyun hazırlar.",
     "takeawayTr": "Yarışmak istediğin gibi ısın.",
-    "tacticalCategory": "patterns"
+    "tacticalCategory": "patterns",
+    "scenarioFr": "Tu joues ton meilleur tennis quand tu es pleinement en mode compétition. À l'échauffement, comment déclencher cet état ?",
+    "optionsFr": [
+      "Visualiser un schéma agressif que tu joueras sur le premier point",
+      "Discuter tranquillement pour te détendre",
+      "Frapper à 50 % pour économiser de l'énergie"
+    ],
+    "explanationFr": "Visualiser un schéma agressif prépare ton cerveau et ton corps à l'état de compétition avant le premier point. Un échauffement nonchalant prépare un jeu nonchalant.",
+    "takeawayFr": "Échauffe-toi comme tu veux jouer."
   },
   {
     "id": "doubles_001",
@@ -1671,7 +2126,18 @@
     "explanation": "A short ball is your cue to get BOTH players to the net. The both-up formation wins the majority of club points, so your partner approaches and joins you.",
     "takeaway": "Short ball = both up. The team that reaches the net first usually wins the point.",
     "mistakeType": "camping in one-up-one-back",
-    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.62, "opponentX": 0.5, "opponentY": 0.1, "ballOriginX": 0.5, "ballOriginY": 0.16, "ballTargetX": 0.5, "ballTargetY": 0.58, "scoreChip": "BOTH UP"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.62,
+      "opponentX": 0.5,
+      "opponentY": 0.1,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.16,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.58,
+      "scoreChip": "BOTH UP"
+    },
     "scenarioTr": "Sen ve partnerin biri-önde-biri-arkada dizilimindesiniz. Arkadaki partnerin kısa, yumuşak bir top alıyor. İkiniz ne yapmalısınız?",
     "optionsTr": [
       "İkiniz birlikte file'ye çıkın (yaklaşma vuruşunun arkasından)",
@@ -1680,7 +2146,15 @@
     ],
     "explanationTr": "Kısa top, ikinizi de file'ye çıkarma işaretidir. Her ikisi de file'de (both-up) dizilimi kulüp puanlarının çoğunu kazanır; partnerin yaklaşıp sana katılır.",
     "takeawayTr": "Kısa top = ikiniz de file'ye. File'ye önce ulaşan takım genelde puanı alır.",
-    "tacticalCategory": "patterns"
+    "tacticalCategory": "patterns",
+    "scenarioFr": "Ton partenaire et toi êtes un devant, un derrière. Ton partenaire de fond récupère une balle courte et flottante au milieu du court. Que faites-vous ?",
+    "optionsFr": [
+      "Monter tous les deux au filet derrière l'approche",
+      "Ne rien changer — garder un joueur derrière pour couvrir",
+      "Il frappe et retourne à la ligne de fond"
+    ],
+    "explanationFr": "Une balle courte, c'est le signal pour amener les DEUX joueurs au filet. La formation deux-devant gagne la majorité des points en club : ton partenaire monte et te rejoint.",
+    "takeawayFr": "Balle courte = les deux devant. L'équipe qui arrive au filet la première gagne généralement le point."
   },
   {
     "id": "doubles_002",
@@ -1697,7 +2171,18 @@
     "explanation": "Start central and look to poach the middle — most balls travel through the middle, and guarding the alley gives away the bigger target. Cover the alley only on an obviously wide ball.",
     "takeaway": "The net player's #1 job is the middle, not the alley.",
     "mistakeType": "net player glued to the alley",
-    "diagram": {"surface": "clay", "youX": 0.32, "youY": 0.58, "opponentX": 0.72, "opponentY": 0.1, "ballOriginX": 0.72, "ballOriginY": 0.14, "ballTargetX": 0.45, "ballTargetY": 0.5, "scoreChip": "POACH READY"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.32,
+      "youY": 0.58,
+      "opponentX": 0.72,
+      "opponentY": 0.1,
+      "ballOriginX": 0.72,
+      "ballOriginY": 0.14,
+      "ballTargetX": 0.45,
+      "ballTargetY": 0.5,
+      "scoreChip": "POACH READY"
+    },
     "scenarioTr": "Partnerin servis atarken sen file oyuncususun. Puana başlamak için nerede durmalısın?",
     "optionsTr": [
       "Ortada, ortadan çıkmaya (poach) hazır",
@@ -1706,7 +2191,15 @@
     ],
     "explanationTr": "Ortada başla ve ortadan poach'a bak — topların çoğu ortadan gelir; koridoru korumak daha büyük hedefi açık bırakır. Koridoru sadece bariz geniş topta kapat.",
     "takeawayTr": "File oyuncusunun bir numaralı işi orta, koridor değil.",
-    "tacticalCategory": "net_game"
+    "tacticalCategory": "net_game",
+    "scenarioFr": "Tu es au filet pendant que ton partenaire sert. Où te places-tu au début du point ?",
+    "optionsFr": [
+      "Au centre, prêt à intercepter au milieu",
+      "Collé à ton couloir pour protéger la ligne",
+      "En retrait près de la ligne de service, par sécurité"
+    ],
+    "explanationFr": "Pars au centre et cherche à intercepter au milieu — la plupart des balles passent par là, et garder le couloir donne la plus grande cible à l'adversaire. Ne couvre le couloir que sur une balle clairement extérieure.",
+    "takeawayFr": "La mission numéro 1 du joueur de filet, c'est le milieu, pas le couloir."
   },
   {
     "id": "doubles_003",
@@ -1723,7 +2216,18 @@
     "explanation": "On a low/defensive ball, don't reflexively aim at the net player — a low volley there is an easy put-away for them. Go deep to the baseliner or low through the middle and keep climbing to the net.",
     "takeaway": "First-volley target depends on height: a low ball goes deep/middle, not at the net player.",
     "mistakeType": "first volley auto-aimed at the net player",
-    "diagram": {"surface": "clay", "youX": 0.55, "youY": 0.62, "opponentX": 0.72, "opponentY": 0.1, "ballOriginX": 0.72, "ballOriginY": 0.14, "ballTargetX": 0.55, "ballTargetY": 0.6, "scoreChip": "1ST VOLLEY"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.55,
+      "youY": 0.62,
+      "opponentX": 0.72,
+      "opponentY": 0.1,
+      "ballOriginX": 0.72,
+      "ballOriginY": 0.14,
+      "ballTargetX": 0.55,
+      "ballTargetY": 0.6,
+      "scoreChip": "1ST VOLLEY"
+    },
     "scenarioTr": "Servis-vole oynuyorsun. Karşılama ayaklarına ALÇAK geliyor. İlk voleyi nereye koyarsın?",
     "optionsTr": [
       "Derine, baseline'daki returner'a — ya da alçak, ortadan",
@@ -1732,7 +2236,15 @@
     ],
     "explanationTr": "Alçak/defansif topta refleksle file oyuncusuna vurma — oradaki alçak vole onlara kolay sayı olur. Derine baseliner'a ya da alçak ortadan oyna ve file'ye çıkmaya devam et.",
     "takeawayTr": "İlk vole hedefi yüksekliğe bağlı: alçak top derine/ortaya gider, file oyuncusuna değil.",
-    "tacticalCategory": "net_game"
+    "tacticalCategory": "net_game",
+    "scenarioFr": "Tu sers-volées. Le retour revient BAS dans tes pieds. Où places-tu ta première volée ?",
+    "optionsFr": [
+      "Profond sur le relanceur au fond, ou bas par le milieu",
+      "Fort sur le joueur adverse au filet",
+      "Une amortie douce dans son carré de service"
+    ],
+    "explanationFr": "Sur une balle basse et défensive, ne vise pas par réflexe le joueur au filet — une volée basse là-bas est un cadeau à smasher. Joue profond sur le joueur de fond ou bas par le milieu, et continue d'avancer au filet.",
+    "takeawayFr": "La cible de la première volée dépend de la hauteur : une balle basse part profond ou au milieu, pas sur le joueur au filet."
   },
   {
     "id": "doubles_004",
@@ -1749,7 +2261,18 @@
     "explanation": "A low cross-court return at the incoming volleyer's feet is the hardest ball to attack. A floaty/high return is poach bait. Your goal is to get your team forward, not to win it outright.",
     "takeaway": "Doubles return = low at the volleyer's feet. Floaters get poached.",
     "mistakeType": "floaty cross-court returns",
-    "diagram": {"surface": "clay", "youX": 0.72, "youY": 0.9, "opponentX": 0.3, "opponentY": 0.42, "ballOriginX": 0.3, "ballOriginY": 0.46, "ballTargetX": 0.72, "ballTargetY": 0.82, "scoreChip": "RETURN LOW"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.72,
+      "youY": 0.9,
+      "opponentX": 0.3,
+      "opponentY": 0.42,
+      "ballOriginX": 0.3,
+      "ballOriginY": 0.46,
+      "ballTargetX": 0.72,
+      "ballTargetY": 0.82,
+      "scoreChip": "RETURN LOW"
+    },
     "scenarioTr": "Biri file'de olan bir takıma karşı çiftlerde karşılama yapıyorsun. Karşılamada öncelik ne?",
     "optionsTr": [
       "ALÇAK tut, çaprazda voleyi yapanın ayaklarına",
@@ -1758,7 +2281,15 @@
     ],
     "explanationTr": "Voleye gelenin ayaklarına alçak çapraz karşılama, saldırması en zor toptur. Yüksek/yumuşak karşılama poach yemidir. Amaç puanı tek vuruşta bitirmek değil, takımını öne taşımak.",
     "takeawayTr": "Çiftlerde karşılama = voleyi yapanın ayaklarına alçak. Yumuşak toplar poach yer.",
-    "tacticalCategory": "return"
+    "tacticalCategory": "return",
+    "scenarioFr": "Tu retournes en double contre une équipe avec un joueur au filet. Quelle est la priorité sur ton retour ?",
+    "optionsFr": [
+      "Le garder BAS, croisé, dans les pieds du volleyeur",
+      "Le frapper profond et à plat au milieu",
+      "Le lifter haut en croisé, par sécurité"
+    ],
+    "explanationFr": "Un retour bas et croisé dans les pieds du volleyeur qui monte est la balle la plus difficile à attaquer. Un retour haut et flottant se fait intercepter. Ton but est de faire avancer ton équipe, pas de gagner le point d'un coup.",
+    "takeawayFr": "Retour en double = bas, dans les pieds du volleyeur. Les balles flottantes se font intercepter."
   },
   {
     "id": "doubles_005",
@@ -1775,7 +2306,18 @@
     "explanation": "Commit just after the serve bounces, as the returner starts their forward swing — early enough to cross and cut off the middle, late enough that they can't redirect the ball behind you.",
     "takeaway": "Poach as the returner starts the swing — not too early, not too late.",
     "mistakeType": "mistimed poach",
-    "diagram": {"surface": "clay", "youX": 0.35, "youY": 0.58, "opponentX": 0.7, "opponentY": 0.1, "ballOriginX": 0.7, "ballOriginY": 0.14, "ballTargetX": 0.48, "ballTargetY": 0.52, "scoreChip": "POACH"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.35,
+      "youY": 0.58,
+      "opponentX": 0.7,
+      "opponentY": 0.1,
+      "ballOriginX": 0.7,
+      "ballOriginY": 0.14,
+      "ballTargetX": 0.48,
+      "ballTargetY": 0.52,
+      "scoreChip": "POACH"
+    },
     "scenarioTr": "Poach yapmaya karar verdin. Tam olarak ne zaman çıkarsın?",
     "optionsTr": [
       "Servis sektikten hemen sonra, returner ileri vuruşa başlarken",
@@ -1784,7 +2326,15 @@
     ],
     "explanationTr": "Servis sektikten hemen sonra, returner ileri vuruşa başlarken çık — ortayı kesmek için yeterince erken, arkana yönlendirilemeyecek kadar geç.",
     "takeawayTr": "Returner vuruşa başlarken poach yap — ne çok erken, ne çok geç.",
-    "tacticalCategory": "net_game"
+    "tacticalCategory": "net_game",
+    "scenarioFr": "Tu décides d'intercepter. À quel moment exactement t'engages-tu ?",
+    "optionsFr": [
+      "Juste après le rebond du service, quand le relanceur amorce son geste vers l'avant",
+      "À l'instant où ton partenaire lance sa balle de service",
+      "Une fois que le retour a déjà passé le filet"
+    ],
+    "explanationFr": "Engage-toi juste après le rebond du service, quand le relanceur amorce son geste — assez tôt pour traverser et couper le milieu, assez tard pour qu'il ne puisse plus rediriger derrière toi.",
+    "takeawayFr": "Intercepte quand le relanceur amorce son geste — ni trop tôt, ni trop tard."
   },
   {
     "id": "doubles_006",
@@ -1801,7 +2351,18 @@
     "explanation": "On a lob over one player, the UN-lobbed partner calls 'switch' and crosses to cover the open side, while the lobbed player rotates across to the other side. Rotating as a unit beats both scrambling backward.",
     "takeaway": "Lobbed over your partner? You call 'switch' and cross. Move as a unit.",
     "mistakeType": "both chase the lob",
-    "diagram": {"surface": "clay", "youX": 0.4, "youY": 0.68, "opponentX": 0.5, "opponentY": 0.12, "ballOriginX": 0.5, "ballOriginY": 0.16, "ballTargetX": 0.8, "ballTargetY": 0.82, "scoreChip": "SWITCH"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.4,
+      "youY": 0.68,
+      "opponentX": 0.5,
+      "opponentY": 0.12,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.16,
+      "ballTargetX": 0.8,
+      "ballTargetY": 0.82,
+      "scoreChip": "SWITCH"
+    },
     "scenarioTr": "Rakip, partnerinin kafasından açık tarafa lob attı. Topu kim alır ve sen ne dersin?",
     "optionsTr": [
       "Sen (lob yemeyen oyuncu) 'switch' deyip çapraz geçip kapatırsın",
@@ -1810,7 +2371,15 @@
     ],
     "explanationTr": "Bir oyuncunun üstünden lob gelince, lob YEMEYEN partner 'switch' der ve açık tarafı kapatmak için çapraz geçer; lob yiyen oyuncu diğer tarafa döner. Birim olarak dönmek, ikinizin de geri savrulmasından iyidir.",
     "takeawayTr": "Partnerinin üstünden lob mu? Sen 'switch' deyip çapraz geç. Birim gibi hareket et.",
-    "tacticalCategory": "patterns"
+    "tacticalCategory": "patterns",
+    "scenarioFr": "Les adversaires lobent au-dessus de ton partenaire, du côté libre. Qui prend la balle et qu'annonces-tu ?",
+    "optionsFr": [
+      "Toi (le joueur non lobé) : tu annonces « switch » et tu traverses",
+      "Ton partenaire sprinte en arrière pour chasser son côté",
+      "Vous reculez tous les deux à la ligne de fond"
+    ],
+    "explanationFr": "Sur un lob au-dessus d'un joueur, c'est le partenaire NON lobé qui annonce « switch » et traverse pour couvrir le côté libre, pendant que le joueur lobé bascule de l'autre côté. Tourner en bloc vaut mieux que deux joueurs qui reculent chacun de leur côté.",
+    "takeawayFr": "Lob au-dessus de ton partenaire ? Tu annonces « switch » et tu traverses. Déplacez-vous en bloc."
   },
   {
     "id": "doubles_007",
@@ -1827,7 +2396,18 @@
     "explanation": "A serve to the body or the T pulls the return toward the middle — exactly where your net partner can poach. A wide serve opens angles AWAY from your poacher. Keep your first-serve percentage high too.",
     "takeaway": "Serve body/T to feed your partner's poach; protect first-serve %.",
     "mistakeType": "serve placement that doesn't set up the partner",
-    "diagram": {"surface": "clay", "youX": 0.62, "youY": 0.94, "opponentX": 0.72, "opponentY": 0.1, "ballOriginX": 0.62, "ballOriginY": 0.9, "ballTargetX": 0.52, "ballTargetY": 0.3, "scoreChip": "SERVE T"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.62,
+      "youY": 0.94,
+      "opponentX": 0.72,
+      "opponentY": 0.1,
+      "ballOriginX": 0.62,
+      "ballOriginY": 0.9,
+      "ballTargetX": 0.52,
+      "ballTargetY": 0.3,
+      "scoreChip": "SERVE T"
+    },
     "scenarioTr": "Partnerin file'de poach'a hazır. Onu kurmak için nereye servis atmalısın?",
     "optionsTr": [
       "Vücuda ya da T'ye — karşılamayı ortaya çeker",
@@ -1836,7 +2416,15 @@
     ],
     "explanationTr": "Vücuda ya da T'ye servis, karşılamayı ortaya çeker — tam da file partnerinin poach yapabileceği yere. Geniş servis ise açıları poach'çından UZAĞA açar. İlk servis yüzdeni de yüksek tut.",
     "takeawayTr": "Partnerinin poach'ını beslemek için vücuda/T'ye servis at; ilk servis yüzdeni koru.",
-    "tacticalCategory": "patterns"
+    "tacticalCategory": "patterns",
+    "scenarioFr": "Ton partenaire est au filet, prêt à intercepter. Où sers-tu pour le mettre en position ?",
+    "optionsFr": [
+      "Sur le corps ou au T, pour ramener le retour vers le milieu",
+      "Extérieur, pour t'ouvrir l'angle à toi",
+      "Un service haut et lent pour démarrer le point tranquillement"
+    ],
+    "explanationFr": "Un service sur le corps ou au T ramène le retour vers le milieu — exactement là où ton partenaire peut intercepter. Un service extérieur ouvre les angles À L'OPPOSÉ de ton intercepteur. Garde aussi un bon pourcentage de premières balles.",
+    "takeawayFr": "Sers corps/T pour nourrir l'interception de ton partenaire ; protège ton pourcentage de premières balles."
   },
   {
     "id": "doubles_008",
@@ -1853,7 +2441,18 @@
     "explanation": "'Down the middle solves the riddle.' Pre-decide who takes the middle (default: the forehand player) so two racquets don't collide or both leave it. Decide before the point, not during it.",
     "takeaway": "Pre-assign the middle to the forehand player. Don't decide mid-point.",
     "mistakeType": "nobody (or both) covers the middle",
-    "diagram": {"surface": "clay", "youX": 0.4, "youY": 0.6, "opponentX": 0.5, "opponentY": 0.1, "ballOriginX": 0.5, "ballOriginY": 0.14, "ballTargetX": 0.5, "ballTargetY": 0.55, "scoreChip": "MIDDLE"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.4,
+      "youY": 0.6,
+      "opponentX": 0.5,
+      "opponentY": 0.1,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.14,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.55,
+      "scoreChip": "MIDDLE"
+    },
     "scenarioTr": "Top, sen ve partnerinin tam ortasından geliyor. Kim almalı?",
     "optionsTr": [
       "Önceden anlaşılan oyuncu — varsayılan olarak forehand'i ortada olan",
@@ -1862,7 +2461,15 @@
     ],
     "explanationTr": "'Down the middle solves the riddle.' Ortayı kimin alacağını önceden belirle (varsayılan: forehand oyuncusu) ki iki raket çarpışmasın ya da ikisi de bırakmasın. Puan sırasında değil, öncesinde karar ver.",
     "takeawayTr": "Ortayı önceden forehand oyuncusuna ata. Puan ortasında karar verme.",
-    "tacticalCategory": "patterns"
+    "tacticalCategory": "patterns",
+    "scenarioFr": "Une balle arrive pile au milieu, entre ton partenaire et toi. Qui la prend ?",
+    "optionsFr": [
+      "Le joueur convenu à l'avance — par défaut, celui dont le coup droit est au milieu",
+      "Celui qui se trouve le plus près à cet instant",
+      "Les deux, par sécurité"
+    ],
+    "explanationFr": "« Au milieu, on résout l'énigme. » Décidez à l'avance qui prend le milieu (par défaut : le joueur en coup droit) pour éviter que deux raquettes se percutent ou que personne n'y aille. Ça se décide avant le point, pas pendant.",
+    "takeawayFr": "Attribue le milieu au joueur en coup droit à l'avance. Ne décide pas en plein point."
   },
   {
     "id": "doubles_009",
@@ -1879,7 +2486,18 @@
     "explanation": "Both-back is a defensive reset against a big serve or a heavy lobbing team — it buys time and protects the exposed net player. It's temporary: absorb, reset, then work your way back to the net.",
     "takeaway": "Both-back is a temporary shield vs a big serve — not a permanent plan.",
     "mistakeType": "leaving the net player exposed to a big serve",
-    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.92, "opponentX": 0.5, "opponentY": 0.06, "ballOriginX": 0.5, "ballOriginY": 0.1, "ballTargetX": 0.5, "ballTargetY": 0.85, "scoreChip": "BOTH BACK"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.92,
+      "opponentX": 0.5,
+      "opponentY": 0.06,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.1,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.85,
+      "scoreChip": "BOTH BACK"
+    },
     "scenarioTr": "Sert bir servisçi partnerinin karşılamasını eziyor ve file oyuncunu avlıyor. Hangi dizilim ayarı yardımcı olur?",
     "optionsTr": [
       "Kısa süre both-back olup servisi sönümle, sonra file'ye geri çık",
@@ -1888,7 +2506,15 @@
     ],
     "explanationTr": "Both-back (ikiniz de arkada), sert servise ya da çok lob atan takıma karşı defansif sıfırlamadır — zaman kazandırır ve açıkta kalan file oyuncusunu korur. Geçicidir: sönümle, sıfırla, sonra file'ye dön.",
     "takeawayTr": "Both-back, sert servise karşı geçici bir kalkandır — kalıcı plan değil.",
-    "tacticalCategory": "defense"
+    "tacticalCategory": "defense",
+    "scenarioFr": "Un gros serveur écrase le retour de ton partenaire et cueille ton joueur de filet. Quel ajustement de formation aide ?",
+    "optionsFr": [
+      "Passer brièvement à deux-derrière pour absorber, puis remonter au filet",
+      "Rester un-devant et espérer que le joueur de filet réagisse plus vite",
+      "Monter les deux au filet tout de suite pour mettre la pression"
+    ],
+    "explanationFr": "Deux-derrière est une remise à zéro défensive contre un gros service ou une équipe qui lobe beaucoup — ça gagne du temps et protège le joueur de filet exposé. C'est temporaire : absorber, se replacer, puis regagner le filet.",
+    "takeawayFr": "Deux-derrière est un bouclier temporaire contre un gros service — pas un plan permanent."
   },
   {
     "id": "doubles_010",
@@ -1905,7 +2531,18 @@
     "explanation": "A lob over the crowding net player resets the point and pushes them off the net, making them respect the lob and poach less. Hitting harder into the poach is exactly what they want.",
     "takeaway": "Punish an over-eager poacher with a lob — it buys back the middle.",
     "mistakeType": "feeding an aggressive poacher",
-    "diagram": {"surface": "clay", "youX": 0.6, "youY": 0.9, "opponentX": 0.35, "opponentY": 0.42, "ballOriginX": 0.6, "ballOriginY": 0.85, "ballTargetX": 0.35, "ballTargetY": 0.14, "scoreChip": "LOB POACHER"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.6,
+      "youY": 0.9,
+      "opponentX": 0.35,
+      "opponentY": 0.42,
+      "ballOriginX": 0.6,
+      "ballOriginY": 0.85,
+      "ballTargetX": 0.35,
+      "ballTargetY": 0.14,
+      "scoreChip": "LOB POACHER"
+    },
     "scenarioTr": "Karşı file oyuncusu sürekli poach yapıp ortayı daraltıyor, karşılamalarını yiyor. Bedelini nasıl ödetirsin?",
     "optionsTr": [
       "Agresif file oyuncusunu lob'la, file'den uzaklaştır",
@@ -1914,7 +2551,15 @@
     ],
     "explanationTr": "Ortayı daraltan file oyuncusunun üstünden lob, puanı sıfırlar ve onu file'den uzaklaştırır; lob'a saygı duyup daha az poach yapar. Poach'ın içine daha sert vurmak tam da onların istediğidir.",
     "takeawayTr": "Fazla hevesli bir poach'çıyı lob'la cezalandır — ortayı geri kazandırır.",
-    "tacticalCategory": "return"
+    "tacticalCategory": "return",
+    "scenarioFr": "Le joueur adverse au filet intercepte sans arrêt et mange tes retours au milieu. Comment le faire payer ?",
+    "optionsFr": [
+      "Lober le joueur de filet agressif pour le repousser",
+      "Frapper plus fort en croisé au même endroit",
+      "Viser son couloir à chaque retour"
+    ],
+    "explanationFr": "Un lob au-dessus du joueur qui s'avance remet le point à zéro et le repousse du filet : il devra respecter le lob et interceptera moins. Frapper plus fort dans son interception, c'est exactement ce qu'il attend.",
+    "takeawayFr": "Punis un intercepteur trop gourmand avec un lob — ça te rend le milieu."
   },
   {
     "id": "serve_hard_1",
@@ -1951,7 +2596,15 @@
       "ballTargetY": 0.3,
       "scoreChip": "DEUCE · 30-30"
     },
-    "tacticalCategory": "patterns"
+    "tacticalCategory": "patterns",
+    "scenarioFr": "Côté égalité, 30-30. Tu as remarqué que le relanceur chippe un revers court et flottant à chaque fois que tu sers sur son corps. Quel est le coup le plus rentable ?",
+    "optionsFr": [
+      "Resservir sur le corps, puis avancer et attaquer tôt le chip court en coup droit",
+      "Tenter un ace à plat au T",
+      "Servir extérieur sur son coup droit pour ouvrir le court"
+    ],
+    "explanationFr": "Tu as lu une tendance fiable. Le service sur le corps coince le revers et provoque la balle courte et flottante : déclenche-la exprès, anticipe la réponse, avance et attaque à la montée. Tu chasses le +1, pas l'ace.",
+    "takeawayFr": "Quand tu as lu une tendance de retour, sers pour la déclencher — puis fonds sur la réponse prévisible."
   },
   {
     "id": "return_hard_1",
@@ -1988,7 +2641,15 @@
       "ballTargetY": 0.84,
       "scoreChip": "4-5 · 0-30 · RETURN"
     },
-    "tacticalCategory": "return"
+    "tacticalCategory": "return",
+    "scenarioFr": "Mené 4-5, 0-30 sur son service, court rapide, face à un gros serveur qui va 70 % sur ton revers. Où te places-tu et quel est l'objectif ?",
+    "optionsFr": [
+      "Te décaler d'un demi-pas vers le revers et bloquer profond au milieu",
+      "Rester à ta place habituelle et tenter un gagnant propre",
+      "Reculer de deux mètres et slicer chaque retour"
+    ],
+    "explanationFr": "Face à une bombe sur court rapide, l'objectif réaliste est un retour neutre, pas un gagnant. Décale-toi vers la cible à 70 %, raccourcis en bloc et vise profond au milieu — ça coupe l'angle du coup suivant et te laisse le temps de te replacer.",
+    "takeawayFr": "Contre un gros serveur : décale-toi vers son schéma, bloque profond au milieu, accepte le neutre — survivre avant d'attaquer."
   },
   {
     "id": "rally_hard_1",
@@ -2025,7 +2686,15 @@
       "ballTargetY": 0.2,
       "scoreChip": "INSIDE-OUT FH"
     },
-    "tacticalCategory": "patterns"
+    "tacticalCategory": "patterns",
+    "scenarioFr": "Long échange de coups droits croisés, tous les deux au fond. Son croisé tombe un peu plus court à chaque balle. Quelle est la façon la plus rentable de changer le schéma ?",
+    "optionsFr": [
+      "Attendre la balle courte, avancer et jouer un coup droit décroisé sur son revers",
+      "Frapper long de ligne sur la prochaine balle profonde",
+      "Continuer à user le même croisé et attendre la faute"
+    ],
+    "explanationFr": "La balle qui raccourcit est ton signal. Changer de direction sur une balle profonde est peu rentable — attends la balle courte, avance et inverse la diagonale en décroisé sur son revers. Tu changes le schéma en position de force, pas de désespoir.",
+    "takeawayFr": "Change de direction sur la balle COURTE, pas sur la profonde — laisse l'échange t'offrir l'ouverture."
   },
   {
     "id": "net_hard_1",
@@ -2062,7 +2731,15 @@
       "ballTargetY": 0.16,
       "scoreChip": "AT THE SERVICE LINE"
     },
-    "tacticalCategory": "netGame"
+    "tacticalCategory": "netGame",
+    "scenarioFr": "Tu as monté long de ligne et tu es à la ligne de service — pas encore au filet — quand ton adversaire arme un passing croisé. Que fais-tu ?",
+    "optionsFr": [
+      "Split-step, couvrir le croisé et pousser la volée profond derrière lui",
+      "Sprinter jusqu'au filet et deviner un côté",
+      "Reculer à la ligne de fond pour récupérer le passing"
+    ],
+    "explanationFr": "Depuis la ligne de service, tu ne peux pas angler une volée sans risque. Ton approche long de ligne a déjà fermé la ligne : split-step, couvre le passing croisé le plus probable, et pousse la volée PROFOND derrière l'adversaire lancé — la profondeur plutôt qu'un angle risqué de trop loin.",
+    "takeawayFr": "Coincé à la ligne de service : split, couvre le croisé, volée profonde derrière lui — pas d'angle sophistiqué."
   },
   {
     "id": "mental_hard_1",
@@ -2087,7 +2764,15 @@
     ],
     "explanationTr": "Choke-break'ten sonra çözüm panik değil, süreçtir. Puanlar arası temponu yavaşlat, nefes al ve daha büyük bir hedefe (çizgilerden pay) dön. Break'i pervasızca kovalama ya da kaçırdıklarını kafanda evirip çevirme — bir sonraki puanı kendi başına oyna.",
     "takeawayTr": "Choke'tan sonra: tempoyu yavaşlat, paylarını genişlet, bir sonraki puanı oyna — kovalama ya da geviş getirme.",
-    "tacticalCategory": "patterns"
+    "tacticalCategory": "patterns",
+    "scenarioFr": "Tu servais pour le set à 5-3 et tu t'es fait breaker à 5-4 après deux doubles fautes. Comment repartir au jeu suivant ?",
+    "optionsFr": [
+      "Allonger ta routine entre les points et te réengager sur une cible à haut pourcentage",
+      "Tout tenter immédiatement pour re-breaker",
+      "Repasser les doubles fautes en tête pour corriger le lancer"
+    ],
+    "explanationFr": "Après un break subi sous pression, la solution est le processus, pas la panique. Ralentis ton tempo entre les points, respire, et reviens à une cible plus large (de la marge sur les lignes). Ne cours pas après le re-break et ne rumine pas — joue le point suivant pour lui-même.",
+    "takeawayFr": "Après un craquage : ralentis le tempo, élargis tes marges, joue le point suivant — ne cours pas après, ne rumine pas."
   },
   {
     "id": "doubles_hard_1",
@@ -2104,7 +2789,18 @@
     "explanation": "The returner has a comfortable, grooved target — crosscourt at the net player's feet. Take it away by hiding where the net player will be: I-formation or a fake poach forces the returner to decide late and abandon a pattern that's been working.",
     "takeaway": "When a returner grooves a target, hide your net player — I-formation or a fake resets their decision.",
     "mistakeType": "staying predictable against a hot returner",
-    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.94, "opponentX": 0.72, "opponentY": 0.1, "ballOriginX": 0.5, "ballOriginY": 0.9, "ballTargetX": 0.55, "ballTargetY": 0.3, "scoreChip": "I-FORMATION"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.94,
+      "opponentX": 0.72,
+      "opponentY": 0.1,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.9,
+      "ballTargetX": 0.55,
+      "ballTargetY": 0.3,
+      "scoreChip": "I-FORMATION"
+    },
     "scenarioTr": "Doubles'ta servis atıyorsun, partnerin file'de. Karşılayan, partnerini iki kez ayaklarına düşen çapraz karşılamalarla yaktı. En iyi ayar ne?",
     "optionsTr": [
       "I-formation'a geç (ya da sahte poach yap) ve karşılayanın hedefini boz",
@@ -2113,7 +2809,15 @@
     ],
     "explanationTr": "Karşılayanın rahat, oturmuş bir hedefi var — file oyuncusunun ayaklarına çapraz. File oyuncusunun nerede olacağını gizleyerek bunu elinden al: I-formation ya da sahte poach, karşılayanı geç karar vermeye ve işe yarayan deseni bırakmaya zorlar.",
     "takeawayTr": "Karşılayan bir hedefi oturttuysa file oyuncunu gizle — I-formation ya da sahte hamle kararını sıfırlar.",
-    "tacticalCategory": "patterns"
+    "tacticalCategory": "patterns",
+    "scenarioFr": "Tu sers en double, ton partenaire au filet. Le relanceur l'a déjà brûlé deux fois avec des retours croisés qui plongent dans ses pieds. Meilleur ajustement ?",
+    "optionsFr": [
+      "Passer en formation en I (ou simuler une interception) pour brouiller sa cible",
+      "Dire à ton partenaire de reculer vers la ligne de service",
+      "Servir simplement plus fort au T à chaque fois"
+    ],
+    "explanationFr": "Le relanceur a une cible confortable et bien rodée : croisé dans les pieds du joueur de filet. Enlève-la en cachant où sera ton partenaire : la formation en I ou une fausse interception l'oblige à décider tard et à abandonner un schéma qui marchait.",
+    "takeawayFr": "Quand un relanceur a rodé sa cible, cache ton joueur de filet — formation en I ou feinte, et sa décision repart de zéro."
   },
   {
     "id": "serve_100",
@@ -2150,7 +2854,15 @@
       "ballTargetX": 0.5,
       "ballTargetY": 0.3,
       "scoreChip": "AD COURT"
-    }
+    },
+    "scenarioFr": "Tu as un gros coup droit mais tu sers sans arrêt extérieur côté avantage, et les retours reviennent sur ton revers. Quel service met ton arme en jeu ?",
+    "optionsFr": [
+      "Le service au T — le retour revient souvent par le milieu, sur ton coup droit",
+      "Encore extérieur, mais plus fort",
+      "Un service à la cuillère pour surprendre"
+    ],
+    "explanationFr": "Le service au T réduit les angles du relanceur : le retour revient donc souvent au centre — exactement là où tu peux te décaler et charger ton coup droit en +1.",
+    "takeawayFr": "Choisis le service qui achète ton meilleur coup à la deuxième balle."
   },
   {
     "id": "serve_101",
@@ -2187,7 +2899,15 @@
       "ballTargetX": 0.27,
       "ballTargetY": 0.3,
       "scoreChip": "BREAK POINT"
-    }
+    },
+    "scenarioFr": "Balle de break contre toi. Ta deuxième balle est fébrile depuis le début. Où sers-tu ?",
+    "optionsFr": [
+      "Un service très lifté sur le corps du relanceur",
+      "Une bombe à plat au T",
+      "Un service mou et flottant dans le coin"
+    ],
+    "explanationFr": "L'effet sur le corps coince le relanceur — aucun angle à attaquer — et le lift te donne de la marge au-dessus du filet quand ton bras est tendu.",
+    "takeawayFr": "Sous pression : de l'effet pour la marge, le corps pour la sécurité."
   },
   {
     "id": "serve_102",
@@ -2224,7 +2944,15 @@
       "ballTargetX": 0.13,
       "ballTargetY": 0.32,
       "scoreChip": "DEUCE COURT"
-    }
+    },
+    "scenarioFr": "Ton adversaire se place deux mètres derrière la ligne de fond pour retourner. Qu'est-ce que cette position invite ?",
+    "optionsFr": [
+      "Un slice extérieur — la profondeur supplémentaire l'emmène hors du court",
+      "Des services à plat plus forts au même endroit",
+      "Uniquement des services au T"
+    ],
+    "explanationFr": "Un relanceur reculé couvre la vitesse, pas la largeur. Un slice extérieur l'éloigne à chaque pas et t'ouvre tout le court pour le +1.",
+    "takeawayFr": "Position de retour reculée = attaque par l'angle, pas par la vitesse."
   },
   {
     "id": "serve_103",
@@ -2261,7 +2989,15 @@
       "ballTargetX": 0.88,
       "ballTargetY": 0.32,
       "scoreChip": "30–40"
-    }
+    },
+    "scenarioFr": "Tu es gaucher et tu sers à 30-40 côté avantage. Quelle est l'échappatoire classique du gaucher ?",
+    "optionsFr": [
+      "Slice extérieur pour emmener le revers du droitier hors du court",
+      "Service à plat au T sur son coup droit",
+      "Service sur le corps, et on verra"
+    ],
+    "explanationFr": "Le slice du gaucher s'éloigne du revers d'un droitier côté avantage — l'échappatoire la plus rentable du tennis sur balle de break.",
+    "takeawayFr": "Gaucher en difficulté = slice extérieur côté avantage."
   },
   {
     "id": "serve_104",
@@ -2286,7 +3022,15 @@
       "Sürpriz olsun diye en az attığın servisi denemek"
     ],
     "explanationTr": "Her seviyede ilk servis sayıları, ikinci servis sayılarından çok daha yüksek oranda kazanılır. Set sayısında %75'lik içerideki servis, %100'lük dışarıdakinden iyidir.",
-    "takeawayTr": "Büyük sayıda ilk servisi içeri at — dörtte üç hızla bile."
+    "takeawayTr": "Büyük sayıda ilk servisi içeri at — dörtte üç hızla bile.",
+    "scenarioFr": "Balle de set pour toi à 5-4, 40-30. Qu'est-ce qui compte le plus sur cette première balle ?",
+    "optionsFr": [
+      "La mettre DEDANS — une première balle en jeu gagne la plupart de ces points",
+      "Un maximum de vitesse pour un ace propre",
+      "Tenter ton service le plus rare pour surprendre"
+    ],
+    "explanationFr": "Les points sur première balle se gagnent à un taux bien supérieur aux points sur deuxième, à tous les niveaux. Sur balle de set, une balle à 75 % dedans vaut mieux qu'une à 100 % dehors.",
+    "takeawayFr": "Point important = mets la première balle, même aux trois quarts de ta vitesse."
   },
   {
     "id": "serve_105",
@@ -2323,7 +3067,15 @@
       "ballTargetX": 0.32,
       "ballTargetY": 0.28,
       "scoreChip": "SECOND SERVE"
-    }
+    },
+    "scenarioFr": "Le revers à une main de ton adversaire semble fébrile sur les balles hautes. Quelle deuxième balle exploite ça ?",
+    "optionsFr": [
+      "Un service kické sur l'épaule du revers",
+      "Un service slicé maintenu bas",
+      "Un service à plat sur le coup droit"
+    ],
+    "explanationFr": "Un service kické monte au-dessus de la hauteur de frappe confortable — et les revers à une main souffrent surtout au-dessus de l'épaule.",
+    "takeawayFr": "Un kické haut sur un revers à une main est un outil de pression gratuit."
   },
   {
     "id": "serve_106",
@@ -2348,7 +3100,15 @@
       "Kaçırana kadar hep tekrarla"
     ],
     "explanationTr": "Servis bir olasılık oyunudur: rakip ayar yapana kadar kazandıranı tekrarla, ayarı görünce onu cezalandır. Batıla değil rakibe tepki ver.",
-    "takeawayTr": "Deseni kaygına göre değil, rakibin ayarına göre değiştir."
+    "takeawayTr": "Deseni kaygına göre değil, rakibin ayarına göre değiştir.",
+    "scenarioFr": "Tu viens de faire deux aces à l'extérieur. Au point suivant, ton instinct dit d'y retourner. Quel est le bon cadre de pensée ?",
+    "optionsFr": [
+      "Rester imprévisible — varie, mais n'abandonne pas ce qui marche tant qu'il ne s'adapte pas",
+      "Ne jamais répéter un service deux fois",
+      "Toujours répéter jusqu'à la faute"
+    ],
+    "explanationFr": "Servir est un jeu de probabilités : répète ce qui gagne jusqu'à ce que le relanceur montre un ajustement, puis punis cet ajustement. Réagis à lui, pas à une superstition.",
+    "takeawayFr": "Change de schéma en réaction à son ajustement, pas à ton anxiété."
   },
   {
     "id": "serve_107",
@@ -2373,7 +3133,15 @@
       "Oyun ortasında yepyeni bir hareket dene"
     ],
     "explanationTr": "Çift hatalar genelde aceleye gelmiş, kısalmış hareketten çıkar. Ritüeli yavaşlatmak ritmi, falsolu hedef payı geri getirir.",
-    "takeawayTr": "Çift hatadan sonra: daha yavaş ritüel, daha falsolu hedef."
+    "takeawayTr": "Çift hatadan sonra: daha yavaş ritüel, daha falsolu hedef.",
+    "scenarioFr": "Tu as fait deux doubles fautes dans ce jeu. Avant le service suivant, quel est le meilleur reset physique ?",
+    "optionsFr": [
+      "Ralentir : un rebond de plus, une respiration complète, une cible avec de l'effet",
+      "Servir vite avant que le doute s'installe",
+      "Changer complètement de mouvement en plein jeu"
+    ],
+    "explanationFr": "Les doubles fautes viennent le plus souvent d'un geste précipité et raccourci. Ralentir le rituel restaure le rythme ; une cible avec de l'effet restaure la marge.",
+    "takeawayFr": "Après des doubles : rituel plus lent, cible plus liftée."
   },
   {
     "id": "serve_108",
@@ -2410,7 +3178,15 @@
       "ballTargetX": 0.5,
       "ballTargetY": 0.3,
       "scoreChip": "DEUCE COURT"
-    }
+    },
+    "scenarioFr": "Côté égalité, face à un droitier au retour de coup droit énorme. Quelle direction de première balle limite les dégâts ?",
+    "optionsFr": [
+      "Le service au T — il trouve le revers et coupe l'angle",
+      "Extérieur — sur sa force en coup droit",
+      "Sur le corps — toujours le corps"
+    ],
+    "explanationFr": "Côté égalité, un service au T arrive sur le revers d'un droitier et ne lui laisse presque aucun angle à exploiter.",
+    "takeawayFr": "T côté égalité = revers et zéro angle pour un droitier."
   },
   {
     "id": "serve_109",
@@ -2435,7 +3211,15 @@
       "Değişiklik yok; koşulları boşver"
     ],
     "explanationTr": "Arkadan esen rüzgâr her şeyi uzatır. Falso topu daha erken indirir; kısa hedef payını servis çizgisinin içinde tutar.",
-    "takeawayTr": "Rüzgâr arkandaysa: falso ekle, hedefi kısalt."
+    "takeawayTr": "Rüzgâr arkandaysa: falso ekle, hedefi kısalt.",
+    "scenarioFr": "Vent fort dans le dos sur ce set. Comment adapter tes cibles au service ?",
+    "optionsFr": [
+      "Plus d'effet et viser plus court dans le carré — le vent allonge les services à plat",
+      "Frapper plus à plat et plus fort — de la vitesse gratuite",
+      "Ne rien changer ; ignorer les conditions"
+    ],
+    "explanationFr": "Un vent arrière allonge tout. L'effet fait redescendre la balle plus tôt ; viser plus court garde ta marge à l'intérieur de la ligne de service.",
+    "takeawayFr": "Vent dans le dos : plus d'effet, cibles plus courtes."
   },
   {
     "id": "serve_110",
@@ -2472,7 +3256,15 @@
       "ballTargetX": 0.82,
       "ballTargetY": 0.15,
       "scoreChip": "SERVE +1"
-    }
+    },
+    "scenarioFr": "Tu sers extérieur côté égalité et le retour revient croisé en flottant. Où joues-tu ton +1 ?",
+    "optionsFr": [
+      "Dans le côté avantage libre qu'il vient de quitter",
+      "Derrière lui, dans le même coin",
+      "Une amortie"
+    ],
+    "explanationFr": "Le service extérieur l'a sorti du court ; le retour flottant te donne du temps. Le court ouvert est la conclusion rentable — derrière lui seulement quand il anticipera.",
+    "takeawayFr": "Service extérieur → +1 dans le court ouvert. L'option sophistiquée viendra plus tard."
   },
   {
     "id": "serve_111",
@@ -2497,7 +3289,15 @@
       "Telafi için daha alçağa nişan al"
     ],
     "explanationTr": "Atışı tutmak serbesttir. Kaçan atışa vurmak hatayı içine gömer; tutmak hiçbir şeye mal olmaz ve ritmi sıfırlar.",
-    "takeawayTr": "Güvenmediğin atışa asla vurma."
+    "takeawayTr": "Güvenmediğin atışa asla vurma.",
+    "scenarioFr": "Ton lancer de balle dérive derrière toi et tes services partent longs. Quelle solution concrète en match ?",
+    "optionsFr": [
+      "Rattraper les mauvais lancers et relancer, sans pénalité",
+      "Frapper quand même — relancer fait faible",
+      "Viser plus bas pour compenser"
+    ],
+    "explanationFr": "Tu as le droit de rattraper ton lancer. Frapper un lancer qui dérive intègre la faute ; le rattraper ne coûte rien et remet ton rythme en place.",
+    "takeawayFr": "Ne frappe jamais un lancer en lequel tu n'as pas confiance."
   },
   {
     "id": "serve_112",
@@ -2534,7 +3334,15 @@
       "ballTargetX": 0.2,
       "ballTargetY": 0.15,
       "scoreChip": "CHIP RETURN"
-    }
+    },
+    "scenarioFr": "Ton adversaire chippe chaque retour court et bas. Comment faire pour que ton service commence à gagner le point ?",
+    "optionsFr": [
+      "Servir et AVANCER — prendre le chip tôt comme un coup d'approche",
+      "Rester derrière et laisser le chip retomber",
+      "Servir plus doucement pour qu'il ne puisse pas chipper"
+    ],
+    "explanationFr": "Un retour chippé est une invitation : il est lent et court. Enchaîner le service par un déplacement vers l'avant transforme sa réponse neutre en ton coup d'approche.",
+    "takeawayFr": "Contre les chips, le rôle de ton service est de t'offrir la balle de milieu de court — va la chercher."
   },
   {
     "id": "serve_113",
@@ -2571,7 +3379,15 @@
       "ballTargetX": 0.31,
       "ballTargetY": 0.3,
       "scoreChip": "30–15"
-    }
+    },
+    "scenarioFr": "En simple, ton adversaire s'est mis à AVANCER sur ta deuxième balle et la prend tôt, à 30-15. Quel service fait passer le message ?",
+    "optionsFr": [
+      "Un kick lourd sur le corps — coince le relanceur qui avance",
+      "Insister avec la même deuxième balle molle",
+      "Un slice extérieur depuis un lancer défensif"
+    ],
+    "explanationFr": "Un relanceur qui avance a raccourci son propre temps de réaction. Un service kické sur le corps ne lui laisse pas de place pour armer et punit sa position agressive.",
+    "takeawayFr": "Quand il avance, sers SUR lui, pas loin de lui."
   },
   {
     "id": "serve_114",
@@ -2596,7 +3412,15 @@
       "O tarafta sadece alttan at"
     ],
     "explanationTr": "Bir adım duruş kaydırmak ya da atışı parlamadan çıkarmak biraz hız kaybettirir ama sayının başlangıcını kurtarır. Koşullar bahane değil taktik girdidir.",
-    "takeawayTr": "Skor seni zorlamadan ritüeli koşullara uyarla."
+    "takeawayTr": "Skor seni zorlamadan ritüeli koşullara uyarla.",
+    "scenarioFr": "D'un côté, le soleil est pile dans l'axe de ton lancer et tu as manqué quatre premières balles de ce côté. Meilleur ajustement ?",
+    "optionsFr": [
+      "Décaler légèrement ta position et l'angle du lancer, et accepter un service avec plus d'effet de ce côté",
+      "Continuer à lancer dans le soleil en plissant les yeux",
+      "Servir uniquement à la cuillère de ce côté"
+    ],
+    "explanationFr": "Déplacer ta position d'un pas ou incliner le lancer hors de l'éblouissement coûte un peu de vitesse mais sauve le début de point. Les conditions sont des données tactiques, pas des excuses.",
+    "takeawayFr": "Adapte ton rituel aux conditions avant que le score t'y oblige."
   },
   {
     "id": "return_100",
@@ -2633,7 +3457,15 @@
       "ballTargetX": 0.5,
       "ballTargetY": 0.15,
       "scoreChip": "RETURN"
-    }
+    },
+    "scenarioFr": "Aucun plan, une première balle de vitesse moyenne arrive. Où part ton retour par défaut ?",
+    "optionsFr": [
+      "Profond par le milieu",
+      "Un angle très fermé vers un couloir",
+      "Une amortie en retour"
+    ],
+    "explanationFr": "Le milieu profond enlève au serveur les angles pour son +1, passe par la partie la plus basse du filet et te laisse le temps de te placer.",
+    "takeawayFr": "Le retour profond au milieu ne fait jamais de cadeau."
   },
   {
     "id": "return_101",
@@ -2670,7 +3502,15 @@
       "ballTargetX": 0.85,
       "ballTargetY": 0.2,
       "scoreChip": "SECOND SERVE"
-    }
+    },
+    "scenarioFr": "Sa deuxième balle tombe court et reste haute à chaque fois. Quel ajustement de position ?",
+    "optionsFr": [
+      "Démarrer un mètre devant ta place habituelle et la prendre à la montée",
+      "Rester en position de première balle, par sécurité",
+      "Reculer pour avoir plus de temps"
+    ],
+    "explanationFr": "Une deuxième balle faible est une attaque offerte — mais seulement si tu la prends tôt. La prendre à la montée vole au serveur son temps de replacement.",
+    "takeawayFr": "Avance tes appuis avant la deuxième balle, n'accélère pas ton geste."
   },
   {
     "id": "return_102",
@@ -2688,7 +3528,18 @@
     "explanation": "Against big serves you don't need to add energy — you need to redirect it. A compact block keeps contact in front and the ball in play.",
     "takeaway": "Their pace is a gift: block it back deep.",
     "mistakeType": "chasing pace on direction change",
-    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.94, "opponentX": 0.5, "opponentY": 0.06, "ballOriginX": 0.5, "ballOriginY": 0.1, "ballTargetX": 0.5, "ballTargetY": 0.86, "scoreChip": "BLOCK"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.94,
+      "opponentX": 0.5,
+      "opponentY": 0.06,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.1,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.86,
+      "scoreChip": "BLOCK"
+    },
     "scenarioTr": "Servisçi seni hızla eziyor — karşılamalar uçuyor. Teknik çözüm ne?",
     "optionsTr": [
       "Blokla kısalt: kompakt salınım, sıkı bilek, onun hızını kullan",
@@ -2696,7 +3547,15 @@
       "Gözünü kapat, umut et"
     ],
     "explanationTr": "Büyük servise enerji eklemen gerekmez — yönlendirmen gerekir. Kompakt blok teması önde tutar, topu oyunda tutar.",
-    "takeawayTr": "Rakibin hızı hediyedir: derine blokla."
+    "takeawayTr": "Rakibin hızı hediyedir: derine blokla.",
+    "scenarioFr": "Le serveur te domine par la puissance — tes retours partent dehors. Quelle correction technique ?",
+    "optionsFr": [
+      "Raccourcir en bloc : geste compact, poignet ferme, utilise sa vitesse",
+      "Accélérer ton geste pour égaler sa vitesse",
+      "Fermer les yeux et espérer"
+    ],
+    "explanationFr": "Contre les gros services, tu n'as pas besoin d'ajouter de l'énergie — tu dois la rediriger. Un bloc compact garde l'impact devant et la balle en jeu.",
+    "takeawayFr": "Sa vitesse est un cadeau : bloque-la profond."
   },
   {
     "id": "return_103",
@@ -2733,7 +3592,15 @@
       "ballTargetX": 0.5,
       "ballTargetY": 0.14,
       "scoreChip": "BREAK POINT"
-    }
+    },
+    "scenarioFr": "Balle de break POUR toi. L'historique dit que sa deuxième balle part sur ton revers. Quel est le plan ?",
+    "optionsFr": [
+      "T'engager tôt : te décaler et jouer le retour de coup droit décidé à l'avance",
+      "Attendre, réagir, garder toutes les options ouvertes",
+      "La chipper prudemment — c'est un gros point"
+    ],
+    "explanationFr": "Sur les gros points où le service est prévisible, c'est le relanceur qui s'est engagé à l'avance qui gagne l'échange. Un retour de coup droit planifié convertit bien plus de balles de break qu'une réaction neutre.",
+    "takeawayFr": "Sur balle de break, retourne avec une décision, pas avec une réaction."
   },
   {
     "id": "return_104",
@@ -2751,7 +3618,18 @@
     "explanation": "The kick's weapon is its bounce. Meeting the ball before the apex turns a shoulder-high problem into a waist-high rally ball.",
     "takeaway": "Beat the kick with your feet (earlier), not your shoulder (higher).",
     "mistakeType": "attacking a tough kick serve",
-    "diagram": {"surface": "clay", "youX": 0.35, "youY": 0.9, "opponentX": 0.6, "opponentY": 0.06, "ballOriginX": 0.6, "ballOriginY": 0.1, "ballTargetX": 0.35, "ballTargetY": 0.78, "scoreChip": "KICK SERVE"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.35,
+      "youY": 0.9,
+      "opponentX": 0.6,
+      "opponentY": 0.06,
+      "ballOriginX": 0.6,
+      "ballOriginY": 0.1,
+      "ballTargetX": 0.35,
+      "ballTargetY": 0.78,
+      "scoreChip": "KICK SERVE"
+    },
     "scenarioTr": "Kick servis sürekli backhand omzunun üstüne tırmanıyor. En basit panzehir?",
     "optionsTr": [
       "İçeri gir, tırmanmadan erken al",
@@ -2759,7 +3637,15 @@
       "Yüksek topa daha sert salla"
     ],
     "explanationTr": "Kick'in silahı sekmesidir. Topu tepe noktasından önce karşılamak, omuz hizası problemini bel hizası ralli topuna çevirir.",
-    "takeawayTr": "Kick'i omzunla (daha yüksek) değil ayaklarınla (daha erken) yen."
+    "takeawayTr": "Kick'i omzunla (daha yüksek) değil ayaklarınla (daha erken) yen.",
+    "scenarioFr": "Son service kické monte sans arrêt au-dessus de ton épaule côté revers. Quelle est la parade la plus simple ?",
+    "optionsFr": [
+      "Avancer et la prendre plus tôt, avant qu'elle monte",
+      "Reculer et la frapper à hauteur de tête",
+      "Frapper plus fort dans la balle haute"
+    ],
+    "explanationFr": "L'arme du kick, c'est son rebond. Prendre la balle avant son sommet transforme un problème à hauteur d'épaule en une balle d'échange à hauteur de hanche.",
+    "takeawayFr": "Bats le kick avec tes pieds (plus tôt), pas avec ton épaule (plus haut)."
   },
   {
     "id": "return_105",
@@ -2796,7 +3682,15 @@
       "ballTargetX": 0.52,
       "ballTargetY": 0.42,
       "scoreChip": "S&V"
-    }
+    },
+    "scenarioFr": "Surprise : il sert-volée sur les gros points. Quel retour lui fait le plus mal ?",
+    "optionsFr": [
+      "Une balle basse dans ses pieds pendant qu'il monte",
+      "Un lob haut et profond à chaque fois",
+      "La frappe la plus forte possible dans le court ouvert"
+    ],
+    "explanationFr": "Le cauchemar d'un volleyeur, c'est une frappe sous le niveau du filet en pleine course. Bas dans les pieds l'oblige à une demi-volée défensive que tu peux attaquer.",
+    "takeawayFr": "Contre celui qui monte : oblige-le à jouer sa première volée dans ses lacets."
   },
   {
     "id": "return_106",
@@ -2814,7 +3708,18 @@
     "explanation": "You don't need to win every return game — one break usually decides club sets. Concentrating energy on second serves and score pressure points is efficient aggression.",
     "takeaway": "Return games are about ONE well-timed surge, not constant heroics.",
     "mistakeType": "even effort distribution across return games",
-    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.92, "opponentX": 0.5, "opponentY": 0.06, "ballOriginX": 0.5, "ballOriginY": 0.1, "ballTargetX": 0.5, "ballTargetY": 0.85, "scoreChip": "RETURN GAME"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.92,
+      "opponentX": 0.5,
+      "opponentY": 0.06,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.1,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.85,
+      "scoreChip": "RETURN GAME"
+    },
     "scenarioTr": "Rakibin servis oyunlarında 0–3 geridesin, koku bile alamadın. Karşılama oyunları için stratejik çerçeve ne?",
     "optionsTr": [
       "Set başına bir oyun hedefle: ikinci servislerde ve 30–30'larda yoğunluğu artır",
@@ -2822,7 +3727,15 @@
       "Her karşılamada kumar oyna"
     ],
     "explanationTr": "Her karşılama oyununu kazanman gerekmiyor — kulüp setlerini genelde tek break belirler. Enerjiyi ikinci servislere ve skor baskısı anlarına yığmak verimli agresyondur.",
-    "takeawayTr": "Karşılama oyunları sürekli kahramanlık değil, İYİ zamanlanmış tek dalgadır."
+    "takeawayTr": "Karşılama oyunları sürekli kahramanlık değil, İYİ zamanlanmış tek dalgadır.",
+    "scenarioFr": "Tu es mené 0-3 sans avoir vu la couleur de ses jeux de service. Quel recadrage stratégique pour tes jeux de retour ?",
+    "optionsFr": [
+      "Viser un jeu par set : monter l'intensité sur ses deuxièmes balles et à 30-30",
+      "Accepter que son service est trop fort",
+      "Tout miser sur chaque retour"
+    ],
+    "explanationFr": "Tu n'as pas besoin de gagner tous les jeux de retour — un seul break décide généralement d'un set en club. Concentrer ton énergie sur les deuxièmes balles et les points sous pression, c'est de l'agressivité efficace.",
+    "takeawayFr": "Les jeux de retour se gagnent par UNE poussée bien placée, pas par de l'héroïsme permanent."
   },
   {
     "id": "return_107",
@@ -2840,7 +3753,18 @@
     "explanation": "The split step at the server's contact loads both legs so your first move is explosive in either direction. Without it, you're reacting a beat late.",
     "takeaway": "No split step, no return. Time it to their hit.",
     "mistakeType": "missing the split step on return",
-    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.9, "opponentX": 0.5, "opponentY": 0.06, "ballOriginX": 0.5, "ballOriginY": 0.1, "ballTargetX": 0.5, "ballTargetY": 0.84, "scoreChip": "SPLIT STEP"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.9,
+      "opponentX": 0.5,
+      "opponentY": 0.06,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.1,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.84,
+      "scoreChip": "SPLIT STEP"
+    },
     "scenarioTr": "Karşılamalarda sürekli hazırlıksız yakalanıyorsun. Eksik ne?",
     "optionsTr": [
       "Rakibin vuruş anına zamanlanmış split step",
@@ -2848,7 +3772,15 @@
       "Denge için hiç kıpırdamadan durmak"
     ],
     "explanationTr": "Servisçinin temas anındaki split step iki bacağı da yükler; ilk hareketin iki yöne de patlayıcı olur. Onsuz bir tempo geç kalırsın.",
-    "takeawayTr": "Split step yoksa karşılama yok. Vuruş anına zamanla."
+    "takeawayTr": "Split step yoksa karşılama yok. Vuruş anına zamanla.",
+    "scenarioFr": "Tu te fais surprendre les pieds plantés sur les retours. Qu'est-ce qui manque ?",
+    "optionsFr": [
+      "Un split-step calé sur sa frappe",
+      "Une préparation plus ample",
+      "Rester parfaitement immobile pour la stabilité"
+    ],
+    "explanationFr": "Le split-step au moment de la frappe du serveur charge les deux jambes pour que ton premier appui soit explosif des deux côtés. Sans lui, tu réagis avec un temps de retard.",
+    "takeawayFr": "Pas de split-step, pas de retour. Cale-le sur sa frappe."
   },
   {
     "id": "return_108",
@@ -2866,7 +3798,18 @@
     "explanation": "Toss position is the most honest tell in tennis. A half-step head start converts an unreturnable slice into a makeable stretch — without overcommitting if you're wrong.",
     "takeaway": "Watch the toss, steal a half-step, keep the other half honest.",
     "mistakeType": "ignoring serve tells",
-    "diagram": {"surface": "clay", "youX": 0.38, "youY": 0.9, "opponentX": 0.6, "opponentY": 0.06, "ballOriginX": 0.6, "ballOriginY": 0.1, "ballTargetX": 0.28, "ballTargetY": 0.76, "scoreChip": "SLICE READ"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.38,
+      "youY": 0.9,
+      "opponentX": 0.6,
+      "opponentY": 0.06,
+      "ballOriginX": 0.6,
+      "ballOriginY": 0.1,
+      "ballTargetX": 0.28,
+      "ballTargetY": 0.76,
+      "scoreChip": "SLICE READ"
+    },
     "scenarioTr": "Her kesik servisten önce atışlarının (kendi sağına) kaydığını fark ettin. Bunu nasıl kullanırsın?",
     "optionsTr": [
       "Temas hemen öncesi kesiğin yönüne yarım adım kay",
@@ -2874,7 +3817,15 @@
       "Boşver — okumalar güvenilmez"
     ],
     "explanationTr": "Atış konumu tenisin en dürüst ipucudur. Yarım adım avans, dönülmez kesiği yetişilebilir topa çevirir — yanılırsan da batmazsın.",
-    "takeawayTr": "Atışı izle, yarım adım çal, diğer yarımı dürüst tut."
+    "takeawayTr": "Atışı izle, yarım adım çal, diğer yarımı dürüst tut.",
+    "scenarioFr": "Tu remarques que son lancer dérive vers sa droite avant chaque service slicé. Comment l'utiliser ?",
+    "optionsFr": [
+      "Voler un demi-pas dans la direction du slice juste avant l'impact",
+      "Lui annoncer que tu l'as vu",
+      "L'ignorer — les indices sont peu fiables"
+    ],
+    "explanationFr": "La position du lancer est l'indice le plus honnête au tennis. Un demi-pas d'avance transforme un slice imprenable en une balle atteignable — sans te surengager si tu te trompes.",
+    "takeawayFr": "Regarde le lancer, vole un demi-pas, garde l'autre moitié honnête."
   },
   {
     "id": "return_109",
@@ -2892,7 +3843,18 @@
     "explanation": "The return is shot one of a rally, not the end of it. Recovering to the middle of their likely angles must be automatic before their next contact.",
     "takeaway": "Return, recover, split — before you evaluate the shot.",
     "mistakeType": "admiring the shot",
-    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.88, "opponentX": 0.5, "opponentY": 0.08, "ballOriginX": 0.5, "ballOriginY": 0.16, "ballTargetX": 0.82, "ballTargetY": 0.82, "scoreChip": "RECOVER"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.88,
+      "opponentX": 0.5,
+      "opponentY": 0.08,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.16,
+      "ballTargetX": 0.82,
+      "ballTargetY": 0.82,
+      "scoreChip": "RECOVER"
+    },
     "scenarioTr": "İyi bir derin karşılama vurdun — sonra sen topu izlerken cevap yanından geçti. Ne bozuldu?",
     "optionsTr": [
       "Toparlanma yok: karşılamadan hemen sonra ortala ve split yap",
@@ -2955,7 +3917,18 @@
     "explanation": "Against body serves, space is everything. A fast lateral shuffle plus compact backhand block is the highest-percentage escape at every level.",
     "takeaway": "Move yourself, not just the racquet, on body serves.",
     "mistakeType": "frozen feet on body serves",
-    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.9, "opponentX": 0.5, "opponentY": 0.06, "ballOriginX": 0.5, "ballOriginY": 0.1, "ballTargetX": 0.5, "ballTargetY": 0.84, "scoreChip": "BODY SERVE"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.9,
+      "opponentX": 0.5,
+      "opponentY": 0.06,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.1,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.84,
+      "scoreChip": "BODY SERVE"
+    },
     "scenarioTr": "Servis gövdene saplandı. Kaçış hamlesi ne?",
     "optionsTr": [
       "Hızlı yana kayıp yer aç ve backhand blokla al",
@@ -3018,7 +3991,18 @@
     "explanation": "Servers calibrate to a stationary target. Showing different depths — sometimes in, sometimes deep — forces recalibration every point and buys free misses.",
     "takeaway": "Your return position is a message: keep changing what it says.",
     "mistakeType": "static return positioning all match",
-    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.9, "opponentX": 0.5, "opponentY": 0.06, "ballOriginX": 0.5, "ballOriginY": 0.1, "ballTargetX": 0.5, "ballTargetY": 0.85, "scoreChip": "VARY DEPTH"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.9,
+      "opponentX": 0.5,
+      "opponentY": 0.06,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.1,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.85,
+      "scoreChip": "VARY DEPTH"
+    },
     "scenarioTr": "Aynı servisçi, iki set geçti. Sabit karşılama noktana alıştı. Panzehir ne?",
     "optionsTr": [
       "Sayılar arasında başlangıç derinliğini değiştir, nişanını boz",
@@ -3044,7 +4028,18 @@
     "explanation": "Even pros win few points against good first serves. Your job is to keep the makeable ones in play and feast on second serves — that's where sets are decided.",
     "takeaway": "Judge your returning on second serves, not aces against you.",
     "mistakeType": "catastrophising a service break",
-    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.92, "opponentX": 0.5, "opponentY": 0.06, "ballOriginX": 0.5, "ballOriginY": 0.1, "ballTargetX": 0.5, "ballTargetY": 0.86, "scoreChip": "1ST SERVE"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.92,
+      "opponentX": 0.5,
+      "opponentY": 0.06,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.1,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.86,
+      "scoreChip": "1ST SERVE"
+    },
     "scenarioTr": "Büyük servisçiye karşı üç ilk servis karşılaması kaçırdın diye köpürüyorsun. Sağlıklı ölçüt ne?",
     "optionsTr": [
       "İlk servislerin BİR KISMINI nötrlemek kazançtır — break'ler ikinci servisten çıkar",
@@ -3107,7 +4102,18 @@
     "explanation": "Depth pushes opponents behind the baseline where their shots lose sting and errors multiply. Pace without depth sits in their strike zone.",
     "takeaway": "Depth is the cheapest form of pressure.",
     "mistakeType": "trading depth for pace",
-    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.94, "opponentX": 0.5, "opponentY": 0.1, "ballOriginX": 0.5, "ballOriginY": 0.16, "ballTargetX": 0.5, "ballTargetY": 0.92, "scoreChip": "DEPTH"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.94,
+      "opponentX": 0.5,
+      "opponentY": 0.1,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.16,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.92,
+      "scoreChip": "DEPTH"
+    },
     "scenarioTr": "Sert-kısa ya da orta-derin vurabilirsin. Kulüp rallilerini hangisi daha çok kazanır?",
     "optionsTr": [
       "Orta ve derin — derin top hata ve kısa cevap zorlar",
@@ -3281,7 +4287,18 @@
     "explanation": "The net is 15cm lower at the center strap, the diagonal gives ~2m more court, and crosscourt leaves you closer to the next likely ball.",
     "takeaway": "Crosscourt isn't passive — it's geometry working for you.",
     "mistakeType": "underrating crosscourt geometry",
-    "diagram": {"surface": "clay", "youX": 0.3, "youY": 0.9, "opponentX": 0.7, "opponentY": 0.1, "ballOriginX": 0.7, "ballOriginY": 0.2, "ballTargetX": 0.3, "ballTargetY": 0.82, "scoreChip": "CROSSCOURT"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.3,
+      "youY": 0.9,
+      "opponentX": 0.7,
+      "opponentY": 0.1,
+      "ballOriginX": 0.7,
+      "ballOriginY": 0.2,
+      "ballTargetX": 0.3,
+      "ballTargetY": 0.82,
+      "scoreChip": "CROSSCOURT"
+    },
     "scenarioTr": "Taktiksel olarak çapraz neden varsayılan ralli yönüdür?",
     "optionsTr": [
       "Ortada file alçak, diyagonal kort daha uzun, toparlanma mesafen daha kısa",
@@ -3307,7 +4324,18 @@
     "explanation": "Club rallies are lost, not won — the player who can stand one more neutral ball usually collects the error. Patience is a trained skill.",
     "takeaway": "Win the boredom contest; the short ball always comes.",
     "mistakeType": "impatience in neutral rallies",
-    "diagram": {"surface": "clay", "youX": 0.55, "youY": 0.9, "opponentX": 0.45, "opponentY": 0.1, "ballOriginX": 0.45, "ballOriginY": 0.2, "ballTargetX": 0.55, "ballTargetY": 0.84, "scoreChip": "NEUTRAL"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.55,
+      "youY": 0.9,
+      "opponentX": 0.45,
+      "opponentY": 0.1,
+      "ballOriginX": 0.45,
+      "ballOriginY": 0.2,
+      "ballTargetX": 0.55,
+      "ballTargetY": 0.84,
+      "scoreChip": "NEUTRAL"
+    },
     "scenarioTr": "6+ vuruşluk rallileri beşinci topta fazlasını isteyerek kaybediyorsun. Antrenman komutu ne?",
     "optionsTr": [
       "'Sıkıcılık eşiğini' yükselt: gerçekten kısa top gelmeden sayı denemesi yok",
@@ -3333,7 +4361,18 @@
     "explanation": "Pace-lovers feed on your energy. A slow high loop above shoulder height forces them to create power from nothing — where their timing and patience crack.",
     "takeaway": "Starve the counter-puncher: no pace to borrow.",
     "mistakeType": "feeding pace to a pace-lover",
-    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.93, "opponentX": 0.5, "opponentY": 0.08, "ballOriginX": 0.5, "ballOriginY": 0.14, "ballTargetX": 0.5, "ballTargetY": 0.88, "scoreChip": "VS PACE"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.93,
+      "opponentX": 0.5,
+      "opponentY": 0.08,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.14,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.88,
+      "scoreChip": "VS PACE"
+    },
     "scenarioTr": "Rakip hız ve ritim âşığı — sert vurduğun her şey daha sert dönüyor. Motorunu ne bozar?",
     "optionsTr": [
       "Kendi gücünü üretmeye zorlayan yüksek, ağır loop'lar",
@@ -3433,7 +4472,18 @@
     "explanation": "If your backhand loses that exchange over time, change WHAT the balls looks like (height/spin/depth) before changing WHERE it goes. Pattern breaks don't have to be risks.",
     "takeaway": "Change ball quality before ball direction.",
     "mistakeType": "line gamble to escape a losing exchange",
-    "diagram": {"surface": "clay", "youX": 0.7, "youY": 0.9, "opponentX": 0.3, "opponentY": 0.1, "ballOriginX": 0.3, "ballOriginY": 0.2, "ballTargetX": 0.7, "ballTargetY": 0.82, "scoreChip": "BH CROSSCOURT"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.7,
+      "youY": 0.9,
+      "opponentX": 0.3,
+      "opponentY": 0.1,
+      "ballOriginX": 0.3,
+      "ballOriginY": 0.2,
+      "ballTargetX": 0.7,
+      "ballTargetY": 0.82,
+      "scoreChip": "BH CROSSCOURT"
+    },
     "scenarioTr": "Backhand-backhand çapraz alışverişi, ikiniz de sağlam. Deseni önce kim bozmalı?",
     "optionsTr": [
       "Backhand'i zayıf olan — ama paralel kumarla değil, yüksek loop ya da kesik değişimiyle",
@@ -3459,7 +4509,18 @@
     "explanation": "Headwind shortens everything: your normal drives land safer, and aggressive targets become high-percentage. The set to attack is the into-wind set.",
     "takeaway": "Into the wind: swing free. With the wind: add spin and margin.",
     "mistakeType": "identical targets in opposite winds",
-    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.9, "opponentX": 0.5, "opponentY": 0.1, "ballOriginX": 0.5, "ballOriginY": 0.2, "ballTargetX": 0.5, "ballTargetY": 0.84, "scoreChip": "INTO WIND"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.9,
+      "opponentX": 0.5,
+      "opponentY": 0.1,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.2,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.84,
+      "scoreChip": "INTO WIND"
+    },
     "scenarioTr": "Bu set sert rüzgâra KARŞI oynuyorsun. İçinde saklı taktik hediye ne?",
     "optionsTr": [
       "Daha büyük sallanabilirsin — rüzgâr topunu içeride tutar, çizgilere daha yakın nişan al",
@@ -3522,7 +4583,18 @@
     "explanation": "Mid-court balls are transition balls: momentum should carry you forward through contact into net position. Stopping kills both power and positioning.",
     "takeaway": "On short balls, your feet finish the shot — not your arm.",
     "mistakeType": "flat-footed transition balls",
-    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.78, "opponentX": 0.5, "opponentY": 0.1, "ballOriginX": 0.5, "ballOriginY": 0.2, "ballTargetX": 0.5, "ballTargetY": 0.62, "scoreChip": "SHORT BALL"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.78,
+      "opponentX": 0.5,
+      "opponentY": 0.1,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.2,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.62,
+      "scoreChip": "SHORT BALL"
+    },
     "scenarioTr": "Orta kort topu geldi ama ayakların sabit vurdun, top süzülerek döndü. Asıl hata neydi?",
     "optionsTr": [
       "Ayaklar durdu — vuruşun İÇİNDEN fileye doğru hareket etmelisin",
@@ -3622,7 +4694,18 @@
     "explanation": "If you're mid-sprint at their contact, you can't change direction. The split at their swing start converts your momentum into readiness both ways.",
     "takeaway": "Sprint between their shots; split AT their shot.",
     "mistakeType": "running through the opponent's contact",
-    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.6, "opponentX": 0.5, "opponentY": 0.1, "ballOriginX": 0.5, "ballOriginY": 0.14, "ballTargetX": 0.5, "ballTargetY": 0.54, "scoreChip": "SPLIT"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.6,
+      "opponentX": 0.5,
+      "opponentY": 0.1,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.14,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.54,
+      "scoreChip": "SPLIT"
+    },
     "scenarioTr": "Yaklaşman iyiyken bile pas yiyorsun. Videoda yaklaşmayı koşarak geçtiğin görülüyor. Eksik ne?",
     "optionsTr": [
       "RAKİP salınıma başladığı anda split step",
@@ -3685,7 +4768,18 @@
     "explanation": "Backpedaling is slow and ends in falling smashes. Turning sideways converts the retreat into athletic strides while the early racquet prep keeps the smash compact.",
     "takeaway": "Turn, cross-step, racquet up — never backpedal to a lob.",
     "mistakeType": "backpedaling under lobs",
-    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.62, "opponentX": 0.5, "opponentY": 0.12, "ballOriginX": 0.5, "ballOriginY": 0.16, "ballTargetX": 0.5, "ballTargetY": 0.86, "scoreChip": "LOB"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.62,
+      "opponentX": 0.5,
+      "opponentY": 0.12,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.16,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.86,
+      "scoreChip": "LOB"
+    },
     "scenarioTr": "Üstünden derin lob yükseliyor. Smacı kurtaran ayak işi ne?",
     "optionsTr": [
       "Yan dön, çapraz adımla geri git, raketi erken kaldır",
@@ -3711,7 +4805,18 @@
     "explanation": "On high wind-blown lobs, the bounce resets the chaos: predictable ball drop, set feet, controlled smash. Air smashes there are coin flips.",
     "takeaway": "Wind + towering lob = bounce smash.",
     "mistakeType": "forcing air smashes in wind",
-    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.6, "opponentX": 0.5, "opponentY": 0.12, "ballOriginX": 0.5, "ballOriginY": 0.16, "ballTargetX": 0.5, "ballTargetY": 0.88, "scoreChip": "WIND LOB"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.6,
+      "opponentX": 0.5,
+      "opponentY": 0.12,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.16,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.88,
+      "scoreChip": "WIND LOB"
+    },
     "scenarioTr": "Rüzgârlı günde çok yüksek, çok derin lob. Havada mı alırsın, sektirir misin?",
     "optionsTr": [
       "Sektir — rüzgâr havadaki zamanlamayı cezalandırır; sekmeden sonra smaçla",
@@ -3737,7 +4842,18 @@
     "explanation": "The drop volley's math works when the opponent is deep or retreating and you're inside the service box with a stable contact. Their position, not your boredom, is the trigger.",
     "takeaway": "Drop volleys punish THEIR position, not your patience.",
     "mistakeType": "drop volleys against a ready opponent",
-    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.56, "opponentX": 0.5, "opponentY": 0.08, "ballOriginX": 0.5, "ballOriginY": 0.14, "ballTargetX": 0.5, "ballTargetY": 0.5, "scoreChip": "DROP VOLLEY"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.56,
+      "opponentX": 0.5,
+      "opponentY": 0.08,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.14,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.5,
+      "scoreChip": "DROP VOLLEY"
+    },
     "scenarioTr": "Drop vole gerçekte ne zaman mantıklı?",
     "optionsTr": [
       "Fileye yakınken — asıl şart rakibin derinde/geri kaçıyor olması",
@@ -3800,7 +4916,18 @@
     "explanation": "Below net height you're defending at the net. Lifting deep resets the exchange for a better next volley; forcing winners from there feeds the net tape.",
     "takeaway": "Low volley = survive deep now, kill the NEXT one.",
     "mistakeType": "forcing winners from low volleys",
-    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.62, "opponentX": 0.5, "opponentY": 0.1, "ballOriginX": 0.5, "ballOriginY": 0.16, "ballTargetX": 0.5, "ballTargetY": 0.6, "scoreChip": "LOW VOLLEY"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.62,
+      "opponentX": 0.5,
+      "opponentY": 0.1,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.16,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.6,
+      "scoreChip": "LOW VOLLEY"
+    },
     "scenarioTr": "File altından vole yapmaya zorlandın. Vuruşun görevi ne?",
     "optionsTr": [
       "Derinlik ve güvenlik — derine kaldır, sayı denemesini reddet",
@@ -3826,7 +4953,18 @@
     "explanation": "If your approach shot leaves your racquet weak and rising, the passer gets a free look. Approach behind balls that stress THEM, not ones that stressed YOU.",
     "takeaway": "Approach behind your strength, not just behind any short ball.",
     "mistakeType": "approaching behind weak lifts",
-    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.76, "opponentX": 0.5, "opponentY": 0.1, "ballOriginX": 0.5, "ballOriginY": 0.18, "ballTargetX": 0.5, "ballTargetY": 0.56, "scoreChip": "STAY BACK"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.76,
+      "opponentX": 0.5,
+      "opponentY": 0.1,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.18,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.56,
+      "scoreChip": "STAY BACK"
+    },
     "scenarioTr": "Hangi topun peşinden fileye GİTMEMELİSİN?",
     "optionsTr": [
       "Zar zor kaldırdığın kısa ama ALÇAK kayan kesik",
@@ -3852,7 +4990,18 @@
     "explanation": "The half-volley is a timing shot: knees low, compact face-controlled block, target deep middle. Any extra swing multiplies the error.",
     "takeaway": "Half-volley: low body, quiet hands, boring target.",
     "mistakeType": "overswinging on half-volleys",
-    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.68, "opponentX": 0.5, "opponentY": 0.1, "ballOriginX": 0.5, "ballOriginY": 0.16, "ballTargetX": 0.5, "ballTargetY": 0.66, "scoreChip": "HALF-VOLLEY"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.68,
+      "opponentX": 0.5,
+      "opponentY": 0.1,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.16,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.66,
+      "scoreChip": "HALF-VOLLEY"
+    },
     "scenarioTr": "Orta kortta yakalandın, top ayak dibinde — mecburi yarım vole. Teknik öncelik ne?",
     "optionsTr": [
       "Alçakta kal, kısa blok, ortaya derin hedefle",
@@ -3878,7 +5027,18 @@
     "explanation": "The high backhand volley has no natural power, so players get cute — and dump it. Commit to a firm, simple punch deep; touch comes from position, not from this shot.",
     "takeaway": "High backhand volley: punch it, don't paint it.",
     "mistakeType": "getting cute on high backhand volleys",
-    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.6, "opponentX": 0.5, "opponentY": 0.12, "ballOriginX": 0.5, "ballOriginY": 0.16, "ballTargetX": 0.4, "ballTargetY": 0.56, "scoreChip": "BH VOLLEY"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.6,
+      "opponentX": 0.5,
+      "opponentY": 0.12,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.16,
+      "ballTargetX": 0.4,
+      "ballTargetY": 0.56,
+      "scoreChip": "BH VOLLEY"
+    },
     "scenarioTr": "Filede backhand omzunun üstünde süzülen top. Hangi seçenek tuzak?",
     "optionsTr": [
       "Narin dokunuş denemek — yüksek backhand vole çizgiden geçen sağlam yumruk ister",
@@ -3904,7 +5064,18 @@
     "explanation": "Letting a floater bounce gives a retreating opponent free seconds. The swinging volley, taken while closing, compresses their recovery and finishes points early.",
     "takeaway": "Floaters inside the baseline are yours — take them out of the air.",
     "mistakeType": "letting attackable floaters bounce",
-    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.72, "opponentX": 0.5, "opponentY": 0.12, "ballOriginX": 0.5, "ballOriginY": 0.16, "ballTargetX": 0.5, "ballTargetY": 0.66, "scoreChip": "SWING VOLLEY"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.72,
+      "opponentX": 0.5,
+      "opponentY": 0.12,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.16,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.66,
+      "scoreChip": "SWING VOLLEY"
+    },
     "scenarioTr": "Baseline içindeyken omuz hizasında yavaş süzülen top. Kuvvetli vole mi, sektirmek mi?",
     "optionsTr": [
       "Kuvvetli (swing) vole — öne kapanırken zamanını çal",
@@ -3930,7 +5101,18 @@
     "explanation": "Covering the line takes away the shortest pass; a crosscourt pass must thread a longer window you can still cut off. Early guessing gifts clean winners.",
     "takeaway": "At net: take the line away, live with the harder crosscourt.",
     "mistakeType": "guessing on passing shots",
-    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.6, "opponentX": 0.5, "opponentY": 0.1, "ballOriginX": 0.5, "ballOriginY": 0.14, "ballTargetX": 0.5, "ballTargetY": 0.55, "scoreChip": "DEFEND PASS"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.6,
+      "opponentX": 0.5,
+      "opponentY": 0.1,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.14,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.55,
+      "scoreChip": "DEFEND PASS"
+    },
     "scenarioTr": "Filedesin; rakip dengeli pozisyondan pas hazırlıyor. En yüzdeli oyunun ne?",
     "optionsTr": [
       "Split'ini koru, paraleli hafif kapat, pası uzun çapraza mecbur bırak",
@@ -3956,7 +5138,18 @@
     "explanation": "Each good volley earns you ground. Closing after the first volley shrinks their passing angles and turns the second volley into a putaway.",
     "takeaway": "Volley, then MOVE — the net rewards the greedy.",
     "mistakeType": "static feet between volleys",
-    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.64, "opponentX": 0.5, "opponentY": 0.06, "ballOriginX": 0.5, "ballOriginY": 0.12, "ballTargetX": 0.5, "ballTargetY": 0.6, "scoreChip": "CLOSE IN"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.64,
+      "opponentX": 0.5,
+      "opponentY": 0.06,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.12,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.6,
+      "scoreChip": "CLOSE IN"
+    },
     "scenarioTr": "Servis çizgisinden sağlam derin bir ilk vole vurdun. Hemen sonraki hamlen ne?",
     "optionsTr": [
       "Bitirici vole için fileye 2–3 adım kapan",
@@ -4394,7 +5587,18 @@
     "explanation": "A static net player is furniture. Movement — real and faked — shrinks the returner's targets and turns weak returns into your putaways.",
     "takeaway": "At net on serve: move every point, even when you don't touch the ball.",
     "mistakeType": "alley-glued doubles positioning",
-    "diagram": {"surface": "clay", "youX": 0.32, "youY": 0.58, "opponentX": 0.72, "opponentY": 0.1, "ballOriginX": 0.72, "ballOriginY": 0.14, "ballTargetX": 0.45, "ballTargetY": 0.5, "scoreChip": "NET THREAT"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.32,
+      "youY": 0.58,
+      "opponentX": 0.72,
+      "opponentY": 0.1,
+      "ballOriginX": 0.72,
+      "ballOriginY": 0.14,
+      "ballTargetX": 0.45,
+      "ballTargetY": 0.5,
+      "scoreChip": "NET THREAT"
+    },
     "scenarioTr": "Partnerin servis atıyor. Filedeki gerçek işin ne?",
     "optionsTr": [
       "Tehdit ol: servisle birlikte kay, poach çakması yap, süzüleni kap",
@@ -4568,7 +5772,18 @@
     "explanation": "The middle volley creates 'yours/mine' confusion, passes over the lowest net, and can't be angled away against you like an alley attempt.",
     "takeaway": "In doubles, the middle is a third opponent — recruit it.",
     "mistakeType": "forcing alley volleys",
-    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.62, "opponentX": 0.5, "opponentY": 0.1, "ballOriginX": 0.5, "ballOriginY": 0.16, "ballTargetX": 0.5, "ballTargetY": 0.58, "scoreChip": "MIDDLE"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.62,
+      "opponentX": 0.5,
+      "opponentY": 0.1,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.16,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.58,
+      "scoreChip": "MIDDLE"
+    },
     "scenarioTr": "Servis atıp giriyorsun; dört oyuncu da aktifken çiftlerdeki ilk vole. Varsayılan hedef?",
     "optionsTr": [
       "Ortadan alçak — rakiplerin arasına",
@@ -4594,7 +5809,18 @@
     "explanation": "With the net player crouched on the center line, the returner can't aim away from them — every return direction is a gamble against a coin-flip movement.",
     "takeaway": "I-formation weaponizes uncertainty, not position.",
     "mistakeType": "static formations against a grooved returner",
-    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.94, "opponentX": 0.72, "opponentY": 0.1, "ballOriginX": 0.5, "ballOriginY": 0.9, "ballTargetX": 0.55, "ballTargetY": 0.3, "scoreChip": "I-FORMATION"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.94,
+      "opponentX": 0.72,
+      "opponentY": 0.1,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.9,
+      "ballTargetX": 0.55,
+      "ballTargetY": 0.3,
+      "scoreChip": "I-FORMATION"
+    },
     "scenarioTr": "Rakibin çapraz karşılaması standart dizilişini paramparça ediyor. I-formasyonuna geçmek gerçekte ne yapar?",
     "optionsTr": [
       "File oyuncusunun yönünü gizler; karşılayıcıyı körlemesine seçime zorlar",
@@ -4620,7 +5846,18 @@
     "explanation": "Collisions are communication failures, not coordination failures. Calling every ball — even obvious ones — builds the habit that saves the ambiguous ones.",
     "takeaway": "Call the obvious balls so the tough ones call themselves.",
     "mistakeType": "silent doubles play",
-    "diagram": {"surface": "clay", "youX": 0.4, "youY": 0.62, "opponentX": 0.5, "opponentY": 0.1, "ballOriginX": 0.5, "ballOriginY": 0.16, "ballTargetX": 0.5, "ballTargetY": 0.56, "scoreChip": "CALL IT"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.4,
+      "youY": 0.62,
+      "opponentX": 0.5,
+      "opponentY": 0.1,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.16,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.56,
+      "scoreChip": "CALL IT"
+    },
     "scenarioTr": "Partnerinle aynı topa gidip yine çarpıştınız. Asgari çözüm ne?",
     "optionsTr": [
       "HER topta erken ve yüksek sesle: 'benim', 'senin', 'değiş', 'sektir'",
@@ -4683,7 +5920,18 @@
     "explanation": "Both-back concedes the net but removes the sitting-duck target. Now every point needs THEIR clean volley winner against your lobs and dipping passes — a worse trade for them.",
     "takeaway": "Losing at net? Both back turns slaughter into a puzzle.",
     "mistakeType": "leaving a partner hanging at net",
-    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.92, "opponentX": 0.5, "opponentY": 0.4, "ballOriginX": 0.5, "ballOriginY": 0.44, "ballTargetX": 0.5, "ballTargetY": 0.85, "scoreChip": "BOTH BACK"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.92,
+      "opponentX": 0.5,
+      "opponentY": 0.4,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.44,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.85,
+      "scoreChip": "BOTH BACK"
+    },
     "scenarioTr": "Rakipler ikisi de filede, partnerine vole yağdırıyor. İKİNİZİN de baseline'a çekilmesi ne zaman doğru?",
     "optionsTr": [
       "File savaşını zaten kaybediyorsan — ikisi geride, işi kazanabileceğin lob/pas savaşına çevirir",
@@ -4746,7 +5994,18 @@
     "explanation": "Net players leave the alley open ON PURPOSE on big points. The crosscourt return is longer, lower and away from the poacher — the boring choice converts.",
     "takeaway": "On break points, refuse the open-alley invitation.",
     "mistakeType": "taking the alley bait on big points",
-    "diagram": {"surface": "clay", "youX": 0.3, "youY": 0.9, "opponentX": 0.3, "opponentY": 0.42, "ballOriginX": 0.3, "ballOriginY": 0.46, "ballTargetX": 0.7, "ballTargetY": 0.82, "scoreChip": "AD RETURN"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.3,
+      "youY": 0.9,
+      "opponentX": 0.3,
+      "opponentY": 0.42,
+      "ballOriginX": 0.3,
+      "ballOriginY": 0.46,
+      "ballTargetX": 0.7,
+      "ballTargetY": 0.82,
+      "scoreChip": "AD RETURN"
+    },
     "scenarioTr": "Ad tarafında 30–40'ta karşılıyorsun (takımın break sayısı). Koridor 'açık'. Disiplin ne?",
     "optionsTr": [
       "Koridor yemini yut(ma) — break'i alçak çapraz kazanır; koridor onların tuzağı",
@@ -4809,7 +6068,18 @@
     "explanation": "Against a scrambling defense, the reply is weak and floaty far more often than a perfect lob. Two players tight at net make the court disappear.",
     "takeaway": "When they scramble, you swarm — close together, finish together.",
     "mistakeType": "hedging against lobs while attacking",
-    "diagram": {"surface": "clay", "youX": 0.5, "youY": 0.58, "opponentX": 0.5, "opponentY": 0.06, "ballOriginX": 0.5, "ballOriginY": 0.1, "ballTargetX": 0.5, "ballTargetY": 0.55, "scoreChip": "BOTH CLOSE"},
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.58,
+      "opponentX": 0.5,
+      "opponentY": 0.06,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.1,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.55,
+      "scoreChip": "BOTH CLOSE"
+    },
     "scenarioTr": "Takımınız ağır bir yaklaşma vurdu, rakipler derinde debeleniyor. Kazanan takım şekli ne?",
     "optionsTr": [
       "İKİ oyuncu da fileye — her açıyı kes, zayıf cevabı bekle",

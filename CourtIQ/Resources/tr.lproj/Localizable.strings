@@ -874,6 +874,8 @@
 "iq.daily_title" = "Tennis IQ";
 "iq.placement_title" = "Yerleştirme";
 "iq.mastered_fmt" = "%d/%d senaryo çözüldü";
+"iq.scale_note" = "Ölçek %d–%d arası. Seviye testi en fazla %d puan; gerisi %d senaryonun tamamını ustalaşmaktan gelir.";
+"iq.of_max_fmt" = "/ %d";
 "iq.estimated_chip" = "Tahmini — kalibre etmek için yerleştirmeyi çöz";
 "iq.baseline_title" = "Başlangıç seviyeni ölç";
 "iq.baseline_body" = "8 senaryo · 3 dk";

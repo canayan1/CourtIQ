@@ -66,12 +66,21 @@ enum TennisIQEngine {
     }
     static let sessionCompletionXP = 10
 
+    /// The scale, named so the UI can show it: a player with no placement and
+    /// nothing mastered reads 60; mastering the whole bank after a perfect
+    /// placement reads 160. Skipping the placement assumes a neutral 0.5.
+    static let floor = 60
+    static let ceiling = 160
+    /// What the placement alone can be worth, out of the 100 points above the floor.
+    static let placementPoints = 40
+
     /// IQ = 60 + 40×placement + 60×mastery, rounded. Neutral 0.5 placement
     /// prior when the user skipped the baseline (labelled "estimated" in UI).
     static func iq(state: TennisIQState, bank: [QuizQuestion]) -> Int {
         let placementAccuracy = state.placement?.accuracy ?? 0.5
         let fraction = masteryFraction(state: state, bank: bank)
-        return Int((60 + 40 * placementAccuracy + 60 * fraction).rounded())
+        return Int((Double(floor) + Double(placementPoints) * placementAccuracy
+                    + Double(ceiling - floor - placementPoints) * fraction).rounded())
     }
 
     static func masteryFraction(state: TennisIQState, bank: [QuizQuestion]) -> Double {

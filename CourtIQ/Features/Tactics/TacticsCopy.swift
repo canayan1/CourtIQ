@@ -50,6 +50,11 @@ struct TacticsCopy {
     var habitLine: String { t("That is the habit doing the work now.", "Artık işi alışkanlık yapıyor.", "C'est l'habitude qui travaille pour toi maintenant.") }
     func xpTo(_ togo: Int, _ level: String) -> String { t("\(togo) XP to \(level)", "\(level) için \(togo) XP", "\(togo) XP jusqu'à \(level)") }
     func unlockAll(_ n: Int) -> String { t("Unlock all \(n) lessons and keep going now.", "\(n) dersin tamamını aç ve hemen devam et.", "Débloque les \(n) leçons et continue tout de suite.") }
+    func stillInside(_ lessons: Int, _ chapters: Int) -> String {
+        t("Still inside: \(lessons) lessons across \(chapters) chapters, plus 156 match scenarios.",
+          "İçeride kalan: \(chapters) bölümde \(lessons) ders, artı 156 maç senaryosu.",
+          "Il reste \(lessons) leçons dans \(chapters) chapitres, plus 156 situations de match.")
+    }
     var seeOptions: String { t("See the options", "Seçenekleri gör", "Voir les options") }
 
     // Notes view

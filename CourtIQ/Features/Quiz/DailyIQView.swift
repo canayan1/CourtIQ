@@ -160,6 +160,9 @@ struct DailyIQView: View {
                     .font(.system(size: 64, weight: .black, design: .rounded))
                     .foregroundStyle(AppPalette.ink)
                     .contentTransition(.numericText())
+                Text(String(format: lang.t("iq.of_max_fmt"), TennisIQEngine.ceiling))
+                    .font(.system(.title3, design: .rounded).weight(.bold))
+                    .foregroundStyle(.secondary)
                 if ActivityManager.shared.currentStreak > 0 {
                     Label("\(ActivityManager.shared.currentStreak)", systemImage: "flame.fill")
                         .font(.system(.headline, design: .rounded).weight(.bold))
@@ -169,6 +172,12 @@ struct DailyIQView: View {
             Text(String(format: lang.t("iq.mastered_fmt"), iq.masteredCount, iq.totalCount))
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
+            Text(String(format: lang.t("iq.scale_note"),
+                        TennisIQEngine.floor, TennisIQEngine.ceiling,
+                        TennisIQEngine.placementPoints, iq.totalCount))
+                .font(.footnote)
+                .foregroundStyle(AppPalette.inkSoft)
+                .fixedSize(horizontal: false, vertical: true)
             if iq.isBaselineEstimated && iq.hasBaseline {
                 Text(lang.t("iq.estimated_chip"))
                     .font(.caption.weight(.semibold))
@@ -295,6 +304,9 @@ struct DailyIQView: View {
                             .font(.system(size: 72, weight: .black, design: .rounded))
                             .foregroundStyle(AppPalette.ink)
                             .contentTransition(.numericText())
+                        Text(String(format: lang.t("iq.of_max_fmt"), TennisIQEngine.ceiling))
+                            .font(.system(.title3, design: .rounded).weight(.bold))
+                            .foregroundStyle(.secondary)
                         if iq.iq > iqBefore {
                             Text("+\(iq.iq - iqBefore)")
                                 .font(.system(.title2, design: .rounded).weight(.black))

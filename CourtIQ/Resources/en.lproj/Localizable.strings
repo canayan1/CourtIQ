@@ -874,6 +874,8 @@
 "iq.daily_title" = "Tennis IQ";
 "iq.placement_title" = "Placement";
 "iq.mastered_fmt" = "%d of %d scenarios mastered";
+"iq.scale_note" = "The scale runs %d–%d. The placement is worth up to %d points; the rest comes from mastering all %d scenarios.";
+"iq.of_max_fmt" = "/ %d";
 "iq.estimated_chip" = "Estimated — take the placement to calibrate";
 "iq.baseline_title" = "Set your baseline";
 "iq.baseline_body" = "8 scenarios · 3 min";

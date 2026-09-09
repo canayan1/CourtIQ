@@ -67,7 +67,13 @@ struct LessonCompleteView: View {
         .background(AppPalette.cream)
         .sheet(isPresented: $showPaywall) { TacticsPaywallSheet() }
         .onAppear {
-            let isBigMoment = progress.pendingChapterComplete != nil || progress.pendingLevelUp != nil
+            // The first lesson a player ever finishes is the moment they have
+            // just felt what the app is for — ask then, not three chapters
+            // later when the feeling has worn off.
+            let isFirstEver = !wasReview && progress.completedCount == 1
+            let isBigMoment = isFirstEver
+                || progress.pendingChapterComplete != nil
+                || progress.pendingLevelUp != nil
 
             // Exactly one sting, picked by rarity: a chapter that also levels the
             // player up and extends a streak would otherwise fire three at once.
@@ -90,9 +96,8 @@ struct LessonCompleteView: View {
             // last one before the paywall, so it asks on its own; a mid-chapter
             // level-up still waits for a second win.
             if isBigMoment {
-                RatingPrompt.registerWin(
-                    minimumWins: progress.pendingChapterComplete != nil ? 1 : 2
-                )
+                let asksAlone = isFirstEver || progress.pendingChapterComplete != nil
+                RatingPrompt.registerWin(minimumWins: asksAlone ? 1 : 2)
             }
         }
     }
@@ -222,6 +227,12 @@ struct LessonCompleteView: View {
 
     /// Nudge only where it's earned: right after the free chapter is finished, or
     /// once the day's free lesson is gone.
+    /// Lessons the player has not finished yet — the honest size of what the
+    /// membership opens, counted from the real course rather than promised.
+    private var remainingLessons: Int {
+        max(0, content.totalLessonCount - progress.completedCount)
+    }
+
     private var shouldNudgeUnlock: Bool {
         if let done = progress.pendingChapterComplete, done.isFree { return true }
         return !progress.hasFreeDailyLesson
@@ -240,6 +251,10 @@ struct LessonCompleteView: View {
                 Text(copy.unlockAll(content.totalLessonCount))
                     .font(.footnote)
                     .foregroundStyle(AppPalette.inkSoft)
+                Text(copy.stillInside(remainingLessons, content.chapters.count))
+                    .font(.footnote.weight(.semibold))
+                    .foregroundStyle(AppPalette.clayText)
+                    .fixedSize(horizontal: false, vertical: true)
                 HStack(spacing: 6) {
                     Text(copy.seeOptions)
                     Image(systemName: "chevron.right")

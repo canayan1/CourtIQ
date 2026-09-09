@@ -87,13 +87,17 @@ struct QuizQuestion: Identifiable, Codable, Hashable {
     let focusTag: String
     let scenario: String
     var scenarioTr: String? = nil
+    var scenarioFr: String? = nil
     var options: [String]
     var optionsTr: [String]? = nil
+    var optionsFr: [String]? = nil
     var correctAnswerIndex: Int
     let explanation: String
     var explanationTr: String? = nil
+    var explanationFr: String? = nil
     let takeaway: String
     var takeawayTr: String? = nil
+    var takeawayFr: String? = nil
     let mistakeType: String
     var diagram: QuizCourtDiagram? = nil
     /// Maps the question to one of the six TacticalCategory values
@@ -120,24 +124,43 @@ struct QuizQuestion: Identifiable, Codable, Hashable {
         if let tr = optionsTr, tr.count == options.count {
             copy.optionsTr = order.map { tr[$0] }
         }
+        if let fr = optionsFr, fr.count == options.count {
+            copy.optionsFr = order.map { fr[$0] }
+        }
         copy.correctAnswerIndex = movedCorrect
         return copy
     }
 
     func localizedScenario(for lang: AppLanguage) -> String {
-        lang == .turkish ? (scenarioTr ?? scenario) : scenario
+        switch lang {
+        case .turkish: return scenarioTr ?? scenario
+        case .french:  return scenarioFr ?? scenario
+        default:       return scenario
+        }
     }
 
     func localizedOptions(for lang: AppLanguage) -> [String] {
-        lang == .turkish ? (optionsTr ?? options) : options
+        switch lang {
+        case .turkish: return optionsTr ?? options
+        case .french:  return optionsFr ?? options
+        default:       return options
+        }
     }
 
     func localizedExplanation(for lang: AppLanguage) -> String {
-        lang == .turkish ? (explanationTr ?? explanation) : explanation
+        switch lang {
+        case .turkish: return explanationTr ?? explanation
+        case .french:  return explanationFr ?? explanation
+        default:       return explanation
+        }
     }
 
     func localizedTakeaway(for lang: AppLanguage) -> String {
-        lang == .turkish ? (takeawayTr ?? takeaway) : takeaway
+        switch lang {
+        case .turkish: return takeawayTr ?? takeaway
+        case .french:  return takeawayFr ?? takeaway
+        default:       return takeaway
+        }
     }
 
     /// Returns either the authored diagram or a category-aware generic

@@ -874,6 +874,8 @@
 "iq.daily_title" = "QI Tennis";
 "iq.placement_title" = "Test de niveau";
 "iq.mastered_fmt" = "%d situations maîtrisées sur %d";
+"iq.scale_note" = "L'échelle va de %d à %d. Le test de niveau vaut jusqu'à %d points ; le reste vient de la maîtrise des %d situations.";
+"iq.of_max_fmt" = "/ %d";
 "iq.estimated_chip" = "Estimation — fais le test de niveau pour calibrer";
 "iq.baseline_title" = "Fais ton point de départ";
 "iq.baseline_body" = "8 situations · 3 min";
