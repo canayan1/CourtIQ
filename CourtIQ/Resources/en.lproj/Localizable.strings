@@ -930,6 +930,8 @@
 "coachreview.ai_eyebrow" = "AI ANALYSIS";
 "coachreview.ai_title" = "Analyze now";
 "coachreview.ai_sub" = "Instant · included";
+"coachreview.ai_sub_first" = "Instant · your first read is free";
+"coachreview.ai_sub_premium" = "Instant · Premium";
 "coachreview.roster_title" = "Coaches in our network — unlocked by demand";
 "coachreview.tier_player" = "Advanced Player Review";
 "coachreview.tier_player_sub" = "Honest take from a high-level player · budget option";

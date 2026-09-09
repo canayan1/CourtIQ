@@ -219,7 +219,7 @@ struct SwingAnalysisView: View {
                                 Text(lang.t("coachreview.ai_title"))
                                     .font(.subheadline.weight(.bold))
                                     .foregroundStyle(.white)
-                                Text(lang.t("coachreview.ai_sub"))
+                                Text(aiPathSubtitle)
                                     .font(.footnote)
                                     .foregroundStyle(.white.opacity(0.9))
                             }
@@ -497,6 +497,15 @@ struct SwingAnalysisView: View {
             parts.append(copy.measuredOverheadChip(Int((ratio * 100).rounded())))
         }
         return parts.joined(separator: " · ")
+    }
+
+    /// What the AI path actually costs the player looking at it. Saying
+    /// "included" to a free player was wrong after their one free read, and
+    /// wrong at the exact moment they decide whether to trust the app.
+    private var aiPathSubtitle: String {
+        if PremiumGate.isPremium(session) { return lang.t("coachreview.ai_sub") }
+        return FreeTaste.swingUsed ? lang.t("coachreview.ai_sub_premium")
+                                   : lang.t("coachreview.ai_sub_first")
     }
 
     private var discussCoachCTA: String {

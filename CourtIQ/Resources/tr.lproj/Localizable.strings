@@ -930,6 +930,8 @@
 "coachreview.ai_eyebrow" = "AI ANALİZ";
 "coachreview.ai_title" = "Şimdi analiz et";
 "coachreview.ai_sub" = "Anında · dahil";
+"coachreview.ai_sub_first" = "Anında · ilk okuman ücretsiz";
+"coachreview.ai_sub_premium" = "Anında · Premium";
 "coachreview.roster_title" = "Ağımızdaki antrenörler — taleple açılır";
 "coachreview.tier_player" = "İleri Seviye Oyuncu İncelemesi";
 "coachreview.tier_player_sub" = "Üst düzey bir oyuncudan dürüst bakış · ekonomik seçenek";

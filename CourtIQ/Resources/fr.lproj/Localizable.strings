@@ -930,6 +930,8 @@
 "coachreview.ai_eyebrow" = "ANALYSE IA";
 "coachreview.ai_title" = "Analyser maintenant";
 "coachreview.ai_sub" = "Immédiat · inclus";
+"coachreview.ai_sub_first" = "Immédiat · ta première analyse est gratuite";
+"coachreview.ai_sub_premium" = "Immédiat · Premium";
 "coachreview.roster_title" = "Les coachs de notre réseau — ouverts selon la demande";
 "coachreview.tier_player" = "Analyse par un joueur confirmé";
 "coachreview.tier_player_sub" = "Un avis franc d'un joueur de bon niveau · option économique";
