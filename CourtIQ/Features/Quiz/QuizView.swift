@@ -96,9 +96,24 @@ struct QuizView: View {
         VStack(alignment: .leading, spacing: 0) {
             // Court diagram — editorial-style single court on parchment.
             // QuizCourtDiagramView manages its own height (288pt).
-            QuizCourtDiagramView(diagram: question.resolvedDiagram,
-                                 play: QuizPlayLibrary.play(for: question.id))
-                .overlay(alignment: .topTrailing) {
+            //
+            // Only for questions that actually carry one. The generic
+            // per-category fallback drew a court whose ball had nothing to do
+            // with the scenario being asked — decoration on a spatial
+            // question, and half a screen of nothing on a mental one. Without
+            // a diagram the scenario simply gets the room.
+            if let authored = question.diagram {
+                QuizCourtDiagramView(diagram: authored,
+                                     play: QuizPlayLibrary.play(for: question.id))
+            }
+
+            VStack(alignment: .leading, spacing: 16) {
+                HStack {
+                    Label(question.category.title, systemImage: question.category.systemImage)
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(.secondary)
+                    // The difficulty badge used to ride on the diagram; it
+                    // belongs to the question, which may not have one.
                     Text(question.difficulty.title.uppercased())
                         .appFont(10, weight: .heavy)
                         .tracking(1.2)
@@ -106,14 +121,6 @@ struct QuizView: View {
                         .padding(.horizontal, 10)
                         .padding(.vertical, 5)
                         .background(Capsule().fill(AppPalette.ink.opacity(0.85)))
-                        .padding(14)
-                }
-
-            VStack(alignment: .leading, spacing: 16) {
-                HStack {
-                    Label(question.category.title, systemImage: question.category.systemImage)
-                        .font(.caption.weight(.semibold))
-                        .foregroundStyle(.secondary)
                     Spacer()
                 }
 
