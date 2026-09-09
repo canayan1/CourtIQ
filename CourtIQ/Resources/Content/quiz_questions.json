@@ -1027,91 +1027,35 @@
     "id": "net_021",
     "category": "net",
     "difficulty": "easy",
-    "focusTag": "approach shot follow",
-    "scenario": "You hit a deep slice approach down the line. Where should you be as your opponent makes contact?",
+    "focusTag": "where to stop behind a short approach",
+    "scenario": "5–4, 30–30. Your approach lands short and they are already inside the baseline winding up, while you are still running and two steps short of the service line.",
     "options": [
-      "Inside the service line, split-stepping",
-      "Already at the net tape",
-      "Behind the baseline still"
+      "Stop where you are and split-step now",
+      "Keep sprinting to two metres from the net",
+      "Turn and recover behind the baseline"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "Inside the service line with a split step is the textbook position — close enough to cover, balanced enough to react to any pass or lob.",
-    "takeaway": "Inside the service line, split step — every approach.",
+    "explanation": "You cannot outrun their contact, and a split from a stopped position covers both passing lanes; arriving mid-stride covers neither. Sprinting the last two steps is what leaves you moving as the ball leaves their strings.",
+    "takeaway": "Split where you are — never arrive mid-stride.",
     "mistakeType": "poor approach follow-through",
-    "scenarioTr": "Çizgiye derin slice approach attın. Rakip temas ederken nerede olmalısın?",
-    "optionsTr": [
-      "Servis çizgisinin içinde, split-step yapmış",
-      "Zaten file bandında",
-      "Hâlâ kale çizgisinin arkasında"
-    ],
-    "explanationTr": "Servis çizgisinin içinde split step, ders kitabı pozisyonudur — kapsamak için yeterince yakın, her pass veya lop'a tepki için yeterince dengeli.",
-    "takeawayTr": "Servis çizgisinin içinde split step — her approach'ta.",
-    "diagram": {
-      "surface": "grass",
-      "youX": 0.3,
-      "youY": 0.6,
-      "opponentX": 0.2,
-      "opponentY": 0.1,
-      "ballOriginX": 0.3,
-      "ballOriginY": 0.5,
-      "ballTargetX": 0.2,
-      "ballTargetY": 0.18,
-      "scoreChip": "DTL APPROACH"
-    },
-    "tacticalCategory": "net_game",
-    "scenarioFr": "Tu montes derrière un slice d'approche profond long de ligne. Où dois-tu être au moment où ton adversaire frappe ?",
-    "optionsFr": [
-      "À l'intérieur de la ligne de service, en split-step",
-      "Déjà collé à la bande du filet",
-      "Encore derrière la ligne de fond"
-    ],
-    "explanationFr": "À l'intérieur de la ligne de service avec un split-step, c'est la position de référence — assez près pour couvrir, assez équilibré pour réagir à un passing ou à un lob.",
-    "takeawayFr": "À l'intérieur de la ligne de service, split-step — sur chaque montée."
+    "tacticalCategory": "net_game"
   },
   {
     "id": "net_022",
     "category": "net",
     "difficulty": "medium",
-    "focusTag": "volley positioning vs passing shot",
-    "scenario": "Opponent shapes to hit a crosscourt passing shot. Where do you volley from?",
+    "focusTag": "recovering behind your own angle volley",
+    "scenario": "30–15. You cut a sharp crosscourt angle volley and they reach it, sliding wide past the doubles alley. You are still standing in the middle of the box where you volleyed from.",
     "options": [
-      "Slightly toward the crosscourt sideline — bisecting the passing lane",
-      "Directly on the centre line",
-      "Close to the net tape"
+      "Shuffle across to the side you volleyed to",
+      "Close straight forward to the net tape",
+      "Hold the middle of the box and split"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "Tilting toward the crosscourt side closes the primary passing lane without abandoning the down-the-line. You're defending the likely shot first.",
-    "takeaway": "Bias your volley position toward the obvious passing lane.",
+    "explanation": "From out there their fastest reply is the line you left open, so moving across keeps you in front of it before they swing. Holding the centre feels balanced, but the ball is no longer in the centre and the geometry moved with it.",
+    "takeaway": "Follow your volley across, not only forward.",
     "mistakeType": "static volley position",
-    "scenarioTr": "Rakip çapraz pass atmaya hazırlanıyor. Volley'i nereden alırsın?",
-    "optionsTr": [
-      "Çapraz çizgiye doğru kaydır — pass rotasını ikiye böl",
-      "Tam orta çizgide",
-      "File bandına çok yakın"
-    ],
-    "explanationTr": "Çapraz tarafa kaymak birincil pass rotasını kapar ama çizgi tarafını terk etmez. Muhtemel atışı önce savunuyorsun.",
-    "takeawayTr": "Volley pozisyonunu bariz pass rotasına doğru kaydır.",
-    "diagram": {
-      "surface": "clay",
-      "youX": 0.45,
-      "youY": 0.6,
-      "opponentX": 0.2,
-      "opponentY": 0.08,
-      "ballOriginX": 0.2,
-      "ballOriginY": 0.18,
-      "ballTargetX": 0.78,
-      "ballTargetY": 0.4,
-      "scoreChip": "CC PASS COMING"
-    },
-    "tacticalCategory": "net_game",
-    "scenarioFr": "L'adversaire se prépare à jouer un passing croisé. D'où joues-tu ta volée ?",
-    "optionsFr": [
-      "Légèrement décalé vers le couloir croisé — sur la bissectrice du passing",
-      "Exactement sur la ligne médiane",
-      "Tout près de la bande du filet"
-    ],
-    "explanationFr": "Se décaler du côté croisé ferme le couloir de passing principal sans abandonner le long de ligne. Tu défends d'abord le coup le plus probable.",
-    "takeawayFr": "Décale ta position de volée vers le passing le plus évident."
+    "tacticalCategory": "net_game"
   },
   {
     "id": "net_023",
@@ -1174,92 +1118,36 @@
   {
     "id": "net_025",
     "category": "net",
-    "difficulty": "easy",
-    "focusTag": "overhead on a lob",
-    "scenario": "Opponent lobs you. Your first movement?",
+    "difficulty": "medium",
+    "focusTag": "reading pass or lob from their contact",
+    "scenario": "4–4, 15–30. You are two metres in and your volley has pulled them into a full slide, contact below the knee behind the baseline. Their last two balls from there floated short.",
     "options": [
-      "Racket up and backpedal laterally in small steps",
-      "Sprint straight back with your head down",
-      "Watch the ball arc before moving"
+      "Close two steps and cut it off",
+      "Drop back a step to cover the lob",
+      "Split where you are and let it drop"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "Racket-up early and small lateral backpedal steps keep your balance and head position for a clean overhead contact.",
-    "takeaway": "On a lob: racket up first, feet second.",
+    "explanation": "A contact below the knee on the run cannot be driven, so the reply floats and cutting it off early ends the point. Backing off for the lob is the right read when they are set with time, not when they are sliding.",
+    "takeaway": "Low and sliding, close in; set and balanced, respect the lob.",
     "mistakeType": "slow racket preparation on lob",
-    "scenarioTr": "Rakip lop attı. İlk hareketin?",
-    "optionsTr": [
-      "Raket yukarıda, küçük yan adımlarla geriye",
-      "Başı aşağıda düz arkaya koş",
-      "Topun yörüngesini izle, sonra hareket et"
-    ],
-    "explanationTr": "Raketi erken yukarı almak ve küçük yan adımlar dengeyi ve baş pozisyonunu korur — temiz overhead teması için.",
-    "takeawayTr": "Lop'ta önce raket, sonra ayaklar.",
-    "diagram": {
-      "surface": "clay",
-      "youX": 0.5,
-      "youY": 0.58,
-      "opponentX": 0.5,
-      "opponentY": 0.1,
-      "ballOriginX": 0.5,
-      "ballOriginY": 0.12,
-      "ballTargetX": 0.5,
-      "ballTargetY": 0.9,
-      "scoreChip": "LOB OVER YOU"
-    },
-    "tacticalCategory": "net_game",
-    "scenarioFr": "L'adversaire te lobe. Ton premier mouvement ?",
-    "optionsFr": [
-      "Raquette en haut et petits pas latéraux en reculant",
-      "Sprinter en arrière tête baissée",
-      "Regarder la trajectoire avant de bouger"
-    ],
-    "explanationFr": "Raquette levée tôt et petits pas latéraux en recul gardent ton équilibre et la position de ta tête pour une smash propre.",
-    "takeawayFr": "Sur un lob : la raquette d'abord, les pieds ensuite."
+    "tacticalCategory": "net_game"
   },
   {
     "id": "net_026",
     "category": "net",
     "difficulty": "medium",
-    "focusTag": "drop volley decision",
-    "scenario": "A high floating ball comes to you at the service line with your opponent deep behind the baseline. Choice?",
+    "focusTag": "drop volley from the wrong distance",
+    "scenario": "40–30. A floater arrives at net height while you are still at the service line, and they are recovering behind their baseline after chasing your deep ball.",
     "options": [
-      "Angled deep volley to keep them pinned back",
-      "A drop volley short crosscourt",
-      "A full-pace volley down the middle"
+      "Punch it deep into the corner",
+      "Drop it short crosscourt over the net",
+      "Angle it sharply toward the sideline"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "When the opponent is deep, a deep angled volley maintains the advantage. A drop volley brings them into play — risky when they're already out of position.",
-    "takeaway": "When opponents are deep, keep them deep — don't invite them in.",
+    "explanation": "From the service line the drop has seven metres to travel off a net-height contact, so it lands mid-court as a sitter. The drop is on two metres in with contact above the tape; from here depth is the shot.",
+    "takeaway": "Service line: punch it deep. Net: drop it short.",
     "mistakeType": "unnecessary drop volley",
-    "scenarioTr": "Yüksek havada top servis çizgisine geliyor, rakip kalenin derinlerinde. Seçim?",
-    "optionsTr": [
-      "Derin açılı volley — onları geride tut",
-      "Kısa çapraz drop volley",
-      "Ortadan tam hızlı volley"
-    ],
-    "explanationTr": "Rakip geride olduğunda derin açılı volley avantajı sürdürür. Drop volley onları oyuna çeker — zaten pozisyon dışıysa risk.",
-    "takeawayTr": "Rakip geridelerse geride tut — içeri davet etme.",
-    "diagram": {
-      "surface": "grass",
-      "youX": 0.5,
-      "youY": 0.55,
-      "opponentX": 0.5,
-      "opponentY": 0.1,
-      "ballOriginX": 0.5,
-      "ballOriginY": 0.2,
-      "ballTargetX": 0.5,
-      "ballTargetY": 0.5,
-      "scoreChip": "HIGH FLOATER"
-    },
-    "tacticalCategory": "net_game",
-    "scenarioFr": "Une balle haute et flottante arrive sur toi à la ligne de service, ton adversaire est loin derrière sa ligne de fond. Ton choix ?",
-    "optionsFr": [
-      "Une volée profonde et angulée pour le garder au fond",
-      "Une volée amortie courte croisée",
-      "Une volée pleine vitesse au milieu"
-    ],
-    "explanationFr": "Quand l'adversaire est loin, une volée profonde et angulée conserve l'avantage. Une volée amortie le fait entrer dans le court — risqué alors qu'il est déjà mal placé.",
-    "takeawayFr": "Quand ils sont loin, garde-les loin — ne les invite pas."
+    "tacticalCategory": "net_game"
   },
   {
     "id": "net_027",
@@ -1294,46 +1182,18 @@
     "id": "net_028",
     "category": "net",
     "difficulty": "medium",
-    "focusTag": "half-volley management",
-    "scenario": "A hard ball dips to your feet at the transition zone. What's the right play?",
+    "focusTag": "half-volley from the transition zone",
+    "scenario": "3–3, 30–40. Following your approach in, their reply dips hard and lands at your feet just inside the service line. The two half-volleys you punched this set both flew long.",
     "options": [
-      "A soft half-volley deep to the middle",
-      "A hard half-volley trying to punch a winner",
-      "Let it bounce and scramble"
+      "Block it soft and deep down the middle",
+      "Punch it hard and flat crosscourt",
+      "Stop, let it bounce, and lift it back"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "A soft half-volley uses the opponent's pace, clears the net, and buys time. A hard one usually sprays. Letting it bounce means you're on the baseline without having gained anything.",
-    "takeaway": "Half-volleys are survival shots — soft, deep, and middle.",
+    "explanation": "Their pace does the work, so a soft block deep through the middle clears the net and buys the step you need to close. Punching flat adds speed to a ball already carrying plenty, which is exactly why the last two sailed.",
+    "takeaway": "Half-volley soft, deep and middle — never harder.",
     "mistakeType": "hard half-volley attempt",
-    "scenarioTr": "Geçiş bölgesinde ayağına sert dip top geliyor. Doğru oyun?",
-    "optionsTr": [
-      "Yumuşak half-volley, derinlik ortaya",
-      "Winner denemek için sert half-volley",
-      "Sektir ve koş"
-    ],
-    "explanationTr": "Yumuşak half-volley rakibin hızını kullanır, fileyi geçer ve zaman kazandırır. Sert olan çoğu zaman savrulur.",
-    "takeawayTr": "Half-volley bir hayatta kalma vuruşudur — yumuşak, derin, orta.",
-    "diagram": {
-      "surface": "grass",
-      "youX": 0.5,
-      "youY": 0.6,
-      "opponentX": 0.5,
-      "opponentY": 0.08,
-      "ballOriginX": 0.5,
-      "ballOriginY": 0.6,
-      "ballTargetX": 0.5,
-      "ballTargetY": 0.16,
-      "scoreChip": "HALF-VOLLEY DEEP"
-    },
-    "tacticalCategory": "net_game",
-    "scenarioFr": "Une balle rapide plonge dans tes pieds dans la zone de transition. Quel est le bon coup ?",
-    "optionsFr": [
-      "Une demi-volée douce, profonde au milieu",
-      "Une demi-volée frappée fort pour tenter le gagnant",
-      "La laisser rebondir et courir"
-    ],
-    "explanationFr": "Une demi-volée douce utilise la vitesse adverse, passe le filet et gagne du temps. Frappée fort, elle part généralement dehors. La laisser rebondir te ramène à la ligne de fond sans rien avoir gagné.",
-    "takeawayFr": "Les demi-volées sont des coups de survie — douces, profondes, au milieu."
+    "tacticalCategory": "net_game"
   },
   {
     "id": "net_029",
@@ -1368,46 +1228,18 @@
     "id": "net_030",
     "category": "net",
     "difficulty": "medium",
-    "focusTag": "volley target selection",
-    "scenario": "You're at the net and your opponent is recovering from wide in the deuce court. Best volley target?",
+    "focusTag": "volley target once they stop sprinting",
+    "scenario": "40–30. Your volley pushed them wide in the deuce corner, and by the time you meet the next one they have stopped, turned, and are jogging back toward the centre facing the middle.",
     "options": [
-      "Open ad court — deep into the corner",
-      "Behind them back into the deuce corner",
-      "Short drop volley"
+      "Deep into the open ad court",
+      "Behind them into the deuce corner",
+      "Short and low down the middle"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "Opponent recovering means they're moving toward the centre. Deep into the open ad court makes them reverse direction and arrive off-balance — or not at all.",
-    "takeaway": "At the net, hit away from their recovery — not back to where they came from.",
+    "explanation": "Their momentum is already carrying them to the centre, so the open ad corner is now the longest run and they arrive late or not at all. Hitting behind them only works while they are still at full sprint the other way.",
+    "takeaway": "Still sprinting, hit behind. Turning back, open court.",
     "mistakeType": "hitting behind when they're recovering",
-    "scenarioTr": "File önündesin ve rakip deuce tarafta açıktan toparlanıyor. En iyi volley hedefi?",
-    "optionsTr": [
-      "Açık ad köşe — derine",
-      "Geldiği deuce köşesine arkadan",
-      "Kısa drop volley"
-    ],
-    "explanationTr": "Toparlanan rakip ortaya doğru hareket eder. Açık ad köşesine derin volley yön değiştirmeye zorlar ve dengesiz yakalar — ya da hiç yetişemez.",
-    "takeawayTr": "File önünde toparlanma yönünün tersine vur — geldiği yere değil.",
-    "diagram": {
-      "surface": "hard",
-      "youX": 0.4,
-      "youY": 0.6,
-      "opponentX": 0.85,
-      "opponentY": 0.08,
-      "ballOriginX": 0.4,
-      "ballOriginY": 0.36,
-      "ballTargetX": 0.16,
-      "ballTargetY": 0.14,
-      "scoreChip": "VOLLEY TO OPEN COURT"
-    },
-    "tacticalCategory": "net_game",
-    "scenarioFr": "Tu es au filet et ton adversaire revient d'une position très excentrée côté égalité. Meilleure cible de volée ?",
-    "optionsFr": [
-      "Le côté avantage libre — profond dans le coin",
-      "Derrière lui, de nouveau dans le coin égalité",
-      "Une volée amortie courte"
-    ],
-    "explanationFr": "S'il se replace, il se déplace vers le centre. Profond dans le côté avantage libre l'oblige à repartir en sens inverse et à arriver en déséquilibre — ou à ne pas arriver du tout.",
-    "takeawayFr": "Au filet, joue à l'opposé de son replacement — pas là d'où il vient."
+    "tacticalCategory": "net_game"
   },
   {
     "id": "mental_021",
@@ -3696,187 +3528,87 @@
   {
     "id": "net_101",
     "category": "net",
-    "difficulty": "easy",
-    "focusTag": "first volley depth",
+    "difficulty": "medium",
+    "focusTag": "volleying against an opponent coming in",
     "tacticalCategory": "net_game",
-    "scenario": "First volley after coming in — where does it go if no easy kill is on?",
+    "scenario": "15–30. Your volley landed short, they ran it down and are following their own reply in. You have a waist-high volley as they cross their service line.",
     "options": [
-      "Deep to the baseline, usually behind or at their backhand",
-      "Short angle drop volley",
-      "As hard as possible anywhere"
+      "Punch it at their feet",
+      "Angle it wide for the winner",
+      "Lob-volley it over their head"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "A deep first volley keeps them pinned and buys you a step closer for the real finishing volley. Drop volleys from the service line are donations.",
-    "takeaway": "First volley = deep and boring. Second volley = the kill.",
-    "mistakeType": "attempting an angled volley from too far back",
-    "scenarioTr": "İçeri girdikten sonraki ilk vole — kolay bitirme yoksa nereye?",
-    "optionsTr": [
-      "Baseline'a derin, genelde backhand'e ya da arkasına",
-      "Kısa açılı drop vole",
-      "Herhangi bir yere olabildiğince sert"
-    ],
-    "explanationTr": "Derin ilk vole rakibi geride çiviler ve asıl bitirici vole için bir adım daha yaklaşmanı sağlar. Servis çizgisinden drop vole hediyedir.",
-    "takeawayTr": "İlk vole = derin ve sıkıcı. İkinci vole = bitirici.",
-    "diagram": {
-      "surface": "hard",
-      "youX": 0.45,
-      "youY": 0.58,
-      "opponentX": 0.35,
-      "opponentY": 0.1,
-      "ballOriginX": 0.45,
-      "ballOriginY": 0.58,
-      "ballTargetX": 0.3,
-      "ballTargetY": 0.1,
-      "scoreChip": "FIRST VOLLEY"
-    }
+    "explanation": "A moving opponent inside the box has to half-volley from below the tape, which hands you the ball you want next. The wide angle needs precision you do not have off waist height, and a short lob volley is a free overhead.",
+    "takeaway": "Against an incoming opponent, volley at their shoelaces.",
+    "mistakeType": "attempting an angled volley from too far back"
   },
   {
     "id": "net_102",
     "category": "net",
     "difficulty": "medium",
-    "focusTag": "split-step at net",
+    "focusTag": "serve and volley on a second serve",
     "tacticalCategory": "net_game",
-    "scenario": "You keep getting passed even when your approach is good. Video shows you running through the approach. What's missing?",
+    "scenario": "4–4, 30–30 on your second serve. They stand two metres behind the baseline and have chipped six of eight second-serve returns short and floating this set.",
     "options": [
-      "A split step the moment THEY start their swing",
-      "More speed to the net",
-      "Standing still at the service line"
+      "Kick it to the backhand and follow it in",
+      "Kick it to the backhand and hold the baseline",
+      "Go flat and hard down the T instead"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "If you're mid-sprint at their contact, you can't change direction. The split at their swing start converts your momentum into readiness both ways.",
-    "takeaway": "Sprint between their shots; split AT their shot.",
-    "mistakeType": "running through the opponent's contact",
-    "diagram": {
-      "surface": "clay",
-      "youX": 0.5,
-      "youY": 0.6,
-      "opponentX": 0.5,
-      "opponentY": 0.1,
-      "ballOriginX": 0.5,
-      "ballOriginY": 0.14,
-      "ballTargetX": 0.5,
-      "ballTargetY": 0.54,
-      "scoreChip": "SPLIT"
-    },
-    "scenarioTr": "Yaklaşman iyiyken bile pas yiyorsun. Videoda yaklaşmayı koşarak geçtiğin görülüyor. Eksik ne?",
-    "optionsTr": [
-      "RAKİP salınıma başladığı anda split step",
-      "Fileye daha çok hız",
-      "Servis çizgisinde hareketsiz durmak"
-    ],
-    "explanationTr": "Onun temasında depar hâlindeysen yön değiştiremezsin. Salınım başında split, momentumunu iki yöne de hazırlığa çevirir.",
-    "takeawayTr": "Vuruşları arasında koş; vuruşunun ANINDA split yap."
+    "explanation": "A returner standing two metres back and chipping gives you a slow high ball at the service line, which is the return worth following. Holding the baseline turns that floater into a neutral rally you had already won the start of.",
+    "takeaway": "A deep chip returner is an invitation — follow the serve in.",
+    "mistakeType": "running through the opponent's contact"
   },
   {
     "id": "net_103",
     "category": "net",
     "difficulty": "medium",
-    "focusTag": "volley target choice",
+    "focusTag": "volley target against a full sprint",
     "tacticalCategory": "net_game",
-    "scenario": "Easy volley, opponent scrambling from your left to your right. Open court right, or behind them left?",
+    "scenario": "30–30. You have an easy volley at chest height. They are at a dead sprint across the baseline toward the open court, eyes on the sideline and two steps from reaching it.",
     "options": [
-      "Behind them if they're sprinting hard — momentum can't stop",
-      "Always open court, no exceptions",
-      "Down the middle"
+      "Behind them, back where they came from",
+      "Into the open court they are sprinting to",
+      "Deep down the middle at their feet"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "The open court is right ONLY if they haven't committed. Against a full sprint, the ball behind them is untouchable because reversing costs two steps.",
-    "takeaway": "Volley to where they CAN'T go, which isn't always where they AREN'T.",
-    "mistakeType": "always hitting to the open court",
-    "scenarioTr": "Kolay vole, rakip solundan sağına koşturuyor. Sağdaki açık kort mu, soluna arkasına mı?",
-    "optionsTr": [
-      "Sert depardaysa arkasına — momentum duramaz",
-      "İstisnasız hep açık kort",
-      "Ortadan"
-    ],
-    "explanationTr": "Açık kort ancak rakip karar vermemişse doğrudur. Tam depara karşı arkasına atılan top dokunulmazdır; geri dönmek iki adıma mal olur.",
-    "takeawayTr": "Voleyi olmadığı yere değil, GİDEMEYECEĞİ yere at.",
-    "diagram": {
-      "surface": "hard",
-      "youX": 0.5,
-      "youY": 0.6,
-      "opponentX": 0.35,
-      "opponentY": 0.2,
-      "ballOriginX": 0.5,
-      "ballOriginY": 0.6,
-      "ballTargetX": 0.2,
-      "ballTargetY": 0.25,
-      "scoreChip": "VOLLEY"
-    }
+    "explanation": "At full sprint their weight is committed, and reversing costs two steps they do not have, so the ball behind them is untouchable. The open court is right once they have stopped and turned back toward the centre, not while they are running.",
+    "takeaway": "Hit behind runners, into space against stoppers.",
+    "mistakeType": "always hitting to the open court"
   },
   {
     "id": "net_104",
     "category": "net",
-    "difficulty": "easy",
-    "focusTag": "overhead footwork",
+    "difficulty": "medium",
+    "focusTag": "overhead target when you are moving back",
     "tacticalCategory": "net_game",
-    "scenario": "A deep lob goes up over you. What's the footwork that saves the smash?",
+    "scenario": "30–30, still air. Their lob pushes you back behind the service line, but you get around it in balance with the racket up and contact over your shoulder.",
     "options": [
-      "Turn sideways and cross-step back, racquet up early",
-      "Backpedal facing the net",
-      "Let every deep lob bounce"
+      "Smash deep through the middle and re-close",
+      "Flatten it into the open corner",
+      "Angle it short crosscourt with touch"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "Backpedaling is slow and ends in falling smashes. Turning sideways converts the retreat into athletic strides while the early racquet prep keeps the smash compact.",
-    "takeaway": "Turn, cross-step, racquet up — never backpedal to a lob.",
-    "mistakeType": "backpedaling under lobs",
-    "diagram": {
-      "surface": "clay",
-      "youX": 0.5,
-      "youY": 0.62,
-      "opponentX": 0.5,
-      "opponentY": 0.12,
-      "ballOriginX": 0.5,
-      "ballOriginY": 0.16,
-      "ballTargetX": 0.5,
-      "ballTargetY": 0.86,
-      "scoreChip": "LOB"
-    },
-    "scenarioTr": "Üstünden derin lob yükseliyor. Smacı kurtaran ayak işi ne?",
-    "optionsTr": [
-      "Yan dön, çapraz adımla geri git, raketi erken kaldır",
-      "Fileye bakarak geri geri koş",
-      "Her derin lobu sektir"
-    ],
-    "explanationTr": "Geri geri koşmak yavaştır ve düşerek smaçla biter. Yan dönüş geri çekilmeyi atletik adımlara çevirir; erken raket hazırlığı smacı kompakt tutar.",
-    "takeawayTr": "Dön, çapraz adım, raket yukarı — loba asla geri geri koşma."
+    "explanation": "A retreating overhead loses margin, so depth through the middle takes their angles away and lets you close in for an easier second one. The flat corner is the version that clips the tape or the line from that far back.",
+    "takeaway": "Overhead from deep: deep and middle.",
+    "mistakeType": "backpedaling under lobs"
   },
   {
     "id": "net_105",
     "category": "net",
     "difficulty": "medium",
-    "focusTag": "when to let the lob bounce",
+    "focusTag": "when the wind makes you let it bounce",
     "tacticalCategory": "net_game",
-    "scenario": "Very high, very deep lob on a windy day. Take it in the air or let it bounce?",
+    "scenario": "5–4, 30–30 in a gusting crosswind. They throw up a very high, very deep lob that is still drifting as it falls, and you can get under it in time.",
     "options": [
-      "Let it bounce — the wind punishes airborne timing; smash after the bounce",
-      "Always in the air, look strong",
-      "Run around it and forehand"
+      "Let it bounce, then smash it deep",
+      "Take it in the air on the way down",
+      "Let it bounce and drive it deep"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "On high wind-blown lobs, the bounce resets the chaos: predictable ball drop, set feet, controlled smash. Air smashes there are coin flips.",
-    "takeaway": "Wind + towering lob = bounce smash.",
-    "mistakeType": "forcing air smashes in wind",
-    "diagram": {
-      "surface": "clay",
-      "youX": 0.5,
-      "youY": 0.6,
-      "opponentX": 0.5,
-      "opponentY": 0.12,
-      "ballOriginX": 0.5,
-      "ballOriginY": 0.16,
-      "ballTargetX": 0.5,
-      "ballTargetY": 0.88,
-      "scoreChip": "WIND LOB"
-    },
-    "scenarioTr": "Rüzgârlı günde çok yüksek, çok derin lob. Havada mı alırsın, sektirir misin?",
-    "optionsTr": [
-      "Sektir — rüzgâr havadaki zamanlamayı cezalandırır; sekmeden sonra smaçla",
-      "Hep havada, güçlü görün",
-      "Dolan ve forehand vur"
-    ],
-    "explanationTr": "Rüzgârda yüksek loblarda sekme kaosu sıfırlar: öngörülebilir düşüş, oturmuş ayaklar, kontrollü smaç. Orada havadan smaç yazı-turadır.",
-    "takeawayTr": "Rüzgâr + kule gibi lob = sektirip smaç."
+    "explanation": "In still air you take a lob you can reach in balance, but a ball falling from that height in gusts keeps moving until contact, and the bounce hands you set feet. Taking it in the air there is a timing gamble on a big point.",
+    "takeaway": "High, deep and windy: bounce it, then smash it.",
+    "mistakeType": "forcing air smashes in wind"
   },
   {
     "id": "net_106",
@@ -3936,38 +3668,18 @@
     "id": "net_108",
     "category": "net",
     "difficulty": "medium",
-    "focusTag": "low volley priority",
+    "focusTag": "the job of a volley below net height",
     "tacticalCategory": "net_game",
-    "scenario": "You're forced to volley below net height. What's the shot's job?",
+    "scenario": "3–4, 15–15. You are inside the box but their dipping crosscourt forces you to volley from below the tape, and they are set and balanced on the baseline behind it.",
     "options": [
-      "Depth and safety — lift it deep, decline the winner attempt",
-      "Sharp angle winner anyway",
-      "Drop volley — it's already low"
+      "Lift it deep down the middle and split again",
+      "Carve a short angle crosscourt winner",
+      "Drop it short since it is already low"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "Below net height you're defending at the net. Lifting deep resets the exchange for a better next volley; forcing winners from there feeds the net tape.",
-    "takeaway": "Low volley = survive deep now, kill the NEXT one.",
-    "mistakeType": "forcing winners from low volleys",
-    "diagram": {
-      "surface": "clay",
-      "youX": 0.5,
-      "youY": 0.62,
-      "opponentX": 0.5,
-      "opponentY": 0.1,
-      "ballOriginX": 0.5,
-      "ballOriginY": 0.16,
-      "ballTargetX": 0.5,
-      "ballTargetY": 0.6,
-      "scoreChip": "LOW VOLLEY"
-    },
-    "scenarioTr": "File altından vole yapmaya zorlandın. Vuruşun görevi ne?",
-    "optionsTr": [
-      "Derinlik ve güvenlik — derine kaldır, sayı denemesini reddet",
-      "Yine de keskin açılı sayı",
-      "Drop vole — zaten alçak"
-    ],
-    "explanationTr": "File altında filede savunmadasın. Derine kaldırmak alışverişi bir sonraki daha iyi vole için sıfırlar; oradan sayı zorlamak file bandını besler.",
-    "takeawayTr": "Alçak vole = şimdi derinle hayatta kal, SONRAKİNİ öldür."
+    "explanation": "Below the tape you have to hit up, so depth through the middle keeps a balanced opponent behind the baseline and earns you the volley you actually want. The short angle from down there clears the net by nothing.",
+    "takeaway": "Low volley: survive deep now, finish the next one.",
+    "mistakeType": "forcing winners from low volleys"
   },
   {
     "id": "net_109",
@@ -4002,38 +3714,18 @@
     "id": "net_110",
     "category": "net",
     "difficulty": "medium",
-    "focusTag": "half-volley handling",
+    "focusTag": "coming in behind the return",
     "tacticalCategory": "net_game",
-    "scenario": "Caught mid-court, ball at your feet — forced half-volley. Key technical priority?",
+    "scenario": "1–1 in the third, 30–0 on their serve. Their second serve has sat up chest high and landed inside the service line all match, and they recover slowly behind it.",
     "options": [
-      "Stay low with a short block, aim deep middle",
-      "Big swing to generate pace",
-      "Jump back to make room"
+      "Chip it deep and follow it in",
+      "Rip a flat drive return and stay back",
+      "Block it deep and hold the baseline"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "The half-volley is a timing shot: knees low, compact face-controlled block, target deep middle. Any extra swing multiplies the error.",
-    "takeaway": "Half-volley: low body, quiet hands, boring target.",
-    "mistakeType": "overswinging on half-volleys",
-    "diagram": {
-      "surface": "clay",
-      "youX": 0.5,
-      "youY": 0.68,
-      "opponentX": 0.5,
-      "opponentY": 0.1,
-      "ballOriginX": 0.5,
-      "ballOriginY": 0.16,
-      "ballTargetX": 0.5,
-      "ballTargetY": 0.66,
-      "scoreChip": "HALF-VOLLEY"
-    },
-    "scenarioTr": "Orta kortta yakalandın, top ayak dibinde — mecburi yarım vole. Teknik öncelik ne?",
-    "optionsTr": [
-      "Alçakta kal, kısa blok, ortaya derin hedefle",
-      "Hız üretmek için büyük salınım",
-      "Yer açmak için geriye sıçra"
-    ],
-    "explanationTr": "Yarım vole bir zamanlama vuruşudur: dizler alçak, raket yüzü kontrollü kompakt blok, hedef ortadan derin. Fazladan her salınım hatayı katlar.",
-    "takeawayTr": "Yarım vole: alçak gövde, sakin eller, sıkıcı hedef."
+    "explanation": "A short chest-high second serve is the invitation: the chip stays low, buys the time to reach the box, and a slow recoverer must pass you from behind. Ripping a flat drive risks the miss and leaves you where they are comfortable.",
+    "takeaway": "Short second serve, chip it deep and come in behind it.",
+    "mistakeType": "overswinging on half-volleys"
   },
   {
     "id": "net_111",
@@ -4070,36 +3762,16 @@
     "difficulty": "medium",
     "focusTag": "swinging volley criteria",
     "tacticalCategory": "approach",
-    "scenario": "Slow floaty ball at shoulder height while you're inside the baseline. Swinging volley or let it bounce?",
+    "scenario": "40–30. Their defensive ball floats to you at shoulder height inside the baseline while they scramble back from the deuce corner, still four metres from the centre.",
     "options": [
-      "Swinging volley — take the time away while moving forward",
-      "Always let it bounce for safety",
-      "Regular punch volley from there"
+      "Swinging volley into the open court",
+      "Let it bounce and drive it hard",
+      "Punch it as a normal volley"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "Letting a floater bounce gives a retreating opponent free seconds. The swinging volley, taken while closing, compresses their recovery and finishes points early.",
-    "takeaway": "Floaters inside the baseline are yours — take them out of the air.",
-    "mistakeType": "letting attackable floaters bounce",
-    "diagram": {
-      "surface": "clay",
-      "youX": 0.5,
-      "youY": 0.72,
-      "opponentX": 0.5,
-      "opponentY": 0.12,
-      "ballOriginX": 0.5,
-      "ballOriginY": 0.16,
-      "ballTargetX": 0.5,
-      "ballTargetY": 0.66,
-      "scoreChip": "SWING VOLLEY"
-    },
-    "scenarioTr": "Baseline içindeyken omuz hizasında yavaş süzülen top. Kuvvetli vole mi, sektirmek mi?",
-    "optionsTr": [
-      "Kuvvetli (swing) vole — öne kapanırken zamanını çal",
-      "Güvenlik için hep sektir",
-      "Oradan normal yumruk vole"
-    ],
-    "explanationTr": "Süzülen topu sektirmek geri kaçan rakibe bedava saniyeler verir. Kapanırken vurulan kuvvetli vole toparlanmasını sıkıştırır ve sayıyı erken bitirir.",
-    "takeawayTr": "Baseline içindeki süzülen toplar senindir — havada al."
+    "explanation": "Taking it out of the air removes the second and a half they need to get back, and shoulder height inside the baseline is where that swing is safe. Letting it bounce hands a scrambling opponent exactly the time they are chasing.",
+    "takeaway": "Shoulder-high floater inside the baseline: take it early.",
+    "mistakeType": "letting attackable floaters bounce"
   },
   {
     "id": "net_113",
@@ -4130,38 +3802,18 @@
     "id": "net_114",
     "category": "net",
     "difficulty": "easy",
-    "focusTag": "closing after the volley",
+    "focusTag": "closing behind a deep first volley",
     "tacticalCategory": "net_game",
-    "scenario": "You hit a solid deep first volley from the service line. What's your very next move?",
+    "scenario": "30–15. Your first volley from the service line landed deep in the corner and pushed them behind the baseline, and they are winding up for the pass.",
     "options": [
-      "Close 2–3 steps toward the net for the finishing volley",
-      "Stay exactly where you are",
-      "Retreat toward the baseline"
+      "Close two or three steps and split again",
+      "Hold the service line to watch for the lob",
+      "Give ground a step for reaction time"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "Each good volley earns you ground. Closing after the first volley shrinks their passing angles and turns the second volley into a putaway.",
-    "takeaway": "Volley, then MOVE — the net rewards the greedy.",
-    "mistakeType": "static feet between volleys",
-    "diagram": {
-      "surface": "clay",
-      "youX": 0.5,
-      "youY": 0.64,
-      "opponentX": 0.5,
-      "opponentY": 0.06,
-      "ballOriginX": 0.5,
-      "ballOriginY": 0.12,
-      "ballTargetX": 0.5,
-      "ballTargetY": 0.6,
-      "scoreChip": "CLOSE IN"
-    },
-    "scenarioTr": "Servis çizgisinden sağlam derin bir ilk vole vurdun. Hemen sonraki hamlen ne?",
-    "optionsTr": [
-      "Bitirici vole için fileye 2–3 adım kapan",
-      "Tam olduğun yerde kal",
-      "Baseline'a geri çekil"
-    ],
-    "explanationTr": "Her iyi vole sana alan kazandırır. İlk voleden sonra kapanmak pas açılarını daraltır ve ikinci voleyi bitirişe çevirir.",
-    "takeawayTr": "Vole at, sonra YÜRÜ — file açgözlüyü ödüllendirir."
+    "explanation": "A deep volley bought you ground, and two or three steps forward shrink both passing lanes before their contact. The service line is where volleys arrive at your feet, and the lob is still covered from inside the box.",
+    "takeaway": "Every good volley earns two steps — take them.",
+    "mistakeType": "static feet between volleys"
   },
   {
     "id": "mental_100",

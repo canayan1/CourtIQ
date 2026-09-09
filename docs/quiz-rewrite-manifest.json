@@ -89,9 +89,40 @@
     "return_026",
     "return_103",
     "return_105",
-    "return_112"
+    "return_112",
+    "net_021",
+    "net_022",
+    "net_025",
+    "net_026",
+    "net_028",
+    "net_030",
+    "net_101",
+    "net_102",
+    "net_103",
+    "net_104",
+    "net_105",
+    "net_108",
+    "net_110",
+    "net_112",
+    "net_114"
   ],
-  "needsDiagram": [],
+  "needsDiagram": [
+    "net_021",
+    "net_022",
+    "net_025",
+    "net_026",
+    "net_028",
+    "net_030",
+    "net_101",
+    "net_102",
+    "net_103",
+    "net_104",
+    "net_105",
+    "net_108",
+    "net_110",
+    "net_112",
+    "net_114"
+  ],
   "diagramsIntentionallyNone": [
     "mental questions carry no court: a diagram adds nothing to a decision about breathing, tempo or self-talk"
   ]

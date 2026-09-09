@@ -18,7 +18,9 @@ authoring rules and refuses the whole merge if any fails.
 """
 import json, re, sys
 
-BANNED = re.compile(r"\b(hope|hoping|bad luck|complain|argue|ignore|do nothing|give up|apolog|smash|"
+# "smash" is a stroke here, not a tantrum — ban only the racket-breaking sense.
+BANNED = re.compile(r"\b(hope|hoping|bad luck|complain|argue|ignore|do nothing|give up|apolog|"
+                    r"smash (your|the) (racket|racquet)|"
                     r"close your eyes|squint|admire|whatever feels|never;|always .*no exceptions)\b", re.I)
 P = "CourtIQ/Resources/Content/quiz_questions.json"
 MANIFEST = "docs/quiz-rewrite-manifest.json"
