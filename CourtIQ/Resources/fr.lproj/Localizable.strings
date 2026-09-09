@@ -343,7 +343,7 @@
 "paywall.sign_in_optional" = "Facultatif — connecte-toi avec Apple pour retrouver Premium sur tous tes appareils.";
 "paywall.what_unlocks" = "Ce que tu obtiens";
 "paywall.benefit_coach" = "Coach — analyses de geste illimitées, et une discussion sur chacune";
-"paywall.benefit_tactics" = "Tactique — tous les chapitres, tous les jours";
+"paywall.benefit_tactics" = "Tactique — les %d leçons après le chapitre 1, sans limite d'une par jour";
 "paywall.benefit_wall" = "Mur — le comptage par caméra et une note sur chaque palier";
 
 /* ── Tip-jar mode (launch window, LaunchOffer.allFeaturesFree == true) ── */

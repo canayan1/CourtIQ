@@ -13,7 +13,7 @@
     "correctAnswerIndex": 0,
     "explanation": "They have shown the adjustment — a metre wider and stepping in — so the T they abandoned is now free space. Serving wide again with more pace fires straight into the ball they just repositioned to hit.",
     "takeaway": "Repeat a winning serve until they move, then serve where they moved from.",
-    "mistakeType": "predictable serve direction",
+    "mistakeType": "ignoring what the opponent does well",
     "tacticalCategory": "patterns",
     "diagram": {
       "surface": "clay",
@@ -38,8 +38,8 @@
     "correctAnswerIndex": 0,
     "explanation": "A deep return kills the +1, so height and depth crosscourt buy back the recovery step you owe. Running around for the inside-out forehand is the trap: it opens the whole deuce side while you are still moving backwards.",
     "takeaway": "Deep return, no +1 — reset crosscourt and earn the next ball.",
-    "mistakeType": "wasting an opened court",
-    "tacticalCategory": "open_court",
+    "mistakeType": "attacking from a defensive position",
+    "tacticalCategory": "defense",
     "diagram": {
       "surface": "clay",
       "youX": 0.18,
@@ -67,7 +67,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Tired legs shorten the kinetic chain, so full pace flattens the trajectory and the ball clips the tape; less pace with spin restores the arc. Keeping the pace and aiming safer fails because your aim was never the problem.",
     "takeaway": "When the legs go, trade pace for arc.",
-    "mistakeType": "forcing pace when fatigued",
+    "mistakeType": "serving without a pattern",
     "tacticalCategory": "patterns",
     "diagram": {
       "surface": "clay",
@@ -96,8 +96,16 @@
     "correctAnswerIndex": 0,
     "explanation": "A second serve that lands mid-box invites the returner forward, so the same kick aimed at the back corner pushes their contact back behind the baseline. More spin without depth is the classic fix that drops it even shorter.",
     "takeaway": "Second serve: same shape, deeper target.",
-    "mistakeType": "safe-dink second serve",
-    "tacticalCategory": "patterns"
+    "mistakeType": "mismanaging the second serve",
+    "tacticalCategory": "patterns",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.38,
+      "youY": 0.96,
+      "opponentX": 0.74,
+      "opponentY": 0.05,
+      "scoreChip": "AD COURT · 40-30"
+    }
   },
   {
     "id": "serve_025",
@@ -113,7 +121,7 @@
     "correctAnswerIndex": 0,
     "explanation": "With the returner camped inside the baseline, the ball to avoid is a second serve, so an 80% spin first serve that jams the body is worth more than pace. Going flat for the T ace fails here — the miss hands them exactly what they want.",
     "takeaway": "On break point, make the first serve — the miss is the real risk.",
-    "mistakeType": "going for too much on break point",
+    "mistakeType": "playing the score wrong",
     "tacticalCategory": "patterns",
     "diagram": {
       "surface": "clay",
@@ -138,8 +146,16 @@
     "correctAnswerIndex": 0,
     "explanation": "Standing that wide leaves the whole T uncovered, and a flat serve there is the longest run you can ask him to make. Kicking wider only chases him into the ball he set his stance up to hit.",
     "takeaway": "Serve into the ground the returner has given away.",
-    "mistakeType": "ignoring returner positioning",
-    "tacticalCategory": "patterns"
+    "mistakeType": "ignoring what the opponent does well",
+    "tacticalCategory": "patterns",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.38,
+      "youY": 0.96,
+      "opponentX": 0.93,
+      "opponentY": 0.05,
+      "scoreChip": "AD · RETURNER WIDE"
+    }
   },
   {
     "id": "serve_027",
@@ -155,7 +171,7 @@
     "correctAnswerIndex": 0,
     "explanation": "The pattern has held every game because the returner has not solved it, and the last game of a set is no time to test unproven targets. Switching to serves you haven't shown is tempting variety with no evidence behind it.",
     "takeaway": "Close the set with the pattern that built it.",
-    "mistakeType": "protect-mode under pressure",
+    "mistakeType": "serving without a pattern",
     "tacticalCategory": "patterns"
   },
   {
@@ -172,8 +188,16 @@
     "correctAnswerIndex": 0,
     "explanation": "Reach is what beats width, so a ball at the hip takes away the arm extension he returns with and cramps the swing. Serving wider is the instinct that fails here: it is the exact ball his wingspan handled twice already.",
     "takeaway": "You cannot stretch long arms — crowd them instead.",
-    "mistakeType": "serving into opponent's strength",
-    "tacticalCategory": "patterns"
+    "mistakeType": "ignoring what the opponent does well",
+    "tacticalCategory": "patterns",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.62,
+      "youY": 0.96,
+      "opponentX": 0.3,
+      "opponentY": 0.04,
+      "scoreChip": "5-5, 30-30 · TALL"
+    }
   },
   {
     "id": "serve_029",
@@ -189,7 +213,7 @@
     "correctAnswerIndex": 0,
     "explanation": "The evidence says your first serve is healthy and the fault came from deceleration, so a full normal swing is the lowest-risk ball available. Rolling in a 70% first serve is the tempting fix, but decelerating is what just failed you.",
     "takeaway": "After a double, swing fully at your normal first serve.",
-    "mistakeType": "easing up after double fault",
+    "mistakeType": "letting emotion pick the shot",
     "tacticalCategory": "patterns"
   },
   {
@@ -206,7 +230,7 @@
     "correctAnswerIndex": 0,
     "explanation": "A headwind brakes the ball and steals length, so a lower toss in front and a deeper, flatter target puts the serve back on the line. Adding more spin is the instinct that fails: it drops the serve even shorter into their strike zone.",
     "takeaway": "Into the wind: lower toss, deeper target.",
-    "mistakeType": "ignoring toss variables in wind",
+    "mistakeType": "ignoring wind, sun and surface",
     "tacticalCategory": "patterns"
   },
   {
@@ -223,7 +247,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Blocking from behind the baseline you can't control a sideline, and a deep middle ball takes away the server's angle while you recover. Deep crosscourt looks just as safe but leaks wide off a stretched block and opens the court.",
     "takeaway": "Stretched block: high, deep, down the middle.",
-    "mistakeType": "attempting angle on defensive return",
+    "mistakeType": "hitting to the open court on autopilot",
     "tacticalCategory": "return",
     "diagram": {
       "surface": "hard",
@@ -252,8 +276,20 @@
     "correctAnswerIndex": 0,
     "explanation": "At 150 km/h with no kick you have time to meet the ball on the baseline, and earlier contact removes the setup time they keep using. Blocking deeper from a metre back is safe but leaves them the same free forehand.",
     "takeaway": "Take time away from a server who keeps getting set.",
-    "mistakeType": "static return position",
-    "tacticalCategory": "return"
+    "mistakeType": "returning from the wrong position",
+    "tacticalCategory": "return",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.66,
+      "youY": 0.98,
+      "opponentX": 0.34,
+      "opponentY": 0.04,
+      "ballOriginX": 0.34,
+      "ballOriginY": 0.07,
+      "ballTargetX": 0.62,
+      "ballTargetY": 0.74,
+      "scoreChip": "4-5, 30-30 · FLAT"
+    }
   },
   {
     "id": "return_023",
@@ -269,8 +305,16 @@
     "correctAnswerIndex": 0,
     "explanation": "A target chosen before the toss lets the swing commit fully, which is exactly what those short floaters were missing. Deciding as the ball leaves the strings feels sharper but leaves you steering the racquet while the ball is on you.",
     "takeaway": "Choose the return target before they toss.",
-    "mistakeType": "reactive return decision",
-    "tacticalCategory": "return"
+    "mistakeType": "not attacking the short ball",
+    "tacticalCategory": "return",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.34,
+      "youY": 0.94,
+      "opponentX": 0.66,
+      "opponentY": 0.04,
+      "scoreChip": "4-4, 15-30 · 2ND"
+    }
   },
   {
     "id": "return_024",
@@ -286,8 +330,20 @@
     "correctAnswerIndex": 0,
     "explanation": "Below the knee there is no height to lift from, so a slice travels with the skid and still lands deep with margin over the net. Rolling topspin off a ball at your shoelaces is what has already found the net twice.",
     "takeaway": "Low ball, low answer — slice it deep.",
-    "mistakeType": "attacking a tough kick serve",
-    "tacticalCategory": "return"
+    "mistakeType": "ignoring wind, sun and surface",
+    "tacticalCategory": "return",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.66,
+      "youY": 0.94,
+      "opponentX": 0.34,
+      "opponentY": 0.04,
+      "ballOriginX": 0.34,
+      "ballOriginY": 0.07,
+      "ballTargetX": 0.74,
+      "ballTargetY": 0.7,
+      "scoreChip": "DEUCE · SKIDDING"
+    }
   },
   {
     "id": "return_025",
@@ -303,8 +359,16 @@
     "correctAnswerIndex": 0,
     "explanation": "The split only helps in the instant your feet reload, so against a slow motion it has to be delayed until their contact. Splitting twice looks like a fix, but the second hop lands late and freezes you as you need to push.",
     "takeaway": "Time the split to their contact, not your rhythm.",
-    "mistakeType": "late split step",
-    "tacticalCategory": "return"
+    "mistakeType": "returning from the wrong position",
+    "tacticalCategory": "return",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.66,
+      "youY": 0.94,
+      "opponentX": 0.34,
+      "opponentY": 0.04,
+      "scoreChip": "SPLIT-STEP TIMING"
+    }
   },
   {
     "id": "return_026",
@@ -320,7 +384,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Moving up denies the kick its bounce height, and crosscourt gives you the longest court and the lowest net to set up the +1. Down the line off a rising kicking ball is the same aggression over the highest net with the least room.",
     "takeaway": "Attack a second serve by moving forward — and go crosscourt for margin.",
-    "mistakeType": "low-percentage down-the-line return",
+    "mistakeType": "changing direction at the wrong moment",
     "diagram": {
       "surface": "hard",
       "youX": 0.5,
@@ -349,8 +413,8 @@
     "correctAnswerIndex": 0,
     "explanation": "A stretched forehand from behind the baseline comes back crosscourt far more often than down the line, so bisecting their real angles means shading that way. Recovering to the exact centre mark is the default that ignores this ball.",
     "takeaway": "Recover to their likely reply, not to the centre mark.",
-    "mistakeType": "admiring the shot",
-    "tacticalCategory": "return",
+    "mistakeType": "failing to recover after your own shot",
+    "tacticalCategory": "patterns",
     "diagram": {
       "surface": "hard",
       "youX": 0.7,
@@ -374,8 +438,20 @@
     "correctAnswerIndex": 0,
     "explanation": "A cheap point at 30-0 is where you spend risk, and slow feet plus a sitting second serve plus two missed passes all point forward. Driving it and staying back is safer but hands them the baseline rally they are comfortable in.",
     "takeaway": "Spend the free point on the play that scares them.",
-    "mistakeType": "chip-and-charge at bad moments",
-    "tacticalCategory": "return"
+    "mistakeType": "approaching the net at the wrong time",
+    "tacticalCategory": "approach",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.66,
+      "youY": 0.94,
+      "opponentX": 0.34,
+      "opponentY": 0.04,
+      "ballOriginX": 0.34,
+      "ballOriginY": 0.07,
+      "ballTargetX": 0.6,
+      "ballTargetY": 0.68,
+      "scoreChip": "30-0 · WEAK 2ND"
+    }
   },
   {
     "id": "return_029",
@@ -391,7 +467,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Breathing out on the ball bounces releases tension while you still have time to load the split step, and it finishes before the toss needs your eyes. Exhaling at their contact is too late — you read and move on a held breath.",
     "takeaway": "Breathe out on their bounces, split on their contact.",
-    "mistakeType": "no pre-return ritual",
+    "mistakeType": "letting emotion pick the shot",
     "tacticalCategory": "return",
     "diagram": {
       "surface": "hard",
@@ -416,7 +492,7 @@
     "correctAnswerIndex": 0,
     "explanation": "The first break point is where the server is most likely to miss the first serve, so spend the aggression there instead of saving it. Playing the first deep and neutral hands back the very ball you earned the chance to attack.",
     "takeaway": "Spend the first break point, don't save it.",
-    "mistakeType": "passive returning on break point",
+    "mistakeType": "playing the score wrong",
     "tacticalCategory": "return",
     "diagram": {
       "surface": "hard",
@@ -445,8 +521,20 @@
     "correctAnswerIndex": 0,
     "explanation": "A deep middle ball hands her no angle to copy, so her reply has to come back through the centre where you already stand. Aiming at the corner again is what has fed her three winners: your angle becomes her angle.",
     "takeaway": "Against an angle player, the middle is a target.",
-    "mistakeType": "changing direction from neutral",
-    "tacticalCategory": "patterns"
+    "mistakeType": "ignoring what the opponent does well",
+    "tacticalCategory": "patterns",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.96,
+      "opponentX": 0.5,
+      "opponentY": 0.04,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.07,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.92,
+      "scoreChip": "2-2 · NEUTRAL RALLY"
+    }
   },
   {
     "id": "rally_022",
@@ -462,8 +550,20 @@
     "correctAnswerIndex": 0,
     "explanation": "From three metres back he has eight extra metres to cover forward, and he has shown all match that he will not make that run. Hitting deeper only feeds the strength he built that court position for.",
     "takeaway": "If depth doesn't hurt them, pull them forward instead.",
-    "mistakeType": "retreating against moonballs",
-    "tacticalCategory": "open_court"
+    "mistakeType": "ignoring what the opponent does well",
+    "tacticalCategory": "open_court",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.92,
+      "opponentX": 0.5,
+      "opponentY": 0.01,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.04,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.9,
+      "scoreChip": "4-3 · HE CAMPS DEEP"
+    }
   },
   {
     "id": "rally_023",
@@ -479,7 +579,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Because your contact was outside the sideline, the two replies they can reach bisect on the ad side of centre, so a step past the mark covers both. The centre mark leaves you a stride late on anything into the ad court.",
     "takeaway": "Recover to the middle of their angles, not the middle of the court.",
-    "mistakeType": "static recovery to centre",
+    "mistakeType": "failing to recover after your own shot",
     "tacticalCategory": "defense",
     "diagram": {
       "surface": "clay",
@@ -504,8 +604,20 @@
     "correctAnswerIndex": 0,
     "explanation": "Against a left-hander the crosscourt diagonal you grew up trading feeds her forehand, and a short central ball is your chance to send it to the other corner instead. Running around it just reloads the same diagonal.",
     "takeaway": "Versus a lefty, check which corner holds the backhand.",
-    "mistakeType": "wasting fitness advantage",
-    "tacticalCategory": "patterns"
+    "mistakeType": "ignoring what the opponent does well",
+    "tacticalCategory": "patterns",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.8,
+      "opponentX": 0.5,
+      "opponentY": 0.05,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.08,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.76,
+      "scoreChip": "3-3 · VS LEFT-HANDER"
+    }
   },
   {
     "id": "rally_025",
@@ -521,8 +633,8 @@
     "correctAnswerIndex": 0,
     "explanation": "Fatigue slows the feet, not the swing, so turning earlier restores a contact point in front where the frame stops appearing. Backing up feels safer but adds a step of running and drops contact even further behind you.",
     "takeaway": "Tired legs: turn earlier, don't reach later.",
-    "mistakeType": "reaching for the ball when tired",
-    "tacticalCategory": "approach",
+    "mistakeType": "failing to recover after your own shot",
+    "tacticalCategory": "defense",
     "diagram": {
       "surface": "clay",
       "youX": 0.55,
@@ -550,8 +662,16 @@
     "correctAnswerIndex": 0,
     "explanation": "A stretched, late contact cannot produce depth, so the short reply is decided before she even hits it and the move belongs on her contact. Waiting to read the bounce is why you reached the last two of these late.",
     "takeaway": "Move on their contact, not on the bounce.",
-    "mistakeType": "forcing winners off transition balls",
-    "tacticalCategory": "patterns"
+    "mistakeType": "not attacking the short ball",
+    "tacticalCategory": "approach",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.99,
+      "opponentX": 0.06,
+      "opponentY": 0.1,
+      "scoreChip": "5-4 · SHE'S STRETCHED"
+    }
   },
   {
     "id": "rally_027",
@@ -567,8 +687,8 @@
     "correctAnswerIndex": 0,
     "explanation": "Raising net clearance a metre cuts errors without changing your game, because the same swing now lands deep instead of in the tape. Swinging harder against a retriever only shrinks the margin that is already failing you.",
     "takeaway": "Fix errors with height before you touch your pace.",
-    "mistakeType": "low-margin baseline hitting",
-    "tacticalCategory": "defense",
+    "mistakeType": "going for too much from a neutral ball",
+    "tacticalCategory": "patterns",
     "diagram": {
       "surface": "clay",
       "youX": 0.5,
@@ -596,8 +716,20 @@
     "correctAnswerIndex": 0,
     "explanation": "From outside the sideline the line is the highest net, the shortest court and the longest recovery run for you. Crosscourt keeps the low net and the long diagonal — change direction from the middle of the court, not from its corner.",
     "takeaway": "Change direction from the middle, not from the corner.",
-    "mistakeType": "missing the attack trigger",
-    "tacticalCategory": "patterns"
+    "mistakeType": "changing direction at the wrong moment",
+    "tacticalCategory": "defense",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.92,
+      "youY": 0.9,
+      "opponentX": 0.5,
+      "opponentY": 0.05,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.08,
+      "ballTargetX": 0.9,
+      "ballTargetY": 0.86,
+      "scoreChip": "2-2, 30-15 · WIDE"
+    }
   },
   {
     "id": "rally_029",
@@ -613,8 +745,8 @@
     "correctAnswerIndex": 0,
     "explanation": "Exhaling on every contact keeps the core stable and stops the oxygen debt that turns long rallies into long errors. Holding it until the point ends is what most club players do, and it is exactly why the tenth ball flies.",
     "takeaway": "One exhale per contact, all rally long.",
-    "mistakeType": "holding breath during rallies",
-    "tacticalCategory": "defense",
+    "mistakeType": "letting emotion pick the shot",
+    "tacticalCategory": "patterns",
     "diagram": {
       "surface": "clay",
       "youX": 0.5,
@@ -642,8 +774,20 @@
     "correctAnswerIndex": 0,
     "explanation": "A ball landing a metre inside your baseline is deep, not short, and attacking from behind your own baseline is the shot that has already missed three times. Deep and heavy keeps the rally and buys the genuinely short one.",
     "takeaway": "Attack starts inside the baseline, not behind it.",
-    "mistakeType": "chasing pace on direction change",
-    "tacticalCategory": "approach"
+    "mistakeType": "going for too much from a neutral ball",
+    "tacticalCategory": "patterns",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.95,
+      "opponentX": 0.5,
+      "opponentY": 0.05,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.08,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.9,
+      "scoreChip": "3-4 · LANDS DEEP"
+    }
   },
   {
     "id": "net_021",
@@ -659,8 +803,16 @@
     "correctAnswerIndex": 0,
     "explanation": "You cannot outrun their contact, and a split from a stopped position covers both passing lanes; arriving mid-stride covers neither. Sprinting the last two steps is what leaves you moving as the ball leaves their strings.",
     "takeaway": "Split where you are — never arrive mid-stride.",
-    "mistakeType": "poor approach follow-through",
-    "tacticalCategory": "net_game"
+    "mistakeType": "approaching the net at the wrong time",
+    "tacticalCategory": "approach",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.5,
+      "youY": 0.84,
+      "opponentX": 0.44,
+      "opponentY": 0.14,
+      "scoreChip": "5-4, 30-30 · APPROACH"
+    }
   },
   {
     "id": "net_022",
@@ -676,8 +828,16 @@
     "correctAnswerIndex": 0,
     "explanation": "From out there their fastest reply is the line you left open, so moving across keeps you in front of it before they swing. Holding the centre feels balanced, but the ball is no longer in the centre and the geometry moved with it.",
     "takeaway": "Follow your volley across, not only forward.",
-    "mistakeType": "static volley position",
-    "tacticalCategory": "net_game"
+    "mistakeType": "failing to recover after your own shot",
+    "tacticalCategory": "net_game",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.5,
+      "youY": 0.62,
+      "opponentX": 0.04,
+      "opponentY": 0.4,
+      "scoreChip": "30-15 · ANGLE VOLLEY"
+    }
   },
   {
     "id": "net_023",
@@ -693,7 +853,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Contact in front of the lead hip keeps the racket face stable and sends the ball forward, which is how a body ball becomes an attacking volley. Blocking it beside your body gives the racket no room and drops it into the net.",
     "takeaway": "Meet body balls in front, never beside you.",
-    "mistakeType": "late volley contact",
+    "mistakeType": "taking the volley from too far back",
     "tacticalCategory": "net_game",
     "diagram": {
       "surface": "hard",
@@ -722,7 +882,7 @@
     "correctAnswerIndex": 0,
     "explanation": "A low first volley is a reset, and deep down the middle buys the step you need to reach proper volley position for the second one. The sharp angle winner from below net height is the shot that has to travel furthest over the highest net.",
     "takeaway": "First volleys at your feet are setups — not winners.",
-    "mistakeType": "going for winners on low first volleys",
+    "mistakeType": "attacking from a defensive position",
     "diagram": {
       "surface": "hard",
       "youX": 0.5,
@@ -751,8 +911,20 @@
     "correctAnswerIndex": 0,
     "explanation": "A contact below the knee on the run cannot be driven, so the reply floats and cutting it off early ends the point. Backing off for the lob is the right read when they are set with time, not when they are sliding.",
     "takeaway": "Low and sliding, close in; set and balanced, respect the lob.",
-    "mistakeType": "slow racket preparation on lob",
-    "tacticalCategory": "net_game"
+    "mistakeType": "not attacking the short ball",
+    "tacticalCategory": "net_game",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.46,
+      "youY": 0.62,
+      "opponentX": 0.14,
+      "opponentY": 0.03,
+      "ballOriginX": 0.14,
+      "ballOriginY": 0.06,
+      "ballTargetX": 0.46,
+      "ballTargetY": 0.6,
+      "scoreChip": "4-4, 15-30 · SLIDING"
+    }
   },
   {
     "id": "net_026",
@@ -768,8 +940,20 @@
     "correctAnswerIndex": 0,
     "explanation": "From the service line the drop has seven metres to travel off a net-height contact, so it lands mid-court as a sitter. The drop is on two metres in with contact above the tape; from here depth is the shot.",
     "takeaway": "Service line: punch it deep. Net: drop it short.",
-    "mistakeType": "unnecessary drop volley",
-    "tacticalCategory": "net_game"
+    "mistakeType": "taking the volley from too far back",
+    "tacticalCategory": "net_game",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.5,
+      "youY": 0.77,
+      "opponentX": 0.5,
+      "opponentY": 0.02,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.06,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.74,
+      "scoreChip": "40-30 · SERVICE LINE"
+    }
   },
   {
     "id": "net_027",
@@ -785,7 +969,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Their pace is already on the ball, so a short firm block redirects it and keeps the strings behind the shot. A full swing adds speed you do not need and is precisely what sent the last two long.",
     "takeaway": "Hard ball at you: block it, don't swing at it.",
-    "mistakeType": "long volley swing",
+    "mistakeType": "attacking from a defensive position",
     "tacticalCategory": "net_game",
     "diagram": {
       "surface": "hard",
@@ -814,8 +998,20 @@
     "correctAnswerIndex": 0,
     "explanation": "Their pace does the work, so a soft block deep through the middle clears the net and buys the step you need to close. Punching flat adds speed to a ball already carrying plenty, which is exactly why the last two sailed.",
     "takeaway": "Half-volley soft, deep and middle — never harder.",
-    "mistakeType": "hard half-volley attempt",
-    "tacticalCategory": "net_game"
+    "mistakeType": "attacking from a defensive position",
+    "tacticalCategory": "net_game",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.5,
+      "youY": 0.74,
+      "opponentX": 0.4,
+      "opponentY": 0.06,
+      "ballOriginX": 0.4,
+      "ballOriginY": 0.09,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.73,
+      "scoreChip": "3-3, 30-40 · AT FEET"
+    }
   },
   {
     "id": "net_029",
@@ -831,7 +1027,7 @@
     "correctAnswerIndex": 0,
     "explanation": "A short floating lob in still air is a free smash, and taking it in the air keeps them scrambling instead of giving them two seconds back. Letting it bounce is right only on a deep heavy lob you cannot reach in balance.",
     "takeaway": "Short lob, hit it in the air; deep lob, let it bounce.",
-    "mistakeType": "alley-glued doubles positioning",
+    "mistakeType": "not attacking the short ball",
     "tacticalCategory": "net_game",
     "diagram": {
       "surface": "hard",
@@ -860,8 +1056,20 @@
     "correctAnswerIndex": 0,
     "explanation": "Their momentum is already carrying them to the centre, so the open ad corner is now the longest run and they arrive late or not at all. Hitting behind them only works while they are still at full sprint the other way.",
     "takeaway": "Still sprinting, hit behind. Turning back, open court.",
-    "mistakeType": "hitting behind when they're recovering",
-    "tacticalCategory": "net_game"
+    "mistakeType": "changing direction at the wrong moment",
+    "tacticalCategory": "net_game",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.46,
+      "youY": 0.61,
+      "opponentX": 0.22,
+      "opponentY": 0.06,
+      "ballOriginX": 0.14,
+      "ballOriginY": 0.09,
+      "ballTargetX": 0.46,
+      "ballTargetY": 0.59,
+      "scoreChip": "40-30 · THEY TURNED"
+    }
   },
   {
     "id": "mental_021",
@@ -877,7 +1085,7 @@
     "correctAnswerIndex": 0,
     "explanation": "A lost set is only useful once it becomes one thing you will do, and a committed kick to the backhand attacks the exact game that broke you. The score goal of three games targets what you cannot control and rebuilds the same deuce tension.",
     "takeaway": "Turn a lost set into one thing you will do.",
-    "mistakeType": "replaying the lost set",
+    "mistakeType": "playing the score wrong",
     "tacticalCategory": "patterns"
   },
   {
@@ -894,8 +1102,8 @@
     "correctAnswerIndex": 0,
     "explanation": "The towel walk spends the adrenaline before it reaches your racquet and keeps your 30–30 serve pattern intact. Serving big while fired up feels like justice, but arousal that high shortens the swing and gives away the game instead.",
     "takeaway": "One bad call costs one point, not two.",
-    "mistakeType": "playing angry after a bad call",
-    "tacticalCategory": "defense"
+    "mistakeType": "letting emotion pick the shot",
+    "tacticalCategory": "patterns"
   },
   {
     "id": "mental_023",
@@ -911,7 +1119,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Breakers are decided by the points you hand over, and your practised kick neither double faults nor invites a free swing. Pushing it in softly avoids the fault but donates the mini-break on the return one shot later.",
     "takeaway": "In a breaker, serve the second serve you practise.",
-    "mistakeType": "slow start in tiebreaks",
+    "mistakeType": "mismanaging the second serve",
     "tacticalCategory": "patterns"
   },
   {
@@ -928,8 +1136,8 @@
     "correctAnswerIndex": 0,
     "explanation": "An external target gives attention one job and lets a rehearsed swing run itself on the shot you just missed twice. The technique cue turns the stroke into a thought under pressure, which is what sent those two forehands long.",
     "takeaway": "Aim at a spot, not at your swing.",
-    "mistakeType": "negative internal focus under pressure",
-    "tacticalCategory": "defense"
+    "mistakeType": "letting emotion pick the shot",
+    "tacticalCategory": "patterns"
   },
   {
     "id": "mental_025",
@@ -945,8 +1153,8 @@
     "correctAnswerIndex": 0,
     "explanation": "The receiver decides when play starts, so taking your full time rebuilds the routine you have gone three return games without. Matching their tempo keeps you inside their rhythm and leaves you choosing a return target after the toss.",
     "takeaway": "The receiver owns the clock — use it.",
-    "mistakeType": "rushing between points",
-    "tacticalCategory": "patterns"
+    "mistakeType": "ignoring what the opponent does well",
+    "tacticalCategory": "return"
   },
   {
     "id": "mental_026",
@@ -962,8 +1170,8 @@
     "correctAnswerIndex": 0,
     "explanation": "A streak runs on tempo, and taking your full time leaves them standing still with a lead to think about. Starting quickly to catch them cold keeps the match at the speed that just produced four straight games.",
     "takeaway": "Cool a hot streak by slowing the clock.",
-    "mistakeType": "overreacting to momentum",
-    "tacticalCategory": "return"
+    "mistakeType": "ignoring what the opponent does well",
+    "tacticalCategory": "patterns"
   },
   {
     "id": "mental_027",
@@ -979,8 +1187,8 @@
     "correctAnswerIndex": 0,
     "explanation": "They are serving their tightest game of the match, so standing in on that second serve converts their dropping first-serve rate into pressure immediately. Extending rallies gives them time to settle and hands back the discomfort.",
     "takeaway": "They serve scared too — stand in and take it.",
-    "mistakeType": "catastrophising a service break",
-    "tacticalCategory": "patterns"
+    "mistakeType": "returning from the wrong position",
+    "tacticalCategory": "return"
   },
   {
     "id": "mental_028",
@@ -996,8 +1204,8 @@
     "correctAnswerIndex": 0,
     "explanation": "Confidence comes back from points won, and the serve already producing eight of nine is the cheapest source of them. Serving and volleying to shorten points adds an unrehearsed skill at the moment your margin is smallest.",
     "takeaway": "Lean on what is already winning points.",
-    "mistakeType": "heroics to rebuild confidence",
-    "tacticalCategory": "defense"
+    "mistakeType": "serving without a pattern",
+    "tacticalCategory": "patterns"
   },
   {
     "id": "mental_029",
@@ -1013,8 +1221,8 @@
     "correctAnswerIndex": 0,
     "explanation": "Two-plus-one keeps the review short enough to stay accurate and leaves practice with one clear job. Listing every error while it is fresh is rumination with a notebook, and it teaches your memory that the match was only misses.",
     "takeaway": "Two things that worked, one to fix — then stop.",
-    "mistakeType": "over- or under-reflecting on losses",
-    "tacticalCategory": "net_game"
+    "mistakeType": "letting emotion pick the shot",
+    "tacticalCategory": "patterns"
   },
   {
     "id": "mental_030",
@@ -1030,7 +1238,7 @@
     "correctAnswerIndex": 0,
     "explanation": "The warm-up is the only free scouting you get, and knowing which wing floats decides your first three service patterns. Grooving your own forehand feels productive but walks you to the first point with no plan for where the ball goes.",
     "takeaway": "Warm up your plan, not only your strokes.",
-    "mistakeType": "warming up without intent",
+    "mistakeType": "ignoring what the opponent does well",
     "tacticalCategory": "patterns"
   },
   {
@@ -1047,7 +1255,7 @@
     "correctAnswerIndex": 0,
     "explanation": "A short ball is your cue to get BOTH players to the net. The both-up formation wins the majority of club points, so your partner approaches and joins you.",
     "takeaway": "Short ball = both up. The team that reaches the net first usually wins the point.",
-    "mistakeType": "camping in one-up-one-back",
+    "mistakeType": "losing the doubles formation",
     "diagram": {
       "surface": "clay",
       "youX": 0.5,
@@ -1068,7 +1276,7 @@
     ],
     "explanationTr": "Kısa top, ikinizi de file'ye çıkarma işaretidir. Her ikisi de file'de (both-up) dizilimi kulüp puanlarının çoğunu kazanır; partnerin yaklaşıp sana katılır.",
     "takeawayTr": "Kısa top = ikiniz de file'ye. File'ye önce ulaşan takım genelde puanı alır.",
-    "tacticalCategory": "patterns",
+    "tacticalCategory": "approach",
     "scenarioFr": "Ton partenaire et toi êtes un devant, un derrière. Ton partenaire de fond récupère une balle courte et flottante au milieu du court. Que faites-vous ?",
     "optionsFr": [
       "Monter tous les deux au filet derrière l'approche",
@@ -1092,8 +1300,16 @@
     "correctAnswerIndex": 0,
     "explanation": "From the service line you can step in on a good return or turn and run down a lob, and watching the volleyer tells your team what is coming before the ball does. Standing on the baseline concedes the net to a team that already owns it.",
     "takeaway": "Returner's partner: service line, eyes on the volleyer.",
-    "mistakeType": "net player glued to the alley",
-    "tacticalCategory": "net_game"
+    "mistakeType": "losing the doubles formation",
+    "tacticalCategory": "return",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.66,
+      "youY": 0.74,
+      "opponentX": 0.66,
+      "opponentY": 0.3,
+      "scoreChip": "30-40 · RETURN TEAM"
+    }
   },
   {
     "id": "doubles_003",
@@ -1109,7 +1325,7 @@
     "correctAnswerIndex": 0,
     "explanation": "From below net height you must lift, so the deep ball to the baseliner is the only target that does not arrive as a sitter. Hard at the net player is the reflex, and a lifted volley there is the easiest put-away in doubles.",
     "takeaway": "First-volley target depends on height: a low ball goes deep/middle, not at the net player.",
-    "mistakeType": "first volley auto-aimed at the net player",
+    "mistakeType": "attacking from a defensive position",
     "diagram": {
       "surface": "clay",
       "youX": 0.55,
@@ -1138,7 +1354,7 @@
     "correctAnswerIndex": 0,
     "explanation": "A low cross-court return at the incoming volleyer's feet is the hardest ball to attack. A floaty/high return is poach bait. Your goal is to get your team forward, not to win it outright.",
     "takeaway": "Doubles return = low at the volleyer's feet. Floaters get poached.",
-    "mistakeType": "floaty cross-court returns",
+    "mistakeType": "ignoring what the opponent does well",
     "diagram": {
       "surface": "clay",
       "youX": 0.72,
@@ -1183,7 +1399,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Crossing as the serve bounces is early enough to cut off the middle and late enough that the returner can no longer redirect behind you. Moving on the toss shows your hand while they can still change the target.",
     "takeaway": "Poach as the returner starts the swing — not too early, not too late.",
-    "mistakeType": "mistimed poach",
+    "mistakeType": "losing the doubles formation",
     "diagram": {
       "surface": "clay",
       "youX": 0.35,
@@ -1212,8 +1428,20 @@
     "correctAnswerIndex": 0,
     "explanation": "From the service line the angle needs a metre of net height you do not have, while a deep middle smash splits two retreating players and leaves you an easy volley to finish. The alley smash is the one already in the net twice.",
     "takeaway": "Angle smashes from close in, middle smashes from deep.",
-    "mistakeType": "both chase the lob",
-    "tacticalCategory": "patterns"
+    "mistakeType": "taking the volley from too far back",
+    "tacticalCategory": "net_game",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.5,
+      "youY": 0.74,
+      "opponentX": 0.35,
+      "opponentY": 0.04,
+      "ballOriginX": 0.35,
+      "ballOriginY": 0.08,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.7,
+      "scoreChip": "LOB · BOTH BACK"
+    }
   },
   {
     "id": "doubles_007",
@@ -1229,8 +1457,16 @@
     "correctAnswerIndex": 0,
     "explanation": "Six floated volleys in a set is a rate, not an accident, so the points that decide the match belong to the racket most likely to hand them back. The middle ball is safe but lets whichever of them is more comfortable take it.",
     "takeaway": "Big points go at the weaker racket.",
-    "mistakeType": "serve placement that doesn't set up the partner",
-    "tacticalCategory": "patterns"
+    "mistakeType": "ignoring what the opponent does well",
+    "tacticalCategory": "patterns",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.34,
+      "youY": 0.94,
+      "opponentX": 0.34,
+      "opponentY": 0.32,
+      "scoreChip": "4-4 · WEAK VOLLEYER"
+    }
   },
   {
     "id": "doubles_008",
@@ -1246,8 +1482,20 @@
     "correctAnswerIndex": 0,
     "explanation": "Standing off the net they must volley up from below the tape, and the middle ball leaves them the smallest angle plus a moment of hesitation. The lob answers a team crowding the net; against this one it is a free overhead.",
     "takeaway": "Tight to the net, lob them; off the net, go low and middle.",
-    "mistakeType": "nobody (or both) covers the middle",
-    "tacticalCategory": "patterns"
+    "mistakeType": "attacking from a defensive position",
+    "tacticalCategory": "defense",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.5,
+      "youY": 0.94,
+      "opponentX": 0.4,
+      "opponentY": 0.28,
+      "ballOriginX": 0.4,
+      "ballOriginY": 0.3,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.88,
+      "scoreChip": "5-4 · THEY'RE OFF NET"
+    }
   },
   {
     "id": "doubles_009",
@@ -1263,8 +1511,8 @@
     "correctAnswerIndex": 0,
     "explanation": "Both-back absorbs a serve your partner cannot block from a normal return position, and it is temporary — you climb back once a return lands deep. Keeping one up only asks the same net player to survive the same ball again.",
     "takeaway": "Both-back is a shield you raise, not a formation you live in.",
-    "mistakeType": "leaving the net player exposed to a big serve",
-    "tacticalCategory": "defense",
+    "mistakeType": "losing the doubles formation",
+    "tacticalCategory": "return",
     "diagram": {
       "surface": "hard",
       "youX": 0.28,
@@ -1288,7 +1536,7 @@
     "correctAnswerIndex": 0,
     "explanation": "A lob over a crowding poacher wins the point outright or pushes them back for the rest of the game, which is the real prize. Hitting harder through the same spot is exactly the ball they are standing there to intercept.",
     "takeaway": "Punish an over-eager poacher with a lob — it buys back the middle.",
-    "mistakeType": "feeding an aggressive poacher",
+    "mistakeType": "ignoring what the opponent does well",
     "diagram": {
       "surface": "clay",
       "youX": 0.6,
@@ -1317,7 +1565,7 @@
     "correctAnswerIndex": 0,
     "explanation": "You've read a reliable tendency. The body serve jams the backhand and forces the short floater — so trigger it on purpose, anticipate the reply, move in, and attack it on the rise. You're hunting the +1, not the ace.",
     "takeaway": "When you've read a return tendency, serve to trigger it — then pounce on the predictable reply.",
-    "mistakeType": "ignoring a read for a low-percentage ace",
+    "mistakeType": "serving without a pattern",
     "diagram": {
       "surface": "hard",
       "youX": 0.45,
@@ -1346,7 +1594,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Against a bomb on a fast court the realistic goal is a neutral return, not a winner. Shade toward the 70% target, shorten to a block, and aim deep down the middle — it cuts the server's next angle and buys time to recover.",
     "takeaway": "Vs a big server: shade to the pattern, block deep middle, accept neutral — survive before you attack.",
-    "mistakeType": "going for a winner off an unreturnable serve",
+    "mistakeType": "attacking from a defensive position",
     "diagram": {
       "surface": "grass",
       "youX": 0.35,
@@ -1375,7 +1623,7 @@
     "correctAnswerIndex": 0,
     "explanation": "The shortening ball is your cue: step in on that one and change direction down the line into their backhand. Changing direction off a deep ball is the low-percentage version of the same idea, and it is the one that misses.",
     "takeaway": "Change direction off the short ball, not the deep one.",
-    "mistakeType": "changing direction off a deep defensive ball",
+    "mistakeType": "changing direction at the wrong moment",
     "diagram": {
       "surface": "grass",
       "youX": 0.2,
@@ -1404,7 +1652,7 @@
     "correctAnswerIndex": 0,
     "explanation": "From the service line you can't angle a volley safely. Your DTL approach already closed the line, so split-step, cover the higher-percentage crosscourt pass, and punch the volley DEEP behind the moving opponent — depth over a risky angle from too far back.",
     "takeaway": "Caught at the service line: split, cover the crosscourt, volley deep behind them — not a fancy angle.",
-    "mistakeType": "attempting an angled volley from too far back",
+    "mistakeType": "taking the volley from too far back",
     "diagram": {
       "surface": "hard",
       "youX": 0.32,
@@ -1417,7 +1665,7 @@
       "ballTargetY": 0.16,
       "scoreChip": "AT THE SERVICE LINE"
     },
-    "tacticalCategory": "netGame"
+    "tacticalCategory": "net_game"
   },
   {
     "id": "mental_hard_1",
@@ -1433,7 +1681,7 @@
     "correctAnswerIndex": 0,
     "explanation": "After a choke-break the fix is process, not panic. Slow your tempo between points, breathe, and reset to a bigger target (margin over the lines). Don't chase the break back recklessly or ruminate on the misses — play the next point on its own merits.",
     "takeaway": "After a choke: slow the tempo, widen your margins, play the next point — don't chase or ruminate.",
-    "mistakeType": "panicking or ruminating after a costly game",
+    "mistakeType": "letting emotion pick the shot",
     "tacticalCategory": "patterns"
   },
   {
@@ -1450,7 +1698,7 @@
     "correctAnswerIndex": 0,
     "explanation": "The returner has a comfortable, grooved target — crosscourt at the net player's feet. Take it away by hiding where the net player will be: I-formation or a fake poach forces the returner to decide late and abandon a pattern that's been working.",
     "takeaway": "When a returner grooves a target, hide your net player — I-formation or a fake resets their decision.",
-    "mistakeType": "staying predictable against a hot returner",
+    "mistakeType": "ignoring what the opponent does well",
     "diagram": {
       "surface": "clay",
       "youX": 0.5,
@@ -1480,7 +1728,7 @@
     "correctAnswerIndex": 0,
     "explanation": "A T serve takes the returner's angle away, so the reply comes back centrally — the one ball you can run around and load the forehand on. Serving wide again keeps working the door that has sent five straight returns to your backhand.",
     "takeaway": "Serve where the return feeds your best shot.",
-    "mistakeType": "serving away from your +1 weapon",
+    "mistakeType": "serving without a pattern",
     "diagram": {
       "surface": "clay",
       "youX": 0.42,
@@ -1505,7 +1753,7 @@
     "correctAnswerIndex": 0,
     "explanation": "A body serve leaves a run-around returner no room to open up, and the kick gives net clearance when your arm is tight. Kicking wide to the backhand is textbook, but here it hands him the step-around forehand he has hunted all match.",
     "takeaway": "Tight arm, big point: kick into the body.",
-    "mistakeType": "forcing the second serve",
+    "mistakeType": "mismanaging the second serve",
     "diagram": {
       "surface": "clay",
       "youX": 0.42,
@@ -1530,7 +1778,15 @@
     "correctAnswerIndex": 0,
     "explanation": "Standing that deep buys him time against pace but leaves him a long way from the sideline, so width drags him wider still and opens the court for your next ball. More pace at the same spot is the serve he has been blocking back all match.",
     "takeaway": "Against a deep returner add width, not speed.",
-    "mistakeType": "answering depth with pace instead of angle"
+    "mistakeType": "ignoring what the opponent does well",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.62,
+      "youY": 0.96,
+      "opponentX": 0.3,
+      "opponentY": 0.01,
+      "scoreChip": "DEUCE 40-15 · DEEP"
+    }
   },
   {
     "id": "serve_103",
@@ -1547,7 +1803,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Standing inside the sideline gives your lefty slice its whole runway, and the ball curves further from the backhand the wider it lands. Going back down the T is the tempting variation, but that is the serve he has punished twice.",
     "takeaway": "Lefty, ad court, big point: slice it wide.",
-    "mistakeType": "wasting the lefty advantage on big points",
+    "mistakeType": "ignoring what the opponent does well",
     "diagram": {
       "surface": "clay",
       "youX": 0.42,
@@ -1572,7 +1828,7 @@
     "correctAnswerIndex": 0,
     "explanation": "A made first serve is worth far more than a fast one, and three-quarter kick keeps that advantage without the miss rate of a one-in-seven target. Pushing a soft serve into the middle is the other trap on set point.",
     "takeaway": "Big point: make the first serve, keep the spin.",
-    "mistakeType": "donating big points with hero serves"
+    "mistakeType": "playing the score wrong"
   },
   {
     "id": "serve_105",
@@ -1589,7 +1845,15 @@
     "correctAnswerIndex": 0,
     "explanation": "The evidence says height, not width, breaks this backhand, and a kick climbing above the shoulder buys you the short chip to attack. Slicing low and wide feeds the strike zone that has already produced two winners.",
     "takeaway": "One-hander struggling high? Serve up, not wide.",
-    "mistakeType": "serving low to a player who loves low balls"
+    "mistakeType": "ignoring what the opponent does well",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.38,
+      "youY": 0.96,
+      "opponentX": 0.74,
+      "opponentY": 0.05,
+      "scoreChip": "AD 15-30 · 2ND SERVE"
+    }
   },
   {
     "id": "serve_106",
@@ -1606,7 +1870,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Nothing in his feet has changed, so the serve is still free money; you change the pattern when the returner adjusts, not when repeating it starts to feel uncomfortable. Switching to the T gives back a point the wide serve was winning.",
     "takeaway": "Keep serving it until they move.",
-    "mistakeType": "predictable serve direction"
+    "mistakeType": "serving without a pattern"
   },
   {
     "id": "serve_107",
@@ -1623,7 +1887,7 @@
     "correctAnswerIndex": 0,
     "explanation": "A short deliberate reset lets the breathing catch up and gives the swing a spin target to commit to, which is what a rushed motion lacks. Serving straight away to outrun the doubt keeps the shortened motion that produced both faults.",
     "takeaway": "Reset the ritual, then commit to a spin target.",
-    "mistakeType": "rushing the serve after errors"
+    "mistakeType": "letting emotion pick the shot"
   },
   {
     "id": "serve_108",
@@ -1640,7 +1904,15 @@
     "correctAnswerIndex": 0,
     "explanation": "Against a left-hander the deuce-court T runs straight into the forehand, which is where those three winners came from, while the slice curves away to the backhand. Hitting the same T harder just speeds up his favourite ball.",
     "takeaway": "Lefty in the deuce court: wide finds the backhand.",
-    "mistakeType": "feeding the returner's forehand"
+    "mistakeType": "ignoring what the opponent does well",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.62,
+      "youY": 0.96,
+      "opponentX": 0.3,
+      "opponentY": 0.05,
+      "scoreChip": "DEUCE 30-30 · LEFTY"
+    }
   },
   {
     "id": "serve_109",
@@ -1657,7 +1929,7 @@
     "correctAnswerIndex": 0,
     "explanation": "A tailwind adds length, so topspin brings the ball down earlier and a shorter target keeps your margin inside the service line. Just taking pace off is the common fix, but a slow flat serve still rides the wind long.",
     "takeaway": "Wind behind you: more spin, shorter target.",
-    "mistakeType": "ignoring wind on serve targets"
+    "mistakeType": "ignoring wind, sun and surface"
   },
   {
     "id": "serve_110",
@@ -1674,7 +1946,7 @@
     "correctAnswerIndex": 0,
     "explanation": "They are still outside the alley and the short floater gives you time, so the open ad court is the biggest target available. Hitting behind them wrong-foots, but that only pays once they start sprinting early to recover.",
     "takeaway": "Wide serve, short reply — hit the space, not the body.",
-    "mistakeType": "overcomplicating the +1 with the court open",
+    "mistakeType": "changing direction at the wrong moment",
     "diagram": {
       "surface": "clay",
       "youX": 0.64,
@@ -1703,7 +1975,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Letting a toss fall untouched costs you nothing but a few seconds, and that drift behind your head is exactly what has been sending serves long. Arching back to reach it is the brave-looking choice that bakes the fault into the swing.",
     "takeaway": "Do not serve a toss you do not trust.",
-    "mistakeType": "swinging at bad tosses"
+    "mistakeType": "mismanaging the second serve"
   },
   {
     "id": "serve_112",
@@ -1720,7 +1992,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Fourteen short chips is a pattern you can move on before the ball lands, and taking it above net height turns their reply into your approach. Waiting for the bounce feels safer, but the ball is dying and you arrive to a low volley.",
     "takeaway": "Against a chipper, move in off your own landing.",
-    "mistakeType": "retreating against short chip returns",
+    "mistakeType": "approaching the net at the wrong time",
     "diagram": {
       "surface": "hard",
       "youX": 0.56,
@@ -1749,7 +2021,15 @@
     "correctAnswerIndex": 0,
     "explanation": "Two break points down is precisely when you play your best percentage, and a serve landing eight of ten with a weak reply is worth running twice. The flat T feels braver but at two of nine it is a donated break.",
     "takeaway": "Break points down: run your highest-percentage serve.",
-    "mistakeType": "serving away from an attacking returner"
+    "mistakeType": "playing the score wrong",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.62,
+      "youY": 0.96,
+      "opponentX": 0.3,
+      "opponentY": 0.04,
+      "scoreChip": "15-40 · DEUCE COURT"
+    }
   },
   {
     "id": "serve_114",
@@ -1766,7 +2046,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Angling the toss out of the sun and accepting a spin-first serve keeps your eyes on the ball, the only variable that decides this point. Sliding a step along the baseline rarely helps — a low sun travels with you down the line.",
     "takeaway": "Move the toss out of the sun before the score forces you.",
-    "mistakeType": "refusing to adapt the toss to conditions"
+    "mistakeType": "ignoring wind, sun and surface"
   },
   {
     "id": "return_100",
@@ -1783,7 +2063,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Crosscourt gives you the longest court and the lowest net, which is what a return needs before it needs a target. Going down the line to hunt the weak backhand asks for the highest net and the shortest court off a 150 km/h serve.",
     "takeaway": "Buy margin on the return; buy the weakness on the next ball.",
-    "mistakeType": "attempting angle on defensive return",
+    "mistakeType": "changing direction at the wrong moment",
     "diagram": {
       "surface": "hard",
       "youX": 0.72,
@@ -1812,7 +2092,19 @@
     "correctAnswerIndex": 0,
     "explanation": "The extra pressure on a short second serve comes from meeting it earlier, so move the feet up and keep the swing you trust. Swinging harder from deep is what has put four of six returns into the net and the back fence.",
     "takeaway": "Attack a second serve with your feet, not your arm.",
-    "mistakeType": "standing deep against weak second serves"
+    "mistakeType": "returning from the wrong position",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.34,
+      "youY": 0.96,
+      "opponentX": 0.66,
+      "opponentY": 0.04,
+      "ballOriginX": 0.66,
+      "ballOriginY": 0.07,
+      "ballTargetX": 0.38,
+      "ballTargetY": 0.66,
+      "scoreChip": "AD · SHORT 2ND"
+    }
   },
   {
     "id": "return_102",
@@ -1829,7 +2121,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Framed returns mean the racquet is late, and a compact block gets contact in front while borrowing the server's pace. Keeping the full swing and starting earlier sounds like the fix, but a long backswing is what you can't start in time.",
     "takeaway": "Late on the return? Cut the swing, not the reaction.",
-    "mistakeType": "chasing pace on direction change",
+    "mistakeType": "ignoring what the opponent does well",
     "diagram": {
       "surface": "hard",
       "youX": 0.7,
@@ -1858,7 +2150,7 @@
     "correctAnswerIndex": 0,
     "explanation": "On a serve this predictable the returner who has already decided wins the exchange, and the run-around forehand is the shot that punishes a short second serve. Waiting to react turns a known ball into an ordinary one.",
     "takeaway": "On break points, return with a decision, not a reaction.",
-    "mistakeType": "passive returning on break points",
+    "mistakeType": "not attacking the short ball",
     "diagram": {
       "surface": "hard",
       "youX": 0.6,
@@ -1887,14 +2179,26 @@
     "correctAnswerIndex": 0,
     "explanation": "Meeting the kick before it peaks turns a shoulder-high ball into a waist-high one and keeps the return deep enough to hold them back. Backing up further is more comfortable but gives them the step forward they have used all game.",
     "takeaway": "Beat the kick with your feet, before the bounce peaks.",
-    "mistakeType": "attacking a tough kick serve"
+    "mistakeType": "returning from the wrong position",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.34,
+      "youY": 0.96,
+      "opponentX": 0.66,
+      "opponentY": 0.04,
+      "ballOriginX": 0.66,
+      "ballOriginY": 0.07,
+      "ballTargetX": 0.3,
+      "ballTargetY": 0.68,
+      "scoreChip": "AD 15-30 · KICKER"
+    }
   },
   {
     "id": "return_105",
     "category": "returnPlay",
     "difficulty": "medium",
     "focusTag": "return vs serve-and-volley",
-    "tacticalCategory": "defense",
+    "tacticalCategory": "return",
     "scenario": "They have served and volleyed on both break points this set and are coming in again at 30-40. Their first volley is struck from around the service line.",
     "options": [
       "Low at their feet as they close",
@@ -1904,7 +2208,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Contact below net height mid-run forces a defensive half-volley you can attack on the next ball. The lob is the other real answer, but from a return you rarely have the time to place it well enough.",
     "takeaway": "Against the rusher: make their first volley come from their shoelaces.",
-    "mistakeType": "floating returns against a net-rusher",
+    "mistakeType": "attacking from a defensive position",
     "diagram": {
       "surface": "hard",
       "youX": 0.35,
@@ -1933,7 +2237,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Two made returns puts you at 15-15 with the server still working, and pressure in a return game comes from being level, not from early winners. Going big on the first two points is what has handed over a free 30-0 all set.",
     "takeaway": "Win return games by starting them level.",
-    "mistakeType": "even effort distribution across return games"
+    "mistakeType": "playing the score wrong"
   },
   {
     "id": "return_107",
@@ -1950,7 +2254,19 @@
     "correctAnswerIndex": 0,
     "explanation": "Depth is bought with net clearance, so lifting the target a couple of metres above the tape moves the bounce back towards their baseline. Swinging harder is the usual answer and it fails: a flatter ball still lands short, only sooner.",
     "takeaway": "Returns go deep because they fly higher, not faster.",
-    "mistakeType": "missing the split step on return"
+    "mistakeType": "going for too much from a neutral ball",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.66,
+      "youY": 0.94,
+      "opponentX": 0.34,
+      "opponentY": 0.04,
+      "ballOriginX": 0.34,
+      "ballOriginY": 0.07,
+      "ballTargetX": 0.62,
+      "ballTargetY": 0.72,
+      "scoreChip": "5-5 · RETURNS SHORT"
+    }
   },
   {
     "id": "return_108",
@@ -1967,7 +2283,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Leaning at the racquet drop uses the read but still leaves you time to stop if this one is different, which is the point of a half-step. Committing at the toss is the greedy version — a server who sees the lean serves the other way.",
     "takeaway": "Use the tell late: lean at the racquet drop, not the toss.",
-    "mistakeType": "ignoring serve tells",
+    "mistakeType": "returning from the wrong position",
     "diagram": {
       "surface": "hard",
       "youX": 0.68,
@@ -1992,7 +2308,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Recovery starts on your own follow-through because it is the only free time in the exchange, and by their contact you must already be split and centred. Waiting for the ball to land leaves you two steps short of any ball hit on the rise.",
     "takeaway": "Start recovering on your follow-through, not on their bounce.",
-    "mistakeType": "admiring the shot",
+    "mistakeType": "failing to recover after your own shot",
     "diagram": {
       "surface": "hard",
       "youX": 0.7,
@@ -2021,7 +2337,19 @@
     "correctAnswerIndex": 0,
     "explanation": "A short serve met early inside the baseline is the one ball that pays for the higher net down the line, and they have already committed the other way. Crosscourt is the safer shape but lands where they are standing.",
     "takeaway": "Earn the line with a short ball and early contact.",
-    "mistakeType": "low-percentage line returns from defense"
+    "mistakeType": "hitting to the open court on autopilot",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.62,
+      "youY": 0.8,
+      "opponentX": 0.22,
+      "opponentY": 0.06,
+      "ballOriginX": 0.34,
+      "ballOriginY": 0.07,
+      "ballTargetX": 0.6,
+      "ballTargetY": 0.72,
+      "scoreChip": "DEUCE 40-15 · SHORT"
+    }
   },
   {
     "id": "return_111",
@@ -2038,7 +2366,19 @@
     "correctAnswerIndex": 0,
     "explanation": "A body serve is a space problem, and one hard step clear of the ball's line gives the compact backhand block the room the forehand never gets. Squeezing the forehand out is what produced two short balls already.",
     "takeaway": "Body serve: move your feet clear, block backhand.",
-    "mistakeType": "frozen feet on body serves"
+    "mistakeType": "returning from the wrong position",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.66,
+      "youY": 0.94,
+      "opponentX": 0.34,
+      "opponentY": 0.04,
+      "ballOriginX": 0.34,
+      "ballOriginY": 0.07,
+      "ballTargetX": 0.66,
+      "ballTargetY": 0.8,
+      "scoreChip": "DEUCE · BODY SERVE"
+    }
   },
   {
     "id": "return_112",
@@ -2055,7 +2395,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Stretched wide you need height for safety and depth for time, and crosscourt is the longest path while you recover the court you just left. Flat down the line on the stretch is the lowest-margin ball available from that position.",
     "takeaway": "Stretched = high, deep, crosscourt. Save the line for balance.",
-    "mistakeType": "changing direction off a deep defensive ball",
+    "mistakeType": "attacking from a defensive position",
     "diagram": {
       "surface": "hard",
       "youX": 0.12,
@@ -2084,7 +2424,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Eleven of twelve to one target means they are aiming off a fixed reference, so changing your depth point to point forces a fresh aim every time. Moving back once only gives them a new fixed target to groove against within a game.",
     "takeaway": "Keep moving the target they're aiming at.",
-    "mistakeType": "static return positioning all match",
+    "mistakeType": "returning from the wrong position",
     "diagram": {
       "surface": "hard",
       "youX": 0.7,
@@ -2113,7 +2453,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Against a 190 km/h serve a return that simply lands deep is already a win, and the 140 km/h second serves are where break points are actually built. Attacking each serve until one lands feels brave, but it donates points you cannot afford at 0-40.",
     "takeaway": "Survive the first serve, hunt the second.",
-    "mistakeType": "catastrophising a service break",
+    "mistakeType": "ignoring what the opponent does well",
     "diagram": {
       "surface": "hard",
       "youX": 0.3,
@@ -2142,7 +2482,19 @@
     "correctAnswerIndex": 0,
     "explanation": "Clay slows the ball and lifts the bounce, so the flat drive that lands deep on a hard court sails long here while spin brings it down and pushes her back. Hitting flatter and earlier fights the surface instead of using it.",
     "takeaway": "On slow courts, buy depth with spin, not speed.",
-    "mistakeType": "changing direction from neutral"
+    "mistakeType": "ignoring wind, sun and surface",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.94,
+      "opponentX": 0.5,
+      "opponentY": 0.05,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.08,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.88,
+      "scoreChip": "CLAY · DRIVES LONG"
+    }
   },
   {
     "id": "rally_101",
@@ -2159,7 +2511,7 @@
     "correctAnswerIndex": 0,
     "explanation": "A deep, heavy ball pushes an early-taking opponent behind the baseline and steals the timing their whole game runs on. Hitting through them harder is the tempting reply, but pace into their strike zone is what they redirect.",
     "takeaway": "Beat an early taker with depth, not speed.",
-    "mistakeType": "trading depth for pace",
+    "mistakeType": "ignoring what the opponent does well",
     "diagram": {
       "surface": "clay",
       "youX": 0.72,
@@ -2188,7 +2540,19 @@
     "correctAnswerIndex": 0,
     "explanation": "While he is still accelerating across, reversing costs him two steps he does not have, so the ball behind him is unreachable. The empty court is the right answer only once he has stopped and started back toward the middle.",
     "takeaway": "Behind them while they run; open court once they turn.",
-    "mistakeType": "always hitting to the open court"
+    "mistakeType": "hitting to the open court on autopilot",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.9,
+      "opponentX": 0.35,
+      "opponentY": 0.05,
+      "ballOriginX": 0.15,
+      "ballOriginY": 0.08,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.88,
+      "scoreChip": "40-30 · FULL SPRINT"
+    }
   },
   {
     "id": "rally_103",
@@ -2205,7 +2569,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Height is time: a high deep middle ball lands far from both corners and gives you the seconds to rebuild court position. The flat counter-winner from that far back has almost no margin and ends the point for them.",
     "takeaway": "In trouble, buy time with height — not risk with pace.",
-    "mistakeType": "low-percentage heroics from defense",
+    "mistakeType": "attacking from a defensive position",
     "diagram": {
       "surface": "hard",
       "youX": 0.7,
@@ -2224,7 +2588,7 @@
     "category": "rally",
     "difficulty": "medium",
     "focusTag": "managing rally length by game",
-    "tacticalCategory": "approach",
+    "tacticalCategory": "patterns",
     "scenario": "Third set, 3–3. You hold serve comfortably on two- and three-shot points, but in return games you are 1 for 9 going for a winner by the fourth ball.",
     "options": [
       "Play the return games longer and take fewer risks",
@@ -2234,7 +2598,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Your serve already shortens points for you, so the break has to come from the rally length she likes least: one more ball, not one bigger swing. Attacking harder is what produced eight of those nine errors.",
     "takeaway": "Short points on your serve, long ones on hers.",
-    "mistakeType": "resetting instead of attacking short balls"
+    "mistakeType": "going for too much from a neutral ball"
   },
   {
     "id": "rally_105",
@@ -2251,7 +2615,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Pressure their backhand deep and the usual reply is a slower crosscourt into your backhand corner, which is exactly the ball you can run around. A ball down the middle gives them no reason to send it anywhere in particular.",
     "takeaway": "Your forehand hunt starts two shots earlier, on their backhand.",
-    "mistakeType": "waiting for weapons instead of building them",
+    "mistakeType": "going for too much from a neutral ball",
     "diagram": {
       "surface": "hard",
       "youX": 0.3,
@@ -2280,7 +2644,7 @@
     "correctAnswerIndex": 0,
     "explanation": "With nothing open, crosscourt buys the lowest net, the longest court and the shortest recovery, three margins for free on a set point. Changing direction down the line off a deep ball asks for the highest net and the shortest court.",
     "takeaway": "On big points, choose the direction with the most margin.",
-    "mistakeType": "underrating crosscourt geometry",
+    "mistakeType": "changing direction at the wrong moment",
     "diagram": {
       "surface": "clay",
       "youX": 0.76,
@@ -2299,7 +2663,7 @@
     "category": "rally",
     "difficulty": "medium",
     "focusTag": "answering a drop shot",
-    "tacticalCategory": "patterns",
+    "tacticalCategory": "approach",
     "scenario": "5–5, 30–30. Her drop shot pulls you up to the service line and you reach it low but on balance. She has stayed back on her own baseline to watch.",
     "options": [
       "Deep down the line, the way you're facing",
@@ -2309,7 +2673,19 @@
     "correctAnswerIndex": 0,
     "explanation": "From the service line the line ball is the shortest flight, so it lands before she can cover it and you keep the forecourt position her drop shot handed you. Crosscourt travels farthest and gives her time to pass you.",
     "takeaway": "Answer a drop shot down the line, then hold your ground.",
-    "mistakeType": "impatience in neutral rallies"
+    "mistakeType": "changing direction at the wrong moment",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.74,
+      "opponentX": 0.5,
+      "opponentY": 0.04,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.3,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.72,
+      "scoreChip": "5-5 · DROP SHOT"
+    }
   },
   {
     "id": "rally_108",
@@ -2326,7 +2702,7 @@
     "correctAnswerIndex": 0,
     "explanation": "A slow ball above shoulder height makes a pace-lover generate their own power, which is where their timing and patience break. Adding pace is the instinct and it feeds the exact ball they have been redirecting all set.",
     "takeaway": "Starve the counter-puncher: no pace to borrow.",
-    "mistakeType": "feeding pace to a pace-lover",
+    "mistakeType": "ignoring what the opponent does well",
     "diagram": {
       "surface": "clay",
       "youX": 0.5,
@@ -2345,7 +2721,7 @@
     "category": "rally",
     "difficulty": "hard",
     "focusTag": "closing behind your own angle",
-    "tacticalCategory": "open_court",
+    "tacticalCategory": "approach",
     "scenario": "You crack a short sharp crosscourt angle from the deuce side and they only just reach it, stretched wide outside the alley. You're still standing a metre inside the baseline after the shot.",
     "options": [
       "Follow it in and close the net",
@@ -2355,7 +2731,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Pulling them that wide also handed them a counter-angle, and from a metre inside the baseline the only way to cover it is forward. Recovering to the centre mark leaves the short angle you just opened completely free.",
     "takeaway": "Insure every angle you hit by closing behind it.",
-    "mistakeType": "admiring an angle instead of closing",
+    "mistakeType": "approaching the net at the wrong time",
     "diagram": {
       "surface": "clay",
       "youX": 0.66,
@@ -2380,7 +2756,7 @@
     "correctAnswerIndex": 0,
     "explanation": "One step back lets the kick drop into your strike zone, where the same backhand goes deep instead of floating short. Taking it on the rise is the brave answer, but a rising kick above the shoulder is the hardest contact you own.",
     "takeaway": "Give a kicking ball one step and it becomes a normal ball.",
-    "mistakeType": "recovering to the hash instead of the bisector",
+    "mistakeType": "attacking from a defensive position",
     "diagram": {
       "surface": "clay",
       "youX": 0.3,
@@ -2409,7 +2785,7 @@
     "correctAnswerIndex": 0,
     "explanation": "You are losing this exchange, so change what the ball looks like before you change where it goes; height and weight cost nothing and push an early taker back. Ripping down the line is the classic escape and the classic error.",
     "takeaway": "Change ball quality before ball direction.",
-    "mistakeType": "line gamble to escape a losing exchange",
+    "mistakeType": "changing direction at the wrong moment",
     "diagram": {
       "surface": "clay",
       "youX": 0.26,
@@ -2438,7 +2814,7 @@
     "correctAnswerIndex": 0,
     "explanation": "A headwind brakes and holds every ball, so full swings land short of the lines you would normally fear; this is the set to attack. Adding spin and margin is the with-the-wind answer, and into the wind it just feeds her short balls.",
     "takeaway": "Into the wind, swing free; with it, add spin.",
-    "mistakeType": "identical targets in opposite winds",
+    "mistakeType": "ignoring wind, sun and surface",
     "diagram": {
       "surface": "clay",
       "youX": 0.5,
@@ -2457,7 +2833,7 @@
     "category": "rally",
     "difficulty": "hard",
     "focusTag": "recovering on a documented tendency",
-    "tacticalCategory": "approach",
+    "tacticalCategory": "patterns",
     "scenario": "4–4 in the third and you have just gone to her backhand corner again. She has sent eleven of her last twelve backhands crosscourt from there, including on both break points.",
     "options": [
       "Shade a step toward her crosscourt reply",
@@ -2467,7 +2843,15 @@
     "correctAnswerIndex": 0,
     "explanation": "The bisector is the honest default, but eleven of twelve is evidence, not a hunch, and one step costs almost nothing on the rare change of direction. Guarding the line pays for a shot she has hit once all match.",
     "takeaway": "Respect the bisector, then lean where the evidence is.",
-    "mistakeType": "baseline war of attrition vs a pusher"
+    "mistakeType": "ignoring what the opponent does well",
+    "diagram": {
+      "surface": "clay",
+      "youX": 0.5,
+      "youY": 0.92,
+      "opponentX": 0.85,
+      "opponentY": 0.05,
+      "scoreChip": "4-4 · HER BACKHAND"
+    }
   },
   {
     "id": "rally_114",
@@ -2484,7 +2868,7 @@
     "correctAnswerIndex": 0,
     "explanation": "A mid-court ball is a transition ball: momentum through contact adds free pace and leaves you at the net for the reply. Planting and staying back is exactly what has been floating them back all match.",
     "takeaway": "Let your feet finish the short ball, not your arm.",
-    "mistakeType": "flat-footed transition balls",
+    "mistakeType": "not attacking the short ball",
     "diagram": {
       "surface": "clay",
       "youX": 0.5,
@@ -2513,7 +2897,7 @@
     "correctAnswerIndex": 0,
     "explanation": "The line approach travels the shorter distance and points you straight at the chip backhand, so you can shade the line and cover the pass. Crosscourt into the open court feels bigger but leaves the line pass behind you.",
     "takeaway": "Approach down the line, then shade the line.",
-    "mistakeType": "crosscourt approaches that open the pass",
+    "mistakeType": "hitting to the open court on autopilot",
     "diagram": {
       "surface": "hard",
       "youX": 0.7,
@@ -2542,14 +2926,26 @@
     "correctAnswerIndex": 0,
     "explanation": "A moving opponent inside the box has to half-volley from below the tape, which hands you the ball you want next. The wide angle needs precision you do not have off waist height, and a short lob volley is a free overhead.",
     "takeaway": "Against an incoming opponent, volley at their shoelaces.",
-    "mistakeType": "attempting an angled volley from too far back"
+    "mistakeType": "taking the volley from too far back",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.5,
+      "youY": 0.62,
+      "opponentX": 0.45,
+      "opponentY": 0.26,
+      "ballOriginX": 0.45,
+      "ballOriginY": 0.28,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.6,
+      "scoreChip": "15-30 · THEY COME IN"
+    }
   },
   {
     "id": "net_102",
     "category": "net",
     "difficulty": "medium",
     "focusTag": "serve and volley on a second serve",
-    "tacticalCategory": "net_game",
+    "tacticalCategory": "approach",
     "scenario": "4–4, 30–30 on your second serve. They stand two metres behind the baseline and have chipped six of eight second-serve returns short and floating this set.",
     "options": [
       "Kick it to the backhand and follow it in",
@@ -2559,7 +2955,15 @@
     "correctAnswerIndex": 0,
     "explanation": "A returner standing two metres back and chipping gives you a slow high ball at the service line, which is the return worth following. Holding the baseline turns that floater into a neutral rally you had already won the start of.",
     "takeaway": "A deep chip returner is an invitation — follow the serve in.",
-    "mistakeType": "running through the opponent's contact"
+    "mistakeType": "approaching the net at the wrong time",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.62,
+      "youY": 0.96,
+      "opponentX": 0.3,
+      "opponentY": 0.02,
+      "scoreChip": "30-30 · 2ND SERVE"
+    }
   },
   {
     "id": "net_103",
@@ -2576,7 +2980,19 @@
     "correctAnswerIndex": 0,
     "explanation": "At full sprint their weight is committed, and reversing costs two steps they do not have, so the ball behind them is untouchable. The open court is right once they have stopped and turned back toward the centre, not while they are running.",
     "takeaway": "Hit behind runners, into space against stoppers.",
-    "mistakeType": "always hitting to the open court"
+    "mistakeType": "hitting to the open court on autopilot",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.48,
+      "youY": 0.6,
+      "opponentX": 0.62,
+      "opponentY": 0.04,
+      "ballOriginX": 0.35,
+      "ballOriginY": 0.07,
+      "ballTargetX": 0.48,
+      "ballTargetY": 0.58,
+      "scoreChip": "30-30 · FULL SPRINT"
+    }
   },
   {
     "id": "net_104",
@@ -2593,7 +3009,19 @@
     "correctAnswerIndex": 0,
     "explanation": "A retreating overhead loses margin, so depth through the middle takes their angles away and lets you close in for an easier second one. The flat corner is the version that clips the tape or the line from that far back.",
     "takeaway": "Overhead from deep: deep and middle.",
-    "mistakeType": "backpedaling under lobs"
+    "mistakeType": "attacking from a defensive position",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.5,
+      "youY": 0.8,
+      "opponentX": 0.5,
+      "opponentY": 0.05,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.08,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.78,
+      "scoreChip": "30-30 · OVERHEAD"
+    }
   },
   {
     "id": "net_105",
@@ -2610,7 +3038,19 @@
     "correctAnswerIndex": 0,
     "explanation": "In still air you take a lob you can reach in balance, but a ball falling from that height in gusts keeps moving until contact, and the bounce hands you set feet. Taking it in the air there is a timing gamble on a big point.",
     "takeaway": "High, deep and windy: bounce it, then smash it.",
-    "mistakeType": "forcing air smashes in wind"
+    "mistakeType": "ignoring wind, sun and surface",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.5,
+      "youY": 0.86,
+      "opponentX": 0.5,
+      "opponentY": 0.04,
+      "ballOriginX": 0.5,
+      "ballOriginY": 0.08,
+      "ballTargetX": 0.53,
+      "ballTargetY": 0.86,
+      "scoreChip": "5-4 · WINDY LOB"
+    }
   },
   {
     "id": "net_106",
@@ -2627,7 +3067,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Two metres from the net with contact above the tape, the drop travels barely a metre and their momentum is already going the wrong way. Punching deep is right from the service line, but here it feeds a player parked back there.",
     "takeaway": "Drop only when you're close in and they're going backwards.",
-    "mistakeType": "drop volleys against a ready opponent",
+    "mistakeType": "hitting to the open court on autopilot",
     "diagram": {
       "surface": "hard",
       "youX": 0.5,
@@ -2646,7 +3086,7 @@
     "category": "net",
     "difficulty": "medium",
     "focusTag": "net depth against a lobber",
-    "tacticalCategory": "net_game",
+    "tacticalCategory": "approach",
     "scenario": "You've approached deep to the backhand corner and closed in behind it. It's 30–30 and they have already lobbed you twice this set from that corner. Where do you stop?",
     "options": [
       "Stop 2–3 metres from the net, in the box",
@@ -2656,7 +3096,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Two to three metres in is the only band that still reaches the dipping ball yet lets you turn and run down a lob. Crowding the net is tempting after a good approach, but against someone already lobbing you it invites the same shot.",
     "takeaway": "Own the middle of the box, not the net cord.",
-    "mistakeType": "crowding the net after approaching",
+    "mistakeType": "ignoring what the opponent does well",
     "diagram": {
       "surface": "hard",
       "youX": 0.62,
@@ -2681,7 +3121,19 @@
     "correctAnswerIndex": 0,
     "explanation": "Below the tape you have to hit up, so depth through the middle keeps a balanced opponent behind the baseline and earns you the volley you actually want. The short angle from down there clears the net by nothing.",
     "takeaway": "Low volley: survive deep now, finish the next one.",
-    "mistakeType": "forcing winners from low volleys"
+    "mistakeType": "attacking from a defensive position",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.48,
+      "youY": 0.65,
+      "opponentX": 0.25,
+      "opponentY": 0.05,
+      "ballOriginX": 0.25,
+      "ballOriginY": 0.08,
+      "ballTargetX": 0.48,
+      "ballTargetY": 0.63,
+      "scoreChip": "3-4, 15-15 · LOW"
+    }
   },
   {
     "id": "net_109",
@@ -2698,7 +3150,7 @@
     "correctAnswerIndex": 0,
     "explanation": "A ball lifted from below the net arrives slow and rising, so staying back keeps the rally neutral instead of handing them a target. Following it in is the habit that has already cost you two points against a balanced passer.",
     "takeaway": "Approach behind balls that hurt them, not ones that hurried you.",
-    "mistakeType": "approaching behind weak lifts",
+    "mistakeType": "approaching the net at the wrong time",
     "diagram": {
       "surface": "hard",
       "youX": 0.46,
@@ -2717,7 +3169,7 @@
     "category": "net",
     "difficulty": "medium",
     "focusTag": "coming in behind the return",
-    "tacticalCategory": "net_game",
+    "tacticalCategory": "return",
     "scenario": "1–1 in the third, 30–0 on their serve. Their second serve has sat up chest high and landed inside the service line all match, and they recover slowly behind it.",
     "options": [
       "Chip it deep and follow it in",
@@ -2727,7 +3179,19 @@
     "correctAnswerIndex": 0,
     "explanation": "A short chest-high second serve is the invitation: the chip stays low, buys the time to reach the box, and a slow recoverer must pass you from behind. Ripping a flat drive risks the miss and leaves you where they are comfortable.",
     "takeaway": "Short second serve, chip it deep and come in behind it.",
-    "mistakeType": "overswinging on half-volleys"
+    "mistakeType": "not attacking the short ball",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.66,
+      "youY": 0.94,
+      "opponentX": 0.38,
+      "opponentY": 0.04,
+      "ballOriginX": 0.38,
+      "ballOriginY": 0.07,
+      "ballTargetX": 0.62,
+      "ballTargetY": 0.72,
+      "scoreChip": "30-0 · SHORT 2ND"
+    }
   },
   {
     "id": "net_111",
@@ -2744,7 +3208,7 @@
     "correctAnswerIndex": 0,
     "explanation": "The high backhand volley has no natural power, so a firm punch deep down the line is the version that stays honest and keeps them pinned. The soft short angle is the fashionable choice and the one that dumps into the net.",
     "takeaway": "High backhand volley: punch it deep, don't paint it.",
-    "mistakeType": "getting cute on high backhand volleys",
+    "mistakeType": "going for too much from a neutral ball",
     "diagram": {
       "surface": "hard",
       "youX": 0.44,
@@ -2773,7 +3237,19 @@
     "correctAnswerIndex": 0,
     "explanation": "Taking it out of the air removes the second and a half they need to get back, and shoulder height inside the baseline is where that swing is safe. Letting it bounce hands a scrambling opponent exactly the time they are chasing.",
     "takeaway": "Shoulder-high floater inside the baseline: take it early.",
-    "mistakeType": "letting attackable floaters bounce"
+    "mistakeType": "not attacking the short ball",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.5,
+      "youY": 0.86,
+      "opponentX": 0.2,
+      "opponentY": 0.06,
+      "ballOriginX": 0.2,
+      "ballOriginY": 0.09,
+      "ballTargetX": 0.5,
+      "ballTargetY": 0.84,
+      "scoreChip": "40-30 · FLOATER"
+    }
   },
   {
     "id": "net_113",
@@ -2790,7 +3266,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Reading the ball off their strings is slower but never wrong, and from two metres in you can still reach both passing lanes. Leaning early is why they've beaten you twice: a late changer only needs to see you move first.",
     "takeaway": "Move after their contact, never before it.",
-    "mistakeType": "guessing on passing shots",
+    "mistakeType": "ignoring what the opponent does well",
     "diagram": {
       "surface": "hard",
       "youX": 0.5,
@@ -2815,7 +3291,15 @@
     "correctAnswerIndex": 0,
     "explanation": "A deep volley bought you ground, and two or three steps forward shrink both passing lanes before their contact. The service line is where volleys arrive at your feet, and the lob is still covered from inside the box.",
     "takeaway": "Every good volley earns two steps — take them.",
-    "mistakeType": "static feet between volleys"
+    "mistakeType": "taking the volley from too far back",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.5,
+      "youY": 0.74,
+      "opponentX": 0.15,
+      "opponentY": 0.02,
+      "scoreChip": "30-15 · AFTER VOLLEY"
+    }
   },
   {
     "id": "mental_100",
@@ -2832,7 +3316,7 @@
     "correctAnswerIndex": 0,
     "explanation": "A stoppage drops heart rate and reaction speed long before it touches your tactics, so movement keeps the body at match temperature. Sitting still to save energy feels sensible and is exactly how those first two games went last time.",
     "takeaway": "Keep moving through the break — come back warm.",
-    "mistakeType": "unstructured time between points"
+    "mistakeType": "ignoring wind, sun and surface"
   },
   {
     "id": "mental_101",
@@ -2849,7 +3333,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Games are lost at 40–0 by treating the points as spare, so deuce-point discipline is what actually closes it out. Going for the ace swaps a rehearsed pattern for a low-percentage one at the score that has already cost you twice.",
     "takeaway": "Play 40–0 like it is deuce.",
-    "mistakeType": "coasting at 40-0"
+    "mistakeType": "playing the score wrong"
   },
   {
     "id": "mental_102",
@@ -2866,7 +3350,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Pressure inflates the future, and a bounce count plus one target shrinks the game back to a task the body already knows. Opening with your biggest serve puts a tight arm behind a low-margin ball and usually starts the game 0–15.",
     "takeaway": "Big moment, small focus.",
-    "mistakeType": "outcome thinking while serving for it"
+    "mistakeType": "serving without a pattern"
   },
   {
     "id": "mental_103",
@@ -2883,7 +3367,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Short, decelerating strokes at normal tempo are choking, which is over-control, so the cure is a full swing at a larger target. Slowing down further is the fix for panic, and here it adds more control to a stroke already dying of it.",
     "takeaway": "Pushing, not rushing? Swing bigger, aim bigger.",
-    "mistakeType": "treating choking like panicking"
+    "mistakeType": "letting emotion pick the shot"
   },
   {
     "id": "mental_104",
@@ -2900,7 +3384,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Net errors from mid-court mean the swing has shrunk, so two high, deep balls restore clearance and contact before tactics resume. Slicing to get the ball in keeps that same short swing and hands them the mid-court to attack.",
     "takeaway": "Break a streak with height and depth.",
-    "mistakeType": "doubling risk after errors"
+    "mistakeType": "letting emotion pick the shot"
   },
   {
     "id": "mental_105",
@@ -2917,7 +3401,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Leads slide because the winning pattern quietly stops being played, so restoring the wide serve and forehand is the repair. Adding pace to steal a game raises your error rate at the score where cheap points are most expensive.",
     "takeaway": "Lost the lead? Replay what built it.",
-    "mistakeType": "playing at the opponent's hot tempo"
+    "mistakeType": "going for too much from a neutral ball"
   },
   {
     "id": "mental_106",
@@ -2934,7 +3418,7 @@
     "correctAnswerIndex": 0,
     "explanation": "A breaker lead is protected by the quality of your own point starts, so serve the patterns that have held all match. Going bigger to extend the lead is how players hand back a mini-break they were gifted rather than earned.",
     "takeaway": "Protect a breaker lead by giving nothing away.",
-    "mistakeType": "gifting cheap points early in tiebreaks"
+    "mistakeType": "playing the score wrong"
   },
   {
     "id": "mental_107",
@@ -2951,7 +3435,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Opponents read posture, and an upright walk keeps their doubt alive while your routine keeps you in the match. Venting visibly to release frustration is the exact signal that has them serving faster and freer.",
     "takeaway": "Your posture talks — decide what it says.",
-    "mistakeType": "broadcasting frustration"
+    "mistakeType": "letting emotion pick the shot"
   },
   {
     "id": "mental_108",
@@ -2968,7 +3452,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Four winners in four points sits far above their set-long rate, so holding your patterns lets that rate pull them back. Matching them winner for winner turns their short streak into your long one, since your risky shots are the newer habit.",
     "takeaway": "Let a hot streak cool — keep your patterns.",
-    "mistakeType": "abandoning patterns during opponent streaks"
+    "mistakeType": "going for too much from a neutral ball"
   },
   {
     "id": "mental_109",
@@ -2985,7 +3469,7 @@
     "correctAnswerIndex": 0,
     "explanation": "A single behavioural instruction survives adrenaline and answers the exact pattern that beat you twice. Five patterns for five scenarios is the plan that vanishes on the first big point, because choosing between them costs time you do not have.",
     "takeaway": "One sentence, one behaviour — that is a plan.",
-    "mistakeType": "vague or bloated game plans"
+    "mistakeType": "ignoring what the opponent does well"
   },
   {
     "id": "mental_110",
@@ -3002,7 +3486,7 @@
     "correctAnswerIndex": 0,
     "explanation": "A long exhale is the fastest legal brake on heart rate and steadies the hands before the toss. Letting it settle by itself works too, but it needs longer than the fifteen seconds you have, so you serve with a racing chest.",
     "takeaway": "Exhale longer than you inhale, then serve.",
-    "mistakeType": "ignoring breath under fatigue"
+    "mistakeType": "letting emotion pick the shot"
   },
   {
     "id": "mental_111",
@@ -3019,7 +3503,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Fatigue forces triage, and that short second serve is where each unit of energy buys the most scoreboard. Attacking the net at every chance spends the same legs on points you were already winning from the baseline.",
     "takeaway": "Tired legs go where the breaks are.",
-    "mistakeType": "flat energy distribution when exhausted"
+    "mistakeType": "approaching the net at the wrong time"
   },
   {
     "id": "mental_112",
@@ -3036,7 +3520,7 @@
     "correctAnswerIndex": 0,
     "explanation": "A short instructional cue converts the miss into the one correction your next volley needs and fills attention with a task. Working out why it missed turns a service point into a technique lesson, and the next point pays the bill.",
     "takeaway": "Give yourself an instruction, not a verdict.",
-    "mistakeType": "outcome focus on match points"
+    "mistakeType": "letting emotion pick the shot"
   },
   {
     "id": "mental_113",
@@ -3053,7 +3537,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Against a weaker opponent the scoreline slips because execution gets replaced by experiments, so running your ordinary pattern properly is the fix. Raising the risk to pull away is the same drift with a bigger swing on it.",
     "takeaway": "Compete against your standard, not their level.",
-    "mistakeType": "coasting against weaker opponents"
+    "mistakeType": "going for too much from a neutral ball"
   },
   {
     "id": "mental_114",
@@ -3070,7 +3554,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Most first-game nerves are a cold body, and arriving already sweating removes the tightness that has cost you three games four times over. Easing into full swings only postpones the problem into the games that decide the set.",
     "takeaway": "Sweat before the first point, not during game four.",
-    "mistakeType": "under-warmed match starts"
+    "mistakeType": "ignoring wind, sun and surface"
   },
   {
     "id": "doubles_100",
@@ -3087,14 +3571,14 @@
     "correctAnswerIndex": 0,
     "explanation": "A left-hander in the deuce court and you in the ad court puts both forehands on the middle lane, which is exactly where the set leaked. Choosing sides by who returns better matters, but not while the middle is the hole.",
     "takeaway": "Lefty deuce, righty ad — forehands own the middle.",
-    "mistakeType": "both chase the lob"
+    "mistakeType": "losing the doubles formation"
   },
   {
     "id": "doubles_101",
     "category": "doubles",
     "difficulty": "medium",
     "focusTag": "the server's job on a signalled poach",
-    "tacticalCategory": "net_game",
+    "tacticalCategory": "patterns",
     "scenario": "30–30 and your partner signals behind their back that they are poaching. You serve up the T, and the returner steps in looking to drive it crosscourt.",
     "options": [
       "Cross behind them to the half they leave",
@@ -3104,14 +3588,26 @@
     "correctAnswerIndex": 0,
     "explanation": "A signalled poach is a swap: the moment they cross, their half becomes yours, and the returner's best escape is exactly that empty court. Holding your own half puts both of you on one side with the other side unguarded.",
     "takeaway": "When your partner crosses, you cross behind them.",
-    "mistakeType": "alley-glued doubles positioning"
+    "mistakeType": "losing the doubles formation",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.62,
+      "youY": 0.96,
+      "opponentX": 0.3,
+      "opponentY": 0.05,
+      "ballOriginX": 0.62,
+      "ballOriginY": 0.96,
+      "ballTargetX": 0.46,
+      "ballTargetY": 0.3,
+      "scoreChip": "30-30 · POACH ON"
+    }
   },
   {
     "id": "doubles_102",
     "category": "doubles",
     "difficulty": "medium",
     "focusTag": "following the return in",
-    "tacticalCategory": "return",
+    "tacticalCategory": "approach",
     "scenario": "30–30 on her second serve. Your return dips low crosscourt and she has to volley up from below the net, while you are a step inside the baseline and balanced.",
     "options": [
       "Move in behind it and take the net",
@@ -3121,7 +3617,19 @@
     "correctAnswerIndex": 0,
     "explanation": "A volley played from below the net comes back slow and rising, and the team already moving forward when that happens wins those points far more often. Freezing mid-court leaves you inside the baseline with none of the advantage.",
     "takeaway": "A dipping return is your ticket in — use it.",
-    "mistakeType": "floating returns to an active net player"
+    "mistakeType": "not attacking the short ball",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.66,
+      "youY": 0.88,
+      "opponentX": 0.3,
+      "opponentY": 0.34,
+      "ballOriginX": 0.66,
+      "ballOriginY": 0.9,
+      "ballTargetX": 0.32,
+      "ballTargetY": 0.36,
+      "scoreChip": "30-30 · DIPPING RTN"
+    }
   },
   {
     "id": "doubles_103",
@@ -3138,7 +3646,19 @@
     "correctAnswerIndex": 0,
     "explanation": "A metre back buys the reaction time a drilled return steals, and the middle is where both of those balls came. Holding your normal position asks the same reflex that has failed twice this game to work on a bigger point.",
     "takeaway": "Weak second serve? Take a metre, keep the middle.",
-    "mistakeType": "random poaching without a serve plan"
+    "mistakeType": "ignoring what the opponent does well",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.36,
+      "youY": 0.62,
+      "opponentX": 0.66,
+      "opponentY": 0.05,
+      "ballOriginX": 0.66,
+      "ballOriginY": 0.08,
+      "ballTargetX": 0.36,
+      "ballTargetY": 0.6,
+      "scoreChip": "30-40 · DRILLED AT YOU"
+    }
   },
   {
     "id": "doubles_104",
@@ -3155,7 +3675,7 @@
     "correctAnswerIndex": 0,
     "explanation": "The un-lobbed player has the shorter path and a forward view of the ball, so calling and crossing keeps the team facing the right way. Letting it bounce is playable, but it hands the net back and turns your team defensive for the rest of the point.",
     "takeaway": "Lob over your partner? Call it, cross, and switch as a unit.",
-    "mistakeType": "both chase the lob",
+    "mistakeType": "losing the doubles formation",
     "diagram": {
       "surface": "hard",
       "youX": 0.68,
@@ -3174,7 +3694,7 @@
     "category": "doubles",
     "difficulty": "medium",
     "focusTag": "team shape under a smash",
-    "tacticalCategory": "patterns",
+    "tacticalCategory": "defense",
     "scenario": "3–4, 30–30. Your lob from the deuce corner lands short and their net player is already turning under it for an easy overhead. Your partner is still up at the net.",
     "options": [
       "Both back, close together near the middle",
@@ -3184,7 +3704,19 @@
     "correctAnswerIndex": 0,
     "explanation": "Standing back and close together forces them to thread a line or an angle, which is the low-percentage smash. Splitting wide opens the middle lane, and the middle is the smash every club player hits without thinking.",
     "takeaway": "When they smash, retreat together and own the middle.",
-    "mistakeType": "camping in one-up-one-back"
+    "mistakeType": "losing the doubles formation",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.8,
+      "youY": 0.92,
+      "opponentX": 0.35,
+      "opponentY": 0.3,
+      "ballOriginX": 0.8,
+      "ballOriginY": 0.9,
+      "ballTargetX": 0.35,
+      "ballTargetY": 0.28,
+      "scoreChip": "3-4 · SHORT LOB"
+    }
   },
   {
     "id": "doubles_106",
@@ -3201,7 +3733,7 @@
     "correctAnswerIndex": 0,
     "explanation": "The middle volley crosses the lowest part of the net and leaves the two of them deciding whose ball it is. A sharp angle from behind the service line has to climb over the highest net with no court to land in.",
     "takeaway": "In doubles, the middle is a third opponent — recruit it.",
-    "mistakeType": "forcing alley volleys",
+    "mistakeType": "going for too much from a neutral ball",
     "diagram": {
       "surface": "clay",
       "youX": 0.5,
@@ -3220,7 +3752,7 @@
     "category": "doubles",
     "difficulty": "hard",
     "focusTag": "I-formation break timing",
-    "tacticalCategory": "patterns",
+    "tacticalCategory": "net_game",
     "scenario": "You're crouched on the centre line in I-formation at 30–40, and your partner will serve up the T. The returner has chipped every return crosscourt so far. When do you break?",
     "options": [
       "Break as the serve lands",
@@ -3230,7 +3762,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Breaking as the serve lands puts you on the chip while the returner has already committed to their target. Moving on the toss is the classic error: the returner sees you go and simply redirects into the half you left.",
     "takeaway": "In the I, commit when the serve lands.",
-    "mistakeType": "static formations against a grooved returner",
+    "mistakeType": "losing the doubles formation",
     "diagram": {
       "surface": "hard",
       "youX": 0.5,
@@ -3259,7 +3791,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Calling every ball, even the obvious ones, builds the reflex that fires on the ambiguous one under pressure. Calling only the middle balls sounds efficient, but that call arrives after you have both already started moving.",
     "takeaway": "Call every ball, so the hard one gets called too.",
-    "mistakeType": "silent doubles play",
+    "mistakeType": "losing the doubles formation",
     "diagram": {
       "surface": "hard",
       "youX": 0.68,
@@ -3288,7 +3820,7 @@
     "correctAnswerIndex": 0,
     "explanation": "A ball at ankle height while they are still moving forward forces the first volley upward, and your partner is standing where that pops. High and deep is safe but gives the incoming server a comfortable volley above the tape.",
     "takeaway": "Against rushing servers: return to shoelaces, partner cleans up.",
-    "mistakeType": "deep returns against serve-and-volley teams",
+    "mistakeType": "ignoring what the opponent does well",
     "diagram": {
       "surface": "hard",
       "youX": 0.3,
@@ -3317,7 +3849,7 @@
     "correctAnswerIndex": 0,
     "explanation": "Your partner will come back across behind you, so crossing covers the empty half and the extra step gives you room to answer the smash. Holding your side leaves half the court open and makes you the easiest target on it.",
     "takeaway": "When your partner is dragged off court, switch with them.",
-    "mistakeType": "leaving a partner hanging at net",
+    "mistakeType": "losing the doubles formation",
     "diagram": {
       "surface": "hard",
       "youX": 0.7,
@@ -3342,7 +3874,7 @@
     "correctAnswerIndex": 0,
     "explanation": "A T serve takes the crosscourt angle away and funnels the return through the middle, which is your net partner's kill zone. Serving wide opens the exact sharp angle that has already beaten your partner twice.",
     "takeaway": "Serve where your partner can poach, not where you must chase.",
-    "mistakeType": "wide serves that expose the net partner",
+    "mistakeType": "serving without a pattern",
     "diagram": {
       "surface": "hard",
       "youX": 0.6,
@@ -3367,7 +3899,7 @@
     "correctAnswerIndex": 0,
     "explanation": "An 'open' alley on break point is usually bait from a net player who intends to cover it, and a low crosscourt at their feet makes them play up from below the tape. The alley drive is the shot they are inviting.",
     "takeaway": "An open alley on a big point is an invitation — decline it.",
-    "mistakeType": "taking the alley bait on big points",
+    "mistakeType": "hitting to the open court on autopilot",
     "diagram": {
       "surface": "hard",
       "youX": 0.24,
@@ -3382,7 +3914,7 @@
     "category": "doubles",
     "difficulty": "hard",
     "focusTag": "returning against the I-formation",
-    "tacticalCategory": "patterns",
+    "tacticalCategory": "return",
     "scenario": "Break point against you at 30–40. They set up in the I-formation, the net player crouched on the centre line, and last point they broke as the serve landed.",
     "options": [
       "Low over the middle at the mover's feet",
@@ -3392,7 +3924,15 @@
     "correctAnswerIndex": 0,
     "explanation": "Because they break as the serve lands, the half they leave is already closing while you swing, and a low middle ball makes the moving player volley up from below the tape. The line change only works against a team that breaks on the toss.",
     "takeaway": "Against the I, go low and middle, not around them.",
-    "mistakeType": "static partner during wide balls"
+    "mistakeType": "hitting to the open court on autopilot",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.34,
+      "youY": 0.94,
+      "opponentX": 0.5,
+      "opponentY": 0.42,
+      "scoreChip": "30-40 · I-FORMATION"
+    }
   },
   {
     "id": "doubles_114",
@@ -3409,6 +3949,18 @@
     "correctAnswerIndex": 0,
     "explanation": "Two players at the net defend as one moving wall, so when your partner slides two steps wide the middle becomes yours to close rather than theirs to leave. Holding your own half is what opens the seam good teams hit first.",
     "takeaway": "Slide when your partner slides; the seam stays shut.",
-    "mistakeType": "hedging against lobs while attacking"
+    "mistakeType": "losing the doubles formation",
+    "diagram": {
+      "surface": "hard",
+      "youX": 0.4,
+      "youY": 0.62,
+      "opponentX": 0.7,
+      "opponentY": 0.05,
+      "ballOriginX": 0.7,
+      "ballOriginY": 0.08,
+      "ballTargetX": 0.86,
+      "ballTargetY": 0.6,
+      "scoreChip": "4-4 · PARTNER PULLED"
+    }
   }
 ]

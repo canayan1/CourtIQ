@@ -83,4 +83,11 @@ final class ContentStore {
     }
 
     var totalLessonCount: Int { curriculum.allLessons.count }
+
+    /// Lessons a free player cannot reach — what Premium actually adds, and
+    /// the only lesson number the paywall is allowed to quote. Derived so it
+    /// cannot drift out of date when a chapter is added.
+    var premiumLessonCount: Int {
+        curriculum.chapters.filter { !$0.isFree }.reduce(0) { $0 + $1.lessons.count }
+    }
 }

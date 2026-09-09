@@ -343,7 +343,7 @@
 "paywall.sign_in_optional" = "Optional — sign in with Apple to sync premium across your devices.";
 "paywall.what_unlocks" = "What you get";
 "paywall.benefit_coach" = "Coach — unlimited swing reads, and a chat about each one";
-"paywall.benefit_tactics" = "Tactics — every chapter, every day";
+"paywall.benefit_tactics" = "Tactics — the %d lessons after Chapter 1, and no one-a-day limit";
 "paywall.benefit_wall" = "Wall — camera counting and a verdict on every rung";
 
 /* ── Tip-jar mode (launch window, LaunchOffer.allFeaturesFree == true) ── */

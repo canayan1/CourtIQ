@@ -367,5 +367,42 @@
     "serve_113",
     "serve_114",
     "serve_hard_1"
-  ]
+  ],
+  "metadataRefresh": {
+    "date": "2026-09-09",
+    "why": "142 distinct mistakeType labels across 156 questions meant the AI Coach's 'top 3 recurring mistakes' were just the three alphabetically-first labels the player happened to miss, all tied at one.",
+    "taxonomySize": 16,
+    "distribution": {
+      "ignoring what the opponent does well": 27,
+      "attacking from a defensive position": 13,
+      "serving without a pattern": 8,
+      "mismanaging the second serve": 4,
+      "playing the score wrong": 8,
+      "letting emotion pick the shot": 13,
+      "ignoring wind, sun and surface": 9,
+      "hitting to the open court on autopilot": 8,
+      "returning from the wrong position": 8,
+      "not attacking the short ball": 9,
+      "changing direction at the wrong moment": 9,
+      "failing to recover after your own shot": 5,
+      "approaching the net at the wrong time": 7,
+      "going for too much from a neutral ball": 10,
+      "taking the volley from too far back": 6,
+      "losing the doubles formation": 12
+    },
+    "categories": {
+      "patterns": 69,
+      "defense": 10,
+      "return": 34,
+      "approach": 14,
+      "open_court": 3,
+      "net_game": 26
+    },
+    "codeFixes": [
+      "mistake patterns now aggregate MISSED questions only (was every question in the quiz, so a 7/7 sweep still reported three weaknesses)",
+      "removed the three invented starter weaknesses a brand-new player was given",
+      "net_hard_1 carried tacticalCategory 'netGame', not a valid raw value, and silently fell back to 'patterns'"
+    ],
+    "knownGap": "no label covers physical readiness / playing tired / going in without a plan; agents folded those into the nearest fit"
+  }
 }

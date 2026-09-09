@@ -604,7 +604,7 @@ final class ProfileStore: ObservableObject {
                 email: identity.email,
                 signInProvider: .apple,
                 currentFocus: profile?.currentFocus ?? "Daily IQ",
-                topMistakePatterns: profile?.topMistakePatterns ?? ["Second serve pressure", "Being predictable", "Return court position"],
+                topMistakePatterns: profile?.topMistakePatterns ?? [],
                 createdAt: Date(),
                 updatedAt: Date()
             )
@@ -652,7 +652,7 @@ final class ProfileStore: ObservableObject {
             bootstrap(
                 from: identity,
                 preserving: "Daily IQ",
-                topMistakePatterns: ["Second serve pressure", "Being predictable", "Return court position"]
+                topMistakePatterns: []
             )
         }
     }
@@ -780,8 +780,11 @@ final class UserSessionManager: ObservableObject {
         profileStore.profile?.currentFocus ?? Quiz.dailyQuiz(for: Date()).focusLabel
     }
 
+    /// Empty until the player has actually missed something. These are fed
+    /// to the AI Coach as the player's recurring mistakes, so a default list
+    /// would invent weaknesses nobody has demonstrated.
     var topMistakePatterns: [String] {
-        profileStore.profile?.topMistakePatterns ?? ["Second serve pressure", "Being predictable", "Return court position"]
+        profileStore.profile?.topMistakePatterns ?? []
     }
 
     var isPremiumUnlocked: Bool {

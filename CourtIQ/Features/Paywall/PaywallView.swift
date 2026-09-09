@@ -171,10 +171,15 @@ struct PaywallView: View {
 
     /// One row per pillar. Content that is free (scenarios, Tactics chapter
     /// 1, the wall drill ladder, match log, doubles) is never listed here.
+    @State private var tacticsContent = ContentStore()
+
     private var premiumBenefits: [String] {
         [lang.t("paywall.benefit_coach"),
          lang.t("paywall.benefit_wall"),
-         lang.t("paywall.benefit_tactics")]
+         // The lesson count is read from the bundled curriculum, never typed
+         // into the copy: a paywall that quotes a number must quote the
+         // real one even after a chapter is added.
+         String(format: lang.t("paywall.benefit_tactics"), tacticsContent.premiumLessonCount)]
     }
 
     private var benefitsCard: some View {

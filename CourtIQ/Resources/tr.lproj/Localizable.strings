@@ -343,7 +343,7 @@
 "paywall.sign_in_optional" = "İsteğe bağlı — premium aboneliğini cihazların arasında senkronlamak için Apple ile giriş yap.";
 "paywall.what_unlocks" = "Neler var";
 "paywall.benefit_coach" = "Koç — sınırsız vuruş okuması ve her biri için sohbet";
-"paywall.benefit_tactics" = "Taktik — her bölüm, her gün";
+"paywall.benefit_tactics" = "Taktik — 1. bölümden sonraki %d ders ve günde bir ders sınırı yok";
 "paywall.benefit_wall" = "Duvar — kamerayla sayım ve her basamağa karar";
 
 /* ── Tip-jar mode (launch window) ── */

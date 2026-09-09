@@ -218,10 +218,26 @@ final class QuizViewModel: ObservableObject {
             focusLabel: quiz.focusLabel,
             score: score,
             totalQuestions: quiz.questions.count,
-            mistakeTypes: quiz.primaryMistakeTypes,
+            mistakeTypes: missedMistakeTypes,
             tacticalBuckets: buildTacticalBuckets(),
             perQuestionResults: perQuestionCorrect
         ))
+    }
+
+    /// The mistake labels of the questions this player actually got WRONG,
+    /// most frequent first. It used to be `quiz.primaryMistakeTypes`, which
+    /// counted every question in the quiz — so a 7/7 sweep still reported
+    /// three "recurring mistakes" to the AI Coach. A player who missed
+    /// nothing has no mistake pattern, and says so by returning empty.
+    private var missedMistakeTypes: [String] {
+        let counts = quiz.questions
+            .filter { perQuestionCorrect[$0.id] == false }
+            .reduce(into: [String: Int]()) { counts, question in
+                counts[question.mistakeType, default: 0] += 1
+            }
+        return counts
+            .sorted { $0.value == $1.value ? $0.key < $1.key : $0.value > $1.value }
+            .map(\.key)
     }
 
     /// Aggregate per-question correctness into TacticalCategory buckets.
