@@ -874,6 +874,11 @@
 "iq.daily_title" = "Tennis IQ";
 "iq.placement_title" = "Yerleştirme";
 "iq.mastered_fmt" = "%d/%d senaryo çözüldü";
+"iq.bridge_eyebrow" = "BU NEREDE ÖĞRETİLİYOR";
+"iq.bridge_title" = "Senaryolar kararı ölçer. Dersler onu öğretir.";
+"iq.bridge_body" = "%d ders, %d bölüm — her biri bir kort şeması ve bir karar. 1. bölüm ücretsiz.";
+"iq.bridge_cta_open" = "Taktik'i aç";
+"iq.bridge_cta_unlock" = "İçeride ne var?";
 "iq.scale_note" = "Ölçek %d–%d arası. Seviye testi en fazla %d puan; gerisi %d senaryonun tamamını ustalaşmaktan gelir.";
 "iq.of_max_fmt" = "/ %d";
 "iq.estimated_chip" = "Tahmini — kalibre etmek için yerleştirmeyi çöz";

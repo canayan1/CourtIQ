@@ -9,6 +9,7 @@ struct DailyIQView: View {
     @EnvironmentObject private var session: UserSessionManager
     @EnvironmentObject private var dailyQuizManager: DailyQuizManager
     @EnvironmentObject private var lang: LanguageManager
+    @EnvironmentObject private var tabRouter: TabRouter
     @ObservedObject private var iq = TennisIQManager.shared
     @Environment(\.dismiss) private var dismiss
 
@@ -21,6 +22,11 @@ struct DailyIQView: View {
     #if DEBUG
     /// QC-only session override (see the QC_IQ_PHASE hook below).
     @State private var qcQuiz: Quiz?
+    /// The Tactics course, read-only, so the summary can offer the lessons that
+    /// TEACH what these scenarios just tested — and say how many are left.
+    @State private var tacticsContent = ContentStore()
+    @State private var tacticsProgress = PlayerProgress()
+    @State private var showTacticsPaywall = false
     #endif
 
     private var sessionQuiz: Quiz {
@@ -130,6 +136,8 @@ struct DailyIQView: View {
         .background(AppPalette.cream)
         .navigationTitle(lang.t("iq.daily_title"))
         .navigationBarTitleDisplayMode(.inline)
+        .sheet(isPresented: $showTacticsPaywall) { TacticsPaywallSheet() }
+        .onAppear { tacticsProgress = PlayerProgress() }
     }
 
     /// IQ over time — only appears once there are 2+ points, so a brand-new
@@ -333,6 +341,8 @@ struct DailyIQView: View {
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
 
+                tacticsBridge
+
                 Button {
                     Haptics.tap()
                     dismiss()
@@ -351,6 +361,50 @@ struct DailyIQView: View {
         .background(AppPalette.cream)
         .navigationTitle(lang.t("iq.daily_title"))
         .navigationBarTitleDisplayMode(.inline)
+    }
+
+    // MARK: - Bridge from scenarios to the lessons that teach them
+
+    /// A scenario session tests a decision; the Tactics course is where that
+    /// decision is taught. Shown to players who are not premium, and it leads
+    /// where they actually are: into the free chapter if they have not started
+    /// it, to the membership once their free lesson for today is spent.
+    @ViewBuilder
+    private var tacticsBridge: some View {
+        if !PremiumGate.isPremium(session) {
+            let started = tacticsProgress.completedCount > 0
+            let spent = started && !tacticsProgress.hasFreeDailyLesson
+            Button {
+                Haptics.tap()
+                if spent { showTacticsPaywall = true } else { tabRouter.selection = .tactics; dismiss() }
+            } label: {
+                VStack(alignment: .leading, spacing: 6) {
+                    Eyebrow(lang.t("iq.bridge_eyebrow"))
+                    Text(lang.t("iq.bridge_title"))
+                        .font(.system(.headline, design: .rounded).weight(.bold))
+                        .foregroundStyle(AppPalette.ink)
+                        .fixedSize(horizontal: false, vertical: true)
+                    Text(String(format: lang.t("iq.bridge_body"),
+                                tacticsContent.totalLessonCount, tacticsContent.chapters.count))
+                        .font(.footnote)
+                        .foregroundStyle(AppPalette.inkSoft)
+                        .fixedSize(horizontal: false, vertical: true)
+                    HStack(spacing: 6) {
+                        Text(spent ? lang.t("iq.bridge_cta_unlock") : lang.t("iq.bridge_cta_open"))
+                        Image(systemName: "chevron.right")
+                    }
+                    .font(.system(.footnote, design: .rounded).weight(.bold))
+                    .foregroundStyle(AppPalette.clayText)
+                    .padding(.top, 2)
+                }
+                .padding(16)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(AppPalette.parchment)
+                .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous).stroke(AppPalette.sand, lineWidth: 1))
+                .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+            }
+            .buttonStyle(PressableCardStyle())
+        }
     }
 
     // MARK: - Pieces

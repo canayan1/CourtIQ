@@ -142,7 +142,13 @@ enum PremiumGate {
 
     /// Raw StoreKit entitlement. (DEBUG auto-grants it — see refreshEntitlements.)
     @MainActor static func isPremium(_ session: UserSessionManager) -> Bool {
-        session.subscriptionManager.entitlementState.isPremium
+        #if DEBUG
+        // Headless QC: SIMCTL_CHILD_QC_FREE=1 forces the free-player view of
+        // the app. DEBUG builds auto-grant the entitlement, which otherwise
+        // hides every paywall and upsell from a screenshot audit.
+        if ProcessInfo.processInfo.environment["QC_FREE"] == "1" { return false }
+        #endif
+        return session.subscriptionManager.entitlementState.isPremium
     }
 
     /// AI Coach: premium, the kill-switch, or a dev-allowlisted account.

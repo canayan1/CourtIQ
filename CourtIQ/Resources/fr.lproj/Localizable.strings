@@ -874,6 +874,11 @@
 "iq.daily_title" = "QI Tennis";
 "iq.placement_title" = "Test de niveau";
 "iq.mastered_fmt" = "%d situations maîtrisées sur %d";
+"iq.bridge_eyebrow" = "OÙ CELA S'APPREND";
+"iq.bridge_title" = "Les situations testent la décision. Les leçons l'enseignent.";
+"iq.bridge_body" = "%d leçons dans %d chapitres, chacune avec un schéma de court et une décision. Le chapitre 1 est gratuit.";
+"iq.bridge_cta_open" = "Ouvrir Tactique";
+"iq.bridge_cta_unlock" = "Voir ce qu'il y a dedans";
 "iq.scale_note" = "L'échelle va de %d à %d. Le test de niveau vaut jusqu'à %d points ; le reste vient de la maîtrise des %d situations.";
 "iq.of_max_fmt" = "/ %d";
 "iq.estimated_chip" = "Estimation — fais le test de niveau pour calibrer";

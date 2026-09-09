@@ -874,6 +874,11 @@
 "iq.daily_title" = "Tennis IQ";
 "iq.placement_title" = "Placement";
 "iq.mastered_fmt" = "%d of %d scenarios mastered";
+"iq.bridge_eyebrow" = "WHERE THIS IS TAUGHT";
+"iq.bridge_title" = "Scenarios test the decision. The lessons teach it.";
+"iq.bridge_body" = "%d lessons across %d chapters, each one a court diagram and a decision. Chapter 1 is free.";
+"iq.bridge_cta_open" = "Open Tactics";
+"iq.bridge_cta_unlock" = "See what's inside";
 "iq.scale_note" = "The scale runs %d–%d. The placement is worth up to %d points; the rest comes from mastering all %d scenarios.";
 "iq.of_max_fmt" = "/ %d";
 "iq.estimated_chip" = "Estimated — take the placement to calibrate";
