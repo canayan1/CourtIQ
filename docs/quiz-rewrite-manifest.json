@@ -214,5 +214,56 @@
   ],
   "diagramsIntentionallyNone": [
     "mental questions carry no court: a diagram adds nothing to a decision about breathing, tempo or self-talk"
-  ]
+  ],
+  "geometryAudit": {
+    "date": "2026-09-09",
+    "method": "score parity (points played: even = deuce court, odd = ad court) checked mechanically; every direction-to-wing claim derived from first principles for the stated court and handedness",
+    "fixed": {
+      "scoreCourtMismatch": [
+        "serve_021",
+        "serve_022",
+        "serve_026",
+        "serve_027",
+        "serve_100",
+        "serve_102",
+        "serve_105",
+        "serve_106",
+        "serve_110",
+        "return_101",
+        "return_104",
+        "return_110",
+        "return_112"
+      ],
+      "wrongWing": [
+        "serve_022 (running around in the ad corner opens the DEUCE side)",
+        "rally_hard_1 (from a crosscourt forehand exchange the change of direction to their backhand is down the line, not inside-out)"
+      ],
+      "earlier": [
+        "return_027",
+        "return_100",
+        "return_021",
+        "serve_026",
+        "serve_108"
+      ]
+    },
+    "verifiedCorrect": [
+      "serve_101",
+      "serve_103",
+      "serve_105",
+      "serve_108",
+      "rally_023",
+      "rally_024",
+      "rally_105",
+      "rally_111",
+      "rally_113",
+      "net_100",
+      "return_027",
+      "return_100",
+      "serve_hard_1",
+      "mental_105"
+    ],
+    "falsePositives": [
+      "net_100 — 'your deuce court' names the right half of your own court in a rally, not the serving side"
+    ]
+  }
 }

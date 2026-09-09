@@ -4,7 +4,7 @@
     "category": "serve",
     "difficulty": "medium",
     "focusTag": "punishing the returner's adjustment",
-    "scenario": "Deuce court, 40-30. You've won three straight points serving wide, but on that last one the returner started a metre wider and took it early crosscourt. Where do you serve now?",
+    "scenario": "Deuce court, 40-15. You've won three straight points serving wide, but on that last one the returner started a metre wider and took it early crosscourt. Where do you serve now?",
     "options": [
       "Serve T into the space they left",
       "Serve wide again, harder this time",
@@ -29,14 +29,14 @@
     "category": "serve",
     "difficulty": "medium",
     "focusTag": "recognising when the +1 is off",
-    "scenario": "Ad court, 30-30. Your wide serve is blocked back deep and heavy into your backhand corner, and you're a metre behind the baseline still recovering. What's the +1?",
+    "scenario": "Ad court, 30-15. Your wide serve is blocked back deep and heavy into your backhand corner, and you're a metre behind the baseline still recovering. What's the +1?",
     "options": [
       "Heavy backhand crosscourt and reset",
       "Run around it for an inside-out forehand",
       "Backhand down the line into the open court"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "A deep return kills the +1, so height and depth crosscourt buy back the recovery step you owe. Running around for the inside-out forehand is the trap: it opens the whole ad side while you are still moving backwards.",
+    "explanation": "A deep return kills the +1, so height and depth crosscourt buy back the recovery step you owe. Running around for the inside-out forehand is the trap: it opens the whole deuce side while you are still moving backwards.",
     "takeaway": "Deep return, no +1 — reset crosscourt and earn the next ball.",
     "mistakeType": "wasting an opened court",
     "tacticalCategory": "open_court",
@@ -129,7 +129,7 @@
     "category": "serve",
     "difficulty": "medium",
     "focusTag": "serving to the returner's stance",
-    "scenario": "Ad court, 30-30. The returner has set up a metre outside the singles sideline on every point this match, and your kick out wide keeps arriving where he is already standing.",
+    "scenario": "Ad court, 30-15. The returner has set up a metre outside the singles sideline on every point this match, and your kick out wide keeps arriving where he is already standing.",
     "options": [
       "Serve flat down the T",
       "Kick wider, nearer the line",
@@ -146,7 +146,7 @@
     "category": "serve",
     "difficulty": "medium",
     "focusTag": "closing out a service game",
-    "scenario": "5-3, serving for the set at 30-15. You've held every service game this set with the same wide-then-T pattern in the deuce court, and the returner still hasn't covered it.",
+    "scenario": "5-3, serving for the set at 40-15. You've held every service game this set with the same wide-then-T pattern in the deuce court, and the returner still hasn't covered it.",
     "options": [
       "Keep running the wide-then-T pattern",
       "Switch to serves you haven't shown them yet",
@@ -1368,13 +1368,13 @@
     "focusTag": "changing the diagonal",
     "scenario": "A long crosscourt forehand exchange, both deep. Your opponent's crosscourt is landing a little shorter each ball. What's the highest-percentage way to change the pattern?",
     "options": [
-      "Wait for the short one, then inside-out",
+      "Wait for the short one, then change direction",
       "Rip it down the line off a deep ball",
       "Keep grinding the same crosscourt"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "The shortening ball is your cue. Changing direction off a deep ball is low-percentage — instead, wait for the short one, step in, and flip the diagonal inside-out to their backhand. You change the pattern from strength, not desperation.",
-    "takeaway": "Change direction off the SHORT ball, not the deep one — let the rally hand you the opening.",
+    "explanation": "The shortening ball is your cue: step in on that one and change direction down the line into their backhand. Changing direction off a deep ball is the low-percentage version of the same idea, and it is the one that misses.",
+    "takeaway": "Change direction off the short ball, not the deep one.",
     "mistakeType": "changing direction off a deep defensive ball",
     "diagram": {
       "surface": "grass",
@@ -1471,7 +1471,7 @@
     "difficulty": "medium",
     "focusTag": "serving to set up your weapon",
     "tacticalCategory": "patterns",
-    "scenario": "Ad court, 30-30, and you're a righty whose forehand is the weapon. You've served wide six times this game and five returns have come back deep to your backhand corner.",
+    "scenario": "Ad court, 30-15, and you're a righty whose forehand is the weapon. You've served wide six times this game and five returns have come back deep to your backhand corner.",
     "options": [
       "Serve T to force the return middle",
       "Serve at the body to cramp their swing",
@@ -1521,7 +1521,7 @@
     "difficulty": "medium",
     "focusTag": "serving against a deep return position",
     "tacticalCategory": "patterns",
-    "scenario": "Deuce court, 30-15 on a slow hard court. The returner has stood two metres behind the baseline all match and blocked your biggest first serves back deep down the middle.",
+    "scenario": "Deuce court, 40-15 on a slow hard court. The returner has stood two metres behind the baseline all match and blocked your biggest first serves back deep down the middle.",
     "options": [
       "Slice wide into the deuce corner",
       "Same target, ten km/h more pace",
@@ -1580,7 +1580,7 @@
     "difficulty": "medium",
     "focusTag": "second serve against a one-hander",
     "tacticalCategory": "patterns",
-    "scenario": "Ad court, 30-30, and you have missed the first serve. The one-hander across the net drove two of your low slice serves for winners today, but chips anything above shoulder height back short.",
+    "scenario": "Ad court, 15-30, and you have missed the first serve. The one-hander across the net drove two of your low slice serves for winners today, but chips anything above shoulder height back short.",
     "options": [
       "Kick it up to the backhand shoulder",
       "Slice it low and wide to the backhand",
@@ -1597,7 +1597,7 @@
     "difficulty": "medium",
     "focusTag": "repeating a winning serve",
     "tacticalCategory": "patterns",
-    "scenario": "Ad court, 40-15. Your kick out wide has produced two aces this game, and on the second one the returner never moved his feet, framing it late from exactly the same spot.",
+    "scenario": "Ad court, 40-0. Your kick out wide has produced two aces this game, and on the second one the returner never moved his feet, framing it late from exactly the same spot.",
     "options": [
       "Serve the same kick out wide",
       "Switch to the flat T for surprise",
@@ -1665,7 +1665,7 @@
     "difficulty": "medium",
     "focusTag": "serve +1 into the open court",
     "tacticalCategory": "open_court",
-    "scenario": "Deuce court, 40-30. Your wide serve drags the returner two steps outside the alley, and the block return floats back crosscourt, landing short of your service line.",
+    "scenario": "Deuce court, 40-15. Your wide serve drags the returner two steps outside the alley, and the block return floats back crosscourt, landing short of your service line.",
     "options": [
       "Forehand into the open ad court, deep",
       "Forehand behind them to the deuce corner",
@@ -1803,7 +1803,7 @@
     "difficulty": "medium",
     "focusTag": "attacking the second serve",
     "tacticalCategory": "return",
-    "scenario": "Ad court, 30-30. Their second serve keeps sitting up short, and you have missed four of six returns going for the finish from your usual spot a metre behind the baseline.",
+    "scenario": "Ad court, 15-30 up. Their second serve keeps sitting up short, and you have missed four of six returns going for the finish from your usual spot a metre behind the baseline.",
     "options": [
       "Step a metre in, same swing speed",
       "Stay back and swing harder at it",
@@ -1878,7 +1878,7 @@
     "difficulty": "medium",
     "focusTag": "timing against a kick serve",
     "tacticalCategory": "return",
-    "scenario": "Ad court, 0-30 up. Their kick keeps climbing above your backhand shoulder, and every time you back up to take it falling they step inside the baseline and own the middle.",
+    "scenario": "Ad court, 15-30 up. Their kick keeps climbing above your backhand shoulder, and every time you back up to take it falling they step inside the baseline and own the middle.",
     "options": [
       "Step in and meet it before the peak",
       "Back up further and take it falling",
@@ -2012,7 +2012,7 @@
     "difficulty": "hard",
     "focusTag": "when the line return is on",
     "tacticalCategory": "return",
-    "scenario": "Deuce court, 40-30. Their second serve sits up short, you step in and take it at hip height, and the server has already drifted a step towards the deuce sideline to cover the crosscourt.",
+    "scenario": "Deuce court, 40-15. Their second serve sits up short, you step in and take it at hip height, and the server has already drifted a step towards the deuce sideline to cover the crosscourt.",
     "options": [
       "Drive it down the line behind them",
       "Drive it crosscourt into the corner",
@@ -2046,7 +2046,7 @@
     "difficulty": "medium",
     "focusTag": "ad-court return target vs righty",
     "tacticalCategory": "return",
-    "scenario": "Ad court at 30-30, their righty slice serve pulls you a step outside the sideline. You reach it balanced but stretched, and they have stayed back.",
+    "scenario": "Ad court at 30-15, their righty slice serve pulls you a step outside the sideline. You reach it balanced but stretched, and they have stayed back.",
     "options": [
       "High and deep crosscourt",
       "Flat down the line on the stretch",
