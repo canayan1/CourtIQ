@@ -86,46 +86,18 @@
     "id": "serve_024",
     "category": "serve",
     "difficulty": "medium",
-    "focusTag": "second serve targeting",
-    "scenario": "Your opponent stands far back to return second serves. What's the best second serve choice?",
+    "focusTag": "second-serve depth",
+    "scenario": "Ad court, 40-30. Your kick second serve has been dying in the middle of the box all set, and the returner has stepped in and chipped two of them back to your feet.",
     "options": [
-      "A kick serve that jumps above shoulder height",
-      "A slow slice wide",
-      "A flat T serve"
+      "Kick it deeper into the corner",
+      "Add more spin, same target",
+      "Flatten it out for more pace"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "A deep returner is vulnerable to high-bouncing balls that force upward contact from shoulder height or above.",
-    "takeaway": "When they stand deep, bounce the ball up — don't dink it in.",
+    "explanation": "A second serve that lands mid-box invites the returner forward, so the same kick aimed at the back corner pushes their contact back behind the baseline. More spin without depth is the classic fix that drops it even shorter.",
+    "takeaway": "Second serve: same shape, deeper target.",
     "mistakeType": "safe-dink second serve",
-    "scenarioTr": "Rakip ikinci servisleri çok geriden karşılıyor. En iyi ikinci servis seçimi nedir?",
-    "optionsTr": [
-      "Omuz hizasının üstüne sıçrayan kick servis",
-      "Yavaş açık slice",
-      "Düz T servisi"
-    ],
-    "explanationTr": "Geride duran rakip, omuz hizasından yukarı vurmak zorunda kaldığı yüksek sıçrayan toplara karşı zayıftır.",
-    "takeawayTr": "Geride duruyorlarsa topu sıçrat — ortaya atmadan.",
-    "diagram": {
-      "surface": "grass",
-      "youX": 0.5,
-      "youY": 0.96,
-      "opponentX": 0.5,
-      "opponentY": 0.02,
-      "ballOriginX": 0.5,
-      "ballOriginY": 0.96,
-      "ballTargetX": 0.5,
-      "ballTargetY": 0.32,
-      "scoreChip": "2ND SERVE"
-    },
-    "tacticalCategory": "patterns",
-    "scenarioFr": "Ton adversaire se place très loin derrière pour retourner les deuxièmes balles. Quel est le meilleur choix ?",
-    "optionsFr": [
-      "Un service kické qui rebondit au-dessus de l'épaule",
-      "Un slice lent à l'extérieur",
-      "Un service à plat au T"
-    ],
-    "explanationFr": "Un relanceur très reculé est vulnérable aux balles à rebond haut qui l'obligent à frapper au-dessus de l'épaule.",
-    "takeawayFr": "Quand il recule, fais rebondir haut — ne pousse pas la balle."
+    "tacticalCategory": "patterns"
   },
   {
     "id": "serve_025",
@@ -156,46 +128,18 @@
     "id": "serve_026",
     "category": "serve",
     "difficulty": "medium",
-    "focusTag": "ad-court T serve",
-    "scenario": "A right-handed opponent stands slightly closer to the alley in the ad court. What serve exploits this?",
+    "focusTag": "serving to the returner's stance",
+    "scenario": "Ad court, 30-30. The returner has set up a metre outside the singles sideline on every point this match, and your kick out wide keeps arriving where he is already standing.",
     "options": [
-      "T serve into their backhand",
-      "Wide slice to their forehand",
-      "Body serve at their feet"
+      "Serve flat down the T",
+      "Kick wider, nearer the line",
+      "Serve heavy at his hip"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "Shifting toward the alley opens the T completely, forcing a jammed backhand return.",
-    "takeaway": "Read returner positioning before every serve — adjust to their stance, not yours.",
+    "explanation": "Standing that wide leaves the whole T uncovered, and a flat serve there is the longest run you can ask him to make. Kicking wider only chases him into the ball he set his stance up to hit.",
+    "takeaway": "Serve into the ground the returner has given away.",
     "mistakeType": "ignoring returner positioning",
-    "scenarioTr": "Ad tarafta sağlak rakip korte biraz daha yakın duruyor. Hangi servis bunu cezalandırır?",
-    "optionsTr": [
-      "Backhand'e T servisi",
-      "Forehand'e açık slice",
-      "Ayaklarına vücut servisi"
-    ],
-    "explanationTr": "Kort kenarına kayması T'yi tam olarak açar ve sıkışmış bir backhand dönüşü zorlar.",
-    "takeawayTr": "Her servis öncesi karşıladığı pozisyonu oku — kendine göre değil ona göre servis at.",
-    "diagram": {
-      "surface": "hard",
-      "youX": 0.45,
-      "youY": 0.96,
-      "opponentX": 0.78,
-      "opponentY": 0.06,
-      "ballOriginX": 0.45,
-      "ballOriginY": 0.96,
-      "ballTargetX": 0.55,
-      "ballTargetY": 0.3,
-      "scoreChip": "AD COURT"
-    },
-    "tacticalCategory": "patterns",
-    "scenarioFr": "Un adversaire droitier se place un peu plus près du couloir côté avantage. Quel service exploite ça ?",
-    "optionsFr": [
-      "Service au T dans son revers",
-      "Slice extérieur sur son coup droit",
-      "Service sur le corps, dans les pieds"
-    ],
-    "explanationFr": "En se décalant vers le couloir, il ouvre complètement le T et se retrouve coincé sur un retour de revers.",
-    "takeawayFr": "Lis le placement du relanceur avant chaque service — adapte-toi à sa position, pas à la tienne."
+    "tacticalCategory": "patterns"
   },
   {
     "id": "serve_027",
@@ -218,46 +162,18 @@
     "id": "serve_028",
     "category": "serve",
     "difficulty": "medium",
-    "focusTag": "body serve vs tall player",
-    "scenario": "You're playing a tall opponent with long arms who returns both wide serves comfortably. What's the pattern adjustment?",
+    "focusTag": "serving against reach",
+    "scenario": "5-5, 30-30 against a 1.95 m opponent with an enormous wingspan. Both of your best wide serves this game came back deep with him barely leaving his spot on the baseline.",
     "options": [
-      "Serve into the body to jam the swing",
-      "Serve even wider to stretch them",
-      "Serve shorter for lower bounce"
+      "Serve into his front hip",
+      "Serve wider, closer to the line",
+      "Serve flat down the T line"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "Tall players with reach cover wide serves well. A body serve removes their reach advantage and forces a cramped swing.",
-    "takeaway": "Against long-armed players, crowd them — don't stretch them.",
+    "explanation": "Reach is what beats width, so a ball at the hip takes away the arm extension he returns with and cramps the swing. Serving wider is the instinct that fails here: it is the exact ball his wingspan handled twice already.",
+    "takeaway": "You cannot stretch long arms — crowd them instead.",
     "mistakeType": "serving into opponent's strength",
-    "scenarioTr": "Uzun kollu ve her iki açık servisi rahat karşılayan uzun bir rakiple oynuyorsun. Desen ayarı ne olmalı?",
-    "optionsTr": [
-      "Vurmayı sıkıştırmak için vücuda servis at",
-      "Daha da geniş at, onları gerebilmek için",
-      "Düşük sıçrama için daha kısa at"
-    ],
-    "explanationTr": "Uzun kollu oyuncular açık servisleri iyi kapsar. Vücut servisi uzunluk avantajını ortadan kaldırır.",
-    "takeawayTr": "Uzun kollulara karşı gerdirme — sıkıştır.",
-    "diagram": {
-      "surface": "hard",
-      "youX": 0.5,
-      "youY": 0.96,
-      "opponentX": 0.5,
-      "opponentY": 0.08,
-      "ballOriginX": 0.5,
-      "ballOriginY": 0.96,
-      "ballTargetX": 0.5,
-      "ballTargetY": 0.32,
-      "scoreChip": "BODY SERVE"
-    },
-    "tacticalCategory": "patterns",
-    "scenarioFr": "Tu joues contre un adversaire grand, aux bras longs, qui retourne facilement les services extérieurs. Quel ajustement ?",
-    "optionsFr": [
-      "Servir sur le corps pour bloquer son geste",
-      "Servir encore plus extérieur pour l'étirer",
-      "Servir plus court pour un rebond bas"
-    ],
-    "explanationFr": "Les grands joueurs couvrent bien l'extérieur grâce à leur allonge. Un service sur le corps annule cet avantage et coince leur geste.",
-    "takeawayFr": "Contre des bras longs, colle-le — ne l'étire pas."
+    "tacticalCategory": "patterns"
   },
   {
     "id": "serve_029",
@@ -301,7 +217,7 @@
     "scenario": "0-30 up on their serve, but they've just hit two 190 km/h first serves at your backhand and you're blocking from a metre behind the baseline. Where does this block go?",
     "options": [
       "Deep down the middle, high over the net",
-      "Deep crosscourt, away from their forehand",
+      "Deep crosscourt into the open half",
       "Low and short to drag them forward"
     ],
     "correctAnswerIndex": 0,
@@ -326,171 +242,69 @@
     "id": "return_022",
     "category": "returnPlay",
     "difficulty": "medium",
-    "focusTag": "return position adjustment",
-    "scenario": "Your opponent's first serve averages below 160 km/h. Where should you stand to return?",
+    "focusTag": "return position against a flat serve",
+    "scenario": "4-5 down, 30-30 on their serve. Their first serve is flat and around 150 km/h, and from a metre behind the baseline your deep blocks give them time to run around for the forehand.",
     "options": [
-      "Inside the baseline to take time away",
-      "Two steps behind the baseline to give yourself time",
-      "Same spot as for a big server"
+      "Step up onto the baseline and take it earlier",
+      "Hold your spot and block deeper down the middle",
+      "Drop back another metre for reaction time"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "Against slower serves, stepping inside the baseline takes time away from the server's next shot and pressures them immediately.",
-    "takeaway": "Return position is a weapon — match it to the server's pace.",
+    "explanation": "At 150 km/h with no kick you have time to meet the ball on the baseline, and earlier contact removes the setup time they keep using. Blocking deeper from a metre back is safe but leaves them the same free forehand.",
+    "takeaway": "Take time away from a server who keeps getting set.",
     "mistakeType": "static return position",
-    "scenarioTr": "Rakibin ilk servis ortalaması 160 km/h'nin altında. Karşılamak için nerede durmalısın?",
-    "optionsTr": [
-      "Kale çizgisinin içinde — zaman çal",
-      "Kaleden iki adım geride — zaman kazan",
-      "Büyük servisçiye karşı olduğu gibi aynı yer"
-    ],
-    "explanationTr": "Yavaş servislere karşı kaleden öne adım atmak rakibin sonraki vuruşundan zaman çalar.",
-    "takeawayTr": "Karşılama pozisyonu silahtır — servisçinin hızına göre ayarla.",
-    "diagram": {
-      "surface": "hard",
-      "youX": 0.5,
-      "youY": 0.78,
-      "opponentX": 0.5,
-      "opponentY": 0.05,
-      "ballOriginX": 0.5,
-      "ballOriginY": 0.05,
-      "ballTargetX": 0.5,
-      "ballTargetY": 0.7,
-      "scoreChip": "STEP IN"
-    },
-    "tacticalCategory": "return",
-    "scenarioFr": "La première balle de ton adversaire tourne sous les 160 km/h. Où te places-tu pour retourner ?",
-    "optionsFr": [
-      "À l'intérieur de la ligne de fond pour lui voler du temps",
-      "Deux pas derrière la ligne pour te donner du temps",
-      "Au même endroit que face à un gros serveur"
-    ],
-    "explanationFr": "Face à un service plus lent, avancer dans le court enlève du temps au serveur pour son coup suivant et le met immédiatement sous pression.",
-    "takeawayFr": "La position de retour est une arme — règle-la sur la vitesse du serveur."
+    "tacticalCategory": "return"
   },
   {
     "id": "return_023",
     "category": "returnPlay",
     "difficulty": "easy",
-    "focusTag": "return intent before the toss",
-    "scenario": "Before the serve, what should you be mentally committed to?",
+    "focusTag": "committing to a return target",
+    "scenario": "4-4, 15-30 on their serve. On the last four second serves you waited to see the ball, decided somewhere around contact, and floated three returns short into the middle.",
     "options": [
-      "A specific target zone for the return",
-      "Whatever shot feels right at contact",
-      "Just getting it back in play"
+      "Pick your target before they toss",
+      "Pick it as the ball leaves the strings",
+      "Pick it once the ball has bounced"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "Decisions made before contact are calmer and cleaner. Reactive decisions at contact lead to tentative swings.",
-    "takeaway": "Decide the return direction before the ball leaves the server's hand.",
+    "explanation": "A target chosen before the toss lets the swing commit fully, which is exactly what those short floaters were missing. Deciding as the ball leaves the strings feels sharper but leaves you steering the racquet while the ball is on you.",
+    "takeaway": "Choose the return target before they toss.",
     "mistakeType": "reactive return decision",
-    "scenarioTr": "Servis atılmadan önce zihinsel olarak neye söz vermiş olmalısın?",
-    "optionsTr": [
-      "Dönüş için belirli bir hedef bölgesi",
-      "Temas anında doğru gelen vuruş",
-      "Sadece topu oyuna sokmak"
-    ],
-    "explanationTr": "Temas öncesi verilen kararlar daha sakin ve temizdir. Temas anında verilen tepkisel kararlar tereddütlü vuruşlara yol açar.",
-    "takeawayTr": "Dönüş yönüne servis atılmadan önce karar ver.",
-    "diagram": {
-      "surface": "grass",
-      "youX": 0.5,
-      "youY": 0.92,
-      "scoreChip": "BEFORE THE SERVE"
-    },
-    "tacticalCategory": "return",
-    "scenarioFr": "Avant le service, sur quoi dois-tu être mentalement engagé ?",
-    "optionsFr": [
-      "Une zone cible précise pour ton retour",
-      "Le coup qui te semblera juste à l'impact",
-      "Juste remettre la balle en jeu"
-    ],
-    "explanationFr": "Une décision prise avant l'impact est plus calme et plus nette. Décider au moment de la frappe mène à des gestes hésitants.",
-    "takeawayFr": "Choisis la direction du retour avant que la balle quitte la main du serveur."
+    "tacticalCategory": "return"
   },
   {
     "id": "return_024",
     "category": "returnPlay",
     "difficulty": "medium",
-    "focusTag": "ad-court backhand return",
-    "scenario": "On ad court, the server hits a wide kick serve jumping to your backhand. Best target?",
+    "focusTag": "returning a low slice serve",
+    "scenario": "Deuce court, 30-30 on a fast, low-bouncing court. Their slice serve skids in below knee height to your forehand, and your last two topspin drives off it went into the net.",
     "options": [
-      "A high block return crosscourt and deep",
-      "A down-the-line attempted winner",
-      "A drop shot"
+      "Slice it back low and deep",
+      "Drive it flat down the line",
+      "Roll heavy topspin crosscourt"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "A high-bouncing wide kick serve is a poor ball to attack. Neutralising crosscourt gives you time to recover the middle.",
-    "takeaway": "Against kick serves pulling you off court, reset — don't counterpunch.",
+    "explanation": "Below the knee there is no height to lift from, so a slice travels with the skid and still lands deep with margin over the net. Rolling topspin off a ball at your shoelaces is what has already found the net twice.",
+    "takeaway": "Low ball, low answer — slice it deep.",
     "mistakeType": "attacking a tough kick serve",
-    "scenarioTr": "Ad tarafta servisçi backhand'e yükselen açık kick servis attı. En iyi hedef?",
-    "optionsTr": [
-      "Çaprazlamasına yüksek blok — derine",
-      "Çizgiye winner denemesi",
-      "Drop shot"
-    ],
-    "explanationTr": "Yüksek sıçrayan açık kick servis saldırılacak bir top değildir. Çaprazlama nötürlemek toparlanma zamanı verir.",
-    "takeawayTr": "Seni korttan çıkaran kick servislere karşı sıfırla — karşı atak yapma.",
-    "diagram": {
-      "surface": "clay",
-      "youX": 0.3,
-      "youY": 0.92,
-      "opponentX": 0.4,
-      "opponentY": 0.06,
-      "ballOriginX": 0.4,
-      "ballOriginY": 0.06,
-      "ballTargetX": 0.16,
-      "ballTargetY": 0.82,
-      "scoreChip": "AD COURT · KICK"
-    },
-    "tacticalCategory": "return",
-    "scenarioFr": "Côté avantage, le serveur sort un service kické extérieur qui saute sur ton revers. Meilleure cible ?",
-    "optionsFr": [
-      "Un retour bloqué haut, croisé et profond",
-      "Un long de ligne tenté en gagnant",
-      "Une amortie"
-    ],
-    "explanationFr": "Un kické extérieur à rebond haut est une mauvaise balle à attaquer. Neutraliser en croisé te laisse le temps de revenir au centre.",
-    "takeawayFr": "Sur un kické qui te sort du court, remets-toi en jeu — ne contre pas."
+    "tacticalCategory": "return"
   },
   {
     "id": "return_025",
     "category": "returnPlay",
-    "difficulty": "easy",
-    "focusTag": "split step timing",
-    "scenario": "When should your split step land as the server makes contact?",
+    "difficulty": "medium",
+    "focusTag": "split-step timing against a slow motion",
+    "scenario": "Third set, 30-30. This server has a long, slow motion with a high toss, and you keep landing your split step and standing there flat-footed before the ball is even struck.",
     "options": [
-      "Just before the server hits the ball",
-      "Exactly as the serve is hit",
-      "After you see the ball direction"
+      "Delay the split to land at their contact",
+      "Keep splitting on your own usual rhythm",
+      "Split twice, once early and once late"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "Landing just before contact means your feet are about to touch the ground as the serve is struck — giving you an explosive push toward the ball.",
-    "takeaway": "Land into the split just before the hit — not after.",
+    "explanation": "The split only helps in the instant your feet reload, so against a slow motion it has to be delayed until their contact. Splitting twice looks like a fix, but the second hop lands late and freezes you as you need to push.",
+    "takeaway": "Time the split to their contact, not your rhythm.",
     "mistakeType": "late split step",
-    "scenarioTr": "Split step ne zaman yere inmeli?",
-    "optionsTr": [
-      "Servisçi topa vurmadan hemen önce",
-      "Tam servis anında",
-      "Top yönünü gördükten sonra"
-    ],
-    "explanationTr": "Servis vuruşundan hemen önce inmek, ayakların yere değmek üzereyken servisin atılmasıyla patlamalı itme sağlar.",
-    "takeawayTr": "Split'e servis vuruşundan hemen önce in — sonra değil.",
-    "diagram": {
-      "surface": "hard",
-      "youX": 0.5,
-      "youY": 0.9,
-      "opponentX": 0.5,
-      "opponentY": 0.05,
-      "scoreChip": "SPLIT STEP"
-    },
-    "tacticalCategory": "return",
-    "scenarioFr": "Quand ton split-step doit-il retomber par rapport à l'impact du serveur ?",
-    "optionsFr": [
-      "Juste avant que le serveur frappe la balle",
-      "Exactement au moment de la frappe",
-      "Après avoir vu la direction de la balle"
-    ],
-    "explanationFr": "Retomber juste avant l'impact met tes pieds au contact du sol au moment où le service part — et te donne une poussée explosive vers la balle.",
-    "takeawayFr": "Retombe du split juste avant la frappe — pas après."
+    "tacticalCategory": "return"
   },
   {
     "id": "return_026",
@@ -550,46 +364,18 @@
     "id": "return_028",
     "category": "returnPlay",
     "difficulty": "medium",
-    "focusTag": "chip-and-charge return",
-    "scenario": "Against a server who is slow at the baseline, when is a chip-and-charge return smart?",
+    "focusTag": "when to chip and charge",
+    "scenario": "30-0 up on their serve. They are heavy-footed at the baseline, their second serve has been sitting up around 130 km/h, and they have netted two passing shots already this set.",
     "options": [
-      "On a predictable second serve in a 30-0 situation",
-      "On every first serve",
-      "Only on break points"
+      "Chip the return deep and follow it in",
+      "Drive the return deep and stay back",
+      "Block it deep and rally as usual"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "Chip-and-charge on a predictable second serve at 30-0 puts the slow-baseline opponent in a passing-shot situation they're uncomfortable in — without risking a critical score.",
-    "takeaway": "Chip-and-charge works in low-stakes moments against predictable serves.",
+    "explanation": "A cheap point at 30-0 is where you spend risk, and slow feet plus a sitting second serve plus two missed passes all point forward. Driving it and staying back is safer but hands them the baseline rally they are comfortable in.",
+    "takeaway": "Spend the free point on the play that scares them.",
     "mistakeType": "chip-and-charge at bad moments",
-    "scenarioTr": "Kaleden yavaş olan servisçiye karşı chip-and-charge dönüşü ne zaman akıllıca?",
-    "optionsTr": [
-      "30-0'da tahmin edilebilir ikinci servise",
-      "Her ilk serviste",
-      "Sadece break point'te"
-    ],
-    "explanationTr": "30-0'da tahmin edilebilir ikinci servise chip-and-charge, kaleden yavaş rakibi zorlayan bir passing-shot durumuna sokar — kritik skor riski almadan.",
-    "takeawayTr": "Chip-and-charge tahmin edilebilir servislere ve düşük riskli anlara yakışır.",
-    "diagram": {
-      "surface": "grass",
-      "youX": 0.5,
-      "youY": 0.9,
-      "opponentX": 0.5,
-      "opponentY": 0.1,
-      "ballOriginX": 0.45,
-      "ballOriginY": 0.85,
-      "ballTargetX": 0.42,
-      "ballTargetY": 0.16,
-      "scoreChip": "CHIP & CHARGE · 30-0"
-    },
-    "tacticalCategory": "return",
-    "scenarioFr": "Face à un serveur lent en fond de court, quand le retour coupé-montée est-il intelligent ?",
-    "optionsFr": [
-      "Sur une deuxième balle prévisible à 30-0",
-      "Sur chaque première balle",
-      "Uniquement sur les balles de break"
-    ],
-    "explanationFr": "Le retour coupé-montée sur une deuxième balle prévisible à 30-0 met un adversaire lent en fond de court dans une situation de passing qu'il n'aime pas — sans risquer un score critique.",
-    "takeawayFr": "Le coupé-montée marche dans les moments à faible enjeu, contre un service prévisible."
+    "tacticalCategory": "return"
   },
   {
     "id": "return_029",
@@ -2105,46 +1891,18 @@
     "id": "serve_102",
     "category": "serve",
     "difficulty": "medium",
-    "focusTag": "serving to returner position",
+    "focusTag": "serving against a deep return position",
     "tacticalCategory": "patterns",
-    "scenario": "Your opponent stands two meters behind the baseline to return. What does this position invite?",
+    "scenario": "Deuce court, 30-15 on a slow hard court. The returner has stood two metres behind the baseline all match and blocked your biggest first serves back deep down the middle.",
     "options": [
-      "Wide slice — the extra depth makes the angle drag them off court",
-      "Harder flat serves at the same spot",
-      "Only T serves"
+      "Slice wide into the deuce corner",
+      "Same target, ten km/h more pace",
+      "Heavy kick high to the backhand"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "Deep returners cover pace but not width. A wide slice pulls them farther with every step and opens the whole court for your +1.",
-    "takeaway": "Deep return position = attack with angle, not speed.",
-    "mistakeType": "answering depth with pace instead of angle",
-    "scenarioTr": "Rakibin karşılama için baseline'ın iki metre gerisinde duruyor. Bu pozisyon neyi davet eder?",
-    "optionsTr": [
-      "Geniş kesik servis — mesafe arttıkça açı onu korttan dışarı sürükler",
-      "Aynı noktaya daha sert düz servis",
-      "Sadece T servisi"
-    ],
-    "explanationTr": "Geriden karşılayan hızı karşılar ama genişliği karşılayamaz. Geniş kesik her adımda onu daha da açar ve +1 için kortu boşaltır.",
-    "takeawayTr": "Geride duran rakibe hızla değil açıyla saldır.",
-    "diagram": {
-      "surface": "hard",
-      "youX": 0.45,
-      "youY": 0.96,
-      "opponentX": 0.2,
-      "opponentY": 0.02,
-      "ballOriginX": 0.45,
-      "ballOriginY": 0.96,
-      "ballTargetX": 0.13,
-      "ballTargetY": 0.32,
-      "scoreChip": "DEUCE COURT"
-    },
-    "scenarioFr": "Ton adversaire se place deux mètres derrière la ligne de fond pour retourner. Qu'est-ce que cette position invite ?",
-    "optionsFr": [
-      "Un slice extérieur — la profondeur supplémentaire l'emmène hors du court",
-      "Des services à plat plus forts au même endroit",
-      "Uniquement des services au T"
-    ],
-    "explanationFr": "Un relanceur reculé couvre la vitesse, pas la largeur. Un slice extérieur l'éloigne à chaque pas et t'ouvre tout le court pour le +1.",
-    "takeawayFr": "Position de retour reculée = attaque par l'angle, pas par la vitesse."
+    "explanation": "Standing that deep buys him time against pace but leaves him a long way from the sideline, so width drags him wider still and opens the court for your next ball. More pace at the same spot is the serve he has been blocking back all match.",
+    "takeaway": "Against a deep returner add width, not speed.",
+    "mistakeType": "answering depth with pace instead of angle"
   },
   {
     "id": "serve_103",
@@ -2174,113 +1932,53 @@
   {
     "id": "serve_104",
     "category": "serve",
-    "difficulty": "easy",
-    "focusTag": "first-serve percentage on big points",
+    "difficulty": "medium",
+    "focusTag": "first-serve choice on set point",
     "tacticalCategory": "patterns",
-    "scenario": "Set point for you at 5–4, 40–30. What matters most on this first serve?",
+    "scenario": "Serving for the set at 5-4, 40-30 in the ad court. Your flat T attempts have landed one of seven this set, and you have won eight of nine points behind a first serve that went in.",
     "options": [
-      "Getting it IN — a made first serve wins most of these points",
-      "Maximum pace for a clean ace",
-      "Trying your rarest serve for surprise"
+      "Kick wide at three-quarter pace",
+      "Flat down the T for the ace",
+      "Soft spin into the middle of the box"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "First-serve points win at a far higher rate than second-serve points at every level. On set point, a 75% serve in beats a 100% serve out.",
-    "takeaway": "Big point = make the first serve, even at three-quarter pace.",
-    "mistakeType": "donating big points with hero serves",
-    "scenarioTr": "5–4, 40–30 — set sayın. Bu ilk serviste en önemli şey ne?",
-    "optionsTr": [
-      "İçeri GİRMESİ — atılan ilk servis bu sayıların çoğunu kazandırır",
-      "As için maksimum hız",
-      "Sürpriz olsun diye en az attığın servisi denemek"
-    ],
-    "explanationTr": "Her seviyede ilk servis sayıları, ikinci servis sayılarından çok daha yüksek oranda kazanılır. Set sayısında %75'lik içerideki servis, %100'lük dışarıdakinden iyidir.",
-    "takeawayTr": "Büyük sayıda ilk servisi içeri at — dörtte üç hızla bile.",
-    "scenarioFr": "Balle de set pour toi à 5-4, 40-30. Qu'est-ce qui compte le plus sur cette première balle ?",
-    "optionsFr": [
-      "La mettre DEDANS — une première balle en jeu gagne la plupart de ces points",
-      "Un maximum de vitesse pour un ace propre",
-      "Tenter ton service le plus rare pour surprendre"
-    ],
-    "explanationFr": "Les points sur première balle se gagnent à un taux bien supérieur aux points sur deuxième, à tous les niveaux. Sur balle de set, une balle à 75 % dedans vaut mieux qu'une à 100 % dehors.",
-    "takeawayFr": "Point important = mets la première balle, même aux trois quarts de ta vitesse."
+    "explanation": "A made first serve is worth far more than a fast one, and three-quarter kick keeps that advantage without the miss rate of a one-in-seven target. Pushing a soft serve into the middle is the other trap on set point.",
+    "takeaway": "Big point: make the first serve, keep the spin.",
+    "mistakeType": "donating big points with hero serves"
   },
   {
     "id": "serve_105",
     "category": "serve",
     "difficulty": "medium",
-    "focusTag": "kick serve usage",
+    "focusTag": "second serve against a one-hander",
     "tacticalCategory": "patterns",
-    "scenario": "Your opponent's one-handed backhand looks shaky on high balls. Which second serve exploits this?",
+    "scenario": "Ad court, 30-30, and you have missed the first serve. The one-hander across the net drove two of your low slice serves for winners today, but chips anything above shoulder height back short.",
     "options": [
-      "Kick serve to the backhand shoulder",
-      "Slice serve kept low",
-      "Flat serve at the forehand"
+      "Kick it up to the backhand shoulder",
+      "Slice it low and wide to the backhand",
+      "Kick it heavy into the body"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "A kick serve climbs above comfortable contact height — one-handers struggle most above the shoulder on the backhand side.",
-    "takeaway": "High kick to a one-hander's backhand is a free pressure tool.",
-    "mistakeType": "serving low to a player who loves low balls",
-    "scenarioTr": "Rakibin tek el backhand'i yüksek toplarda titrek görünüyor. Hangi ikinci servis bunu kullanır?",
-    "optionsTr": [
-      "Backhand omzuna kick servis",
-      "Alçak tutulan kesik servis",
-      "Forehand'e düz servis"
-    ],
-    "explanationTr": "Kick servis rahat vuruş yüksekliğinin üstüne tırmanır — tek el backhand omuz üstünde en çok zorlanır.",
-    "takeawayTr": "Tek el backhand'e yüksek kick bedava baskı aracıdır.",
-    "diagram": {
-      "surface": "hard",
-      "youX": 0.45,
-      "youY": 0.96,
-      "opponentX": 0.3,
-      "opponentY": 0.08,
-      "ballOriginX": 0.45,
-      "ballOriginY": 0.96,
-      "ballTargetX": 0.32,
-      "ballTargetY": 0.28,
-      "scoreChip": "SECOND SERVE"
-    },
-    "scenarioFr": "Le revers à une main de ton adversaire semble fébrile sur les balles hautes. Quelle deuxième balle exploite ça ?",
-    "optionsFr": [
-      "Un service kické sur l'épaule du revers",
-      "Un service slicé maintenu bas",
-      "Un service à plat sur le coup droit"
-    ],
-    "explanationFr": "Un service kické monte au-dessus de la hauteur de frappe confortable — et les revers à une main souffrent surtout au-dessus de l'épaule.",
-    "takeawayFr": "Un kické haut sur un revers à une main est un outil de pression gratuit."
+    "explanation": "The evidence says height, not width, breaks this backhand, and a kick climbing above the shoulder buys you the short chip to attack. Slicing low and wide feeds the strike zone that has already produced two winners.",
+    "takeaway": "One-hander struggling high? Serve up, not wide.",
+    "mistakeType": "serving low to a player who loves low balls"
   },
   {
     "id": "serve_106",
     "category": "serve",
     "difficulty": "medium",
-    "focusTag": "pattern discipline after aces",
+    "focusTag": "repeating a winning serve",
     "tacticalCategory": "patterns",
-    "scenario": "You just hit two aces out wide. Next point, your gut says go wide again. What's the smarter frame?",
+    "scenario": "Ad court, 40-15. Your kick out wide has produced two aces this game, and on the second one the returner never moved his feet, framing it late from exactly the same spot.",
     "options": [
-      "Stay unpredictable — mix, but don't abandon what works until they adjust",
-      "Never repeat a serve twice",
-      "Always repeat until it misses"
+      "Serve the same kick out wide",
+      "Switch to the flat T for surprise",
+      "Serve at the body to vary it"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "Serving is a probability game: repeat winners until the returner shows an adjustment, then punish the adjustment. React to them, not to superstition.",
-    "takeaway": "Change your pattern off their adjustment, not your anxiety.",
-    "mistakeType": "predictable serve direction",
-    "scenarioTr": "Az önce açıktan iki as attın. Sonraki sayıda için 'yine açık' diyor. Daha akıllı çerçeve ne?",
-    "optionsTr": [
-      "Okunmaz kal — karıştır ama rakip uyum sağlayana dek işleyeni bırakma",
-      "Aynı servisi asla üst üste atma",
-      "Kaçırana kadar hep tekrarla"
-    ],
-    "explanationTr": "Servis bir olasılık oyunudur: rakip ayar yapana kadar kazandıranı tekrarla, ayarı görünce onu cezalandır. Batıla değil rakibe tepki ver.",
-    "takeawayTr": "Deseni kaygına göre değil, rakibin ayarına göre değiştir.",
-    "scenarioFr": "Tu viens de faire deux aces à l'extérieur. Au point suivant, ton instinct dit d'y retourner. Quel est le bon cadre de pensée ?",
-    "optionsFr": [
-      "Rester imprévisible — varie, mais n'abandonne pas ce qui marche tant qu'il ne s'adapte pas",
-      "Ne jamais répéter un service deux fois",
-      "Toujours répéter jusqu'à la faute"
-    ],
-    "explanationFr": "Servir est un jeu de probabilités : répète ce qui gagne jusqu'à ce que le relanceur montre un ajustement, puis punis cet ajustement. Réagis à lui, pas à une superstition.",
-    "takeawayFr": "Change de schéma en réaction à son ajustement, pas à ton anxiété."
+    "explanation": "Nothing in his feet has changed, so the serve is still free money; you change the pattern when the returner adjusts, not when repeating it starts to feel uncomfortable. Switching to the T gives back a point the wide serve was winning.",
+    "takeaway": "Keep serving it until they move.",
+    "mistakeType": "predictable serve direction"
   },
   {
     "id": "serve_107",
@@ -2302,47 +2000,19 @@
   {
     "id": "serve_108",
     "category": "serve",
-    "difficulty": "medium",
-    "focusTag": "deuce-court T logic",
+    "difficulty": "hard",
+    "focusTag": "serving to a left-hander",
     "tacticalCategory": "patterns",
-    "scenario": "Deuce court against a righty with a huge forehand return. Which first-serve direction limits the damage?",
+    "scenario": "Deuce court, 30-30, against a left-hander. Your first serves down the T have come back as three forehand winners today, all struck from inside the baseline.",
     "options": [
-      "T serve — it finds the backhand and cuts the angle",
-      "Wide — to his forehand strength",
-      "Body — always body"
+      "Slice it wide to the deuce corner",
+      "Flat down the T again, harder",
+      "Serve at the body to jam him"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "In the deuce court a T serve arrives at a righty's backhand and gives the returner almost no angle to work with.",
-    "takeaway": "Deuce T = backhand + no angles for a right-hander.",
-    "mistakeType": "feeding the returner's forehand",
-    "scenarioTr": "Deuce tarafında, forehand karşılaması müthiş bir sağlağa karşısın. Hangi ilk servis yönü hasarı sınırlar?",
-    "optionsTr": [
-      "T servisi — backhand'i bulur ve açıyı keser",
-      "Açığa — forehand gücüne",
-      "Gövdeye — her zaman gövde"
-    ],
-    "explanationTr": "Deuce tarafında T servisi sağlağın backhand'ine gider ve karşılayana neredeyse hiç açı bırakmaz.",
-    "takeawayTr": "Deuce T = sağlak için backhand + açısızlık.",
-    "diagram": {
-      "surface": "hard",
-      "youX": 0.45,
-      "youY": 0.96,
-      "opponentX": 0.25,
-      "opponentY": 0.08,
-      "ballOriginX": 0.45,
-      "ballOriginY": 0.96,
-      "ballTargetX": 0.5,
-      "ballTargetY": 0.3,
-      "scoreChip": "DEUCE COURT"
-    },
-    "scenarioFr": "Côté égalité, face à un droitier au retour de coup droit énorme. Quelle direction de première balle limite les dégâts ?",
-    "optionsFr": [
-      "Le service au T — il trouve le revers et coupe l'angle",
-      "Extérieur — sur sa force en coup droit",
-      "Sur le corps — toujours le corps"
-    ],
-    "explanationFr": "Côté égalité, un service au T arrive sur le revers d'un droitier et ne lui laisse presque aucun angle à exploiter.",
-    "takeawayFr": "T côté égalité = revers et zéro angle pour un droitier."
+    "explanation": "Against a left-hander the deuce-court T runs straight into the forehand, which is where those three winners came from, while the slice curves away to the backhand. Hitting the same T harder just speeds up his favourite ball.",
+    "takeaway": "Lefty in the deuce court: wide finds the backhand.",
+    "mistakeType": "feeding the returner's forehand"
   },
   {
     "id": "serve_109",
@@ -2394,34 +2064,18 @@
     "id": "serve_111",
     "category": "serve",
     "difficulty": "easy",
-    "focusTag": "toss discipline",
+    "focusTag": "resetting a bad toss",
     "tacticalCategory": "patterns",
-    "scenario": "Your ball toss keeps drifting behind you and serves are sailing long. What's the practical in-match fix?",
+    "scenario": "Break point down at 30-40, second serve. The toss drifts a foot behind your head as it leaves your hand, the same drift that sent both of your last first serves long.",
     "options": [
-      "Catch bad tosses and re-toss without penalty",
-      "Swing anyway — re-tossing looks weak",
-      "Aim lower to compensate"
+      "Let it drop and start again",
+      "Arch back and hit it anyway",
+      "Shorten the swing and steer it"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "You're allowed to catch a toss. Swinging at a drifting toss bakes the error in; catching it costs nothing and resets your rhythm.",
-    "takeaway": "Never swing at a toss you don't trust.",
-    "mistakeType": "swinging at bad tosses",
-    "scenarioTr": "Top atışın sürekli arkana kaçıyor ve servisler uzun gidiyor. Maç içi pratik çözüm ne?",
-    "optionsTr": [
-      "Kötü atışı tut ve bedelsiz yeniden at",
-      "Yine de vur — yeniden atmak zayıf görünür",
-      "Telafi için daha alçağa nişan al"
-    ],
-    "explanationTr": "Atışı tutmak serbesttir. Kaçan atışa vurmak hatayı içine gömer; tutmak hiçbir şeye mal olmaz ve ritmi sıfırlar.",
-    "takeawayTr": "Güvenmediğin atışa asla vurma.",
-    "scenarioFr": "Ton lancer de balle dérive derrière toi et tes services partent longs. Quelle solution concrète en match ?",
-    "optionsFr": [
-      "Rattraper les mauvais lancers et relancer, sans pénalité",
-      "Frapper quand même — relancer fait faible",
-      "Viser plus bas pour compenser"
-    ],
-    "explanationFr": "Tu as le droit de rattraper ton lancer. Frapper un lancer qui dérive intègre la faute ; le rattraper ne coûte rien et remet ton rythme en place.",
-    "takeawayFr": "Ne frappe jamais un lancer en lequel tu n'as pas confiance."
+    "explanation": "Letting a toss fall untouched costs you nothing but a few seconds, and that drift behind your head is exactly what has been sending serves long. Arching back to reach it is the brave-looking choice that bakes the fault into the swing.",
+    "takeaway": "Do not serve a toss you do not trust.",
+    "mistakeType": "swinging at bad tosses"
   },
   {
     "id": "serve_112",
@@ -2456,46 +2110,18 @@
     "id": "serve_113",
     "category": "serve",
     "difficulty": "hard",
-    "focusTag": "I-formation trigger",
+    "focusTag": "serve selection facing break points",
     "tacticalCategory": "patterns",
-    "scenario": "Singles, but your opponent has started standing IN on your second serve, taking it at 30–15. What's the message serve?",
+    "scenario": "15-40 down, serving in the deuce court. Your wide slice has landed eight of ten today and drawn short returns, while the flat T you keep reaching for is two of nine.",
     "options": [
-      "Heavy body kick — jam the incoming returner",
-      "Double-down on the same soft second",
-      "Wide slice from a defensive toss"
+      "Wide slice on both points",
+      "Flat T on the first point",
+      "Take pace off and roll both in"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "A returner stepping in has shortened their own reaction time. A kicking body serve gives them no room to swing and punishes the aggressive position.",
-    "takeaway": "When they step in, serve INTO them, not away from them.",
-    "mistakeType": "serving away from an attacking returner",
-    "scenarioTr": "Tekler, ama rakip ikinci servisinde İÇERİ girip 30–15'te erken almaya başladı. Mesaj servisi hangisi?",
-    "optionsTr": [
-      "Ağır gövde kick'i — içeri giren rakibi sıkıştır",
-      "Aynı yumuşak ikinciyi tekrar at",
-      "Savunmacı atışla açığa kesik"
-    ],
-    "explanationTr": "İçeri giren rakip kendi tepki süresini kısaltmıştır. Gövdeye kick, salınacak yer bırakmaz ve agresif pozisyonu cezalandırır.",
-    "takeawayTr": "İçeri girene servisten kaçma — üstüne at.",
-    "diagram": {
-      "surface": "hard",
-      "youX": 0.45,
-      "youY": 0.96,
-      "opponentX": 0.3,
-      "opponentY": 0.16,
-      "ballOriginX": 0.45,
-      "ballOriginY": 0.96,
-      "ballTargetX": 0.31,
-      "ballTargetY": 0.3,
-      "scoreChip": "30–15"
-    },
-    "scenarioFr": "En simple, ton adversaire s'est mis à AVANCER sur ta deuxième balle et la prend tôt, à 30-15. Quel service fait passer le message ?",
-    "optionsFr": [
-      "Un kick lourd sur le corps — coince le relanceur qui avance",
-      "Insister avec la même deuxième balle molle",
-      "Un slice extérieur depuis un lancer défensif"
-    ],
-    "explanationFr": "Un relanceur qui avance a raccourci son propre temps de réaction. Un service kické sur le corps ne lui laisse pas de place pour armer et punit sa position agressive.",
-    "takeawayFr": "Quand il avance, sers SUR lui, pas loin de lui."
+    "explanation": "Two break points down is precisely when you play your best percentage, and a serve landing eight of ten with a weak reply is worth running twice. The flat T feels braver but at two of nine it is a donated break.",
+    "takeaway": "Break points down: run your highest-percentage serve.",
+    "mistakeType": "serving away from an attacking returner"
   },
   {
     "id": "serve_114",
@@ -2520,15 +2146,15 @@
     "difficulty": "medium",
     "focusTag": "return target when balanced",
     "tacticalCategory": "return",
-    "scenario": "Deuce court, 30-30, a 150 km/h first serve into your forehand that you meet balanced on the baseline. Their backhand has coughed up three short balls already this set.",
+    "scenario": "Deuce court, 30-30, a 150 km/h first serve into your forehand that you meet balanced on the baseline. Their backhand has leaked three short balls this set, and from here it sits down the line.",
     "options": [
-      "Deep crosscourt to the backhand",
-      "Down the line to the backhand corner",
+      "Deep crosscourt with margin",
+      "Down the line to the backhand",
       "Deep up the middle to stay neutral"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "Balanced and on time, crosscourt gives you the longest court and the lowest net while feeding the wing already leaking short balls. Down the line reaches the same wing over the highest net with no room, for no extra reward.",
-    "takeaway": "Balanced return? Longest court, weakest wing.",
+    "explanation": "Crosscourt gives you the longest court and the lowest net, which is what a return needs before it needs a target. Going down the line to hunt the weak backhand asks for the highest net and the shortest court off a 150 km/h serve.",
+    "takeaway": "Buy margin on the return; buy the weakness on the next ball.",
     "mistakeType": "attempting angle on defensive return",
     "diagram": {
       "surface": "hard",
@@ -2547,46 +2173,18 @@
     "id": "return_101",
     "category": "returnPlay",
     "difficulty": "medium",
-    "focusTag": "second-serve attack position",
+    "focusTag": "attacking the second serve",
     "tacticalCategory": "return",
-    "scenario": "Their second serve lands short and sits up every time. What's the positional adjustment?",
+    "scenario": "Ad court, 30-30. Their second serve keeps sitting up short, and you have missed four of six returns going for the finish from your usual spot a metre behind the baseline.",
     "options": [
-      "Start a meter inside your usual spot and take it on the rise",
-      "Stay in first-serve position to be safe",
-      "Back up for more time"
+      "Step a metre in, same swing speed",
+      "Stay back and swing harder at it",
+      "Stay back and roll it deep instead"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "A weak second serve is a free attack — but only if you meet it early. Taking it on the rise steals the server's recovery time.",
-    "takeaway": "Move your feet UP before the second serve, not your swing speed.",
-    "mistakeType": "standing deep against weak second serves",
-    "scenarioTr": "Rakibin ikinci servisi hep kısa düşüp yükseliyor. Pozisyon ayarı ne olmalı?",
-    "optionsTr": [
-      "Normal yerinden bir metre içeride başla ve topu yükselirken al",
-      "Güvenli olsun diye ilk servis pozisyonunda kal",
-      "Zaman için geri çekil"
-    ],
-    "explanationTr": "Zayıf ikinci servis bedava hücumdur — ama ancak erken karşılarsan. Yükselen topu almak servisçinin toparlanma süresini çalar.",
-    "takeawayTr": "İkinci servisten önce salınım hızını değil ayaklarını öne taşı.",
-    "diagram": {
-      "surface": "hard",
-      "youX": 0.35,
-      "youY": 0.78,
-      "opponentX": 0.55,
-      "opponentY": 0.1,
-      "ballOriginX": 0.35,
-      "ballOriginY": 0.78,
-      "ballTargetX": 0.85,
-      "ballTargetY": 0.2,
-      "scoreChip": "SECOND SERVE"
-    },
-    "scenarioFr": "Sa deuxième balle tombe court et reste haute à chaque fois. Quel ajustement de position ?",
-    "optionsFr": [
-      "Démarrer un mètre devant ta place habituelle et la prendre à la montée",
-      "Rester en position de première balle, par sécurité",
-      "Reculer pour avoir plus de temps"
-    ],
-    "explanationFr": "Une deuxième balle faible est une attaque offerte — mais seulement si tu la prends tôt. La prendre à la montée vole au serveur son temps de replacement.",
-    "takeawayFr": "Avance tes appuis avant la deuxième balle, n'accélère pas ton geste."
+    "explanation": "The extra pressure on a short second serve comes from meeting it earlier, so move the feet up and keep the swing you trust. Swinging harder from deep is what has put four of six returns into the net and the back fence.",
+    "takeaway": "Attack a second serve with your feet, not your arm.",
+    "mistakeType": "standing deep against weak second serves"
   },
   {
     "id": "return_102",
@@ -2649,47 +2247,19 @@
   {
     "id": "return_104",
     "category": "returnPlay",
-    "difficulty": "easy",
-    "focusTag": "returning kick serves",
+    "difficulty": "medium",
+    "focusTag": "timing against a kick serve",
     "tacticalCategory": "return",
-    "scenario": "Their kick serve keeps climbing above your backhand shoulder. What's the simplest counter?",
+    "scenario": "Ad court, 0-30 up. Their kick keeps climbing above your backhand shoulder, and every time you back up to take it falling they step inside the baseline and own the middle.",
     "options": [
-      "Step in and take it earlier, before it climbs",
-      "Back up and hit it at head height",
-      "Swing harder at the high ball"
+      "Step in and meet it before the peak",
+      "Back up further and take it falling",
+      "Stand still and swing over the high ball"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "The kick's weapon is its bounce. Meeting the ball before the apex turns a shoulder-high problem into a waist-high rally ball.",
-    "takeaway": "Beat the kick with your feet (earlier), not your shoulder (higher).",
-    "mistakeType": "attacking a tough kick serve",
-    "diagram": {
-      "surface": "clay",
-      "youX": 0.35,
-      "youY": 0.9,
-      "opponentX": 0.6,
-      "opponentY": 0.06,
-      "ballOriginX": 0.6,
-      "ballOriginY": 0.1,
-      "ballTargetX": 0.35,
-      "ballTargetY": 0.78,
-      "scoreChip": "KICK SERVE"
-    },
-    "scenarioTr": "Kick servis sürekli backhand omzunun üstüne tırmanıyor. En basit panzehir?",
-    "optionsTr": [
-      "İçeri gir, tırmanmadan erken al",
-      "Geri çekil, kafa hizasında vur",
-      "Yüksek topa daha sert salla"
-    ],
-    "explanationTr": "Kick'in silahı sekmesidir. Topu tepe noktasından önce karşılamak, omuz hizası problemini bel hizası ralli topuna çevirir.",
-    "takeawayTr": "Kick'i omzunla (daha yüksek) değil ayaklarınla (daha erken) yen.",
-    "scenarioFr": "Son service kické monte sans arrêt au-dessus de ton épaule côté revers. Quelle est la parade la plus simple ?",
-    "optionsFr": [
-      "Avancer et la prendre plus tôt, avant qu'elle monte",
-      "Reculer et la frapper à hauteur de tête",
-      "Frapper plus fort dans la balle haute"
-    ],
-    "explanationFr": "L'arme du kick, c'est son rebond. Prendre la balle avant son sommet transforme un problème à hauteur d'épaule en une balle d'échange à hauteur de hanche.",
-    "takeawayFr": "Bats le kick avec tes pieds (plus tôt), pas avec ton épaule (plus haut)."
+    "explanation": "Meeting the kick before it peaks turns a shoulder-high ball into a waist-high one and keeps the return deep enough to hold them back. Backing up further is more comfortable but gives them the step forward they have used all game.",
+    "takeaway": "Beat the kick with your feet, before the bounce peaks.",
+    "mistakeType": "attacking a tough kick serve"
   },
   {
     "id": "return_105",
@@ -2724,91 +2294,35 @@
     "id": "return_106",
     "category": "returnPlay",
     "difficulty": "medium",
-    "focusTag": "return games mindset",
+    "focusTag": "structuring a return game",
     "tacticalCategory": "return",
-    "scenario": "You're 0–3 down on their serve games without a sniff. What's the strategic reframe for return games?",
+    "scenario": "0-3 down in the set. In every one of their service games you have missed the first two returns going for too much, and only started making balls once the game was already gone.",
     "options": [
-      "Target one game per set: raise intensity on their second serves and 30–30 points",
-      "Accept their serve is too good",
-      "Gamble on every single return"
+      "Make the first two returns deep and neutral",
+      "Go for winners early while the game is open",
+      "Change your return position on every point"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "You don't need to win every return game — one break usually decides club sets. Concentrating energy on second serves and score pressure points is efficient aggression.",
-    "takeaway": "Return games are about ONE well-timed surge, not constant heroics.",
-    "mistakeType": "even effort distribution across return games",
-    "diagram": {
-      "surface": "clay",
-      "youX": 0.5,
-      "youY": 0.92,
-      "opponentX": 0.5,
-      "opponentY": 0.06,
-      "ballOriginX": 0.5,
-      "ballOriginY": 0.1,
-      "ballTargetX": 0.5,
-      "ballTargetY": 0.85,
-      "scoreChip": "RETURN GAME"
-    },
-    "scenarioTr": "Rakibin servis oyunlarında 0–3 geridesin, koku bile alamadın. Karşılama oyunları için stratejik çerçeve ne?",
-    "optionsTr": [
-      "Set başına bir oyun hedefle: ikinci servislerde ve 30–30'larda yoğunluğu artır",
-      "Servisi çok iyi, kabullen",
-      "Her karşılamada kumar oyna"
-    ],
-    "explanationTr": "Her karşılama oyununu kazanman gerekmiyor — kulüp setlerini genelde tek break belirler. Enerjiyi ikinci servislere ve skor baskısı anlarına yığmak verimli agresyondur.",
-    "takeawayTr": "Karşılama oyunları sürekli kahramanlık değil, İYİ zamanlanmış tek dalgadır.",
-    "scenarioFr": "Tu es mené 0-3 sans avoir vu la couleur de ses jeux de service. Quel recadrage stratégique pour tes jeux de retour ?",
-    "optionsFr": [
-      "Viser un jeu par set : monter l'intensité sur ses deuxièmes balles et à 30-30",
-      "Accepter que son service est trop fort",
-      "Tout miser sur chaque retour"
-    ],
-    "explanationFr": "Tu n'as pas besoin de gagner tous les jeux de retour — un seul break décide généralement d'un set en club. Concentrer ton énergie sur les deuxièmes balles et les points sous pression, c'est de l'agressivité efficace.",
-    "takeawayFr": "Les jeux de retour se gagnent par UNE poussée bien placée, pas par de l'héroïsme permanent."
+    "explanation": "Two made returns puts you at 15-15 with the server still working, and pressure in a return game comes from being level, not from early winners. Going big on the first two points is what has handed over a free 30-0 all set.",
+    "takeaway": "Win return games by starting them level.",
+    "mistakeType": "even effort distribution across return games"
   },
   {
     "id": "return_107",
     "category": "returnPlay",
-    "difficulty": "easy",
-    "focusTag": "return ready position",
+    "difficulty": "medium",
+    "focusTag": "return depth",
     "tacticalCategory": "return",
-    "scenario": "You keep getting caught flat-footed on returns. What's missing?",
+    "scenario": "5-5, 30-30 on their serve. Your last six returns have all landed inside their service line, and they have stepped in and hit four forehand winners off those short balls.",
     "options": [
-      "A split step timed to their contact",
-      "A bigger backswing",
-      "Standing perfectly still for stability"
+      "Aim two metres higher over the net",
+      "Swing harder to push the ball deeper",
+      "Aim closer to the sidelines to move them"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "The split step at the server's contact loads both legs so your first move is explosive in either direction. Without it, you're reacting a beat late.",
-    "takeaway": "No split step, no return. Time it to their hit.",
-    "mistakeType": "missing the split step on return",
-    "diagram": {
-      "surface": "clay",
-      "youX": 0.5,
-      "youY": 0.9,
-      "opponentX": 0.5,
-      "opponentY": 0.06,
-      "ballOriginX": 0.5,
-      "ballOriginY": 0.1,
-      "ballTargetX": 0.5,
-      "ballTargetY": 0.84,
-      "scoreChip": "SPLIT STEP"
-    },
-    "scenarioTr": "Karşılamalarda sürekli hazırlıksız yakalanıyorsun. Eksik ne?",
-    "optionsTr": [
-      "Rakibin vuruş anına zamanlanmış split step",
-      "Daha büyük geri salınım",
-      "Denge için hiç kıpırdamadan durmak"
-    ],
-    "explanationTr": "Servisçinin temas anındaki split step iki bacağı da yükler; ilk hareketin iki yöne de patlayıcı olur. Onsuz bir tempo geç kalırsın.",
-    "takeawayTr": "Split step yoksa karşılama yok. Vuruş anına zamanla.",
-    "scenarioFr": "Tu te fais surprendre les pieds plantés sur les retours. Qu'est-ce qui manque ?",
-    "optionsFr": [
-      "Un split-step calé sur sa frappe",
-      "Une préparation plus ample",
-      "Rester parfaitement immobile pour la stabilité"
-    ],
-    "explanationFr": "Le split-step au moment de la frappe du serveur charge les deux jambes pour que ton premier appui soit explosif des deux côtés. Sans lui, tu réagis avec un temps de retard.",
-    "takeawayFr": "Pas de split-step, pas de retour. Cale-le sur sa frappe."
+    "explanation": "Depth is bought with net clearance, so lifting the target a couple of metres above the tape moves the bounce back towards their baseline. Swinging harder is the usual answer and it fails: a flatter ball still lands short, only sooner.",
+    "takeaway": "Returns go deep because they fly higher, not faster.",
+    "mistakeType": "missing the split step on return"
   },
   {
     "id": "return_108",
@@ -2867,76 +2381,36 @@
   {
     "id": "return_110",
     "category": "returnPlay",
-    "difficulty": "medium",
-    "focusTag": "down-the-line return risk",
+    "difficulty": "hard",
+    "focusTag": "when the line return is on",
     "tacticalCategory": "return",
-    "scenario": "You love the down-the-line return winner. When is it actually the right call?",
+    "scenario": "Deuce court, 40-30. Their second serve sits up short, you step in and take it at hip height, and the server has already drifted a step towards the deuce sideline to cover the crosscourt.",
     "options": [
-      "On a short, slow serve when you're balanced inside the court",
-      "On every big point",
-      "Whenever you feel hot"
+      "Drive it down the line behind them",
+      "Drive it crosscourt into the corner",
+      "Roll it deep up the middle and rally"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "Down the line crosses the highest net and gives the shortest court. It needs a short ball, early contact and balance — otherwise it's a donation dressed as bravery.",
-    "takeaway": "Line returns are earned by the serve's weakness, not your mood.",
-    "mistakeType": "low-percentage line returns from defense",
-    "scenarioTr": "Paralel karşılama sayısını seviyorsun. Gerçekten ne zaman doğru karar?",
-    "optionsTr": [
-      "Kısa ve yavaş serviste, kortun içinde dengedeyken",
-      "Her büyük sayıda",
-      "Kendini iyi hissettiğinde"
-    ],
-    "explanationTr": "Paralel, filenin en yüksek yerinden geçer ve en kısa kortu sunar. Kısa top, erken temas ve denge ister — yoksa cesaret kılığında hediyedir.",
-    "takeawayTr": "Paralel karşılamayı ruh hâlin değil servisin zayıflığı hak ettirir.",
-    "diagram": {
-      "surface": "hard",
-      "youX": 0.25,
-      "youY": 0.8,
-      "opponentX": 0.5,
-      "opponentY": 0.12,
-      "ballOriginX": 0.25,
-      "ballOriginY": 0.8,
-      "ballTargetX": 0.15,
-      "ballTargetY": 0.14,
-      "scoreChip": "SHORT SERVE"
-    }
+    "explanation": "A short serve met early inside the baseline is the one ball that pays for the higher net down the line, and they have already committed the other way. Crosscourt is the safer shape but lands where they are standing.",
+    "takeaway": "Earn the line with a short ball and early contact.",
+    "mistakeType": "low-percentage line returns from defense"
   },
   {
     "id": "return_111",
     "category": "returnPlay",
-    "difficulty": "easy",
-    "focusTag": "body-serve escape",
+    "difficulty": "medium",
+    "focusTag": "escaping the body serve",
     "tacticalCategory": "return",
-    "scenario": "The serve jams into your body. What's the escape move?",
+    "scenario": "Deuce court, 30-30. They have jammed three serves straight into your hip this game, and both times you tried to turn a forehand out of it the return sat up short mid-court.",
     "options": [
-      "Quick side-shuffle to create space and take it with the backhand block",
-      "Lean back and flick with wrists",
-      "Take a full swing from your chest"
+      "Step out of the ball's line, block backhand",
+      "Rotate the hips and squeeze a forehand",
+      "Lean back and block it from the chest"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "Against body serves, space is everything. A fast lateral shuffle plus compact backhand block is the highest-percentage escape at every level.",
-    "takeaway": "Move yourself, not just the racquet, on body serves.",
-    "mistakeType": "frozen feet on body serves",
-    "diagram": {
-      "surface": "clay",
-      "youX": 0.5,
-      "youY": 0.9,
-      "opponentX": 0.5,
-      "opponentY": 0.06,
-      "ballOriginX": 0.5,
-      "ballOriginY": 0.1,
-      "ballTargetX": 0.5,
-      "ballTargetY": 0.84,
-      "scoreChip": "BODY SERVE"
-    },
-    "scenarioTr": "Servis gövdene saplandı. Kaçış hamlesi ne?",
-    "optionsTr": [
-      "Hızlı yana kayıp yer aç ve backhand blokla al",
-      "Geriye yaslan, bilekle kurtar",
-      "Göğsünden tam salınımla vur"
-    ],
-    "explanationTr": "Gövde servisine karşı her şey alan yaratmaktır. Hızlı yana kayış + kompakt backhand blok her seviyede en yüksek yüzdeli kaçıştır.",
-    "takeawayTr": "Gövde servisinde sadece raketi değil kendini oynat."
+    "explanation": "A body serve is a space problem, and one hard step clear of the ball's line gives the compact backhand block the room the forehand never gets. Squeezing the forehand out is what produced two short balls already.",
+    "takeaway": "Body serve: move your feet clear, block backhand.",
+    "mistakeType": "frozen feet on body serves"
   },
   {
     "id": "return_112",
