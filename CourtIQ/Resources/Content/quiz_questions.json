@@ -497,24 +497,16 @@
     "category": "returnPlay",
     "difficulty": "medium",
     "focusTag": "second serve attack",
-    "scenario": "Opponent's second serve averages 140 km/h with heavy kick. What's the best aggressive return pattern?",
+    "scenario": "Their second serve kicks up at 140 km/h and you're 0-30 up on their serve. You've been returning from a metre behind the baseline and floating them back.",
     "options": [
       "Move up and take it on the rise, crosscourt",
       "Move up but go down the line for a winner",
       "Stand back and block it safely"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "Moving up denies the kick its bounce height. Driving it crosscourt is the higher-percentage aggressive return — more court length and a lower net give you margin to set up a +1. Down the line is tempting but lower-percentage off a deep kicking ball.",
+    "explanation": "Moving up denies the kick its bounce height, and crosscourt gives you the longest court and the lowest net to set up the +1. Down the line off a rising kicking ball is the same aggression over the highest net with the least room.",
     "takeaway": "Attack a second serve by moving forward — and go crosscourt for margin.",
     "mistakeType": "low-percentage down-the-line return",
-    "scenarioTr": "Rakibin ikinci servisi 140 km/h ağır kick'le geliyor. En iyi agresif dönüş deseni?",
-    "optionsTr": [
-      "Öne gel, yükseliyorken çapraz vur",
-      "Öne gel ama winner için çizgiye git",
-      "Geride kal ve güvenli blokla"
-    ],
-    "explanationTr": "Öne gelmek kick'in sıçrama yüksekliğini yok eder. Çapraz sürmek daha yüksek yüzdeli agresif dönüştür — daha uzun saha ve daha alçak file +1 kurmak için sana pay verir. Çizgiye vurmak cazip ama derin kick'li topta daha düşük yüzdeli.",
-    "takeawayTr": "İkinci servise saldırmak için öne gel — ve pay için çapraz git.",
     "diagram": {
       "surface": "hard",
       "youX": 0.5,
@@ -527,15 +519,7 @@
       "ballTargetY": 0.7,
       "scoreChip": "2ND SERVE · KICK"
     },
-    "tacticalCategory": "return",
-    "scenarioFr": "La deuxième balle adverse tourne à 140 km/h avec beaucoup de kick. Quel est le meilleur schéma de retour agressif ?",
-    "optionsFr": [
-      "Avancer et la prendre à la montée, en croisé",
-      "Avancer mais tenter le long de ligne gagnant",
-      "Rester derrière et bloquer prudemment"
-    ],
-    "explanationFr": "Avancer prive le kick de sa hauteur de rebond. La frapper en croisé est le retour agressif le plus rentable — plus de longueur de court et un filet plus bas te donnent la marge pour enchaîner le +1. Le long de ligne est tentant, mais moins rentable sur une balle kickée profonde.",
-    "takeawayFr": "Attaque une deuxième balle en avançant — et joue croisé pour la marge."
+    "tacticalCategory": "return"
   },
   {
     "id": "return_027",
@@ -1163,24 +1147,16 @@
     "category": "net",
     "difficulty": "medium",
     "focusTag": "first volley after serve",
-    "scenario": "You serve-and-volley and get a low ball at your feet. What's the priority?",
+    "scenario": "You serve and volley at 30-30 and the return dips to your feet inside the service line. They have passed you twice down the line already this set.",
     "options": [
       "Scoop it deep down the middle to buy time",
       "Attempt a sharp angle volley winner",
       "Let it bounce and play a groundstroke"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "A low first volley is a reset — deep middle buys time to reach the proper volley position for the second volley.",
+    "explanation": "A low first volley is a reset, and deep down the middle buys the step you need to reach proper volley position for the second one. The sharp angle winner from below net height is the shot that has to travel furthest over the highest net.",
     "takeaway": "First volleys at your feet are setups — not winners.",
     "mistakeType": "going for winners on low first volleys",
-    "scenarioTr": "Servis-volley attın ve ayaklarına düşük top geldi. Öncelik ne?",
-    "optionsTr": [
-      "Ortadan derine kepçele — zaman kazan",
-      "Sert açılı volley winner dene",
-      "Sektir ve groundstroke'la oyna"
-    ],
-    "explanationTr": "Düşük ilk volley bir sıfırlamadır — ortadan derine atmak ikinci volley için doğru pozisyona gelme zamanı kazandırır.",
-    "takeawayTr": "Ayağındaki ilk volley kurulumdur — winner değil.",
     "diagram": {
       "surface": "hard",
       "youX": 0.5,
@@ -1193,15 +1169,7 @@
       "ballTargetY": 0.58,
       "scoreChip": "S&V · LOW BALL"
     },
-    "tacticalCategory": "net_game",
-    "scenarioFr": "Tu sers-volées et tu récupères une balle basse dans les pieds. Quelle est la priorité ?",
-    "optionsFr": [
-      "La relever profond au milieu pour gagner du temps",
-      "Tenter une volée d'angle gagnante",
-      "La laisser rebondir et jouer un coup de fond"
-    ],
-    "explanationFr": "Une première volée basse est une remise en jeu — profond au milieu te donne le temps d'atteindre la bonne position pour la deuxième volée.",
-    "takeawayFr": "Les premières volées dans les pieds sont des préparations — pas des gagnants."
+    "tacticalCategory": "net_game"
   },
   {
     "id": "net_025",
@@ -1706,14 +1674,14 @@
     "category": "doubles",
     "difficulty": "medium",
     "focusTag": "first volley by height",
-    "scenario": "You're serving and volleying. The return comes back LOW at your feet. Where do you place the first volley?",
+    "scenario": "You serve and volley at 30-30, and the return dips LOW at your feet just inside the service line. Both opponents are already at the net.",
     "options": [
-      "Deep to the baseline returner, or low through the middle",
+      "Deep to the baseline returner",
       "Hard at the opposing net player",
       "A soft drop into their service box"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "On a low/defensive ball, don't reflexively aim at the net player — a low volley there is an easy put-away for them. Go deep to the baseliner or low through the middle and keep climbing to the net.",
+    "explanation": "From below net height you must lift, so the deep ball to the baseliner is the only target that does not arrive as a sitter. Hard at the net player is the reflex, and a lifted volley there is the easiest put-away in doubles.",
     "takeaway": "First-volley target depends on height: a low ball goes deep/middle, not at the net player.",
     "mistakeType": "first volley auto-aimed at the net player",
     "diagram": {
@@ -1728,23 +1696,7 @@
       "ballTargetY": 0.6,
       "scoreChip": "1ST VOLLEY"
     },
-    "scenarioTr": "Servis-vole oynuyorsun. Karşılama ayaklarına ALÇAK geliyor. İlk voleyi nereye koyarsın?",
-    "optionsTr": [
-      "Derine, baseline'daki returner'a — ya da alçak, ortadan",
-      "Sert, karşı file oyuncusuna",
-      "Servis kutusuna yumuşak bir drop"
-    ],
-    "explanationTr": "Alçak/defansif topta refleksle file oyuncusuna vurma — oradaki alçak vole onlara kolay sayı olur. Derine baseliner'a ya da alçak ortadan oyna ve file'ye çıkmaya devam et.",
-    "takeawayTr": "İlk vole hedefi yüksekliğe bağlı: alçak top derine/ortaya gider, file oyuncusuna değil.",
-    "tacticalCategory": "net_game",
-    "scenarioFr": "Tu sers-volées. Le retour revient BAS dans tes pieds. Où places-tu ta première volée ?",
-    "optionsFr": [
-      "Profond sur le relanceur au fond, ou bas par le milieu",
-      "Fort sur le joueur adverse au filet",
-      "Une amortie douce dans son carré de service"
-    ],
-    "explanationFr": "Sur une balle basse et défensive, ne vise pas par réflexe le joueur au filet — une volée basse là-bas est un cadeau à smasher. Joue profond sur le joueur de fond ou bas par le milieu, et continue d'avancer au filet.",
-    "takeawayFr": "La cible de la première volée dépend de la hauteur : une balle basse part profond ou au milieu, pas sur le joueur au filet."
+    "tacticalCategory": "net_game"
   },
   {
     "id": "doubles_004",
@@ -1796,14 +1748,14 @@
     "category": "doubles",
     "difficulty": "medium",
     "focusTag": "poach timing",
-    "scenario": "You decide to poach. When exactly do you commit to crossing?",
+    "scenario": "You're the net player at 30-30 and you've decided to poach this point. Your partner is serving to the body and the returner has blocked every one crosscourt.",
     "options": [
-      "Just after the serve bounces, as the returner starts the forward swing",
-      "The instant your partner tosses to serve",
-      "After the return has already cleared the net"
+      "Just after the serve bounces",
+      "The instant your partner tosses",
+      "Once the return clears the net"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "Commit just after the serve bounces, as the returner starts their forward swing — early enough to cross and cut off the middle, late enough that they can't redirect the ball behind you.",
+    "explanation": "Crossing as the serve bounces is early enough to cut off the middle and late enough that the returner can no longer redirect behind you. Moving on the toss shows your hand while they can still change the target.",
     "takeaway": "Poach as the returner starts the swing — not too early, not too late.",
     "mistakeType": "mistimed poach",
     "diagram": {
@@ -1818,23 +1770,7 @@
       "ballTargetY": 0.52,
       "scoreChip": "POACH"
     },
-    "scenarioTr": "Poach yapmaya karar verdin. Tam olarak ne zaman çıkarsın?",
-    "optionsTr": [
-      "Servis sektikten hemen sonra, returner ileri vuruşa başlarken",
-      "Partnerin servise atış yaptığı an",
-      "Karşılama file'yi çoktan geçtikten sonra"
-    ],
-    "explanationTr": "Servis sektikten hemen sonra, returner ileri vuruşa başlarken çık — ortayı kesmek için yeterince erken, arkana yönlendirilemeyecek kadar geç.",
-    "takeawayTr": "Returner vuruşa başlarken poach yap — ne çok erken, ne çok geç.",
-    "tacticalCategory": "net_game",
-    "scenarioFr": "Tu décides d'intercepter. À quel moment exactement t'engages-tu ?",
-    "optionsFr": [
-      "Juste après le rebond du service, quand le relanceur amorce son geste vers l'avant",
-      "À l'instant où ton partenaire lance sa balle de service",
-      "Une fois que le retour a déjà passé le filet"
-    ],
-    "explanationFr": "Engage-toi juste après le rebond du service, quand le relanceur amorce son geste — assez tôt pour traverser et couper le milieu, assez tard pour qu'il ne puisse plus rediriger derrière toi.",
-    "takeawayFr": "Intercepte quand le relanceur amorce son geste — ni trop tôt, ni trop tard."
+    "tacticalCategory": "net_game"
   },
   {
     "id": "doubles_006",
@@ -2001,14 +1937,14 @@
     "category": "doubles",
     "difficulty": "medium",
     "focusTag": "beat an aggressive poacher",
-    "scenario": "The opposing net player keeps poaching and crowding the middle, eating your returns. How do you make them pay?",
+    "scenario": "Their net player has poached four of your last six returns, standing a step off the centre line. You're returning at 30-30 in the deuce court.",
     "options": [
-      "Lob the aggressive net player to push them off the net",
-      "Hit harder cross-court through the same spot",
-      "Aim every return down their alley"
+      "Lob the crowding net player",
+      "Hit harder through the same spot",
+      "Aim your return down their alley"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "A lob over the crowding net player resets the point and pushes them off the net, making them respect the lob and poach less. Hitting harder into the poach is exactly what they want.",
+    "explanation": "A lob over a crowding poacher wins the point outright or pushes them back for the rest of the game, which is the real prize. Hitting harder through the same spot is exactly the ball they are standing there to intercept.",
     "takeaway": "Punish an over-eager poacher with a lob — it buys back the middle.",
     "mistakeType": "feeding an aggressive poacher",
     "diagram": {
@@ -2023,23 +1959,7 @@
       "ballTargetY": 0.14,
       "scoreChip": "LOB POACHER"
     },
-    "scenarioTr": "Karşı file oyuncusu sürekli poach yapıp ortayı daraltıyor, karşılamalarını yiyor. Bedelini nasıl ödetirsin?",
-    "optionsTr": [
-      "Agresif file oyuncusunu lob'la, file'den uzaklaştır",
-      "Aynı noktadan daha sert çapraz vur",
-      "Her karşılamayı onların koridoruna at"
-    ],
-    "explanationTr": "Ortayı daraltan file oyuncusunun üstünden lob, puanı sıfırlar ve onu file'den uzaklaştırır; lob'a saygı duyup daha az poach yapar. Poach'ın içine daha sert vurmak tam da onların istediğidir.",
-    "takeawayTr": "Fazla hevesli bir poach'çıyı lob'la cezalandır — ortayı geri kazandırır.",
-    "tacticalCategory": "return",
-    "scenarioFr": "Le joueur adverse au filet intercepte sans arrêt et mange tes retours au milieu. Comment le faire payer ?",
-    "optionsFr": [
-      "Lober le joueur de filet agressif pour le repousser",
-      "Frapper plus fort en croisé au même endroit",
-      "Viser son couloir à chaque retour"
-    ],
-    "explanationFr": "Un lob au-dessus du joueur qui s'avance remet le point à zéro et le repousse du filet : il devra respecter le lob et interceptera moins. Frapper plus fort dans son interception, c'est exactement ce qu'il attend.",
-    "takeawayFr": "Punis un intercepteur trop gourmand avec un lob — ça te rend le milieu."
+    "tacticalCategory": "return"
   },
   {
     "id": "serve_hard_1",
@@ -2871,24 +2791,16 @@
     "difficulty": "hard",
     "focusTag": "break-point return intent",
     "tacticalCategory": "return",
-    "scenario": "Break point FOR you. History says their second serve goes to your backhand. What's the plan?",
+    "scenario": "Break point for you at 30-40. Their second serve has gone to your backhand on nine of eleven points this set, and it lands short of the service line.",
     "options": [
-      "Commit early: run around it and hit the forehand return you decided on beforehand",
-      "Wait, react, keep every option open",
-      "Chip it back safely — it's a big point"
+      "Run around it for the forehand",
+      "Wait, react, keep options open",
+      "Chip it back safely and rally"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "On predictable big-point serves, the returner who has pre-committed wins the exchange. A planned forehand return converts far more break points than neutral reactions.",
+    "explanation": "On a serve this predictable the returner who has already decided wins the exchange, and the run-around forehand is the shot that punishes a short second serve. Waiting to react turns a known ball into an ordinary one.",
     "takeaway": "On break points, return with a decision, not a reaction.",
     "mistakeType": "passive returning on break points",
-    "scenarioTr": "Break sayısı SENDE. İstatistik, ikinci servislerinin backhand'ine geldiğini söylüyor. Plan ne?",
-    "optionsTr": [
-      "Erken karar: dolan ve önceden kararlaştırdığın forehand karşılamayı vur",
-      "Bekle, tepki ver, tüm seçenekleri açık tut",
-      "Büyük sayı — güvenle çel"
-    ],
-    "explanationTr": "Tahmin edilebilir büyük-sayı servislerinde önceden karar vermiş karşılayıcı kazanır. Planlı forehand karşılama, nötr tepkilerden çok daha fazla break çevirir.",
-    "takeawayTr": "Break sayısında tepkiyle değil kararla karşıla.",
     "diagram": {
       "surface": "hard",
       "youX": 0.6,
@@ -2900,15 +2812,7 @@
       "ballTargetX": 0.5,
       "ballTargetY": 0.14,
       "scoreChip": "BREAK POINT"
-    },
-    "scenarioFr": "Balle de break POUR toi. L'historique dit que sa deuxième balle part sur ton revers. Quel est le plan ?",
-    "optionsFr": [
-      "T'engager tôt : te décaler et jouer le retour de coup droit décidé à l'avance",
-      "Attendre, réagir, garder toutes les options ouvertes",
-      "La chipper prudemment — c'est un gros point"
-    ],
-    "explanationFr": "Sur les gros points où le service est prévisible, c'est le relanceur qui s'est engagé à l'avance qui gagne l'échange. Un retour de coup droit planifié convertit bien plus de balles de break qu'une réaction neutre.",
-    "takeawayFr": "Sur balle de break, retourne avec une décision, pas avec une réaction."
+    }
   },
   {
     "id": "return_104",
@@ -2961,24 +2865,16 @@
     "difficulty": "medium",
     "focusTag": "return vs serve-and-volley",
     "tacticalCategory": "defense",
-    "scenario": "Surprise — they're serving and volleying on big points. What return hurts that most?",
+    "scenario": "They have served and volleyed on both break points this set and are coming in again at 30-40. Their first volley is struck from around the service line.",
     "options": [
-      "Low ball at their feet as they close in",
-      "High deep lob every time",
-      "Hardest possible drive at the open court"
+      "Low at their feet as they close",
+      "A high deep lob over them",
+      "The hardest drive you have"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "A volleyer's nightmare is contact below net height mid-run. Low at the feet forces a defensive half-volley you can attack.",
+    "explanation": "Contact below net height mid-run forces a defensive half-volley you can attack on the next ball. The lob is the other real answer, but from a return you rarely have the time to place it well enough.",
     "takeaway": "Against the rusher: make their first volley come from their shoelaces.",
     "mistakeType": "floating returns against a net-rusher",
-    "scenarioTr": "Sürpriz — büyük sayılarda servis-vole oynuyorlar. Buna en çok hangi karşılama acı verir?",
-    "optionsTr": [
-      "Koşarken ayaklarının dibine alçak top",
-      "Her seferinde yüksek derin lob",
-      "Açık korta olabildiğince sert vuruş"
-    ],
-    "explanationTr": "Volecinin kâbusu koşu ortasında file altından temas etmektir. Ayak dibine alçak top, saldırabileceğin savunmacı bir yarım vole zorlar.",
-    "takeawayTr": "File koşucusuna karşı ilk voleyi ayakkabı bağından açtır.",
     "diagram": {
       "surface": "hard",
       "youX": 0.35,
@@ -2990,15 +2886,7 @@
       "ballTargetX": 0.52,
       "ballTargetY": 0.42,
       "scoreChip": "S&V"
-    },
-    "scenarioFr": "Surprise : il sert-volée sur les gros points. Quel retour lui fait le plus mal ?",
-    "optionsFr": [
-      "Une balle basse dans ses pieds pendant qu'il monte",
-      "Un lob haut et profond à chaque fois",
-      "La frappe la plus forte possible dans le court ouvert"
-    ],
-    "explanationFr": "Le cauchemar d'un volleyeur, c'est une frappe sous le niveau du filet en pleine course. Bas dans les pieds l'oblige à une demi-volée défensive que tu peux attaquer.",
-    "takeawayFr": "Contre celui qui monte : oblige-le à jouer sa première volée dans ses lacets."
+    }
   },
   {
     "id": "return_106",
@@ -3224,24 +3112,16 @@
     "difficulty": "medium",
     "focusTag": "ad-court return target vs righty",
     "tacticalCategory": "return",
-    "scenario": "Ad court, their righty slice pulls you wide. Balanced but stretched — where's the smart return?",
+    "scenario": "Ad court at 30-30, their righty slice serve pulls you a step outside the sideline. You reach it balanced but stretched, and they have stayed back.",
     "options": [
-      "High and deep crosscourt to reset with time",
+      "High and deep crosscourt",
       "Flat down the line on the stretch",
-      "Sharp short angle back"
+      "A sharp short angle back"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "Stretched wide, your priorities are height for safety and depth for time. Deep crosscourt travels the longest distance while you recover.",
+    "explanation": "Stretched wide you need height for safety and depth for time, and crosscourt is the longest path while you recover the court you just left. Flat down the line on the stretch is the lowest-margin ball available from that position.",
     "takeaway": "Stretched = high, deep, crosscourt. Save the line for balance.",
     "mistakeType": "changing direction off a deep defensive ball",
-    "scenarioTr": "Ad tarafı, sağlağın kesiği seni açığa sürükledi. Dengedesin ama gerginsin — akıllı karşılama nereye?",
-    "optionsTr": [
-      "Yüksek ve derin çapraza — zamanla sıfırla",
-      "Gerilirken düz paralel",
-      "Keskin kısa açı"
-    ],
-    "explanationTr": "Açılmışken önceliğin güvenlik için yükseklik, zaman için derinliktir. Derin çapraz, sen toparlanırken en uzun yolu kat eder.",
-    "takeawayTr": "Gerildiysen = yüksek, derin, çapraz. Paraleli dengeye sakla.",
     "diagram": {
       "surface": "hard",
       "youX": 0.12,
@@ -3422,24 +3302,16 @@
     "difficulty": "medium",
     "focusTag": "height as defense",
     "tacticalCategory": "defense",
-    "scenario": "You're dragged deep behind the baseline, barely reaching the ball. What buys you back into the point?",
+    "scenario": "At 3-4, 30-30 they pull you two metres behind the baseline and you barely reach the ball. They are balanced on their own baseline, waiting.",
     "options": [
-      "A high, deep ball down the middle — time to recover",
+      "High and deep down the middle",
       "A flat counter-winner attempt",
-      "A desperate drop shot"
+      "A drop shot from behind the baseline"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "Height equals time. A high deep middle ball travels slowly, lands far from both winners' corners, and lets you rebuild your court position.",
+    "explanation": "Height is time: a high deep middle ball lands far from both corners and gives you the seconds to rebuild court position. The flat counter-winner from that far back has almost no margin and ends the point for them.",
     "takeaway": "In trouble, buy time with height — not risk with pace.",
     "mistakeType": "low-percentage heroics from defense",
-    "scenarioTr": "Baseline'ın çok gerisine sürüklendin, topa zor yetişiyorsun. Seni sayıya ne geri sokar?",
-    "optionsTr": [
-      "Ortadan yüksek ve derin top — toparlanma zamanı",
-      "Düz karşı-sayı denemesi",
-      "Çaresiz drop shot"
-    ],
-    "explanationTr": "Yükseklik = zaman. Ortadan yüksek derin top yavaş gider, iki sayı köşesinden de uzağa düşer ve pozisyonunu yeniden kurmana izin verir.",
-    "takeawayTr": "Zordayken hızla risk değil, yükseklikle zaman satın al.",
     "diagram": {
       "surface": "hard",
       "youX": 0.7,
@@ -3496,24 +3368,16 @@
     "difficulty": "hard",
     "focusTag": "inside-out forehand setup",
     "tacticalCategory": "patterns",
-    "scenario": "You want more inside-out forehands (your weapon). Which rally ball creates them?",
+    "scenario": "Your inside-out forehand is your best shot and you've hit two winners with it. It's 4-4, 30-30, and you're in a neutral rally from the middle of the baseline.",
     "options": [
-      "A deep ball to their backhand — the weak crosscourt reply lands in your run-around zone",
+      "A deep ball to their backhand",
       "Any ball down the middle",
       "Short angles to their forehand"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "Pressure their backhand deep and the typical reply is a slower crosscourt into your backhand corner — exactly where you can run around and dictate inside-out.",
+    "explanation": "Pressure their backhand deep and the usual reply is a slower crosscourt into your backhand corner, which is exactly the ball you can run around. A ball down the middle gives them no reason to send it anywhere in particular.",
     "takeaway": "Your forehand hunt starts two shots earlier, on their backhand.",
     "mistakeType": "waiting for weapons instead of building them",
-    "scenarioTr": "Silahın olan inside-out forehand'i daha çok istiyorsun. Hangi ralli topu onu yaratır?",
-    "optionsTr": [
-      "Backhand'ine derin top — zayıf çapraz cevap dolanma bölgene düşer",
-      "Ortaya herhangi bir top",
-      "Forehand'ine kısa açılar"
-    ],
-    "explanationTr": "Backhand'ine derin baskı yap; tipik cevap, backhand köşene gelen yavaş çaprazdır — tam dolanıp inside-out ile yöneteceğin yer.",
-    "takeawayTr": "Forehand avın iki vuruş önce, rakibin backhand'inde başlar.",
     "diagram": {
       "surface": "hard",
       "youX": 0.3,
@@ -3599,14 +3463,14 @@
     "difficulty": "medium",
     "focusTag": "loopy ball as disruption",
     "tacticalCategory": "patterns",
-    "scenario": "Your opponent loves pace and rhythm — everything you hit hard comes back harder. What breaks their engine?",
+    "scenario": "They redirect everything you hit hard and have won six of the last eight rallies. It's 2-4 and their contact point is always waist high, on the baseline.",
     "options": [
-      "High, heavy loops that make them generate their own power",
-      "More pace to out-hit them",
-      "Standing closer to the baseline"
+      "High, heavy loops above the shoulder",
+      "More pace to try to out-hit them",
+      "Stand closer in and take it early"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "Pace-lovers feed on your energy. A slow high loop above shoulder height forces them to create power from nothing — where their timing and patience crack.",
+    "explanation": "A slow ball above shoulder height makes a pace-lover generate their own power, which is where their timing and patience break. Adding pace is the instinct and it feeds the exact ball they have been redirecting all set.",
     "takeaway": "Starve the counter-puncher: no pace to borrow.",
     "mistakeType": "feeding pace to a pace-lover",
     "diagram": {
@@ -3620,15 +3484,7 @@
       "ballTargetX": 0.5,
       "ballTargetY": 0.88,
       "scoreChip": "VS PACE"
-    },
-    "scenarioTr": "Rakip hız ve ritim âşığı — sert vurduğun her şey daha sert dönüyor. Motorunu ne bozar?",
-    "optionsTr": [
-      "Kendi gücünü üretmeye zorlayan yüksek, ağır loop'lar",
-      "Daha fazla hızla onu ezmek",
-      "Baseline'a daha yakın durmak"
-    ],
-    "explanationTr": "Hız sevenler senin enerjinle beslenir. Omuz üstü yavaş yüksek loop, gücü sıfırdan üretmeye zorlar — zamanlaması ve sabrı orada çatlar.",
-    "takeawayTr": "Kontracıyı aç bırak: ödünç alacak hız verme."
+    }
   },
   {
     "id": "rally_109",
@@ -4782,14 +4638,14 @@
     "difficulty": "medium",
     "focusTag": "first volley in doubles",
     "tacticalCategory": "net_game",
-    "scenario": "Serving and coming in, first volley in doubles with all four players active. Default target?",
+    "scenario": "You serve and come in at 40-30, all four players active, and the return floats to you just behind the service line. Both opponents are at the net.",
     "options": [
-      "Low through the middle — between the opponents",
+      "Low through the middle",
       "Sharp angle to the alley",
       "At the net player's body"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "The middle volley creates 'yours/mine' confusion, passes over the lowest net, and can't be angled away against you like an alley attempt.",
+    "explanation": "The middle volley crosses the lowest part of the net and leaves the two of them deciding whose ball it is. A sharp angle from behind the service line has to climb over the highest net with no court to land in.",
     "takeaway": "In doubles, the middle is a third opponent — recruit it.",
     "mistakeType": "forcing alley volleys",
     "diagram": {
@@ -4803,15 +4659,7 @@
       "ballTargetX": 0.5,
       "ballTargetY": 0.58,
       "scoreChip": "MIDDLE"
-    },
-    "scenarioTr": "Servis atıp giriyorsun; dört oyuncu da aktifken çiftlerdeki ilk vole. Varsayılan hedef?",
-    "optionsTr": [
-      "Ortadan alçak — rakiplerin arasına",
-      "Koridora keskin açı",
-      "File oyuncusunun gövdesine"
-    ],
-    "explanationTr": "Orta vole 'senin mi benim mi' karmaşası yaratır, filenin en alçak yerinden geçer ve koridor denemesi gibi açıyla cezalandırılamaz.",
-    "takeawayTr": "Çiftlerde orta üçüncü rakiptir — onu takımına al."
+    }
   },
   {
     "id": "doubles_107",
@@ -4877,24 +4725,16 @@
     "difficulty": "medium",
     "focusTag": "return at server's feet",
     "tacticalCategory": "return",
-    "scenario": "The server rushes the net behind every serve. Your best repeated return?",
+    "scenario": "The server follows every serve in, and their first volley has been clean all set. You're returning at 30-40 with your partner at the net.",
     "options": [
-      "Low at the incoming server's feet — make the first volley an upward defensive one",
+      "Low at the incoming server's feet",
       "High and deep to the baseline",
-      "Hard at the net player"
+      "Hard at their net player"
     ],
     "correctAnswerIndex": 0,
-    "explanation": "Their momentum forward makes ankle-height balls brutal: the first volley pops UP, and your partner at net feasts on it.",
+    "explanation": "A ball at ankle height while they are still moving forward forces the first volley upward, and your partner is standing where that pops. High and deep is safe but gives the incoming server a comfortable volley above the tape.",
     "takeaway": "Against rushing servers: return to shoelaces, partner cleans up.",
     "mistakeType": "deep returns against serve-and-volley teams",
-    "scenarioTr": "Servisçi her servisin arkasından fileye koşuyor. En iyi tekrarlanan karşılaman?",
-    "optionsTr": [
-      "Gelen servisçinin ayak dibine alçak — ilk voleyi yukarı doğru savunmaya zorla",
-      "Baseline'a yüksek ve derin",
-      "File oyuncusuna sert"
-    ],
-    "explanationTr": "Öne momentumu, bilek hizası topları acımasız yapar: ilk vole YUKARI kalkar ve filedeki partnerin onunla ziyafet çeker.",
-    "takeawayTr": "Koşan servisçiye: ayakkabı bağına dön, partner temizlesin.",
     "diagram": {
       "surface": "hard",
       "youX": 0.3,
