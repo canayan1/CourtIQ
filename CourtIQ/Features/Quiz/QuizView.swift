@@ -103,8 +103,17 @@ struct QuizView: View {
             // question, and half a screen of nothing on a mental one. Without
             // a diagram the scenario simply gets the room.
             if let authored = question.diagram {
-                QuizCourtDiagramView(diagram: authored,
-                                     play: QuizPlayLibrary.play(for: question.id))
+                // The choreographed play animates the correct shot in gold and
+                // walks players to their answer positions. Running it while the
+                // options are still on screen answered the question for the
+                // player — 130 of the 156 plays did exactly that. It belongs
+                // AFTER the pick, where the same animation becomes the
+                // explanation; before it, the static diagram shows only the
+                // situation.
+                QuizCourtDiagramView(
+                    diagram: authored,
+                    play: viewModel.hasSubmittedCurrentAnswer
+                        ? QuizPlayLibrary.play(for: question.id) : nil)
             }
 
             VStack(alignment: .leading, spacing: 16) {
