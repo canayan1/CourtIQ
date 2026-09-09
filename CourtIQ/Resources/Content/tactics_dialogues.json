@@ -128,9 +128,9 @@
               "next": "n6"
             },
             {
-              "label": "Watch their feet and copy the direction",
+              "label": "Wait until you see the bounce, then move",
               "correct": false,
-              "reply": "Their feet move late. By the time you read them, you are already sprinting.",
+              "reply": "By then you are already sprinting. The angles are set the moment they strike the ball, not when it lands.",
               "next": "n5"
             }
           ]
@@ -173,7 +173,7 @@
           "id": "n2",
           "kind": "ask",
           "mood": "thinking",
-          "text": "You're balanced, the ball is comfortable, they're in the middle. Which ball do you hit?",
+          "text": "You're balanced, the ball is comfortable, and they're on their baseline, in the middle. Which ball do you hit?",
           "options": [
             {
               "label": "Down the line, to move them",
@@ -299,9 +299,9 @@
               "next": "n3"
             },
             {
-              "label": "Drop shot, they're standing back",
+              "label": "Drop shot — they're deep but set, and they read it early",
               "correct": false,
-              "reply": "They're back but balanced, with time to read it. You'd be handing them a short ball to run onto.",
+              "reply": "Deep but balanced, with time to read it. You'd be handing them a short ball to run onto.",
               "next": "n2"
             }
           ]
@@ -1327,7 +1327,7 @@
           "id": "n2",
           "kind": "ask",
           "mood": "thinking",
-          "text": "You read it early and you can get there. What's the play?",
+          "text": "You read it early, it's sitting up above net height, and you'll take it inside the baseline. What's the play?",
           "options": [
             {
               "label": "Wait behind the baseline and let it come to you",
@@ -1474,7 +1474,7 @@
           "id": "n2",
           "kind": "ask",
           "mood": "thinking",
-          "text": "The rally is still going. What do you do with the next ball?",
+          "text": "Each reply came back weaker than the last, but this one lands deep and at a comfortable height. What do you do with it?",
           "options": [
             {
               "label": "Switch to the forehand so they can't settle",
@@ -1820,7 +1820,7 @@
           "id": "n6",
           "kind": "ask",
           "mood": "thinking",
-          "text": "Deep to the backhand, or wide and a bit short?",
+          "text": "They're standing right on the baseline, stepping in on the return. Deep to the backhand, or wide and a bit short?",
           "options": [
             {
               "label": "Wide, the angle drags them off court",
@@ -1866,10 +1866,10 @@
           "id": "n2",
           "kind": "ask",
           "mood": "thinking",
-          "text": "You serve wide in the deuce court. They are stretched outside their sideline. Where is your next ball going?",
+          "text": "You serve wide in the deuce court. They are stretched outside their sideline and still stranded there. Where is your next ball going?",
           "options": [
             {
-              "label": "Straight back at them, before they recover",
+              "label": "Hard at their body while they're still out wide",
               "correct": false,
               "reply": "You are hitting to the one spot they are already standing in. The empty half of the court stays empty.",
               "next": "n2"
@@ -2369,9 +2369,9 @@
           "text": "So when do you try the untested one?",
           "options": [
             {
-              "label": "Early in a game, when a miss costs little",
+              "label": "At 40-0 or 40-15, when a miss costs little",
               "correct": true,
-              "reply": "Right. That is also what keeps your trusted serve unreadable later on.",
+              "reply": "Right. A cheap point buys the experiment — and it keeps your trusted serve unreadable later on.",
               "next": "n7"
             },
             {
@@ -2525,9 +2525,9 @@
               "next": "n8"
             },
             {
-              "label": "Mix it around so they don't get grooved",
+              "label": "Spread it evenly between both wings so it stays fair",
               "correct": false,
-              "reply": "Go there until they solve it. One ball the other way now and then, only to stop them camping on it.",
+              "reply": "Fair is not the goal. Go there until they solve it — one ball the other way now and then, only to stop them camping on it.",
               "next": "n7"
             }
           ]
@@ -2653,7 +2653,7 @@
           "id": "n7",
           "kind": "ask",
           "mood": "thinking",
-          "text": "So when do you make this read?",
+          "text": "You're reading their recovery, not their shot. When do you make that read?",
           "options": [
             {
               "label": "In the moment after the ball leaves their racket",
@@ -3387,7 +3387,7 @@
           "id": "n2",
           "kind": "ask",
           "mood": "thinking",
-          "text": "You are a right-hander, so are they. Your forehand is much better than your backhand. What do you do?",
+          "text": "You are a right-hander, so are they. The ball is slow and neutral, deep near your baseline. Your forehand is much better than your backhand. What do you do?",
           "options": [
             {
               "label": "Take the backhand, the ball is on that side",
@@ -3555,9 +3555,9 @@
               "next": "n4"
             },
             {
-              "label": "Hard straight at them so they cannot swing",
+              "label": "A soft ball at their body at a comfortable height",
               "correct": false,
-              "reply": "You would be feeding a volley to somebody already standing near the net.",
+              "reply": "That is a feed, not a finish. They are already near the net and you would be handing them a volley.",
               "next": "n3"
             }
           ]
@@ -3915,7 +3915,7 @@
           "id": "n5",
           "kind": "ask",
           "mood": "thinking",
-          "text": "You reset, you recover, the next ball comes. Now what?",
+          "text": "You reset, you recover, and their next ball comes back neutral with you balanced behind the baseline. Now what?",
           "options": [
             {
               "label": "Go back to hitting deep cross-court with intent",
@@ -4699,7 +4699,7 @@
           "id": "n3",
           "kind": "ask",
           "mood": "thinking",
-          "text": "Do you go again?",
+          "text": "Both poaches came on first serves. This one is a second serve, and they've driven those down the line. Do you go again?",
           "options": [
             {
               "label": "Poach again, it's been working",
@@ -4818,7 +4818,7 @@
           "id": "n8",
           "kind": "ask",
           "mood": "thinking",
-          "text": "The return goes up over your head. What now?",
+          "text": "The return goes up deep over your head, past anything you could reach. What now?",
           "options": [
             {
               "label": "Cross to the other half — that lob is your partner's ball",
