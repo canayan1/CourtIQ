@@ -193,7 +193,7 @@ struct DialogueView: View {
                 }
 
             case .offer:
-                PrimaryButton(title: "Go on then", icon: "arrow.turn.down.right") {
+                PrimaryButton(title: copy.goOnThen, icon: "arrow.turn.down.right") {
                     acceptOffer()
                 }
                 QuietButton(title: "Maybe later") {
@@ -211,7 +211,7 @@ struct DialogueView: View {
                 }
 
             case .say, .show:
-                PrimaryButton(title: "Continue", icon: "arrow.right") {
+                PrimaryButton(title: copy.continueLabel, icon: "arrow.right") {
                     Sound.play(.tap)
                     advance()
                 }

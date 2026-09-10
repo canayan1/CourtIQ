@@ -49,7 +49,7 @@ struct LessonView: View {
             .padding(.bottom, 24)
         }
         .background(AppPalette.cream)
-        .navigationTitle("Chapter \(chapter.number)")
+        .navigationTitle(copy.chapter(chapter.number))
         .navigationBarTitleDisplayMode(.inline)
         .animation(Motion.reveal, value: phase)
         .animation(Motion.reveal, value: picked)
@@ -82,10 +82,10 @@ struct LessonView: View {
             // the hero treatment — it is the one line worth remembering — while
             // the situation sits above it so the reader is standing inside the
             // point before the rule lands.
-            section("The situation", lesson.situation)
+            section(copy.theSituation, lesson.situation)
 
             VStack(alignment: .leading, spacing: 10) {
-                Eyebrow(isReview ? "Review · The principle" : "The principle",
+                Eyebrow(isReview ? copy.reviewPrinciple : copy.thePrinciple,
                         tint: .white.opacity(0.85))
                 Text(lesson.principle)
                     .appFont(22, weight: .bold, relativeTo: .title3)
@@ -107,7 +107,7 @@ struct LessonView: View {
                     .cardSurface()
             }
 
-            section("Your default", lesson.defaultAction)
+            section(copy.yourDefault, lesson.defaultAction)
 
             if !lesson.adjustments.isEmpty {
                 VStack(alignment: .leading, spacing: 12) {
@@ -130,7 +130,7 @@ struct LessonView: View {
                 .transition(.opacity)
             }
 
-            section("The common mistake", lesson.commonMistake)
+            section(copy.theCommonMistake, lesson.commonMistake)
 
             // The "Going further" note is part of the one subscription.
             // Subscribers see it in full; everyone else sees a locked teaser
@@ -149,7 +149,7 @@ struct LessonView: View {
             }
 
             if showsQuiz {
-                PrimaryButton(title: "Try it in a point", icon: "arrow.right") {
+                PrimaryButton(title: copy.tryItInAPoint, icon: "arrow.right") {
                     phase = .decide
                 }
                 .padding(.top, 4)
@@ -319,7 +319,7 @@ struct LessonView: View {
             HStack(spacing: 8) {
                 Image(systemName: correct ? "checkmark.seal.fill" : "arrow.counterclockwise")
                     .font(.headline)
-                Text(correct ? (attempts == 1 ? "Exactly right" : "That's it") : "Not the highest-percentage play")
+                Text(correct ? (attempts == 1 ? copy.exactlyRight : copy.thatsIt) : copy.notHighestPercentage)
                     .font(.system(.headline, design: .rounded).weight(.bold))
             }
             .foregroundStyle(correct ? AppPalette.mossText : AppPalette.clayText)
@@ -331,7 +331,7 @@ struct LessonView: View {
                     .fixedSize(horizontal: false, vertical: true)
 
                 PrimaryButton(
-                    title: isReview ? "Done" : "Complete lesson",
+                    title: isReview ? copy.done : copy.completeLesson,
                     icon: "checkmark",
                     tint: AppPalette.mossDeep
                 ) {

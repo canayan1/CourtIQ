@@ -182,7 +182,7 @@ struct LearnPathView: View {
                 open(next.lesson, in: next.chapter, access: access)
             } label: {
                 VStack(alignment: .leading, spacing: 10) {
-                    Eyebrow(progress.completedCount == 0 ? "Start here" : "Continue",
+                    Eyebrow(progress.completedCount == 0 ? copy.startHere : copy.continueLabel,
                             tint: .white.opacity(0.85))
                     Text(next.lesson.title)
                         .appFont(24, weight: .heavy, relativeTo: .title2)

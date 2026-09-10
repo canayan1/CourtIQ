@@ -197,6 +197,7 @@
 		C6FACBEAF61D4096BFBD94B1 /* TacticsCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB43A14D9D46278C44F454 /* TacticsCopy.swift */; };
 		57BDD6501F87474BBD2A0162 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 29114A4DB26D434FA843A2C4 /* Localizable.strings */; };
 		8C6EC95640A9480BAC57DDE3 /* TacticsContentI18n.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74D6444366D433795340A61 /* TacticsContentI18n.swift */; };
+		4E31330777EA4B08A8DEB98B /* tactics_i18n.fr.json in Resources */ = {isa = PBXBuildFile; fileRef = 14C9C1FF08FC486084225C29 /* tactics_i18n.fr.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -402,6 +403,7 @@
 		7DBB43A14D9D46278C44F454 /* TacticsCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TacticsCopy.swift; path = CourtIQ/Features/Tactics/TacticsCopy.swift; sourceTree = "<group>"; };
 		29114A4DB26D434FA843A2C4 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = file; name = Localizable.strings; path = CourtIQ/Resources/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A74D6444366D433795340A61 /* TacticsContentI18n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TacticsContentI18n.swift; path = CourtIQ/Features/Tactics/TacticsContentI18n.swift; sourceTree = "<group>"; };
+		14C9C1FF08FC486084225C29 /* tactics_i18n.fr.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = tactics_i18n.fr.json; path = CourtIQ/Resources/Content/tactics_i18n.fr.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -514,6 +516,7 @@
 				A000000000000000000FC0 /* WallRallyCamView.swift */,
 				B100000000000000000001 /* WallBallLocator.swift */,
 				B400000000000000000001 /* WallSwingDetector.swift */,
+				14C9C1FF08FC486084225C29 /* tactics_i18n.fr.json */,
 				A74D6444366D433795340A61 /* TacticsContentI18n.swift */,
 				29114A4DB26D434FA843A2C4 /* Localizable.strings */,
 				7DBB43A14D9D46278C44F454 /* TacticsCopy.swift */,
@@ -750,6 +753,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E31330777EA4B08A8DEB98B /* tactics_i18n.fr.json in Resources */,
 				57BDD6501F87474BBD2A0162 /* Localizable.strings in Resources */,
 				8833ED409FE04E80950CEC88 /* tactics_wrong.wav in Resources */,
 				617B4F4BF5C24B659D8B0594 /* tactics_tap.wav in Resources */,

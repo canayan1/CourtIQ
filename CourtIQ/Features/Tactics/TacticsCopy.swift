@@ -15,6 +15,25 @@ struct TacticsCopy {
         }
     }
 
+    // Lesson chrome — the labels around the content. These were English
+    // literals in the views while the lesson itself was translated.
+    var theSituation: String { t("The situation", "Durum", "La situation") }
+    var thePrinciple: String { t("The principle", "İlke", "Le principe") }
+    var reviewPrinciple: String { t("Review · The principle", "Tekrar · İlke", "Révision · Le principe") }
+    var yourDefault: String { t("Your default", "Varsayılanın", "Ton réflexe") }
+    var theCommonMistake: String { t("The common mistake", "Sık yapılan hata", "L'erreur classique") }
+    var tryItInAPoint: String { t("Try it in a point", "Bir sayıda dene", "Essaie-le dans un point") }
+    var continueLabel: String { t("Continue", "Devam", "Continuer") }
+    var startHere: String { t("Start here", "Buradan başla", "Commence ici") }
+    var goOnThen: String { t("Go on then", "Hadi bakalım", "Vas-y") }
+    var exactlyRight: String { t("Exactly right", "Tam isabet", "Exactement") }
+    var thatsIt: String { t("That's it", "İşte bu", "C'est ça") }
+    var notHighestPercentage: String {
+        t("Not the highest-percentage play", "En yüksek yüzdeli seçim değil", "Ce n'est pas le choix le plus rentable")
+    }
+    var completeLesson: String { t("Complete lesson", "Dersi tamamla", "Terminer la leçon") }
+    var done: String { t("Done", "Bitti", "Terminé") }
+
     // MARK: Lesson content
     //
     // The curriculum JSON holds the English and the structure; these read the
