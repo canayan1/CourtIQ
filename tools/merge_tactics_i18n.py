@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Merge a language's Tactics group files into one bundled i18n file.
+"""Emit or merge the Tactics course translation files.
 
-    python3 tools/merge_tactics_i18n.py fr
+    python3 tools/merge_tactics_i18n.py --emit <dir>   # English, split into groups
+    python3 tools/merge_tactics_i18n.py fr             # merge <dir>/fr/*.json
 
 Reads <scratch>/tac/<lang>/*.json (the per-group agent output), checks every
 key against the English manifest regenerated from the curriculum itself, and
@@ -86,5 +87,35 @@ def main(lang):
           f"({100 * len(merged) // len(en)}%)")
 
 
+def emit(target):
+    """Split the English into one file per chapter plus three dialogue files.
+
+    Chapter-sized groups are what a translator (or a translating agent) can
+    hold in one pass while still seeing a whole lesson's situation, principle
+    and quiz together -- which is what catches a crosscourt that turned into a
+    down-the-line somewhere between the option and its explanation.
+    """
+    en = manifest()
+    cur = json.load(open("CourtIQ/Resources/Content/tactics_curriculum.json"))
+    groups, dialogue = {}, {}
+    for ch in cur["chapters"] + cur.get("sideSets", []):
+        pre = (f"chapter.{ch['id']}.",) + tuple(f"lesson.{l['id']}." for l in ch["lessons"])
+        groups[f"chapter-{ch['id']}"] = {k: v for k, v in en.items() if k.startswith(pre)}
+    dialogue = {k: v for k, v in en.items() if k.startswith("dialogue.")}
+    items = list(dialogue.items())
+    for i in range(3):
+        groups[f"dialogue-{i + 1}"] = dict(items[i * len(items) // 3:(i + 1) * len(items) // 3])
+    os.makedirs(target, exist_ok=True)
+    covered = sum(len(g) for g in groups.values())
+    assert covered == len(en), f"{covered} of {len(en)} keys landed in a group"
+    for name, g in groups.items():
+        json.dump(g, open(os.path.join(target, f"{name}.json"), "w"), ensure_ascii=False, indent=1)
+        print(f"{name:30} {len(g):4d} keys  {sum(len(v) for v in g.values()):6,d} chars")
+    print(f"TOTAL {covered} keys per language")
+
+
 if __name__ == "__main__":
-    main(sys.argv[1])
+    if sys.argv[1] == "--emit":
+        emit(sys.argv[2])
+    else:
+        main(sys.argv[1])
