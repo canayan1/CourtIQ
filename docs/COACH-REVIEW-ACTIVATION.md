@@ -154,9 +154,43 @@ Found by reading the published documents, not the plans:
 
 ---
 
+## 4a. Deploy runbook for Step 1 (needs the words "deploy et")
+
+Everything below is built and committed; nothing is deployed. Run in this
+order — the migration schedules a cron job that reads a Vault secret, so
+the secret must exist before 03:17 UTC of the first day.
+
+```bash
+# 1. schema + cron (pg_cron, pg_net, unique txn index, access log, language)
+supabase db push --linked
+
+# 2. the maintenance secret into Vault (value read from disk, never typed)
+supabase db query --linked "select vault.create_secret('$(tr -d '\n' < ~/.appstore-keys/coach_maintenance_secret.txt)', 'coach_review_maintenance_secret');"
+
+# 3. function secrets (same file for the function side; cap and sandbox flag)
+supabase secrets set COACH_MAINTENANCE_SECRET="$(tr -d '\n' < ~/.appstore-keys/coach_maintenance_secret.txt)" COACH_REVIEW_MAX_OPEN=5 COACH_REVIEW_ALLOW_SANDBOX=1
+
+# 4. functions
+supabase functions deploy coach-review-order
+supabase functions deploy coach-review-queue --no-verify-jwt
+supabase functions deploy coach-review-maintenance --no-verify-jwt
+
+# 5. the panel (repo canayanIOSapps)
+cd /Users/can/Projects/canayanIOSapps && vercel deploy --prod
+```
+
+`COACH_REVIEW_ALLOW_SANDBOX=1` stays on for Step 3 (the device test) and is
+set back to `0` at Step 4. With it on, a sandbox receipt can create an
+order; with it off, only a production one can.
+
+Smoke test after deploy, before touching the app: `curl` the maintenance
+function with the secret → `{ purged: 0, open: 0, ... }`; post to the
+order function with a garbage `transactionJws` → `402 { error: "purchase" }`.
+
 ## 5. Order of work
 
-**Step 0 — decide the exposure now (Can).** The Buy button is live to real
+**Step 0 — decide the exposure now (Can). ✅ 10 Sep: IAP set
+`DEVELOPER_REMOVED_FROM_SALE`.** The Buy button is live to real
 users today with §1a unfixed. Two honest options:
 
 - *(a)* Temporarily remove the IAP from sale in all territories (ASC
@@ -167,12 +201,13 @@ users today with §1a unfixed. Two honest options:
   A single buyer with a bad upload is the cost.
 
 **Step 1 — the three app/backend fixes (§1a, §1b, §1c) + retention cron
-(§2) + capacity cap + SLA mail (§4).** Roughly two days of build; all
-testable with the StoreKit config and a sandbox account. Ships as part
-of 1.2. *(Me.)*
+(§2) + capacity cap + SLA visibility (§4).** ✅ Built and committed 10 Sep
+(292f3ea app, 0f8b5e4 backend, panel 3b1aade). Not yet deployed — §4a.
+SLA *mail* was dropped for now: no mail provider is configured; the panel
+banner and the daily digest cover it until one is.
 
-**Step 2 — legal text (§3).** Drafts from me, wording sign-off from Can /
-lawyer, published to the GitHub Pages policy + ToS before submission, App
+**Step 2 — legal text (§3).** Drafts committed 10 Sep (privacy §2a, terms
+§3a). Wording sign-off from Can / lawyer, published to the GitHub Pages policy + ToS before submission, App
 Privacy labels updated in the web UI. Blocking for the App Store review as
 much as for the law: the review screenshot of a consumable that shares
 video with a person, next to a privacy policy that never mentions a person,
