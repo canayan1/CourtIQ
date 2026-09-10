@@ -188,7 +188,7 @@
               "next": "n2"
             },
             {
-              "label": "Cross-court, deep",
+              "label": "Cross-court and deep, as usual",
               "correct": true,
               "reply": "Yes. Longest court, lowest net, and you finish the shot near your recovery spot.",
               "next": "n3"
@@ -293,7 +293,7 @@
               "next": "n2"
             },
             {
-              "label": "Three-quarter pace, deep",
+              "label": "Three-quarter pace, deep in their court",
               "correct": true,
               "reply": "Right. Depth is what takes their options away, not speed.",
               "next": "n3"
@@ -1147,7 +1147,7 @@
           "text": "Why does an arcing ball also bother them?",
           "options": [
             {
-              "label": "It drops from above your shoulder, with no easy contact",
+              "label": "It drops from above their shoulder, with no easy contact",
               "correct": true,
               "reply": "Right. Plenty of club players have no attacking answer to a ball falling on them.",
               "next": "n8"
@@ -1483,7 +1483,7 @@
               "next": "n2"
             },
             {
-              "label": "The backhand again",
+              "label": "Hit the backhand again, same spot",
               "correct": true,
               "reply": "Yes. It's getting worse every time you go there. Don't rescue them.",
               "next": "n3"
@@ -1694,7 +1694,7 @@
           "text": "And a serve you hit with no target in mind. Where does that one usually go?",
           "options": [
             {
-              "label": "Into the middle of the box",
+              "label": "Into the middle of the box, every time",
               "correct": true,
               "reply": "Usually, yes. The one part of the box that pressures nobody.",
               "next": "n7"
@@ -2519,13 +2519,13 @@
           "text": "You've found the weak side. How often do you go there?",
           "options": [
             {
-              "label": "Until they solve it",
+              "label": "Keep going there until they solve it",
               "correct": true,
               "reply": "Right. Go there until they fix it. Nothing says you have to be fair.",
               "next": "n8"
             },
             {
-              "label": "Spread it evenly between both wings so it stays fair",
+              "label": "Spread it between both wings to stay fair",
               "correct": false,
               "reply": "Fair is not the goal. Go there until they solve it — one ball the other way now and then, only to stop them camping on it.",
               "next": "n7"
@@ -2803,7 +2803,7 @@
           "text": "You've hit the short ball. Where are you standing?",
           "options": [
             {
-              "label": "Moving in behind it",
+              "label": "Moving in behind it, closing the net",
               "correct": true,
               "reply": "Right. The reply will be short and weak, and you need to be there for it.",
               "next": "n8"
@@ -3188,7 +3188,7 @@
           "text": "Next set you're up 4-1 with the same pattern. What do you change?",
           "options": [
             {
-              "label": "Nothing at all",
+              "label": "Nothing, it's still working",
               "correct": true,
               "reply": "Right. Run it until they solve it. Boredom is not a tactical reason.",
               "next": "n9"
