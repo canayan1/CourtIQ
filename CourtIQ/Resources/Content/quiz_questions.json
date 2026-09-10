@@ -38,7 +38,9 @@
       "Sers sur son corps pour le bloquer"
     ],
     "explanationFr": "Il a montré son ajustement — un mètre plus large et un pas en avant — donc le T qu'il a déserté est maintenant libre. Resservir extérieur plus fort, c'est envoyer la balle exactement là où il vient de se placer.",
-    "takeawayFr": "Répète un service gagnant jusqu'à ce qu'il bouge, puis sers là où il était."
+    "takeawayFr": "Répète un service gagnant jusqu'à ce qu'il bouge, puis sers là où il était.",
+    "focusTagTr": "kayan karşılayanı cezalandırmak",
+    "focusTagFr": "punir l'ajustement du relanceur"
   },
   {
     "id": "serve_022",
@@ -83,7 +85,9 @@
       "Revers long de ligne dans l'ouverture"
     ],
     "explanationFr": "Un retour long tue le +1 : de la hauteur et de la longueur en croisé te rendent le pas de replacement que tu dois. Tourner autour pour le décroisé est le piège — ça ouvre tout le côté égalité alors que tu recules encore.",
-    "takeawayFr": "Retour long, pas de +1 : neutralise en croisé et gagne la balle suivante."
+    "takeawayFr": "Retour long, pas de +1 : neutralise en croisé et gagne la balle suivante.",
+    "focusTagTr": "+1 fırsatı yokken sıfırlamak",
+    "focusTagFr": "quand le +1 n'est pas jouable"
   },
   {
     "id": "serve_023",
@@ -128,7 +132,9 @@
       "Garde la vitesse et frappe encore plus fort"
     ],
     "explanationFr": "Des jambes fatiguées raccourcissent la chaîne : à pleine vitesse la trajectoire s'aplatit et la balle accroche la bande. Moins de vitesse avec de l'effet redonne de l'arc. Viser plus court ne sert à rien, ta visée n'a jamais été le problème.",
-    "takeawayFr": "Quand les jambes lâchent, échange la vitesse contre de l'arc."
+    "takeawayFr": "Quand les jambes lâchent, échange la vitesse contre de l'arc.",
+    "focusTagTr": "yorgunken birinci servis yüzdesi",
+    "focusTagFr": "premières balles et fatigue"
   },
   {
     "id": "serve_024",
@@ -169,7 +175,9 @@
       "Aplatis-la pour plus de vitesse"
     ],
     "explanationFr": "Une deuxième balle qui tombe au milieu du carré invite le relanceur à avancer ; le même lift visé dans le coin du fond repousse son impact derrière la ligne de fond. Plus d'effet sans longueur, c'est le réflexe classique qui la fait tomber encore plus court.",
-    "takeawayFr": "Deuxième balle : même forme, cible plus longue."
+    "takeawayFr": "Deuxième balle : même forme, cible plus longue.",
+    "focusTagTr": "ikinci serviste derinlik",
+    "focusTagFr": "longueur de la deuxième balle"
   },
   {
     "id": "serve_025",
@@ -210,7 +218,9 @@
       "Première extérieure et montée au filet"
     ],
     "explanationFr": "Avec un relanceur campé dans le court, la balle à éviter c'est une deuxième : une première à 80 % avec de l'effet qui bloque le corps vaut mieux que de la vitesse. Partir à plat au T pour l'ace échoue ici, la faute lui offre exactement ce qu'il attend.",
-    "takeawayFr": "Sur balle de break, passe ta première : la faute est le vrai risque."
+    "takeawayFr": "Sur balle de break, passe ta première : la faute est le vrai risque.",
+    "focusTagTr": "break sayısında servis seçimi",
+    "focusTagFr": "choix de service sur balle de break"
   },
   {
     "id": "serve_026",
@@ -251,7 +261,9 @@
       "Sers lourd au niveau de sa hanche"
     ],
     "explanationFr": "Placé aussi large, il laisse tout le T découvert, et un service à plat là-bas est la plus longue course que tu peux lui demander. Lifter encore plus large ne fait que le renvoyer sur la balle pour laquelle il a préparé ses appuis.",
-    "takeawayFr": "Sers dans le terrain que le relanceur t'abandonne."
+    "takeawayFr": "Sers dans le terrain que le relanceur t'abandonne.",
+    "focusTagTr": "karşılayanın duruşuna göre servis",
+    "focusTagFr": "servir selon la position du relanceur"
   },
   {
     "id": "serve_027",
@@ -284,7 +296,9 @@
       "Sers tout sur le corps pour assurer"
     ],
     "explanationFr": "Le schéma a tenu tous les jeux parce que le relanceur ne l'a pas résolu, et le dernier jeu d'un set n'est pas le moment de tester des cibles non éprouvées. Changer pour des services que tu n'as pas encore montrés, c'est de la variété sans aucune preuve derrière.",
-    "takeawayFr": "Termine le set avec le schéma qui l'a construit."
+    "takeawayFr": "Termine le set avec le schéma qui l'a construit.",
+    "focusTagTr": "servis oyununu kapatmak",
+    "focusTagFr": "conclure son jeu de service"
   },
   {
     "id": "serve_028",
@@ -325,7 +339,9 @@
       "Sers à plat le long du T"
     ],
     "explanationFr": "C'est l'allonge qui bat la largeur : une balle sur la hanche lui enlève l'extension du bras avec laquelle il retourne et coince son geste. Servir encore plus large est l'instinct qui échoue ici, c'est exactement la balle que son envergure a déjà gérée deux fois.",
-    "takeawayFr": "On n'étire pas de longs bras, on les enferme."
+    "takeawayFr": "On n'étire pas de longs bras, on les enferme.",
+    "focusTagTr": "uzun kollu rakibe servis",
+    "focusTagFr": "servir contre un grand gabarit"
   },
   {
     "id": "serve_029",
@@ -358,7 +374,9 @@
       "Aplatis-la et va chercher l'ace"
     ],
     "explanationFr": "Les faits disent que ta première va bien et que la faute vient de la décélération : un geste complet et normal est donc la balle la moins risquée. Rouler une première à 70 % est la solution tentante, mais c'est justement décélérer qui vient de te trahir.",
-    "takeawayFr": "Après une double, joue ta première normale, geste complet."
+    "takeawayFr": "Après une double, joue ta première normale, geste complet.",
+    "focusTagTr": "çift hatadan sonraki servis",
+    "focusTagFr": "après une double faute"
   },
   {
     "id": "serve_030",
@@ -391,7 +409,9 @@
       "Lancer plus haut et geste plus doux"
     ],
     "explanationFr": "Un vent de face freine la balle et vole de la longueur : un lancer plus bas et devant, avec une cible plus longue et plus tendue, remet le service à sa place. Mettre plus d'effet est l'instinct qui échoue, la balle tombe encore plus court, dans sa zone de frappe.",
-    "takeawayFr": "Contre le vent : lancer plus bas, cible plus longue."
+    "takeawayFr": "Contre le vent : lancer plus bas, cible plus longue.",
+    "focusTagTr": "ters rüzgârda servis",
+    "focusTagFr": "servir face au vent"
   },
   {
     "id": "return_021",
@@ -436,7 +456,9 @@
       "Bas et court pour le faire avancer"
     ],
     "explanationFr": "En bloquant derrière la ligne de fond, tu ne contrôles aucune ligne de côté : une balle longue au milieu enlève l'angle au serveur pendant que tu te replaces. Le croisé long semble aussi sûr, mais il fuit vers l'extérieur sur un bloc en extension et ouvre le court.",
-    "takeawayFr": "Bloc en extension : haut, long, au milieu."
+    "takeawayFr": "Bloc en extension : haut, long, au milieu.",
+    "focusTagTr": "savunma bloğu hedefi",
+    "focusTagFr": "cible du retour bloqué"
   },
   {
     "id": "return_022",
@@ -481,7 +503,9 @@
       "Recule encore d'un mètre pour voir la balle"
     ],
     "explanationFr": "À 150 km/h sans lift, tu as le temps de prendre la balle sur la ligne de fond, et un impact plus tôt lui enlève le temps de préparation qu'il utilise. Bloquer plus long depuis un mètre en arrière est sûr, mais lui laisse le même coup droit gratuit.",
-    "takeawayFr": "Enlève le temps au serveur qui a toujours le temps de se placer."
+    "takeawayFr": "Enlève le temps au serveur qui a toujours le temps de se placer.",
+    "focusTagTr": "düz servise karşı pozisyon",
+    "focusTagFr": "placement face à un service à plat"
   },
   {
     "id": "return_023",
@@ -522,7 +546,9 @@
       "Choisis-la une fois la balle rebondie"
     ],
     "explanationFr": "Une cible choisie avant le lancer laisse le geste s'engager complètement, et c'est exactement ce qui manquait à ces retours flottants. Décider quand la balle quitte le tamis paraît plus vif, mais tu pilotes encore la raquette quand la balle est déjà sur toi.",
-    "takeawayFr": "Choisis la cible du retour avant son lancer."
+    "takeawayFr": "Choisis la cible du retour avant son lancer.",
+    "focusTagTr": "karşılama hedefine erken karar",
+    "focusTagFr": "s'engager sur une cible de retour"
   },
   {
     "id": "return_024",
@@ -567,7 +593,9 @@
       "Enroule un gros lift en croisé"
     ],
     "explanationFr": "Sous le genou, il n'y a pas de hauteur pour lifter : un slice accompagne le rebond fusant et retombe quand même long avec de la marge sur le filet. Enrouler du lift sur une balle dans les lacets, c'est ce qui a déjà trouvé le filet deux fois.",
-    "takeawayFr": "Balle basse, réponse basse : slice long."
+    "takeawayFr": "Balle basse, réponse basse : slice long.",
+    "focusTagTr": "alçak slice servisi karşılamak",
+    "focusTagFr": "retour sur service slicé bas"
   },
   {
     "id": "return_025",
@@ -608,7 +636,9 @@
       "Split deux fois, une tôt et une tard"
     ],
     "explanationFr": "Le split ne sert que dans l'instant où tes appuis se rechargent : face à un geste lent, il doit donc être retardé jusqu'à son impact. Splitter deux fois ressemble à une solution, mais le second saut retombe trop tard et te fige au moment de pousser.",
-    "takeawayFr": "Cale ton split sur son impact, pas sur ton rythme."
+    "takeawayFr": "Cale ton split sur son impact, pas sur ton rythme.",
+    "focusTagTr": "yavaş serviste split step zamanı",
+    "focusTagFr": "split-step face à un geste lent"
   },
   {
     "id": "return_026",
@@ -653,7 +683,9 @@
       "Reste en arrière et bloque tranquillement"
     ],
     "explanationFr": "Avancer prive le lift de sa hauteur de rebond, et le croisé t'offre le court le plus long et le filet le plus bas pour préparer le +1. Le long de ligne sur une balle liftée montante, c'est la même agressivité au-dessus du filet le plus haut avec le moins de place.",
-    "takeawayFr": "Attaque une deuxième balle en avançant, et croise pour la marge."
+    "takeawayFr": "Attaque une deuxième balle en avançant, et croise pour la marge.",
+    "focusTagTr": "ikinci servise saldırı",
+    "focusTagFr": "avancer sur la deuxième balle"
   },
   {
     "id": "return_027",
@@ -694,7 +726,9 @@
       "Décale-toi vers le long de ligne"
     ],
     "explanationFr": "Un coup droit en extension depuis derrière la ligne de fond revient bien plus souvent en croisé qu'en long de ligne : couper ses angles réels veut dire se décaler de ce côté. Revenir pile sur la marque du milieu est le réflexe par défaut qui ignore cette balle.",
-    "takeawayFr": "Replace-toi sur sa réponse probable, pas sur la marque du milieu."
+    "takeawayFr": "Replace-toi sur sa réponse probable, pas sur la marque du milieu.",
+    "focusTagTr": "karşılamadan sonra toparlanma",
+    "focusTagFr": "replacement après le retour"
   },
   {
     "id": "return_028",
@@ -739,7 +773,9 @@
       "Bloque-le long et joue l'échange normal"
     ],
     "explanationFr": "Un point pas cher à 30-0, c'est là qu'on dépense du risque : des appuis lents, une deuxième balle qui reste haute et deux passings manqués pointent tous vers l'avant. Frapper et rester au fond est plus sûr, mais lui rend l'échange de fond où il est à l'aise.",
-    "takeawayFr": "Dépense le point gratuit sur le jeu qui lui fait peur."
+    "takeawayFr": "Dépense le point gratuit sur le jeu qui lui fait peur.",
+    "focusTagTr": "kesip fileye çıkma anı",
+    "focusTagFr": "quand monter derrière son retour"
   },
   {
     "id": "return_029",
@@ -780,7 +816,9 @@
       "Pendant que tu retournes vers la ligne"
     ],
     "explanationFr": "Souffler sur les rebonds relâche la tension pendant qu'il te reste du temps pour charger le split-step, et c'est fini avant que le lancer réclame tes yeux. Expirer à son impact est trop tard : tu lis et tu pars en apnée.",
-    "takeawayFr": "Souffle sur ses rebonds, split sur son impact."
+    "takeawayFr": "Souffle sur ses rebonds, split sur son impact.",
+    "focusTagTr": "karşılama öncesi nefes zamanı",
+    "focusTagFr": "respirer avant le retour"
   },
   {
     "id": "return_030",
@@ -825,7 +863,9 @@
       "Joue les deux longues et fais-le gagner"
     ],
     "explanationFr": "C'est sur la première balle de break que le serveur a le plus de chances de manquer sa première : dépense ton agressivité là, au lieu de la garder. Jouer la première long et neutre lui rend précisément la balle que tu as gagné le droit d'attaquer.",
-    "takeawayFr": "Dépense la première balle de break, ne la garde pas."
+    "takeawayFr": "Dépense la première balle de break, ne la garde pas.",
+    "focusTagTr": "iki break sayısını planlamak",
+    "focusTagFr": "enchaîner les balles de break"
   },
   {
     "id": "rally_021",
@@ -870,7 +910,9 @@
       "Un angle court pour la faire avancer"
     ],
     "explanationFr": "Une balle longue au milieu ne lui donne aucun angle à copier : sa réponse doit revenir par le centre, là où tu es déjà. Viser encore le coin, c'est ce qui lui a offert trois points gagnants, ton angle devient le sien.",
-    "takeawayFr": "Contre une joueuse d'angles, le milieu est une cible."
+    "takeawayFr": "Contre une joueuse d'angles, le milieu est une cible.",
+    "focusTagTr": "nötr ralde hedef",
+    "focusTagFr": "cible en échange neutre"
   },
   {
     "id": "rally_022",
@@ -915,7 +957,9 @@
       "Un coup droit à plat long de ligne"
     ],
     "explanationFr": "À trois mètres derrière, il a huit mètres de plus à couvrir vers l'avant, et il a montré tout le match qu'il ne ferait pas cette course. Frapper plus long ne fait que nourrir la force pour laquelle il a choisi ce placement.",
-    "takeawayFr": "Si la longueur ne fait pas mal, tire-le vers l'avant."
+    "takeawayFr": "Si la longueur ne fait pas mal, tire-le vers l'avant.",
+    "focusTagTr": "geride duran rakibi öne çekmek",
+    "focusTagFr": "faire avancer un joueur reculé"
   },
   {
     "id": "rally_023",
@@ -956,7 +1000,9 @@
       "Reste large et garde la ligne quittée"
     ],
     "explanationFr": "Comme ton impact était à l'extérieur de la ligne de côté, les deux réponses qu'il peut atteindre se coupent côté avantage du centre : un pas au-delà de la marque couvre les deux. La marque du milieu te laisse une foulée de retard sur tout ce qui part côté avantage.",
-    "takeawayFr": "Replace-toi au milieu de ses angles, pas au milieu du court."
+    "takeawayFr": "Replace-toi au milieu de ses angles, pas au milieu du court.",
+    "focusTagTr": "açıortayda toparlanma",
+    "focusTagFr": "replacement sur la bissectrice"
   },
   {
     "id": "rally_024",
@@ -1001,7 +1047,9 @@
       "Tourne autour pour ton coup droit croisé"
     ],
     "explanationFr": "Face à une gauchère, la diagonale croisée que tu as toujours échangée nourrit son coup droit, et une balle courte au centre est ta chance de l'envoyer dans l'autre coin. Tourner autour ne fait que recharger la même diagonale.",
-    "takeawayFr": "Contre une gauchère, vérifie quel coin abrite le revers."
+    "takeawayFr": "Contre une gauchère, vérifie quel coin abrite le revers.",
+    "focusTagTr": "solağa karşı çaprazlar",
+    "focusTagFr": "les diagonales face à un gaucher"
   },
   {
     "id": "rally_025",
@@ -1046,7 +1094,9 @@
       "Avance et prends-la à la montée"
     ],
     "explanationFr": "La fatigue ralentit les appuis, pas le geste : tourner plus tôt rétablit un point d'impact devant toi, là où le cadre cesse d'apparaître. Reculer paraît plus sûr mais ajoute une foulée de course et repousse l'impact encore plus en arrière.",
-    "takeawayFr": "Jambes fatiguées : tourne plus tôt, ne va pas chercher plus tard."
+    "takeawayFr": "Jambes fatiguées : tourne plus tôt, ne va pas chercher plus tard.",
+    "focusTagTr": "yorgunken vuruş noktası",
+    "focusTagFr": "point d'impact et fatigue"
   },
   {
     "id": "rally_026",
@@ -1087,7 +1137,9 @@
       "Recule d'un pas au cas où elle joue long"
     ],
     "explanationFr": "Un impact en extension et en retard ne peut pas produire de longueur : la réponse courte est décidée avant même sa frappe, et le déplacement se fait sur son impact. Attendre de lire le rebond, c'est pour ça que tu es arrivé en retard sur les deux dernières.",
-    "takeawayFr": "Pars sur son impact, pas sur le rebond."
+    "takeawayFr": "Pars sur son impact, pas sur le rebond.",
+    "focusTagTr": "kısa topu erken okumak",
+    "focusTagFr": "anticiper la balle courte"
   },
   {
     "id": "rally_027",
@@ -1132,7 +1184,9 @@
       "Enlève la vitesse et pousse la balle"
     ],
     "explanationFr": "Monter d'un mètre au-dessus du filet réduit les fautes sans changer ton jeu : le même geste retombe long au lieu d'accrocher la bande. Frapper plus fort contre une joueuse qui remonte tout ne fait que rétrécir la marge qui te trahit déjà.",
-    "takeawayFr": "Corrige tes fautes par la hauteur avant de toucher à ta vitesse."
+    "takeawayFr": "Corrige tes fautes par la hauteur avant de toucher à ta vitesse.",
+    "focusTagTr": "hızdan önce güvenlik payı",
+    "focusTagFr": "la marge avant la puissance"
   },
   {
     "id": "rally_028",
@@ -1177,7 +1231,9 @@
       "Frappe fort au milieu, dans ses pieds"
     ],
     "explanationFr": "Depuis l'extérieur de la ligne de côté, le long de ligne c'est le filet le plus haut, le court le plus court et la plus longue course de replacement pour toi. Le croisé garde le filet bas et la longue diagonale : on change de direction depuis le milieu du court, pas depuis son coin.",
-    "takeawayFr": "Change de direction depuis le milieu, pas depuis le coin."
+    "takeawayFr": "Change de direction depuis le milieu, pas depuis le coin.",
+    "focusTagTr": "yön değiştirme anı",
+    "focusTagFr": "d'où changer de direction"
   },
   {
     "id": "rally_029",
@@ -1222,7 +1278,9 @@
       "Prends une grande inspiration avant de servir"
     ],
     "explanationFr": "Expirer à chaque impact stabilise le gainage et évite la dette d'oxygène qui transforme les longs échanges en longues fautes. Retenir jusqu'à la fin du point, c'est ce que font la plupart des joueurs de club, et c'est exactement pour ça que la dixième balle s'envole.",
-    "takeawayFr": "Une expiration par impact, tout l'échange."
+    "takeawayFr": "Une expiration par impact, tout l'échange.",
+    "focusTagTr": "uzun rallerde nefes",
+    "focusTagFr": "respirer dans les longs échanges"
   },
   {
     "id": "rally_030",
@@ -1267,7 +1325,9 @@
       "Prends-la tôt à la montée et vise la ligne"
     ],
     "explanationFr": "Une balle qui tombe un mètre à l'intérieur de ta ligne de fond est longue, pas courte, et attaquer depuis derrière ta propre ligne est le coup qui a déjà manqué trois fois. Long et lourd garde l'échange et t'achète la vraie balle courte.",
-    "takeawayFr": "L'attaque commence à l'intérieur de la ligne, pas derrière."
+    "takeawayFr": "L'attaque commence à l'intérieur de la ligne, pas derrière.",
+    "focusTagTr": "saldırı bölgesi",
+    "focusTagFr": "la zone d'attaque"
   },
   {
     "id": "net_021",
@@ -1308,7 +1368,9 @@
       "Fais demi-tour derrière la ligne de fond"
     ],
     "explanationFr": "Tu ne peux pas courir plus vite que son impact, et un split à l'arrêt couvre les deux couloirs de passing ; arriver en pleine foulée n'en couvre aucun. Sprinter les deux derniers pas, c'est ce qui te laisse en mouvement quand la balle quitte son tamis.",
-    "takeawayFr": "Split là où tu es, jamais en pleine foulée."
+    "takeawayFr": "Split là où tu es, jamais en pleine foulée.",
+    "focusTagTr": "kısa yaklaşma sonrası durma yeri",
+    "focusTagFr": "où s'arrêter sur une approche courte"
   },
   {
     "id": "net_022",
@@ -1349,7 +1411,9 @@
       "Garde le milieu du carré et split"
     ],
     "explanationFr": "De là-bas, sa réponse la plus rapide est la ligne que tu as laissée ouverte : te déplacer de ce côté te met devant elle avant qu'il ne frappe. Garder le centre semble équilibré, mais la balle n'est plus au centre et la géométrie a bougé avec elle.",
-    "takeawayFr": "Suis ta volée en travers, pas seulement vers l'avant."
+    "takeawayFr": "Suis ta volée en travers, pas seulement vers l'avant.",
+    "focusTagTr": "açı volesinden sonra toparlanma",
+    "focusTagFr": "se replacer après sa volée croisée"
   },
   {
     "id": "net_023",
@@ -1394,7 +1458,9 @@
       "Recule d'un pas pour avoir de la place"
     ],
     "explanationFr": "Un impact devant la hanche avant garde la face de raquette stable et renvoie la balle vers l'avant : c'est comme ça qu'une balle sur le corps devient une volée d'attaque. La bloquer à côté du corps ne laisse aucune place à la raquette et la met dans le filet.",
-    "takeawayFr": "Prends les balles de corps devant toi, jamais à côté."
+    "takeawayFr": "Prends les balles de corps devant toi, jamais à côté.",
+    "focusTagTr": "vücuda gelen topta vole noktası",
+    "focusTagFr": "point d'impact sur la volée au corps"
   },
   {
     "id": "net_024",
@@ -1439,7 +1505,9 @@
       "Laisse-la rebondir et joue en fond de court"
     ],
     "explanationFr": "Une première volée basse est une remise en jeu, et longue au milieu elle t'achète le pas qu'il faut pour atteindre une vraie position de volée sur la suivante. La volée courte très angulée sous la hauteur du filet est le coup qui doit voyager le plus loin par-dessus le filet le plus haut.",
-    "takeawayFr": "Une première volée dans les pieds prépare, elle ne conclut pas."
+    "takeawayFr": "Une première volée dans les pieds prépare, elle ne conclut pas.",
+    "focusTagTr": "servisten sonra ilk vole",
+    "focusTagFr": "première volée après le service"
   },
   {
     "id": "net_025",
@@ -1484,7 +1552,9 @@
       "Split sur place et laisse-la tomber"
     ],
     "explanationFr": "Un impact sous le genou en pleine course ne peut pas être frappé fort : la réponse flotte, et la couper tôt termine le point. Reculer pour le lob est la bonne lecture quand il est stable et qu'il a le temps, pas quand il glisse.",
-    "takeawayFr": "Bas et en glissade, avance ; stable et équilibré, respecte le lob."
+    "takeawayFr": "Bas et en glissade, avance ; stable et équilibré, respecte le lob.",
+    "focusTagTr": "geçiş mi lob mu okumak",
+    "focusTagFr": "lire le passing ou le lob"
   },
   {
     "id": "net_026",
@@ -1529,7 +1599,9 @@
       "Angle-la fort vers la ligne de côté"
     ],
     "explanationFr": "Depuis la ligne de service, l'amortie a sept mètres à parcourir avec un impact à hauteur de filet : elle retombe au milieu du court en balle facile. L'amortie se joue à deux mètres du filet, impact au-dessus de la bande ; d'ici, c'est la longueur qui marque.",
-    "takeawayFr": "Ligne de service : joue long. Au filet : joue court."
+    "takeawayFr": "Ligne de service : joue long. Au filet : joue court.",
+    "focusTagTr": "yanlış mesafeden drop vole",
+    "focusTagFr": "amortie de volée trop loin du filet"
   },
   {
     "id": "net_027",
@@ -1574,7 +1646,9 @@
       "Adoucis les mains et renvoie en slice"
     ],
     "explanationFr": "Sa vitesse est déjà sur la balle : un bloc court et ferme la redirige et garde le tamis derrière la frappe. Armer complètement ajoute une vitesse dont tu n'as pas besoin, et c'est précisément ce qui a envoyé les deux dernières trop longues.",
-    "takeawayFr": "Balle forte sur toi : bloque, n'arme pas."
+    "takeawayFr": "Balle forte sur toi : bloque, n'arme pas.",
+    "focusTagTr": "sert geçişte hareket boyu",
+    "focusTagFr": "longueur de geste sur un passing"
   },
   {
     "id": "net_028",
@@ -1619,7 +1693,9 @@
       "Arrête-toi, laisse rebondir et relève"
     ],
     "explanationFr": "Sa vitesse fait le travail : un bloc doux, long et par le milieu passe le filet et t'achète le pas qu'il faut pour monter. Pousser à plat ajoute de la vitesse à une balle qui en a déjà beaucoup, et c'est exactement pour ça que les deux dernières sont parties.",
-    "takeawayFr": "Demi-volée douce, longue et au milieu, jamais plus fort."
+    "takeawayFr": "Demi-volée douce, longue et au milieu, jamais plus fort.",
+    "focusTagTr": "geçiş bölgesinde yarı vole",
+    "focusTagFr": "demi-volée en zone de transition"
   },
   {
     "id": "net_029",
@@ -1664,7 +1740,9 @@
       "Recule et joue-la après le rebond"
     ],
     "explanationFr": "Un lob court et flottant sans vent est un smash gratuit, et le prendre de volée le laisse en course au lieu de lui rendre deux secondes. Laisser rebondir n'est juste que sur un lob long et lourd que tu ne peux pas atteindre en équilibre.",
-    "takeawayFr": "Lob court, smashe de volée ; lob long, laisse rebondir."
+    "takeawayFr": "Lob court, smashe de volée ; lob long, laisse rebondir.",
+    "focusTagTr": "kısa lobda smaç zamanlaması",
+    "focusTagFr": "timing du smash sur lob court"
   },
   {
     "id": "net_030",
@@ -1709,7 +1787,9 @@
       "Court et bas dans l'axe du milieu"
     ],
     "explanationFr": "Leur élan les ramène déjà vers le centre : le coin ouvert côté avantage devient la plus longue course et ils arrivent en retard, ou pas du tout. Jouer derrière eux ne marche que tant qu'ils sprintent encore dans l'autre sens.",
-    "takeawayFr": "Encore en sprint, joue derrière. S'ils reviennent, l'ouverture."
+    "takeawayFr": "Encore en sprint, joue derrière. S'ils reviennent, l'ouverture.",
+    "focusTagTr": "rakip durunca vole hedefi",
+    "focusTagFr": "cible de volée sur adversaire arrêté"
   },
   {
     "id": "mental_021",
@@ -1742,7 +1822,9 @@
       "Revoir les doubles fautes pour corriger le lancer"
     ],
     "explanationFr": "Un set perdu ne sert que s'il devient une chose que tu vas faire, et une deuxième balle liftée sur le revers attaque exactement le coup qui t'a cassé. L'objectif de trois jeux vise ce que tu ne contrôles pas et recrée la même tension à égalité.",
-    "takeawayFr": "Transforme un set perdu en une seule chose à faire."
+    "takeawayFr": "Transforme un set perdu en une seule chose à faire.",
+    "focusTagTr": "yeni sete temiz başlamak",
+    "focusTagFr": "repartir après un set perdu"
   },
   {
     "id": "mental_022",
@@ -1775,7 +1857,9 @@
       "Joue les deux points suivants en sécurité, le temps que ça passe"
     ],
     "explanationFr": "La marche jusqu'à la serviette dépense l'adrénaline avant qu'elle n'arrive dans ta raquette et garde intact ton schéma de service à 30 A. Servir fort pendant que tu bous ressemble à une justice, mais à ce niveau d'excitation le geste raccourcit et tu donnes le jeu.",
-    "takeawayFr": "Une mauvaise annonce coûte un point, pas deux."
+    "takeawayFr": "Une mauvaise annonce coûte un point, pas deux.",
+    "focusTagTr": "tartışmalı karardan sonra sıfırlama",
+    "focusTagFr": "après une annonce litigieuse"
   },
   {
     "id": "mental_023",
@@ -1808,7 +1892,9 @@
       "Aplatis-la pour que le retour ne soit pas attaquable"
     ],
     "explanationFr": "Un jeu décisif se joue sur les points que tu offres, et ton lift travaillé ne fait ni double faute ni cadeau à la relance. La pousser doucement évite la faute mais donne le mini-break au retour, un coup plus tard.",
-    "takeawayFr": "Au jeu décisif, sers la deuxième balle que tu travailles."
+    "takeawayFr": "Au jeu décisif, sers la deuxième balle que tu travailles.",
+    "focusTagTr": "tiebreakte ikinci servis",
+    "focusTagFr": "deuxième balle en jeu décisif"
   },
   {
     "id": "mental_024",
@@ -1841,7 +1927,9 @@
       "Enlève de la vitesse et roule-la profond au milieu"
     ],
     "explanationFr": "Une cible extérieure donne à ton attention une seule tâche et laisse un geste travaillé se dérouler tout seul sur le coup que tu viens de rater deux fois. Le repère technique transforme le geste en pensée sous pression, et c'est ça qui a envoyé ces deux coups droits longs.",
-    "takeawayFr": "Vise un point du court, pas ton geste."
+    "takeawayFr": "Vise un point du court, pas ton geste.",
+    "focusTagTr": "baskı altında dış odak",
+    "focusTagFr": "focus externe sous pression"
   },
   {
     "id": "mental_025",
@@ -1874,7 +1962,9 @@
       "Relance un pas plus loin pour gagner du temps"
     ],
     "explanationFr": "C'est le relanceur qui décide quand le point commence : prendre tout ton temps reconstruit le rituel qui te manque depuis trois jeux de relance. Coller à son tempo te garde dans son rythme et te fait choisir ta cible de retour après le lancer.",
-    "takeawayFr": "Le relanceur tient l'horloge : sers-t'en."
+    "takeawayFr": "Le relanceur tient l'horloge : sers-t'en.",
+    "focusTagTr": "tempoyu eline almak",
+    "focusTagFr": "imposer son tempo"
   },
   {
     "id": "mental_026",
@@ -1907,7 +1997,9 @@
       "Change de style de jeu pendant deux ou trois jeux"
     ],
     "explanationFr": "Une série vit sur le tempo : prendre tout ton temps le laisse debout, immobile, avec une avance à ruminer. Démarrer vite pour le prendre à froid garde le match à la vitesse qui vient de lui donner quatre jeux d'affilée.",
-    "takeawayFr": "Refroidis une série chaude en ralentissant l'horloge."
+    "takeawayFr": "Refroidis une série chaude en ralentissant l'horloge.",
+    "focusTagTr": "rakibin ritmini bozmak",
+    "focusTagFr": "casser la dynamique adverse"
   },
   {
     "id": "mental_027",
@@ -1940,7 +2032,9 @@
       "Frappe fort le premier retour pour rebreaker"
     ],
     "explanationFr": "Il joue son jeu de service le plus crispé du match : rentrer sur cette deuxième balle transforme tout de suite sa première balle en baisse en pression. Allonger les échanges lui laisse le temps de se rassurer et lui rend l'inconfort.",
-    "takeawayFr": "Lui aussi sert avec la peur : rentre et prends-la."
+    "takeawayFr": "Lui aussi sert avec la peur : rentre et prends-la.",
+    "focusTagTr": "break yedikten sonra tepki",
+    "focusTagFr": "réagir après un break concédé"
   },
   {
     "id": "mental_028",
@@ -1973,7 +2067,9 @@
       "Bagarre en longs échanges jusqu'à retrouver le toucher"
     ],
     "explanationFr": "La confiance revient des points gagnés, et le service qui produit déjà huit points sur neuf en est la source la moins chère. Monter au filet derrière ton service pour raccourcir les points ajoute un geste non travaillé au moment où ta marge est la plus mince.",
-    "takeawayFr": "Appuie-toi sur ce qui gagne déjà des points."
+    "takeawayFr": "Appuie-toi sur ce qui gagne déjà des points.",
+    "focusTagTr": "maç içinde güven toplamak",
+    "focusTagFr": "retrouver confiance en match"
   },
   {
     "id": "mental_029",
@@ -2006,7 +2102,9 @@
       "Va au court demain et enchaîne les séries de volées"
     ],
     "explanationFr": "Deux plus un garde le bilan assez court pour rester juste et laisse à l'entraînement une seule tâche claire. Lister toutes tes fautes à chaud, c'est ruminer avec un carnet, et ça apprend à ta mémoire que le match n'était que des ratés.",
-    "takeawayFr": "Deux choses qui ont marché, une à corriger, puis stop."
+    "takeawayFr": "Deux choses qui ont marché, une à corriger, puis stop.",
+    "focusTagTr": "maç sonrası değerlendirme",
+    "focusTagFr": "le bilan d'après-match"
   },
   {
     "id": "mental_030",
@@ -2039,7 +2137,9 @@
       "Frappe à mi-régime et garde tes jambes pour le match"
     ],
     "explanationFr": "L'échauffement est la seule observation gratuite que tu auras, et savoir quelle aile flotte décide de tes trois premiers schémas de service. Travailler ton coup droit paraît utile mais t'amène au premier point sans aucun plan sur l'endroit où va la balle.",
-    "takeawayFr": "Échauffe ton plan, pas seulement tes coups."
+    "takeawayFr": "Échauffe ton plan, pas seulement tes coups.",
+    "focusTagTr": "ısınmada rakibi okumak",
+    "focusTagFr": "observer pendant l'échauffement"
   },
   {
     "id": "doubles_001",
@@ -2084,7 +2184,9 @@
       "Il frappe et retourne à la ligne de fond"
     ],
     "explanationFr": "Une balle courte, c'est le signal pour amener les DEUX joueurs au filet. La formation deux-devant gagne la majorité des points en club : ton partenaire monte et te rejoint.",
-    "takeawayFr": "Balle courte = les deux devant. L'équipe qui arrive au filet la première gagne généralement le point."
+    "takeawayFr": "Balle courte = les deux devant. L'équipe qui arrive au filet la première gagne généralement le point.",
+    "focusTagTr": "ikisi de önde dizilişi",
+    "focusTagFr": "les deux au filet"
   },
   {
     "id": "doubles_002",
@@ -2125,7 +2227,9 @@
       "Tout près du filet, prêt à jouer la volée"
     ],
     "explanationFr": "Depuis la ligne de service tu peux avancer sur un bon retour ou te retourner pour courir un lob, et surveiller le volleyeur dit à ton équipe ce qui arrive avant la balle. Rester au fond concède le filet à une équipe qui le possède déjà.",
-    "takeawayFr": "Partenaire du relanceur : ligne de service, yeux sur le volleyeur."
+    "takeawayFr": "Partenaire du relanceur : ligne de service, yeux sur le volleyeur.",
+    "focusTagTr": "karşılayanın eşi",
+    "focusTagFr": "le partenaire du relanceur"
   },
   {
     "id": "doubles_003",
@@ -2170,7 +2274,9 @@
       "Une amortie douce dans leur carré de service"
     ],
     "explanationFr": "Sous le niveau du filet tu es obligé de lever, donc la balle profonde sur le joueur du fond est la seule cible qui n'arrive pas en ballon. Fort sur le volleyeur est le réflexe, et une volée levée à cet endroit est la plus facile à conclure en double.",
-    "takeawayFr": "Volée basse : profond au milieu, jamais sur le joueur au filet."
+    "takeawayFr": "Volée basse : profond au milieu, jamais sur le joueur au filet.",
+    "focusTagTr": "top yüksekliğine göre ilk vole",
+    "focusTagFr": "première volée selon la hauteur"
   },
   {
     "id": "doubles_004",
@@ -2215,7 +2321,9 @@
       "Le lifter haut en croisé, par sécurité"
     ],
     "explanationFr": "Un retour bas et croisé dans les pieds du volleyeur qui monte est la balle la plus difficile à attaquer. Un retour haut et flottant se fait intercepter. Ton but est de faire avancer ton équipe, pas de gagner le point d'un coup.",
-    "takeawayFr": "Retour en double = bas, dans les pieds du volleyeur. Les balles flottantes se font intercepter."
+    "takeawayFr": "Retour en double = bas, dans les pieds du volleyeur. Les balles flottantes se font intercepter.",
+    "focusTagTr": "çiftlerde karşılama",
+    "focusTagFr": "le retour en double"
   },
   {
     "id": "doubles_005",
@@ -2260,7 +2368,9 @@
       "Une fois que le retour a passé le filet"
     ],
     "explanationFr": "Traverser au rebond du service, c'est assez tôt pour couper le milieu et assez tard pour que le relanceur ne puisse plus rediriger derrière toi. Partir au lancer montre ton jeu alors qu'il peut encore changer de cible.",
-    "takeawayFr": "Intercepte quand le relanceur déclenche son geste."
+    "takeawayFr": "Intercepte quand le relanceur déclenche son geste.",
+    "focusTagTr": "araya girme zamanlaması",
+    "focusTagFr": "le timing de l'interception"
   },
   {
     "id": "doubles_006",
@@ -2305,7 +2415,9 @@
       "Court et doux dans l'espace laissé libre"
     ],
     "explanationFr": "Depuis la ligne de service, l'angle demande un mètre de hauteur de filet que tu n'as pas, alors qu'un smash profond dans l'axe sépare deux joueurs qui reculent et te laisse une volée facile pour finir. Le smash dans le couloir est celui déjà mis deux fois au filet.",
-    "takeawayFr": "Smash angulé de près, smash au milieu de loin."
+    "takeawayFr": "Smash angulé de près, smash au milieu de loin.",
+    "focusTagTr": "çiftlerde smaç hedefi",
+    "focusTagFr": "cible du smash en double"
   },
   {
     "id": "doubles_007",
@@ -2346,7 +2458,9 @@
       "Attaque les lignes de côté pour les faire courir"
     ],
     "explanationFr": "Six volées flottantes dans un set, c'est un taux, pas un hasard : les points qui décident du match reviennent à la raquette la plus susceptible de les rendre. La balle au milieu est sûre, mais elle laisse celui des deux qui est le plus à l'aise la prendre.",
-    "takeawayFr": "Les points importants vont sur la raquette la plus faible."
+    "takeawayFr": "Les points importants vont sur la raquette la plus faible.",
+    "focusTagTr": "zayıf rakibi hedeflemek",
+    "focusTagFr": "jouer sur le plus faible"
   },
   {
     "id": "doubles_008",
@@ -2391,7 +2505,9 @@
       "Fort dans le couloir, à côté du plus proche"
     ],
     "explanationFr": "Éloignés du filet, ils doivent relever la volée sous la bande, et la balle au milieu leur laisse le plus petit angle plus un instant d'hésitation. Le lob répond à une équipe collée au filet ; contre celle-ci, c'est un smash offert.",
-    "takeawayFr": "Collés au filet, lobe-les ; loin du filet, joue bas au milieu."
+    "takeawayFr": "Collés au filet, lobe-les ; loin du filet, joue bas au milieu.",
+    "focusTagTr": "filedeki iki rakibe saldırı",
+    "focusTagFr": "attaquer deux joueurs au filet"
   },
   {
     "id": "doubles_009",
@@ -2432,7 +2548,9 @@
       "Montez tous les deux pour prendre le retour tôt"
     ],
     "explanationFr": "Les deux au fond absorbent un service que ton partenaire ne peut pas bloquer depuis une position de retour normale, et c'est temporaire : vous remontez dès qu'un retour tombe profond. Garder un joueur devant demande juste au même volleyeur de survivre à la même balle.",
-    "takeawayFr": "Les deux au fond, c'est un bouclier qu'on lève, pas une formation où l'on vit."
+    "takeawayFr": "Les deux au fond, c'est un bouclier qu'on lève, pas une formation où l'on vit.",
+    "focusTagTr": "ikisi de arkada savunma",
+    "focusTagFr": "défendre à deux au fond"
   },
   {
     "id": "doubles_010",
@@ -2477,7 +2595,9 @@
       "Vise ton retour dans leur couloir"
     ],
     "explanationFr": "Un lob par-dessus un intercepteur trop gourmand gagne le point directement ou le repousse pour le reste du jeu, et c'est ça le vrai gain. Frapper plus fort au même endroit, c'est exactement la balle qu'il attend là pour intercepter.",
-    "takeawayFr": "Punis un intercepteur trop pressé par un lob : ça te rend le milieu."
+    "takeawayFr": "Punis un intercepteur trop pressé par un lob : ça te rend le milieu.",
+    "focusTagTr": "araya giren rakibi geçmek",
+    "focusTagFr": "déjouer un intercepteur agressif"
   },
   {
     "id": "serve_hard_1",
@@ -2522,7 +2642,9 @@
       "Sers extérieur pour ouvrir le court"
     ],
     "explanationFr": "Tu as lu une tendance fiable. Le service sur le corps enferme le revers et provoque ce coupé court et flottant : déclenche-le exprès, anticipe la réponse, avance et attaque-la à la montée. Tu chasses le coup d'après, pas l'ace.",
-    "takeawayFr": "Quand tu lis une tendance, sers pour la déclencher, puis saute sur la réponse."
+    "takeawayFr": "Quand tu lis une tendance, sers pour la déclencher, puis saute sur la réponse.",
+    "focusTagTr": "karşılama alışkanlığını okumak",
+    "focusTagFr": "lire une habitude de retour"
   },
   {
     "id": "return_hard_1",
@@ -2567,7 +2689,9 @@
       "Recule de deux mètres et joue-le en slice long"
     ],
     "explanationFr": "Face à une bombe sur surface rapide, l'objectif réaliste est un retour neutre, pas un coup gagnant. Décale-toi vers la cible à 70 %, raccourcis en blocage et vise profond dans l'axe : ça coupe l'angle suivant du serveur et te donne le temps de te replacer.",
-    "takeawayFr": "Face à un gros serveur : décale-toi, bloque profond au milieu, accepte le neutre."
+    "takeawayFr": "Face à un gros serveur : décale-toi, bloque profond au milieu, accepte le neutre.",
+    "focusTagTr": "sert servisi karşılamak",
+    "focusTagFr": "retourner un gros service"
   },
   {
     "id": "rally_hard_1",
@@ -2612,7 +2736,9 @@
       "Continue à croiser sans rien changer du tout"
     ],
     "explanationFr": "La balle qui raccourcit est ton signal : entre dans le court sur celle-là et change de direction long de ligne sur son revers. Changer de direction sur une balle profonde est la version à faible pourcentage de la même idée, et c'est celle qui rate.",
-    "takeawayFr": "Change de direction sur la balle courte, pas sur la profonde."
+    "takeawayFr": "Change de direction sur la balle courte, pas sur la profonde.",
+    "focusTagTr": "çaprazı değiştirmek",
+    "focusTagFr": "changer de diagonale"
   },
   {
     "id": "net_hard_1",
@@ -2657,7 +2783,9 @@
       "Recule à la ligne de fond pour le passing"
     ],
     "explanationFr": "Depuis la ligne de service tu ne peux pas angler une volée sans risque. Ta montée long de ligne a déjà fermé la ligne : fais ton split-step, couvre le passing croisé, le plus probable, et pousse la volée PROFOND derrière l'adversaire lancé. La longueur plutôt qu'un angle risqué de trop loin.",
-    "takeawayFr": "Pris à la ligne de service : split, couvre le croisé, volée profonde derrière lui."
+    "takeawayFr": "Pris à la ligne de service : split, couvre le croisé, volée profonde derrière lui.",
+    "focusTagTr": "servis çizgisinden vole",
+    "focusTagFr": "volleyer depuis la ligne de service"
   },
   {
     "id": "mental_hard_1",
@@ -2690,7 +2818,9 @@
       "Revois les fautes pour corriger le lancer"
     ],
     "explanationFr": "Après un break encaissé par crispation, la solution est le processus, pas la panique. Ralentis ton tempo entre les points, respire et vise plus large, avec de la marge sur les lignes. Ne cours pas après le rebreak et ne rumine pas les ratés : joue le point suivant pour lui-même.",
-    "takeawayFr": "Après une crispation : ralentis, élargis tes marges, joue le point suivant."
+    "takeawayFr": "Après une crispation : ralentis, élargis tes marges, joue le point suivant.",
+    "focusTagTr": "kasıldıktan sonra sıfırlama",
+    "focusTagFr": "repartir après un craquage"
   },
   {
     "id": "doubles_hard_1",
@@ -2735,7 +2865,9 @@
       "Sers simplement plus fort au milieu, sur le T"
     ],
     "explanationFr": "Le relanceur a une cible confortable et bien rodée : croisé sur les pieds du joueur au filet. Enlève-la-lui en cachant l'endroit où sera ton partenaire ; la formation en I ou une fausse interception oblige le relanceur à décider tard et à abandonner un schéma qui marchait.",
-    "takeawayFr": "Quand un relanceur a sa cible, cache ton joueur au filet."
+    "takeawayFr": "Quand un relanceur a sa cible, cache ton joueur au filet.",
+    "focusTagTr": "formda karşılayanı bozmak",
+    "focusTagFr": "gêner un relanceur en confiance"
   },
   {
     "id": "serve_100",
@@ -2776,7 +2908,9 @@
       "Sers encore extérieur, avec plus de vitesse"
     ],
     "explanationFr": "Un service sur le T enlève l'angle au relanceur, donc la réponse revient dans l'axe : la seule balle que tu peux contourner pour armer le coup droit. Servir encore extérieur continue d'ouvrir la porte qui a envoyé cinq retours d'affilée sur ton revers.",
-    "takeawayFr": "Sers là où le retour nourrit ton meilleur coup."
+    "takeawayFr": "Sers là où le retour nourrit ton meilleur coup.",
+    "focusTagTr": "kozunu hazırlayan servis",
+    "focusTagFr": "servir pour préparer son arme"
   },
   {
     "id": "serve_101",
@@ -2817,7 +2951,9 @@
       "Deuxième balle à plat, au milieu sur le T"
     ],
     "explanationFr": "Un service sur le corps ne laisse aucune place à un relanceur qui contourne, et le lift donne de la hauteur au-dessus du filet quand ton bras est crispé. Lifter extérieur sur le revers est le manuel, mais ici ça lui offre le coup droit contourné qu'il chasse depuis le début.",
-    "takeawayFr": "Bras crispé, point important : lift sur le corps."
+    "takeawayFr": "Bras crispé, point important : lift sur le corps.",
+    "focusTagTr": "baskı altında ikinci servis",
+    "focusTagFr": "deuxième balle sous pression"
   },
   {
     "id": "serve_102",
@@ -2858,7 +2994,9 @@
       "Lift lourd et très haut sur son revers"
     ],
     "explanationFr": "Rester si loin lui donne du temps contre la vitesse mais l'éloigne beaucoup de la ligne de côté : la largeur le tire encore plus dehors et ouvre le court pour ta balle suivante. Plus de vitesse au même endroit, c'est le service qu'il bloque depuis le début.",
-    "takeawayFr": "Contre un relanceur reculé, ajoute de la largeur, pas de la vitesse."
+    "takeawayFr": "Contre un relanceur reculé, ajoute de la largeur, pas de la vitesse.",
+    "focusTagTr": "geriden karşılayana servis",
+    "focusTagFr": "servir contre un relanceur reculé"
   },
   {
     "id": "serve_103",
@@ -2899,7 +3037,9 @@
       "Encore à plat sur le T, pour tenter l'ace"
     ],
     "explanationFr": "Se placer à l'intérieur de la ligne de côté donne à ton slice de gaucher toute sa piste, et la balle s'écarte d'autant plus du revers qu'elle tombe large. Repartir sur le T est la variation tentante, mais c'est le service qu'il a puni deux fois.",
-    "takeawayFr": "Gaucher, côté avantage, point important : slice extérieur."
+    "takeawayFr": "Gaucher, côté avantage, point important : slice extérieur.",
+    "focusTagTr": "solağın avantaj kortu paterni",
+    "focusTagFr": "schéma gaucher côté avantage"
   },
   {
     "id": "serve_104",
@@ -2932,7 +3072,9 @@
       "Un peu d'effet, doucement au milieu du carré"
     ],
     "explanationFr": "Une première balle passée vaut bien plus qu'une première balle rapide, et un lift à trois quarts garde cet avantage sans le taux de fautes d'une cible qui rentre une fois sur sept. Pousser un service mou au milieu est l'autre piège sur balle de set.",
-    "takeawayFr": "Point important : passe la première balle, garde l'effet."
+    "takeawayFr": "Point important : passe la première balle, garde l'effet.",
+    "focusTagTr": "set sayısında birinci servis",
+    "focusTagFr": "première balle sur balle de set"
   },
   {
     "id": "serve_105",
@@ -2973,7 +3115,9 @@
       "Lift lourd, droit dans le corps du relanceur"
     ],
     "explanationFr": "Les faits disent que c'est la hauteur, pas la largeur, qui casse ce revers, et un lift qui monte au-dessus de l'épaule t'achète le coupé court à attaquer. Slicer bas et extérieur nourrit exactement la zone de frappe qui a déjà produit deux coups gagnants.",
-    "takeawayFr": "Revers à une main en difficulté haut ? Sers en hauteur, pas en largeur."
+    "takeawayFr": "Revers à une main en difficulté haut ? Sers en hauteur, pas en largeur.",
+    "focusTagTr": "tek elli backhande ikinci servis",
+    "focusTagFr": "deuxième balle sur un revers à une main"
   },
   {
     "id": "serve_106",
@@ -3006,7 +3150,9 @@
       "Sers sur le corps, pour varier un peu"
     ],
     "explanationFr": "Rien n'a changé dans ses pieds, donc ce service reste de l'argent gratuit ; tu changes de schéma quand le relanceur s'adapte, pas quand le répéter commence à te mettre mal à l'aise. Passer sur le T rend un point que le service extérieur gagnait.",
-    "takeawayFr": "Continue à le servir tant qu'il ne bouge pas."
+    "takeawayFr": "Continue à le servir tant qu'il ne bouge pas.",
+    "focusTagTr": "işleyen servisi tekrarlamak",
+    "focusTagFr": "répéter un service qui marche"
   },
   {
     "id": "serve_107",
@@ -3039,7 +3185,9 @@
       "Prends tout le temps autorisé à chaque point"
     ],
     "explanationFr": "Un reset court et volontaire laisse la respiration se caler et donne au geste une cible avec effet sur laquelle s'engager, ce qui manque à un mouvement précipité. Servir tout de suite pour distancer le doute garde le geste raccourci qui a produit les deux fautes.",
-    "takeawayFr": "Reprends ton rituel, puis engage-toi sur une cible avec effet."
+    "takeawayFr": "Reprends ton rituel, puis engage-toi sur une cible avec effet.",
+    "focusTagTr": "servis ritmini sıfırlamak",
+    "focusTagFr": "retrouver son rythme au service"
   },
   {
     "id": "serve_108",
@@ -3080,7 +3228,9 @@
       "Sers sur le corps, pour le coincer sur place"
     ],
     "explanationFr": "Contre un gaucher, le T côté égalité va droit sur le coup droit, d'où viennent ces trois coups gagnants, alors que le slice s'écarte vers le revers. Frapper le même T plus fort ne fait qu'accélérer sa balle préférée.",
-    "takeawayFr": "Gaucher côté égalité : l'extérieur trouve le revers."
+    "takeawayFr": "Gaucher côté égalité : l'extérieur trouve le revers.",
+    "focusTagTr": "solağa servis",
+    "focusTagFr": "servir face à un gaucher"
   },
   {
     "id": "serve_109",
@@ -3113,7 +3263,9 @@
       "Reste bien à plat et vise pile sur la ligne"
     ],
     "explanationFr": "Un vent dans le dos allonge la balle : le lift la fait retomber plus tôt et une cible plus courte garde ta marge à l'intérieur de la ligne de service. Enlever de la vitesse est la correction courante, mais un service lent et à plat porte quand même trop loin.",
-    "takeawayFr": "Vent dans le dos : plus d'effet, cible plus courte."
+    "takeawayFr": "Vent dans le dos : plus d'effet, cible plus courte.",
+    "focusTagTr": "rüzgâr arkadayken servis",
+    "focusTagFr": "servir vent dans le dos"
   },
   {
     "id": "serve_110",
@@ -3158,7 +3310,9 @@
       "Coup droit profond au milieu, puis tu montes"
     ],
     "explanationFr": "Il est encore au-delà du couloir et le flottant court te laisse du temps : l'ouverture côté avantage est la plus grande cible disponible. Jouer derrière lui prend à contre-pied, mais ça ne paie que quand il sprinte tôt pour se replacer.",
-    "takeawayFr": "Service extérieur, réponse courte : joue l'espace, pas le corps."
+    "takeawayFr": "Service extérieur, réponse courte : joue l'espace, pas le corps.",
+    "focusTagTr": "servis +1 açık korta",
+    "focusTagFr": "servir +1 dans l'ouverture"
   },
   {
     "id": "serve_111",
@@ -3191,7 +3345,9 @@
       "Raccourcis le geste et guide la balle"
     ],
     "explanationFr": "Laisser tomber un lancer ne te coûte que quelques secondes, et cette dérive derrière la tête est exactement ce qui envoie tes services trop longs. Te cambrer pour aller la chercher est le choix qui a l'air courageux, mais il inscrit la faute dans le geste.",
-    "takeawayFr": "Ne sers jamais un lancer en qui tu n'as pas confiance."
+    "takeawayFr": "Ne sers jamais un lancer en qui tu n'as pas confiance.",
+    "focusTagTr": "bozuk top atışını yakalamak",
+    "focusTagFr": "reprendre un mauvais lancer"
   },
   {
     "id": "serve_112",
@@ -3236,7 +3392,9 @@
       "Reste au fond et joue l'échange de là"
     ],
     "explanationFr": "Quatorze coupés courts, c'est un schéma sur lequel tu peux partir avant même que la balle ne tombe, et la prendre au-dessus du filet transforme sa réponse en ton coup d'approche. Attendre le rebond paraît plus sûr, mais la balle meurt et tu arrives sur une volée basse.",
-    "takeawayFr": "Contre un joueur qui coupe, avance dès ta retombée."
+    "takeawayFr": "Contre un joueur qui coupe, avance dès ta retombée.",
+    "focusTagTr": "kesik karşılamaya saldırmak",
+    "focusTagFr": "attaquer un retour slicé court"
   },
   {
     "id": "serve_113",
@@ -3277,7 +3435,9 @@
       "Enlève de la vitesse et roule les deux"
     ],
     "explanationFr": "Deux balles de break contre toi, c'est exactement le moment de jouer ton meilleur pourcentage, et un service qui rentre huit fois sur dix avec une réponse faible mérite d'être joué deux fois. Le T à plat paraît plus courageux, mais à deux sur neuf c'est un break offert.",
-    "takeawayFr": "Balles de break contre toi : joue ton service au meilleur pourcentage."
+    "takeawayFr": "Balles de break contre toi : joue ton service au meilleur pourcentage.",
+    "focusTagTr": "break sayısında servis tercihi",
+    "focusTagFr": "choix de service sur balles de break"
   },
   {
     "id": "serve_114",
@@ -3310,7 +3470,9 @@
       "Garder le lancer et servir à l'instinct, yeux baissés"
     ],
     "explanationFr": "Décaler le lancer hors du soleil et accepter un service d'abord lifté te garde les yeux sur la balle, la seule variable qui décide ce point. Te déplacer d'un pas sur la ligne de fond n'aide presque jamais : un soleil bas te suit tout le long de la ligne.",
-    "takeawayFr": "Sors ton lancer du soleil avant que le score t'y oblige."
+    "takeawayFr": "Sors ton lancer du soleil avant que le score t'y oblige.",
+    "focusTagTr": "koşullara göre top atışı",
+    "focusTagFr": "adapter son lancer aux conditions"
   },
   {
     "id": "return_100",
@@ -3355,7 +3517,9 @@
       "Profond au centre pour rester neutre"
     ],
     "explanationFr": "Le croisé te donne le court le plus long et le filet le plus bas, c'est ce dont un retour a besoin avant d'avoir besoin d'une cible. Aller long de ligne chercher le revers faible, c'est demander le filet le plus haut et le court le plus court sur un service à 150 km/h.",
-    "takeawayFr": "Prends de la marge au retour ; prends le point faible à la balle d'après."
+    "takeawayFr": "Prends de la marge au retour ; prends le point faible à la balle d'après.",
+    "focusTagTr": "dengeli karşılamada hedef",
+    "focusTagFr": "cible de retour en équilibre"
   },
   {
     "id": "return_101",
@@ -3400,7 +3564,9 @@
       "Rester derrière et lifter profond"
     ],
     "explanationFr": "La pression sur une deuxième balle courte vient du fait de la prendre plus tôt : avance les pieds et garde le geste en qui tu as confiance. Frapper plus fort de loin, c'est ce qui a mis quatre retours sur six dans le filet et au fond du grillage.",
-    "takeawayFr": "Attaque une deuxième balle avec tes pieds, pas avec ton bras."
+    "takeawayFr": "Attaque une deuxième balle avec tes pieds, pas avec ton bras.",
+    "focusTagTr": "ikinci servise saldırmak",
+    "focusTagFr": "attaquer la deuxième balle"
   },
   {
     "id": "return_102",
@@ -3445,7 +3611,9 @@
       "Reculer d'un mètre et jouer normal"
     ],
     "explanationFr": "Un retour dans le cadre veut dire que la raquette est en retard, et un bloc compact donne un contact devant tout en empruntant la vitesse du serveur. Garder le geste complet en l'armant plus tôt semble être la solution, mais c'est justement l'armé long que tu n'as pas le temps de lancer.",
-    "takeawayFr": "En retard au retour ? Raccourcis le geste, pas la réaction."
+    "takeawayFr": "En retard au retour ? Raccourcis le geste, pas la réaction.",
+    "focusTagTr": "hızlı servise blok",
+    "focusTagFr": "bloquer face à la vitesse"
   },
   {
     "id": "return_103",
@@ -3490,7 +3658,9 @@
       "Chiper la balle et jouer l'échange"
     ],
     "explanationFr": "Sur un service aussi prévisible, c'est le relanceur qui a déjà décidé qui gagne l'échange, et le coup droit joué en tournant autour du revers est le coup qui punit une deuxième balle courte. Attendre pour réagir transforme une balle connue en balle ordinaire.",
-    "takeawayFr": "Sur balle de break, retourne avec une décision, pas un réflexe."
+    "takeawayFr": "Sur balle de break, retourne avec une décision, pas un réflexe.",
+    "focusTagTr": "break sayısında karşılama niyeti",
+    "focusTagFr": "intention de retour sur balle de break"
   },
   {
     "id": "return_104",
@@ -3535,7 +3705,9 @@
       "Rester sur place et frapper par-dessus"
     ],
     "explanationFr": "Prendre le lift avant son sommet transforme une balle à hauteur d'épaule en balle à hauteur de hanche et garde le retour assez profond pour le tenir en arrière. Reculer encore est plus confortable, mais ça lui offre le pas en avant dont il profite depuis le début du jeu.",
-    "takeawayFr": "Bats le lift avec tes pieds, avant le sommet du rebond."
+    "takeawayFr": "Bats le lift avec tes pieds, avant le sommet du rebond.",
+    "focusTagTr": "kick serviste zamanlama",
+    "focusTagFr": "timing face au service lifté"
   },
   {
     "id": "return_105",
@@ -3580,7 +3752,9 @@
       "Ton coup le plus fort, plein axe"
     ],
     "explanationFr": "Un contact sous la hauteur du filet en pleine course l'oblige à une demi-volée défensive que tu attaques à la balle suivante. Le lob est l'autre vraie réponse, mais depuis un retour tu as rarement le temps de le placer assez bien.",
-    "takeawayFr": "Contre le serveur-volleyeur : fais-le volleyer dans ses lacets."
+    "takeawayFr": "Contre le serveur-volleyeur : fais-le volleyer dans ses lacets.",
+    "focusTagTr": "servis-vole yapana karşılama",
+    "focusTagFr": "retour face au service-volée"
   },
   {
     "id": "return_106",
@@ -3613,7 +3787,9 @@
       "Changer de position à chaque point"
     ],
     "explanationFr": "Deux retours remis te mettent à 15 A avec le serveur encore au travail, et la pression dans un jeu de retour vient du fait d'être à égalité, pas de gagnants précoces. Voir trop grand sur les deux premiers points, c'est ce qui lui offre un 30-0 gratuit depuis le début du set.",
-    "takeawayFr": "Gagne les jeux de retour en les démarrant à égalité."
+    "takeawayFr": "Gagne les jeux de retour en les démarrant à égalité.",
+    "focusTagTr": "karşılama oyununu kurgulamak",
+    "focusTagFr": "construire son jeu de retour"
   },
   {
     "id": "return_107",
@@ -3658,7 +3834,9 @@
       "Viser plus près des lignes pour le déplacer"
     ],
     "explanationFr": "La profondeur s'achète avec la hauteur au-dessus du filet : lève la cible de deux mètres au-dessus de la bande et le rebond recule vers sa ligne de fond. Frapper plus fort est la réponse habituelle et elle échoue : une balle plus tendue tombe court quand même, juste plus tôt.",
-    "takeawayFr": "Un retour va profond parce qu'il vole plus haut, pas plus vite."
+    "takeawayFr": "Un retour va profond parce qu'il vole plus haut, pas plus vite.",
+    "focusTagTr": "karşılamada derinlik",
+    "focusTagFr": "la longueur du retour"
   },
   {
     "id": "return_108",
@@ -3699,7 +3877,9 @@
       "Attendre le rebond et courir la chercher"
     ],
     "explanationFr": "Te pencher à la descente de raquette exploite l'indice mais te laisse encore le temps de t'arrêter si celui-là est différent : c'est tout l'intérêt du demi-pas. T'engager dès le lancer, c'est la version gourmande — un serveur qui voit ton appui sert de l'autre côté.",
-    "takeawayFr": "Sers-toi de l'indice tard : à la descente de raquette, pas au lancer."
+    "takeawayFr": "Sers-toi de l'indice tard : à la descente de raquette, pas au lancer.",
+    "focusTagTr": "top atışını okumak",
+    "focusTagFr": "lire le lancer de balle"
   },
   {
     "id": "return_109",
@@ -3744,7 +3924,9 @@
       "Repartir en lisant la direction de son geste"
     ],
     "explanationFr": "Le replacement commence sur ton propre accompagnement, parce que c'est le seul temps libre de l'échange, et à son contact tu dois déjà être en split-step et recentré. Attendre que la balle rebondisse te laisse deux pas de retard sur toute balle prise à la montée.",
-    "takeawayFr": "Replace-toi dès ton accompagnement, pas à son rebond."
+    "takeawayFr": "Replace-toi dès ton accompagnement, pas à son rebond.",
+    "focusTagTr": "karşılama sonrası toparlanma anı",
+    "focusTagFr": "quand se replacer après le retour"
   },
   {
     "id": "return_110",
@@ -3789,7 +3971,9 @@
       "Lifter profond au centre et échanger"
     ],
     "explanationFr": "Une balle de service courte prise tôt à l'intérieur du court est la seule balle qui paie le filet plus haut du long de ligne, et il s'est déjà engagé de l'autre côté. Le croisé a la forme la plus sûre, mais il tombe là où il est déjà placé.",
-    "takeawayFr": "La ligne se mérite : balle courte et contact tôt."
+    "takeawayFr": "La ligne se mérite : balle courte et contact tôt.",
+    "focusTagTr": "paralel karşılamanın zamanı",
+    "focusTagFr": "quand jouer le retour long de ligne"
   },
   {
     "id": "return_111",
@@ -3834,7 +4018,9 @@
       "Reculer le buste et bloquer devant toi"
     ],
     "explanationFr": "Un service sur le corps est un problème d'espace : un pas franc hors de l'axe de la balle donne au bloc de revers la place que le coup droit n'a jamais. Vouloir extraire le coup droit, c'est ce qui a déjà produit deux balles courtes.",
-    "takeawayFr": "Service sur le corps : dégage tes pieds, bloque en revers."
+    "takeawayFr": "Service sur le corps : dégage tes pieds, bloque en revers.",
+    "focusTagTr": "vücuda gelen servisten kurtulmak",
+    "focusTagFr": "se dégager du service au corps"
   },
   {
     "id": "return_112",
@@ -3879,7 +4065,9 @@
       "Un angle court et sec en retour"
     ],
     "explanationFr": "En extension côté large, il te faut de la hauteur pour la sécurité et de la profondeur pour le temps : le croisé est le trajet le plus long pendant que tu récupères le court que tu viens de quitter. À plat long de ligne en extension, c'est la balle qui a le moins de marge depuis cette position.",
-    "takeawayFr": "En extension : haut, profond, croisé. La ligne quand tu es en équilibre."
+    "takeawayFr": "En extension : haut, profond, croisé. La ligne quand tu es en équilibre.",
+    "focusTagTr": "avantaj kortunda karşılama hedefi",
+    "focusTagFr": "retour côté avantage contre un droitier"
   },
   {
     "id": "return_113",
@@ -3924,7 +4112,9 @@
       "Garder ta place et lire son lancer"
     ],
     "explanationFr": "Onze sur douze vers la même cible veut dire qu'il vise à partir d'un repère fixe : changer ta profondeur d'un point à l'autre l'oblige à revoir sa visée à chaque fois. Reculer une bonne fois ne fait que lui donner une nouvelle cible fixe à roder en un jeu.",
-    "takeawayFr": "Continue de bouger la cible qu'il vise."
+    "takeawayFr": "Continue de bouger la cible qu'il vise.",
+    "focusTagTr": "karşılama yerini değiştirmek",
+    "focusTagFr": "varier son placement au retour"
   },
   {
     "id": "return_114",
@@ -3969,7 +4159,9 @@
       "Chiper le retour et lancer l'échange"
     ],
     "explanationFr": "Face à un service à 190 km/h, un retour qui tombe simplement profond est déjà une victoire, et c'est sur les deuxièmes balles à 140 km/h que se construisent les balles de break. Attaquer chaque service jusqu'à ce qu'un passe paraît courageux, mais ça donne des points que tu ne peux pas te permettre à 0-40.",
-    "takeawayFr": "Survis à la première, chasse la deuxième."
+    "takeawayFr": "Survis à la première, chasse la deuxième.",
+    "focusTagTr": "gerçekçi karşılama hedefleri",
+    "focusTagFr": "des objectifs de retour réalistes"
   },
   {
     "id": "rally_100",
@@ -4014,7 +4206,9 @@
       "Enlever de la vitesse et rester court"
     ],
     "explanationFr": "La terre battue ralentit la balle et relève le rebond : la balle tendue qui tombe profond sur dur part longue ici, alors que le lift la fait redescendre et la repousse en arrière. Frapper plus à plat et plus tôt, c'est lutter contre la surface au lieu de t'en servir.",
-    "takeawayFr": "Sur terrain lent, la profondeur vient du lift, pas de la vitesse."
+    "takeawayFr": "Sur terrain lent, la profondeur vient du lift, pas de la vitesse.",
+    "focusTagTr": "yavaş yüksek seken korta uyum",
+    "focusTagFr": "s'adapter à un court lent et haut"
   },
   {
     "id": "rally_101",
@@ -4059,7 +4253,9 @@
       "Un angle court pour le faire rentrer"
     ],
     "explanationFr": "Une balle profonde et lourde repousse derrière la ligne un adversaire qui prend tôt et lui vole le timing sur lequel tourne tout son jeu. Frapper à travers lui est la réponse tentante, mais la vitesse dans sa zone de frappe est exactement ce qu'il redirige.",
-    "takeawayFr": "Contre celui qui prend tôt : de la profondeur, pas de la vitesse."
+    "takeawayFr": "Contre celui qui prend tôt : de la profondeur, pas de la vitesse.",
+    "focusTagTr": "erken vurana karşı derinlik",
+    "focusTagFr": "longueur contre un joueur qui prend tôt"
   },
   {
     "id": "rally_102",
@@ -4104,7 +4300,9 @@
       "Profond au centre pour relancer le point"
     ],
     "explanationFr": "Tant qu'il accélère en travers, repartir en sens inverse lui coûte deux pas qu'il n'a pas : la balle dans son dos est intouchable. Le court ouvert n'est la bonne réponse qu'une fois qu'il s'est arrêté et qu'il revient vers le centre.",
-    "takeawayFr": "Dans le dos tant qu'il court ; dans l'ouverture quand il repart."
+    "takeawayFr": "Dans le dos tant qu'il court ; dans l'ouverture quand il repart.",
+    "focusTagTr": "koşan rakibin arkasına vurmak",
+    "focusTagFr": "jouer derrière l'adversaire lancé"
   },
   {
     "id": "rally_103",
@@ -4149,7 +4347,9 @@
       "Une amortie de derrière la ligne"
     ],
     "explanationFr": "La hauteur, c'est du temps : une balle haute et profonde au centre tombe loin des deux coins et te donne les secondes qu'il faut pour reprendre ta place dans le court. Le contre gagnant à plat depuis si loin n'a presque aucune marge et lui donne le point.",
-    "takeawayFr": "En difficulté : de la hauteur, pas de la vitesse."
+    "takeawayFr": "En difficulté : de la hauteur, pas de la vitesse.",
+    "focusTagTr": "savunmada yükseklik",
+    "focusTagFr": "la hauteur comme défense"
   },
   {
     "id": "rally_104",
@@ -4182,7 +4382,9 @@
       "Jouer tous les jeux de la même façon"
     ],
     "explanationFr": "Ton service raccourcit déjà les points pour toi, donc le break doit venir de la longueur d'échange qu'elle aime le moins : une balle de plus, pas un coup plus fort. Attaquer davantage, c'est ce qui a produit huit de ces neuf fautes.",
-    "takeawayFr": "Points courts sur ton service, longs sur le sien."
+    "takeawayFr": "Points courts sur ton service, longs sur le sien.",
+    "focusTagTr": "oyuna göre ral uzunluğu",
+    "focusTagFr": "gérer la longueur des échanges"
   },
   {
     "id": "rally_105",
@@ -4227,7 +4429,9 @@
       "Des angles courts sur son coup droit"
     ],
     "explanationFr": "Mets la pression profond sur son revers et la réponse habituelle est un croisé plus lent dans ton coin de revers, exactement la balle autour de laquelle tu peux tourner. Une balle au centre ne lui donne aucune raison de l'envoyer quelque part en particulier.",
-    "takeawayFr": "Ta chasse au coup droit commence deux coups plus tôt, sur son revers."
+    "takeawayFr": "Ta chasse au coup droit commence deux coups plus tôt, sur son revers.",
+    "focusTagTr": "ters köşe forehandi kurmak",
+    "focusTagFr": "préparer le coup droit décroisé"
   },
   {
     "id": "rally_106",
@@ -4272,7 +4476,9 @@
       "Frapper à plat au centre, sur lui"
     ],
     "explanationFr": "Comme rien n'est ouvert, le croisé t'achète le filet le plus bas, le court le plus long et le replacement le plus court : trois marges gratuites sur une balle de set. Changer de direction long de ligne sur une balle profonde, c'est demander le filet le plus haut et le court le plus court.",
-    "takeawayFr": "Sur les points importants, choisis la direction qui a le plus de marge."
+    "takeawayFr": "Sur les points importants, choisis la direction qui a le plus de marge.",
+    "focusTagTr": "büyük sayılarda çapraz geometrisi",
+    "focusTagFr": "le croisé sur les points importants"
   },
   {
     "id": "rally_107",
@@ -4317,7 +4523,9 @@
       "Profond croisé dans le coin opposé"
     ],
     "explanationFr": "Depuis la ligne de service, la balle long de ligne a le trajet le plus court : elle tombe avant qu'elle puisse la couvrir et tu gardes la position d'avant-court que son amortie vient de t'offrir. Le croisé voyage le plus loin et lui laisse le temps de te passer.",
-    "takeawayFr": "Réponds à une amortie long de ligne, puis tiens ta place."
+    "takeawayFr": "Réponds à une amortie long de ligne, puis tiens ta place.",
+    "focusTagTr": "drop topuna cevap",
+    "focusTagFr": "répondre à une amortie"
   },
   {
     "id": "rally_108",
@@ -4362,7 +4570,9 @@
       "Te rapprocher et prendre la balle tôt"
     ],
     "explanationFr": "Une balle lente au-dessus de la hauteur d'épaule oblige un amateur de vitesse à produire sa propre puissance, et c'est là que son timing et sa patience craquent. Ajouter de la vitesse est l'instinct, et ça lui sert exactement la balle qu'il redirige depuis le début du set.",
-    "takeawayFr": "Affame le contreur : ne lui prête aucune vitesse."
+    "takeawayFr": "Affame le contreur : ne lui prête aucune vitesse.",
+    "focusTagTr": "yüksek topla ritmi bozmak",
+    "focusTagFr": "la balle haute pour déranger"
   },
   {
     "id": "rally_109",
@@ -4403,7 +4613,9 @@
       "Rester derrière la ligne et relancer"
     ],
     "explanationFr": "L'avoir tiré aussi large lui a aussi donné un contre-angle, et depuis un mètre à l'intérieur du court la seule façon de le couvrir est d'avancer. Te replacer à la marque centrale laisse l'angle court que tu viens d'ouvrir totalement libre.",
-    "takeawayFr": "Assure chaque angle que tu joues en montant derrière."
+    "takeawayFr": "Assure chaque angle que tu joues en montant derrière.",
+    "focusTagTr": "açılı topun arkasından fileye",
+    "focusTagFr": "monter derrière son croisé court"
   },
   {
     "id": "rally_110",
@@ -4448,7 +4660,9 @@
       "Frapper à plat à hauteur d'épaule"
     ],
     "explanationFr": "Un pas en arrière laisse le lift redescendre dans ta zone de frappe, où le même revers part profond au lieu de flotter court. La prendre à la montée est la réponse courageuse, mais un lift qui monte au-dessus de l'épaule est le contact le plus difficile que tu aies.",
-    "takeawayFr": "Donne un pas à une balle qui saute et elle redevient normale."
+    "takeawayFr": "Donne un pas à une balle qui saute et elle redevient normale.",
+    "focusTagTr": "yüksek seken topu çevirmek",
+    "focusTagFr": "gérer la balle haute liftée"
   },
   {
     "id": "rally_111",
@@ -4493,7 +4707,9 @@
       "Aplatir et la prendre plus tôt"
     ],
     "explanationFr": "Tu perds cet échange : change ce à quoi ressemble la balle avant de changer où elle va ; la hauteur et le poids ne coûtent rien et repoussent celui qui prend tôt. Tirer long de ligne est l'échappatoire classique et la faute classique.",
-    "takeawayFr": "Change la qualité de balle avant la direction."
+    "takeawayFr": "Change la qualité de balle avant la direction.",
+    "focusTagTr": "kaybettiğin ralden çıkmak",
+    "focusTagFr": "sortir d'un échange perdant"
   },
   {
     "id": "rally_112",
@@ -4538,7 +4754,9 @@
       "Enlever de la vitesse et assurer"
     ],
     "explanationFr": "Un vent de face freine et retient chaque balle : les gestes complets tombent en deçà des lignes que tu craindrais d'habitude, et c'est le set pour attaquer. Ajouter du lift et de la marge, c'est la réponse quand tu joues vent dans le dos ; face au vent, ça ne fait que lui servir des balles courtes.",
-    "takeawayFr": "Face au vent, joue libéré ; vent dans le dos, mets du lift."
+    "takeawayFr": "Face au vent, joue libéré ; vent dans le dos, mets du lift.",
+    "focusTagTr": "rüzgâra göre hedefler",
+    "focusTagFr": "des cibles adaptées au vent"
   },
   {
     "id": "rally_113",
@@ -4579,7 +4797,9 @@
       "Garder la ligne qu'elle n'utilise pas"
     ],
     "explanationFr": "La bissectrice est la valeur par défaut honnête, mais onze sur douze est une preuve, pas une intuition, et un pas ne coûte presque rien sur le rare changement de direction. Couvrir la ligne, c'est payer pour un coup qu'elle a joué une fois dans tout le match.",
-    "takeawayFr": "Respecte la bissectrice, puis penche du côté des preuves."
+    "takeawayFr": "Respecte la bissectrice, puis penche du côté des preuves.",
+    "focusTagTr": "bilinen alışkanlığa göre toparlanma",
+    "focusTagFr": "se replacer sur une tendance connue"
   },
   {
     "id": "rally_114",
@@ -4624,7 +4844,9 @@
       "La laisser descendre, puis l'attaquer"
     ],
     "explanationFr": "Une balle au milieu du court est une balle de transition : traverser le contact ajoute de la vitesse gratuite et te laisse au filet pour la réponse. Se planter et rester derrière, c'est exactement ce qui les renvoie en flottant depuis le début du match.",
-    "takeawayFr": "Laisse tes pieds finir la balle courte, pas ton bras."
+    "takeawayFr": "Laisse tes pieds finir la balle courte, pas ton bras.",
+    "focusTagTr": "orta kort topunda durmamak",
+    "focusTagFr": "traverser la balle de mi-court"
   },
   {
     "id": "net_100",
@@ -4669,7 +4891,9 @@
       "Coup d'approche profond au centre"
     ],
     "explanationFr": "L'approche long de ligne parcourt la distance la plus courte et te met face au revers coupé, ce qui te permet de te décaler côté ligne et de couvrir le passing. Le croisé dans l'ouverture paraît plus ambitieux mais laisse le passing long de ligne dans ton dos.",
-    "takeawayFr": "Approche long de ligne, puis décale-toi côté ligne."
+    "takeawayFr": "Approche long de ligne, puis décale-toi côté ligne.",
+    "focusTagTr": "yaklaşma yönü ve kapatma",
+    "focusTagFr": "direction d'approche et couverture"
   },
   {
     "id": "net_101",
@@ -4714,7 +4938,9 @@
       "Un lob-volée par-dessus lui"
     ],
     "explanationFr": "Un adversaire en mouvement à l'intérieur du carré doit faire une demi-volée sous la bande, ce qui te donne la balle que tu veux ensuite. L'angle large demande une précision que tu n'as pas à hauteur de hanche, et un lob-volée trop court est un smash offert.",
-    "takeawayFr": "Face à un adversaire qui monte, volleye dans ses lacets."
+    "takeawayFr": "Face à un adversaire qui monte, volleye dans ses lacets.",
+    "focusTagTr": "fileye gelen rakibe vole",
+    "focusTagFr": "volleyer contre un adversaire qui monte"
   },
   {
     "id": "net_102",
@@ -4755,7 +4981,9 @@
       "Servir fort et à plat le long du T"
     ],
     "explanationFr": "Un relanceur placé deux mètres en arrière qui coupe te donne une balle haute et lente vers la ligne de service : c'est le retour qui vaut la peine d'être suivi. Rester au fond transforme ce ballon en échange neutre dont tu avais déjà gagné le début.",
-    "takeawayFr": "Un relanceur qui coupe de loin t'invite : suis ton service."
+    "takeawayFr": "Un relanceur qui coupe de loin t'invite : suis ton service.",
+    "focusTagTr": "ikinci serviste servis-vole",
+    "focusTagFr": "service-volée sur deuxième balle"
   },
   {
     "id": "net_103",
@@ -4800,7 +5028,9 @@
       "Profond au centre, dans ses pieds"
     ],
     "explanationFr": "En plein sprint son poids est engagé, et repartir en sens inverse lui coûte deux pas qu'il n'a pas : la balle dans son dos est intouchable. L'ouverture est le bon choix une fois qu'il s'est arrêté et revient vers le centre, pas pendant qu'il court.",
-    "takeawayFr": "Dans le dos de celui qui court, dans l'espace de celui qui s'arrête."
+    "takeawayFr": "Dans le dos de celui qui court, dans l'espace de celui qui s'arrête.",
+    "focusTagTr": "koşan rakibe vole hedefi",
+    "focusTagFr": "cible de volée sur un adversaire lancé"
   },
   {
     "id": "net_104",
@@ -4845,7 +5075,9 @@
       "L'ouvrir court en croisé, en touche"
     ],
     "explanationFr": "Un smash en reculant perd de la marge : la profondeur au centre lui enlève les angles et te laisse avancer pour un deuxième smash plus facile. Le coin à plat est la version qui accroche la bande ou la ligne depuis si loin.",
-    "takeawayFr": "Smash de loin : profond et au centre."
+    "takeawayFr": "Smash de loin : profond et au centre.",
+    "focusTagTr": "geri giderken smaç hedefi",
+    "focusTagFr": "cible du smash en reculant"
   },
   {
     "id": "net_105",
@@ -4890,7 +5122,9 @@
       "Laisser rebondir et frapper profond"
     ],
     "explanationFr": "Sans vent tu prends de volée un lob que tu atteins en équilibre, mais une balle qui tombe de cette hauteur dans les rafales bouge jusqu'au contact, et le rebond te donne des appuis fixes. La prendre en l'air ici, c'est parier sur le timing dans un moment important.",
-    "takeawayFr": "Lob haut, profond et venté : laisse rebondir, puis smashe."
+    "takeawayFr": "Lob haut, profond et venté : laisse rebondir, puis smashe.",
+    "focusTagTr": "rüzgârda lobu yere bırakmak",
+    "focusTagFr": "laisser rebondir le lob par vent"
   },
   {
     "id": "net_106",
@@ -4935,7 +5169,9 @@
       "L'ouvrir large au-delà du couloir"
     ],
     "explanationFr": "À deux mètres du filet avec un contact au-dessus de la bande, l'amortie ne parcourt qu'un mètre et son élan l'emmène déjà dans le mauvais sens. Pousser profond est juste depuis la ligne de service, mais ici ça sert un joueur déjà garé au fond.",
-    "takeawayFr": "Amortis seulement quand tu es près du filet et qu'il recule."
+    "takeawayFr": "Amortis seulement quand tu es près du filet et qu'il recule.",
+    "focusTagTr": "drop vole zamanı",
+    "focusTagFr": "quand jouer l'amortie de volée"
   },
   {
     "id": "net_107",
@@ -4976,7 +5212,9 @@
       "À la ligne de service, et volleyer"
     ],
     "explanationFr": "Deux à trois mètres à l'intérieur est la seule zone qui atteint encore la balle qui plonge tout en te laissant te retourner pour courir un lob. Coller le filet est tentant après une bonne approche, mais face à quelqu'un qui te lobe déjà, ça appelle le même coup.",
-    "takeawayFr": "Occupe le milieu du carré, pas la bande du filet."
+    "takeawayFr": "Occupe le milieu du carré, pas la bande du filet.",
+    "focusTagTr": "lob atana karşı file mesafesi",
+    "focusTagFr": "distance au filet face à un lobeur"
   },
   {
     "id": "net_108",
@@ -5021,7 +5259,9 @@
       "Amortis-la, elle est déjà basse"
     ],
     "explanationFr": "Sous la bande tu es obligé de relever : la profondeur au centre garde un adversaire stable derrière sa ligne de fond et te fait gagner la volée que tu veux vraiment. L'angle court depuis là-bas ne passe le filet que d'un cheveu.",
-    "takeawayFr": "Volée basse : survis profond, conclus la suivante."
+    "takeawayFr": "Volée basse : survis profond, conclus la suivante.",
+    "focusTagTr": "alçak volenin görevi",
+    "focusTagFr": "le rôle de la volée basse"
   },
   {
     "id": "net_109",
@@ -5066,7 +5306,9 @@
       "Slice court et sprinte devant"
     ],
     "explanationFr": "Une balle relevée sous le filet arrive lente et montante : rester au fond garde l'échange neutre au lieu de lui offrir une cible. Monter derrière, c'est l'habitude qui t'a déjà coûté deux points face à un passeur stable.",
-    "takeawayFr": "Monte derrière les balles qui le gênent, pas celles qui te pressent."
+    "takeawayFr": "Monte derrière les balles qui le gênent, pas celles qui te pressent.",
+    "focusTagTr": "arkasından çıkılmayacak toplar",
+    "focusTagFr": "quelles balles ne pas suivre"
   },
   {
     "id": "net_110",
@@ -5111,7 +5353,9 @@
       "Bloque profond et tiens la ligne de fond"
     ],
     "explanationFr": "Une deuxième balle courte à hauteur de poitrine, c'est l'invitation : le slice reste bas, te donne le temps d'atteindre le carré, et un joueur lent au replacement doit te passer de loin. Le retour à plat risque la faute et te laisse là où il est à l'aise.",
-    "takeawayFr": "Deuxième balle courte : slice profond et monte."
+    "takeawayFr": "Deuxième balle courte : slice profond et monte.",
+    "focusTagTr": "karşılamanın arkasından fileye",
+    "focusTagFr": "monter derrière son retour"
   },
   {
     "id": "net_111",
@@ -5156,7 +5400,9 @@
       "Frappe fort pour conclure tout de suite"
     ],
     "explanationFr": "La volée haute de revers n'a aucune puissance naturelle : une poussée ferme et profonde long de ligne, c'est la version honnête, celle qui le garde cloué au fond. L'angle court en douceur est le choix à la mode, et celui qui finit dans le filet.",
-    "takeawayFr": "Volée haute de revers : pousse profond, ne peaufine pas."
+    "takeawayFr": "Volée haute de revers : pousse profond, ne peaufine pas.",
+    "focusTagTr": "yüksek backhand vole seçimi",
+    "focusTagFr": "choix sur la volée haute de revers"
   },
   {
     "id": "net_112",
@@ -5201,7 +5447,9 @@
       "Bloque-la en volée classique"
     ],
     "explanationFr": "Prendre la balle de volée lui enlève la seconde et demie dont il a besoin pour revenir, et à hauteur d'épaule dans le court cette frappe est sûre. Laisser rebondir donne exactement le temps qu'il court chercher.",
-    "takeawayFr": "Ballon à hauteur d'épaule dans le court : prends-le tôt."
+    "takeawayFr": "Ballon à hauteur d'épaule dans le court : prends-le tôt.",
+    "focusTagTr": "vuruşlu vole şartları",
+    "focusTagFr": "quand jouer la volée frappée"
   },
   {
     "id": "net_113",
@@ -5242,7 +5490,9 @@
       "Recule d'un pas pour avoir le temps"
     ],
     "explanationFr": "Lire la balle à la sortie de son tamis est plus lent mais jamais faux, et à deux mètres du filet tu couvres encore les deux couloirs de passing. Te pencher trop tôt, c'est pour ça qu'il t'a battu deux fois : un joueur qui change tard n'a qu'à te voir bouger le premier.",
-    "takeawayFr": "Bouge après son impact, jamais avant."
+    "takeawayFr": "Bouge après son impact, jamais avant.",
+    "focusTagTr": "filede geçişi okumak",
+    "focusTagFr": "lire le passing au filet"
   },
   {
     "id": "net_114",
@@ -5283,7 +5533,9 @@
       "Recule d'un pas pour gagner du temps"
     ],
     "explanationFr": "Une volée profonde t'a acheté du terrain, et deux ou trois pas en avant referment les deux couloirs de passing avant sa frappe. La ligne de service, c'est là où les volées arrivent dans tes pieds, et le lob reste couvert depuis l'intérieur du carré.",
-    "takeawayFr": "Chaque bonne volée te rapporte deux pas : prends-les."
+    "takeawayFr": "Chaque bonne volée te rapporte deux pas : prends-les.",
+    "focusTagTr": "derin ilk voleden sonra kapatmak",
+    "focusTagFr": "monter derrière sa volée longue"
   },
   {
     "id": "mental_100",
@@ -5316,7 +5568,9 @@
       "Profites-en pour préparer un plan sur son revers"
     ],
     "explanationFr": "Une interruption fait chuter le rythme cardiaque et la vitesse de réaction bien avant de toucher à ta tactique : bouger garde le corps à température de match. Rester assis pour économiser semble raisonnable, et c'est exactement comme ça que les deux jeux sont partis la dernière fois.",
-    "takeawayFr": "Bouge pendant la pause : reviens chaud."
+    "takeawayFr": "Bouge pendant la pause : reviens chaud.",
+    "focusTagTr": "aradan sonra yeniden başlamak",
+    "focusTagFr": "repartir après une interruption"
   },
   {
     "id": "mental_101",
@@ -5349,7 +5603,9 @@
       "Enlève de la vitesse pour assurer la première"
     ],
     "explanationFr": "Les jeux se perdent à 40-0 quand on traite les points comme du rab : la discipline d'un point à égalité, c'est ce qui referme le jeu. Tenter l'ace échange un schéma répété contre un pari à faible pourcentage, au score qui t'a déjà coûté deux fois.",
-    "takeawayFr": "Joue 40-0 comme si c'était égalité."
+    "takeawayFr": "Joue 40-0 comme si c'était égalité.",
+    "focusTagTr": "oyunu kapatmak",
+    "focusTagFr": "conclure un jeu"
   },
   {
     "id": "mental_102",
@@ -5382,7 +5638,9 @@
       "Rappelle-toi qu'il ne reste que quatre points"
     ],
     "explanationFr": "La pression gonfle l'avenir : un nombre de rebonds fixe et une seule cible ramènent le jeu à une tâche que ton corps connaît déjà. Ouvrir avec ton plus gros service met un bras crispé derrière une balle sans marge, et le jeu commence souvent 0-15.",
-    "takeawayFr": "Grand moment, petite consigne."
+    "takeawayFr": "Grand moment, petite consigne.",
+    "focusTagTr": "seti servisle kapatmak",
+    "focusTagFr": "servir pour le set"
   },
   {
     "id": "mental_103",
@@ -5415,7 +5673,9 @@
       "Raccourcis le point en montant sur la prochaine balle"
     ],
     "explanationFr": "Des coups courts qui décélèrent avec un rythme normal, c'est de la crispation, donc un excès de contrôle : le remède est un geste complet vers une cible plus grande. Ralentir encore soigne la panique, et ici ça ajoute du contrôle à un coup qui en meurt déjà.",
-    "takeawayFr": "Tu pousses ? Frappe plus grand, vise plus grand."
+    "takeawayFr": "Tu pousses ? Frappe plus grand, vise plus grand.",
+    "focusTagTr": "kasılmak mı panik mi",
+    "focusTagFr": "craquer ou paniquer"
   },
   {
     "id": "mental_104",
@@ -5448,7 +5708,9 @@
       "Avance et prends la prochaine balle courte tôt"
     ],
     "explanationFr": "Des fautes de filet depuis le milieu du court veulent dire que le geste a rétréci : deux balles hautes et profondes restaurent la marge et le point d'impact avant de revenir à la tactique. Slicer pour remettre garde ce même geste court et lui offre le milieu du court.",
-    "takeawayFr": "Casse une série avec de la hauteur et de la profondeur."
+    "takeawayFr": "Casse une série avec de la hauteur et de la profondeur.",
+    "focusTagTr": "hata sarmalını durdurmak",
+    "focusTagFr": "stopper la série de fautes"
   },
   {
     "id": "mental_105",
@@ -5481,7 +5743,9 @@
       "Allonge les échanges et attends qu'il baisse"
     ],
     "explanationFr": "Les avances fondent parce que le schéma gagnant cesse discrètement d'être joué : remettre le service extérieur et le coup droit, c'est la réparation. Mettre de la vitesse pour voler un jeu augmente tes fautes au score où les points bradés coûtent le plus cher.",
-    "takeawayFr": "Avance perdue ? Rejoue ce qui l'a construite."
+    "takeawayFr": "Avance perdue ? Rejoue ce qui l'a construite.",
+    "focusTagTr": "öndeki avantajı korumak",
+    "focusTagFr": "protéger son avance"
   },
   {
     "id": "mental_106",
@@ -5514,7 +5778,9 @@
       "Enlève de la vitesse et fais-le jouer l'échange"
     ],
     "explanationFr": "Une avance dans le jeu décisif se protège par la qualité de tes propres débuts de point : sers les schémas qui tiennent depuis le début du match. Servir plus fort pour creuser l'écart, c'est comme ça qu'on rend un mini-break qu'on n'avait même pas gagné.",
-    "takeawayFr": "Avance dans le jeu décisif : ne donne rien."
+    "takeawayFr": "Avance dans le jeu décisif : ne donne rien.",
+    "focusTagTr": "tiebreakte avantajı yönetmek",
+    "focusTagFr": "gérer l'avance en jeu décisif"
   },
   {
     "id": "mental_107",
@@ -5547,7 +5813,9 @@
       "Reste silencieux, saute le rituel, économise"
     ],
     "explanationFr": "Les adversaires lisent la posture : marcher droit entretient son doute pendant que ton rituel te garde dans le match. Évacuer visiblement ta frustration, c'est le signal exact qui le fait servir plus vite et plus libre.",
-    "takeawayFr": "Ta posture parle : décide ce qu'elle dit."
+    "takeawayFr": "Ta posture parle : décide ce qu'elle dit.",
+    "focusTagTr": "yorgunken beden dili",
+    "focusTagFr": "langage corporel et fatigue"
   },
   {
     "id": "mental_108",
@@ -5580,7 +5848,9 @@
       "Monte la hauteur, la profondeur, enlève la vitesse"
     ],
     "explanationFr": "Quatre gagnants en quatre points, c'est très au-dessus de sa moyenne sur le set : garder tes schémas laisse cette moyenne le rattraper. Répondre coup gagnant pour coup gagnant transforme sa courte série en longue série pour toi, parce que tes coups risqués sont l'habitude la plus récente.",
-    "takeawayFr": "Laisse une série chaude refroidir : garde tes schémas."
+    "takeawayFr": "Laisse une série chaude refroidir : garde tes schémas.",
+    "focusTagTr": "rakibin seri gidişini okumak",
+    "focusTagFr": "interpréter une série adverse"
   },
   {
     "id": "mental_109",
@@ -5613,7 +5883,9 @@
       "Un objectif de score : à égalité après quatre jeux"
     ],
     "explanationFr": "Une seule consigne de comportement survit à l'adrénaline et répond exactement au schéma qui t'a battu deux fois. Cinq schémas pour cinq scénarios, c'est le plan qui disparaît au premier point important, parce que choisir coûte un temps que tu n'as pas.",
-    "takeawayFr": "Une phrase, un comportement : voilà un plan."
+    "takeawayFr": "Une phrase, un comportement : voilà un plan.",
+    "focusTagTr": "tek maddelik maç planı",
+    "focusTagFr": "un plan de match à une intention"
   },
   {
     "id": "mental_110",
@@ -5646,7 +5918,9 @@
       "Sers maintenant, le rythme de l'échange est chaud"
     ],
     "explanationFr": "Une longue expiration est le frein le plus rapide sur le rythme cardiaque, et elle stabilise les mains avant le lancer. Laisser redescendre tout seul marche aussi, mais il faut plus que les quinze secondes dont tu disposes, donc tu sers avec la poitrine qui s'emballe.",
-    "takeawayFr": "Expire plus longtemps que tu n'inspires, puis sers."
+    "takeawayFr": "Expire plus longtemps que tu n'inspires, puis sers.",
+    "focusTagTr": "bedeni sıfırlamak",
+    "focusTagFr": "faire redescendre le cardio"
   },
   {
     "id": "mental_111",
@@ -5679,7 +5953,9 @@
       "Enlève la vitesse partout et vise le jeu décisif"
     ],
     "explanationFr": "La fatigue oblige à trier, et cette deuxième balle courte est l'endroit où chaque unité d'énergie rapporte le plus au tableau d'affichage. Monter au filet dès que possible dépense les mêmes jambes sur des points que tu gagnais déjà du fond.",
-    "takeawayFr": "Jambes fatiguées : va là où sont les breaks."
+    "takeawayFr": "Jambes fatiguées : va là où sont les breaks.",
+    "focusTagTr": "yorgunken enerji seçimi",
+    "focusTagFr": "où dépenser son énergie"
   },
   {
     "id": "mental_112",
@@ -5712,7 +5988,9 @@
       "Comprends pourquoi la volée a raté avant de servir"
     ],
     "explanationFr": "Un repère technique court transforme la faute en la seule correction dont ta prochaine volée a besoin, et il remplit ton attention avec une tâche. Chercher pourquoi elle a raté transforme un point de service en cours technique, et c'est le point suivant qui paie l'addition.",
-    "takeawayFr": "Donne-toi une consigne, pas un verdict."
+    "takeawayFr": "Donne-toi une consigne, pas un verdict.",
+    "focusTagTr": "hatadan sonra iç konuşma",
+    "focusTagFr": "se parler après une faute"
   },
   {
     "id": "mental_113",
@@ -5745,7 +6023,9 @@
       "Ajoute de l'effet, de la profondeur, attends la faute"
     ],
     "explanationFr": "Contre un adversaire plus faible, le score glisse parce que l'exécution est remplacée par des expériences : jouer correctement ton schéma ordinaire, c'est le remède. Monter le risque pour t'échapper, c'est la même dérive avec un plus grand geste dessus.",
-    "takeawayFr": "Mesure-toi à ton standard, pas à son niveau."
+    "takeawayFr": "Mesure-toi à ton standard, pas à son niveau.",
+    "focusTagTr": "zayıf rakibe karşı oynamak",
+    "focusTagFr": "jouer contre plus faible que soi"
   },
   {
     "id": "mental_114",
@@ -5778,7 +6058,9 @@
       "Garde les jambes, l'échauffement suffira"
     ],
     "explanationFr": "La plupart des nerfs du premier jeu, c'est un corps froid : arriver déjà en sueur enlève la crispation qui t'a coûté trois jeux quatre fois de suite. Monter en régime progressivement ne fait que repousser le problème dans les jeux qui décident du set.",
-    "takeawayFr": "Transpire avant le premier point, pas au quatrième jeu."
+    "takeawayFr": "Transpire avant le premier point, pas au quatrième jeu.",
+    "focusTagTr": "maça ısınmış başlamak",
+    "focusTagFr": "entrer sur le court échauffé"
   },
   {
     "id": "doubles_100",
@@ -5811,7 +6093,9 @@
       "Le côté avantage au meilleur retourneur"
     ],
     "explanationFr": "Le gaucher côté égalité et toi côté avantage, ça met les deux coups droits sur la ligne du centre, exactement là où le set a fui. Choisir les côtés selon qui retourne le mieux compte, mais pas tant que le trou est au milieu.",
-    "takeawayFr": "Gaucher côté égalité : les coups droits tiennent le centre."
+    "takeawayFr": "Gaucher côté égalité : les coups droits tiennent le centre.",
+    "focusTagTr": "hangi taraf kimin",
+    "focusTagFr": "qui joue de quel côté"
   },
   {
     "id": "doubles_101",
@@ -5856,7 +6140,9 @@
       "Suis ton service et monte derrière lui"
     ],
     "explanationFr": "Une interception annoncée est un échange de places : dès qu'il traverse, sa moitié devient la tienne, et la meilleure sortie du retourneur est précisément ce court vide. Garder ta moitié vous met tous les deux du même côté, l'autre sans personne.",
-    "takeawayFr": "Quand ton partenaire traverse, traverse derrière lui."
+    "takeawayFr": "Quand ton partenaire traverse, traverse derrière lui.",
+    "focusTagTr": "işaret verilince servisçinin işi",
+    "focusTagFr": "le rôle du serveur sur une interception"
   },
   {
     "id": "doubles_102",
@@ -5901,7 +6187,9 @@
       "Reste où tu es et attends la volée"
     ],
     "explanationFr": "Une volée jouée sous le niveau du filet revient lente et montante, et l'équipe déjà en mouvement vers l'avant à ce moment-là gagne ces points bien plus souvent. Te figer au milieu du court te laisse dans le court sans aucun des avantages.",
-    "takeawayFr": "Un retour plongeant est ton ticket pour monter : prends-le."
+    "takeawayFr": "Un retour plongeant est ton ticket pour monter : prends-le.",
+    "focusTagTr": "karşılamayla birlikte fileye",
+    "focusTagFr": "suivre son retour au filet"
   },
   {
     "id": "doubles_103",
@@ -5946,7 +6234,9 @@
       "Glisse vers le couloir et protège la ligne"
     ],
     "explanationFr": "Un mètre en arrière achète le temps de réaction qu'un retour frappé te vole, et le centre est d'où venaient ces deux balles. Garder ta position normale demande au même réflexe, qui a déjà échoué deux fois ce jeu, de fonctionner sur un point plus important.",
-    "takeawayFr": "Deuxième balle faible ? Prends un mètre, garde le centre."
+    "takeawayFr": "Deuxième balle faible ? Prends un mètre, garde le centre.",
+    "focusTagTr": "zayıf ikinci serviste file oyuncusu",
+    "focusTagFr": "au filet sur une deuxième balle faible"
   },
   {
     "id": "doubles_104",
@@ -5991,7 +6281,9 @@
       "Laisse rebondir et joue-la du fond"
     ],
     "explanationFr": "Le joueur qui n'est pas lobé a le chemin le plus court et voit la balle devant lui : annoncer et traverser garde l'équipe tournée dans le bon sens. Laisser rebondir est jouable, mais ça rend le filet et met ton équipe en défense pour tout le reste du point.",
-    "takeawayFr": "Lob au-dessus de ton partenaire ? Annonce, traverse, changez de côté."
+    "takeawayFr": "Lob au-dessus de ton partenaire ? Annonce, traverse, changez de côté.",
+    "focusTagTr": "lobu kim kapatır",
+    "focusTagFr": "qui couvre le lob"
   },
   {
     "id": "doubles_105",
@@ -6036,7 +6328,9 @@
       "Écartez-vous pour couvrir les deux couloirs"
     ],
     "explanationFr": "Reculer tous les deux et rester serrés l'oblige à trouver une ligne ou un angle, c'est-à-dire le smash à faible pourcentage. Vous écarter ouvre le couloir du centre, et le centre est le smash que tout joueur de club frappe sans réfléchir.",
-    "takeawayFr": "Quand ils smashent, reculez ensemble et tenez le centre."
+    "takeawayFr": "Quand ils smashent, reculez ensemble et tenez le centre.",
+    "focusTagTr": "smaç yerken takım dizilişi",
+    "focusTagFr": "se placer à deux sous un smash"
   },
   {
     "id": "doubles_106",
@@ -6081,7 +6375,9 @@
       "Sur le corps du volleyeur"
     ],
     "explanationFr": "La volée au centre passe par la partie la plus basse du filet et laisse les deux adversaires se demander à qui est la balle. Un angle court depuis derrière la ligne de service doit franchir la partie la plus haute du filet, sans court pour retomber.",
-    "takeawayFr": "En double, le centre est un troisième adversaire : recrute-le."
+    "takeawayFr": "En double, le centre est un troisième adversaire : recrute-le.",
+    "focusTagTr": "çiftlerde ilk vole",
+    "focusTagFr": "la première volée en double"
   },
   {
     "id": "doubles_107",
@@ -6126,7 +6422,9 @@
       "Pars au moment du lancer de balle"
     ],
     "explanationFr": "Partir au rebond du service te met sur le slice alors que le retourneur a déjà choisi sa cible. Bouger sur le lancer est l'erreur classique : le retourneur te voit partir et redirige simplement dans la moitié que tu laisses.",
-    "takeawayFr": "En formation en I, engage-toi au rebond du service."
+    "takeawayFr": "En formation en I, engage-toi au rebond du service.",
+    "focusTagTr": "I dizilişinde çıkış zamanı",
+    "focusTagFr": "le départ en formation en I"
   },
   {
     "id": "doubles_108",
@@ -6171,7 +6469,9 @@
       "Décidez que le coup droit prend le centre"
     ],
     "explanationFr": "Annoncer chaque balle, même les évidentes, construit le réflexe qui se déclenche sur la balle ambiguë sous pression. N'annoncer que les balles du milieu paraît efficace, mais cette annonce arrive après que vous êtes tous les deux partis.",
-    "takeawayFr": "Annonce chaque balle, pour que la difficile soit annoncée aussi."
+    "takeawayFr": "Annonce chaque balle, pour que la difficile soit annoncée aussi.",
+    "focusTagTr": "erken sesli iletişim",
+    "focusTagFr": "annoncer la balle tôt"
   },
   {
     "id": "doubles_109",
@@ -6216,7 +6516,9 @@
       "Fort sur son joueur au filet"
     ],
     "explanationFr": "Une balle à hauteur de cheville pendant qu'il avance encore force la première volée vers le haut, et ton partenaire est justement là où ça retombe. Haut et profond est sûr, mais ça offre au serveur qui monte une volée confortable au-dessus de la bande.",
-    "takeawayFr": "Contre un serveur-volleyeur : retourne dans les lacets, ton partenaire conclut."
+    "takeawayFr": "Contre un serveur-volleyeur : retourne dans les lacets, ton partenaire conclut.",
+    "focusTagTr": "servisçinin ayağına karşılama",
+    "focusTagFr": "retour dans les pieds du serveur"
   },
   {
     "id": "doubles_110",
@@ -6257,7 +6559,9 @@
       "Recule au fond de ton propre côté"
     ],
     "explanationFr": "Ton partenaire va revenir en traversant derrière toi, donc traverser couvre la moitié vide et le pas en arrière te donne de quoi répondre au smash. Garder ton côté laisse la moitié du court ouverte et fait de toi la cible la plus facile dessus.",
-    "takeawayFr": "Partenaire emmené hors du court : changez de côté."
+    "takeawayFr": "Partenaire emmené hors du court : changez de côté.",
+    "focusTagTr": "eşin savunmadayken yer değiştirmek",
+    "focusTagFr": "croiser quand le partenaire est débordé"
   },
   {
     "id": "doubles_111",
@@ -6298,7 +6602,9 @@
       "Sers dans le corps pour bloquer le contournement"
     ],
     "explanationFr": "Un service au T enlève l'angle croisé et canalise le retour par le centre, c'est-à-dire la zone où ton partenaire tue la balle. Servir extérieur ouvre exactement l'angle qui a déjà battu ton partenaire deux fois.",
-    "takeawayFr": "Sers là où ton partenaire peut intercepter, pas là où tu devras courir."
+    "takeawayFr": "Sers là où ton partenaire peut intercepter, pas là où tu devras courir.",
+    "focusTagTr": "eşine göre servis yeri",
+    "focusTagFr": "placer son service pour son partenaire"
   },
   {
     "id": "doubles_112",
@@ -6339,7 +6645,9 @@
       "Lob par-dessus l'épaule du joueur au filet"
     ],
     "explanationFr": "Un couloir « ouvert » sur balle de break, c'est en général un appât d'un joueur au filet qui compte bien le couvrir, et un croisé bas dans ses pieds l'oblige à relever sous la bande. Le coup dans le couloir est celui qu'il t'invite à jouer.",
-    "takeawayFr": "Couloir ouvert sur un point important : décline l'invitation."
+    "takeawayFr": "Couloir ouvert sur un point important : décline l'invitation.",
+    "focusTagTr": "avantaj kortunda karşılama önceliği",
+    "focusTagFr": "priorités du relanceur côté avantage"
   },
   {
     "id": "doubles_113",
@@ -6380,7 +6688,9 @@
       "Fort et profond dans le coin du serveur"
     ],
     "explanationFr": "Comme il part au rebond du service, la moitié qu'il quitte se referme déjà pendant que tu frappes, et une balle basse au centre oblige le joueur en mouvement à relever sous la bande. Le changement de direction ne marche que contre une équipe qui part sur le lancer.",
-    "takeawayFr": "Contre la formation en I : bas et au centre, pas autour d'eux."
+    "takeawayFr": "Contre la formation en I : bas et au centre, pas autour d'eux.",
+    "focusTagTr": "I dizilişine karşı karşılama",
+    "focusTagFr": "retourner contre la formation en I"
   },
   {
     "id": "doubles_114",
@@ -6425,6 +6735,8 @@
       "Recule d'un mètre au cas où il lobe"
     ],
     "explanationFr": "Deux joueurs au filet défendent comme un mur qui se déplace : quand ton partenaire glisse de deux pas, le centre devient à toi à couvrir plutôt qu'à lui à laisser. Garder ta moitié, c'est ce qui ouvre la faille que les bonnes équipes visent en premier.",
-    "takeawayFr": "Glisse quand ton partenaire glisse ; la faille reste fermée."
+    "takeawayFr": "Glisse quand ton partenaire glisse ; la faille reste fermée.",
+    "focusTagTr": "filede birlikte kaymak",
+    "focusTagFr": "glisser à deux au filet"
   }
 ]
