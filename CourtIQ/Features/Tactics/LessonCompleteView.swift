@@ -149,11 +149,11 @@ struct LessonCompleteView: View {
             HStack(spacing: 10) {
                 Image(systemName: level.symbol)
                     .font(.title2.weight(.bold))
-                Text(level.title)
+                Text(lang.t(level.localizationKey))
                     .appFont(24, weight: .heavy, relativeTo: .title2)
             }
             .foregroundStyle(.white)
-            Text(level.blurb)
+            Text(lang.t(level.blurbKey))
                 .font(.footnote)
                 .foregroundStyle(.white.opacity(0.9))
                 .multilineTextAlignment(.center)
@@ -209,7 +209,7 @@ struct LessonCompleteView: View {
     private var levelBar: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
-                Text(progress.level.title)
+                Text(lang.t(progress.level.localizationKey))
                     .font(.system(.footnote, design: .rounded).weight(.bold))
                     .foregroundStyle(AppPalette.ink)
                 Spacer()

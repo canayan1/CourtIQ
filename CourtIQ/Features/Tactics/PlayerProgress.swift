@@ -26,6 +26,21 @@ enum PlayerLevel: Int, CaseIterable, Identifiable {
         }
     }
 
+    /// Bundle keys for the localised name and blurb. `title` / `blurb` below
+    /// stay as the English fallback.
+    private var slug: String {
+        switch self {
+        case .rookie: return "rookie"
+        case .rallyBuilder: return "rally_builder"
+        case .pointBuilder: return "point_builder"
+        case .courtReader: return "court_reader"
+        case .tactician: return "tactician"
+        case .strategist: return "strategist"
+        }
+    }
+    var localizationKey: String { "tactics.level.\(slug)" }
+    var blurbKey: String { "tactics.level.\(slug).blurb" }
+
     var title: String {
         switch self {
         case .rookie:       return "Rookie"

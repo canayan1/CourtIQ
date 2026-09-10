@@ -993,3 +993,17 @@
 "quiz.diff.easy" = "Temel";
 "quiz.diff.medium" = "Maç Baskısı";
 "quiz.diff.hard" = "İleri Taktik";
+
+/* Tactics player levels */
+"tactics.level.rookie" = "Çaylak";
+"tactics.level.rookie.blurb" = "Nerede duracağını öğreniyorsun.";
+"tactics.level.rally_builder" = "Ral Kuran";
+"tactics.level.rally_builder.blurb" = "Ralliyi dürüst tutabiliyorsun.";
+"tactics.level.point_builder" = "Sayı Kuran";
+"tactics.level.point_builder.blurb" = "Umut etmek yerine sayıyı kuruyorsun.";
+"tactics.level.court_reader" = "Kort Okuyan";
+"tactics.level.court_reader.blurb" = "Rakibinin yapamadığını görüyorsun.";
+"tactics.level.tactician" = "Taktikçi";
+"tactics.level.tactician.blurb" = "Atıştan önce planın var.";
+"tactics.level.strategist" = "Stratejist";
+"tactics.level.strategist.blurb" = "Senden sert vuranı akılla geçiyorsun.";

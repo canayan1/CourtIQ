@@ -151,7 +151,7 @@ struct LearnPathView: View {
             Image(systemName: progress.level.symbol)
                 .font(.footnote.weight(.bold))
                 .foregroundStyle(AppPalette.clay)
-            Text(progress.level.title)
+            Text(lang.t(progress.level.localizationKey))
                 .font(.system(.subheadline, design: .rounded).weight(.bold))
                 .foregroundStyle(AppPalette.ink)
                 .fixedSize(horizontal: false, vertical: true)
@@ -161,7 +161,7 @@ struct LearnPathView: View {
     @ViewBuilder
     private var levelTarget: some View {
         if let togo = progress.xpToNextLevel, let nextLevel = progress.level.next {
-            Text(copy.xpToNext(togo, nextLevel.title))
+            Text(copy.xpToNext(togo, lang.t(nextLevel.localizationKey)))
                 .font(.caption)
                 .foregroundStyle(AppPalette.inkSoft)
                 .fixedSize(horizontal: false, vertical: true)
@@ -194,7 +194,7 @@ struct LearnPathView: View {
 
                     HStack(spacing: 6) {
                         Image(systemName: access == .needsSubscription ? "lock.fill" : "play.fill")
-                        Text(access == .needsSubscription ? "Unlock to continue" : "Open lesson")
+                        Text(access == .needsSubscription ? copy.unlockToContinue : copy.openLesson)
                     }
                     .font(.system(.subheadline, design: .rounded).weight(.bold))
                     .foregroundStyle(AppPalette.ink)
@@ -583,7 +583,8 @@ private struct LessonNodeRow: View {
 
     private var subtitleText: String {
         switch access {
-        case .needsPrevious(let title): return copy.finishFirst(title)
+        case .needsPrevious(let id, let title):
+            return copy.finishFirst(copy.lessonTitle(id: id, fallback: title))
         case .needsSubscription:        return copy.unlockToOpen
         case .freeDaily:                return copy.freeToday
         case .open:                     return isDone ? copy.doneReview : lesson.principle

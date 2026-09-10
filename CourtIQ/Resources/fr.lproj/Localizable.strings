@@ -993,3 +993,17 @@
 "quiz.diff.easy" = "Fondamentaux";
 "quiz.diff.medium" = "Sous pression";
 "quiz.diff.hard" = "Tactique avancée";
+
+/* Tactics player levels */
+"tactics.level.rookie" = "Débutant";
+"tactics.level.rookie.blurb" = "Tu apprends où te placer.";
+"tactics.level.rally_builder" = "Bâtisseur d'échange";
+"tactics.level.rally_builder.blurb" = "Tu tiens un échange proprement.";
+"tactics.level.point_builder" = "Bâtisseur de point";
+"tactics.level.point_builder.blurb" = "Tu construis le point au lieu d'espérer.";
+"tactics.level.court_reader" = "Lecteur de jeu";
+"tactics.level.court_reader.blurb" = "Tu vois ce que ton adversaire ne sait pas faire.";
+"tactics.level.tactician" = "Tacticien";
+"tactics.level.tactician.blurb" = "Tu as un plan avant le lancer.";
+"tactics.level.strategist" = "Stratège";
+"tactics.level.strategist.blurb" = "Tu réfléchis mieux que ceux qui frappent plus fort.";

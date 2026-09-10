@@ -993,3 +993,17 @@
 "quiz.diff.easy" = "Foundation";
 "quiz.diff.medium" = "Match Pressure";
 "quiz.diff.hard" = "Advanced Tactics";
+
+/* Tactics player levels */
+"tactics.level.rookie" = "Rookie";
+"tactics.level.rookie.blurb" = "You're learning where to stand.";
+"tactics.level.rally_builder" = "Rally Builder";
+"tactics.level.rally_builder.blurb" = "You can keep a rally honest.";
+"tactics.level.point_builder" = "Point Builder";
+"tactics.level.point_builder.blurb" = "You build points instead of hoping.";
+"tactics.level.court_reader" = "Court Reader";
+"tactics.level.court_reader.blurb" = "You spot what your opponent can't do.";
+"tactics.level.tactician" = "Tactician";
+"tactics.level.tactician.blurb" = "You have a plan before the toss.";
+"tactics.level.strategist" = "Strategist";
+"tactics.level.strategist.blurb" = "You out-think players who out-hit you.";

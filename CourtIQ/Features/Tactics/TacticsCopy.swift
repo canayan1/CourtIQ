@@ -33,6 +33,12 @@ struct TacticsCopy {
     }
     var completeLesson: String { t("Complete lesson", "Dersi tamamla", "Terminer la leçon") }
     var done: String { t("Done", "Bitti", "Terminé") }
+    var openLesson: String { t("Open lesson", "Dersi aç", "Ouvrir la leçon") }
+    var unlockToContinue: String { t("Unlock to continue", "Devam etmek için aç", "Débloque pour continuer") }
+
+    /// A lesson's title looked up by id, for the places that hold an id rather
+    /// than the lesson itself (the locked row naming its predecessor).
+    func lessonTitle(id: String, fallback: String) -> String { c("lesson.\(id).title", fallback) }
 
     // MARK: Lesson content
     //

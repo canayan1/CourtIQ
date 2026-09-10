@@ -19,7 +19,7 @@ enum LessonAccess: Equatable {
     /// Openable, but doing so spends today's one free lesson.
     case freeDaily
     /// Blocked until the preceding lesson is finished.
-    case needsPrevious(title: String)
+    case needsPrevious(id: String, title: String)
     /// Blocked by the paywall — today's free lesson is already spent.
     case needsSubscription
 
@@ -42,7 +42,7 @@ struct AccessGate {
 
         if let previous = previousLesson(before: lesson, in: chapter),
            !progress.isCompleted(previous.id) {
-            return .needsPrevious(title: previous.title)
+            return .needsPrevious(id: previous.id, title: previous.title)
         }
 
         if chapter.isFree { return .open }
