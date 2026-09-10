@@ -37,8 +37,14 @@ struct LearnPathView: View {
                    isSubscribed: subscriptions.isSubscribed)
     }
 
+    /// The curriculum, in the player's language. Everything the rail renders
+    /// and everything it pushes downstream comes through here, so this is the
+    /// single place lesson content gets translated.
+    private var chapters: [Chapter] { content.chapters.map { copy.localized($0) } }
+    private var sideSets: [Chapter] { content.sideSets.map { copy.localized($0) } }
+
     private var next: (chapter: Chapter, lesson: Lesson)? {
-        content.nextLesson(for: progress)
+        content.nextLesson(for: progress).map { (copy.localized($0.chapter), copy.localized($0.lesson)) }
     }
 
     var body: some View {
@@ -48,13 +54,13 @@ struct LearnPathView: View {
                     header
                     continueCard
 
-                    ForEach(content.chapters) { chapter in
+                    ForEach(chapters) { chapter in
                         chapterSection(chapter)
                     }
 
                     warmUpCard
 
-                    if !content.sideSets.isEmpty {
+                    if !sideSets.isEmpty {
                         sideSetSection
                     }
 
@@ -93,7 +99,7 @@ struct LearnPathView: View {
         .onAppear {
             guard ProcessInfo.processInfo.environment["QC_TACTICS"] == "lesson",
                   router.path.isEmpty,
-                  let chapter = content.chapters.first, let lesson = chapter.lessons.first
+                  let chapter = chapters.first, let lesson = chapter.lessons.first
             else { return }
             router.open(lesson, in: chapter)
         }
@@ -341,7 +347,7 @@ struct LearnPathView: View {
                 Spacer(minLength: 0)
             }
 
-            ForEach(content.sideSets) { set in
+            ForEach(sideSets) { set in
                 Button {
                     openSideSet(set)
                 } label: {

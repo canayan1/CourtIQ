@@ -64,6 +64,13 @@ struct Chapter: Codable, Identifiable, Hashable {
     static func == (lhs: Chapter, rhs: Chapter) -> Bool { lhs.id == rhs.id }
     func hash(into hasher: inout Hasher) { hasher.combine(id) }
 
+    init(id: String, number: Int, title: String, subtitle: String, symbol: String,
+         isFree: Bool, lessons: [Lesson], hook: String? = nil, isSideSet: Bool = false) {
+        self.id = id; self.number = number; self.title = title; self.subtitle = subtitle
+        self.symbol = symbol; self.isFree = isFree; self.lessons = lessons
+        self.hook = hook; self.isSideSet = isSideSet
+    }
+
     init(from decoder: any Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
         id = try c.decode(String.self, forKey: .id)

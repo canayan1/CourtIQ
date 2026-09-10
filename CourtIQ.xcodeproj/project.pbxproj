@@ -196,6 +196,7 @@
 		8833ED409FE04E80950CEC88 /* tactics_wrong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3B82DA28C42B4893990110AC /* tactics_wrong.wav */; };
 		C6FACBEAF61D4096BFBD94B1 /* TacticsCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB43A14D9D46278C44F454 /* TacticsCopy.swift */; };
 		57BDD6501F87474BBD2A0162 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 29114A4DB26D434FA843A2C4 /* Localizable.strings */; };
+		8C6EC95640A9480BAC57DDE3 /* TacticsContentI18n.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74D6444366D433795340A61 /* TacticsContentI18n.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -400,6 +401,7 @@
 		3B82DA28C42B4893990110AC /* tactics_wrong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = tactics_wrong.wav; path = CourtIQ/Resources/Audio/tactics_wrong.wav; sourceTree = "<group>"; };
 		7DBB43A14D9D46278C44F454 /* TacticsCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TacticsCopy.swift; path = CourtIQ/Features/Tactics/TacticsCopy.swift; sourceTree = "<group>"; };
 		29114A4DB26D434FA843A2C4 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = file; name = Localizable.strings; path = CourtIQ/Resources/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A74D6444366D433795340A61 /* TacticsContentI18n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TacticsContentI18n.swift; path = CourtIQ/Features/Tactics/TacticsContentI18n.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -512,6 +514,7 @@
 				A000000000000000000FC0 /* WallRallyCamView.swift */,
 				B100000000000000000001 /* WallBallLocator.swift */,
 				B400000000000000000001 /* WallSwingDetector.swift */,
+				A74D6444366D433795340A61 /* TacticsContentI18n.swift */,
 				29114A4DB26D434FA843A2C4 /* Localizable.strings */,
 				7DBB43A14D9D46278C44F454 /* TacticsCopy.swift */,
 				3B82DA28C42B4893990110AC /* tactics_wrong.wav */,
@@ -879,6 +882,7 @@
 				A000000000000000000FC1 /* WallRallyCamView.swift in Sources */,
 				B100000000000000000002 /* WallBallLocator.swift in Sources */,
 				B400000000000000000002 /* WallSwingDetector.swift in Sources */,
+				8C6EC95640A9480BAC57DDE3 /* TacticsContentI18n.swift in Sources */,
 				C6FACBEAF61D4096BFBD94B1 /* TacticsCopy.swift in Sources */,
 				9DC668D6EE434CA28E15A53A /* TacticsAccess.swift in Sources */,
 				955A7FC7227E41E5B9D96608 /* Sound.swift in Sources */,

@@ -236,7 +236,9 @@ struct DialogueView: View {
         guard script == nil else { return }
         if wasAlreadyDone == nil { wasAlreadyDone = progress.isCompleted(lesson.id) }
 
-        let loaded = content.script(for: lesson)
+        // Translated here rather than per bubble, so an ask node's options
+        // and Rocco's replies to them come through too.
+        let loaded = copy.localized(content.script(for: lesson))
         script = loaded
         guard let first = loaded.first else { return }
         currentID = first.id

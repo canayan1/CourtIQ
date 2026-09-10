@@ -1,8 +1,10 @@
 import Foundation
 
-/// Bilingual chrome copy for the Tactics tab (EN/TR), the same `t(en, tr)`
-/// pattern as `OnboardingCopy`. Lesson CONTENT stays in the bundled JSON
-/// (English for now); this covers only the app's own labels around it.
+/// Copy for the Tactics tab in the app's three shipped languages: the chrome
+/// via `t(en, tr, fr)` below, and — since the whole tab is one of the three
+/// things the app sells and shipped English-only — the lesson CONTENT too,
+/// via `c(key, fallback)`, which reads `TacticsContentI18n` and falls back to
+/// the English in `tactics_curriculum.json` for any key not yet translated.
 struct TacticsCopy {
     let lang: AppLanguage
     private func t(_ en: String, _ tr: String, _ fr: String? = nil) -> String {
@@ -11,6 +13,90 @@ struct TacticsCopy {
         case .french:  return fr ?? en
         default:       return en
         }
+    }
+
+    // MARK: Lesson content
+    //
+    // The curriculum JSON holds the English and the structure; these read the
+    // per-language file beside it. Every accessor falls back to the value it
+    // was given, so an untranslated lesson renders in English rather than
+    // blank, and a half-finished language is shippable.
+
+    private var content: [String: String] { TacticsContentI18n.map(for: lang) }
+
+    private func c(_ key: String, _ fallback: String) -> String {
+        guard let v = content[key], !v.trimmingCharacters(in: .whitespaces).isEmpty else { return fallback }
+        return v
+    }
+
+    /// A chapter with every displayed string swapped for this language. Ids,
+    /// numbering, symbol and gating are structural and carried over as-is.
+    func localized(_ ch: Chapter) -> Chapter {
+        Chapter(id: ch.id, number: ch.number,
+                title: c("chapter.\(ch.id).title", ch.title),
+                subtitle: c("chapter.\(ch.id).subtitle", ch.subtitle),
+                symbol: ch.symbol, isFree: ch.isFree,
+                lessons: ch.lessons.map(localized),
+                hook: ch.hook.map { c("chapter.\(ch.id).hook", $0) },
+                isSideSet: ch.isSideSet)
+    }
+
+    /// A lesson with every displayed string swapped for this language.
+    ///
+    /// Views localise ONCE at the top and then read the lesson normally, so
+    /// nothing downstream — the renderer, `DialogueBuilder`, the quiz — has to
+    /// know a translation exists. `correctIndex`, the option ORDER and the
+    /// diagrams are carried over untouched: the translated option list is
+    /// positional, so reordering it would point the index at the wrong answer.
+    func localized(_ l: Lesson) -> Lesson {
+        Lesson(id: l.id,
+               title: c("lesson.\(l.id).title", l.title),
+               situation: c("lesson.\(l.id).situation", l.situation),
+               principle: c("lesson.\(l.id).principle", l.principle),
+               defaultAction: c("lesson.\(l.id).defaultAction", l.defaultAction),
+               adjustments: l.adjustments.enumerated().map { i, a in
+                   Adjustment(when: c("lesson.\(l.id).adj.\(i).when", a.when),
+                              then: c("lesson.\(l.id).adj.\(i).then", a.then))
+               },
+               commonMistake: c("lesson.\(l.id).commonMistake", l.commonMistake),
+               diagram: l.diagram,
+               quiz: QuizItem(scenario: c("lesson.\(l.id).quiz.scenario", l.quiz.scenario),
+                              question: c("lesson.\(l.id).quiz.question", l.quiz.question),
+                              options: l.quiz.options.enumerated().map { i, o in
+                                  c("lesson.\(l.id).quiz.opt.\(i)", o) },
+                              correctIndex: l.quiz.correctIndex,
+                              explanation: c("lesson.\(l.id).quiz.explanation", l.quiz.explanation),
+                              diagram: l.quiz.diagram),
+               advanced: l.advanced.map {
+                   AdvancedNote(heading: c("lesson.\(l.id).advanced.heading", $0.heading),
+                                body: c("lesson.\(l.id).advanced.body", $0.body)) })
+    }
+
+    /// A dialogue script in the player's language.
+    ///
+    /// Authored scripts are looked up by lesson + node id. A script DERIVED by
+    /// `DialogueBuilder` from an already-translated lesson finds no keys and
+    /// falls back to the text it was built from, which is the translation — so
+    /// this is safe to apply to either kind.
+    ///
+    /// Branching is structural and untouched: `next`, `correct` and the option
+    /// ORDER all carry over, because a wrong option's `next` points back at its
+    /// own ask node and that is what makes the retry loop work.
+    func localized(_ script: DialogueScript) -> DialogueScript {
+        DialogueScript(id: script.id, lessonID: script.lessonID, nodes: script.nodes.map { node in
+            let base = "dialogue.\(script.lessonID).\(node.id)"
+            return DialogueNode(
+                id: node.id, kind: node.kind, mood: node.mood,
+                text: c(base, node.text),
+                next: node.next,
+                options: node.options.enumerated().map { i, o in
+                    DialogueNode.Option(label: c("\(base).opt.\(i).label", o.label),
+                                        correct: o.correct,
+                                        reply: c("\(base).opt.\(i).reply", o.reply),
+                                        next: o.next)
+                },
+                scene: node.scene, setID: node.setID)
+        })
     }
 
     // Rail
