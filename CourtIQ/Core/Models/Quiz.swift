@@ -10,6 +10,10 @@ enum QuizCategory: String, CaseIterable, Identifiable, Codable {
 
     var id: String { rawValue }
 
+    /// Displayed name, localised. `title` below is the English fallback and
+    /// the source of internally-built quiz titles.
+    var localizationKey: String { "quiz.cat.\(rawValue)" }
+
     var title: String {
         switch self {
         case .serve: return "Serve"
@@ -55,6 +59,8 @@ enum QuizDifficulty: String, Codable {
     case medium
     case hard
 
+    var localizationKey: String { "quiz.diff.\(rawValue)" }
+
     var title: String {
         switch self {
         case .easy: return "Foundation"
@@ -85,6 +91,8 @@ struct QuizQuestion: Identifiable, Codable, Hashable {
     let category: QuizCategory
     let difficulty: QuizDifficulty
     let focusTag: String
+    var focusTagTr: String? = nil
+    var focusTagFr: String? = nil
     let scenario: String
     var scenarioTr: String? = nil
     var scenarioFr: String? = nil
@@ -129,6 +137,14 @@ struct QuizQuestion: Identifiable, Codable, Hashable {
         }
         copy.correctAnswerIndex = movedCorrect
         return copy
+    }
+
+    func localizedFocusTag(for lang: AppLanguage) -> String {
+        switch lang {
+        case .turkish: return focusTagTr ?? focusTag
+        case .french:  return focusTagFr ?? focusTag
+        default:       return focusTag
+        }
     }
 
     func localizedScenario(for lang: AppLanguage) -> String {

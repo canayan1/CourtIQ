@@ -118,12 +118,12 @@ struct QuizView: View {
 
             VStack(alignment: .leading, spacing: 16) {
                 HStack {
-                    Label(question.category.title, systemImage: question.category.systemImage)
+                    Label(lang.t(question.category.localizationKey), systemImage: question.category.systemImage)
                         .font(.caption.weight(.semibold))
                         .foregroundStyle(.secondary)
                     // The difficulty badge used to ride on the diagram; it
                     // belongs to the question, which may not have one.
-                    Text(question.difficulty.title.uppercased())
+                    Text(lang.t(question.difficulty.localizationKey).uppercased())
                         .appFont(10, weight: .heavy)
                         .tracking(1.2)
                         .foregroundStyle(.white)
@@ -134,7 +134,7 @@ struct QuizView: View {
                 }
 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text(question.focusTag.uppercased())
+                    Text(question.localizedFocusTag(for: lang.language).uppercased())
                         .font(.caption.weight(.bold))
                         .foregroundStyle(AppPalette.clayBright)
                     Text(question.localizedScenario(for: lang.language))

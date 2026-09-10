@@ -834,7 +834,7 @@
     "focusTag": "the neutral rally target",
     "scenario": "2–2, neutral rally, both of you behind the baseline. She has carved three angle winners this set, each one off a ball you aimed near a corner. Nothing is open — where does this one go?",
     "options": [
-      "Deep through the middle, past her service line",
+      "Deep up the middle, past her service line",
       "Deep into the corner to move her again",
       "A short angle to make her run forward"
     ],
@@ -1795,7 +1795,7 @@
     "tacticalCategory": "patterns",
     "scenarioTr": "Tiebreak'te 3-4 ve ilk servisi kaçırdın. Bugünkü iki çift hatan da baskı altında düzleştirdiğin ikinci servislerde geldi.",
     "optionsTr": [
-      "Her zamanki kick ikinci servisini backhand'e at",
+      "Her zamanki kick ikinciyi backhand'e at",
       "Yumuşak koy, ralliye geriden başla",
       "Düzleştir ki karşılama saldıramasın"
     ],
@@ -2070,7 +2070,7 @@
     },
     "scenarioTr": "Sen ve partnerin biri-önde-biri-arkada dizilimindesiniz. Arkadaki partnerin kısa, yumuşak bir top alıyor. İkiniz ne yapmalısınız?",
     "optionsTr": [
-      "İkiniz birlikte file'ye çıkın (yaklaşma vuruşunun arkasından)",
+      "Yaklaşmanın arkasından ikiniz de fileye çıkın",
       "Olduğunuz yerde kalın — biriniz arkada kalsın",
       "Partner vurup baseline'a geri çekilsin"
     ],
@@ -2112,7 +2112,7 @@
     },
     "scenarioTr": "Partnerin onun servisinde 30-40'ta karşılıyor; sen karşılayanın partnerisin. Karşı file oyuncusu bu oyunda iki karşılamayı kesip sayı yaptı.",
     "optionsTr": [
-      "Servis çizgisinde, gözün file oyuncusunda",
+      "Servis çizgisinde, file oyuncusunu izle",
       "Partnerinin yanında dip çizgide",
       "Fileye yapışık, vole atmaya hazır"
     ],
@@ -2179,7 +2179,7 @@
     "focusTag": "doubles return",
     "scenario": "You're returning serve in doubles against a team with one player at the net. What's the priority on your return?",
     "options": [
-      "Keep it LOW, cross-court at the volleyer's feet",
+      "Low and cross-court, at the volleyer's feet",
       "Drive it deep and flat down the middle",
       "Loop it high cross-court for safety"
     ],
@@ -2210,7 +2210,7 @@
     "tacticalCategory": "return",
     "scenarioFr": "Tu retournes en double contre une équipe avec un joueur au filet. Quelle est la priorité sur ton retour ?",
     "optionsFr": [
-      "Le garder BAS, croisé, dans les pieds du volleyeur",
+      "Bas et croisé, dans les pieds du volleyeur",
       "Le frapper profond et à plat au milieu",
       "Le lifter haut en croisé, par sécurité"
     ],
@@ -2576,7 +2576,7 @@
     "focusTag": "changing the diagonal",
     "scenario": "A long crosscourt forehand exchange, both deep. Your opponent's crosscourt is landing a little shorter each ball. What's the highest-percentage way to change the pattern?",
     "options": [
-      "Wait for the short one, then change direction",
+      "Wait for the short ball, then change",
       "Rip it down the line off a deep ball",
       "Keep grinding the same crosscourt"
     ],
@@ -2722,7 +2722,7 @@
     "tacticalCategory": "patterns",
     "scenarioTr": "Çiftlerde servis atıyorsun, partnerin filede. Karşılayan iki kez çapraz karşılamayı partnerinin ayaklarına düşürüp yaktı. En iyi ayar ne?",
     "optionsTr": [
-      "I dizilimine geç ya da araya girer gibi yap",
+      "I dizilimi ya da girme numarası",
       "Partnerin bir adım geri çekilsin",
       "Sadece ortadan daha sert servis at"
     ],
@@ -3608,7 +3608,7 @@
     "takeawayTr": "Karşılama oyunlarını eşit başlayarak kazan.",
     "scenarioFr": "0-3 dans le set. Dans chacun de ses jeux de service tu as manqué les deux premiers retours en voulant trop en faire, et tu n'as commencé à remettre des balles qu'une fois le jeu déjà perdu.",
     "optionsFr": [
-      "Remettre les deux premiers retours profonds",
+      "Deux premiers retours remis profonds",
       "Chercher le gagnant tôt dans le jeu",
       "Changer de position à chaque point"
     ],
@@ -3911,7 +3911,7 @@
     },
     "scenarioTr": "Aynı servis atanla iki set geride kaldı. Her karşılamada aynı noktada durdun ve onlar son on iki ilk servisin on birinde aynı geniş slice'ı attı.",
     "optionsTr": [
-      "Başlangıç derinliğini sayı sayı değiştir",
+      "Duruş derinliğini sayı sayı değiştir",
       "Set boyunca bir metre geride dur",
       "Yerini koru, atışı okumaya çalış"
     ],
@@ -3919,7 +3919,7 @@
     "takeawayTr": "Nişan aldıkları hedefi sürekli oynat.",
     "scenarioFr": "Deux sets face au même serveur. Tu es resté au même endroit sur tous les retours, et il a servi le même slice extérieur sur onze de ses douze dernières premières balles.",
     "optionsFr": [
-      "Varier ta profondeur de départ à chaque point",
+      "Varier ta profondeur à chaque point",
       "Reculer d'un mètre pour la fin du set",
       "Garder ta place et lire son lancer"
     ],
@@ -4214,7 +4214,7 @@
     },
     "scenarioTr": "Ters köşe forehand'in en iyi vuruşun ve onunla iki sayı vurdun. 4-4, 30-30 ve dip çizginin ortasından nötr bir raldesin.",
     "optionsTr": [
-      "Backhand'lerine derin bir top",
+      "Backhand'ine derin bir top",
       "Ortadan herhangi bir top",
       "Forehand'lerine kısa açı"
     ],
@@ -5501,7 +5501,7 @@
     "mistakeType": "playing the score wrong",
     "scenarioTr": "Tiebreak'te 4-2 öndesin ve iki servisin de sırada. Mini break senin bir winner'ından değil, rakibin çift hatasından geldi.",
     "optionsTr": [
-      "Bütün maç tutan iki servis paternini at",
+      "Maç boyu tutan iki servis paterni",
       "İki serviste de büyüt, farkı aç",
       "Hızı biraz al, rakibe ral oynat"
     ],
@@ -5666,7 +5666,7 @@
     "mistakeType": "approaching the net at the wrong time",
     "scenarioTr": "Üçüncü sette 3-3, bacaklar ağır ve kramp kapıda; her topu kovalayamazsın. Rakibin ikinci servisi bütün maç servis çizgisinin önüne düştü ve o toplarda on sayının yedisini aldın.",
     "optionsTr": [
-      "İkinci servis karşılamalarına ve ilk sayılarına harca",
+      "İkinci servis karşılamaları ve ilk sayılar",
       "Her fırsatta fileye çık, sayıları kısalt",
       "Her yerde hızı düşür, tiebreak'e tutun"
     ],
@@ -5851,7 +5851,7 @@
     "takeawayTr": "Partnerin çapraz geçtiğinde sen de arkasından geç.",
     "scenarioFr": "30 A et ton partenaire signale dans le dos qu'il va intercepter. Tu sers au T, et le retourneur avance pour frapper croisé.",
     "optionsFr": [
-      "Traverse derrière lui vers la moitié qu'il quitte",
+      "Traverse derrière lui vers sa moitié",
       "Garde ta moitié et split-step au fond",
       "Suis ton service et monte derrière lui"
     ],
@@ -6203,7 +6203,7 @@
     },
     "scenarioTr": "Rakip servis atıp her seferinde fileye geliyor ve ilk volesi bütün set temizdi. 30-40'ta karşılıyorsun, partnerin filede.",
     "optionsTr": [
-      "Gelen servis atıcının ayağına alçak",
+      "Servis atanın ayağına alçak top",
       "Yüksek ve derin, dip çizgiye",
       "File oyuncusunun üstüne sert"
     ],
@@ -6252,7 +6252,7 @@
     "takeawayTr": "Partnerin korttan dışarı sürüklendiyse onunla yer değiştir.",
     "scenarioFr": "4-4, tu es au filet et ton partenaire est emmené très large dans le coin côté avantage pour courir un lob. Les deux adversaires attendent au filet et ton partenaire ne peut que remettre un ballon.",
     "optionsFr": [
-      "Traverse vers la moitié vide et recule d'un pas",
+      "Traverse dans la moitié vide et recule",
       "Garde ton côté et reste collé au filet",
       "Recule au fond de ton propre côté"
     ],

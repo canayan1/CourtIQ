@@ -982,3 +982,14 @@
 "train.group_court" = "SUR LE COURT";
 "train.group_body" = "LE CORPS";
 "train.drills" = "Exercices";
+
+/* Quiz card chips: category + difficulty */
+"quiz.cat.serve" = "Service";
+"quiz.cat.returnPlay" = "Retour";
+"quiz.cat.rally" = "Échange";
+"quiz.cat.net" = "Jeu au filet";
+"quiz.cat.mental" = "Mental";
+"quiz.cat.doubles" = "Double";
+"quiz.diff.easy" = "Fondamentaux";
+"quiz.diff.medium" = "Sous pression";
+"quiz.diff.hard" = "Tactique avancée";

@@ -982,3 +982,14 @@
 "train.group_court" = "ON COURT";
 "train.group_body" = "BODY";
 "train.drills" = "Drills";
+
+/* Quiz card chips: category + difficulty */
+"quiz.cat.serve" = "Serve";
+"quiz.cat.returnPlay" = "Return";
+"quiz.cat.rally" = "Rally";
+"quiz.cat.net" = "Net Play";
+"quiz.cat.mental" = "Mental";
+"quiz.cat.doubles" = "Doubles";
+"quiz.diff.easy" = "Foundation";
+"quiz.diff.medium" = "Match Pressure";
+"quiz.diff.hard" = "Advanced Tactics";

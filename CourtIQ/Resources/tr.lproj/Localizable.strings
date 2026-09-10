@@ -982,3 +982,14 @@
 "train.group_court" = "KORTTA";
 "train.group_body" = "BEDEN";
 "train.drills" = "Drill'ler";
+
+/* Quiz card chips: category + difficulty */
+"quiz.cat.serve" = "Servis";
+"quiz.cat.returnPlay" = "Karşılama";
+"quiz.cat.rally" = "Ral";
+"quiz.cat.net" = "File Oyunu";
+"quiz.cat.mental" = "Zihinsel";
+"quiz.cat.doubles" = "Çiftler";
+"quiz.diff.easy" = "Temel";
+"quiz.diff.medium" = "Maç Baskısı";
+"quiz.diff.hard" = "İleri Taktik";

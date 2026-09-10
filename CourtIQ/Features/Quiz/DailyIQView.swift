@@ -215,7 +215,7 @@ struct DailyIQView: View {
                             .font(.footnote)
                             .frame(width: 22)
                             .foregroundStyle(AppPalette.clay)
-                        Text(category.title)
+                        Text(lang.t(category.localizationKey))
                             .font(.footnote.weight(.semibold))
                             .foregroundStyle(AppPalette.ink)
                             .frame(width: 82, alignment: .leading)
@@ -244,7 +244,7 @@ struct DailyIQView: View {
                 }
                 .buttonStyle(.plain)
                 .accessibilityElement(children: .combine)
-                .accessibilityLabel("\(category.title): \(mastered)/\(total)")
+                .accessibilityLabel("\(lang.t(category.localizationKey)): \(mastered)/\(total)")
             }
         }
         .padding(16)
@@ -533,7 +533,7 @@ struct IQCategoryUnitsView: View {
             .padding(20)
         }
         .background(AppPalette.cream)
-        .navigationTitle(category.title)
+        .navigationTitle(lang.t(category.localizationKey))
         .navigationBarTitleDisplayMode(.inline)
         .navigationDestination(item: $activeUnit) { unit in
             QuizView(quiz: iq.practiceQuiz(for: unit)) { summary in
