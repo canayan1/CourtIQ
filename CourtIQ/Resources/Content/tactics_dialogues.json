@@ -122,7 +122,7 @@
           "text": "How do you find that spot in a real rally?",
           "options": [
             {
-              "label": "From the ball they are hitting, cover their sharp cross-court",
+              "label": "From their contact, cover the sharp cross-court",
               "correct": true,
               "reply": "That's it. Their most dangerous angle tells you which way to lean.",
               "next": "n6"
@@ -413,7 +413,7 @@
               "next": "n2"
             },
             {
-              "label": "A meter inside the sideline and inside the baseline",
+              "label": "A meter inside the sideline and baseline",
               "correct": true,
               "reply": "Yes. They can't tell the difference. The scoreboard can.",
               "next": "n3"
@@ -619,13 +619,13 @@
           "text": "So you stay out of that strip completely?",
           "options": [
             {
-              "label": "Yes, never set foot in it",
+              "label": "Yes, never set foot in there",
               "correct": false,
               "reply": "Then approach shots and drop shots are off the menu, and you never move forward all match.",
               "next": "n6"
             },
             {
-              "label": "Run through it, just never stop there",
+              "label": "Run through it, never stop there",
               "correct": true,
               "reply": "Exactly. That strip is movement, not a position.",
               "next": "n7"
@@ -869,13 +869,13 @@
           "text": "How do you get quicker at reading it?",
           "options": [
             {
-              "label": "Call the label out loud as it leaves their racket",
+              "label": "Call it out loud as it leaves their racket",
               "correct": true,
               "reply": "That's the drill. A few sessions and the read starts happening without you.",
               "next": "n7"
             },
             {
-              "label": "Decide once you've seen the bounce",
+              "label": "Decide once you have seen the bounce",
               "correct": false,
               "reply": "By the bounce you're already swinging. The decision arrives after the shot does.",
               "next": "n6"
@@ -1006,13 +1006,13 @@
           "text": "So when do you change direction?",
           "options": [
             {
-              "label": "On a slower ball, with time and both feet under you",
+              "label": "On a slower ball, with time and balance",
               "correct": true,
               "reply": "Right. Then the change of direction hurts them instead of hurting you.",
               "next": "n7"
             },
             {
-              "label": "When they least expect it",
+              "label": "On any ball, when they least expect it",
               "correct": false,
               "reply": "Surprise doesn't buy you timing. The speed of the ball decides this one, not their guess.",
               "next": "n6"
@@ -1147,13 +1147,13 @@
           "text": "Why does an arcing ball also bother them?",
           "options": [
             {
-              "label": "It drops from above shoulder height, with no easy contact point",
+              "label": "It drops from above your shoulder, with no easy contact",
               "correct": true,
               "reply": "Right. Plenty of club players have no attacking answer to a ball falling on them.",
               "next": "n8"
             },
             {
-              "label": "It's slower, so they get impatient and rush",
+              "label": "It's slower, so they get impatient and rush it",
               "correct": false,
               "reply": "You can't build a tactic on someone's mood. Whatever troubles them has to be physical.",
               "next": "n7"
@@ -1984,13 +1984,13 @@
           "text": "How many of these patterns do you need?",
           "options": [
             {
-              "label": "Two. Wide then open court, T then open side",
+              "label": "Two. Wide then open, T then open side",
               "correct": true,
               "reply": "Two practiced patterns will carry a whole match. Two you trust, not six you half know.",
               "next": "n6"
             },
             {
-              "label": "One for every serve you own",
+              "label": "One pattern for every serve you own",
               "correct": false,
               "reply": "Then you are choosing between six plans while the ball is in the air. You will pick none of them.",
               "next": "n5"
@@ -2369,13 +2369,13 @@
           "text": "So when do you try the untested one?",
           "options": [
             {
-              "label": "At 40-0 or 40-15, when a miss costs little",
+              "label": "At 40-0 or 40-15, when a miss is cheap",
               "correct": true,
               "reply": "Right. A cheap point buys the experiment — and it keeps your trusted serve unreadable later on.",
               "next": "n7"
             },
             {
-              "label": "Never, just stick with what works",
+              "label": "Never — just stick with what works",
               "correct": false,
               "reply": "Then they read you by the third game and stand there waiting. The same serve every time is a pattern, not a weapon.",
               "next": "n6"
@@ -2979,7 +2979,7 @@
             {
               "label": "The drop shot, surprise wins big points",
               "correct": false,
-              "reply": "A shot you haven't landed all day is an experiment. Deuce is an expensive place to run one.",
+              "reply": "A shot you haven't landed all day is an experiment. A break point is an expensive place to run one.",
               "next": "n3"
             },
             {
@@ -3344,7 +3344,7 @@
           "text": "When does this pattern stop working?",
           "options": [
             {
-              "label": "Once they have stopped and are balanced in the middle",
+              "label": "Once they have stopped, balanced in the middle",
               "correct": true,
               "reply": "Right. Then they are waiting for it, and the open court is the better ball.",
               "next": "n7"
@@ -3620,7 +3620,7 @@
           "text": "When should you not try the short angle?",
           "options": [
             {
-              "label": "When you are defending or off balance",
+              "label": "When defending or off balance",
               "correct": true,
               "reply": "Right. From there it lands short and central, and they take the attack off you.",
               "next": "n6"
@@ -3776,7 +3776,7 @@
               "next": "n6"
             },
             {
-              "label": "A deep one",
+              "label": "A deep one, near your baseline",
               "correct": false,
               "reply": "A deep ball keeps you honest at the baseline. It is not the one you attack off.",
               "next": "n5"
@@ -4510,7 +4510,7 @@
           "text": "You've got the volley. Where do you put it?",
           "options": [
             {
-              "label": "Down the middle, between the two of them",
+              "label": "Down the middle, between them",
               "correct": true,
               "reply": "Yes. Or at the feet of whichever one is closer. Simple beats clever here.",
               "next": "n8"
@@ -4555,7 +4555,7 @@
               "next": "n2"
             },
             {
-              "label": "You defend their worst ball, leave their best one open",
+              "label": "You guard their worst ball, not their best",
               "correct": true,
               "reply": "That's it. The alley is their hardest shot. The middle is their easiest.",
               "next": "n3"
@@ -4708,7 +4708,7 @@
               "next": "n3"
             },
             {
-              "label": "Hold your half, split-step, volley what comes",
+              "label": "Hold your half, split-step, volley",
               "correct": true,
               "reply": "Yes. Hold, and their firmer return still has to get past you.",
               "next": "n4"
@@ -4821,7 +4821,7 @@
           "text": "The return goes up deep over your head, past anything you could reach. What now?",
           "options": [
             {
-              "label": "Cross to the other half — that lob is your partner's ball",
+              "label": "Cross over — that lob is your partner's ball",
               "correct": true,
               "reply": "Yes. Switch immediately and cover their side. A shout helps your partner launch, but your feet go first.",
               "next": "n9"

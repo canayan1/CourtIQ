@@ -55,7 +55,7 @@
             "question": "Which ball do you hit?",
             "options": [
               "Down the line, to move them",
-              "Cross-court, deep",
+              "Cross-court and deep, as usual",
               "Short and low, to bring them in"
             ],
             "correctIndex": 1,
@@ -205,7 +205,7 @@
             "question": "What is your target?",
             "options": [
               "The corner, right on the intersection of the lines",
-              "A meter inside the sideline and a meter inside the baseline",
+              "A meter inside the sideline and the baseline",
               "Right at their feet so they cannot swing"
             ],
             "correctIndex": 1,
@@ -306,7 +306,7 @@
             "options": [
               "Stay where you are — you covered that side already",
               "On the center mark",
-              "A step past the center mark, toward the side their cross-court would land"
+              "A step past the center mark, toward their cross-court"
             ],
             "correctIndex": 2,
             "explanation": "They are calm and hitting from the side, so their sharp cross-court is on. That cross-court is the one shot that can pull you past your sideline. Lean a step that way and you cover it, without giving up the down-the-line."
@@ -535,7 +535,7 @@
             "options": [
               "Defend — high and deep down the middle",
               "Neutral — deep cross-court and wait",
-              "Attack — hit to a target and follow it forward"
+              "Attack — hit a target and follow it in"
             ],
             "correctIndex": 2,
             "explanation": "Short, high, slow, and you are moving in with the ball above the net. Those are all the attacking signs at once. Playing it safe wastes the best chance of the point."
@@ -795,7 +795,7 @@
             "question": "What is the change most likely to win you the next game?",
             "options": [
               "Go for even bigger shots, since the small ones are not working",
-              "Commit to hitting one more deep ball than feels natural before attacking",
+              "Hit one more deep ball than feels natural before attacking",
               "Slow every ball right down and just push it back"
             ],
             "correctIndex": 1,
@@ -970,7 +970,7 @@
             "question": "What do you do with the next ball?",
             "options": [
               "Switch to their forehand so they cannot settle in",
-              "Hit it to the backhand again",
+              "Hit it to their backhand again, deep",
               "Go for a winner down the line to end it"
             ],
             "correctIndex": 1,
@@ -1489,8 +1489,8 @@
             "scenario": "It is 30-40 on your serve. Your body serve to the backhand has landed all match. Your wide serve has mostly missed.",
             "question": "Which serve do you hit?",
             "options": [
-              "The wide serve. It is bolder and they are not expecting it",
-              "The body serve to the backhand",
+              "The wide serve — bolder, and unexpected",
+              "The body serve, into their backhand hip",
               "A very safe slow serve into the middle of the box"
             ],
             "correctIndex": 1,
@@ -1763,7 +1763,7 @@
             "question": "What tactic is most likely to change the match?",
             "options": [
               "Hit even harder and deeper to push them further back",
-              "Use short low balls to drag them forward, and follow them in",
+              "Short low balls to drag them forward, then follow in",
               "Slow everything down and rally from the baseline"
             ],
             "correctIndex": 1,
@@ -1970,7 +1970,7 @@
             "question": "What is the right response?",
             "options": [
               "Focus harder and commit to the same baseline game",
-              "Pick one concrete change — say, high balls to their forehand — and run it for a full game",
+              "Pick one concrete change and run it a full game",
               "Just swing harder and hope the misses stop"
             ],
             "correctIndex": 1,
@@ -2184,7 +2184,7 @@
             "question": "What is the best play?",
             "options": [
               "Take it with the backhand, since it is on that side",
-              "Step around it and hit an inside-out forehand to their backhand",
+              "Step around it, inside-out forehand to their backhand",
               "Step around it and hit a forehand down the line"
             ],
             "correctIndex": 1,
@@ -2525,7 +2525,7 @@
             "question": "What is the problem with your formation?",
             "options": [
               "Nothing — one up and one back covers the net and the baseline",
-              "You are split, so in a neutral rally you should both be up or both be back",
+              "You are split; in a neutral rally both up or both back",
               "Your partner should move to the net while you go back"
             ],
             "correctIndex": 1,
@@ -2616,7 +2616,7 @@
             "question": "Where do you stand, and what do you watch?",
             "options": [
               "Pick a side early and commit, so you are already moving at the hit",
-              "Middle third of your box, split-step as the returner swings, eyes on their racket face",
+              "Middle third of your box, split-step as they swing, eyes on the racket",
               "Hug your alley so nothing can pass you down the line"
             ],
             "correctIndex": 1,
@@ -2829,7 +2829,7 @@
             "scenario": "The serve goes up the T. The right-handed returner in the deuce court is squeezed toward the middle, the ball on their backhand.",
             "question": "What is your job as they swing?",
             "options": [
-              "Step toward the middle as they swing and look to volley the block that comes back down the center",
+              "Step to the middle as they swing, volley the block up the center",
               "Hold your ground — a T serve can be returned anywhere, so stay neutral",
               "Turn and watch the serve so you know whether it landed in"
             ],
@@ -2927,7 +2927,7 @@
             "question": "What do you change?",
             "options": [
               "Stand even wider so the alley is closed for good",
-              "Move to the middle third of your box, split-step as they hit, and give up the alley on purpose",
+              "Middle third of your box, split-step as they hit, alley open on purpose",
               "Ask your partner to serve only to the T so nothing comes back wide"
             ],
             "correctIndex": 1,
@@ -3030,7 +3030,7 @@
             "options": [
               "Poach again — it is working, and they will not expect it a third time",
               "Move right up on the net so the firmer return has less time to dip",
-              "Hold your half, split-step as they hit, and volley anything that comes within reach"
+              "Hold your half, split-step as they hit, volley what comes"
             ],
             "correctIndex": 2,
             "explanation": "Inside the baseline on a slower ball, the returner has time to watch you leave. They hit into the space behind you. So the move that beat them on a first serve becomes a gift here. Crowding the net does not fix it: the pace arrives before you react, and the lob gets easier. Holding keeps your half covered and your feet under you."
