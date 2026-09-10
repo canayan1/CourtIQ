@@ -1007,3 +1007,19 @@
 "tactics.level.tactician.blurb" = "Atıştan önce planın var.";
 "tactics.level.strategist" = "Stratejist";
 "tactics.level.strategist.blurb" = "Senden sert vuranı akılla geçiyorsun.";
+
+/* Coach review: pending / status / language */
+"coachreview.language_note" = "İncelemen İngilizce yazılır — uygulaman Türkçeyse Türkçe.";
+"coachreview.card_sub_fmt" = "Sesli inceleme · 72 saat · %@";
+"coachreview.order_cta_fmt" = "İncelemeyi al · %@";
+"coachreview.price_fallback" = "$19.99";
+"coachreview.pending_title" = "Klibin hâlâ gönderiliyor";
+"coachreview.pending_body" = "Ödeme alındı. İyi bir bağlantıda denemeye devam edeceğiz — ya da şimdi gönder.";
+"coachreview.pending_retry" = "Şimdi gönder";
+"coachreview.orphan_title" = "Ödeme alındı — klip gönderilmedi";
+"coachreview.orphan_body" = "Klibini çek ya da seç, sonuç ekranından gönder. Tekrar ücret alınmaz.";
+"coachreview.capacity_full" = "Şu an bütün inceleme yerleri dolu. Bir iki gün sonra tekrar dene — ücret alınmadı.";
+"coachreview.purchase_rejected" = "Apple bu satın almayı doğrulayamadı. Klibin kayıtlı; tekrar deneyeceğiz, iki kez ücret alınmaz.";
+"coachreview.ready_title" = "İncelemen hazır";
+"home.state_review_ready" = "Koç incelemen hazır";
+"home.state_review_open" = "Koç incelemesi yolda · %d saat kaldı";

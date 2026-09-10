@@ -7,6 +7,9 @@ import AVFoundation
 struct CoachReviewDeliverableView: View {
     let order: CoachReviewOrder
     let deliverable: CoachReviewDeliverable
+    /// Needed to mint the voice note's signed URL through the player's own
+    /// session — the app never holds a permanent link to a clip or a note.
+    let ensureSession: () async throws -> SupabaseSession
 
     @EnvironmentObject private var lang: LanguageManager
     @StateObject private var audio = CoachVoicePlayer()
@@ -27,6 +30,13 @@ struct CoachReviewDeliverableView: View {
         .navigationBarTitleDisplayMode(.inline)
         .safeAreaInset(edge: .bottom) {
             if deliverable.voicePath != nil { voiceBar }
+        }
+        .task {
+            guard deliverable.voicePath != nil,
+                  let session = try? await ensureSession(),
+                  let url = await CoachReviewManager.shared.voiceURL(for: deliverable, session: session)
+            else { return }
+            audio.load(url: url)
         }
     }
 

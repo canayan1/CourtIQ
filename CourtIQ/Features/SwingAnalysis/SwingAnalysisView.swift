@@ -236,6 +236,9 @@ struct SwingAnalysisView: View {
                     }
                     .buttonStyle(PressableCardStyle())
 
+                    // A paid player's order lives here, on the tab that sold it.
+                    CoachReviewStatusCard(ensureSession: { try await session.ensureSessionWithRetry() })
+
                     CoachReviewInterestCard(source: "setup")
                 }
             }
@@ -783,7 +786,7 @@ private struct CoachReviewInterestCard: View {
                     .foregroundStyle(AppPalette.goldText)
                     .frame(width: 30)
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(lang.t("coachreview.card_eyebrow"))
+                    Text(canOrder ? lang.t("coachreview.order_eyebrow") : lang.t("coachreview.card_eyebrow"))
                         .font(.caption2.weight(.heavy)).kerning(0.8)
                         .foregroundStyle(AppPalette.goldText)
                     Text(interested ? lang.t("coachreview.card_joined")
@@ -791,7 +794,11 @@ private struct CoachReviewInterestCard: View {
                         .font(.subheadline.weight(.bold))
                         .foregroundStyle(AppPalette.ink)
                         .fixedSize(horizontal: false, vertical: true)
-                    if !interested {
+                    if canOrder, let price = reviewManager.productDisplayPrice {
+                        Text(String(format: lang.t("coachreview.card_sub_fmt"), price))
+                            .font(.footnote)
+                            .foregroundStyle(AppPalette.inkSoft)
+                    } else if !interested {
                         Text(lang.t("coachreview.card_sub"))
                             .font(.footnote)
                             .foregroundStyle(AppPalette.inkSoft)

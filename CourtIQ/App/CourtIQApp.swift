@@ -229,6 +229,13 @@ struct CourtIQApp: App {
                 // if a streak is going but today is still idle (cleared once the
                 // player does anything). Highest-ROI retention notification.
                 .onChange(of: scenePhase) { _, phase in
+                    // A paid clip that never reached the server, or a review
+                    // delivered while the app was closed, is picked up here.
+                    // No-op for anyone without a coach-review order.
+                    if phase == .active {
+                        Task { await CoachReviewManager.shared.syncIfNeeded(
+                            ensureSession: { try await session.ensureSessionWithRetry() }) }
+                    }
                     guard phase == .background else { return }
                     NotificationManager.shared.refreshStreakRiskReminder(
                         streak: ActivityManager.shared.currentStreak,

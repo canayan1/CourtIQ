@@ -1007,3 +1007,19 @@
 "tactics.level.tactician.blurb" = "Tu as un plan avant le lancer.";
 "tactics.level.strategist" = "Stratège";
 "tactics.level.strategist.blurb" = "Tu réfléchis mieux que ceux qui frappent plus fort.";
+
+/* Coach review: pending / status / language */
+"coachreview.language_note" = "Ta revue est rédigée en anglais — ou en turc si ton application est en turc.";
+"coachreview.card_sub_fmt" = "Revue vocale · 72 h · %@";
+"coachreview.order_cta_fmt" = "Acheter la revue · %@";
+"coachreview.price_fallback" = "19,99 $";
+"coachreview.pending_title" = "Ton clip est encore en cours d'envoi";
+"coachreview.pending_body" = "Paiement reçu. On réessaie dès qu'il y a une bonne connexion — ou envoie-le maintenant.";
+"coachreview.pending_retry" = "Envoyer maintenant";
+"coachreview.orphan_title" = "Paiement reçu — clip non envoyé";
+"coachreview.orphan_body" = "Filme ou choisis ton clip et envoie-le depuis l'écran de résultat. Tu ne seras pas débité une deuxième fois.";
+"coachreview.capacity_full" = "Toutes les places de revue sont prises pour le moment. Réessaie dans un jour ou deux — tu n'as pas été débité.";
+"coachreview.purchase_rejected" = "Apple n'a pas pu confirmer cet achat. Ton clip est sauvegardé ; on réessaie, et tu ne seras pas débité deux fois.";
+"coachreview.ready_title" = "Ta revue est prête";
+"home.state_review_ready" = "Ta revue par le coach est prête";
+"home.state_review_open" = "Revue du coach en route · %d h restantes";

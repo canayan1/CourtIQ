@@ -517,6 +517,12 @@ final class SubscriptionManager: ObservableObject {
         updatesTask = Task.detached(priority: .background) { [weak self] in
             for await result in Transaction.updates {
                 guard case .verified(let transaction) = result else { continue }
+                // The coach-review consumable is finished by CoachReviewManager
+                // ONLY after the server has stored the order. Finishing it
+                // here would cut that safety net: a failed upload after the
+                // charge would leave the player paid with nothing, and
+                // nothing to retry.
+                if transaction.productID == AppConfiguration.shared.coachReviewProductID { continue }
                 await transaction.finish()
                 await self?.refreshEntitlements()
             }

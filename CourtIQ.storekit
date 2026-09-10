@@ -1,74 +1,90 @@
 {
-  "appPolicies" : {
-    "eula" : "",
-    "policies" : [ ]
+  "appPolicies": {
+    "eula": "",
+    "policies": []
   },
-  "identifier" : "A1B2C3D4",
-  "nonRenewingSubscriptions" : [ ],
-  "products" : [ ],
-  "settings" : {
-    "_applicationInternalID" : "6773753464",
-    "_developerTeamID" : "DC8ALPY949",
-    "_failTransactionsEnabled" : false,
-    "_lastSynchronizedDate" : 0
-  },
-  "subscriptionGroups" : [
+  "identifier": "A1B2C3D4",
+  "nonRenewingSubscriptions": [],
+  "products": [
     {
-      "id" : "21500001",
-      "localizations" : [ ],
-      "name" : "DropVolley Premium",
-      "subscriptions" : [
+      "displayPrice": "19.99",
+      "familyShareable": false,
+      "internalID": "6803196729",
+      "localizations": [
         {
-          "adHocOffers" : [ ],
-          "codeOffers" : [ ],
-          "displayPrice" : "59.99",
-          "familyShareable" : false,
-          "groupNumber" : 1,
-          "internalID" : "21500011",
-          "introductoryOffer" : {
-            "internalID" : "21500021",
-            "paymentMode" : "free",
-            "subscriptionPeriod" : "P3D"
+          "description": "One review of your clip by a real coach",
+          "displayName": "One coach review",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "com.canayan93.courtiq.coachreview1",
+      "referenceName": "One coach review",
+      "type": "Consumable"
+    }
+  ],
+  "settings": {
+    "_applicationInternalID": "6773753464",
+    "_developerTeamID": "DC8ALPY949",
+    "_failTransactionsEnabled": false,
+    "_lastSynchronizedDate": 0
+  },
+  "subscriptionGroups": [
+    {
+      "id": "21500001",
+      "localizations": [],
+      "name": "DropVolley Premium",
+      "subscriptions": [
+        {
+          "adHocOffers": [],
+          "codeOffers": [],
+          "displayPrice": "59.99",
+          "familyShareable": false,
+          "groupNumber": 1,
+          "internalID": "21500011",
+          "introductoryOffer": {
+            "internalID": "21500021",
+            "paymentMode": "free",
+            "subscriptionPeriod": "P3D"
           },
-          "localizations" : [
+          "localizations": [
             {
-              "description" : "Full access to DropVolley, billed yearly",
-              "displayName" : "Annual",
-              "locale" : "en_US"
+              "description": "Full access to DropVolley, billed yearly",
+              "displayName": "Annual",
+              "locale": "en_US"
             }
           ],
-          "productID" : "com.courtiq.premium.annual",
-          "recurringSubscriptionPeriod" : "P1Y",
-          "referenceName" : "DropVolley Annual",
-          "subscriptionGroupID" : "21500001",
-          "type" : "RecurringSubscription"
+          "productID": "com.courtiq.premium.annual",
+          "recurringSubscriptionPeriod": "P1Y",
+          "referenceName": "DropVolley Annual",
+          "subscriptionGroupID": "21500001",
+          "type": "RecurringSubscription"
         },
         {
-          "adHocOffers" : [ ],
-          "codeOffers" : [ ],
-          "displayPrice" : "9.99",
-          "familyShareable" : false,
-          "groupNumber" : 1,
-          "internalID" : "21500012",
-          "introductoryOffer" : null,
-          "localizations" : [
+          "adHocOffers": [],
+          "codeOffers": [],
+          "displayPrice": "9.99",
+          "familyShareable": false,
+          "groupNumber": 1,
+          "internalID": "21500012",
+          "introductoryOffer": null,
+          "localizations": [
             {
-              "description" : "Full access to DropVolley, billed weekly",
-              "displayName" : "Weekly",
-              "locale" : "en_US"
+              "description": "Full access to DropVolley, billed weekly",
+              "displayName": "Weekly",
+              "locale": "en_US"
             }
           ],
-          "productID" : "com.courtiq.premium.weekly",
-          "recurringSubscriptionPeriod" : "P1W",
-          "referenceName" : "DropVolley Weekly",
-          "subscriptionGroupID" : "21500001",
-          "type" : "RecurringSubscription"
+          "productID": "com.courtiq.premium.weekly",
+          "recurringSubscriptionPeriod": "P1W",
+          "referenceName": "DropVolley Weekly",
+          "subscriptionGroupID": "21500001",
+          "type": "RecurringSubscription"
         }
       ]
     }
   ],
-  "version" : {
-    "major" : 4,
-    "minor" : 0
+  "version": {
+    "major": 4,
+    "minor": 0
   }
 }

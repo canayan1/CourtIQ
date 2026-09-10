@@ -110,6 +110,16 @@ struct CoachReviewOrderView: View {
                     .font(.footnote)
                     .foregroundStyle(AppPalette.ink)
             }
+            // Stated before the price, not after: a French player reading a
+            // review in English is a refund unless they chose it knowingly.
+            HStack(alignment: .top, spacing: 10) {
+                Image(systemName: "text.bubble")
+                    .foregroundStyle(AppPalette.moss)
+                Text(lang.t("coachreview.language_note"))
+                    .font(.footnote)
+                    .foregroundStyle(AppPalette.inkSoft)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
         }
         .tint(AppPalette.clay)
         .padding(16)
@@ -122,7 +132,9 @@ struct CoachReviewOrderView: View {
         } label: {
             HStack {
                 if manager.isSubmitting { ProgressView().tint(.white) }
-                Text(manager.isSubmitting ? lang.t("coachreview.sending") : lang.t("coachreview.order_cta"))
+                Text(manager.isSubmitting ? lang.t("coachreview.sending")
+                     : String(format: lang.t("coachreview.order_cta_fmt"),
+                              manager.productDisplayPrice ?? lang.t("coachreview.price_fallback")))
                     .font(.headline)
             }
             .foregroundStyle(.white)
@@ -158,6 +170,7 @@ struct CoachReviewOrderView: View {
                 stroke: stroke,
                 handedness: handedness,
                 note: note.isEmpty ? nil : note,
+                reviewLanguage: lang.language.rawValue,
                 session: session,
                 productID: AppConfiguration.shared.coachReviewProductID
             )
@@ -166,7 +179,8 @@ struct CoachReviewOrderView: View {
         } catch CoachReviewManager.SubmitError.purchaseCancelled {
             // User backed out of the sheet — no error to show.
         } catch {
-            errorMessage = error.localizedDescription
+            let raw = error.localizedDescription
+            errorMessage = raw.hasPrefix("coachreview.") ? lang.t(raw) : raw
             showError = true
         }
     }

@@ -199,6 +199,7 @@
 		8C6EC95640A9480BAC57DDE3 /* TacticsContentI18n.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74D6444366D433795340A61 /* TacticsContentI18n.swift */; };
 		4E31330777EA4B08A8DEB98B /* tactics_i18n.fr.json in Resources */ = {isa = PBXBuildFile; fileRef = 14C9C1FF08FC486084225C29 /* tactics_i18n.fr.json */; };
 		0B85B093A18C497C930D181B /* tactics_i18n.tr.json in Resources */ = {isa = PBXBuildFile; fileRef = 35585313ACC649F99915637C /* tactics_i18n.tr.json */; };
+		091DF643A8744E32B6E9C3AE /* CoachReviewStatusCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED68D5F39334C9BBBB722EB /* CoachReviewStatusCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -406,6 +407,7 @@
 		A74D6444366D433795340A61 /* TacticsContentI18n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TacticsContentI18n.swift; path = CourtIQ/Features/Tactics/TacticsContentI18n.swift; sourceTree = "<group>"; };
 		14C9C1FF08FC486084225C29 /* tactics_i18n.fr.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = tactics_i18n.fr.json; path = CourtIQ/Resources/Content/tactics_i18n.fr.json; sourceTree = "<group>"; };
 		35585313ACC649F99915637C /* tactics_i18n.tr.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = tactics_i18n.tr.json; path = CourtIQ/Resources/Content/tactics_i18n.tr.json; sourceTree = "<group>"; };
+		FED68D5F39334C9BBBB722EB /* CoachReviewStatusCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoachReviewStatusCard.swift; path = CourtIQ/Features/CoachReview/CoachReviewStatusCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -518,6 +520,7 @@
 				A000000000000000000FC0 /* WallRallyCamView.swift */,
 				B100000000000000000001 /* WallBallLocator.swift */,
 				B400000000000000000001 /* WallSwingDetector.swift */,
+				FED68D5F39334C9BBBB722EB /* CoachReviewStatusCard.swift */,
 				35585313ACC649F99915637C /* tactics_i18n.tr.json */,
 				14C9C1FF08FC486084225C29 /* tactics_i18n.fr.json */,
 				A74D6444366D433795340A61 /* TacticsContentI18n.swift */,
@@ -890,6 +893,7 @@
 				A000000000000000000FC1 /* WallRallyCamView.swift in Sources */,
 				B100000000000000000002 /* WallBallLocator.swift in Sources */,
 				B400000000000000000002 /* WallSwingDetector.swift in Sources */,
+				091DF643A8744E32B6E9C3AE /* CoachReviewStatusCard.swift in Sources */,
 				8C6EC95640A9480BAC57DDE3 /* TacticsContentI18n.swift in Sources */,
 				C6FACBEAF61D4096BFBD94B1 /* TacticsCopy.swift in Sources */,
 				9DC668D6EE434CA28E15A53A /* TacticsAccess.swift in Sources */,

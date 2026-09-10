@@ -9,12 +9,19 @@ final class CoachReviewService {
     enum ServiceError: LocalizedError {
         case missingConfiguration
         case videoTooLarge
+        /// 409 — the coach's open-order cap is reached. Nothing was charged
+        /// or, if it was, the transaction stays unfinished and retries later.
+        case capacityFull
+        /// 402 — Apple would not confirm the purchase.
+        case purchaseRejected
         case server(String)
 
         var errorDescription: String? {
             switch self {
             case .missingConfiguration: return "Coach review isn't available right now."
             case .videoTooLarge:        return "That clip is too long — keep it under ~30 seconds."
+            case .capacityFull:         return "Every review slot is taken right now."
+            case .purchaseRejected:     return "Apple couldn't confirm this purchase."
             case .server(let message):  return message
             }
         }
@@ -39,10 +46,12 @@ final class CoachReviewService {
     /// purchase succeeds — the transaction id is passed through for audit.
     func createOrder(
         videoURL: URL,
-        stroke: SwingStroke,
-        handedness: SwingHandedness?,
+        stroke: String,
+        handedness: String?,
         note: String?,
+        reviewLanguage: String,
         transactionID: String?,
+        transactionJWS: String?,
         session: SupabaseSession
     ) async throws -> CreatedOrder {
         guard let baseURL = configuration.supabaseURL else { throw ServiceError.missingConfiguration }
@@ -56,7 +65,9 @@ final class CoachReviewService {
             let stroke: String
             let handedness: String?
             let note: String?
+            let reviewLanguage: String
             let transactionId: String?
+            let transactionJws: String?
             let mimeType: String
         }
 
@@ -71,18 +82,48 @@ final class CoachReviewService {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try JSONEncoder().encode(Payload(
             videoBase64: base64,
-            stroke: stroke.rawValue,
-            handedness: handedness?.rawValue,
+            stroke: stroke,
+            handedness: handedness,
             note: note?.trimmingCharacters(in: .whitespacesAndNewlines),
+            reviewLanguage: reviewLanguage,
             transactionId: transactionID,
+            transactionJws: transactionJWS,
             mimeType: "video/mp4"
         ))
 
         let (body, response) = try await URLSession.shared.data(for: request)
+        guard let http = response as? HTTPURLResponse else { throw ServiceError.server("No response.") }
+        switch http.statusCode {
+        case 200..<300: return try JSONDecoder().decode(CreatedOrder.self, from: body)
+        case 409:       throw ServiceError.capacityFull
+        case 402:       throw ServiceError.purchaseRejected
+        default:        throw ServiceError.server(Self.serverMessage(from: body))
+        }
+    }
+
+    /// A short-lived signed URL for one object the caller is allowed to read
+    /// (the storage RLS policy decides). Used for the delivered voice note.
+    func signedURL(forObject path: String, session: SupabaseSession, ttlSeconds: Int = 3600) async throws -> URL {
+        guard let baseURL = configuration.supabaseURL else { throw ServiceError.missingConfiguration }
+        let url = baseURL.appendingPathComponent("storage/v1/object/sign/coach-reviews/\(path)")
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        if let anonKey = configuration.supabaseAnonKey {
+            request.setValue(anonKey, forHTTPHeaderField: "apikey")
+        }
+        request.setValue("Bearer \(session.accessToken)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try JSONEncoder().encode(["expiresIn": ttlSeconds])
+        let (body, response) = try await URLSession.shared.data(for: request)
         guard let http = response as? HTTPURLResponse, (200..<300).contains(http.statusCode) else {
             throw ServiceError.server(Self.serverMessage(from: body))
         }
-        return try JSONDecoder().decode(CreatedOrder.self, from: body)
+        struct Signed: Decodable { let signedURL: String }
+        let signed = try JSONDecoder().decode(Signed.self, from: body)
+        guard let full = URL(string: baseURL.absoluteString + "/storage/v1" + signed.signedURL) else {
+            throw ServiceError.server("Bad signed URL.")
+        }
+        return full
     }
 
     // MARK: Read

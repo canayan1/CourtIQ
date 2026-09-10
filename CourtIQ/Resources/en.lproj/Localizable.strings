@@ -1007,3 +1007,19 @@
 "tactics.level.tactician.blurb" = "You have a plan before the toss.";
 "tactics.level.strategist" = "Strategist";
 "tactics.level.strategist.blurb" = "You out-think players who out-hit you.";
+
+/* Coach review: pending / status / language */
+"coachreview.language_note" = "Your review is written in English — or in Turkish if your app is set to Turkish.";
+"coachreview.card_sub_fmt" = "Voice review · 72h · %@";
+"coachreview.order_cta_fmt" = "Buy review · %@";
+"coachreview.price_fallback" = "$19.99";
+"coachreview.pending_title" = "Still sending your clip";
+"coachreview.pending_body" = "Payment received. We'll keep trying on a good connection — or send it now.";
+"coachreview.pending_retry" = "Send now";
+"coachreview.orphan_title" = "Payment received — clip not sent";
+"coachreview.orphan_body" = "Film or pick your clip and send it from the result screen. You won't be charged again.";
+"coachreview.capacity_full" = "Every review slot is taken right now. Try again in a day or two — you haven't been charged.";
+"coachreview.purchase_rejected" = "Apple couldn't confirm this purchase. Your clip is saved; we'll retry, and you won't be charged twice.";
+"coachreview.ready_title" = "Your review is ready";
+"home.state_review_ready" = "Your coach review is ready";
+"home.state_review_open" = "Coach review on its way · %dh left";

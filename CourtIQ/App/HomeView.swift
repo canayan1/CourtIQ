@@ -9,6 +9,7 @@ struct HomeView: View {
     @EnvironmentObject private var session: UserSessionManager
     @EnvironmentObject private var dailyQuizManager: DailyQuizManager
     @EnvironmentObject private var lang: LanguageManager
+    @ObservedObject private var reviewManager = CoachReviewManager.shared
     @EnvironmentObject private var drillManager: CourtTapDrillManager
     @EnvironmentObject private var avatarManager: AvatarManager
     @EnvironmentObject private var matchManager: MatchEntryManager
@@ -231,6 +232,12 @@ struct HomeView: View {
     // MARK: - Pillar cards
 
     private var coachState: String {
+        if let order = reviewManager.activeOrder {
+            if order.status == .delivered { return lang.t("home.state_review_ready") }
+            if let hours = order.hoursRemaining {
+                return String(format: lang.t("home.state_review_open"), hours)
+            }
+        }
         if let last = swingStore.records.first {
             let stroke = last.stroke?.rawValue.capitalized ?? last.strokeRaw.capitalized
             if let score = last.score {
