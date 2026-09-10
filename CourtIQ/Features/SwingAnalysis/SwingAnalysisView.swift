@@ -786,7 +786,9 @@ private struct CoachReviewInterestCard: View {
                     .foregroundStyle(AppPalette.goldText)
                     .frame(width: 30)
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(canOrder ? lang.t("coachreview.order_eyebrow") : lang.t("coachreview.card_eyebrow"))
+                    // "Coming soon" only while the store has no product to sell —
+                    // not merely because this screen has no clip yet.
+                    Text(reviewManager.productAvailable ? lang.t("coachreview.order_eyebrow") : lang.t("coachreview.card_eyebrow"))
                         .font(.caption2.weight(.heavy)).kerning(0.8)
                         .foregroundStyle(AppPalette.goldText)
                     Text(interested ? lang.t("coachreview.card_joined")
@@ -794,7 +796,7 @@ private struct CoachReviewInterestCard: View {
                         .font(.subheadline.weight(.bold))
                         .foregroundStyle(AppPalette.ink)
                         .fixedSize(horizontal: false, vertical: true)
-                    if canOrder, let price = reviewManager.productDisplayPrice {
+                    if reviewManager.productAvailable, let price = reviewManager.productDisplayPrice {
                         Text(String(format: lang.t("coachreview.card_sub_fmt"), price))
                             .font(.footnote)
                             .foregroundStyle(AppPalette.inkSoft)
