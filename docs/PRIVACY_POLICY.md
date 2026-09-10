@@ -17,6 +17,7 @@ If you have questions, contact us at **info@kalibrefin.com**.
 - **Profile preferences** you set in onboarding: skill level, training frequency, focus area, language.
 - **Community content** you post: tip comments, training discussion replies, and reports you file on other users' content.
 - **Support and feedback** content you send via in-app feedback or email.
+- **Coach review submissions** (only if you buy a coach review): the video clip you choose to send, the stroke and handedness you select, your optional note, and the language your app is set to. See section 2a.
 
 ### b. Information collected automatically
 - **Usage data**: which quizzes you complete, your streak, training sessions you mark done, mobility flows you start, weekly check-ins you submit. Stored locally on your device and (if signed in) synced to your CourtIQ account.
@@ -24,7 +25,7 @@ If you have questions, contact us at **info@kalibrefin.com**.
 - **App version, iOS version, device model, locale**: included automatically in any feedback email you choose to send.
 
 ### c. Information from third parties
-- **Apple App Store / StoreKit**: subscription status (active / lapsed / refunded). Apple does not share your payment details with us.
+- **Apple App Store / StoreKit**: subscription status (active / lapsed / refunded), and — for a coach review purchase — a signed transaction record that we verify with Apple's certificate chain before creating your order. Apple does not share your payment details with us.
 
 ### d. What we do NOT collect
 - Your contacts, photos, location, microphone, camera, health data, or facial data.
@@ -42,8 +43,33 @@ If you have questions, contact us at **info@kalibrefin.com**.
 | Moderate community comments | Community content, reports |
 | Diagnose crashes and improve performance | Device diagnostics, app version |
 | Respond to your support requests | Information you give us |
+| Deliver a coach review you purchased | Your submitted clip, note, stroke, handedness, app language, verified purchase record |
 
 We do **not** use your data for advertising, profiling, or sale to third parties.
+
+---
+
+## 2a. Human coach review (paid, optional)
+
+If you buy a **coach review**, a human being watches the video you submit. This section says exactly who, what they can do, and for how long. Nothing here applies unless you make that purchase; the AI swing analysis is covered by section 2.
+
+**Who watches.** A tennis coach reviewing on behalf of DropVolley. Today that is DropVolley's own founding coach. If we ever add independent coaches, each will be bound by a written contract with confidentiality and data-processing terms before they can see a single clip, and we will update this section first.
+
+**What they can do.** Stream your clip inside our coach panel through a link that expires after 30 minutes and is re-issued only while your order is open. They cannot download it, and the panel offers no way to. Every time a link is issued, and every claim and delivery, is logged against your order.
+
+**What they cannot do.** Share, post, copy, keep, or use your video for anything other than your review — including their own marketing or training any software. DropVolley will only ever use a clip in its own marketing if you switch on a separate, per-video permission, which is off by default and which you can withdraw at any time.
+
+**What you receive and where it lives.** A scorecard, written notes with timestamps, one prioritised correction with a drill, and a voice note. These are stored in your account and shown only to you, until you delete them or your account.
+
+**Retention.** The original video is deleted automatically **90 days after your order is created**, or immediately when you delete your account — whichever comes first. The review itself stays in your account until you remove it.
+
+**Age and other people.** This feature is for players aged 18 or over. You confirm at purchase that anyone visible in the clip is happy for it to be reviewed; please film only yourself where you can.
+
+**Review language.** Reviews are written in English, or in Turkish if your app is set to Turkish. This is stated on the order screen before you pay.
+
+**Legal basis.** Performance of the contract you enter when you buy the review (GDPR Art. 6(1)(b)); for the marketing permission, your consent (Art. 6(1)(a)), withdrawable at any time.
+
+**Where the coach may be.** Our founding coach works from Ireland and Türkiye. Your clip is stored on our EU-hosted infrastructure and streamed to the coach; it is not copied to a device.
 
 ---
 
@@ -53,7 +79,7 @@ We do **not** use your data for advertising, profiling, or sale to third parties
 - **Our backend** (Firebase / Supabase): only the data needed to sync your account across devices and to support community features.
 - **Apple's infrastructure**: subscription receipts and Sign in with Apple identifiers, governed by Apple's privacy policy.
 
-We retain account data while your account is active. When you delete your account (Profile → Delete account), we delete server-side records within 30 days. Local data is wiped immediately.
+We retain account data while your account is active. When you delete your account (Profile → Delete account), we delete server-side records within 30 days. Local data is wiped immediately. Coach-review clips are deleted at once on account deletion and in any case 90 days after the order (section 2a).
 
 ---
 
@@ -101,7 +127,7 @@ CourtIQ requires users to be **at least 16 years old** — the strictest GDPR co
 | Apple Sign In | Authentication | https://www.apple.com/legal/privacy/ |
 | Apple StoreKit | Subscription billing | https://www.apple.com/legal/privacy/ |
 | Apple MetricKit | Aggregated crash/performance reports | https://www.apple.com/legal/privacy/ |
-| Firebase / Supabase | Account sync, content delivery | (link to provider's policy) |
+| Firebase / Supabase | Account sync, content delivery, private storage of coach-review clips and reviews | https://supabase.com/privacy · https://firebase.google.com/support/privacy |
 
 We do not use third-party advertising SDKs.
 

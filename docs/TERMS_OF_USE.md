@@ -49,6 +49,22 @@ Pricing is shown in the app at the moment of purchase and may vary by region. Pr
 
 ---
 
+## 3a. Coach review (one-time purchase)
+
+CourtIQ offers an optional **coach review**: you submit one video clip and a human tennis coach returns a written and voice review. It is sold as a one-time in-app purchase, separate from All Access.
+
+- **What you get.** A five-point scorecard, timestamped written notes, one prioritised correction with a drill, and a voice note of roughly two to three minutes, all delivered inside the app. The review addresses what is visible in the clip you sent, at the quality of that clip.
+- **When you get it.** We aim to deliver within **72 hours** of your order. If we miss that, you may choose either a free second review of the same clip or a credit for a future review. We do not guarantee a delivery time; the 72 hours is a target we hold ourselves to, not a warranty.
+- **Availability.** The number of reviews we accept at one time is limited so that each one gets real attention. If no slot is free, the purchase is not offered and you are not charged.
+- **Payment and refunds.** Billing is handled by Apple through your App Store account. Refunds are decided by Apple at its sole discretion; we cannot issue them directly (https://reportaproblem.apple.com). Before requesting a refund, contact us — a review by a different coach, or a fresh review of a better clip, is usually the faster remedy.
+- **If your clip cannot be reviewed.** The coach may decline footage that is not tennis, does not show you, is unsafe, unlawful, or abusive. In that case you receive a credit for another submission, not a review.
+- **Who reviews.** A human coach acting on our behalf. Reviews are written in English, or in Turkish if your app is set to Turkish; this is stated before you pay. The coach's view is a professional opinion about technique and tactics from a short clip — it is not a lesson plan, not a diagnosis, and not a promise that you will improve.
+- **Your responsibilities.** You must be 18 or over. You confirm that you have the right to submit the clip and that anyone visible in it agrees to its being reviewed. You keep ownership of your video; you grant us the licence needed to store it, show it to the reviewing coach, and deliver the review to you, as described in our Privacy Policy (section 2a).
+- **Health and safety.** Sections 5 and 6 of these Terms apply to coach reviews in full. A coach will not diagnose injuries or give medical advice, and you should not act on a review if you are injured or in pain without seeing a qualified professional.
+- **Marketing use.** We will not use your clip or your review in any marketing unless you turn on the separate, per-video permission in the app. You can turn it off again at any time.
+
+---
+
 ## 4. Community content
 
 When you post a tip comment, training discussion reply, or any other user-generated content:
@@ -123,7 +139,7 @@ CourtIQ does not warrant, guarantee, or accept liability for:
 - Any decision you make, action you take, match you play, training you do, injury you suffer, money you spend, or relationship you alter on the basis of AI Coach output;
 - The availability or performance of the third-party AI provider's systems.
 
-The disclaimers, releases, and indemnifications in Sections 5.1–5.5, 6, 8, and 9 of these Terms apply in full to the AI Coach feature.
+The disclaimers, releases, and indemnifications in Sections 5.1–5.5, 6, 8, and 9 of these Terms apply in full to the AI Coach feature, and to the human coach review described in Section 3a.
 
 If a response feels off, ignore it. If pain, injury, or medical concern is involved, see a qualified professional — not the AI.
 
