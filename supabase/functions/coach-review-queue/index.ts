@@ -6,7 +6,7 @@
 //
 //   POST { action: "list" }
 //     → { orders: [{ id, stroke, handedness, note, createdAt, slaDueAt, status, videoUrl }] }
-//       videoUrl is a SHORT-LIVED signed URL (2h) — stream only, never a
+//       videoUrl is a SHORT-LIVED signed URL (30 min) — stream only, never a
 //       permanent link (docs/COACH-REVIEW-POLICY.md §4).
 //
 //   POST { action: "claim", orderId }
@@ -19,12 +19,13 @@
 // ONE fix (sentence + timestamp + cue), 3 micro-notes, 1 drill, 2-3 min voice.
 
 import { createClient } from "jsr:@supabase/supabase-js@2";
+import { purgeOverdueClips } from "../_shared/coachReviewPurge.ts";
 
 const SUPABASE_URL     = Deno.env.get("SUPABASE_URL") ?? "";
 const SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
 const PANEL_SECRET     = Deno.env.get("COACH_PANEL_SECRET") ?? "";
 const BUCKET           = "coach-reviews";
-const SIGNED_URL_TTL   = 2 * 60 * 60;          // 2 hours
+const SIGNED_URL_TTL   = 30 * 60;              // 30 minutes, re-minted per list (MVP §2)
 const MAX_VOICE_BASE64 = 12 * 1024 * 1024;     // ~9 MB of m4a
 
 const corsHeaders = {
@@ -86,27 +87,35 @@ Deno.serve(async (req) => {
   if (action === "list") {
     const { data, error } = await admin
       .from("coach_review_orders")
-      .select("id, stroke, handedness, note, created_at, sla_due_at, status, video_path")
+      .select("id, stroke, handedness, note, review_language, created_at, sla_due_at, status, video_path, video_purged_at")
       .in("status", ["submitted", "in_review"])
       .order("sla_due_at", { ascending: true })
       .limit(50);
     if (error) return json({ error: "Could not read the queue." }, 500);
 
     const orders = await Promise.all((data ?? []).map(async (o) => {
-      const { data: signed } = await admin.storage
-        .from(BUCKET)
-        .createSignedUrl(o.video_path, SIGNED_URL_TTL);
+      const { data: signed } = o.video_purged_at
+        ? { data: null }
+        : await admin.storage.from(BUCKET).createSignedUrl(o.video_path, SIGNED_URL_TTL);
       return {
         id: o.id,
         stroke: o.stroke,
         handedness: o.handedness,
         note: o.note,
+        reviewLanguage: o.review_language ?? "en",
         createdAt: o.created_at,
         slaDueAt: o.sla_due_at,
         status: o.status,
         videoUrl: signed?.signedUrl ?? null,
       };
     }));
+    // Every mint is attributable (policy §4). coach_id is null until
+    // per-coach auth lands; today the only holder of the secret is the owner.
+    if (orders.length) {
+      await admin.from("coach_review_access_log").insert(
+        orders.filter((o) => o.videoUrl).map((o) => ({ order_id: o.id, action: "mint" })));
+    }
+    try { await purgeOverdueClips(admin, 20); } catch { /* best effort */ }
     return json({ orders });
   }
 
@@ -121,6 +130,7 @@ Deno.serve(async (req) => {
       .eq("id", orderId)
       .eq("status", "submitted");
     if (error) return json({ error: "Could not claim the order." }, 500);
+    await admin.from("coach_review_access_log").insert({ order_id: orderId, action: "claim" });
     return json({ ok: true });
   }
 
@@ -165,6 +175,7 @@ Deno.serve(async (req) => {
       .update({ status: "delivered", delivered_at: new Date().toISOString() })
       .eq("id", orderId);
     if (updErr) return json({ error: "Could not mark it delivered." }, 500);
+    await admin.from("coach_review_access_log").insert({ order_id: orderId, action: "deliver" });
 
     return json({ ok: true });
   }
