@@ -128,9 +128,9 @@ Found by reading the published documents, not the plans:
 - **Coach agreement** — not needed while Can is the only coach reviewing
   his own users' clips, but the privacy policy's processor language has to
   be true from day one. Needed before coach #2 signs in.
-- **Review language disclosure.** The French launch makes this concrete: a
-  French player will receive a review in English or Turkish. That must be
-  on the order screen before the price, or it is a refund every time.
+- **Review language disclosure.** ✅ Decided 11 Sep: every review is written
+  in English, no exceptions. Stated on the order screen before the price,
+  in the privacy policy and in the terms.
 
 ---
 
@@ -154,9 +154,19 @@ Found by reading the published documents, not the plans:
 
 ---
 
-## 4a. Deploy runbook for Step 1 (needs the words "deploy et")
+## 4a. Deploy runbook for Step 1
 
-Everything below is built and committed; nothing is deployed. Run in this
+✅ **Deployed 11 Sep 2026** (Can: "supabase için sen deploy edebilirsin"):
+migration applied, Vault secret created, function secrets set
+(`MAX_OPEN=5`, `ALLOW_SANDBOX=1`), functions live (order v3, queue v4,
+maintenance v1), cron `coach-review-maintenance` active at 03:17 UTC.
+Smoke-tested live: maintenance → `{purged:0, open:0}`, wrong secret → 401,
+queue list → `[]`, order with a forged JWS from an anonymous session → 402.
+The panel change (canayanIOSapps 3b1aade + follow-up) is committed but NOT
+deployed to Vercel — it only adds a language label and an SLA banner, the
+live panel keeps working without it.
+
+The runbook, for the next time: Run in this
 order — the migration schedules a cron job that reads a Vault secret, so
 the secret must exist before 03:17 UTC of the first day.
 
@@ -201,8 +211,9 @@ users today with §1a unfixed. Two honest options:
   A single buyer with a bad upload is the cost.
 
 **Step 1 — the three app/backend fixes (§1a, §1b, §1c) + retention cron
-(§2) + capacity cap + SLA visibility (§4).** ✅ Built and committed 10 Sep
-(292f3ea app, 0f8b5e4 backend, panel 3b1aade). Not yet deployed — §4a.
+(§2) + capacity cap + SLA visibility (§4).** ✅ Built 10 Sep (292f3ea app,
+0f8b5e4 backend, panel 3b1aade), backend deployed and smoke-tested 11 Sep
+(§4a). The app side ships with 1.2.
 SLA *mail* was dropped for now: no mail provider is configured; the panel
 banner and the daily digest cover it until one is.
 
