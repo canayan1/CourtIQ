@@ -1009,7 +1009,7 @@
 "tactics.level.strategist.blurb" = "You out-think players who out-hit you.";
 
 /* Coach review: pending / status / language */
-"coachreview.language_note" = "Your review is written in English — or in Turkish if your app is set to Turkish.";
+"coachreview.language_note" = "Your review is written in English.";
 "coachreview.card_sub_fmt" = "Voice review · 72h · %@";
 "coachreview.order_cta_fmt" = "Buy review · %@";
 "coachreview.price_fallback" = "$19.99";

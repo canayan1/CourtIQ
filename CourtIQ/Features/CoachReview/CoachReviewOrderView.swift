@@ -110,8 +110,9 @@ struct CoachReviewOrderView: View {
                     .font(.footnote)
                     .foregroundStyle(AppPalette.ink)
             }
-            // Stated before the price, not after: a French player reading a
-            // review in English is a refund unless they chose it knowingly.
+            // Stated before the price, not after: every review is written in
+            // English, and a French or Turkish player has to know that before
+            // paying, not after.
             HStack(alignment: .top, spacing: 10) {
                 Image(systemName: "text.bubble")
                     .foregroundStyle(AppPalette.moss)

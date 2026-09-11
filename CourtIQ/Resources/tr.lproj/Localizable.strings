@@ -1009,7 +1009,7 @@
 "tactics.level.strategist.blurb" = "Senden sert vuranı akılla geçiyorsun.";
 
 /* Coach review: pending / status / language */
-"coachreview.language_note" = "İncelemen İngilizce yazılır — uygulaman Türkçeyse Türkçe.";
+"coachreview.language_note" = "İncelemen İngilizce yazılır.";
 "coachreview.card_sub_fmt" = "Sesli inceleme · 72 saat · %@";
 "coachreview.order_cta_fmt" = "İncelemeyi al · %@";
 "coachreview.price_fallback" = "$19.99";

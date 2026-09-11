@@ -65,7 +65,7 @@ If you buy a **coach review**, a human being watches the video you submit. This 
 
 **Age and other people.** This feature is for players aged 18 or over. You confirm at purchase that anyone visible in the clip is happy for it to be reviewed; please film only yourself where you can.
 
-**Review language.** Reviews are written in English, or in Turkish if your app is set to Turkish. This is stated on the order screen before you pay.
+**Review language.** Reviews are written in English, whatever language your app is set to. This is stated on the order screen before you pay.
 
 **Legal basis.** Performance of the contract you enter when you buy the review (GDPR Art. 6(1)(b)); for the marketing permission, your consent (Art. 6(1)(a)), withdrawable at any time.
 

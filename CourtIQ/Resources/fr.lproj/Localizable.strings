@@ -1009,7 +1009,7 @@
 "tactics.level.strategist.blurb" = "Tu réfléchis mieux que ceux qui frappent plus fort.";
 
 /* Coach review: pending / status / language */
-"coachreview.language_note" = "Ta revue est rédigée en anglais — ou en turc si ton application est en turc.";
+"coachreview.language_note" = "Ta revue est rédigée en anglais.";
 "coachreview.card_sub_fmt" = "Revue vocale · 72 h · %@";
 "coachreview.order_cta_fmt" = "Acheter la revue · %@";
 "coachreview.price_fallback" = "19,99 $";
