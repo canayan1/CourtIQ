@@ -1023,3 +1023,11 @@
 "coachreview.ready_title" = "Your review is ready";
 "home.state_review_ready" = "Your coach review is ready";
 "home.state_review_open" = "Coach review on its way · %dh left";
+
+/* Coach review: re-upload handshake */
+"coachreview.status_needs_reupload" = "New clip needed";
+"coachreview.reupload_title" = "Your coach couldn't open your clip";
+"coachreview.reupload_body" = "Send a new one — you won't be charged again, and the 72-hour clock restarts when it lands.";
+"coachreview.reupload_cta" = "Send a new clip";
+"coachreview.reupload_sent" = "New clip sent";
+"home.state_review_reupload" = "Your coach needs a new clip";

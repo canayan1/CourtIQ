@@ -3,20 +3,24 @@ import Foundation
 // MARK: - Order
 
 enum CoachReviewStatus: String, Codable {
-    case submitted, inReview = "in_review", delivered, refunded, cancelled
+    case submitted, inReview = "in_review", needsReupload = "needs_reupload", delivered, refunded, cancelled
 
     /// Short, ≤3-word status a user reads at a glance.
     var shortLabelKey: String {
         switch self {
         case .submitted: return "coachreview.status_submitted"
         case .inReview:  return "coachreview.status_in_review"
+        case .needsReupload: return "coachreview.status_needs_reupload"
         case .delivered: return "coachreview.status_delivered"
         case .refunded:  return "coachreview.status_refunded"
         case .cancelled: return "coachreview.status_cancelled"
         }
     }
 
-    var isOpen: Bool { self == .submitted || self == .inReview }
+    /// Still the coach's to act on. `needsReupload` is open too, but the
+    /// 72-hour clock is paused until the player sends a clip.
+    var isOpen: Bool { self == .submitted || self == .inReview || self == .needsReupload }
+    var isWaitingOnPlayer: Bool { self == .needsReupload }
 }
 
 /// A purchased human review. Mirrors `coach_review_orders`; the local copy is
@@ -27,20 +31,24 @@ struct CoachReviewOrder: Codable, Identifiable, Hashable {
     var stroke: String
     var handedness: String?
     var note: String?
+    /// What the coach said when sending the clip back (nil otherwise).
+    var coachMessage: String? = nil
     var createdAt: Date
     var slaDueAt: Date
     var deliveredAt: Date?
 
     enum CodingKeys: String, CodingKey {
         case id, status, stroke, handedness, note
+        case coachMessage = "coach_message"
         case createdAt = "created_at"
         case slaDueAt = "sla_due_at"
         case deliveredAt = "delivered_at"
     }
 
-    /// Hours left on the 72h SLA (nil once delivered).
+    /// Hours left on the 72h SLA (nil once delivered or while the clock is
+    /// paused waiting for a new clip).
     var hoursRemaining: Int? {
-        guard status.isOpen else { return nil }
+        guard status.isOpen, !status.isWaitingOnPlayer else { return nil }
         let seconds = slaDueAt.timeIntervalSinceNow
         return seconds > 0 ? Int(seconds / 3600) : 0
     }

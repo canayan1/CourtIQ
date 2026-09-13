@@ -18,11 +18,15 @@ struct CoachReviewStatusCard: View {
     @EnvironmentObject private var lang: LanguageManager
     @State private var showDeliverable = false
     @State private var isRetrying = false
+    @State private var showReuploadPicker = false
+    @State private var reuploadError: String?
 
     var body: some View {
         Group {
             if let record = manager.pending.first {
                 pendingCard(record)
+            } else if let order = manager.activeOrder, order.status.isWaitingOnPlayer {
+                reuploadCard(order)
             } else if let order = manager.activeOrder {
                 orderCard(order)
             }
@@ -86,6 +90,81 @@ struct CoachReviewStatusCard: View {
         .background(AppPalette.goldTint.opacity(0.55))
         .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).stroke(AppPalette.gold.opacity(0.4), lineWidth: 1))
         .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+    }
+
+    // MARK: Coach sent it back
+
+    /// The coach could not open the clip. Same paid order, new clip, no
+    /// second charge; the 72-hour clock restarts when it lands.
+    private func reuploadCard(_ order: CoachReviewOrder) -> some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(alignment: .top, spacing: 12) {
+                Image(systemName: "arrow.triangle.2.circlepath.circle.fill")
+                    .font(.title3)
+                    .foregroundStyle(AppPalette.clay)
+                    .frame(width: 30)
+                VStack(alignment: .leading, spacing: 4) {
+                    Eyebrow(lang.t("coachreview.order_eyebrow"), tint: AppPalette.clayText)
+                    Text(lang.t("coachreview.reupload_title"))
+                        .font(.subheadline.weight(.bold))
+                        .foregroundStyle(AppPalette.ink)
+                    Text(lang.t("coachreview.reupload_body"))
+                        .font(.footnote)
+                        .foregroundStyle(AppPalette.inkSoft)
+                        .fixedSize(horizontal: false, vertical: true)
+                    if let message = order.coachMessage, !message.isEmpty {
+                        Text("“\(message)”")
+                            .font(.footnote.italic())
+                            .foregroundStyle(AppPalette.ink)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    if let reuploadError {
+                        Text(reuploadError)
+                            .font(.caption)
+                            .foregroundStyle(AppPalette.clayText)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                }
+            }
+            Button {
+                Haptics.tap()
+                showReuploadPicker = true
+            } label: {
+                HStack {
+                    if manager.isSubmitting { ProgressView().tint(.white) }
+                    Text(manager.isSubmitting ? lang.t("coachreview.sending") : lang.t("coachreview.reupload_cta"))
+                        .font(.subheadline.weight(.bold))
+                }
+                .foregroundStyle(.white)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 12)
+                .background(AppPalette.clay, in: RoundedRectangle(cornerRadius: 12))
+            }
+            .buttonStyle(PressableCardStyle())
+            .disabled(manager.isSubmitting)
+        }
+        .padding(14)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppPalette.goldTint.opacity(0.55))
+        .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).stroke(AppPalette.gold.opacity(0.4), lineWidth: 1))
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .sheet(isPresented: $showReuploadPicker) {
+            VideoPicker(sourceType: .photoLibrary) { url in
+                showReuploadPicker = false
+                guard let url else { return }
+                Task {
+                    do {
+                        let session = try await ensureSession()
+                        try await manager.reupload(orderID: order.id, videoURL: url, session: session)
+                        reuploadError = nil
+                        Haptics.success()
+                    } catch {
+                        reuploadError = error.localizedDescription
+                    }
+                }
+            }
+            .ignoresSafeArea()
+        }
     }
 
     // MARK: Open / delivered

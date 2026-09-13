@@ -101,6 +101,29 @@ final class CoachReviewService {
         }
     }
 
+    /// Replaces the clip on an order the coach sent back. No purchase: the
+    /// order is already paid and the server checks ownership and state.
+    func reupload(orderID: String, videoURL: URL, session: SupabaseSession) async throws -> CreatedOrder {
+        guard let baseURL = configuration.supabaseURL else { throw ServiceError.missingConfiguration }
+        let data = try await Self.compressedVideoData(from: videoURL)
+        let base64 = data.base64EncodedString()
+        guard base64.count <= Self.maxBase64Bytes else { throw ServiceError.videoTooLarge }
+        struct Payload: Encodable { let reuploadOrderId: String; let videoBase64: String; let mimeType: String }
+        let url = baseURL.appendingPathComponent("functions/v1/coach-review-order")
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.timeoutInterval = 120
+        if let anonKey = configuration.supabaseAnonKey { request.setValue(anonKey, forHTTPHeaderField: "apikey") }
+        request.setValue("Bearer \(session.accessToken)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try JSONEncoder().encode(Payload(reuploadOrderId: orderID, videoBase64: base64, mimeType: "video/mp4"))
+        let (body, response) = try await URLSession.shared.data(for: request)
+        guard let http = response as? HTTPURLResponse, (200..<300).contains(http.statusCode) else {
+            throw ServiceError.server(Self.serverMessage(from: body))
+        }
+        return try JSONDecoder().decode(CreatedOrder.self, from: body)
+    }
+
     /// A short-lived signed URL for one object the caller is allowed to read
     /// (the storage RLS policy decides). Used for the delivered voice note.
     func signedURL(forObject path: String, session: SupabaseSession, ttlSeconds: Int = 3600) async throws -> URL {
@@ -132,7 +155,7 @@ final class CoachReviewService {
     func fetchOrders(session: SupabaseSession) async throws -> [CoachReviewOrder] {
         try await get(
             path: "rest/v1/coach_review_orders",
-            query: [URLQueryItem(name: "select", value: "id,status,stroke,handedness,note,created_at,sla_due_at,delivered_at"),
+            query: [URLQueryItem(name: "select", value: "id,status,stroke,handedness,note,coach_message,created_at,sla_due_at,delivered_at"),
                     URLQueryItem(name: "order", value: "created_at.desc"),
                     URLQueryItem(name: "limit", value: "20")],
             session: session

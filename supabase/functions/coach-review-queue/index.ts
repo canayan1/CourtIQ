@@ -10,7 +10,11 @@
 //       permanent link (docs/COACH-REVIEW-POLICY.md §4).
 //
 //   POST { action: "claim", orderId }
-//     → flips submitted → in_review
+//     → flips submitted → in_review  ("received — I can open it")
+//
+//   POST { action: "reject", orderId, reason }
+//     → flips submitted/in_review → needs_reupload with the coach's message;
+//       the player re-sends a clip from the app without paying again
 //
 //   POST { action: "deliver", orderId, deliverable: {...}, voiceBase64? }
 //     → stores the voice note, inserts the deliverable, flips → delivered
@@ -66,7 +70,7 @@ Deno.serve(async (req) => {
   }
 
   let body: {
-    action?: string; orderId?: string; voiceBase64?: string;
+    action?: string; orderId?: string; reason?: string; voiceBase64?: string;
     deliverable?: {
       scorecard?: Record<string, number | null>;
       oneThing?: string; oneThingAt?: number; oneThingCue?: string;
@@ -87,8 +91,8 @@ Deno.serve(async (req) => {
   if (action === "list") {
     const { data, error } = await admin
       .from("coach_review_orders")
-      .select("id, stroke, handedness, note, review_language, created_at, sla_due_at, status, video_path, video_purged_at")
-      .in("status", ["submitted", "in_review"])
+      .select("id, stroke, handedness, note, review_language, created_at, sla_due_at, status, video_path, video_purged_at, coach_message, reupload_count")
+      .in("status", ["submitted", "in_review", "needs_reupload"])
       .order("sla_due_at", { ascending: true })
       .limit(50);
     if (error) return json({ error: "Could not read the queue." }, 500);
@@ -106,6 +110,8 @@ Deno.serve(async (req) => {
         createdAt: o.created_at,
         slaDueAt: o.sla_due_at,
         status: o.status,
+        coachMessage: o.coach_message ?? null,
+        reuploadCount: o.reupload_count ?? 0,
         videoUrl: signed?.signedUrl ?? null,
       };
     }));
@@ -131,6 +137,22 @@ Deno.serve(async (req) => {
       .eq("status", "submitted");
     if (error) return json({ error: "Could not claim the order." }, 500);
     await admin.from("coach_review_access_log").insert({ order_id: orderId, action: "claim" });
+    return json({ ok: true });
+  }
+
+  // ---------------------------------------------------------------- reject --
+  if (action === "reject") {
+    const reason = (body.reason ?? "").trim().slice(0, 300);
+    if (!reason) return json({ error: "Tell the player what to fix." }, 400);
+    const { data, error } = await admin
+      .from("coach_review_orders")
+      .update({ status: "needs_reupload", coach_message: reason })
+      .eq("id", orderId)
+      .in("status", ["submitted", "in_review"])
+      .select("id");
+    if (error) return json({ error: "Could not send it back." }, 500);
+    if (!data?.length) return json({ error: "Order is not open." }, 409);
+    await admin.from("coach_review_access_log").insert({ order_id: orderId, action: "reject" });
     return json({ ok: true });
   }
 

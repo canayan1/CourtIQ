@@ -13,6 +13,8 @@
 //
 // Body: { videoBase64, stroke, handedness?, note?, reviewLanguage?,
 //         transactionId, transactionJws, mimeType? }
+//   or, to replace the clip on an order the coach sent back (no new purchase):
+//       { reuploadOrderId, videoBase64, mimeType? }
 // Auth: Bearer <Supabase JWT>
 // Returns: { orderId, slaDueAt }              200
 //          { error: "capacity" }              409  (nothing consumed; app retries later)
@@ -76,6 +78,7 @@ Deno.serve(async (req) => {
   let body: {
     videoBase64?: string; stroke?: string; handedness?: string; note?: string;
     reviewLanguage?: string; transactionId?: string; transactionJws?: string; mimeType?: string;
+    reuploadOrderId?: string;
   };
   try {
     body = await req.json();
@@ -84,13 +87,49 @@ Deno.serve(async (req) => {
   }
 
   const videoBase64   = (body.videoBase64 ?? "").trim();
+  if (!videoBase64)    return json({ error: "No video provided." }, 400);
+  if (videoBase64.length > MAX_BASE64) return json({ error: "Video is too large." }, 413);
+
+  // ---- Re-upload: the order is already paid; only ownership and state matter.
+  const reuploadOrderId = (body.reuploadOrderId ?? "").trim();
+  if (reuploadOrderId) {
+    const admin = createClient(SUPABASE_URL, SERVICE_ROLE_KEY);
+    const { data: order } = await admin
+      .from("coach_review_orders")
+      .select("id, user_id, status, video_path, reupload_count")
+      .eq("id", reuploadOrderId)
+      .maybeSingle();
+    if (!order || order.user_id !== user.id) return json({ error: "Order not found." }, 404);
+    if (order.status !== "needs_reupload") return json({ error: "Order is not waiting for a clip." }, 409);
+
+    const { error: upErr } = await admin.storage.from(BUCKET).upload(order.video_path, decodeBase64(videoBase64), {
+      contentType: body.mimeType ?? "video/mp4",
+      upsert: true,
+    });
+    if (upErr) return json({ error: "Could not store the video." }, 500);
+
+    const now = Date.now();
+    const slaDueAt = new Date(now + SLA_HOURS * 3600_000).toISOString();
+    const purgeAt  = new Date(now + RETENTION_DAYS * 86_400_000).toISOString();
+    const { error: updErr } = await admin.from("coach_review_orders").update({
+      status: "submitted",
+      coach_message: null,
+      reupload_count: (order.reupload_count ?? 0) + 1,
+      sla_due_at: slaDueAt,          // the clock restarts: the coach could not work before
+      purge_video_at: purgeAt,
+      video_purged_at: null,
+    }).eq("id", order.id);
+    if (updErr) return json({ error: "Could not update the order." }, 500);
+    await admin.from("coach_review_access_log").insert({ order_id: order.id, action: "reupload" });
+    await notifyCoach(`Clip re-sent on order ${order.id.slice(0, 8)}`, `The player sent a new clip. SLA restarted: ${slaDueAt}`);
+    return json({ orderId: order.id, slaDueAt });
+  }
+
   const stroke        = (body.stroke ?? "").trim();
   const transactionId = (body.transactionId ?? "").trim();
   const transactionJws = (body.transactionJws ?? "").trim();
-  if (!videoBase64)    return json({ error: "No video provided." }, 400);
   if (!stroke)         return json({ error: "No stroke selected." }, 400);
   if (!transactionId || !transactionJws) return json({ error: "purchase", reason: "missing" }, 402);
-  if (videoBase64.length > MAX_BASE64) return json({ error: "Video is too large." }, 413);
 
   // 1. The purchase, verified against Apple's certificate chain.
   const verified = await verifyCoachReviewPurchase(transactionJws, PRODUCT_ID, ALLOW_SANDBOX);
@@ -161,5 +200,28 @@ Deno.serve(async (req) => {
   // 5. Keep the retention promise even if the daily job is asleep.
   try { await purgeOverdueClips(admin, 10); } catch { /* best effort */ }
 
+  await notifyCoach(`New coach review: ${stroke}`,
+    `Order ${orderId.slice(0, 8)} · ${stroke} · ${body.handedness ?? "—"} · player reads ${language.toUpperCase()}\n` +
+    `Due ${slaDueAt}\n${(body.note ?? "").slice(0, 200) || "(no note)"}\n\nhttps://samosfi.com/coach`);
+
   return json({ orderId, slaDueAt });
 });
+
+/**
+ * Tells the coach an order landed. Optional: does nothing until RESEND_API_KEY
+ * and COACH_NOTIFY_EMAIL are set. Failure never fails the order — the panel
+ * queue is the source of truth, this is only the doorbell.
+ */
+async function notifyCoach(subject: string, text: string): Promise<void> {
+  const key = Deno.env.get("RESEND_API_KEY");
+  const to = Deno.env.get("COACH_NOTIFY_EMAIL");
+  const from = Deno.env.get("COACH_NOTIFY_FROM") ?? "DropVolley <onboarding@resend.dev>";
+  if (!key || !to) return;
+  try {
+    await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: { "Authorization": `Bearer ${key}`, "Content-Type": "application/json" },
+      body: JSON.stringify({ from, to, subject, text }),
+    });
+  } catch { /* doorbell only */ }
+}

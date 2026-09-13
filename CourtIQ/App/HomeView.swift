@@ -234,6 +234,7 @@ struct HomeView: View {
     private var coachState: String {
         if let order = reviewManager.activeOrder {
             if order.status == .delivered { return lang.t("home.state_review_ready") }
+            if order.status.isWaitingOnPlayer { return lang.t("home.state_review_reupload") }
             if let hours = order.hoursRemaining {
                 return String(format: lang.t("home.state_review_open"), hours)
             }

@@ -305,6 +305,25 @@ final class CoachReviewManager: ObservableObject {
         await resume(session: session)
     }
 
+    // MARK: - Re-upload
+
+    /// Sends a replacement clip for an order the coach bounced. Nothing to
+    /// pay, nothing to keep on disk: if it fails the order simply stays in
+    /// `needsReupload` and the card keeps offering the button.
+    func reupload(orderID: String, videoURL: URL, session: SupabaseSession) async throws {
+        isSubmitting = true
+        defer { isSubmitting = false }
+        let created = try await service.reupload(orderID: orderID, videoURL: videoURL, session: session)
+        if let i = orders.firstIndex(where: { $0.id == orderID }) {
+            orders[i].status = .submitted
+            orders[i].coachMessage = nil
+            orders[i].slaDueAt = ISO8601DateFormatter.supabaseFractional.date(from: created.slaDueAt)
+                ?? ISO8601DateFormatter.supabasePlain.date(from: created.slaDueAt)
+                ?? Date().addingTimeInterval(72 * 3600)
+            persist()
+        }
+    }
+
     // MARK: - Sync
 
     /// Refreshes statuses + pulls any newly delivered review. Best effort:

@@ -1023,3 +1023,11 @@
 "coachreview.ready_title" = "İncelemen hazır";
 "home.state_review_ready" = "Koç incelemen hazır";
 "home.state_review_open" = "Koç incelemesi yolda · %d saat kaldı";
+
+/* Coach review: re-upload handshake */
+"coachreview.status_needs_reupload" = "Yeni klip gerekiyor";
+"coachreview.reupload_title" = "Koçun klibini açamadı";
+"coachreview.reupload_body" = "Yeni bir tane gönder — tekrar ücret alınmaz, 72 saatlik süre klip ulaşınca yeniden başlar.";
+"coachreview.reupload_cta" = "Yeni klip gönder";
+"coachreview.reupload_sent" = "Yeni klip gönderildi";
+"home.state_review_reupload" = "Koçun yeni bir klip istiyor";

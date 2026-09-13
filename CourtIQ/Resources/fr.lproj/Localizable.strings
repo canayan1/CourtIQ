@@ -1023,3 +1023,11 @@
 "coachreview.ready_title" = "Ta revue est prête";
 "home.state_review_ready" = "Ta revue par le coach est prête";
 "home.state_review_open" = "Revue du coach en route · %d h restantes";
+
+/* Coach review: re-upload handshake */
+"coachreview.status_needs_reupload" = "Nouveau clip demandé";
+"coachreview.reupload_title" = "Ton coach n'a pas pu ouvrir ton clip";
+"coachreview.reupload_body" = "Envoie-en un nouveau — tu ne seras pas débité une deuxième fois, et le compte à rebours de 72 h repart à la réception.";
+"coachreview.reupload_cta" = "Envoyer un nouveau clip";
+"coachreview.reupload_sent" = "Nouveau clip envoyé";
+"home.state_review_reupload" = "Ton coach a besoin d'un nouveau clip";
