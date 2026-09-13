@@ -1,6 +1,6 @@
 # CourtIQ Terms of Use
 
-**Last updated:** May 2026
+**Last updated:** 13 September 2026
 
 By downloading, installing, or using CourtIQ ("the app"), you agree to these Terms of Use ("Terms"). If you do not agree, do not use the app. CourtIQ is published by **Can Ayan**, established in the Republic of Ireland ("we", "us", "our").
 
@@ -43,7 +43,7 @@ CourtIQ offers an optional auto-renewing subscription called **All Access** that
 - **Renewal**: automatic at the end of each billing period unless canceled at least 24 hours before the period ends.
 - **Manage / cancel**: in iOS Settings → Apple ID → Subscriptions, or via Profile → Manage subscription in CourtIQ.
 - **Free trial**: if a free trial is offered, the subscription auto-converts to paid at the end of the trial unless canceled at least 24 hours before the trial ends.
-- **Refunds**: handled by Apple at its sole discretion. We cannot issue refunds directly. Submit refund requests at https://reportaproblem.apple.com.
+- **Refunds**: processed by Apple through your App Store account (https://reportaproblem.apple.com). Where you are entitled to a refund under these Terms or by law, you will receive it — if Apple declines a refund you are owed, contact us and we will make sure it is paid.
 
 Pricing is shown in the app at the moment of purchase and may vary by region. Prices may change with notice; existing subscribers continue to be billed at the price they signed up for until the next renewal.
 
@@ -51,23 +51,27 @@ Pricing is shown in the app at the moment of purchase and may vary by region. Pr
 
 ## 3a. Coach review (one-time purchase)
 
-CourtIQ offers an optional **coach review**: you submit one video clip and a human tennis coach returns a written and voice review. It is sold as a one-time in-app purchase, separate from All Access.
+CourtIQ offers an optional **coach review**: you submit one video clip and a human tennis coach returns a written and voice review inside the app. It is sold as a one-time in-app purchase, separate from All Access. We are responsible to you for the review; the coach is not a party to this contract.
 
-- **What you get.** A five-point scorecard, timestamped written notes, one prioritised correction with a drill, and a voice note of roughly two to three minutes, all delivered inside the app. The review addresses what is visible in the clip you sent, at the quality of that clip.
-- **When you get it.** We aim to deliver within **72 hours** of your order. If we miss that, you may choose either a free second review of the same clip or a credit for a future review. We do not guarantee a delivery time; the 72 hours is a target we hold ourselves to, not a warranty.
-- **Availability.** The number of reviews we accept at one time is limited so that each one gets real attention. If no slot is free, the purchase is not offered and you are not charged.
-- **Payment and refunds.** Billing is handled by Apple through your App Store account. Refunds are decided by Apple at its sole discretion; we cannot issue them directly (https://reportaproblem.apple.com). Before requesting a refund, contact us — a review by a different coach, or a fresh review of a better clip, is usually the faster remedy.
-- **If your clip cannot be reviewed.** The coach may decline footage that is not tennis, does not show you, is unsafe, unlawful, or abusive. In that case you receive a credit for another submission, not a review.
+- **What you get.** For one clip and one stroke: a five-point scorecard, timestamped written notes, one prioritised correction with a drill, and a voice note of roughly two to three minutes. The review addresses what is visible in the clip you sent, at the quality of that clip. It is a one-off assessment, not ongoing coaching: it does not include follow-up questions, a second look at a re-filmed clip, or a lesson plan.
+- **When you get it.** We deliver within **72 hours** of the time your clip finishes uploading. If we are late, you may (a) wait, (b) ask for a free second review of a new clip once the first arrives, or (c) cancel the order and receive a full refund. If your clip cannot be opened we will ask you to re-upload it, and the 72 hours run from the successful re-upload.
+- **Availability.** The number of reviews we accept at one time is limited so that each one gets real attention. The app checks for a free slot before the purchase; if none is free you are told so and not charged. If the last slot fills in the moment between that check and your payment, your payment is held, your clip is sent automatically when a slot opens, and you may instead ask us for a refund at any time before the review starts.
+- **Your right to cancel (EU/EEA/UK consumers).** You have 14 days from purchase to cancel this order for any reason. Because you ask us to start work at once, if the review has been delivered to you within those 14 days your right to cancel ends on delivery; if you cancel before delivery, we refund you in full. To cancel, email **info@kalibrefin.com** from the address on your account, or use the model cancellation form at https://canayan1.github.io/CourtIQ/CANCELLATION_FORM. Refunds go back to the payment method you used through Apple.
+- **Payment and refunds.** Billing is handled by Apple through your App Store account. Refunds are processed by Apple (https://reportaproblem.apple.com); where you are entitled to one under these Terms or by law you will receive it, and if Apple declines a refund you are owed, contact us and we will make sure it is paid. Before requesting a refund, contact us — a fresh review of a better clip is usually the faster fix.
+- **If your clip cannot be reviewed.** The coach may decline a clip that does not show tennis, does not show you, or shows something unsafe, unlawful or abusive. We will tell you why within the 72-hour window. You then choose: a full refund, or a credit for one new submission. A credit never expires and converts to a refund if we stop offering coach reviews.
+- **Problems with a review.** Email **info@kalibrefin.com** within 14 days of delivery; we answer within 5 working days. Your statutory remedies for a service not performed with reasonable skill and care — re-performance, a price reduction, or a refund — apply in full; sections 8 and 9 do not reduce them.
 - **Who reviews.** A human coach acting on our behalf. Reviews are written in English, whatever language your app is set to; this is stated before you pay. The coach's view is a professional opinion about technique and tactics from a short clip — it is not a lesson plan, not a diagnosis, and not a promise that you will improve.
-- **Your responsibilities.** You must be 18 or over. You confirm that you have the right to submit the clip and that anyone visible in it agrees to its being reviewed. You keep ownership of your video; you grant us the licence needed to store it, show it to the reviewing coach, and deliver the review to you, as described in our Privacy Policy (section 2a).
+- **Age.** You must be 18 or over to buy a coach review; we ask you to confirm this before you pay. If we learn a buyer is under 18 we cancel the order and refund it. Do not send a clip in which anyone under 18 is identifiable unless you are their parent or guardian.
+- **Your clip.** You must have the right to submit it, and you must make sure anyone else clearly identifiable in it does not object to its being reviewed — film only yourself where you can. You keep ownership of your video. You grant us a non-exclusive, royalty-free licence, limited to this order, to store the clip, stream it to the coach reviewing your order, and use it to prepare and deliver your review. The licence lasts until the clip is deleted — automatically 90 days after your order, or when you delete your account or ask us to remove it — and it does not cover marketing, training software, or any other purpose. Section 4 does not apply to coach-review clips. The scorecard, notes, drill and voice note we deliver are ours; you may use them for your own personal, non-commercial purposes.
 - **Health and safety.** Sections 5 and 6 of these Terms apply to coach reviews in full. A coach will not diagnose injuries or give medical advice, and you should not act on a review if you are injured or in pain without seeing a qualified professional.
-- **Marketing use.** We will not use your clip or your review in any marketing unless you turn on the separate, per-video permission in the app. You can turn it off again at any time.
+- **Marketing use.** We do not use coach-review clips or reviews in marketing. If we ever offer that, it will be a separate, per-video, off-by-default permission you can withdraw in the app, and these Terms will change first.
+- **Changes.** Changes to these Terms do not affect a coach-review order already placed.
 
 ---
 
 ## 4. Community content
 
-When you post a tip comment, training discussion reply, or any other user-generated content:
+This section does not apply to clips you submit for a coach review (section 3a). When you post a tip comment, training discussion reply, or any other user-generated content:
 
 - You retain ownership of what you post.
 - You grant us a worldwide, perpetual, royalty-free, sublicensable license to host, display, distribute, reproduce, translate, and moderate that content within CourtIQ and related promotional materials.
@@ -103,7 +107,7 @@ You acknowledge that physical activity — including tennis, strength training, 
 
 ### 5.3 No supervision
 
-CourtIQ delivers self-directed training content. You are not supervised by a coach or trainer through the app. Form cues, prescriptions, and rep counts are general guidance — not personalized instruction. You are responsible for performing all movements with safe technique, appropriate load, and adequate warm-up and recovery.
+CourtIQ delivers self-directed training content. You are not supervised by a coach or trainer through the app — a coach review you have purchased (section 3a) is a one-off opinion on a clip, not supervision. Form cues, prescriptions, and rep counts are general guidance — not personalized instruction. You are responsible for performing all movements with safe technique, appropriate load, and adequate warm-up and recovery.
 
 ### 5.4 No medical advice
 
@@ -198,7 +202,8 @@ Some jurisdictions do not allow the exclusion of certain warranties. In those ju
 
 To the fullest extent permitted by law:
 
-- We will not be liable for any indirect, incidental, special, consequential, exemplary, or punitive damages, including but not limited to lost profits, lost data, lost goodwill, loss of use, personal injury, property damage, business interruption, or substitute services — even if we have been advised of the possibility of such damages.
+- We will not be liable for any indirect, incidental, special, consequential, exemplary, or punitive damages, including but not limited to lost profits, lost data, lost goodwill, loss of use, property damage, business interruption, or substitute services — even if we have been advised of the possibility of such damages.
+- Nothing in these Terms excludes or limits our liability for death or personal injury caused by our negligence, for fraud, or for anything else that cannot be excluded by law.
 - Our total cumulative liability to you for all claims arising out of or related to CourtIQ — regardless of the form of action or legal theory — will not exceed the **greater of**: (a) the total amount you paid us in the twelve (12) months preceding the event giving rise to the claim, or (b) **fifty US dollars ($50)**.
 
 Some jurisdictions do not allow the limitation or exclusion of liability for incidental or consequential damages. In those jurisdictions, only the limitations permitted by your local law apply, and our liability is limited to the maximum extent permitted.
@@ -213,7 +218,7 @@ Before filing any claim, you agree to try to resolve it informally by emailing *
 
 ### 10.2 Online dispute resolution (EU consumers)
 
-If you are a consumer resident in the European Union, you may also submit complaints to the European Commission's Online Dispute Resolution platform: https://ec.europa.eu/consumers/odr. We are not obliged to participate in ODR proceedings, and we prefer to resolve disputes directly through the email above.
+The European Commission's Online Dispute Resolution platform closed in July 2025. If you are a consumer resident in the European Union you may contact your national consumer body (in Ireland, the Competition and Consumer Protection Commission, https://www.ccpc.ie) or, for a cross-border dispute, the European Consumer Centre network (https://www.eccnet.eu). If you are resident in Türkiye you may also apply to the Tüketici Hakem Heyeti (consumer arbitration committee) for claims below its monetary threshold. We prefer to resolve disputes directly through the email above.
 
 ### 10.3 Courts (consumers)
 
@@ -235,7 +240,7 @@ Except where prohibited by law (including under EU consumer protection law), cla
 
 ## 11. Changes to the app and these Terms
 
-We may add, change, or remove features at any time without notice. We may update these Terms — material changes will be announced in-app and the "Last updated" date will be revised. Continued use after changes take effect means you accept the updated Terms. If you do not accept, you must stop using CourtIQ.
+We may add, change, or remove features at any time without notice. We may update these Terms — material changes will be announced in-app and the "Last updated" date will be revised. Continued use after changes take effect means you accept the updated Terms. If you do not accept, you must stop using CourtIQ. Changes do not affect a coach-review order already placed.
 
 ---
 
