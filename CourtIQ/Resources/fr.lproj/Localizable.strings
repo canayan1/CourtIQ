@@ -936,7 +936,7 @@
 "coachreview.tier_player" = "Analyse par un joueur confirmé";
 "coachreview.tier_player_sub" = "Un avis franc d'un joueur de bon niveau · option économique";
 "coachreview.tier_level2" = "Coach certifié niveau 2";
-"coachreview.tier_level2_sub" = "Certifié niveau 2 · 20 ans · plus de 100 jeunes formés · analyses en turc";
+"coachreview.tier_level2_sub" = "Certifié niveau 2 · 20 ans · plus de 100 jeunes formés";
 "coachreview.tier_level3" = "Coach certifié niveau 3";
 "coachreview.tier_level3_sub" = "Coach certifié niveau 3 basé en Irlande · plan de jeu complet, périmètre sur mesure";
 "coachreview.join_waitlist" = "Rejoindre la liste d'attente";
@@ -1031,3 +1031,6 @@
 "coachreview.reupload_cta" = "Envoyer un nouveau clip";
 "coachreview.reupload_sent" = "Nouveau clip envoyé";
 "home.state_review_reupload" = "Ton coach a besoin d'un nouveau clip";
+"coachreview.capacity_held" = "La dernière place s'est remplie au moment de ton achat. Ton paiement est conservé et ton clip partira dès qu'une place se libère — ou écris-nous pour un remboursement.";
+"coachreview.card_sub_full" = "Toutes les places de revue sont prises cette semaine — reviens bientôt";
+"coachreview.consent_start_now" = "Commencez ma revue immédiatement. Je comprends qu'une fois livrée, je ne pourrai plus annuler cette commande.";

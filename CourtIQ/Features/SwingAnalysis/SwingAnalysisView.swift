@@ -796,7 +796,11 @@ private struct CoachReviewInterestCard: View {
                         .font(.subheadline.weight(.bold))
                         .foregroundStyle(AppPalette.ink)
                         .fixedSize(horizontal: false, vertical: true)
-                    if reviewManager.productAvailable, let price = reviewManager.productDisplayPrice {
+                    if reviewManager.productAvailable, reviewManager.acceptingOrders == false {
+                        Text(lang.t("coachreview.card_sub_full"))
+                            .font(.footnote)
+                            .foregroundStyle(AppPalette.clayText)
+                    } else if reviewManager.productAvailable, let price = reviewManager.productDisplayPrice {
                         Text(String(format: lang.t("coachreview.card_sub_fmt"), price))
                             .font(.footnote)
                             .foregroundStyle(AppPalette.inkSoft)
@@ -827,6 +831,11 @@ private struct CoachReviewInterestCard: View {
         .task {
             await reviewManager.refreshProductAvailability(
                 productID: AppConfiguration.shared.coachReviewProductID)
+            // Only worth a network call where a Buy could appear.
+            if orderVideoURL != nil, reviewManager.productAvailable, let ensureSession,
+               let session = try? await ensureSession() {
+                await reviewManager.refreshCapacity(session: session)
+            }
         }
         .navigationDestination(isPresented: $showOrder) {
             if let orderVideoURL, let ensureSession {
@@ -843,6 +852,7 @@ private struct CoachReviewInterestCard: View {
     /// stays an honest waitlist instead of a Buy button that cannot complete.
     private var canOrder: Bool {
         orderVideoURL != nil && ensureSession != nil && reviewManager.productAvailable
+            && reviewManager.acceptingOrders != false
     }
 
     private var detailsSheet: some View {

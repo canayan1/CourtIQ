@@ -936,7 +936,7 @@
 "coachreview.tier_player" = "İleri Seviye Oyuncu İncelemesi";
 "coachreview.tier_player_sub" = "Üst düzey bir oyuncudan dürüst bakış · ekonomik seçenek";
 "coachreview.tier_level2" = "Level 2 Sertifikalı Antrenör";
-"coachreview.tier_level2_sub" = "Level 2 sertifikalı · 20 yıl · 100+ junior yetiştirdi · inceleme Türkçe";
+"coachreview.tier_level2_sub" = "Level 2 sertifikalı · 20 yıl · 100+ junior yetiştirdi";
 "coachreview.tier_level3" = "Level 3 Sertifikalı Antrenör";
 "coachreview.tier_level3_sub" = "İrlanda merkezli Level 3 sertifikalı antrenör · komple oyun planı, kapsama göre";
 "coachreview.join_waitlist" = "Listeye gir";
@@ -1031,3 +1031,6 @@
 "coachreview.reupload_cta" = "Yeni klip gönder";
 "coachreview.reupload_sent" = "Yeni klip gönderildi";
 "home.state_review_reupload" = "Koçun yeni bir klip istiyor";
+"coachreview.capacity_held" = "Sen alırken son yer de doldu. Ödemen bekletiliyor, bir yer açılır açılmaz klibin gönderilecek — ya da iade için bize yaz.";
+"coachreview.card_sub_full" = "Bu hafta bütün inceleme yerleri dolu — yakında tekrar bak";
+"coachreview.consent_start_now" = "İncelememe hemen başlayın. Teslim edildikten sonra bu siparişten cayamayacağımı anlıyorum.";

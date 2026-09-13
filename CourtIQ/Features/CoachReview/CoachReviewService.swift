@@ -101,6 +101,27 @@ final class CoachReviewService {
         }
     }
 
+    struct Capacity: Decodable { let accepting: Bool; let open: Int; let max: Int }
+
+    /// Is the coach taking orders right now? Asked before the App Store sheet
+    /// opens, so a full queue is told to the player before any charge.
+    func capacity(session: SupabaseSession) async throws -> Capacity {
+        guard let baseURL = configuration.supabaseURL else { throw ServiceError.missingConfiguration }
+        let url = baseURL.appendingPathComponent("functions/v1/coach-review-order")
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.timeoutInterval = 20
+        if let anonKey = configuration.supabaseAnonKey { request.setValue(anonKey, forHTTPHeaderField: "apikey") }
+        request.setValue("Bearer \(session.accessToken)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try JSONEncoder().encode(["preflight": true])
+        let (body, response) = try await URLSession.shared.data(for: request)
+        guard let http = response as? HTTPURLResponse, (200..<300).contains(http.statusCode) else {
+            throw ServiceError.server(Self.serverMessage(from: body))
+        }
+        return try JSONDecoder().decode(Capacity.self, from: body)
+    }
+
     /// Replaces the clip on an order the coach sent back. No purchase: the
     /// order is already paid and the server checks ownership and state.
     func reupload(orderID: String, videoURL: URL, session: SupabaseSession) async throws -> CreatedOrder {

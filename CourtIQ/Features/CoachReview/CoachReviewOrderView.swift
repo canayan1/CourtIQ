@@ -18,11 +18,15 @@ struct CoachReviewOrderView: View {
     @State private var note = ""
     @State private var consented = false
     @State private var isAdult = false
+    /// EU/UK consumer law: work may only start inside the 14-day withdrawal
+    /// window at the buyer's express request, and the right to cancel ends
+    /// on delivery only if they acknowledged that beforehand (CRD Art. 16(a)).
+    @State private var startNow = false
     @State private var errorMessage: String?
     @State private var showError = false
     @State private var didSubmit = false
 
-    private var canOrder: Bool { consented && isAdult && !manager.isSubmitting }
+    private var canOrder: Bool { consented && isAdult && startNow && !manager.isSubmitting }
 
     var body: some View {
         ScrollView {
@@ -107,6 +111,11 @@ struct CoachReviewOrderView: View {
             }
             Toggle(isOn: $isAdult) {
                 Text(lang.t("coachreview.consent_adult"))
+                    .font(.footnote)
+                    .foregroundStyle(AppPalette.ink)
+            }
+            Toggle(isOn: $startNow) {
+                Text(lang.t("coachreview.consent_start_now"))
                     .font(.footnote)
                     .foregroundStyle(AppPalette.ink)
             }

@@ -32,6 +32,14 @@ final class CoachReviewManager: ObservableObject {
     /// The storefront's own price string ("$19.99", "19,99 €") — the only
     /// price the UI is allowed to print.
     @Published private(set) var productDisplayPrice: String?
+    /// Last known answer to "is the coach taking orders?" — nil until asked.
+    /// The Buy button is only offered while this is true, so a full queue is
+    /// a message before the App Store sheet, never a charge after it.
+    @Published private(set) var acceptingOrders: Bool?
+
+    func refreshCapacity(session: SupabaseSession) async {
+        acceptingOrders = (try? await service.capacity(session: session))?.accepting
+    }
 
     /// A submission between "Apple charged the card" and "the server has the
     /// order". Survives relaunch; the clip it points at lives in the durable
@@ -102,6 +110,9 @@ final class CoachReviewManager: ObservableObject {
         case purchaseCancelled
         case purchasePending
         case verificationFailed
+        /// The queue filled up between the card and the sheet. Nothing was
+        /// charged: this is thrown BEFORE `product.purchase()`.
+        case capacityFull
         case upload(String)
 
         var errorDescription: String? {
@@ -110,6 +121,7 @@ final class CoachReviewManager: ObservableObject {
             case .purchaseCancelled:  return nil          // silent — user chose to stop
             case .purchasePending:    return "Your purchase is pending approval."
             case .verificationFailed: return "That purchase couldn't be verified."
+            case .capacityFull:       return "coachreview.capacity_full"
             case .upload(let message): return message
             }
         }
@@ -152,6 +164,14 @@ final class CoachReviewManager: ObservableObject {
 
         let products = try await Product.products(for: [productID])
         guard let product = products.first else { throw SubmitError.productUnavailable }
+
+        // Ask about capacity right before the sheet, not just when the card
+        // appeared: "every slot is taken" must reach the player before Apple
+        // charges the card, or "you haven't been charged" is a lie.
+        if let capacity = try? await service.capacity(session: session), !capacity.accepting {
+            acceptingOrders = false
+            throw SubmitError.capacityFull
+        }
 
         let fileName = try Self.copyClipToDurableStorage(videoURL)
         var record = PendingSubmission(
@@ -240,7 +260,9 @@ final class CoachReviewManager: ObservableObject {
             // card and the alert can say them in the player's language.
             let message: String
             switch error as? CoachReviewService.ServiceError {
-            case .capacityFull?:     message = "coachreview.capacity_full"
+            // After a charge, a full queue is a RACE (two buyers, one slot),
+            // and the truthful message is "held, will be sent" — not "not charged".
+            case .capacityFull?:     message = "coachreview.capacity_held"
             case .purchaseRejected?: message = "coachreview.purchase_rejected"
             default:                 message = error.localizedDescription
             }
