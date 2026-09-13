@@ -240,8 +240,16 @@ users today with §1a unfixed. Two honest options:
 SLA *mail* was dropped for now: no mail provider is configured; the panel
 banner and the daily digest cover it until one is.
 
-**Step 2 — legal text (§3).** Drafts committed 10 Sep (privacy §2a, terms
-§3a). Wording sign-off from Can / lawyer, published to the GitHub Pages policy + ToS before submission, App
+**Step 2 — legal text (§3).** ✅ 13 Sep: two review agents (data
+protection; consumer + Apple) benchmarked the drafts against Skillest,
+OnForm, SwingVision, CoachNow and the law; every required change applied
+(terms 3a rewritten, privacy 2a rewritten, 2b Gemini disclosure added,
+model cancellation form). Two code changes fell out of it: the capacity
+check now runs BEFORE the App Store sheet, and the order screen carries
+the express-start / loss-of-withdrawal toggle. Can delegated sign-off
+("hukuki onay işi sende"); a lawyer's hour is still advised before the
+first non-EEA contractor coach (SCCs + Art. 28) and before real TR volume
+(VERBİS / representative). Wording sign-off from Can / lawyer, published to the GitHub Pages policy + ToS before submission, App
 Privacy labels updated in the web UI. Blocking for the App Store review as
 much as for the law: the review screenshot of a consumable that shares
 video with a person, next to a privacy policy that never mentions a person,
