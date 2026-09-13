@@ -197,6 +197,29 @@ Smoke test after deploy, before touching the app: `curl` the maintenance
 function with the secret → `{ purged: 0, open: 0, ... }`; post to the
 order function with a garbage `transactionJws` → `402 { error: "purchase" }`.
 
+## 4b. The received / can't-open handshake (added 13 Sep)
+
+Can's flow, built and deployed (order v4, queue v5, migration
+20260913000000): the panel has **Received — start review** (= claim) and
+**Can't open — ask for a new clip** (= reject with a message the player sees
+verbatim). A bounced order goes to `needs_reupload`; the app's status card
+and Home show the coach's message and a **Send a new clip** button that
+re-uploads onto the same paid order with no second charge; the 72-hour
+clock pauses while it waits on the player and restarts when the clip lands.
+
+**How the coach learns an order arrived.** Today: open
+https://samosfi.com/coach — the queue is the source of truth, sorted by
+SLA, with a red banner under 24 h. There is no push and no email until a
+mail provider exists. The order function already sends a "doorbell" email
+on a new order or a re-sent clip the moment `RESEND_API_KEY` and
+`COACH_NOTIFY_EMAIL` are set (Resend free tier: create an account, an API
+key, and either verify samosfi.com or use the onboarding sender to your own
+address). Five minutes of Can's time; nothing else changes.
+
+**"Notification to the player."** The player's app learns on foreground and
+shows the card immediately; a real push needs APNs/FCM setup and a
+permission prompt — a separate small project, not needed for launch.
+
 ## 5. Order of work
 
 **Step 0 — decide the exposure now (Can). ✅ 10 Sep: IAP set
