@@ -2,7 +2,7 @@
 
 **Last updated:** 13 September 2026
 
-CourtIQ, sold on the App Store as **DropVolley** ("we", "us"), is a tennis IQ and training app published by **Can Ayan, sole trader, trading as DropVolley**, Dublin 4, Republic of Ireland. This policy explains what data we collect, why, and how you can control it. Can Ayan is the **data controller** of your personal data under the EU General Data Protection Regulation (GDPR) and the Irish Data Protection Act 2018, and the **veri sorumlusu** under Türkiye's Law No. 6698 (KVKK) for users in Türkiye. kalibrefin.com is our support mailbox.
+CourtIQ, sold on the App Store as **DropVolley** ("we", "us"), is a tennis IQ and training app published by **Can Ayan**, an individual developer established in Dublin 4, Republic of Ireland, under his personal Apple developer account. This policy explains what data we collect, why, and how you can control it. Can Ayan is the **data controller** of your personal data under the EU General Data Protection Regulation (GDPR) and the Irish Data Protection Act 2018, and the **veri sorumlusu** under Türkiye's Law No. 6698 (KVKK) for users in Türkiye. kalibrefin.com is our support mailbox.
 
 We do **not** sell personal data, and we use only the data needed to run the app.
 
@@ -75,11 +75,11 @@ If you buy a **coach review**, a human being watches the video you submit. This 
 
 **Legal basis.** Performance of the contract you enter when you buy the review (GDPR Art. 6(1)(b); KVKK Art. 5(2)(c)). No automated decision with legal or similar effect is made about you (Art. 22): the assessment is a human judgement.
 
-**Where the coach may be.** Your clip is stored on our EU-hosted infrastructure (Supabase Inc., EU region, Stockholm, Sweden). Our founding coach — who is also the data controller — sometimes reviews from Türkiye, which is outside the EEA and has no EU adequacy decision. Because he is the controller and not a separate recipient, this is remote access by the controller, not a transfer to a third party; the clip stays on EU servers, is streamed — not downloaded — through a 30-minute link, and access is logged. If we engage an independent coach located outside the EEA, that will be an international transfer: we will sign the European Commission's Standard Contractual Clauses (GDPR Art. 46(2)(c)) with that coach before they receive a single link, and we will update this section first.
+**Where the coach is.** Your clip is stored on our EU-hosted infrastructure (Supabase Inc., EU region, Stockholm, Sweden) and the coach reviews it from Ireland; it is streamed — not downloaded — through a 30-minute link, and access is logged. If we ever engage an independent coach located outside the EEA, that will be an international transfer: we will sign the European Commission's Standard Contractual Clauses (GDPR Art. 46(2)(c)) with that coach before they receive a single link, and we will update this section first.
 
 **If something goes wrong.** If a clip is accessed outside the logged review window, we will tell you within 72 hours of learning of it.
 
-**Türkiye'deki kullanıcılar için aydınlatma (KVKK m.10).** Veri sorumlusu: Can Ayan (DropVolley), Dublin, İrlanda. İşleme amacı: satın aldığınız antrenör incelemesinin hazırlanması. Toplama yöntemi: uygulama içinden yüklediğiniz video ve notunuz (elektronik ortam). Hukuki sebep: KVKK m.5/2-c (sözleşmenin ifası). Aktarım: video AB'de (İsveç) barındırılır; İrlanda'daki veri sorumlusu tarafından yalnızca inceleme amacıyla izlenir; ileride sözleşmeli bir antrenöre Türkiye dışına aktarım gerekirse KVKK m.9 kapsamında yeterli güvence (standart sözleşme) ile yapılır. Haklarınız: KVKK m.11 kapsamındaki haklarınızı info@kalibrefin.com adresine başvurarak kullanabilirsiniz; başvurular 30 gün içinde yanıtlanır.
+**Türkiye'deki kullanıcılar için aydınlatma (KVKK m.10).** Veri sorumlusu: Can Ayan (DropVolley), Dublin, İrlanda. İşleme amacı: satın aldığınız antrenör incelemesinin hazırlanması. Toplama yöntemi: uygulama içinden yüklediğiniz video ve notunuz (elektronik ortam). Hukuki sebep: KVKK m.5/2-c (sözleşmenin ifası). Aktarım: video AB'de (İsveç) barındırılır ve İrlanda'daki veri sorumlusu tarafından yalnızca inceleme amacıyla izlenir; bu, KVKK m.9 kapsamında yurt dışına aktarımdır ve sözleşmenin ifası için zorunludur; ileride sözleşmeli bir antrenöre aktarım gerekirse yeterli güvence (standart sözleşme) ile yapılır. Haklarınız: KVKK m.11 kapsamındaki haklarınızı info@kalibrefin.com adresine başvurarak kullanabilirsiniz; başvurular 30 gün içinde yanıtlanır.
 
 ---
 
@@ -166,7 +166,7 @@ We may update this policy as the app evolves. Material changes will be announced
 
 ## 9. International data transfers
 
-Some of our service providers (e.g. Apple, Firebase / Supabase if used) may process your personal data outside the European Economic Area. Where this happens, we rely on the safeguards published by those providers — typically the European Commission's Standard Contractual Clauses or an applicable adequacy decision. You may request details of these safeguards by emailing info@kalibrefin.com. Section 2a explains the position for coach reviews watched from Türkiye.
+Some of our service providers (e.g. Apple, Firebase / Supabase if used) may process your personal data outside the European Economic Area. Where this happens, we rely on the safeguards published by those providers — typically the European Commission's Standard Contractual Clauses or an applicable adequacy decision. You may request details of these safeguards by emailing info@kalibrefin.com. Section 2a explains what would change if a coach outside the EEA were ever engaged.
 
 ---
 
@@ -174,7 +174,7 @@ Some of our service providers (e.g. Apple, Firebase / Supabase if used) may proc
 
 **info@kalibrefin.com**
 
-Can Ayan, sole trader, trading as DropVolley
+Can Ayan (individual developer, publisher of DropVolley)
 Dublin 4, Ireland
 Republic of Ireland
 

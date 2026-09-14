@@ -249,7 +249,9 @@ check now runs BEFORE the App Store sheet, and the order screen carries
 the express-start / loss-of-withdrawal toggle. Can delegated sign-off
 ("hukuki onay işi sende"); a lawyer's hour is still advised before the
 first non-EEA contractor coach (SCCs + Art. 28) and before real TR volume
-(VERBİS / representative). Wording sign-off from Can / lawyer, published to the GitHub Pages policy + ToS before submission, App
+(VERBİS / representative). Corrected 14 Sep: Can lives in Ireland and
+publishes as an individual developer — not a sole trader, not in Türkiye;
+the policy no longer says either. Wording sign-off from Can / lawyer, published to the GitHub Pages policy + ToS before submission, App
 Privacy labels updated in the web UI. Blocking for the App Store review as
 much as for the law: the review screenshot of a consumable that shares
 video with a person, next to a privacy policy that never mentions a person,

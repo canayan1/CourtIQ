@@ -2,7 +2,7 @@
 
 *Use this only if you wish to cancel a coach review order (Terms of Use, section 3a). Complete and email it to **info@kalibrefin.com** from the email address on your account.*
 
-To: Can Ayan, trading as DropVolley, Dublin 4, Ireland — info@kalibrefin.com
+To: Can Ayan (publisher of the DropVolley app), Dublin 4, Ireland — info@kalibrefin.com
 
 I hereby give notice that I cancel my contract for the following service:
 
