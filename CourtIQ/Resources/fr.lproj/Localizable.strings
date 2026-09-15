@@ -1135,3 +1135,6 @@
 "nutrition.recipe_steps" = "Étapes";
 "nutrition.recipe_why" = "Pourquoi ça marche";
 "nutrition.recipe_swap" = "Alternative";
+"nutrition.share_title" = "Laisser le Coach IA voir ceci";
+"nutrition.share_body" = "Désactivé par défaut. Une fois activé, un court résumé accompagne chaque message — tes moyennes, tes comparaisons, tes cinq dernières séances. Jamais tes notes ni le journal brut.";
+"nutrition.share_locked" = "Demande au Coach IA pourquoi tu étais à plat mardi · Premium";

@@ -35,6 +35,12 @@ struct AIChatContextPayload: Encodable {
     /// can personalize to who the player is and what they're working toward.
     let tennisProfile: TennisProfilePayload?
 
+    /// The player's fuel-log summary — only when they switched sharing on
+    /// (`CourtIQ.Nutrition.ShareWithCoach`) and hold Premium. Plain English,
+    /// built by `NutritionManager.coachSummary`; the raw log never leaves
+    /// the device.
+    var nutrition: String? = nil
+
     enum CodingKeys: String, CodingKey {
         case profile
         case matches
@@ -44,6 +50,7 @@ struct AIChatContextPayload: Encodable {
         case imported
         case matchMemory = "match_memory"
         case tennisProfile = "tennis_profile"
+        case nutrition
     }
 
     /// Self-assessed Tennis Profile, in plain English for the prompt.

@@ -543,7 +543,10 @@ struct AICoachThreadView: View {
             playStyle: playStyle,
             imported: nil,  // Phase 3 will wire imported ChatGPT summary here
             matchMemory: MatchMemoryStore.shared.memoryForContext,
-            tennisProfile: tennisProfilePayload
+            tennisProfile: tennisProfilePayload,
+            nutrition: (session.isPremiumUnlocked
+                        && UserDefaults.standard.bool(forKey: "CourtIQ.Nutrition.ShareWithCoach"))
+                        ? NutritionManager.shared.coachSummary : nil
         )
     }
 

@@ -123,6 +123,54 @@ final class NutritionManager: ObservableObject {
 
     var insights: [NutritionInsight] { NutritionInsights.compute(ratedEntries) }
 
+    // MARK: Coach summary
+
+    /// What the AI Coach is allowed to see when the player has switched
+    /// sharing on: no raw log, no notes — averages, the comparisons that
+    /// cleared the evidence bar, and the last five sessions in one line
+    /// each. Kept under ~700 characters so it costs little per turn.
+    var coachSummary: String? {
+        let rated = ratedEntries
+        guard let avg = NutritionInsights.averages(rated) else { return nil }
+        var lines: [String] = []
+        lines.append(String(format: "Fuel log, %d rated sessions. Averages out of 5 — energy %.1f, legs %.1f, focus %.1f, stomach %.1f.",
+                            avg.count, avg.energy, avg.legs, avg.focus, avg.stomach))
+        for i in insights.prefix(2) {
+            lines.append(String(format: "%@: %@ averaged %.1f (n=%d) vs %@ %.1f (n=%d).",
+                                Self.plain(i.dimension.labelKey), Self.plain(i.betterLabelKey), i.betterMean, i.betterCount,
+                                Self.plain(i.worseLabelKey), i.worseMean, i.worseCount))
+        }
+        let recent = rated.prefix(5).map { e -> String in
+            let r = e.ratings ?? .neutral
+            let meal = e.meal.map { Self.plain($0.labelKey) } ?? "nothing"
+            return "\(Self.shortDate(e.date)) \(e.kind.rawValue): \(Self.plain(e.timing.labelKey)), \(meal), water \(e.hydration.rawValue)\(e.caffeine ? ", caffeine" : "") → \(r.energy)/\(r.legs)/\(r.focus)/\(r.stomach)"
+        }
+        if !recent.isEmpty { lines.append("Recent (energy/legs/focus/stomach): " + recent.joined(separator: "; ")) }
+        return lines.joined(separator: "\n")
+    }
+
+    /// English labels for the prompt, independent of the app language.
+    private static func plain(_ key: String) -> String {
+        let table: [String: String] = [
+            "nutrition.dim_timing": "Meal timing", "nutrition.dim_meal": "Meal type",
+            "nutrition.dim_hydration": "Hydration", "nutrition.dim_caffeine": "Caffeine",
+            "nutrition.timing_under1h": "under 1h before", "nutrition.timing_h1to2": "1–2h before",
+            "nutrition.timing_h2to3": "2–3h before", "nutrition.timing_over3h": "3h+ before",
+            "nutrition.timing_nothing": "nothing eaten",
+            "nutrition.meal_carbHeavy": "carb-heavy", "nutrition.meal_balanced": "balanced",
+            "nutrition.meal_proteinHeavy": "protein-heavy", "nutrition.meal_lightSnack": "light snack",
+            "nutrition.meal_bigMeal": "big meal",
+            "nutrition.hydration_low": "low water", "nutrition.hydration_ok": "normal water", "nutrition.hydration_high": "plenty of water",
+            "nutrition.caffeine_yes": "with caffeine", "nutrition.caffeine_no": "no caffeine",
+        ]
+        return table[key] ?? key
+    }
+
+    private static func shortDate(_ d: Date) -> String {
+        let f = DateFormatter(); f.dateFormat = "d MMM"; f.locale = Locale(identifier: "en_US_POSIX")
+        return f.string(from: d)
+    }
+
     // MARK: Mutations
 
     @discardableResult

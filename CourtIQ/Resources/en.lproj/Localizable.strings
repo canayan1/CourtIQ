@@ -1135,3 +1135,6 @@
 "nutrition.recipe_steps" = "Steps";
 "nutrition.recipe_why" = "Why this works";
 "nutrition.recipe_swap" = "Swap";
+"nutrition.share_title" = "Let the AI Coach see this";
+"nutrition.share_body" = "Off by default. When on, a short summary goes with each message — averages, your comparisons, your last five sessions. Never your notes or the raw log.";
+"nutrition.share_locked" = "Ask the AI Coach why you felt flat on Tuesday · Premium";

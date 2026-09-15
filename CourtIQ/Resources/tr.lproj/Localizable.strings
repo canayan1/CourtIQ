@@ -1135,3 +1135,6 @@
 "nutrition.recipe_steps" = "Adımlar";
 "nutrition.recipe_why" = "Neden işe yarıyor";
 "nutrition.recipe_swap" = "Alternatif";
+"nutrition.share_title" = "AI Koç bunu görsün";
+"nutrition.share_body" = "Varsayılan olarak kapalı. Açıkken her mesajla kısa bir özet gider — ortalamaların, karşılaştırmaların, son beş seansın. Notların ve ham günlük asla gitmez.";
+"nutrition.share_locked" = "AI Koç'a salı neden bitkin olduğunu sor · Premium";

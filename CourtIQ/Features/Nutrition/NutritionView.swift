@@ -14,6 +14,9 @@ struct NutritionView: View {
     @State private var showLog = false
     @State private var rating: NutritionEntry?
     @State private var showPaywall = false
+    /// Off by default. Sends a short summary (averages, comparisons, last
+    /// five sessions) with each AI Coach message — never the raw log.
+    @AppStorage("CourtIQ.Nutrition.ShareWithCoach") private var shareWithCoach = false
     #if DEBUG
     @State private var qcPush: String?
     #endif
@@ -28,6 +31,7 @@ struct NutritionView: View {
                 actionCard
                 insightsCard
                 contentCards
+                if !manager.entries.isEmpty { coachShareCard }
                 if !manager.entries.isEmpty { recent }
                 Text(lang.t("nutrition.disclaimer"))
                     .font(.caption)
@@ -108,6 +112,42 @@ struct NutritionView: View {
                 .buttonStyle(PressableCardStyle())
             }
         }
+    }
+
+    /// Premium-only, off by default, explained on the card: what goes, what
+    /// never goes. A free player sees the same card locked, so the switch is
+    /// a reason to upgrade rather than a surprise after.
+    private var coachShareCard: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            if session.isPremiumUnlocked {
+                Toggle(isOn: $shareWithCoach) {
+                    VStack(alignment: .leading, spacing: 3) {
+                        Text(lang.t("nutrition.share_title"))
+                            .font(.subheadline.weight(.bold))
+                            .foregroundStyle(AppPalette.ink)
+                        Text(lang.t("nutrition.share_body"))
+                            .font(.footnote)
+                            .foregroundStyle(AppPalette.inkSoft)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                }
+                .tint(AppPalette.clay)
+            } else {
+                Button {
+                    Haptics.tap()
+                    showPaywall = true
+                } label: {
+                    contentCard("lock.fill", lang.t("nutrition.share_title"), lang.t("nutrition.share_locked"), locked: true)
+                }
+                .buttonStyle(PressableCardStyle())
+            }
+        }
+        .padding(session.isPremiumUnlocked ? 14 : 0)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(session.isPremiumUnlocked ? AppPalette.parchment : .clear,
+                    in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
+            .stroke(session.isPremiumUnlocked ? AppPalette.sand : .clear, lineWidth: 1))
     }
 
     private func contentCard(_ symbol: String, _ title: String, _ sub: String, locked: Bool) -> some View {

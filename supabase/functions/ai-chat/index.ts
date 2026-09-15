@@ -780,6 +780,10 @@ interface ChatRequest {
             total_shots: number;
         };
         imported?: string | null;
+        /// Plain-English summary of the player's on-device fuel log —
+        /// present only when they switched sharing on and hold Premium.
+        /// Averages, comparisons, last five sessions; never the raw log.
+        nutrition?: string | null;
         /// Rolling, client-side auto-compacted summary of the user's
         /// *older* match history (everything beyond the verbatim recent
         /// window in `matches`). Lets the Coach reason over long-term
@@ -1002,6 +1006,16 @@ function buildCachedPrefix(
         tennisProfileBlock = lines.join("\n");
     }
 
+    // Fuel log: opt-in, premium, summary only. Capped so a client bug can
+    // never inflate the cached prefix; the guidance line keeps the Coach on
+    // the same footing as the app's own nutrition screens.
+    const nutritionRaw = (context?.nutrition ?? "").toString().slice(0, 1500).trim();
+    const nutritionBlock = nutritionRaw
+        ? nutritionRaw + "\n(Use this to spot what fuels this player well or badly from THEIR OWN averages. " +
+          "General athlete guidance only — timing, carbohydrate, fluids, caffeine. No calorie targets, " +
+          "no supplements, no medical or dietary diagnosis; refer anything clinical to a dietitian or doctor.)"
+        : "no fuel log shared";
+
     return [
         SYSTEM_PROMPT,
         APP_LIBRARY,
@@ -1020,6 +1034,8 @@ function buildCachedPrefix(
         styleBlock,
         "[TENNIS_PROFILE]",
         tennisProfileBlock,
+        "[NUTRITION_LOG]",
+        nutritionBlock,
         importedBlock,
     ].join("\n\n");
 }
