@@ -67,7 +67,7 @@ struct NutritionView: View {
             case "guide":   if let guide { NutritionGuideView(guide: guide) }
             case "today":   if let guide { NutritionTodayView(guide: guide) }
             case "section": if let s = guide?.sections.first { NutritionGuideSectionView(section: s) }
-            case "recipe":  if let r = recipes?.recipes.first { NutritionRecipeDetailView(recipe: r) }
+            case "recipe":  if let r = recipes?.recipes.first(where: { $0.proNote != nil }) ?? recipes?.recipes.first { NutritionRecipeDetailView(recipe: r) }
             default: EmptyView()
             }
         }

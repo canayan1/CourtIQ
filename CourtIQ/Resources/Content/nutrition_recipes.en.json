@@ -250,7 +250,11 @@
       ],
       "why": "An hour before play you want carbohydrate that empties from the stomach fast, and the ACSM/AND/DC position says low-fat, low-fibre, low-to-moderate-protein choices are the ones least likely to give you gut trouble on court. White bread, honey and banana are exactly that, and they are foods you already know, which matters more than anything fancy. This is the snack for the day you got home late and have to be on court in an hour.",
       "swap": "Gluten-free bread works the same way; use jam instead of honey if you avoid honey.",
-      "proNote": null
+      "proNote": {
+        "text": "The ITF's own sample pre-match breakfast is this plain: cereal and yoghurt with toast and nut butter, fruit and water. It also says to eat at least ninety minutes before, ideally three hours.",
+        "sourceLabel": "ITF — Planning Meals (2019)",
+        "sourceURL": "https://www.itftennis.com/media/2300/health-planning-meals.pdf"
+      }
     },
     {
       "id": "chicken-rice-bowl",
@@ -300,7 +304,11 @@
       ],
       "why": "For a long match or a two-hour session the ACSM/AND/DC position wants a proper carbohydrate meal two to four hours before, with only modest protein and little fat so it clears the stomach in time. White rice and lean chicken are as plain and predictable as a pre-match plate gets, which is why players with touchy stomachs keep coming back to it. The pinch of salt is deliberate; sodium in the pre-play meal helps you hold on to the fluid you drink.",
       "swap": "Swap the chicken for a tin of drained chickpeas warmed in the oil and it is vegan; keep the portion of rice the same.",
-      "proNote": null
+      "proNote": {
+        "text": "Casper Ruud told the ATP he eats the same plate before every match: plain rice with chicken, olive oil and salt, an hour and a half to two hours before he walks on. Boring and repeated is the point.",
+        "sourceLabel": "ATP Tour — Food Court: Casper Ruud (2022)",
+        "sourceURL": "https://www.atptour.com/en/news/ruud-food-court-june-2022"
+      }
     },
     {
       "id": "eggs-on-toast",
@@ -495,7 +503,11 @@
       ],
       "why": "Between two matches on the same day, the ACSM/AND/DC position says to refuel with small, regular carbohydrate snacks rather than one heavy meal, and to keep them low in fat and fibre so nothing is sitting in your stomach when you walk back on. White bread, jam and banana are about as fast-digesting and familiar as food gets. This has been the club tournament lunch for a century for a reason.",
       "swap": "Gluten-free bread or rice cakes with the same jam if wheat is out.",
-      "proNote": null
+      "proNote": {
+        "text": "Denis Shapovalov told the ATP he eats bananas on court even though he hates them, after a gel once made him ill. Familiar beats optimal when your stomach is the judge.",
+        "sourceLabel": "ATP Tour — Food Court: Denis Shapovalov (2022)",
+        "sourceURL": "https://www.atptour.com/en/news/shapovalov-food-court-june-2022"
+      }
     },
     {
       "id": "rice-cakes-banana-dates",
@@ -539,7 +551,11 @@
       ],
       "why": "The IOC consensus notes that even small amounts of carbohydrate during play lasting an hour or more help both your legs and your concentration, and that when you play several matches close together, restoring fuel quickly is the priority. Dates and rice cakes are fast carbohydrate that travel in a bag without going off in the sun. The salt is there because you will be sweating for hours and the ACSM/AND/DC position wants some sodium coming in with your fluid on long days.",
       "swap": "Raisins or dried apricots do the same job as dates; oatcakes replace the rice cakes if you want something less airy.",
-      "proNote": null
+      "proNote": {
+        "text": "Felix Auger-Aliassime told the ATP there are always bananas and gels on court, and that he takes them between sets. Worth knowing: the ITF's own guidance says to avoid bananas on court because they digest slowly. The pros and the governing body genuinely disagree.",
+        "sourceLabel": "ATP Tour — Food Court: Felix Auger-Aliassime (2024)",
+        "sourceURL": "https://www.atptour.com/en/news/felix-food-court-rotterdam-2024"
+      }
     },
     {
       "id": "potato-egg-box",
@@ -585,7 +601,11 @@
       ],
       "why": "On a tournament day with hours between matches you need carbohydrate to refill, some protein to start repair, and salt to hold the water you drink; the ACSM/AND/DC position covers all three for short recovery windows. Boiled potatoes and eggs do that without any packaging, and they taste fine cold. Eat the potatoes first after a match and leave the eggs for when the next match is more than an hour away.",
       "swap": "Leave out the eggs and add a tin of drained white beans tossed with the potatoes for a vegan box.",
-      "proNote": null
+      "proNote": {
+        "text": "ESPN reported that Andy Roddick sprinkled salt into his water bottles, and that one player used coconut water for the potassium. A tennis cramping review notes clinicians adding half a teaspoon of salt to a bottle for players who cramp repeatedly.",
+        "sourceLabel": "ESPN — Sweat is a serious issue for many tennis players (2009)",
+        "sourceURL": "https://www.espn.com/espn/page2/story?page=hruby%2F090909"
+      }
     },
     {
       "id": "pasta-lentil-tomato",
@@ -640,7 +660,11 @@
       ],
       "why": "If you play tomorrow morning, tonight's dinner is the meal that sets your fuel; the ACSM/AND/DC position says a carbohydrate-rich day normalises muscle glycogen within about 24 hours. Pasta gives you the carbohydrate and the lentils give you the protein the IOC consensus wants spread across your meals. It also works as the dinner after an evening session, when it does the refilling and the repair in one plate.",
       "swap": "Gluten-free pasta or rice under the same sauce if wheat is out.",
-      "proNote": null
+      "proNote": {
+        "text": "Alex de Minaur told the Australian Open he starts on electrolytes the night before, and eats plain pasta before going on. He frames it around five-set matches, which yours probably is not.",
+        "sourceLabel": "Australian Open — How hydration and nutrition fuel the stars (2026)",
+        "sourceURL": "https://ausopen.com/articles/news/extremely-important-how-hydration-and-nutrition-fuel-stars-ao-2026"
+      }
     },
     {
       "id": "chicken-potatoes-yoghurt",

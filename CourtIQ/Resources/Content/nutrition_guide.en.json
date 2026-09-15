@@ -328,6 +328,66 @@
           "url": "https://www.usta.com/en/home/improve/tennis-health---fitness/national/a-player-s-diet-on-match-day.html"
         }
       ]
+    },
+    {
+      "id": "pro-habits",
+      "title": "What the pros do",
+      "summary": "Professionals eat plainer, earlier and far more repetitively than you would guess, and where their habits and the ITF's own advice disagree, the disagreement is the lesson.",
+      "body": [
+        "Casper Ruud told the ATP he eats the same thing before every match: plain rice with chicken, olive oil and salt, an hour and a half to two hours out. Denis Shapovalov rotates three meals and gives himself ninety minutes to digest. Felix Auger-Aliassime orders lean protein with no sauce, vegetables and white rice. None of it is exotic.",
+        "On court they eat bananas. Shapovalov says he hates them and eats them anyway, after gels once made him ill. Alex de Minaur carries bananas, bars and snacks. Yet the ITF's own guidance tells players to avoid bananas on court, because they digest slowly. Both are true. The lesson is not the banana, it is that they use what their stomach already knows.",
+        "Carlos Alcaraz drank pickle juice in the 2024 Roland-Garros final to hold off cramp. The trial behind that habit found it cut cramp duration by about fifty seconds, but the cramp was induced electrically in a foot muscle, the authors said fluid and electrolytes did not explain it, and a 2021 repeat found no difference at all.",
+        "What not to borrow is the volume. One professional was reported drinking ten litres of water a day to match a measured sweat loss, and the elite carbohydrate range in the research is written for players training twice a day. The in-match feeding advice starts at two hours of play. A forty-five minute social set is not that match."
+      ],
+      "keyPoints": [
+        "Pros eat plain, familiar food, and the same food",
+        "Most eat ninety minutes to two hours before walking on",
+        "They eat bananas, the ITF says avoid them, both true",
+        "Pickle juice for cramp: one small trial, one failed repeat",
+        "Their volumes are scaled to five sets, not your league match"
+      ],
+      "sources": [
+        {
+          "label": "ATP Tour — Food Court: Casper Ruud (2022)",
+          "url": "https://www.atptour.com/en/news/ruud-food-court-june-2022"
+        },
+        {
+          "label": "ATP Tour — Food Court: Denis Shapovalov (2022)",
+          "url": "https://www.atptour.com/en/news/shapovalov-food-court-june-2022"
+        },
+        {
+          "label": "ATP Tour — Food Court: Felix Auger-Aliassime (2024)",
+          "url": "https://www.atptour.com/en/news/felix-food-court-rotterdam-2024"
+        },
+        {
+          "label": "Australian Open — How hydration and nutrition fuel the stars (2026)",
+          "url": "https://ausopen.com/articles/news/extremely-important-how-hydration-and-nutrition-fuel-stars-ao-2026"
+        },
+        {
+          "label": "ITF — Planning Meals (2019)",
+          "url": "https://www.itftennis.com/media/2300/health-planning-meals.pdf"
+        },
+        {
+          "label": "Roland-Garros — Alcaraz outlasts Zverev for first crown (2024)",
+          "url": "https://www.rolandgarros.com/en-us/article/rg2024-alcaraz-outlasts-zverev-for-first-roland-garros-crown"
+        },
+        {
+          "label": "Miller et al. — Reflex inhibition of electrically induced muscle cramps (2010)",
+          "url": "https://doi.org/10.1249/mss.0b013e3181c0647e"
+        },
+        {
+          "label": "Georgieva et al. — Mouth rinsing versus ingesting pickle juice (2021)",
+          "url": "https://doi.org/10.3390/app112412096"
+        },
+        {
+          "label": "Ranchordas et al. — Nutrition for Tennis: Practical Recommendations (2013)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3761836/"
+        },
+        {
+          "label": "ESPN — Sweat is a serious issue for many tennis players (2009)",
+          "url": "https://www.espn.com/espn/page2/story?page=hruby%2F090909"
+        }
+      ]
     }
   ],
   "today": {
