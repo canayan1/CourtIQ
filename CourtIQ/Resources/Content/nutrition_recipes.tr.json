@@ -250,7 +250,11 @@
       ],
       "why": "Oyundan bir saat önce mideyi hızlı terk eden karbonhidrat istersin; ACSM/AND/DC pozisyon bildirisine göre az yağlı, az lifli, az ya da orta proteinli seçenekler kortta mide derdi çıkarma ihtimali en düşük olanlardır. Beyaz ekmek, bal ve muz tam olarak budur, üstelik zaten bildiğin yiyecekler, bu da her türlü süslü şeyden daha önemli. Eve geç geldiğin ve bir saat içinde kortta olman gereken günün atıştırmalığı bu.",
       "swap": "Glutensiz ekmek aynı işi görür; baldan uzak duruyorsan bal yerine reçel kullan.",
-      "proNote": null
+      "proNote": {
+        "text": "ITF'nin kendi örnek maç öncesi kahvaltısı tam da bu kadar sade: mısır gevreği ve yoğurt, yanında kızarmış ekmek ve fındık ezmesi, meyve ve su. Ayrıca en az doksan dakika, ideal olarak üç saat önce yemeyi söylüyor.",
+        "sourceLabel": "ITF — Öğün Planlama (2019)",
+        "sourceURL": "https://www.itftennis.com/media/2300/health-planning-meals.pdf"
+      }
     },
     {
       "id": "chicken-rice-bowl",
@@ -300,7 +304,11 @@
       ],
       "why": "Uzun bir maç ya da iki saatlik antrenman için ACSM/AND/DC pozisyon bildirisi, iki ila dört saat önce düzgün bir karbonhidrat öğünü ister; protein ölçülü, yağ az olsun ki mide vaktinde boşalsın. Beyaz pirinç ve yağsız tavuk, maç öncesi bir tabağın olabileceği kadar sade ve tahmin edilebilir; hassas mideli oyuncuların buna hep geri dönmesi bundan. Tutam tuz bilinçli: oyun öncesi öğündeki sodyum, içtiğin sıvıyı tutmana yardım eder.",
       "swap": "Tavuk yerine bir kutu süzülmüş nohutu yağda ısıt, vegan olur; pirinç porsiyonunu aynı tut.",
-      "proNote": null
+      "proNote": {
+        "text": "Casper Ruud ATP'ye her maçtan önce aynı tabağı yediğini söyledi: sade pirinç, tavuk, zeytinyağı ve tuz, korta çıkmasına bir buçuk ila iki saat kala. Sıkıcı ve tekrarlı olması işin tam da amacı.",
+        "sourceLabel": "ATP Tour — Food Court: Casper Ruud (2022)",
+        "sourceURL": "https://www.atptour.com/en/news/ruud-food-court-june-2022"
+      }
     },
     {
       "id": "eggs-on-toast",
@@ -495,7 +503,11 @@
       ],
       "why": "Aynı gün iki maç arasında ACSM/AND/DC pozisyon bildirisi, tek bir ağır öğün yerine küçük ve düzenli karbonhidrat atıştırmalıklarıyla yakıt doldurmayı, korta geri döndüğünde midende bir şey kalmasın diye de bunları az yağlı, az lifli tutmayı söyler. Beyaz ekmek, reçel ve muz, bir yiyeceğin olabileceği kadar hızlı sindirilir ve tanıdıktır. Kulüp turnuvalarının yüz yıllık öğle yemeği olması boşuna değil.",
       "swap": "Buğday yasaksa aynı reçelle glutensiz ekmek ya da pirinç patlağı.",
-      "proNote": null
+      "proNote": {
+        "text": "Denis Shapovalov ATP'ye, nefret etmesine rağmen kortta muz yediğini söyledi; bir jel bir keresinde onu hasta etmiş. Kararı miden veriyorsa, tanıdık olan en iyi olanı yener.",
+        "sourceLabel": "ATP Tour — Food Court: Denis Shapovalov (2022)",
+        "sourceURL": "https://www.atptour.com/en/news/shapovalov-food-court-june-2022"
+      }
     },
     {
       "id": "rice-cakes-banana-dates",
@@ -539,7 +551,11 @@
       ],
       "why": "IOC uzlaşı bildirisi, bir saat ve üzeri oyunda küçük miktarda karbonhidratın bile hem bacaklarına hem konsantrasyonuna yaradığını, art arda birkaç maç oynadığında da yakıtı hızla yerine koymanın öncelik olduğunu belirtir. Hurma ve pirinç patlağı, çantada güneşte bozulmadan taşınan hızlı karbonhidrattır. Tuz orada çünkü saatlerce terleyeceksin ve ACSM/AND/DC pozisyon bildirisi uzun günlerde sıvıyla birlikte bir miktar sodyum alınmasını ister.",
       "swap": "Kuru üzüm ya da kuru kayısı hurmanın işini görür; daha az havadar bir şey istersen pirinç patlağı yerine yulaflı kraker.",
-      "proNote": null
+      "proNote": {
+        "text": "Felix Auger-Aliassime ATP'ye kortta her zaman muz ve jel bulunduğunu, bunları setler arasında aldığını söyledi. Bilmekte fayda var: ITF'nin kendi rehberi, yavaş sindirildikleri için kortta muzdan kaçınmayı söylüyor. Profesyonellerle federasyon burada gerçekten anlaşamıyor.",
+        "sourceLabel": "ATP Tour — Food Court: Felix Auger-Aliassime (2024)",
+        "sourceURL": "https://www.atptour.com/en/news/felix-food-court-rotterdam-2024"
+      }
     },
     {
       "id": "potato-egg-box",
@@ -585,7 +601,11 @@
       ],
       "why": "Maçlar arasında saatler olan bir turnuva gününde doldurmak için karbonhidrata, onarımı başlatmak için biraz proteine, içtiğin suyu tutmak için de tuza ihtiyacın var; ACSM/AND/DC pozisyon bildirisi kısa toparlanma aralıkları için üçünü de kapsar. Haşlanmış patates ve yumurta bunu hiçbir ambalaj olmadan yapar, soğuk da lezzetlidir. Maçtan sonra önce patatesi ye, yumurtayı sonraki maça bir saatten fazla varsa bırak.",
       "swap": "Yumurtayı çıkar, patateslere bir kutu süzülmüş fasulye konservesi karıştır, vegan kutu olur.",
-      "proNote": null
+      "proNote": {
+        "text": "ESPN, Andy Roddick'in matarasına tuz serptiğini ve bir oyuncunun potasyum için hindistan cevizi suyu kullandığını aktardı. Tenis kramplarını ele alan bir derleme de, sık kramp giren oyuncular için hekimlerin bir mataraya yarım çay kaşığı tuz eklediğini belirtiyor.",
+        "sourceLabel": "ESPN — Ter, birçok tenisçi için ciddi bir sorun (2009)",
+        "sourceURL": "https://www.espn.com/espn/page2/story?page=hruby%2F090909"
+      }
     },
     {
       "id": "pasta-lentil-tomato",
@@ -640,7 +660,11 @@
       ],
       "why": "Yarın sabah oynayacaksan yakıtını belirleyen öğün bu akşamki yemek; ACSM/AND/DC pozisyon bildirisi, karbonhidrattan zengin bir günün kas glikojenini yaklaşık 24 saat içinde normale döndürdüğünü söyler. Makarna karbonhidratı, mercimek de IOC uzlaşı bildirisinin öğünlere yayılmasını istediği proteini verir. Akşam antrenmanından sonraki yemek olarak da işe yarar; doldurmayı ve onarımı tek tabakta halleder.",
       "swap": "Buğday yasaksa aynı sosun altına glutensiz makarna ya da pilav.",
-      "proNote": null
+      "proNote": {
+        "text": "Alex de Minaur Australian Open'a, elektrolit almaya bir gece önceden başladığını ve korta çıkmadan sade makarna yediğini söyledi. Bunu beş setlik maçlara göre anlatıyor; seninki muhtemelen o değil.",
+        "sourceLabel": "Australian Open — Hidrasyon ve beslenme yıldızlara nasıl yakıt veriyor (2026)",
+        "sourceURL": "https://ausopen.com/articles/news/extremely-important-how-hydration-and-nutrition-fuel-stars-ao-2026"
+      }
     },
     {
       "id": "chicken-potatoes-yoghurt",
