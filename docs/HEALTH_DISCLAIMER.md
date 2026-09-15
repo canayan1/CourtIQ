@@ -44,8 +44,8 @@ CourtIQ is self-directed. You are not supervised by a coach or trainer through t
 
 ## See also
 
-- [Terms of Use](./TERMS_OF_USE) — sections 5, 6, 8, and 9 contain the full assumption-of-risk, release of liability, and limitation-of-liability clauses you accepted when you started using CourtIQ.
-- [Privacy Policy](./PRIVACY_POLICY)
+- [Terms of Use](https://samosfi.com/apps/dropvolley/terms) — sections 5, 6, 8, and 9 contain the full assumption-of-risk, release of liability, and limitation-of-liability clauses you accepted when you started using CourtIQ.
+- [Privacy Policy](https://samosfi.com/apps/dropvolley/privacy)
 - [Support](./SUPPORT)
 
 ---

@@ -27,7 +27,7 @@
 	<key>COURTIQ_PREMIUM_ENTITLEMENT_ID</key>
 	<string>premium_all_access</string>
 	<key>COURTIQ_PRIVACY_URL</key>
-	<string>https://canayan-ios-apps.vercel.app/apps/dropvolley/privacy</string>
+	<string>https://samosfi.com/apps/dropvolley/privacy</string>
 	<key>COURTIQ_REVENUECAT_API_KEY</key>
 	<string>appl_IFAcpDxxXtTPLFyZzyjRyuWGraA</string>
 	<key>COURTIQ_SUPABASE_ANON_KEY</key>
@@ -35,9 +35,9 @@
 	<key>COURTIQ_SUPABASE_URL</key>
 	<string>https://ybnodzzrkwennzpwyjmr.supabase.co</string>
 	<key>COURTIQ_SUPPORT_URL</key>
-	<string>https://canayan-ios-apps.vercel.app/apps/dropvolley/support</string>
+	<string>https://samosfi.com/apps/dropvolley/support</string>
 	<key>COURTIQ_TERMS_URL</key>
-	<string>https://canayan-ios-apps.vercel.app/apps/dropvolley/terms</string>
+	<string>https://samosfi.com/apps/dropvolley/terms</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationCategoryType</key>

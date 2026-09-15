@@ -26,8 +26,8 @@ We aim to respond within 24 hours.
 
 ## Privacy & legal
 
-- [Privacy Policy](./PRIVACY_POLICY.md)
-- [Terms of Use](./TERMS_OF_USE.md)
+- [Privacy Policy](https://samosfi.com/apps/dropvolley/privacy)
+- [Terms of Use](https://samosfi.com/apps/dropvolley/terms)
 - [Moderation Policy](./MODERATION_POLICY.md)
 
 ## About

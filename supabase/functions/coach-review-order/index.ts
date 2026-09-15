@@ -214,9 +214,12 @@ Deno.serve(async (req) => {
   // 5. Keep the retention promise even if the daily job is asleep.
   try { await purgeOverdueClips(admin, 10); } catch { /* best effort */ }
 
+  // The doorbell carries no free text. The player's note is personal data
+  // they wrote, and the panel is the source of truth for it — sending it
+  // through an email provider buys nothing and discloses something.
   await notifyCoach(`New coach review: ${stroke}`,
     `Order ${orderId.slice(0, 8)} · ${stroke} · ${body.handedness ?? "—"} · player reads ${language.toUpperCase()}\n` +
-    `Due ${slaDueAt}\n${(body.note ?? "").slice(0, 200) || "(no note)"}\n\nhttps://samosfi.com/coach`);
+    `Due ${slaDueAt}\n\nhttps://samosfi.com/coach`);
 
   return json({ orderId, slaDueAt });
 });

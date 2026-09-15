@@ -55,6 +55,6 @@ Développée en Irlande par des entraîneurs et des joueurs de tennis.
 
 Arrête de juste taper dans la balle. Commence à réfléchir. Le tennis avec un cerveau.
 
-Assistance : https://canayan1.github.io/CourtIQ/SUPPORT
-Politique de confidentialité : https://canayan1.github.io/CourtIQ/PRIVACY_POLICY
-Conditions d'utilisation : https://canayan1.github.io/CourtIQ/TERMS_OF_USE
+Assistance : https://samosfi.com/apps/dropvolley/support
+Politique de confidentialité : https://samosfi.com/apps/dropvolley/privacy
+Conditions d'utilisation : https://samosfi.com/apps/dropvolley/terms

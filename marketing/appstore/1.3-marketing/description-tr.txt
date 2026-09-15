@@ -33,5 +33,5 @@ Premium ile sınırsız AI koçluk, tam swing analizi, kamerayla notlanan duvar 
 
 —
 DropVolley otomatik yenilenen bir aboneliktir (haftalik ya da ucretsiz denemeli yillik). Odeme, satin alma onayinda Apple Kimliginden tahsil edilir. Aboneligin, donem bitiminden en az 24 saat once iptal edilmedikce otomatik yenilenir; App Store ayarlarindan diledigin zaman yonet ya da iptal et.
-Kullanim Sartlari: https://canayan-ios-apps.vercel.app/apps/dropvolley/terms
-Gizlilik Politikasi: https://canayan-ios-apps.vercel.app/apps/dropvolley/privacy
+Kullanim Sartlari: https://samosfi.com/apps/dropvolley/terms
+Gizlilik Politikasi: https://samosfi.com/apps/dropvolley/privacy
