@@ -209,6 +209,7 @@
 		9CC71A12AAAF44B6B39D8922 /* NutritionTodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9882835EEA104A23A225ECEB /* NutritionTodayView.swift */; };
 		F96157F3D15C4175BF5440A2 /* NutritionGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD983BD5B9ED41C2B38F4369 /* NutritionGuideView.swift */; };
 		4408AA3451544A038525BEC4 /* NutritionRecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C517A03AB2348BA9A39621C /* NutritionRecipesView.swift */; };
+		0FC944F399964BA69E2DA0E6 /* nutrition_recipes.en.json in Resources */ = {isa = PBXBuildFile; fileRef = 48D75E5288AA45E489A6507E /* nutrition_recipes.en.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -426,6 +427,7 @@
 		9882835EEA104A23A225ECEB /* NutritionTodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NutritionTodayView.swift; path = CourtIQ/Features/Nutrition/NutritionTodayView.swift; sourceTree = "<group>"; };
 		AD983BD5B9ED41C2B38F4369 /* NutritionGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NutritionGuideView.swift; path = CourtIQ/Features/Nutrition/NutritionGuideView.swift; sourceTree = "<group>"; };
 		9C517A03AB2348BA9A39621C /* NutritionRecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NutritionRecipesView.swift; path = CourtIQ/Features/Nutrition/NutritionRecipesView.swift; sourceTree = "<group>"; };
+		48D75E5288AA45E489A6507E /* nutrition_recipes.en.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = nutrition_recipes.en.json; path = CourtIQ/Resources/Content/nutrition_recipes.en.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -538,6 +540,7 @@
 				A000000000000000000FC0 /* WallRallyCamView.swift */,
 				B100000000000000000001 /* WallBallLocator.swift */,
 				B400000000000000000001 /* WallSwingDetector.swift */,
+				48D75E5288AA45E489A6507E /* nutrition_recipes.en.json */,
 				9C517A03AB2348BA9A39621C /* NutritionRecipesView.swift */,
 				AD983BD5B9ED41C2B38F4369 /* NutritionGuideView.swift */,
 				9882835EEA104A23A225ECEB /* NutritionTodayView.swift */,
@@ -786,6 +789,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FC944F399964BA69E2DA0E6 /* nutrition_recipes.en.json in Resources */,
 				0B85B093A18C497C930D181B /* tactics_i18n.tr.json in Resources */,
 				4E31330777EA4B08A8DEB98B /* tactics_i18n.fr.json in Resources */,
 				57BDD6501F87474BBD2A0162 /* Localizable.strings in Resources */,

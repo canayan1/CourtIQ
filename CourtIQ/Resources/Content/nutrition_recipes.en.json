@@ -1,0 +1,329 @@
+{
+  "version": 1,
+  "quiz": [
+    {
+      "id": "playTime",
+      "question": "When do you usually play?",
+      "options": [
+        {"id": "morning", "label": "Morning, before work or on a weekend", "tags": ["morning"]},
+        {"id": "midday", "label": "Middle of the day", "tags": ["midday"]},
+        {"id": "evening", "label": "Evening, after work", "tags": ["evening"]}
+      ]
+    },
+    {
+      "id": "sessionLength",
+      "question": "How long is a normal session for you?",
+      "options": [
+        {"id": "short", "label": "Under an hour, a quick hit", "tags": ["lighter", "quick"]},
+        {"id": "normal", "label": "One to two hours", "tags": ["energy"]},
+        {"id": "long", "label": "Over two hours, or a match that could go three sets", "tags": ["long"]}
+      ]
+    },
+    {
+      "id": "stomach",
+      "question": "How does your stomach handle food before play?",
+      "options": [
+        {"id": "sturdy", "label": "Fine, I can eat most things and play", "tags": []},
+        {"id": "sensitive", "label": "Touchy, I need plain food and time to digest", "tags": ["sensitiveStomach"]}
+      ]
+    },
+    {
+      "id": "diet",
+      "question": "Anything you leave out?",
+      "options": [
+        {"id": "anything", "label": "I eat everything", "tags": []},
+        {"id": "vegetarian", "label": "No meat or fish", "tags": ["vegetarian"]},
+        {"id": "vegan", "label": "No animal products", "tags": ["vegan", "vegetarian", "dairyFree"]},
+        {"id": "dairyFree", "label": "No milk, yoghurt or cheese", "tags": ["dairyFree"]},
+        {"id": "glutenFree", "label": "No wheat or gluten", "tags": ["glutenFree"]}
+      ]
+    },
+    {
+      "id": "prepTime",
+      "question": "How much time do you have to prepare food?",
+      "options": [
+        {"id": "none", "label": "Almost none, I grab and go", "tags": ["quick"]},
+        {"id": "10min", "label": "About ten minutes", "tags": ["quick"]},
+        {"id": "30min", "label": "Half an hour, I can cook", "tags": []}
+      ]
+    },
+    {
+      "id": "goal",
+      "question": "What do you want food to do for your tennis right now?",
+      "options": [
+        {"id": "energy", "label": "Stop me fading in the second set", "tags": ["energy"]},
+        {"id": "recovery", "label": "Help me feel fresh the day after", "tags": ["recovery"]},
+        {"id": "lighter", "label": "Feel lighter on court", "tags": ["lighter"]}
+      ]
+    }
+  ],
+  "recipes": [
+    {
+      "id": "porridge-banana-honey",
+      "title": "Porridge with banana and honey",
+      "when": "pre",
+      "hoursBefore": "2-3",
+      "prepMinutes": 8,
+      "tags": ["quick", "vegetarian", "morning", "energy"],
+      "ingredients": [
+        {"item": "porridge oats", "amount": "1 mug"},
+        {"item": "milk", "amount": "2 mugs"},
+        {"item": "banana", "amount": "1, sliced"},
+        {"item": "honey", "amount": "1 tablespoon"},
+        {"item": "salt", "amount": "a pinch"}
+      ],
+      "steps": [
+        "Put the oats, milk and salt in a small pan over medium heat.",
+        "Stir now and then for five or six minutes until it thickens and the oats are soft.",
+        "Pour into a bowl, top with the banana and drizzle the honey over."
+      ],
+      "why": "Oats release their carbohydrate slowly, which the ACSM/AND/DC position prefers before play when you will not be eating much during it, and a morning meal refills the liver glycogen you ran down overnight. Eat it two to three hours out so it has settled before the warm-up. If you normally drink coffee, a cup with this lands about an hour before the first ball, the timing the ISSN caffeine stand supports; leave it out if it makes you jittery.",
+      "swap": "Make it with water or oat milk and swap the honey for jam and it becomes dairy-free and vegan."
+    },
+    {
+      "id": "toast-honey-banana",
+      "title": "Toast, honey and banana",
+      "when": "pre",
+      "hoursBefore": "1",
+      "prepMinutes": 5,
+      "tags": ["quick", "sensitiveStomach", "vegetarian", "dairyFree", "morning", "midday", "evening", "energy", "lighter"],
+      "ingredients": [
+        {"item": "white bread", "amount": "2 slices"},
+        {"item": "honey", "amount": "2 teaspoons"},
+        {"item": "banana", "amount": "1"}
+      ],
+      "steps": [
+        "Toast the bread until just golden.",
+        "Spread the honey thinly while the toast is warm.",
+        "Eat the banana alongside, or slice it onto the toast."
+      ],
+      "why": "An hour before play you want carbohydrate that empties from the stomach fast, and the ACSM/AND/DC position says low-fat, low-fibre, low-to-moderate-protein choices are the ones least likely to give you gut trouble on court. White bread, honey and banana are exactly that, and they are foods you already know, which matters more than anything fancy. This is the snack for the day you got home late and have to be on court in an hour.",
+      "swap": "Gluten-free bread works the same way; use jam instead of honey if you avoid honey."
+    },
+    {
+      "id": "chicken-rice-bowl",
+      "title": "Chicken and rice bowl",
+      "when": "pre",
+      "hoursBefore": "2-3",
+      "prepMinutes": 25,
+      "tags": ["sensitiveStomach", "dairyFree", "glutenFree", "midday", "evening", "energy", "long"],
+      "ingredients": [
+        {"item": "white rice", "amount": "1 mug"},
+        {"item": "chicken breast", "amount": "1, sliced into strips"},
+        {"item": "olive oil", "amount": "1 tablespoon"},
+        {"item": "lemon", "amount": "half"},
+        {"item": "salt", "amount": "half a teaspoon"},
+        {"item": "carrot", "amount": "1, grated"}
+      ],
+      "steps": [
+        "Rinse the rice, cover with two mugs of water and a pinch of salt, simmer covered until the water is gone, about 12 minutes.",
+        "Meanwhile fry the chicken strips in the oil over medium heat with the salt until cooked through, about 8 minutes.",
+        "Pile the rice in a bowl, add the chicken and carrot, squeeze the lemon over."
+      ],
+      "why": "For a long match or a two-hour session the ACSM/AND/DC position wants a proper carbohydrate meal two to four hours before, with only modest protein and little fat so it clears the stomach in time. White rice and lean chicken are as plain and predictable as a pre-match plate gets, which is why players with touchy stomachs keep coming back to it. The pinch of salt is deliberate; sodium in the pre-play meal helps you hold on to the fluid you drink.",
+      "swap": "Swap the chicken for a tin of drained chickpeas warmed in the oil and it is vegan; keep the portion of rice the same."
+    },
+    {
+      "id": "eggs-on-toast",
+      "title": "Eggs on toast with tomato",
+      "when": "post",
+      "hoursBefore": "n/a",
+      "prepMinutes": 10,
+      "tags": ["quick", "vegetarian", "dairyFree", "morning", "midday", "recovery"],
+      "ingredients": [
+        {"item": "eggs", "amount": "2 or 3"},
+        {"item": "bread", "amount": "2 thick slices"},
+        {"item": "olive oil", "amount": "1 teaspoon"},
+        {"item": "tomato", "amount": "1, sliced"},
+        {"item": "salt and pepper", "amount": "to taste"}
+      ],
+      "steps": [
+        "Toast the bread.",
+        "Beat the eggs with a pinch of salt, cook them gently in the oil, stirring, until just set.",
+        "Spoon onto the toast, lay the tomato beside it, season."
+      ],
+      "why": "After a session the ACSM/AND/DC position asks for a modest serving of high-quality protein in the first couple of hours, together with carbohydrate to start refilling your muscles. Eggs are one of the best whole-food proteins you can buy anywhere, and the toast does the carbohydrate job. Eat this within an hour or two of coming off court, especially if you play again tomorrow.",
+      "swap": "No bread in the house: serve the eggs over leftover boiled potatoes, which also makes it gluten-free."
+    },
+    {
+      "id": "yoghurt-oats-honey-nuts",
+      "title": "Yoghurt, oats, honey and nuts",
+      "when": "post",
+      "hoursBefore": "n/a",
+      "prepMinutes": 5,
+      "tags": ["quick", "vegetarian", "morning", "midday", "evening", "recovery", "lighter"],
+      "ingredients": [
+        {"item": "plain yoghurt", "amount": "1 large bowl, about 300 g"},
+        {"item": "porridge oats", "amount": "3 tablespoons"},
+        {"item": "honey", "amount": "1 tablespoon"},
+        {"item": "walnuts or hazelnuts", "amount": "a small handful, chopped"},
+        {"item": "banana or apple", "amount": "1, chopped"}
+      ],
+      "steps": [
+        "Spoon the yoghurt into a bowl.",
+        "Stir in the oats and leave two minutes so they soften slightly.",
+        "Top with the fruit, nuts and honey."
+      ],
+      "why": "Yoghurt gives you dairy protein and the oats, fruit and honey give you carbohydrate, the combination the ISSN nutrient timing position and the ACSM/AND/DC position both support for recovery after training. It is cold, quick and easy to eat when you are not hungry after a hard session but know you should eat something. Good as the first thing after an evening session when a full dinner is too much.",
+      "swap": "Thick soy yoghurt makes it dairy-free; use jam instead of honey to make it vegan."
+    },
+    {
+      "id": "lentil-potato-stew",
+      "title": "Lentil and potato stew",
+      "when": "post",
+      "hoursBefore": "n/a",
+      "prepMinutes": 30,
+      "tags": ["vegan", "vegetarian", "dairyFree", "glutenFree", "evening", "recovery", "long"],
+      "ingredients": [
+        {"item": "red lentils", "amount": "1 mug, rinsed"},
+        {"item": "potatoes", "amount": "2 medium, diced"},
+        {"item": "onion", "amount": "1, chopped"},
+        {"item": "carrot", "amount": "1, diced"},
+        {"item": "tinned chopped tomatoes", "amount": "1 tin"},
+        {"item": "olive oil", "amount": "2 tablespoons"},
+        {"item": "cumin", "amount": "1 teaspoon"},
+        {"item": "salt", "amount": "1 teaspoon"}
+      ],
+      "steps": [
+        "Soften the onion and carrot in the oil over medium heat for five minutes.",
+        "Add the cumin, lentils, potatoes, tomatoes, salt and three mugs of water.",
+        "Simmer with the lid half on for about twenty minutes until the lentils collapse and the potatoes are soft.",
+        "Taste for salt, add a squeeze of lemon if you have one."
+      ],
+      "why": "After a long session you need carbohydrate to refill your muscles and protein to repair them, and the IOC consensus is clear that ordinary foods cover both without any supplement. Lentils bring the protein, potatoes bring the carbohydrate, and the salt and liquid help replace what you sweated out, which the ACSM/AND/DC position says should not be skipped after a heavy session. Make a pot on Sunday and it feeds you after two or three sessions in the week.",
+      "swap": "No lentils: use a tin of chickpeas or white beans and simmer for ten minutes instead of twenty."
+    },
+    {
+      "id": "jam-sandwiches-banana",
+      "title": "Jam sandwiches and a banana",
+      "when": "tournament",
+      "hoursBefore": "n/a",
+      "prepMinutes": 5,
+      "tags": ["quick", "sensitiveStomach", "vegan", "vegetarian", "dairyFree", "morning", "midday", "evening", "energy", "long"],
+      "ingredients": [
+        {"item": "white bread", "amount": "4 slices"},
+        {"item": "jam", "amount": "2 tablespoons"},
+        {"item": "banana", "amount": "1 or 2"},
+        {"item": "salt", "amount": "a small pinch for the jam, optional"}
+      ],
+      "steps": [
+        "Spread the jam on two slices, close the sandwiches, cut into quarters.",
+        "Wrap them in paper or a box; they keep for hours in a bag.",
+        "Eat a quarter or two with a few bites of banana after the first match, and again half an hour before the next."
+      ],
+      "why": "Between two matches on the same day, the ACSM/AND/DC position says to refuel with small, regular carbohydrate snacks rather than one heavy meal, and to keep them low in fat and fibre so nothing is sitting in your stomach when you walk back on. White bread, jam and banana are about as fast-digesting and familiar as food gets. This has been the club tournament lunch for a century for a reason.",
+      "swap": "Gluten-free bread or rice cakes with the same jam if wheat is out."
+    },
+    {
+      "id": "rice-cakes-banana-dates",
+      "title": "Rice cakes, banana and dates",
+      "when": "tournament",
+      "hoursBefore": "n/a",
+      "prepMinutes": 5,
+      "tags": ["quick", "vegan", "vegetarian", "dairyFree", "glutenFree", "midday", "energy", "long", "lighter"],
+      "ingredients": [
+        {"item": "plain rice cakes", "amount": "6"},
+        {"item": "banana", "amount": "1"},
+        {"item": "dates", "amount": "5 or 6, stones out"},
+        {"item": "salt", "amount": "a pinch, sprinkled on the rice cakes"}
+      ],
+      "steps": [
+        "Pack the rice cakes in a box so they do not crumble.",
+        "Keep the banana and dates in the same box.",
+        "Eat two rice cakes and a couple of dates after a match; save the banana for the gap before the next one."
+      ],
+      "why": "The IOC consensus notes that even small amounts of carbohydrate during play lasting an hour or more help both your legs and your concentration, and that when you play several matches close together, restoring fuel quickly is the priority. Dates and rice cakes are fast carbohydrate that travel in a bag without going off in the sun. The salt is there because you will be sweating for hours and the ACSM/AND/DC position wants some sodium coming in with your fluid on long days.",
+      "swap": "Raisins or dried apricots do the same job as dates; oatcakes replace the rice cakes if you want something less airy."
+    },
+    {
+      "id": "potato-egg-box",
+      "title": "Salted potato and egg box",
+      "when": "tournament",
+      "hoursBefore": "n/a",
+      "prepMinutes": 25,
+      "tags": ["vegetarian", "dairyFree", "glutenFree", "midday", "energy", "recovery", "long"],
+      "ingredients": [
+        {"item": "small potatoes", "amount": "6 to 8"},
+        {"item": "eggs", "amount": "3"},
+        {"item": "olive oil", "amount": "1 tablespoon"},
+        {"item": "salt", "amount": "1 teaspoon"},
+        {"item": "cherry tomatoes", "amount": "a handful"}
+      ],
+      "steps": [
+        "Boil the potatoes in salted water until a knife slides in, about 15 minutes; drop the eggs in for the last 9 minutes.",
+        "Drain, peel the eggs, halve the potatoes while warm and toss them in the oil and salt.",
+        "Pack potatoes, eggs and tomatoes in a box; it is fine eaten cold from the bag."
+      ],
+      "why": "On a tournament day with hours between matches you need carbohydrate to refill, some protein to start repair, and salt to hold the water you drink; the ACSM/AND/DC position covers all three for short recovery windows. Boiled potatoes and eggs do that without any packaging, and they taste fine cold. Eat the potatoes first after a match and leave the eggs for when the next match is more than an hour away.",
+      "swap": "Leave out the eggs and add a tin of drained white beans tossed with the potatoes for a vegan box."
+    },
+    {
+      "id": "pasta-lentil-tomato",
+      "title": "Pasta with lentil tomato sauce",
+      "when": "evening",
+      "hoursBefore": "n/a",
+      "prepMinutes": 30,
+      "tags": ["vegan", "vegetarian", "dairyFree", "morning", "evening", "energy", "recovery", "long"],
+      "ingredients": [
+        {"item": "pasta", "amount": "2 large handfuls per person"},
+        {"item": "red lentils", "amount": "half a mug, rinsed"},
+        {"item": "tinned chopped tomatoes", "amount": "1 tin"},
+        {"item": "onion", "amount": "1, chopped"},
+        {"item": "garlic", "amount": "2 cloves, chopped"},
+        {"item": "olive oil", "amount": "2 tablespoons"},
+        {"item": "salt", "amount": "1 teaspoon"}
+      ],
+      "steps": [
+        "Soften the onion and garlic in the oil for five minutes.",
+        "Add the lentils, tomatoes, salt and one mug of water; simmer twenty minutes until the lentils are soft and the sauce thick.",
+        "Cook the pasta in salted water while the sauce simmers, drain, and stir through the sauce."
+      ],
+      "why": "If you play tomorrow morning, tonight's dinner is the meal that sets your fuel; the ACSM/AND/DC position says a carbohydrate-rich day normalises muscle glycogen within about 24 hours. Pasta gives you the carbohydrate and the lentils give you the protein the IOC consensus wants spread across your meals. It also works as the dinner after an evening session, when it does the refilling and the repair in one plate.",
+      "swap": "Gluten-free pasta or rice under the same sauce if wheat is out."
+    },
+    {
+      "id": "chicken-potatoes-yoghurt",
+      "title": "Chicken, potatoes and yoghurt sauce",
+      "when": "evening",
+      "hoursBefore": "n/a",
+      "prepMinutes": 30,
+      "tags": ["glutenFree", "midday", "evening", "energy", "recovery", "long"],
+      "ingredients": [
+        {"item": "chicken thighs or breast", "amount": "2 pieces"},
+        {"item": "potatoes", "amount": "3 medium, cut into wedges"},
+        {"item": "olive oil", "amount": "2 tablespoons"},
+        {"item": "plain yoghurt", "amount": "half a mug"},
+        {"item": "garlic", "amount": "1 clove, crushed"},
+        {"item": "lemon", "amount": "half"},
+        {"item": "salt and pepper", "amount": "to taste"}
+      ],
+      "steps": [
+        "Heat the oven to 220 C. Toss the potatoes and chicken in the oil, salt and pepper on one tray.",
+        "Roast for 25 minutes until the potatoes are crisp at the edges and the chicken is cooked through.",
+        "Stir the garlic, a squeeze of lemon and a pinch of salt into the yoghurt and serve it on the side."
+      ],
+      "why": "The evening after a hard session is when you do most of your repair, and the ACSM/AND/DC position wants a good serving of quality protein at each meal every three to five hours, with carbohydrate alongside to refill what you used. Chicken and yoghurt cover the protein and the potatoes cover the fuel. If you have a match tomorrow, this is a dinner your stomach already knows, which the ACSM/AND/DC position says matters more than anything new.",
+      "swap": "Roast a tin of drained chickpeas with the potatoes instead of the chicken, and serve the yoghurt as is, for a vegetarian plate."
+    },
+    {
+      "id": "bedtime-yoghurt-honey-walnuts",
+      "title": "Bedtime yoghurt, honey and walnuts",
+      "when": "evening",
+      "hoursBefore": "n/a",
+      "prepMinutes": 3,
+      "tags": ["quick", "vegetarian", "glutenFree", "evening", "recovery", "lighter"],
+      "ingredients": [
+        {"item": "plain yoghurt", "amount": "1 bowl, about 250 g"},
+        {"item": "honey", "amount": "2 teaspoons"},
+        {"item": "walnuts", "amount": "a small handful, broken up"}
+      ],
+      "steps": [
+        "Spoon the yoghurt into a bowl.",
+        "Scatter the walnuts over and drizzle the honey.",
+        "Eat it in the half hour before bed."
+      ],
+      "why": "The ISSN nutrient timing position reports that a serving of slow-digesting dairy protein before sleep keeps muscle repair going through the night without disturbing your sleep. Yoghurt is the everyday version of that. This is the one for the evening you played late, ate a light dinner and want something small before bed rather than nothing.",
+      "swap": "Warm milk with a spoon of honey does the same job if you would rather drink than eat."
+    }
+  ]
+}

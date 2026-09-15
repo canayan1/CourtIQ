@@ -14,6 +14,9 @@ struct NutritionView: View {
     @State private var showLog = false
     @State private var rating: NutritionEntry?
     @State private var showPaywall = false
+    #if DEBUG
+    @State private var qcPush: String?
+    #endif
 
     private var guide: NutritionGuide? { NutritionContentStore.guide(for: lang.language) }
     private var recipes: NutritionRecipeBook? { NutritionContentStore.recipes(for: lang.language) }
@@ -42,7 +45,16 @@ struct NutritionView: View {
             switch ProcessInfo.processInfo.environment["QC_NUTRITION"] {
             case "log":  showLog = true
             case "rate": rating = manager.entries.first
+            case "recipes", "guide", "today": qcPush = ProcessInfo.processInfo.environment["QC_NUTRITION"]
             default: break
+            }
+        }
+        .navigationDestination(isPresented: Binding(get: { qcPush != nil }, set: { if !$0 { qcPush = nil } })) {
+            switch qcPush {
+            case "recipes": if let recipes { NutritionRecipesView(book: recipes) }
+            case "guide":   if let guide { NutritionGuideView(guide: guide) }
+            case "today":   if let guide { NutritionTodayView(guide: guide) }
+            default: EmptyView()
             }
         }
         #endif
