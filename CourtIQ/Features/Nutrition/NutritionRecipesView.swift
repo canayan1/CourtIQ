@@ -170,6 +170,7 @@ struct NutritionRecipeDetailView: View {
                         }
                     }
                 }
+                if let pro = recipe.proNote { proNoteCard(pro) }
                 VStack(alignment: .leading, spacing: 8) {
                     Eyebrow(lang.t("nutrition.recipe_why"), tint: AppPalette.mossDeep)
                     Text(recipe.why)
@@ -196,6 +197,35 @@ struct NutritionRecipeDetailView: View {
         .background(AppPalette.cream)
         .navigationTitle(recipe.title)
         .navigationBarTitleDisplayMode(.inline)
+    }
+
+    /// What a professional is documented to do, with the source next to it
+    /// and a line saying plainly that they have nothing to do with us.
+    private func proNoteCard(_ pro: NutritionRecipeBook.ProNote) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Eyebrow(lang.t("nutrition.pro_eyebrow"), tint: AppPalette.goldText)
+            Text(pro.text)
+                .font(.subheadline)
+                .foregroundStyle(AppPalette.ink)
+                .fixedSize(horizontal: false, vertical: true)
+            if let url = URL(string: pro.sourceURL) {
+                Link(destination: url) {
+                    HStack(spacing: 6) {
+                        Image(systemName: "link")
+                        Text(pro.sourceLabel).multilineTextAlignment(.leading)
+                    }
+                    .font(.footnote)
+                    .foregroundStyle(AppPalette.clayText)
+                }
+            }
+            Text(lang.t("nutrition.pro_disclaimer"))
+                .font(.caption2)
+                .foregroundStyle(AppPalette.inkSoft)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .padding(16)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .cardSurface(fill: AppPalette.goldTint.opacity(0.45), stroke: AppPalette.gold.opacity(0.35), cornerRadius: 18)
     }
 
     private func section<Content: View>(_ title: String, @ViewBuilder content: () -> Content) -> some View {

@@ -102,6 +102,15 @@ struct NutritionRecipeBook: Codable {
         let item: String
         let amount: String
     }
+    /// A sourced, factual note about what professionals are documented to
+    /// do — never an endorsement, never a recipe named after a person. The
+    /// source is shown with the note so a reader can check it themselves.
+    struct ProNote: Codable, Hashable {
+        let text: String
+        let sourceLabel: String
+        let sourceURL: String
+    }
+
     struct Recipe: Codable, Identifiable, Hashable {
         let id: String
         let title: String
@@ -113,6 +122,10 @@ struct NutritionRecipeBook: Codable {
         let steps: [String]
         let why: String
         let swap: String
+        /// Optional: Swift's synthesised Decodable uses decodeIfPresent for
+        /// Optionals, so a language file written before this field existed
+        /// still decodes.
+        let proNote: ProNote?
     }
 
     let version: Int

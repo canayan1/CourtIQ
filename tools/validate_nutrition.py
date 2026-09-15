@@ -65,12 +65,21 @@ def recipes(path):
         if "glutenFree" in tags and GLUTEN.search(text): errs.append(f"recipe {r['id']} tagged glutenFree but lists gluten")
         if "vegan" in tags and ANIMAL.search(text): errs.append(f"recipe {r['id']} tagged vegan but lists an animal product")
         for t in tags: tag_counts[t] = tag_counts.get(t, 0) + 1
+        # A pro note is a factual report, so it must carry a fetchable source
+        # and must never put a person's name in the recipe title.
+        pro = r.get("proNote")
+        if pro is not None:
+            for k in ("text", "sourceLabel", "sourceURL"):
+                if not str(pro.get(k, "")).strip(): errs.append(f"recipe {r['id']} proNote missing {k}")
+            if not str(pro.get("sourceURL", "")).startswith("http"):
+                errs.append(f"recipe {r['id']} proNote source is not a url")
     quiz_tags = {t for q in d.get("quiz", []) for o in q.get("options", []) for t in o.get("tags", [])}
     for t in sorted(quiz_tags):
         if tag_counts.get(t, 0) < 3: errs.append(f"quiz tag '{t}' appears on only {tag_counts.get(t, 0)} recipes (need 3)")
     if errs: fail(errs)
     when_counts = {w: sum(1 for r in d["recipes"] if r["when"] == w) for w in sorted(WHEN)}
-    print(f"  recipes ok · {len(d['recipes'])} recipes · when {when_counts} · quiz tags all ≥3")
+    pro = sum(1 for r in d["recipes"] if r.get("proNote"))
+    print(f"  recipes ok · {len(d['recipes'])} recipes · when {when_counts} · quiz tags all ≥3 · {pro} pro notes")
 
 if __name__ == "__main__":
     {"guide": guide, "recipes": recipes}[sys.argv[1]](sys.argv[2])
