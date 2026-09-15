@@ -328,6 +328,66 @@
           "url": "https://www.usta.com/en/home/improve/tennis-health---fitness/national/a-player-s-diet-on-match-day.html"
         }
       ]
+    },
+    {
+      "id": "pro-habits",
+      "title": "Ce que font les pros",
+      "summary": "Les pros mangent plus simple, plus tôt et bien plus souvent la même chose que tu ne l'imagines, et là où leurs habitudes et les conseils de l'ITF elle-même divergent, c'est le désaccord qui est instructif.",
+      "body": [
+        "Casper Ruud a dit à l'ATP qu'il mange la même chose avant chaque match : du riz nature avec du poulet, de l'huile d'olive et du sel, une heure et demie à deux heures avant. Denis Shapovalov alterne trois repas et se laisse quatre-vingt-dix minutes pour digérer. Felix Auger-Aliassime commande une protéine maigre sans sauce, des légumes et du riz blanc. Rien d'exotique là-dedans.",
+        "Sur le court, ils mangent des bananes. Shapovalov dit qu'il déteste ça et en mange quand même, après que les gels l'ont rendu malade une fois. Alex de Minaur emporte bananes, barres et en-cas. Pourtant, l'ITF elle-même conseille d'éviter la banane sur le court, parce qu'elle digère lentement. Les deux sont vrais. La leçon n'est pas la banane : c'est qu'ils utilisent ce que leur estomac connaît déjà.",
+        "Carlos Alcaraz a bu du jus de cornichon en finale de Roland-Garros 2024 pour contenir une crampe. L'étude derrière cette habitude a trouvé une durée de crampe réduite d'environ cinquante secondes, mais la crampe était induite électriquement dans un muscle du pied, les auteurs ont dit que les liquides et les électrolytes ne l'expliquaient pas, et une réplication de 2021 n'a trouvé aucune différence du tout.",
+        "Ce qu'il ne faut pas copier, c'est le volume. On a rapporté qu'un professionnel buvait dix litres d'eau par jour pour compenser une perte de sueur mesurée, et la fourchette de glucides des élites dans la recherche vise des joueurs qui s'entraînent deux fois par jour. Les conseils d'alimentation en match commencent à deux heures de jeu. Un set entre amis de quarante-cinq minutes n'est pas ce match-là."
+      ],
+      "keyPoints": [
+        "Les pros mangent simple, familier, et toujours la même chose",
+        "La plupart mangent quatre-vingt-dix minutes à deux heures avant de jouer",
+        "Ils mangent des bananes, l'ITF dit d'éviter : les deux sont vrais",
+        "Jus de cornichon anti-crampe : une petite étude, une réplication négative",
+        "Leurs volumes sont calibrés pour cinq sets, pas ton match"
+      ],
+      "sources": [
+        {
+          "label": "ATP Tour — Food Court : Casper Ruud (2022)",
+          "url": "https://www.atptour.com/en/news/ruud-food-court-june-2022"
+        },
+        {
+          "label": "ATP Tour — Food Court : Denis Shapovalov (2022)",
+          "url": "https://www.atptour.com/en/news/shapovalov-food-court-june-2022"
+        },
+        {
+          "label": "ATP Tour — Food Court : Felix Auger-Aliassime (2024)",
+          "url": "https://www.atptour.com/en/news/felix-food-court-rotterdam-2024"
+        },
+        {
+          "label": "Open d'Australie — Comment l'hydratation et la nutrition alimentent les stars (2026)",
+          "url": "https://ausopen.com/articles/news/extremely-important-how-hydration-and-nutrition-fuel-stars-ao-2026"
+        },
+        {
+          "label": "ITF — Planifier ses repas (2019)",
+          "url": "https://www.itftennis.com/media/2300/health-planning-meals.pdf"
+        },
+        {
+          "label": "Roland-Garros — Alcaraz vient à bout de Zverev pour son premier titre (2024)",
+          "url": "https://www.rolandgarros.com/en-us/article/rg2024-alcaraz-outlasts-zverev-for-first-roland-garros-crown"
+        },
+        {
+          "label": "Miller et al. — Inhibition réflexe des crampes musculaires induites électriquement (2010)",
+          "url": "https://doi.org/10.1249/mss.0b013e3181c0647e"
+        },
+        {
+          "label": "Georgieva et al. — Rinçage de bouche contre ingestion de jus de cornichon (2021)",
+          "url": "https://doi.org/10.3390/app112412096"
+        },
+        {
+          "label": "Ranchordas et al. — Nutrition pour le tennis : recommandations pratiques (2013)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3761836/"
+        },
+        {
+          "label": "ESPN — La transpiration est un vrai problème pour beaucoup de joueurs de tennis (2009)",
+          "url": "https://www.espn.com/espn/page2/story?page=hruby%2F090909"
+        }
+      ]
     }
   ],
   "today": {

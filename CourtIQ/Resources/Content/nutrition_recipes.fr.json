@@ -250,7 +250,11 @@
       ],
       "why": "Une heure avant de jouer, tu veux des glucides qui quittent vite l'estomac, et la position ACSM/AND/DC dit que les choix pauvres en graisses, pauvres en fibres et faibles à modérés en protéines sont ceux qui risquent le moins de te causer des soucis de ventre sur le court. Pain de mie, miel et banane, c'est exactement ça, et ce sont des aliments que tu connais déjà, ce qui compte plus que n'importe quoi de sophistiqué. C'est l'en-cas du jour où tu es rentré tard et où tu dois être sur le court dans une heure.",
       "swap": "Le pain sans gluten marche pareil ; mets de la confiture à la place du miel si tu évites le miel.",
-      "proNote": null
+      "proNote": {
+        "text": "Le petit-déjeuner d'avant-match donné en exemple par l'ITF elle-même est aussi simple que ça : céréales et yaourt avec des tartines et de la purée d'oléagineux, un fruit et de l'eau. Elle dit aussi de manger au moins quatre-vingt-dix minutes avant, idéalement trois heures.",
+        "sourceLabel": "ITF — Planifier ses repas (2019)",
+        "sourceURL": "https://www.itftennis.com/media/2300/health-planning-meals.pdf"
+      }
     },
     {
       "id": "chicken-rice-bowl",
@@ -300,7 +304,11 @@
       ],
       "why": "Pour un long match ou une séance de deux heures, la position ACSM/AND/DC veut un vrai repas riche en glucides deux à quatre heures avant, avec juste un peu de protéines et peu de graisses pour qu'il quitte l'estomac à temps. Riz blanc et poulet maigre, c'est ce qu'on fait de plus simple et de plus prévisible comme assiette d'avant-match, et c'est pour ça que les joueurs à l'estomac fragile y reviennent toujours. La pincée de sel n'est pas là par hasard ; le sodium du repas d'avant-match t'aide à garder l'eau que tu bois.",
       "swap": "Remplace le poulet par une boîte de pois chiches égouttés réchauffés dans l'huile et c'est végan ; garde la même portion de riz.",
-      "proNote": null
+      "proNote": {
+        "text": "Casper Ruud a dit à l'ATP qu'il mange la même assiette avant chaque match : du riz nature avec du poulet, de l'huile d'olive et du sel, une heure et demie à deux heures avant d'entrer sur le court. Ennuyeux et répété, c'est justement l'idée.",
+        "sourceLabel": "ATP Tour — Food Court : Casper Ruud (2022)",
+        "sourceURL": "https://www.atptour.com/en/news/ruud-food-court-june-2022"
+      }
     },
     {
       "id": "eggs-on-toast",
@@ -495,7 +503,11 @@
       ],
       "why": "Entre deux matchs le même jour, la position ACSM/AND/DC dit de refaire le plein avec des petits en-cas glucidiques réguliers plutôt qu'un gros repas, et de les garder pauvres en graisses et en fibres pour que rien ne traîne dans ton estomac quand tu retournes sur le court. Pain de mie, confiture et banane, difficile de faire plus vite digéré et plus familier. Ça fait un siècle que c'est le déjeuner des tournois de club, et ce n'est pas pour rien.",
       "swap": "Du pain sans gluten ou des galettes de riz avec la même confiture si le blé est exclu.",
-      "proNote": null
+      "proNote": {
+        "text": "Denis Shapovalov a dit à l'ATP qu'il mange des bananes sur le court alors qu'il déteste ça, après qu'un gel l'a rendu malade une fois. Le familier bat l'optimal quand c'est ton estomac qui juge.",
+        "sourceLabel": "ATP Tour — Food Court : Denis Shapovalov (2022)",
+        "sourceURL": "https://www.atptour.com/en/news/shapovalov-food-court-june-2022"
+      }
     },
     {
       "id": "rice-cakes-banana-dates",
@@ -539,7 +551,11 @@
       ],
       "why": "Le consensus de l'IOC note que même de petites quantités de glucides quand tu joues une heure ou plus aident à la fois tes jambes et ta concentration, et que quand tu enchaînes plusieurs matchs rapprochés, refaire le plein vite est la priorité. Dattes et galettes de riz sont des glucides rapides qui voyagent dans un sac sans tourner au soleil. Le sel est là parce que tu vas transpirer pendant des heures et que la position ACSM/AND/DC veut un peu de sodium avec ce que tu bois les jours longs.",
       "swap": "Raisins secs ou abricots secs font le même boulot que les dattes ; des galettes d'avoine remplacent les galettes de riz si tu veux quelque chose de moins aérien.",
-      "proNote": null
+      "proNote": {
+        "text": "Felix Auger-Aliassime a dit à l'ATP qu'il y a toujours des bananes et des gels sur le court, et qu'il en prend entre les sets. À savoir : les conseils de l'ITF elle-même disent d'éviter la banane sur le court parce qu'elle digère lentement. Les pros et la fédération sont vraiment en désaccord.",
+        "sourceLabel": "ATP Tour — Food Court : Felix Auger-Aliassime (2024)",
+        "sourceURL": "https://www.atptour.com/en/news/felix-food-court-rotterdam-2024"
+      }
     },
     {
       "id": "potato-egg-box",
@@ -585,7 +601,11 @@
       ],
       "why": "Un jour de tournoi avec des heures entre les matchs, il te faut des glucides pour recharger, un peu de protéines pour lancer la réparation, et du sel pour retenir l'eau que tu bois ; la position ACSM/AND/DC couvre les trois pour les fenêtres de récupération courtes. Pommes de terre bouillies et œufs font ça sans aucun emballage, et c'est bon froid. Mange d'abord les pommes de terre après un match et garde les œufs pour quand le match suivant est à plus d'une heure.",
       "swap": "Laisse tomber les œufs et ajoute une boîte de haricots blancs égouttés mélangés aux pommes de terre pour une gamelle végane.",
-      "proNote": null
+      "proNote": {
+        "text": "ESPN a rapporté qu'Andy Roddick versait du sel dans ses gourdes, et qu'un joueur utilisait de l'eau de coco pour le potassium. Une revue sur les crampes au tennis note que des cliniciens ajoutent une demi-cuillère à café de sel dans une gourde pour les joueurs qui crampent à répétition.",
+        "sourceLabel": "ESPN — La transpiration est un vrai problème pour beaucoup de joueurs de tennis (2009)",
+        "sourceURL": "https://www.espn.com/espn/page2/story?page=hruby%2F090909"
+      }
     },
     {
       "id": "pasta-lentil-tomato",
@@ -640,7 +660,11 @@
       ],
       "why": "Si tu joues demain matin, le dîner de ce soir est le repas qui fixe ton carburant ; la position ACSM/AND/DC dit qu'une journée riche en glucides normalise le glycogène musculaire en 24 heures environ. Les pâtes t'apportent les glucides et les lentilles les protéines que le consensus de l'IOC veut voir réparties sur tes repas. Ça marche aussi comme dîner après une séance du soir, quand il fait la recharge et la réparation dans une seule assiette.",
       "swap": "Des pâtes sans gluten ou du riz sous la même sauce si le blé est exclu.",
-      "proNote": null
+      "proNote": {
+        "text": "Alex de Minaur a dit à l'Open d'Australie qu'il commence les électrolytes la veille au soir, et qu'il mange des pâtes nature avant d'entrer sur le court. Il parle de matchs en cinq sets, ce que le tien n'est probablement pas.",
+        "sourceLabel": "Open d'Australie — Comment l'hydratation et la nutrition alimentent les stars (2026)",
+        "sourceURL": "https://ausopen.com/articles/news/extremely-important-how-hydration-and-nutrition-fuel-stars-ao-2026"
+      }
     },
     {
       "id": "chicken-potatoes-yoghurt",
