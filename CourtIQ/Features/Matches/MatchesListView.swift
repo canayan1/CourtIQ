@@ -429,24 +429,3 @@ struct MatchesListView: View {
         .brandedPhoto("PhotoMatch", scrim: .hero, cornerRadius: 24)
     }
 }
-
-// MARK: - Staggered entrance modifier
-
-private extension View {
-    /// Tactile entrance: opacity + a small rise + slight scale, staggered by
-    /// index with a bouncy spring. A no-op (instant) under Reduce Motion.
-    /// Mirrors the Home/Train reveal so Matches shares one motion language.
-    @ViewBuilder
-    func reveal(appeared: Bool, index: Int, reduceMotion: Bool) -> some View {
-        if reduceMotion {
-            self.opacity(appeared ? 1 : 0)
-        } else {
-            self
-                .opacity(appeared ? 1 : 0)
-                .offset(y: appeared ? 0 : 14)
-                .scaleEffect(appeared ? 1 : 0.96)
-                .animation(Motion.entrance.delay(Double(index) * Motion.stagger),
-                           value: appeared)
-        }
-    }
-}

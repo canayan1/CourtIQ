@@ -17,10 +17,18 @@ struct NutritionRateSheet: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 18) {
-                    ratingRow(lang.t("nutrition.rate_energy"), $ratings.energy)
-                    ratingRow(lang.t("nutrition.rate_legs"), $ratings.legs)
-                    ratingRow(lang.t("nutrition.rate_focus"), $ratings.focus)
-                    ratingRow(lang.t("nutrition.rate_stomach"), $ratings.stomach)
+                    // Name what is being rated. On a rest day the question is
+                    // "how did the day feel", not "how did the session go".
+                    Text(String(format: lang.t(entry.kind.didPlay ? "nutrition.rate_about_fmt"
+                                                                  : "nutrition.rate_about_rest_fmt"),
+                                dayLabel))
+                        .font(.subheadline)
+                        .foregroundStyle(AppPalette.inkSoft)
+                        .fixedSize(horizontal: false, vertical: true)
+
+                    NutritionRatingRows(ratings: $ratings)
+                        .environmentObject(lang)
+
                     TextField(lang.t("nutrition.after_placeholder"), text: $note, axis: .vertical)
                         .lineLimit(2...4)
                         .padding(12)
@@ -39,37 +47,13 @@ struct NutritionRateSheet: View {
         }
     }
 
-    private func ratingRow(_ title: String, _ value: Binding<Int>) -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack {
-                Text(title)
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(AppPalette.ink)
-                Spacer()
-                Text(lang.t(value.wrappedValue <= 2 ? "nutrition.rate_low" : value.wrappedValue >= 4 ? "nutrition.rate_high" : "nutrition.hydration_ok"))
-                    .font(.caption)
-                    .foregroundStyle(AppPalette.inkSoft)
-            }
-            HStack(spacing: 8) {
-                ForEach(1...5, id: \.self) { n in
-                    Button {
-                        Haptics.tap()
-                        value.wrappedValue = n
-                    } label: {
-                        Text("\(n)")
-                            .font(.system(.headline, design: .rounded).weight(.bold))
-                            .foregroundStyle(n == value.wrappedValue ? .white : AppPalette.ink)
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 12)
-                            .background(n == value.wrappedValue ? AppPalette.clay : AppPalette.parchment,
-                                        in: RoundedRectangle(cornerRadius: 12))
-                            .overlay(RoundedRectangle(cornerRadius: 12)
-                                .stroke(n == value.wrappedValue ? AppPalette.clay : AppPalette.sand, lineWidth: 1))
-                    }
-                    .buttonStyle(PressableCardStyle())
-                    .accessibilityLabel("\(title) \(n)")
-                }
-            }
-        }
+    private var dayLabel: String {
+        let cal = Calendar(identifier: .iso8601)
+        if cal.isDateInToday(entry.date) { return lang.t("journal.day_today") }
+        if cal.isDateInYesterday(entry.date) { return lang.t("journal.day_yesterday") }
+        let f = DateFormatter()
+        f.locale = Locale(identifier: lang.language.rawValue)
+        f.setLocalizedDateFormatFromTemplate("EEEE d MMMM")
+        return f.string(from: entry.date)
     }
 }

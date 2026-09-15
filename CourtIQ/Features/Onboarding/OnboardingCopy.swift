@@ -45,6 +45,15 @@ struct OnboardingCopy {
         t("Cross-court is the safer ball. Here's why — and when to break the rule.", "Çapraz top daha güvenli. İşte nedeni — ve kuralı ne zaman bozacağın.", "Le croisé est la balle la plus sûre. Voici pourquoi — et quand enfreindre la règle.")
     }
     var showcaseTacticsCaption: String { t("30 lessons · 156 scenarios · chapter 1 free", "30 ders · 156 senaryo · 1. bölüm ücretsiz", "30 leçons · 156 situations · chapitre 1 gratuit") }
+    var showcaseJournalEyebrow: String { t("JOURNAL", "GÜNLÜK", "JOURNAL") }
+    var showcaseJournalHeadline: String {
+        t("Write the season down", "Sezonu yaz", "Écris la saison")
+    }
+    var showcaseJournalCaption: String {
+        t("Matches and fuel in one calendar. Miss a day? Tap it and fill it in.", "Maçlar ve beslenme tek takvimde. Bir günü kaçırdın mı? Dokun ve doldur.", "Matchs et nutrition dans un seul calendrier. Un jour oublié ? Touche-le et remplis-le.")
+    }
+    var showcaseJournalMatch: String { t("Match", "Maç", "Match") }
+    var showcaseJournalFuel: String { t("Fuel", "Beslenme", "Nutrition") }
 
     var showcaseSwingEyebrow: String { t("SWING", "SWING", "GESTE") }
     var showcaseSwingHeadline: String {

@@ -608,3 +608,29 @@ struct StatPill: View {
         .accessibilityLabel("\(label): \(value)")
     }
 }
+
+// MARK: - Staggered entrance modifier
+
+extension View {
+    /// Tactile entrance: opacity + a small rise + slight scale, staggered by
+    /// index with a bouncy spring. When Reduce Motion is on it is a no-op
+    /// (content is shown at rest, with at most a simple fade handled by the
+    /// `appeared` flag flipping instantly).
+    ///
+    /// Lives here rather than in Home because the Journal wants the same
+    /// entrance, and two screens copying an animation is how two screens stop
+    /// matching.
+    @ViewBuilder
+    func reveal(appeared: Bool, index: Int, reduceMotion: Bool) -> some View {
+        if reduceMotion {
+            self.opacity(appeared ? 1 : 0)
+        } else {
+            self
+                .opacity(appeared ? 1 : 0)
+                .offset(y: appeared ? 0 : 14)
+                .scaleEffect(appeared ? 1 : 0.96)
+                .animation(Motion.entrance.delay(Double(index) * Motion.stagger),
+                           value: appeared)
+        }
+    }
+}

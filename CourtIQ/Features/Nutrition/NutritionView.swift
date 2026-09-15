@@ -32,7 +32,7 @@ struct NutritionView: View {
                 // Until there is rated data the insight card is only a
                 // promise, so the guide, the picker and the recipes come
                 // first; once there are averages they lead.
-                if manager.ratedEntries.isEmpty {
+                if manager.ratedSessions.isEmpty {
                     contentCards
                     insightsCard
                 } else {
@@ -229,7 +229,7 @@ struct NutritionView: View {
     private var insightsCard: some View {
         VStack(alignment: .leading, spacing: 12) {
             Eyebrow(lang.t("nutrition.insights"))
-            let rated = manager.ratedEntries
+            let rated = manager.ratedSessions
             if let avg = NutritionInsights.averages(rated) {
                 averagesRow(avg)
             }
@@ -312,7 +312,7 @@ struct NutritionView: View {
                 Text(entry.date, style: .date)
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(AppPalette.ink)
-                Text([lang.t(entry.timing.labelKey),
+                Text([entry.timing.map { lang.t($0.labelKey) } ?? lang.t(entry.kind.labelKey),
                       entry.meal.map { lang.t($0.labelKey) },
                       lang.t(entry.hydration.labelKey),
                       entry.caffeine ? lang.t("nutrition.caffeine_yes") : nil]

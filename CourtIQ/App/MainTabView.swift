@@ -3,7 +3,7 @@ import SwiftUI
 /// Routes tab selection so Home heroes can SWITCH tabs rather than push a
 /// duplicate of those screens inside the Home NavigationStack.
 final class TabRouter: ObservableObject {
-    enum Tab: Hashable { case home, coach, wall, tactics }
+    enum Tab: Hashable { case home, coach, wall, tactics, journal }
     @Published var selection: Tab = .home
 }
 
@@ -18,8 +18,11 @@ struct MainTabView: View {
     //   2. Coach   — your video, analysed (AI now, real coach on the waitlist).
     //   3. Wall    — camera-judged wall drills, level by level.
     //   4. Tactics — tactics taught a lesson at a time (Tennis IQ today).
-    // Matches, Doubles, Drills, Recover and Programs are Home shortcuts: they
-    // stay, they just stop pretending to be headline features.
+    //   5. Journal — matches and fuel in one calendar you can write into
+    //                backwards. The fourth flagship, added when the match log
+    //                and the fuel log turned out to be one habit.
+    // Doubles, Drills, Recover and Programs are Home shortcuts: they stay,
+    // they just stop pretending to be headline features.
     var body: some View {
         TabView(selection: $tabRouter.selection) {
             NavigationStack {
@@ -53,18 +56,27 @@ struct MainTabView: View {
                 Label(lang.t("tab.tactics"), systemImage: "brain.head.profile")
             }
             .tag(TabRouter.Tab.tactics)
+
+            NavigationStack {
+                JournalView().trackScreen("Journal")
+            }
+            .tabItem {
+                Label(lang.t("tab.journal"), systemImage: "book.pages.fill")
+            }
+            .tag(TabRouter.Tab.journal)
         }
         .tint(AppPalette.clay)
         .environmentObject(tabRouter)
         .id(lang.language)
         #if DEBUG
-        // Headless QC: SIMCTL_CHILD_QC_TAB=coach|wall|tactics fronts a tab
+        // Headless QC: SIMCTL_CHILD_QC_TAB=coach|wall|tactics|journal fronts a tab
         // for screenshot audits without taps.
         .onAppear {
             switch ProcessInfo.processInfo.environment["QC_TAB"] {
             case "coach":   tabRouter.selection = .coach
             case "wall":    tabRouter.selection = .wall
             case "tactics": tabRouter.selection = .tactics
+            case "journal": tabRouter.selection = .journal
             default: break
             }
         }

@@ -88,7 +88,7 @@ enum NutritionInsights {
 
     private static func bucketKey(_ e: NutritionEntry, _ d: NutritionInsight.Dimension) -> String {
         switch d {
-        case .timing:    return e.timing.labelKey
+        case .timing:    return e.timing?.labelKey ?? "nutrition.kind_rest"
         case .meal:      return e.meal?.labelKey ?? NutritionTiming.nothing.labelKey
         case .hydration: return e.hydration.labelKey
         case .caffeine:  return e.caffeine ? "nutrition.caffeine_yes" : "nutrition.caffeine_no"

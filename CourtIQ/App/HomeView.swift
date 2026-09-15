@@ -68,7 +68,7 @@ struct HomeView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
-                // The three things the app sells, in the order the tab bar
+                // The four things the app sells, in the order the tab bar
                 // lists them. Each is a tab, so each SWITCHES tabs.
                 VStack(spacing: 12) {
                     pillarCard(.coach, icon: "video.fill", photo: "PhotoCoach",
@@ -86,10 +86,15 @@ struct HomeView: View {
                                title: lang.t("home.pillar_tactics_title"),
                                state: tacticsState)
                         .reveal(appeared: appeared, index: 2, reduceMotion: reduceMotion)
+                    pillarCard(.journal, icon: "book.pages.fill", photo: "PhotoGear",
+                               eyebrow: lang.t("home.pillar_journal"),
+                               title: lang.t("home.pillar_journal_title"),
+                               state: journalState)
+                        .reveal(appeared: appeared, index: 3, reduceMotion: reduceMotion)
                 }
 
                 iqStrip
-                    .reveal(appeared: appeared, index: 3, reduceMotion: reduceMotion)
+                    .reveal(appeared: appeared, index: 4, reduceMotion: reduceMotion)
 
                 // Secondary features: chips, not photo tiles, so they never
                 // compete with the pillars for the eye.
@@ -100,7 +105,7 @@ struct HomeView: View {
                     Eyebrow(lang.t("home.also"))
                     alsoRow
                 }
-                .reveal(appeared: appeared, index: 4, reduceMotion: reduceMotion)
+                .reveal(appeared: appeared, index: 5, reduceMotion: reduceMotion)
 
                 VStack(alignment: .leading, spacing: 12) {
                     HStack(spacing: 6) {
@@ -114,10 +119,10 @@ struct HomeView: View {
                                 .accessibilityLabel(String(format: lang.t("home.streak_days"), streakDays))
                         }
                     }
-                    .reveal(appeared: appeared, index: 5, reduceMotion: reduceMotion)
+                    .reveal(appeared: appeared, index: 6, reduceMotion: reduceMotion)
 
                     RecentActivityStrip(activities: recentActivity, lang: lang)
-                        .reveal(appeared: appeared, index: 6, reduceMotion: reduceMotion)
+                        .reveal(appeared: appeared, index: 7, reduceMotion: reduceMotion)
                 }
             }
             .padding(20)
@@ -270,6 +275,17 @@ struct HomeView: View {
         return lang.t("home.state_all_lessons")
     }
 
+    /// What the journal wants from the player today, in one line: the open
+    /// question if there is one, otherwise the streak, otherwise the invitation.
+    private var journalState: String {
+        let digest = JournalDigest(matches: matchManager.entries.filter { !$0.isDraft },
+                                   fuel: nutrition.entries)
+        if let prompt = digest.prompt { return lang.t(prompt.titleKey) }
+        let streak = digest.streak
+        if streak > 0 { return String(format: lang.t("home.journal_state_streak"), streak) }
+        return lang.t("home.journal_state_empty")
+    }
+
     private func pillarCard(_ tab: TabRouter.Tab, icon: String, photo: String,
                             eyebrow: String, title: String, state: String) -> some View {
         Button {
@@ -404,10 +420,8 @@ struct HomeView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 8) {
                 chip(lang.t("train.drills"), icon: "scope") { route = .drills }
-                chip(lang.t("home.tile_matches"), icon: "square.and.pencil") { route = .matches }
                 chip(lang.t("home.tile_doubles"), icon: "person.2.fill") { route = .doubles }
                 chip(lang.t("train.recover"), icon: "figure.walk") { route = .recover }
-                chip(lang.t("nutrition.title"), icon: "fork.knife") { route = .nutrition }
                 chip(lang.t("train.programs"), icon: session.isPremiumUnlocked ? "figure.strengthtraining.traditional" : "lock.fill") {
                     if session.isPremiumUnlocked { route = .programs } else { showProgramsPaywall = true }
                 }
@@ -487,27 +501,5 @@ struct RecentActivityStrip: View {
             .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
         }
         .buttonStyle(PressableCardStyle())
-    }
-}
-
-// MARK: - Staggered entrance modifier
-
-private extension View {
-    /// Tactile entrance: opacity + a small rise + slight scale, staggered by
-    /// index with a bouncy spring. When Reduce Motion is on it is a no-op
-    /// (content is shown at rest, with at most a simple fade handled by the
-    /// `appeared` flag flipping instantly).
-    @ViewBuilder
-    func reveal(appeared: Bool, index: Int, reduceMotion: Bool) -> some View {
-        if reduceMotion {
-            self.opacity(appeared ? 1 : 0)
-        } else {
-            self
-                .opacity(appeared ? 1 : 0)
-                .offset(y: appeared ? 0 : 14)
-                .scaleEffect(appeared ? 1 : 0.96)
-                .animation(Motion.entrance.delay(Double(index) * Motion.stagger),
-                           value: appeared)
-        }
     }
 }

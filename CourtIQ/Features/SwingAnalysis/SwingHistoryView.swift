@@ -212,23 +212,3 @@ struct SwingReportDetailView: View {
         return record.strokeRaw.capitalized
     }
 }
-
-// MARK: - Staggered entrance modifier
-
-private extension View {
-    /// Mirrors the Train hub / Mobility library tactile staggered entrance;
-    /// Reduce-Motion safe (fades in place when Reduce Motion is on).
-    @ViewBuilder
-    func reveal(appeared: Bool, index: Int, reduceMotion: Bool) -> some View {
-        if reduceMotion {
-            self.opacity(appeared ? 1 : 0)
-        } else {
-            self
-                .opacity(appeared ? 1 : 0)
-                .offset(y: appeared ? 0 : 14)
-                .scaleEffect(appeared ? 1 : 0.97)
-                .animation(Motion.entrance.delay(Double(index) * Motion.stagger),
-                           value: appeared)
-        }
-    }
-}

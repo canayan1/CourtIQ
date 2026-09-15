@@ -314,7 +314,7 @@ private struct ShowcaseSlide: Identifiable {
     /// the numbers/quotes finale slides are already full.
     var showsTourVideo: Bool = false
 
-    /// One slide per pillar — the three things the app sells — each proven
+    /// One slide per pillar — the four things the app sells — each proven
     /// by a live sample: the two-path swing choice, a wall rung being
     /// counted, a tactics lesson's court diagram with Rocco. ≤5-word
     /// headlines; ~16s total.
@@ -337,6 +337,12 @@ private struct ShowcaseSlide: Identifiable {
                 headline: copy.showcaseTacticsHeadline,
                 photo: "PhotoCourt",
                 sample: AnyView(TacticsSampleCard(copy: copy))
+            ),
+            ShowcaseSlide(
+                eyebrow: copy.showcaseJournalEyebrow,
+                headline: copy.showcaseJournalHeadline,
+                photo: "PhotoGear",
+                sample: AnyView(JournalSampleCard(copy: copy))
             ),
         ]
     }
@@ -423,6 +429,65 @@ private struct TacticsSampleCard: View {
         .background(AppPalette.parchment)
         .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous).stroke(AppPalette.sand, lineWidth: 1))
         .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+    }
+}
+
+// The journal in four seconds: a week of empty squares, then two days fill
+// in — one played, one eaten. The promise is that a square is never closed.
+private struct JournalSampleCard: View {
+    let copy: OnboardingCopy
+    /// Which of the seven squares fill, and with what. Fixed rather than
+    /// random so the slide looks the same every time it is shown.
+    private static let filled: [(index: Int, match: Bool)] = [(1, true), (3, false), (4, true)]
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack(spacing: 8) {
+                ForEach(0..<7, id: \.self) { i in
+                    let entry = Self.filled.first { $0.index == i }
+                    RoundedRectangle(cornerRadius: 7, style: .continuous)
+                        .fill(entry.map { $0.match ? AppPalette.clay : AppPalette.moss } ?? AppPalette.sand.opacity(0.5))
+                        .frame(height: 34)
+                        .overlay {
+                            if let entry {
+                                Image(systemName: entry.match ? "checkmark" : "fork.knife")
+                                    .appFont(11, weight: .heavy)
+                                    .foregroundStyle(.white)
+                            }
+                        }
+                        .demoReveal(entry == nil ? 0.2 : 0.5 + Double(i) * 0.25)
+                }
+            }
+            HStack(spacing: 14) {
+                legend(AppPalette.clay, copy.showcaseJournalMatch)
+                legend(AppPalette.moss, copy.showcaseJournalFuel)
+                Spacer(minLength: 0)
+            }
+            .demoReveal(1.3)
+            Text(copy.showcaseJournalCaption)
+                .font(.footnote.weight(.bold))
+                .foregroundStyle(AppPalette.inkSoft)
+                .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
+                .frame(maxWidth: .infinity, alignment: .center)
+                .demoReveal(1.6)
+        }
+        .padding(14)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppPalette.parchment)
+        .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous).stroke(AppPalette.sand, lineWidth: 1))
+        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+    }
+
+    private func legend(_ color: Color, _ label: String) -> some View {
+        HStack(spacing: 6) {
+            RoundedRectangle(cornerRadius: 3, style: .continuous)
+                .fill(color)
+                .frame(width: 10, height: 10)
+            Text(label)
+                .font(.caption)
+                .foregroundStyle(AppPalette.inkSoft)
+        }
     }
 }
 

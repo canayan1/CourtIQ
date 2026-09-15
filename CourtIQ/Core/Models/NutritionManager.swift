@@ -16,13 +16,19 @@ import Combine
 
 enum NutritionSessionKind: String, Codable, CaseIterable, Identifiable {
     case practice, match, wall
+    /// A day the player did not play. Worth logging: what you eat on a rest
+    /// day is half of what you bring to the next one, and a rest day next to
+    /// a flat session is exactly the comparison the insights are for.
+    case rest
     var id: String { rawValue }
     var labelKey: String { "nutrition.kind_\(rawValue)" }
+    var didPlay: Bool { self != .rest }
     var symbol: String {
         switch self {
         case .practice: return "figure.tennis"
         case .match:    return "trophy"
         case .wall:     return "rectangle.portrait"
+        case .rest:     return "moon.zzz"
         }
     }
 }
@@ -69,7 +75,10 @@ struct NutritionEntry: Codable, Identifiable, Hashable {
     /// `Date.todayKey` of `date` — the unit the streak and the day list use.
     var dayKey: String
     var kind: NutritionSessionKind
-    var timing: NutritionTiming
+    /// How long before playing the last meal was. Nil on a rest day, where
+    /// there is no session to be early or late for — storing a timing there
+    /// would put a number into the comparisons that means nothing.
+    var timing: NutritionTiming?
     /// Nil when `timing == .nothing`.
     var meal: NutritionMealType?
     var hydration: NutritionHydration
@@ -81,6 +90,19 @@ struct NutritionEntry: Codable, Identifiable, Hashable {
     var afterNote: String?
 
     var isRated: Bool { ratings != nil }
+}
+
+// MARK: - Recall
+
+/// The answers to reuse when the player says "same as last time". Deliberately
+/// not the note: the note is about one specific meal and repeating it would be
+/// putting words in their mouth.
+struct NutritionRecall: Hashable {
+    let kind: NutritionSessionKind
+    let timing: NutritionTiming?
+    let meal: NutritionMealType
+    let hydration: NutritionHydration
+    let caffeine: Bool
 }
 
 // MARK: - Manager
@@ -115,13 +137,41 @@ final class NutritionManager: ObservableObject {
         entries.first { !$0.isRated && Date().timeIntervalSince($0.date) < ratingWindow }
     }
 
+    /// Everything logged on one calendar day, newest first.
+    func entries(on day: Date) -> [NutritionEntry] {
+        let key = day.todayKey
+        return entries.filter { $0.dayKey == key }
+    }
+
+    /// The last thing the player answered, for "same as last time". Nil until
+    /// there is one, so the button only appears when it can actually do
+    /// something.
+    var recall: NutritionRecall? {
+        guard let last = entries.first else { return nil }
+        return NutritionRecall(kind: last.kind, timing: last.timing ?? .h1to2,
+                               meal: last.meal ?? .balanced,
+                               hydration: last.hydration, caffeine: last.caffeine)
+    }
+
+    /// Notes the player has actually written before, newest first and
+    /// de-duplicated — offered as chips so a repeated breakfast is one tap.
+    var recentNotes: [String] {
+        var seen = Set<String>()
+        return entries.compactMap(\.note).filter { seen.insert($0.lowercased()).inserted }.prefix(6).map { $0 }
+    }
+
     var ratedEntries: [NutritionEntry] { entries.filter(\.isRated) }
 
     /// Days with a log — logging fuel counts as doing something for the
     /// unified streak, like a quiz or a wall session.
     var activeDayKeys: Set<String> { Set(entries.map(\.dayKey)) }
 
-    var insights: [NutritionInsight] { NutritionInsights.compute(ratedEntries) }
+    /// Only sessions the player actually played: the comparisons ask which
+    /// pre-session choice left better legs, and a rest day has no session to
+    /// answer for.
+    var ratedSessions: [NutritionEntry] { entries.filter { $0.isRated && $0.kind.didPlay } }
+
+    var insights: [NutritionInsight] { NutritionInsights.compute(ratedSessions) }
 
     // MARK: Coach summary
 
@@ -130,7 +180,7 @@ final class NutritionManager: ObservableObject {
     /// cleared the evidence bar, and the last five sessions in one line
     /// each. Kept under ~700 characters so it costs little per turn.
     var coachSummary: String? {
-        let rated = ratedEntries
+        let rated = ratedSessions
         guard let avg = NutritionInsights.averages(rated) else { return nil }
         var lines: [String] = []
         lines.append(String(format: "Fuel log, %d rated sessions. Averages out of 5 — energy %.1f, legs %.1f, focus %.1f, stomach %.1f.",
@@ -143,7 +193,8 @@ final class NutritionManager: ObservableObject {
         let recent = rated.prefix(5).map { e -> String in
             let r = e.ratings ?? .neutral
             let meal = e.meal.map { Self.plain($0.labelKey) } ?? "nothing"
-            return "\(Self.shortDate(e.date)) \(e.kind.rawValue): \(Self.plain(e.timing.labelKey)), \(meal), water \(e.hydration.rawValue)\(e.caffeine ? ", caffeine" : "") → \(r.energy)/\(r.legs)/\(r.focus)/\(r.stomach)"
+            let timing = e.timing.map { Self.plain($0.labelKey) } ?? "rest day"
+            return "\(Self.shortDate(e.date)) \(e.kind.rawValue): \(timing), \(meal), water \(e.hydration.rawValue)\(e.caffeine ? ", caffeine" : "") → \(r.energy)/\(r.legs)/\(r.focus)/\(r.stomach)"
         }
         if !recent.isEmpty { lines.append("Recent (energy/legs/focus/stomach): " + recent.joined(separator: "; ")) }
         return lines.joined(separator: "\n")
@@ -173,19 +224,27 @@ final class NutritionManager: ObservableObject {
 
     // MARK: Mutations
 
+    /// `date` is the day being logged, which is not always today: the journal
+    /// calendar lets the player fill in a day they missed, exactly as the
+    /// match log does. A past day is rated in the same sitting, so `ratings`
+    /// may arrive with the entry rather than later.
     @discardableResult
-    func log(kind: NutritionSessionKind, timing: NutritionTiming, meal: NutritionMealType?,
-             hydration: NutritionHydration, caffeine: Bool, note: String?) -> NutritionEntry {
-        let now = Date()
+    func log(kind: NutritionSessionKind, timing: NutritionTiming?, meal: NutritionMealType?,
+             hydration: NutritionHydration, caffeine: Bool, note: String?,
+             on date: Date = Date(), ratings: NutritionRatings? = nil,
+             afterNote: String? = nil) -> NutritionEntry {
+        let now = date
         let entry = NutritionEntry(
             id: UUID().uuidString, date: now, dayKey: now.todayKey,
             kind: kind, timing: timing, meal: timing == .nothing ? nil : meal,
             hydration: hydration, caffeine: caffeine,
             note: Self.clean(note),
-            ratings: nil, ratedAt: nil, afterNote: nil)
-        entries.insert(entry, at: 0)
+            ratings: ratings, ratedAt: ratings == nil ? nil : Date(),
+            afterNote: Self.clean(afterNote))
+        entries.append(entry)
+        entries.sort { $0.date > $1.date }
         persist()
-        AppAnalytics.shared.log(AnalyticsEvent.nutritionLogged, ["kind": kind.rawValue, "timing": timing.rawValue])
+        AppAnalytics.shared.log(AnalyticsEvent.nutritionLogged, ["kind": kind.rawValue, "timing": timing?.rawValue ?? "rest"])
         return entry
     }
 

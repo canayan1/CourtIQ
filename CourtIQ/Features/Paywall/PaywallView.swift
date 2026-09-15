@@ -154,9 +154,9 @@ struct PaywallView: View {
                 .foregroundStyle(.white)
                 .fixedSize(horizontal: false, vertical: true)
 
-            // One membership, three reasons — the three things the app sells.
-            // Never list free content here: the paywall must not sell what
-            // the player already has.
+            // One membership, three reasons. NOT one per pillar: the journal
+            // is the fourth flagship and is free, and the paywall must never
+            // sell what the player already has.
             Text(t("Every swing read, every wall rung counted, every tactics lesson open.", "Her vuruş okuması, her duvar basamağı sayılır, her taktik dersi açık.", "Chaque geste analysé, chaque palier du mur compté, chaque leçon de tactique ouverte."))
             .foregroundStyle(.white.opacity(0.9))
             .fixedSize(horizontal: false, vertical: true)

@@ -128,22 +128,3 @@ struct MobilityLibraryView: View {
         .accessibilityValue(isLocked ? lang.t("mobility.premium") : flow.duration)
     }
 }
-
-// MARK: - Staggered entrance modifier
-
-private extension View {
-    /// Mirrors the Train hub's tactile staggered entrance; Reduce-Motion safe.
-    @ViewBuilder
-    func reveal(appeared: Bool, index: Int, reduceMotion: Bool) -> some View {
-        if reduceMotion {
-            self.opacity(appeared ? 1 : 0)
-        } else {
-            self
-                .opacity(appeared ? 1 : 0)
-                .offset(y: appeared ? 0 : 14)
-                .scaleEffect(appeared ? 1 : 0.97)
-                .animation(Motion.entrance.delay(Double(index) * Motion.stagger),
-                           value: appeared)
-        }
-    }
-}

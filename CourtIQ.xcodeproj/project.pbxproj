@@ -215,6 +215,12 @@
 		44FA0F82430943B2A384D217 /* nutrition_recipes.fr.json in Resources */ = {isa = PBXBuildFile; fileRef = C9ED65B9249E403589C97657 /* nutrition_recipes.fr.json */; };
 		D75B33A2B47F4039A75800A8 /* nutrition_guide.fr.json in Resources */ = {isa = PBXBuildFile; fileRef = A3145A711B374453957B671D /* nutrition_guide.fr.json */; };
 		26753DCBFD364855BBDE39D5 /* nutrition_guide.tr.json in Resources */ = {isa = PBXBuildFile; fileRef = 1FEC0319412C426FAEC9E533 /* nutrition_guide.tr.json */; };
+		0FF516F81A5B401DB0D00B67 /* DayGridCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8BC89C05E44C7797FBFCCD /* DayGridCalendar.swift */; };
+		200498A0464A4B6AAF34C6BD /* JournalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7695E1419F4CFFB40351B7 /* JournalModel.swift */; };
+		E9C207348CB840BAA7D69EC2 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699DA8131E7D46E991AE56FE /* JournalView.swift */; };
+		2D5FB157FE3A44D0B7E500FF /* JournalItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF5D7E9C44B44CA89B2A13B /* JournalItemRow.swift */; };
+		B7BCC1CA90EC43C69978DAE1 /* JournalDaySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE2B87E9CF4C72ACB84F5A /* JournalDaySheet.swift */; };
+		98A56F2CCF3B4D10B9F13568 /* NutritionRatingRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37632BC4FD164EC4BDA804B8 /* NutritionRatingRows.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -438,6 +444,12 @@
 		C9ED65B9249E403589C97657 /* nutrition_recipes.fr.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = nutrition_recipes.fr.json; path = CourtIQ/Resources/Content/nutrition_recipes.fr.json; sourceTree = "<group>"; };
 		A3145A711B374453957B671D /* nutrition_guide.fr.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = nutrition_guide.fr.json; path = CourtIQ/Resources/Content/nutrition_guide.fr.json; sourceTree = "<group>"; };
 		1FEC0319412C426FAEC9E533 /* nutrition_guide.tr.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = nutrition_guide.tr.json; path = CourtIQ/Resources/Content/nutrition_guide.tr.json; sourceTree = "<group>"; };
+		1C8BC89C05E44C7797FBFCCD /* DayGridCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DayGridCalendar.swift; path = CourtIQ/Features/Journal/DayGridCalendar.swift; sourceTree = "<group>"; };
+		5F7695E1419F4CFFB40351B7 /* JournalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JournalModel.swift; path = CourtIQ/Features/Journal/JournalModel.swift; sourceTree = "<group>"; };
+		699DA8131E7D46E991AE56FE /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JournalView.swift; path = CourtIQ/Features/Journal/JournalView.swift; sourceTree = "<group>"; };
+		2FF5D7E9C44B44CA89B2A13B /* JournalItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JournalItemRow.swift; path = CourtIQ/Features/Journal/JournalItemRow.swift; sourceTree = "<group>"; };
+		27FE2B87E9CF4C72ACB84F5A /* JournalDaySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JournalDaySheet.swift; path = CourtIQ/Features/Journal/JournalDaySheet.swift; sourceTree = "<group>"; };
+		37632BC4FD164EC4BDA804B8 /* NutritionRatingRows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NutritionRatingRows.swift; path = CourtIQ/Features/Nutrition/NutritionRatingRows.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -550,6 +562,12 @@
 				A000000000000000000FC0 /* WallRallyCamView.swift */,
 				B100000000000000000001 /* WallBallLocator.swift */,
 				B400000000000000000001 /* WallSwingDetector.swift */,
+				37632BC4FD164EC4BDA804B8 /* NutritionRatingRows.swift */,
+				27FE2B87E9CF4C72ACB84F5A /* JournalDaySheet.swift */,
+				2FF5D7E9C44B44CA89B2A13B /* JournalItemRow.swift */,
+				699DA8131E7D46E991AE56FE /* JournalView.swift */,
+				5F7695E1419F4CFFB40351B7 /* JournalModel.swift */,
+				1C8BC89C05E44C7797FBFCCD /* DayGridCalendar.swift */,
 				1FEC0319412C426FAEC9E533 /* nutrition_guide.tr.json */,
 				A3145A711B374453957B671D /* nutrition_guide.fr.json */,
 				C9ED65B9249E403589C97657 /* nutrition_recipes.fr.json */,
@@ -944,6 +962,12 @@
 				A000000000000000000FC1 /* WallRallyCamView.swift in Sources */,
 				B100000000000000000002 /* WallBallLocator.swift in Sources */,
 				B400000000000000000002 /* WallSwingDetector.swift in Sources */,
+				98A56F2CCF3B4D10B9F13568 /* NutritionRatingRows.swift in Sources */,
+				B7BCC1CA90EC43C69978DAE1 /* JournalDaySheet.swift in Sources */,
+				2D5FB157FE3A44D0B7E500FF /* JournalItemRow.swift in Sources */,
+				E9C207348CB840BAA7D69EC2 /* JournalView.swift in Sources */,
+				200498A0464A4B6AAF34C6BD /* JournalModel.swift in Sources */,
+				0FF516F81A5B401DB0D00B67 /* DayGridCalendar.swift in Sources */,
 				4408AA3451544A038525BEC4 /* NutritionRecipesView.swift in Sources */,
 				F96157F3D15C4175BF5440A2 /* NutritionGuideView.swift in Sources */,
 				9CC71A12AAAF44B6B39D8922 /* NutritionTodayView.swift in Sources */,
