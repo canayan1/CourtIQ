@@ -1,0 +1,376 @@
+{
+  "version": 1,
+  "sections": [
+    {
+      "id": "before-you-play",
+      "title": "Before you play",
+      "summary": "Eat a carbohydrate-based meal two to four hours before you play, then a small familiar snack about an hour out.",
+      "body": [
+        "Your main pre-match meal goes in two to four hours before the first ball. Build it on carbohydrate: pasta, rice, potatoes, bread or cereal, with a modest portion of protein and not much fat. The ITF's player guide says it should be high in carbohydrate, low in fat, protein and fibre, enjoyable and familiar. Finish it three hours before if you can, never later than 90 minutes.",
+        "If you have less time, go smaller. An hour out, a banana and water, toast with honey or jam, or a small bowl of cereal is enough. The USTA's dietitian suggests a banana, an English muffin or oatmeal with a little peanut butter in the 60 to 90 minute window. Skip the fry-up, the big salad and anything you have never eaten before a match.",
+        "For a match longer than an hour, the joint ACSM, Academy and Dietitians of Canada position suggests 1 to 4 g of carbohydrate per kg of body weight in the one to four hours before. You do not need to weigh anything; a normal plate of pasta or rice with some fruit lands in that range for most adults.",
+        "Do not skip breakfast for an early match. If you cannot face solid food, the ITF suggests a liquid option such as a carbohydrate drink, milk and fresh fruit, or a smoothie. Avoid a big hit of plain sugar, such as a fizzy drink or sweets, in the minutes before you walk on."
+      ],
+      "keyPoints": [
+        "Main meal two to four hours before, built on carbohydrate",
+        "One hour out: a banana or toast, plus water",
+        "Low fat, low fibre, familiar; nothing new on match day",
+        "Never skip breakfast before a morning match",
+        "Liquid meal if you cannot stomach solid food"
+      ],
+      "sources": [
+        {
+          "label": "ITF — Planning Meals (2019)",
+          "url": "https://www.itftennis.com/media/2300/health-planning-meals.pdf"
+        },
+        {
+          "label": "Academy of Nutrition and Dietetics, Dietitians of Canada, ACSM — Nutrition and Athletic Performance (2016)",
+          "url": "https://www.dietitians.ca/DietitiansOfCanada/media/Documents/Resources/noap-position-paper.pdf"
+        },
+        {
+          "label": "USTA — What to Eat: Match-Day Diet for Tennis Players (2017)",
+          "url": "https://www.usta.com/en/home/improve/tennis-health---fitness/national/a-player-s-diet-on-match-day.html"
+        },
+        {
+          "label": "USTA Eastern — Mount Sinai Health Beat: What Tennis Players Need to Eat and Drink",
+          "url": "https://www.usta.com/en/home/stay-current/eastern/MOUNTSINAIHEALTHBEAT.html"
+        },
+        {
+          "label": "LTA — Nutrition guide: What to eat on competition day",
+          "url": "https://www.lta.org.uk/advantage-home/content/nutrition-guide-what-to-eat-on-competition-day/"
+        }
+      ]
+    },
+    {
+      "id": "hydration-and-heat",
+      "title": "Hydration and heat",
+      "summary": "Start hydrated, drink at every changeover rather than waiting for thirst, and add sodium when it is hot.",
+      "body": [
+        "Losing around 2 percent of your body weight in sweat is enough to blunt your game, and the ISSN review notes that with typical sweat rates of 0.5 to 2 litres an hour, that can happen inside 60 to 90 minutes. The joint ACSM position adds that in hot weather the drop in aerobic performance and concentration shows up earlier. Walking on already dehydrated brings it forward again.",
+        "The USTA's heat guidance is easy to follow: drink about 400 to 650 ml (14 to 22 oz) of water or a sports drink two hours before, then at each changeover take four to eight swallows if you are a light sweater and eight to twelve if you are a heavy one. Drink to that plan, not to thirst; you can be 2 percent down before you feel thirsty.",
+        "In the heat, sodium matters more than any other electrolyte. It is the main mineral lost in sweat, and salt in your drink or food also makes you thirstier so you drink more. Salted pretzels, a sports drink with sodium, or a pinch of salt in your bottle all work. The ITF suggests heavy sweaters add small amounts of table salt to a sports drink.",
+        "Cooling helps too. The USTA suggests staying in air conditioning or shade before you play, a cold towel on the neck at changeovers, a light-coloured hat and even a slushy about 30 minutes before. To learn your own sweat rate, weigh yourself before and after a session: each kilogram lost is roughly a litre you did not replace."
+      ],
+      "keyPoints": [
+        "About 2 percent body weight down and your tennis suffers",
+        "400 to 650 ml two hours before you play",
+        "Four to twelve swallows every changeover, not just when thirsty",
+        "Hot day: sodium from a sports drink, pretzels or salt",
+        "Weigh before and after to learn your sweat rate"
+      ],
+      "sources": [
+        {
+          "label": "USTA Sport Science — Heat and Hydration Concerns for Tennis Players",
+          "url": "https://www.usta.com/es/content/dam/usta/sections/mid-atlantic/pdfs/heat_and_hydration_flyer.pdf"
+        },
+        {
+          "label": "USTA — Beat the heat: Cooling and hydration tips for tennis players",
+          "url": "https://www.usta.com/en/home/improve/tennis-health---fitness/national/beat-the-heat--cooling-and-hydration-tips-for-tennis-players.html"
+        },
+        {
+          "label": "ISSN — Exercise and sports nutrition review update (2018)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6090881/"
+        },
+        {
+          "label": "Academy of Nutrition and Dietetics, Dietitians of Canada, ACSM — Nutrition and Athletic Performance (2016)",
+          "url": "https://www.dietitians.ca/DietitiansOfCanada/media/Documents/Resources/noap-position-paper.pdf"
+        },
+        {
+          "label": "ITF — Eating Right (2019)",
+          "url": "https://www.itftennis.com/media/2146/nutrition-eating-right.pdf"
+        }
+      ]
+    },
+    {
+      "id": "during-a-long-match",
+      "title": "During a long match",
+      "summary": "Once a match runs past an hour, take in carbohydrate at the changeovers, about 30 to 60 g an hour, from a drink or a snack you have used before.",
+      "body": [
+        "For a short hit, water is all you need; the joint ACSM position says carbohydrate is not needed for exercise under 45 minutes. Past the hour, and certainly in a three-setter, your glycogen starts to run down and your legs, then your decisions, go with it. The ITF describes change of ends as the ideal moment to take on extra carbohydrate and fluid to delay fatigue in the latter stages.",
+        "The position stands agree on the number: 30 to 60 g of carbohydrate per hour for stop-start sports lasting one to two and a half hours. A 500 ml bottle of sports drink at the recommended 6 to 8 percent strength delivers roughly 30 to 40 g, so drink plus a small snack covers it. Start in the first set; do not wait until you feel empty.",
+        "Courtside food should be simple and familiar. The LTA lists bananas, dried fruit and white bread sandwiches with honey or jam; the ITF points to low-fat energy bars and non-caffeinated gels. Take a bite or a few sips at each changeover rather than a lot at once. Pick what your stomach already knows from practice.",
+        "Leave the chocolate bar and the cola in the bag. The ITF warns that fatty snacks sit in your stomach and slow fluid absorption, and that sugary fizzy drinks are a poor choice on court. Drinks stronger than about 8 percent carbohydrate, including most fruit juice, also slow the rate your body absorbs fluid."
+      ],
+      "keyPoints": [
+        "Under 45 minutes: water is enough",
+        "Past an hour: 30 to 60 g carbohydrate per hour",
+        "Sports drink at 6 to 8 percent, plus a small snack",
+        "Small amounts every changeover, starting in set one",
+        "No fatty snacks, cola or neat fruit juice on court"
+      ],
+      "sources": [
+        {
+          "label": "Academy of Nutrition and Dietetics, Dietitians of Canada, ACSM — Nutrition and Athletic Performance (2016)",
+          "url": "https://www.dietitians.ca/DietitiansOfCanada/media/Documents/Resources/noap-position-paper.pdf"
+        },
+        {
+          "label": "ISSN — Position stand: Nutrient timing (2017)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5596471/"
+        },
+        {
+          "label": "ISSN — Exercise and sports nutrition review update (2018)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6090881/"
+        },
+        {
+          "label": "ITF — Planning Meals (2019)",
+          "url": "https://www.itftennis.com/media/2300/health-planning-meals.pdf"
+        },
+        {
+          "label": "LTA — Nutrition guide: What to eat on competition day",
+          "url": "https://www.lta.org.uk/advantage-home/content/nutrition-guide-what-to-eat-on-competition-day/"
+        },
+        {
+          "label": "USTA — What to Eat: Match-Day Diet for Tennis Players (2017)",
+          "url": "https://www.usta.com/en/home/improve/tennis-health---fitness/national/a-player-s-diet-on-match-day.html"
+        }
+      ]
+    },
+    {
+      "id": "after-you-play",
+      "title": "After you play",
+      "summary": "Within half an hour of coming off, drink with some salt and eat carbohydrate with a little protein, then have a proper meal within two hours.",
+      "body": [
+        "First job is fluid and sodium. The joint ACSM position suggests drinking about 1.25 to 1.5 litres for every kilogram you lost, spread over the next couple of hours, because you keep sweating and losing urine after the match. Add salt through food or a sports drink; plain water alone dilutes you and makes you pass more of it.",
+        "Then eat. The ISSN and ITF both point to the first 30 minutes as the window when muscles store glycogen fastest and protein does the most for repair. The ITF's rule of thumb is two parts carbohydrate to one part protein: flavoured milk, yoghurt with fruit, or a peanut butter or tuna sandwich. The ISSN nutrient timing stand suggests 20 to 40 g of protein in that first meal.",
+        "Follow up with a real meal within two to three hours: pasta or rice, a portion of meat, fish, eggs or beans, vegetables and several glasses of fluid. The ITF notes full glycogen stores take 24 to 48 hours to rebuild, so what you eat that evening and the next morning still counts.",
+        "How much this timing matters depends on what comes next. The ISSN nutrient timing stand says that outside situations where rapid recovery is truly needed, and daily carbohydrate is matching demand, the importance of timed intake drops. Playing again tomorrow or later today: hit the window. One match a week: eat well, sleep, and do not overthink the clock."
+      ],
+      "keyPoints": [
+        "Rehydrate with salt: 1.25 to 1.5 litres per kg lost",
+        "First 30 minutes: carbohydrate plus protein, two to one",
+        "Proper meal within two to three hours",
+        "Glycogen takes 24 to 48 hours to refill fully",
+        "Timing matters most when you play again soon"
+      ],
+      "sources": [
+        {
+          "label": "ISSN — Position stand: Nutrient timing (2017)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5596471/"
+        },
+        {
+          "label": "ISSN — Exercise and sports nutrition review update (2018)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6090881/"
+        },
+        {
+          "label": "Academy of Nutrition and Dietetics, Dietitians of Canada, ACSM — Nutrition and Athletic Performance (2016)",
+          "url": "https://www.dietitians.ca/DietitiansOfCanada/media/Documents/Resources/noap-position-paper.pdf"
+        },
+        {
+          "label": "ITF — Planning Meals (2019)",
+          "url": "https://www.itftennis.com/media/2300/health-planning-meals.pdf"
+        },
+        {
+          "label": "LTA — Nutrition guide: What to eat on competition day",
+          "url": "https://www.lta.org.uk/advantage-home/content/nutrition-guide-what-to-eat-on-competition-day/"
+        }
+      ]
+    },
+    {
+      "id": "tournament-day",
+      "title": "Two matches in a day",
+      "summary": "With a second match hours away, start drinking and eating carbohydrate the moment you walk off, in small amounts, and keep going every couple of hours.",
+      "body": [
+        "Club tournaments and box leagues often mean a second match with only a few hours in between. The ITF is blunt: if the next match starts within one or two hours, rehydration and carbohydrate intake begin immediately. Do not sit down to chat first. Bottle in hand, snack in the other, then find shade.",
+        "For a gap under about eight hours the joint ACSM position suggests roughly 1 to 1.2 g of carbohydrate per kg per hour for the first four hours, from easy, low-fibre sources, taken as small regular snacks rather than one big plate. In practice that is a sports drink, then something every hour or so: a jam sandwich, rice cakes with banana, dried fruit, a cereal bar, yoghurt.",
+        "The LTA's between-match list is a good template: yoghurt with fruit, a dried fruit and nut mix, rice cakes topped with nut butter and sliced banana. Keep a gap of at least 90 minutes between your last proper snack and walking back on, as the ITF advises, then top up with sips of sports drink in the final hour.",
+        "If the first match was hot and long, add salt to what you eat between matches; the ITF specifically suggests extra salt after heavy sweat losses or cramps. Cool down properly too: shade or air conditioning, a cold towel, a cool shower if there is one. Overnight between tournament days, the LTA reminds you there may be only 12 hours, so the evening meal and breakfast do the recovery work."
+      ],
+      "keyPoints": [
+        "Start drinking and eating carbohydrate immediately after match one",
+        "Small snacks every hour beat one big plate",
+        "Low-fibre, familiar: jam sandwich, rice cakes, yoghurt, dried fruit",
+        "Last solid food 90 minutes before the second match",
+        "Hot first match: add salt and cool down in shade"
+      ],
+      "sources": [
+        {
+          "label": "ITF — Planning Meals (2019)",
+          "url": "https://www.itftennis.com/media/2300/health-planning-meals.pdf"
+        },
+        {
+          "label": "Academy of Nutrition and Dietetics, Dietitians of Canada, ACSM — Nutrition and Athletic Performance (2016)",
+          "url": "https://www.dietitians.ca/DietitiansOfCanada/media/Documents/Resources/noap-position-paper.pdf"
+        },
+        {
+          "label": "LTA — Nutrition guide: What to eat on competition day",
+          "url": "https://www.lta.org.uk/advantage-home/content/nutrition-guide-what-to-eat-on-competition-day/"
+        },
+        {
+          "label": "USTA — Beat the heat: Cooling and hydration tips for tennis players",
+          "url": "https://www.usta.com/en/home/improve/tennis-health---fitness/national/beat-the-heat--cooling-and-hydration-tips-for-tennis-players.html"
+        }
+      ]
+    },
+    {
+      "id": "cramps-and-stomach",
+      "title": "Cramps and stomach trouble",
+      "summary": "Cramps are mostly fatigue with dehydration and salt loss on top, and stomach trouble is mostly what you ate and when; both respond to boring, practised habits.",
+      "body": [
+        "Cramp is not fully understood. The joint ACSM position says skeletal muscle cramps are typically caused by muscle fatigue, and may be associated with dehydration and electrolyte imbalance; the ISSN review calls the cause unknown. What the evidence does support: players who sweat heavily and lose a lot of salt, especially when not used to the heat, cramp more often.",
+        "So the prevention list is unglamorous. Be fit for the length of match you are playing, get some sessions in the heat before a hot tournament, drink to a plan from the first changeover, and put sodium into that plan through a sports drink or salty food. The USTA's treatment advice when it strikes is rest in the shade, gentle stretching and fluid with electrolytes.",
+        "Stomach trouble on court usually traces back to fat, protein or fibre eaten too close to play, or to drinks that are too strong. The joint ACSM position suggests avoiding high fat, protein and fibre choices before and during play, and the USTA notes drinks over 8 percent carbohydrate slow fluid absorption. Trial gels and sports drinks in practice first; the LTA warns some cause gut upset.",
+        "The gut adapts to what you rehearse. The ACSM position notes that practising your competition eating in training builds gastrointestinal tolerance, which is another reason not to debut anything on match day. If cramps or stomach problems keep coming back despite all this, see a doctor or dietitian if it keeps happening."
+      ],
+      "keyPoints": [
+        "Cramp: fatigue first, dehydration and salt loss on top",
+        "Heavy, salty sweaters and the un-acclimatised cramp most",
+        "Prevent with fitness, heat sessions, fluid and sodium",
+        "Stomach: no fat, fibre or strong drinks near play",
+        "Rehearse race-day eating in practice; see a professional if it persists"
+      ],
+      "sources": [
+        {
+          "label": "Academy of Nutrition and Dietetics, Dietitians of Canada, ACSM — Nutrition and Athletic Performance (2016)",
+          "url": "https://www.dietitians.ca/DietitiansOfCanada/media/Documents/Resources/noap-position-paper.pdf"
+        },
+        {
+          "label": "ISSN — Exercise and sports nutrition review update (2018)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6090881/"
+        },
+        {
+          "label": "USTA Sport Science — Heat and Hydration Concerns for Tennis Players",
+          "url": "https://www.usta.com/es/content/dam/usta/sections/mid-atlantic/pdfs/heat_and_hydration_flyer.pdf"
+        },
+        {
+          "label": "ITF — Planning Meals (2019)",
+          "url": "https://www.itftennis.com/media/2300/health-planning-meals.pdf"
+        },
+        {
+          "label": "LTA — Nutrition guide: What to eat on competition day",
+          "url": "https://www.lta.org.uk/advantage-home/content/nutrition-guide-what-to-eat-on-competition-day/"
+        }
+      ]
+    },
+    {
+      "id": "caffeine",
+      "title": "Caffeine",
+      "summary": "A coffee about an hour before you play can help; more is not better, and an evening dose can cost you the sleep you need for tomorrow.",
+      "body": [
+        "Caffeine is the one supplement with enough evidence that both the ISSN and the IOC back it. The ISSN position stand suggests 3 to 6 mg per kg of body weight, taken about 60 minutes before exercise, improves performance across endurance, repeated-sprint and high-intensity work. The USTA's dietitian translates a moderate dose as roughly two cups of coffee for a 68 kg player.",
+        "Coffee is fine as the source; the ISSN stand found capsules, coffee, energy drinks and gum give comparable effects. The stand also found no consistent difference between habitual and non-habitual users, so your daily coffee does not cancel it out. Very high doses, around 9 mg per kg, bring more side effects without more benefit, and the IOC lists nausea, anxiety, restlessness and insomnia among them.",
+        "Sensitivity varies a lot from player to player, partly down to genetics, and the ISSN notes sleep disturbance varies the same way. For a night match, weigh a small performance lift against a poor night before your next one. The ITF's player guide suggests setting a cut-off time in the early afternoon and keeping coffee to one or two cups a day.",
+        "On court, the ITF prefers non-caffeinated gels and steers you away from cola. The old worry that caffeine dehydrates you is overstated at moderate habitual amounts, according to the joint ACSM position, so a pre-match coffee does not undo your hydration plan. Try it in practice first, never for the first time in a final."
+      ],
+      "keyPoints": [
+        "Position stand: 3 to 6 mg per kg, an hour before",
+        "Coffee works as well as pills or gum",
+        "Around 9 mg per kg: more side effects, no more benefit",
+        "Night match: caffeine can wreck the sleep you need",
+        "Trial it in practice, never first in a match"
+      ],
+      "sources": [
+        {
+          "label": "ISSN — Position stand: Caffeine and exercise performance (2021)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7777221/"
+        },
+        {
+          "label": "IOC — Consensus statement: Dietary supplements and the high-performance athlete (2018)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5867441/"
+        },
+        {
+          "label": "Academy of Nutrition and Dietetics, Dietitians of Canada, ACSM — Nutrition and Athletic Performance (2016)",
+          "url": "https://www.dietitians.ca/DietitiansOfCanada/media/Documents/Resources/noap-position-paper.pdf"
+        },
+        {
+          "label": "ITF — Eating Right (2019)",
+          "url": "https://www.itftennis.com/media/2146/nutrition-eating-right.pdf"
+        },
+        {
+          "label": "ITF — Planning Meals (2019)",
+          "url": "https://www.itftennis.com/media/2300/health-planning-meals.pdf"
+        },
+        {
+          "label": "USTA Eastern — Mount Sinai Health Beat: What Tennis Players Need to Eat and Drink",
+          "url": "https://www.usta.com/en/home/stay-current/eastern/MOUNTSINAIHEALTHBEAT.html"
+        }
+      ]
+    },
+    {
+      "id": "match-day-dont-change",
+      "title": "What not to change",
+      "summary": "Match day is for repeating what already works in practice, not for new foods, new drinks, new pills or new rules.",
+      "body": [
+        "The single most repeated line across every source here is familiarity. The ITF says the pre-match meal must be familiar; the LTA says test any gel or drink in practice first because some cause gut upset; the joint ACSM position says competition eating should be rehearsed in training so your gut is used to it. A tournament is the wrong place to find out.",
+        "So do not skip breakfast to feel light, do not go low-carbohydrate the day before, and do not try a new sports drink, gel, bar or coffee routine because someone at the club swears by it. Do not drink far more than usual either: the ACSM position notes over-drinking is most common in recreational athletes, and diluting your sodium is its own problem.",
+        "Do not add a supplement for the day. The IOC consensus points out that most products carry no proof of benefit or safety and some are contaminated with banned or harmful substances, and it asks for a proper assessment of your diet before any supplement is considered. Caffeine from coffee, trialled beforehand, is the only exception this guide makes.",
+        "What you can change is the plan, and only in practice. Try the earlier breakfast, the salted bottle, the courtside sandwich in a Tuesday session, note how you felt, and carry the winners into match day. The ISSN nutrient timing stand is reassuring here: if your everyday eating is sound, the fine timing matters less than you think."
+      ],
+      "keyPoints": [
+        "Nothing new on match day: food, drink, gel or coffee",
+        "Rehearse every match-day habit in practice first",
+        "Do not skip breakfast or go low-carb the day before",
+        "Do not over-drink; too much plain water dilutes you",
+        "No supplements beyond a trialled coffee"
+      ],
+      "sources": [
+        {
+          "label": "ITF — Planning Meals (2019)",
+          "url": "https://www.itftennis.com/media/2300/health-planning-meals.pdf"
+        },
+        {
+          "label": "LTA — Nutrition guide: What to eat on competition day",
+          "url": "https://www.lta.org.uk/advantage-home/content/nutrition-guide-what-to-eat-on-competition-day/"
+        },
+        {
+          "label": "Academy of Nutrition and Dietetics, Dietitians of Canada, ACSM — Nutrition and Athletic Performance (2016)",
+          "url": "https://www.dietitians.ca/DietitiansOfCanada/media/Documents/Resources/noap-position-paper.pdf"
+        },
+        {
+          "label": "IOC — Consensus statement: Dietary supplements and the high-performance athlete (2018)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5867441/"
+        },
+        {
+          "label": "ISSN — Position stand: Nutrient timing (2017)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5596471/"
+        },
+        {
+          "label": "USTA — What to Eat: Match-Day Diet for Tennis Players (2017)",
+          "url": "https://www.usta.com/en/home/improve/tennis-health---fitness/national/a-player-s-diet-on-match-day.html"
+        }
+      ]
+    }
+  ],
+  "today": {
+    "base": {
+      "under1": {
+        "headline": "Small, familiar, easy to digest",
+        "eat": "A banana or a slice of white toast with jam, plus a few mouthfuls of water. Nothing you have not eaten before a match.",
+        "avoid": "A full meal, anything fatty or high in fibre, and a big sugary drink right before you walk on.",
+        "why": "There is no time to digest a meal; a light carbohydrate snack tops up energy without sitting in your stomach."
+      },
+      "h1to2": {
+        "headline": "Light carbohydrate snack, sip water",
+        "eat": "Toast with honey, a small bowl of cereal, or yoghurt with fruit, with 400 to 600 ml of water spread over the next hour.",
+        "avoid": "Fried food, a large portion of meat, a big salad, or any food you have not tried before playing.",
+        "why": "A small carbohydrate snack an hour or two out delays fatigue; fat, protein and fibre this close slow digestion and upset stomachs."
+      },
+      "h2to4": {
+        "headline": "Your main pre-match meal, now",
+        "eat": "A proper carbohydrate-based plate: pasta, rice or potatoes with a modest portion of protein, and a glass of water with it.",
+        "avoid": "Creamy or fried dishes, very high-fibre meals, alcohol, and eating so much you are still full at match time.",
+        "why": "Two to four hours is the window the tennis federations and the position stands give for the main meal to digest and fuel you."
+      },
+      "over4": {
+        "headline": "Eat normally, plan the top-up",
+        "eat": "A normal balanced meal now, water through the day, then a carbohydrate snack such as a banana about an hour before you play.",
+        "avoid": "Skipping meals to feel light, or leaving a gap of more than three hours without eating on a match day.",
+        "why": "Your stores are filled by yesterday's and today's normal eating; the snack an hour out is what tops the tank up."
+      }
+    },
+    "intensity": {
+      "light": "For a light hit, water is enough on court and you do not need snacks during play.",
+      "normal": "For a normal session, bring water and one carbohydrate snack for the changeovers in case it runs past an hour.",
+      "hard": "For a match or two hours plus, bring a sports drink and a courtside snack, and take carbohydrate every hour from the first set."
+    },
+    "heat": {
+      "cool": "In cool weather, plain water at the changeovers is fine; drink to a plan, not just to thirst.",
+      "warm": "In warm weather, add a little salt to your food today and drink at every changeover, thirsty or not.",
+      "hot": "In the heat, drink 400 to 650 ml two hours out, use a sports drink with sodium on court, and find shade at changeovers."
+    },
+    "lastSession": {
+      "flat": "You felt flat last time, so eat carbohydrate at every meal today, keep the fluids up, and have your top-up snack rather than skipping it.",
+      "ok": "Last session felt fine, so keep the same foods and timing; do not fix what worked.",
+      "great": "Last session felt great, so write down what you ate and when, and repeat it exactly."
+    }
+  }
+}

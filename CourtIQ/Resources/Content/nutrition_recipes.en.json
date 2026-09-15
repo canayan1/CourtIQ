@@ -5,55 +5,166 @@
       "id": "playTime",
       "question": "When do you usually play?",
       "options": [
-        {"id": "morning", "label": "Morning, before work or on a weekend", "tags": ["morning"]},
-        {"id": "midday", "label": "Middle of the day", "tags": ["midday"]},
-        {"id": "evening", "label": "Evening, after work", "tags": ["evening"]}
+        {
+          "id": "morning",
+          "label": "Morning, before work",
+          "tags": [
+            "morning"
+          ]
+        },
+        {
+          "id": "midday",
+          "label": "Middle of the day",
+          "tags": [
+            "midday"
+          ]
+        },
+        {
+          "id": "evening",
+          "label": "Evening, after work",
+          "tags": [
+            "evening"
+          ]
+        }
       ]
     },
     {
       "id": "sessionLength",
       "question": "How long is a normal session for you?",
       "options": [
-        {"id": "short", "label": "Under an hour, a quick hit", "tags": ["lighter", "quick"]},
-        {"id": "normal", "label": "One to two hours", "tags": ["energy"]},
-        {"id": "long", "label": "Over two hours, or a match that could go three sets", "tags": ["long"]}
+        {
+          "id": "short",
+          "label": "Under an hour, a quick hit",
+          "tags": [
+            "lighter",
+            "quick"
+          ]
+        },
+        {
+          "id": "normal",
+          "label": "One to two hours",
+          "tags": [
+            "energy"
+          ]
+        },
+        {
+          "id": "long",
+          "label": "Over two hours, or a long match",
+          "tags": [
+            "long"
+          ]
+        }
       ]
     },
     {
       "id": "stomach",
       "question": "How does your stomach handle food before play?",
       "options": [
-        {"id": "sturdy", "label": "Fine, I can eat most things and play", "tags": []},
-        {"id": "sensitive", "label": "Touchy, I need plain food and time to digest", "tags": ["sensitiveStomach"]}
+        {
+          "id": "sturdy",
+          "label": "Fine, I can eat most things and play",
+          "tags": []
+        },
+        {
+          "id": "sensitive",
+          "label": "Touchy — plain food, time to digest",
+          "tags": [
+            "sensitiveStomach"
+          ]
+        }
       ]
     },
     {
       "id": "diet",
       "question": "Anything you leave out?",
       "options": [
-        {"id": "anything", "label": "I eat everything", "tags": []},
-        {"id": "vegetarian", "label": "No meat or fish", "tags": ["vegetarian"]},
-        {"id": "vegan", "label": "No animal products", "tags": ["vegan", "vegetarian", "dairyFree"]},
-        {"id": "dairyFree", "label": "No milk, yoghurt or cheese", "tags": ["dairyFree"]},
-        {"id": "glutenFree", "label": "No wheat or gluten", "tags": ["glutenFree"]}
+        {
+          "id": "anything",
+          "label": "I eat everything",
+          "tags": []
+        },
+        {
+          "id": "vegetarian",
+          "label": "No meat or fish",
+          "tags": [
+            "vegetarian"
+          ]
+        },
+        {
+          "id": "vegan",
+          "label": "No animal products",
+          "tags": [
+            "vegan",
+            "vegetarian",
+            "dairyFree"
+          ]
+        },
+        {
+          "id": "dairyFree",
+          "label": "No milk, yoghurt or cheese",
+          "tags": [
+            "dairyFree"
+          ]
+        },
+        {
+          "id": "glutenFree",
+          "label": "No wheat or gluten",
+          "tags": [
+            "glutenFree"
+          ]
+        }
       ]
     },
     {
       "id": "prepTime",
       "question": "How much time do you have to prepare food?",
       "options": [
-        {"id": "none", "label": "Almost none, I grab and go", "tags": ["quick"]},
-        {"id": "10min", "label": "About ten minutes", "tags": ["quick"]},
-        {"id": "30min", "label": "Half an hour, I can cook", "tags": []}
+        {
+          "id": "none",
+          "label": "Almost none, I grab and go",
+          "tags": [
+            "quick"
+          ]
+        },
+        {
+          "id": "10min",
+          "label": "About ten minutes",
+          "tags": [
+            "quick"
+          ]
+        },
+        {
+          "id": "30min",
+          "label": "Half an hour, I can cook",
+          "tags": []
+        }
       ]
     },
     {
       "id": "goal",
       "question": "What do you want food to do for your tennis right now?",
       "options": [
-        {"id": "energy", "label": "Stop me fading in the second set", "tags": ["energy"]},
-        {"id": "recovery", "label": "Help me feel fresh the day after", "tags": ["recovery"]},
-        {"id": "lighter", "label": "Feel lighter on court", "tags": ["lighter"]}
+        {
+          "id": "energy",
+          "label": "Stop me fading in the second set",
+          "tags": [
+            "energy"
+          ]
+        },
+        {
+          "id": "recovery",
+          "label": "Help me feel fresh the day after",
+          "tags": [
+            "recovery"
+          ]
+        },
+        {
+          "id": "lighter",
+          "label": "Feel lighter on court",
+          "tags": [
+            "lighter"
+          ]
+        }
       ]
     }
   ],
@@ -64,13 +175,33 @@
       "when": "pre",
       "hoursBefore": "2-3",
       "prepMinutes": 8,
-      "tags": ["quick", "vegetarian", "morning", "energy"],
+      "tags": [
+        "quick",
+        "vegetarian",
+        "morning",
+        "energy"
+      ],
       "ingredients": [
-        {"item": "porridge oats", "amount": "1 mug"},
-        {"item": "milk", "amount": "2 mugs"},
-        {"item": "banana", "amount": "1, sliced"},
-        {"item": "honey", "amount": "1 tablespoon"},
-        {"item": "salt", "amount": "a pinch"}
+        {
+          "item": "porridge oats",
+          "amount": "1 mug"
+        },
+        {
+          "item": "milk",
+          "amount": "2 mugs"
+        },
+        {
+          "item": "banana",
+          "amount": "1, sliced"
+        },
+        {
+          "item": "honey",
+          "amount": "1 tablespoon"
+        },
+        {
+          "item": "salt",
+          "amount": "a pinch"
+        }
       ],
       "steps": [
         "Put the oats, milk and salt in a small pan over medium heat.",
@@ -86,11 +217,30 @@
       "when": "pre",
       "hoursBefore": "1",
       "prepMinutes": 5,
-      "tags": ["quick", "sensitiveStomach", "vegetarian", "dairyFree", "morning", "midday", "evening", "energy", "lighter"],
+      "tags": [
+        "quick",
+        "sensitiveStomach",
+        "vegetarian",
+        "dairyFree",
+        "morning",
+        "midday",
+        "evening",
+        "energy",
+        "lighter"
+      ],
       "ingredients": [
-        {"item": "white bread", "amount": "2 slices"},
-        {"item": "honey", "amount": "2 teaspoons"},
-        {"item": "banana", "amount": "1"}
+        {
+          "item": "white bread",
+          "amount": "2 slices"
+        },
+        {
+          "item": "honey",
+          "amount": "2 teaspoons"
+        },
+        {
+          "item": "banana",
+          "amount": "1"
+        }
       ],
       "steps": [
         "Toast the bread until just golden.",
@@ -106,14 +256,40 @@
       "when": "pre",
       "hoursBefore": "2-3",
       "prepMinutes": 25,
-      "tags": ["sensitiveStomach", "dairyFree", "glutenFree", "midday", "evening", "energy", "long"],
+      "tags": [
+        "sensitiveStomach",
+        "dairyFree",
+        "glutenFree",
+        "midday",
+        "evening",
+        "energy",
+        "long"
+      ],
       "ingredients": [
-        {"item": "white rice", "amount": "1 mug"},
-        {"item": "chicken breast", "amount": "1, sliced into strips"},
-        {"item": "olive oil", "amount": "1 tablespoon"},
-        {"item": "lemon", "amount": "half"},
-        {"item": "salt", "amount": "half a teaspoon"},
-        {"item": "carrot", "amount": "1, grated"}
+        {
+          "item": "white rice",
+          "amount": "1 mug"
+        },
+        {
+          "item": "chicken breast",
+          "amount": "1, sliced into strips"
+        },
+        {
+          "item": "olive oil",
+          "amount": "1 tablespoon"
+        },
+        {
+          "item": "lemon",
+          "amount": "half"
+        },
+        {
+          "item": "salt",
+          "amount": "half a teaspoon"
+        },
+        {
+          "item": "carrot",
+          "amount": "1, grated"
+        }
       ],
       "steps": [
         "Rinse the rice, cover with two mugs of water and a pinch of salt, simmer covered until the water is gone, about 12 minutes.",
@@ -129,13 +305,35 @@
       "when": "post",
       "hoursBefore": "n/a",
       "prepMinutes": 10,
-      "tags": ["quick", "vegetarian", "dairyFree", "morning", "midday", "recovery"],
+      "tags": [
+        "quick",
+        "vegetarian",
+        "dairyFree",
+        "morning",
+        "midday",
+        "recovery"
+      ],
       "ingredients": [
-        {"item": "eggs", "amount": "2 or 3"},
-        {"item": "bread", "amount": "2 thick slices"},
-        {"item": "olive oil", "amount": "1 teaspoon"},
-        {"item": "tomato", "amount": "1, sliced"},
-        {"item": "salt and pepper", "amount": "to taste"}
+        {
+          "item": "eggs",
+          "amount": "2 or 3"
+        },
+        {
+          "item": "bread",
+          "amount": "2 thick slices"
+        },
+        {
+          "item": "olive oil",
+          "amount": "1 teaspoon"
+        },
+        {
+          "item": "tomato",
+          "amount": "1, sliced"
+        },
+        {
+          "item": "salt and pepper",
+          "amount": "to taste"
+        }
       ],
       "steps": [
         "Toast the bread.",
@@ -151,13 +349,36 @@
       "when": "post",
       "hoursBefore": "n/a",
       "prepMinutes": 5,
-      "tags": ["quick", "vegetarian", "morning", "midday", "evening", "recovery", "lighter"],
+      "tags": [
+        "quick",
+        "vegetarian",
+        "morning",
+        "midday",
+        "evening",
+        "recovery",
+        "lighter"
+      ],
       "ingredients": [
-        {"item": "plain yoghurt", "amount": "1 large bowl, about 300 g"},
-        {"item": "porridge oats", "amount": "3 tablespoons"},
-        {"item": "honey", "amount": "1 tablespoon"},
-        {"item": "walnuts or hazelnuts", "amount": "a small handful, chopped"},
-        {"item": "banana or apple", "amount": "1, chopped"}
+        {
+          "item": "plain yoghurt",
+          "amount": "1 large bowl, about 300 g"
+        },
+        {
+          "item": "porridge oats",
+          "amount": "3 tablespoons"
+        },
+        {
+          "item": "honey",
+          "amount": "1 tablespoon"
+        },
+        {
+          "item": "walnuts or hazelnuts",
+          "amount": "a small handful, chopped"
+        },
+        {
+          "item": "banana or apple",
+          "amount": "1, chopped"
+        }
       ],
       "steps": [
         "Spoon the yoghurt into a bowl.",
@@ -173,16 +394,48 @@
       "when": "post",
       "hoursBefore": "n/a",
       "prepMinutes": 30,
-      "tags": ["vegan", "vegetarian", "dairyFree", "glutenFree", "evening", "recovery", "long"],
+      "tags": [
+        "vegan",
+        "vegetarian",
+        "dairyFree",
+        "glutenFree",
+        "evening",
+        "recovery",
+        "long"
+      ],
       "ingredients": [
-        {"item": "red lentils", "amount": "1 mug, rinsed"},
-        {"item": "potatoes", "amount": "2 medium, diced"},
-        {"item": "onion", "amount": "1, chopped"},
-        {"item": "carrot", "amount": "1, diced"},
-        {"item": "tinned chopped tomatoes", "amount": "1 tin"},
-        {"item": "olive oil", "amount": "2 tablespoons"},
-        {"item": "cumin", "amount": "1 teaspoon"},
-        {"item": "salt", "amount": "1 teaspoon"}
+        {
+          "item": "red lentils",
+          "amount": "1 mug, rinsed"
+        },
+        {
+          "item": "potatoes",
+          "amount": "2 medium, diced"
+        },
+        {
+          "item": "onion",
+          "amount": "1, chopped"
+        },
+        {
+          "item": "carrot",
+          "amount": "1, diced"
+        },
+        {
+          "item": "tinned chopped tomatoes",
+          "amount": "1 tin"
+        },
+        {
+          "item": "olive oil",
+          "amount": "2 tablespoons"
+        },
+        {
+          "item": "cumin",
+          "amount": "1 teaspoon"
+        },
+        {
+          "item": "salt",
+          "amount": "1 teaspoon"
+        }
       ],
       "steps": [
         "Soften the onion and carrot in the oil over medium heat for five minutes.",
@@ -199,12 +452,35 @@
       "when": "tournament",
       "hoursBefore": "n/a",
       "prepMinutes": 5,
-      "tags": ["quick", "sensitiveStomach", "vegan", "vegetarian", "dairyFree", "morning", "midday", "evening", "energy", "long"],
+      "tags": [
+        "quick",
+        "sensitiveStomach",
+        "vegan",
+        "vegetarian",
+        "dairyFree",
+        "morning",
+        "midday",
+        "evening",
+        "energy",
+        "long"
+      ],
       "ingredients": [
-        {"item": "white bread", "amount": "4 slices"},
-        {"item": "jam", "amount": "2 tablespoons"},
-        {"item": "banana", "amount": "1 or 2"},
-        {"item": "salt", "amount": "a small pinch for the jam, optional"}
+        {
+          "item": "white bread",
+          "amount": "4 slices"
+        },
+        {
+          "item": "jam",
+          "amount": "2 tablespoons"
+        },
+        {
+          "item": "banana",
+          "amount": "1 or 2"
+        },
+        {
+          "item": "salt",
+          "amount": "a small pinch for the jam, optional"
+        }
       ],
       "steps": [
         "Spread the jam on two slices, close the sandwiches, cut into quarters.",
@@ -220,12 +496,34 @@
       "when": "tournament",
       "hoursBefore": "n/a",
       "prepMinutes": 5,
-      "tags": ["quick", "vegan", "vegetarian", "dairyFree", "glutenFree", "midday", "energy", "long", "lighter"],
+      "tags": [
+        "quick",
+        "vegan",
+        "vegetarian",
+        "dairyFree",
+        "glutenFree",
+        "midday",
+        "energy",
+        "long",
+        "lighter"
+      ],
       "ingredients": [
-        {"item": "plain rice cakes", "amount": "6"},
-        {"item": "banana", "amount": "1"},
-        {"item": "dates", "amount": "5 or 6, stones out"},
-        {"item": "salt", "amount": "a pinch, sprinkled on the rice cakes"}
+        {
+          "item": "plain rice cakes",
+          "amount": "6"
+        },
+        {
+          "item": "banana",
+          "amount": "1"
+        },
+        {
+          "item": "dates",
+          "amount": "5 or 6, stones out"
+        },
+        {
+          "item": "salt",
+          "amount": "a pinch, sprinkled on the rice cakes"
+        }
       ],
       "steps": [
         "Pack the rice cakes in a box so they do not crumble.",
@@ -241,13 +539,36 @@
       "when": "tournament",
       "hoursBefore": "n/a",
       "prepMinutes": 25,
-      "tags": ["vegetarian", "dairyFree", "glutenFree", "midday", "energy", "recovery", "long"],
+      "tags": [
+        "vegetarian",
+        "dairyFree",
+        "glutenFree",
+        "midday",
+        "energy",
+        "recovery",
+        "long"
+      ],
       "ingredients": [
-        {"item": "small potatoes", "amount": "6 to 8"},
-        {"item": "eggs", "amount": "3"},
-        {"item": "olive oil", "amount": "1 tablespoon"},
-        {"item": "salt", "amount": "1 teaspoon"},
-        {"item": "cherry tomatoes", "amount": "a handful"}
+        {
+          "item": "small potatoes",
+          "amount": "6 to 8"
+        },
+        {
+          "item": "eggs",
+          "amount": "3"
+        },
+        {
+          "item": "olive oil",
+          "amount": "1 tablespoon"
+        },
+        {
+          "item": "salt",
+          "amount": "1 teaspoon"
+        },
+        {
+          "item": "cherry tomatoes",
+          "amount": "a handful"
+        }
       ],
       "steps": [
         "Boil the potatoes in salted water until a knife slides in, about 15 minutes; drop the eggs in for the last 9 minutes.",
@@ -263,15 +584,45 @@
       "when": "evening",
       "hoursBefore": "n/a",
       "prepMinutes": 30,
-      "tags": ["vegan", "vegetarian", "dairyFree", "morning", "evening", "energy", "recovery", "long"],
+      "tags": [
+        "vegan",
+        "vegetarian",
+        "dairyFree",
+        "morning",
+        "evening",
+        "energy",
+        "recovery",
+        "long"
+      ],
       "ingredients": [
-        {"item": "pasta", "amount": "2 large handfuls per person"},
-        {"item": "red lentils", "amount": "half a mug, rinsed"},
-        {"item": "tinned chopped tomatoes", "amount": "1 tin"},
-        {"item": "onion", "amount": "1, chopped"},
-        {"item": "garlic", "amount": "2 cloves, chopped"},
-        {"item": "olive oil", "amount": "2 tablespoons"},
-        {"item": "salt", "amount": "1 teaspoon"}
+        {
+          "item": "pasta",
+          "amount": "2 large handfuls per person"
+        },
+        {
+          "item": "red lentils",
+          "amount": "half a mug, rinsed"
+        },
+        {
+          "item": "tinned chopped tomatoes",
+          "amount": "1 tin"
+        },
+        {
+          "item": "onion",
+          "amount": "1, chopped"
+        },
+        {
+          "item": "garlic",
+          "amount": "2 cloves, chopped"
+        },
+        {
+          "item": "olive oil",
+          "amount": "2 tablespoons"
+        },
+        {
+          "item": "salt",
+          "amount": "1 teaspoon"
+        }
       ],
       "steps": [
         "Soften the onion and garlic in the oil for five minutes.",
@@ -287,15 +638,43 @@
       "when": "evening",
       "hoursBefore": "n/a",
       "prepMinutes": 30,
-      "tags": ["glutenFree", "midday", "evening", "energy", "recovery", "long"],
+      "tags": [
+        "glutenFree",
+        "midday",
+        "evening",
+        "energy",
+        "recovery",
+        "long"
+      ],
       "ingredients": [
-        {"item": "chicken thighs or breast", "amount": "2 pieces"},
-        {"item": "potatoes", "amount": "3 medium, cut into wedges"},
-        {"item": "olive oil", "amount": "2 tablespoons"},
-        {"item": "plain yoghurt", "amount": "half a mug"},
-        {"item": "garlic", "amount": "1 clove, crushed"},
-        {"item": "lemon", "amount": "half"},
-        {"item": "salt and pepper", "amount": "to taste"}
+        {
+          "item": "chicken thighs or breast",
+          "amount": "2 pieces"
+        },
+        {
+          "item": "potatoes",
+          "amount": "3 medium, cut into wedges"
+        },
+        {
+          "item": "olive oil",
+          "amount": "2 tablespoons"
+        },
+        {
+          "item": "plain yoghurt",
+          "amount": "half a mug"
+        },
+        {
+          "item": "garlic",
+          "amount": "1 clove, crushed"
+        },
+        {
+          "item": "lemon",
+          "amount": "half"
+        },
+        {
+          "item": "salt and pepper",
+          "amount": "to taste"
+        }
       ],
       "steps": [
         "Heat the oven to 220 C. Toss the potatoes and chicken in the oil, salt and pepper on one tray.",
@@ -311,11 +690,27 @@
       "when": "evening",
       "hoursBefore": "n/a",
       "prepMinutes": 3,
-      "tags": ["quick", "vegetarian", "glutenFree", "evening", "recovery", "lighter"],
+      "tags": [
+        "quick",
+        "vegetarian",
+        "glutenFree",
+        "evening",
+        "recovery",
+        "lighter"
+      ],
       "ingredients": [
-        {"item": "plain yoghurt", "amount": "1 bowl, about 250 g"},
-        {"item": "honey", "amount": "2 teaspoons"},
-        {"item": "walnuts", "amount": "a small handful, broken up"}
+        {
+          "item": "plain yoghurt",
+          "amount": "1 bowl, about 250 g"
+        },
+        {
+          "item": "honey",
+          "amount": "2 teaspoons"
+        },
+        {
+          "item": "walnuts",
+          "amount": "a small handful, broken up"
+        }
       ],
       "steps": [
         "Spoon the yoghurt into a bowl.",

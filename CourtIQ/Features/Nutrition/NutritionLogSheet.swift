@@ -92,6 +92,8 @@ struct NutritionLogSheet: View {
         } label: {
             Text(title)
                 .font(.subheadline.weight(.semibold))
+                .multilineTextAlignment(.leading)
+                .fixedSize(horizontal: false, vertical: true)
                 .foregroundStyle(selected ? .white : AppPalette.ink)
                 .padding(.horizontal, 14)
                 .padding(.vertical, 9)
