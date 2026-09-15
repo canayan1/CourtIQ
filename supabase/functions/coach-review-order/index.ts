@@ -79,11 +79,25 @@ Deno.serve(async (req) => {
     videoBase64?: string; stroke?: string; handedness?: string; note?: string;
     reviewLanguage?: string; transactionId?: string; transactionJws?: string; mimeType?: string;
     reuploadOrderId?: string;
+    preflight?: boolean;
   };
   try {
     body = await req.json();
   } catch {
     return json({ error: "Invalid JSON." }, 400);
+  }
+
+  // ---- Pre-flight: is a slot free? Asked BEFORE the App Store sheet opens,
+  // so "all slots are taken" is told to the player before any charge, not
+  // after. The post-purchase 409 below is then only a race between two
+  // buyers, and the app treats it as a held credit, not a refusal.
+  if (body.preflight) {
+    const admin = createClient(SUPABASE_URL, SERVICE_ROLE_KEY);
+    const { count: open } = await admin
+      .from("coach_review_orders")
+      .select("id", { count: "exact", head: true })
+      .in("status", ["submitted", "in_review"]);
+    return json({ accepting: (open ?? 0) < MAX_OPEN, open: open ?? 0, max: MAX_OPEN });
   }
 
   const videoBase64   = (body.videoBase64 ?? "").trim();
