@@ -213,6 +213,7 @@
 		B4A9C9FA82364CAB95680020 /* nutrition_guide.en.json in Resources */ = {isa = PBXBuildFile; fileRef = 5799584BF0394FDB9B714ECE /* nutrition_guide.en.json */; };
 		29D092B4448540DFAA6E40E4 /* nutrition_recipes.tr.json in Resources */ = {isa = PBXBuildFile; fileRef = ED0797793E25466D87A301A9 /* nutrition_recipes.tr.json */; };
 		44FA0F82430943B2A384D217 /* nutrition_recipes.fr.json in Resources */ = {isa = PBXBuildFile; fileRef = C9ED65B9249E403589C97657 /* nutrition_recipes.fr.json */; };
+		D75B33A2B47F4039A75800A8 /* nutrition_guide.fr.json in Resources */ = {isa = PBXBuildFile; fileRef = A3145A711B374453957B671D /* nutrition_guide.fr.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -434,6 +435,7 @@
 		5799584BF0394FDB9B714ECE /* nutrition_guide.en.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = nutrition_guide.en.json; path = CourtIQ/Resources/Content/nutrition_guide.en.json; sourceTree = "<group>"; };
 		ED0797793E25466D87A301A9 /* nutrition_recipes.tr.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = nutrition_recipes.tr.json; path = CourtIQ/Resources/Content/nutrition_recipes.tr.json; sourceTree = "<group>"; };
 		C9ED65B9249E403589C97657 /* nutrition_recipes.fr.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = nutrition_recipes.fr.json; path = CourtIQ/Resources/Content/nutrition_recipes.fr.json; sourceTree = "<group>"; };
+		A3145A711B374453957B671D /* nutrition_guide.fr.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = nutrition_guide.fr.json; path = CourtIQ/Resources/Content/nutrition_guide.fr.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -546,6 +548,7 @@
 				A000000000000000000FC0 /* WallRallyCamView.swift */,
 				B100000000000000000001 /* WallBallLocator.swift */,
 				B400000000000000000001 /* WallSwingDetector.swift */,
+				A3145A711B374453957B671D /* nutrition_guide.fr.json */,
 				C9ED65B9249E403589C97657 /* nutrition_recipes.fr.json */,
 				ED0797793E25466D87A301A9 /* nutrition_recipes.tr.json */,
 				5799584BF0394FDB9B714ECE /* nutrition_guide.en.json */,
@@ -798,6 +801,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D75B33A2B47F4039A75800A8 /* nutrition_guide.fr.json in Resources */,
 				44FA0F82430943B2A384D217 /* nutrition_recipes.fr.json in Resources */,
 				29D092B4448540DFAA6E40E4 /* nutrition_recipes.tr.json in Resources */,
 				B4A9C9FA82364CAB95680020 /* nutrition_guide.en.json in Resources */,

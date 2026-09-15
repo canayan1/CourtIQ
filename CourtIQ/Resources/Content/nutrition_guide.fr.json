@@ -1,0 +1,376 @@
+{
+  "version": 1,
+  "sections": [
+    {
+      "id": "before-you-play",
+      "title": "Avant de jouer",
+      "summary": "Prends un repas à base de glucides deux à quatre heures avant de jouer, puis une petite collation familière environ une heure avant.",
+      "body": [
+        "Ton vrai repas d'avant-match se prend deux à quatre heures avant la première balle. Construis-le autour des glucides : pâtes, riz, pommes de terre, pain ou céréales, avec une portion modeste de protéines et peu de gras. Le guide du joueur de l'ITF dit qu'il doit être riche en glucides, pauvre en graisses, en protéines et en fibres, agréable et familier. Termine-le trois heures avant si tu peux, jamais moins de 90 minutes avant.",
+        "Si tu as moins de temps, vois plus petit. Une heure avant, une banane et de l'eau, une tartine de miel ou de confiture, ou un petit bol de céréales suffisent. La diététicienne de l'USTA propose une banane, un muffin anglais ou du porridge avec un peu de beurre de cacahuète dans la fenêtre des 60 à 90 minutes. Oublie le petit-déj gras à l'anglaise, la grande salade et tout ce que tu n'as jamais mangé avant un match.",
+        "Pour un match de plus d'une heure, la prise de position commune de l'ACSM, de l'Academy et des Dietitians of Canada suggère 1 à 4 g de glucides par kg de poids de corps dans les une à quatre heures qui précèdent. Pas besoin de peser quoi que ce soit ; une assiette normale de pâtes ou de riz avec un fruit tombe dans cette fourchette pour la plupart des adultes.",
+        "Ne saute pas le petit-déjeuner pour un match tôt le matin. Si tu n'arrives pas à avaler du solide, l'ITF propose une option liquide comme une boisson glucidique, du lait avec des fruits frais, ou un smoothie. Évite une grosse dose de sucre pur, soda ou bonbons, dans les minutes avant d'entrer sur le court."
+      ],
+      "keyPoints": [
+        "Repas principal deux à quatre heures avant, à base de glucides",
+        "Une heure avant : une banane ou une tartine, plus de l'eau",
+        "Peu de gras, peu de fibres, du familier ; rien de nouveau le jour du match",
+        "Ne saute jamais le petit-déjeuner avant un match le matin",
+        "Repas liquide si tu ne supportes pas le solide"
+      ],
+      "sources": [
+        {
+          "label": "ITF — Planifier ses repas (2019)",
+          "url": "https://www.itftennis.com/media/2300/health-planning-meals.pdf"
+        },
+        {
+          "label": "Academy of Nutrition and Dietetics, Dietitians of Canada, ACSM — Nutrition et performance sportive (2016)",
+          "url": "https://www.dietitians.ca/DietitiansOfCanada/media/Documents/Resources/noap-position-paper.pdf"
+        },
+        {
+          "label": "USTA — Quoi manger : l'alimentation du joueur de tennis le jour du match (2017)",
+          "url": "https://www.usta.com/en/home/improve/tennis-health---fitness/national/a-player-s-diet-on-match-day.html"
+        },
+        {
+          "label": "USTA Eastern — Mount Sinai Health Beat : ce que les joueurs de tennis doivent manger et boire",
+          "url": "https://www.usta.com/en/home/stay-current/eastern/MOUNTSINAIHEALTHBEAT.html"
+        },
+        {
+          "label": "LTA — Guide nutrition : quoi manger le jour de la compétition",
+          "url": "https://www.lta.org.uk/advantage-home/content/nutrition-guide-what-to-eat-on-competition-day/"
+        }
+      ]
+    },
+    {
+      "id": "hydration-and-heat",
+      "title": "Hydratation et chaleur",
+      "summary": "Commence bien hydraté, bois à chaque changement de côté sans attendre d'avoir soif, et ajoute du sodium quand il fait chaud.",
+      "body": [
+        "Perdre environ 2 % de ton poids de corps en sueur suffit à plomber ton jeu, et la revue de l'ISSN note qu'avec des taux de sudation typiques de 0,5 à 2 litres par heure, ça peut arriver en 60 à 90 minutes. La prise de position commune de l'ACSM ajoute que par temps chaud, la baisse de performance aérobie et de concentration apparaît plus tôt. Entrer sur le court déjà déshydraté l'avance encore.",
+        "Les consignes de l'USTA pour la chaleur sont simples à suivre : bois environ 400 à 650 ml (14 à 22 oz) d'eau ou de boisson de l'effort deux heures avant, puis à chaque changement de côté prends quatre à huit gorgées si tu transpires peu et huit à douze si tu transpires beaucoup. Bois selon ce plan, pas selon ta soif ; tu peux déjà être à 2 % de perte avant de ressentir la soif.",
+        "Dans la chaleur, le sodium compte plus que tout autre électrolyte. C'est le principal minéral perdu dans la sueur, et le sel dans ta boisson ou ta nourriture te donne aussi plus soif, donc tu bois plus. Des bretzels salés, une boisson de l'effort avec du sodium, ou une pincée de sel dans ta gourde font l'affaire. L'ITF suggère aux gros transpirants d'ajouter un peu de sel de table à leur boisson de l'effort.",
+        "Se rafraîchir aide aussi. L'USTA conseille de rester à la clim ou à l'ombre avant de jouer, une serviette froide sur la nuque aux changements de côté, une casquette de couleur claire et même un granité environ 30 minutes avant. Pour connaître ton propre taux de sudation, pèse-toi avant et après une séance : chaque kilo perdu correspond à peu près à un litre que tu n'as pas remplacé."
+      ],
+      "keyPoints": [
+        "Environ 2 % de poids en moins et ton tennis en pâtit",
+        "400 à 650 ml deux heures avant de jouer",
+        "Quatre à douze gorgées à chaque changement de côté, pas seulement quand tu as soif",
+        "Jour chaud : du sodium via une boisson de l'effort, des bretzels ou du sel",
+        "Pèse-toi avant et après pour connaître ton taux de sudation"
+      ],
+      "sources": [
+        {
+          "label": "USTA Sport Science — Chaleur et hydratation : les points de vigilance pour les joueurs de tennis",
+          "url": "https://www.usta.com/es/content/dam/usta/sections/mid-atlantic/pdfs/heat_and_hydration_flyer.pdf"
+        },
+        {
+          "label": "USTA — Vaincre la chaleur : conseils de rafraîchissement et d'hydratation pour les joueurs de tennis",
+          "url": "https://www.usta.com/en/home/improve/tennis-health---fitness/national/beat-the-heat--cooling-and-hydration-tips-for-tennis-players.html"
+        },
+        {
+          "label": "ISSN — Mise à jour de la revue sur l'exercice et la nutrition sportive (2018)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6090881/"
+        },
+        {
+          "label": "Academy of Nutrition and Dietetics, Dietitians of Canada, ACSM — Nutrition et performance sportive (2016)",
+          "url": "https://www.dietitians.ca/DietitiansOfCanada/media/Documents/Resources/noap-position-paper.pdf"
+        },
+        {
+          "label": "ITF — Bien manger (2019)",
+          "url": "https://www.itftennis.com/media/2146/nutrition-eating-right.pdf"
+        }
+      ]
+    },
+    {
+      "id": "during-a-long-match",
+      "title": "Pendant un long match",
+      "summary": "Dès qu'un match dépasse l'heure, prends des glucides aux changements de côté, environ 30 à 60 g par heure, via une boisson ou une collation que tu as déjà testée.",
+      "body": [
+        "Pour une courte séance, l'eau suffit ; la prise de position commune de l'ACSM dit que les glucides ne sont pas nécessaires pour un effort de moins de 45 minutes. Passé l'heure, et à coup sûr dans un match en trois sets, ton glycogène commence à baisser et tes jambes, puis tes décisions, suivent. L'ITF décrit le changement de côté comme le moment idéal pour prendre des glucides et du liquide en plus afin de retarder la fatigue en fin de match.",
+        "Les prises de position s'accordent sur le chiffre : 30 à 60 g de glucides par heure pour les sports intermittents qui durent une heure à deux heures et demie. Une gourde de 500 ml de boisson de l'effort à la concentration recommandée de 6 à 8 % apporte à peu près 30 à 40 g, donc boisson plus petite collation, ça couvre. Commence dès le premier set ; n'attends pas de te sentir vide.",
+        "Ce que tu manges au bord du court doit rester simple et familier. La LTA cite les bananes, les fruits secs et les sandwichs de pain blanc au miel ou à la confiture ; l'ITF oriente vers les barres énergétiques pauvres en gras et les gels sans caféine. Prends une bouchée ou quelques gorgées à chaque changement de côté plutôt que beaucoup d'un coup. Choisis ce que ton estomac connaît déjà de l'entraînement.",
+        "Laisse la barre chocolatée et le cola dans le sac. L'ITF prévient que les collations grasses restent sur l'estomac et ralentissent l'absorption des liquides, et que les sodas sucrés sont un mauvais choix sur le court. Les boissons à plus de 8 % de glucides environ, dont la plupart des jus de fruits, ralentissent aussi la vitesse à laquelle ton corps absorbe le liquide."
+      ],
+      "keyPoints": [
+        "Moins de 45 minutes : l'eau suffit",
+        "Passé l'heure : 30 à 60 g de glucides par heure",
+        "Boisson de l'effort à 6 à 8 %, plus une petite collation",
+        "De petites quantités à chaque changement de côté, dès le premier set",
+        "Pas de collation grasse, de cola ni de jus de fruit pur sur le court"
+      ],
+      "sources": [
+        {
+          "label": "Academy of Nutrition and Dietetics, Dietitians of Canada, ACSM — Nutrition et performance sportive (2016)",
+          "url": "https://www.dietitians.ca/DietitiansOfCanada/media/Documents/Resources/noap-position-paper.pdf"
+        },
+        {
+          "label": "ISSN — Prise de position : le timing des nutriments (2017)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5596471/"
+        },
+        {
+          "label": "ISSN — Mise à jour de la revue sur l'exercice et la nutrition sportive (2018)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6090881/"
+        },
+        {
+          "label": "ITF — Planifier ses repas (2019)",
+          "url": "https://www.itftennis.com/media/2300/health-planning-meals.pdf"
+        },
+        {
+          "label": "LTA — Guide nutrition : quoi manger le jour de la compétition",
+          "url": "https://www.lta.org.uk/advantage-home/content/nutrition-guide-what-to-eat-on-competition-day/"
+        },
+        {
+          "label": "USTA — Quoi manger : l'alimentation du joueur de tennis le jour du match (2017)",
+          "url": "https://www.usta.com/en/home/improve/tennis-health---fitness/national/a-player-s-diet-on-match-day.html"
+        }
+      ]
+    },
+    {
+      "id": "after-you-play",
+      "title": "Après avoir joué",
+      "summary": "Dans la demi-heure qui suit ta sortie du court, bois avec un peu de sel et mange des glucides avec un peu de protéines, puis prends un vrai repas dans les deux heures.",
+      "body": [
+        "Première tâche : le liquide et le sodium. La prise de position commune de l'ACSM suggère de boire environ 1,25 à 1,5 litre pour chaque kilo perdu, réparti sur les deux heures suivantes, parce que tu continues à transpirer et à perdre de l'urine après le match. Ajoute du sel via la nourriture ou une boisson de l'effort ; l'eau plate seule te dilue et t'en fait éliminer davantage.",
+        "Ensuite, mange. L'ISSN et l'ITF désignent toutes deux les 30 premières minutes comme la fenêtre où les muscles stockent le glycogène le plus vite et où les protéines servent le plus à la réparation. La règle de l'ITF est deux parts de glucides pour une part de protéines : lait aromatisé, yaourt aux fruits, ou sandwich au beurre de cacahuète ou au thon. La prise de position de l'ISSN sur le timing des nutriments suggère 20 à 40 g de protéines dans ce premier repas.",
+        "Enchaîne avec un vrai repas dans les deux à trois heures : pâtes ou riz, une portion de viande, de poisson, d'œufs ou de légumineuses, des légumes et plusieurs verres de liquide. L'ITF note que les réserves de glycogène mettent 24 à 48 heures à se reconstituer complètement, donc ce que tu manges ce soir-là et le lendemain matin compte encore.",
+        "L'importance de ce timing dépend de la suite. La prise de position de l'ISSN sur le timing des nutriments dit qu'en dehors des situations où une récupération rapide est vraiment nécessaire, et si l'apport quotidien en glucides couvre la demande, l'importance d'un apport minuté diminue. Tu rejoues demain ou plus tard dans la journée : vise la fenêtre. Un match par semaine : mange bien, dors, et ne te prends pas la tête avec le chrono."
+      ],
+      "keyPoints": [
+        "Réhydrate-toi avec du sel : 1,25 à 1,5 litre par kilo perdu",
+        "30 premières minutes : glucides plus protéines, deux pour un",
+        "Vrai repas dans les deux à trois heures",
+        "Le glycogène met 24 à 48 heures à se recharger complètement",
+        "Le timing compte surtout quand tu rejoues vite"
+      ],
+      "sources": [
+        {
+          "label": "ISSN — Prise de position : le timing des nutriments (2017)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5596471/"
+        },
+        {
+          "label": "ISSN — Mise à jour de la revue sur l'exercice et la nutrition sportive (2018)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6090881/"
+        },
+        {
+          "label": "Academy of Nutrition and Dietetics, Dietitians of Canada, ACSM — Nutrition et performance sportive (2016)",
+          "url": "https://www.dietitians.ca/DietitiansOfCanada/media/Documents/Resources/noap-position-paper.pdf"
+        },
+        {
+          "label": "ITF — Planifier ses repas (2019)",
+          "url": "https://www.itftennis.com/media/2300/health-planning-meals.pdf"
+        },
+        {
+          "label": "LTA — Guide nutrition : quoi manger le jour de la compétition",
+          "url": "https://www.lta.org.uk/advantage-home/content/nutrition-guide-what-to-eat-on-competition-day/"
+        }
+      ]
+    },
+    {
+      "id": "tournament-day",
+      "title": "Deux matchs dans la journée",
+      "summary": "Quand un deuxième match t'attend quelques heures plus tard, commence à boire et à manger des glucides dès que tu sors du court, en petites quantités, et continue toutes les deux heures environ.",
+      "body": [
+        "Les tournois de club et les championnats internes imposent souvent un deuxième match avec seulement quelques heures d'écart. L'ITF est catégorique : si le match suivant commence dans une ou deux heures, la réhydratation et l'apport en glucides commencent immédiatement. Ne t'assieds pas pour discuter d'abord. Gourde dans une main, collation dans l'autre, puis trouve de l'ombre.",
+        "Pour un écart de moins de huit heures environ, la prise de position commune de l'ACSM suggère à peu près 1 à 1,2 g de glucides par kg et par heure pendant les quatre premières heures, à partir de sources faciles et pauvres en fibres, prises en petites collations régulières plutôt qu'en une seule grosse assiette. Concrètement, une boisson de l'effort, puis quelque chose environ toutes les heures : un sandwich à la confiture, des galettes de riz avec de la banane, des fruits secs, une barre de céréales, un yaourt.",
+        "La liste entre deux matchs de la LTA est un bon modèle : yaourt aux fruits, mélange de fruits secs et de noix, galettes de riz tartinées de purée d'oléagineux avec des rondelles de banane. Garde au moins 90 minutes entre ta dernière vraie collation et le retour sur le court, comme le conseille l'ITF, puis complète avec des gorgées de boisson de l'effort dans la dernière heure.",
+        "Si le premier match a été chaud et long, ajoute du sel à ce que tu manges entre les matchs ; l'ITF suggère spécifiquement un supplément de sel après de grosses pertes de sueur ou des crampes. Rafraîchis-toi bien aussi : ombre ou clim, serviette froide, douche fraîche s'il y en a une. D'un jour de tournoi à l'autre, la LTA rappelle qu'il n'y a parfois que 12 heures, donc c'est le dîner et le petit-déjeuner qui font le travail de récupération."
+      ],
+      "keyPoints": [
+        "Commence à boire et à manger des glucides tout de suite après le premier match",
+        "Des petites collations toutes les heures valent mieux qu'une grosse assiette",
+        "Pauvre en fibres, familier : sandwich à la confiture, galettes de riz, yaourt, fruits secs",
+        "Dernier solide 90 minutes avant le deuxième match",
+        "Premier match dans la chaleur : ajoute du sel et rafraîchis-toi à l'ombre"
+      ],
+      "sources": [
+        {
+          "label": "ITF — Planifier ses repas (2019)",
+          "url": "https://www.itftennis.com/media/2300/health-planning-meals.pdf"
+        },
+        {
+          "label": "Academy of Nutrition and Dietetics, Dietitians of Canada, ACSM — Nutrition et performance sportive (2016)",
+          "url": "https://www.dietitians.ca/DietitiansOfCanada/media/Documents/Resources/noap-position-paper.pdf"
+        },
+        {
+          "label": "LTA — Guide nutrition : quoi manger le jour de la compétition",
+          "url": "https://www.lta.org.uk/advantage-home/content/nutrition-guide-what-to-eat-on-competition-day/"
+        },
+        {
+          "label": "USTA — Vaincre la chaleur : conseils de rafraîchissement et d'hydratation pour les joueurs de tennis",
+          "url": "https://www.usta.com/en/home/improve/tennis-health---fitness/national/beat-the-heat--cooling-and-hydration-tips-for-tennis-players.html"
+        }
+      ]
+    },
+    {
+      "id": "cramps-and-stomach",
+      "title": "Crampes et troubles digestifs",
+      "summary": "Les crampes, c'est surtout de la fatigue avec de la déshydratation et une perte de sel par-dessus, et les troubles digestifs, c'est surtout ce que tu as mangé et quand ; les deux répondent à des habitudes ennuyeuses et rodées.",
+      "body": [
+        "La crampe n'est pas entièrement comprise. La prise de position commune de l'ACSM dit que les crampes des muscles squelettiques sont typiquement causées par la fatigue musculaire, et peuvent être associées à la déshydratation et à un déséquilibre électrolytique ; la revue de l'ISSN qualifie la cause d'inconnue. Ce que les données soutiennent : les joueurs qui transpirent beaucoup et perdent beaucoup de sel, surtout quand ils ne sont pas habitués à la chaleur, ont plus souvent des crampes.",
+        "Donc la liste de prévention n'a rien de glamour. Sois en forme pour la durée du match que tu joues, fais quelques séances dans la chaleur avant un tournoi par temps chaud, bois selon un plan dès le premier changement de côté, et intègre du sodium à ce plan via une boisson de l'effort ou des aliments salés. Le conseil de l'USTA quand ça frappe : repos à l'ombre, étirements doux et liquide avec des électrolytes.",
+        "Les troubles digestifs sur le court viennent en général du gras, des protéines ou des fibres mangés trop près du jeu, ou de boissons trop concentrées. La prise de position commune de l'ACSM suggère d'éviter les choix riches en gras, en protéines et en fibres avant et pendant le jeu, et l'USTA note que les boissons à plus de 8 % de glucides ralentissent l'absorption des liquides. Teste les gels et les boissons de l'effort à l'entraînement d'abord ; la LTA prévient que certains perturbent l'intestin.",
+        "L'intestin s'adapte à ce que tu répètes. La prise de position de l'ACSM note que pratiquer ton alimentation de compétition à l'entraînement construit la tolérance digestive, ce qui est une raison de plus de ne rien inaugurer le jour du match. Si les crampes ou les problèmes d'estomac reviennent malgré tout ça, consulte un médecin ou un diététicien si ça persiste."
+      ],
+      "keyPoints": [
+        "Crampe : la fatigue d'abord, déshydratation et perte de sel par-dessus",
+        "Les gros transpirants au sel et les non-acclimatés ont le plus de crampes",
+        "Prévention : forme physique, séances dans la chaleur, liquide et sodium",
+        "Estomac : pas de gras, de fibres ni de boissons concentrées près du jeu",
+        "Répète ton alimentation de jour de match à l'entraînement ; consulte si ça persiste"
+      ],
+      "sources": [
+        {
+          "label": "Academy of Nutrition and Dietetics, Dietitians of Canada, ACSM — Nutrition et performance sportive (2016)",
+          "url": "https://www.dietitians.ca/DietitiansOfCanada/media/Documents/Resources/noap-position-paper.pdf"
+        },
+        {
+          "label": "ISSN — Mise à jour de la revue sur l'exercice et la nutrition sportive (2018)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6090881/"
+        },
+        {
+          "label": "USTA Sport Science — Chaleur et hydratation : les points de vigilance pour les joueurs de tennis",
+          "url": "https://www.usta.com/es/content/dam/usta/sections/mid-atlantic/pdfs/heat_and_hydration_flyer.pdf"
+        },
+        {
+          "label": "ITF — Planifier ses repas (2019)",
+          "url": "https://www.itftennis.com/media/2300/health-planning-meals.pdf"
+        },
+        {
+          "label": "LTA — Guide nutrition : quoi manger le jour de la compétition",
+          "url": "https://www.lta.org.uk/advantage-home/content/nutrition-guide-what-to-eat-on-competition-day/"
+        }
+      ]
+    },
+    {
+      "id": "caffeine",
+      "title": "Caféine",
+      "summary": "Un café environ une heure avant de jouer peut aider ; plus n'est pas mieux, et une dose le soir peut te coûter le sommeil dont tu as besoin pour demain.",
+      "body": [
+        "La caféine est le seul complément avec assez de preuves pour que l'ISSN et l'IOC le soutiennent tous les deux. La prise de position de l'ISSN suggère que 3 à 6 mg par kg de poids de corps, pris environ 60 minutes avant l'effort, améliorent la performance en endurance, en sprints répétés et en travail à haute intensité. La diététicienne de l'USTA traduit une dose modérée par à peu près deux tasses de café pour un joueur de 68 kg.",
+        "Le café convient comme source ; la prise de position de l'ISSN a trouvé que gélules, café, boissons énergisantes et chewing-gum donnent des effets comparables. Elle n'a pas non plus trouvé de différence constante entre consommateurs habituels et non habituels, donc ton café quotidien n'annule pas l'effet. Les très fortes doses, autour de 9 mg par kg, apportent plus d'effets secondaires sans plus de bénéfice, et l'IOC cite parmi eux nausées, anxiété, agitation et insomnie.",
+        "La sensibilité varie beaucoup d'un joueur à l'autre, en partie à cause de la génétique, et l'ISSN note que les troubles du sommeil varient de la même façon. Pour un match en soirée, mets en balance un petit gain de performance et une mauvaise nuit avant le match suivant. Le guide du joueur de l'ITF suggère de fixer une heure limite en début d'après-midi et de s'en tenir à une ou deux tasses de café par jour.",
+        "Sur le court, l'ITF préfère les gels sans caféine et te détourne du cola. La vieille crainte que la caféine te déshydrate est exagérée à des doses habituelles modérées, selon la prise de position commune de l'ACSM, donc un café d'avant-match ne défait pas ton plan d'hydratation. Essaie-le à l'entraînement d'abord, jamais pour la première fois en finale."
+      ],
+      "keyPoints": [
+        "Prise de position : 3 à 6 mg par kg, une heure avant",
+        "Le café marche aussi bien que les gélules ou le chewing-gum",
+        "Autour de 9 mg par kg : plus d'effets secondaires, pas plus de bénéfice",
+        "Match en soirée : la caféine peut ruiner le sommeil dont tu as besoin",
+        "Teste-la à l'entraînement, jamais pour la première fois en match"
+      ],
+      "sources": [
+        {
+          "label": "ISSN — Prise de position : caféine et performance à l'effort (2021)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7777221/"
+        },
+        {
+          "label": "IOC — Déclaration de consensus : compléments alimentaires et athlète de haut niveau (2018)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5867441/"
+        },
+        {
+          "label": "Academy of Nutrition and Dietetics, Dietitians of Canada, ACSM — Nutrition et performance sportive (2016)",
+          "url": "https://www.dietitians.ca/DietitiansOfCanada/media/Documents/Resources/noap-position-paper.pdf"
+        },
+        {
+          "label": "ITF — Bien manger (2019)",
+          "url": "https://www.itftennis.com/media/2146/nutrition-eating-right.pdf"
+        },
+        {
+          "label": "ITF — Planifier ses repas (2019)",
+          "url": "https://www.itftennis.com/media/2300/health-planning-meals.pdf"
+        },
+        {
+          "label": "USTA Eastern — Mount Sinai Health Beat : ce que les joueurs de tennis doivent manger et boire",
+          "url": "https://www.usta.com/en/home/stay-current/eastern/MOUNTSINAIHEALTHBEAT.html"
+        }
+      ]
+    },
+    {
+      "id": "match-day-dont-change",
+      "title": "Ce qu'il ne faut pas changer",
+      "summary": "Le jour du match sert à répéter ce qui marche déjà à l'entraînement, pas à tester de nouveaux aliments, de nouvelles boissons, de nouvelles pilules ou de nouvelles règles.",
+      "body": [
+        "La phrase la plus répétée dans toutes les sources citées ici, c'est la familiarité. L'ITF dit que le repas d'avant-match doit être familier ; la LTA dit de tester tout gel ou boisson à l'entraînement d'abord parce que certains perturbent l'intestin ; la prise de position commune de l'ACSM dit que l'alimentation de compétition doit être répétée à l'entraînement pour que ton intestin y soit habitué. Un tournoi est le mauvais endroit pour le découvrir.",
+        "Donc ne saute pas le petit-déjeuner pour te sentir léger, ne passe pas en mode pauvre en glucides la veille, et n'essaie pas une nouvelle boisson de l'effort, un nouveau gel, une nouvelle barre ou une nouvelle routine café parce que quelqu'un au club ne jure que par ça. Ne bois pas non plus beaucoup plus que d'habitude : la prise de position de l'ACSM note que boire trop est surtout fréquent chez les sportifs amateurs, et diluer ton sodium est un problème en soi.",
+        "N'ajoute pas de complément pour l'occasion. Le consensus de l'IOC souligne que la plupart des produits n'ont aucune preuve de bénéfice ni de sécurité et que certains sont contaminés par des substances interdites ou nocives, et il demande une vraie évaluation de ton alimentation avant d'envisager tout complément. La caféine du café, testée à l'avance, est la seule exception que fait ce guide.",
+        "Ce que tu peux changer, c'est le plan, et seulement à l'entraînement. Essaie le petit-déjeuner plus tôt, la gourde salée, le sandwich au bord du court pendant une séance du mardi, note comment tu t'es senti, et garde ce qui a marché pour le jour du match. La prise de position de l'ISSN sur le timing des nutriments est rassurante là-dessus : si ton alimentation de tous les jours est saine, le timing précis compte moins que tu ne le penses."
+      ],
+      "keyPoints": [
+        "Rien de nouveau le jour du match : aliment, boisson, gel ou café",
+        "Répète chaque habitude de jour de match à l'entraînement d'abord",
+        "Ne saute pas le petit-déjeuner et ne passe pas en pauvre en glucides la veille",
+        "Ne bois pas trop ; trop d'eau plate te dilue",
+        "Pas de compléments en dehors d'un café déjà testé"
+      ],
+      "sources": [
+        {
+          "label": "ITF — Planifier ses repas (2019)",
+          "url": "https://www.itftennis.com/media/2300/health-planning-meals.pdf"
+        },
+        {
+          "label": "LTA — Guide nutrition : quoi manger le jour de la compétition",
+          "url": "https://www.lta.org.uk/advantage-home/content/nutrition-guide-what-to-eat-on-competition-day/"
+        },
+        {
+          "label": "Academy of Nutrition and Dietetics, Dietitians of Canada, ACSM — Nutrition et performance sportive (2016)",
+          "url": "https://www.dietitians.ca/DietitiansOfCanada/media/Documents/Resources/noap-position-paper.pdf"
+        },
+        {
+          "label": "IOC — Déclaration de consensus : compléments alimentaires et athlète de haut niveau (2018)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5867441/"
+        },
+        {
+          "label": "ISSN — Prise de position : le timing des nutriments (2017)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5596471/"
+        },
+        {
+          "label": "USTA — Quoi manger : l'alimentation du joueur de tennis le jour du match (2017)",
+          "url": "https://www.usta.com/en/home/improve/tennis-health---fitness/national/a-player-s-diet-on-match-day.html"
+        }
+      ]
+    }
+  ],
+  "today": {
+    "base": {
+      "under1": {
+        "headline": "Petit, familier, facile à digérer",
+        "eat": "Une banane ou une tranche de pain blanc à la confiture, plus quelques gorgées d'eau. Rien que tu n'aies pas déjà mangé avant un match.",
+        "avoid": "Un repas complet, tout ce qui est gras ou riche en fibres, et une grosse boisson sucrée juste avant d'entrer sur le court.",
+        "why": "Pas le temps de digérer un repas. Une petite collation glucidique recharge l'énergie sans peser sur l'estomac."
+      },
+      "h1to2": {
+        "headline": "Petite collation glucidique, quelques gorgées d'eau",
+        "eat": "Une tartine de miel, un petit bol de céréales ou un yaourt aux fruits, avec 400 à 600 ml d'eau répartis sur l'heure qui vient.",
+        "avoid": "Des fritures, une grosse portion de viande, une grande salade, ou tout aliment que tu n'as pas encore testé avant de jouer.",
+        "why": "Une petite collation glucidique une à deux heures avant retarde la fatigue. Gras, protéines et fibres si près du jeu ralentissent la digestion et dérangent l'estomac."
+      },
+      "h2to4": {
+        "headline": "Ton vrai repas d'avant-match, c'est maintenant",
+        "eat": "Une vraie assiette à base de glucides, pâtes, riz ou pommes de terre avec une portion modeste de protéines, et un verre d'eau avec.",
+        "avoid": "Les plats en sauce crémeuse ou frits, les repas très riches en fibres, l'alcool, et manger tellement que tu es encore plein à l'heure du match.",
+        "why": "Deux à quatre heures, c'est la fenêtre que les fédérations de tennis et les prises de position donnent au repas principal pour digérer et te donner de l'énergie."
+      },
+      "over4": {
+        "headline": "Mange normalement, prévois la recharge",
+        "eat": "Un repas normal et équilibré maintenant, de l'eau au fil de la journée, puis une collation glucidique comme une banane environ une heure avant de jouer.",
+        "avoid": "Sauter des repas pour te sentir léger, ou rester plus de trois heures sans manger un jour de match.",
+        "why": "Tes réserves sont remplies par ton alimentation normale d'hier et d'aujourd'hui. La collation une heure avant, c'est ce qui finit de faire le plein."
+      }
+    },
+    "intensity": {
+      "light": "Pour une séance tranquille, l'eau suffit sur le court et tu n'as pas besoin de collation pendant le jeu.",
+      "normal": "Pour une séance normale, prends de l'eau et une collation glucidique pour les changements de côté, au cas où ça dépasse l'heure.",
+      "hard": "Pour un match ou deux heures et plus, prends une boisson de l'effort et une collation pour le court, et des glucides chaque heure dès le premier set."
+    },
+    "heat": {
+      "cool": "Par temps frais, de l'eau plate aux changements de côté suffit. Bois selon un plan, pas seulement quand tu as soif.",
+      "warm": "Par temps chaud, ajoute un peu de sel à ta nourriture aujourd'hui et bois à chaque changement de côté, soif ou pas.",
+      "hot": "Par forte chaleur, bois 400 à 650 ml deux heures avant, prends une boisson de l'effort avec du sodium sur le court, cherche l'ombre aux changements de côté."
+    },
+    "lastSession": {
+      "flat": "Tu étais à plat la dernière fois, donc mange des glucides à chaque repas aujourd'hui, bois bien, et prends ta collation de recharge au lieu de la sauter.",
+      "ok": "La dernière séance s'est bien passée, donc garde les mêmes aliments et le même timing. Ne change pas ce qui a marché.",
+      "great": "La dernière séance était top, donc note ce que tu as mangé et quand, et refais exactement pareil."
+    }
+  }
+}
