@@ -39,7 +39,7 @@ struct HomeView: View {
     /// All grid tiles push their destination via this single route +
     /// navigationDestination. (Switching tabs via tabRouter from a grid tile did
     /// not work; pushing via route does.) The Coach hero still switches tabs.
-    private enum Route: Hashable { case swing, tennisIQ, matches, doubles, drills, recover, programs, nutrition
+    private enum Route: Hashable { case swing, tennisIQ, doubles, drills, recover, programs, nutrition
         #if DEBUG
         /// QC only: the paid coach-review order screen (App Store review
         /// screenshot for the consumable IAP).
@@ -151,8 +151,6 @@ struct HomeView: View {
                 // records through DailyQuizManager itself, so Profile stats and
                 // the unified streak keep working unchanged.
                 DailyIQView()
-            case .matches:
-                MatchesListView()
             case .doubles:
                 DoublesView()
             case .drills:
