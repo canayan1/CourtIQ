@@ -200,6 +200,11 @@
 		4E31330777EA4B08A8DEB98B /* tactics_i18n.fr.json in Resources */ = {isa = PBXBuildFile; fileRef = 14C9C1FF08FC486084225C29 /* tactics_i18n.fr.json */; };
 		0B85B093A18C497C930D181B /* tactics_i18n.tr.json in Resources */ = {isa = PBXBuildFile; fileRef = 35585313ACC649F99915637C /* tactics_i18n.tr.json */; };
 		091DF643A8744E32B6E9C3AE /* CoachReviewStatusCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED68D5F39334C9BBBB722EB /* CoachReviewStatusCard.swift */; };
+		D0DD0B5D910D4857AC5E56A2 /* NutritionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1512534CEFEB4FC0A37CFEB7 /* NutritionManager.swift */; };
+		A8A56857C8C14295815BA124 /* NutritionInsights.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86594215DB945938C2E5389 /* NutritionInsights.swift */; };
+		AC315E475F064139A29677F9 /* NutritionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A1324C83F7473BB1FB8FD9 /* NutritionView.swift */; };
+		04D2500BF8684048B82F5380 /* NutritionLogSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5554FFA1FD14A2D8E8BEC08 /* NutritionLogSheet.swift */; };
+		299085D29B5444178FDC99E8 /* NutritionRateSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7A09848344B82BFA6F16E /* NutritionRateSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -408,6 +413,11 @@
 		14C9C1FF08FC486084225C29 /* tactics_i18n.fr.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = tactics_i18n.fr.json; path = CourtIQ/Resources/Content/tactics_i18n.fr.json; sourceTree = "<group>"; };
 		35585313ACC649F99915637C /* tactics_i18n.tr.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = tactics_i18n.tr.json; path = CourtIQ/Resources/Content/tactics_i18n.tr.json; sourceTree = "<group>"; };
 		FED68D5F39334C9BBBB722EB /* CoachReviewStatusCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoachReviewStatusCard.swift; path = CourtIQ/Features/CoachReview/CoachReviewStatusCard.swift; sourceTree = "<group>"; };
+		1512534CEFEB4FC0A37CFEB7 /* NutritionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NutritionManager.swift; path = CourtIQ/Core/Models/NutritionManager.swift; sourceTree = "<group>"; };
+		F86594215DB945938C2E5389 /* NutritionInsights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NutritionInsights.swift; path = CourtIQ/Core/Models/NutritionInsights.swift; sourceTree = "<group>"; };
+		77A1324C83F7473BB1FB8FD9 /* NutritionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NutritionView.swift; path = CourtIQ/Features/Nutrition/NutritionView.swift; sourceTree = "<group>"; };
+		C5554FFA1FD14A2D8E8BEC08 /* NutritionLogSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NutritionLogSheet.swift; path = CourtIQ/Features/Nutrition/NutritionLogSheet.swift; sourceTree = "<group>"; };
+		63E7A09848344B82BFA6F16E /* NutritionRateSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NutritionRateSheet.swift; path = CourtIQ/Features/Nutrition/NutritionRateSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -520,6 +530,11 @@
 				A000000000000000000FC0 /* WallRallyCamView.swift */,
 				B100000000000000000001 /* WallBallLocator.swift */,
 				B400000000000000000001 /* WallSwingDetector.swift */,
+				63E7A09848344B82BFA6F16E /* NutritionRateSheet.swift */,
+				C5554FFA1FD14A2D8E8BEC08 /* NutritionLogSheet.swift */,
+				77A1324C83F7473BB1FB8FD9 /* NutritionView.swift */,
+				F86594215DB945938C2E5389 /* NutritionInsights.swift */,
+				1512534CEFEB4FC0A37CFEB7 /* NutritionManager.swift */,
 				FED68D5F39334C9BBBB722EB /* CoachReviewStatusCard.swift */,
 				35585313ACC649F99915637C /* tactics_i18n.tr.json */,
 				14C9C1FF08FC486084225C29 /* tactics_i18n.fr.json */,
@@ -893,6 +908,11 @@
 				A000000000000000000FC1 /* WallRallyCamView.swift in Sources */,
 				B100000000000000000002 /* WallBallLocator.swift in Sources */,
 				B400000000000000000002 /* WallSwingDetector.swift in Sources */,
+				299085D29B5444178FDC99E8 /* NutritionRateSheet.swift in Sources */,
+				04D2500BF8684048B82F5380 /* NutritionLogSheet.swift in Sources */,
+				AC315E475F064139A29677F9 /* NutritionView.swift in Sources */,
+				A8A56857C8C14295815BA124 /* NutritionInsights.swift in Sources */,
+				D0DD0B5D910D4857AC5E56A2 /* NutritionManager.swift in Sources */,
 				091DF643A8744E32B6E9C3AE /* CoachReviewStatusCard.swift in Sources */,
 				8C6EC95640A9480BAC57DDE3 /* TacticsContentI18n.swift in Sources */,
 				C6FACBEAF61D4096BFBD94B1 /* TacticsCopy.swift in Sources */,

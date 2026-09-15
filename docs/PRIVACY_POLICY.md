@@ -19,6 +19,7 @@ If you have questions, contact us at **info@kalibrefin.com**.
 - **Support and feedback** content you send via in-app feedback or email.
 - **Coach review submissions** (only if you buy a coach review): the video clip you choose to send, the stroke and handedness you select, your optional note, and the language your app is set to. See section 2a.
 - **AI swing, footwork and match analysis** (only if you use it): the clip you choose is sent to Google's Gemini API for automated analysis. See section 2b.
+- **Nutrition log** (only if you use it): what you ate before playing and how you rated your energy, legs, focus and stomach afterwards. This stays **on your device only** — it is not synced to your account and we never receive it. If we ever add a way to share it with the AI Coach, it will be a separate switch, off by default, and this policy will say so first.
 
 ### b. Information collected automatically
 - **Usage data**: which quizzes you complete, your streak, training sessions you mark done, mobility flows you start, weekly check-ins you submit. Stored locally on your device and (if signed in) synced to your CourtIQ account.

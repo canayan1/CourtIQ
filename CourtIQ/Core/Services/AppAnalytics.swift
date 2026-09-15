@@ -107,6 +107,9 @@ enum AnalyticsEvent {
     static let coachReviewInterest  = "coach_review_interest"
     /// A paid human review was purchased + submitted.
     static let coachReviewOrdered   = "coach_review_ordered"
+    /// Nutrition: a pre-session meal was logged / a session was rated.
+    static let nutritionLogged      = "nutrition_logged"
+    static let nutritionRated       = "nutrition_rated"
 }
 
 extension View {

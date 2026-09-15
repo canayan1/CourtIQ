@@ -356,7 +356,9 @@ struct TennisProfileResultView: View {
 }
 
 /// Lightweight wrapping HStack so strength/growth chips flow onto new lines.
-private struct FlowLayout: Layout {
+/// Wraps chips onto as many rows as they need. Shared: the Tennis Profile
+/// result and the Nutrition log both lay out capsule chips with it.
+struct FlowLayout: Layout {
     var spacing: CGFloat = 8
 
     func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout Void) -> CGSize {

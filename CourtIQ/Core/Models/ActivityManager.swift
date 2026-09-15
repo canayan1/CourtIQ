@@ -21,6 +21,7 @@ final class ActivityManager {
         days.formUnion(MatchEntryManager.shared.activeDayKeys)
         days.formUnion(CourtTapDrillManager.shared.activeDayKeys)
         days.formUnion(WallProgressManager.shared.activeDayKeys)
+        days.formUnion(NutritionManager.shared.activeDayKeys)
         return days
     }
 

@@ -39,7 +39,7 @@ struct HomeView: View {
     /// All grid tiles push their destination via this single route +
     /// navigationDestination. (Switching tabs via tabRouter from a grid tile did
     /// not work; pushing via route does.) The Coach hero still switches tabs.
-    private enum Route: Hashable { case swing, tennisIQ, matches, doubles, drills, recover, programs
+    private enum Route: Hashable { case swing, tennisIQ, matches, doubles, drills, recover, programs, nutrition
         #if DEBUG
         /// QC only: the paid coach-review order screen (App Store review
         /// screenshot for the consumable IAP).
@@ -128,6 +128,7 @@ struct HomeView: View {
             case "swing": route = .swing
             case "coachorder": route = .coachOrder
             case "paywall": showProgramsPaywall = true
+            case "nutrition": route = .nutrition
             case "profile": showProfile = true
             default:      break
             }
@@ -150,6 +151,8 @@ struct HomeView: View {
                 TrainPracticeView()
             case .recover:
                 MobilityLibraryView()
+            case .nutrition:
+                NutritionView()
             case .programs:
                 TrainProgramsView()
             #if DEBUG
@@ -364,6 +367,7 @@ struct HomeView: View {
                 chip(lang.t("home.tile_matches"), icon: "square.and.pencil") { route = .matches }
                 chip(lang.t("home.tile_doubles"), icon: "person.2.fill") { route = .doubles }
                 chip(lang.t("train.recover"), icon: "figure.walk") { route = .recover }
+                chip(lang.t("nutrition.title"), icon: "fork.knife") { route = .nutrition }
                 chip(lang.t("train.programs"), icon: session.isPremiumUnlocked ? "figure.strengthtraining.traditional" : "lock.fill") {
                     if session.isPremiumUnlocked { route = .programs } else { showProgramsPaywall = true }
                 }
