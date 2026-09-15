@@ -57,7 +57,7 @@ struct NutritionView: View {
             switch ProcessInfo.processInfo.environment["QC_NUTRITION"] {
             case "log":  showLog = true
             case "rate": rating = manager.entries.first
-            case "recipes", "guide", "today", "section", "recipe": qcPush = ProcessInfo.processInfo.environment["QC_NUTRITION"]
+            case "recipes", "guide", "today", "section", "prosection", "recipe": qcPush = ProcessInfo.processInfo.environment["QC_NUTRITION"]
             default: break
             }
         }
@@ -67,6 +67,7 @@ struct NutritionView: View {
             case "guide":   if let guide { NutritionGuideView(guide: guide) }
             case "today":   if let guide { NutritionTodayView(guide: guide) }
             case "section": if let s = guide?.sections.first { NutritionGuideSectionView(section: s) }
+            case "prosection": if let s = guide?.sections.first(where: { $0.id == "pro-habits" }) { NutritionGuideSectionView(section: s) }
             case "recipe":  if let r = recipes?.recipes.first(where: { $0.proNote != nil }) ?? recipes?.recipes.first { NutritionRecipeDetailView(recipe: r) }
             default: EmptyView()
             }
