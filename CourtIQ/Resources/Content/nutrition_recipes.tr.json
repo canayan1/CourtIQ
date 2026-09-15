@@ -1,0 +1,724 @@
+{
+  "version": 1,
+  "quiz": [
+    {
+      "id": "playTime",
+      "question": "Genelde ne zaman oynuyorsun?",
+      "options": [
+        {
+          "id": "morning",
+          "label": "Sabah, işten önce ya da hafta sonu",
+          "tags": [
+            "morning"
+          ]
+        },
+        {
+          "id": "midday",
+          "label": "Gün ortasında",
+          "tags": [
+            "midday"
+          ]
+        },
+        {
+          "id": "evening",
+          "label": "Akşam, iş çıkışı",
+          "tags": [
+            "evening"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sessionLength",
+      "question": "Normal bir antrenmanın ne kadar sürer?",
+      "options": [
+        {
+          "id": "short",
+          "label": "Bir saatten az, kısa bir top vurma",
+          "tags": [
+            "lighter",
+            "quick"
+          ]
+        },
+        {
+          "id": "normal",
+          "label": "Bir-iki saat",
+          "tags": [
+            "energy"
+          ]
+        },
+        {
+          "id": "long",
+          "label": "İki saatten uzun ya da uzun bir maç",
+          "tags": [
+            "long"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stomach",
+      "question": "Oyun öncesi yemeğe miden nasıl tepki verir?",
+      "options": [
+        {
+          "id": "sturdy",
+          "label": "Sorun yok, çoğu şeyi yiyip oynarım",
+          "tags": []
+        },
+        {
+          "id": "sensitive",
+          "label": "Hassas — sade yemek, sindirme süresi",
+          "tags": [
+            "sensitiveStomach"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "diet",
+      "question": "Yemediğin bir şey var mı?",
+      "options": [
+        {
+          "id": "anything",
+          "label": "Her şeyi yerim",
+          "tags": []
+        },
+        {
+          "id": "vegetarian",
+          "label": "Et ve balık yok",
+          "tags": [
+            "vegetarian"
+          ]
+        },
+        {
+          "id": "vegan",
+          "label": "Hayvansal ürün yok",
+          "tags": [
+            "vegan",
+            "vegetarian",
+            "dairyFree"
+          ]
+        },
+        {
+          "id": "dairyFree",
+          "label": "Süt, yoğurt ve peynir yok",
+          "tags": [
+            "dairyFree"
+          ]
+        },
+        {
+          "id": "glutenFree",
+          "label": "Buğday ve gluten yok",
+          "tags": [
+            "glutenFree"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prepTime",
+      "question": "Yemek hazırlamaya ne kadar vaktin var?",
+      "options": [
+        {
+          "id": "none",
+          "label": "Neredeyse hiç, alıp çıkarım",
+          "tags": [
+            "quick"
+          ]
+        },
+        {
+          "id": "10min",
+          "label": "On dakika kadar",
+          "tags": [
+            "quick"
+          ]
+        },
+        {
+          "id": "30min",
+          "label": "Yarım saat, yemek pişirebilirim",
+          "tags": []
+        }
+      ]
+    },
+    {
+      "id": "goal",
+      "question": "Şu an yemekten tenisin için ne bekliyorsun?",
+      "options": [
+        {
+          "id": "energy",
+          "label": "İkinci sette tükenmemi engellesin",
+          "tags": [
+            "energy"
+          ]
+        },
+        {
+          "id": "recovery",
+          "label": "Ertesi gün dinç hissedeyim",
+          "tags": [
+            "recovery"
+          ]
+        },
+        {
+          "id": "lighter",
+          "label": "Kortta daha hafif hissettirsin",
+          "tags": [
+            "lighter"
+          ]
+        }
+      ]
+    }
+  ],
+  "recipes": [
+    {
+      "id": "porridge-banana-honey",
+      "title": "Muzlu ballı yulaf lapası",
+      "when": "pre",
+      "hoursBefore": "2-3",
+      "prepMinutes": 8,
+      "tags": [
+        "quick",
+        "vegetarian",
+        "morning",
+        "energy"
+      ],
+      "ingredients": [
+        {
+          "item": "yulaf ezmesi",
+          "amount": "1 su bardağı"
+        },
+        {
+          "item": "süt",
+          "amount": "2 su bardağı"
+        },
+        {
+          "item": "muz",
+          "amount": "1 adet, dilimlenmiş"
+        },
+        {
+          "item": "bal",
+          "amount": "1 yemek kaşığı"
+        },
+        {
+          "item": "tuz",
+          "amount": "bir tutam"
+        }
+      ],
+      "steps": [
+        "Yulafı, sütü ve tuzu küçük bir tencereye koy, orta ateşe al.",
+        "Koyulaşıp yulaflar yumuşayana kadar beş altı dakika arada bir karıştır.",
+        "Kaseye boşalt, üstüne muzu diz, balı gezdir."
+      ],
+      "why": "Yulaf karbonhidratını yavaş salar; ACSM/AND/DC pozisyon bildirisi, oyun sırasında pek bir şey yemeyeceksen maç öncesi için tam bunu önerir, sabah yemeği de gece boyunca tükettiğin karaciğer glikojenini yerine koyar. Isınmadan önce yerine oturmuş olsun diye iki üç saat önceden ye. Kahve içiyorsan bununla birlikte bir fincan, ilk toptan yaklaşık bir saat öncesine denk gelir, ISSN kafein bildirisi de bu zamanlamayı destekler; seni tedirgin ediyorsa kahveyi atla.",
+      "swap": "Su ya da yulaf sütüyle yap, balın yerine reçel koy; süt içermez ve vegan olur."
+    },
+    {
+      "id": "toast-honey-banana",
+      "title": "Kızarmış ekmek, bal ve muz",
+      "when": "pre",
+      "hoursBefore": "1",
+      "prepMinutes": 5,
+      "tags": [
+        "quick",
+        "sensitiveStomach",
+        "vegetarian",
+        "dairyFree",
+        "morning",
+        "midday",
+        "evening",
+        "energy",
+        "lighter"
+      ],
+      "ingredients": [
+        {
+          "item": "beyaz ekmek",
+          "amount": "2 dilim"
+        },
+        {
+          "item": "bal",
+          "amount": "2 çay kaşığı"
+        },
+        {
+          "item": "muz",
+          "amount": "1 adet"
+        }
+      ],
+      "steps": [
+        "Ekmeği hafif kızarana kadar kızart.",
+        "Ekmek sıcakken balı ince bir kat sür.",
+        "Muzu yanında ye ya da dilimleyip ekmeğin üstüne koy."
+      ],
+      "why": "Oyundan bir saat önce mideyi hızlı terk eden karbonhidrat istersin; ACSM/AND/DC pozisyon bildirisine göre az yağlı, az lifli, az ya da orta proteinli seçenekler kortta mide derdi çıkarma ihtimali en düşük olanlardır. Beyaz ekmek, bal ve muz tam olarak budur, üstelik zaten bildiğin yiyecekler, bu da her türlü süslü şeyden daha önemli. Eve geç geldiğin ve bir saat içinde kortta olman gereken günün atıştırmalığı bu.",
+      "swap": "Glutensiz ekmek aynı işi görür; baldan uzak duruyorsan bal yerine reçel kullan."
+    },
+    {
+      "id": "chicken-rice-bowl",
+      "title": "Tavuklu pilav kasesi",
+      "when": "pre",
+      "hoursBefore": "2-3",
+      "prepMinutes": 25,
+      "tags": [
+        "sensitiveStomach",
+        "dairyFree",
+        "glutenFree",
+        "midday",
+        "evening",
+        "energy",
+        "long"
+      ],
+      "ingredients": [
+        {
+          "item": "beyaz pirinç",
+          "amount": "1 su bardağı"
+        },
+        {
+          "item": "tavuk göğsü",
+          "amount": "1 adet, şerit şerit doğranmış"
+        },
+        {
+          "item": "zeytinyağı",
+          "amount": "1 yemek kaşığı"
+        },
+        {
+          "item": "limon",
+          "amount": "yarım"
+        },
+        {
+          "item": "tuz",
+          "amount": "yarım çay kaşığı"
+        },
+        {
+          "item": "havuç",
+          "amount": "1 adet, rendelenmiş"
+        }
+      ],
+      "steps": [
+        "Pirinci yıka, iki su bardağı su ve bir tutam tuzla kapağı kapalı, suyunu çekene kadar kısık ateşte pişir, yaklaşık 12 dakika.",
+        "Bu arada tavuk şeritlerini yağda, tuzla, orta ateşte iyice pişene kadar sote et, yaklaşık 8 dakika.",
+        "Pilavı kaseye al, tavuğu ve havucu ekle, üstüne limonu sık."
+      ],
+      "why": "Uzun bir maç ya da iki saatlik antrenman için ACSM/AND/DC pozisyon bildirisi, iki ila dört saat önce düzgün bir karbonhidrat öğünü ister; protein ölçülü, yağ az olsun ki mide vaktinde boşalsın. Beyaz pirinç ve yağsız tavuk, maç öncesi bir tabağın olabileceği kadar sade ve tahmin edilebilir; hassas mideli oyuncuların buna hep geri dönmesi bundan. Tutam tuz bilinçli: oyun öncesi öğündeki sodyum, içtiğin sıvıyı tutmana yardım eder.",
+      "swap": "Tavuk yerine bir kutu süzülmüş nohutu yağda ısıt, vegan olur; pirinç porsiyonunu aynı tut."
+    },
+    {
+      "id": "eggs-on-toast",
+      "title": "Domatesli yumurta ve kızarmış ekmek",
+      "when": "post",
+      "hoursBefore": "n/a",
+      "prepMinutes": 10,
+      "tags": [
+        "quick",
+        "vegetarian",
+        "dairyFree",
+        "morning",
+        "midday",
+        "recovery"
+      ],
+      "ingredients": [
+        {
+          "item": "yumurta",
+          "amount": "2 ya da 3 adet"
+        },
+        {
+          "item": "ekmek",
+          "amount": "2 kalın dilim"
+        },
+        {
+          "item": "zeytinyağı",
+          "amount": "1 çay kaşığı"
+        },
+        {
+          "item": "domates",
+          "amount": "1 adet, dilimlenmiş"
+        },
+        {
+          "item": "tuz ve karabiber",
+          "amount": "damak tadına göre"
+        }
+      ],
+      "steps": [
+        "Ekmeği kızart.",
+        "Yumurtaları bir tutam tuzla çırp, yağda karıştırarak, hafifçe katılaşana kadar kısık ateşte pişir.",
+        "Ekmeğin üstüne al, domatesi yanına koy, tuz ve karabiber ekle."
+      ],
+      "why": "Antrenmandan sonra ACSM/AND/DC pozisyon bildirisi, ilk birkaç saat içinde ölçülü bir porsiyon kaliteli protein ve yanında kaslarını yeniden doldurmaya başlayacak karbonhidrat ister. Yumurta her yerde bulabileceğin en iyi doğal proteinlerden biri, ekmek de karbonhidrat işini görür. Özellikle yarın yine oynayacaksan, korttan çıktıktan sonraki bir iki saat içinde ye.",
+      "swap": "Evde ekmek yoksa yumurtayı önceden haşlanmış patatesin üstüne koy, böylece glutensiz de olur."
+    },
+    {
+      "id": "yoghurt-oats-honey-nuts",
+      "title": "Yoğurt, yulaf, bal ve kuruyemiş",
+      "when": "post",
+      "hoursBefore": "n/a",
+      "prepMinutes": 5,
+      "tags": [
+        "quick",
+        "vegetarian",
+        "morning",
+        "midday",
+        "evening",
+        "recovery",
+        "lighter"
+      ],
+      "ingredients": [
+        {
+          "item": "sade yoğurt",
+          "amount": "1 büyük kase, yaklaşık 300 g"
+        },
+        {
+          "item": "yulaf ezmesi",
+          "amount": "3 yemek kaşığı"
+        },
+        {
+          "item": "bal",
+          "amount": "1 yemek kaşığı"
+        },
+        {
+          "item": "ceviz ya da fındık",
+          "amount": "küçük bir avuç, kıyılmış"
+        },
+        {
+          "item": "muz ya da elma",
+          "amount": "1 adet, doğranmış"
+        }
+      ],
+      "steps": [
+        "Yoğurdu kaseye koy.",
+        "Yulafı karıştır, hafif yumuşasın diye iki dakika bekle.",
+        "Üstüne meyveyi, kuruyemişi ve balı koy."
+      ],
+      "why": "Yoğurt süt proteini verir, yulaf, meyve ve bal ise karbonhidrat; ISSN besin zamanlaması bildirisi de ACSM/AND/DC pozisyon bildirisi de antrenman sonrası toparlanma için bu ikiliyi destekler. Soğuk, hızlı ve sert bir antrenmandan sonra acıkmadığın ama bir şey yemen gerektiğini bildiğin anlarda yemesi kolay. Tam bir akşam yemeği fazla geldiğinde, akşam antrenmanından sonra ilk yenecek şey olarak iyi.",
+      "swap": "Koyu soya yoğurduyla süt içermez olur; vegan yapmak için bal yerine reçel kullan."
+    },
+    {
+      "id": "lentil-potato-stew",
+      "title": "Patatesli mercimek yemeği",
+      "when": "post",
+      "hoursBefore": "n/a",
+      "prepMinutes": 30,
+      "tags": [
+        "vegan",
+        "vegetarian",
+        "dairyFree",
+        "glutenFree",
+        "evening",
+        "recovery",
+        "long"
+      ],
+      "ingredients": [
+        {
+          "item": "kırmızı mercimek",
+          "amount": "1 su bardağı, yıkanmış"
+        },
+        {
+          "item": "patates",
+          "amount": "2 orta boy, küp doğranmış"
+        },
+        {
+          "item": "soğan",
+          "amount": "1 adet, doğranmış"
+        },
+        {
+          "item": "havuç",
+          "amount": "1 adet, küp doğranmış"
+        },
+        {
+          "item": "doğranmış domates konservesi",
+          "amount": "1 kutu"
+        },
+        {
+          "item": "zeytinyağı",
+          "amount": "2 yemek kaşığı"
+        },
+        {
+          "item": "kimyon",
+          "amount": "1 çay kaşığı"
+        },
+        {
+          "item": "tuz",
+          "amount": "1 çay kaşığı"
+        }
+      ],
+      "steps": [
+        "Soğanı ve havucu yağda orta ateşte beş dakika yumuşat.",
+        "Kimyonu, mercimeği, patatesi, domatesi, tuzu ve üç su bardağı suyu ekle.",
+        "Kapağı yarı kapalı, mercimekler dağılıp patatesler yumuşayana kadar yaklaşık yirmi dakika kısık ateşte pişir.",
+        "Tuzuna bak, varsa biraz limon sık."
+      ],
+      "why": "Uzun bir antrenmandan sonra kaslarını doldurmak için karbonhidrata, onarmak için proteine ihtiyacın var; IOC uzlaşı bildirisi, sıradan yiyeceklerin hiçbir takviye olmadan ikisini de karşıladığı konusunda net. Mercimek proteini, patates karbonhidratı getirir; tuz ve sıvı da terle kaybettiğini yerine koyar, ACSM/AND/DC pozisyon bildirisi ağır bir antrenmandan sonra bunun atlanmamasını söyler. Pazar günü bir tencere yap, hafta içinde iki üç antrenman sonrası seni doyurur.",
+      "swap": "Mercimek yoksa bir kutu nohut ya da fasulye konservesi kullan, yirmi yerine on dakika pişir."
+    },
+    {
+      "id": "jam-sandwiches-banana",
+      "title": "Reçelli sandviç ve muz",
+      "when": "tournament",
+      "hoursBefore": "n/a",
+      "prepMinutes": 5,
+      "tags": [
+        "quick",
+        "sensitiveStomach",
+        "vegan",
+        "vegetarian",
+        "dairyFree",
+        "morning",
+        "midday",
+        "evening",
+        "energy",
+        "long"
+      ],
+      "ingredients": [
+        {
+          "item": "beyaz ekmek",
+          "amount": "4 dilim"
+        },
+        {
+          "item": "reçel",
+          "amount": "2 yemek kaşığı"
+        },
+        {
+          "item": "muz",
+          "amount": "1 ya da 2 adet"
+        },
+        {
+          "item": "tuz",
+          "amount": "reçele küçük bir tutam, isteğe bağlı"
+        }
+      ],
+      "steps": [
+        "Reçeli iki dilime sür, sandviçleri kapat, dörde böl.",
+        "Kağıda sar ya da bir kutuya koy; çantada saatlerce dayanır.",
+        "İlk maçtan sonra bir iki parçayı birkaç ısırık muzla ye, sonraki maçtan yarım saat önce yine."
+      ],
+      "why": "Aynı gün iki maç arasında ACSM/AND/DC pozisyon bildirisi, tek bir ağır öğün yerine küçük ve düzenli karbonhidrat atıştırmalıklarıyla yakıt doldurmayı, korta geri döndüğünde midende bir şey kalmasın diye de bunları az yağlı, az lifli tutmayı söyler. Beyaz ekmek, reçel ve muz, bir yiyeceğin olabileceği kadar hızlı sindirilir ve tanıdıktır. Kulüp turnuvalarının yüz yıllık öğle yemeği olması boşuna değil.",
+      "swap": "Buğday yasaksa aynı reçelle glutensiz ekmek ya da pirinç patlağı."
+    },
+    {
+      "id": "rice-cakes-banana-dates",
+      "title": "Pirinç patlağı, muz ve hurma",
+      "when": "tournament",
+      "hoursBefore": "n/a",
+      "prepMinutes": 5,
+      "tags": [
+        "quick",
+        "vegan",
+        "vegetarian",
+        "dairyFree",
+        "glutenFree",
+        "midday",
+        "energy",
+        "long",
+        "lighter"
+      ],
+      "ingredients": [
+        {
+          "item": "sade pirinç patlağı",
+          "amount": "6 adet"
+        },
+        {
+          "item": "muz",
+          "amount": "1 adet"
+        },
+        {
+          "item": "hurma",
+          "amount": "5 ya da 6 adet, çekirdeği çıkarılmış"
+        },
+        {
+          "item": "tuz",
+          "amount": "bir tutam, pirinç patlaklarının üstüne serpilmiş"
+        }
+      ],
+      "steps": [
+        "Pirinç patlaklarını ufalanmasın diye bir kutuya koy.",
+        "Muzu ve hurmayı aynı kutuda tut.",
+        "Maçtan sonra iki pirinç patlağı ve birkaç hurma ye; muzu sonraki maça kadarki araya sakla."
+      ],
+      "why": "IOC uzlaşı bildirisi, bir saat ve üzeri oyunda küçük miktarda karbonhidratın bile hem bacaklarına hem konsantrasyonuna yaradığını, art arda birkaç maç oynadığında da yakıtı hızla yerine koymanın öncelik olduğunu belirtir. Hurma ve pirinç patlağı, çantada güneşte bozulmadan taşınan hızlı karbonhidrattır. Tuz orada çünkü saatlerce terleyeceksin ve ACSM/AND/DC pozisyon bildirisi uzun günlerde sıvıyla birlikte bir miktar sodyum alınmasını ister.",
+      "swap": "Kuru üzüm ya da kuru kayısı hurmanın işini görür; daha az havadar bir şey istersen pirinç patlağı yerine yulaflı kraker."
+    },
+    {
+      "id": "potato-egg-box",
+      "title": "Tuzlu patates ve yumurta kutusu",
+      "when": "tournament",
+      "hoursBefore": "n/a",
+      "prepMinutes": 25,
+      "tags": [
+        "vegetarian",
+        "dairyFree",
+        "glutenFree",
+        "midday",
+        "energy",
+        "recovery",
+        "long"
+      ],
+      "ingredients": [
+        {
+          "item": "küçük patates",
+          "amount": "6-8 adet"
+        },
+        {
+          "item": "yumurta",
+          "amount": "3 adet"
+        },
+        {
+          "item": "zeytinyağı",
+          "amount": "1 yemek kaşığı"
+        },
+        {
+          "item": "tuz",
+          "amount": "1 çay kaşığı"
+        },
+        {
+          "item": "çeri domates",
+          "amount": "bir avuç"
+        }
+      ],
+      "steps": [
+        "Patatesleri tuzlu suda bıçak kolayca girene kadar haşla, yaklaşık 15 dakika; son 9 dakikada yumurtaları da at.",
+        "Süz, yumurtaları soy, patatesleri sıcakken ikiye böl, yağ ve tuzla karıştır.",
+        "Patatesi, yumurtayı ve domatesi bir kutuya koy; çantadan soğuk yenmesinde sakınca yok."
+      ],
+      "why": "Maçlar arasında saatler olan bir turnuva gününde doldurmak için karbonhidrata, onarımı başlatmak için biraz proteine, içtiğin suyu tutmak için de tuza ihtiyacın var; ACSM/AND/DC pozisyon bildirisi kısa toparlanma aralıkları için üçünü de kapsar. Haşlanmış patates ve yumurta bunu hiçbir ambalaj olmadan yapar, soğuk da lezzetlidir. Maçtan sonra önce patatesi ye, yumurtayı sonraki maça bir saatten fazla varsa bırak.",
+      "swap": "Yumurtayı çıkar, patateslere bir kutu süzülmüş fasulye konservesi karıştır, vegan kutu olur."
+    },
+    {
+      "id": "pasta-lentil-tomato",
+      "title": "Mercimekli domates soslu makarna",
+      "when": "evening",
+      "hoursBefore": "n/a",
+      "prepMinutes": 30,
+      "tags": [
+        "vegan",
+        "vegetarian",
+        "dairyFree",
+        "morning",
+        "evening",
+        "energy",
+        "recovery",
+        "long"
+      ],
+      "ingredients": [
+        {
+          "item": "makarna",
+          "amount": "kişi başı 2 büyük avuç"
+        },
+        {
+          "item": "kırmızı mercimek",
+          "amount": "yarım su bardağı, yıkanmış"
+        },
+        {
+          "item": "doğranmış domates konservesi",
+          "amount": "1 kutu"
+        },
+        {
+          "item": "soğan",
+          "amount": "1 adet, doğranmış"
+        },
+        {
+          "item": "sarımsak",
+          "amount": "2 diş, doğranmış"
+        },
+        {
+          "item": "zeytinyağı",
+          "amount": "2 yemek kaşığı"
+        },
+        {
+          "item": "tuz",
+          "amount": "1 çay kaşığı"
+        }
+      ],
+      "steps": [
+        "Soğanı ve sarımsağı yağda beş dakika yumuşat.",
+        "Mercimeği, domatesi, tuzu ve bir su bardağı suyu ekle; mercimekler yumuşayıp sos koyulaşana kadar yirmi dakika kısık ateşte pişir.",
+        "Sos pişerken makarnayı tuzlu suda haşla, süz, sosla karıştır."
+      ],
+      "why": "Yarın sabah oynayacaksan yakıtını belirleyen öğün bu akşamki yemek; ACSM/AND/DC pozisyon bildirisi, karbonhidrattan zengin bir günün kas glikojenini yaklaşık 24 saat içinde normale döndürdüğünü söyler. Makarna karbonhidratı, mercimek de IOC uzlaşı bildirisinin öğünlere yayılmasını istediği proteini verir. Akşam antrenmanından sonraki yemek olarak da işe yarar; doldurmayı ve onarımı tek tabakta halleder.",
+      "swap": "Buğday yasaksa aynı sosun altına glutensiz makarna ya da pilav."
+    },
+    {
+      "id": "chicken-potatoes-yoghurt",
+      "title": "Tavuk, patates ve yoğurt sosu",
+      "when": "evening",
+      "hoursBefore": "n/a",
+      "prepMinutes": 30,
+      "tags": [
+        "glutenFree",
+        "midday",
+        "evening",
+        "energy",
+        "recovery",
+        "long"
+      ],
+      "ingredients": [
+        {
+          "item": "tavuk but ya da göğüs",
+          "amount": "2 parça"
+        },
+        {
+          "item": "patates",
+          "amount": "3 orta boy, elma dilimi doğranmış"
+        },
+        {
+          "item": "zeytinyağı",
+          "amount": "2 yemek kaşığı"
+        },
+        {
+          "item": "sade yoğurt",
+          "amount": "yarım su bardağı"
+        },
+        {
+          "item": "sarımsak",
+          "amount": "1 diş, ezilmiş"
+        },
+        {
+          "item": "limon",
+          "amount": "yarım"
+        },
+        {
+          "item": "tuz ve karabiber",
+          "amount": "damak tadına göre"
+        }
+      ],
+      "steps": [
+        "Fırını 220 dereceye ısıt. Patatesi ve tavuğu tek tepside yağ, tuz ve karabiberle harmanla.",
+        "Patateslerin kenarları çıtırlaşıp tavuk iyice pişene kadar 25 dakika fırınla.",
+        "Yoğurda sarımsağı, biraz limon suyunu ve bir tutam tuzu karıştır, yanında sun."
+      ],
+      "why": "Sert bir antrenmandan sonraki akşam, onarımın büyük kısmını yaptığın zamandır; ACSM/AND/DC pozisyon bildirisi her üç beş saatte bir, her öğünde iyi bir porsiyon kaliteli protein ve yanında harcadığını dolduracak karbonhidrat ister. Tavuk ve yoğurt proteini, patates de yakıtı karşılar. Yarın maçın varsa bu, midenin zaten tanıdığı bir akşam yemeği; ACSM/AND/DC pozisyon bildirisine göre bu, her yeni şeyden daha önemli.",
+      "swap": "Tavuk yerine bir kutu süzülmüş nohutu patateslerle fırınla, yoğurdu olduğu gibi sun; vejetaryen tabak olur."
+    },
+    {
+      "id": "bedtime-yoghurt-honey-walnuts",
+      "title": "Yatmadan önce yoğurt, bal ve ceviz",
+      "when": "evening",
+      "hoursBefore": "n/a",
+      "prepMinutes": 3,
+      "tags": [
+        "quick",
+        "vegetarian",
+        "glutenFree",
+        "evening",
+        "recovery",
+        "lighter"
+      ],
+      "ingredients": [
+        {
+          "item": "sade yoğurt",
+          "amount": "1 kase, yaklaşık 250 g"
+        },
+        {
+          "item": "bal",
+          "amount": "2 çay kaşığı"
+        },
+        {
+          "item": "ceviz",
+          "amount": "küçük bir avuç, kırılmış"
+        }
+      ],
+      "steps": [
+        "Yoğurdu kaseye koy.",
+        "Cevizi üstüne serp, balı gezdir.",
+        "Yatmadan önceki yarım saat içinde ye."
+      ],
+      "why": "ISSN besin zamanlaması bildirisi, uyumadan önce bir porsiyon yavaş sindirilen süt proteininin uykunu bozmadan kas onarımını gece boyunca sürdürdüğünü bildirir. Yoğurt bunun gündelik hali. Geç oynadığın, hafif bir akşam yemeği yediğin ve yatmadan önce hiçbir şey yerine küçük bir şey istediğin akşam için bu.",
+      "swap": "Yemek yerine içmeyi tercih edersen bir kaşık ballı ılık süt aynı işi görür."
+    }
+  ]
+}

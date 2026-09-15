@@ -211,6 +211,8 @@
 		4408AA3451544A038525BEC4 /* NutritionRecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C517A03AB2348BA9A39621C /* NutritionRecipesView.swift */; };
 		0FC944F399964BA69E2DA0E6 /* nutrition_recipes.en.json in Resources */ = {isa = PBXBuildFile; fileRef = 48D75E5288AA45E489A6507E /* nutrition_recipes.en.json */; };
 		B4A9C9FA82364CAB95680020 /* nutrition_guide.en.json in Resources */ = {isa = PBXBuildFile; fileRef = 5799584BF0394FDB9B714ECE /* nutrition_guide.en.json */; };
+		29D092B4448540DFAA6E40E4 /* nutrition_recipes.tr.json in Resources */ = {isa = PBXBuildFile; fileRef = ED0797793E25466D87A301A9 /* nutrition_recipes.tr.json */; };
+		44FA0F82430943B2A384D217 /* nutrition_recipes.fr.json in Resources */ = {isa = PBXBuildFile; fileRef = C9ED65B9249E403589C97657 /* nutrition_recipes.fr.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -430,6 +432,8 @@
 		9C517A03AB2348BA9A39621C /* NutritionRecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NutritionRecipesView.swift; path = CourtIQ/Features/Nutrition/NutritionRecipesView.swift; sourceTree = "<group>"; };
 		48D75E5288AA45E489A6507E /* nutrition_recipes.en.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = nutrition_recipes.en.json; path = CourtIQ/Resources/Content/nutrition_recipes.en.json; sourceTree = "<group>"; };
 		5799584BF0394FDB9B714ECE /* nutrition_guide.en.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = nutrition_guide.en.json; path = CourtIQ/Resources/Content/nutrition_guide.en.json; sourceTree = "<group>"; };
+		ED0797793E25466D87A301A9 /* nutrition_recipes.tr.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = nutrition_recipes.tr.json; path = CourtIQ/Resources/Content/nutrition_recipes.tr.json; sourceTree = "<group>"; };
+		C9ED65B9249E403589C97657 /* nutrition_recipes.fr.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = nutrition_recipes.fr.json; path = CourtIQ/Resources/Content/nutrition_recipes.fr.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -542,6 +546,8 @@
 				A000000000000000000FC0 /* WallRallyCamView.swift */,
 				B100000000000000000001 /* WallBallLocator.swift */,
 				B400000000000000000001 /* WallSwingDetector.swift */,
+				C9ED65B9249E403589C97657 /* nutrition_recipes.fr.json */,
+				ED0797793E25466D87A301A9 /* nutrition_recipes.tr.json */,
 				5799584BF0394FDB9B714ECE /* nutrition_guide.en.json */,
 				48D75E5288AA45E489A6507E /* nutrition_recipes.en.json */,
 				9C517A03AB2348BA9A39621C /* NutritionRecipesView.swift */,
@@ -792,6 +798,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44FA0F82430943B2A384D217 /* nutrition_recipes.fr.json in Resources */,
+				29D092B4448540DFAA6E40E4 /* nutrition_recipes.tr.json in Resources */,
 				B4A9C9FA82364CAB95680020 /* nutrition_guide.en.json in Resources */,
 				0FC944F399964BA69E2DA0E6 /* nutrition_recipes.en.json in Resources */,
 				0B85B093A18C497C930D181B /* tactics_i18n.tr.json in Resources */,

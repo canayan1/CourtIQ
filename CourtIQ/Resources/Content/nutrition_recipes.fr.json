@@ -1,0 +1,724 @@
+{
+  "version": 1,
+  "quiz": [
+    {
+      "id": "playTime",
+      "question": "Tu joues plutôt quand ?",
+      "options": [
+        {
+          "id": "morning",
+          "label": "Le matin, avant le boulot",
+          "tags": [
+            "morning"
+          ]
+        },
+        {
+          "id": "midday",
+          "label": "En milieu de journée",
+          "tags": [
+            "midday"
+          ]
+        },
+        {
+          "id": "evening",
+          "label": "Le soir, après le boulot",
+          "tags": [
+            "evening"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sessionLength",
+      "question": "Une séance normale, ça dure combien de temps pour toi ?",
+      "options": [
+        {
+          "id": "short",
+          "label": "Moins d'une heure, vite fait",
+          "tags": [
+            "lighter",
+            "quick"
+          ]
+        },
+        {
+          "id": "normal",
+          "label": "Une à deux heures",
+          "tags": [
+            "energy"
+          ]
+        },
+        {
+          "id": "long",
+          "label": "Plus de deux heures, ou un long match",
+          "tags": [
+            "long"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stomach",
+      "question": "Comment ton estomac réagit quand tu manges avant de jouer ?",
+      "options": [
+        {
+          "id": "sturdy",
+          "label": "Bien, je mange de tout et je joue",
+          "tags": []
+        },
+        {
+          "id": "sensitive",
+          "label": "Capricieux — du simple, du temps",
+          "tags": [
+            "sensitiveStomach"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "diet",
+      "question": "Il y a des choses que tu ne manges pas ?",
+      "options": [
+        {
+          "id": "anything",
+          "label": "Je mange de tout",
+          "tags": []
+        },
+        {
+          "id": "vegetarian",
+          "label": "Ni viande ni poisson",
+          "tags": [
+            "vegetarian"
+          ]
+        },
+        {
+          "id": "vegan",
+          "label": "Rien d'origine animale",
+          "tags": [
+            "vegan",
+            "vegetarian",
+            "dairyFree"
+          ]
+        },
+        {
+          "id": "dairyFree",
+          "label": "Ni lait, ni yaourt, ni fromage",
+          "tags": [
+            "dairyFree"
+          ]
+        },
+        {
+          "id": "glutenFree",
+          "label": "Ni blé ni gluten",
+          "tags": [
+            "glutenFree"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prepTime",
+      "question": "Tu as combien de temps pour préparer à manger ?",
+      "options": [
+        {
+          "id": "none",
+          "label": "Presque pas, j'attrape et je file",
+          "tags": [
+            "quick"
+          ]
+        },
+        {
+          "id": "10min",
+          "label": "Une dizaine de minutes",
+          "tags": [
+            "quick"
+          ]
+        },
+        {
+          "id": "30min",
+          "label": "Une demi-heure, je peux cuisiner",
+          "tags": []
+        }
+      ]
+    },
+    {
+      "id": "goal",
+      "question": "En ce moment, qu'est-ce que tu attends de ton alimentation pour ton tennis ?",
+      "options": [
+        {
+          "id": "energy",
+          "label": "Ne plus m'écrouler au deuxième set",
+          "tags": [
+            "energy"
+          ]
+        },
+        {
+          "id": "recovery",
+          "label": "Être en forme le lendemain",
+          "tags": [
+            "recovery"
+          ]
+        },
+        {
+          "id": "lighter",
+          "label": "Me sentir plus léger sur le court",
+          "tags": [
+            "lighter"
+          ]
+        }
+      ]
+    }
+  ],
+  "recipes": [
+    {
+      "id": "porridge-banana-honey",
+      "title": "Porridge banane et miel",
+      "when": "pre",
+      "hoursBefore": "2-3",
+      "prepMinutes": 8,
+      "tags": [
+        "quick",
+        "vegetarian",
+        "morning",
+        "energy"
+      ],
+      "ingredients": [
+        {
+          "item": "flocons d'avoine",
+          "amount": "1 bol"
+        },
+        {
+          "item": "lait",
+          "amount": "2 bols"
+        },
+        {
+          "item": "banane",
+          "amount": "1, coupée en rondelles"
+        },
+        {
+          "item": "miel",
+          "amount": "1 cuillère à soupe"
+        },
+        {
+          "item": "sel",
+          "amount": "une pincée"
+        }
+      ],
+      "steps": [
+        "Mets les flocons, le lait et le sel dans une petite casserole à feu moyen.",
+        "Remue de temps en temps pendant cinq ou six minutes, jusqu'à ce que ça épaississe et que les flocons soient fondants.",
+        "Verse dans un bol, pose la banane dessus et arrose de miel."
+      ],
+      "why": "Les flocons d'avoine libèrent leurs glucides lentement, ce que la position ACSM/AND/DC préfère avant de jouer quand tu ne mangeras pas grand-chose pendant, et un repas le matin recharge le glycogène du foie que tu as épuisé pendant la nuit. Mange-le deux à trois heures avant pour qu'il soit bien passé au moment de l'échauffement. Si tu bois du café d'habitude, une tasse avec ce bol arrive à peu près une heure avant la première balle, le timing que soutient la position ISSN sur la caféine ; laisse-le tomber s'il te rend nerveux.",
+      "swap": "Fais-le avec de l'eau ou du lait d'avoine et remplace le miel par de la confiture, et il devient sans produits laitiers et végan."
+    },
+    {
+      "id": "toast-honey-banana",
+      "title": "Tartines miel et banane",
+      "when": "pre",
+      "hoursBefore": "1",
+      "prepMinutes": 5,
+      "tags": [
+        "quick",
+        "sensitiveStomach",
+        "vegetarian",
+        "dairyFree",
+        "morning",
+        "midday",
+        "evening",
+        "energy",
+        "lighter"
+      ],
+      "ingredients": [
+        {
+          "item": "pain de mie",
+          "amount": "2 tranches"
+        },
+        {
+          "item": "miel",
+          "amount": "2 cuillères à café"
+        },
+        {
+          "item": "banane",
+          "amount": "1"
+        }
+      ],
+      "steps": [
+        "Fais griller le pain jusqu'à ce qu'il soit juste doré.",
+        "Étale le miel en couche fine pendant que le pain est encore chaud.",
+        "Mange la banane à côté, ou coupe-la en rondelles sur les tartines."
+      ],
+      "why": "Une heure avant de jouer, tu veux des glucides qui quittent vite l'estomac, et la position ACSM/AND/DC dit que les choix pauvres en graisses, pauvres en fibres et faibles à modérés en protéines sont ceux qui risquent le moins de te causer des soucis de ventre sur le court. Pain de mie, miel et banane, c'est exactement ça, et ce sont des aliments que tu connais déjà, ce qui compte plus que n'importe quoi de sophistiqué. C'est l'en-cas du jour où tu es rentré tard et où tu dois être sur le court dans une heure.",
+      "swap": "Le pain sans gluten marche pareil ; mets de la confiture à la place du miel si tu évites le miel."
+    },
+    {
+      "id": "chicken-rice-bowl",
+      "title": "Bol de riz au poulet",
+      "when": "pre",
+      "hoursBefore": "2-3",
+      "prepMinutes": 25,
+      "tags": [
+        "sensitiveStomach",
+        "dairyFree",
+        "glutenFree",
+        "midday",
+        "evening",
+        "energy",
+        "long"
+      ],
+      "ingredients": [
+        {
+          "item": "riz blanc",
+          "amount": "1 bol"
+        },
+        {
+          "item": "blanc de poulet",
+          "amount": "1, coupé en lanières"
+        },
+        {
+          "item": "huile d'olive",
+          "amount": "1 cuillère à soupe"
+        },
+        {
+          "item": "citron",
+          "amount": "un demi"
+        },
+        {
+          "item": "sel",
+          "amount": "une demi-cuillère à café"
+        },
+        {
+          "item": "carotte",
+          "amount": "1, râpée"
+        }
+      ],
+      "steps": [
+        "Rince le riz, couvre avec deux bols d'eau et une pincée de sel, laisse mijoter à couvert jusqu'à absorption de l'eau, environ 12 minutes.",
+        "Pendant ce temps, fais revenir le poulet dans l'huile à feu moyen avec le sel jusqu'à ce qu'il soit bien cuit, environ 8 minutes.",
+        "Mets le riz dans un bol, ajoute le poulet et la carotte, presse le citron par-dessus."
+      ],
+      "why": "Pour un long match ou une séance de deux heures, la position ACSM/AND/DC veut un vrai repas riche en glucides deux à quatre heures avant, avec juste un peu de protéines et peu de graisses pour qu'il quitte l'estomac à temps. Riz blanc et poulet maigre, c'est ce qu'on fait de plus simple et de plus prévisible comme assiette d'avant-match, et c'est pour ça que les joueurs à l'estomac fragile y reviennent toujours. La pincée de sel n'est pas là par hasard ; le sodium du repas d'avant-match t'aide à garder l'eau que tu bois.",
+      "swap": "Remplace le poulet par une boîte de pois chiches égouttés réchauffés dans l'huile et c'est végan ; garde la même portion de riz."
+    },
+    {
+      "id": "eggs-on-toast",
+      "title": "Œufs brouillés, tartines et tomate",
+      "when": "post",
+      "hoursBefore": "n/a",
+      "prepMinutes": 10,
+      "tags": [
+        "quick",
+        "vegetarian",
+        "dairyFree",
+        "morning",
+        "midday",
+        "recovery"
+      ],
+      "ingredients": [
+        {
+          "item": "œufs",
+          "amount": "2 ou 3"
+        },
+        {
+          "item": "pain",
+          "amount": "2 tranches épaisses"
+        },
+        {
+          "item": "huile d'olive",
+          "amount": "1 cuillère à café"
+        },
+        {
+          "item": "tomate",
+          "amount": "1, coupée en rondelles"
+        },
+        {
+          "item": "sel et poivre",
+          "amount": "à ton goût"
+        }
+      ],
+      "steps": [
+        "Fais griller le pain.",
+        "Bats les œufs avec une pincée de sel, fais-les cuire doucement dans l'huile en remuant, jusqu'à ce qu'ils soient juste pris.",
+        "Dépose-les sur les tartines, pose la tomate à côté, sale et poivre."
+      ],
+      "why": "Après une séance, la position ACSM/AND/DC demande une portion modérée de protéines de bonne qualité dans les deux premières heures, avec des glucides pour commencer à recharger tes muscles. Les œufs sont l'une des meilleures protéines brutes qu'on trouve n'importe où, et les tartines font le boulot côté glucides. Mange ça dans l'heure ou les deux heures qui suivent la sortie du court, surtout si tu rejoues demain.",
+      "swap": "Pas de pain à la maison : sers les œufs sur un reste de pommes de terre bouillies, ce qui rend le plat sans gluten en plus."
+    },
+    {
+      "id": "yoghurt-oats-honey-nuts",
+      "title": "Yaourt, flocons d'avoine, miel et noix",
+      "when": "post",
+      "hoursBefore": "n/a",
+      "prepMinutes": 5,
+      "tags": [
+        "quick",
+        "vegetarian",
+        "morning",
+        "midday",
+        "evening",
+        "recovery",
+        "lighter"
+      ],
+      "ingredients": [
+        {
+          "item": "yaourt nature",
+          "amount": "1 grand bol, environ 300 g"
+        },
+        {
+          "item": "flocons d'avoine",
+          "amount": "3 cuillères à soupe"
+        },
+        {
+          "item": "miel",
+          "amount": "1 cuillère à soupe"
+        },
+        {
+          "item": "noix ou noisettes",
+          "amount": "une petite poignée, concassées"
+        },
+        {
+          "item": "banane ou pomme",
+          "amount": "1, coupée en morceaux"
+        }
+      ],
+      "steps": [
+        "Verse le yaourt dans un bol.",
+        "Ajoute les flocons, mélange et attends deux minutes pour qu'ils ramollissent un peu.",
+        "Ajoute le fruit, les noix et le miel par-dessus."
+      ],
+      "why": "Le yaourt t'apporte des protéines laitières, et les flocons, le fruit et le miel apportent les glucides, la combinaison que la position ISSN sur le timing des nutriments et la position ACSM/AND/DC soutiennent toutes les deux pour récupérer après l'entraînement. C'est froid, rapide et facile à manger quand tu n'as pas faim après une grosse séance mais que tu sais qu'il faut avaler quelque chose. Parfait comme première chose après une séance du soir, quand un vrai dîner, c'est trop.",
+      "swap": "Un yaourt au soja bien épais le rend sans produits laitiers ; mets de la confiture à la place du miel pour le rendre végan."
+    },
+    {
+      "id": "lentil-potato-stew",
+      "title": "Lentilles corail aux pommes de terre",
+      "when": "post",
+      "hoursBefore": "n/a",
+      "prepMinutes": 30,
+      "tags": [
+        "vegan",
+        "vegetarian",
+        "dairyFree",
+        "glutenFree",
+        "evening",
+        "recovery",
+        "long"
+      ],
+      "ingredients": [
+        {
+          "item": "lentilles corail",
+          "amount": "1 bol, rincées"
+        },
+        {
+          "item": "pommes de terre",
+          "amount": "2 moyennes, coupées en dés"
+        },
+        {
+          "item": "oignon",
+          "amount": "1, émincé"
+        },
+        {
+          "item": "carotte",
+          "amount": "1, coupée en dés"
+        },
+        {
+          "item": "tomates concassées en boîte",
+          "amount": "1 boîte"
+        },
+        {
+          "item": "huile d'olive",
+          "amount": "2 cuillères à soupe"
+        },
+        {
+          "item": "cumin en poudre",
+          "amount": "1 cuillère à café"
+        },
+        {
+          "item": "sel",
+          "amount": "1 cuillère à café"
+        }
+      ],
+      "steps": [
+        "Fais revenir l'oignon et la carotte dans l'huile à feu moyen pendant cinq minutes.",
+        "Ajoute le cumin, les lentilles, les pommes de terre, les tomates, le sel et trois bols d'eau.",
+        "Laisse mijoter à demi-couvert environ vingt minutes, jusqu'à ce que les lentilles se défassent et que les pommes de terre soient fondantes.",
+        "Goûte, rectifie le sel, ajoute un filet de citron si tu en as un."
+      ],
+      "why": "Après une longue séance, il te faut des glucides pour recharger tes muscles et des protéines pour les réparer, et le consensus de l'IOC est clair : les aliments ordinaires couvrent les deux sans aucun complément. Les lentilles apportent les protéines, les pommes de terre les glucides, et le sel et le liquide aident à remplacer ce que tu as transpiré, ce que la position ACSM/AND/DC dit de ne pas négliger après une grosse séance. Fais-en une marmite le dimanche et ça te nourrit après deux ou trois séances dans la semaine.",
+      "swap": "Pas de lentilles : prends une boîte de pois chiches ou de haricots blancs et laisse mijoter dix minutes au lieu de vingt."
+    },
+    {
+      "id": "jam-sandwiches-banana",
+      "title": "Sandwichs à la confiture et banane",
+      "when": "tournament",
+      "hoursBefore": "n/a",
+      "prepMinutes": 5,
+      "tags": [
+        "quick",
+        "sensitiveStomach",
+        "vegan",
+        "vegetarian",
+        "dairyFree",
+        "morning",
+        "midday",
+        "evening",
+        "energy",
+        "long"
+      ],
+      "ingredients": [
+        {
+          "item": "pain de mie",
+          "amount": "4 tranches"
+        },
+        {
+          "item": "confiture",
+          "amount": "2 cuillères à soupe"
+        },
+        {
+          "item": "banane",
+          "amount": "1 ou 2"
+        },
+        {
+          "item": "sel",
+          "amount": "une toute petite pincée dans la confiture, facultatif"
+        }
+      ],
+      "steps": [
+        "Étale la confiture sur deux tranches, referme les sandwichs, coupe-les en quatre.",
+        "Emballe-les dans du papier ou une boîte ; ils tiennent des heures dans un sac.",
+        "Mange un quart ou deux avec quelques bouchées de banane après le premier match, et encore une demi-heure avant le suivant."
+      ],
+      "why": "Entre deux matchs le même jour, la position ACSM/AND/DC dit de refaire le plein avec des petits en-cas glucidiques réguliers plutôt qu'un gros repas, et de les garder pauvres en graisses et en fibres pour que rien ne traîne dans ton estomac quand tu retournes sur le court. Pain de mie, confiture et banane, difficile de faire plus vite digéré et plus familier. Ça fait un siècle que c'est le déjeuner des tournois de club, et ce n'est pas pour rien.",
+      "swap": "Du pain sans gluten ou des galettes de riz avec la même confiture si le blé est exclu."
+    },
+    {
+      "id": "rice-cakes-banana-dates",
+      "title": "Galettes de riz, banane et dattes",
+      "when": "tournament",
+      "hoursBefore": "n/a",
+      "prepMinutes": 5,
+      "tags": [
+        "quick",
+        "vegan",
+        "vegetarian",
+        "dairyFree",
+        "glutenFree",
+        "midday",
+        "energy",
+        "long",
+        "lighter"
+      ],
+      "ingredients": [
+        {
+          "item": "galettes de riz nature",
+          "amount": "6"
+        },
+        {
+          "item": "banane",
+          "amount": "1"
+        },
+        {
+          "item": "dattes",
+          "amount": "5 ou 6, dénoyautées"
+        },
+        {
+          "item": "sel",
+          "amount": "une pincée, saupoudrée sur les galettes"
+        }
+      ],
+      "steps": [
+        "Range les galettes de riz dans une boîte pour qu'elles ne s'émiettent pas.",
+        "Garde la banane et les dattes dans la même boîte.",
+        "Mange deux galettes et deux ou trois dattes après un match ; garde la banane pour le creux avant le suivant."
+      ],
+      "why": "Le consensus de l'IOC note que même de petites quantités de glucides quand tu joues une heure ou plus aident à la fois tes jambes et ta concentration, et que quand tu enchaînes plusieurs matchs rapprochés, refaire le plein vite est la priorité. Dattes et galettes de riz sont des glucides rapides qui voyagent dans un sac sans tourner au soleil. Le sel est là parce que tu vas transpirer pendant des heures et que la position ACSM/AND/DC veut un peu de sodium avec ce que tu bois les jours longs.",
+      "swap": "Raisins secs ou abricots secs font le même boulot que les dattes ; des galettes d'avoine remplacent les galettes de riz si tu veux quelque chose de moins aérien."
+    },
+    {
+      "id": "potato-egg-box",
+      "title": "Gamelle pommes de terre et œufs",
+      "when": "tournament",
+      "hoursBefore": "n/a",
+      "prepMinutes": 25,
+      "tags": [
+        "vegetarian",
+        "dairyFree",
+        "glutenFree",
+        "midday",
+        "energy",
+        "recovery",
+        "long"
+      ],
+      "ingredients": [
+        {
+          "item": "pommes de terre grenaille",
+          "amount": "6 à 8"
+        },
+        {
+          "item": "œufs",
+          "amount": "3"
+        },
+        {
+          "item": "huile d'olive",
+          "amount": "1 cuillère à soupe"
+        },
+        {
+          "item": "sel",
+          "amount": "1 cuillère à café"
+        },
+        {
+          "item": "tomates cerises",
+          "amount": "une poignée"
+        }
+      ],
+      "steps": [
+        "Fais cuire les pommes de terre à l'eau salée jusqu'à ce qu'un couteau s'enfonce, environ 15 minutes ; ajoute les œufs pour les 9 dernières.",
+        "Égoutte, écale les œufs, coupe les pommes de terre en deux encore chaudes et mélange-les avec l'huile et le sel.",
+        "Mets pommes de terre, œufs et tomates dans une boîte ; ça se mange très bien froid, sorti du sac."
+      ],
+      "why": "Un jour de tournoi avec des heures entre les matchs, il te faut des glucides pour recharger, un peu de protéines pour lancer la réparation, et du sel pour retenir l'eau que tu bois ; la position ACSM/AND/DC couvre les trois pour les fenêtres de récupération courtes. Pommes de terre bouillies et œufs font ça sans aucun emballage, et c'est bon froid. Mange d'abord les pommes de terre après un match et garde les œufs pour quand le match suivant est à plus d'une heure.",
+      "swap": "Laisse tomber les œufs et ajoute une boîte de haricots blancs égouttés mélangés aux pommes de terre pour une gamelle végane."
+    },
+    {
+      "id": "pasta-lentil-tomato",
+      "title": "Pâtes sauce tomate aux lentilles",
+      "when": "evening",
+      "hoursBefore": "n/a",
+      "prepMinutes": 30,
+      "tags": [
+        "vegan",
+        "vegetarian",
+        "dairyFree",
+        "morning",
+        "evening",
+        "energy",
+        "recovery",
+        "long"
+      ],
+      "ingredients": [
+        {
+          "item": "pâtes",
+          "amount": "2 grosses poignées par personne"
+        },
+        {
+          "item": "lentilles corail",
+          "amount": "un demi-bol, rincées"
+        },
+        {
+          "item": "tomates concassées en boîte",
+          "amount": "1 boîte"
+        },
+        {
+          "item": "oignon",
+          "amount": "1, émincé"
+        },
+        {
+          "item": "ail",
+          "amount": "2 gousses, hachées"
+        },
+        {
+          "item": "huile d'olive",
+          "amount": "2 cuillères à soupe"
+        },
+        {
+          "item": "sel",
+          "amount": "1 cuillère à café"
+        }
+      ],
+      "steps": [
+        "Fais revenir l'oignon et l'ail dans l'huile pendant cinq minutes.",
+        "Ajoute lentilles, tomates, sel et un bol d'eau ; laisse mijoter vingt minutes, jusqu'à ce que les lentilles soient fondantes et la sauce épaisse.",
+        "Fais cuire les pâtes dans l'eau salée pendant que la sauce mijote, égoutte-les et mélange-les à la sauce."
+      ],
+      "why": "Si tu joues demain matin, le dîner de ce soir est le repas qui fixe ton carburant ; la position ACSM/AND/DC dit qu'une journée riche en glucides normalise le glycogène musculaire en 24 heures environ. Les pâtes t'apportent les glucides et les lentilles les protéines que le consensus de l'IOC veut voir réparties sur tes repas. Ça marche aussi comme dîner après une séance du soir, quand il fait la recharge et la réparation dans une seule assiette.",
+      "swap": "Des pâtes sans gluten ou du riz sous la même sauce si le blé est exclu."
+    },
+    {
+      "id": "chicken-potatoes-yoghurt",
+      "title": "Poulet, pommes de terre, sauce yaourt",
+      "when": "evening",
+      "hoursBefore": "n/a",
+      "prepMinutes": 30,
+      "tags": [
+        "glutenFree",
+        "midday",
+        "evening",
+        "energy",
+        "recovery",
+        "long"
+      ],
+      "ingredients": [
+        {
+          "item": "hauts de cuisse ou blanc de poulet",
+          "amount": "2 morceaux"
+        },
+        {
+          "item": "pommes de terre",
+          "amount": "3 moyennes, coupées en quartiers"
+        },
+        {
+          "item": "huile d'olive",
+          "amount": "2 cuillères à soupe"
+        },
+        {
+          "item": "yaourt nature",
+          "amount": "un demi-bol"
+        },
+        {
+          "item": "ail",
+          "amount": "1 gousse, écrasée"
+        },
+        {
+          "item": "citron",
+          "amount": "un demi"
+        },
+        {
+          "item": "sel et poivre",
+          "amount": "à ton goût"
+        }
+      ],
+      "steps": [
+        "Préchauffe le four à 220 °C. Mélange les pommes de terre et le poulet avec l'huile, le sel et le poivre sur une plaque.",
+        "Enfourne 25 minutes, jusqu'à ce que les pommes de terre soient croustillantes sur les bords et le poulet bien cuit.",
+        "Mélange l'ail, un filet de citron et une pincée de sel dans le yaourt et sers-le à côté."
+      ],
+      "why": "Le soir après une grosse séance, c'est là que tu fais l'essentiel de ta réparation, et la position ACSM/AND/DC veut une bonne portion de protéines de qualité à chaque repas, toutes les trois à cinq heures, avec des glucides à côté pour recharger ce que tu as dépensé. Poulet et yaourt couvrent les protéines, les pommes de terre couvrent le carburant. Si tu as un match demain, c'est un dîner que ton estomac connaît déjà, ce qui, selon la position ACSM/AND/DC, compte plus que n'importe quelle nouveauté.",
+      "swap": "Fais rôtir une boîte de pois chiches égouttés avec les pommes de terre à la place du poulet, et sers le yaourt tel quel, pour une assiette végétarienne."
+    },
+    {
+      "id": "bedtime-yoghurt-honey-walnuts",
+      "title": "Yaourt du soir, miel et noix",
+      "when": "evening",
+      "hoursBefore": "n/a",
+      "prepMinutes": 3,
+      "tags": [
+        "quick",
+        "vegetarian",
+        "glutenFree",
+        "evening",
+        "recovery",
+        "lighter"
+      ],
+      "ingredients": [
+        {
+          "item": "yaourt nature",
+          "amount": "1 bol, environ 250 g"
+        },
+        {
+          "item": "miel",
+          "amount": "2 cuillères à café"
+        },
+        {
+          "item": "noix",
+          "amount": "une petite poignée, concassées"
+        }
+      ],
+      "steps": [
+        "Verse le yaourt dans un bol.",
+        "Parsème de noix et arrose de miel.",
+        "Mange-le dans la demi-heure avant d'aller te coucher."
+      ],
+      "why": "La position ISSN sur le timing des nutriments rapporte qu'une portion de protéines laitières à digestion lente avant de dormir entretient la réparation musculaire pendant la nuit sans perturber ton sommeil. Le yaourt, c'est la version de tous les jours de ça. C'est celui du soir où tu as joué tard, dîné léger et où tu veux un petit quelque chose avant de te coucher plutôt que rien.",
+      "swap": "Du lait chaud avec une cuillère de miel fait le même boulot si tu préfères boire que manger."
+    }
+  ]
+}
