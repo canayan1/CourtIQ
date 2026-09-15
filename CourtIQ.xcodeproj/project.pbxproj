@@ -205,6 +205,10 @@
 		AC315E475F064139A29677F9 /* NutritionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A1324C83F7473BB1FB8FD9 /* NutritionView.swift */; };
 		04D2500BF8684048B82F5380 /* NutritionLogSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5554FFA1FD14A2D8E8BEC08 /* NutritionLogSheet.swift */; };
 		299085D29B5444178FDC99E8 /* NutritionRateSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7A09848344B82BFA6F16E /* NutritionRateSheet.swift */; };
+		A2ECD5FFA8314ADE84B71606 /* NutritionContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB723F8C36942EEB76F97EB /* NutritionContent.swift */; };
+		9CC71A12AAAF44B6B39D8922 /* NutritionTodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9882835EEA104A23A225ECEB /* NutritionTodayView.swift */; };
+		F96157F3D15C4175BF5440A2 /* NutritionGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD983BD5B9ED41C2B38F4369 /* NutritionGuideView.swift */; };
+		4408AA3451544A038525BEC4 /* NutritionRecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C517A03AB2348BA9A39621C /* NutritionRecipesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -418,6 +422,10 @@
 		77A1324C83F7473BB1FB8FD9 /* NutritionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NutritionView.swift; path = CourtIQ/Features/Nutrition/NutritionView.swift; sourceTree = "<group>"; };
 		C5554FFA1FD14A2D8E8BEC08 /* NutritionLogSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NutritionLogSheet.swift; path = CourtIQ/Features/Nutrition/NutritionLogSheet.swift; sourceTree = "<group>"; };
 		63E7A09848344B82BFA6F16E /* NutritionRateSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NutritionRateSheet.swift; path = CourtIQ/Features/Nutrition/NutritionRateSheet.swift; sourceTree = "<group>"; };
+		2BB723F8C36942EEB76F97EB /* NutritionContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NutritionContent.swift; path = CourtIQ/Core/Models/NutritionContent.swift; sourceTree = "<group>"; };
+		9882835EEA104A23A225ECEB /* NutritionTodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NutritionTodayView.swift; path = CourtIQ/Features/Nutrition/NutritionTodayView.swift; sourceTree = "<group>"; };
+		AD983BD5B9ED41C2B38F4369 /* NutritionGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NutritionGuideView.swift; path = CourtIQ/Features/Nutrition/NutritionGuideView.swift; sourceTree = "<group>"; };
+		9C517A03AB2348BA9A39621C /* NutritionRecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NutritionRecipesView.swift; path = CourtIQ/Features/Nutrition/NutritionRecipesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -530,6 +538,10 @@
 				A000000000000000000FC0 /* WallRallyCamView.swift */,
 				B100000000000000000001 /* WallBallLocator.swift */,
 				B400000000000000000001 /* WallSwingDetector.swift */,
+				9C517A03AB2348BA9A39621C /* NutritionRecipesView.swift */,
+				AD983BD5B9ED41C2B38F4369 /* NutritionGuideView.swift */,
+				9882835EEA104A23A225ECEB /* NutritionTodayView.swift */,
+				2BB723F8C36942EEB76F97EB /* NutritionContent.swift */,
 				63E7A09848344B82BFA6F16E /* NutritionRateSheet.swift */,
 				C5554FFA1FD14A2D8E8BEC08 /* NutritionLogSheet.swift */,
 				77A1324C83F7473BB1FB8FD9 /* NutritionView.swift */,
@@ -908,6 +920,10 @@
 				A000000000000000000FC1 /* WallRallyCamView.swift in Sources */,
 				B100000000000000000002 /* WallBallLocator.swift in Sources */,
 				B400000000000000000002 /* WallSwingDetector.swift in Sources */,
+				4408AA3451544A038525BEC4 /* NutritionRecipesView.swift in Sources */,
+				F96157F3D15C4175BF5440A2 /* NutritionGuideView.swift in Sources */,
+				9CC71A12AAAF44B6B39D8922 /* NutritionTodayView.swift in Sources */,
+				A2ECD5FFA8314ADE84B71606 /* NutritionContent.swift in Sources */,
 				299085D29B5444178FDC99E8 /* NutritionRateSheet.swift in Sources */,
 				04D2500BF8684048B82F5380 /* NutritionLogSheet.swift in Sources */,
 				AC315E475F064139A29677F9 /* NutritionView.swift in Sources */,

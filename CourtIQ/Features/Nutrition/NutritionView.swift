@@ -10,8 +10,13 @@ import SwiftUI
 struct NutritionView: View {
     @ObservedObject private var manager = NutritionManager.shared
     @EnvironmentObject private var lang: LanguageManager
+    @EnvironmentObject private var session: UserSessionManager
     @State private var showLog = false
     @State private var rating: NutritionEntry?
+    @State private var showPaywall = false
+
+    private var guide: NutritionGuide? { NutritionContentStore.guide(for: lang.language) }
+    private var recipes: NutritionRecipeBook? { NutritionContentStore.recipes(for: lang.language) }
 
     var body: some View {
         ScrollView {
@@ -19,6 +24,7 @@ struct NutritionView: View {
                 header
                 actionCard
                 insightsCard
+                contentCards
                 if !manager.entries.isEmpty { recent }
                 Text(lang.t("nutrition.disclaimer"))
                     .font(.caption)
@@ -48,6 +54,76 @@ struct NutritionView: View {
             NutritionRateSheet(entry: entry)
                 .environmentObject(lang)
         }
+        .sheet(isPresented: $showPaywall) {
+            NavigationStack {
+                PaywallView(source: "Nutrition")
+                    .environmentObject(session)
+                    .environmentObject(lang)
+            }
+        }
+    }
+
+    // MARK: Guide · Today · Recipes
+
+    /// The guide and the "today" picker are free; the recipe set is part of
+    /// Premium. All three only appear when their content shipped in the
+    /// bundle, so a language build without the JSON degrades to the log.
+    @ViewBuilder
+    private var contentCards: some View {
+        if let guide {
+            NavigationLink { NutritionTodayView(guide: guide) } label: {
+                contentCard("questionmark.circle.fill", lang.t("nutrition.today_card_title"), lang.t("nutrition.today_card_sub"), locked: false)
+            }
+            .buttonStyle(PressableCardStyle())
+            NavigationLink { NutritionGuideView(guide: guide) } label: {
+                contentCard("book.closed.fill", lang.t("nutrition.guide_card_title"), lang.t("nutrition.guide_card_sub"), locked: false)
+            }
+            .buttonStyle(PressableCardStyle())
+        }
+        if let recipes {
+            if session.isPremiumUnlocked {
+                NavigationLink { NutritionRecipesView(book: recipes) } label: {
+                    contentCard("fork.knife.circle.fill", lang.t("nutrition.recipes_card_title"), lang.t("nutrition.recipes_card_sub"), locked: false)
+                }
+                .buttonStyle(PressableCardStyle())
+            } else {
+                Button {
+                    Haptics.tap()
+                    showPaywall = true
+                } label: {
+                    contentCard("lock.fill", lang.t("nutrition.recipes_card_title"), lang.t("nutrition.recipes_card_locked"), locked: true)
+                }
+                .buttonStyle(PressableCardStyle())
+            }
+        }
+    }
+
+    private func contentCard(_ symbol: String, _ title: String, _ sub: String, locked: Bool) -> some View {
+        HStack(alignment: .top, spacing: 12) {
+            Image(systemName: symbol)
+                .font(.title3)
+                .foregroundStyle(locked ? AppPalette.goldText : AppPalette.clay)
+                .frame(width: 30)
+            VStack(alignment: .leading, spacing: 4) {
+                Text(title)
+                    .font(.subheadline.weight(.bold))
+                    .foregroundStyle(AppPalette.ink)
+                Text(sub)
+                    .font(.footnote)
+                    .foregroundStyle(AppPalette.inkSoft)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            Spacer(minLength: 6)
+            Image(systemName: "chevron.right")
+                .font(.footnote.weight(.semibold))
+                .foregroundStyle(AppPalette.inkSoft.opacity(0.7))
+                .padding(.top, 4)
+        }
+        .padding(14)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .cardSurface(fill: locked ? AppPalette.goldTint.opacity(0.45) : AppPalette.parchment,
+                     stroke: locked ? AppPalette.gold.opacity(0.4) : AppPalette.sand, cornerRadius: 16)
+        .contentShape(Rectangle())
     }
 
     // MARK: Pieces
