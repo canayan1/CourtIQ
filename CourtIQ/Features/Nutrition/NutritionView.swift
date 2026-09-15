@@ -29,8 +29,16 @@ struct NutritionView: View {
             VStack(alignment: .leading, spacing: 22) {
                 header
                 actionCard
-                insightsCard
-                contentCards
+                // Until there is rated data the insight card is only a
+                // promise, so the guide, the picker and the recipes come
+                // first; once there are averages they lead.
+                if manager.ratedEntries.isEmpty {
+                    contentCards
+                    insightsCard
+                } else {
+                    insightsCard
+                    contentCards
+                }
                 if !manager.entries.isEmpty { coachShareCard }
                 if !manager.entries.isEmpty { recent }
                 Text(lang.t("nutrition.disclaimer"))
