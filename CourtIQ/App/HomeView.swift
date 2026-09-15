@@ -94,6 +94,9 @@ struct HomeView: View {
                 // Secondary features: chips, not photo tiles, so they never
                 // compete with the pillars for the eye.
                 VStack(alignment: .leading, spacing: 10) {
+                    // A session logged but not yet rated is the one thing
+                    // Nutrition needs from the player today; Home says so.
+                    if nutrition.pendingRating != nil { nutritionNudge }
                     Eyebrow(lang.t("home.also"))
                     alsoRow
                 }
@@ -356,6 +359,43 @@ struct HomeView: View {
         if !iqManager.hasBaseline { return lang.t("home.iq_hero_baseline") }
         if iqManager.completedSessionToday { return lang.t("home.iq_hero_done") }
         return lang.t("home.iq_hero_ready")
+    }
+
+    // MARK: - Nutrition nudge
+
+    @ObservedObject private var nutrition = NutritionManager.shared
+
+    private var nutritionNudge: some View {
+        Button {
+            Haptics.tap()
+            route = .nutrition
+        } label: {
+            HStack(alignment: .top, spacing: 12) {
+                Image(systemName: "hand.thumbsup.fill")
+                    .font(.title3)
+                    .foregroundStyle(AppPalette.moss)
+                    .frame(width: 30)
+                VStack(alignment: .leading, spacing: 3) {
+                    Text(lang.t("home.nutrition_rate_title"))
+                        .font(.subheadline.weight(.bold))
+                        .foregroundStyle(AppPalette.ink)
+                    Text(lang.t("home.nutrition_rate_sub"))
+                        .font(.footnote)
+                        .foregroundStyle(AppPalette.inkSoft)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                Spacer(minLength: 6)
+                Image(systemName: "chevron.right")
+                    .font(.footnote.weight(.semibold))
+                    .foregroundStyle(AppPalette.inkSoft.opacity(0.7))
+                    .padding(.top, 4)
+            }
+            .padding(14)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .cardSurface(fill: AppPalette.mossTint.opacity(0.45), stroke: AppPalette.moss.opacity(0.35), cornerRadius: 16)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(PressableCardStyle())
     }
 
     // MARK: - Also (secondary features)

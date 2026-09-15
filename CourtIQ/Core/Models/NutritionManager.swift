@@ -203,6 +203,14 @@ final class NutritionManager: ObservableObject {
         persist()
     }
 
+    /// Account deletion: nothing survives on the device either.
+    func resetLocalData() {
+        entries = []
+        defaults.removeObject(forKey: key)
+        defaults.removeObject(forKey: "CourtIQ.Nutrition.RecipeAnswers")
+        defaults.removeObject(forKey: "CourtIQ.Nutrition.ShareWithCoach")
+    }
+
     private static func clean(_ text: String?) -> String? {
         let trimmed = text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         return trimmed.isEmpty ? nil : trimmed

@@ -1138,3 +1138,5 @@
 "nutrition.share_title" = "Let the AI Coach see this";
 "nutrition.share_body" = "Off by default. When on, a short summary goes with each message — averages, your comparisons, your last five sessions. Never your notes or the raw log.";
 "nutrition.share_locked" = "Ask the AI Coach why you felt flat on Tuesday · Premium";
+"home.nutrition_rate_title" = "Rate how you felt";
+"home.nutrition_rate_sub" = "You logged a meal before today's session. Two taps and it counts.";

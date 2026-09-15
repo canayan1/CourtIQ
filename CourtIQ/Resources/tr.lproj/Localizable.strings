@@ -1138,3 +1138,5 @@
 "nutrition.share_title" = "AI Koç bunu görsün";
 "nutrition.share_body" = "Varsayılan olarak kapalı. Açıkken her mesajla kısa bir özet gider — ortalamaların, karşılaştırmaların, son beş seansın. Notların ve ham günlük asla gitmez.";
 "nutrition.share_locked" = "AI Koç'a salı neden bitkin olduğunu sor · Premium";
+"home.nutrition_rate_title" = "Nasıl hissettiğini puanla";
+"home.nutrition_rate_sub" = "Bugünkü seans öncesi öğününü kaydettin. İki dokunuşla sayılır.";

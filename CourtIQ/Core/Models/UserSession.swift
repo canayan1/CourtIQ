@@ -883,6 +883,7 @@ final class UserSessionManager: ObservableObject {
             DailyQuizManager.shared.resetLocalData()
             TrainingProgressManager.shared.resetLocalData()
             DiscussionStore.shared.resetLocalData()
+            NutritionManager.shared.resetLocalData()
             subscriptionManager.resetLocalEntitlements()
             hasCompletedOnboarding = false
             syncState = configuration.hasRemoteSyncConfiguration ? .syncing : .unavailable
@@ -914,6 +915,7 @@ final class UserSessionManager: ObservableObject {
             DailyQuizManager.shared.resetLocalData()
             TrainingProgressManager.shared.resetLocalData()
             DiscussionStore.shared.resetLocalData()
+            NutritionManager.shared.resetLocalData()
             subscriptionManager.resetLocalEntitlements()
             hasCompletedOnboarding = false
             syncState = configuration.hasRemoteSyncConfiguration ? .syncing : .unavailable
