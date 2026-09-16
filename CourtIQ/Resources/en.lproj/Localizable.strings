@@ -1202,3 +1202,5 @@
 "nutrition.timing_unknown" = "Timing not recorded";
 "journal.add_another_meal" = "Add another meal to this day";
 "nutrition.today_last_from_log" = "Read from your fuel log. Tap to change it.";
+"nutrition.edit" = "Edit";
+"nutrition.edit_title" = "Edit this entry";

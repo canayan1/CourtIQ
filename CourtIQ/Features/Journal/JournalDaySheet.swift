@@ -8,6 +8,7 @@ struct JournalDaySheet: View {
     var onLogFuel: (Date) -> Void
     var onLogMatch: (Date) -> Void
     var onRateFuel: (NutritionEntry) -> Void
+    var onEditFuel: (NutritionEntry) -> Void
     var onOpenMatch: (MatchEntry) -> Void
 
     @EnvironmentObject private var lang: LanguageManager
@@ -48,6 +49,7 @@ struct JournalDaySheet: View {
                             JournalItemRow(item: item,
                                            showsDate: false,
                                            onRateFuel: { entry in dismiss(); onRateFuel(entry) },
+                                           onEditFuel: { entry in dismiss(); onEditFuel(entry) },
                                            onOpenMatch: { m in dismiss(); onOpenMatch(m) })
                                 .environmentObject(lang)
                         }

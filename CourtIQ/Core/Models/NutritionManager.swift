@@ -261,6 +261,26 @@ final class NutritionManager: ObservableObject {
         return entry
     }
 
+    /// Correct an entry in place. Kept separate from `log` so an edit never
+    /// changes the id, and never touches the rating — that is what `rate` is
+    /// for, and a player fixing "practice" to "match" has not changed how the
+    /// day felt.
+    func update(id: String, kind: NutritionSessionKind, timing: NutritionTiming?,
+                meal: NutritionMealType?, hydration: NutritionHydration,
+                caffeine: Bool, note: String?, on date: Date) {
+        guard let i = entries.firstIndex(where: { $0.id == id }) else { return }
+        entries[i].kind = kind
+        entries[i].timing = kind.didPlay ? timing : nil
+        entries[i].meal = (kind.didPlay && timing == .nothing) ? nil : meal
+        entries[i].hydration = hydration
+        entries[i].caffeine = caffeine
+        entries[i].note = Self.clean(note)
+        entries[i].date = date
+        entries[i].dayKey = date.todayKey
+        entries.sort { $0.date > $1.date }
+        persist()
+    }
+
     func rate(_ id: String, _ ratings: NutritionRatings, afterNote: String?) {
         guard let i = entries.firstIndex(where: { $0.id == id }) else { return }
         entries[i].ratings = ratings

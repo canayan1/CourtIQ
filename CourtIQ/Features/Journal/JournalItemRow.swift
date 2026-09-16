@@ -9,6 +9,7 @@ struct JournalItemRow: View {
     /// heading — repeating it on every row is noise.
     var showsDate: Bool = true
     var onRateFuel: (NutritionEntry) -> Void
+    var onEditFuel: ((NutritionEntry) -> Void)? = nil
     var onOpenMatch: (MatchEntry) -> Void
 
     @EnvironmentObject private var lang: LanguageManager
@@ -138,6 +139,11 @@ struct JournalItemRow: View {
         // Delete lived only behind a long-press on the Nutrition screen, so a
         // mis-tap made from the Journal could not be undone from the Journal.
         .contextMenu {
+            if let onEditFuel {
+                Button { onEditFuel(n) } label: {
+                    Label(lang.t("nutrition.edit"), systemImage: "pencil")
+                }
+            }
             Button(role: .destructive) { NutritionManager.shared.delete(n.id) } label: {
                 Label(lang.t("nutrition.delete"), systemImage: "trash")
             }

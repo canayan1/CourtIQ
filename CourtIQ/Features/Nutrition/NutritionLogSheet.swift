@@ -13,6 +13,10 @@ struct NutritionLogSheet: View {
     /// The day being logged. Defaults to now for the "log before you play"
     /// path; the journal passes the tapped day.
     var date: Date = Date()
+    /// Non-nil when correcting an entry that already exists. The sheet then
+    /// opens on that entry's answers and saves over it instead of adding a
+    /// second row for the same meal.
+    var editing: NutritionEntry? = nil
 
     @EnvironmentObject private var lang: LanguageManager
     @Environment(\.dismiss) private var dismiss
@@ -35,9 +39,10 @@ struct NutritionLogSheet: View {
 
     /// A past day is rated here and now. "Past" means an earlier calendar
     /// day, not merely an earlier hour: a session logged this morning is
-    /// still rated this evening by the usual prompt.
+    /// still rated this evening by the usual prompt. An edit never asks —
+    /// the rating already exists and belongs to `rate`.
     private var isRetro: Bool {
-        !Calendar(identifier: .iso8601).isDateInToday(date)
+        editing == nil && !Calendar(identifier: .iso8601).isDateInToday(date)
     }
 
     /// A rest day has no session to be early or late for, so the timing and
@@ -49,7 +54,9 @@ struct NutritionLogSheet: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 22) {
                     if isRetro { retroHeader }
-                    if let recall = manager.recall(before: date), !recalled { recallButton(recall) }
+                    if editing == nil, let recall = manager.recall(before: date), !recalled {
+                        recallButton(recall)
+                    }
 
                     question(lang.t("nutrition.q_kind")) {
                         chips(NutritionSessionKind.allCases, selected: kind) { kind = $0 }
@@ -79,6 +86,16 @@ struct NutritionLogSheet: View {
                     if isRetro { retroRatings }
 
                     PrimaryButton(title: lang.t("nutrition.save"), icon: "checkmark") {
+                        if let editing {
+                            manager.update(id: editing.id, kind: kind,
+                                           timing: playedThatDay ? timing : nil,
+                                           meal: (playedThatDay && timing == .nothing) ? nil : meal,
+                                           hydration: hydration, caffeine: caffeine,
+                                           note: note, on: editing.date)
+                            Haptics.success()
+                            dismiss()
+                            return
+                        }
                         manager.log(kind: kind,
                                     timing: playedThatDay ? timing : nil,
                                     meal: (playedThatDay && timing == .nothing) ? nil : meal,
@@ -93,13 +110,24 @@ struct NutritionLogSheet: View {
                 .padding(20)
             }
             .background(AppPalette.cream)
-            .navigationTitle(lang.t("journal.add_fuel"))
+            .navigationTitle(lang.t(editing == nil ? "journal.add_fuel" : "nutrition.edit_title"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button(lang.t("common.cancel")) { dismiss() }
                         .foregroundStyle(AppPalette.inkSoft)
                 }
+            }
+            // An edit opens on what is already there.
+            .onAppear {
+                guard let e = editing, !recalled else { return }
+                recalled = true            // also suppresses the recall card
+                kind = e.kind
+                if let t = e.timing { timing = t } else if !e.kind.didPlay { timing = .h1to2 }
+                if let m = e.meal { meal = m }
+                hydration = e.hydration
+                caffeine = e.caffeine
+                note = e.note ?? ""
             }
             #if DEBUG
             // Headless QC: SIMCTL_CHILD_QC_FUEL_KIND=rest opens straight on a

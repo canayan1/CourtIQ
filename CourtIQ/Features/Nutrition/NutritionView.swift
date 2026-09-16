@@ -13,6 +13,7 @@ struct NutritionView: View {
     @EnvironmentObject private var session: UserSessionManager
     @State private var showLog = false
     @State private var rating: NutritionEntry?
+    @State private var editing: NutritionEntry?
     @State private var showPaywall = false
     /// Off by default. Sends a short summary (averages, comparisons, last
     /// five sessions) with each AI Coach message — never the raw log.
@@ -79,6 +80,10 @@ struct NutritionView: View {
         }
         .sheet(item: $rating) { entry in
             NutritionRateSheet(entry: entry)
+                .environmentObject(lang)
+        }
+        .sheet(item: $editing) { entry in
+            NutritionLogSheet(date: entry.date, editing: entry)
                 .environmentObject(lang)
         }
         .sheet(isPresented: $showPaywall) {
@@ -387,6 +392,9 @@ struct NutritionView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .cardSurface(cornerRadius: 16)
         .contextMenu {
+            Button { editing = entry } label: {
+                Label(lang.t("nutrition.edit"), systemImage: "pencil")
+            }
             Button(role: .destructive) { manager.delete(entry.id) } label: {
                 Label(lang.t("nutrition.delete"), systemImage: "trash")
             }

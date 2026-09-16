@@ -18,6 +18,7 @@ struct JournalView: View {
     @State private var selectedDay: Date?
     @State private var ratingEntry: NutritionEntry?
     @State private var newFuelDate: Date?
+    @State private var editingFuel: NutritionEntry?
     @State private var newMatchDate: Date?
     @State private var matchDetail: MatchEntry?
     @State private var appeared = false
@@ -44,12 +45,13 @@ struct JournalView: View {
         .navigationBarTitleDisplayMode(.inline)
         .onAppear { withAnimation(Motion.entrance) { appeared = true } }
         #if DEBUG
-        // Headless QC: SIMCTL_CHILD_QC_JOURNAL=day|daypast|fuel|fuelpast|match.
+        // Headless QC: SIMCTL_CHILD_QC_JOURNAL=day|daypast|fuel|fuelpast|edit|match.
         .onAppear {
             switch ProcessInfo.processInfo.environment["QC_JOURNAL"] {
             case "day":   selectedDay = Date()
             case "fuel":  newFuelDate = Date()
             case "fuelpast": newFuelDate = Calendar.current.date(byAdding: .day, value: -3, to: Date())
+            case "edit":  editingFuel = nutrition.entries.first
             case "daypast": selectedDay = Calendar.current.date(byAdding: .day, value: -3, to: Date())
             case "match": newMatchDate = Date()
             default: break
@@ -62,6 +64,7 @@ struct JournalView: View {
                             onLogFuel: { newFuelDate = $0 },
                             onLogMatch: { newMatchDate = $0 },
                             onRateFuel: { ratingEntry = $0 },
+                            onEditFuel: { editingFuel = $0 },
                             onOpenMatch: { matchDetail = $0 })
                 .environmentObject(lang)
                 .environmentObject(session)
@@ -83,6 +86,10 @@ struct JournalView: View {
         }
         .sheet(item: $ratingEntry) { entry in
             NutritionRateSheet(entry: entry)
+                .environmentObject(lang)
+        }
+        .sheet(item: $editingFuel) { entry in
+            NutritionLogSheet(date: entry.date, editing: entry)
                 .environmentObject(lang)
         }
         .navigationDestination(item: $matchDetail) { entry in
@@ -315,6 +322,7 @@ struct JournalView: View {
                 ForEach(items.prefix(12)) { item in
                     JournalItemRow(item: item,
                                    onRateFuel: { ratingEntry = $0 },
+                                   onEditFuel: { editingFuel = $0 },
                                    onOpenMatch: { matchDetail = $0 })
                         .environmentObject(lang)
                 }
