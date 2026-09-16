@@ -32,6 +32,7 @@ struct NutritionRecipesView: View {
         .background(AppPalette.cream)
         .navigationTitle(lang.t("nutrition.recipes_title"))
         .navigationBarTitleDisplayMode(.inline)
+        .trackScreen("Nutrition Recipes")
         .onAppear {
             if answers.isEmpty, !storedAnswers.isEmpty,
                let data = storedAnswers.data(using: .utf8),
@@ -197,6 +198,7 @@ struct NutritionRecipeDetailView: View {
         .background(AppPalette.cream)
         .navigationTitle(recipe.title)
         .navigationBarTitleDisplayMode(.inline)
+        .trackScreen("Nutrition Recipe")
     }
 
     /// What a professional is documented to do, with the source next to it

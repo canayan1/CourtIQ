@@ -55,6 +55,16 @@ enum JournalPrompt: Identifiable, Hashable {
         case .rateMatch:    return "star"
         }
     }
+
+    /// Stable, low-cardinality name for the analytics event — never the id,
+    /// which carries a row id and would explode the dimension.
+    var analyticsKind: String {
+        switch self {
+        case .rateFuel:     return "rate_fuel"
+        case .fuelForMatch: return "fuel_for_match"
+        case .rateMatch:    return "rate_match"
+        }
+    }
 }
 
 /// One line in the merged timeline. Matches and fuel entries are different

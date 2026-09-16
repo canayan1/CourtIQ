@@ -66,6 +66,7 @@ struct NutritionTodayView: View {
         .background(AppPalette.cream)
         .navigationTitle(lang.t("nutrition.today_title"))
         .navigationBarTitleDisplayMode(.inline)
+        .trackScreen("Nutrition Today")
     }
 
     private func question<Content: View>(_ title: String, @ViewBuilder content: () -> Content) -> some View {

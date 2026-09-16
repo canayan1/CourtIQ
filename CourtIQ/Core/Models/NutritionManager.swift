@@ -257,7 +257,10 @@ final class NutritionManager: ObservableObject {
         entries.sort { $0.date > $1.date }
         persist()
         AppAnalytics.shared.log(AnalyticsEvent.nutritionLogged,
-                                ["kind": kind.rawValue, "timing": timing?.rawValue ?? "none"])
+                                ["kind": kind.rawValue,
+                                 "timing": timing?.rawValue ?? "none",
+                                 "backdated": !Calendar(identifier: .iso8601).isDateInToday(now),
+                                 "rated_inline": ratings != nil])
         return entry
     }
 

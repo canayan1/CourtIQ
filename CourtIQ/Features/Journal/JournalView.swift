@@ -135,6 +135,8 @@ struct JournalView: View {
                 .foregroundStyle(AppPalette.inkSoft)
                 .fixedSize(horizontal: false, vertical: true)
             PrimaryButton(title: lang.t(prompt.ctaKey), icon: prompt.symbol) {
+                AppAnalytics.shared.log(AnalyticsEvent.journalPromptActioned,
+                                        ["kind": prompt.analyticsKind])
                 switch prompt {
                 case .rateFuel(let entry):   ratingEntry = entry
                 case .fuelForMatch(let m):   newFuelDate = m.date
@@ -183,7 +185,14 @@ struct JournalView: View {
             DayGridCalendar(
                 mark: { marks[JournalDay.key($0)] ?? .none },
                 accessibility: dayAccessibility,
-                onSelectDay: { selectedDay = $0 }
+                onSelectDay: { day in
+                    let cal = Calendar(identifier: .iso8601)
+                    AppAnalytics.shared.log(AnalyticsEvent.journalDayOpened, [
+                        "past": cal.startOfDay(for: day) < cal.startOfDay(for: Date()),
+                        "had_entry": !(marks[JournalDay.key(day)] ?? .none).isEmpty,
+                    ])
+                    selectedDay = day
+                }
             )
             HStack(spacing: 14) {
                 legend(AppPalette.clay, lang.t("journal.legend_match"))
@@ -346,6 +355,12 @@ struct JournalView: View {
         f.setLocalizedDateFormatFromTemplate("EEEE d MMMM")
         return f.string(from: date)
     }
+}
+
+/// `sheet(item:)` needs an `Identifiable`; a bare `String` is not one either.
+struct IdentifiableString: Identifiable, Hashable {
+    let value: String
+    var id: String { value }
 }
 
 /// `sheet(item:)` needs an `Identifiable`; a bare `Date` is not one.

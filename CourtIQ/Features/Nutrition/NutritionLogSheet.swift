@@ -112,6 +112,7 @@ struct NutritionLogSheet: View {
             .background(AppPalette.cream)
             .navigationTitle(lang.t(editing == nil ? "journal.add_fuel" : "nutrition.edit_title"))
             .navigationBarTitleDisplayMode(.inline)
+            .trackScreen(editing == nil ? "Nutrition Log" : "Nutrition Edit")
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button(lang.t("common.cancel")) { dismiss() }

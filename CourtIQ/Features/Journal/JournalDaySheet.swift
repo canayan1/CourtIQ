@@ -80,6 +80,7 @@ struct JournalDaySheet: View {
             .background(AppPalette.cream)
             .navigationTitle(lang.t("journal.day_title"))
             .navigationBarTitleDisplayMode(.inline)
+            .trackScreen("Journal Day")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(lang.t("common.done")) { dismiss() }

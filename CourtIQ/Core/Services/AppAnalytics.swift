@@ -108,8 +108,16 @@ enum AnalyticsEvent {
     /// A paid human review was purchased + submitted.
     static let coachReviewOrdered   = "coach_review_ordered"
     /// Nutrition: a pre-session meal was logged / a session was rated.
+    /// `nutrition_logged` carries `backdated` — the Tennis Journal's whole
+    /// premise is that a day you missed can still be filled in, and this is
+    /// the only way to find out whether anyone actually does it.
     static let nutritionLogged      = "nutrition_logged"
     static let nutritionRated       = "nutrition_rated"
+    /// Journal: a calendar day was opened, and whether it was in the past.
+    static let journalDayOpened     = "journal_day_opened"
+    /// Journal: the one open question was acted on, and which kind it was.
+    /// Answers "does the app asking actually work?"
+    static let journalPromptActioned = "journal_prompt_actioned"
 }
 
 extension View {

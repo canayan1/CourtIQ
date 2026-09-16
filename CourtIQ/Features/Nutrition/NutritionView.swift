@@ -14,7 +14,10 @@ struct NutritionView: View {
     @State private var showLog = false
     @State private var rating: NutritionEntry?
     @State private var editing: NutritionEntry?
-    @State private var showPaywall = false
+    /// Which locked card opened the paywall — two cards lead here and they
+    /// are very different asks (12 recipes vs sharing a summary with the AI
+    /// Coach). One shared `source` made them indistinguishable in GA4.
+    @State private var paywallSource: String?
     /// Off by default. Sends a short summary (averages, comparisons, last
     /// five sessions) with each AI Coach message — never the raw log.
     @AppStorage("CourtIQ.Nutrition.ShareWithCoach") private var shareWithCoach = false
@@ -52,6 +55,7 @@ struct NutritionView: View {
         .background(AppPalette.cream)
         .navigationTitle(lang.t("nutrition.title"))
         .navigationBarTitleDisplayMode(.inline)
+        .trackScreen("Nutrition")
         #if DEBUG
         // Headless QC: SIMCTL_CHILD_QC_NUTRITION=log|rate opens a sheet on appear.
         .onAppear {
@@ -86,9 +90,10 @@ struct NutritionView: View {
             NutritionLogSheet(date: entry.date, editing: entry)
                 .environmentObject(lang)
         }
-        .sheet(isPresented: $showPaywall) {
+        .sheet(item: Binding(get: { paywallSource.map(IdentifiableString.init) },
+                             set: { paywallSource = $0?.value })) { wrapper in
             NavigationStack {
-                PaywallView(source: "Nutrition")
+                PaywallView(source: wrapper.value)
                     .environmentObject(session)
                     .environmentObject(lang)
             }
@@ -121,7 +126,7 @@ struct NutritionView: View {
             } else {
                 Button {
                     Haptics.tap()
-                    showPaywall = true
+                    paywallSource = "Nutrition Recipes"
                 } label: {
                     contentCard("lock.fill", lang.t("nutrition.recipes_card_title"), lang.t("nutrition.recipes_card_locked"), locked: true)
                 }
@@ -151,7 +156,7 @@ struct NutritionView: View {
             } else {
                 Button {
                     Haptics.tap()
-                    showPaywall = true
+                    paywallSource = "Nutrition CoachShare"
                 } label: {
                     contentCard("lock.fill", lang.t("nutrition.share_title"), lang.t("nutrition.share_locked"), locked: true)
                 }

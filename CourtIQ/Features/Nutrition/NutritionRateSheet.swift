@@ -45,6 +45,7 @@ struct NutritionRateSheet: View {
             .background(AppPalette.cream)
             .navigationTitle(lang.t("nutrition.rate_title"))
             .navigationBarTitleDisplayMode(.inline)
+            .trackScreen("Nutrition Rate")
             // Re-rating starts from what was said last time, not from the
             // neutral defaults — otherwise correcting one row silently resets
             // the other three.

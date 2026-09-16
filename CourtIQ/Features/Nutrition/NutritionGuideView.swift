@@ -49,6 +49,7 @@ struct NutritionGuideView: View {
         .background(AppPalette.cream)
         .navigationTitle(lang.t("nutrition.guide_title"))
         .navigationBarTitleDisplayMode(.inline)
+        .trackScreen("Nutrition Guide")
     }
 }
 
@@ -111,5 +112,6 @@ struct NutritionGuideSectionView: View {
         .background(AppPalette.cream)
         .navigationTitle(section.title)
         .navigationBarTitleDisplayMode(.inline)
+        .trackScreen("Nutrition Guide Section")
     }
 }
