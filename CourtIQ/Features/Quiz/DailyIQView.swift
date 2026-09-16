@@ -22,12 +22,17 @@ struct DailyIQView: View {
     #if DEBUG
     /// QC-only session override (see the QC_IQ_PHASE hook below).
     @State private var qcQuiz: Quiz?
+    #endif
+
+    // NOT debug-only, despite having been written inside the block above once:
+    // `tacticsBridge` is a shipping feature for players without Premium, and
+    // with these three behind `#if DEBUG` the file did not compile in Release
+    // at all. Keep them out here.
     /// The Tactics course, read-only, so the summary can offer the lessons that
     /// TEACH what these scenarios just tested — and say how many are left.
     @State private var tacticsContent = ContentStore()
     @State private var tacticsProgress = PlayerProgress()
     @State private var showTacticsPaywall = false
-    #endif
 
     private var sessionQuiz: Quiz {
         #if DEBUG
