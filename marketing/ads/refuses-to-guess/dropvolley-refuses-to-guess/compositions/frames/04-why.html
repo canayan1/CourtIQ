@@ -1,0 +1,164 @@
+<template>
+  <style>
+    /* 04-why — Noise. Ink ground, two lines, deliberately still.
+       Design truth: frame.md (Statement treatment, ink for gravity). */
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1080px;
+      height: 1920px;
+      container-type: size;
+      overflow: hidden;
+      font-family: "SF Pro Display", -apple-system, system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* full-bleed ground rides on a clip layer, never on #root */
+    .f04why-ground {
+      position: absolute;
+      inset: 0;
+      background: #1e2938;
+    }
+
+    .f04why-stack {
+      position: absolute;
+      inset: 0;
+    }
+
+    /* content region: top 200px → 1594px (83% keep-out), block optically centred */
+    .f04why-inner {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 200px;
+      bottom: 326px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 60px;
+      text-align: center;
+    }
+
+    /* line 1 — the setup, lighter of the two */
+    .f04why-l1 {
+      color: #fcf7ee;
+      font-size: 5.93cqw; /* 64px @1080 */
+      font-weight: 400;
+      line-height: 1.16;
+      letter-spacing: -0.012em;
+      opacity: 0;
+    }
+
+    /* the one coral moment — a hairline that draws on to mark the beat */
+    .f04why-rule {
+      width: 140px;
+      height: 1px;
+      margin: 58px 0;
+      background: #c65c31;
+      transform-origin: 50% 50%;
+      opacity: 0;
+    }
+
+    /* line 2 — the thesis, larger and heavier */
+    .f04why-l2 {
+      color: #fcf7ee;
+      font-size: 8.52cqw; /* 92px @1080 */
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.022em;
+    }
+
+    .f04why-row {
+      opacity: 0;
+    }
+  </style>
+
+  <div id="root" data-composition-id="04-why" data-width="1080" data-height="1920" data-duration="4.5">
+    <div
+      id="f04why-ground" class="clip f04why-ground"
+      data-start="0"
+      data-duration="4.5"
+      data-track-index="0"
+    ></div>
+
+    <div
+      id="f04why-stack" class="clip f04why-stack"
+      data-start="0"
+      data-duration="4.5"
+      data-track-index="1"
+    >
+      <div class="f04why-inner">
+        <div class="f04why-l1" id="f04why-line1">
+          <div>Below that, the difference</div>
+          <div>is noise.</div>
+        </div>
+
+        <div class="f04why-rule" id="f04why-rule"></div>
+
+        <div class="f04why-l2">
+          <div class="f04why-row" id="f04why-row1">A confident answer</div>
+          <div class="f04why-row" id="f04why-row2">built on noise</div>
+          <div class="f04why-row" id="f04why-row3">is worse than</div>
+          <div class="f04why-row" id="f04why-row4">no answer.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var tl = gsap.timeline({ paused: true });
+
+      // Scene 1 (0.0–1.4s) — hard cut to ink; line 1 arrives on ONE move.
+      tl.fromTo(
+        "#f04why-line1",
+        { opacity: 0, y: 30, filter: "blur(6px)" },
+        { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.8, ease: "power3.out" },
+        0.04
+      );
+
+      // the beat: a coral hairline draws outward from centre
+      tl.fromTo(
+        "#f04why-rule",
+        { opacity: 0, scaleX: 0 },
+        { opacity: 1, scaleX: 1, duration: 0.55, ease: "power3.out" },
+        1.05
+      );
+
+      // Scene 2 (1.4–4.0s) — the thesis takes the weight; line 1 steps back.
+      tl.fromTo(
+        "#f04why-line1",
+        { opacity: 1 },
+        { opacity: 0.6, duration: 0.75, ease: "power2.out", immediateRender: false },
+        1.42
+      );
+
+      // thesis builds fragment by fragment, paced to reading speed
+      var rows = [
+        { sel: "#f04why-row1", at: 1.48, dur: 0.66 },
+        { sel: "#f04why-row2", at: 1.82, dur: 0.66 },
+        { sel: "#f04why-row3", at: 2.16, dur: 0.66 },
+        { sel: "#f04why-row4", at: 2.54, dur: 0.78 }
+      ];
+      for (var i = 0; i < rows.length; i++) {
+        tl.fromTo(
+          rows[i].sel,
+          { opacity: 0, y: 34, filter: "blur(6px)" },
+          {
+            opacity: 1,
+            y: 0,
+            filter: "blur(0px)",
+            duration: rows[i].dur,
+            ease: "power3.out"
+          },
+          rows[i].at
+        );
+      }
+      // last fragment lands at 3.32s; both lines hold still to the cut.
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["04-why"] = tl;
+    })();
+  </script>
+</template>

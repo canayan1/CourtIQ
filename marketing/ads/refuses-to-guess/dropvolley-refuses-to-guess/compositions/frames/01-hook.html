@@ -1,0 +1,146 @@
+<template>
+  <style>
+    /* ── 01-hook — "Nutrition apps tell you what to eat." / "This one won't."
+       Ink ground, type only. Scene 1 builds the claim line by line on long-tail
+       settles; Scene 2 holds dead still; Scene 3 hard-cuts the contradiction in. ── */
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      container-type: size;
+      color: #fcf7ee;
+      font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* full-bleed ground rides on a clip layer, never on #root */
+    .frame-01-hook-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #1e2938;
+    }
+
+    .frame-01-hook-stage {
+      position: absolute;
+      inset: 0;
+      padding: 0 4.2cqw;
+    }
+
+    .frame-01-hook-claim {
+      position: absolute;
+      left: 4.2cqw;
+      right: 4.2cqw;
+      top: 24cqh;
+      text-align: center;
+    }
+
+    .frame-01-hook-ln {
+      display: block;
+      font-size: 12.5cqw;
+      font-weight: 400;
+      line-height: 1.06;
+      letter-spacing: -0.022em;
+      color: #fcf7ee;
+      white-space: nowrap;
+    }
+
+    /* section-rule — the only separator; cream@14% on the ink ground */
+    .frame-01-hook-rule {
+      position: absolute;
+      left: 50%;
+      margin-left: -85px;
+      top: 56.8cqh;
+      width: 170px;
+      height: 1px;
+      transform-origin: 50% 50%;
+      background-color: rgba(252, 247, 238, 0.14);
+    }
+
+    .frame-01-hook-answer {
+      position: absolute;
+      left: 4.2cqw;
+      right: 4.2cqw;
+      top: 60cqh;
+      text-align: center;
+      font-size: 7cqw;
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -0.018em;
+      color: #e4894f;
+      white-space: nowrap;
+    }
+  </style>
+
+  <div id="root" data-composition-id="01-hook" data-width="1080" data-height="1920" data-duration="4.5">
+    <div
+      id="frame-01-hook-ground"
+      class="clip frame-01-hook-ground"
+      data-start="0"
+      data-duration="4.5"
+      data-track-index="0"
+    ></div>
+
+    <div id="frame-01-hook-stage" class="clip frame-01-hook-stage" data-start="0" data-duration="4.5" data-track-index="1">
+      <div class="frame-01-hook-claim">
+        <span class="frame-01-hook-ln" id="frame-01-hook-l1">Nutrition apps</span>
+        <span class="frame-01-hook-ln" id="frame-01-hook-l2">tell you what</span>
+        <span class="frame-01-hook-ln" id="frame-01-hook-l3">to eat.</span>
+      </div>
+
+      <div class="frame-01-hook-rule" id="frame-01-hook-rule"></div>
+
+      <div class="frame-01-hook-answer" id="frame-01-hook-answer">This one won&rsquo;t.</div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var tl = gsap.timeline({ paused: true });
+
+      // ── Scene 1 (0.0–1.6s) — the claim builds line by line, each on its own
+      //    long-tail settle (power4.out, no overshoot, nothing bounces).
+      tl.fromTo(
+        "#frame-01-hook-l1",
+        { opacity: 0, y: 46 },
+        { opacity: 1, y: 0, duration: 0.85, ease: "power4.out" },
+        0.0
+      );
+      tl.fromTo(
+        "#frame-01-hook-l2",
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 0.85, ease: "power4.out" },
+        0.4
+      );
+      tl.fromTo(
+        "#frame-01-hook-l3",
+        { opacity: 0, y: 34, scale: 0.988 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.82, ease: "power4.out" },
+        0.78
+      );
+
+      // ── Scene 2 (1.6–2.6s) — full stop. No tween occupies this window:
+      //    the stillness is the beat.
+
+      // ── Scene 3 (2.6–4.0s) — the contradiction ARRIVES, it does not dissolve:
+      //    a hard cut, not a fade.
+      tl.fromTo(
+        "#frame-01-hook-answer",
+        { opacity: 0 },
+        { opacity: 1, duration: 0.02, ease: "none" },
+        2.6
+      );
+
+      // the hairline draws on beneath the claim to seat the new line, then holds
+      tl.fromTo(
+        "#frame-01-hook-rule",
+        { scaleX: 0, opacity: 0 },
+        { scaleX: 1, opacity: 1, duration: 0.55, ease: "power4.out" },
+        2.62
+      );
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["01-hook"] = tl;
+      tl.seek(0);
+    })();
+  </script>
+</template>

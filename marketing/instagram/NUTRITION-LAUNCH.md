@@ -48,10 +48,15 @@ it is the same story one layer down.
 | # | Format | Hook | Asset |
 |---|---|---|---|
 | 1 | Carousel (7) | "Your forehand didn't lose the third set." | `out/carousel-5-nutrition/` — built |
-| 2 | Reel, screen recording | "This app refuses to tell you what to eat." | log → insight card → the "5 on each side" line |
+| 2 | Reel, built | "Nutrition apps tell you what to eat. This one won't." | `marketing/ads/refuses-to-guess/` — 24s, 9:16, HyperFrames |
 | 3 | Reel or single | "Pros eat bananas on court. The ITF says don't." | guide section, scrolling the sources |
 | 4 | Reel, screen recording | "You forgot to log Tuesday. Tap Tuesday." | journal calendar → past day → entry sheet |
 | 5 | Single + question sticker | "Four taps, and the app asks how it went." | rate sheet; ask the audience what they eat before a match |
+
+The reel's opening line was going to be "Every nutrition app tells you what
+to eat." It is now "Nutrition apps tell you…" — an ad whose whole thesis is
+that we refuse to overclaim cannot open on an unsubstantiated absolute about
+every competitor we have never surveyed.
 
 Post 1 carries the announcement. Post 2 is the one that should travel: an
 app admitting it does not know yet is a pattern interrupt in this niche.

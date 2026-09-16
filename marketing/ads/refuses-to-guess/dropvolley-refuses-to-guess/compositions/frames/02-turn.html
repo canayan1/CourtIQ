@@ -1,0 +1,211 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      container-type: size;
+      font-family: "SF Pro Display", -apple-system, system-ui, sans-serif;
+      color: #1e2938;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---------- layer 0 — the cream ground + the dimmed capture plate ---------- */
+    .turn-ground {
+      position: absolute;
+      inset: 0;
+      background: #e9decb;
+      overflow: hidden;
+    }
+    .turn-plate {
+      /* Texture only: oversized so the blur never exposes an edge, smeared past
+         legibility, and dimmed until it is warmth on the paper, not a screen. */
+      position: absolute;
+      left: -8%;
+      top: -8%;
+      width: 116%;
+      height: 116%;
+      object-fit: cover;
+      object-position: 50% 42%;
+      filter: blur(26px) saturate(0.55);
+      opacity: 0;
+    }
+
+    /* ---------- layer 1 — the type + the four pills ---------- */
+    .turn-content {
+      position: absolute;
+      inset: 0;
+      padding: 0 3.2cqw;
+    }
+
+    .turn-eyebrow {
+      position: absolute;
+      left: 3.2cqw;
+      right: 3.2cqw;
+      top: 20cqh;
+      display: flex;
+      align-items: baseline;
+      gap: 0.9cqw;
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-weight: 500;
+      font-size: 2.55cqw;
+      line-height: 1;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #1e2938;
+      opacity: 0;
+    }
+    .turn-spike {
+      color: #c65c31;
+      font-size: 1.12em;
+      line-height: 1;
+    }
+
+    .turn-rule {
+      position: absolute;
+      left: 3.2cqw;
+      right: 3.2cqw;
+      top: 23.2cqh;
+      height: 1px;
+      background: rgba(30, 41, 56, 0.12);
+      transform-origin: 0% 50%;
+    }
+
+    .turn-row {
+      position: absolute;
+      left: 3.2cqw;
+      right: 3.2cqw;
+      top: 41cqh;
+      display: flex;
+      gap: 1.5cqw;
+      align-items: stretch;
+    }
+    .turn-pill {
+      flex: 1 1 0;
+      height: 11cqh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fcf7ee;
+      border: 1px solid #e1d1b8;
+      border-radius: 12px;
+      box-shadow:
+        0 1px 3px rgba(30, 41, 56, 0.08),
+        0 4px 16px rgba(30, 41, 56, 0.04);
+      opacity: 0;
+    }
+    .turn-pill span {
+      font-size: 3.5cqw;
+      font-weight: 500;
+      letter-spacing: -0.005em;
+      line-height: 1;
+      color: #1e2938;
+    }
+
+    .turn-sub {
+      position: absolute;
+      left: 3.2cqw;
+      right: 3.2cqw;
+      top: 62.5cqh;
+      font-size: 7.2cqw;
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -0.018em;
+      color: #4a4640;
+    }
+    .turn-sub span {
+      display: block;
+      opacity: 0;
+    }
+  </style>
+
+  <div id="root" data-composition-id="02-turn" data-width="1080" data-height="1920" data-duration="5.5">
+    <div
+      id="turn-ground" class="clip turn-ground"
+      data-start="0"
+      data-duration="5.5"
+      data-track-index="0"
+    >
+      <img id="turn-plate" class="turn-plate" src="assets/fuel-log.png" alt="" />
+    </div>
+
+    <div
+      id="turn-content" class="clip turn-content"
+      data-start="0"
+      data-duration="5.5"
+      data-track-index="1"
+    >
+      <div id="turn-eyebrow" class="turn-eyebrow">
+        <span class="turn-spike">&#10033;</span><span>What works for you</span>
+      </div>
+
+      <div id="turn-rule" class="turn-rule"></div>
+
+      <div class="turn-row">
+        <div id="turn-pill-1" class="turn-pill"><span>Energy</span></div>
+        <div id="turn-pill-2" class="turn-pill"><span>Legs</span></div>
+        <div id="turn-pill-3" class="turn-pill"><span>Focus</span></div>
+        <div id="turn-pill-4" class="turn-pill"><span>Stomach</span></div>
+      </div>
+
+      <div class="turn-sub">
+        <span id="turn-sub-1">You log the meal.</span>
+        <span id="turn-sub-2">You rate how you played.</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    (function () {
+      var tl = gsap.timeline({ paused: true });
+
+      /* Scene 1 (0.0-1.0s) — ground, texture plate, eyebrow, hairline rule. */
+      tl.fromTo("#turn-plate", { opacity: 0 }, { opacity: 0.09, duration: 0.9, ease: "power2.out" }, 0);
+      tl.fromTo(
+        "#turn-eyebrow",
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
+        0.12
+      );
+      tl.fromTo(
+        "#turn-rule",
+        { scaleX: 0, opacity: 0 },
+        { scaleX: 1, opacity: 1, duration: 0.85, ease: "power3.out" },
+        0.34
+      );
+
+      /* Scene 2 (1.0-3.2s) — four pills cascade left to right, one beat apart,
+         each settling on a long tail. No overshoot, nothing bounces. */
+      var pills = ["#turn-pill-1", "#turn-pill-2", "#turn-pill-3", "#turn-pill-4"];
+      for (var i = 0; i < pills.length; i++) {
+        var at = 1 + i * 0.5;
+        tl.fromTo(
+          pills[i],
+          { opacity: 0, y: 34 },
+          { opacity: 1, y: 0, duration: 0.72, ease: "power4.out" },
+          at
+        );
+      }
+
+      /* Scene 3 (3.2-5.0s) — the sub-line reveals beneath the row, then stillness. */
+      tl.fromTo(
+        "#turn-sub-1",
+        { opacity: 0, y: 22 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+        3.22
+      );
+      tl.fromTo(
+        "#turn-sub-2",
+        { opacity: 0, y: 22 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+        3.46
+      );
+
+      window.__timelines["02-turn"] = tl;
+      tl.seek(0);
+    })();
+  </script>
+</template>

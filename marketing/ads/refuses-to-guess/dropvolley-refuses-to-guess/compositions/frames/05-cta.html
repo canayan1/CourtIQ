@@ -1,0 +1,285 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      font-family: "SF Pro Display", -apple-system, system-ui, sans-serif;
+      font-synthesis: none;
+    }
+
+    .clip {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* — depth layer 1: the warm cream ground (full-bleed, never on #root) — */
+    .cta05-ground {
+      background: #fcf7ee;
+    }
+
+    /* — depth layer 2: the half-step tile field the capture rests on — */
+    .cta05-tile {
+      position: absolute;
+      left: 640px;
+      top: 640px;
+      width: 460px;
+      height: 780px;
+      border-radius: 12px;
+      background: rgba(248, 227, 213, 0.62);
+      border: 1px solid rgba(30, 41, 56, 0.08);
+    }
+
+    /* — depth layer 3: the type + the capture — */
+    .cta05-line {
+      position: absolute;
+      left: 84px;
+      width: 912px;
+      color: #1e2938;
+      font-size: 88px;
+      font-weight: 400;
+      line-height: 1.06;
+      letter-spacing: -0.018em;
+      white-space: nowrap;
+    }
+    .cta05-line-a {
+      top: 372px;
+    }
+    .cta05-line-b {
+      top: 465px;
+    }
+
+    .cta05-rule {
+      position: absolute;
+      left: 84px;
+      top: 628px;
+      width: 208px;
+      height: 1px;
+      background: rgba(30, 41, 56, 0.2);
+      transform-origin: left center;
+    }
+
+    .cta05-shot {
+      position: absolute;
+      left: 692px;
+      top: 700px;
+      width: 302px;
+      height: 656px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(30, 41, 56, 0.12);
+      box-shadow:
+        0 1px 3px rgba(30, 41, 56, 0.08),
+        0 4px 16px rgba(30, 41, 56, 0.04);
+      background: #fcf7ee;
+    }
+    .cta05-shot img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .cta05-lockup {
+      position: absolute;
+      left: 84px;
+      top: 1136px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .cta05-dot {
+      width: 26px;
+      height: 26px;
+      border-radius: 9999px;
+      background: #c65c31;
+    }
+    .cta05-mark {
+      color: #1e2938;
+      font-size: 64px;
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .cta05-sweep {
+      position: absolute;
+      left: 84px;
+      top: 1248px;
+      width: 344px;
+      height: 1px;
+      background: rgba(30, 41, 56, 0.2);
+      transform-origin: left center;
+    }
+
+    .cta05-fine {
+      position: absolute;
+      left: 84px;
+      top: 1470px;
+      width: 912px;
+      color: rgba(30, 41, 56, 0.72);
+      font-size: 32px;
+      font-weight: 400;
+      line-height: 1.4;
+      letter-spacing: 0.005em;
+    }
+  </style>
+
+  <div id="root" data-composition-id="05-cta" data-width="1080" data-height="1920">
+    <div
+      id="cta05-ground"
+      class="clip cta05-ground"
+      data-start="0"
+      data-duration="4"
+      data-track-index="0"
+    ></div>
+
+    <div id="cta05-stage" class="clip" data-start="0" data-duration="4" data-track-index="1">
+      <div class="cta05-tile" id="cta05-tile"></div>
+
+      <div class="cta05-shot" id="cta05-shot">
+        <img src="assets/journal-cal.png" alt="" />
+      </div>
+
+      <div class="cta05-line cta05-line-a" id="cta05-line-a">Tennis Journal —</div>
+      <div class="cta05-line cta05-line-b" id="cta05-line-b">free in DropVolley.</div>
+
+      <div class="cta05-rule" id="cta05-rule"></div>
+
+      <div class="cta05-lockup">
+        <span class="cta05-dot" id="cta05-dot"></span>
+        <span class="cta05-mark" id="cta05-mark">DropVolley</span>
+      </div>
+
+      <div class="cta05-sweep" id="cta05-sweep"></div>
+
+      <div class="cta05-fine" id="cta05-fine">
+        General information for healthy adults, not dietary advice.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.querySelector('[data-composition-id="05-cta"]');
+      var q = function (sel) {
+        return root.querySelector(sel);
+      };
+
+      var lineA = q("#cta05-line-a");
+      var lineB = q("#cta05-line-b");
+      var rule = q("#cta05-rule");
+      var tile = q("#cta05-tile");
+      var shot = q("#cta05-shot");
+      var dot = q("#cta05-dot");
+      var mark = q("#cta05-mark");
+      var sweep = q("#cta05-sweep");
+      var fine = q("#cta05-fine");
+
+      var tl = gsap.timeline({ paused: true });
+
+      /* Scene 1 (0.0–1.2s) — the line settles centred-left, the capture
+         arrives offset right and slightly below. Long-tail settles only. */
+      tl.fromTo(
+        lineA,
+        { opacity: 0, y: 28 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+        0.05,
+      );
+      tl.fromTo(
+        lineB,
+        { opacity: 0, y: 28 },
+        { opacity: 1, y: 0, duration: 0.85, ease: "power3.out" },
+        0.22,
+      );
+      tl.fromTo(
+        tile,
+        { opacity: 0 },
+        { opacity: 1, duration: 1.0, ease: "power2.out" },
+        0.3,
+      );
+      tl.fromTo(
+        shot,
+        { opacity: 0, x: 18, y: 38 },
+        { opacity: 1, x: 0, y: 0, duration: 1.0, ease: "power3.out" },
+        0.4,
+      );
+      tl.fromTo(
+        rule,
+        { opacity: 0, scaleX: 0 },
+        { opacity: 1, scaleX: 1, duration: 0.7, ease: "power3.out" },
+        0.85,
+      );
+
+      /* Scene 2 (1.2–2.2s) — the wordmark fades up beneath the line with the
+         clay dot; the supporting capture recedes as the mark settles whole
+         (the blueprint's "satellites clear" finisher), then the underline
+         sweeps beneath the wordmark. */
+      tl.fromTo(
+        dot,
+        { opacity: 0, scale: 0.92 },
+        { opacity: 1, scale: 1, duration: 0.55, ease: "power3.out" },
+        1.18,
+      );
+      tl.fromTo(
+        mark,
+        { opacity: 0, y: 18 },
+        { opacity: 1, y: 0, duration: 0.75, ease: "power3.out" },
+        1.26,
+      );
+      tl.fromTo(
+        shot,
+        { opacity: 1, x: 0 },
+        {
+          opacity: 0.64,
+          x: 16,
+          duration: 1.05,
+          ease: "power2.out",
+          immediateRender: false,
+        },
+        1.4,
+      );
+      tl.fromTo(
+        tile,
+        { opacity: 1 },
+        {
+          opacity: 0.7,
+          duration: 1.05,
+          ease: "power2.out",
+          immediateRender: false,
+        },
+        1.4,
+      );
+      tl.fromTo(
+        sweep,
+        { opacity: 0, scaleX: 0 },
+        { opacity: 1, scaleX: 1, duration: 0.85, ease: "power3.out" },
+        1.62,
+      );
+
+      /* Scene 3 — the required disclaimer. It used to fade up at 2.3s of a
+         3s frame, which left it fully on screen for about a tenth of a
+         second: legally present, practically invisible, and the first thing
+         a loop would cut. It now lands early and holds for over three
+         seconds, which is the whole reason the frame is 4s. */
+      tl.fromTo(
+        fine,
+        { opacity: 0, y: 14 },
+        { opacity: 1, y: 0, duration: 0.62, ease: "power2.out" },
+        0.85,
+      );
+
+      /* hold the landed frame to the full 4s — no exit, nothing moves */
+      tl.set(fine, { opacity: 1 }, 4);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["05-cta"] = tl;
+      tl.seek(0);
+    })();
+  </script>
+</template>
