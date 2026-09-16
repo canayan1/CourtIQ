@@ -21,6 +21,16 @@ struct AppConfiguration {
 
     static let shared = AppConfiguration()
 
+    /// Where a shared link sends a stranger.
+    ///
+    /// This used to be the bare string `courtiq.app`, written into three share
+    /// texts. That domain is not ours and today serves an unrelated AI
+    /// basketball app, so for months every share the app produced sent tennis
+    /// players to someone else's product. One constant now, so it cannot drift
+    /// apart again, pointing at the App Store because an install is the whole
+    /// point of a share.
+    static let shareDestination = "https://apps.apple.com/app/id6773753464"
+
     private init(bundle: Bundle = .main) {
         privacyPolicyURL = Self.urlValue(for: "COURTIQ_PRIVACY_URL", bundle: bundle)
         termsOfUseURL = Self.urlValue(for: "COURTIQ_TERMS_URL", bundle: bundle)

@@ -166,7 +166,7 @@ struct DrillResultView: View {
         return """
         DropVolley · Drill #\(session.dayNumber)
         🎾 \(session.emojiString) \(pct)%
-        courtiq.app
+        \(AppConfiguration.shareDestination)
         """
     }
 }

@@ -118,6 +118,14 @@ enum AnalyticsEvent {
     /// Journal: the one open question was acted on, and which kind it was.
     /// Answers "does the app asking actually work?"
     static let journalPromptActioned = "journal_prompt_actioned"
+
+    /// Head-to-head challenge — the acquisition loop. `challenge_shared`
+    /// counts links created, `challenge_opened` counts links that reached an
+    /// installed app, and the gap between them is the install funnel.
+    static let challengeShared    = "challenge_shared"
+    static let challengeOpened    = "challenge_opened"
+    static let challengeStarted   = "challenge_started"
+    static let challengeCompleted = "challenge_completed"
 }
 
 extension View {

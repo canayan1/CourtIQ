@@ -19,6 +19,9 @@ struct DailyIQView: View {
     @State private var xpBefore = 0
     @State private var lastScore = 0
     @State private var lastTotal = 0
+    /// The exact questions this session asked — a challenge has to send the
+    /// same five, in the same order, not five fresh ones.
+    @State private var playedQuestions: [QuizQuestion] = []
     #if DEBUG
     /// QC-only session override (see the QC_IQ_PHASE hook below).
     @State private var qcQuiz: Quiz?
@@ -57,6 +60,7 @@ struct DailyIQView: View {
                 QuizView(quiz: sessionQuiz, title: lang.t("iq.daily_title")) { summary in
                     lastScore = summary.score
                     lastTotal = summary.totalQuestions
+                    playedQuestions = sessionQuiz.questions
                     iq.recordSession(results: summary.perQuestionResults ?? [:])
                     // Same manager that powers Profile stats + the unified streak.
                     dailyQuizManager.recordCompletion(summary: summary, isDaily: true)
@@ -307,6 +311,44 @@ struct DailyIQView: View {
 
     // MARK: - Session summary (the Duolingo moment)
 
+    /// Send the same five scenarios to someone else, with your score attached.
+    /// The whole challenge rides in the link — no account, no server, and it
+    /// opens on the App Store for anyone who does not have the app yet.
+    @ViewBuilder
+    private var challengeCard: some View {
+        if let challenge = TennisChallenge.from(questions: playedQuestions, score: lastScore) {
+            VStack(alignment: .leading, spacing: 10) {
+                Text(lang.t("challenge.cta_title"))
+                    .font(.subheadline.weight(.bold))
+                    .foregroundStyle(AppPalette.ink)
+                    .fixedSize(horizontal: false, vertical: true)
+                Text(String(format: lang.t("challenge.cta_body_fmt"), lastScore, TennisChallenge.length))
+                    .font(.footnote)
+                    .foregroundStyle(AppPalette.inkSoft)
+                    .fixedSize(horizontal: false, vertical: true)
+                ShareLink(item: challenge.url,
+                          message: Text(String(format: lang.t("challenge.share_fmt"),
+                                               lastScore, TennisChallenge.length))) {
+                    HStack(spacing: 8) {
+                        Image(systemName: "paperplane.fill")
+                        Text(lang.t("challenge.cta_button"))
+                    }
+                    .font(.headline)
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 16)
+                    .background(AppPalette.clay, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+                }
+                .simultaneousGesture(TapGesture().onEnded {
+                    AppAnalytics.shared.log(AnalyticsEvent.challengeShared, ["from": "daily_summary"])
+                })
+            }
+            .padding(16)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .cardSurface(fill: AppPalette.goldTint.opacity(0.5), stroke: AppPalette.gold.opacity(0.4), cornerRadius: 18)
+        }
+    }
+
     private var summaryView: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 22) {
@@ -341,6 +383,8 @@ struct DailyIQView: View {
                                  systemImage: "flame.fill")
                     }
                 }
+
+                challengeCard
 
                 Text(String(format: lang.t("iq.mastered_fmt"), iq.masteredCount, iq.totalCount))
                     .font(.subheadline)

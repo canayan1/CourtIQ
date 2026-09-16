@@ -261,6 +261,9 @@ private struct RootView: View {
     /// A doubles invite code arriving from a universal link or the clipboard.
     @State private var pendingInvite: InviteCode?
 
+    /// A head-to-head challenge arriving from a `samosfi.com/c/<payload>` link.
+    @State private var pendingChallenge: TennisChallenge?
+
     /// Only route deep links once the user is past onboarding + the health gate,
     /// so an invite never lands on top of those first-run screens.
     private var readyForDeepLink: Bool {
@@ -300,6 +303,11 @@ private struct RootView: View {
         .sheet(item: $pendingInvite) { invite in
             DoublesAcceptSheet(onAccepted: {}, initialCode: invite.code)
         }
+        .sheet(item: Binding(get: { pendingChallenge.map(ChallengeBox.init) },
+                             set: { pendingChallenge = $0?.challenge })) { box in
+            ChallengeView(challenge: box.challenge)
+                .environmentObject(lang)
+        }
     }
 
     // MARK: - Doubles invite deep links
@@ -309,9 +317,23 @@ private struct RootView: View {
         let host = url.host ?? ""
         guard host.contains("samosfi") || host.contains("canayan-ios-apps") else { return }
         let comps = url.pathComponents.filter { $0 != "/" }
-        guard comps.first == "d", comps.count >= 2 else { return }
-        let code = normalizedInviteCode(comps[1])
-        if code.count == 6 { pendingInvite = InviteCode(code: code) }
+        guard comps.count >= 2 else { return }
+
+        switch comps[0] {
+        case "d":
+            let code = normalizedInviteCode(comps[1])
+            if code.count == 6 { pendingInvite = InviteCode(code: code) }
+        case "c":
+            // A challenge carries everything in the payload — no lookup, no
+            // network, so it opens even on a plane.
+            if let challenge = try? ChallengeCodec.decode(comps[1], bank: TennisIQManager.shared.bank) {
+                AppAnalytics.shared.log(AnalyticsEvent.challengeOpened,
+                                        ["theirs": challenge.challengerScore])
+                pendingChallenge = challenge
+            }
+        default:
+            break
+        }
     }
 
     // The launch-time clipboard read that used to live here was a mistake:
@@ -325,6 +347,12 @@ private struct RootView: View {
     private func normalizedInviteCode(_ s: String) -> String {
         s.uppercased().filter { $0.isLetter || $0.isNumber }
     }
+}
+
+/// Wraps a decoded challenge so `.sheet(item:)` can present it.
+private struct ChallengeBox: Identifiable {
+    let challenge: TennisChallenge
+    let id = UUID()
 }
 
 /// Wraps a deep-linked invite code so `.sheet(item:)` can present the accept flow.
