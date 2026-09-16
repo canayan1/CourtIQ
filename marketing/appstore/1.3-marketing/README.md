@@ -1,10 +1,18 @@
 # App Store screenshots — 1.3
 
-Six frames, 1320×2868 (6.9"), built by `build.py` from real device captures.
+Six frames per locale, 1320×2868 (6.9"), built by `build.py` from real device
+captures taken in that locale.
 
 ```bash
-python3 build.py        # writes out/*.png
+python3 build.py            # every locale in COPY
+python3 build.py tr         # just one
 ```
+
+Captures live in `assets/shots/<locale>/`, frames in `out/<locale>/`. The 1.1
+set shipped the English frames onto the Turkish storefront; a Turkish player
+saw an app that did not look like the one they downloaded, so the captures are
+now taken with the simulator set to each language and the frame copy lives in
+`COPY`, keyed by locale.
 
 ## Where the pictures come from
 

@@ -47,59 +47,81 @@ assert N_WALL >= 4, "wall level count looks wrong"
 
 W, H = 1320, 2868
 
+# Per-locale copy. The device captures are per-locale too: shipping English
+# frames onto the Turkish storefront was the old behaviour and it advertised
+# an app that does not look like the one a Turkish player downloads.
+COPY = {
+    "en-US": {
+        "01-journal":   ("TENNIS JOURNAL", "Write the\nseason down.",
+            "Your matches and what you ate, in one calendar. Tap any day — today or three weeks back — and fill it in.",
+            [("Any day", "BACKDATED"), ("Both", "IN ONE PLACE"), ("Free", "MATCHES + FUEL")]),
+        "02-fuel":      ("WHAT YOU ATE, AND HOW YOU PLAYED", "Your legs,\nexplained.",
+            "Log the meal before you play, rate how you felt after. Your own averages do the talking — plus a guide where every claim is sourced.",
+            [("{sources}", "SOURCES CITED"), ("{sections}", "GUIDE SECTIONS"), ("On device", "ONLY")]),
+        "03-tactics":   ("TACTICS, TAUGHT", "Learn tactics\nlike a language.",
+            "{lessons} lessons, one decision at a time, each with its own court diagram. Chapter 1 is free.",
+            [("{lessons}", "LESSONS"), ("Ch. 1", "FREE"), ("Daily", "FREE LESSON")]),
+        "04-wall":      ("WALL PRACTICE", "The wall never misses.\nNow it counts.",
+            "Prop your phone behind you. It watches you turn and swing, counts every rep on-device, and grades the rung.",
+            [("{wall}", "LEVELS"), ("Counts", "BY CAMERA"), ("No", "TRIPOD")]),
+        "05-coach":     ("YOUR SWING, REVIEWED", "Film one swing.\nGet coached.",
+            "AI reads your swing frame by frame — preparation, contact point, finish, balance — and tells you what to fix first.",
+            [("AI", "READS IT"), ("Frame", "BY FRAME"), ("Free", "TO START")]),
+        "06-decisions": ("FOUR WAYS TO GET BETTER", "Tennis is decisions,\nnot strokes.",
+            "{scenarios} real match scenarios written by certified coaches, and four things to work on — all from one screen.",
+            [("{scenarios}", "SCENARIOS"), ("4", "WAYS IN"), ("Free", "TO START")]),
+    },
+    "tr": {
+        "01-journal":   ("TENİS GÜNLÜĞÜ", "Sezonu yaz,\ngün gün.",
+            "Maçların ve ne yediğin tek takvimde. İstediğin güne dokun — bugüne ya da üç hafta öncesine — ve doldur.",
+            [("Her gün", "GERİYE DÖNÜK"), ("İkisi", "TEK YERDE"), ("Ücretsiz", "MAÇ + BESLENME")]),
+        "02-fuel":      ("NE YEDİN, NASIL OYNADIN", "Bacakların\nneden bitiyor?",
+            "Oynamadan önceki öğününü kaydet, sonrasında nasıl hissettiğini puanla. Konuşan kendi ortalamaların — üstelik her iddiası kaynaklı bir kılavuz.",
+            [("{sources}", "KAYNAK"), ("{sections}", "KILAVUZ BÖLÜMÜ"), ("Cihazda", "SADECE")]),
+        "03-tactics":   ("TAKTİK, ÖĞRETİLİR", "Taktiği bir dil\ngibi öğren.",
+            "{lessons} ders, her seferinde tek bir karar, her biri kendi kort şemasıyla. 1. bölüm ücretsiz.",
+            [("{lessons}", "DERS"), ("1. bölüm", "ÜCRETSİZ"), ("Her gün", "BEDAVA DERS")]),
+        "04-wall":      ("DUVAR ANTRENMANI", "Duvar asla kaçırmaz.\nArtık sayıyor.",
+            "Telefonu arkana koy. Dönüşünü ve vuruşunu izler, her tekrarı cihazda sayar ve basamağı notlar.",
+            [("{wall}", "SEVİYE"), ("Kamerayla", "SAYAR"), ("Tripod", "YOK")]),
+        "05-coach":     ("VURUŞUN, İNCELENMİŞ", "Bir vuruş çek.\nKoçluk al.",
+            "AI vuruşunu kare kare okur — hazırlık, temas noktası, bitiş, denge — ve önce neyi düzelteceğini söyler.",
+            [("AI", "OKUR"), ("Kare", "KARE"), ("Ücretsiz", "BAŞLA")]),
+        "06-decisions": ("GELİŞMENİN DÖRT YOLU", "Tenis karardır,\nvuruş değil.",
+            "Sertifikalı koçların yazdığı {scenarios} gerçek maç senaryosu ve üzerinde çalışılacak dört şey — hepsi tek ekrandan.",
+            [("{scenarios}", "SENARYO"), ("4", "GİRİŞ YOLU"), ("Ücretsiz", "BAŞLA")]),
+    },
+}
+
 SHOTS = [
     {
         "id": "01-journal",
         "shot": "02_journal.png",
-        "eyebrow": "TENNIS JOURNAL",
-        "head": "Write the\nseason down.",
-        "sub": "Your matches and what you ate, in one calendar. Tap any day — today or three weeks back — and fill it in.",
-        "badges": [("Any day", "BACKDATED"), ("Both", "IN ONE PLACE"), ("Free", "MATCHES + FUEL")],
         "dark": True,
     },
     {
         "id": "02-fuel",
         "shot": "07_fuel.png",
-        "eyebrow": "WHAT YOU ATE, AND HOW YOU PLAYED",
-        "head": "Your legs,\nexplained.",
-        "sub": f"Log the meal before you play, rate how you felt after. Your own averages do the talking — plus a guide where every claim is sourced.",
-        "badges": [(f"{N_SOURCES}", "SOURCES CITED"), (f"{N_SECTIONS}", "GUIDE SECTIONS"), ("On device", "ONLY")],
         "dark": False,
     },
     {
         "id": "03-tactics",
         "shot": "05_tactics.png",
-        "eyebrow": "TACTICS, TAUGHT",
-        "head": "Learn tactics\nlike a language.",
-        "sub": f"{N_LESSONS} lessons, one decision at a time, each with its own court diagram. Chapter 1 is free.",
-        "badges": [(f"{N_LESSONS}", "LESSONS"), ("Ch. 1", "FREE"), ("Daily", "FREE LESSON")],
         "dark": True,
     },
     {
         "id": "04-wall",
         "shot": "04_wall.png",
-        "eyebrow": "WALL PRACTICE",
-        "head": "The wall never misses.\nNow it counts.",
-        "sub": "Prop your phone behind you. It watches you turn and swing, counts every rep on-device, and grades the rung.",
-        "badges": [(f"{N_WALL}", "LEVELS"), ("Counts", "BY CAMERA"), ("No", "TRIPOD")],
         "dark": False,
     },
     {
         "id": "05-coach",
         "shot": "06_coach.png",
-        "eyebrow": "YOUR SWING, REVIEWED",
-        "head": "Film one swing.\nGet coached.",
-        "sub": "AI reads your swing frame by frame — preparation, contact point, finish, balance — and tells you what to fix first.",
-        "badges": [("AI", "READS IT"), ("Frame", "BY FRAME"), ("Free", "TO START")],
         "dark": False,
     },
     {
         "id": "06-decisions",
         "shot": "01_home.png",
-        "eyebrow": "FOUR WAYS TO GET BETTER",
-        "head": "Tennis is decisions,\nnot strokes.",
-        "sub": f"{N_SCENARIOS} real match scenarios written by certified coaches, and four things to work on — all from one screen.",
-        "badges": [(f"{N_SCENARIOS}", "SCENARIOS"), ("4", "WAYS IN"), ("Free", "TO START")],
         "dark": True,
     },
 ]
@@ -154,32 +176,45 @@ def data_uri(path: pathlib.Path) -> str:
     return "data:image/png;base64," + base64.b64encode(path.read_bytes()).decode()
 
 
-def main() -> None:
-    (HERE / "out").mkdir(exist_ok=True)
+def build(locale: str) -> None:
+    """Render one locale's frames from that locale's device captures."""
+    shots_dir = HERE / "assets/shots" / locale
+    out_dir = HERE / "out" / locale
+    out_dir.mkdir(parents=True, exist_ok=True)
     (HERE / "build").mkdir(exist_ok=True)
+    fill = {"scenarios": N_SCENARIOS, "lessons": N_LESSONS, "wall": N_WALL,
+            "sections": N_SECTIONS, "sources": N_SOURCES, "recipes": N_RECIPES}
+
     for s in SHOTS:
-        shot = HERE / "assets/shots" / s["shot"]
+        shot = shots_dir / s["shot"]
         assert shot.exists(), f"missing capture: {shot}"
+        eyebrow, head, sub, badges_raw = COPY[locale][s["id"]]
         badges = "\n".join(
-            f'<div class="badge"><div class="v">{v}</div><div class="k">{k}</div></div>'
-            for v, k in s["badges"])
+            f'<div class="badge"><div class="v">{v.format(**fill)}</div>'
+            f'<div class="k">{k}</div></div>' for v, k in badges_raw)
         tone = "d dark" if s["dark"] else "l light"
         html = f"""<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head>
 <body><div class="frame {tone}">
-  <div class="eyebrow">{s['eyebrow']}</div>
-  <div class="head">{s['head']}</div>
-  <div class="sub">{s['sub']}</div>
+  <div class="eyebrow">{eyebrow}</div>
+  <div class="head">{head}</div>
+  <div class="sub">{sub.format(**fill)}</div>
   <div class="badges">{badges}</div>
   <div class="device"><img src="{data_uri(shot)}" alt=""></div>
 </div></body></html>"""
-        page = HERE / "build" / f"{s['id']}.html"
+        page = HERE / "build" / f"{locale}-{s['id']}.html"
         page.write_text(html)
-        out = HERE / "out" / f"{s['id']}.png"
+        out = out_dir / f"{s['id']}.png"
         subprocess.run([CHROME, "--headless", "--disable-gpu", "--hide-scrollbars",
                         f"--screenshot={out}", f"--window-size={W},{H}",
                         "--force-device-scale-factor=1", page.as_uri()],
                        check=True, capture_output=True)
-        print(f"  {out.name}")
+        print(f"  {locale}/{out.name}")
+
+
+def main() -> None:
+    locales = sys.argv[1:] or sorted(COPY)
+    for locale in locales:
+        build(locale)
     print(f"scenarios {N_SCENARIOS} · lessons {N_LESSONS} · wall {N_WALL} · "
           f"guide sections {N_SECTIONS} · recipes {N_RECIPES} · sources {N_SOURCES}")
 
