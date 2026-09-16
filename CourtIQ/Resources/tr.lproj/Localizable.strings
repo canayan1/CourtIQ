@@ -427,7 +427,7 @@
 "health.eyebrow" = "BAŞLAMADAN ÖNCE";
 "health.title" = "Güvenli antrenman.";
 "health.subtitle" = "DropVolley tenisçiler tarafından yapıldı, doktorlar değil. Antrenman, mobilite veya fiziksel içeriği kullanmadan önce lütfen şunları oku ve onayla.";
-"health.bullet_not_medical" = "DropVolley tıbbi tavsiye, teşhis veya tedavi değildir. Doktor, fizyoterapist, sertifikalı antrenör veya koçun yerini tutmaz.";
+"health.bullet_not_medical" = "DropVolley tıbbi tavsiye, teşhis veya tedavi değildir — beslenme kılavuzu, tarifler ve beslenme günlüğü de dahil: bunlar sağlıklı yetişkinler için genel bilgidir, diyet tavsiyesi değildir. Doktor, diyetisyen, fizyoterapist, sertifikalı antrenör ya da koç yerine geçmez.";
 "health.bullet_consult_doctor" = "Herhangi bir yeni fiziksel aktiviteye başlamadan önce mutlaka kalifiye bir sağlık profesyoneliyle konuş — özellikle kalp, eklem ya da kas-iskelet rahatsızlığın varsa, hamile isen, sakatlıktan iyileşiyorsan veya son 6 ayda düzenli egzersiz yapmadıysan.";
 "health.bullet_stop_if_pain" = "DropVolley'i kullanırken ya da sonrasında ağrı, baş dönmesi, nefes darlığı, göğüs rahatsızlığı veya alışılmadık herhangi bir belirti hissedersen hemen dur ve tıbbi yardım al.";
 "health.bullet_assume_risk" = "Tenis, kuvvet antrenmanı, plyometrik, mobilite ve kondisyon çalışması ciddi yaralanma dahil olmak üzere doğal bir sakatlanma riski taşır. DropVolley'i kullanarak bu riski bilerek ve gönüllü olarak kabul ediyorsun.";
@@ -1193,7 +1193,6 @@
 "nutrition.q_hydration_past" = "O gün su?";
 "nutrition.q_caffeine_past" = "O gün kafein?";
 "nutrition.timing_nothing_past" = "Yemedim";
-"health.bullet_nutrition" = "Beslenme günlüğü, kılavuz ve tarifler sağlıklı yetişkinler için genel bilgidir — diyet tavsiyesi değildir ve sana özel değildir. Bir rahatsızlığın, gıda alerjin ya da yeme bozukluğun varsa buradakini değil doktorunu veya diyetisyenini dinle.";
 "nutrition.rate_mid" = "Normal";
 "nutrition.rate_optional" = "İsteğe bağlı. Hatırlamıyorsan boş bırak — tahmin ortalamalarını bulandırır.";
 "nutrition.q_how_was_it_rest" = "O gün bitti — nasıl hissettin?";

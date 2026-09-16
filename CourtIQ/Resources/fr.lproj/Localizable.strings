@@ -427,7 +427,7 @@
 "health.eyebrow" = "AVANT DE COMMENCER";
 "health.title" = "Entraîne-toi en sécurité.";
 "health.subtitle" = "DropVolley est fait par des joueurs de tennis, pas par des médecins. Lis et accepte quelques points avant d'utiliser l'entraînement, la mobilité ou tout contenu physique de cette app.";
-"health.bullet_not_medical" = "DropVolley ne constitue ni un avis médical, ni un diagnostic, ni un traitement. L'app ne remplace pas un médecin, un kinésithérapeute, un préparateur physique diplômé ou un entraîneur.";
+"health.bullet_not_medical" = "DropVolley ne constitue ni un avis médical, ni un diagnostic, ni un traitement — y compris le guide de nutrition, les recettes et le journal de nutrition, qui sont une information générale pour adultes en bonne santé et non des conseils diététiques. L'app ne remplace ni un médecin, ni un diététicien, ni un kinésithérapeute, ni un entraîneur diplômé, ni un coach.";
 "health.bullet_consult_doctor" = "Consulte un professionnel de santé qualifié avant de commencer une nouvelle activité physique — en particulier en cas de problème cardiaque, articulaire ou musculo-squelettique, de grossesse, de retour de blessure, ou si tu n'as pas pratiqué régulièrement ces 6 derniers mois.";
 "health.bullet_stop_if_pain" = "En cas de douleur, de vertige, d'essoufflement, de gêne à la poitrine ou de tout symptôme inhabituel pendant ou après l'utilisation de DropVolley, arrête immédiatement et consulte un médecin.";
 "health.bullet_assume_risk" = "Le tennis, la musculation, la pliométrie, la mobilité et la préparation physique comportent un risque de blessure — y compris de blessure grave ou pire. En utilisant DropVolley, tu acceptes ce risque en connaissance de cause et volontairement.";
@@ -1193,7 +1193,6 @@
 "nutrition.q_hydration_past" = "De l'eau ce jour-là ?";
 "nutrition.q_caffeine_past" = "De la caféine ce jour-là ?";
 "nutrition.timing_nothing_past" = "Rien mangé";
-"health.bullet_nutrition" = "Le journal de nutrition, le guide et les recettes sont une information générale pour adultes en bonne santé — ce ne sont pas des conseils diététiques et ils ne sont pas adaptés à toi. En cas de pathologie, d'allergie alimentaire ou de trouble du comportement alimentaire, suis ton médecin ou ta diététicienne, pas cet écran.";
 "nutrition.rate_mid" = "Normal";
 "nutrition.rate_optional" = "Facultatif. Laisse vide si tu ne t'en souviens pas — une estimation ne ferait que brouiller tes moyennes.";
 "nutrition.q_how_was_it_rest" = "La journée est passée — tu t'es senti comment ?";

@@ -427,7 +427,7 @@
 "health.eyebrow" = "BEFORE YOU START";
 "health.title" = "Train safely.";
 "health.subtitle" = "DropVolley is built by tennis players, not doctors. Please read and acknowledge a few things before you use the training, mobility, or any physical content in this app.";
-"health.bullet_not_medical" = "DropVolley is not medical advice, diagnosis, or treatment. It is not a substitute for a doctor, physiotherapist, certified trainer, or coach.";
+"health.bullet_not_medical" = "DropVolley is not medical advice, diagnosis, or treatment — and that includes the nutrition guide, recipes and fuel log, which are general information for healthy adults, not dietary advice. It is not a substitute for a doctor, dietitian, physiotherapist, certified trainer, or coach.";
 "health.bullet_consult_doctor" = "Speak to a qualified medical professional before starting any new physical activity — especially if you have any heart, joint, or musculoskeletal condition, are pregnant, are recovering from injury, or have not exercised regularly in the past 6 months.";
 "health.bullet_stop_if_pain" = "If you feel pain, dizziness, shortness of breath, chest discomfort, or any unusual symptom during or after using DropVolley, stop immediately and seek medical attention.";
 "health.bullet_assume_risk" = "Tennis, strength training, plyometrics, mobility, and conditioning carry an inherent risk of injury — including serious injury or worse. You knowingly and voluntarily accept this risk by using DropVolley.";
@@ -1193,7 +1193,6 @@
 "nutrition.q_hydration_past" = "Water that day?";
 "nutrition.q_caffeine_past" = "Caffeine that day?";
 "nutrition.timing_nothing_past" = "Didn't eat";
-"health.bullet_nutrition" = "The fuel log, nutrition guide and recipes are general information for healthy adults — not dietary advice, and not tailored to you. If you have a condition, a food allergy or an eating disorder, follow your doctor or dietitian instead.";
 "nutrition.rate_mid" = "Normal";
 "nutrition.rate_optional" = "Optional. Leave it blank if you can't remember — a guess would only muddy your averages.";
 "nutrition.q_how_was_it_rest" = "That day is over — how did you feel?";

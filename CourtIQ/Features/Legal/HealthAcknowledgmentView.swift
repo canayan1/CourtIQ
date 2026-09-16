@@ -25,11 +25,11 @@ struct HealthAcknowledgmentView: View {
                         lang.t("health.bullet_consult_doctor"),
                         lang.t("health.bullet_stop_if_pain"),
                         lang.t("health.bullet_assume_risk"),
-                        lang.t("health.bullet_self_directed"),
-                        // The app gives sports-nutrition information now. This
-                        // screen is the only thing a player actually accepts,
-                        // so it has to name food as well as movement.
-                        lang.t("health.bullet_nutrition")
+                        lang.t("health.bullet_self_directed")
+                        // Food is named in the first bullet rather than a
+                        // sixth one: a sixth pushed the list past the fold,
+                        // and a point you can agree to without scrolling to
+                        // is not a point anyone has read.
                     ])
                     legalLinks
                 }
