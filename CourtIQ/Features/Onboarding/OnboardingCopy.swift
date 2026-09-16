@@ -24,9 +24,9 @@ struct OnboardingCopy {
 
     // MARK: 0 — Hook / positioning (opens the app)
     var hookEyebrow: String { t("DROPVOLLEY", "DROPVOLLEY", "DROPVOLLEY") }
-    var hookTitle: String { t("Three ways to get better at tennis.", "Teniste gelişmenin üç yolu.", "Trois façons de progresser au tennis.") }
+    var hookTitle: String { t("Four ways to get better at tennis.", "Teniste gelişmenin dört yolu.", "Quatre façons de progresser au tennis.") }
     var hookSubtitle: String {
-        t("Film a swing and get it read. Hit the wall and get it counted. Learn the tactics that win points.", "Vuruşunu çek, okunsun. Duvara vur, sayılsın. Puan kazandıran taktikleri öğren.", "Filme un geste, on te le décrypte. Joue au mur, on te compte. Apprends la tactique qui fait gagner des points.")
+        t("Film a swing and get it read. Hit the wall and get it counted. Learn the tactics that win points. Write the season down.", "Vuruşunu çek, okunsun. Duvara vur, sayılsın. Puan kazandıran taktikleri öğren. Sezonu yaz.", "Filme un geste, on te le décrypte. Joue au mur, on te compte. Apprends la tactique qui fait gagner des points. Écris la saison.")
     }
 
     // MARK: Feature showcase — one slide per pillar, each a live sample
