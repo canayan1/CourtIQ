@@ -1202,3 +1202,4 @@
 "nutrition.meal_none" = "Pas de repas";
 "nutrition.timing_unknown" = "Horaire non noté";
 "journal.add_another_meal" = "Ajouter un autre repas à ce jour";
+"nutrition.today_last_from_log" = "Lu dans ton journal de nutrition. Touche pour modifier.";

@@ -169,6 +169,17 @@ final class NutritionManager: ObservableObject {
 
     var insights: [NutritionInsight] { NutritionInsights.compute(ratedSessions) }
 
+    /// How the last rated session went, in the three buckets the "what should
+    /// I eat today?" picker uses. The log already knows this, so the picker
+    /// should not make the player answer it again from memory. Nil until
+    /// there is a rated session to read.
+    var lastSessionFeel: NutritionLastSession? {
+        guard let composite = ratedSessions.first?.ratings?.composite else { return nil }
+        if composite <= 2.5 { return .flat }
+        if composite >= 3.75 { return .great }
+        return .ok
+    }
+
     /// Rated days the player did not play. Kept out of the comparisons — a
     /// rest day has no session to answer for — but shown, because the app
     /// asked for them.
@@ -270,6 +281,10 @@ final class NutritionManager: ObservableObject {
         defaults.removeObject(forKey: key)
         defaults.removeObject(forKey: "CourtIQ.Nutrition.RecipeAnswers")
         defaults.removeObject(forKey: "CourtIQ.Nutrition.ShareWithCoach")
+        // The "what should I eat today?" picker remembers its answers now.
+        defaults.removeObject(forKey: "CourtIQ.Nutrition.Today.Hours")
+        defaults.removeObject(forKey: "CourtIQ.Nutrition.Today.Intensity")
+        defaults.removeObject(forKey: "CourtIQ.Nutrition.Today.Heat")
     }
 
     private static func clean(_ text: String?) -> String? {

@@ -8,25 +8,50 @@ struct NutritionTodayView: View {
     let guide: NutritionGuide
 
     @EnvironmentObject private var lang: LanguageManager
-    @State private var hours: NutritionHoursUntil = .h1to2
-    @State private var intensity: NutritionIntensity = .normal
-    @State private var heat: NutritionHeat = .warm
-    @State private var last: NutritionLastSession = .ok
+    @ObservedObject private var manager = NutritionManager.shared
+
+    // Remembered between visits. A player's court, climate and usual
+    // intensity barely change week to week, so starting from scratch every
+    // time was four taps charged for nothing. Stored as raw values because
+    // AppStorage cannot hold these enums directly.
+    @AppStorage("CourtIQ.Nutrition.Today.Hours")     private var hoursRaw = NutritionHoursUntil.h1to2.rawValue
+    @AppStorage("CourtIQ.Nutrition.Today.Intensity") private var intensityRaw = NutritionIntensity.normal.rawValue
+    @AppStorage("CourtIQ.Nutrition.Today.Heat")      private var heatRaw = NutritionHeat.warm.rawValue
+
+    private var hours: NutritionHoursUntil { NutritionHoursUntil(rawValue: hoursRaw) ?? .h1to2 }
+    private var intensity: NutritionIntensity { NutritionIntensity(rawValue: intensityRaw) ?? .normal }
+    private var heat: NutritionHeat { NutritionHeat(rawValue: heatRaw) ?? .warm }
+
+    /// "How did you feel last time?" is the one answer the fuel log already
+    /// holds, so it is read rather than asked — and only asked when there is
+    /// nothing to read.
+    @State private var lastOverride: NutritionLastSession?
+    private var last: NutritionLastSession { lastOverride ?? manager.lastSessionFeel ?? .ok }
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 22) {
                 question(lang.t("nutrition.today_q_hours")) {
-                    picker(NutritionHoursUntil.allCases, selected: hours) { hours = $0 }
+                    picker(NutritionHoursUntil.allCases, selected: hours) { hoursRaw = $0.rawValue }
                 }
                 question(lang.t("nutrition.today_q_intensity")) {
-                    picker(NutritionIntensity.allCases, selected: intensity) { intensity = $0 }
+                    picker(NutritionIntensity.allCases, selected: intensity) { intensityRaw = $0.rawValue }
                 }
                 question(lang.t("nutrition.today_q_heat")) {
-                    picker(NutritionHeat.allCases, selected: heat) { heat = $0 }
+                    picker(NutritionHeat.allCases, selected: heat) { heatRaw = $0.rawValue }
                 }
                 question(lang.t("nutrition.today_q_last")) {
-                    picker(NutritionLastSession.allCases, selected: last) { last = $0 }
+                    VStack(alignment: .leading, spacing: 8) {
+                        picker(NutritionLastSession.allCases, selected: last) { lastOverride = $0 }
+                        // Say where the answer came from, so a pre-filled chip
+                        // does not look like the app guessing.
+                        if lastOverride == nil, manager.lastSessionFeel != nil {
+                            Text(lang.t("nutrition.today_last_from_log"))
+                                .font(.caption)
+                                .foregroundStyle(AppPalette.inkSoft)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
+                    }
                 }
                 if let advice = guide.advice(hours: hours, intensity: intensity, heat: heat, last: last) {
                     adviceCard(advice)
