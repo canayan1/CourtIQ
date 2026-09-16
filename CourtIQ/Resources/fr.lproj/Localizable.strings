@@ -1195,3 +1195,4 @@
 "nutrition.q_hydration_past" = "De l'eau ce jour-là ?";
 "nutrition.q_caffeine_past" = "De la caféine ce jour-là ?";
 "nutrition.timing_nothing_past" = "Rien mangé";
+"health.bullet_nutrition" = "Le journal de nutrition, le guide et les recettes sont une information générale pour adultes en bonne santé — ce ne sont pas des conseils diététiques et ils ne sont pas adaptés à toi. En cas de pathologie, d'allergie alimentaire ou de trouble du comportement alimentaire, suis ton médecin ou ta diététicienne, pas cet écran.";

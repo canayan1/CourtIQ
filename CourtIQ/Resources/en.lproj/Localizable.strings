@@ -1195,3 +1195,4 @@
 "nutrition.q_hydration_past" = "Water that day?";
 "nutrition.q_caffeine_past" = "Caffeine that day?";
 "nutrition.timing_nothing_past" = "Didn't eat";
+"health.bullet_nutrition" = "The fuel log, nutrition guide and recipes are general information for healthy adults — not dietary advice, and not tailored to you. If you have a condition, a food allergy or an eating disorder, follow your doctor or dietitian instead.";

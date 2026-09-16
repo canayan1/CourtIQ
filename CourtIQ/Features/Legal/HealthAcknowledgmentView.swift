@@ -25,7 +25,11 @@ struct HealthAcknowledgmentView: View {
                         lang.t("health.bullet_consult_doctor"),
                         lang.t("health.bullet_stop_if_pain"),
                         lang.t("health.bullet_assume_risk"),
-                        lang.t("health.bullet_self_directed")
+                        lang.t("health.bullet_self_directed"),
+                        // The app gives sports-nutrition information now. This
+                        // screen is the only thing a player actually accepts,
+                        // so it has to name food as well as movement.
+                        lang.t("health.bullet_nutrition")
                     ])
                     legalLinks
                 }
@@ -162,7 +166,11 @@ struct HealthAcknowledgmentView: View {
 enum HealthAcknowledgment {
     /// Bump this any time the disclaimer language changes materially.
     /// Bumping forces every existing user to re-accept on next launch.
-    static let currentVersion = 1
+    /// Bumped to 2 on 15 Sep 2026: the acknowledged text gained a line about
+    /// food, because the app now gives sports-nutrition information. Everyone
+    /// who accepted version 1 accepted a document that did not mention it, so
+    /// they are asked once more rather than assumed to have agreed.
+    static let currentVersion = 2
 
     private static let versionKey = "CourtIQ.healthAck.version"
     private static let timestampKey = "CourtIQ.healthAck.timestamp"

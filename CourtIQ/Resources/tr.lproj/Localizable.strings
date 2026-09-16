@@ -1195,3 +1195,4 @@
 "nutrition.q_hydration_past" = "O gün su?";
 "nutrition.q_caffeine_past" = "O gün kafein?";
 "nutrition.timing_nothing_past" = "Yemedim";
+"health.bullet_nutrition" = "Beslenme günlüğü, kılavuz ve tarifler sağlıklı yetişkinler için genel bilgidir — diyet tavsiyesi değildir ve sana özel değildir. Bir rahatsızlığın, gıda alerjin ya da yeme bozukluğun varsa buradakini değil doktorunu veya diyetisyenini dinle.";
