@@ -25,6 +25,11 @@ struct NutritionLogSheet: View {
     @State private var caffeine = false
     @State private var note = ""
     @State private var ratings = NutritionRatings.neutral
+    /// Whether the player actually answered the four rows. The defaults sit
+    /// at 3, so without this a quick backfill of last week would post three
+    /// invented "3.0" sessions into the averages — and six of those are
+    /// enough to make the app print a comparison nobody answered.
+    @State private var ratedIt = false
     @State private var afterNote = ""
     @State private var recalled = false
 
@@ -44,7 +49,7 @@ struct NutritionLogSheet: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 22) {
                     if isRetro { retroHeader }
-                    if let recall = manager.recall, !recalled { recallButton(recall) }
+                    if let recall = manager.recall(before: date), !recalled { recallButton(recall) }
 
                     question(lang.t("nutrition.q_kind")) {
                         chips(NutritionSessionKind.allCases, selected: kind) { kind = $0 }
@@ -79,7 +84,7 @@ struct NutritionLogSheet: View {
                                     meal: (playedThatDay && timing == .nothing) ? nil : meal,
                                     hydration: hydration, caffeine: caffeine, note: note,
                                     on: date,
-                                    ratings: isRetro ? ratings : nil,
+                                    ratings: (isRetro && ratedIt) ? ratings : nil,
                                     afterNote: isRetro ? afterNote : nil)
                         Haptics.success()
                         dismiss()
@@ -96,6 +101,15 @@ struct NutritionLogSheet: View {
                         .foregroundStyle(AppPalette.inkSoft)
                 }
             }
+            #if DEBUG
+            // Headless QC: SIMCTL_CHILD_QC_FUEL_KIND=rest opens straight on a
+            // day the player did not play, which is the short form of this
+            // sheet and the one that shows the rating card without scrolling.
+            .onAppear {
+                if let raw = ProcessInfo.processInfo.environment["QC_FUEL_KIND"],
+                   let k = NutritionSessionKind(rawValue: raw) { kind = k }
+            }
+            #endif
         }
     }
 
@@ -118,11 +132,18 @@ struct NutritionLogSheet: View {
     /// The follow-up, asked inline because the day is already over.
     private var retroRatings: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text(lang.t("nutrition.q_how_was_it"))
+            Text(lang.t(playedThatDay ? "nutrition.q_how_was_it" : "nutrition.q_how_was_it_rest"))
                 .font(.subheadline.weight(.semibold))
                 .foregroundStyle(AppPalette.ink)
                 .fixedSize(horizontal: false, vertical: true)
-            NutritionRatingRows(ratings: $ratings)
+            // Optional on purpose. Leaving it blank saves the meal and
+            // nothing else, which is the honest record of a day you can
+            // remember eating but not how it felt.
+            Text(lang.t("nutrition.rate_optional"))
+                .font(.footnote)
+                .foregroundStyle(AppPalette.inkSoft)
+                .fixedSize(horizontal: false, vertical: true)
+            NutritionRatingRows(ratings: $ratings, onAnswer: { ratedIt = true })
                 .environmentObject(lang)
             TextField(lang.t("nutrition.after_placeholder"), text: $afterNote, axis: .vertical)
                 .lineLimit(2...4)
@@ -143,8 +164,8 @@ struct NutritionLogSheet: View {
         Button {
             Haptics.tap()
             kind = recall.kind
-            timing = recall.timing ?? .h1to2
-            meal = recall.meal
+            if let t = recall.timing { timing = t }
+            if let m = recall.meal { meal = m }
             hydration = recall.hydration
             caffeine = recall.caffeine
             recalled = true
@@ -171,10 +192,13 @@ struct NutritionLogSheet: View {
         .buttonStyle(PressableCardStyle())
     }
 
+    /// Only what was actually answered last time. The card used to read
+    /// "Didn't play · 1–2 hours ago" after a rest day, which is a meal
+    /// timing for a day with no session.
     private func recallSummary(_ r: NutritionRecall) -> String {
         [lang.t(r.kind.labelKey),
          r.timing.map { lang.t($0.labelKey) },
-         lang.t(r.meal.labelKey),
+         r.meal.map { lang.t($0.labelKey) },
          lang.t(r.hydration.labelKey)]
             .compactMap { $0 }.joined(separator: " · ")
     }

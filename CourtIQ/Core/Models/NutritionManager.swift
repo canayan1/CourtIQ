@@ -100,7 +100,7 @@ struct NutritionEntry: Codable, Identifiable, Hashable {
 struct NutritionRecall: Hashable {
     let kind: NutritionSessionKind
     let timing: NutritionTiming?
-    let meal: NutritionMealType
+    let meal: NutritionMealType?
     let hydration: NutritionHydration
     let caffeine: Bool
 }
@@ -118,9 +118,12 @@ final class NutritionManager: ObservableObject {
 
     private let defaults = UserDefaults.standard
     private let key = "CourtIQ.Nutrition.Entries"
-    /// An unrated entry older than this is treated as abandoned — the player
-    /// is not asked about a session from last week.
-    private let ratingWindow: TimeInterval = 18 * 3600
+    /// How far back the app will chase an unanswered rating. Past this, an
+    /// answer is a guess rather than a memory. The Journal uses the same
+    /// number (`JournalDigest.recallDays`) so the two screens never disagree
+    /// about whether an entry is still worth asking about.
+    static let ratingWindowDays = 4
+    private let ratingWindow: TimeInterval = TimeInterval(NutritionManager.ratingWindowDays) * 86_400
 
     private init() {
         if let data = defaults.data(forKey: key),
@@ -137,19 +140,14 @@ final class NutritionManager: ObservableObject {
         entries.first { !$0.isRated && Date().timeIntervalSince($0.date) < ratingWindow }
     }
 
-    /// Everything logged on one calendar day, newest first.
-    func entries(on day: Date) -> [NutritionEntry] {
-        let key = day.todayKey
-        return entries.filter { $0.dayKey == key }
-    }
-
-    /// The last thing the player answered, for "same as last time". Nil until
-    /// there is one, so the button only appears when it can actually do
-    /// something.
-    var recall: NutritionRecall? {
-        guard let last = entries.first else { return nil }
-        return NutritionRecall(kind: last.kind, timing: last.timing ?? .h1to2,
-                               meal: last.meal ?? .balanced,
+    /// The last thing the player answered before `date`, for "same as last
+    /// time". Bounded by the day being logged: when filling in a day from
+    /// three weeks ago, "last time" has to mean the entry before it, not one
+    /// from this morning. Nil until there is one, so the button only appears
+    /// when it can do something.
+    func recall(before date: Date = .distantFuture) -> NutritionRecall? {
+        guard let last = entries.first(where: { $0.date < date }) else { return nil }
+        return NutritionRecall(kind: last.kind, timing: last.timing, meal: last.meal,
                                hydration: last.hydration, caffeine: last.caffeine)
     }
 
@@ -159,8 +157,6 @@ final class NutritionManager: ObservableObject {
         var seen = Set<String>()
         return entries.compactMap(\.note).filter { seen.insert($0.lowercased()).inserted }.prefix(6).map { $0 }
     }
-
-    var ratedEntries: [NutritionEntry] { entries.filter(\.isRated) }
 
     /// Days with a log — logging fuel counts as doing something for the
     /// unified streak, like a quiz or a wall session.
@@ -172,6 +168,11 @@ final class NutritionManager: ObservableObject {
     var ratedSessions: [NutritionEntry] { entries.filter { $0.isRated && $0.kind.didPlay } }
 
     var insights: [NutritionInsight] { NutritionInsights.compute(ratedSessions) }
+
+    /// Rated days the player did not play. Kept out of the comparisons — a
+    /// rest day has no session to answer for — but shown, because the app
+    /// asked for them.
+    var ratedRestDays: [NutritionEntry] { entries.filter { $0.isRated && !$0.kind.didPlay } }
 
     // MARK: Coach summary
 
@@ -239,12 +240,13 @@ final class NutritionManager: ObservableObject {
             kind: kind, timing: timing, meal: timing == .nothing ? nil : meal,
             hydration: hydration, caffeine: caffeine,
             note: Self.clean(note),
-            ratings: ratings, ratedAt: ratings == nil ? nil : Date(),
+            ratings: ratings, ratedAt: ratings == nil ? nil : now,
             afterNote: Self.clean(afterNote))
         entries.append(entry)
         entries.sort { $0.date > $1.date }
         persist()
-        AppAnalytics.shared.log(AnalyticsEvent.nutritionLogged, ["kind": kind.rawValue, "timing": timing?.rawValue ?? "rest"])
+        AppAnalytics.shared.log(AnalyticsEvent.nutritionLogged,
+                                ["kind": kind.rawValue, "timing": timing?.rawValue ?? "none"])
         return entry
     }
 

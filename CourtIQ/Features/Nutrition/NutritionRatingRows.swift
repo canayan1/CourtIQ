@@ -6,6 +6,11 @@ import SwiftUI
 /// two different ways.
 struct NutritionRatingRows: View {
     @Binding var ratings: NutritionRatings
+    /// Fired on the first tap. A caller that saves these rows alongside
+    /// something else needs to know whether the player actually answered —
+    /// the defaults sit at 3, and saving an untouched 3 as a real answer is
+    /// how an app invents data about someone.
+    var onAnswer: (() -> Void)? = nil
     @EnvironmentObject private var lang: LanguageManager
 
     var body: some View {
@@ -24,9 +29,12 @@ struct NutritionRatingRows: View {
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(AppPalette.ink)
                 Spacer()
+                // Its own key: this used to borrow the hydration chip's
+                // "Normal", one wording change away from reading
+                // "Plenty of water" next to Focus.
                 Text(lang.t(value.wrappedValue <= 2 ? "nutrition.rate_low"
                             : value.wrappedValue >= 4 ? "nutrition.rate_high"
-                            : "nutrition.hydration_ok"))
+                            : "nutrition.rate_mid"))
                     .font(.caption)
                     .foregroundStyle(AppPalette.inkSoft)
             }
@@ -35,6 +43,7 @@ struct NutritionRatingRows: View {
                     Button {
                         Haptics.tap()
                         value.wrappedValue = n
+                        onAnswer?()
                     } label: {
                         Text("\(n)")
                             .font(.system(.headline, design: .rounded).weight(.bold))

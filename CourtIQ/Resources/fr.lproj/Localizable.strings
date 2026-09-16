@@ -1042,7 +1042,7 @@
 "nutrition.intro" = "Note ton dernier repas avant de jouer, puis évalue comment tu t'es senti après. Tes propres moyennes font le reste — pas de devinettes, pas de règles sorties d'un livre.";
 "nutrition.log_cta" = "Noter avant de jouer";
 "nutrition.rate_cta" = "Évaluer tes sensations";
-"nutrition.rate_hint" = "Tu as noté un repas avant la séance d'aujourd'hui. Deux touches et c'est compté.";
+"nutrition.rate_hint" = "Tu as noté ce que tu as mangé, mais pas comment ça s'est passé. Quatre touches.";
 "nutrition.kind_practice" = "Entraînement";
 "nutrition.kind_match" = "Match";
 "nutrition.kind_wall" = "Mur";
@@ -1084,7 +1084,7 @@
 "nutrition.dim_caffeine" = "Caféine";
 "nutrition.averages_fmt" = "Sur %d séances évaluées";
 "nutrition.empty_insights_fmt" = "Encore environ %d séances évaluées avant ta première comparaison. Chacune demande au moins %d séances de chaque côté pour vouloir dire quelque chose.";
-"nutrition.recent" = "Récent";
+"nutrition.your_log" = "Ton journal de nutrition";
 "nutrition.unrated" = "Non évalué";
 "nutrition.disclaimer" = "Conseils généraux pour des joueurs adultes en bonne santé, pas un avis médical ni diététique. Si tu as une pathologie, une allergie ou un trouble alimentaire, suis ton médecin ou ton diététicien, pas cet écran.";
 "nutrition.delete" = "Supprimer";
@@ -1138,8 +1138,6 @@
 "nutrition.share_title" = "Laisser le Coach IA voir ceci";
 "nutrition.share_body" = "Désactivé par défaut. Une fois activé, un court résumé accompagne chaque message — tes moyennes, tes comparaisons, tes cinq dernières séances. Jamais tes notes ni le journal brut.";
 "nutrition.share_locked" = "Demande au Coach IA pourquoi tu étais à plat mardi · Premium";
-"home.nutrition_rate_title" = "Évalue tes sensations";
-"home.nutrition_rate_sub" = "Tu as noté un repas avant la séance d'aujourd'hui. Deux touches et c'est compté.";
 "nutrition.pro_eyebrow" = "SUR LE CIRCUIT";
 "nutrition.pro_disclaimer" = "Rapporté d'après la source ci-dessus. Les personnes et organisations citées n'ont aucun lien avec DropVolley et n'ont rien approuvé ici.";
 
@@ -1151,7 +1149,7 @@
 "journal.intro" = "Matchs et nutrition dans un seul calendrier. Touche n'importe quel jour — aujourd'hui ou il y a trois semaines — et remplis-le.";
 "journal.calendar" = "Les sept dernières semaines";
 "journal.calendar_hint" = "Touche un jour pour ajouter un match, un entraînement ou ce que tu as mangé.";
-"journal.streak_days" = "série de %d jours";
+"journal.streak_days" = "%d jours écrits dans le journal";
 "journal.legend_match" = "Joué";
 "journal.legend_fuel" = "Nutrition notée";
 "journal.add_fuel" = "Noter la nutrition";
@@ -1173,7 +1171,7 @@
 "journal.result_lost" = "Perdu";
 "journal.prompt_rate_fuel_title" = "Ça t'a fait quoi ?";
 "journal.prompt_rate_fuel_body" = "%@ : tu as noté ce que tu as mangé, mais pas comment ça s'est passé. Quatre touches.";
-"journal.prompt_rate_fuel_cta" = "Évaluer cette séance";
+"journal.prompt_rate_fuel_cta" = "Dire comment ça s'est passé";
 "journal.prompt_fuel_match_title" = "Tu as mangé quoi avant ce match ?";
 "journal.prompt_fuel_match_body" = "%@ : tu as joué sans rien noter côté nutrition. Remplis-le pendant que tu t'en souviens.";
 "journal.prompt_fuel_match_cta" = "Ajouter le repas";
@@ -1185,7 +1183,7 @@
 "home.journal_state_streak" = "%d jours notés d'affilée";
 "home.journal_state_empty" = "Matchs et nutrition, un seul calendrier";
 "nutrition.kind_rest" = "Pas joué";
-"nutrition.q_meal_rest" = "Tu as mangé comment ce jour-là, en gros ?";
+"nutrition.q_meal_rest" = "Tu as mangé comment, en gros ?";
 "nutrition.q_how_was_it" = "La journée est passée — ça t'a fait quoi ?";
 "nutrition.logging_for_fmt" = "Saisie du %@";
 "nutrition.same_as_last" = "Comme la dernière fois";
@@ -1196,3 +1194,11 @@
 "nutrition.q_caffeine_past" = "De la caféine ce jour-là ?";
 "nutrition.timing_nothing_past" = "Rien mangé";
 "health.bullet_nutrition" = "Le journal de nutrition, le guide et les recettes sont une information générale pour adultes en bonne santé — ce ne sont pas des conseils diététiques et ils ne sont pas adaptés à toi. En cas de pathologie, d'allergie alimentaire ou de trouble du comportement alimentaire, suis ton médecin ou ta diététicienne, pas cet écran.";
+"nutrition.rate_mid" = "Normal";
+"nutrition.rate_optional" = "Facultatif. Laisse vide si tu ne t'en souviens pas — une estimation ne ferait que brouiller tes moyennes.";
+"nutrition.q_how_was_it_rest" = "La journée est passée — tu t'es senti comment ?";
+"nutrition.rest_summary_fmt" = "Jours de repos : %1$d évalués, %2$.1f sur 5 en moyenne. Exclus des comparaisons ci-dessus — il n'y avait pas de séance à évaluer.";
+"nutrition.rerate_a11y" = "%.1f sur 5. Touche pour modifier.";
+"nutrition.meal_none" = "Pas de repas";
+"nutrition.timing_unknown" = "Horaire non noté";
+"journal.add_another_meal" = "Ajouter un autre repas à ce jour";

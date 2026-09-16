@@ -162,8 +162,12 @@ struct JournalView: View {
             HStack {
                 Eyebrow(lang.t("journal.calendar"))
                 Spacer()
+                // Not a flame: Home already shows the app-wide activity
+                // streak, which counts quizzes and wall sessions too and
+                // allows a grace day. Two flames with different numbers on
+                // the same screen would just look broken.
                 if streak > 0 {
-                    Label("\(streak)", systemImage: "flame.fill")
+                    Label("\(streak)", systemImage: "square.and.pencil")
                         .font(.system(.footnote, design: .rounded).weight(.bold))
                         .foregroundStyle(AppPalette.clay)
                         .accessibilityLabel(String(format: lang.t("journal.streak_days"), streak))

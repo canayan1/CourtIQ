@@ -12,6 +12,7 @@ struct NutritionRateSheet: View {
 
     @State private var ratings = NutritionRatings.neutral
     @State private var note = ""
+    @State private var loaded = false
 
     var body: some View {
         NavigationStack {
@@ -44,6 +45,15 @@ struct NutritionRateSheet: View {
             .background(AppPalette.cream)
             .navigationTitle(lang.t("nutrition.rate_title"))
             .navigationBarTitleDisplayMode(.inline)
+            // Re-rating starts from what was said last time, not from the
+            // neutral defaults — otherwise correcting one row silently resets
+            // the other three.
+            .onAppear {
+                guard !loaded else { return }
+                loaded = true
+                if let existing = entry.ratings { ratings = existing }
+                if let existing = entry.afterNote { note = existing }
+            }
         }
     }
 

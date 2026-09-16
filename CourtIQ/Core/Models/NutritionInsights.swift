@@ -88,8 +88,13 @@ enum NutritionInsights {
 
     private static func bucketKey(_ e: NutritionEntry, _ d: NutritionInsight.Dimension) -> String {
         switch d {
-        case .timing:    return e.timing?.labelKey ?? "nutrition.kind_rest"
-        case .meal:      return e.meal?.labelKey ?? NutritionTiming.nothing.labelKey
+        // `compute` only ever sees played sessions, which always carry a
+        // timing; the nil branch is here so a future caller cannot silently
+        // bucket rest days into a meal-timing comparison.
+        case .timing:    return e.timing?.labelKey ?? "nutrition.timing_unknown"
+        // Its own label: borrowing the timing chip made a meal-shape
+        // comparison read "Meal type: Haven't eaten averaged 3.8".
+        case .meal:      return e.meal?.labelKey ?? "nutrition.meal_none"
         case .hydration: return e.hydration.labelKey
         case .caffeine:  return e.caffeine ? "nutrition.caffeine_yes" : "nutrition.caffeine_no"
         }

@@ -107,10 +107,17 @@ struct JournalItemRow: View {
             }
             Spacer(minLength: 6)
             if let r = n.ratings {
-                Text(String(format: "%.1f", r.composite))
-                    .font(.system(.headline, design: .rounded).weight(.bold))
-                    .foregroundStyle(AppPalette.mossDeep)
-                    .monospacedDigit()
+                Button {
+                    Haptics.tap()
+                    onRateFuel(n)
+                } label: {
+                    Text(String(format: "%.1f", r.composite))
+                        .font(.system(.headline, design: .rounded).weight(.bold))
+                        .foregroundStyle(AppPalette.mossDeep)
+                        .monospacedDigit()
+                }
+                .buttonStyle(PressableCardStyle())
+                .accessibilityLabel(String(format: lang.t("nutrition.rerate_a11y"), r.composite))
             } else {
                 Button {
                     Haptics.tap()
@@ -128,6 +135,13 @@ struct JournalItemRow: View {
         .padding(14)
         .frame(maxWidth: .infinity, alignment: .leading)
         .cardSurface(cornerRadius: 16)
+        // Delete lived only behind a long-press on the Nutrition screen, so a
+        // mis-tap made from the Journal could not be undone from the Journal.
+        .contextMenu {
+            Button(role: .destructive) { NutritionManager.shared.delete(n.id) } label: {
+                Label(lang.t("nutrition.delete"), systemImage: "trash")
+            }
+        }
     }
 
     private func dayLabel(_ date: Date) -> String {

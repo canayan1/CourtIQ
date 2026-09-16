@@ -169,7 +169,8 @@ struct DayGridCalendar: View {
 
     private var weekdayLetters: [String] {
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: lang.language == .turkish ? "tr_TR" : "en_US")
+        // Every shipped language, not just Turkish: French read M T W T F S S.
+        formatter.locale = Locale(identifier: lang.language.rawValue)
         let veryShort = formatter.veryShortWeekdaySymbols ?? ["M", "T", "W", "T", "F", "S", "S"]
         // veryShortWeekdaySymbols is Sun-first; rotate to Mon-first.
         guard veryShort.count == 7 else { return ["M", "T", "W", "T", "F", "S", "S"] }

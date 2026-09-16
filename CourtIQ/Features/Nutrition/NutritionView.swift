@@ -207,19 +207,23 @@ struct NutritionView: View {
 
     @ViewBuilder
     private var actionCard: some View {
-        if let pending = manager.pendingRating {
-            VStack(alignment: .leading, spacing: 10) {
-                Text(lang.t("nutrition.rate_hint"))
-                    .font(.footnote)
-                    .foregroundStyle(AppPalette.inkSoft)
-                    .fixedSize(horizontal: false, vertical: true)
-                PrimaryButton(title: lang.t("nutrition.rate_cta"), icon: "hand.thumbsup") {
-                    rating = pending
+        // Both, not either. A pending rating used to hide the log button, so
+        // a second meal before an evening match had nowhere to go.
+        VStack(alignment: .leading, spacing: 12) {
+            if let pending = manager.pendingRating {
+                VStack(alignment: .leading, spacing: 10) {
+                    Text(lang.t("nutrition.rate_hint"))
+                        .font(.footnote)
+                        .foregroundStyle(AppPalette.inkSoft)
+                        .fixedSize(horizontal: false, vertical: true)
+                    PrimaryButton(title: lang.t("nutrition.rate_cta"), icon: "hand.thumbsup") {
+                        rating = pending
+                    }
                 }
+                .padding(16)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .cardSurface(fill: AppPalette.goldTint.opacity(0.55), stroke: AppPalette.gold.opacity(0.4), cornerRadius: 18)
             }
-            .padding(16)
-            .cardSurface(fill: AppPalette.goldTint.opacity(0.55), stroke: AppPalette.gold.opacity(0.4), cornerRadius: 18)
-        } else {
             PrimaryButton(title: lang.t("nutrition.log_cta"), icon: "fork.knife") {
                 showLog = true
             }
@@ -233,6 +237,7 @@ struct NutritionView: View {
             if let avg = NutritionInsights.averages(rated) {
                 averagesRow(avg)
             }
+            if let rest = restSummary { rest }
             let insights = manager.insights
             if insights.isEmpty {
                 Text(String(format: lang.t("nutrition.empty_insights_fmt"),
@@ -261,6 +266,29 @@ struct NutritionView: View {
         .padding(16)
         .frame(maxWidth: .infinity, alignment: .leading)
         .cardSurface(cornerRadius: 18)
+    }
+
+    /// Days the player did not play, summarised on their own line. They are
+    /// deliberately absent from the comparisons above — a rest day has no
+    /// session to answer for — but the app asked for the rating, so it owes
+    /// the player somewhere to see it.
+    @ViewBuilder
+    private var restSummary: (some View)? {
+        let rest = manager.ratedRestDays
+        if rest.isEmpty {
+            nil as EmptyView?
+        } else {
+            let mean = rest.compactMap { $0.ratings?.composite }.reduce(0, +) / Double(rest.count)
+            HStack(alignment: .top, spacing: 10) {
+                Image(systemName: "moon.zzz")
+                    .foregroundStyle(AppPalette.inkSoft)
+                    .frame(width: 22)
+                Text(String(format: lang.t("nutrition.rest_summary_fmt"), rest.count, mean))
+                    .font(.subheadline)
+                    .foregroundStyle(AppPalette.ink)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+        }
     }
 
     private func averagesRow(_ avg: NutritionAverages) -> some View {
@@ -296,7 +324,7 @@ struct NutritionView: View {
 
     private var recent: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Eyebrow(lang.t("nutrition.recent"))
+            Eyebrow(lang.t("nutrition.your_log"))
             ForEach(manager.entries.prefix(10)) { entry in
                 entryRow(entry)
             }
@@ -312,7 +340,8 @@ struct NutritionView: View {
                 Text(entry.date, style: .date)
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(AppPalette.ink)
-                Text([entry.timing.map { lang.t($0.labelKey) } ?? lang.t(entry.kind.labelKey),
+                Text([lang.t(entry.kind.labelKey),
+                      entry.timing.map { lang.t($0.labelKey) },
                       entry.meal.map { lang.t($0.labelKey) },
                       lang.t(entry.hydration.labelKey),
                       entry.caffeine ? lang.t("nutrition.caffeine_yes") : nil]
@@ -328,10 +357,18 @@ struct NutritionView: View {
             }
             Spacer(minLength: 6)
             if let r = entry.ratings {
-                Text(String(format: "%.1f", r.composite))
-                    .font(.system(.headline, design: .rounded).weight(.bold))
-                    .foregroundStyle(AppPalette.mossDeep)
-                    .monospacedDigit()
+                // Tappable: the first pass is often done in a car park.
+                Button {
+                    Haptics.tap()
+                    rating = entry
+                } label: {
+                    Text(String(format: "%.1f", r.composite))
+                        .font(.system(.headline, design: .rounded).weight(.bold))
+                        .foregroundStyle(AppPalette.mossDeep)
+                        .monospacedDigit()
+                }
+                .buttonStyle(PressableCardStyle())
+                .accessibilityLabel(String(format: lang.t("nutrition.rerate_a11y"), r.composite))
             } else {
                 Button {
                     Haptics.tap()

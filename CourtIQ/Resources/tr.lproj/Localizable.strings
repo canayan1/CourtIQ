@@ -1042,7 +1042,7 @@
 "nutrition.intro" = "Oynamadan önce son öğününü kaydet, sonrasında nasıl hissettiğini puanla. Gerisini kendi ortalamaların yapar — tahmin yok, kitaptan kural yok.";
 "nutrition.log_cta" = "Oynamadan önce kaydet";
 "nutrition.rate_cta" = "Nasıl hissettiğini puanla";
-"nutrition.rate_hint" = "Bugünkü seans öncesi öğününü kaydettin. İki dokunuşla sayılır.";
+"nutrition.rate_hint" = "Ne yediğini kaydettin ama nasıl geçtiğini söylemedin. Dört dokunuş.";
 "nutrition.kind_practice" = "Antrenman";
 "nutrition.kind_match" = "Maç";
 "nutrition.kind_wall" = "Duvar";
@@ -1084,7 +1084,7 @@
 "nutrition.dim_caffeine" = "Kafein";
 "nutrition.averages_fmt" = "%d puanlanmış seans";
 "nutrition.empty_insights_fmt" = "İlk karşılaştırmaya yaklaşık %d puanlanmış seans kaldı. Bir karşılaştırmanın anlamlı olması için her iki tarafta en az %d seans gerekir.";
-"nutrition.recent" = "Son kayıtlar";
+"nutrition.your_log" = "Beslenme günlüğün";
 "nutrition.unrated" = "Puanlanmadı";
 "nutrition.disclaimer" = "Sağlıklı yetişkin oyuncular için genel rehberdir; tıbbi ya da diyet tavsiyesi değildir. Bir rahatsızlığın, alerjin ya da yeme bozukluğun varsa bu ekranı değil doktorunu ya da diyetisyenini dinle.";
 "nutrition.delete" = "Sil";
@@ -1138,8 +1138,6 @@
 "nutrition.share_title" = "AI Koç bunu görsün";
 "nutrition.share_body" = "Varsayılan olarak kapalı. Açıkken her mesajla kısa bir özet gider — ortalamaların, karşılaştırmaların, son beş seansın. Notların ve ham günlük asla gitmez.";
 "nutrition.share_locked" = "AI Koç'a salı neden bitkin olduğunu sor · Premium";
-"home.nutrition_rate_title" = "Nasıl hissettiğini puanla";
-"home.nutrition_rate_sub" = "Bugünkü seans öncesi öğününü kaydettin. İki dokunuşla sayılır.";
 "nutrition.pro_eyebrow" = "TURDA";
 "nutrition.pro_disclaimer" = "Yukarıdaki kaynaktan aktarılmıştır. Adı geçen kişi ve kurumların DropVolley ile bir bağı yoktur ve buradaki hiçbir şeyi onaylamamışlardır.";
 
@@ -1151,7 +1149,7 @@
 "journal.intro" = "Maçlar ve beslenme tek takvimde. İstediğin güne dokun — bugüne ya da üç hafta öncesine — ve doldur.";
 "journal.calendar" = "Son yedi hafta";
 "journal.calendar_hint" = "Maç, antrenman ya da o gün ne yediğini eklemek için bir güne dokun.";
-"journal.streak_days" = "%d günlük seri";
+"journal.streak_days" = "günlüğe %d gün yazıldı";
 "journal.legend_match" = "Oynadın";
 "journal.legend_fuel" = "Beslenme kaydı";
 "journal.add_fuel" = "Beslenme ekle";
@@ -1173,7 +1171,7 @@
 "journal.result_lost" = "Kaybettin";
 "journal.prompt_rate_fuel_title" = "Bu sana nasıl hissettirdi?";
 "journal.prompt_rate_fuel_body" = "%@: ne yediğini kaydettin ama nasıl geçtiğini söylemedin. Dört dokunuş.";
-"journal.prompt_rate_fuel_cta" = "O seansı puanla";
+"journal.prompt_rate_fuel_cta" = "Nasıl geçtiğini söyle";
 "journal.prompt_fuel_match_title" = "O maçtan önce ne yedin?";
 "journal.prompt_fuel_match_body" = "%@: oynadın ama beslenme günlüğü boş. Aklındayken doldur.";
 "journal.prompt_fuel_match_cta" = "Öğünü ekle";
@@ -1185,7 +1183,7 @@
 "home.journal_state_streak" = "%d gün üst üste kayıt";
 "home.journal_state_empty" = "Maçlar ve beslenme, tek takvim";
 "nutrition.kind_rest" = "Oynamadım";
-"nutrition.q_meal_rest" = "O gün kabaca nasıl beslendin?";
+"nutrition.q_meal_rest" = "Kabaca nasıl beslendin?";
 "nutrition.q_how_was_it" = "O gün bitti — nasıl hissettirdi?";
 "nutrition.logging_for_fmt" = "%@ için kayıt";
 "nutrition.same_as_last" = "Geçen seferkiyle aynı";
@@ -1196,3 +1194,11 @@
 "nutrition.q_caffeine_past" = "O gün kafein?";
 "nutrition.timing_nothing_past" = "Yemedim";
 "health.bullet_nutrition" = "Beslenme günlüğü, kılavuz ve tarifler sağlıklı yetişkinler için genel bilgidir — diyet tavsiyesi değildir ve sana özel değildir. Bir rahatsızlığın, gıda alerjin ya da yeme bozukluğun varsa buradakini değil doktorunu veya diyetisyenini dinle.";
+"nutrition.rate_mid" = "Normal";
+"nutrition.rate_optional" = "İsteğe bağlı. Hatırlamıyorsan boş bırak — tahmin ortalamalarını bulandırır.";
+"nutrition.q_how_was_it_rest" = "O gün bitti — nasıl hissettin?";
+"nutrition.rest_summary_fmt" = "Dinlenme günleri: %1$d puanlandı, 5 üzerinden ortalama %2$.1f. Yukarıdaki karşılaştırmalara girmiyor — hesap verecek bir seans yoktu.";
+"nutrition.rerate_a11y" = "5 üzerinden %.1f. Değiştirmek için dokun.";
+"nutrition.meal_none" = "Öğün yok";
+"nutrition.timing_unknown" = "Zaman kaydedilmedi";
+"journal.add_another_meal" = "Bu güne bir öğün daha ekle";

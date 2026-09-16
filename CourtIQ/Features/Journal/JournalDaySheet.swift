@@ -20,6 +20,10 @@ struct JournalDaySheet: View {
             .items(on: date)
     }
 
+    private var hasFuel: Bool {
+        items.contains { if case .fuel = $0 { return true } else { return false } }
+    }
+
     private var isFuture: Bool {
         Calendar(identifier: .iso8601).startOfDay(for: date) >
             Calendar(identifier: .iso8601).startOfDay(for: Date())
@@ -53,7 +57,11 @@ struct JournalDaySheet: View {
                         // A day that has not happened yet can hold a planned
                         // match but not a meal you have eaten.
                         if !isFuture {
-                            PrimaryButton(title: lang.t("journal.add_fuel"), icon: "fork.knife") {
+                            // Naming the second one stops an accidental
+                            // duplicate: two meals on a match day is real, two
+                            // identical rows because you forgot is not.
+                            PrimaryButton(title: lang.t(hasFuel ? "journal.add_another_meal" : "journal.add_fuel"),
+                                          icon: "fork.knife") {
                                 dismiss()
                                 onLogFuel(date)
                             }
