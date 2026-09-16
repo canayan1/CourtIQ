@@ -1,0 +1,11 @@
+{
+  "provider": "heygen",
+  "speed": 1,
+  "lines": [],
+  "bgm": {
+    "mode": "retrieve",
+    "query": "calm, sparse, understated — a quiet confident bed with restraint, no build, no drop",
+    "blob": "Tennis has a fuel clock, keyed to match moments, and DropVolley is where it lives",
+    "arc": "Hook (it's the third set) → The clock (four stops) → Source + CTA"
+  }
+}

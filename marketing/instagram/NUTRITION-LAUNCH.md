@@ -1,35 +1,45 @@
 # Instagram — nutrition launch (1.3)
 
-## The positioning decision, first
+## The positioning, corrected
 
-The obvious angle is **"eat this, play better."** We cannot use it, and we
-should not want to.
+**The thing is nutrition FOR TENNIS PLAYERS.** That is the whole line, and
+everything in the campaign has to sound like it was made by someone who
+plays.
 
-- Our own Terms (§8.4) and the health disclaimer every user accepts say the
-  app does **not** give dietary advice. An ad that gives dietary advice
-  contradicts the document the user agreed to on first launch.
-- An unsourced food claim is exactly what the content rules for this feature
-  forbid — the validator rejects one inside the app; it should not appear on
-  a carousel either.
-- And it is the most crowded claim in fitness marketing. Saying it louder
-  than everyone else is not a strategy.
+The first version of this plan got that wrong. It led on the app's *method*
+— that it will not draw a comparison under five rated sessions on each side
+— and built the first reel around it. That is true, and genuinely unusual,
+and completely uninteresting to a club player scrolling at night. It was an
+epistemology ad for a tennis audience. Can killed it, correctly.
 
-**So the campaign sells the two things that are actually ours:**
+**What is actually ours: the clock is keyed to tennis, not to "exercise."**
+Generic nutrition advice is written for workouts. Tennis is not a workout —
+it is a set of match moments, and the guide in this app is built on them:
 
-1. **The app refuses to guess.** It will not show a comparison until five
-   rated sessions sit on each side of it, and until then it tells you how
-   many are left. Nothing else in this category admits it does not know yet.
-   That is the single most persuasive screenshot we have.
-2. **Every claim carries its source.** Nine guide sections, 52 citations —
-   ITF, USTA, ACSM, IOC, the position stands — openable on the page.
+- the meal two to four hours out
+- the small familiar snack an hour before
+- **the changeover** — four to twelve swallows, to a plan and not to thirst
+- the point where a match crosses an hour — 30 to 60 g of carbohydrate
+- the first thirty minutes after
+- two matches in one day, which no gym app has ever had to think about
 
-**Why it matters, in one line for a club player:** you lose the third set to
-your legs, not your forehand, and what you ate is one of the few inputs you
-can actually test on yourself.
+Nobody outside tennis has a changeover. A general nutrition app cannot copy
+that shape, and a tennis player recognises it instantly as written for them.
 
-That line is deliberately the same shape as the brand's existing one ("you
-don't lose because of your forehand"). Nutrition is not a new brand story,
-it is the same story one layer down.
+**Supporting, not leading:**
+
+1. *Every claim carries its source* — nine sections, 52 citations, ITF,
+   USTA, ACSM, IOC. This is the credibility floor, and it is what lets us
+   put numbers on a frame at all. It is a reason to believe, not the hook.
+2. *The app refuses to guess* — no comparison until five rated sessions sit
+   on each side. Keep it as a carousel slide and a caption line. It is a
+   lovely detail for someone already interested. It is not a reason to stop
+   scrolling.
+
+**The teach-first rule.** A viewer who never installs should come away
+knowing something they can use on Saturday. That is the brand, and it is
+also what makes the content worth watching — the app is where the clock
+lives, never the subject of the piece.
 
 ## What we are NOT saying
 
@@ -47,25 +57,80 @@ it is the same story one layer down.
 
 | # | Format | Hook | Asset |
 |---|---|---|---|
-| 1 | Carousel (7) | "Your forehand didn't lose the third set." | `out/carousel-5-nutrition/` — built |
-| 2 | Reel, built | "Nutrition apps tell you what to eat. This one won't." | `marketing/ads/refuses-to-guess/` — 24s, 9:16, HyperFrames |
+| 1 | Reel, **lead** | "Your forehand is fine. It's the third set." → the match-day fuel clock | `marketing/ads/fuel-clock/` — 20s, 9:16, HyperFrames |
+| 2 | Carousel (7) | "Your forehand didn't lose the third set." | `out/carousel-5-nutrition/` — built |
 | 3 | Reel or single | "Pros eat bananas on court. The ITF says don't." | guide section, scrolling the sources |
-| 4 | Reel, screen recording | "You forgot to log Tuesday. Tap Tuesday." | journal calendar → past day → entry sheet |
-| 5 | Single + question sticker | "Four taps, and the app asks how it went." | rate sheet; ask the audience what they eat before a match |
+| 4 | Single + question sticker | "Four taps, and the app asks how it went." | rate sheet; ask what they eat before a match |
+| 5 | Reel, screen recording | "You forgot to log Tuesday. Tap Tuesday." | journal calendar → past day → entry sheet |
 
-The reel's opening line was going to be "Every nutrition app tells you what
-to eat." It is now "Nutrition apps tell you…" — an ad whose whole thesis is
-that we refuse to overclaim cannot open on an unsubstantiated absolute about
-every competitor we have never surveyed.
+The fuel clock leads, because it is the piece that says *for tennis players*
+without having to claim it: four stops keyed to match moments, the
+changeover given the most room, every number traceable to the guide. Two
+thirds of its running time is the advice itself.
 
-Post 1 carries the announcement. Post 2 is the one that should travel: an
-app admitting it does not know yet is a pattern interrupt in this niche.
-Post 3 is the credibility piece — it shows we read the sources rather than
-repeating a listicle, and the contradiction is genuinely interesting.
+Piece 5 is really a Tennis Journal post rather than a nutrition one; it is
+here because backdating is what makes the fuel log survivable, but if the
+journal gets its own run it belongs there.
+
+**Retired:** `marketing/ads/refuses-to-guess/` — a built and rendered 25s
+reel arguing that the app refuses to draw a conclusion under five rated
+sessions. The craft is fine and the claim is true; the angle was wrong for
+this audience. Kept on disk, not scheduled. Its best line survives as a
+carousel slide and a caption.
 
 ## Captions
 
-### 1 — carousel
+### 1 — the fuel clock (lead reel)
+
+**EN**
+
+Your forehand is fine. It's the third set. 🎾
+
+Tennis has a fuel clock, and it isn't the one in a gym app. It's keyed to
+the match:
+
+• 2–4 hours before — a meal built on carbohydrate
+• 1 hour out — a banana, toast or oatmeal
+• Every changeover — four to twelve swallows, to a plan, not to thirst
+• Past the first hour — 30 to 60 g of carbohydrate an hour
+
+The changeover is the one club players skip, and it's the only stop on that
+list that belongs to tennis and nothing else. You can be about 2% of your
+body weight down before you even feel thirsty.
+
+Every line of that is in DropVolley's nutrition guide with its source on the
+page — ITF, USTA, and the joint ACSM position stand. Free, with the fuel log
+and the Tennis Journal.
+
+General information for healthy adults, not dietary advice.
+
+**TR**
+
+Forehand'inde sorun yok. Sorun üçüncü sette. 🎾
+
+Tenisin bir yakıt saati var ve bu, spor salonu uygulamalarındaki saat değil.
+Maça göre ayarlı:
+
+• 2–4 saat önce — karbonhidrat üzerine kurulu bir öğün
+• 1 saat kala — muz, tost ya da yulaf
+• Her taraf değişiminde — dört ila on iki yudum; susadığında değil, plana göre
+• İlk saatten sonra — saatte 30 ila 60 g karbonhidrat
+
+Kulüp oyuncularının atladığı durak taraf değişimi, ve o listede yalnızca
+tenise ait olan tek durak da o. Daha susadığını hissetmeden vücut ağırlığının
+yaklaşık %2'sini kaybetmiş olabilirsin.
+
+Bunların hepsi DropVolley'in beslenme kılavuzunda, kaynağı sayfanın üstünde —
+ITF, USTA ve ortak ACSM bildirisi. Beslenme günlüğü ve Tenis Günlüğü ile
+birlikte ücretsiz.
+
+Sağlıklı yetişkinler için genel bilgidir, diyet tavsiyesi değildir.
+
+**Hashtags**
+#tennis #tennisnutrition #tennistraining #tennistips #clubtennis
+#recreationaltennis #tennisfitness #tennislife #tenniscoach #tennisapp
+
+### 2 — carousel
 
 **EN**
 
@@ -103,7 +168,7 @@ Sağlıklı yetişkinler için genel bilgidir, diyet tavsiyesi değildir.
 #tennis #tennisnutrition #tennistraining #tennistips #clubtennis
 #recreationaltennis #tennisrecovery #tennislife #tenniscoach #tennisapp
 
-### 2 — "it refuses to guess"
+### Retired — "it refuses to guess" (reel not scheduled; caption kept for reuse)
 
 **EN**
 

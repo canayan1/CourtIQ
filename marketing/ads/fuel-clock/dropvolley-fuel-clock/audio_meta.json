@@ -1,0 +1,11 @@
+{
+  "bgm": {
+    "path": "assets/bgm/track.mp3",
+    "volume": 0.9,
+    "query": "calm, sparse, understated — a quiet confident bed with restraint, no build, no drop",
+    "duration_s": 119
+  },
+  "bgm_pending": false,
+  "voices": [],
+  "sfx": []
+}
