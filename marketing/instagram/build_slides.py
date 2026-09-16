@@ -268,6 +268,49 @@ CAROUSELS = {
             "Scenarios, drills and the match journal are free. "
             "AI Coach &amp; swing analysis when you\'re ready.", "7/7"),
     ],
+    # Nutrition launch (1.3). The obvious angle — "eat this, play better" —
+    # is off-limits: the app's own Terms and health disclaimer say it does not
+    # give dietary advice, and an unsourced food claim is exactly what the
+    # content rules forbid. So the campaign sells the two things that are
+    # actually ours: the app refuses to guess, and every claim is sourced.
+    "carousel-5-nutrition": [
+        hook("New in DropVolley",
+             'Your forehand didn\'t lose the <span class="accent">third set'
+             '</span>.',
+             "Your legs did. DropVolley now logs what you ate and how you "
+             "played — and lets your own data answer.", "1/7"),
+        rows("What's new", 'Nutrition, the <span class="accent">honest</span> '
+             'way',
+             [("🍽", "A fuel log, not a food diary",
+               "Log the meal before you play. Rate energy, legs, focus and "
+               "stomach after. Five taps."),
+              ("📖", "A guide with its sources on the page",
+               "Nine sections, 52 citations — ITF, USTA, ACSM, IOC. Open any "
+               "of them."),
+              ("🗓", "It lives in your Tennis Journal",
+               "Matches and fuel in one calendar. Forgot Tuesday? Tap Tuesday "
+               "and fill it in.")],
+             "2/7"),
+        phone("The log", "Five taps before you play.", "fuel-log.png", "3/7",
+              "Practice, match, wall — or a day you didn't play at all."),
+        phone("The part nobody else does", "It refuses to guess.",
+              "fuel-insights.png", "4/7",
+              "No comparison until five rated sessions sit on each side of "
+              "it. Until then it tells you how many are left."),
+        phone("Where it comes from", "Every claim, sourced.",
+              "guide-sources.png", "5/7",
+              "Not a listicle. The governing bodies and the position stands, "
+              "linked on the page."),
+        hook("From the guide",
+             'Pros eat bananas on court. The ITF says <span class="accent">'
+             'don\'t</span>.',
+             "Both are true, and the guide says why. The lesson was never the "
+             "banana — it is that they only use what their stomach already "
+             "knows.", "6/7"),
+        cta('Your season, <span class="accent">a day at a time</span>.',
+            "The journal, the fuel log and the sourced guide are free. "
+            "Recipes come with Premium.", "7/7"),
+    ],
     "carousel-2-how": [
         hook("How it works",
              'A tennis coach in your pocket — in <span class="accent">1 '
