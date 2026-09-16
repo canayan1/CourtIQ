@@ -7,8 +7,12 @@ Rules these scripts keep:
 - No download counts, ratings, awards or testimonials we don't have.
 - No implied link to Tennis Ireland, the ITF or WTN.
 - Swing/form analysis is named as beta wherever it appears.
-- Coach review is described as live, because the IAP is approved and
-  purchasable — verified 26 Aug 2026.
+- **Reel 5 (coach review) is ON HOLD — do not shoot it.** It was written on
+  26 Aug 2026 when the IAP was approved and purchasable. It is not any more:
+  `com.canayan93.courtiq.coachreview1` is **Removed From Sale** as of the 1.3
+  submission (16 Sep 2026), so the script advertises something nobody can
+  buy. Re-check the product's state in App Store Connect before it is shot,
+  and re-read the script against whatever is true then.
 
 Per reel: **Script** goes in HeyGen's text box. **Captions** are the burned-in
 overlays (HeyGen auto-captions, then fix the ones marked). **Cutaways** are
@@ -119,7 +123,13 @@ recordings, never stock with visible logos.
 
 ---
 
-## 5. A real coach watches your swing
+## 5. A real coach watches your swing — ⚠️ ON HOLD, DO NOT SHOOT
+
+> The in-app purchase behind this reel is Removed From Sale (checked 16 Sep
+> 2026 against the App Store Connect API). Everything below still describes
+> the feature accurately, but shooting it now would advertise a purchase
+> that cannot be completed. Left in place for when the product goes back on
+> sale; check its state first.
 
 **Hook (0–2s):**
 `A person watches it. Not an algorithm.`
