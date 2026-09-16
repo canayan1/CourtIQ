@@ -1,0 +1,245 @@
+<template>
+  <style>
+    #root {
+      position: relative;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      container-type: size;
+    }
+
+    /* ── Layer 1 · the full-bleed cream ground (rides on a clip, never on #root) ── */
+    .clk02-ground {
+      position: absolute;
+      inset: 0;
+      background: #fcf7ee;
+    }
+
+    /* ── Layer 2 · the time rail ── */
+    .clk02-stage {
+      position: absolute;
+      inset: 0;
+      font-kerning: normal;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .clk02-eyebrow {
+      position: absolute;
+      left: 196px;
+      top: 238px;
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 26px;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #4a4640;
+      will-change: transform, opacity;
+    }
+
+    .clk02-rail {
+      position: absolute;
+      left: 107px;
+      top: 254px;
+      width: 2px;
+      height: 1332px;
+      background: #e1d1b8;
+      transform-origin: 50% 0%;
+      will-change: transform;
+    }
+
+    .clk02-dot {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 9999px;
+      background: #c65c31;
+      transform-origin: 50% 50%;
+      will-change: transform, opacity;
+    }
+
+    .clk02-dot.clk02-dot-hero {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* ── Layer 3 · the four stops ── */
+    .clk02-stop {
+      position: absolute;
+      left: 196px;
+      width: 800px;
+    }
+
+    .clk02-mark {
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 30px;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #c65c31;
+      will-change: transform, opacity;
+    }
+
+    .clk02-note {
+      margin-top: 20px;
+      font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      font-size: 50px;
+      font-weight: 400;
+      line-height: 1.26;
+      letter-spacing: -0.012em;
+      color: #1e2938;
+      will-change: transform, opacity;
+    }
+
+    /* the changeover — one step up the ramp */
+    .clk02-stop-hero .clk02-mark {
+      font-size: 34px;
+    }
+
+    .clk02-stop-hero .clk02-note {
+      font-size: 62px;
+      line-height: 1.24;
+      letter-spacing: -0.014em;
+    }
+
+    .clk02-keep {
+      white-space: nowrap;
+    }
+
+    .clk02-word {
+      position: relative;
+      display: inline-block;
+    }
+
+    .clk02-underline {
+      position: absolute;
+      left: 0;
+      bottom: -13px;
+      width: 100%;
+      height: 3px;
+      background: #c65c31;
+      transform-origin: 0% 50%;
+      will-change: transform;
+    }
+  </style>
+
+  <div
+    id="root"
+    data-composition-id="02-clock"
+    data-start="0"
+    data-duration="10.5"
+    data-width="1080"
+    data-height="1920"
+  >
+    <div
+      class="clip clk02-ground"
+      id="clk02-ground"
+      data-start="0"
+      data-duration="10.5"
+      data-track-index="0"
+    ></div>
+
+    <div
+      class="clip clk02-stage"
+      id="clk02-stage"
+      data-start="0"
+      data-duration="10.5"
+      data-track-index="1"
+    >
+      <div class="clk02-eyebrow" id="clk02-eyebrow">MATCH DAY</div>
+      <div class="clk02-rail" id="clk02-rail"></div>
+
+      <div class="clk02-dot" id="clk02-dot-1" style="left: 102px; top: 395px"></div>
+      <div class="clk02-dot" id="clk02-dot-2" style="left: 102px; top: 679px"></div>
+      <div class="clk02-dot clk02-dot-hero" id="clk02-dot-3" style="left: 99px; top: 950px"></div>
+      <div class="clk02-dot" id="clk02-dot-4" style="left: 102px; top: 1349px"></div>
+
+      <div class="clk02-stop" id="clk02-stop-1" style="top: 386px">
+        <div class="clk02-mark" id="clk02-mark-1">2&#8211;4 HOURS BEFORE</div>
+        <div class="clk02-note" id="clk02-note-1">A meal built on carbohydrate.</div>
+      </div>
+
+      <div class="clk02-stop" id="clk02-stop-2" style="top: 670px">
+        <div class="clk02-mark" id="clk02-mark-2">1 HOUR OUT</div>
+        <div class="clk02-note" id="clk02-note-2">A banana, toast or oatmeal.</div>
+      </div>
+
+      <div class="clk02-stop clk02-stop-hero" id="clk02-stop-3" style="top: 942px">
+        <div class="clk02-mark" id="clk02-mark-3">EVERY&nbsp;<span class="clk02-word">CHANGEOVER<i class="clk02-underline" id="clk02-underline"></i></span></div>
+        <div class="clk02-note" id="clk02-note-3">Four to twelve swallows &#8212; to a plan, not to thirst.</div>
+      </div>
+
+      <div class="clk02-stop" id="clk02-stop-4" style="top: 1340px">
+        <div class="clk02-mark" id="clk02-mark-4">PAST THE FIRST HOUR</div>
+        <div class="clk02-note" id="clk02-note-4">30 to 60 g of carbohydrate <span class="clk02-keep">an hour.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+
+      /* Scene 1 (0.0-1.0s) — the rail draws downward, the eyebrow settles beside its head. */
+      tl.fromTo(
+        "#clk02-rail",
+        { scaleY: 0 },
+        { scaleY: 1, duration: 0.95, ease: "power3.out" },
+        0
+      );
+      tl.fromTo(
+        "#clk02-eyebrow",
+        { opacity: 0, x: -18 },
+        { opacity: 1, x: 0, duration: 0.7, ease: "power3.out" },
+        0.16
+      );
+
+      /* Each stop lands on the rail: dot, time marker, then the instruction.
+         Long-tail settle (power3.out, generous durations) — nothing overshoots. */
+      function landStop(index, at, markDur, noteDur) {
+        tl.fromTo(
+          "#clk02-dot-" + index,
+          { scale: 0, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" },
+          at
+        );
+        tl.fromTo(
+          "#clk02-mark-" + index,
+          { opacity: 0, y: 16 },
+          { opacity: 1, y: 0, duration: markDur, ease: "power3.out" },
+          at + 0.06
+        );
+        tl.fromTo(
+          "#clk02-note-" + index,
+          { opacity: 0, y: 26 },
+          { opacity: 1, y: 0, duration: noteDur, ease: "power3.out" },
+          at + 0.22
+        );
+      }
+
+      /* Scene 2 (1.0-3.0s) */
+      landStop(1, 1.0, 0.75, 1.0);
+
+      /* Scene 3 (3.0-4.6s) */
+      landStop(2, 3.0, 0.75, 1.0);
+
+      /* Scene 4 (4.6-7.4s) — the changeover, the stop this reel exists for.
+         Most room on the timeline, type a step larger, and a clay underline
+         draws beneath CHANGEOVER as the line settles. */
+      landStop(3, 4.6, 0.85, 1.15);
+      tl.fromTo(
+        "#clk02-underline",
+        { scaleX: 0, opacity: 1 },
+        { scaleX: 1, duration: 0.8, ease: "power2.out" },
+        5.45
+      );
+
+      /* Scene 5 (7.4-10.0s) — the last stop lands, then the whole rail holds and reads. */
+      landStop(4, 7.4, 0.75, 1.0);
+
+      window.__timelines["02-clock"] = tl;
+    })();
+  </script>
+</template>

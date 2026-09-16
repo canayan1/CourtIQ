@@ -1,0 +1,285 @@
+<template>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+
+  <style>
+    /* ── 03-source-cta — Code editorial, cream ground, 1080×1920 ───────────
+       cream #FCF7EE ground · ink #1E2938 voice · clay/coral #C65C31 used
+       EXACTLY once (the wordmark dot). Hairline elevation only. ------------ */
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      container-type: size;
+    }
+
+    .f03-source-cta-ground {
+      position: absolute;
+      inset: 0;
+      background: #fcf7ee;
+    }
+
+    .f03-source-cta-stage {
+      position: absolute;
+      inset: 0;
+    }
+
+    /* — Scene 1: the claim, left, and the real guide screen, right of centre — */
+
+    .f03-source-cta-headline {
+      position: absolute;
+      left: 72px;
+      top: 160px;
+      width: 880px;
+      font-family: "SF Pro Display", -apple-system, system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 80px;
+      line-height: 1.06;
+      letter-spacing: -0.018em;
+      color: #1e2938;
+    }
+
+    .f03-source-cta-phonewrap {
+      position: absolute;
+      left: 508px;
+      top: 390px;
+      width: 500px;
+      height: 1087px; /* 56.6% of frame height — the proof, at reading size */
+    }
+
+    .f03-source-cta-phone {
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(30, 41, 56, 0.2);
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fcf7ee;
+      box-shadow:
+        0 1px 3px rgba(30, 41, 56, 0.08),
+        0 4px 16px rgba(30, 41, 56, 0.04);
+    }
+
+    .f03-source-cta-shot {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 0%;
+    }
+
+    /* the Scene-3 recede: a flat cream veil, never a gradient or a glow */
+    .f03-source-cta-veil {
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      background: #fcf7ee;
+      opacity: 0;
+    }
+
+    /* — Scene 2: the named bodies, then the required line at the foot — */
+
+    .f03-source-cta-sources {
+      position: absolute;
+      left: 72px;
+      top: 352px;
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-weight: 500;
+      font-size: 32px;
+      line-height: 1.2;
+      letter-spacing: 0.07em;
+      color: rgba(30, 41, 56, 0.76);
+    }
+
+    .f03-source-cta-rule {
+      position: absolute;
+      left: 72px;
+      top: 1512px;
+      width: 936px;
+      height: 1px;
+      background: rgba(30, 41, 56, 0.16);
+      transform-origin: 0 50%;
+    }
+
+    .f03-source-cta-disclaimer {
+      position: absolute;
+      left: 72px;
+      top: 1530px;
+      width: 936px;
+      font-family: "SF Pro Display", -apple-system, system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 1.3;
+      letter-spacing: 0.002em;
+      color: #4a4640;
+    }
+
+    /* — Scene 3: where the clock lives — */
+
+    .f03-source-cta-cta {
+      position: absolute;
+      left: 72px;
+      top: 880px;
+      width: 404px;
+      font-family: "SF Pro Display", -apple-system, system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 46px;
+      line-height: 1.18;
+      letter-spacing: -0.014em;
+      color: #1e2938;
+    }
+
+    .f03-source-cta-mark {
+      position: absolute;
+      left: 72px;
+      top: 1050px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-family: "SF Pro Display", -apple-system, system-ui, sans-serif;
+      font-weight: 500;
+      font-size: 38px;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: #1e2938;
+    }
+
+    /* the one clay moment in the frame */
+    .f03-source-cta-dot {
+      width: 15px;
+      height: 15px;
+      border-radius: 9999px;
+      background: #c65c31;
+    }
+  </style>
+
+  <div
+    id="root"
+    data-composition-id="03-source-cta"
+    data-start="0"
+    data-duration="6"
+    data-width="1080"
+    data-height="1920"
+  >
+    <div
+      id="f03-source-cta-ground"
+      class="clip f03-source-cta-ground"
+      data-start="0"
+      data-duration="6"
+      data-track-index="0"
+    ></div>
+
+    <div id="f03-source-cta-stage" class="clip f03-source-cta-stage" data-start="0" data-duration="6" data-track-index="1">
+      <div class="f03-source-cta-headline">Every line of it, sourced.</div>
+
+      <div class="f03-source-cta-phonewrap">
+        <div class="f03-source-cta-phone">
+          <img
+            class="f03-source-cta-shot"
+            src="assets/guide-sources.png"
+            alt="The DropVolley nutrition guide, Before you play, with the ITF, USTA and ACSM named in its body text"
+            loading="eager"
+            decoding="sync"
+          />
+          <div class="f03-source-cta-veil"></div>
+        </div>
+      </div>
+
+      <div class="f03-source-cta-sources">ITF · USTA · ACSM.</div>
+
+      <div class="f03-source-cta-cta">Tennis Journal —<br />free in DropVolley.</div>
+
+      <div class="f03-source-cta-mark">
+        <span class="f03-source-cta-dot"></span><span class="f03-source-cta-word">DropVolley</span>
+      </div>
+
+      <div class="f03-source-cta-rule"></div>
+
+      <div class="f03-source-cta-disclaimer">
+        General information for healthy adults, not dietary advice.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.querySelector('[data-composition-id="03-source-cta"]');
+      var q = function (sel) {
+        return root.querySelector(sel);
+      };
+
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+
+      /* Scene 1 (0.0–1.8s) — the claim settles, the guide screen rises from below.
+         Long-tail out-curves only: nothing bounces anywhere in this piece. */
+      tl.fromTo(
+        q(".f03-source-cta-headline"),
+        { opacity: 0, y: 34 },
+        { opacity: 1, y: 0, duration: 0.95, ease: "power3.out" },
+        0.1
+      );
+      tl.fromTo(
+        q(".f03-source-cta-phonewrap"),
+        { opacity: 0, y: 150 },
+        { opacity: 1, y: 0, duration: 1.3, ease: "power3.out" },
+        0.3
+      );
+
+      /* Scene 2 (1.8–3.2s) — the named bodies, then the required line, EARLY.
+         The disclaimer is fully up by 2.95s and is never touched again. */
+      tl.fromTo(
+        q(".f03-source-cta-sources"),
+        { opacity: 0, y: 18 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
+        1.85
+      );
+      tl.fromTo(
+        q(".f03-source-cta-rule"),
+        { scaleX: 0 },
+        { scaleX: 1, duration: 0.8, ease: "power2.out" },
+        2.1
+      );
+      tl.fromTo(
+        q(".f03-source-cta-disclaimer"),
+        { opacity: 0, y: 12 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" },
+        2.25
+      );
+
+      /* Scene 3 (3.2–6.0s) — the satellite clears for the mark: the guide screen
+         recedes a hair and dims, and the lockup settles. Then dead still. */
+      tl.to(
+        q(".f03-source-cta-phonewrap"),
+        { scale: 0.962, duration: 1.1, ease: "power2.inOut" },
+        3.3
+      );
+      tl.to(q(".f03-source-cta-veil"), { opacity: 0.22, duration: 1.1, ease: "power2.inOut" }, 3.3);
+      tl.fromTo(
+        q(".f03-source-cta-cta"),
+        { opacity: 0, y: 26 },
+        { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" },
+        3.6
+      );
+      tl.fromTo(
+        q(".f03-source-cta-dot"),
+        { opacity: 0, scale: 0.92 },
+        { opacity: 1, scale: 1, duration: 0.45, ease: "power2.out" },
+        4.3
+      );
+      tl.fromTo(
+        q(".f03-source-cta-word"),
+        { opacity: 0, y: 14 },
+        { opacity: 1, y: 0, duration: 0.75, ease: "power3.out" },
+        4.4
+      );
+
+      /* full-span anchor — the last 0.85s is a held, unmoving read */
+      tl.to({}, { duration: 6 }, 0);
+
+      window.__timelines["03-source-cta"] = tl;
+      tl.seek(0);
+    })();
+  </script>
+</template>

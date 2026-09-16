@@ -10,7 +10,7 @@ music: "calm, sparse, understated — a quiet confident bed with restraint, no b
 
 ## Frame 1 — It's the third set
 
-- status: outline
+- status: animated
 - src: compositions/frames/01-hook.html
 - duration: 4s
 - transition_in: cut
@@ -31,7 +31,7 @@ rest of the reel pays off.
 
 ## Frame 2 — The clock
 
-- status: outline
+- status: animated
 - src: compositions/frames/02-clock.html
 - duration: 10s
 - transition_in: crossfade
@@ -64,7 +64,7 @@ move anywhere in this frame — the cascade is the motion.
 
 ## Frame 3 — Where it comes from, and where it lives
 
-- status: outline
+- status: animated
 - src: compositions/frames/03-source-cta.html
 - duration: 6s
 - transition_in: crossfade

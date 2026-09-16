@@ -1,0 +1,170 @@
+<template>
+  <style>
+    /* ── 01-hook — "Your forehand is fine." / "It's the third set." / the clay promise.
+       Ink ground, type only, camera locked. Scene 1 lands the first statement on one
+       long-tail settle; Scene 2 holds a beat of stillness then HARD-CUTS the second
+       statement in beneath it; Scene 3 draws a clay hairline and seats the promise
+       line in clay, smaller, which holds to the cut. Nothing bounces, nothing glows. ── */
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      container-type: size;
+      color: #fcf7ee;
+      font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* full-bleed ink ground rides on a clip layer, never on #root */
+    .frame-01-hook-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #1e2938;
+    }
+
+    .frame-01-hook-stage {
+      position: absolute;
+      inset: 0;
+    }
+
+    /* — the two cream statements: same size, same measure, centred — */
+    .frame-01-hook-claim {
+      position: absolute;
+      left: 4.2cqw;
+      right: 4.2cqw;
+      text-align: center;
+    }
+
+    .frame-01-hook-claim-a {
+      top: 24cqh;
+    }
+
+    .frame-01-hook-claim-b {
+      top: 42cqh;
+    }
+
+    .frame-01-hook-ln {
+      display: block;
+      font-size: 11.8cqw;
+      font-weight: 400;
+      line-height: 1.06;
+      letter-spacing: -0.022em;
+      color: #fcf7ee;
+      white-space: nowrap;
+    }
+
+    /* — the clay lockup: a hairline that draws, then the promise — */
+    .frame-01-hook-rule {
+      position: absolute;
+      left: 50%;
+      margin-left: -108px;
+      top: 61.5cqh;
+      width: 216px;
+      height: 1px;
+      transform-origin: 0% 50%;
+      background-color: #c65c31;
+    }
+
+    .frame-01-hook-promise {
+      position: absolute;
+      left: 4.2cqw;
+      right: 4.2cqw;
+      top: 65.5cqh;
+      text-align: center;
+      font-size: 6.6cqw;
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -0.018em;
+      color: #c65c31;
+      white-space: nowrap;
+    }
+  </style>
+
+  <div id="root" data-composition-id="01-hook" data-width="1080" data-height="1920" data-duration="4.5">
+    <div
+      id="frame-01-hook-ground"
+      class="clip frame-01-hook-ground"
+      data-start="0"
+      data-duration="4.5"
+      data-track-index="0"
+    ></div>
+
+    <div
+      id="frame-01-hook-stage"
+      class="clip frame-01-hook-stage"
+      data-start="0"
+      data-duration="4.5"
+      data-track-index="1"
+    >
+      <div class="frame-01-hook-claim frame-01-hook-claim-a">
+        <span class="frame-01-hook-ln" id="frame-01-hook-a1">Your forehand</span>
+        <span class="frame-01-hook-ln" id="frame-01-hook-a2">is fine.</span>
+      </div>
+
+      <div class="frame-01-hook-claim frame-01-hook-claim-b">
+        <span class="frame-01-hook-ln" id="frame-01-hook-b1">It&rsquo;s the</span>
+        <span class="frame-01-hook-ln" id="frame-01-hook-b2">third set.</span>
+      </div>
+
+      <div class="frame-01-hook-rule" id="frame-01-hook-rule"></div>
+
+      <div class="frame-01-hook-promise" id="frame-01-hook-promise">Tennis has a fuel clock.</div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var tl = gsap.timeline({ paused: true });
+
+      // ── Scene 1 (0.0–1.3s) — "Your forehand is fine." lands centred in cream.
+      //    ONE move: a short rise onto a long-tail settle (power4.out, no overshoot).
+      //    The hero is on screen well before 0.5s.
+      tl.fromTo(
+        "#frame-01-hook-a1",
+        { opacity: 0, y: 44 },
+        { opacity: 1, y: 0, duration: 0.95, ease: "power4.out" },
+        0.05
+      );
+      tl.fromTo(
+        "#frame-01-hook-a2",
+        { opacity: 0, y: 38 },
+        { opacity: 1, y: 0, duration: 0.95, ease: "power4.out" },
+        0.22
+      );
+
+      // ── Scene 2 (1.3–2.4s) — a beat of stillness, then the second statement
+      //    CUTS in beneath it. A hard cut, not a fade, and nothing else moves.
+      tl.fromTo(
+        "#frame-01-hook-b1",
+        { opacity: 0 },
+        { opacity: 1, duration: 0.02, ease: "none" },
+        1.45
+      );
+      tl.fromTo(
+        "#frame-01-hook-b2",
+        { opacity: 0 },
+        { opacity: 1, duration: 0.02, ease: "none" },
+        1.45
+      );
+
+      // ── Scene 3 (2.4–4.0s) — a clay hairline draws left→right beneath the pair,
+      //    then the promise arrives in clay, smaller, and holds to the cut.
+      tl.fromTo(
+        "#frame-01-hook-rule",
+        { scaleX: 0 },
+        { scaleX: 1, duration: 0.62, ease: "power4.out" },
+        2.45
+      );
+      tl.fromTo(
+        "#frame-01-hook-promise",
+        { opacity: 0, y: 26 },
+        { opacity: 1, y: 0, duration: 0.95, ease: "power4.out" },
+        2.95
+      );
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["01-hook"] = tl;
+      tl.seek(0);
+    })();
+  </script>
+</template>
