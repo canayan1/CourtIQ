@@ -185,6 +185,45 @@ struct BodySessionView: View {
                     .padding(.top, 4)
             }
 
+            if !r.findings.findings.isEmpty {
+                Divider().padding(.vertical, 4)
+                Text("Where to look")
+                    .font(.headline)
+                    .foregroundStyle(AppPalette.ink)
+                ForEach(r.findings.findings, id: \.kind.rawValue) { finding in
+                    HStack(alignment: .top, spacing: 10) {
+                        Circle()
+                            .fill(finding.weight == .clear ? AppPalette.clay : AppPalette.gold)
+                            .frame(width: 8, height: 8)
+                            .padding(.top, 6)
+                        Text(finding.sentence)
+                            .font(.subheadline)
+                            .foregroundStyle(AppPalette.ink)
+                    }
+                }
+            } else if r.findings.notChecked.isEmpty {
+                Text("Nothing to flag in this one.")
+                    .font(.subheadline)
+                    .foregroundStyle(AppPalette.moss)
+                    .padding(.top, 4)
+            }
+
+            // Always shown, never collapsed away. A session with no flags and
+            // a long list here is not a session played well — it is a session
+            // nobody looked at, and the difference has to be visible or the
+            // whole thing turns into flattery.
+            if !r.findings.notChecked.isEmpty {
+                Divider().padding(.vertical, 4)
+                Text("Not checked")
+                    .font(.headline)
+                    .foregroundStyle(AppPalette.inkSoft)
+                ForEach(r.findings.notChecked, id: \.self) { reason in
+                    Text("· " + reason)
+                        .font(.footnote)
+                        .foregroundStyle(AppPalette.inkSoft)
+                }
+            }
+
             Button("Done") { result = nil }
                 .buttonStyle(.bordered)
                 .tint(AppPalette.clay)

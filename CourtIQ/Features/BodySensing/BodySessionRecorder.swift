@@ -25,6 +25,9 @@ struct BodySessionResult {
     var efforts: Int
     var workShare: Double?
     var longestRest: Double?
+    /// The point of the session: what the player owed and did not pay, and
+    /// what could not be looked at.
+    var findings: SessionFindings
 }
 
 /// Runs a session with the phone worn on the body.
@@ -104,6 +107,11 @@ final class BodySessionRecorder: ObservableObject {
 
         tick()
         harvestSplitSteps(flushAll: true)
+        // NOTE: `motion` holds only the tail that harvesting has not discarded,
+        // so the rules below judge the end of the session rather than all of
+        // it. Correct for a first pass — every rule here is a rate — but the
+        // moment findings are trended across sessions this has to become a
+        // running summary rather than a buffer.
 
         // A wall rally has its own rhythm — one racket sound and one rebound
         // per cycle — so it gets the gap the wall sessions were calibrated
@@ -136,6 +144,11 @@ final class BodySessionRecorder: ObservableObject {
                                          opponentContacts: split?.opponent ?? [])
         let rhythm = RallyRhythmReader.read(strokes: strokeTimes)
         let work = MovementDetector.workRest(motion)
+        let findings = SessionAnalyst.analyse(
+            ownContacts: strokeTimes,
+            opponentContacts: split?.opponent ?? [],
+            splitSteps: splitSteps, motion: motion,
+            rhythm: rhythm, isWall: onWall)
 
         state = .idle
         return BodySessionResult(
@@ -143,7 +156,8 @@ final class BodySessionRecorder: ObservableObject {
             impacts: impacts, attribution: split, splitSteps: splitSteps,
             readiness: readiness, rhythm: rhythm, wallRebounds: rebounds,
             efforts: MovementDetector.efforts(motion).count,
-            workShare: work?.workShare, longestRest: work?.longestRest)
+            workShare: work?.workShare, longestRest: work?.longestRest,
+            findings: findings)
     }
 
     // MARK: - Sensors
