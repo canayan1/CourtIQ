@@ -253,7 +253,7 @@ product instead of two.
 
 | device | strokes | footwork | heart rate | changeover mark | live to phone | status |
 |---|---|---|---|---|---|---|
-| iPhone on belt / in pocket | audio | 100 Hz motion | — | rest-gap inference | it *is* the phone | built, DEBUG, needs T1–T3 |
+| iPhone on belt / in pocket | audio | 100 Hz motion | — | rest-gap inference | it *is* the phone | built, DEBUG, **writes the same session file as the watch**, needs T1–T3 |
 | Apple Watch (S8 / Ultra, watchOS 10+) | 800 Hz accelerometer | 200 Hz motion | yes | one tap | WatchConnectivity | **target built, embedded, UNRUN** — see T0 |
 | Garmin | — (Connect IQ accel is ~25 Hz, enough for feet, not for impact) | via a Connect IQ app, separate codebase | via Apple Health sync, after the fact | — | not live | not started |
 | Xiaomi / Mi Band | — | — | via Apple Health sync | — | not live | no raw-sensor API; heart rate only |
@@ -311,6 +311,12 @@ Count your strokes yourself. Note roughly how far you stood from the wall.
 - Tempo spread under ~20% if you struck cleanly.
 
 **Settles:** whether the pocket can replace the Rally Cam's setup entirely.
+
+**Also:** the session is saved on the phone the moment you stop, and it
+appears on the bench card at the bottom of Home. Log today's match in the
+Journal afterwards and the AI report's summary carries it — same file, same
+coach block, same rules as a watch session. No watch was involved in any of
+that, which is the point.
 
 **If it fails:** "Could not tell your racket from the ball off the wall" means
 the two populations did not separate. Tell me your standing distance and

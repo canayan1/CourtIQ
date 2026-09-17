@@ -43,6 +43,19 @@ final class WatchLink: NSObject, ObservableObject {
         if session.activationState != .activated { session.activate() }
     }
 
+    /// Puts a stored session on the bench card, whichever device wrote it.
+    /// The phone recorder calls this when it stops, so a phone-only session
+    /// appears exactly where a watch session would.
+    func showStored(_ session: SensingSession) {
+        let events = session.decodedEvents
+        let stints = StintBuilder.stints(from: events)
+        let notes = stints.count >= 2
+            ? BenchReport.compare(latest: stints[stints.count - 1], previous: stints[stints.count - 2])
+            : []
+        live = LiveMatch(id: session.id, drill: session.drill, startedAt: session.startedAt,
+                         events: events, stints: stints, benchNotes: notes, finished: true)
+    }
+
     fileprivate func receive(_ payload: [String: Any]) {
         guard let id = payload["session"] as? String,
               let data = payload["events"] as? Data,

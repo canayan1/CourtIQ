@@ -5,6 +5,9 @@ import Foundation
 
 /// Everything a finished session knows.
 struct BodySessionResult {
+    /// Where the session was written. The Journal attaches it to the match
+    /// logged for the same day, and the coach reads it from there.
+    var sessionID: String
     var drill: DrillContext
     var startedAt: Date
     var duration: Double
@@ -62,6 +65,17 @@ final class BodySessionRecorder: ObservableObject {
     private let engine = AVAudioEngine()
     private let motionManager = CMMotionManager()
     private let envelopeBuffer = LiveEnvelope()
+    /// The phone writes the same file a watch would. This is the piece that
+    /// makes "the same data without a watch" true end to end: a phone-only
+    /// match lands in SensingSessionStore, the Journal finds it by day, and
+    /// the coach block is built from it exactly as from a wrist.
+    private let store = SensingSessionStore.shared
+    private var sessionID = ""
+    /// Derived motion is written as it is harvested, so a session that dies
+    /// at forty minutes has forty minutes on disk. Contacts are written once
+    /// at the end, because whose they were needs the whole session to say.
+    private var effortsEmittedUntil: Double = 0
+    private var activityEmittedUntil: Double = 0
     private var drill = DrillContext(kind: .freePlay, note: nil, plannedMinutes: nil)
     private var startedAt = Date()
     private var startUptime: TimeInterval = 0
@@ -78,6 +92,8 @@ final class BodySessionRecorder: ObservableObject {
         guard state == .idle else { return }
         self.drill = drill
         startedAt = Date()
+        sessionID = UUID().uuidString
+        effortsEmittedUntil = 0; activityEmittedUntil = 0
         startUptime = ProcessInfo.processInfo.systemUptime
         envelopeBuffer.reset(); motion.removeAll(); splitSteps.removeAll(); ticks.removeAll()
         strokes = 0; splitStepCount = 0; elapsed = 0; failure = nil
@@ -150,8 +166,24 @@ final class BodySessionRecorder: ObservableObject {
             splitSteps: splitSteps, motion: motion,
             rhythm: rhythm, isWall: onWall)
 
+        // Contacts, with owners, once. On a wall the rebounds are the
+        // player's own ball and nobody's contact, so only strokes are written.
+        var contacts: [SensorEvent] = []
+        let strength: (Double) -> Double = { t in impacts.first { $0.t == t }?.strength ?? 0 }
+        for t in strokeTimes { contacts.append(.contact(t: t, strength: strength(t), owner: .player)) }
+        for t in split?.opponent ?? [] { contacts.append(.contact(t: t, strength: strength(t), owner: .opponent)) }
+        if !onWall, split == nil {
+            // Nobody could be told apart, so nothing is claimed for either
+            // side — the coach block and the stint builder both treat
+            // .unknown as exactly that.
+            contacts = impacts.map { .contact(t: $0.t, strength: $0.strength, owner: .unknown) }
+        }
+        persist(contacts)
+        if let stored = store.load(sessionID) { WatchLink.shared.showStored(stored) }
+
         state = .idle
         return BodySessionResult(
+            sessionID: sessionID,
             drill: drill, startedAt: startedAt, duration: elapsed, ticks: ticks,
             impacts: impacts, attribution: split, splitSteps: splitSteps,
             readiness: readiness, rhythm: rhythm, wallRebounds: rebounds,
@@ -247,13 +279,38 @@ final class BodySessionRecorder: ObservableObject {
         let ready = motion.filter { $0.t <= cutoff }
         guard ready.count > 40 else { return }
 
+        var fresh: [SensorEvent] = []
         for step in MovementDetector.splitSteps(ready) {
             if let previous = splitSteps.last, step.landing <= previous.landing { continue }
             splitSteps.append(step)
+            fresh.append(.splitStep(t: step.landing, landingG: step.landingG))
         }
         splitStepCount = splitSteps.count
 
+        // Efforts and activity, the same way the watch harvests them, so a
+        // stint built from this file cannot tell which device wrote it.
+        for e in MovementDetector.efforts(ready) where e > effortsEmittedUntil {
+            let peak = ready.filter { abs($0.t - e) < 0.25 }.map(\.horizontal).max() ?? 0
+            fresh.append(.effort(t: e, peakPush: peak))
+        }
+        effortsEmittedUntil = cutoff
+        let slice = ready.filter { $0.t > activityEmittedUntil }
+        if slice.count > 40, let wr = MovementDetector.workRest(slice) {
+            fresh.append(.activity(t: cutoff, movingShare: wr.workShare))
+            activityEmittedUntil = cutoff
+        }
+        persist(fresh)
+
         // Keep a second of overlap so a hop spanning the boundary survives.
         if !flushAll { motion.removeAll { $0.t < cutoff - 1.0 } }
+    }
+
+    /// Appends to the session file. The codec refuses raw motion, so nothing
+    /// here can ship it by accident; what is written is what was concluded.
+    private func persist(_ events: [SensorEvent]) {
+        guard !events.isEmpty, !sessionID.isEmpty else { return }
+        let dtos = events.compactMap { try? SensorEventCodec.dto($0) }
+        store.append(dtos, to: sessionID, startedAt: startedAt,
+                     drill: drill.kind.rawValue, highRateMotion: false)
     }
 }

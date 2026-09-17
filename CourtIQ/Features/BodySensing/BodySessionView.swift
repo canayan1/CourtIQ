@@ -224,6 +224,11 @@ struct BodySessionView: View {
                 }
             }
 
+            Text("Saved. Log today's match in the Journal and the coach reads this session with it.")
+                .font(.footnote)
+                .foregroundStyle(AppPalette.inkSoft)
+                .padding(.top, 4)
+
             Button("Done") { result = nil }
                 .buttonStyle(.bordered)
                 .tint(AppPalette.clay)
