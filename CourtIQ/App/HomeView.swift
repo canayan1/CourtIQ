@@ -139,6 +139,10 @@ struct HomeView: View {
                 // debug flows is no use — somebody has to tap it. It is
                 // deliberately unstyled and untranslated: it is not finished,
                 // and it should not look as though it is.
+                // What the watch sent, if a session is running or just ended.
+                // Same DEBUG door and the same reason: the link has never
+                // carried a real session.
+                BenchCardView()
                 Button("Body session (debug)") { route = .bodySession }
                     .font(.footnote)
                     .foregroundStyle(AppPalette.inkSoft)

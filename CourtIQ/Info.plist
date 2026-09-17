@@ -46,6 +46,10 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>DropVolley uses the camera so you can record a short swing video for AI technique analysis, and during Wall practice to watch you swing so it can count your reps on-device.</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>DropVolley on Apple Watch reads your heart rate during a session you start, so the changeover summary can show how it changed between games. The iPhone app itself does not read health data.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>DropVolley on Apple Watch saves the session you start as a tennis workout.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>DropVolley uses the microphone to record swing videos, whose audio is analyzed on-device to find the moment of ball contact, and to capture match voice notes, which are transcribed on-device.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>

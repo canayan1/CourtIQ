@@ -28,6 +28,7 @@ enum BallImpactAudio {
     static let rallyMinGap: Double = 0.9
     static let madK: Double = 6.0
 
+    #if !os(watchOS)
     /// Every candidate strike, in seconds into the clip.
     static func impacts(videoURL: URL, minGap: Double = wallMinGap) async -> [Double]? {
         let asset = AVURLAsset(url: videoURL)
@@ -90,6 +91,8 @@ enum BallImpactAudio {
         }
         return envelope
     }
+
+    #endif
 
     /// Adaptive threshold + min-gap strongest-peak picking (mirror of mine.py).
     static func detectImpacts(envelope: [Double], dt: Double,

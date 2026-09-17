@@ -19,6 +19,17 @@ enum SensorEvent: Equatable {
     /// The player marked a changeover. One tap on the wrist, which is what
     /// players already do with a scoring app, and it beats any inference.
     case changeover(t: Double)
+
+    // Derived motion. Raw samples never leave the device that sensed them —
+    // 100 to 200 Hz for an hour is megabytes with no use on the far side,
+    // since every detector already ran where the data was. What travels is
+    // what the detectors concluded, in the same vocabulary the phone's own
+    // recorder produces from its raw stream, so a stint built from a watch
+    // and a stint built from a belt phone are the same object.
+    case splitStep(t: Double, landingG: Double)
+    case effort(t: Double, peakPush: Double)
+    /// Share of the last slice spent moving, reported once per tick.
+    case activity(t: Double, movingShare: Double)
 }
 
 /// A stretch of play between changeovers — one or two games.
@@ -101,6 +112,9 @@ enum StintBuilder {
         var motion: [BodyMotionSample] = []
         var hr: [Double] = []
         var opponentTimes: [Double] = []
+        var derivedHops: [SplitStep] = []
+        var derivedPeaks: [Double] = []
+        var activity: [Double] = []
         for e in events {
             switch e {
             case .contact(let t, _, let owner):
@@ -109,22 +123,37 @@ enum StintBuilder {
             case .motion(let m): motion.append(m)
             case .heartRate(_, let bpm): hr.append(bpm)
             case .changeover: break
+            case .splitStep(let t, let g): derivedHops.append(SplitStep(landing: t, unload: 0, landingG: g))
+            case .effort(_, let peak): derivedPeaks.append(peak)
+            case .activity(_, let share): activity.append(share)
             }
         }
         guard own + opp >= minContacts else { return nil }
 
-        let efforts = MovementDetector.efforts(motion)
-        let peaks = pushPeaks(motion, at: efforts).sorted()
-        let work = MovementDetector.workRest(motion)
-        let hops = MovementDetector.splitSteps(motion)
+        // Raw motion when we have it (the phone's own recorder, the tests);
+        // otherwise the derived events a watch sent. Same detectors either
+        // way, so the two paths cannot disagree about what a hop is.
+        let hops: [SplitStep]
+        let peaks: [Double]
+        let movingShare: Double
+        if motion.count > 40 {
+            let efforts = MovementDetector.efforts(motion)
+            peaks = pushPeaks(motion, at: efforts).sorted()
+            hops = MovementDetector.splitSteps(motion)
+            movingShare = MovementDetector.workRest(motion)?.workShare ?? 0
+        } else {
+            peaks = derivedPeaks.sorted()
+            hops = derivedHops
+            movingShare = activity.isEmpty ? 0 : activity.reduce(0, +) / Double(activity.count)
+        }
         let readiness = MovementDetector.readiness(splitSteps: hops,
                                                    opponentContacts: opponentTimes)?.share
 
         return Stint(index: index, start: start, end: end,
                      ownContacts: own, opponentContacts: opp,
-                     efforts: efforts.count,
+                     efforts: peaks.count,
                      medianPeakPush: peaks.isEmpty ? 0 : peaks[peaks.count / 2],
-                     movingShare: work?.workShare ?? 0,
+                     movingShare: movingShare,
                      readiness: readiness,
                      meanHeartRate: hr.isEmpty ? nil : hr.reduce(0, +) / Double(hr.count))
     }
@@ -144,6 +173,9 @@ extension SensorEvent {
         case .motion(let m): return m.t
         case .heartRate(let t, _): return t
         case .changeover(let t): return t
+        case .splitStep(let t, _): return t
+        case .effort(let t, _): return t
+        case .activity(let t, _): return t
         }
     }
 }

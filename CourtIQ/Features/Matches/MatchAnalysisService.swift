@@ -144,6 +144,14 @@ final class MatchAnalysisService {
             }
         }
 
+        // The measured session, when one exists for this match. It arrives as
+        // observations with their rules attached — no causes, no dietary
+        // advice — because the coach cannot read those from a wrist or a belt
+        // and the app forbids inventing them.
+        if mode == .compound, let measured = SensingSummary.coachBlock(for: entry) {
+            lines.append(measured)
+        }
+
         // Personalize: append the player's Tennis Profile + a brief recent-match
         // trend so the analysis references their real level/style/goals and
         // recent form instead of generic advice. Optional — absent if the

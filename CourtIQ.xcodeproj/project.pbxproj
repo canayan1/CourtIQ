@@ -7,6 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB1E0000000000000000000E /* CourtIQWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1E0000000000000000000A /* CourtIQWatchApp.swift */; };
+		AB1E0000000000000000000F /* WatchSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1E0000000000000000000B /* WatchSessionController.swift */; };
+		AB1E00000000000000000010 /* WatchSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1E0000000000000000000C /* WatchSessionView.swift */; };
+		AB1E00000000000000000011 /* SessionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD000000FEE4B1FA0DE0001 /* SessionModels.swift */; };
+		AB1E00000000000000000012 /* WristSwingDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD000001FEE4B1FA0DE0001 /* WristSwingDetector.swift */; };
+		AB1E00000000000000000013 /* MovementDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD000002FEE4B1FA0DE0001 /* MovementDetector.swift */; };
+		AB1E00000000000000000014 /* ImpactAttribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD000003FEE4B1FA0DE0001 /* ImpactAttribution.swift */; };
+		AB1E00000000000000000015 /* RallyRhythm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD010001FEE4B1FA0DE0001 /* RallyRhythm.swift */; };
+		AB1E00000000000000000016 /* SessionFindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD020001FEE4B1FA0DE0001 /* SessionFindings.swift */; };
+		AB1E00000000000000000017 /* MatchStints.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD030001FEE4B1FA0DE0001 /* MatchStints.swift */; };
+		AB1E00000000000000000018 /* BallImpactAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA11A0D10FEE4B1FA0DE0001 /* BallImpactAudio.swift */; };
+		AB1E00000000000000000019 /* LiveEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1E0000000000000000001B /* LiveEnvelope.swift */; };
+		AB1E0000000000000000001A /* SensorEventCodec.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1E0000000000000000001C /* SensorEventCodec.swift */; };
+		AB1E0000000000000000001D /* LiveEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1E0000000000000000001B /* LiveEnvelope.swift */; };
+		AB1E0000000000000000001E /* SensorEventCodec.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1E0000000000000000001C /* SensorEventCodec.swift */; };
+		AB1E00000000000000000024 /* WatchLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1E00000000000000000023 /* WatchLink.swift */; };
+		AB1E00000000000000000027 /* SensingSessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1E00000000000000000025 /* SensingSessionStore.swift */; };
+		AB1E00000000000000000028 /* SensingSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1E00000000000000000026 /* SensingSummary.swift */; };
+		AB1E00000000000000000020 /* CourtIQWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = AB1E00000000000000000008 /* CourtIQWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B100000000000000000002 /* WallBallLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000000000000000001 /* WallBallLocator.swift */; };
 		B400000000000000000002 /* WallSwingDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B400000000000000000001 /* WallSwingDetector.swift */; };
 		F4D689E4217B817DAA69B4A7 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 325B817E77DD62D36909AF94 /* RevenueCat */; };
@@ -236,6 +255,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		AB1E00000000000000000022 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A000000000000000000000 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AB1E00000000000000000001;
+			remoteInfo = CourtIQWatch;
+		};
 		7967EE66321338298E0BB737 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A000000000000000000000 /* Project object */;
@@ -245,7 +271,31 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		AB1E0000000000000000001F /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				AB1E00000000000000000020 /* CourtIQWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		AB1E00000000000000000008 /* CourtIQWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CourtIQWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB1E0000000000000000000A /* CourtIQWatchApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CourtIQWatchApp.swift; path = CourtIQWatch/CourtIQWatchApp.swift; sourceTree = "<group>"; };
+		AB1E0000000000000000000B /* WatchSessionController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WatchSessionController.swift; path = CourtIQWatch/WatchSessionController.swift; sourceTree = "<group>"; };
+		AB1E0000000000000000000C /* WatchSessionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WatchSessionView.swift; path = CourtIQWatch/WatchSessionView.swift; sourceTree = "<group>"; };
+		AB1E0000000000000000000D /* CourtIQWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = CourtIQWatch.entitlements; path = CourtIQWatch/CourtIQWatch.entitlements; sourceTree = "<group>"; };
+		AB1E0000000000000000001B /* LiveEnvelope.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LiveEnvelope.swift; path = CourtIQ/Features/BodySensing/LiveEnvelope.swift; sourceTree = "<group>"; };
+		AB1E0000000000000000001C /* SensorEventCodec.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SensorEventCodec.swift; path = CourtIQ/Features/BodySensing/SensorEventCodec.swift; sourceTree = "<group>"; };
+		AB1E00000000000000000023 /* WatchLink.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WatchLink.swift; path = CourtIQ/Features/BodySensing/WatchLink.swift; sourceTree = "<group>"; };
+		AB1E00000000000000000025 /* SensingSessionStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SensingSessionStore.swift; path = CourtIQ/Features/BodySensing/SensingSessionStore.swift; sourceTree = "<group>"; };
+		AB1E00000000000000000026 /* SensingSummary.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SensingSummary.swift; path = CourtIQ/Features/BodySensing/SensingSummary.swift; sourceTree = "<group>"; };
 		B100000000000000000001 /* WallBallLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WallBallLocator.swift; path = CourtIQ/Features/Wall/WallBallLocator.swift; sourceTree = "<group>"; };
 		B400000000000000000001 /* WallSwingDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WallSwingDetector.swift; path = CourtIQ/Features/Wall/WallSwingDetector.swift; sourceTree = "<group>"; };
 		04D5B2D2F6843DCDF39EC336 /* TennisProfileQuestionnaireView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TennisProfileQuestionnaireView.swift; path = CourtIQ/Features/TennisProfile/TennisProfileQuestionnaireView.swift; sourceTree = "<group>"; };
@@ -477,6 +527,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AB1E00000000000000000006 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2A731268862A5E3AC1754431 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -497,6 +554,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB1E00000000000000000009 /* CourtIQWatch */ = {
+			isa = PBXGroup;
+			children = (
+				AB1E0000000000000000000A /* CourtIQWatchApp.swift */,
+				AB1E0000000000000000000B /* WatchSessionController.swift */,
+				AB1E0000000000000000000C /* WatchSessionView.swift */,
+				AB1E0000000000000000000D /* CourtIQWatch.entitlements */,
+			);
+			name = CourtIQWatch;
+			sourceTree = "<group>";
+		};
 		1A452508E882D4D1A153AE73 /* CourtIQUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -520,6 +588,7 @@
 			isa = PBXGroup;
 			children = (
 				A00000000000000000000F /* Info.plist */,
+				AB1E00000000000000000009 /* CourtIQWatch */,
 				A000000000000000000010 /* CourtIQApp.swift */,
 				A000000000000000000011 /* MainTabView.swift */,
 				A000000000000000000013 /* ProfileView.swift */,
@@ -713,6 +782,11 @@
 				BD010001FEE4B1FA0DE0001 /* RallyRhythm.swift */,
 				BD020001FEE4B1FA0DE0001 /* SessionFindings.swift */,
 				BD030001FEE4B1FA0DE0001 /* MatchStints.swift */,
+				AB1E0000000000000000001B /* LiveEnvelope.swift */,
+				AB1E0000000000000000001C /* SensorEventCodec.swift */,
+				AB1E00000000000000000023 /* WatchLink.swift */,
+				AB1E00000000000000000025 /* SensingSessionStore.swift */,
+				AB1E00000000000000000026 /* SensingSummary.swift */,
 				AC3D682A1ECA458C9921D4AD /* SwingImpactAnalyzer.swift */,
 				CFB312EFDFBC3D468DFBD276 /* SwingAnalysisService.swift */,
 				B1C1F0C3D2F961F7294836E6 /* SwingAnalysisView.swift */,
@@ -737,6 +811,7 @@
 			children = (
 				A00000000000000000000D /* CourtIQ.app */,
 				F9EE92467572A4EAAAE0B125 /* CourtIQUITests.xctest */,
+				AB1E00000000000000000008 /* CourtIQWatch.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -781,6 +856,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		AB1E00000000000000000001 /* CourtIQWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB1E00000000000000000002 /* Build configuration list for PBXNativeTarget "CourtIQWatch" */;
+			buildPhases = (
+				AB1E00000000000000000005 /* Sources */,
+				AB1E00000000000000000006 /* Frameworks */,
+				AB1E00000000000000000007 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CourtIQWatch;
+			productName = CourtIQWatch;
+			productReference = AB1E00000000000000000008 /* CourtIQWatch.app */;
+			productType = "com.apple.product-type.application";
+		};
 		1EE96FC5D4A60669456E340B /* CourtIQUITests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 515D58A67B3C858B7779F0E7 /* Build configuration list for PBXNativeTarget "CourtIQUITests" */;
@@ -806,10 +898,12 @@
 				A00000000000000000000A /* Sources */,
 				A00000000000000000000B /* Frameworks */,
 				A00000000000000000000C /* Resources */,
+				AB1E0000000000000000001F /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				AB1E00000000000000000021 /* PBXTargetDependency */,
 			);
 			packageProductDependencies = (
 				325B817E77DD62D36909AF94 /* RevenueCat */,
@@ -849,11 +943,19 @@
 			targets = (
 				A000000000000000000006 /* CourtIQ */,
 				1EE96FC5D4A60669456E340B /* CourtIQUITests */,
+				AB1E00000000000000000001 /* CourtIQWatch */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AB1E00000000000000000007 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A00000000000000000000C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -903,6 +1005,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AB1E00000000000000000005 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB1E0000000000000000000E /* CourtIQWatchApp.swift in Sources */,
+				AB1E0000000000000000000F /* WatchSessionController.swift in Sources */,
+				AB1E00000000000000000010 /* WatchSessionView.swift in Sources */,
+				AB1E00000000000000000011 /* SessionModels.swift in Sources */,
+				AB1E00000000000000000012 /* WristSwingDetector.swift in Sources */,
+				AB1E00000000000000000013 /* MovementDetector.swift in Sources */,
+				AB1E00000000000000000014 /* ImpactAttribution.swift in Sources */,
+				AB1E00000000000000000015 /* RallyRhythm.swift in Sources */,
+				AB1E00000000000000000016 /* SessionFindings.swift in Sources */,
+				AB1E00000000000000000017 /* MatchStints.swift in Sources */,
+				AB1E00000000000000000018 /* BallImpactAudio.swift in Sources */,
+				AB1E00000000000000000019 /* LiveEnvelope.swift in Sources */,
+				AB1E0000000000000000001A /* SensorEventCodec.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		85A441F2A3C15F3890765F01 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -916,6 +1038,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB1E0000000000000000001D /* LiveEnvelope.swift in Sources */,
+				AB1E0000000000000000001E /* SensorEventCodec.swift in Sources */,
+				AB1E00000000000000000024 /* WatchLink.swift in Sources */,
+				AB1E00000000000000000027 /* SensingSessionStore.swift in Sources */,
+				AB1E00000000000000000028 /* SensingSummary.swift in Sources */,
 				A000000000000000000020 /* CourtIQApp.swift in Sources */,
 				A000000000000000000021 /* MainTabView.swift in Sources */,
 				A000000000000000000023 /* ProfileView.swift in Sources */,
@@ -1111,6 +1238,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		AB1E00000000000000000021 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CourtIQWatch;
+			target = AB1E00000000000000000001 /* CourtIQWatch */;
+			targetProxy = AB1E00000000000000000022 /* PBXContainerItemProxy */;
+		};
 		66930E349614DC5C65579663 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CourtIQ;
@@ -1132,6 +1265,78 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		AB1E00000000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CourtIQWatch/CourtIQWatch.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 38;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = DC8ALPY949;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = DropVolley;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "DropVolley reads your heart rate during a session you start, so the changeover summary can show how it changed between games.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "DropVolley saves the session you start as a tennis workout.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "DropVolley listens for the sound of ball contact to tell your strokes from your opponent's. Audio is reduced to the moment of each strike on the watch and is never recorded or sent anywhere.";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKApplication = YES;
+				INFOPLIST_KEY_WKBackgroundModes = "workout-processing";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.canayan93.courtiq;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.canayan93.courtiq.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		AB1E00000000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CourtIQWatch/CourtIQWatch.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 38;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = DC8ALPY949;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = DropVolley;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "DropVolley reads your heart rate during a session you start, so the changeover summary can show how it changed between games.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "DropVolley saves the session you start as a tennis workout.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "DropVolley listens for the sound of ball contact to tell your strokes from your opponent's. Audio is reduced to the moment of each strike on the watch and is never recorded or sent anywhere.";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKApplication = YES;
+				INFOPLIST_KEY_WKBackgroundModes = "workout-processing";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.canayan93.courtiq;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.canayan93.courtiq.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
 		55B1C5470381EFE152FB07AC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1252,6 +1457,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AB1E00000000000000000002 /* Build configuration list for PBXNativeTarget "CourtIQWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB1E00000000000000000003 /* Debug */,
+				AB1E00000000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		515D58A67B3C858B7779F0E7 /* Build configuration list for PBXNativeTarget "CourtIQUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

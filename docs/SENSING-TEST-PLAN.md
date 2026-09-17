@@ -254,7 +254,7 @@ product instead of two.
 | device | strokes | footwork | heart rate | changeover mark | live to phone | status |
 |---|---|---|---|---|---|---|
 | iPhone on belt / in pocket | audio | 100 Hz motion | — | rest-gap inference | it *is* the phone | built, DEBUG, needs T1–T3 |
-| Apple Watch (S8 / Ultra, watchOS 10+) | 800 Hz accelerometer | 200 Hz motion | yes | one tap | WatchConnectivity | detector built; no watch to run it |
+| Apple Watch (S8 / Ultra, watchOS 10+) | 800 Hz accelerometer | 200 Hz motion | yes | one tap | WatchConnectivity | **target built, embedded, UNRUN** — see T0 |
 | Garmin | — (Connect IQ accel is ~25 Hz, enough for feet, not for impact) | via a Connect IQ app, separate codebase | via Apple Health sync, after the fact | — | not live | not started |
 | Xiaomi / Mi Band | — | — | via Apple Health sync | — | not live | no raw-sensor API; heart rate only |
 
@@ -265,6 +265,39 @@ contribute heart rate after the match and nothing during it.
 ## Tests to run
 
 Numbered in the order that unblocks the most.
+
+### T0 — The first watch session *(the moment a watch exists)*
+
+**Do:** install the app from Xcode with the watch paired. Open DropVolley on
+the wrist, pick `Match`, tap Start, accept the HealthKit and microphone
+prompts, hit thirty balls with a partner, tap **Changeover** once, hit thirty
+more, tap Stop. Then open the phone: the bench card sits at the bottom of Home
+(DEBUG build only).
+
+**Expect — and expect some of this to fail:**
+- The workout starts and the screen shows a rising stroke count. If it shows
+  "100 Hz fallback" on a Series 8 or later, `CMBatchedSensorManager` did not
+  start — the most likely first failure, since it requires an active workout
+  session and that ordering has never been exercised.
+- "You" roughly equals your count; "Them" roughly equals your partner's.
+  Opponent contacts come from the microphone minus whatever the wrist claimed,
+  so a wrist that misses strokes shows up here as inflated opponent counts.
+- The phone's bench card shows two stints after the changeover, with notes
+  only if something moved by more than 15%.
+- Heart rate appears on the wrist within the first minute.
+
+**Settles:** whether a single line of `CourtIQWatch/` runs. Everything in that
+folder was written without a watch. The detectors under it are tested; the
+workout session, the batched sensors, the microphone on watchOS and the link
+to the phone have been compiled and never executed. The first session is a
+test of the plumbing, not of the player.
+
+**Then:** log the match in the Journal. The AI report's summary now carries a
+"Measured session" block (`SensingSummary`) with the rules stated first — no
+causes, no dietary advice — and the list of what could not be checked. Read
+the report for any sentence that names fatigue, fitness, food or hydration as
+a cause. If one appears, the rule in the block was ignored and the block needs
+strengthening before this ships.
 
 ### T1 — Wall, phone in pocket *(fastest, highest value)*
 
@@ -361,8 +394,16 @@ person gate, which is removed here because it fails for the far player. On the
 body, the rejecting is done by loudness clustering and the minimum gap, and
 neither has been checked against a hand count.
 
-**No watch.** Every line of `WristSwingDetector` is tested against synthetic
-signals and none against a wrist. Do not ship anything built on it without one.
+**No watch.** The watch target now exists, is embedded in the iOS app, and
+compiles for watchOS — and not one line of it has run. `WristSwingDetector` is
+tested against synthetic signals and none against a wrist; `CourtIQWatch/` has
+been tested against nothing. T0 is the first time any of it meets hardware.
+
+**HealthKit is now on the iOS entitlements.** Apple requires it on the
+companion whenever the watch app runs a workout session, even though the phone
+never reads health data. That changes provisioning (automatic signing should
+regenerate the profile) and it changes App Review: the usage strings are in
+place, and 1.4's review notes should say the phone reads nothing.
 
 **GPS is recorded but claims nothing yet.** Each fix carries its own
 `horizontalAccuracy`. A single-frequency receiver's 3–5 m cannot separate a
@@ -393,11 +434,12 @@ bug and worth checking once T1 gives a trusted count.
 | | |
 |---|---|
 | Camera pipeline | `CourtIQ/Features/Duel/` |
-| Body sensing | `CourtIQ/Features/BodySensing/` |
+| Body sensing (shared iOS + watchOS) | `CourtIQ/Features/BodySensing/` |
+| Watch app (UNRUN) | `CourtIQWatch/` |
 | Shared audio | `CourtIQ/Features/SwingAnalysis/BallImpactAudio.swift` |
 | Camera design | `docs/DUEL-BASELINE-CAM.md` |
 | Offline tools | `tools/court-calibrate.swift`, `tools/duel-track.swift`, `tools/duel-corpus.sh` |
-| Test suites | `tools/{duel-report,wrist-swing,movement,attribution,rhythm}-test.swift` |
+| Test suites | `tools/{duel-report,wrist-swing,movement,attribution,rhythm,findings,stints,codec}-test.swift` |
 
 The body session screen is reachable only in a DEBUG build, from a plain button
 at the bottom of Home. That is deliberate: nothing it reports has been checked

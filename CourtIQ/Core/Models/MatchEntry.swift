@@ -120,6 +120,11 @@ struct MatchEntry: Codable, Identifiable, Hashable {
     /// aggregate (streak, win rate, totals, trends) so an in-progress log
     /// never skews the user's real statistics. Tapping Save clears it.
     var isDraft: Bool
+    /// The recorded session this match was played with, if there was one.
+    /// Optional and defaulted, so every match logged before sensing existed
+    /// decodes unchanged; when nil the coach block falls back to the nearest
+    /// session on the same day, and to nothing if the day has none.
+    var sensingSessionID: String? = nil
 
     init(
         id: String = UUID().uuidString,
@@ -181,6 +186,7 @@ struct MatchEntry: Codable, Identifiable, Hashable {
         case preMatchAudioFile, postMatchAudioFile
         case photoFileNames, aiPreComment, aiReport, hadPlan
         case isQuickLog, isDraft
+        case sensingSessionID
     }
 
     init(from decoder: Decoder) throws {
@@ -213,6 +219,7 @@ struct MatchEntry: Codable, Identifiable, Hashable {
         hadPlan = try c.decodeIfPresent(Bool.self, forKey: .hadPlan)
         isQuickLog = try c.decodeIfPresent(Bool.self, forKey: .isQuickLog) ?? false
         isDraft = try c.decodeIfPresent(Bool.self, forKey: .isDraft) ?? false
+        sensingSessionID = try c.decodeIfPresent(String.self, forKey: .sensingSessionID)
     }
 
     /// Trimmed tournament name, or nil when blank — the UI shows the
