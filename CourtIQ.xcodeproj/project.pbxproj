@@ -157,6 +157,7 @@
 		C42C3CFF6843C67C68E8FB6F /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AA3AEFE28E84B4C9E60F40 /* DesignSystem.swift */; };
 		C763EB69F9265F6B439BA23D /* SwingAnalysisConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82706820737C1C2313D111A2 /* SwingAnalysisConsentView.swift */; };
 		CC1C0316005DD09AB30EE8F4 /* SwingFrameExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DF1FBA78574C22ADBF282 /* SwingFrameExtractor.swift */; };
+		BA11A0D10FEE4B1FA0DE0002 /* BallImpactAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA11A0D10FEE4B1FA0DE0001 /* BallImpactAudio.swift */; };
 		11473B166FFF4B968A8EF217 /* SwingImpactAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D682A1ECA458C9921D4AD /* SwingImpactAnalyzer.swift */; };
 		CC1F6A22C438B041E97699BD /* SwingAnalysisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C1F0C3D2F961F7294836E6 /* SwingAnalysisView.swift */; };
 		D9DF80F409A57D89B6499E67 /* DoublesModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AC30870C3CE0B44AD67AB3 /* DoublesModels.swift */; };
@@ -221,6 +222,8 @@
 		2D5FB157FE3A44D0B7E500FF /* JournalItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF5D7E9C44B44CA89B2A13B /* JournalItemRow.swift */; };
 		B7BCC1CA90EC43C69978DAE1 /* JournalDaySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE2B87E9CF4C72ACB84F5A /* JournalDaySheet.swift */; };
 		98A56F2CCF3B4D10B9F13568 /* NutritionRatingRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37632BC4FD164EC4BDA804B8 /* NutritionRatingRows.swift */; };
+		D4C9A92AF38646E7A14417D0 /* TennisChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373CB631B7649B2BF36AD96 /* TennisChallenge.swift */; };
+		74C90D15E2514442B330519B /* ChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F41D801284C2BAA4C5B5E /* ChallengeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -388,6 +391,7 @@
 		E00B10E3A8A0478FF6C61632 /* MentalCheckView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MentalCheckView.swift; path = CourtIQ/Features/Matches/MentalCheckView.swift; sourceTree = "<group>"; };
 		E0556A0C64DB8336DFA363B3 /* TrainProgramsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TrainProgramsView.swift; path = CourtIQ/Features/Training/TrainProgramsView.swift; sourceTree = "<group>"; };
 		E37DF1FBA78574C22ADBF282 /* SwingFrameExtractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwingFrameExtractor.swift; path = CourtIQ/Features/SwingAnalysis/SwingFrameExtractor.swift; sourceTree = "<group>"; };
+		BA11A0D10FEE4B1FA0DE0001 /* BallImpactAudio.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BallImpactAudio.swift; path = CourtIQ/Features/SwingAnalysis/BallImpactAudio.swift; sourceTree = "<group>"; };
 		AC3D682A1ECA458C9921D4AD /* SwingImpactAnalyzer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwingImpactAnalyzer.swift; path = CourtIQ/Features/SwingAnalysis/SwingImpactAnalyzer.swift; sourceTree = "<group>"; };
 		E59972A086F7FB607351D71D /* TrainPracticeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TrainPracticeView.swift; path = CourtIQ/Features/Training/TrainPracticeView.swift; sourceTree = "<group>"; };
 		E9CF8D66C72388FA065116B1 /* DoublesInviteService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesInviteService.swift; path = CourtIQ/Features/Doubles/DoublesInviteService.swift; sourceTree = "<group>"; };
@@ -450,6 +454,8 @@
 		2FF5D7E9C44B44CA89B2A13B /* JournalItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JournalItemRow.swift; path = CourtIQ/Features/Journal/JournalItemRow.swift; sourceTree = "<group>"; };
 		27FE2B87E9CF4C72ACB84F5A /* JournalDaySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JournalDaySheet.swift; path = CourtIQ/Features/Journal/JournalDaySheet.swift; sourceTree = "<group>"; };
 		37632BC4FD164EC4BDA804B8 /* NutritionRatingRows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NutritionRatingRows.swift; path = CourtIQ/Features/Nutrition/NutritionRatingRows.swift; sourceTree = "<group>"; };
+		8373CB631B7649B2BF36AD96 /* TennisChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TennisChallenge.swift; path = CourtIQ/Features/Challenge/TennisChallenge.swift; sourceTree = "<group>"; };
+		262F41D801284C2BAA4C5B5E /* ChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChallengeView.swift; path = CourtIQ/Features/Challenge/ChallengeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -562,6 +568,8 @@
 				A000000000000000000FC0 /* WallRallyCamView.swift */,
 				B100000000000000000001 /* WallBallLocator.swift */,
 				B400000000000000000001 /* WallSwingDetector.swift */,
+				262F41D801284C2BAA4C5B5E /* ChallengeView.swift */,
+				8373CB631B7649B2BF36AD96 /* TennisChallenge.swift */,
 				37632BC4FD164EC4BDA804B8 /* NutritionRatingRows.swift */,
 				27FE2B87E9CF4C72ACB84F5A /* JournalDaySheet.swift */,
 				2FF5D7E9C44B44CA89B2A13B /* JournalItemRow.swift */,
@@ -677,6 +685,7 @@
 				82706820737C1C2313D111A2 /* SwingAnalysisConsentView.swift */,
 				161E8A1AEB1F9F5949EB117B /* VideoPicker.swift */,
 				E37DF1FBA78574C22ADBF282 /* SwingFrameExtractor.swift */,
+				BA11A0D10FEE4B1FA0DE0001 /* BallImpactAudio.swift */,
 				AC3D682A1ECA458C9921D4AD /* SwingImpactAnalyzer.swift */,
 				CFB312EFDFBC3D468DFBD276 /* SwingAnalysisService.swift */,
 				B1C1F0C3D2F961F7294836E6 /* SwingAnalysisView.swift */,
@@ -962,6 +971,8 @@
 				A000000000000000000FC1 /* WallRallyCamView.swift in Sources */,
 				B100000000000000000002 /* WallBallLocator.swift in Sources */,
 				B400000000000000000002 /* WallSwingDetector.swift in Sources */,
+				74C90D15E2514442B330519B /* ChallengeView.swift in Sources */,
+				D4C9A92AF38646E7A14417D0 /* TennisChallenge.swift in Sources */,
 				98A56F2CCF3B4D10B9F13568 /* NutritionRatingRows.swift in Sources */,
 				B7BCC1CA90EC43C69978DAE1 /* JournalDaySheet.swift in Sources */,
 				2D5FB157FE3A44D0B7E500FF /* JournalItemRow.swift in Sources */,
@@ -1026,6 +1037,7 @@
 				C763EB69F9265F6B439BA23D /* SwingAnalysisConsentView.swift in Sources */,
 				135446F7924B9D8A9FAABA50 /* VideoPicker.swift in Sources */,
 				CC1C0316005DD09AB30EE8F4 /* SwingFrameExtractor.swift in Sources */,
+				BA11A0D10FEE4B1FA0DE0002 /* BallImpactAudio.swift in Sources */,
 				11473B166FFF4B968A8EF217 /* SwingImpactAnalyzer.swift in Sources */,
 				065E60992E196985B3FD8E65 /* SwingAnalysisService.swift in Sources */,
 				CC1F6A22C438B041E97699BD /* SwingAnalysisView.swift in Sources */,
