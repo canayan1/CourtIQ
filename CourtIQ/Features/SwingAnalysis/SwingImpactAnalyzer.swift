@@ -11,11 +11,9 @@ import Vision
 /// person-gate brings counts to ~truth. So: the COUNT comes from DSP+Vision on
 /// device; the AI only ever coaches, never counts.
 ///
-/// The audio algorithm is the Swift port of tools/stroke-miner/mine.py, which
-/// was calibrated against Can's hand-counted wall sessions: high-pass
-/// differentiator → 10 ms RMS envelope → adaptive threshold (median + 6·MAD)
-/// → min-gap peak picking where the STRONGEST peak in each window wins (the
-/// near-mic racket hit beats the far wall bounce).
+/// The audio stage now lives in `BallImpactAudio`, because the duel pipeline
+/// needs the same calibrated numbers WITHOUT the person gate below: pose is
+/// what fails for the player across the net.
 enum SwingImpactAnalyzer {
 
     struct Scan {
@@ -33,10 +31,6 @@ enum SwingImpactAnalyzer {
     }
 
     // Tuned constants — keep in sync with tools/stroke-miner/mine.py.
-    private static let sampleRate: Double = 16_000
-    private static let envelopeWindow: Double = 0.010   // 10 ms RMS
-    private static let minGap: Double = 1.4             // s between strokes
-    private static let madK: Double = 6.0               // threshold = med + K·MAD
     /// Frames around the impact must show a person with at least this many
     /// confident joints to count as a real swing (kills ball-collection walks
     /// far from camera and out-of-frame strokes).
@@ -50,8 +44,9 @@ enum SwingImpactAnalyzer {
         guard let duration = try? await asset.load(.duration).seconds,
               duration > 0 else { return nil }
 
-        guard let envelope = try? readEnvelope(asset: asset) else { return nil }
-        let candidates = detectImpacts(envelope: envelope, dt: envelopeWindow)
+        guard let envelope = try? BallImpactAudio.readEnvelope(asset: asset) else { return nil }
+        let candidates = BallImpactAudio.detectImpacts(envelope: envelope,
+                                                       dt: BallImpactAudio.envelopeWindow)
             .filter { $0 > 0.6 && $0 < duration - 0.4 }
         guard !candidates.isEmpty else {
             return Scan(impacts: [], overheadImpacts: 0, rawImpactCount: 0, duration: duration)
@@ -64,82 +59,6 @@ enum SwingImpactAnalyzer {
             rawImpactCount: candidates.count,
             duration: duration
         )
-    }
-
-    // MARK: - Audio envelope (offline)
-
-    /// Decodes the clip's audio to 16 kHz mono float PCM and reduces it to a
-    /// 10 ms RMS envelope of the high-pass differentiated signal.
-    private static func readEnvelope(asset: AVAsset) throws -> [Double] {
-        guard let track = asset.tracks(withMediaType: .audio).first else {
-            throw NSError(domain: "SwingImpactAnalyzer", code: 1)
-        }
-        let reader = try AVAssetReader(asset: asset)
-        let settings: [String: Any] = [
-            AVFormatIDKey: kAudioFormatLinearPCM,
-            AVSampleRateKey: sampleRate,
-            AVNumberOfChannelsKey: 1,
-            AVLinearPCMBitDepthKey: 32,
-            AVLinearPCMIsFloatKey: true,
-            AVLinearPCMIsNonInterleaved: false,
-        ]
-        let output = AVAssetReaderTrackOutput(track: track, outputSettings: settings)
-        reader.add(output)
-        reader.startReading()
-
-        let window = Int(envelopeWindow * sampleRate)   // 160 samples
-        var envelope: [Double] = []
-        var previous: Float = 0
-        var sumSquares: Double = 0
-        var filled = 0
-
-        while let sample = output.copyNextSampleBuffer() {
-            guard let block = CMSampleBufferGetDataBuffer(sample) else { continue }
-            var length = 0
-            var pointer: UnsafeMutablePointer<Int8>?
-            guard CMBlockBufferGetDataPointer(
-                block, atOffset: 0, lengthAtOffsetOut: nil,
-                totalLengthOut: &length, dataPointerOut: &pointer) == noErr,
-                let bytes = pointer else { continue }
-
-            bytes.withMemoryRebound(to: Float.self, capacity: length / 4) { floats in
-                for i in 0..<(length / 4) {
-                    let x = floats[i]
-                    let hp = Double(x - previous)   // differentiator ≈ high-pass
-                    previous = x
-                    sumSquares += hp * hp
-                    filled += 1
-                    if filled == window {
-                        envelope.append((sumSquares / Double(window)).squareRoot())
-                        sumSquares = 0
-                        filled = 0
-                    }
-                }
-            }
-        }
-        return envelope
-    }
-
-    /// Adaptive threshold + min-gap strongest-peak picking (mirror of mine.py).
-    private static func detectImpacts(envelope: [Double], dt: Double) -> [Double] {
-        guard envelope.count > 10 else { return [] }
-        let sorted = envelope.sorted()
-        let median = sorted[sorted.count / 2]
-        let deviations = envelope.map { abs($0 - median) }.sorted()
-        let mad = max(deviations[deviations.count / 2], 1e-9)
-        let threshold = median + madK * mad
-
-        let above = envelope.indices.filter { envelope[$0] > threshold }
-        guard !above.isEmpty else { return [] }
-
-        let gapSamples = Int(minGap / dt)
-        var kept: [Int] = []
-        for index in above.sorted(by: { envelope[$0] > envelope[$1] }) {
-            if kept.allSatisfy({ abs($0 - index) >= gapSamples }) {
-                kept.append(index)
-            }
-        }
-        return kept.sorted().map { Double($0) * dt }
     }
 
     // MARK: - Vision person gate

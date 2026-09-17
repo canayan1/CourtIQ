@@ -12,13 +12,19 @@ import CoreGraphics
 import Foundation
 
 let argv = CommandLine.arguments
-guard argv.count >= 2 else { print("usage: duel-track <video> [out.png]"); exit(1) }
+guard argv.count >= 2 else { print("usage: duel-track <video> [out.png] [fps]"); exit(1) }
+let videoURL = URL(fileURLWithPath: argv[1])
+// 10 fps is where the per-stroke numbers stop changing: at 5 fps the half
+// second of smoothing has only two or three samples to work with, while 10 fps
+// and 15 fps agree to the last printed digit on every metric.
+let sampleFPS = argv.count >= 4 ? (Double(argv[3]) ?? 10) : 10
 
 let clip: Clip
-do { clip = try Clip.read(url: URL(fileURLWithPath: argv[1])) }
+do { clip = try Clip.read(url: videoURL) }
 catch { print(error.localizedDescription); exit(1) }
 let W = clip.width, H = clip.height
-print("\(clip.frames.count) frames of \(W)x\(H), \(String(format: "%.1f", clip.times.last ?? 0)) s")
+print(String(format: "%dx%d, %.1f s — background from %d frames, tracking at %d fps",
+             W, H, clip.duration, clip.backgroundFrames, Int(sampleFPS)))
 
 let band = CourtLineFinder.playBand(motionCount: clip.motionCount, width: W, height: H)
 let ridge = CourtLineFinder.ridgeMask(gray: clip.background, width: W, height: H, rows: band)
@@ -38,17 +44,28 @@ guard cal.confidence == .full else {
 // Track. Blobs are searched across the whole frame, not just the play band:
 // the band exists to find the lines, and a player chasing a wide ball can
 // leave it.
-var masks: [(time: Double, mask: [Bool])] = []
-for i in clip.frames.indices { masks.append((clip.times[i], clip.motionMask(i))) }
-let tracks = PlayerTracker.tracks(frameMasks: masks, width: W, height: H,
-                                  rows: 0..<H, calibration: cal)
+var tracks: [PlayerTrack] = []
+do {
+    var near: [PlayerSample] = [], far: [PlayerSample] = []
+    try clip.forEachMask(fps: sampleFPS) { t, mask in
+        let found = PlayerTracker.tracks(frameMasks: [(t, mask)], width: W, height: H,
+                                         rows: 0..<H, calibration: cal)
+        for f in found {
+            if f.end == .near { near.append(contentsOf: f.samples) }
+            else { far.append(contentsOf: f.samples) }
+        }
+    }
+    if !near.isEmpty { tracks.append(PlayerTrack(end: .near, samples: near)) }
+    if !far.isEmpty { tracks.append(PlayerTrack(end: .far, samples: far)) }
+} catch { print(error.localizedDescription); exit(1) }
+let sampledFrames = tracks.map(\.samples.count).max() ?? 0
 
 print("\ntracks: \(tracks.map { "\($0.end.rawValue) (\($0.samples.count) frames)" }.joined(separator: ", "))")
 for t in tracks {
     let depth = t.samples.map(\.court.depth).sorted()
     let across = t.samples.map(\.court.across).sorted()
     let heights = t.samples.map(\.pixelHeight).sorted()
-    print("\n\(t.end.rawValue) end — seen in \(t.samples.count) of \(clip.frames.count) frames")
+    print("\n\(t.end.rawValue) end — seen in \(t.samples.count) of ~\(sampledFrames) frames")
     print(String(format: "  depth   median %5.2f m   range %5.2f .. %5.2f m",
                  depth[depth.count/2], depth.first!, depth.last!))
     print(String(format: "  across  median %+5.2f m   range %+5.2f .. %+5.2f m",
@@ -56,6 +73,42 @@ for t in tracks {
     print(String(format: "  blob height median %4.0f px", heights[heights.count/2]))
     let p = cal.precisionCm(atDepth: depth[depth.count/2])
     print(String(format: "  one pixel there is %.1f cm across, %.1f cm deep", p.across, p.deep))
+}
+
+
+// ── strokes ──────────────────────────────────────────────────────────────
+// The audio finds impacts; the court decides whose they are. An impact only
+// counts for a player who was actually tracked on their own half at that
+// instant, which is the rejecting the person gate used to do and cannot do
+// here — pose fails for the far player, so gating on it would silently delete
+// one player's strokes.
+let impacts = await BallImpactAudio.impacts(videoURL: videoURL,
+                                           minGap: BallImpactAudio.rallyMinGap) ?? []
+print("\naudio impacts: \(impacts.count)")
+
+if tracks.count < 2 {
+    print("only one player is on this court, so there is no head-to-head to report.")
+    print("what follows measures that player alone.")
+}
+
+for t in tracks {
+    let own = impacts.filter { DuelMetrics.position(t, at: $0) != nil }
+    guard let m = DuelMetrics.measure(t, impacts: own) else {
+        print("\n\(t.end.rawValue) end — \(own.count) strokes in view, too few to measure")
+        continue
+    }
+    print("\n\(t.end.rawValue) end — \(m.strokes) strokes")
+    print(String(format: "  contact %+.2f m behind their own baseline", m.contactDepth))
+    print(String(format: "  %.2f m travelled per stroke", m.metresPerStroke))
+    print(String(format: "  still moving %.2f m/s at contact", m.speedAtContact))
+    print(String(format: "  %.2f m off centre between strokes", m.recoveryGap))
+    print(String(format: "  %.2f m of court width used", m.lateralSpread))
+}
+
+if tracks.count == 2 {
+    print("\nNOT REPORTED: which player hit each impact. Alternation and loudness")
+    print("will decide it, and neither has been tested on a clip containing two")
+    print("players — so pressure metrics stay unwritten rather than guessed.")
 }
 
 guard argv.count >= 3, let ov = Overlay(background: clip.background, width: W, height: H)

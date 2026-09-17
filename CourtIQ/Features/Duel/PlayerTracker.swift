@@ -13,6 +13,31 @@ struct PlayerSample {
 }
 
 struct PlayerTrack {
+    /// A moving average over a fixed span of TIME, not a fixed number of
+    /// samples — so a clip read at 5 fps and the same clip read at 10 fps are
+    /// smoothed by the same amount, and a metric built on the result does not
+    /// secretly depend on how often anybody looked.
+    ///
+    /// It is needed because the bottom edge of a motion blob is the player's
+    /// feet, and feet move: a stride shifts that edge by tens of centimetres
+    /// while the player's position barely changes. Integrating the raw track
+    /// measures the stride, not the running, which is how the first version
+    /// reported nine metres of travel per stroke for someone standing almost
+    /// still.
+    func smoothed(window: Double = 0.5) -> PlayerTrack {
+        guard samples.count > 2 else { return self }
+        var out = samples
+        for i in samples.indices {
+            let t = samples[i].time
+            let near = samples.filter { abs($0.time - t) <= window / 2 }
+            guard near.count > 1 else { continue }
+            out[i].court = CourtPoint(
+                across: near.reduce(0) { $0 + $1.court.across } / Double(near.count),
+                depth: near.reduce(0) { $0 + $1.court.depth } / Double(near.count))
+        }
+        return PlayerTrack(end: end, samples: out)
+    }
+
     /// Which end of the court this player lives at. Assigned from the court
     /// itself rather than from who looks bigger, which is the whole point of
     /// calibrating first.
