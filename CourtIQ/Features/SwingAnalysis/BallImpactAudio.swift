@@ -114,4 +114,22 @@ enum BallImpactAudio {
         return kept.sorted().map { Double($0) * dt }
     }
 
+    /// The same peaks, but keeping how loud each one was.
+    ///
+    /// Loudness is not a detail here, it is the only thing in a single
+    /// microphone that says WHOSE stroke it was. A player's own racket is
+    /// about a metre from a phone on their belt; the other end of the court is
+    /// twelve to twenty-five, and sound falls off with the square of distance,
+    /// so the two arrive twenty to thirty decibels apart. That gap is what
+    /// ImpactAttribution reads.
+    static func detectImpactsWithStrength(envelope: [Double], dt: Double,
+                                          minGap: Double = wallMinGap)
+        -> [(t: Double, strength: Double)] {
+        let times = detectImpacts(envelope: envelope, dt: dt, minGap: minGap)
+        return times.map { t in
+            let i = min(envelope.count - 1, max(0, Int((t / dt).rounded())))
+            return (t, envelope[i])
+        }
+    }
+
 }

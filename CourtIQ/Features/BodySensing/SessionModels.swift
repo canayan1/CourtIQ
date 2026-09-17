@@ -142,6 +142,28 @@ struct WatchSessionSummary: Codable, Equatable {
 /// phone in a bag at the back of the court loses nothing: everything arrives
 /// when it comes back in range, and the summary is sent again at the end so a
 /// session survives even if every tick was dropped.
+/// The rule for the microphone, which is not negotiable and belongs next to
+/// the data rather than in a document nobody opens.
+///
+/// A session is recorded in a public place. The microphone will pick up the
+/// people on the next court, the conversation behind the fence, and whatever
+/// the player says between points. So audio is processed as it arrives and
+/// discarded in the same breath: what survives a session is a list of instants
+/// and how loud each one was — a few hundred numbers — and never a recording.
+/// Nothing is written to disk, nothing is sent anywhere, and there is no
+/// setting that turns that off.
+///
+/// On watchOS the microphone stays live in the background with a microphone
+/// indicator on the watch face, which the player can tap to come straight back
+/// to the app. That indicator is a feature, not a nuisance: somebody wearing a
+/// live microphone around other people should be able to see that it is on.
+enum AudioPolicy {
+    /// Audio is reduced to this and nothing else is kept.
+    typealias Kept = (t: Double, strength: Double)
+    static let storesRecordings = false
+    static let transmitsAudio = false
+}
+
 enum WatchSessionTransport {
     static let tickInterval: TimeInterval = 20
     /// Ticks are accumulated and sent in batches of this many, so a session
