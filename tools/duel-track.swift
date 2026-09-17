@@ -91,18 +91,34 @@ if tracks.count < 2 {
     print("what follows measures that player alone.")
 }
 
-for t in tracks {
+// Numbering is by end of court, which is the one thing about a player that
+// stays true for the whole clip without recognising anybody — and the one
+// thing the viewer can check at a glance.
+let handed = ProcessInfo.processInfo.environment["HAND"].map {
+    Handedness(rawValue: $0) ?? .unknown } ?? .unknown
+let players = tracks.enumerated().map { i, t in
+    DuelPlayer(number: i == 0 ? .one : .two, end: t.end, handedness: handed)
+}
+
+for (t, player) in zip(tracks, players) {
     let own = impacts.filter { DuelMetrics.position(t, at: $0) != nil }
     guard let m = DuelMetrics.measure(t, impacts: own) else {
-        print("\n\(t.end.rawValue) end — \(own.count) strokes in view, too few to measure")
+        print("\n\(player.label) — \(own.count) strokes in view, too few to measure")
         continue
     }
-    print("\n\(t.end.rawValue) end — \(m.strokes) strokes")
+    print("\n\(player.label) — \(m.strokes) strokes")
     print(String(format: "  contact %+.2f m behind their own baseline", m.contactDepth))
     print(String(format: "  %.2f m travelled per stroke", m.metresPerStroke))
     print(String(format: "  still moving %.2f m/s at contact", m.speedAtContact))
     print(String(format: "  %.2f m off centre between strokes", m.recoveryGap))
     print(String(format: "  %.2f m of court width used", m.lateralSpread))
+
+    let depth = t.samples.map(\.court.depth).sorted()
+    let split = DuelReport.wings(t, impacts: own, player: player)
+    for line in DuelReport.sentences(for: player, wings: split,
+                                     precisionCm: cal.precisionCm(atDepth: depth[depth.count/2]).across) {
+        print("  · " + line)
+    }
 }
 
 if tracks.count == 2 {
