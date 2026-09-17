@@ -205,6 +205,27 @@ to supply it either.
    phase, since the near racket is metres from the microphone and the far one
    is twenty — and `DuelMetrics.pressure` is already waiting for the answer.
 
+## What found footage is and is not good for
+
+Nine clips have now been through the pipeline. Five of them came from Wikimedia
+Commons — the 2018 Davis Cup Americas Zone tie, CC BY-SA 4.0 — and all five
+were correctly refused, along with the wall sessions and the handheld balcony
+pan. Only the one clip actually shot from behind a baseline produced metres.
+`tools/duel-corpus.sh` re-runs the set.
+
+That is the whole value of found footage: it is a REFUSAL corpus. The most
+important thing this pipeline does is decline to measure a clip it cannot
+measure, and a single happy-path clip never tests that.
+
+What it must not be used for is tuning. Openly licensed match video is side-on
+broadcast: a camera higher than any phone will reach, at an angle the geometry
+here is not built for, cutting and zooming between points, with professionals
+on the court. Moving any threshold to make those clips work would tune the
+pipeline for a shot no user will ever take — the same mistake as the first
+calibration run, which blamed the metrics for what was actually wrong with the
+clip. The footage that decides this feature is the footage its users will
+shoot.
+
 ## Known costs of the on-device port
 
 The offline tool peaks at 400 MB on a 1080p clip. Most of that is the 48-frame
