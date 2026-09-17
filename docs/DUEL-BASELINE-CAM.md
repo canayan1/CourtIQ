@@ -154,11 +154,32 @@ to supply it either.
 
 ## Build order
 
-1. Court homography from the lines, testable today on the ground-level clip.
-2. Static-camera background-subtraction tracker, already proven at 165/165;
-   needs the court mask to reject neighbouring courts.
-3. Impact-anchored metric layer on top of the existing `SwingImpactAnalyzer`.
-   This also fixes single-player swing analysis, so it pays for itself even if
-   the duel never ships.
-4. The two-player association, against a clip shot to the spec above. Until
-   such a clip exists this step stays unwritten rather than written blind.
+1. ~~Court homography from the lines~~ — done. `CourtCalibration` /
+   `CourtLineFinder`, driven by `tools/court-calibrate.swift`. On the
+   ground-level clip it resolves a foot position to 1.3 cm across at the near
+   baseline and 3.4 cm at the far one, and the sidelines — derived, never
+   detected — land on the real ones. It refuses rather than guesses: of four
+   clips only the real court keeps full metres.
+2. ~~Static-camera tracker~~ — done. `PlayerTracker`. The court does the
+   separating (one player per half) and the rejecting (feet inside the lines,
+   and person-sized where they stand, which is what throws out the match on
+   the next court along).
+3. ~~Impact-anchored metrics~~ — done. `DuelMetrics`, on `BallImpactAudio`
+   split out of `SwingImpactAnalyzer` so the duel gets the calibrated impact
+   times without the Vision person gate. 10 fps and 15 fps now agree to the
+   last printed digit on all five metrics.
+4. The two-player association, against a clip shot to the spec above. Still
+   unwritten, and staying unwritten: every clip on hand holds one player, so
+   there is nothing to test it against. What it needs is deciding which player
+   hit each impact — alternation fixes the pattern and loudness fixes the
+   phase, since the near racket is metres from the microphone and the far one
+   is twenty — and `DuelMetrics.pressure` is already waiting for the answer.
+
+## Known costs of the on-device port
+
+The offline tool peaks at 400 MB on a 1080p clip. Most of that is the 48-frame
+background sample, and a phone should not copy the approach unchanged: a
+running background estimate, or tracking at a reduced resolution while keeping
+the calibration at full, would both work. The far player's foot position is the
+thing that resolution buys, so whichever is chosen has to be measured against
+the far end rather than the near one.
