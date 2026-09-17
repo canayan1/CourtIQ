@@ -16,6 +16,12 @@ struct BodySessionResult {
     var attribution: ImpactAttribution.Split?
     var splitSteps: [SplitStep]
     var readiness: (share: Double, matched: Int, total: Int)?
+    /// How the session was struck: rallies, tempo and how steady it was.
+    var rhythm: RallyRhythm?
+    /// On a wall, the quieter population — the ball coming back off the wall.
+    /// Nil when the two never separated, which says where the phone was more
+    /// than it says anything about the player.
+    var wallRebounds: Int?
     var efforts: Int
     var workShare: Double?
     var longestRest: Double?
@@ -99,23 +105,44 @@ final class BodySessionRecorder: ObservableObject {
         tick()
         harvestSplitSteps(flushAll: true)
 
+        // A wall rally has its own rhythm — one racket sound and one rebound
+        // per cycle — so it gets the gap the wall sessions were calibrated
+        // with rather than the faster one a rally between two people needs.
+        let onWall = drill.kind == .wall
         let impacts = BallImpactAudio.detectImpactsWithStrength(
             envelope: envelopeBuffer.snapshot(), dt: BallImpactAudio.envelopeWindow,
-            minGap: BallImpactAudio.rallyMinGap)
-        // With no wrist to claim them, loudness is the only way to tell the
-        // player's own strokes from the other end of the court — and it
-        // declines when a session has only one player in it.
-        let split = ImpactAttribution.splitByLoudness(impacts)
-        let opponentContacts = split?.opponent ?? []
-        let readiness = MovementDetector.readiness(splitSteps: splitSteps,
-                                                   opponentContacts: opponentContacts)
+            minGap: onWall ? BallImpactAudio.wallMinGap : BallImpactAudio.rallyMinGap)
+
+        var split: ImpactAttribution.Split? = nil
+        var rebounds: Int? = nil
+        var strokeTimes = impacts.map(\.t)
+        if onWall {
+            // The quiet population here is the wall, not an opponent. Both
+            // sounds are the player's; only the loud one is a stroke.
+            if let separated = ImpactAttribution.separateWallBounces(impacts) {
+                strokeTimes = separated.strokes
+                rebounds = separated.rebounds.count
+            }
+        } else {
+            // With no wrist to claim them, loudness is the only way to tell
+            // the player's own strokes from the other end of the court — and
+            // it declines when a session has only one player in it.
+            split = ImpactAttribution.splitByLoudness(impacts)
+            if let own = split?.own { strokeTimes = own }
+        }
+
+        let readiness = onWall ? nil
+            : MovementDetector.readiness(splitSteps: splitSteps,
+                                         opponentContacts: split?.opponent ?? [])
+        let rhythm = RallyRhythmReader.read(strokes: strokeTimes)
         let work = MovementDetector.workRest(motion)
 
         state = .idle
         return BodySessionResult(
             drill: drill, startedAt: startedAt, duration: elapsed, ticks: ticks,
             impacts: impacts, attribution: split, splitSteps: splitSteps,
-            readiness: readiness, efforts: MovementDetector.efforts(motion).count,
+            readiness: readiness, rhythm: rhythm, wallRebounds: rebounds,
+            efforts: MovementDetector.efforts(motion).count,
             workShare: work?.workShare, longestRest: work?.longestRest)
     }
 

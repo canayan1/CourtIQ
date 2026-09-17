@@ -133,6 +133,26 @@ struct BodySessionView: View {
                 .font(.subheadline)
                 .foregroundStyle(AppPalette.inkSoft)
 
+            if let rhythm = r.rhythm {
+                row("Longest rally", "\(rhythm.longestRally) strokes")
+                row("Rallies", "\(rhythm.rallies.count)")
+                row("Tempo", String(format: "%.2f s between strokes", rhythm.medianInterval))
+                row("Tempo steadiness",
+                    String(format: "%.0f%% spread", rhythm.tempoSpread * 100))
+            }
+            if r.drill.kind == .wall {
+                if let rebounds = r.wallRebounds {
+                    row("Rebounds heard", "\(rebounds)")
+                } else {
+                    Text("Could not tell your racket from the ball coming off the "
+                         + "wall: both arrived at the microphone at much the same "
+                         + "volume. In a pocket they should be far apart, so this "
+                         + "is worth checking against your own count.")
+                        .font(.footnote)
+                        .foregroundStyle(AppPalette.inkSoft)
+                }
+            }
+
             row("Split steps", "\(r.splitSteps.count)")
             row("Efforts", "\(r.efforts)")
             if let share = r.workShare {
@@ -148,7 +168,13 @@ struct BodySessionView: View {
             // heard two players clearly enough to tell apart. When that did
             // not happen the screen says so instead of showing a share of
             // nothing.
-            if let readiness = r.readiness {
+            if r.drill.kind == .wall {
+                // Readiness compares the player's hops with the OPPONENT's
+                // contacts, and a wall does not have contacts of its own to
+                // compare against — the rebound is the player's own ball
+                // coming back. Silence here is correct.
+                EmptyView()
+            } else if let readiness = r.readiness {
                 row("Ready for the ball",
                     String(format: "%.0f%% (%d of %d)",
                            readiness.share * 100, readiness.matched, readiness.total))

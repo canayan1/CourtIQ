@@ -164,6 +164,7 @@
 		BD000003FEE4B1FA0DE0002 /* ImpactAttribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD000003FEE4B1FA0DE0001 /* ImpactAttribution.swift */; };
 		BD000004FEE4B1FA0DE0002 /* BodySessionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD000004FEE4B1FA0DE0001 /* BodySessionRecorder.swift */; };
 		BD000005FEE4B1FA0DE0002 /* BodySessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD000005FEE4B1FA0DE0001 /* BodySessionView.swift */; };
+		BD010001FEE4B1FA0DE0002 /* RallyRhythm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD010001FEE4B1FA0DE0001 /* RallyRhythm.swift */; };
 		11473B166FFF4B968A8EF217 /* SwingImpactAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D682A1ECA458C9921D4AD /* SwingImpactAnalyzer.swift */; };
 		CC1F6A22C438B041E97699BD /* SwingAnalysisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C1F0C3D2F961F7294836E6 /* SwingAnalysisView.swift */; };
 		D9DF80F409A57D89B6499E67 /* DoublesModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AC30870C3CE0B44AD67AB3 /* DoublesModels.swift */; };
@@ -404,6 +405,7 @@
 		BD000003FEE4B1FA0DE0001 /* ImpactAttribution.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImpactAttribution.swift; path = CourtIQ/Features/BodySensing/ImpactAttribution.swift; sourceTree = "<group>"; };
 		BD000004FEE4B1FA0DE0001 /* BodySessionRecorder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BodySessionRecorder.swift; path = CourtIQ/Features/BodySensing/BodySessionRecorder.swift; sourceTree = "<group>"; };
 		BD000005FEE4B1FA0DE0001 /* BodySessionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BodySessionView.swift; path = CourtIQ/Features/BodySensing/BodySessionView.swift; sourceTree = "<group>"; };
+		BD010001FEE4B1FA0DE0001 /* RallyRhythm.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RallyRhythm.swift; path = CourtIQ/Features/BodySensing/RallyRhythm.swift; sourceTree = "<group>"; };
 		AC3D682A1ECA458C9921D4AD /* SwingImpactAnalyzer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwingImpactAnalyzer.swift; path = CourtIQ/Features/SwingAnalysis/SwingImpactAnalyzer.swift; sourceTree = "<group>"; };
 		E59972A086F7FB607351D71D /* TrainPracticeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TrainPracticeView.swift; path = CourtIQ/Features/Training/TrainPracticeView.swift; sourceTree = "<group>"; };
 		E9CF8D66C72388FA065116B1 /* DoublesInviteService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesInviteService.swift; path = CourtIQ/Features/Doubles/DoublesInviteService.swift; sourceTree = "<group>"; };
@@ -704,6 +706,7 @@
 				BD000003FEE4B1FA0DE0001 /* ImpactAttribution.swift */,
 				BD000004FEE4B1FA0DE0001 /* BodySessionRecorder.swift */,
 				BD000005FEE4B1FA0DE0001 /* BodySessionView.swift */,
+				BD010001FEE4B1FA0DE0001 /* RallyRhythm.swift */,
 				AC3D682A1ECA458C9921D4AD /* SwingImpactAnalyzer.swift */,
 				CFB312EFDFBC3D468DFBD276 /* SwingAnalysisService.swift */,
 				B1C1F0C3D2F961F7294836E6 /* SwingAnalysisView.swift */,
@@ -1062,6 +1065,7 @@
 				BD000003FEE4B1FA0DE0002 /* ImpactAttribution.swift in Sources */,
 				BD000004FEE4B1FA0DE0002 /* BodySessionRecorder.swift in Sources */,
 				BD000005FEE4B1FA0DE0002 /* BodySessionView.swift in Sources */,
+				BD010001FEE4B1FA0DE0002 /* RallyRhythm.swift in Sources */,
 				11473B166FFF4B968A8EF217 /* SwingImpactAnalyzer.swift in Sources */,
 				065E60992E196985B3FD8E65 /* SwingAnalysisService.swift in Sources */,
 				CC1F6A22C438B041E97699BD /* SwingAnalysisView.swift in Sources */,
