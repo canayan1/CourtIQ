@@ -10,29 +10,45 @@
 // comes from Vision body pose on this machine, and the verdict is arithmetic
 // over those numbers. A model's only future job is to phrase the result.
 //
-// CALIBRATION RESULT, 17 Sep 2026 — READ THIS BEFORE BUILDING ON IT.
+// CALIBRATION, 17 Sep 2026 — READ THIS BEFORE BUILDING ON IT.
 //
-// Run against a real clip (IMG_9933, 17 s, one player at court distance):
-//   · pose extraction works — 146 of 235 sampled frames yield a usable body
-//   · but the same clip at 12 fps and at 6 fps disagrees by about a third:
-//       court coverage   10.01  vs  7.15 body-heights
-//       highest wrist    +1.75  vs +1.31 body-heights
+// The first calibration blamed the metrics. It was mostly wrong: two bugs in
+// this file were corrupting the pose data underneath them.
 //
-// A number that moves that much when you change the sampling rate is not a
-// measurement, and two of these are sampling-dependent BY CONSTRUCTION:
-// accumulated travel grows with sample count, and a max over samples rises
-// with sample count. Ranking two people on them would be noise delivered in a
-// confident voice — precisely the failure §1 of the research doc describes.
+//   1. The clip's rotation lives in preferredTransform, not in the pixel
+//      buffer. Vision was being handed sideways people.
+//   2. x is normalised against frame width and y against frame height, so on
+//      a 9:16 frame the two were never the same unit, and every distance
+//      mixing them was wrong.
 //
-// The fix is not a threshold. The metrics have to be anchored to EVENTS — the
-// impacts SwingImpactAnalyzer already finds on the audio track — and measured
-// per stroke, so the answer does not depend on how often we looked.
+// Fixing both roughly quintupled the usable frames — 15 of 198 to 169 on the
+// ground-level clip, 146 of 235 to 842 on IMG_9933 — and with clean data four
+// of the five metrics stopped depending on how often we looked. Same clip at
+// 12 fps and 6 fps:
 //
-// Also unvalidated: everything about telling TWO people apart. Every clip on
-// hand is one player at a wall, so the association step below has never once
-// run on the case it exists for.
+//      width of court used   2.79  vs  2.68     (4%)
+//      widest base           0.86  vs  0.82     (5%)
+//      time in a wide stance  51%  vs   52%     (1%)
+//      highest wrist        +0.63  vs +0.63     (0%)
+//      court coverage        5.92  vs 15.73   (166%)
 //
-// Run it against a real clip before trusting any of it.
+// So: the four are reproducible and can carry a comparison. Court coverage is
+// not, and no threshold will save it — accumulated travel counts steps, so it
+// answers a question about the sampling rate, not about the player. It stays
+// computed and clearly labelled below; replacing it means anchoring travel to
+// the impacts SwingImpactAnalyzer already finds on the audio track and
+// measuring displacement per stroke, which is a real number either way.
+//
+// STILL UNVALIDATED, AND THIS IS THE ONE THAT BLOCKS THE FEATURE: telling two
+// people apart. Four clips have now gone through this file — a wall session
+// from two angles, a court from a balcony, a court from the baseline — and
+// not one frame of any of them contained two detectable people. Even at a
+// confidence floor of 0.05, the player across the net is never found: in the
+// baseline clip the near player is about 65 px tall and the far one roughly
+// half that, and in the balcony clip the only other people in shot are on
+// neighbouring courts. That is not a tuning problem. A phone filming from
+// behind one baseline puts the opponent too far away to measure, so the
+// association code below has still never run on the case it exists for.
 
 import AVFoundation
 import Vision
@@ -73,6 +89,28 @@ guard let track = asset.tracks(withMediaType: .video).first else { print("no vid
 let nominal = Double(track.nominalFrameRate)
 let stride = max(1, Int((nominal / targetFPS).rounded()))
 
+// A phone clip does not store its rotation in the pixels. It stores it in
+// preferredTransform, and a portrait recording arrives as a landscape buffer
+// with a 90-degree turn attached. Handing Vision the raw buffer is asking it
+// to find a sideways human. On the ground-level two-player clip that one
+// omission was the difference between 17 usable frames out of 100 and 86.
+let xf = track.preferredTransform
+let orientation: CGImagePropertyOrientation
+switch (xf.a.rounded(), xf.b.rounded(), xf.c.rounded(), xf.d.rounded()) {
+case (0, 1, -1, 0):   orientation = .right
+case (0, -1, 1, 0):   orientation = .left
+case (-1, 0, 0, -1):  orientation = .down
+default:              orientation = .up
+}
+
+// Vision normalises x against the frame's width and y against its height, so
+// on a 9:16 frame a step of 0.1 sideways is barely half the distance of 0.1
+// upward. Every metric here is quoted in body heights, and a body height is
+// measured in y — so x is converted into y-units once, at the point each
+// joint is recorded, and the rest of the file can use plain distances.
+let displaySize = track.naturalSize.applying(xf)
+let aspect = abs(displaySize.width) / abs(displaySize.height)
+
 let reader = try AVAssetReader(asset: asset)
 let output = AVAssetReaderTrackOutput(track: track, outputSettings: [
     kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA])
@@ -86,13 +124,14 @@ while let sample = output.copyNextSampleBuffer() {
     guard index % stride == 0, let buffer = CMSampleBufferGetImageBuffer(sample) else { continue }
     let t = CMTimeGetSeconds(CMSampleBufferGetPresentationTimeStamp(sample))
     let request = VNDetectHumanBodyPoseRequest()
-    try? VNImageRequestHandler(cvPixelBuffer: buffer, options: [:]).perform([request])
+    try? VNImageRequestHandler(cvPixelBuffer: buffer, orientation: orientation, options: [:])
+        .perform([request])
     guard let obs = request.results, !obs.isEmpty else { continue }
 
     var people: [Person] = []
     for o in obs {
         guard let hipL = pt(o, .leftHip), let hipR = pt(o, .rightHip) else { continue }
-        let hip = CGPoint(x: (hipL.x + hipR.x) / 2, y: (hipL.y + hipR.y) / 2)
+        let hip = CGPoint(x: (hipL.x + hipR.x) / 2 * aspect, y: (hipL.y + hipR.y) / 2)
         let sL = pt(o, .leftShoulder), sR = pt(o, .rightShoulder)
         let aL = pt(o, .leftAnkle), aR = pt(o, .rightAnkle)
         let wrist = [pt(o, .rightWrist), pt(o, .leftWrist)].compactMap { $0 }.max { $0.y < $1.y }
@@ -108,7 +147,7 @@ while let sample = output.copyNextSampleBuffer() {
         if height <= 0.08 { height = abs(shoulder.y - hip.y) / 0.30 }
         guard height > 0.05 else { continue }
         var span: CGFloat? = nil
-        if let l = aL, let r = aR { span = abs(l.x - r.x) }
+        if let l = aL, let r = aR { span = abs(l.x - r.x) * aspect }
         people.append(Person(hip: hip, wrist: wrist, shoulderL: sL, shoulderR: sR,
                              ankleSpan: span, height: height))
     }
@@ -220,11 +259,14 @@ for (i, t) in players.enumerated() {
     guard !m.isEmpty else { continue }
     let label = i == 0 ? "Player A" : "Player B"
     print("\n\(label)  (\(Int(m["frames"] ?? 0)) tracked frames)")
-    print(String(format: "  court coverage        %.2f body-heights of travel", m["coverage"] ?? 0))
     print(String(format: "  width of court used   %.2f body-heights", m["lateral_range"] ?? 0))
     print(String(format: "  widest base           %.2f body-heights", m["widest_base"] ?? 0))
     print(String(format: "  time in a wide stance %.0f%%", (m["ready_share"] ?? 0) * 100))
     print(String(format: "  highest wrist         %+.2f body-heights above the shoulder", m["wrist_peak"] ?? 0))
+    // Printed apart from the four above, because it is not the same kind of
+    // number: it moved 166% between 12 fps and 6 fps on the same clip.
+    print(String(format: "  [not reproducible] court coverage %.2f body-heights of travel",
+                 m["coverage"] ?? 0))
 }
 
 if players.count < 2 {
