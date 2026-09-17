@@ -87,6 +87,7 @@ enum DuelMetrics {
     }
 
     static func measure(_ raw: PlayerTrack, impacts: [Double]) -> PlayerMetrics? {
+        guard raw.isMeasurable else { return nil }
         let track = raw.smoothed()
         let own = impacts.filter { position(track, at: $0) != nil }.sorted()
         guard own.count >= 3 else { return nil }
@@ -120,6 +121,7 @@ enum DuelMetrics {
     /// contains a rally.
     static func pressure(by striker: PlayerTrack, strikes: [Double],
                          on rawOpponent: PlayerTrack, replies: [Double]) -> PressureMetrics? {
+        guard striker.isMeasurable, rawOpponent.isMeasurable else { return nil }
         let opponent = rawOpponent.smoothed()
         var moved: [Double] = [], gaps: [Double] = []
         for t in strikes.sorted() {

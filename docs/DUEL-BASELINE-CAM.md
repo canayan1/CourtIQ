@@ -21,10 +21,23 @@ five metrics stopped depending on the sampling rate — at 12 fps versus 6 fps
 they now agree within 5%. The fifth, accumulated court coverage, moved 166% and
 is printed separately as not reproducible.
 
-Then the harder result. **Not one frame of any clip contained two detectable
-people.** At a confidence floor of 0.05 the person detector never returns a
-second box. Tiling the frame and upscaling each tile 4× found a second person
-in 2 of 67 frames. The player across the net is simply not there to be found.
+Then a result that was read wrongly the first time, and the correction matters
+more than the original claim.
+
+**Not one frame of any clip contained two detectable people** — true of Vision's
+person detector, at a confidence floor of 0.05, with the frame tiled and each
+tile upscaled 4×. That was reported as "these clips contain one player", which
+is false. Both court clips contain a rally. What happened is that the pipeline
+could not see the far player and the pipeline's blindness was written down as a
+fact about the world; the far player is plainly there when the far half of the
+frame is cropped and enlarged.
+
+Once looked for properly, the far player IS found — by motion, not recognition
+— but in **fragments**. Background subtraction only catches what differs from
+the background, so a distant player in pale clothing against a pale fence
+arrives as a head here and a leg there: about 19 pixels of a person the court
+says should be 68. Judged one at a time, each piece is too small to be a person
+and, worse, its lowest pixel is not a foot.
 
 One technique did work perfectly. On the static ground-level clip, background
 subtraction — a temporal median background, then a threshold, then connected
@@ -33,6 +46,23 @@ the handheld balcony clip the same code produces hundreds of false boxes per
 frame and misses the player entirely.
 
 So: **a static camera is not a preference, it is the precondition.**
+
+The fragments are joined back together using the court as the yardstick — it
+predicts how tall a person standing at a given row should be, so pieces that
+overlap horizontally and sit within a body height of each other belong to one
+person, and the rule tightens with distance instead of needing a constant tuned
+per clip. That same prediction then grades what it found: far too tall is
+scenery, and too short is a player only half seen. The near player measures 125
+to 158 pixels against a predicted 123 to 141, which is the strongest
+independent check the geometry has had.
+
+A half-seen player is kept and flagged, never measured. Their lateral position
+holds; their depth is the bottom of whatever registered, which is fiction. An
+unguarded version of this reported the far player making contact eleven metres
+in front of their own baseline, having quietly locked onto the match being
+played on the next court — there is nothing to tell two fragments apart when
+both are fragments. Seeing somebody and measuring them are different things,
+and the app says which one it did.
 
 ## Why the clips failed, and why that is good news
 

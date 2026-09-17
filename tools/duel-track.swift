@@ -47,9 +47,11 @@ guard cal.confidence == .full else {
 var tracks: [PlayerTrack] = []
 do {
     var near: [PlayerSample] = [], far: [PlayerSample] = []
+    var lastNear: CourtPoint? = nil, lastFar: CourtPoint? = nil
     try clip.forEachMask(fps: sampleFPS) { t, mask in
         let found = PlayerTracker.tracks(frameMasks: [(t, mask)], width: W, height: H,
-                                         rows: 0..<H, calibration: cal)
+                                         rows: 0..<H, calibration: cal,
+                                         lastNear: &lastNear, lastFar: &lastFar)
         for f in found {
             if f.end == .near { near.append(contentsOf: f.samples) }
             else { far.append(contentsOf: f.samples) }
@@ -71,6 +73,11 @@ for t in tracks {
     print(String(format: "  across  median %+5.2f m   range %+5.2f .. %+5.2f m",
                  across[across.count/2], across.first!, across.last!))
     print(String(format: "  blob height median %4.0f px", heights[heights.count/2]))
+    let partial = t.samples.filter(\.partial).count
+    if partial > 0 {
+        print(String(format: "  only partly visible in %d of %d frames — lateral position holds,"
+                     + " depth does not", partial, t.samples.count))
+    }
     let p = cal.precisionCm(atDepth: depth[depth.count/2])
     print(String(format: "  one pixel there is %.1f cm across, %.1f cm deep", p.across, p.deep))
 }
@@ -102,6 +109,15 @@ let players = tracks.enumerated().map { i, t in
 
 for (t, player) in zip(tracks, players) {
     let own = impacts.filter { DuelMetrics.position(t, at: $0) != nil }
+    guard t.isMeasurable else {
+        print(String(format: "\n%@ — visible in %d frames but only ever in pieces (%.0f%%).",
+                     player.label, t.samples.count, t.partialShare * 100))
+        print("  Nothing about them is measured from this clip: the lowest visible")
+        print("  pixel of a half-seen player is not a foot, so every number built on")
+        print("  it would be invented. This is what the shooting guide's height and")
+        print("  resolution are for.")
+        continue
+    }
     guard let m = DuelMetrics.measure(t, impacts: own) else {
         print("\n\(player.label) — \(own.count) strokes in view, too few to measure")
         continue

@@ -112,6 +112,16 @@ struct CourtCalibration {
         return pixelHeight / pxPerMetre
     }
 
+    /// How many pixels tall a standing adult at that depth should be. The
+    /// inverse of `estimatedHeightMetres`, and the yardstick for deciding
+    /// whether a blob is a whole person, a piece of one, or scenery.
+    func personPixelHeight(atDepth d: Double, metres: Double = 1.7) -> Double? {
+        guard confidence == .full else { return nil }
+        let pxPerMetre = lateralScale / (c * d + 1)
+        guard pxPerMetre > 0.5 else { return nil }
+        return metres * pxPerMetre
+    }
+
     /// How many centimetres of court one pixel is worth at a given depth —
     /// the honest error bar to put on any number quoted from this clip.
     func precisionCm(atDepth d: Double) -> (across: Double, deep: Double) {
