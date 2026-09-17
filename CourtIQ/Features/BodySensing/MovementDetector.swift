@@ -5,7 +5,7 @@ import Foundation
 /// `userAcceleration` is what the body did, with gravity already removed by
 /// CoreMotion; `gravity` says which way is down, which is what makes a hop
 /// separable from a sideways shove no matter how the phone sits in its strap.
-struct BodyMotionSample {
+struct BodyMotionSample: Equatable {
     var t: Double
     var accX, accY, accZ: Double       // userAcceleration, g
     var gravX, gravY, gravZ: Double

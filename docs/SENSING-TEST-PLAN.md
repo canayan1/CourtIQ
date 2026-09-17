@@ -220,6 +220,48 @@ that changes it.
 
 ---
 
+## The bench card, and which devices can feed it
+
+The plan is a data tool that fuses with a device: sit down at the changeover,
+open the phone, and read what changed in the games just played. Two pieces
+make that possible and both are built and tested (`MatchStints.swift`).
+
+**Stints.** Tennis changes ends after odd games, so what a player sits down
+from is usually a pair — "in these two games" is the unit. A stint is cut at a
+changeover the player marked (one tap on the wrist, which is what people
+already do with a scoring app), or, when nobody tapped, at a quiet gap longer
+than 55 s: between-point rests are twenty-odd seconds, changeovers ninety.
+Marks always win, so a medical timeout is never mistaken for a changeover.
+
+**The comparison.** The latest stint against the one before: movements per
+minute, how sharp the pushes off were, split-step rate, heart rate when a
+wearable supplied one. Only differences of 15% or more are mentioned, so two
+stints that were the same produce an empty card rather than an invented one.
+
+**What it will never say: why.** A drop between two stints is consistent with
+tiredness, heat, dehydration, an opponent who stopped making the player run, a
+deliberate change of pace, and fuel — and nothing on a wrist or belt separates
+those. "You may need carbohydrate" is both a guess dressed as a reading and a
+breach of the app's rule that nutrition content carries no unsourced dietary
+advice. The card reports the observation; the Journal already holds what the
+player logged eating; the two can sit side by side.
+
+**One event stream, any device.** Everything downstream consumes
+`SensorEvent` — contacts, motion, heart rate, changeover marks — and does not
+know what produced them. That is what makes "phone and external device" one
+product instead of two.
+
+| device | strokes | footwork | heart rate | changeover mark | live to phone | status |
+|---|---|---|---|---|---|---|
+| iPhone on belt / in pocket | audio | 100 Hz motion | — | rest-gap inference | it *is* the phone | built, DEBUG, needs T1–T3 |
+| Apple Watch (S8 / Ultra, watchOS 10+) | 800 Hz accelerometer | 200 Hz motion | yes | one tap | WatchConnectivity | detector built; no watch to run it |
+| Garmin | — (Connect IQ accel is ~25 Hz, enough for feet, not for impact) | via a Connect IQ app, separate codebase | via Apple Health sync, after the fact | — | not live | not started |
+| Xiaomi / Mi Band | — | — | via Apple Health sync | — | not live | no raw-sensor API; heart rate only |
+
+The honest reading of that table: the phone is the product that exists, the
+Apple Watch is the product that would be best, and third-party bands
+contribute heart rate after the match and nothing during it.
+
 ## Tests to run
 
 Numbered in the order that unblocks the most.
