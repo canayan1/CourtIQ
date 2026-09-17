@@ -97,6 +97,21 @@ struct CourtCalibration {
         return CourtPoint(across: across, depth: depth)
     }
 
+    /// Roughly how tall, in metres, something that many pixels high at that
+    /// depth would be. The court gives a scale perpendicular to the view, and
+    /// a standing person is perpendicular to the view too, so the lateral
+    /// scale carries over — approximately, and the further the camera tilts
+    /// down the more approximately. It is quite good enough for its one job:
+    /// telling a player from a fence banner or a match on the next court,
+    /// which differ from a person by a factor of three or four, not by ten
+    /// per cent.
+    func estimatedHeightMetres(pixelHeight: Double, depth: Double) -> Double? {
+        guard confidence == .full else { return nil }
+        let pxPerMetre = lateralScale / (c * depth + 1)
+        guard pxPerMetre > 0.5 else { return nil }
+        return pixelHeight / pxPerMetre
+    }
+
     /// How many centimetres of court one pixel is worth at a given depth —
     /// the honest error bar to put on any number quoted from this clip.
     func precisionCm(atDepth d: Double) -> (across: Double, deep: Double) {
