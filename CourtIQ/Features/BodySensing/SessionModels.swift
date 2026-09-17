@@ -34,13 +34,16 @@ struct DrillContext: Codable, Equatable {
     var plannedMinutes: Int?
 }
 
-/// A slice of the session, sent to the phone while it is still running.
+/// A slice of the session, reported while it is still running.
 ///
-/// Raw motion never leaves the watch. 800 Hz across three axes is about 19 KB
+/// Raw motion never leaves the sensor. 800 Hz across three axes is about 19 KB
 /// every second before the gyroscope, which is both more than the link wants
 /// and more than the battery will pay for — and the phone has no use for it,
 /// because the detection that matters already ran on the watch. So the watch
-/// sends what it concluded, not what it saw.
+/// sends what it concluded, not what it saw. A phone worn on the body has no
+/// link to cross at all, but the same shape holds: detection runs as the data
+/// arrives and only the conclusions are kept, so an hour's session is a few
+/// kilobytes rather than a few hundred megabytes.
 struct LiveTick: Codable, Equatable {
     /// Seconds since the session started.
     var elapsed: Double
