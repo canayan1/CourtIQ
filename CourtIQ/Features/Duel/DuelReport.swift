@@ -3,7 +3,17 @@ import Foundation
 /// Which hand the player holds the racket in. Asked, not guessed: nothing in
 /// this pipeline can see a grip, and a wrong assumption here does not degrade
 /// the report, it mirrors it.
-enum Handedness: String, Codable, CaseIterable {
+///
+/// Deliberately NOT `SwingHandedness`, which the swing-analysis consent screen
+/// already defines as right-or-left. That screen makes the player choose
+/// before anything runs, so two states are all it can be in. Here the player
+/// may never have been asked — the clip is of somebody else, or the question
+/// has not come up yet — and "not told" has to be representable, because the
+/// whole point is that an unasked question produces no claim about a wing
+/// rather than a coin flip. Bridge the two where they meet rather than
+/// widening the existing type, which would break every exhaustive switch over
+/// it for no gain.
+enum RacketHand: String, Codable, CaseIterable {
     case right, left, unknown
 }
 
@@ -18,7 +28,7 @@ struct DuelPlayer {
 
     var number: Number
     var end: PlayerTrack.End
-    var handedness: Handedness = .unknown
+    var handedness: RacketHand = .unknown
     /// What the user typed, if they bothered.
     var name: String?
 

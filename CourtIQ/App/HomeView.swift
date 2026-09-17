@@ -44,6 +44,13 @@ struct HomeView: View {
         /// QC only: the paid coach-review order screen (App Store review
         /// screenshot for the consumable IAP).
         case coachOrder
+        /// Not shipped yet, on purpose. The body session measures strokes and
+        /// split steps from a phone worn at the waist, and nothing it reports
+        /// has been checked against a hand count. Until it has, it lives
+        /// behind DEBUG so it can be tested on a real court without any risk
+        /// of reaching a release — this project's rule is that a measurement
+        /// earns its place by agreeing with reality first.
+        case bodySession
         #endif
     }
     @State private var route: Route?
@@ -124,6 +131,19 @@ struct HomeView: View {
                     RecentActivityStrip(activities: recentActivity, lang: lang)
                         .reveal(appeared: appeared, index: 7, reduceMotion: reduceMotion)
                 }
+
+                #if DEBUG
+                // A door for calibration, not a feature. The body session has
+                // to be started on a real court with the phone in a belt
+                // strap, so the QC environment variable that opens the other
+                // debug flows is no use — somebody has to tap it. It is
+                // deliberately unstyled and untranslated: it is not finished,
+                // and it should not look as though it is.
+                Button("Body session (debug)") { route = .bodySession }
+                    .font(.footnote)
+                    .foregroundStyle(AppPalette.inkSoft)
+                    .padding(.top, 8)
+                #endif
             }
             .padding(20)
         }
@@ -135,6 +155,7 @@ struct HomeView: View {
             case "iq":    route = .tennisIQ
             case "swing": route = .swing
             case "coachorder": route = .coachOrder
+            case "body": route = .bodySession
             case "paywall": showProgramsPaywall = true
             case "nutrition": route = .nutrition
             case "profile": showProfile = true
@@ -169,6 +190,8 @@ struct HomeView: View {
                     handedness: .right,
                     ensureSession: { try await session.ensureSessionWithRetry() }
                 )
+            case .bodySession:
+                BodySessionView()
             #endif
             }
         }
