@@ -63,6 +63,59 @@ struct SessionFindings: Equatable {
 /// with their timestamps. Rates are reported rather than individual slips,
 /// because one missed split step is noise and forty is a habit — but the
 /// moments are kept so the habit can be shown rather than asserted.
+/// What a drill makes it fair to check.
+///
+/// The sensors see the same things in every session; what they MEAN differs
+/// by what the player set out to do, and that is the whole reason the drill
+/// is declared before starting. Standing still between volleys is not a
+/// fault. Moving into the ball at contact is the point of a volley, not
+/// lateness. A serving session has no opponent to be ready for. And a session
+/// of one repeated action — serves, cross-court forehands — has a rhythm that
+/// ought to hold, where a match's rallies vary by design.
+///
+/// One table rather than conditions scattered through the rules, so the
+/// answer to "why was this not checked" is always a line here, and always
+/// reaches the player: a rule that does not apply says so, in the drill's own
+/// terms, instead of silently vanishing.
+struct DrillExpectations {
+    var splitStep: String?        // nil = checked; otherwise why not
+    var recovery: String?
+    var lateArrival: String?
+    /// One repeated action, whose tempo should hold.
+    var tempoShouldHold: Bool
+
+    static func expectations(for kind: DrillContext.Kind) -> DrillExpectations {
+        switch kind {
+        case .match, .freePlay:
+            return DrillExpectations(splitStep: nil, recovery: nil, lateArrival: nil,
+                                     tempoShouldHold: false)
+        case .crossCourtForehand, .crossCourtBackhand:
+            return DrillExpectations(splitStep: nil, recovery: nil, lateArrival: nil,
+                                     tempoShouldHold: true)
+        case .serve:
+            return DrillExpectations(
+                splitStep: "Split steps: a serving session has no opponent's shot to be ready for.",
+                recovery: "Recovery after your shot: nothing comes back in a serving session.",
+                lateArrival: "Arriving in time: a serve starts from a standstill, so there is nothing to arrive for.",
+                tempoShouldHold: true)
+        case .volley:
+            return DrillExpectations(
+                splitStep: nil,
+                recovery: "Recovery after your shot: between volleys there is no room to recover — "
+                        + "readiness at the net is judged by the split step instead.",
+                lateArrival: "Arriving in time: at the net you move INTO the ball; being on the move "
+                           + "at contact is the point of a volley, not a fault.",
+                tempoShouldHold: false)
+        case .wall:
+            return DrillExpectations(
+                splitStep: "Split steps: a wall has no contacts of its own to be ready for, so there was nothing to check against.",
+                recovery: "Recovery after your shot: on a wall the ball comes back to where you are standing, so staying put is not a fault.",
+                lateArrival: nil,
+                tempoShouldHold: true)
+        }
+    }
+}
+
 enum SessionAnalyst {
 
     /// Below this many chances, a rate is the session being short rather than
@@ -92,14 +145,25 @@ enum SessionAnalyst {
                         rhythm: RallyRhythm?,
                         isWall: Bool,
                         efforts: [(t: Double, peak: Double)] = []) -> SessionFindings {
+        analyse(ownContacts: ownContacts, opponentContacts: opponentContacts, splitSteps: splitSteps,
+                motion: motion, rhythm: rhythm, drill: isWall ? .wall : .freePlay, efforts: efforts)
+    }
+
+    static func analyse(ownContacts: [Double],
+                        opponentContacts: [Double],
+                        splitSteps: [SplitStep],
+                        motion: [BodyMotionSample],
+                        rhythm: RallyRhythm?,
+                        drill: DrillContext.Kind,
+                        efforts: [(t: Double, peak: Double)] = []) -> SessionFindings {
         var findings: [Finding] = []
         var notChecked: [String] = []
+        let expect = DrillExpectations.expectations(for: drill)
 
         // 1. Not splitting. Needs the opponent's contacts, which needs the
         //    microphone to have separated two players.
-        if isWall {
-            notChecked.append("Split steps: a wall has no contacts of its own to "
-                              + "be ready for, so there was nothing to check against.")
+        if let why = expect.splitStep {
+            notChecked.append(why)
         } else if opponentContacts.count < minOpportunities {
             notChecked.append("Split steps: only \(opponentContacts.count) of your "
                               + "opponent's contacts were heard, too few to say anything.")
@@ -120,10 +184,8 @@ enum SessionAnalyst {
         //    themselves. You hit, and then nothing happens until the ball is
         //    back. The window is your contact to their reply, which is
         //    precisely the time you had to recover in.
-        if isWall {
-            notChecked.append("Recovery after your shot: on a wall the ball comes "
-                              + "back to where you are standing, so staying put is "
-                              + "not a fault.")
+        if let why = expect.recovery {
+            notChecked.append(why)
         } else if ownContacts.count < minOpportunities || opponentContacts.isEmpty {
             notChecked.append("Recovery after your shot: too few rallies were "
                               + "resolved into two players to check it.")
@@ -159,7 +221,9 @@ enum SessionAnalyst {
 
         // 3. Arriving late. Measured at the player's own contacts, from how
         //    much they were still travelling as they struck.
-        if ownContacts.count < minOpportunities {
+        if let why = expect.lateArrival {
+            notChecked.append(why)
+        } else if ownContacts.count < minOpportunities {
             notChecked.append("Arriving in time: too few of your own contacts were "
                               + "identified.")
         } else if motion.count < 40 && efforts.isEmpty {
@@ -188,8 +252,10 @@ enum SessionAnalyst {
             findings.append(fade)
         }
 
-        // 5. A wall rally that came apart.
-        if isWall, let rhythm, rhythm.tempoSpread > 0.35, rhythm.totalStrokes >= 20 {
+        // 5. A session of one repeated action whose rhythm came apart — a
+        //    wall rally, a serving session, a cross-court drill. A match is
+        //    exempt: its rallies vary by design.
+        if expect.tempoShouldHold, let rhythm, rhythm.tempoSpread > 0.35, rhythm.totalStrokes >= 20 {
             findings.append(Finding(kind: .tempoDrift,
                                     occurrences: Int(rhythm.tempoSpread * 100),
                                     opportunities: 100,
@@ -254,8 +320,8 @@ extension Finding {
             return String(format: "You hit %d%% fewer balls in the second half of the "
                           + "session than the first.", occurrences)
         case .tempoDrift:
-            return String(format: "Your wall rally tempo varied by %d%% — the rhythm "
-                          + "came apart rather than holding.", occurrences)
+            return String(format: "Your tempo varied by %d%% across the session — the "
+                          + "rhythm came apart rather than holding.", occurrences)
         }
     }
 }

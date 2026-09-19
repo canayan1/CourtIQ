@@ -220,6 +220,27 @@ that changes it.
 
 ---
 
+## The drill decides which rules are fair
+
+The sensors see the same things in every session; what they *mean* depends on
+what the player set out to do — which is why the drill is declared before
+starting. `DrillExpectations` is one table, not conditions scattered through
+the rules, so "why was this not checked" is always a line in it and always
+reaches the player in the drill's own terms.
+
+| drill | split step | recovery | late to the ball | tempo should hold |
+|---|---|---|---|---|
+| match / free play | yes | yes | yes | no — rallies vary by design |
+| cross-court FH / BH | yes | yes | yes | **yes** — one wing, one rhythm |
+| serve | no — no opponent's shot to be ready for | no — nothing comes back | no — starts from a standstill | **yes** |
+| volley | yes | no — no room to recover between volleys | no — moving *into* the ball is the point | no |
+| wall | no | no — the ball comes back to you | yes | **yes** |
+
+Tested in `tools/drills-test.swift`: a serving session fires no rally rule
+and names the drill in each reason, but a ragged serving rhythm is flagged; a
+volleyer pushing hard at contact is not called late; the old `isWall` entry
+point still means what it meant.
+
 ## Trends, and the two rules that now run from the file
 
 **Against the player's own history** (`SessionTrends`): this session's
@@ -464,7 +485,7 @@ bug and worth checking once T1 gives a trusted count.
 | Shared audio | `CourtIQ/Features/SwingAnalysis/BallImpactAudio.swift` |
 | Camera design | `docs/DUEL-BASELINE-CAM.md` |
 | Offline tools | `tools/court-calibrate.swift`, `tools/duel-track.swift`, `tools/duel-corpus.sh` |
-| Test suites | `tools/{duel-report,wrist-swing,movement,attribution,rhythm,findings,stints,codec,trends}-test.swift` |
+| Test suites | `tools/{duel-report,wrist-swing,movement,attribution,rhythm,findings,stints,codec,trends,drills}-test.swift` |
 
 The body session screen is reachable only in a DEBUG build, from a plain button
 at the bottom of Home. That is deliberate: nothing it reports has been checked

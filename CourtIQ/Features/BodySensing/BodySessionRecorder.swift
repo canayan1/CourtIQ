@@ -165,7 +165,7 @@ final class BodySessionRecorder: ObservableObject {
             ownContacts: strokeTimes,
             opponentContacts: split?.opponent ?? [],
             splitSteps: splitSteps, motion: [],
-            rhythm: rhythm, isWall: onWall, efforts: efforts)
+            rhythm: rhythm, drill: drill.kind, efforts: efforts)
 
         // Contacts, with owners, once. On a wall the rebounds are the
         // player's own ball and nobody's contact, so only strokes are written.

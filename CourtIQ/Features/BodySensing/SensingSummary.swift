@@ -64,10 +64,14 @@ enum SensingSummary {
             return nil }
         let efforts = events.compactMap { e -> (t: Double, peak: Double)? in
             if case .effort(let t, let p) = e { return (t, p) }; return nil }
+        // The drill decides which rules are fair, and rhythm is read from
+        // the player's own contacts so the one-repeated-action drills can be
+        // judged on whether their tempo held.
+        let kind = DrillContext.Kind(rawValue: session.drill) ?? .freePlay
         let findings = SessionAnalyst.analyse(ownContacts: ownTimes, opponentContacts: oppTimes,
-                                              splitSteps: hops, motion: [], rhythm: nil,
-                                              isWall: session.drill == DrillContext.Kind.wall.rawValue,
-                                              efforts: efforts)
+                                              splitSteps: hops, motion: [],
+                                              rhythm: RallyRhythmReader.read(strokes: ownTimes),
+                                              drill: kind, efforts: efforts)
         if !findings.findings.isEmpty {
             lines.append("Flagged:")
             for f in findings.findings { lines.append("  " + f.sentence) }
