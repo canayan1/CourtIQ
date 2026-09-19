@@ -62,9 +62,12 @@ enum SensingSummary {
         let hops = events.compactMap { e -> SplitStep? in
             if case .splitStep(let t, let g) = e { return SplitStep(landing: t, unload: 0, landingG: g) }
             return nil }
+        let efforts = events.compactMap { e -> (t: Double, peak: Double)? in
+            if case .effort(let t, let p) = e { return (t, p) }; return nil }
         let findings = SessionAnalyst.analyse(ownContacts: ownTimes, opponentContacts: oppTimes,
                                               splitSteps: hops, motion: [], rhythm: nil,
-                                              isWall: session.drill == DrillContext.Kind.wall.rawValue)
+                                              isWall: session.drill == DrillContext.Kind.wall.rawValue,
+                                              efforts: efforts)
         if !findings.findings.isEmpty {
             lines.append("Flagged:")
             for f in findings.findings { lines.append("  " + f.sentence) }
@@ -72,6 +75,18 @@ enum SensingSummary {
         if !findings.notChecked.isEmpty {
             lines.append("Not checked (say so if relevant, do not guess):")
             for r in findings.notChecked { lines.append("  " + r) }
+        }
+
+        // Against the player's own history, same kind of session. This is
+        // the analytics: not how this session compares with anyone else, but
+        // with the last several of theirs.
+        let history = store.all().filter { $0.id != session.id && $0.drill == session.drill }
+        let trend = SessionTrends.compare(current: session, history: history)
+        if !trend.notes.isEmpty {
+            lines.append("Against this player's previous \(trend.baselineCount) \(session.drill) sessions:")
+            for n in trend.notes { lines.append("  " + n.sentence) }
+        } else if let why = trend.notCompared {
+            lines.append("Trend: " + why)
         }
         return lines.joined(separator: "\n")
     }

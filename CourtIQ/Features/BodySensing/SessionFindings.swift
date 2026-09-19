@@ -77,12 +77,21 @@ enum SessionAnalyst {
     /// still travelling when they hit, rather than having arrived.
     static let lateContactSpeed: Double = 1.4   // m/s equivalent in g-seconds
 
+    /// `efforts` are the derived push-offs a device wrote to the session file
+    /// — time and peak horizontal g. When raw motion is absent they carry the
+    /// two rules that need movement, and they carry them with a sharper
+    /// definition: recovery IS a push-off, so "rooted" becomes "no push-off
+    /// at all between your shot and their reply", and "late" becomes "a hard
+    /// push-off within a beat of contact". That is what a wrist or a belt
+    /// can promise from a file, and it is what the coach now gets for the
+    /// whole session rather than for the tail a buffer happened to keep.
     static func analyse(ownContacts: [Double],
                         opponentContacts: [Double],
                         splitSteps: [SplitStep],
                         motion: [BodyMotionSample],
                         rhythm: RallyRhythm?,
-                        isWall: Bool) -> SessionFindings {
+                        isWall: Bool,
+                        efforts: [(t: Double, peak: Double)] = []) -> SessionFindings {
         var findings: [Finding] = []
         var notChecked: [String] = []
 
@@ -118,20 +127,25 @@ enum SessionAnalyst {
         } else if ownContacts.count < minOpportunities || opponentContacts.isEmpty {
             notChecked.append("Recovery after your shot: too few rallies were "
                               + "resolved into two players to check it.")
-        } else if motion.count < 40 {
+        } else if motion.count < 40 && efforts.isEmpty {
             notChecked.append("Recovery after your shot: not enough motion data.")
         } else {
             var rooted: [Double] = []
             var chances = 0
+            let useMotion = motion.count >= 40
             for hit in ownContacts.sorted() {
                 guard let reply = opponentContacts.first(where: { $0 > hit + 0.25 }) else { continue }
                 // A window so short there was nothing to do in it is not a
                 // chance missed.
                 guard reply - hit > 0.6 else { continue }
                 chances += 1
-                let during = motion.filter { $0.t > hit && $0.t < reply }
-                guard !during.isEmpty else { continue }
-                if during.allSatisfy({ $0.horizontal < movedAtAll }) { rooted.append(hit) }
+                if useMotion {
+                    let during = motion.filter { $0.t > hit && $0.t < reply }
+                    guard !during.isEmpty else { continue }
+                    if during.allSatisfy({ $0.horizontal < movedAtAll }) { rooted.append(hit) }
+                } else if !efforts.contains(where: { $0.t > hit && $0.t < reply }) {
+                    rooted.append(hit)
+                }
             }
             if chances >= minOpportunities {
                 if let f = make(.rootedAfterOwnShot, rooted, chances, floor: 0.25) {
@@ -148,15 +162,19 @@ enum SessionAnalyst {
         if ownContacts.count < minOpportunities {
             notChecked.append("Arriving in time: too few of your own contacts were "
                               + "identified.")
-        } else if motion.count < 40 {
+        } else if motion.count < 40 && efforts.isEmpty {
             notChecked.append("Arriving in time: not enough motion data.")
         } else {
             var late: [Double] = []
             for hit in ownContacts {
-                let around = motion.filter { abs($0.t - hit) < 0.15 }
-                guard !around.isEmpty else { continue }
-                let peak = around.map(\.horizontal).max() ?? 0
-                if peak > lateContactSpeed { late.append(hit) }
+                if motion.count >= 40 {
+                    let around = motion.filter { abs($0.t - hit) < 0.15 }
+                    guard !around.isEmpty else { continue }
+                    let peak = around.map(\.horizontal).max() ?? 0
+                    if peak > lateContactSpeed { late.append(hit) }
+                } else if efforts.contains(where: { abs($0.t - hit) < 0.15 && $0.peak > lateContactSpeed }) {
+                    late.append(hit)
+                }
             }
             if let f = make(.lateToTheBall, late, ownContacts.count, floor: 0.30) {
                 findings.append(f)

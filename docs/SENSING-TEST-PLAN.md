@@ -220,6 +220,25 @@ that changes it.
 
 ---
 
+## Trends, and the two rules that now run from the file
+
+**Against the player's own history** (`SessionTrends`): this session's
+readiness, movements per minute, push hardness and rally-tempo steadiness
+against the median of at least three previous sessions of the *same drill*.
+A match is never compared with a wall session; two previous sessions are an
+anecdote and produce nothing but the reason. Only differences past the bench
+card's 15% floor (10 points for readiness) are mentioned. It says what
+changed and never why. Reaches the coach block and the phone's session screen.
+
+**Recovery and late-arrival now run from the session file.** They used to
+need raw motion, which the file deliberately does not hold, so the coach never
+got them and the phone judged only the tail its buffer had kept. They now read
+the derived `.effort` events instead, with a sharper definition that is also
+the more defensible one: recovery *is* a push-off, so "rooted" means no
+push-off at all between your shot and their reply, and "late" means a hard
+push-off within a beat of contact. Same rule for either device, whole session,
+tested in `tools/trends-test.swift`.
+
 ## The bench card, and which devices can feed it
 
 The plan is a data tool that fuses with a device: sit down at the changeover,
@@ -445,7 +464,7 @@ bug and worth checking once T1 gives a trusted count.
 | Shared audio | `CourtIQ/Features/SwingAnalysis/BallImpactAudio.swift` |
 | Camera design | `docs/DUEL-BASELINE-CAM.md` |
 | Offline tools | `tools/court-calibrate.swift`, `tools/duel-track.swift`, `tools/duel-corpus.sh` |
-| Test suites | `tools/{duel-report,wrist-swing,movement,attribution,rhythm,findings,stints,codec}-test.swift` |
+| Test suites | `tools/{duel-report,wrist-swing,movement,attribution,rhythm,findings,stints,codec,trends}-test.swift` |
 
 The body session screen is reachable only in a DEBUG build, from a plain button
 at the bottom of Home. That is deliberate: nothing it reports has been checked

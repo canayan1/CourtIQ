@@ -186,6 +186,7 @@
 		BD010001FEE4B1FA0DE0002 /* RallyRhythm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD010001FEE4B1FA0DE0001 /* RallyRhythm.swift */; };
 		BD020001FEE4B1FA0DE0002 /* SessionFindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD020001FEE4B1FA0DE0001 /* SessionFindings.swift */; };
 		BD030001FEE4B1FA0DE0002 /* MatchStints.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD030001FEE4B1FA0DE0001 /* MatchStints.swift */; };
+		BD040001FEE4B1FA0DE0002 /* SessionTrends.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD040001FEE4B1FA0DE0001 /* SessionTrends.swift */; };
 		11473B166FFF4B968A8EF217 /* SwingImpactAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D682A1ECA458C9921D4AD /* SwingImpactAnalyzer.swift */; };
 		CC1F6A22C438B041E97699BD /* SwingAnalysisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C1F0C3D2F961F7294836E6 /* SwingAnalysisView.swift */; };
 		D9DF80F409A57D89B6499E67 /* DoublesModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AC30870C3CE0B44AD67AB3 /* DoublesModels.swift */; };
@@ -460,6 +461,7 @@
 		BD010001FEE4B1FA0DE0001 /* RallyRhythm.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RallyRhythm.swift; path = CourtIQ/Features/BodySensing/RallyRhythm.swift; sourceTree = "<group>"; };
 		BD020001FEE4B1FA0DE0001 /* SessionFindings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionFindings.swift; path = CourtIQ/Features/BodySensing/SessionFindings.swift; sourceTree = "<group>"; };
 		BD030001FEE4B1FA0DE0001 /* MatchStints.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MatchStints.swift; path = CourtIQ/Features/BodySensing/MatchStints.swift; sourceTree = "<group>"; };
+		BD040001FEE4B1FA0DE0001 /* SessionTrends.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionTrends.swift; path = CourtIQ/Features/BodySensing/SessionTrends.swift; sourceTree = "<group>"; };
 		AC3D682A1ECA458C9921D4AD /* SwingImpactAnalyzer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwingImpactAnalyzer.swift; path = CourtIQ/Features/SwingAnalysis/SwingImpactAnalyzer.swift; sourceTree = "<group>"; };
 		E59972A086F7FB607351D71D /* TrainPracticeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TrainPracticeView.swift; path = CourtIQ/Features/Training/TrainPracticeView.swift; sourceTree = "<group>"; };
 		E9CF8D66C72388FA065116B1 /* DoublesInviteService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublesInviteService.swift; path = CourtIQ/Features/Doubles/DoublesInviteService.swift; sourceTree = "<group>"; };
@@ -787,6 +789,7 @@
 				AB1E00000000000000000023 /* WatchLink.swift */,
 				AB1E00000000000000000025 /* SensingSessionStore.swift */,
 				AB1E00000000000000000026 /* SensingSummary.swift */,
+				BD040001FEE4B1FA0DE0001 /* SessionTrends.swift */,
 				AC3D682A1ECA458C9921D4AD /* SwingImpactAnalyzer.swift */,
 				CFB312EFDFBC3D468DFBD276 /* SwingAnalysisService.swift */,
 				B1C1F0C3D2F961F7294836E6 /* SwingAnalysisView.swift */,
@@ -1201,6 +1204,7 @@
 				BD010001FEE4B1FA0DE0002 /* RallyRhythm.swift in Sources */,
 				BD020001FEE4B1FA0DE0002 /* SessionFindings.swift in Sources */,
 				BD030001FEE4B1FA0DE0002 /* MatchStints.swift in Sources */,
+				BD040001FEE4B1FA0DE0002 /* SessionTrends.swift in Sources */,
 				11473B166FFF4B968A8EF217 /* SwingImpactAnalyzer.swift in Sources */,
 				065E60992E196985B3FD8E65 /* SwingAnalysisService.swift in Sources */,
 				CC1F6A22C438B041E97699BD /* SwingAnalysisView.swift in Sources */,

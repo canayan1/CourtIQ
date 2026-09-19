@@ -123,11 +123,6 @@ final class BodySessionRecorder: ObservableObject {
 
         tick()
         harvestSplitSteps(flushAll: true)
-        // NOTE: `motion` holds only the tail that harvesting has not discarded,
-        // so the rules below judge the end of the session rather than all of
-        // it. Correct for a first pass — every rule here is a rate — but the
-        // moment findings are trended across sessions this has to become a
-        // running summary rather than a buffer.
 
         // A wall rally has its own rhythm — one racket sound and one rebound
         // per cycle — so it gets the gap the wall sessions were calibrated
@@ -160,11 +155,17 @@ final class BodySessionRecorder: ObservableObject {
                                          opponentContacts: split?.opponent ?? [])
         let rhythm = RallyRhythmReader.read(strokes: strokeTimes)
         let work = MovementDetector.workRest(motion)
+        // `motion` is only the tail harvesting has not discarded, so the
+        // rules that need movement read the derived efforts written to the
+        // session file — the whole session, the same way the coach reads it.
+        let recorded = store.load(sessionID)?.decodedEvents ?? []
+        let efforts = recorded.compactMap { e -> (t: Double, peak: Double)? in
+            if case .effort(let t, let p) = e { return (t, p) }; return nil }
         let findings = SessionAnalyst.analyse(
             ownContacts: strokeTimes,
             opponentContacts: split?.opponent ?? [],
-            splitSteps: splitSteps, motion: motion,
-            rhythm: rhythm, isWall: onWall)
+            splitSteps: splitSteps, motion: [],
+            rhythm: rhythm, isWall: onWall, efforts: efforts)
 
         // Contacts, with owners, once. On a wall the rebounds are the
         // player's own ball and nobody's contact, so only strokes are written.

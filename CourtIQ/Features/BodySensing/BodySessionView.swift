@@ -224,6 +224,30 @@ struct BodySessionView: View {
                 }
             }
 
+            // Against the player's own previous sessions of this kind. Same
+            // floor as the bench card, same silence when nothing moved, same
+            // refusal to say why.
+            if let stored = SensingSessionStore.shared.load(r.sessionID) {
+                let history = SensingSessionStore.shared.all().filter { $0.id != r.sessionID }
+                let trend = SessionTrends.compare(current: stored, history: history)
+                if !trend.notes.isEmpty {
+                    Divider().padding(.vertical, 4)
+                    Text("Against your last \(trend.baselineCount)")
+                        .font(.headline)
+                        .foregroundStyle(AppPalette.ink)
+                    ForEach(trend.notes, id: \.sentence) { note in
+                        Text("· " + note.sentence)
+                            .font(.subheadline)
+                            .foregroundStyle(AppPalette.ink)
+                    }
+                } else if let why = trend.notCompared {
+                    Text("No trend yet: " + why)
+                        .font(.footnote)
+                        .foregroundStyle(AppPalette.inkSoft)
+                        .padding(.top, 4)
+                }
+            }
+
             Text("Saved. Log today's match in the Journal and the coach reads this session with it.")
                 .font(.footnote)
                 .foregroundStyle(AppPalette.inkSoft)
