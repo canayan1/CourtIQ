@@ -83,6 +83,7 @@ final class BodySessionRecorder: ObservableObject {
     private var motion: [BodyMotionSample] = []
     private var splitSteps: [SplitStep] = []
     private var tickTimer: Timer?
+    private var clockTimer: Timer?
     private var lastTickAt: Double = 0
     private var lastTickStrokes = 0
 
@@ -101,12 +102,22 @@ final class BodySessionRecorder: ObservableObject {
 
         do {
             try startAudio()
-            startMotion()
+            try startMotion()
         } catch {
             failure = error.localizedDescription
+            stopSensors()
             return
         }
         state = .running
+        // Two timers on purpose: the clock ticks every second so the screen is
+        // honest, while the detectors run on the slower interval they were
+        // designed for.
+        clockTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+            Task { @MainActor in
+                guard let self, self.state == .running else { return }
+                self.elapsed = ProcessInfo.processInfo.systemUptime - self.startUptime
+            }
+        }
         tickTimer = Timer.scheduledTimer(withTimeInterval: WatchSessionTransport.tickInterval,
                                          repeats: true) { [weak self] _ in
             Task { @MainActor in self?.tick() }
@@ -115,11 +126,9 @@ final class BodySessionRecorder: ObservableObject {
 
     func stop() -> BodySessionResult {
         tickTimer?.invalidate(); tickTimer = nil
+        clockTimer?.invalidate(); clockTimer = nil
         state = .finishing
-        engine.inputNode.removeTap(onBus: 0)
-        engine.stop()
-        motionManager.stopDeviceMotionUpdates()
-        try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
+        stopSensors()
 
         tick()
         harvestSplitSteps(flushAll: true)
@@ -218,10 +227,16 @@ final class BodySessionRecorder: ObservableObject {
         try engine.start()
     }
 
-    private func startMotion() {
+    private func startMotion() throws {
+        // A session with no motion records no footwork, no split steps and no
+        // efforts — which is most of what it exists for. Earlier this only set
+        // `failure` and let the session run anyway: the screen showed a
+        // stopwatch that never moved and saved a file with nothing in it.
+        // Better to refuse.
         guard motionManager.isDeviceMotionAvailable else {
-            failure = "This device has no motion sensors."
-            return
+            throw NSError(domain: "BodySession", code: 1, userInfo: [NSLocalizedDescriptionKey:
+                "This device has no motion sensors, so a session would record nothing. "
+                + "The simulator has none; use a real iPhone."])
         }
         // 100 Hz. Human movement lives below about 5 Hz, so this is not a
         // compromise — nothing about footwork improves above it.
@@ -236,7 +251,6 @@ final class BodySessionRecorder: ObservableObject {
                 t: t,
                 accX: d.userAcceleration.x, accY: d.userAcceleration.y, accZ: d.userAcceleration.z,
                 gravX: d.gravity.x, gravY: d.gravity.y, gravZ: d.gravity.z))
-            self.elapsed = t
             }
         }
     }
@@ -245,6 +259,10 @@ final class BodySessionRecorder: ObservableObject {
 
     private func tick() {
         guard state != .idle else { return }
+        // From the clock, not from the last motion sample: if the sensor
+        // stalls the session should show that it is still running rather than
+        // freezing at whatever second the samples stopped.
+        elapsed = ProcessInfo.processInfo.systemUptime - startUptime
         harvestSplitSteps(flushAll: false)
 
         let impacts = BallImpactAudio.detectImpacts(
@@ -313,5 +331,13 @@ final class BodySessionRecorder: ObservableObject {
         let dtos = events.compactMap { try? SensorEventCodec.dto($0) }
         store.append(dtos, to: sessionID, startedAt: startedAt,
                      drill: drill.kind.rawValue, highRateMotion: false)
+    }
+
+    /// Idempotent, so the failure path and the normal stop can both call it.
+    private func stopSensors() {
+        engine.inputNode.removeTap(onBus: 0)
+        engine.stop()
+        motionManager.stopDeviceMotionUpdates()
+        try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
     }
 }

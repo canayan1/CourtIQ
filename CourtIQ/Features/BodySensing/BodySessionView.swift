@@ -46,13 +46,11 @@ struct BodySessionView: View {
             Text("What are you about to do?")
                 .font(.headline)
                 .foregroundStyle(AppPalette.inkSoft)
-            Picker("Drill", selection: $drill) {
-                ForEach(DrillContext.Kind.allCases, id: \.self) { kind in
-                    Text(label(for: kind)).tag(kind)
-                }
-            }
-            .pickerStyle(.inline)
-            .labelsHidden()
+            // Chips rather than a wheel. Seven options in an inline Picker
+            // renders as a cramped wheel that shows four and hides the rest —
+            // including Wall and Match, which are the two a player is most
+            // likely to want. Chips show all seven and match the Home screen.
+            FlowChips(kinds: DrillContext.Kind.allCases, selection: $drill, label: label)
 
             if let failure = recorder.failure {
                 Text(failure)
@@ -294,5 +292,56 @@ struct BodySessionView: View {
     private func timeString(_ seconds: Double) -> String {
         let s = Int(seconds.rounded())
         return String(format: "%d:%02d", s / 60, s % 60)
+    }
+}
+
+/// A wrapping row of selectable chips.
+///
+/// Written rather than reached for because SwiftUI has no wrapping stack: a
+/// LazyVGrid with adaptive columns is the standard substitute and gives every
+/// option a fixed-width cell, which looks wrong when the labels run from
+/// "Wall" to "Cross-court backhands". This measures nothing and simply lets
+/// the chips flow, which is what the Home screen's row does.
+private struct FlowChips: View {
+    let kinds: [DrillContext.Kind]
+    @Binding var selection: DrillContext.Kind
+    let label: (DrillContext.Kind) -> String
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            ForEach(rows(), id: \.first) { row in
+                HStack(spacing: 8) {
+                    ForEach(row, id: \.self) { kind in
+                        Button { selection = kind } label: {
+                            Text(label(kind))
+                                .font(.subheadline.weight(selection == kind ? .semibold : .regular))
+                                .foregroundStyle(selection == kind ? AppPalette.parchment : AppPalette.ink)
+                                .padding(.horizontal, 14)
+                                .padding(.vertical, 9)
+                                .background(selection == kind ? AppPalette.clay : AppPalette.sand.opacity(0.5))
+                                .clipShape(Capsule())
+                        }
+                        .buttonStyle(.plain)
+                    }
+                    Spacer(minLength: 0)
+                }
+            }
+        }
+    }
+
+    /// Two per row for the long labels, three for the short ones — decided by
+    /// label length rather than by index, so a translation that lengthens
+    /// "Wall" does not push a chip off the screen.
+    private func rows() -> [[DrillContext.Kind]] {
+        var out: [[DrillContext.Kind]] = []
+        var row: [DrillContext.Kind] = []
+        var width = 0
+        for kind in kinds {
+            let w = label(kind).count + 4
+            if width + w > 34, !row.isEmpty { out.append(row); row = []; width = 0 }
+            row.append(kind); width += w
+        }
+        if !row.isEmpty { out.append(row) }
+        return out
     }
 }
