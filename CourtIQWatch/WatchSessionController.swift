@@ -52,7 +52,8 @@ final class WatchSessionController: NSObject, ObservableObject {
     private let envelope = LiveEnvelope()
 
     private var sessionID = UUID().uuidString
-    private var drill = DrillContext(kind: .freePlay, note: nil, plannedMinutes: nil)
+    private var drill = DrillContext(kind: .freePlay)
+    private var converter: AVAudioConverter?
     private var startUptime: TimeInterval = 0
     private var tickTimer: Timer?
 
@@ -63,7 +64,12 @@ final class WatchSessionController: NSObject, ObservableObject {
     private var motion: [MotionSample] = []
     private var body: [BodyMotionSample] = []
     private var wristImpacts: [Double] = []          // every own contact so far
-    private var audioProcessedUntil: Double = 0
+    /// Opponent contacts already sent, so a trailing-window detection never
+    /// sends the same strike twice. This replaces a "processed until" gate,
+    /// which lost any impact that only crossed the adaptive threshold after
+    /// its tick had passed, and double-sent any that a louder neighbour
+    /// later displaced.
+    private var opponentSent: [Double] = []
     private var bodyProcessedUntil: Double = 0
     private var lastTickAt: Double = 0
 
@@ -75,14 +81,14 @@ final class WatchSessionController: NSObject, ObservableObject {
     // MARK: - Lifecycle
 
     func start(drill: DrillContext) {
-        guard state == .idle else { return }
+        guard SensingFeature.isEnabled, state == .idle else { return }
         self.drill = drill
         sessionID = UUID().uuidString
         startUptime = ProcessInfo.processInfo.systemUptime
         accel.removeAll(); motion.removeAll(); body.removeAll(); pending.removeAll()
         wristImpacts.removeAll(); envelope.reset()
         strokes = 0; opponentStrokes = 0; changeovers = 0; elapsed = 0
-        audioProcessedUntil = 0; bodyProcessedUntil = 0; lastTickAt = 0
+        opponentSent.removeAll(); bodyProcessedUntil = 0; lastTickAt = 0
         failure = nil
 
         activateLink()
@@ -146,8 +152,8 @@ final class WatchSessionController: NSObject, ObservableObject {
         workout?.end()
         let builder = self.builder
         Task {
-            try? await builder?.endCollection(at: Date())
-            try? await builder?.finishWorkout()
+            _ = try? await builder?.endCollection(at: Date())
+            _ = try? await builder?.finishWorkout()
         }
     }
 
@@ -216,13 +222,18 @@ final class WatchSessionController: NSObject, ObservableObject {
         try session.setActive(true)
         let input = engine.inputNode
         let format = input.outputFormat(forBus: 0)
-        envelope.binSize = max(1, Int(format.sampleRate * BallImpactAudio.envelopeWindow))
-        // Folded into the envelope on the audio thread and never kept — the
-        // same promise the phone keeps, in the same class.
+        // Converted to the detector's 16 kHz first, then folded into the
+        // envelope on the audio thread and never kept — the same class, the
+        // same rate and the same promise as the phone.
+        guard let conv = AVAudioConverter(from: format, to: LiveEnvelope.calibratedFormat) else {
+            throw NSError(domain: "WatchSession", code: 2, userInfo: [NSLocalizedDescriptionKey:
+                "The microphone format could not be converted to the detector's rate."])
+        }
+        converter = conv
+        envelope.binSize = Int(LiveEnvelope.calibratedSampleRate * BallImpactAudio.envelopeWindow)
         let sink = envelope
         input.installTap(onBus: 0, bufferSize: 4096, format: format) { buffer, _ in
-            guard let channel = buffer.floatChannelData?[0] else { return }
-            sink.consume(channel, count: Int(buffer.frameLength))
+            sink.consume(buffer, converter: conv)
         }
         engine.prepare()
         try engine.start()
@@ -256,18 +267,27 @@ final class WatchSessionController: NSObject, ObservableObject {
         // 2. The opponent's strokes, from the microphone: every impact it
         //    heard that the wrist did not claim. This is the piece the
         //    accelerometer can never supply on its own and the readiness
-        //    metric cannot exist without.
-        let heard = BallImpactAudio.detectImpactsWithStrength(
-            envelope: envelope.snapshot(), dt: BallImpactAudio.envelopeWindow,
-            minGap: BallImpactAudio.rallyMinGap)
-        let fresh = heard.filter { $0.t > audioProcessedUntil && $0.t < t - margin }
-        let split = ImpactAttribution.split(audioImpacts: fresh.map(\.t), ownSwings: wristImpacts)
-        for ot in split.opponent {
-            let strength = fresh.first { $0.t == ot }?.strength ?? 0
-            pending.append(.contact(t: ot, strength: strength, owner: .opponent))
+        //    metric cannot exist without. The drill decides whether there
+        //    IS an opponent: on a wall the unclaimed sounds are the
+        //    player's own ball coming back, and a serving session has no
+        //    reply at all — the first version reported a wall's rebounds
+        //    as thirty opponent strokes.
+        if drill.kind.contactModel == .twoPlayers {
+            let dt = BallImpactAudio.envelopeWindow
+            let (window, first) = envelope.snapshot(lastSeconds: WatchSessionTransport.liveAudioWindow,
+                                                    binDuration: dt)
+            let heard = BallImpactAudio.detectImpactsWithStrength(envelope: window, dt: dt,
+                                                                  minGap: drill.kind.impactMinGap)
+                .map { (t: $0.t + Double(first) * dt, strength: $0.strength) }
+                .filter { $0.t < t - margin }
+            let split = ImpactAttribution.split(audioImpacts: heard.map(\.t), ownSwings: wristImpacts)
+            for ot in split.opponent where !opponentSent.contains(where: { abs($0 - ot) < 0.2 }) {
+                opponentSent.append(ot)
+                let strength = heard.first { $0.t == ot }?.strength ?? 0
+                pending.append(.contact(t: ot, strength: strength, owner: .opponent))
+            }
+            opponentStrokes = opponentSent.count
         }
-        opponentStrokes += split.opponent.count
-        audioProcessedUntil = max(audioProcessedUntil, t - margin)
 
         // 3. Feet, from device motion — the same detector the phone runs on
         //    its own body samples, so a watch stint and a belt stint agree
@@ -313,21 +333,24 @@ final class WatchSessionController: NSObject, ObservableObject {
     /// what makes the bench card current the moment it is opened.
     private func flush(final: Bool) {
         guard !pending.isEmpty || final else { return }
-        guard let data = try? SensorEventCodec.encode(pending) else { return }
-        let payload: [String: Any] = [
-            "session": sessionID,
-            "drill": drill.kind.rawValue,
-            "started": Date().timeIntervalSince1970 - now,
-            "highRate": highRateMotion,
-            "events": data,
-            "final": final,
-        ]
+        let batch = SessionBatch(id: sessionID, drill: drill.kind.rawValue,
+                                 startedAt: Date(timeIntervalSinceNow: -now),
+                                 highRateMotion: highRateMotion,
+                                 events: pending.compactMap { try? SensorEventCodec.dto($0) },
+                                 final: final)
+        guard let data = try? SensorEventCodec.encode(batch) else { return }
         pending.removeAll()
         guard WCSession.isSupported() else { return }
         let session = WCSession.default
-        session.transferUserInfo(payload)
+        let payload: [String: Any] = ["batch": data]
+        // Sent once. Live when the phone is reachable, with the queue as the
+        // fallback if that fails; queued otherwise. The first version sent
+        // every batch both ways whenever the phone was reachable, and the
+        // append-only store kept both copies.
         if session.isReachable {
-            session.sendMessage(payload, replyHandler: nil, errorHandler: { _ in })
+            session.sendMessage(payload, replyHandler: nil) { _ in session.transferUserInfo(payload) }
+        } else {
+            session.transferUserInfo(payload)
         }
     }
 }

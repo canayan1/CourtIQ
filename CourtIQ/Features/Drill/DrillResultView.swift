@@ -37,7 +37,7 @@ struct DrillResultView: View {
                     .accessibilityLabel(lang.t("common.close"))
             }
             Spacer()
-            Text("Drill #\(session.dayNumber)")
+            Text(String(format: lang.t("drill.number_fmt"), session.dayNumber))
                 .font(.caption.weight(.heavy))
                 .tracking(0.6)
                 .textCase(.uppercase)

@@ -1223,3 +1223,8 @@
 "challenge.cta_body_fmt" = "Il reçoit les mêmes cinq situations et ton %1$d/%2$d à battre. Tout voyage dans le lien.";
 "challenge.cta_button" = "Défier un ami";
 "challenge.share_fmt" = "J'ai fait %1$d/%2$d sur ces cinq situations de tennis. À toi 🎾";
+
+/* Hardcoded until Sep 2026: the last three English literals in shipped screens. */
+"profile.path_to_fmt" = "Vers %@";
+"drill.number_fmt" = "Exercice n°%d";
+"training.week_of_fmt" = "SEM %d · %d";

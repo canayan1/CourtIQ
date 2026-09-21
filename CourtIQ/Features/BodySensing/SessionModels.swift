@@ -28,109 +28,32 @@ struct DrillContext: Codable, Equatable {
     }
 
     var kind: Kind
-    /// The player's own words, if they added any.
-    var note: String?
-    /// What they set out to do, in minutes. Nil for "until I stop".
-    var plannedMinutes: Int?
 }
 
-/// A slice of the session, reported while it is still running.
-///
-/// Raw motion never leaves the sensor. 800 Hz across three axes is about 19 KB
-/// every second before the gyroscope, which is both more than the link wants
-/// and more than the battery will pay for — and the phone has no use for it,
-/// because the detection that matters already ran on the watch. So the watch
-/// sends what it concluded, not what it saw. A phone worn on the body has no
-/// link to cross at all, but the same shape holds: detection runs as the data
-/// arrives and only the conclusions are kept, so an hour's session is a few
-/// kilobytes rather than a few hundred megabytes.
-struct LiveTick: Codable, Equatable {
-    /// Seconds since the session started.
-    var elapsed: Double
-    var swings: Int
-    var swingsPerMinute: Double
-    /// Median peak rotation rate over this slice, rad/s. Compared against the
-    /// session's own opening minutes rather than any absolute figure, because
-    /// what a hard swing measures differs by player, racket and where the
-    /// watch sits on the wrist.
-    var medianPeakRotation: Double
-    var heartRate: Double?
-    /// Metres covered, from HealthKit's workout distance, which fuses GPS with
-    /// the accelerometer and is steadier than either alone.
-    var distanceMetres: Double?
+extension DrillContext.Kind {
+    /// What the microphone hears in this drill, and therefore what an
+    /// unclaimed impact IS. Decided here, once, rather than by an `if onWall`
+    /// in each recorder — the watch used to ignore the drill entirely and
+    /// reported a wall's rebounds as an opponent's strokes.
+    enum ContactModel { case twoPlayers, wallRebound, solo }
 
-    /// Where the watch thinks it is, and how sure it is.
-    ///
-    /// The accuracy figure travels WITH the fix on purpose, because how much
-    /// this is worth is a measurement rather than an opinion. The scales it
-    /// has to beat: a singles court is 23.77 m by 8.23, baseline to service
-    /// line is 5.49 m, and the camera pipeline resolves a foot to about 1 cm
-    /// near the baseline.
-    ///
-    /// At the three to five metres a single-frequency receiver manages, none
-    /// of those distinctions survive. The dual-frequency L1/L5 receiver in the
-    /// Ultra is quoted nearer one to two metres under open sky, which is a
-    /// different proposition: baseline versus net is a twelve-metre question
-    /// and could hold up, and deuce side versus ad side might. Which of those
-    /// is true on a real court in Dublin is something to find out from
-    /// recorded fixes, not to decide here — so the fix is stored, its accuracy
-    /// is stored beside it, and no feature quotes a position until the
-    /// accuracy that came back says it can.
-    var latitude: Double?
-    var longitude: Double?
-    /// Metres of horizontal uncertainty as reported by CoreLocation. Negative
-    /// means the fix is invalid.
-    var locationAccuracy: Double?
-    /// Speed in m/s from the location fix, when it has one.
-    var speed: Double?
-
-    /// Whether a fix is good enough to say which END of the court somebody is
-    /// at — a twelve-metre distinction, so it needs a few metres of accuracy
-    /// rather than a few centimetres.
-    var canPlaceOnCourtEnd: Bool {
-        guard let a = locationAccuracy, a > 0 else { return false }
-        return a <= 4
+    var contactModel: ContactModel {
+        switch self {
+        case .wall: return .wallRebound
+        case .serve: return .solo
+        case .freePlay, .crossCourtForehand, .crossCourtBackhand, .volley, .match: return .twoPlayers
+        }
     }
 
-    /// Whether a fix could separate the two halves of the court sideways.
-    /// A doubles court is 10.97 m wide, so half of it is 5.5 — the fix has to
-    /// be comfortably inside that to mean anything.
-    var canPlaceOnCourtSide: Bool {
-        guard let a = locationAccuracy, a > 0 else { return false }
-        return a <= 2
-    }
-}
-
-/// Everything the phone needs once the session ends.
-struct WatchSessionSummary: Codable, Equatable {
-    var id: UUID
-    var startedAt: Date
-    var duration: Double
-    var drill: DrillContext
-    var ticks: [LiveTick]
-
-    var totalSwings: Int
-    /// Rally length proxy: the median gap between consecutive strokes. In a
-    /// drill it measures the feed's rhythm; in a match it measures how long
-    /// the points were.
-    var medianGapBetweenSwings: Double?
-    var medianImpactG: Double?
-    /// Whether the high-rate sensors were available. Older watches fall back
-    /// to 100 Hz, which still counts strokes but places contact far less
-    /// precisely — so anything quoted from a fallback session has to say so.
-    var highRateMotion: Bool
-
-    /// How far the swing faded, as a percentage of the opening quarter.
-    /// Positive means the player was swinging harder at the end than at the
-    /// start; negative is the usual direction.
-    var intensityDriftPercent: Double? {
-        let rotations = ticks.map(\.medianPeakRotation).filter { $0 > 0 }
-        guard rotations.count >= 4 else { return nil }
-        let quarter = max(1, rotations.count / 4)
-        let opening = rotations.prefix(quarter).reduce(0, +) / Double(quarter)
-        let closing = rotations.suffix(quarter).reduce(0, +) / Double(quarter)
-        guard opening > 0 else { return nil }
-        return (closing - opening) / opening * 100
+    /// The minimum gap between two impacts that are two strokes. A wall
+    /// rally is one racket and one rebound per cycle; a rally between two
+    /// people is faster. Read by the live tick and the final pass alike, so
+    /// the number on the screen and the number in the file agree.
+    var impactMinGap: Double {
+        switch contactModel {
+        case .wallRebound: return BallImpactAudio.wallMinGap
+        case .twoPlayers, .solo: return BallImpactAudio.rallyMinGap
+        }
     }
 }
 
@@ -166,7 +89,50 @@ enum AudioPolicy {
 
 enum WatchSessionTransport {
     static let tickInterval: TimeInterval = 20
-    /// Ticks are accumulated and sent in batches of this many, so a session
-    /// that runs for an hour costs about nine transfers rather than 180.
-    static let ticksPerTransfer = 10
+    /// The audio window the live tick detects on. Long enough that the
+    /// adaptive threshold has a floor to measure against, short enough that a
+    /// two-hour session does not copy and sort two hours of envelope every
+    /// twenty seconds on the main actor — which is what the first version did.
+    static let liveAudioWindow: TimeInterval = 90
+}
+
+/// Whether the sensing feature exists in this build. One flag, consulted by
+/// every door — the Home route, the watch link, the recorder — so the feature
+/// is gated once rather than half. Compile-time today; when it ships this
+/// becomes a configuration or premium gate.
+enum SensingFeature {
+    #if DEBUG
+    static let isEnabled = true
+    #else
+    static let isEnabled = false
+    #endif
+}
+
+/// Small statistics both targets share, so the audio and the wrist detectors
+/// cannot drift apart when one is retuned.
+enum Stats {
+    /// Middle value; the mean of the two middle values for an even count.
+    static func median(_ xs: [Double]) -> Double {
+        guard !xs.isEmpty else { return .nan }
+        let s = xs.sorted()
+        return s.count % 2 == 1 ? s[s.count / 2] : (s[s.count / 2 - 1] + s[s.count / 2]) / 2
+    }
+
+    /// Adaptive threshold at median + k × MAD — the rule BallImpactAudio was
+    /// calibrated on, and the one WristSwingDetector borrows.
+    static func madThreshold(_ xs: [Double], k: Double) -> Double {
+        let sorted = xs.sorted()
+        let median = sorted[sorted.count / 2]
+        let deviations = xs.map { abs($0 - median) }.sorted()
+        let mad = max(deviations[deviations.count / 2], 1e-9)
+        return median + k * mad
+    }
+}
+
+/// m:ss, for a session clock on either screen.
+enum SessionClock {
+    static func string(_ seconds: Double) -> String {
+        let s = Int(seconds.rounded())
+        return String(format: "%d:%02d", s / 60, s % 60)
+    }
 }

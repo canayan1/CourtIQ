@@ -1,0 +1,873 @@
+import SwiftUI
+
+// The production athlete figure: the canvas, its pose model and the two
+// small helpers it draws with. Moved out of MobilityAnimationPreview.swift,
+// which is a development gallery that never ships a screen — the figure was
+// living inside it, so the gallery had to be compiled into the app to get
+// the figure, and 800 lines of exploration UI shipped in every release for
+// no reason. HybridMobilityFigure is the caller.
+
+/// Canvas-based athlete figure that interpolates between a sequence of
+/// `AthletePose` keyframes on a loop, with an underlying breath-driven
+/// micro-motion. Use the static-pose initializer when you want a still
+/// thumbnail (e.g. in a card grid).
+struct AthleteFigureCanvas: View {
+    let poseSequence: [AthletePose]
+    let loopDuration: TimeInterval
+    let isStatic: Bool
+
+    init(poseSequence: [AthletePose], loopDuration: TimeInterval) {
+        self.poseSequence = poseSequence
+        self.loopDuration = loopDuration
+        self.isStatic = false
+    }
+
+    init(staticPose: AthletePose) {
+        self.poseSequence = [staticPose]
+        self.loopDuration = 1
+        self.isStatic = true
+    }
+
+    var body: some View {
+        TimelineView(.animation(minimumInterval: 1.0/60.0)) { context in
+            let now = context.date.timeIntervalSinceReferenceDate
+            let pose: AthletePose = isStatic
+                ? poseSequence[0]
+                : interpolated(at: now)
+            let breath = breathOffset(at: now)
+
+            Canvas { ctx, size in
+                draw(pose: pose, breath: breath, ctx: &ctx, size: size)
+            }
+        }
+    }
+
+    // MARK: Interpolation
+
+    private func interpolated(at time: TimeInterval) -> AthletePose {
+        guard poseSequence.count >= 2 else { return poseSequence.first ?? .standing }
+        let step = loopDuration / Double(poseSequence.count)
+        let phase = time.truncatingRemainder(dividingBy: loopDuration)
+        let i = Int(phase / step)
+        let localT = (phase - Double(i) * step) / step
+        let eased = ease(localT)
+        let a = poseSequence[i % poseSequence.count]
+        let b = poseSequence[(i + 1) % poseSequence.count]
+        return AthletePose.lerp(a, b, eased)
+    }
+
+    private func ease(_ t: Double) -> Double {
+        // Smooth in/out — feels like a deliberate breath cycle.
+        t < 0.5 ? 2 * t * t : 1 - pow(-2 * t + 2, 2) / 2
+    }
+
+    /// ±2% torso compression on a 4-second sine wave. Even on a frozen
+    /// pose the figure breathes; on an animated pose this layers on
+    /// top of the keyframe interpolation.
+    private func breathOffset(at time: TimeInterval) -> CGFloat {
+        let omega = 2 * Double.pi / 4.0
+        return CGFloat(sin(time * omega)) * 0.012
+    }
+
+    // MARK: Drawing
+
+    private func draw(pose: AthletePose, breath: CGFloat, ctx: inout GraphicsContext, size: CGSize) {
+        let s = min(size.width, size.height)
+        let absolute = pose.absolute(in: CGSize(width: s, height: s),
+                                     breathBias: breath)
+        let bodyColor = ink
+        let accent = clay
+        // Joint anchor + clothing strokes use a darker version of the
+        // body color so they read as anatomical detail rather than noise.
+        let jointColor = Color(red: 0.10, green: 0.07, blue: 0.04)
+
+        // Spine geometry — shared between the body silhouette and the
+        // clothing strokes so shorts/tank lines tilt with the torso
+        // during folds and rotations.
+        let spineDir = normalize(CGPoint(x: absolute.chest.x - absolute.pelvis.x,
+                                         y: absolute.chest.y - absolute.pelvis.y))
+        let spinePerp = CGPoint(x: -spineDir.y, y: spineDir.x)
+
+        // 1. Ground shadow — soft ellipse under the feet, scales with foot spread.
+        let leftFoot  = absolute.leftFoot
+        let rightFoot = absolute.rightFoot
+        let footCenter = CGPoint(x: (leftFoot.x + rightFoot.x) / 2,
+                                 y: max(leftFoot.y, rightFoot.y) + s * 0.012)
+        let spread = max(abs(rightFoot.x - leftFoot.x), s * 0.10)
+        let shadowRect = CGRect(
+            x: footCenter.x - spread * 0.9,
+            y: footCenter.y - s * 0.012,
+            width: spread * 1.8,
+            height: s * 0.025
+        )
+        ctx.fill(Path(ellipseIn: shadowRect),
+                 with: .color(bodyColor.opacity(0.18)))
+
+        // 2. Back-side limbs (z-order behind body silhouette).
+        drawLimb(ctx: &ctx, from: absolute.pelvis, mid: absolute.leftKnee, end: absolute.leftFoot,
+                 widthStart: s * 0.075, widthMid: s * 0.045, widthEnd: s * 0.035, color: bodyColor.opacity(0.92))
+        drawLimb(ctx: &ctx, from: absolute.chest, mid: absolute.leftElbow, end: absolute.leftHand,
+                 widthStart: s * 0.055, widthMid: s * 0.038, widthEnd: s * 0.030, color: bodyColor.opacity(0.92))
+
+        // 3. Body silhouette + head.
+        drawBodySilhouette(ctx: &ctx, pose: absolute, size: s, color: bodyColor,
+                           spinePerp: spinePerp)
+
+        // 4. Front-side limbs in accent color for fore/back depth.
+        drawLimb(ctx: &ctx, from: absolute.pelvis, mid: absolute.rightKnee, end: absolute.rightFoot,
+                 widthStart: s * 0.075, widthMid: s * 0.045, widthEnd: s * 0.035, color: accent)
+        drawLimb(ctx: &ctx, from: absolute.chest, mid: absolute.rightElbow, end: absolute.rightHand,
+                 widthStart: s * 0.055, widthMid: s * 0.038, widthEnd: s * 0.030, color: accent)
+
+        // 5. Clothing hints — tank top hem across the chest, shorts hem
+        //    across the pelvis. Both tilt with the spine perpendicular.
+        drawClothing(ctx: &ctx, pose: absolute, size: s,
+                     spinePerp: spinePerp, lineColor: jointColor.opacity(0.55))
+
+        // 6. Joint anchor dots — small filled circles at elbow + knee
+        //    give the figure recognizable anatomy at thumbnail scale.
+        let jointR = s * 0.018
+        for joint in [absolute.leftElbow, absolute.rightElbow,
+                      absolute.leftKnee, absolute.rightKnee] {
+            ctx.fill(
+                Path(ellipseIn: CGRect(x: joint.x - jointR, y: joint.y - jointR,
+                                       width: jointR * 2, height: jointR * 2)),
+                with: .color(jointColor.opacity(0.85))
+            )
+        }
+
+        // 7. Head highlight — small parchment-tinted oval offset toward
+        //    upper-left so the head reads as a 3D sphere lit from above.
+        let headR: CGFloat = s * 0.080
+        let highlightR = headR * 0.35
+        let hx = absolute.head.x - headR * 0.30
+        let hy = absolute.head.y - headR * 0.35
+        let highlightRect = CGRect(x: hx - highlightR,
+                                   y: hy - highlightR,
+                                   width: highlightR * 2,
+                                   height: highlightR * 2)
+        ctx.fill(Path(ellipseIn: highlightRect),
+                 with: .color(Color(red: 1.0, green: 0.97, blue: 0.92).opacity(0.18)))
+
+        // 8. Face — soft closed-eye marks. Two short horizontal strokes
+        //    in a parchment tint. "Eyes closed" reads as focused /
+        //    breathing rather than blank, which matches the meditative
+        //    intent of a mobility hold.
+        drawFace(ctx: &ctx, head: absolute.head, headR: headR, size: s)
+
+        // 9. Limb highlight stripes — thin parchment-tinted ribbons
+        //    along the top edge of each limb, simulating light from
+        //    upper-left. Painted after the base limbs but before
+        //    silhouette overlap concerns matter, since they live
+        //    visually on top of the limb fill.
+        drawLimbHighlight(ctx: &ctx, from: absolute.chest, mid: absolute.rightElbow,
+                          end: absolute.rightHand, size: s)
+        drawLimbHighlight(ctx: &ctx, from: absolute.pelvis, mid: absolute.rightKnee,
+                          end: absolute.rightFoot, size: s)
+
+        // 10. Motion arrow — pose-driven optional arc with arrowhead.
+        if let hint = pose.motionHint {
+            drawMotionArrow(ctx: &ctx, hint: hint, size: s)
+        }
+
+        // 11. Subtle dashed ground line — spatial grounding.
+        var ground = Path()
+        let groundY = s * 0.94
+        ground.move(to: CGPoint(x: s * 0.08, y: groundY))
+        ground.addLine(to: CGPoint(x: s * 0.92, y: groundY))
+        ctx.stroke(ground, with: .color(bodyColor.opacity(0.18)),
+                   style: StrokeStyle(lineWidth: 1.5, dash: [4, 6]))
+    }
+
+    /// Soft "eyes closed" face — two short horizontal strokes set
+    /// against the head fill. Avoids open-eye dots which read as
+    /// cartoonish at thumbnail scale.
+    private func drawFace(ctx: inout GraphicsContext, head: CGPoint, headR: CGFloat, size s: CGFloat) {
+        // Eyes sit slightly above head center, well inside the
+        // silhouette so they never bleed off the head edge mid-pose.
+        let eyeY = head.y - headR * 0.05
+        let eyeDX = headR * 0.32
+        let eyeLength = headR * 0.30
+        let eyeColor = Color(red: 1.0, green: 0.97, blue: 0.92).opacity(0.55)
+        let stroke = StrokeStyle(lineWidth: max(1.4, s * 0.010), lineCap: .round)
+
+        var leftEye = Path()
+        leftEye.move(to: CGPoint(x: head.x - eyeDX - eyeLength / 2, y: eyeY))
+        leftEye.addLine(to: CGPoint(x: head.x - eyeDX + eyeLength / 2, y: eyeY))
+        ctx.stroke(leftEye, with: .color(eyeColor), style: stroke)
+
+        var rightEye = Path()
+        rightEye.move(to: CGPoint(x: head.x + eyeDX - eyeLength / 2, y: eyeY))
+        rightEye.addLine(to: CGPoint(x: head.x + eyeDX + eyeLength / 2, y: eyeY))
+        ctx.stroke(rightEye, with: .color(eyeColor), style: stroke)
+    }
+
+    /// Thin parchment-tinted ribbon laid along the upper edge of a
+    /// limb to suggest a single overhead-left light source. Only
+    /// applied to the front-side limbs so it doesn't add visual
+    /// noise behind the body silhouette.
+    private func drawLimbHighlight(ctx: inout GraphicsContext,
+                                   from a: CGPoint, mid b: CGPoint, end c: CGPoint,
+                                   size s: CGFloat) {
+        // We render along the "upper" perpendicular — the one with
+        // the more negative y component, matching a top-left light.
+        let nAB = upwardPerpendicular(from: a, to: b)
+        let nBC = upwardPerpendicular(from: b, to: c)
+        let nB = normalize(CGPoint(x: (nAB.x + nBC.x) / 2,
+                                   y: (nAB.y + nBC.y) / 2))
+
+        // Stripe sits just inside the limb edge — narrow ribbon (~3 pt
+        // at full size) at low alpha so it reads as a soft highlight.
+        let stripeWidth = max(2.0, s * 0.012)
+
+        let aHi  = offset(a, by: nAB, mag: s * 0.020)
+        let bHi  = offset(b, by: nB,  mag: s * 0.012)
+        let cHi  = offset(c, by: nBC, mag: s * 0.008)
+        let aLo  = offset(a, by: nAB, mag: s * 0.020 - stripeWidth)
+        let bLo  = offset(b, by: nB,  mag: s * 0.012 - stripeWidth)
+        let cLo  = offset(c, by: nBC, mag: s * 0.008 - stripeWidth)
+
+        var stripe = Path()
+        stripe.move(to: aHi)
+        stripe.addQuadCurve(to: cHi, control: bHi)
+        stripe.addLine(to: cLo)
+        stripe.addQuadCurve(to: aLo, control: bLo)
+        stripe.closeSubpath()
+
+        let highlight = Color(red: 1.0, green: 0.97, blue: 0.92).opacity(0.22)
+        ctx.fill(stripe, with: .color(highlight))
+    }
+
+    /// Returns the perpendicular vector with the smaller (more
+    /// negative) y component — i.e. the one pointing "up" in screen
+    /// space, suitable for a top-light highlight.
+    private func upwardPerpendicular(from a: CGPoint, to b: CGPoint) -> CGPoint {
+        let n = perpendicular(from: a, to: b)
+        return n.y <= 0 ? n : CGPoint(x: -n.x, y: -n.y)
+    }
+
+    /// Pose-driven motion indicator. The hint defines start + end
+    /// points in normalized [0,1] and an optional curve control —
+    /// renderer adds a small arrowhead at the end.
+    private func drawMotionArrow(ctx: inout GraphicsContext, hint: MotionHint, size s: CGFloat) {
+        let start = CGPoint(x: hint.start.x * s, y: hint.start.y * s)
+        let end   = CGPoint(x: hint.end.x * s,   y: hint.end.y * s)
+        let control = CGPoint(x: hint.control.x * s, y: hint.control.y * s)
+
+        var arc = Path()
+        arc.move(to: start)
+        arc.addQuadCurve(to: end, control: control)
+
+        let arrowColor = clay.opacity(0.85)
+        let lineWidth: CGFloat = max(1.8, s * 0.012)
+        ctx.stroke(arc, with: .color(arrowColor),
+                   style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
+
+        // Arrowhead — two short strokes 30° off the local tangent at
+        // the end point. Approximate the tangent as (end - control).
+        let tx = end.x - control.x
+        let ty = end.y - control.y
+        let len = max(sqrt(tx * tx + ty * ty), 0.0001)
+        let tnx = tx / len
+        let tny = ty / len
+
+        let headSize = s * 0.045
+        let cos30: CGFloat = 0.866
+        let sin30: CGFloat = 0.5
+
+        let leftDX = -tnx * cos30 - tny * sin30
+        let leftDY = -tny * cos30 + tnx * sin30
+        let rightDX = -tnx * cos30 + tny * sin30
+        let rightDY = -tny * cos30 - tnx * sin30
+
+        var head = Path()
+        head.move(to: end)
+        head.addLine(to: CGPoint(x: end.x + leftDX * headSize, y: end.y + leftDY * headSize))
+        head.move(to: end)
+        head.addLine(to: CGPoint(x: end.x + rightDX * headSize, y: end.y + rightDY * headSize))
+        ctx.stroke(head, with: .color(arrowColor),
+                   style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
+    }
+
+    /// Draws thin contour lines suggesting a tank top hem (just below
+    /// the chest) and a shorts hem (just below the pelvis). Both tilt
+    /// with the spine so the figure looks dressed even mid-rotation.
+    private func drawClothing(ctx: inout GraphicsContext, pose: AthletePose,
+                              size s: CGFloat, spinePerp: CGPoint, lineColor: Color) {
+        let chest = pose.chest
+        let pelvis = pose.pelvis
+
+        // Tank top hem — slight curve across the upper torso.
+        let chestHalfW = s * 0.080
+        let tankCenter = CGPoint(x: chest.x + spinePerp.y * s * 0.04,
+                                 y: chest.y + spinePerp.x * s * 0.04 * -1)
+        // Simpler: keep the hem at the chest's vertical band, tilted
+        // perpendicular to the spine.
+        let _ = tankCenter
+        let tankL = offset(chest, by: spinePerp, mag: chestHalfW * 0.85)
+        let tankR = offset(chest, by: spinePerp, mag: -chestHalfW * 0.85)
+        var tank = Path()
+        tank.move(to: tankL)
+        // Gentle dip toward the center (suggests neckline curve).
+        let dip = CGPoint(
+            x: (tankL.x + tankR.x) / 2 + spinePerp.x * s * 0.02 * -1,
+            y: (tankL.y + tankR.y) / 2 + spinePerp.y * s * 0.02 * -1
+        )
+        tank.addQuadCurve(to: tankR, control: dip)
+        ctx.stroke(tank, with: .color(lineColor),
+                   style: StrokeStyle(lineWidth: max(1.2, s * 0.008), lineCap: .round))
+
+        // Shorts hem — straight perpendicular line just below the pelvis.
+        let hipHalfW = s * 0.060
+        let shortsOffsetAlongSpine = s * 0.06
+        // Move slightly downward along the spine (toward the legs).
+        let spineDown = CGPoint(x: -spinePerp.y, y: spinePerp.x)
+        let shortsCenter = offset(pelvis, by: spineDown, mag: shortsOffsetAlongSpine)
+        let shortsL = offset(shortsCenter, by: spinePerp, mag: hipHalfW * 1.05)
+        let shortsR = offset(shortsCenter, by: spinePerp, mag: -hipHalfW * 1.05)
+        var shorts = Path()
+        shorts.move(to: shortsL)
+        shorts.addLine(to: shortsR)
+        ctx.stroke(shorts, with: .color(lineColor),
+                   style: StrokeStyle(lineWidth: max(1.2, s * 0.008), lineCap: .round))
+    }
+
+    /// Tapered limb — three control points (origin, joint, end) with
+    /// per-point width. Renders as a filled closed ribbon: trace one
+    /// side from origin → joint → end (smoothed with quadratics), add
+    /// a rounded end cap, trace back along the other side, and close.
+    private func drawLimb(ctx: inout GraphicsContext,
+                          from a: CGPoint, mid b: CGPoint, end c: CGPoint,
+                          widthStart wA: CGFloat, widthMid wB: CGFloat, widthEnd wC: CGFloat,
+                          color: Color) {
+        // Two segments: a→b, b→c. Compute perpendicular offsets at
+        // each control point so the outline curves with the limb.
+        let nAB = perpendicular(from: a, to: b)
+        let nBC = perpendicular(from: b, to: c)
+
+        // At the joint, average the two perpendiculars so the seam
+        // looks continuous rather than kinked.
+        let nB = normalize(CGPoint(x: (nAB.x + nBC.x) / 2,
+                                   y: (nAB.y + nBC.y) / 2))
+
+        let aHi = offset(a, by: nAB, mag: wA / 2)
+        let aLo = offset(a, by: nAB, mag: -wA / 2)
+        let bHi = offset(b, by: nB, mag: wB / 2)
+        let bLo = offset(b, by: nB, mag: -wB / 2)
+        let cHi = offset(c, by: nBC, mag: wC / 2)
+        let cLo = offset(c, by: nBC, mag: -wC / 2)
+
+        var path = Path()
+        path.move(to: aHi)
+        path.addQuadCurve(to: cHi,
+                          control: CGPoint(x: bHi.x, y: bHi.y))
+        // Rounded end cap at c.
+        path.addArc(center: c, radius: wC / 2,
+                    startAngle: angle(nBC),
+                    endAngle: angle(CGPoint(x: -nBC.x, y: -nBC.y)),
+                    clockwise: false)
+        path.addQuadCurve(to: aLo,
+                          control: CGPoint(x: bLo.x, y: bLo.y))
+        path.addArc(center: a, radius: wA / 2,
+                    startAngle: angle(CGPoint(x: -nAB.x, y: -nAB.y)),
+                    endAngle: angle(nAB),
+                    clockwise: false)
+        path.closeSubpath()
+        ctx.fill(path, with: .color(color))
+    }
+
+    /// Continuous closed silhouette for the torso (pelvis ↔ chest ↔ neck
+    /// stub) drawn as one filled shape. Head is rendered as a separate
+    /// filled ellipse on top so the geometry stays predictable across
+    /// any pose orientation (no fragile arc-direction math).
+    private func drawBodySilhouette(ctx: inout GraphicsContext, pose: AthletePose,
+                                    size: CGFloat, color: Color, spinePerp: CGPoint) {
+        let pelvis = pose.pelvis
+        let chest = pose.chest
+        let head = pose.head
+
+        // Shoulder width tapers slightly wider than hip width.
+        let hipHalfW: CGFloat = size * 0.058
+        let chestHalfW: CGFloat = size * 0.080
+        let neckHalfW: CGFloat = size * 0.028
+
+        let pelvisL = offset(pelvis, by: spinePerp, mag: hipHalfW)
+        let pelvisR = offset(pelvis, by: spinePerp, mag: -hipHalfW)
+        let chestL = offset(chest, by: spinePerp, mag: chestHalfW)
+        let chestR = offset(chest, by: spinePerp, mag: -chestHalfW)
+
+        // Neck base is closer to the chest than to the head — the head
+        // floats above the neck stub with a small gap for visual breathing.
+        let neckBase = lerpPoint(chest, head, 0.55)
+        let neckL = offset(neckBase, by: spinePerp, mag: neckHalfW)
+        let neckR = offset(neckBase, by: spinePerp, mag: -neckHalfW)
+
+        // 1. Torso silhouette (pelvis → chest → neck on both sides).
+        var torso = Path()
+        torso.move(to: pelvisL)
+        torso.addQuadCurve(to: chestL, control: lerpPoint(pelvisL, chestL, 0.5))
+        torso.addQuadCurve(to: neckL,
+                           control: lerpPoint(chestL, neckL, 0.5))
+        torso.addLine(to: neckR)
+        torso.addQuadCurve(to: chestR, control: lerpPoint(neckR, chestR, 0.5))
+        torso.addQuadCurve(to: pelvisR, control: lerpPoint(chestR, pelvisR, 0.5))
+        torso.closeSubpath()
+        ctx.fill(torso, with: .color(color))
+
+        // 2. Head as separate filled circle. Sized to feel proportional
+        //    to the torso width — slightly wider than the chestHalfW.
+        let headR: CGFloat = size * 0.080
+        let headRect = CGRect(x: head.x - headR,
+                              y: head.y - headR,
+                              width: headR * 2,
+                              height: headR * 2)
+        ctx.fill(Path(ellipseIn: headRect), with: .color(color))
+    }
+
+    // MARK: Math helpers
+
+    private func perpendicular(from a: CGPoint, to b: CGPoint) -> CGPoint {
+        let dx = b.x - a.x
+        let dy = b.y - a.y
+        let n = normalize(CGPoint(x: -dy, y: dx))
+        return n
+    }
+
+    private func normalize(_ p: CGPoint) -> CGPoint {
+        let len = sqrt(p.x * p.x + p.y * p.y)
+        guard len > 0.0001 else { return .zero }
+        return CGPoint(x: p.x / len, y: p.y / len)
+    }
+
+    private func offset(_ p: CGPoint, by direction: CGPoint, mag: CGFloat) -> CGPoint {
+        CGPoint(x: p.x + direction.x * mag, y: p.y + direction.y * mag)
+    }
+
+    private func angle(_ p: CGPoint) -> Angle {
+        .radians(atan2(p.y, p.x))
+    }
+
+    private func lerpPoint(_ a: CGPoint, _ b: CGPoint, _ t: Double) -> CGPoint {
+        CGPoint(x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t)
+    }
+
+    // Local color helpers — pulls from AppPalette but keeps these
+    // accessible inside Canvas closures without environment lookup.
+    private var ink: Color { AppPalette.ink }
+    private var clay: Color { AppPalette.clay }
+}
+
+// MARK: - Breath tempo strip
+
+/// Visual companion to the figure's breath modulation. Renders a row
+/// of small dots that progressively fill on each breath cycle — three
+/// breaths in, then resets. The active dot pulses in sync with the
+/// figure's chest expansion so the user can use the strip as a tempo
+/// metronome ("hold until all three light up").
+struct BreathDot: View {
+    /// Total dots displayed. Three matches the "Hold 3 breaths" copy
+    /// in the hero hint.
+    let count: Int = 3
+    /// Seconds per breath — matches `AthleteFigureCanvas.breathOffset`
+    /// (4s sine), so the dot pulse stays phase-locked with the figure.
+    let breathDuration: TimeInterval = 4.0
+
+    var body: some View {
+        TimelineView(.animation(minimumInterval: 1.0/30.0)) { context in
+            let t = context.date.timeIntervalSinceReferenceDate
+            // Determine which dot is "active" — completes one breath each
+            // breathDuration, wraps after `count` breaths.
+            let cyclePosition = t.truncatingRemainder(dividingBy: Double(count) * breathDuration)
+            let activeIndex = Int(cyclePosition / breathDuration)
+            let activePulse = 0.7 + 0.3 * abs(sin(t * 2 * .pi / breathDuration))
+
+            HStack(spacing: 5) {
+                ForEach(0..<count, id: \.self) { i in
+                    let isActive = i == activeIndex
+                    let isFilled = i <= activeIndex
+                    Circle()
+                        .fill(isFilled ? AppPalette.clay : AppPalette.sand)
+                        .frame(width: 7, height: 7)
+                        .scaleEffect(isActive ? activePulse : 1.0)
+                        .animation(.easeInOut(duration: 0.2), value: activeIndex)
+                }
+            }
+        }
+    }
+}
+
+// MARK: - Pose model
+
+/// Per-pose optional motion indicator. Normalized [0,1] positions —
+/// the renderer scales into pixel space. `control` is the QuadCurve
+/// control point so the arrow can arc rather than going straight.
+struct MotionHint: Equatable {
+    var start: CGPoint
+    var end: CGPoint
+    var control: CGPoint
+}
+
+/// Normalized [0,1] joint positions for the athlete figure. All poses
+/// face the viewer in profile (left-foot first when reading L→R).
+/// `lerp` blends two poses; `absolute(in:breathBias:)` projects into
+/// pixel coordinates and applies the breath micro-modulation.
+struct AthletePose {
+    var head: CGPoint
+    var chest: CGPoint
+    var pelvis: CGPoint
+    var leftElbow: CGPoint
+    var rightElbow: CGPoint
+    var leftHand: CGPoint
+    var rightHand: CGPoint
+    var leftKnee: CGPoint
+    var rightKnee: CGPoint
+    var leftFoot: CGPoint
+    var rightFoot: CGPoint
+    /// Optional motion arrow rendered on top of the figure. Use
+    /// sparingly — overuse adds visual chrome.
+    var motionHint: MotionHint? = nil
+
+    func absolute(in size: CGSize, breathBias: CGFloat) -> AthletePose {
+        // Breath modulates only the chest+head (ribs expand). Adds a
+        // tiny upward push proportional to bias.
+        let breathLift = CGPoint(x: 0, y: breathBias * -1)
+        return AthletePose(
+            head: scaled(addBias(head, by: breathLift), size),
+            chest: scaled(addBias(chest, by: breathLift), size),
+            pelvis: scaled(pelvis, size),
+            leftElbow: scaled(leftElbow, size),
+            rightElbow: scaled(rightElbow, size),
+            leftHand: scaled(leftHand, size),
+            rightHand: scaled(rightHand, size),
+            leftKnee: scaled(leftKnee, size),
+            rightKnee: scaled(rightKnee, size),
+            leftFoot: scaled(leftFoot, size),
+            rightFoot: scaled(rightFoot, size)
+        )
+    }
+
+    private func addBias(_ p: CGPoint, by b: CGPoint) -> CGPoint {
+        CGPoint(x: p.x + b.x, y: p.y + b.y)
+    }
+
+    private func scaled(_ p: CGPoint, _ size: CGSize) -> CGPoint {
+        CGPoint(x: p.x * size.width, y: p.y * size.height)
+    }
+
+    static func lerp(_ a: AthletePose, _ b: AthletePose, _ t: Double) -> AthletePose {
+        // Show the destination's motion hint once we cross the midpoint
+        // — interpolating arrow endpoints looks chaotic in motion.
+        let hint = t < 0.5 ? a.motionHint : b.motionHint
+        return AthletePose(
+            head: lerpPt(a.head, b.head, t),
+            chest: lerpPt(a.chest, b.chest, t),
+            pelvis: lerpPt(a.pelvis, b.pelvis, t),
+            leftElbow: lerpPt(a.leftElbow, b.leftElbow, t),
+            rightElbow: lerpPt(a.rightElbow, b.rightElbow, t),
+            leftHand: lerpPt(a.leftHand, b.leftHand, t),
+            rightHand: lerpPt(a.rightHand, b.rightHand, t),
+            leftKnee: lerpPt(a.leftKnee, b.leftKnee, t),
+            rightKnee: lerpPt(a.rightKnee, b.rightKnee, t),
+            leftFoot: lerpPt(a.leftFoot, b.leftFoot, t),
+            rightFoot: lerpPt(a.rightFoot, b.rightFoot, t),
+            motionHint: hint
+        )
+    }
+
+    private static func lerpPt(_ a: CGPoint, _ b: CGPoint, _ t: Double) -> CGPoint {
+        CGPoint(x: a.x + (b.x - a.x) * t,
+                y: a.y + (b.y - a.y) * t)
+    }
+
+    // MARK: - Canned poses (tennis mobility library)
+
+    /// Standing neutral — head over pelvis, arms relaxed alongside hips.
+    static let standing = AthletePose(
+        head:        .init(x: 0.50, y: 0.18),
+        chest:       .init(x: 0.50, y: 0.34),
+        pelvis:      .init(x: 0.50, y: 0.55),
+        leftElbow:   .init(x: 0.41, y: 0.50),
+        rightElbow:  .init(x: 0.59, y: 0.50),
+        leftHand:    .init(x: 0.38, y: 0.66),
+        rightHand:   .init(x: 0.62, y: 0.66),
+        leftKnee:    .init(x: 0.46, y: 0.75),
+        rightKnee:   .init(x: 0.54, y: 0.75),
+        leftFoot:    .init(x: 0.44, y: 0.92),
+        rightFoot:   .init(x: 0.56, y: 0.92)
+    )
+
+    /// Forward fold — hip-hinge, hands sweeping toward the floor.
+    static let forwardFold = AthletePose(
+        head:        .init(x: 0.50, y: 0.66),
+        chest:       .init(x: 0.50, y: 0.55),
+        pelvis:      .init(x: 0.50, y: 0.40),
+        leftElbow:   .init(x: 0.45, y: 0.72),
+        rightElbow:  .init(x: 0.55, y: 0.72),
+        leftHand:    .init(x: 0.46, y: 0.88),
+        rightHand:   .init(x: 0.54, y: 0.88),
+        leftKnee:    .init(x: 0.47, y: 0.68),
+        rightKnee:   .init(x: 0.53, y: 0.68),
+        leftFoot:    .init(x: 0.45, y: 0.92),
+        rightFoot:   .init(x: 0.55, y: 0.92)
+    )
+
+    /// World's Greatest Stretch — front (right) leg in a deep 90° lunge,
+    /// back (left) leg straight behind, right arm rotated up and out,
+    /// left hand planted on the floor inside the front foot. Motion
+    /// arrow traces the thoracic rotation arc above the head.
+    static let lungeTwist = AthletePose(
+        head:        .init(x: 0.55, y: 0.36),
+        chest:       .init(x: 0.55, y: 0.52),
+        pelvis:      .init(x: 0.52, y: 0.68),
+        leftElbow:   .init(x: 0.46, y: 0.78),
+        rightElbow:  .init(x: 0.68, y: 0.38),
+        leftHand:    .init(x: 0.40, y: 0.88),
+        rightHand:   .init(x: 0.84, y: 0.16),
+        leftKnee:    .init(x: 0.32, y: 0.84),
+        rightKnee:   .init(x: 0.66, y: 0.78),
+        leftFoot:    .init(x: 0.18, y: 0.92),
+        rightFoot:   .init(x: 0.70, y: 0.92),
+        motionHint: MotionHint(
+            start:   .init(x: 0.38, y: 0.20),
+            end:     .init(x: 0.72, y: 0.20),
+            control: .init(x: 0.55, y: 0.08)
+        )
+    )
+
+    /// Standing calf wall press — back leg straight, heel pressed back
+    /// toward the ground, hands on an implied wall ahead.
+    static let calfWall = AthletePose(
+        head:        .init(x: 0.50, y: 0.20),
+        chest:       .init(x: 0.50, y: 0.36),
+        pelvis:      .init(x: 0.52, y: 0.55),
+        leftElbow:   .init(x: 0.40, y: 0.44),
+        rightElbow:  .init(x: 0.60, y: 0.46),
+        leftHand:    .init(x: 0.30, y: 0.32),
+        rightHand:   .init(x: 0.70, y: 0.34),
+        leftKnee:    .init(x: 0.60, y: 0.72),
+        rightKnee:   .init(x: 0.36, y: 0.78),
+        leftFoot:    .init(x: 0.64, y: 0.92),
+        rightFoot:   .init(x: 0.20, y: 0.92)
+    )
+
+    /// Side-lying T-spine windmill — torso open to the ceiling, top arm
+    /// reaching out and back. Motion arrow traces the windmill sweep
+    /// from the chest up and over.
+    static let tSpineWindmill = AthletePose(
+        head:        .init(x: 0.45, y: 0.32),
+        chest:       .init(x: 0.52, y: 0.46),
+        pelvis:      .init(x: 0.55, y: 0.66),
+        leftElbow:   .init(x: 0.36, y: 0.52),
+        rightElbow:  .init(x: 0.74, y: 0.42),
+        leftHand:    .init(x: 0.22, y: 0.42),
+        rightHand:   .init(x: 0.88, y: 0.22),
+        leftKnee:    .init(x: 0.48, y: 0.78),
+        rightKnee:   .init(x: 0.60, y: 0.78),
+        leftFoot:    .init(x: 0.42, y: 0.92),
+        rightFoot:   .init(x: 0.62, y: 0.92),
+        motionHint: MotionHint(
+            start:   .init(x: 0.45, y: 0.30),
+            end:     .init(x: 0.86, y: 0.18),
+            control: .init(x: 0.78, y: 0.05)
+        )
+    )
+
+    /// 90/90 hip seat — front and back legs both at 90°, torso upright.
+    /// Side profile shows the front knee out, back knee tucked behind.
+    static let nineNinety = AthletePose(
+        head:        .init(x: 0.50, y: 0.22),
+        chest:       .init(x: 0.50, y: 0.40),
+        pelvis:      .init(x: 0.50, y: 0.62),
+        leftElbow:   .init(x: 0.40, y: 0.58),
+        rightElbow:  .init(x: 0.60, y: 0.58),
+        leftHand:    .init(x: 0.32, y: 0.72),
+        rightHand:   .init(x: 0.68, y: 0.72),
+        leftKnee:    .init(x: 0.32, y: 0.78),
+        rightKnee:   .init(x: 0.74, y: 0.74),
+        leftFoot:    .init(x: 0.18, y: 0.92),
+        rightFoot:   .init(x: 0.84, y: 0.84)
+    )
+
+    /// Child's pose / kneeling reach — heels under hips, torso folded
+    /// forward, arms extended along the floor in front. Reads as a
+    /// rest/decompress pose.
+    static let childsPose = AthletePose(
+        head:        .init(x: 0.36, y: 0.74),
+        chest:       .init(x: 0.46, y: 0.72),
+        pelvis:      .init(x: 0.62, y: 0.78),
+        leftElbow:   .init(x: 0.30, y: 0.78),
+        rightElbow:  .init(x: 0.30, y: 0.74),
+        leftHand:    .init(x: 0.14, y: 0.84),
+        rightHand:   .init(x: 0.14, y: 0.80),
+        leftKnee:    .init(x: 0.62, y: 0.88),
+        rightKnee:   .init(x: 0.62, y: 0.84),
+        leftFoot:    .init(x: 0.78, y: 0.92),
+        rightFoot:   .init(x: 0.78, y: 0.92)
+    )
+
+    /// Standing reach and rotate — both arms swung overhead, torso
+    /// rotated through the spine. Tilted slightly for visual energy.
+    static let standingReachRotate = AthletePose(
+        head:        .init(x: 0.50, y: 0.20),
+        chest:       .init(x: 0.50, y: 0.36),
+        pelvis:      .init(x: 0.50, y: 0.58),
+        leftElbow:   .init(x: 0.34, y: 0.18),
+        rightElbow:  .init(x: 0.66, y: 0.16),
+        leftHand:    .init(x: 0.24, y: 0.04),
+        rightHand:   .init(x: 0.78, y: 0.02),
+        leftKnee:    .init(x: 0.46, y: 0.75),
+        rightKnee:   .init(x: 0.54, y: 0.75),
+        leftFoot:    .init(x: 0.44, y: 0.92),
+        rightFoot:   .init(x: 0.56, y: 0.92),
+        motionHint: MotionHint(
+            start:   .init(x: 0.20, y: 0.14),
+            end:     .init(x: 0.80, y: 0.10),
+            control: .init(x: 0.50, y: -0.04)
+        )
+    )
+
+    /// Standing hip circle — one knee lifted, leg circling. Captured
+    /// at the mid-arc with knee high and out.
+    static let hipCircle = AthletePose(
+        head:        .init(x: 0.48, y: 0.18),
+        chest:       .init(x: 0.48, y: 0.34),
+        pelvis:      .init(x: 0.50, y: 0.56),
+        leftElbow:   .init(x: 0.38, y: 0.46),
+        rightElbow:  .init(x: 0.62, y: 0.46),
+        leftHand:    .init(x: 0.32, y: 0.60),
+        rightHand:   .init(x: 0.68, y: 0.60),
+        leftKnee:    .init(x: 0.72, y: 0.62),
+        rightKnee:   .init(x: 0.52, y: 0.74),
+        leftFoot:    .init(x: 0.86, y: 0.80),
+        rightFoot:   .init(x: 0.52, y: 0.92)
+    )
+
+    /// Glute bridge — lying supine, knees bent, hips lifted. Approximated
+    /// in profile so the elevated pelvis reads as the highest point.
+    static let gluteBridge = AthletePose(
+        head:        .init(x: 0.16, y: 0.82),
+        chest:       .init(x: 0.30, y: 0.78),
+        pelvis:      .init(x: 0.48, y: 0.62),
+        leftElbow:   .init(x: 0.20, y: 0.88),
+        rightElbow:  .init(x: 0.22, y: 0.82),
+        leftHand:    .init(x: 0.10, y: 0.92),
+        rightHand:   .init(x: 0.12, y: 0.86),
+        leftKnee:    .init(x: 0.68, y: 0.60),
+        rightKnee:   .init(x: 0.70, y: 0.66),
+        leftFoot:    .init(x: 0.84, y: 0.92),
+        rightFoot:   .init(x: 0.86, y: 0.92)
+    )
+
+    /// Pigeon pose hold — front leg forward bent across the body,
+    /// back leg extended straight behind, torso reaching forward
+    /// over the front shin.
+    static let pigeonPose = AthletePose(
+        head:        .init(x: 0.40, y: 0.66),
+        chest:       .init(x: 0.46, y: 0.62),
+        pelvis:      .init(x: 0.56, y: 0.72),
+        leftElbow:   .init(x: 0.30, y: 0.72),
+        rightElbow:  .init(x: 0.30, y: 0.68),
+        leftHand:    .init(x: 0.14, y: 0.82),
+        rightHand:   .init(x: 0.14, y: 0.78),
+        leftKnee:    .init(x: 0.46, y: 0.84),
+        rightKnee:   .init(x: 0.74, y: 0.86),
+        leftFoot:    .init(x: 0.66, y: 0.92),
+        rightFoot:   .init(x: 0.90, y: 0.92)
+    )
+
+    /// Lateral lunge / Cossack squat reach — feet wide, one knee bent
+    /// deep, opposite leg straight out to the side, arms reaching to
+    /// the bent-knee side for balance.
+    static let lateralLungeReach = AthletePose(
+        head:        .init(x: 0.42, y: 0.40),
+        chest:       .init(x: 0.46, y: 0.54),
+        pelvis:      .init(x: 0.48, y: 0.68),
+        leftElbow:   .init(x: 0.30, y: 0.52),
+        rightElbow:  .init(x: 0.30, y: 0.66),
+        leftHand:    .init(x: 0.16, y: 0.60),
+        rightHand:   .init(x: 0.18, y: 0.78),
+        leftKnee:    .init(x: 0.34, y: 0.82),
+        rightKnee:   .init(x: 0.80, y: 0.78),
+        leftFoot:    .init(x: 0.22, y: 0.92),
+        rightFoot:   .init(x: 0.92, y: 0.92)
+    )
+
+    /// Seated spinal twist — sitting cross-legged or with one knee up,
+    /// torso rotated, opposite hand braced behind for support.
+    static let seatedSpinalTwist = AthletePose(
+        head:        .init(x: 0.46, y: 0.40),
+        chest:       .init(x: 0.50, y: 0.56),
+        pelvis:      .init(x: 0.50, y: 0.72),
+        leftElbow:   .init(x: 0.34, y: 0.50),
+        rightElbow:  .init(x: 0.68, y: 0.62),
+        leftHand:    .init(x: 0.22, y: 0.40),
+        rightHand:   .init(x: 0.80, y: 0.74),
+        leftKnee:    .init(x: 0.34, y: 0.86),
+        rightKnee:   .init(x: 0.68, y: 0.82),
+        leftFoot:    .init(x: 0.22, y: 0.92),
+        rightFoot:   .init(x: 0.72, y: 0.92),
+        motionHint: MotionHint(
+            start:   .init(x: 0.30, y: 0.34),
+            end:     .init(x: 0.66, y: 0.36),
+            control: .init(x: 0.50, y: 0.20)
+        )
+    )
+
+    // MARK: - Title → pose mapping
+
+    /// Best-effort lookup that maps a free-form mobility movement title
+    /// (from `mobility_flows.json`) to one of our canned poses.
+    /// Tennis content uses dozens of variants ("Standing hip circles",
+    /// "Walking knee hugs with rotation", "Wall angel slides", …) —
+    /// rather than handcraft 70 poses, we extract a handful of strong
+    /// signal words and fall through to the closest archetype.
+    ///
+    /// Order matters — most-specific keywords go first.
+    static func match(forTitle title: String) -> AthletePose {
+        let t = title.lowercased()
+
+        // Exact named moves
+        if t.contains("world") || (t.contains("greatest") && t.contains("stretch")) {
+            return .lungeTwist
+        }
+        if t.contains("pigeon") { return .pigeonPose }
+        if t.contains("child") { return .childsPose }
+        if t.contains("90/90") || t.contains("90 90") { return .nineNinety }
+        if t.contains("cossack") { return .lateralLungeReach }
+        if t.contains("glute bridge") || (t.contains("bridge") && t.contains("hip")) {
+            return .gluteBridge
+        }
+
+        // Categorical signal words
+        if t.contains("twist") || t.contains("rotat") || t.contains("open-book") ||
+           t.contains("open book") || t.contains("thoracic") || t.contains("windmill") ||
+           t.contains("spinal") {
+            return t.contains("seat") || t.contains("kneel") ? .seatedSpinalTwist : .tSpineWindmill
+        }
+        if t.contains("lunge") || t.contains("hip flexor") { return .lungeTwist }
+        if t.contains("calf") || t.contains("ankle") { return .calfWall }
+        if t.contains("forward fold") || t.contains("hamstring") || t.contains("hinge") ||
+           t.contains("toe tap") || t.contains("toe-touch") || t.contains("rdl") {
+            return .forwardFold
+        }
+        if t.contains("hip circle") || t.contains("hip swing") || t.contains("hip opener") ||
+           t.contains("knee hug") || t.contains("leg swing") {
+            return .hipCircle
+        }
+        if t.contains("reach") && (t.contains("standing") || t.contains("overhead")) {
+            return .standingReachRotate
+        }
+        if t.contains("squat") || t.contains("shoulder slide") || t.contains("wall angel") ||
+           t.contains("shoulder plate") {
+            return .standingReachRotate
+        }
+        if t.contains("supine") || t.contains("lying") || t.contains("foam roll") ||
+           t.contains("figure-four") || t.contains("figure four") || t.contains("sleeper") {
+            return .gluteBridge
+        }
+        if t.contains("seat") || t.contains("cross-legged") {
+            return .seatedSpinalTwist
+        }
+        return .standing
+    }
+}

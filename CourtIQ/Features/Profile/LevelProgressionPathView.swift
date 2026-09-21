@@ -59,7 +59,7 @@ struct LevelProgressionPathView: View {
     private var headerRow: some View {
         HStack(alignment: .center) {
             VStack(alignment: .leading, spacing: 2) {
-                Text("Path to \(nextLevelTitle)")
+                Text(String(format: lang.t("profile.path_to_fmt"), nextLevelTitle))
                     .font(.headline)
                 Text("\(manager.completedWeekCount) of \(PlayerProgressionManager.totalWeeksToLevelUp) weeks complete")
                     .font(.caption)

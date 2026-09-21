@@ -281,10 +281,19 @@ enum SessionAnalyst {
     /// count: a player who tires hits fewer balls in the second half, so
     /// halving the strokes would hide exactly the thing being looked for.
     private static func fading(ownContacts: [Double], motion: [BodyMotionSample]) -> Finding? {
-        guard let first = motion.first, let last = motion.last else { return nil }
-        let span = last.t - first.t
+        // The span is the session's, from whichever evidence is present. The
+        // app never passes raw motion any more — the file holds events — and
+        // the first version read the span from motion alone, so in the app
+        // this rule could never fire and never said so: a player who hit 40%
+        // fewer balls in the second half got a clean sheet.
+        let sorted = ownContacts.sorted()
+        let start: Double, end: Double
+        if let f = motion.first, let l = motion.last { start = f.t; end = l.t }
+        else if let f = sorted.first, let l = sorted.last { start = f; end = l }
+        else { return nil }
+        let span = end - start
         guard span > 240 else { return nil }   // under four minutes, fading means nothing
-        let midpoint = first.t + span / 2
+        let midpoint = start + span / 2
 
         let early = ownContacts.filter { $0 < midpoint }.count
         let lateHalf = ownContacts.filter { $0 >= midpoint }.count

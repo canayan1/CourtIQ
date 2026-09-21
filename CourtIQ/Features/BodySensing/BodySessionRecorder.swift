@@ -11,7 +11,10 @@ struct BodySessionResult {
     var drill: DrillContext
     var startedAt: Date
     var duration: Double
-    var ticks: [LiveTick]
+    /// This session against the player's previous ones, computed once here
+    /// rather than in the view — the view used to reload every session file
+    /// on every re-render.
+    var trend: TrendResult
 
     /// Every contact the microphone heard, with how loud it was.
     var impacts: [(t: Double, strength: Double)]
@@ -56,7 +59,6 @@ final class BodySessionRecorder: ObservableObject {
     @Published private(set) var elapsed: Double = 0
     @Published private(set) var strokes: Int = 0
     @Published private(set) var splitStepCount: Int = 0
-    @Published private(set) var ticks: [LiveTick] = []
     /// Set when the microphone or motion sensors refuse to start, so the UI
     /// can say what is missing rather than showing a session that records
     /// nothing.
@@ -76,29 +78,30 @@ final class BodySessionRecorder: ObservableObject {
     /// at the end, because whose they were needs the whole session to say.
     private var effortsEmittedUntil: Double = 0
     private var activityEmittedUntil: Double = 0
-    private var drill = DrillContext(kind: .freePlay, note: nil, plannedMinutes: nil)
+    private var drill = DrillContext(kind: .freePlay)
+    private var converter: AVAudioConverter?
     private var startedAt = Date()
     private var startUptime: TimeInterval = 0
 
     private var motion: [BodyMotionSample] = []
     private var splitSteps: [SplitStep] = []
+    /// Stroke times the live tick has already counted, so a trailing-window
+    /// detection never counts the same strike twice.
+    private var liveStrokes: [Double] = []
     private var tickTimer: Timer?
     private var clockTimer: Timer?
-    private var lastTickAt: Double = 0
-    private var lastTickStrokes = 0
 
     // MARK: - Lifecycle
 
     func start(drill: DrillContext) {
-        guard state == .idle else { return }
+        guard SensingFeature.isEnabled, state == .idle else { return }
         self.drill = drill
         startedAt = Date()
         sessionID = UUID().uuidString
         effortsEmittedUntil = 0; activityEmittedUntil = 0
         startUptime = ProcessInfo.processInfo.systemUptime
-        envelopeBuffer.reset(); motion.removeAll(); splitSteps.removeAll(); ticks.removeAll()
+        envelopeBuffer.reset(); motion.removeAll(); splitSteps.removeAll(); liveStrokes.removeAll()
         strokes = 0; splitStepCount = 0; elapsed = 0; failure = nil
-        lastTickAt = 0; lastTickStrokes = 0
 
         do {
             try startAudio()
@@ -133,43 +136,51 @@ final class BodySessionRecorder: ObservableObject {
         tick()
         harvestSplitSteps(flushAll: true)
 
-        // A wall rally has its own rhythm — one racket sound and one rebound
-        // per cycle — so it gets the gap the wall sessions were calibrated
-        // with rather than the faster one a rally between two people needs.
-        let onWall = drill.kind == .wall
+        // The drill decides the gap and what the quiet population means —
+        // in DrillContext.Kind, once, for this recorder, the live tick and
+        // the watch alike.
+        let onWall = drill.kind.contactModel == .wallRebound
         let impacts = BallImpactAudio.detectImpactsWithStrength(
             envelope: envelopeBuffer.snapshot(), dt: BallImpactAudio.envelopeWindow,
-            minGap: onWall ? BallImpactAudio.wallMinGap : BallImpactAudio.rallyMinGap)
+            minGap: drill.kind.impactMinGap)
 
         var split: ImpactAttribution.Split? = nil
         var rebounds: Int? = nil
         var strokeTimes = impacts.map(\.t)
-        if onWall {
-            // The quiet population here is the wall, not an opponent. Both
-            // sounds are the player's; only the loud one is a stroke.
+        switch drill.kind.contactModel {
+        case .wallRebound:
+            // The quiet population is the wall, not an opponent. Both sounds
+            // are the player's; only the loud one is a stroke.
             if let separated = ImpactAttribution.separateWallBounces(impacts) {
                 strokeTimes = separated.strokes
                 rebounds = separated.rebounds.count
             }
-        } else {
+        case .twoPlayers:
             // With no wrist to claim them, loudness is the only way to tell
             // the player's own strokes from the other end of the court — and
             // it declines when a session has only one player in it.
             split = ImpactAttribution.splitByLoudness(impacts)
             if let own = split?.own { strokeTimes = own }
+        case .solo:
+            break
         }
 
         let readiness = onWall ? nil
             : MovementDetector.readiness(splitSteps: splitSteps,
                                          opponentContacts: split?.opponent ?? [])
         let rhythm = RallyRhythmReader.read(strokes: strokeTimes)
-        let work = MovementDetector.workRest(motion)
-        // `motion` is only the tail harvesting has not discarded, so the
-        // rules that need movement read the derived efforts written to the
-        // session file — the whole session, the same way the coach reads it.
+        // `motion` is only the tail harvesting has not discarded. Everything
+        // below reads the session file instead — the whole session, the same
+        // way the coach reads it — so the summary rows and the coach block
+        // can no longer disagree about the same session.
         let recorded = store.load(sessionID)?.decodedEvents ?? []
         let efforts = recorded.compactMap { e -> (t: Double, peak: Double)? in
             if case .effort(let t, let p) = e { return (t, p) }; return nil }
+        let activity = recorded.compactMap { e -> Double? in
+            if case .activity(_, let share) = e { return share }; return nil }
+        let effortTimes = efforts.map(\.t).sorted()
+        var longestRest = 0.0
+        for i in 1..<max(1, effortTimes.count) { longestRest = max(longestRest, effortTimes[i] - effortTimes[i - 1]) }
         let findings = SessionAnalyst.analyse(
             ownContacts: strokeTimes,
             opponentContacts: split?.opponent ?? [],
@@ -189,16 +200,21 @@ final class BodySessionRecorder: ObservableObject {
             contacts = impacts.map { .contact(t: $0.t, strength: $0.strength, owner: .unknown) }
         }
         persist(contacts)
-        if let stored = store.load(sessionID) { WatchLink.shared.showStored(stored) }
+        let stored = store.load(sessionID)
+        if let stored { WatchLink.shared.showStored(stored) }
+        let trend = stored.map {
+            SessionTrends.compare(current: $0, history: store.all().filter { $0.id != sessionID })
+        } ?? TrendResult(notes: [], baselineCount: 0, notCompared: "the session was not saved.")
 
         state = .idle
         return BodySessionResult(
             sessionID: sessionID,
-            drill: drill, startedAt: startedAt, duration: elapsed, ticks: ticks,
+            drill: drill, startedAt: startedAt, duration: elapsed, trend: trend,
             impacts: impacts, attribution: split, splitSteps: splitSteps,
             readiness: readiness, rhythm: rhythm, wallRebounds: rebounds,
-            efforts: MovementDetector.efforts(motion).count,
-            workShare: work?.workShare, longestRest: work?.longestRest,
+            efforts: efforts.count,
+            workShare: activity.isEmpty ? nil : activity.reduce(0, +) / Double(activity.count),
+            longestRest: effortTimes.count >= 2 ? longestRest : nil,
             findings: findings)
     }
 
@@ -213,15 +229,22 @@ final class BodySessionRecorder: ObservableObject {
 
         let input = engine.inputNode
         let format = input.outputFormat(forBus: 0)
-        envelopeBuffer.binSize = max(1, Int(format.sampleRate * BallImpactAudio.envelopeWindow))
+        // The hardware runs at 44.1 or 48 kHz; the detector was calibrated at
+        // 16. Convert first, then fold — otherwise the envelope has a
+        // different spectral shape from the one the threshold was tuned on.
+        guard let conv = AVAudioConverter(from: format, to: LiveEnvelope.calibratedFormat) else {
+            throw NSError(domain: "BodySession", code: 2, userInfo: [NSLocalizedDescriptionKey:
+                "The microphone format could not be converted to the detector's rate."])
+        }
+        converter = conv
+        envelopeBuffer.binSize = Int(LiveEnvelope.calibratedSampleRate * BallImpactAudio.envelopeWindow)
         // The tap runs on a real-time audio thread. It must not wait on the
         // main actor and must not outlive the buffer it was handed, so the
-        // samples are folded into the envelope right here, synchronously, and
-        // the buffer is never referenced again.
+        // samples are converted and folded into the envelope right here,
+        // synchronously, and the buffer is never referenced again.
         let sink = envelopeBuffer
         input.installTap(onBus: 0, bufferSize: 4096, format: format) { buffer, _ in
-            guard let channel = buffer.floatChannelData?[0] else { return }
-            sink.consume(channel, count: Int(buffer.frameLength))
+            sink.consume(buffer, converter: conv)
         }
         engine.prepare()
         try engine.start()
@@ -265,23 +288,26 @@ final class BodySessionRecorder: ObservableObject {
         elapsed = ProcessInfo.processInfo.systemUptime - startUptime
         harvestSplitSteps(flushAll: false)
 
-        let impacts = BallImpactAudio.detectImpacts(
-            envelope: envelopeBuffer.snapshot(), dt: BallImpactAudio.envelopeWindow,
-            minGap: BallImpactAudio.rallyMinGap)
-        strokes = impacts.count
-
-        let window = max(0.001, elapsed - lastTickAt)
-        let new = max(0, strokes - lastTickStrokes)
-        ticks.append(LiveTick(elapsed: elapsed,
-                              swings: new,
-                              swingsPerMinute: Double(new) / window * 60,
-                              medianPeakRotation: 0,   // the wrist's number; nil from the waist
-                              heartRate: nil,
-                              distanceMetres: nil,
-                              latitude: nil, longitude: nil,
-                              locationAccuracy: nil, speed: nil))
-        lastTickAt = elapsed
-        lastTickStrokes = strokes
+        // The live count: the same gap and the same meaning of the quiet
+        // population the final pass uses, so the number on the screen and
+        // the number in the file agree. Detected on a trailing window, not
+        // the whole session — the count is cumulative.
+        let dt = BallImpactAudio.envelopeWindow
+        let (window, first) = envelopeBuffer.snapshot(lastSeconds: WatchSessionTransport.liveAudioWindow,
+                                                      binDuration: dt)
+        let heard = BallImpactAudio.detectImpactsWithStrength(envelope: window, dt: dt,
+                                                              minGap: drill.kind.impactMinGap)
+            .map { (t: $0.t + Double(first) * dt, strength: $0.strength) }
+        let counted: [Double]
+        if drill.kind.contactModel == .wallRebound, let sep = ImpactAttribution.separateWallBounces(heard) {
+            counted = sep.strokes
+        } else {
+            counted = heard.map(\.t)
+        }
+        for t in counted where t < elapsed - 0.5 && !liveStrokes.contains(where: { abs($0 - t) < 0.2 }) {
+            liveStrokes.append(t)
+        }
+        strokes = liveStrokes.count
     }
 
     /// Runs split-step detection over the motion collected so far, then throws

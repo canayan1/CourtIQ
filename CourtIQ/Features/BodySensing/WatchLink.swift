@@ -25,10 +25,14 @@ final class WatchLink: NSObject, ObservableObject {
         var id: String
         var drill: String
         var startedAt: Date
-        var events: [SensorEvent]
         var stints: [Stint]
         var benchNotes: [BenchNote]
         var finished: Bool
+
+        init(session: SensingSession, finished: Bool) {
+            id = session.id; drill = session.drill; startedAt = session.startedAt
+            stints = session.stints; benchNotes = session.benchNotes; self.finished = finished
+        }
     }
 
     @Published private(set) var live: LiveMatch?
@@ -46,36 +50,23 @@ final class WatchLink: NSObject, ObservableObject {
     /// Puts a stored session on the bench card, whichever device wrote it.
     /// The phone recorder calls this when it stops, so a phone-only session
     /// appears exactly where a watch session would.
-    func showStored(_ session: SensingSession) {
-        let events = session.decodedEvents
-        let stints = StintBuilder.stints(from: events)
-        let notes = stints.count >= 2
-            ? BenchReport.compare(latest: stints[stints.count - 1], previous: stints[stints.count - 2])
-            : []
-        live = LiveMatch(id: session.id, drill: session.drill, startedAt: session.startedAt,
-                         events: events, stints: stints, benchNotes: notes, finished: true)
+    func showStored(_ session: SensingSession, finished: Bool = true) {
+        live = LiveMatch(session: session, finished: finished)
     }
 
+    /// One typed batch in, one append, one card. A batch from a newer watch
+    /// than this phone understands is dropped with its version logged rather
+    /// than half-parsed.
     fileprivate func receive(_ payload: [String: Any]) {
-        guard let id = payload["session"] as? String,
-              let data = payload["events"] as? Data,
-              let dtos = try? JSONDecoder().decode([SensorEventDTO].self, from: data)
-        else { return }
-        let drill = payload["drill"] as? String ?? DrillContext.Kind.freePlay.rawValue
-        let started = Date(timeIntervalSince1970: payload["started"] as? Double
-                           ?? Date().timeIntervalSince1970)
-        let highRate = payload["highRate"] as? Bool ?? false
-        let final = payload["final"] as? Bool ?? false
-
-        let session = store.append(dtos, to: id, startedAt: started, drill: drill,
-                                   highRateMotion: highRate)
-        let events = session.decodedEvents
-        let stints = StintBuilder.stints(from: events)
-        let notes = stints.count >= 2
-            ? BenchReport.compare(latest: stints[stints.count - 1], previous: stints[stints.count - 2])
-            : []
-        live = LiveMatch(id: id, drill: drill, startedAt: started, events: events,
-                         stints: stints, benchNotes: notes, finished: final)
+        guard let data = payload["batch"] as? Data,
+              let batch = try? SensorEventCodec.decodeBatch(data) else { return }
+        guard batch.version <= SessionBatch.currentVersion else {
+            print("WatchLink: batch version \(batch.version) is newer than this build understands")
+            return
+        }
+        let session = store.append(batch.events, to: batch.id, startedAt: batch.startedAt,
+                                   drill: batch.drill, highRateMotion: batch.highRateMotion)
+        showStored(session, finished: batch.final)
     }
 }
 

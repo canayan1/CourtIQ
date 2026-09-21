@@ -15,6 +15,11 @@ struct MobilityLibraryView: View {
     private let flows = MobilityFlow.sampleFlows
 
     @State private var appeared = false
+    #if DEBUG
+    /// Headless QC: SIMCTL_CHILD_QC_OPEN=recoverflow pushes the first flow so
+    /// the figure can be screenshotted without a tap.
+    @State private var qcPushFirstFlow = false
+    #endif
 
     private var previewFlowIDs: Set<String> {
         Set(flows.prefix(2).map(\.id))
@@ -59,7 +64,15 @@ struct MobilityLibraryView: View {
         }
         .navigationTitle(lang.t("mobility.library"))
         .background(AppPalette.cream)
+        #if DEBUG
+        .navigationDestination(isPresented: $qcPushFirstFlow) {
+            if let first = flows.first { MobilityFlowDetailView(flow: first) }
+        }
+        #endif
         .onAppear {
+            #if DEBUG
+            if ProcessInfo.processInfo.environment["QC_OPEN"] == "recoverflow" { qcPushFirstFlow = true }
+            #endif
             if reduceMotion {
                 appeared = true
             } else if !appeared {

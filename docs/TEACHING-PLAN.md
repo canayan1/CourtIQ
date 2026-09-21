@@ -275,6 +275,11 @@ parts); decision 9 is still yours. No capture screen yet.
 **Not built, on purpose:** Step 4 and Step 5. They need Step 3's data, and
 the data needs lessons.
 
+**Where the code sits.** `Practice/` and `Teaching/` compile in the test
+tools only; they are not in the app target yet. They join it with their first
+screen, once T1 has confirmed the counting they depend on — until then they
+would be dead weight in a shipping binary.
+
 ## Sequencing
 
 | when | what | needs |

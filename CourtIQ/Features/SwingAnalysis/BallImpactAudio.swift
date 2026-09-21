@@ -34,8 +34,10 @@ enum BallImpactAudio {
         let asset = AVURLAsset(url: videoURL)
         guard let duration = try? await asset.load(.duration).seconds, duration > 0,
               let envelope = try? readEnvelope(asset: asset) else { return nil }
+        // The same edge guard SwingImpactAnalyzer keeps: the first and last
+        // half-second are the recording button, not a stroke.
         return detectImpacts(envelope: envelope, dt: envelopeWindow, minGap: minGap)
-            .filter { $0 > 0.3 && $0 < duration - 0.2 }
+            .filter { $0 > 0.6 && $0 < duration - 0.4 }
     }
 
     // MARK: - Audio envelope (offline)
@@ -59,12 +61,11 @@ enum BallImpactAudio {
         reader.add(output)
         reader.startReading()
 
-        let window = Int(envelopeWindow * sampleRate)   // 160 samples
-        var envelope: [Double] = []
-        var previous: Float = 0
-        var sumSquares: Double = 0
-        var filled = 0
-
+        // The same class the live paths fold their microphone into — one
+        // definition of the envelope, so the offline and live detectors
+        // cannot drift apart.
+        let live = LiveEnvelope()
+        live.binSize = Int(envelopeWindow * sampleRate)   // 160 samples
         while let sample = output.copyNextSampleBuffer() {
             guard let block = CMSampleBufferGetDataBuffer(sample) else { continue }
             var length = 0
@@ -73,22 +74,11 @@ enum BallImpactAudio {
                 block, atOffset: 0, lengthAtOffsetOut: nil,
                 totalLengthOut: &length, dataPointerOut: &pointer) == noErr,
                 let bytes = pointer else { continue }
-
             bytes.withMemoryRebound(to: Float.self, capacity: length / 4) { floats in
-                for i in 0..<(length / 4) {
-                    let x = floats[i]
-                    let hp = Double(x - previous)   // differentiator ≈ high-pass
-                    previous = x
-                    sumSquares += hp * hp
-                    filled += 1
-                    if filled == window {
-                        envelope.append((sumSquares / Double(window)).squareRoot())
-                        sumSquares = 0
-                        filled = 0
-                    }
-                }
+                live.consume(floats, count: length / 4)
             }
         }
+        let envelope = live.snapshot()
         return envelope
     }
 
@@ -98,11 +88,7 @@ enum BallImpactAudio {
     static func detectImpacts(envelope: [Double], dt: Double,
                                       minGap: Double = wallMinGap) -> [Double] {
         guard envelope.count > 10 else { return [] }
-        let sorted = envelope.sorted()
-        let median = sorted[sorted.count / 2]
-        let deviations = envelope.map { abs($0 - median) }.sorted()
-        let mad = max(deviations[deviations.count / 2], 1e-9)
-        let threshold = median + madK * mad
+        let threshold = Stats.madThreshold(envelope, k: madK)
 
         let above = envelope.indices.filter { envelope[$0] > threshold }
         guard !above.isEmpty else { return [] }

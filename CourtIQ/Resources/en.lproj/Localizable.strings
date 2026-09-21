@@ -1223,3 +1223,8 @@
 "challenge.cta_body_fmt" = "They get the same five scenarios and your %1$d/%2$d to beat. The whole thing travels in the link.";
 "challenge.cta_button" = "Challenge a friend";
 "challenge.share_fmt" = "I got %1$d/%2$d on these five tennis situations. Your turn 🎾";
+
+/* Hardcoded until Sep 2026: the last three English literals in shipped screens. */
+"profile.path_to_fmt" = "Path to %@";
+"drill.number_fmt" = "Drill #%d";
+"training.week_of_fmt" = "WK %d · %d";

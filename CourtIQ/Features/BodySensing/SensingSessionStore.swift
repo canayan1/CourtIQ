@@ -9,6 +9,16 @@ struct SensingSession: Codable, Identifiable, Equatable {
     var events: [SensorEventDTO]
 
     var decodedEvents: [SensorEvent] { events.compactMap(SensorEventCodec.event) }
+
+    /// Derived once, here, for every reader — the link, the bench card, the
+    /// coach block. The first version wrote this derivation out three times
+    /// and the copies had already started to differ.
+    var stints: [Stint] { StintBuilder.stints(from: decodedEvents) }
+    var benchNotes: [BenchNote] {
+        let s = stints
+        guard s.count >= 2 else { return [] }
+        return BenchReport.compare(latest: s[s.count - 1], previous: s[s.count - 2])
+    }
 }
 
 /// Sessions on disk, one JSON file each under Documents/sensing.
@@ -27,6 +37,9 @@ final class SensingSessionStore {
     private let directory: URL
     private let encoder = JSONEncoder()
     private let decoder = JSONDecoder()
+    /// Sessions decoded this process, so a batch every twenty seconds does
+    /// not re-read and re-decode the whole file before appending to it.
+    private var cache: [String: SensingSession] = [:]
 
     init(directory: URL? = nil) {
         let base = directory ?? FileManager.default
@@ -43,8 +56,11 @@ final class SensingSessionStore {
     }
 
     func load(_ id: String) -> SensingSession? {
-        guard let data = try? Data(contentsOf: url(id)) else { return nil }
-        return try? decoder.decode(SensingSession.self, from: data)
+        if let hit = cache[id] { return hit }
+        guard let data = try? Data(contentsOf: url(id)),
+              let session = try? decoder.decode(SensingSession.self, from: data) else { return nil }
+        cache[id] = session
+        return session
     }
 
     /// Appends a batch, creating the session on first sight.
@@ -53,7 +69,12 @@ final class SensingSessionStore {
                 drill: String, highRateMotion: Bool) -> SensingSession {
         var session = load(id) ?? SensingSession(id: id, startedAt: startedAt, drill: drill,
                                                  highRateMotion: highRateMotion, events: [])
-        session.events.append(contentsOf: dtos)
+        // A batch can arrive twice — a live send that also got queued, a
+        // resumed transfer — and the store is append-only, so exact
+        // duplicates are dropped here rather than counted as strokes.
+        let seen = Set(session.events.map { "\($0.k)|\($0.t)|\($0.o ?? "")" })
+        session.events.append(contentsOf: dtos.filter { !seen.contains("\($0.k)|\($0.t)|\($0.o ?? "")") })
+        cache[id] = session
         if let data = try? encoder.encode(session) { try? data.write(to: url(id), options: .atomic) }
         return session
     }

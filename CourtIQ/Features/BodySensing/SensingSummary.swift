@@ -15,8 +15,21 @@ enum SensingSummary {
     static func coachBlock(for entry: MatchEntry) -> String? {
         let store = SensingSessionStore.shared
         let session: SensingSession?
-        if let id = entry.sensingSessionID { session = store.load(id) }
-        else { session = store.nearest(to: entry.date) }
+        if let id = entry.sensingSessionID {
+            session = store.load(id)
+        } else if let near = store.nearest(to: entry.date),
+                  // The fallback attaches a session to a MATCH. A wall drill
+                  // or a serving session on the same day is not that match,
+                  // and judging a match on wall rules would hand the coach the
+                  // wrong session with a straight face — so only sessions
+                  // that were a match or free play, and only within three
+                  // hours of the match's own time, are ever attached this way.
+                  [DrillContext.Kind.match.rawValue, DrillContext.Kind.freePlay.rawValue].contains(near.drill),
+                  abs(near.startedAt.timeIntervalSince(entry.date)) < 3 * 3600 {
+            session = near
+        } else {
+            session = nil
+        }
         guard let session else { return nil }
         let events = session.decodedEvents
         guard events.count > 20 else { return nil }
@@ -33,7 +46,7 @@ enum SensingSummary {
         let opp = events.filter { if case .contact(_, _, .opponent) = $0 { return true }; return false }.count
         lines.append("Contacts: player \(own), opponent \(opp).")
 
-        let stints = StintBuilder.stints(from: events)
+        let stints = session.stints
         if !stints.isEmpty {
             lines.append("Stints (between changeovers):")
             for s in stints {
@@ -44,11 +57,7 @@ enum SensingSummary {
                 if let hr = s.meanHeartRate { part += String(format: ", HR %.0f", hr) }
                 lines.append(part)
             }
-            if stints.count >= 2 {
-                let notes = BenchReport.compare(latest: stints[stints.count - 1],
-                                                previous: stints[stints.count - 2])
-                for n in notes { lines.append("  Last stint vs previous: " + n.sentence) }
-            }
+            for n in session.benchNotes { lines.append("  Last stint vs previous: " + n.sentence) }
         }
 
         // The omission detector, on the event stream. With no raw motion in

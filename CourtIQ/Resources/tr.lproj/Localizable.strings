@@ -1223,3 +1223,8 @@
 "challenge.cta_body_fmt" = "Aynı beş senaryoyu ve geçmesi gereken %2$d üzerinden %1$d skorunu alır. Her şey bağlantının içinde gider.";
 "challenge.cta_button" = "Bir arkadaşına meydan oku";
 "challenge.share_fmt" = "Bu beş tenis durumunda %2$d üzerinden %1$d yaptım. Sıra sende 🎾";
+
+/* Hardcoded until Sep 2026: the last three English literals in shipped screens. */
+"profile.path_to_fmt" = "%@ yolunda";
+"drill.number_fmt" = "Drill #%d";
+"training.week_of_fmt" = "HF %d · %d";

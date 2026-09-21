@@ -291,6 +291,17 @@ player logged eating; the two can sit side by side.
 know what produced them. That is what makes "phone and external device" one
 product instead of two.
 
+**One shape on the wire.** What crosses the watch-to-phone link is a typed,
+versioned `SessionBatch` (`SensorEventCodec.swift`): session id, drill, start
+time, motion rate, the events, and a `final` flag. It is sent once — live
+message first, queued transfer only when the live path fails — and the store
+drops any exact duplicate that still arrives, so a batch delivered twice is
+never counted as strokes twice. Both microphones feed the same detector at
+the same 16 kHz it was tuned on; the watch and the phone tap each run an
+`AVAudioConverter` before anything is measured. The drill decides the contact
+model (two players / wall rebound / solo) and the minimum gap between
+impacts, on the phone tick and on the wrist alike.
+
 | device | strokes | footwork | heart rate | changeover mark | live to phone | status |
 |---|---|---|---|---|---|---|
 | iPhone on belt / in pocket | audio | 100 Hz motion | — | rest-gap inference | it *is* the phone | built, DEBUG, **writes the same session file as the watch**, needs T1–T3 |
@@ -485,9 +496,12 @@ bug and worth checking once T1 gives a trusted count.
 | Shared audio | `CourtIQ/Features/SwingAnalysis/BallImpactAudio.swift` |
 | Camera design | `docs/DUEL-BASELINE-CAM.md` |
 | Offline tools | `tools/court-calibrate.swift`, `tools/duel-track.swift`, `tools/duel-corpus.sh` |
-| Test suites | `tools/{duel-report,wrist-swing,movement,attribution,rhythm,findings,stints,codec,trends,drills}-test.swift` |
+| Test suites | `tools/{duel-report,wrist-swing,movement,attribution,rhythm,findings,stints,codec,trends,drills,tasks,lesson}-test.swift` |
+| Practice / Teaching engines (compiled by the tools, not yet in the app target) | `CourtIQ/Features/Practice/`, `CourtIQ/Features/Teaching/` |
 
 The body session screen is reachable only in a DEBUG build, from a plain button
-at the bottom of Home. That is deliberate: nothing it reports has been checked
+at the bottom of Home (`SensingFeature.isEnabled`, the one flag that also gates
+the watch link and, through Info.plist preprocessing, keeps background audio out
+of a Release build). That is deliberate: nothing it reports has been checked
 against a hand count, and in this app a measurement earns its place by agreeing
 with reality first.

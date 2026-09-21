@@ -110,7 +110,7 @@ struct TrainingProgramDetailView: View {
                     Spacer()
 
                     // Current week / total — replaces the old plain "8 weeks"
-                    Text("WK \(progress.selectedWeek) · \(program.durationWeeks)")
+                    Text(String(format: lang.t("training.week_of_fmt"), progress.selectedWeek, program.durationWeeks))
                         .appFont(11, weight: .heavy)
                         .tracking(1.0)
                         .foregroundStyle(.white.opacity(0.85))

@@ -32,7 +32,7 @@ struct WatchSessionView: View {
                     Text(failure).font(.footnote).foregroundStyle(.red)
                 }
                 Button("Start") {
-                    controller.start(drill: DrillContext(kind: drill, note: nil, plannedMinutes: nil))
+                    controller.start(drill: DrillContext(kind: drill))
                 }
                 .buttonStyle(.borderedProminent)
                 Text("The microphone listens for ball contact and is never recorded.")
@@ -90,8 +90,5 @@ struct WatchSessionView: View {
         }
     }
 
-    private func timeString(_ seconds: Double) -> String {
-        let s = Int(seconds.rounded())
-        return String(format: "%d:%02d", s / 60, s % 60)
-    }
+    private func timeString(_ seconds: Double) -> String { SessionClock.string(seconds) }
 }

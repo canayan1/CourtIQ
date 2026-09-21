@@ -142,11 +142,13 @@ struct HomeView: View {
                 // What the watch sent, if a session is running or just ended.
                 // Same DEBUG door and the same reason: the link has never
                 // carried a real session.
-                BenchCardView()
-                Button("Body session (debug)") { route = .bodySession }
-                    .font(.footnote)
-                    .foregroundStyle(AppPalette.inkSoft)
-                    .padding(.top, 8)
+                if SensingFeature.isEnabled {
+                    BenchCardView()
+                    Button("Body session (debug)") { route = .bodySession }
+                        .font(.footnote)
+                        .foregroundStyle(AppPalette.inkSoft)
+                        .padding(.top, 8)
+                }
                 #endif
             }
             .padding(20)
@@ -160,6 +162,7 @@ struct HomeView: View {
             case "swing": route = .swing
             case "coachorder": route = .coachOrder
             case "body": route = .bodySession
+            case "recover", "recoverflow": route = .recover
             case "paywall": showProgramsPaywall = true
             case "nutrition": route = .nutrition
             case "profile": showProfile = true

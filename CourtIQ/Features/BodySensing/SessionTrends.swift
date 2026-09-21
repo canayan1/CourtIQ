@@ -70,10 +70,7 @@ enum SessionTrends {
         }
         let now = aggregate(current)
         let past = same.map(aggregate)
-        func median(_ xs: [Double]) -> Double? {
-            guard !xs.isEmpty else { return nil }
-            let s = xs.sorted(); return s[s.count / 2]
-        }
+        func median(_ xs: [Double]) -> Double? { xs.isEmpty ? nil : Stats.median(xs) }
         var notes: [TrendNote] = []
 
         if let a = now.readiness, let b = median(past.compactMap(\.readiness)), b > 0 {

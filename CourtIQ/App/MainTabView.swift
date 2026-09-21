@@ -67,8 +67,9 @@ struct MainTabView: View {
         }
         .tint(AppPalette.clay)
         .environmentObject(tabRouter)
-        // The wrist can only reach a phone that is listening.
-        .task { WatchLink.shared.activate() }
+        // The wrist can only reach a phone that is listening — and only a
+        // build that has the feature listens. One flag gates every door.
+        .task { if SensingFeature.isEnabled { WatchLink.shared.activate() } }
         .id(lang.language)
         #if DEBUG
         // Headless QC: SIMCTL_CHILD_QC_TAB=coach|wall|tactics|journal fronts a tab

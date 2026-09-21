@@ -60,7 +60,7 @@ struct BodySessionView: View {
 
             Button {
                 result = nil
-                recorder.start(drill: DrillContext(kind: drill, note: nil, plannedMinutes: nil))
+                recorder.start(drill: DrillContext(kind: drill))
             } label: {
                 Text("Start")
                     .font(.headline)
@@ -225,25 +225,24 @@ struct BodySessionView: View {
             // Against the player's own previous sessions of this kind. Same
             // floor as the bench card, same silence when nothing moved, same
             // refusal to say why.
-            if let stored = SensingSessionStore.shared.load(r.sessionID) {
-                let history = SensingSessionStore.shared.all().filter { $0.id != r.sessionID }
-                let trend = SessionTrends.compare(current: stored, history: history)
-                if !trend.notes.isEmpty {
-                    Divider().padding(.vertical, 4)
-                    Text("Against your last \(trend.baselineCount)")
-                        .font(.headline)
+            // Computed once by the recorder when the session stopped. The
+            // first version reloaded every session file from disk inside
+            // this body, on every re-render.
+            if !r.trend.notes.isEmpty {
+                Divider().padding(.vertical, 4)
+                Text("Against your last \(r.trend.baselineCount)")
+                    .font(.headline)
+                    .foregroundStyle(AppPalette.ink)
+                ForEach(r.trend.notes, id: \.sentence) { note in
+                    Text("· " + note.sentence)
+                        .font(.subheadline)
                         .foregroundStyle(AppPalette.ink)
-                    ForEach(trend.notes, id: \.sentence) { note in
-                        Text("· " + note.sentence)
-                            .font(.subheadline)
-                            .foregroundStyle(AppPalette.ink)
-                    }
-                } else if let why = trend.notCompared {
-                    Text("No trend yet: " + why)
-                        .font(.footnote)
-                        .foregroundStyle(AppPalette.inkSoft)
-                        .padding(.top, 4)
                 }
+            } else if let why = r.trend.notCompared {
+                Text("No trend yet: " + why)
+                    .font(.footnote)
+                    .foregroundStyle(AppPalette.inkSoft)
+                    .padding(.top, 4)
             }
 
             Text("Saved. Log today's match in the Journal and the coach reads this session with it.")
@@ -289,10 +288,7 @@ struct BodySessionView: View {
         }
     }
 
-    private func timeString(_ seconds: Double) -> String {
-        let s = Int(seconds.rounded())
-        return String(format: "%d:%02d", s / 60, s % 60)
-    }
+    private func timeString(_ seconds: Double) -> String { SessionClock.string(seconds) }
 }
 
 /// A wrapping row of selectable chips.

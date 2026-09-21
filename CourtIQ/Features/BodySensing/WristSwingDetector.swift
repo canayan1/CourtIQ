@@ -92,11 +92,7 @@ enum WristSwingDetector {
             jerk.append(abs(accel[i].magnitude - accel[i - 1].magnitude))
         }
 
-        let sorted = jerk.sorted()
-        let median = sorted[sorted.count / 2]
-        let deviations = jerk.map { abs($0 - median) }.sorted()
-        let mad = max(deviations[deviations.count / 2], 1e-9)
-        let threshold = median + madK * mad
+        let threshold = Stats.madThreshold(jerk, k: madK)
 
         // How much this peak stands out from the load the arm was already
         // under, which is what separates a strike from a swing.

@@ -65,3 +65,30 @@ enum SensorEventCodec {
         try JSONDecoder().decode([SensorEventDTO].self, from: data).compactMap(event)
     }
 }
+
+/// One batch on the wire, and one shape for it on both sides.
+///
+/// The first version sent a hand-built dictionary with six magic keys and
+/// parsed it by hand on the phone; a typo on either side dropped the whole
+/// session into a silent `guard … else { return }`. This is typed, versioned,
+/// and the only thing either side encodes or decodes.
+struct SessionBatch: Codable, Equatable {
+    static let currentVersion = 1
+    var version: Int = SessionBatch.currentVersion
+    var id: String
+    var drill: String
+    var startedAt: Date
+    var highRateMotion: Bool
+    var events: [SensorEventDTO]
+    var final: Bool
+}
+
+extension SensorEventCodec {
+    private static var coder: (JSONEncoder, JSONDecoder) {
+        let e = JSONEncoder(); e.dateEncodingStrategy = .iso8601
+        let d = JSONDecoder(); d.dateDecodingStrategy = .iso8601
+        return (e, d)
+    }
+    static func encode(_ batch: SessionBatch) throws -> Data { try coder.0.encode(batch) }
+    static func decodeBatch(_ data: Data) throws -> SessionBatch { try coder.1.decode(SessionBatch.self, from: data) }
+}
