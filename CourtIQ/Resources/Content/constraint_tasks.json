@@ -1,0 +1,64 @@
+[
+  {
+    "_draft_note": "DRAFT. Every task here is a placeholder for coaching knowledge: what each one SHAPES is the coach's to write, and `draft` stays true until the coach has confirmed it. The engine is real; the tennis is not yet. See docs/TEACHING-PLAN.md, decision 1.",
+    "id": "wall.rally",
+    "name": "Keep it going",
+    "shapes": "Consistency and footwork. A player who does not recover to a ready base cannot keep a wall rally alive past a handful.",
+    "kind": "consecutiveRally",
+    "measurement": "audioStrokes",
+    "surface": "wall",
+    "length": 30,
+    "threshold": { "rule": "relative", "factor": 1.5, "minimum": 6, "maximum": 60 },
+    "instruction": "Rally against the wall. Count how many you can keep going before the ball gets away.",
+    "draft": true
+  },
+  {
+    "id": "wall.tempo",
+    "name": "Hold the rhythm",
+    "shapes": "Early preparation. A late take-back cannot hold a steady tempo; the player rushes some balls and waits on others.",
+    "kind": "tempoHold",
+    "measurement": "audioStrokes",
+    "surface": "wall",
+    "length": 20,
+    "maxTempoSpread": 0.25,
+    "threshold": { "rule": "absolute", "value": 20, "minimum": 8, "maximum": 40 },
+    "instruction": "Twenty balls at one steady beat. Same gap between every hit, like a metronome.",
+    "draft": true
+  },
+  {
+    "id": "wall.alternate",
+    "name": "Both sides",
+    "shapes": "Recovery and grip change. Alternating wings forces the player back to the middle between every ball.",
+    "kind": "alternateWings",
+    "measurement": "wing",
+    "surface": "wall",
+    "length": 20,
+    "threshold": { "rule": "relative", "factor": 1.5, "minimum": 4, "maximum": 40 },
+    "instruction": "Forehand, backhand, forehand, backhand. Count how many you can alternate without breaking the pattern.",
+    "draft": true
+  },
+  {
+    "id": "court.deep",
+    "name": "Past the line",
+    "shapes": "Length. A short, flat, arm-only swing cannot land balls past the service line; the swing has to lengthen and the weight has to go forward.",
+    "kind": "targetZone",
+    "measurement": "feederTap",
+    "surface": "court",
+    "length": 20,
+    "threshold": { "rule": "relative", "factor": 1.4, "minimum": 6, "maximum": 20 },
+    "instruction": "Twenty fed balls. Every one has to land past the service line — anything shorter does not count.",
+    "draft": true
+  },
+  {
+    "id": "court.crosscourt",
+    "name": "Cross-court corridor",
+    "shapes": "Direction and the contact point. Consistent cross-court needs contact in front; a late contact goes down the line or wide.",
+    "kind": "targetZone",
+    "measurement": "feederTap",
+    "surface": "court",
+    "length": 20,
+    "threshold": { "rule": "relative", "factor": 1.4, "minimum": 6, "maximum": 20 },
+    "instruction": "Twenty fed balls, all cross-court, inside the singles line and past the service line.",
+    "draft": true
+  }
+]

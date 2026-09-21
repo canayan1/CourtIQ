@@ -1,0 +1,27 @@
+{
+  "_draft_note": "DRAFT — coach to author. This is a starter taxonomy of common club-level forehand deviations, written so the schema exists and the lesson-capture tool has something to pick from. The coach rewrites it; nothing here is authoritative. Rule: a deviation is a thing a coach SEES, named consistently, so lessons aggregate. See docs/TEACHING-PLAN.md, Step 3, decision 9.",
+  "stroke": "forehand",
+  "version": "0.1-draft",
+  "deviations": [
+    { "id": "fh.prep.late",       "name": "Late preparation",            "description": "Racket still in front when the ball bounces; take-back happens after the bounce." },
+    { "id": "fh.prep.high",       "name": "Take-back too high / straight", "description": "Racket head lifts high and straight back rather than turning with the shoulders." },
+    { "id": "fh.turn.none",       "name": "No shoulder turn",             "description": "Hips and shoulders stay square to the net; the arm swings alone." },
+    { "id": "fh.contact.behind",  "name": "Contact behind the hip",       "description": "Ball met level with or behind the front hip rather than in front." },
+    { "id": "fh.contact.close",   "name": "Contact too close to the body", "description": "Elbow jammed; no room to extend through the ball." },
+    { "id": "fh.contact.far",     "name": "Reaching for the ball",        "description": "Contact far from the body with a straight, locked arm." },
+    { "id": "fh.contact.high",    "name": "Contact above shoulder height", "description": "Ball taken late in its rise or on the drop, above comfortable strike zone." },
+    { "id": "fh.contact.low",     "name": "Contact below knee height",    "description": "Ball allowed to drop; player bends at the waist rather than the knees." },
+    { "id": "fh.weight.back",     "name": "Weight on the back foot",      "description": "No forward transfer; the body falls away from the ball at contact." },
+    { "id": "fh.weight.early",    "name": "Weight through too early",     "description": "Front foot lands and weight arrives before the racket does." },
+    { "id": "fh.arm.only",        "name": "Arm-only swing",               "description": "No leg drive or trunk rotation; power comes from the shoulder and elbow." },
+    { "id": "fh.wrist.loose",     "name": "Wrist collapses at contact",   "description": "Racket face changes angle through contact; ball sprays." },
+    { "id": "fh.face.open",       "name": "Racket face open",             "description": "Face tilted upward at contact; ball floats long." },
+    { "id": "fh.face.closed",     "name": "Racket face closed",           "description": "Face tilted down at contact; ball into the net." },
+    { "id": "fh.finish.short",    "name": "Short follow-through",         "description": "Swing stops at or just after contact; no extension toward the target." },
+    { "id": "fh.finish.around",   "name": "Follow-through wraps too early", "description": "Racket comes around the body before extending; ball pulled wide." },
+    { "id": "fh.feet.flat",       "name": "Flat-footed at contact",       "description": "No split step; player is not loaded when the ball arrives." },
+    { "id": "fh.feet.stance",     "name": "Stance too narrow",            "description": "Feet close together; no base to rotate from." },
+    { "id": "fh.timing.rushed",   "name": "Rushed swing",                 "description": "Swing starts too late and is accelerated to catch up; contact is a snatch." },
+    { "id": "fh.eyes.early",      "name": "Head comes up early",          "description": "Eyes leave the contact point before the ball is struck." }
+  ]
+}

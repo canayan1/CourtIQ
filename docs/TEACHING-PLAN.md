@@ -235,6 +235,46 @@ The player taught themselves; the app set the task and kept the score.
 
 ---
 
+## Built so far (21 Sep 2026)
+
+Everything buildable without a coach or a court was built the same day the
+plan was written, so the discussion is about decisions, not about whether the
+engine exists.
+
+**Step 1 — the engine, not the tennis.** `CourtIQ/Features/Practice/`:
+`ConstraintTask` (tasks as data in `constraint_tasks.json`), `TaskScorer`
+(consecutive rally, tempo hold, alternating wings, target zone — each from
+the evidence it needs and *unscored* rather than zero when that evidence is
+missing), `TaskProgressionStore` (the bar is the player's own: first attempt
+is the baseline, met raises it, missed leaves it, unscored is never
+recorded), `PracticePlanner` (three tasks, interleaved, stable within a day),
+`TaskReport` (outcome, bar, next — and a test that no sentence contains a
+body part or a technique word). 23 checks in `tools/tasks-test.swift`. The
+five tasks in the file are **drafts**: what each one shapes is decision 1 and
+it is yours. No screen yet; it wires into the body session once T1 says the
+counting is right.
+
+**Step 2 — the lab, refusing correctly.** `tools/swing-lab.swift`: audio
+contact → pose at contact with the clip's rotation applied → per-rep contact
+ahead of the hip, contact height, finish height, tempo, and the spread of
+each. Three refusals, all exercised on real clips: a silent clip ("contact is
+found by sound"), a player under 25% of frame height (the two behind-the-
+baseline clips: 10% and 13%), a player square to the camera (shoulder span
+over 0.18 of height). **There is no positive case yet** — no clip on hand is
+side-on, close and audible. The first tripod session is the first real run.
+
+**Step 3 — the store and the drafts.** `CourtIQ/Features/Teaching/
+LessonCapture.swift`: a lesson row (pseudonymous student, one deviation, one
+cue, before/after/retention clips), consent recorded before a row can exist,
+withdrawal that deletes rows *and* clips, ids that must come from the
+vocabularies so rows aggregate. 14 checks in `tools/lesson-test.swift`. The
+vocabularies exist as **drafts** in `teaching_deviations.json` (20) and
+`teaching_cues.json` (22, every one external-focus — the test forbids body
+parts); decision 9 is still yours. No capture screen yet.
+
+**Not built, on purpose:** Step 4 and Step 5. They need Step 3's data, and
+the data needs lessons.
+
 ## Sequencing
 
 | when | what | needs |

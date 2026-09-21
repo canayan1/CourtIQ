@@ -1,0 +1,28 @@
+{
+  "_draft_note": "DRAFT — coach to author. A starter cue library so the lesson-capture tool has something to pick from and so the wording rule is demonstrated. RULE, from the motor-learning literature and binding on every cue the app ever utters: EXTERNAL FOCUS ONLY — the ball, the target, the wall, the rhythm, an object. Never a body part, never a joint angle. 'Send the ball past the line' teaches; 'extend your elbow' does not. Each cue names the deviations it is commonly used against; which cue works for which player is exactly the thing the lesson data exists to find out. See docs/TEACHING-PLAN.md, Step 3, decision 9.",
+  "version": "0.1-draft",
+  "cues": [
+    { "id": "cue.bounce.turn",     "text": "Be turned before the ball bounces.",                          "targets": ["fh.prep.late", "fh.turn.none", "fh.timing.rushed"] },
+    { "id": "cue.bounce.racket",   "text": "Racket back by the bounce, then wait.",                        "targets": ["fh.prep.late", "fh.timing.rushed"] },
+    { "id": "cue.meet.front",      "text": "Meet the ball out in front of you, where you can see it.",     "targets": ["fh.contact.behind", "fh.timing.rushed"] },
+    { "id": "cue.meet.side",       "text": "Let the ball come to your side, not your stomach.",           "targets": ["fh.contact.close"] },
+    { "id": "cue.meet.reach",      "text": "Let the ball come to you; do not go and get it.",             "targets": ["fh.contact.far"] },
+    { "id": "cue.meet.waist",      "text": "Hit the ball at belt height — move your feet until it is.",  "targets": ["fh.contact.high", "fh.contact.low"] },
+    { "id": "cue.target.deep",     "text": "Every ball has to land past the service line.",              "targets": ["fh.finish.short", "fh.arm.only", "fh.weight.back"] },
+    { "id": "cue.target.fence",    "text": "Finish with the racket pointing at the far fence.",           "targets": ["fh.finish.short", "fh.finish.around"] },
+    { "id": "cue.target.corridor", "text": "Keep every ball inside the cross-court corridor.",            "targets": ["fh.contact.behind", "fh.finish.around"] },
+    { "id": "cue.push.wall",       "text": "Push the ball toward the wall, do not hit at it.",            "targets": ["fh.wrist.loose", "fh.timing.rushed"] },
+    { "id": "cue.brush.up",        "text": "Brush up the back of the ball toward the top of the fence.",  "targets": ["fh.face.open", "fh.face.closed"] },
+    { "id": "cue.roof.over",       "text": "Hit the ball over an imaginary roof a metre above the net.", "targets": ["fh.face.closed", "fh.finish.short"] },
+    { "id": "cue.step.into",       "text": "Step toward the ball as you hit it.",                         "targets": ["fh.weight.back"] },
+    { "id": "cue.hit.then.step",   "text": "Hit, then step — the ball goes first.",                       "targets": ["fh.weight.early"] },
+    { "id": "cue.hop.bounce",      "text": "Little hop as they hit, land as it bounces.",                 "targets": ["fh.feet.flat"] },
+    { "id": "cue.wide.base",       "text": "Stand as if you are about to be pushed.",                     "targets": ["fh.feet.stance"] },
+    { "id": "cue.metronome",       "text": "Same gap between every hit — count it out loud.",             "targets": ["fh.timing.rushed", "fh.prep.late"] },
+    { "id": "cue.watch.strings",   "text": "See the ball on the strings before you look up.",             "targets": ["fh.eyes.early"] },
+    { "id": "cue.slow.ball",       "text": "Make the ball go slower and land deeper.",                     "targets": ["fh.arm.only", "fh.timing.rushed", "fh.wrist.loose"] },
+    { "id": "cue.hip.wall",        "text": "Turn so your back pocket faces the wall, then let it come round.", "targets": ["fh.turn.none", "fh.arm.only"] },
+    { "id": "cue.two.balls",       "text": "Imagine hitting through two balls in a row toward the target.", "targets": ["fh.finish.short", "fh.wrist.loose"] },
+    { "id": "cue.shadow.slow",     "text": "Shadow the full swing slowly, then hit at the same speed.",    "targets": ["fh.timing.rushed", "fh.finish.short"] }
+  ]
+}
