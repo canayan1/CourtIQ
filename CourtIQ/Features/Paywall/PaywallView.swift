@@ -1,4 +1,5 @@
 import SwiftUI
+import StoreKit
 
 /// PaywallView is DropVolley's subscription upsell, shown contextually when a
 /// free user hits a premium gate in one of the three pillars (Coach: AI
@@ -39,6 +40,10 @@ struct PaywallView: View {
     @State private var isWorking = false
     @State private var errorMessage: String?
     @State private var showExample = false
+    /// StoreKit's own redeem sheet. Offer codes handed out by hand — a free
+    /// month for a tester, say — otherwise need the App Store app and a
+    /// typed code; this puts the same sheet one tap inside the paywall.
+    @State private var showRedeem = false
 
     private let configuration = AppConfiguration.shared
 
@@ -539,10 +544,32 @@ struct PaywallView: View {
                 }
                 .font(.footnote.weight(.semibold))
                 .foregroundStyle(AppPalette.inkSoft)
+            } else {
+                Button(t("Have a code? Redeem it", "Kodun mu var? Kullan", "Un code ? Utilisez-le")) {
+                    showRedeem = true
+                }
+                .font(.footnote.weight(.semibold))
+                .foregroundStyle(AppPalette.inkSoft)
+                .disabled(isWorking)
             }
         }
         .frame(maxWidth: .infinity)
         .padding(.top, 4)
+        .offerCodeRedemption(isPresented: $showRedeem) { _ in
+            // The sheet reports only that it closed; the transaction, if any,
+            // arrives through Transaction.updates. Refresh so the paywall
+            // dismisses on the same visit instead of the next launch.
+            Task { await refreshAfterRedeem() }
+        }
+    }
+
+    private func refreshAfterRedeem() async {
+        isWorking = true
+        defer { isWorking = false }
+        await manager.refreshEntitlements()
+        if manager.entitlementState.isPremium {
+            dismiss()
+        }
     }
 
     private func footerButton(_ title: String, action: @escaping () -> Void) -> some View {

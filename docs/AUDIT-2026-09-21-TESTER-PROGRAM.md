@@ -44,9 +44,10 @@ Kullanım linki (uygulama gerekmez, App Store açar):
 
 Uygulama tarafı: açılışta `Transaction.currentEntitlements`, arka planda
 `Transaction.updates` dinleniyor; kod kullanıldıktan sonra uygulama açılınca
-premium gelir, gelmezse paywall'daki "Restore Purchases" var. Uygulamada
-"kod gir" düğmesi (`presentOfferCodeRedeemSheet`) **yok** — link yeterli,
-1.5'e iki satırla eklenir.
+premium gelir, gelmezse paywall'daki "Restore Purchases" var. Mağazadaki
+1.3'te "kod gir" düğmesi **yok** — link yeterli; main'de paywall'a
+"Have a code? Redeem it" (StoreKit `offerCodeRedemption`) eklendi, 1.5 ile
+gider.
 
 **Karar önerisi:** 10 kişi için `1 Month Free` grubunda **yeni bir tek-
 kullanımlık parti** (15 kod, 60 gün geçerli) üret; eski 1000'lik partiden
@@ -96,10 +97,10 @@ Kaba maliyet: 10 kişi tavanı zorlasa bile AI Coach günde <€1, swing günde
 
 ## 6. Geri bildirim toplama — eksik olan
 
-- Uygulamada geri bildirim düğmesi yok; destek URL'si sadece Legal
-  ekranında. Testerlar için bir **WhatsApp/IG grubu + 5 soruluk form**
-  (ilk 5 dakikada ne yaptın / ne anlamadın / ne için para verirdin / hangi
-  ekranda çıktın / cihaz-iOS) kur. Uygulama içi düğme 1.5'e.
+- Uygulamada geri bildirim var: Profil › "Beta feedback" e-posta taslağı
+  açıyor (alıcı Info.plist'ten, cihaz bilgisi ekli); Support sayfası da
+  Profil › Policies altında. Yine de testerlar için bir **WhatsApp/IG
+  grubu + 5 soruluk form** kur — e-posta taslağı atlanır, grup atlanmaz.
 - Firebase Analytics bağlı (`GoogleService-Info.plist` var), 1.4'te ekran
   takibi genişledi. **App Privacy etiketlerinde "Analytics / Usage Data"
   beyanı 1.4'ten önce web UI'da kontrol edilmeli** (senin işin).
@@ -118,5 +119,6 @@ Kaba maliyet: 10 kişi tavanı zorlasa bile AI Coach günde <€1, swing günde
    ilk 15'lik liste Can'a dosya olarak verildi.
 4. Tester mesajı: link + "yıllık başlar, 33 gün sonra €69.99, iptal
    bitmeden" + geri bildirim kanalı + puan istenmiyor.
-5. 1.5 küçük paket: uygulama içi kod girme + geri bildirim düğmesi +
-   privacy URL'sini samosfi'ye çevir.
+5. 1.5 küçük paket: uygulama içi kod girme (paywall'a eklendi, main'de) +
+   privacy URL'sini samosfi'ye çevir (ASC web UI — API yazımı bu oturumda
+   izin vermedi).
