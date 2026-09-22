@@ -85,8 +85,20 @@ struct DailyIQView: View {
                 phase = .placementResult
             case "session":
                 // Optional QC_IQ_CAT=doubles etc. pins the session to a
-                // category's first unit (deterministic screenshots).
-                if let raw = ProcessInfo.processInfo.environment["QC_IQ_CAT"],
+                // category's first unit (deterministic screenshots), and
+                // QC_IQ_Q=<question id> to one exact question — how the
+                // marketing scenario slides are captured from the real screen.
+                if let id = ProcessInfo.processInfo.environment["QC_IQ_Q"],
+                   let question = Quiz.fullBank.first(where: { $0.id == id }) {
+                    // A real five-question session with the wanted question
+                    // first, so the progress header reads what a player
+                    // actually sees rather than "1 of 1".
+                    let rest = Quiz.fullBank
+                        .filter { $0.category == question.category && $0.id != id }
+                        .prefix(4)
+                    qcQuiz = Quiz(id: "qc-\(id)", title: question.category.title,
+                                  questions: [question] + rest)
+                } else if let raw = ProcessInfo.processInfo.environment["QC_IQ_CAT"],
                    let category = QuizCategory(rawValue: raw),
                    let unit = iq.units(for: category).first {
                     qcQuiz = iq.practiceQuiz(for: unit)

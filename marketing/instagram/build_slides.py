@@ -240,7 +240,73 @@ def stat_result(pager):
         + FOOTER.format(pager=pager) + "</div>")
 
 
+
+def scenario(eyebrow, question, options, pager, prompt):
+    """Instagram scenario post: one court question, three lettered options,
+    the answer left to the comments. Text only — the court itself is the
+    app screenshot on the next slide, which keeps the post honest about
+    what the product looks like."""
+    chips = "".join(
+        f'<div class="chip" style="display:flex;width:100%;margin:0 0 22px 0;'
+        f'font-size:40px;padding:30px 36px;">'
+        f'<span style="color:{CLAY_TEXT};font-weight:800;width:62px;">{l}</span>'
+        f'<span>{t}</span></div>'
+        for l, t in options)
+    return page(
+        f'<div class="slide">{DOTS}'
+        f'<div class="eyebrow">{eyebrow}</div>'
+        f'<h1 style="font-size:64px;line-height:1.1;">{question}</h1>'
+        f'<div style="margin-top:52px;">{chips}</div>'
+        f'<div class="sub" style="margin-top:auto;margin-bottom:64px;'
+        f'font-size:44px;font-weight:700;color:{CLAY_TEXT};">{prompt}</div>'
+        + FOOTER.format(pager=pager) + "</div>")
+
+
+def prize(eyebrow, title, items, note, pager):
+    rows_html = "".join(
+        f'<div class="row card"><div class="ic">{ic}</div><div>'
+        f'<div class="t">{t}</div><div class="d">{d}</div></div></div>'
+        for ic, t, d in items)
+    return page(
+        f'<div class="slide">{DOTS}'
+        f'<div class="eyebrow">{eyebrow}</div>'
+        f'<h1 style="font-size:66px;">{title}</h1>'
+        f'<div class="rows">{rows_html}</div>'
+        f'<div class="sub" style="margin-top:auto;margin-bottom:64px;'
+        f'font-size:30px;">{note}</div>'
+        + FOOTER.format(pager=pager) + "</div>")
+
+
 CAROUSELS = {
+    "giveaway-3-months": [
+        scenario(
+            "Tennis IQ · what would you do?",
+            'Your angle pulled them <span class="accent">off the court</span>. '
+            'You are a metre inside your own baseline. Now what?',
+            [("A", "Follow it in and close the net"),
+             ("B", "Recover to the centre mark as usual"),
+             ("C", "Hold deep behind the baseline and reset")],
+            "1/4", "Answer A, B or C in the comments →"),
+        phone("Straight from the app", "This is one of 156 scenarios.",
+              "scenario-rally109.png", "2/4",
+              "Every one has a court diagram, an answer, and the reason "
+              "behind it."),
+        prize("The giveaway", '3 months of Premium, to <span class="accent">'
+              '10 of you</span>.',
+              [("💬", "Answer in the comments",
+                "A, B or C — and say why, if you want to argue for it."),
+               ("➕", "Follow the account",
+                "That is the whole entry. No tagging, no sharing required."),
+               ("📩", "Codes go out by DM",
+                "Closes Sunday 21:00 Irish time.")],
+              "Free trial on the annual plan — cancel before it ends if you "
+              "don't want it to continue. Not sponsored, endorsed or "
+              "administered by Instagram.", "3/4"),
+        cta('Train the part of tennis <span class="accent">no one '
+            'teaches</span>.',
+            "Tennis IQ scenarios, wall drills and the match journal are free. "
+            "Link in bio.", "4/4"),
+    ],
     "carousel-1-intro": [
         hook("DropVolley · Tennis IQ",
              'You don\'t lose because of your <span class="accent">forehand'

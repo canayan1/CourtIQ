@@ -15,43 +15,57 @@ bunu açıkça yasaklıyor), form analizi beta olarak anılıyor, koç incelemes
 Beğeni yerine **cevap** istiyor: tenis oynamayan katılmaz, yorum beğeniden
 güçlü sinyal, gönderinin kendisi ürünü gösteriyor.
 
-**Görsel:** uygulamanın kendi kort diyagramlarından bir Tennis IQ senaryosu
-(tek kare ya da 2 slayt: 1 = soru, 2 = "cevap yorumlarda"). `shots/`
-hattından çıkar.
+**Görsel:** 4 slaytlık carousel, `out/giveaway-3-months/01..04.png`
+(1080×1350). Yeniden üretmek için:
+`python3 build_slides.py giveaway-3-months`
+
+Senaryo gerçek: `rally_109` — 156 sorudan biri, "closing behind your own
+angle", zor. Diyagramı vuruş çizgisi taşımıyor, yani resim cevabı ele
+vermiyor (bunu özellikle kontrol ettim — beş soruda çiziliyor, bu onlardan
+biri değil). Doğru cevap **A**, ve kulüp seviyesinde çoğunluk B der; tartışma
+tam da orada çıkar.
 
 **Caption (EN):**
 
-> Deuce side, you've been pulled wide. Your opponent is parked on the
-> baseline, dead centre. Down the line, heavy crosscourt, or deep float and
-> reset?
+> You crack a short sharp crosscourt angle from the deuce side. They only
+> just reach it, stretched wide outside the alley — and you're still standing
+> a metre inside your own baseline.
 >
-> Put your answer in the comments — no wrong answers, I want to see how
-> people think.
+> A — follow it in and close the net
+> B — recover to the centre mark as usual
+> C — hold deep behind the baseline and reset
+>
+> Answer in the comments. There's a right answer and a reason for it, but I'm
+> more interested in how people think it through.
 >
 > I'll pick 10 of the answers and send each one 3 months of DropVolley
-> Premium. DropVolley is the app I built around exactly this: the decision,
-> not the forehand. Tennis IQ scenarios, a swing you can film and have read,
-> wall drills the phone counts, and a season journal.
+> Premium. DropVolley is the app I built around exactly this — the decision,
+> not the forehand. 156 match scenarios with the court drawn out, a swing you
+> can film and have read, wall drills the phone counts, and a season journal.
 >
 > To enter: answer in the comments and follow @dropvolley. Open anywhere the
 > App Store works. Closes Sunday 21:00 Irish time — codes go out by DM.
 >
-> No rating and no review needed. I want the opposite: tell me what's
-> broken. This giveaway isn't sponsored, endorsed or run by Instagram.
+> No rating and no review needed. I want the opposite: tell me what's broken.
+> This giveaway isn't sponsored, endorsed or run by Instagram.
 
 **Caption (TR):**
 
-> Deuce tarafında geniş açıya çekildin. Rakip dipte, tam ortada duruyor.
-> Down the line mi, ağır çapraz mı, derin yüksek top atıp pozisyonu mu
-> toparlarsın?
+> Deuce tarafından kısa keskin bir çapraz açı patlattın. Topa koridorun
+> dışında esneyerek zar zor yetiştiler — ve sen hâlâ kendi dip çizginin bir
+> metre içindesin.
 >
-> Cevabını yoruma yaz — yanlış cevap yok, insanların nasıl düşündüğünü
-> merak ediyorum.
+> A — peşinden git, fileyi kapat
+> B — her zamanki gibi ortaya dön
+> C — dip çizgi gerisinde bekle, pozisyonu topla
+>
+> Cevabını yoruma yaz. Doğru cevap ve gerekçesi var, ama benim asıl merak
+> ettiğim insanların nasıl düşündüğü.
 >
 > Cevap verenler arasından 10 kişiye 3 ay DropVolley Premium göndereceğim.
-> DropVolley'i tam olarak bunun için yaptım: forehand değil, karar. Tennis
-> IQ senaryoları, çekip analiz ettirdiğin vuruş, telefonun saydığı duvar
-> drilleri ve bir sezon günlüğü.
+> DropVolley'i tam olarak bunun için yaptım: forehand değil, karar. Kortu
+> çizilmiş 156 maç senaryosu, çekip analiz ettirdiğin vuruş, telefonun saydığı
+> duvar drilleri ve bir sezon günlüğü.
 >
 > Katılmak için: cevabını yoruma yaz ve @dropvolley'i takip et. App Store'un
 > çalıştığı her yerden katılabilirsin. Pazar 21:00'de kapanıyor, kodlar
@@ -60,7 +74,9 @@ hattından çıkar.
 > Puan ya da yorum istemiyorum, tam tersini istiyorum: neyin bozuk olduğunu
 > söyle. Bu çekiliş Instagram tarafından desteklenmiyor veya yürütülmüyor.
 
----
+**Kapanışta:** doğru cevabı ayrı bir gönderi/story olarak aç — "A, çünkü o
+açıyı açarken karşı açıyı da hediye ettin; dip çizginin bir metre içinden onu
+kapatmanın tek yolu ileri gitmek." Tartışmayı iki katına çıkarır.
 
 ## B. Sorduğun sade hâli — beğeni + takip
 
