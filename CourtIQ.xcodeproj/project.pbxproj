@@ -258,6 +258,7 @@
 		98A56F2CCF3B4D10B9F13568 /* NutritionRatingRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37632BC4FD164EC4BDA804B8 /* NutritionRatingRows.swift */; };
 		D4C9A92AF38646E7A14417D0 /* TennisChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373CB631B7649B2BF36AD96 /* TennisChallenge.swift */; };
 		74C90D15E2514442B330519B /* ChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F41D801284C2BAA4C5B5E /* ChallengeView.swift */; };
+		D1A1200000000000000002 /* ChallengeUnreadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A1200000000000000001 /* ChallengeUnreadableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -545,6 +546,7 @@
 		37632BC4FD164EC4BDA804B8 /* NutritionRatingRows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NutritionRatingRows.swift; path = CourtIQ/Features/Nutrition/NutritionRatingRows.swift; sourceTree = "<group>"; };
 		8373CB631B7649B2BF36AD96 /* TennisChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TennisChallenge.swift; path = CourtIQ/Features/Challenge/TennisChallenge.swift; sourceTree = "<group>"; };
 		262F41D801284C2BAA4C5B5E /* ChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChallengeView.swift; path = CourtIQ/Features/Challenge/ChallengeView.swift; sourceTree = "<group>"; };
+		D1A1200000000000000001 /* ChallengeUnreadableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChallengeUnreadableView.swift; path = CourtIQ/Features/Challenge/ChallengeUnreadableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -677,6 +679,7 @@
 				B100000000000000000001 /* WallBallLocator.swift */,
 				B400000000000000000001 /* WallSwingDetector.swift */,
 				262F41D801284C2BAA4C5B5E /* ChallengeView.swift */,
+				D1A1200000000000000001 /* ChallengeUnreadableView.swift */,
 				8373CB631B7649B2BF36AD96 /* TennisChallenge.swift */,
 				37632BC4FD164EC4BDA804B8 /* NutritionRatingRows.swift */,
 				27FE2B87E9CF4C72ACB84F5A /* JournalDaySheet.swift */,
@@ -1160,6 +1163,7 @@
 				B100000000000000000002 /* WallBallLocator.swift in Sources */,
 				B400000000000000000002 /* WallSwingDetector.swift in Sources */,
 				74C90D15E2514442B330519B /* ChallengeView.swift in Sources */,
+				D1A1200000000000000002 /* ChallengeUnreadableView.swift in Sources */,
 				D4C9A92AF38646E7A14417D0 /* TennisChallenge.swift in Sources */,
 				98A56F2CCF3B4D10B9F13568 /* NutritionRatingRows.swift in Sources */,
 				B7BCC1CA90EC43C69978DAE1 /* JournalDaySheet.swift in Sources */,

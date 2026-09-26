@@ -126,6 +126,10 @@ enum AnalyticsEvent {
     static let challengeOpened    = "challenge_opened"
     static let challengeStarted   = "challenge_started"
     static let challengeCompleted = "challenge_completed"
+    /// A link that reached the app but could not be read. Worth counting on its
+    /// own: a rise here means links are being mangled in transit or by a build
+    /// mismatch, which looks like silence in every other metric.
+    static let challengeUnreadable = "challenge_unreadable"
 }
 
 extension View {

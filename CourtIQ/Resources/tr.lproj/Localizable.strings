@@ -1247,3 +1247,13 @@
 "home.dailyone_eyebrow" = "GÜNÜN SORUSU";
 "home.dailyone_ready" = "Tek soru. Herkese aynısı geliyor.";
 "home.dailyone_done" = "Cevapladın — diğerleri ne demiş, bak";
+
+/* Challenge — geri gelen yanıt ve okunamayan linkler */
+"challenge.reply_eyebrow" = "CEVAP GELDİ";
+"challenge.reply_footer" = "Bu hesap kapandı. Daily IQ'da beş yeni soru oyna ve taze bir meydan okuma gönder.";
+"challenge.unreadable_newer_title" = "Bu link daha yeni bir DropVolley istiyor";
+"challenge.unreadable_newer_body" = "Uygulamanın sonraki bir sürümüyle yapılmış. App Store'dan güncelle, sonra linke tekrar dokun.";
+"challenge.unreadable_missing_title" = "Bu meydan okuma sende olmayan bir senaryoyu gösteriyor";
+"challenge.unreadable_missing_body" = "Uygulamayı güncellemek onu getirecektir. Linkin kendisinde bir sorun yok.";
+"challenge.unreadable_broken_title" = "Bu link yolda zarar görmüş";
+"challenge.unreadable_broken_body" = "Bir kısmı eksik — mesajlaşma uygulamaları uzun linkleri bazen ortadan kesiyor. Tekrar iste ya da tamamını yapıştır.";

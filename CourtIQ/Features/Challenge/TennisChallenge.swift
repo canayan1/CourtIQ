@@ -10,26 +10,53 @@ import Foundation
 /// keeps working offline, forever, with no row to expire.
 ///
 /// The cost is that the challenger is not told the reply automatically — the
-/// reply comes back as another link, or as a message. In practice that is how
-/// these spread anyway: the reply is the engagement.
+/// reply comes back as another link. That link has to say it is a reply, which
+/// is what `replierScore` is for. Version 1 could not: a reply was byte-for-byte
+/// an opening challenge, so the app greeted the original challenger with "can
+/// you beat it?" and asked them to replay five scenarios they had just answered
+/// and knew the answers to. They scored five out of five and "won". The loop
+/// the comment above claims did not close; it doubled back.
 struct TennisChallenge: Equatable {
     /// Payload format version. Bumped only if the byte layout changes — the
     /// question set is addressed by content hash, so adding, removing or
     /// reordering scenarios does not need a new version.
-    static let version: UInt8 = 1
+    ///
+    /// v1 = `[1][5 × 3-byte hash][score]`, opening challenges only.
+    /// v2 = `[2][5 × 3-byte hash][kind][scoreA][scoreB]`, which can also say
+    /// "this is the answer to the one you sent".
+    static let version: UInt8 = 2
 
     /// How many scenarios one challenge carries.
     static let length = 5
 
     let questionIDs: [String]
-    /// The challenger's score out of `questionIDs.count`.
+    /// Whoever sent the ORIGINAL challenge — not whoever sent this link.
     let challengerScore: Int
+    /// Set only on a reply: what the person who was challenged scored. Its
+    /// presence is what makes this a result rather than an invitation.
+    let replierScore: Int?
 
-    init?(questionIDs: [String], challengerScore: Int) {
+    /// A reply is a finished head-to-head. Both numbers are already known, so
+    /// there is nothing left to play.
+    var isReply: Bool { replierScore != nil }
+
+    init?(questionIDs: [String], challengerScore: Int, replierScore: Int? = nil) {
         guard questionIDs.count == Self.length,
-              (0...questionIDs.count).contains(challengerScore) else { return nil }
+              (0...questionIDs.count).contains(challengerScore),
+              replierScore.map({ (0...questionIDs.count).contains($0) }) ?? true
+        else { return nil }
         self.questionIDs = questionIDs
         self.challengerScore = challengerScore
+        self.replierScore = replierScore
+    }
+
+    /// The link sent back after playing someone's challenge. It carries BOTH
+    /// numbers, so the original challenger opens a result and never re-answers
+    /// questions they have already seen.
+    func reply(withMyScore mine: Int) -> TennisChallenge? {
+        TennisChallenge(questionIDs: questionIDs,
+                        challengerScore: challengerScore,
+                        replierScore: mine)
     }
 }
 
@@ -57,8 +84,17 @@ enum ChallengeHash {
 // MARK: - Codec
 
 enum ChallengeCodec {
-    /// `[version][h0…h4 · 3 bytes each][score]` → 17 bytes → 23 base64url
-    /// characters, which keeps the shared URL short enough to read aloud.
+    /// `[2][h0…h4 · 3 bytes each][kind][scoreA][scoreB]` → 19 bytes → 26
+    /// base64url characters, which keeps the shared URL short enough to read
+    /// aloud. `kind` is 0 for an invitation and 1 for a result being sent back.
+    private static let kindOpening: UInt8 = 0
+    private static let kindReply: UInt8   = 1
+
+    /// v1's byte count, still accepted when decoding so links already sent keep
+    /// working. Nothing writes it any more.
+    private static let v1ByteCount = 2 + TennisChallenge.length * 3
+    private static let v2ByteCount = 4 + TennisChallenge.length * 3
+
     static func encode(_ challenge: TennisChallenge) -> String {
         var bytes: [UInt8] = [TennisChallenge.version]
         for id in challenge.questionIDs {
@@ -67,7 +103,9 @@ enum ChallengeCodec {
             bytes.append(UInt8((h >> 8) & 0xFF))
             bytes.append(UInt8(h & 0xFF))
         }
+        bytes.append(challenge.isReply ? kindReply : kindOpening)
         bytes.append(UInt8(challenge.challengerScore))
+        bytes.append(UInt8(challenge.replierScore ?? 0))
         return base64URL(Data(bytes))
     }
 
@@ -82,12 +120,20 @@ enum ChallengeCodec {
         case questionMissing
     }
 
-    /// Resolves the payload against a live question bank.
+    /// Resolves the payload against a live question bank. Accepts v1 as well as
+    /// v2 — a v1 link is an opening challenge, which is all v1 could express.
     static func decode(_ payload: String, bank: [QuizQuestion]) throws -> TennisChallenge {
-        guard let data = dataFromBase64URL(payload),
-              data.count == 2 + TennisChallenge.length * 3 else { throw DecodeError.malformed }
+        guard let data = dataFromBase64URL(payload) else { throw DecodeError.malformed }
         let bytes = [UInt8](data)
-        guard bytes[0] == TennisChallenge.version else { throw DecodeError.unsupportedVersion }
+        guard let version = bytes.first else { throw DecodeError.malformed }
+
+        switch (version, bytes.count) {
+        case (1, v1ByteCount), (2, v2ByteCount): break
+        // A version we know with the wrong length is a corrupted link, not a
+        // future one; saying "update the app" there would be a lie.
+        case (1, _), (2, _):                     throw DecodeError.malformed
+        default:                                 throw DecodeError.unsupportedVersion
+        }
 
         var byHash: [UInt32: String] = [:]
         for q in bank { byHash[ChallengeHash.fnv1a24(q.id)] = q.id }
@@ -99,10 +145,18 @@ enum ChallengeCodec {
             guard let id = byHash[h] else { throw DecodeError.questionMissing }
             ids.append(id)
         }
-        let score = Int(bytes[bytes.count - 1])
-        guard let challenge = TennisChallenge(questionIDs: ids, challengerScore: score) else {
-            throw DecodeError.malformed
+
+        let challenge: TennisChallenge?
+        if version == 1 {
+            challenge = TennisChallenge(questionIDs: ids, challengerScore: Int(bytes[bytes.count - 1]))
+        } else {
+            let tail = 1 + TennisChallenge.length * 3
+            let isReply = bytes[tail] == kindReply
+            challenge = TennisChallenge(questionIDs: ids,
+                                        challengerScore: Int(bytes[tail + 1]),
+                                        replierScore: isReply ? Int(bytes[tail + 2]) : nil)
         }
+        guard let challenge else { throw DecodeError.malformed }
         return challenge
     }
 

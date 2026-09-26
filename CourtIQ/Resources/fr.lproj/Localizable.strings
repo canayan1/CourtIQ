@@ -1247,3 +1247,13 @@
 "home.dailyone_eyebrow" = "QUESTION DU JOUR";
 "home.dailyone_ready" = "Une question. La même pour tout le monde.";
 "home.dailyone_done" = "Répondu — vois ce que les autres ont choisi";
+
+/* Challenge — une réponse qui revient, et les liens illisibles */
+"challenge.reply_eyebrow" = "ILS ONT RÉPONDU";
+"challenge.reply_footer" = "Celui-ci est réglé. Jouez cinq autres scénarios dans Daily IQ et envoyez un nouveau défi.";
+"challenge.unreadable_newer_title" = "Ce lien demande une version plus récente de DropVolley";
+"challenge.unreadable_newer_body" = "Il a été créé par une version ultérieure de l'app. Mettez à jour depuis l'App Store, puis retouchez le lien.";
+"challenge.unreadable_missing_title" = "Ce défi pointe vers un scénario que vous n'avez pas";
+"challenge.unreadable_missing_body" = "Mettre l'app à jour devrait l'ajouter. Le lien lui-même n'a rien d'anormal.";
+"challenge.unreadable_broken_title" = "Ce lien n'a pas survécu au trajet";
+"challenge.unreadable_broken_body" = "Il en manque un morceau — les messageries coupent parfois les liens longs. Redemandez-le, ou collez-le en entier.";

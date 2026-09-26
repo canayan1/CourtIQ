@@ -6,6 +6,12 @@ import SwiftUI
 ///
 /// Nothing here is social in the app sense — there is no thread, no profile and
 /// no one to follow. Two people, five questions, one link.
+///
+/// It opens in one of two states. An invitation is played. A reply — someone
+/// answering the challenge you sent — is already finished, so it opens on the
+/// result and asks nothing: the five scenarios in it are five this player has
+/// seen, and inviting them to "beat" a score by re-answering questions they
+/// know the answers to would be a scoreboard, not a contest.
 struct ChallengeView: View {
     let challenge: TennisChallenge
 
@@ -14,8 +20,20 @@ struct ChallengeView: View {
     @ObservedObject private var iq = TennisIQManager.shared
 
     private enum Phase { case intro, playing, result }
-    @State private var phase: Phase = .intro
-    @State private var myScore = 0
+    @State private var phase: Phase
+    @State private var myScore: Int
+
+    init(challenge: TennisChallenge) {
+        self.challenge = challenge
+        _phase = State(initialValue: challenge.isReply ? .result : .intro)
+        _myScore = State(initialValue: 0)
+    }
+
+    /// On an invitation, "mine" is the score just played. On a reply it is the
+    /// score this player already sent — they are the original challenger, and
+    /// the link is their own number coming back with an answer beside it.
+    private var mine: Int { challenge.isReply ? challenge.challengerScore : myScore }
+    private var theirs: Int { challenge.replierScore ?? challenge.challengerScore }
 
     /// Resolved once, so the same five questions are asked in the same order
     /// the challenger answered them.
@@ -92,19 +110,21 @@ struct ChallengeView: View {
     private var result: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                Eyebrow(lang.t("challenge.result_eyebrow"))
+                Eyebrow(lang.t(challenge.isReply ? "challenge.reply_eyebrow" : "challenge.result_eyebrow"))
                 Text(verdict)
                     .font(.system(.title2, design: .rounded).weight(.bold))
                     .foregroundStyle(AppPalette.ink)
                     .fixedSize(horizontal: false, vertical: true)
 
                 HStack(spacing: 12) {
-                    scoreTile(lang.t("challenge.you"), myScore, mine: true)
-                    scoreTile(lang.t("challenge.them"), challenge.challengerScore, mine: false)
+                    scoreTile(lang.t("challenge.you"), mine, mine: true)
+                    scoreTile(lang.t("challenge.them"), theirs, mine: false)
                 }
 
-                // The reply is the loop: your score becomes the next link.
-                if let reply = TennisChallenge.from(questions: questions, score: myScore) {
+                // The reply closes the loop, and closes it once. A reply to a
+                // reply would be the same five questions a third time, with
+                // both players now knowing every answer.
+                if !challenge.isReply, let reply = challenge.reply(withMyScore: myScore) {
                     ShareLink(item: reply.url,
                               message: Text(String(format: lang.t("challenge.share_reply_fmt"),
                                                    myScore, TennisChallenge.length))) {
@@ -123,7 +143,7 @@ struct ChallengeView: View {
                     })
                 }
 
-                Text(lang.t("challenge.result_footer"))
+                Text(lang.t(challenge.isReply ? "challenge.reply_footer" : "challenge.result_footer"))
                     .font(.footnote)
                     .foregroundStyle(AppPalette.inkSoft)
                     .fixedSize(horizontal: false, vertical: true)
@@ -133,8 +153,8 @@ struct ChallengeView: View {
     }
 
     private var verdict: String {
-        if myScore > challenge.challengerScore { return lang.t("challenge.verdict_win") }
-        if myScore < challenge.challengerScore { return lang.t("challenge.verdict_lose") }
+        if mine > theirs { return lang.t("challenge.verdict_win") }
+        if mine < theirs { return lang.t("challenge.verdict_lose") }
         return lang.t("challenge.verdict_draw")
     }
 

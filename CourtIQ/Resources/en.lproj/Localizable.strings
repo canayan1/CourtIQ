@@ -1247,3 +1247,13 @@
 "home.dailyone_eyebrow" = "DAILY ONE";
 "home.dailyone_ready" = "One question. Everyone gets the same one.";
 "home.dailyone_done" = "Answered — see how the rest called it";
+
+/* Challenge — a reply coming back, and links that cannot be read */
+"challenge.reply_eyebrow" = "THEY ANSWERED";
+"challenge.reply_footer" = "That settles this one. Play another five in Daily IQ and send a fresh challenge.";
+"challenge.unreadable_newer_title" = "This link needs a newer DropVolley";
+"challenge.unreadable_newer_body" = "It was made by a later version of the app. Update from the App Store and tap the link again.";
+"challenge.unreadable_missing_title" = "This challenge points at a scenario you don't have";
+"challenge.unreadable_missing_body" = "Updating the app should bring it in. Nothing is wrong with the link itself.";
+"challenge.unreadable_broken_title" = "This link didn't survive the trip";
+"challenge.unreadable_broken_body" = "Part of it is missing — messaging apps sometimes cut long links in half. Ask for it again, or paste the whole thing.";

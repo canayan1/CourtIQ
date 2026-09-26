@@ -261,8 +261,9 @@ private struct RootView: View {
     /// A doubles invite code arriving from a universal link or the clipboard.
     @State private var pendingInvite: InviteCode?
 
-    /// A head-to-head challenge arriving from a `samosfi.com/c/<payload>` link.
-    @State private var pendingChallenge: TennisChallenge?
+    /// A head-to-head challenge arriving from a `samosfi.com/c/<payload>` link,
+    /// or the reason one could not be read.
+    @State private var pendingChallenge: ChallengeArrival?
 
     /// Only route deep links once the user is past onboarding + the health gate,
     /// so an invite never lands on top of those first-run screens.
@@ -297,16 +298,34 @@ private struct RootView: View {
             Text(session.authErrorMessage ?? "")
         }
         .onOpenURL { handleInviteURL($0) }
+        #if DEBUG
+        // Headless QC: SIMCTL_CHILD_QC_CHALLENGE=<payload> opens a challenge
+        // link at launch. `simctl openurl` hands universal links to Safari
+        // rather than the app, so without this the deep-link path — host check,
+        // decode, which sheet — can only be tested by hand on a device. It goes
+        // through handleInviteURL exactly as a real tap does, so what it proves
+        // is the shipping path and not a shortcut around it.
+        .onAppear {
+            guard let payload = ProcessInfo.processInfo.environment["QC_CHALLENGE"],
+                  let url = URL(string: "https://samosfi.com/c/\(payload)") else { return }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { handleInviteURL(url) }
+        }
+        #endif
         .onContinueUserActivity(NSUserActivityTypeBrowsingWeb) { activity in
             if let url = activity.webpageURL { handleInviteURL(url) }
         }
         .sheet(item: $pendingInvite) { invite in
             DoublesAcceptSheet(onAccepted: {}, initialCode: invite.code)
         }
-        .sheet(item: Binding(get: { pendingChallenge.map(ChallengeBox.init) },
-                             set: { pendingChallenge = $0?.challenge })) { box in
-            ChallengeView(challenge: box.challenge)
-                .environmentObject(lang)
+        .sheet(item: $pendingChallenge) { arrival in
+            switch arrival.content {
+            case .ready(let challenge):
+                ChallengeView(challenge: challenge)
+                    .environmentObject(lang)
+            case .broken(let reason):
+                ChallengeUnreadableView(reason: reason)
+                    .environmentObject(lang)
+            }
         }
     }
 
@@ -326,10 +345,23 @@ private struct RootView: View {
         case "c":
             // A challenge carries everything in the payload — no lookup, no
             // network, so it opens even on a plane.
-            if let challenge = try? ChallengeCodec.decode(comps[1], bank: TennisIQManager.shared.bank) {
+            //
+            // A failure used to be swallowed by `try?`: someone tapped a link a
+            // friend sent them, the app opened on Home, and nothing explained
+            // why. Whatever went wrong, the person who tapped deserves the
+            // sentence.
+            do {
+                let challenge = try ChallengeCodec.decode(comps[1], bank: TennisIQManager.shared.bank)
                 AppAnalytics.shared.log(AnalyticsEvent.challengeOpened,
-                                        ["theirs": challenge.challengerScore])
-                pendingChallenge = challenge
+                                        ["theirs": challenge.challengerScore,
+                                         "reply": challenge.isReply])
+                pendingChallenge = .init(content: .ready(challenge))
+            } catch let error as ChallengeCodec.DecodeError {
+                AppAnalytics.shared.log(AnalyticsEvent.challengeUnreadable,
+                                        ["reason": String(describing: error)])
+                pendingChallenge = .init(content: .broken(error))
+            } catch {
+                pendingChallenge = .init(content: .broken(.malformed))
             }
         default:
             break
@@ -349,9 +381,14 @@ private struct RootView: View {
     }
 }
 
-/// Wraps a decoded challenge so `.sheet(item:)` can present it.
-private struct ChallengeBox: Identifiable {
-    let challenge: TennisChallenge
+/// What came out of a `/c/<payload>` link — a challenge, or the reason there
+/// isn't one. Both are worth a sheet; only one of them used to get one.
+struct ChallengeArrival: Identifiable {
+    enum Content {
+        case ready(TennisChallenge)
+        case broken(ChallengeCodec.DecodeError)
+    }
+    let content: Content
     let id = UUID()
 }
 
