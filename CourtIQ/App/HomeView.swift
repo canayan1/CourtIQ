@@ -19,6 +19,7 @@ struct HomeView: View {
     @ObservedObject private var swingStore = SwingAnalysisStore.shared
     @ObservedObject private var doublesStore = DoublesStore.shared
     @ObservedObject private var iqManager = TennisIQManager.shared
+    @ObservedObject private var dailyOne = DailyOneStore.shared
     @ObservedObject private var wallProgress = WallProgressManager.shared
     /// Tactics keeps its own stores (ported). Re-created on appear so a
     /// lesson finished in the Tactics tab shows here when you come back.
@@ -39,7 +40,7 @@ struct HomeView: View {
     /// All grid tiles push their destination via this single route +
     /// navigationDestination. (Switching tabs via tabRouter from a grid tile did
     /// not work; pushing via route does.) The Coach hero still switches tabs.
-    private enum Route: Hashable { case swing, tennisIQ, doubles, drills, recover, programs, nutrition
+    private enum Route: Hashable { case swing, tennisIQ, dailyOne, doubles, drills, recover, programs, nutrition
         #if DEBUG
         /// QC only: the paid coach-review order screen (App Store review
         /// screenshot for the consumable IAP).
@@ -75,6 +76,13 @@ struct HomeView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
+                // Above the pillars on purpose. It is the only thing here
+                // that is the same for this player as for everybody else,
+                // it takes twenty seconds, and it is the reason to open the
+                // app on a day with no tennis in it.
+                dailyOneStrip
+                    .reveal(appeared: appeared, index: 0, reduceMotion: reduceMotion)
+
                 // The four things the app sells, in the order the tab bar
                 // lists them. Each is a tab, so each SWITCHES tabs.
                 VStack(spacing: 12) {
@@ -159,6 +167,7 @@ struct HomeView: View {
         .onAppear {
             switch ProcessInfo.processInfo.environment["QC_OPEN"] {
             case "iq":    route = .tennisIQ
+            case "dailyone": route = .dailyOne
             case "swing": route = .swing
             case "coachorder": route = .coachOrder
             case "body": route = .bodySession
@@ -174,6 +183,8 @@ struct HomeView: View {
             switch dest {
             case .swing:
                 SwingAnalysisView()
+            case .dailyOne:
+                DailyOneView()
             case .tennisIQ:
                 // The Daily IQ loop (placement → session → IQ summary). It
                 // records through DailyQuizManager itself, so Profile stats and
@@ -361,6 +372,52 @@ struct HomeView: View {
 
     /// The daily scenarios are tactics practice, so they live under Tactics;
     /// the number still deserves a line on Home because it is the streak.
+    /// The shared daily question. It sits above the Tennis IQ strip because
+    /// it is the one thing on this screen a player can finish in twenty
+    /// seconds, and the only one that is the same for them as for everybody
+    /// else — which is what makes it worth talking about.
+    private var dailyOneStrip: some View {
+        let key = DailyOne.dayKey()
+        let answered = dailyOne.hasAnswered(key)
+        return Button {
+            Haptics.tap()
+            route = .dailyOne
+        } label: {
+            HStack(spacing: 12) {
+                VStack(alignment: .leading, spacing: 3) {
+                    Text(lang.t("home.dailyone_eyebrow"))
+                        .font(.caption.weight(.heavy))
+                        .kerning(1.2)
+                        .foregroundStyle(AppPalette.clay)
+                    Text(lang.t(answered ? "home.dailyone_done" : "home.dailyone_ready"))
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(AppPalette.ink)
+                        .multilineTextAlignment(.leading)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                Spacer(minLength: 8)
+                if dailyOne.streak > 0 {
+                    Label("\(dailyOne.streak)", systemImage: "flame.fill")
+                        .font(.footnote.weight(.bold))
+                        .foregroundStyle(AppPalette.clay)
+                        .labelStyle(.titleAndIcon)
+                }
+                Image(systemName: answered ? "checkmark.circle.fill" : "chevron.right")
+                    .font(.headline.weight(.semibold))
+                    .foregroundStyle(AppPalette.clay)
+            }
+            .padding(.horizontal, 18)
+            .padding(.vertical, 14)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(AppPalette.parchment)
+            .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .stroke(answered ? AppPalette.sand : AppPalette.clay.opacity(0.45), lineWidth: 1.5))
+            .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(PressableCardStyle())
+    }
+
     private var iqStrip: some View {
         Button {
             Haptics.tap()

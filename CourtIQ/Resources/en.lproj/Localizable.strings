@@ -1228,3 +1228,22 @@
 "profile.path_to_fmt" = "Path to %@";
 "drill.number_fmt" = "Drill #%d";
 "training.week_of_fmt" = "WK %d · %d";
+
+/* Daily One — the shared question */
+"dailyone.title" = "Daily One";
+"dailyone.eyebrow" = "TODAY'S QUESTION";
+"dailyone.unavailable" = "Today's question isn't available. Check back tomorrow.";
+"dailyone.lock" = "Lock it in";
+"dailyone.correct" = "You called it.";
+"dailyone.wrong" = "Not this time.";
+"dailyone.why" = "WHY";
+"dailyone.share" = "Share";
+"dailyone.share_title" = "DropVolley Daily";
+"dailyone.share_call" = "Can you call it?";
+"dailyone.streak_fmt" = "%d day streak";
+"dailyone.first_answers" = "You're among the first to answer today — the split shows once enough players have.";
+"dailyone.crowd_fmt" = "%d%% of players chose the same as you.";
+"dailyone.crowd_total_fmt" = "%d answers so far today.";
+"home.dailyone_eyebrow" = "DAILY ONE";
+"home.dailyone_ready" = "One question. Everyone gets the same one.";
+"home.dailyone_done" = "Answered — see how the rest called it";

@@ -338,15 +338,25 @@ extension Quiz {
     /// performance one: a question must present the same option order when
     /// it is drawn and when the answer is graded. Re-shuffling on each access
     /// would break that.
-    private static let questionBank: [QuizQuestion] = {
+    /// The bank exactly as authored, options in file order. Only the daily
+    /// shared question reads this: it needs the option order to be a function
+    /// of the date rather than of this launch, so that "61% said B" is a
+    /// sentence about the same B everywhere.
+    private static let rawQuestionBank: [QuizQuestion] = {
         let loaded = BundleContentLoader.loadArray([QuizQuestion].self, named: "quiz_questions")
-        let bank = loaded.isEmpty ? fallbackQuestions : loaded
-        return bank.map { $0.shufflingOptions() }
+        return loaded.isEmpty ? fallbackQuestions : loaded
+    }()
+
+    private static let questionBank: [QuizQuestion] = {
+        rawQuestionBank.map { $0.shufflingOptions() }
     }()
 
     /// Full bundled bank, read-only — the Tennis IQ mastery engine builds
     /// sessions, placement and category mastery from this.
     static var fullBank: [QuizQuestion] { questionBank }
+
+    /// Same questions, options unpermuted. See `rawQuestionBank`.
+    static var unshuffledBank: [QuizQuestion] { rawQuestionBank }
 
     private static func dateKey(from date: Date) -> String {
         let startOfDay = Calendar.current.startOfDay(for: date)

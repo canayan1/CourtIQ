@@ -186,6 +186,11 @@
 		BD030001FEE4B1FA0DE0002 /* MatchStints.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD030001FEE4B1FA0DE0001 /* MatchStints.swift */; };
 		BD040001FEE4B1FA0DE0002 /* SessionTrends.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD040001FEE4B1FA0DE0001 /* SessionTrends.swift */; };
 		A7B1E0000000000000000002 /* AthleteFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B1E0000000000000000001 /* AthleteFigure.swift */; };
+		D1A110000000000000000001 /* DailyOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A110000000000000000000 /* DailyOne.swift */; };
+		D1A110000000000000000003 /* DailyOneStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A110000000000000000002 /* DailyOneStore.swift */; };
+		D1A110000000000000000005 /* DailyOneCrowd.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A110000000000000000004 /* DailyOneCrowd.swift */; };
+		D1A110000000000000000007 /* DailyOneShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A110000000000000000006 /* DailyOneShare.swift */; };
+		D1A110000000000000000009 /* DailyOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A110000000000000000008 /* DailyOneView.swift */; };
 		A7B1E0000000000000000004 /* MotionArcOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B1E0000000000000000003 /* MotionArcOverlay.swift */; };
 		11473B166FFF4B968A8EF217 /* SwingImpactAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D682A1ECA458C9921D4AD /* SwingImpactAnalyzer.swift */; };
 		CC1F6A22C438B041E97699BD /* SwingAnalysisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C1F0C3D2F961F7294836E6 /* SwingAnalysisView.swift */; };
@@ -470,6 +475,11 @@
 		7EAC00000000000000000005 /* TaskProgression.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TaskProgression.swift; path = CourtIQ/Features/Practice/TaskProgression.swift; sourceTree = "<group>"; };
 		7EAC00000000000000000007 /* LessonCapture.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LessonCapture.swift; path = CourtIQ/Features/Teaching/LessonCapture.swift; sourceTree = "<group>"; };
 		A7B1E0000000000000000001 /* AthleteFigure.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AthleteFigure.swift; path = CourtIQ/Features/Mobility/AthleteFigure.swift; sourceTree = "<group>"; };
+		D1A110000000000000000000 /* DailyOne.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DailyOne.swift; path = CourtIQ/Features/DailyOne/DailyOne.swift; sourceTree = "<group>"; };
+		D1A110000000000000000002 /* DailyOneStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DailyOneStore.swift; path = CourtIQ/Features/DailyOne/DailyOneStore.swift; sourceTree = "<group>"; };
+		D1A110000000000000000004 /* DailyOneCrowd.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DailyOneCrowd.swift; path = CourtIQ/Features/DailyOne/DailyOneCrowd.swift; sourceTree = "<group>"; };
+		D1A110000000000000000006 /* DailyOneShare.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DailyOneShare.swift; path = CourtIQ/Features/DailyOne/DailyOneShare.swift; sourceTree = "<group>"; };
+		D1A110000000000000000008 /* DailyOneView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DailyOneView.swift; path = CourtIQ/Features/DailyOne/DailyOneView.swift; sourceTree = "<group>"; };
 		A7B1E0000000000000000003 /* MotionArcOverlay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MotionArcOverlay.swift; path = CourtIQ/Features/Mobility/MotionArcOverlay.swift; sourceTree = "<group>"; };
 		AC3D682A1ECA458C9921D4AD /* SwingImpactAnalyzer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwingImpactAnalyzer.swift; path = CourtIQ/Features/SwingAnalysis/SwingImpactAnalyzer.swift; sourceTree = "<group>"; };
 		E59972A086F7FB607351D71D /* TrainPracticeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TrainPracticeView.swift; path = CourtIQ/Features/Training/TrainPracticeView.swift; sourceTree = "<group>"; };
@@ -807,6 +817,11 @@
 				7EAC00000000000000000005 /* TaskProgression.swift */,
 				7EAC00000000000000000007 /* LessonCapture.swift */,
 				A7B1E0000000000000000001 /* AthleteFigure.swift */,
+				D1A110000000000000000000 /* DailyOne.swift */,
+				D1A110000000000000000002 /* DailyOneStore.swift */,
+				D1A110000000000000000004 /* DailyOneCrowd.swift */,
+				D1A110000000000000000006 /* DailyOneShare.swift */,
+				D1A110000000000000000008 /* DailyOneView.swift */,
 				A7B1E0000000000000000003 /* MotionArcOverlay.swift */,
 				AC3D682A1ECA458C9921D4AD /* SwingImpactAnalyzer.swift */,
 				CFB312EFDFBC3D468DFBD276 /* SwingAnalysisService.swift */,
@@ -1222,6 +1237,11 @@
 				BD030001FEE4B1FA0DE0002 /* MatchStints.swift in Sources */,
 				BD040001FEE4B1FA0DE0002 /* SessionTrends.swift in Sources */,
 				A7B1E0000000000000000002 /* AthleteFigure.swift in Sources */,
+				D1A110000000000000000001 /* DailyOne.swift in Sources */,
+				D1A110000000000000000003 /* DailyOneStore.swift in Sources */,
+				D1A110000000000000000005 /* DailyOneCrowd.swift in Sources */,
+				D1A110000000000000000007 /* DailyOneShare.swift in Sources */,
+				D1A110000000000000000009 /* DailyOneView.swift in Sources */,
 				A7B1E0000000000000000004 /* MotionArcOverlay.swift in Sources */,
 				11473B166FFF4B968A8EF217 /* SwingImpactAnalyzer.swift in Sources */,
 				065E60992E196985B3FD8E65 /* SwingAnalysisService.swift in Sources */,

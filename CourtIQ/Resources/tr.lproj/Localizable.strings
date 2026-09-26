@@ -1228,3 +1228,22 @@
 "profile.path_to_fmt" = "%@ yolunda";
 "drill.number_fmt" = "Drill #%d";
 "training.week_of_fmt" = "HF %d · %d";
+
+/* Daily One — the shared question */
+"dailyone.title" = "Günün Sorusu";
+"dailyone.eyebrow" = "BUGÜNÜN SORUSU";
+"dailyone.unavailable" = "Bugünün sorusu görüntülenemiyor. Yarın tekrar bak.";
+"dailyone.lock" = "Cevabı kilitle";
+"dailyone.correct" = "Doğru okudun.";
+"dailyone.wrong" = "Bu sefer olmadı.";
+"dailyone.why" = "NEDEN";
+"dailyone.share" = "Paylaş";
+"dailyone.share_title" = "DropVolley Günün Sorusu";
+"dailyone.share_call" = "Sen ne derdin?";
+"dailyone.streak_fmt" = "%d günlük seri";
+"dailyone.first_answers" = "Bugün ilk cevaplayanlardansın — yeterince oyuncu cevaplayınca dağılım görünecek.";
+"dailyone.crowd_fmt" = "Oyuncuların %%%d'i seninle aynı şıkkı seçti.";
+"dailyone.crowd_total_fmt" = "Bugün şu ana kadar %d cevap.";
+"home.dailyone_eyebrow" = "GÜNÜN SORUSU";
+"home.dailyone_ready" = "Tek soru. Herkese aynısı geliyor.";
+"home.dailyone_done" = "Cevapladın — diğerleri ne demiş, bak";

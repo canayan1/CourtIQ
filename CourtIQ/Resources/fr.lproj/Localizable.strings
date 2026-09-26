@@ -1228,3 +1228,22 @@
 "profile.path_to_fmt" = "Vers %@";
 "drill.number_fmt" = "Exercice n°%d";
 "training.week_of_fmt" = "SEM %d · %d";
+
+/* Daily One — the shared question */
+"dailyone.title" = "La Question du Jour";
+"dailyone.eyebrow" = "LA QUESTION DU JOUR";
+"dailyone.unavailable" = "La question du jour n'est pas disponible. Reviens demain.";
+"dailyone.lock" = "Valider";
+"dailyone.correct" = "Bien vu.";
+"dailyone.wrong" = "Pas cette fois.";
+"dailyone.why" = "POURQUOI";
+"dailyone.share" = "Partager";
+"dailyone.share_title" = "DropVolley — Question du jour";
+"dailyone.share_call" = "Et toi, tu joues quoi ?";
+"dailyone.streak_fmt" = "série de %d jours";
+"dailyone.first_answers" = "Tu es parmi les premiers à répondre aujourd'hui — la répartition s'affichera quand assez de joueurs auront répondu.";
+"dailyone.crowd_fmt" = "%d %% des joueurs ont choisi la même chose que toi.";
+"dailyone.crowd_total_fmt" = "%d réponses aujourd'hui.";
+"home.dailyone_eyebrow" = "QUESTION DU JOUR";
+"home.dailyone_ready" = "Une question. La même pour tout le monde.";
+"home.dailyone_done" = "Répondu — vois ce que les autres ont choisi";
