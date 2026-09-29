@@ -12,6 +12,7 @@
 // Auth: Bearer <Supabase JWT> (Authorization header)
 
 import { createClient } from "jsr:@supabase/supabase-js@2";
+import { entitlementAllows } from "../_shared/entitlement.ts";
 // Prompt logic lives in prompts.mjs — a single source of truth shared with
 // tools/swing-bench, so offline evaluation always tests EXACTLY what prod sends.
 import {
@@ -31,39 +32,12 @@ const GEMINI_MODEL   = Deno.env.get("SWING_GEMINI_MODEL") ?? "gemini-2.5-flash";
 const SUPABASE_URL      = Deno.env.get("SUPABASE_URL") ?? "";
 const SUPABASE_ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY") ?? "";
 
-// --- RevenueCat server-side entitlement gate (see ai-chat for full rationale) ---
-// Ships behind REQUIRE_ENTITLEMENT (dark until flipped on post-1.0.2). Fails OPEN
-// on any RevenueCat error so an outage never locks out paying users; the prepaid
-// budget cap is the backstop for the brief abuse window that would open.
-const REVENUECAT_SECRET_KEY = Deno.env.get("REVENUECAT_SECRET_KEY") ?? "";
-const REQUIRE_ENTITLEMENT   = (Deno.env.get("REQUIRE_ENTITLEMENT") ?? "false").toLowerCase() === "true";
-const ENTITLEMENT_ID        = Deno.env.get("PREMIUM_ENTITLEMENT_ID") ?? "premium_all_access";
-const entitlementCache = new Map<string, { entitled: boolean; at: number }>();
-const ENTITLEMENT_TTL_MS = 10 * 60 * 1000;
-async function isEntitled(userId: string): Promise<boolean> {
-  if (!REQUIRE_ENTITLEMENT) return true;          // gate dark -> allow (rollout)
-  if (!REVENUECAT_SECRET_KEY) return true;        // misconfigured -> fail open
-  const hit = entitlementCache.get(userId);
-  if (hit && Date.now() - hit.at < ENTITLEMENT_TTL_MS) return hit.entitled;
-  try {
-    const res = await fetch(
-      `https://api.revenuecat.com/v1/subscribers/${encodeURIComponent(userId)}`,
-      { headers: { Authorization: `Bearer ${REVENUECAT_SECRET_KEY}` } },
-    );
-    if (!res.ok) return true;                     // RC error -> fail open
-    const body = await res.json();
-    // Single premium entitlement in this project + its RC identifier is a
-    // display-style string, so treat ANY active (non-expired) entitlement as
-    // premium instead of matching an exact key. Robust to the identifier/renames.
-    const ents = (body?.subscriber?.entitlements ?? {}) as Record<string, { expires_date?: string | null }>;
-    const nowMs = Date.now();
-    const entitled = Object.values(ents).some((e) => e && (e.expires_date == null || new Date(e.expires_date).getTime() > nowMs));
-    entitlementCache.set(userId, { entitled, at: Date.now() });
-    return entitled;
-  } catch {
-    return true;                                  // network error -> fail open
-  }
-}
+// --- RevenueCat server-side entitlement gate ---
+// Lives in _shared/entitlement.ts now, with the four copies of it that had
+// already drifted apart. Read that file before flipping the gate on: failing
+// open on a RevenueCat *error* is not the same as being safe, because an id
+// RevenueCat has never seen comes back 200 with no entitlements and looks
+// exactly like a free rider.
 
 // Hard usage caps (cost control). Tunable via env.
 const DAILY_CAP   = Number(Deno.env.get("SWING_DAILY_CAP") ?? "3");
@@ -97,8 +71,8 @@ Deno.serve(async (req) => {
   const { data: { user }, error: userErr } = await supabase.auth.getUser();
   if (userErr || !user) return json({ error: "Not authenticated." }, 401);
 
-  // Server-side entitlement gate (no-op until REQUIRE_ENTITLEMENT is flipped on).
-  if (!(await isEntitled(user.id))) return json({ error: "entitlement_required", needsUpgrade: true }, 402);
+  // Server-side entitlement gate — see _shared/entitlement.ts.
+  if (!(await entitlementAllows("swing-analysis", user.id))) return json({ error: "entitlement_required", needsUpgrade: true }, 402);
 
   let body: {
     stroke?: string; handedness?: string; video?: string; mimeType?: string;

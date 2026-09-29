@@ -30,6 +30,7 @@
 //   handled by Supabase platform — returns standard auth error
 
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
+import { entitlementAllows } from "../_shared/entitlement.ts";
 import { createClient } from "jsr:@supabase/supabase-js@2";
 import { TENNIS_COACH_MANUAL, MANUAL_VERSION } from "./tennis_manual.ts";
 
@@ -57,43 +58,14 @@ const SUPABASE_SERVICE_ROLE    = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? ""
 // RevenueCat customer id to the Supabase uid (RevenueCatManager.identify),
 // so we look the caller up by user.id.
 //
-// Deployed behind REQUIRE_ENTITLEMENT so it can ship dark and be flipped ON
-// only once a RevenueCat-enabled build is live — older builds have no RC
-// record and must NOT be locked out. Fails OPEN on any RevenueCat API error
-// so a RevenueCat outage never locks out paying users; the prepaid budget
-// cap is the backstop for the brief abuse window that would open.
-const REVENUECAT_SECRET_KEY    = Deno.env.get("REVENUECAT_SECRET_KEY") ?? "";
-const REQUIRE_ENTITLEMENT      = (Deno.env.get("REQUIRE_ENTITLEMENT") ?? "false").toLowerCase() === "true";
-const ENTITLEMENT_ID           = Deno.env.get("PREMIUM_ENTITLEMENT_ID") ?? "premium_all_access";
+// The gate itself lives in _shared/entitlement.ts. Flipping it on is not a
+// one-line change: an id RevenueCat has never seen answers 200 with no
+// entitlements, which is indistinguishable from a free rider, so a subscriber
+// whose alias has not landed would be denied what they paid for. Run
+// ENTITLEMENT_SHADOW=true first and read the denials before enforcing.
 
 // Per-instance positive cache to avoid a RevenueCat round trip on every turn.
-const entitlementCache = new Map<string, { entitled: boolean; at: number }>();
-const ENTITLEMENT_TTL_MS = 10 * 60 * 1000;
 
-async function isEntitled(userId: string): Promise<boolean> {
-    if (!REQUIRE_ENTITLEMENT) return true;        // gate dark → allow (rollout)
-    if (!REVENUECAT_SECRET_KEY) return true;      // misconfigured → fail open
-    const hit = entitlementCache.get(userId);
-    if (hit && Date.now() - hit.at < ENTITLEMENT_TTL_MS) return hit.entitled;
-    try {
-        const res = await fetch(
-            `https://api.revenuecat.com/v1/subscribers/${encodeURIComponent(userId)}`,
-            { headers: { Authorization: `Bearer ${REVENUECAT_SECRET_KEY}` } },
-        );
-        if (!res.ok) return true;                 // RC error → fail open (don't punish payers)
-        const body = await res.json();
-        // Single premium entitlement in this project + its RC identifier is a
-        // display-style string, so treat ANY active (non-expired) entitlement as
-        // premium instead of matching an exact key. Robust to the identifier/renames.
-        const ents = (body?.subscriber?.entitlements ?? {}) as Record<string, { expires_date?: string | null }>;
-        const nowMs = Date.now();
-        const entitled = Object.values(ents).some((e) => e && (e.expires_date == null || new Date(e.expires_date).getTime() > nowMs));
-        entitlementCache.set(userId, { entitled, at: Date.now() });
-        return entitled;
-    } catch {
-        return true;                              // network error → fail open
-    }
-}
 
 // DropVolley Coach system prompt (v0.2 — approved in chat 2026-05-24).
 // Kept inline so the function is self-contained and version-controlled
@@ -582,7 +554,7 @@ Deno.serve(async (req) => {
     // -- Server-side entitlement gate (see REQUIRE_ENTITLEMENT above). Placed
     //    before the compaction branch so EVERY Anthropic call is behind it.
     //    No-op until the gate is flipped on post-1.0.2-rollout. --
-    if (!(await isEntitled(user.id))) {
+    if (!(await entitlementAllows("ai-chat", user.id))) {
         return jsonErr(402, "entitlement_required", { needsUpgrade: true });
     }
 
