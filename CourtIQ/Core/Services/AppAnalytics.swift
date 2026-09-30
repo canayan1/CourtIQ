@@ -130,6 +130,12 @@ enum AnalyticsEvent {
     /// own: a rise here means links are being mangled in transit or by a build
     /// mismatch, which looks like silence in every other metric.
     static let challengeUnreadable = "challenge_unreadable"
+
+    /// Training sessions actually performed, as opposed to program pages read.
+    /// Before the runner existed there was nothing to count here: the app could
+    /// see that someone opened a program, never that they trained.
+    static let sessionStarted   = "session_started"
+    static let sessionCompleted = "session_completed"
 }
 
 extension View {

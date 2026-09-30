@@ -40,7 +40,7 @@ struct HomeView: View {
     /// All grid tiles push their destination via this single route +
     /// navigationDestination. (Switching tabs via tabRouter from a grid tile did
     /// not work; pushing via route does.) The Coach hero still switches tabs.
-    private enum Route: Hashable { case swing, tennisIQ, dailyOne, doubles, drills, recover, programs, nutrition
+    private enum Route: Hashable { case swing, tennisIQ, dailyOne, doubles, drills, recover, programs, program(String), nutrition
         #if DEBUG
         /// QC only: the paid coach-review order screen (App Store review
         /// screenshot for the consumable IAP).
@@ -76,10 +76,18 @@ struct HomeView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
-                // Above the pillars on purpose. It is the only thing here
-                // that is the same for this player as for everybody else,
-                // it takes twenty seconds, and it is the reason to open the
-                // app on a day with no tennis in it.
+                // First, when there is one. A session you are part-way through
+                // a program of beats anything else Home can offer, and it is
+                // the one thing here you might be holding the phone in a gym
+                // to find. It renders nothing at all when no program is
+                // active, so Home does not grow a slot for an empty promise.
+                UpNextCard { program in route = .program(program.id) }
+                    .reveal(appeared: appeared, index: 0, reduceMotion: reduceMotion)
+
+                // Then the daily question. It is the only thing here that is
+                // the same for this player as for everybody else, it takes
+                // twenty seconds, and it is the reason to open the app on a
+                // day with no tennis in it.
                 dailyOneStrip
                     .reveal(appeared: appeared, index: 0, reduceMotion: reduceMotion)
 
@@ -200,6 +208,12 @@ struct HomeView: View {
                 NutritionView()
             case .programs:
                 TrainProgramsView()
+            case .program(let id):
+                if let p = TrainingProgram.allPrograms.first(where: { $0.id == id }) {
+                    TrainingProgramDetailView(program: p)
+                } else {
+                    TrainProgramsView()
+                }
             #if DEBUG
             case .coachOrder:
                 CoachReviewOrderView(

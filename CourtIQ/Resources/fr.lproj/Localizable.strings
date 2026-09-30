@@ -1257,3 +1257,23 @@
 "challenge.unreadable_missing_body" = "Mettre l'app à jour devrait l'ajouter. Le lien lui-même n'a rien d'anormal.";
 "challenge.unreadable_broken_title" = "Ce lien n'a pas survécu au trajet";
 "challenge.unreadable_broken_body" = "Il en manque un morceau — les messageries coupent parfois les liens longs. Redemandez-le, ou collez-le en entier.";
+
+/* Carte « À suivre » + le dérouleur de séance */
+"upnext.eyebrow" = "À SUIVRE";
+"upnext.week_done" = "SEMAINE TERMINÉE — ON RECOMMENCE";
+"upnext.open_program" = "Programme complet";
+"upnext.start" = "Démarrer la séance";
+"upnext.rail_a11y_fmt" = "Aperçu de la séance, %1$d exercices. Balayez pour les lire.";
+"runner.next" = "Suivant";
+"runner.finish" = "Terminer";
+"runner.warmup" = "ÉCHAUFFEMENT";
+"runner.warmup_title" = "Avant de commencer";
+"runner.finisher" = "FINISHER";
+"runner.finisher_title" = "Le dernier";
+"runner.recovery" = "Récupération";
+"runner.exercise_fmt" = "EXERCICE %1$d SUR %2$d";
+"runner.how" = "Comment";
+"runner.watch" = "Attention";
+"runner.done_title" = "Séance terminée.";
+"runner.progress_fmt" = "Étape %1$d sur %2$d";
+"runner.prescription_a11y_fmt" = "Prescription : %@";

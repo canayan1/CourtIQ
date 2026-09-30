@@ -17,13 +17,66 @@ final class TrainingProgressManager: ObservableObject {
     @Published private(set) var weeklyCheckIns: [String: TrainingWeeklyCheckIn] = [:]
     @Published var selectedWeek = 1
 
+    /// The program the player is actually on.
+    ///
+    /// Until now nothing recorded this: completion was tracked per
+    /// (program, week, day), but nobody knew which program you were *in*, so
+    /// no screen outside the program detail could say what you were meant to
+    /// do next. Home could only offer a door marked "Programs" and let you
+    /// find your own way back.
+    @Published private(set) var activeProgramID: String?
+
     private let defaults = UserDefaults.standard
     private let completedKey = "CourtIQ.Training.CompletedSessionKeys"
     private let checkInKey = "CourtIQ.Training.WeeklyCheckIns"
+    private let activeKey = "CourtIQ.Training.ActiveProgramID"
     private let client = SupabaseRESTClient.shared
 
     private init() {
         load()
+    }
+
+    /// Remember which program the player is on. Called when they open one —
+    /// opening is the only signal the app has, and it is a better guess than
+    /// none. Switching programs is just opening another.
+    func setActive(programID: String) {
+        guard activeProgramID != programID else { return }
+        activeProgramID = programID
+        defaults.set(programID, forKey: activeKey)
+    }
+
+    func clearActive() {
+        activeProgramID = nil
+        defaults.removeObject(forKey: activeKey)
+    }
+
+    /// The next session in a program: the first day of the selected week that
+    /// has not been ticked off.
+    ///
+    /// The content carries no calendar — a program is a weekly template of
+    /// `days`, repeated for `durationWeeks` — so this deliberately answers
+    /// "what is next" and not "what is scheduled for today". Any screen that
+    /// called it today's session would be inventing a date the content never
+    /// claimed.
+    func nextDay(in program: TrainingProgram) -> TrainingDayPlan? {
+        program.days.first { !isCompleted(programID: program.id, week: selectedWeek, dayID: $0.id) }
+            ?? program.days.first
+    }
+
+    /// True when every day of the selected week is done — the card should
+    /// congratulate rather than nag.
+    func weekIsComplete(_ program: TrainingProgram) -> Bool {
+        !program.days.isEmpty && program.days.allSatisfy {
+            isCompleted(programID: program.id, week: selectedWeek, dayID: $0.id)
+        }
+    }
+
+    func markCompleted(programID: String, week: Int, dayID: String) {
+        let key = sessionKey(programID: programID, week: week, dayID: dayID)
+        guard !completedSessionKeys.contains(key) else { return }
+        completedSessionKeys.insert(key)
+        saveCompleted()
+        Task { await syncCompletion(for: key, programID: programID, week: week, dayID: dayID) }
     }
 
     func isCompleted(programID: String, week: Int, dayID: String) -> Bool {
@@ -137,6 +190,7 @@ final class TrainingProgressManager: ObservableObject {
     }
 
     func resetLocalData() {
+        clearActive()
         completedSessionKeys = []
         weeklyCheckIns = [:]
         selectedWeek = 1
@@ -153,6 +207,7 @@ final class TrainingProgressManager: ObservableObject {
     }
 
     private func load() {
+        activeProgramID = defaults.string(forKey: activeKey)
         if let saved = defaults.array(forKey: completedKey) as? [String] {
             completedSessionKeys = Set(saved)
         }

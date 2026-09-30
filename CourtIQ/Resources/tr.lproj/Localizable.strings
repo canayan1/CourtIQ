@@ -1257,3 +1257,23 @@
 "challenge.unreadable_missing_body" = "Uygulamayı güncellemek onu getirecektir. Linkin kendisinde bir sorun yok.";
 "challenge.unreadable_broken_title" = "Bu link yolda zarar görmüş";
 "challenge.unreadable_broken_body" = "Bir kısmı eksik — mesajlaşma uygulamaları uzun linkleri bazen ortadan kesiyor. Tekrar iste ya da tamamını yapıştır.";
+
+/* Sıradaki kartı + oturum koşucusu */
+"upnext.eyebrow" = "SIRADAKİ";
+"upnext.week_done" = "HAFTA BİTTİ — BAŞTAN AL";
+"upnext.open_program" = "Programın tamamı";
+"upnext.start" = "Oturumu başlat";
+"upnext.rail_a11y_fmt" = "Oturum önizlemesi, %1$d egzersiz. Okumak için kaydır.";
+"runner.next" = "Sıradaki";
+"runner.finish" = "Bitir";
+"runner.warmup" = "ISINMA";
+"runner.warmup_title" = "Başlamadan önce";
+"runner.finisher" = "BİTİRİCİ";
+"runner.finisher_title" = "Sonuncu";
+"runner.recovery" = "Toparlanma";
+"runner.exercise_fmt" = "EGZERSİZ %1$d / %2$d";
+"runner.how" = "Nasıl";
+"runner.watch" = "Dikkat";
+"runner.done_title" = "Oturum tamam.";
+"runner.progress_fmt" = "Adım %1$d / %2$d";
+"runner.prescription_a11y_fmt" = "Uygulama: %@";

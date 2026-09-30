@@ -1257,3 +1257,23 @@
 "challenge.unreadable_missing_body" = "Updating the app should bring it in. Nothing is wrong with the link itself.";
 "challenge.unreadable_broken_title" = "This link didn't survive the trip";
 "challenge.unreadable_broken_body" = "Part of it is missing — messaging apps sometimes cut long links in half. Ask for it again, or paste the whole thing.";
+
+/* Up Next card + the session runner */
+"upnext.eyebrow" = "UP NEXT";
+"upnext.week_done" = "WEEK DONE — GO AGAIN";
+"upnext.open_program" = "Full program";
+"upnext.start" = "Start session";
+"upnext.rail_a11y_fmt" = "Session preview, %1$d exercises. Swipe to read them.";
+"runner.next" = "Next";
+"runner.finish" = "Finish";
+"runner.warmup" = "WARM-UP";
+"runner.warmup_title" = "Before you start";
+"runner.finisher" = "FINISHER";
+"runner.finisher_title" = "Last one";
+"runner.recovery" = "Recovery";
+"runner.exercise_fmt" = "EXERCISE %1$d OF %2$d";
+"runner.how" = "How";
+"runner.watch" = "Watch out";
+"runner.done_title" = "Session done.";
+"runner.progress_fmt" = "Step %1$d of %2$d";
+"runner.prescription_a11y_fmt" = "Prescription: %@";

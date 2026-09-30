@@ -66,6 +66,12 @@ struct TrainingProgramDetailView: View {
             }
             loadCheckIn()
         }
+        .onAppear {
+            // Opening a program is the app's only signal that this is the
+            // one you are on. Home needs it to show the next session; before
+            // this, nothing outside these four walls knew.
+            progress.setActive(programID: program.id)
+        }
         .onChange(of: progress.selectedWeek) { _, _ in
             selectedEntryID = weeklyEntries.first?.id
             loadCheckIn()
