@@ -29,6 +29,21 @@ whole point of this document is to keep it that way until they are fixed.
 
 ---
 
+---
+
+## 0b. Re-verified 2 Oct 2026 (code + live queries, not the table above)
+
+| Thing | State |
+|---|---|
+| App Store | **1.4 live since 22 Sep** — so the §1 app fixes (292f3ea…26b967e) are in players' hands; main == release/1.4 for CoachReview |
+| IAP `coachreview1` | still `DEVELOPER_REMOVED_FROM_SALE` → `Product.products` empty → no Buy button anywhere; the card falls back to the waitlist |
+| Edge functions | order v8, queue v7, maintenance v3, all ACTIVE; cron 03:17 UTC active |
+| Function secrets | `ALLOW_SANDBOX=1`, `MAX_OPEN=5` set; **`RESEND_API_KEY` / `COACH_NOTIFY_EMAIL` NOT set** → no doorbell; the queue page is the only way the coach learns an order exists |
+| Data | 0 orders, 0 deliverables, 0 access-log rows, 0 objects in `coach-reviews` (bucket private), 0 coach rows |
+| Step 3 (device sandbox run) | **never done** — nothing has ever travelled the pipeline end to end |
+| Honesty gap | `coachreview.sent_body` says "We'll notify you the moment it lands"; there is no push and no local notification — the app learns on foreground. Change the copy to "open the app to check" until push exists. |
+
+
 ## 1. The three defects that would hurt the first buyer
 
 Ordered by damage. None is hypothetical; each is a line in the code.
@@ -162,9 +177,9 @@ migration applied, Vault secret created, function secrets set
 maintenance v1), cron `coach-review-maintenance` active at 03:17 UTC.
 Smoke-tested live: maintenance → `{purged:0, open:0}`, wrong secret → 401,
 queue list → `[]`, order with a forged JWS from an anonymous session → 402.
-The panel change (canayanIOSapps 3b1aade + follow-up) is committed but NOT
-deployed to Vercel — it only adds a language label and an SLA banner, the
-live panel keeps working without it.
+The panel changes (canayanIOSapps 3b1aade → c7a7bdf) ARE deployed: on
+2 Oct 2026 the live bundle at samosfi.com/coach contains `needs_reupload`,
+"start review" and "new clip" — the Received / Can't-open buttons are live.
 
 The runbook, for the next time: Run in this
 order — the migration schedules a cron job that reads a Vault secret, so
