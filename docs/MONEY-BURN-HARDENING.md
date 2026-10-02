@@ -62,6 +62,42 @@ for the day, the function returns 503. Worst-case daily bill is bounded to
 3. **Separate the paid video key.** `swing-analysis` falls back to the free
    `GEMINI_API_KEY`; put `GEMINI_VIDEO_API_KEY` in its **own Google Cloud project**
    so match/doubles spam can't degrade/bill the swing path (and vice-versa).
+
+   Less urgent since 2 Oct 2026 — `bump_feature_usage` now caps match and
+   doubles at 10/user/day, which closes the drain-the-shared-quota route. Still
+   worth doing: Gemini's free-tier quota is per *project*, so one project means
+   one pool no matter how politely each user behaves.
+
+   **Steps (only Can can do these — they need a Google account):**
+
+   1. <https://console.cloud.google.com> → project dropdown (top bar, next to
+      the Google Cloud logo) → **New Project** → name it e.g.
+      `dropvolley-video` → **Create**. Wait for the notification, then switch
+      to it in the same dropdown. *Check the project name in the top bar before
+      every step below — creating the key in the wrong project is the one
+      mistake that silently undoes the whole exercise.*
+   2. **APIs & Services → Library** → search `Generative Language API` →
+      **Enable**.
+   3. **APIs & Services → Credentials** → **+ Create credentials** → **API key**.
+      Copy it somewhere private. **Do not paste it into a chat.**
+   4. Still on that key → **Edit API key** → *API restrictions* → **Restrict
+      key** → tick **Generative Language API** → **Save**. An unrestricted key
+      is usable for anything in the project if it leaks.
+   5. **Billing → Budgets & alerts → Create budget** → scope it to this project,
+      set an amount, tick the email alerts. This is the step that actually
+      limits a bad month; the rest is isolation.
+   6. Supabase: <https://supabase.com/dashboard> → project `ybnodzzrkwennzpwyjmr`
+      → **Project Settings → Edge Functions → Secrets** (older dashboards:
+      **Edge Functions → Secrets** tab) → **Add new secret** →
+      name `GEMINI_VIDEO_API_KEY`, value = the key → **Save**.
+   7. Redeploy so the running instances pick it up:
+      `supabase functions deploy swing-analysis`.
+
+   Verify: `supabase secrets list` shows `GEMINI_VIDEO_API_KEY` with a digest
+   (never the value), and a swing analysis still succeeds end to end. If the
+   key is wrong, `swing-analysis` answers 503 "AI is not configured" or Gemini
+   returns 400 — it will not silently fall back to the free key, because the
+   `??` picks the video key the moment it is non-empty.
 4. **Flip the entitlement gate** — `REQUIRE_ENTITLEMENT=true` for `ai-chat` +
    `swing-analysis` once the RevenueCat build (1.0.2) is live, so non-premium
    users can't call the premium paths at all.
