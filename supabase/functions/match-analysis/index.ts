@@ -26,6 +26,10 @@ const SUPABASE_ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY") ?? "";
 
 const MAX_SUMMARY = 6000;
 const GLOBAL_DAILY_CAP = Number(Deno.env.get("GLOBAL_DAILY_CALL_CAP") ?? "1500");
+// Per-user ceiling. The global cap protects the BILL; this protects everyone
+// else's share of it, because without it one looping account can spend the
+// whole day's allowance before lunch and hand every other player a 503.
+const USER_DAILY_CAP = Number(Deno.env.get("MATCH_DAILY_CAP") ?? "10");
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -108,6 +112,21 @@ Deno.serve(async (req) => {
   const summary = (typeof body.summary === "string" ? body.summary : "").trim();
   if (!summary) return json({ error: "No match details provided." }, 400);
   if (summary.length > MAX_SUMMARY) return json({ error: "Too much detail." }, 413);
+
+  // Per-user daily cap. Counted server-side off the JWT (see the migration:
+  // the user id is never an argument), so it survives a reinstall and cannot be
+  // spoofed by minting a fresh anonymous account per request.
+  //
+  // Fails OPEN like the breaker below: a counter outage must not look like a
+  // broken feature to somebody on their first report of the day.
+  try {
+    const { data: userCount } = await supabase.rpc("bump_feature_usage", { p_feature: "match" });
+    if (typeof userCount === "number" && userCount > USER_DAILY_CAP) {
+      return json({
+        error: `You've reached today's limit of ${USER_DAILY_CAP} match analyses. Come back tomorrow.`,
+      }, 429);
+    }
+  } catch (_e) { /* fail open */ }
 
   // Global daily budget breaker (cost cap). Atomically bumps a shared counter
   // and refuses once the whole app crosses GLOBAL_DAILY_CALL_CAP for the day, so
