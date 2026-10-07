@@ -943,12 +943,10 @@
 				A00000000000000000000A /* Sources */,
 				A00000000000000000000B /* Frameworks */,
 				A00000000000000000000C /* Resources */,
-				AB1E0000000000000000001F /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				AB1E00000000000000000021 /* PBXTargetDependency */,
 			);
 			packageProductDependencies = (
 				325B817E77DD62D36909AF94 /* RevenueCat */,
