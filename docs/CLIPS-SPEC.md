@@ -214,16 +214,64 @@ Declared Age Range API; yayın öncesi onay kuyruğu (Can, ~15 dk/gün 1k MAU'da
 - DSA Art. 16/17: bildirim formu + gerekçe şablonu (mikro işletme, Section 3
   muaf).
 
-## 10. Pilot (kod öncesi, 2 hafta)
+## 10. Kendi kendine yürüyen döngü (operatörsüz) — Can, 12 Eki
 
-- 10 klip Can'ın arşivinden; Can + 2 koç **kör** değerlendirir (Q1–Q3). Koç–koç
-  uyumu ölçülür — koçlar bile anlaşamıyorsa, "doğru" diye bir şey olmadığının kanıtı budur ve ekrana öyle yansır.
-- 15 arkadaş + 1 WhatsApp grubu, uygulamasız (TestFlight'ta Daily One
-  motoruna video eklenmiş sürüm yeterse onunla).
-- Ölçüm: bitirme oranı, kliplerin %'si 24 saatte ≥3 cevap, Q1/Q2/Q3'te
-  koçla uyum, Q4 isabet, kart paylaşım oranı, linke tıklayan → yükleyen.
-- Geçer not: ≥%80 klip 24 saatte ≥3 cevap; Q1 uyumu ≥%80; en az 2 kişi
-  kendi klibini yüklemek istiyor.
+> "Direkt ben olmadan iki kullanıcının birbiriyle iletişim kurabileceği
+> bir mekanizma peşindeyim."
+
+Kaptan yok, koç devşirme yok, seed grubu yok. **Her şey bir kişi + bir klip +
+paylaşım sayfasından başlar** ve ikinci kişi uygulamasız değer alır.
+
+### Döngü (A uygulamalı, B uygulamasız)
+1. **A** klip seçer (PHPicker) → vuruş türü → "Bu vuruşta ne görüyorsun?"
+   düğmesi → paylaşım sayfası (WhatsApp / iMessage / Stories).
+   Link: `samosfi.com/k/<klipKodu>` — A'nın davet kodunu da taşır.
+2. **B** linki tarayıcıda açar: klip döngüde oynar, aynı 4 soru, hesap yok,
+   yükleme yok. Cevaplar → anında **"senin bakışın vs şimdiye kadar
+   bakanlar"** (gizli-oy kuralı: cevaplamadan görmez). Değer burada
+   verildi; yükleme istenmedi.
+3. Aynı sayfada tek teklif: **"Senin vuruşuna kim baksın?"** → App Store.
+   B yükleyip açınca link kodu okunur → A ile B **otomatik arkadaş**
+   (kod yazma yok, davet onayı yok; A zaten linki göndermişti).
+4. **A** uygulamayı açınca: "3 kişi baktı" + iki-tally kart. Bir cevapla
+   bile kart oluşur — boş ekran yok.
+5. B'nin ilk klibi → aynı döngü, B'nin çevresine. **K burada doğar.**
+
+### t=0 problemi: arkadaşsız ilk kullanıcı
+Araştırmanın en net uyarısı: "kimse bakmadı" = ilk çıkış. Operatörsüz
+çözüm **AI bakışı**: klip yüklenir yüklenmez 🤖 sütunu dolu gelir
+(vuruş türü, temas anı, 4 soruya AI'ın cevabı — "bakış" etiketiyle, doğru
+iddiasıyla değil). İlk kullanıcı sıfır arkadaşla bile bir kart alır ve
+paylaşacak bir şeyi olur: "AI şunu gördü, sen ne görüyorsun?" AI'ın işi
+burada hakemlik değil, **yalnızlığı doldurmak**.
+
+### Koçlar — devşirme değil, kendi gelir
+Koç olan kullanıcı profilden "Koçum" der, belge yükler; onaylanana kadar
+oyları oyuncu sayılır, hiçbir akış beklemez. Onay (Can) döngünün
+**dışında** tek manuel iştir ve günde dakikalar sürer. Koç, öğrencilerine
+kendi linkini atar — öğrenciler gelince grup kendiliğinden oluşur.
+
+### Gruplar — yönetici yok
+Herhangi bir kullanıcı "grup aç" der, link paylaşır; linkten gelen üye olur.
+Ayın Vuruşu'nu (§13) grubu açan başlatır. Kulüp adı serbest metin; kulüp
+markası resmi değildir, Faz 2'ye kadar öyle kalır.
+
+### Uygulamasız cevaplayan için kötüye kullanım önlemi
+Daily One'daki desen: IP + gün tuzlu hash, klip başına tek cevap; kalabalık
+yüzdesi ≥3 cevapta görünür. Web cevapları `rater_kind = web` olarak ayrı
+sütunda saklanır, koç/oyuncu tally'lerine karışmaz.
+
+### Pilot = yayın
+Ayrı bir pilot yok. Özellik TestFlight'a çıkar, Can kendi klibiyle döngüyü
+bir kez döndürür, sonra **ölçüm konuşur**: link açılma / cevaplama /
+yükleme / ilk klip oranları, kart paylaşım oranı, ilk 24 saatte bakış
+alan klip yüzdesi. Kapılar §3'teki gibi; farkı, kimse kapıyı itmiyor.
+
+### İnşa sırası (değişti)
+1. **Web replay + cevap sayfası** (`samosfi.com/k/`) — döngünün kalbi, önce bu.
+2. Yükleme + link üretimi + AI bakışı.
+3. Otomatik arkadaşlık (link kodu) + iki-tally kart.
+4. Koç başvurusu; gruplar; Ayın Vuruşu.
 
 ## 11. Can'ın cevaplaması gerekenler
 
@@ -237,7 +285,7 @@ Declared Age Range API; yayın öncesi onay kuyruğu (Can, ~15 dk/gün 1k MAU'da
 5. Klip saklama: 180 gün mü, süresiz mi?
 6. Koçlara ne vaat ediliyor (yıldız + öne çıkma yeter mi, Faz 2'de müşteri
    akışı sözü verilecek mi)?
-7. Pilot koçları kim (2 isim)?
+7. AI bakışı t=0'da hangi 4 soruyu cevaplar, hangilerinde "bu açıdan göremiyorum" der?
 8. Faz 1 ürün adı: "Klipler" mi, "Göz" mü, başka mı?
 
 ## 12. İş yükü (tahmin)
@@ -304,5 +352,5 @@ izle, "sen ne görüyorsun?" → "kulübüne katıl".
 - Grup yöneticisi = doğrulanmış koç ya da kaptan; rapor/engelle geçerli.
 
 ### Faz
-§6 gruplar (Faz 1.5) ve §3 koç doğrulaması üstüne; §10 pilotun ikinci ayı:
-tek kulüp, tek vuruş, 12+ katılımcı.
+§6 gruplar ve §3 koç doğrulaması üstüne; grubu açan kişi başlatır, operatör
+gerekmez. Açılma eşiği: grupta ≥8 üye.
