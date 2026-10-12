@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "note": "PROVISIONAL. Q2 fault lists per stroke are placeholders until Can writes the real ones (docs/CLIPS-SPEC.md §11.2). Shared verbatim by iOS (bundle), the edge functions (_shared/clipQuestions.ts) and the web page — keep the three copies identical.",
+  "strokes": ["forehand", "backhand", "serve", "volley"],
+  "q1": {
+    "prompt": "What matters most here?",
+    "options": [
+      { "id": "footwork", "label": "Footwork" },
+      { "id": "technique", "label": "Technique" },
+      { "id": "decision", "label": "Decision" },
+      { "id": "unclear", "label": "Can't tell from this angle" }
+    ]
+  },
+  "q2": {
+    "prompt": "What exactly?",
+    "byQ1": {
+      "footwork": [
+        { "id": "late_split", "label": "Late or no split step" },
+        { "id": "no_adjust", "label": "No adjustment steps" },
+        { "id": "too_close", "label": "Too close to the ball" },
+        { "id": "no_recovery", "label": "No recovery after the shot" }
+      ],
+      "technique": [
+        { "id": "late_prep", "label": "Late preparation" },
+        { "id": "racket_face", "label": "Racket face open or closed" },
+        { "id": "contact_point", "label": "Contact point too late" },
+        { "id": "wrist", "label": "Wrist doing the work" },
+        { "id": "short_finish", "label": "Short finish" }
+      ],
+      "decision": [
+        { "id": "wrong_target", "label": "Wrong target for the position" },
+        { "id": "overhit", "label": "Too much on a neutral ball" },
+        { "id": "no_height", "label": "No margin over the net" }
+      ],
+      "unclear": []
+    }
+  },
+  "q3": { "prompt": "Tap the moment", "toleranceMs": 300 },
+  "q4": {
+    "prompt": "What level is this player?",
+    "systems": {
+      "wtn": { "label": "WTN", "min": 1, "max": 40, "step": 0.5, "hitWithin": 3, "lowerIsBetter": true },
+      "utr": { "label": "UTR", "min": 1, "max": 16.5, "step": 0.25, "hitWithin": 0.75, "lowerIsBetter": false },
+      "band": { "label": "Level", "values": ["2.5", "3.0", "3.5", "4.0", "4.5", "5.0+"], "hitWithin": 1 }
+    }
+  },
+  "minVotesForCrowd": 3,
+  "maxClipMs": 12000
+}
