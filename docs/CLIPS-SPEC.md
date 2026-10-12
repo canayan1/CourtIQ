@@ -11,6 +11,13 @@ dokümanıdır; §11'deki sorular cevaplanmadan kod yazılmaz.*
 > AI ile kuvvetlendirilmiş şekilde, bir platform içinde şeffaf yapılmasını
 > sağlamak istiyorum."
 
+**İlke (Can, 12 Eki): bu işte mutlak doğru yok.** Koç, arkadaş ve AI üç
+*bakış*tır; hiçbiri "cevap anahtarı" değildir, hiçbiri diğerini "yenmez".
+Ürün bir yarışma değil, **geri bildirim içeren toplumsal analiz dayanışması**:
+bir vuruşa çok göz bakar, bakışlar yan yana konur, fark öğretir. Bu
+dokümanda "doğru", "anahtar", "kazanan", "yendi" kelimeleri bilinçli olarak
+kullanılmaz; "referans", "bakış", "uyum", "fark" kullanılır.
+
 Bunun kurguya etkisi: **atomik birim "arkadaş grubu" değil, "koç + öğrencileri"**.
 Kalabalık değil koç merkezde; AI hakem değil koçun aleti; şeffaflık = iki
 taraf da aynı veriyi görür; güven = doğrulama + arkadaş-grubu gizliliği +
@@ -28,10 +35,11 @@ ilişkisinin içindeki bir adım olur. Bkz. §0 ve §6.
 
 Bu üçü, araştırmanın en zor iki sorusunu çözüyor:
 
-- *Doğruyu kim bulur?* → Koç cevabı varsa **koç cevabı anahtardır**; yoksa
-  arkadaş görüşü "arkadaşların gördüğü" olarak gösterilir, "doğru" olarak değil.
-  Koç oylarının ayrı tutulması, kalabalığın güvenilirliğini ölçen altın seti
-  **kendiliğinden** üretir (koç–kalabalık uyum oranı = kalibrasyon).
+- *Doğruyu kim bulur?* → Kimse. Koç bakışı **referans** bakıştır (ayrı
+  gösterilir, ağırlığı yüksektir) ama "doğru" değildir; arkadaş bakışı
+  "arkadaşların gördüğü"dür. Koç oylarının ayrı tutulması, bakışlar arası
+  *uyumu* ölçmeyi mümkün kılar — kalibrasyon için yeter, hakikat iddiası
+  gerektirmez.
 - *Apple yaş sınıfı?* → Arkadaş grubu, beğenisiz, feed'siz = "UGC + mesajlaşma",
   **4+** kalır. Açık feed 13+ ve yaş beyanı API'si ister — Faz 2'nin bedeli bu.
 
@@ -50,12 +58,12 @@ Bu üçü, araştırmanın en zor iki sorusunu çözüyor:
 ### Cevaplayan (45 saniye, uygulama içinde)
 Klip döngüde oynar. Oylar **cevap verilene kadar gizli** (sürü etkisi önlemi).
 
-| # | Soru | Tip | Anahtar |
+| # | Soru | Tip | Referans (doğru değil) |
 |---|---|---|---|
-| Q1 | En kritik sorun ne? | footwork · teknik · karar · **"bu açıdan görünmüyor"** | koç çoğunluğu, yoksa yok |
-| Q2 | Tam olarak ne? | Q1'e bağlı 4–6 seçenek (ör. teknik → geç hazırlık / bilek / raket yüzü / temas noktası / bitiriş) | koç çoğunluğu |
+| Q1 | En kritik sorun ne? | footwork · teknik · karar · **"bu açıdan görünmüyor"** | koç bakışı, yoksa yok |
+| Q2 | Tam olarak ne? | Q1'e bağlı 4–6 seçenek (ör. teknik → geç hazırlık / bilek / raket yüzü / temas noktası / bitiriş) | koç bakışı |
 | Q3 | Hangi anda? | videoda dokun | koç zaman damgalarının medyanı ± 0,3 sn |
-| Q4 | Bu oyuncu kaç? | WTN/UTR kaydırıcı (ya da seviye bandı) | **yükleyenin beyanı** |
+| Q4 | Bu oyuncu kaç? | WTN/UTR kaydırıcı (ya da seviye bandı) | **yükleyenin beyanı** (tek nesnel referans) |
 
 "Bu açıdan görünmüyor" seçeneği zorunlu: koç panelindeki "—" ile aynı
 dürüstlük; yanlış açıdan çekilmiş klipte kalabalığı tahmine zorlamıyoruz.
@@ -70,9 +78,10 @@ Forehand · 7 arkadaş, 2 koç cevapladı
 
 Seviye tahmini    arkadaşlar ortalama WTN 27 · koçlar 24 · sen 25
 ```
-Koç varsa koç satırı üstte ve "anahtar" olarak işaretli; yoksa başlık
-"arkadaşların gördüğü" olur, "doğru" kelimesi hiç geçmez. Ayrıca her cevaplayan
-kendi cevabını koç anahtarıyla karşılaştırır: **"Gözün: 2/3 koçlarla aynı."**
+Koç varsa koç satırı üstte, "⭐ koç bakışı" olarak işaretli; "doğru",
+"anahtar" kelimeleri hiçbir ekranda geçmez. Her cevaplayan kendi bakışını
+koçlarınkiyle yan yana görür: **"Koçlarla uyum: 2/3."** Uyumsuzluk hata
+değil, *fark*tır — ekran "yanlış" demez, "koçlar başka bir şey gördü" der.
 
 ### Paylaşım kartı (spoiler'sız)
 Donmuş kare + "7 arkadaşım bu forehand'de 3 farklı şey gördü — sen ne
@@ -90,11 +99,11 @@ Q1'i cevaplar, sonra "arkadaş ol ve gerisini gör".
   koçlar farklı şey gördü" rozeti; aylık "oyuncular koçlarla %X uyuştu"
   istatistiği (araştırmanın beklentisi: Q1'de yüksek, Q2'de düşük — bunu
   ölçmek başlı başına içerik).
-- **Göz puanı (rater için):** koç anahtarı olan kliplerde Q1–Q3 uyum oranı.
+- **Göz puanı (rater için):** koç bakışı olan kliplerde Q1–Q3 uyum oranı — "koçlarla ne kadar aynı görüyorsun", "ne kadar doğru görüyorsun" değil.
   Üçüncü bir "IQ" sayısı **üretilmez**; göz puanı Tennis IQ'nun içine
   "video" kategorisi olarak akar (profildeki iki IQ sorunu büyümesin).
 - Koç cevapları ağırlıklandırmada kullanılır; oyuncu ağırlığı *sadece* koç
-  anahtarlı kliplerdeki geçmiş uyumdan hesaplanır, asla kalabalıkla uyumdan
+  bakışı olan kliplerdeki geçmiş uyumdan hesaplanır, asla kalabalıkla uyumdan
   (Community Notes tuzağı).
 
 ## 3. Koç yıldızı — doğrulama şart
@@ -108,14 +117,14 @@ Ev kuralı: sahte sosyal kanıt yok. Yıldız **sadece doğrulanmış** koça ve
 - Doğrulanmamış koç: yıldız yok, oyları `player` sayılır, "koçum" ibaresi
   gösterilmez. "Beklemede" rozeti bile yok — belirsizlik satılmaz.
 - Koçun kazandığı: ⭐, cevapları öne çıkar, kendi öğrencilerinin kliplerinde
-  anahtar sayılır, profilinde "N klibe koç gözüyle baktı"; Faz 2'de keşfet
+  referans sayılır, profilinde "N klibe koç gözüyle baktı"; Faz 2'de keşfet
   dağıtımı ve ücretli inceleme kuyruğuna otomatik giriş.
 - Koç cevabı **teşhis** değil **gözlem**dir: koç da aynı çoktan seçmeliyi
   doldurur, serbest metin yok (Faz 1). Tıbbi/sakatlık ifadesi için alan yok.
 
 ## 4. WTN / UTR tahmini
 
-Bu, koç anahtarı gerektirmeyen tek soru ve en paylaşılabilir sonuç
+Bu, koç bakışına ihtiyaç duymayan tek soru ve en paylaşılabilir sonuç
 ("arkadaşların seni 4.5 sandı, sen 4.0'sın").
 
 - Yükleyen puanını girer (isteğe bağlı). Saklanır: `clips.declared_rating`
@@ -207,8 +216,8 @@ Declared Age Range API; yayın öncesi onay kuyruğu (Can, ~15 dk/gün 1k MAU'da
 
 ## 10. Pilot (kod öncesi, 2 hafta)
 
-- 10 klip Can'ın arşivinden; Can + 2 koç **kör** anahtarlar (Q1–Q3). Koç–koç
-  uyumu ölçülür — kalabalığın tavanı budur.
+- 10 klip Can'ın arşivinden; Can + 2 koç **kör** değerlendirir (Q1–Q3). Koç–koç
+  uyumu ölçülür — koçlar bile anlaşamıyorsa, "doğru" diye bir şey olmadığının kanıtı budur ve ekrana öyle yansır.
 - 15 arkadaş + 1 WhatsApp grubu, uygulamasız (TestFlight'ta Daily One
   motoruna video eklenmiş sürüm yeterse onunla).
 - Ölçüm: bitirme oranı, kliplerin %'si 24 saatte ≥3 cevap, Q1/Q2/Q3'te
@@ -247,51 +256,53 @@ Declared Age Range API; yayın öncesi onay kuyruğu (Can, ~15 dk/gün 1k MAU'da
 Toplam: pilot sonrası 3–4 hafta tek geliştirici. İlk yapılacak: §10 pilot,
 kod yazmadan.
 
-## 13. Kulüp Kupası — "bu ay kulübün en iyi forehand'i kimde?" (Can, 12 Eki)
+## 13. Ayın Vuruşu — kulüpte toplu analiz (Can, 12 Eki; 2. düzeltmeyle)
 
-Hedeflenen viral parça bu. İki tally modeli burada da aynen çalışır ve
-Apple 1.2'nin açık yasağını ("objectification of real people — hot-or-not
-voting") **tasarımla** aşmak zorundayız; yasağı yorumla değil.
+Hedeflenen viral parça. **Yarışma değil, dayanışma:** bir ay boyunca kulübün
+herkesi aynı vuruşa bakar, herkes herkese geri bildirim verir, kimse
+sıralanmaz. Apple 1.2'nin "hot-or-not" yasağının yanından değil, karşı
+yönünden geçer — ama bu dokümandaki korkuluklar yine şarttır.
 
 ### Mekanik
 - Aylık, **tek vuruş** (Ekim: forehand, Kasım: servis…). Kulüp = §6'daki grup;
-  kupayı doğrulanmış koç ya da kaptan açar.
-- **Katılım isteğe bağlı:** üye "yarışmaya kat" deyip klip atar. Kimse
-  klibi olmadan sıralanmaz; "kat" demeden hiçbir listede görünmez.
-- Değerlendirme **kriterle**, beğeniyle değil: koç panelindeki 5 kontrol
-  noktası (hazırlık, temas, bitiriş, ayak, zamanlama; 1–5 ya da "—").
-  Herkes aynı kartı doldurur; "beğen" düğmesi yoktur.
-- İki tally, ayrı ve görünür: **Koçların seçimi** ve **Üyelerin seçimi**.
-  Farklıysa bu *manşet* ("üyeler Ayşe'yi, koçlar Deniz'i seçti").
-- Oylar kupa kapanana kadar gizli; kapanınca **ilk 3 + "en çok gelişen"**
-  (geçen ayın klibine göre) açıklanır. **Alt sıralama yoktur** — 4. ve
-  sonrası sadece kendi puan kartını görür.
-- Kendi klibine oy yok; her katılımcı en az 5 başkasına bakmadan sonuç
-  göremez (bedavacılık önlemi + kalibrasyon verisi).
+  ayı doğrulanmış koç ya da kaptan açar.
+- **Katılım isteğe bağlı:** üye "bu ay katılıyorum" deyip klip atar; katılmayan
+  hiçbir yerde görünmez.
+- Herkes herkese bakar, aynı kriter kartıyla (5 kontrol noktası: hazırlık,
+  temas, bitiriş, ayak, zamanlama; 1–5 ya da "—"). **Beğeni yok, sıra yok.**
+  Her katılımcı en az 5 başkasına bakmadan kendi kartını göremez — dayanışma
+  mekanik olarak zorunlu.
+- Ay kapanınca her katılımcı **kendi kartını** alır: üç bakış yan yana —
+  ⭐ koçlar, 👥 üyeler, 🤖 AI — ve geçen ayki kendi klibine göre değişim.
+  Kart yalnız sahibine açılır.
+- Kulübe açık tek şey: koçların **"bu ay bakmaya değer"** dediği 3 klip —
+  örnek olarak, madalya olarak değil; sıra numarası yoktur, "en iyi" yazmaz,
+  gerekçesi yazar ("temas noktası önde — buna bakın"). Sahibi isterse çıkarır.
+- "En çok gelişen" yalnız kişinin kendisine söylenir, listelenmez.
 
-### "AI ile yarıştırma" — hakem değil, yarışmacı
-AI'ın seçimi **üçüncü sütun** olur: "AI'ın seçimi: Mert". Hakem değil,
-katılımcı; yanılırsa herkes görür — bu, güvenilmez video-AI'ı dürüstçe
-sergilemenin tek yolu ve ayrıca içerik ("koçlar AI'ı 3. kez yendi").
-AI seçimi hiçbir sıralamayı etkilemez, hiçbir karta "AI dedi ki" olarak
-girmez.
+### AI: üçüncü bakış, puan tablosu yok
+AI kartta üçüncü sütundur; "AI'ın seçimi", "AI'ı yendi", "AI yanıldı" gibi
+hiçbir ifade yoktur — çünkü ortada doğru yok. AI'ın bakışı koç ve üye
+bakışından farklıysa kart bunu "üç bakış ayrıştı" diye gösterir, kimseyi
+haklı çıkarmaz. (Can, 12 Eki: "AI ile insanları yarıştırırız bir noktada,
+önemli değil" — yarıştırma ancak katılımcılar isterse ve yine sıralamasız.)
 
 ### Paylaşım
-Final 4 kartı (4 donmuş kare, kulüp adı, ay, vuruş, grup kodu) → Stories;
-evrensel link: tarayıcıda 4 klibi izleyip "sen kimi seçerdin?" — sonra
-"kulübüne katıl". Kazanan kartı sadece kazananın kendi paylaşımıyla çıkar.
+Katılımcı **kendi kartını** paylaşır (üç bakış + değişim, kulüp adı, ay,
+grup kodu). Kulübün paylaştığı: "bu ay 23 kişi birbirinin forehand'ine
+baktı, 3 örnek klip" — isim yok. Evrensel link: tarayıcıda 3 örnek klibi
+izle, "sen ne görüyorsun?" → "kulübüne katıl".
 
 ### Korkuluklar (bunlar olmadan özellik yok)
 - Soru her zaman vuruş hakkında, kişi hakkında değil; görünüm/beden/yaş
-  için alan yok, serbest metin yok.
-- 16+; kulüp kupasına 16 altı katılamaz (junior kupası ancak kulübün
-  izinleri tuttuğu koç-yönetimli kapalı grupta, Faz 2).
-- Katılımcı kupadan istediği an çekilir, klibi anında kaybolur.
-- Koç tally'si yoksa (koçsuz kulüp) sonuç "üyelerin seçimi" diye etiketlenir,
-  "en iyi" kelimesi kullanılmaz.
-- Grup yöneticisi = doğrulanmış koç ya da kaptan; rapor/engelle burada da
-  geçerli.
+  için alan yok, serbest metin yok (Faz 1).
+- Hiçbir ekranda sıra numarası, "en iyi/en kötü", "kazandı/yendi" yok.
+- 16+; 16 altı katılamaz (junior ayı ancak kulübün izinleri tuttuğu
+  koç-yönetimli kapalı grupta, Faz 2).
+- Katılımcı istediği an çekilir, klibi ve kartı anında kaybolur.
+- Koç yoksa koç sütunu boştur; "örnek klip" seçimi yapılmaz.
+- Grup yöneticisi = doğrulanmış koç ya da kaptan; rapor/engelle geçerli.
 
 ### Faz
-Kupa, §6 gruplar (Faz 1.5) ve §3 koç doğrulaması üstüne kurulur; §10 pilotun
-ikinci ayı olarak denenir: tek kulüp, tek vuruş, 12+ katılımcı.
+§6 gruplar (Faz 1.5) ve §3 koç doğrulaması üstüne; §10 pilotun ikinci ayı:
+tek kulüp, tek vuruş, 12+ katılımcı.
