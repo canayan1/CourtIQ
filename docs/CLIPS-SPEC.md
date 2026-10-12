@@ -246,3 +246,52 @@ Declared Age Range API; yayın öncesi onay kuyruğu (Can, ~15 dk/gün 1k MAU'da
 
 Toplam: pilot sonrası 3–4 hafta tek geliştirici. İlk yapılacak: §10 pilot,
 kod yazmadan.
+
+## 13. Kulüp Kupası — "bu ay kulübün en iyi forehand'i kimde?" (Can, 12 Eki)
+
+Hedeflenen viral parça bu. İki tally modeli burada da aynen çalışır ve
+Apple 1.2'nin açık yasağını ("objectification of real people — hot-or-not
+voting") **tasarımla** aşmak zorundayız; yasağı yorumla değil.
+
+### Mekanik
+- Aylık, **tek vuruş** (Ekim: forehand, Kasım: servis…). Kulüp = §6'daki grup;
+  kupayı doğrulanmış koç ya da kaptan açar.
+- **Katılım isteğe bağlı:** üye "yarışmaya kat" deyip klip atar. Kimse
+  klibi olmadan sıralanmaz; "kat" demeden hiçbir listede görünmez.
+- Değerlendirme **kriterle**, beğeniyle değil: koç panelindeki 5 kontrol
+  noktası (hazırlık, temas, bitiriş, ayak, zamanlama; 1–5 ya da "—").
+  Herkes aynı kartı doldurur; "beğen" düğmesi yoktur.
+- İki tally, ayrı ve görünür: **Koçların seçimi** ve **Üyelerin seçimi**.
+  Farklıysa bu *manşet* ("üyeler Ayşe'yi, koçlar Deniz'i seçti").
+- Oylar kupa kapanana kadar gizli; kapanınca **ilk 3 + "en çok gelişen"**
+  (geçen ayın klibine göre) açıklanır. **Alt sıralama yoktur** — 4. ve
+  sonrası sadece kendi puan kartını görür.
+- Kendi klibine oy yok; her katılımcı en az 5 başkasına bakmadan sonuç
+  göremez (bedavacılık önlemi + kalibrasyon verisi).
+
+### "AI ile yarıştırma" — hakem değil, yarışmacı
+AI'ın seçimi **üçüncü sütun** olur: "AI'ın seçimi: Mert". Hakem değil,
+katılımcı; yanılırsa herkes görür — bu, güvenilmez video-AI'ı dürüstçe
+sergilemenin tek yolu ve ayrıca içerik ("koçlar AI'ı 3. kez yendi").
+AI seçimi hiçbir sıralamayı etkilemez, hiçbir karta "AI dedi ki" olarak
+girmez.
+
+### Paylaşım
+Final 4 kartı (4 donmuş kare, kulüp adı, ay, vuruş, grup kodu) → Stories;
+evrensel link: tarayıcıda 4 klibi izleyip "sen kimi seçerdin?" — sonra
+"kulübüne katıl". Kazanan kartı sadece kazananın kendi paylaşımıyla çıkar.
+
+### Korkuluklar (bunlar olmadan özellik yok)
+- Soru her zaman vuruş hakkında, kişi hakkında değil; görünüm/beden/yaş
+  için alan yok, serbest metin yok.
+- 16+; kulüp kupasına 16 altı katılamaz (junior kupası ancak kulübün
+  izinleri tuttuğu koç-yönetimli kapalı grupta, Faz 2).
+- Katılımcı kupadan istediği an çekilir, klibi anında kaybolur.
+- Koç tally'si yoksa (koçsuz kulüp) sonuç "üyelerin seçimi" diye etiketlenir,
+  "en iyi" kelimesi kullanılmaz.
+- Grup yöneticisi = doğrulanmış koç ya da kaptan; rapor/engelle burada da
+  geçerli.
+
+### Faz
+Kupa, §6 gruplar (Faz 1.5) ve §3 koç doğrulaması üstüne kurulur; §10 pilotun
+ikinci ayı olarak denenir: tek kulüp, tek vuruş, 12+ katılımcı.
