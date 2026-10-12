@@ -4,6 +4,19 @@
 `reports/DropVolley pazar ve viral büyüme araştırması.md`. Bu doküman karar
 dokümanıdır; §11'deki sorular cevaplanmadan kod yazılmaz.*
 
+## 00. Vizyon (Can, 12 Eki)
+
+> "Bu aslında koçların öğrencileriyle, kulüpteki insanların arkadaşlarıyla
+> interact etme aracı olacak. DropVolley sayesinde güvenilir bir ortamda,
+> AI ile kuvvetlendirilmiş şekilde, bir platform içinde şeffaf yapılmasını
+> sağlamak istiyorum."
+
+Bunun kurguya etkisi: **atomik birim "arkadaş grubu" değil, "koç + öğrencileri"**.
+Kalabalık değil koç merkezde; AI hakem değil koçun aleti; şeffaflık = iki
+taraf da aynı veriyi görür; güven = doğrulama + arkadaş-grubu gizliliği +
+feed'sizlik. Ücretli koç incelemesi, yabancı pazarı olmaktan çıkıp koç–öğrenci
+ilişkisinin içindeki bir adım olur. Bkz. §0 ve §6.
+
 ## 0. Can'ın kararları (12 Eki)
 
 1. **Faz 1 sadece arkadaşlar.** Klip, yükleyenin arkadaşlarına gider; sonuç
