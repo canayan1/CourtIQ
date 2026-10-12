@@ -30,8 +30,8 @@ ilişkisinin içindeki bir adım olur. Bkz. §0 ve §6.
    yükleyenin profiline eklenir. Keşfet/açık feed **Faz 2**.
 2. **Koçlara yıldız.** Doğrulanmış tenis koçlarının cevapları ayrı sayılır ve
    ayrı gösterilir; koç ile oyuncu görüşü arasındaki *fark* görünür olur.
-3. **Son soru: "Bu oyuncunun WTN / UTR'si kaç?"** Cevap anahtarı yükleyenin
-   kendi puanı.
+3. **Son soru: "Bu oyuncunun WTN / UTR'si kaç?"** Referansı yükleyenin
+   kendi beyanı — bir hakikat değil, kişinin kendi sayısı.
 
 Bu üçü, araştırmanın en zor iki sorusunu çözüyor:
 
