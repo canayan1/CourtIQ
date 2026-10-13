@@ -40,7 +40,7 @@ struct HomeView: View {
     /// All grid tiles push their destination via this single route +
     /// navigationDestination. (Switching tabs via tabRouter from a grid tile did
     /// not work; pushing via route does.) The Coach hero still switches tabs.
-    private enum Route: Hashable { case swing, tennisIQ, dailyOne, doubles, drills, recover, programs, program(String), nutrition
+    private enum Route: Hashable { case swing, tennisIQ, dailyOne, doubles, drills, recover, programs, program(String), nutrition, clips
         #if DEBUG
         /// QC only: the paid coach-review order screen (App Store review
         /// screenshot for the consumable IAP).
@@ -176,6 +176,7 @@ struct HomeView: View {
             switch ProcessInfo.processInfo.environment["QC_OPEN"] {
             case "iq":    route = .tennisIQ
             case "dailyone": route = .dailyOne
+            case "clips": route = .clips
             case "swing": route = .swing
             case "coachorder": route = .coachOrder
             case "body": route = .bodySession
@@ -206,6 +207,8 @@ struct HomeView: View {
                 MobilityLibraryView()
             case .nutrition:
                 NutritionView()
+            case .clips:
+                ClipsHubView()
             case .programs:
                 TrainProgramsView()
             case .program(let id):
@@ -488,6 +491,7 @@ struct HomeView: View {
     private var alsoRow: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 8) {
+                chip(lang.t("clips.title"), icon: "video.badge.plus") { route = .clips }
                 chip(lang.t("train.drills"), icon: "scope") { route = .drills }
                 chip(lang.t("home.tile_doubles"), icon: "person.2.fill") { route = .doubles }
                 chip(lang.t("train.recover"), icon: "figure.walk") { route = .recover }

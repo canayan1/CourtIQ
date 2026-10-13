@@ -87,6 +87,7 @@
 		A000000000000000000053 /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000043 /* PaywallView.swift */; };
 		A000000000000000000055 /* LegalDocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A000000000000000000045 /* LegalDocumentView.swift */; };
 		A000000000000000000057 /* quiz_questions.json in Resources */ = {isa = PBXBuildFile; fileRef = A000000000000000000047 /* quiz_questions.json */; };
+		D1A14000000000000000C /* clip_questions.json in Resources */ = {isa = PBXBuildFile; fileRef = D1A14000000000000000B /* clip_questions.json */; };
 		B7E11QM0000000000003 /* quiz_plays.json in Resources */ = {isa = PBXBuildFile; fileRef = B7E11QF0000000000003 /* quiz_plays.json */; };
 		A000000000000000000AD1 /* Audio in Resources */ = {isa = PBXBuildFile; fileRef = A000000000000000000AD0 /* Audio */; };
 		A0000000000000000009F2 /* onboarding_tour.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A0000000000000000009F1 /* onboarding_tour.mp4 */; };
@@ -193,6 +194,11 @@
 		D1A110000000000000000005 /* DailyOneCrowd.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A110000000000000000004 /* DailyOneCrowd.swift */; };
 		D1A110000000000000000007 /* DailyOneShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A110000000000000000006 /* DailyOneShare.swift */; };
 		D1A110000000000000000009 /* DailyOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A110000000000000000008 /* DailyOneView.swift */; };
+		D1A1400000000000000002 /* ClipModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A1400000000000000001 /* ClipModels.swift */; };
+		D1A1400000000000000004 /* ClipsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A1400000000000000003 /* ClipsService.swift */; };
+		D1A1400000000000000006 /* ClipShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A1400000000000000005 /* ClipShareView.swift */; };
+		D1A1400000000000000008 /* ClipAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A1400000000000000007 /* ClipAnswerView.swift */; };
+		D1A140000000000000000A /* ClipsHubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A1400000000000000009 /* ClipsHubView.swift */; };
 		A7B1E0000000000000000004 /* MotionArcOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B1E0000000000000000003 /* MotionArcOverlay.swift */; };
 		11473B166FFF4B968A8EF217 /* SwingImpactAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D682A1ECA458C9921D4AD /* SwingImpactAnalyzer.swift */; };
 		CC1F6A22C438B041E97699BD /* SwingAnalysisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C1F0C3D2F961F7294836E6 /* SwingAnalysisView.swift */; };
@@ -363,6 +369,7 @@
 		A000000000000000000046 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = CourtIQ/Assets.xcassets; sourceTree = "<group>"; };
 		A000000000000000000AD0 /* Audio */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Audio; path = CourtIQ/Resources/Audio; sourceTree = "<group>"; };
 		A000000000000000000047 /* quiz_questions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = quiz_questions.json; path = CourtIQ/Resources/Content/quiz_questions.json; sourceTree = "<group>"; };
+		D1A14000000000000000B /* clip_questions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = clip_questions.json; path = CourtIQ/Resources/Content/clip_questions.json; sourceTree = "<group>"; };
 		B7E11QF0000000000003 /* quiz_plays.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = quiz_plays.json; path = CourtIQ/Resources/Content/quiz_plays.json; sourceTree = "<group>"; };
 		A0000000000000000009F1 /* onboarding_tour.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = onboarding_tour.mp4; path = CourtIQ/Resources/Content/onboarding_tour.mp4; sourceTree = "<group>"; };
 		A000000000000000000048 /* training_programs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = training_programs.json; path = CourtIQ/Resources/Content/training_programs.json; sourceTree = "<group>"; };
@@ -485,6 +492,11 @@
 		D1A110000000000000000004 /* DailyOneCrowd.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DailyOneCrowd.swift; path = CourtIQ/Features/DailyOne/DailyOneCrowd.swift; sourceTree = "<group>"; };
 		D1A110000000000000000006 /* DailyOneShare.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DailyOneShare.swift; path = CourtIQ/Features/DailyOne/DailyOneShare.swift; sourceTree = "<group>"; };
 		D1A110000000000000000008 /* DailyOneView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DailyOneView.swift; path = CourtIQ/Features/DailyOne/DailyOneView.swift; sourceTree = "<group>"; };
+		D1A1400000000000000001 /* ClipModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ClipModels.swift; path = CourtIQ/Features/Clips/ClipModels.swift; sourceTree = "<group>"; };
+		D1A1400000000000000003 /* ClipsService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ClipsService.swift; path = CourtIQ/Features/Clips/ClipsService.swift; sourceTree = "<group>"; };
+		D1A1400000000000000005 /* ClipShareView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ClipShareView.swift; path = CourtIQ/Features/Clips/ClipShareView.swift; sourceTree = "<group>"; };
+		D1A1400000000000000007 /* ClipAnswerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ClipAnswerView.swift; path = CourtIQ/Features/Clips/ClipAnswerView.swift; sourceTree = "<group>"; };
+		D1A1400000000000000009 /* ClipsHubView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ClipsHubView.swift; path = CourtIQ/Features/Clips/ClipsHubView.swift; sourceTree = "<group>"; };
 		A7B1E0000000000000000003 /* MotionArcOverlay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MotionArcOverlay.swift; path = CourtIQ/Features/Mobility/MotionArcOverlay.swift; sourceTree = "<group>"; };
 		AC3D682A1ECA458C9921D4AD /* SwingImpactAnalyzer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwingImpactAnalyzer.swift; path = CourtIQ/Features/SwingAnalysis/SwingImpactAnalyzer.swift; sourceTree = "<group>"; };
 		E59972A086F7FB607351D71D /* TrainPracticeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TrainPracticeView.swift; path = CourtIQ/Features/Training/TrainPracticeView.swift; sourceTree = "<group>"; };
@@ -780,6 +792,7 @@
 				A000000000000000000046 /* Assets.xcassets */,
 				A000000000000000000AD0 /* Audio */,
 				A000000000000000000047 /* quiz_questions.json */,
+				D1A14000000000000000B /* clip_questions.json */,
 				B7E11QF0000000000003 /* quiz_plays.json */,
 				A0000000000000000009F1 /* onboarding_tour.mp4 */,
 				A000000000000000000048 /* training_programs.json */,
@@ -829,6 +842,11 @@
 				D1A110000000000000000004 /* DailyOneCrowd.swift */,
 				D1A110000000000000000006 /* DailyOneShare.swift */,
 				D1A110000000000000000008 /* DailyOneView.swift */,
+				D1A1400000000000000001 /* ClipModels.swift */,
+				D1A1400000000000000003 /* ClipsService.swift */,
+				D1A1400000000000000005 /* ClipShareView.swift */,
+				D1A1400000000000000007 /* ClipAnswerView.swift */,
+				D1A1400000000000000009 /* ClipsHubView.swift */,
 				A7B1E0000000000000000003 /* MotionArcOverlay.swift */,
 				AC3D682A1ECA458C9921D4AD /* SwingImpactAnalyzer.swift */,
 				CFB312EFDFBC3D468DFBD276 /* SwingAnalysisService.swift */,
@@ -1028,6 +1046,7 @@
 				A000000000000000000060 /* Assets.xcassets in Resources */,
 				A000000000000000000AD1 /* Audio in Resources */,
 				A000000000000000000057 /* quiz_questions.json in Resources */,
+				D1A14000000000000000C /* clip_questions.json in Resources */,
 				B7E11QM0000000000003 /* quiz_plays.json in Resources */,
 				A0000000000000000009F2 /* onboarding_tour.mp4 in Resources */,
 				A000000000000000000058 /* training_programs.json in Resources */,
@@ -1252,6 +1271,11 @@
 				D1A110000000000000000005 /* DailyOneCrowd.swift in Sources */,
 				D1A110000000000000000007 /* DailyOneShare.swift in Sources */,
 				D1A110000000000000000009 /* DailyOneView.swift in Sources */,
+				D1A1400000000000000002 /* ClipModels.swift in Sources */,
+				D1A1400000000000000004 /* ClipsService.swift in Sources */,
+				D1A1400000000000000006 /* ClipShareView.swift in Sources */,
+				D1A1400000000000000008 /* ClipAnswerView.swift in Sources */,
+				D1A140000000000000000A /* ClipsHubView.swift in Sources */,
 				A7B1E0000000000000000004 /* MotionArcOverlay.swift in Sources */,
 				11473B166FFF4B968A8EF217 /* SwingImpactAnalyzer.swift in Sources */,
 				065E60992E196985B3FD8E65 /* SwingAnalysisService.swift in Sources */,

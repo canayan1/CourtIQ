@@ -136,6 +136,12 @@ enum AnalyticsEvent {
     /// see that someone opened a program, never that they trained.
     static let sessionStarted   = "session_started"
     static let sessionCompleted = "session_completed"
+
+    /// Clips — the loop (docs/CLIPS-SPEC.md §10). shared = links created,
+    /// redeemed = links that reached an installed app, answered = views cast.
+    static let clipShared       = "clip_shared"
+    static let clipLinkRedeemed = "clip_link_redeemed"
+    static let clipAnswered     = "clip_answered"
 }
 
 extension View {

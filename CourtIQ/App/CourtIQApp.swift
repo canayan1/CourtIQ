@@ -265,6 +265,10 @@ private struct RootView: View {
     /// or the reason one could not be read.
     @State private var pendingChallenge: ChallengeArrival?
 
+    /// A clip that arrived through a `samosfi.com/k/<code>` link, after the
+    /// code made its sender a friend. nil when the link was a plain friend link.
+    @State private var pendingClipID: String?
+
     /// Only route deep links once the user is past onboarding + the health gate,
     /// so an invite never lands on top of those first-run screens.
     private var readyForDeepLink: Bool {
@@ -317,6 +321,10 @@ private struct RootView: View {
         .sheet(item: $pendingInvite) { invite in
             DoublesAcceptSheet(onAccepted: {}, initialCode: invite.code)
         }
+        .sheet(item: Binding(get: { pendingClipID.map(ClipArrival.init) }, set: { pendingClipID = $0?.clipID })) { a in
+            ClipAnswerView(clipID: a.clipID)
+                .environmentObject(lang)
+        }
         .sheet(item: $pendingChallenge) { arrival in
             switch arrival.content {
             case .ready(let challenge):
@@ -339,6 +347,19 @@ private struct RootView: View {
         guard comps.count >= 2 else { return }
 
         switch comps[0] {
+        case "k", "f":
+            // A clip link or a friend link. Both carry a code that makes the
+            // sender and this person friends; a clip link also puts that clip
+            // in the inbox. The redeem is idempotent, so a link opened twice
+            // (store → install → open again) costs nothing.
+            let code = comps[1].lowercased()
+            Task {
+                guard let s = try? await session.ensureSessionWithRetry() else { return }
+                if let r = try? await ClipsService.redeem(code: code, session: s) {
+                    AppAnalytics.shared.log(AnalyticsEvent.clipLinkRedeemed, ["kind": comps[0], "clip": r.clipId != nil])
+                    await MainActor.run { pendingClipID = r.clipId }
+                }
+            }
         case "d":
             let code = normalizedInviteCode(comps[1])
             if code.count == 6 { pendingInvite = InviteCode(code: code) }
@@ -396,4 +417,10 @@ struct ChallengeArrival: Identifiable {
 private struct InviteCode: Identifiable {
     let id = UUID()
     let code: String
+}
+
+/// Wraps a clip id arriving by link so `.sheet(item:)` can present it.
+private struct ClipArrival: Identifiable {
+    let clipID: String
+    var id: String { clipID }
 }

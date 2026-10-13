@@ -128,21 +128,25 @@ Deno.serve(async (req) => {
     }
 
     // The AI view: fills the first day, labelled as a view, never a verdict.
-    let ai: unknown = null;
+    let aiNote = "no_key";
     if (GEMINI_API_KEY) {
-      const { data: used } = await user.rpc("bump_feature_usage", { p_feature: "clip_ai" });
-      if (!(typeof used === "number" && used > AI_DAILY_CAP)) {
-        ai = await aiView(admin, clip.storage_path, clip.stroke, clip.duration_ms);
-        if (ai && typeof ai === "object") {
-          const v = ai as { q1: string; q2: string | null; q3Ms: number | null; q4: number | null };
-          await admin.from("clip_votes").upsert({
+      const { data: used, error: capErr } = await user.rpc("bump_feature_usage", { p_feature: "clip_ai" });
+      if (capErr) aiNote = "cap_rpc:" + capErr.message.slice(0, 60);
+      else if (typeof used === "number" && used > AI_DAILY_CAP) aiNote = "capped";
+      else {
+        const r = await aiView(admin, clip.storage_path, clip.stroke, clip.duration_ms);
+        if (typeof r === "string") aiNote = r;
+        else {
+          const { error: vErr } = await admin.from("clip_votes").upsert({
             clip_id: clipId, rater: null, rater_kind: "ai", voter_hash: "ai",
-            q1: v.q1, q2: v.q2, q3_ms: v.q3Ms, q4_guess: v.q4,
+            q1: r.q1, q2: r.q2, q3_ms: r.q3Ms, q4_guess: r.q4,
           }, { onConflict: "clip_id,voter_hash" });
+          aiNote = vErr ? "vote_insert:" + vErr.message.slice(0, 60) : "ok";
         }
       }
     }
-    return json({ ok: true, recipients: ids.size, ai: ai !== null });
+    await admin.from("clips").update({ ai_note: aiNote }).eq("id", clipId);
+    return json({ ok: true, recipients: ids.size, ai: aiNote === "ok", aiNote });
   }
 
   // ----------------------------------------------------------- playback --
@@ -287,12 +291,13 @@ Deno.serve(async (req) => {
  * among several — its only job is that a first user with no friends still has
  * something to look at.
  */
-async function aiView(admin: ReturnType<typeof createClient>, path: string, stroke: string, durationMs: number) {
+async function aiView(admin: ReturnType<typeof createClient>, path: string, stroke: string, durationMs: number):
+  Promise<{ q1: string; q2: string | null; q3Ms: number | null; q4: number | null } | string> {
   try {
-    const { data: file } = await admin.storage.from(BUCKET).download(path);
-    if (!file) return null;
+    const { data: file, error: dlErr } = await admin.storage.from(BUCKET).download(path);
+    if (dlErr || !file) return "download:" + (dlErr?.message ?? "empty").slice(0, 60);
     const bytes = new Uint8Array(await file.arrayBuffer());
-    if (bytes.length > 12 * 1024 * 1024) return null;
+    if (bytes.length > 12 * 1024 * 1024) return "too_large";
     let bin = ""; for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
     const b64 = btoa(bin);
 
@@ -312,13 +317,14 @@ async function aiView(admin: ReturnType<typeof createClient>, path: string, stro
         generationConfig: { responseMimeType: "application/json", temperature: 0.2, maxOutputTokens: 256 },
       }),
     });
-    if (!res.ok) return null;
+    if (!res.ok) return "gemini_" + res.status + ":" + (await res.text()).slice(0, 80).replace(/\s+/g, " ");
     const out = await res.json();
     const text = out?.candidates?.[0]?.content?.parts?.[0]?.text ?? "";
     const parsed = JSON.parse(text);
     const v = cleanVote({ q1: parsed.q1, q2: parsed.q2, q3Ms: parsed.q3Ms, q4: parsed.q4 }, durationMs);
+    // A shape the bank rejects is the model refusing to pick: record it as "unclear".
     return typeof v === "string" ? { q1: "unclear", q2: null, q3Ms: null, q4: null } : v;
-  } catch {
-    return null;
+  } catch (e) {
+    return "exception:" + String((e as Error)?.message ?? e).slice(0, 60);
   }
 }
