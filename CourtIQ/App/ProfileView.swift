@@ -62,6 +62,7 @@ struct ProfileView: View {
                 // PROGRESS — the three pillars first, then rings and streak.
                 band(lang.t("profile.band_progress")) {
                     pillarProgressSection
+                    PinnedClipCard()
                     ThreeRingsCard()
                         .environmentObject(drillManager)
                         .environmentObject(matchManager)
@@ -905,5 +906,60 @@ struct ProfileView: View {
             .background(accent.opacity(0.14))
             .foregroundStyle(accent)
             .clipShape(Capsule())
+    }
+}
+
+/// The stroke you chose to stand behind. Lives on the profile; friends see
+/// it in their Clips list and say what they see. Hidden until something is
+/// pinned — no empty slot.
+private struct PinnedClipCard: View {
+    @EnvironmentObject private var lang: LanguageManager
+    @EnvironmentObject private var session: UserSessionManager
+    @State private var pinned: ClipsService.OwnedClip?
+    @State private var tally: ClipsService.Tally?
+    @State private var open = false
+
+    var body: some View {
+        Group {
+            if let pinned {
+                Button { open = true } label: {
+                    VStack(alignment: .leading, spacing: 8) {
+                        HStack {
+                            Image(systemName: "pin.fill").foregroundStyle(AppPalette.clay)
+                            Text(lang.t("clips.my_stroke")).font(.subheadline.weight(.bold)).foregroundStyle(AppPalette.ink)
+                            Spacer()
+                            Image(systemName: "chevron.right").font(.caption).foregroundStyle(AppPalette.inkSoft)
+                        }
+                        Text(lang.t("clips.stroke_\(pinned.stroke)")).font(.footnote).foregroundStyle(AppPalette.inkSoft)
+                        if let t = tally {
+                            HStack(spacing: 14) {
+                                ForEach(ClipViewKind.allCases, id: \.rawValue) { k in
+                                    if let kt = t.kind(k.rawValue), kt.shown, let sm = kt.score_mean {
+                                        VStack(spacing: 2) {
+                                            Text(sm.formatted(.number.precision(.fractionLength(1)))).font(.headline).foregroundStyle(AppPalette.clay).monospacedDigit()
+                                            Text(lang.t(k.titleKey)).font(.caption2).foregroundStyle(AppPalette.inkSoft)
+                                        }
+                                    }
+                                }
+                                Spacer()
+                                Text(String(format: lang.t("clips.views_fmt"), pinned.views)).font(.caption).foregroundStyle(AppPalette.inkSoft)
+                            }
+                        }
+                    }
+                    .padding(16).frame(maxWidth: .infinity, alignment: .leading).cardSurface(cornerRadius: 18)
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .task {
+            guard let s = try? await session.ensureSessionWithRetry(),
+                  let pr = try? await ClipsService.profile(session: s), let id = pr.pinnedClipId else { return }
+            let mine = (try? await ClipsService.mine(session: s)) ?? []
+            pinned = mine.first { $0.id == id }
+            tally = try? await ClipsService.tally(clipId: id, session: s)
+        }
+        .sheet(isPresented: $open) {
+            if let pinned { ClipAnswerView(clipID: pinned.id).environmentObject(lang).environmentObject(session) }
+        }
     }
 }

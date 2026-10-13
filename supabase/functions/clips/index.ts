@@ -20,6 +20,9 @@
 //   report      { clipId, reason }
 //   delete      { clipId }
 //   coach_apply { credentialType, credentialRef }  (document upload is a later step)
+//   profile_get { }               → { displayName, pinnedClipId }
+//   profile_set { displayName?, pinnedClipId? | null }   pin = friends can see it
+//   vote also takes score (1–10): about the stroke, shown only to the owner
 
 import { createClient } from "jsr:@supabase/supabase-js@2";
 import { CLIP_QUESTIONS, cleanVote } from "../_shared/clipQuestions.ts";
@@ -175,7 +178,7 @@ Deno.serve(async (req) => {
     const { data: coach } = await admin.from("coach_review_coaches").select("verified_at, active").eq("user_id", me.id).maybeSingle();
     const kind = coach?.verified_at && coach.active ? "coach" : "player";
     const { error } = await admin.from("clip_votes").insert({
-      clip_id: clipId, rater: me.id, rater_kind: kind, q1: v.q1, q2: v.q2, q3_ms: v.q3Ms, q4_guess: v.q4,
+      clip_id: clipId, rater: me.id, rater_kind: kind, q1: v.q1, q2: v.q2, q3_ms: v.q3Ms, q4_guess: v.q4, score: v.score,
     });
     if (error) {
       if ((error as { code?: string }).code === "23505") return json({ error: "already_voted" }, 409);
@@ -218,7 +221,51 @@ Deno.serve(async (req) => {
   // ------------------------------------------------------------ friends --
   if (action === "friends") {
     const { data } = await user.rpc("my_friends");
-    return json({ friends: data ?? [] });
+    const ids = (data ?? []).map((f: { friend: string }) => f.friend);
+    if (!ids.length) return json({ friends: [] });
+    const { data: profs } = await admin.from("clip_profiles").select("user_id, display_name, pinned_clip_id").in("user_id", ids);
+    const byUser = new Map((profs ?? []).map((p) => [p.user_id, p]));
+    const pinnedIds = (profs ?? []).map((p) => p.pinned_clip_id).filter(Boolean) as string[];
+    const { data: pinned } = pinnedIds.length
+      ? await admin.from("clips").select("id, stroke, poster_path, status").in("id", pinnedIds).eq("status", "active")
+      : { data: [] };
+    const byClip = new Map((pinned ?? []).map((c) => [c.id, c]));
+    const out = [];
+    for (const f of data ?? []) {
+      const p = byUser.get(f.friend);
+      const c = p?.pinned_clip_id ? byClip.get(p.pinned_clip_id) : null;
+      let poster: string | null = null;
+      if (c?.poster_path) {
+        const { data: s } = await admin.storage.from(BUCKET).createSignedUrl(c.poster_path, PLAYBACK_TTL);
+        poster = s?.signedUrl ?? null;
+      }
+      out.push({ friend: f.friend, since: f.since, displayName: p?.display_name ?? null,
+                 pinned: c ? { id: c.id, stroke: c.stroke, poster } : null });
+    }
+    return json({ friends: out });
+  }
+
+  // ---------------------------------------------------------- profile --
+  if (action === "profile_get") {
+    const { data: p } = await admin.from("clip_profiles").select("display_name, pinned_clip_id").eq("user_id", me.id).maybeSingle();
+    return json({ displayName: p?.display_name ?? null, pinnedClipId: p?.pinned_clip_id ?? null });
+  }
+  if (action === "profile_set") {
+    const patch: Record<string, unknown> = { user_id: me.id, updated_at: new Date().toISOString() };
+    if (typeof body.displayName === "string") patch.display_name = body.displayName.trim().slice(0, 40) || null;
+    if (body.pinnedClipId === null) patch.pinned_clip_id = null;
+    if (typeof body.pinnedClipId === "string") {
+      const { data: c } = await admin.from("clips").select("id, owner").eq("id", body.pinnedClipId).maybeSingle();
+      if (!c || c.owner !== me.id) return json({ error: "not_yours" }, 403);
+      patch.pinned_clip_id = c.id;
+      // Every current friend can see the pinned clip; the policy covers future ones.
+      const { data: fr } = await user.rpc("my_friends");
+      const ids = (fr ?? []).map((f: { friend: string }) => f.friend);
+      if (ids.length) await admin.from("clip_recipients").upsert(ids.map((uid) => ({ clip_id: c.id, user_id: uid })), { onConflict: "clip_id,user_id" });
+    }
+    const { error } = await admin.from("clip_profiles").upsert(patch, { onConflict: "user_id" });
+    if (error) return json({ error: "profile", detail: error.message }, 500);
+    return json({ ok: true });
   }
 
   // -------------------------------------------------------- invite_code --
@@ -245,6 +292,13 @@ Deno.serve(async (req) => {
     if (!other || other === me.id) return json({ error: "no_match" }, 404);
     const [a, b] = other < me.id ? [other, me.id] : [me.id, other];
     await admin.from("friendships").upsert({ user_a: a, user_b: b, source: "link" }, { onConflict: "user_a,user_b" });
+    // Both pinned clips become visible to the new friend, both ways.
+    const { data: pins } = await admin.from("clip_profiles").select("user_id, pinned_clip_id").in("user_id", [a, b]);
+    for (const p of pins ?? []) {
+      if (!p.pinned_clip_id) continue;
+      const viewer = p.user_id === a ? b : a;
+      await admin.from("clip_recipients").upsert({ clip_id: p.pinned_clip_id, user_id: viewer }, { onConflict: "clip_id,user_id" });
+    }
     // Opening a friend's clip link should also put that clip in my inbox.
     const { data: clip } = await admin.from("clips").select("id").eq("code", c).maybeSingle();
     if (clip) await admin.from("clip_recipients").upsert({ clip_id: clip.id, user_id: me.id }, { onConflict: "clip_id,user_id" });

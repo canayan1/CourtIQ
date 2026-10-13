@@ -6,7 +6,7 @@
 // silent. Keep it identical. (Q2 lists are provisional — CLIPS-SPEC §11.2.)
 
 export const CLIP_QUESTIONS = {
-  version: 1,
+  version: 2,
   strokes: ["forehand", "backhand", "serve", "volley"],
   q1: ["footwork", "technique", "decision", "unclear"],
   q2: {
@@ -26,11 +26,11 @@ export const CLIP_QUESTIONS = {
 };
 
 export interface VoteInput {
-  q1?: unknown; q2?: unknown; q3Ms?: unknown; q4?: unknown;
+  q1?: unknown; q2?: unknown; q3Ms?: unknown; q4?: unknown; score?: unknown;
 }
 
 export interface CleanVote {
-  q1: string; q2: string | null; q3Ms: number | null; q4: number | null;
+  q1: string; q2: string | null; q3Ms: number | null; q4: number | null; score: number | null;
 }
 
 /** Validates a vote against the bank. Returns a reason string on failure. */
@@ -57,5 +57,11 @@ export function cleanVote(v: VoteInput, durationMs: number): CleanVote | string 
     if (typeof v.q4 !== "number" || !Number.isFinite(v.q4)) return "bad_q4";
     q4 = v.q4;
   }
-  return { q1, q2, q3Ms, q4 };
+  // 1–10, optional, integer. About the stroke; shown only to the owner.
+  let score: number | null = null;
+  if (v.score !== undefined && v.score !== null) {
+    if (typeof v.score !== "number" || !Number.isInteger(v.score) || v.score < 1 || v.score > 10) return "bad_score";
+    score = v.score;
+  }
+  return { q1, q2, q3Ms, q4, score };
 }

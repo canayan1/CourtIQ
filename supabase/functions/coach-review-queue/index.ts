@@ -17,6 +17,8 @@
 //       the player re-sends a clip from the app without paying again
 //
 //   POST { action: "deliver", orderId, deliverable: {...}, voiceBase64? }
+//   POST { action: "clip_reports" } / { action: "clip_remove"|"clip_restore", clipId }
+//     → clip moderation for the owner (CLIPS-SPEC §9); removed = bytes deleted
 //     → stores the voice note, inserts the deliverable, flips → delivered
 //
 // The deliverable shape is the "One Thing" format (TEMPLATE §6): a scorecard,
@@ -200,6 +202,39 @@ Deno.serve(async (req) => {
     await admin.from("coach_review_access_log").insert({ order_id: orderId, action: "deliver" });
 
     return json({ ok: true });
+  }
+
+  // ------------------------------------------------- clip moderation --
+  // Can moderates by hand for now (CLIPS-SPEC §9). Reported clips are hidden
+  // on report; here they are reviewed and either removed or put back.
+  if (action === "clip_reports") {
+    const { data: reports } = await admin.from("clip_reports")
+      .select("id, clip_id, reason, created_at").order("created_at", { ascending: false }).limit(50);
+    const ids = Array.from(new Set((reports ?? []).map((r) => r.clip_id)));
+    const { data: clips } = ids.length
+      ? await admin.from("clips").select("id, code, stroke, status, storage_path, created_at").in("id", ids)
+      : { data: [] };
+    const byId = new Map((clips ?? []).map((c) => [c.id, c]));
+    const out = [];
+    for (const r of reports ?? []) {
+      const c = byId.get(r.clip_id);
+      if (!c) continue;
+      const { data: s } = await admin.storage.from("clips").createSignedUrl(c.storage_path, 30 * 60);
+      out.push({ reportId: r.id, clipId: c.id, code: c.code, stroke: c.stroke, status: c.status,
+                 reason: r.reason, reportedAt: r.created_at, videoUrl: s?.signedUrl ?? null });
+    }
+    return json({ reports: out });
+  }
+  if (action === "clip_remove" || action === "clip_restore") {
+    const clipId = String(body.clipId ?? "");
+    const status = action === "clip_remove" ? "removed" : "active";
+    const { error } = await admin.from("clips").update({ status }).eq("id", clipId);
+    if (error) return json({ error: "Could not update the clip." }, 500);
+    if (status === "removed") {
+      const { data: c } = await admin.from("clips").select("storage_path, poster_path").eq("id", clipId).maybeSingle();
+      if (c) await admin.storage.from("clips").remove([c.storage_path, c.poster_path].filter(Boolean) as string[]);
+    }
+    return json({ ok: true, status });
   }
 
   return json({ error: "Unknown action." }, 400);

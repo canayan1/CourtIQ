@@ -23,6 +23,7 @@ struct ClipAnswerView: View {
     @State private var q3Ms: Int?
     @State private var q4: Double?
     @State private var includeQ4 = false
+    @State private var score: Int?
     @State private var submitted = false
     @State private var busy = false
     @State private var error: String?
@@ -106,6 +107,24 @@ struct ClipAnswerView: View {
                     }
                 }
             }
+            if q1 != nil {
+                section("5 · " + lang.t("clips.q5_prompt")) {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(lang.t("clips.q5_hint")).font(.caption).foregroundStyle(AppPalette.inkSoft)
+                        HStack(spacing: 6) {
+                            ForEach(1...10, id: \.self) { n in
+                                Button { score = (score == n) ? nil : n; Haptics.tap() } label: {
+                                    Text("\(n)").font(.footnote.weight(.bold))
+                                        .frame(width: 28, height: 34)
+                                        .background(score == n ? AppPalette.clay : AppPalette.parchment, in: RoundedRectangle(cornerRadius: 9, style: .continuous))
+                                        .foregroundStyle(score == n ? .white : AppPalette.ink)
+                                }
+                                .buttonStyle(.plain)
+                            }
+                        }
+                    }
+                }
+            }
             PrimaryButton(title: busy ? lang.t("clips.sending") : lang.t("clips.see_views"), icon: "eye") { Task { await submit() } }
                 .disabled(!ready || busy).opacity(ready ? 1 : 0.5)
         }
@@ -146,7 +165,8 @@ struct ClipAnswerView: View {
                          rows: [(bank.q1.options.first { $0.id == q1 }?.label ?? q1, nil),
                                 (q2.map { bank.label($0) }, nil),
                                 (q3Ms.map { String(format: "%.1f s", Double($0) / 1000) }, nil),
-                                (q4.map { "WTN \($0.formatted(.number.precision(.fractionLength(1))))" }, nil)]
+                                (q4.map { "WTN \($0.formatted(.number.precision(.fractionLength(1))))" }, nil),
+                                (score.map { String(format: lang.t("clips.score_fmt"), $0) }, nil)]
                             .compactMap { r in r.0.map { ($0, r.1) } })
             }
             if let tally {
@@ -177,6 +197,7 @@ struct ClipAnswerView: View {
                 if let q2 = t.q2, !q2.isEmpty { dist(q2, n: t.n, small: true) }
                 if let m = t.q3_median_ms { row(lang.t("clips.moment_median"), String(format: "%.1f s", m / 1000)) }
                 if let mean = t.q4_mean { row(lang.t("clips.level_mean"), "WTN \(mean.formatted(.number.precision(.fractionLength(1))))") }
+                if let sm = t.score_mean, let sn = t.score_n { row(lang.t("clips.score_mean"), "\(sm.formatted(.number.precision(.fractionLength(1)))) / 10 · \(sn)") }
             }
         }
         .padding(14).frame(maxWidth: .infinity, alignment: .leading).cardSurface(cornerRadius: 18)
@@ -238,7 +259,7 @@ struct ClipAnswerView: View {
         busy = true; error = nil
         do {
             let s = try await session.ensureSessionWithRetry()
-            let r = try await ClipsService.vote(clipId: clipID, q1: q1, q2: q1 == "unclear" ? nil : q2, q3Ms: q1 == "unclear" ? nil : q3Ms, q4: includeQ4 ? q4 : nil, session: s)
+            let r = try await ClipsService.vote(clipId: clipID, q1: q1, q2: q1 == "unclear" ? nil : q2, q3Ms: q1 == "unclear" ? nil : q3Ms, q4: includeQ4 ? q4 : nil, score: score, session: s)
             tally = r.tally; submitted = true
             AppAnalytics.shared.log(AnalyticsEvent.clipAnswered, ["kind": r.kind])
             Haptics.tap()

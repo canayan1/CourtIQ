@@ -1343,3 +1343,19 @@
 "clips.level_mean" = "Level (mean)";
 "clips.declared_fmt" = "Your own rating: %@ %.1f";
 "clips.no_truth" = "No view here is the answer. Where they differ is where the stroke is worth a second look.";
+
+/* Clips — score, pin, names */
+"clips.q5_prompt" = "How clean does this stroke look?";
+"clips.q5_hint" = "1 = rough, 10 = textbook. Only the owner sees the average.";
+"clips.score_fmt" = "Your score: %d / 10";
+"clips.score_mean" = "Score (mean)";
+"clips.pin" = "Pin to profile";
+"clips.unpin" = "Unpin";
+"clips.pin_hint" = "Pin one clip: friends see it on their Clips list and can say what they see.";
+"clips.name" = "Your name";
+"clips.name_placeholder" = "How friends see you";
+"clips.name_hint" = "Shown only to friends, next to your pinned stroke.";
+"clips.friend_unnamed" = "A friend";
+"clips.pinned_by_friend" = "pinned";
+"clips.no_pin_yet" = "Nothing pinned yet";
+"clips.my_stroke" = "My stroke";

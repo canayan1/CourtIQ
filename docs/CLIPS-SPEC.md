@@ -64,6 +64,7 @@ Klip döngüde oynar. Oylar **cevap verilene kadar gizli** (sürü etkisi önlem
 | Q2 | Tam olarak ne? | Q1'e bağlı 4–6 seçenek (ör. teknik → geç hazırlık / bilek / raket yüzü / temas noktası / bitiriş) | koç bakışı |
 | Q3 | Hangi anda? | videoda dokun | koç zaman damgalarının medyanı ± 0,3 sn |
 | Q4 | Bu oyuncu kaç? | WTN/UTR kaydırıcı (ya da seviye bandı) | **yükleyenin beyanı** (tek nesnel referans) |
+| Q5 | Bu vuruş ne kadar temiz görünüyor? (isteğe bağlı) | 1–10 | yok — **yalnız sahibine**, tür başına ortalama; asla bir ismin yanında (Can, 13 Eki) |
 
 "Bu açıdan görünmüyor" seçeneği zorunlu: koç panelindeki "—" ile aynı
 dürüstlük; yanlış açıdan çekilmiş klipte kalabalığı tahmine zorlamıyoruz.
@@ -145,6 +146,13 @@ Bu, koç bakışına ihtiyaç duymayan tek soru ve en paylaşılabilir sonuç
 
 ## 5. Profil
 
+**13 Eki eklemesi (Can):** kullanıcı **bir klibi sabitler** (profilde "Vuruşum"
+kartı); arkadaşları bunu Klipler listesinde görür ve bakış + 1–10 puan verir.
+Sabitlenen klip arkadaşlara otomatik alıcı olur (mevcut arkadaşlar anında,
+yeni arkadaşlar link redeem'inde). `clip_profiles(user_id, display_name,
+pinned_clip_id)`; isim yalnız arkadaşlara görünür. İlk AI bakışı ücretsiz
+(günlük kota `CLIP_AI_DAILY_CAP`, varsayılan 5).
+
 Profile üç parça eklenir (mevcut "Three pillars" bölümünün altına):
 
 1. **Kliplerim** — her klip: donmuş kare, cevap sayısı, koç var/yok, fark
@@ -199,6 +207,11 @@ coach_review_coaches  + credential_type, credential_ref, verified_at, verified_b
 Declared Age Range API; yayın öncesi onay kuyruğu (Can, ~15 dk/gün 1k MAU'da,
 10k'da otomatik eleme şart); rapor/engelle/24 saatte kaldır; Faz 1'de sadece
 "rapor et" + yükleyenin anında silmesi yeter.
+
+## 9a. Moderasyon (Can, 13 Eki: "başlangıçta moderasyonu ben yaparım")
+Rapor edilen klip anında `reported` olur ve görünmez; `samosfi.com/coach`
+panelinin altındaki **Reported clips** bölümünde izlenir; **Remove** byte'ları
+siler, **Restore** geri açar. Apple 1.2'nin 24 saat kuralı Can'ın takvimidir.
 
 ## 9. Hukuk / mağaza — Faz 1 listesi
 

@@ -37,7 +37,12 @@ enum ClipsService {
         let id: String; let owner: String; let stroke: String; let duration_ms: Int
         let created_at: String; let status: String; let answered: Bool
     }
-    struct Friend: Decodable, Identifiable, Hashable { let friend: String; let since: String; var id: String { friend } }
+    struct PinnedSummary: Decodable, Hashable { let id: String; let stroke: String; let poster: String? }
+    struct Friend: Decodable, Identifiable, Hashable {
+        let friend: String; let since: String; let displayName: String?; let pinned: PinnedSummary?
+        var id: String { friend }
+    }
+    struct Profile: Decodable { let displayName: String?; let pinnedClipId: String? }
 
     /// One kind's aggregate. `shown == false` means "not enough yet", and the
     /// screen says exactly that rather than showing one person's opinion.
@@ -45,6 +50,7 @@ enum ClipsService {
         let n: Int; let shown: Bool
         let q1: [String: Int]?; let q2: [String: Int]?
         let q3_median_ms: Double?; let q4_mean: Double?; let q4_n: Int?
+        let score_mean: Double?; let score_n: Int?
     }
     struct Declared: Decodable, Hashable { let system: String?; let value: Double?; let band: String? }
     struct Tally: Decodable, Hashable {
@@ -88,12 +94,25 @@ enum ClipsService {
         try await call(["action": "playback", "clipId": clipId], session: session)
     }
 
-    static func vote(clipId: String, q1: String, q2: String?, q3Ms: Int?, q4: Double?, session: SupabaseSession) async throws -> VoteResult {
+    static func vote(clipId: String, q1: String, q2: String?, q3Ms: Int?, q4: Double?, score: Int?, session: SupabaseSession) async throws -> VoteResult {
         var body: [String: Any] = ["action": "vote", "clipId": clipId, "q1": q1]
         if let q2 { body["q2"] = q2 }
         if let q3Ms { body["q3Ms"] = q3Ms }
         if let q4 { body["q4"] = q4 }
+        if let score { body["score"] = score }
         return try await call(body, session: session)
+    }
+
+    static func profile(session: SupabaseSession) async throws -> Profile {
+        try await call(["action": "profile_get"], session: session)
+    }
+    /// `pin == .some(nil)` clears the pin; `nil` leaves it alone.
+    static func setProfile(displayName: String?, pin: String??, session: SupabaseSession) async throws {
+        struct R: Decodable { let ok: Bool }
+        var body: [String: Any] = ["action": "profile_set"]
+        if let displayName { body["displayName"] = displayName }
+        if let pin { body["pinnedClipId"] = pin ?? NSNull() }
+        _ = try await call(body, session: session) as R
     }
 
     static func tally(clipId: String, session: SupabaseSession) async throws -> Tally? {

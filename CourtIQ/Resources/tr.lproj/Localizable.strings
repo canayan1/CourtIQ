@@ -1343,3 +1343,19 @@
 "clips.level_mean" = "Seviye (ortalama)";
 "clips.declared_fmt" = "Senin puanın: %@ %.1f";
 "clips.no_truth" = "Buradaki hiçbir bakış cevap değil. Ayrıştıkları yer, vuruşa ikinci kez bakmaya değer yer.";
+
+/* Clips — puan, sabitleme, isim */
+"clips.q5_prompt" = "Bu vuruş sana ne kadar temiz görünüyor?";
+"clips.q5_hint" = "1 = kaba, 10 = kitap gibi. Ortalamayı sadece sahibi görür.";
+"clips.score_fmt" = "Puanın: %d / 10";
+"clips.score_mean" = "Puan (ortalama)";
+"clips.pin" = "Profile sabitle";
+"clips.unpin" = "Sabitlemeyi kaldır";
+"clips.pin_hint" = "Bir klibi sabitle: arkadaşların Klipler listesinde görür ve ne gördüğünü söyler.";
+"clips.name" = "Adın";
+"clips.name_placeholder" = "Arkadaşların seni nasıl görsün";
+"clips.name_hint" = "Sadece arkadaşlara, sabitlenmiş vuruşunun yanında görünür.";
+"clips.friend_unnamed" = "Bir arkadaş";
+"clips.pinned_by_friend" = "sabitlenmiş";
+"clips.no_pin_yet" = "Henüz sabitlenmiş klip yok";
+"clips.my_stroke" = "Vuruşum";

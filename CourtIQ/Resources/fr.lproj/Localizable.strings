@@ -1343,3 +1343,19 @@
 "clips.level_mean" = "Niveau (moyenne)";
 "clips.declared_fmt" = "Ton propre classement : %@ %.1f";
 "clips.no_truth" = "Aucun regard ici n'est la réponse. Là où ils divergent, le coup mérite un second regard.";
+
+/* Clips — note, épingle, noms */
+"clips.q5_prompt" = "Ce coup te paraît propre à quel point ?";
+"clips.q5_hint" = "1 = brouillon, 10 = manuel. Seul le propriétaire voit la moyenne.";
+"clips.score_fmt" = "Ta note : %d / 10";
+"clips.score_mean" = "Note (moyenne)";
+"clips.pin" = "Épingler au profil";
+"clips.unpin" = "Désépingler";
+"clips.pin_hint" = "Épingle un clip : tes amis le voient dans leur liste Clips et disent ce qu'ils voient.";
+"clips.name" = "Ton nom";
+"clips.name_placeholder" = "Comme tes amis te voient";
+"clips.name_hint" = "Visible seulement par les amis, à côté de ton coup épinglé.";
+"clips.friend_unnamed" = "Un ami";
+"clips.pinned_by_friend" = "épinglé";
+"clips.no_pin_yet" = "Rien d'épinglé pour l'instant";
+"clips.my_stroke" = "Mon coup";

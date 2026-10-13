@@ -43,7 +43,7 @@ const clientIP = (req: Request) =>
 /** Aggregates per kind, with the same thresholds as clip_tally(). The owner's
  *  declared rating is never included here — this endpoint has no owner. */
 async function tallies(admin: ReturnType<typeof createClient>, clipId: string) {
-  const { data: votes } = await admin.from("clip_votes").select("rater_kind, q1, q2, q3_ms, q4_guess").eq("clip_id", clipId);
+  const { data: votes } = await admin.from("clip_votes").select("rater_kind, q1, q2, q3_ms, q4_guess, score").eq("clip_id", clipId);
   const out: Record<string, unknown> = {};
   for (const kind of ["coach", "player", "web", "ai"]) {
     const vs = (votes ?? []).filter((v) => v.rater_kind === kind);
@@ -57,12 +57,15 @@ async function tallies(admin: ReturnType<typeof createClient>, clipId: string) {
     };
     const q3 = vs.map((v) => v.q3_ms).filter((x): x is number => typeof x === "number").sort((a, b) => a - b);
     const q4 = vs.map((v) => v.q4_guess).filter((x): x is number => typeof x === "number");
+    const sc = vs.map((v) => v.score).filter((x): x is number => typeof x === "number");
     out[kind] = {
       n, shown: true,
       q1: count((v) => v.q1), q2: count((v) => v.q2),
       q3_median_ms: q3.length ? q3[Math.floor(q3.length / 2)] : null,
       q4_mean: q4.length ? Math.round((q4.reduce((a, b) => a + b, 0) / q4.length) * 100) / 100 : null,
       q4_n: q4.length,
+      score_mean: sc.length ? Math.round((sc.reduce((a, b) => a + b, 0) / sc.length) * 10) / 10 : null,
+      score_n: sc.length,
     };
   }
   return out;
@@ -85,7 +88,7 @@ Deno.serve(async (req) => {
   if (!clip || clip.status !== "active" || !clip.uploaded_at || clip.purged_at) return json({ error: "not_found" }, 404);
 
   const hash = await voterHash(code, clientIP(req));
-  const { data: mine } = await admin.from("clip_votes").select("q1, q2, q3_ms, q4_guess").eq("clip_id", clip.id).eq("voter_hash", hash).maybeSingle();
+  const { data: mine } = await admin.from("clip_votes").select("q1, q2, q3_ms, q4_guess, score").eq("clip_id", clip.id).eq("voter_hash", hash).maybeSingle();
 
   if (body.action === "view") {
     const { data: s } = await admin.storage.from(BUCKET).createSignedUrl(clip.storage_path, PLAYBACK_TTL);
@@ -95,7 +98,7 @@ Deno.serve(async (req) => {
       url: s?.signedUrl ?? null, poster: p?.signedUrl ?? null,
       questions: CLIP_QUESTIONS,
       // Hidden-vote rule: the crowd is shown only to someone who has answered.
-      yours: mine ? { q1: mine.q1, q2: mine.q2, q3Ms: mine.q3_ms, q4: mine.q4_guess } : null,
+      yours: mine ? { q1: mine.q1, q2: mine.q2, q3Ms: mine.q3_ms, q4: mine.q4_guess, score: mine.score } : null,
       tally: mine ? await tallies(admin, clip.id) : null,
       ownerCode: code,   // the link to redeem after install → friendship
     });
@@ -110,7 +113,7 @@ Deno.serve(async (req) => {
     if ((count ?? 0) >= WEB_DAILY_CAP_PER_CLIP) return json({ error: "busy" }, 429);
     const { error } = await admin.from("clip_votes").insert({
       clip_id: clip.id, rater: null, rater_kind: "web", voter_hash: hash,
-      q1: v.q1, q2: v.q2, q3_ms: v.q3Ms, q4_guess: v.q4,
+      q1: v.q1, q2: v.q2, q3_ms: v.q3Ms, q4_guess: v.q4, score: v.score,
     });
     if (error) return json({ error: "insert" }, 500);
     return json({ ok: true, yours: v, tally: await tallies(admin, clip.id) });
