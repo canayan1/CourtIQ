@@ -314,12 +314,23 @@ async function aiView(admin: ReturnType<typeof createClient>, path: string, stro
       method: "POST", headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         contents: [{ role: "user", parts: [{ inline_data: { mime_type: "video/mp4", data: b64 } }, { text: prompt }] }],
-        generationConfig: { responseMimeType: "application/json", temperature: 0.2, maxOutputTokens: 256 },
+        // maxOutputTokens INCLUDES thinking tokens on gemini-2.5 models (see
+        // match-analysis): 256 was eaten entirely by thinking and the visible
+        // text came back empty — "Unexpected end of JSON input" on the first
+        // live clip. No thinking needed for a four-field pick.
+        generationConfig: {
+          responseMimeType: "application/json", temperature: 0.2, maxOutputTokens: 2048,
+          thinkingConfig: { thinkingBudget: 0 },
+        },
       }),
     });
     if (!res.ok) return "gemini_" + res.status + ":" + (await res.text()).slice(0, 80).replace(/\s+/g, " ");
     const out = await res.json();
-    const text = out?.candidates?.[0]?.content?.parts?.[0]?.text ?? "";
+    const parts = out?.candidates?.[0]?.content?.parts ?? [];
+    const text = parts.map((p: { text?: string }) => p.text ?? "").join("").trim()
+      .replace(/^```(?:json)?\s*/i, "").replace(/```\s*$/, "");
+    // An empty answer is the model declining; say so instead of throwing.
+    if (!text) return "empty:" + String(out?.candidates?.[0]?.finishReason ?? "none");
     const parsed = JSON.parse(text);
     const v = cleanVote({ q1: parsed.q1, q2: parsed.q2, q3Ms: parsed.q3Ms, q4: parsed.q4 }, durationMs);
     // A shape the bank rejects is the model refusing to pick: record it as "unclear".
