@@ -137,10 +137,13 @@ Deno.serve(async (req) => {
         const r = await aiView(admin, clip.storage_path, clip.stroke, clip.duration_ms);
         if (typeof r === "string") aiNote = r;
         else {
-          const { error: vErr } = await admin.from("clip_votes").upsert({
+          // Not an upsert: the one-ai-vote-per-clip index is partial, and
+          // ON CONFLICT cannot name a partial index. Replace instead.
+          await admin.from("clip_votes").delete().eq("clip_id", clipId).eq("rater_kind", "ai");
+          const { error: vErr } = await admin.from("clip_votes").insert({
             clip_id: clipId, rater: null, rater_kind: "ai", voter_hash: "ai",
             q1: r.q1, q2: r.q2, q3_ms: r.q3Ms, q4_guess: r.q4,
-          }, { onConflict: "clip_id,voter_hash" });
+          });
           aiNote = vErr ? "vote_insert:" + vErr.message.slice(0, 60) : "ok";
         }
       }
